@@ -73,8 +73,24 @@ if [ -z "$PUBLIC_URL" ]; then
   echo "Tunnel did not report a URL. See $LOG_DIR/tunnel.log"; read -r; exit 1
 fi
 
-# Prove it end to end from the outside before handing the link over.
+# Prove it end to end before handing the link over.
+HOST_ONLY=${PUBLIC_URL#https://}
+NOTE=""
 HEALTH=$(curl -fs -m 20 "$PUBLIC_URL/engine/health" 2>/dev/null | head -c 40)
+if [ -z "$HEALTH" ]; then
+  # Don't call the tunnel broken yet. Corporate DNS commonly blackholes
+  # *.trycloudflare.com (quick tunnels are an exfiltration route), which makes
+  # the link unreachable from THIS machine while working fine for everyone else.
+  # Retry against a public resolver's answer to tell the two cases apart.
+  IP=$(nslookup "$HOST_ONLY" 1.1.1.1 2>/dev/null | awk '/^Address: /{print $2}' | tail -1)
+  if [ -n "$IP" ]; then
+    HEALTH=$(curl -fs --resolve "$HOST_ONLY:443:$IP" -m 20 "$PUBLIC_URL/engine/health" 2>/dev/null | head -c 40)
+    [ -n "$HEALTH" ] && NOTE="
+  NOTE: this Mac's own DNS will not resolve the link (VPN or network filtering).
+        The tunnel is fine — other people can open it. To see it yourself, use
+        your phone with wifi off, or disconnect the VPN."
+  fi
+fi
 
 cat <<EOF
 
@@ -84,9 +100,9 @@ cat <<EOF
      $PUBLIC_URL
 
 ──────────────────────────────────────────────────────────────
-  reachable from outside : $([ -n "$HEALTH" ] && echo "yes" || echo "NO — check $LOG_DIR/tunnel.log")
-  sims run on            : this Mac (close this window to stop)
-  logs                   : $LOG_DIR
+  serving over the tunnel : $([ -n "$HEALTH" ] && echo "yes" || echo "NO — check $LOG_DIR/tunnel.log")
+  sims run on             : this Mac (close this window to stop)
+  logs                    : $LOG_DIR$NOTE
 
   Anyone with the link can browse and can queue simulations.
   Limits already in force: 6 sims/hour each, 3 queued at once, 64 games max.

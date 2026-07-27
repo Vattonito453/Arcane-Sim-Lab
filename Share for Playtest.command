@@ -73,24 +73,34 @@ if [ -z "$PUBLIC_URL" ]; then
   echo "Tunnel did not report a URL. See $LOG_DIR/tunnel.log"; read -r; exit 1
 fi
 
-# Prove it end to end before handing the link over.
+# Prove it end to end before handing the link over. Cloudflare says outright that
+# a fresh quick tunnel "may take some time to be reachable", so probe on a loop
+# rather than once — a single immediate check reported a working tunnel as broken.
 HOST_ONLY=${PUBLIC_URL#https://}
 NOTE=""
-HEALTH=$(curl -fs -m 20 "$PUBLIC_URL/engine/health" 2>/dev/null | head -c 40)
-if [ -z "$HEALTH" ]; then
-  # Don't call the tunnel broken yet. Corporate DNS commonly blackholes
-  # *.trycloudflare.com (quick tunnels are an exfiltration route), which makes
-  # the link unreachable from THIS machine while working fine for everyone else.
-  # Retry against a public resolver's answer to tell the two cases apart.
+HEALTH=""
+printf "Checking the link"
+for _ in $(seq 1 20); do
+  HEALTH=$(curl -fs -m 8 "$PUBLIC_URL/engine/health" 2>/dev/null | head -c 40)
+  [ -n "$HEALTH" ] && break
+  # Corporate DNS commonly blackholes *.trycloudflare.com (quick tunnels are an
+  # exfiltration route), which makes the link unreachable from THIS machine while
+  # working fine for everyone else. Ask a public resolver to tell the cases apart.
   IP=$(nslookup "$HOST_ONLY" 1.1.1.1 2>/dev/null | awk '/^Address: /{print $2}' | tail -1)
   if [ -n "$IP" ]; then
-    HEALTH=$(curl -fs --resolve "$HOST_ONLY:443:$IP" -m 20 "$PUBLIC_URL/engine/health" 2>/dev/null | head -c 40)
-    [ -n "$HEALTH" ] && NOTE="
+    HEALTH=$(curl -fs --resolve "$HOST_ONLY:443:$IP" -m 8 "$PUBLIC_URL/engine/health" 2>/dev/null | head -c 40)
+    if [ -n "$HEALTH" ]; then
+      NOTE="
   NOTE: this Mac's own DNS will not resolve the link (VPN or network filtering).
         The tunnel is fine — other people can open it. To see it yourself, use
         your phone with wifi off, or disconnect the VPN."
+      break
+    fi
   fi
-fi
+  printf "."
+  sleep 3
+done
+echo
 
 cat <<EOF
 

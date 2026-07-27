@@ -65,8 +65,10 @@ Forge logs cards **leaving** the battlefield, never **entering** (measured: 134
 is *inference*, not a read. `board.py` reports its own error rate — currently
 **86.5% of exits match**, and 68 of the 71 misses are tokens created and
 sacrificed without ever acting, for which the exit is the object's only mention.
-On the 2-game fixture the same figure is **83.3%**, with **12.0%** of entries
-recorded as assumed (no type data to go on).
+On the 2-game fixture the same figure is **83.3%**. Entries recorded as assumed
+(no type data to go on) depend on how warm the Scryfall cache is — **8.4%** with
+the cache warm, more on a cold one — so treat exit_match_rate, not assumed_share,
+as the regression signal.
 
 Consequences you must respect:
 - The **event log is authoritative**; the board is an aid. Never present

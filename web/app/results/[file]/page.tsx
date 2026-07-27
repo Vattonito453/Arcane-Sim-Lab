@@ -15,7 +15,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Chrome, Footer } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { RunGameSummary, RunSummary } from "@/lib/types";
-import { deckSlug, pct, stripAi } from "@/lib/format";
+import { deckSlug, pct, plural, runTitle, stripAi } from "@/lib/format";
 
 function fmtClock(ms: number): string {
   const s = Math.round(ms / 1000);
@@ -142,7 +142,10 @@ export default function ResultsPage() {
     return { games, baseline, rows, tops, topNames, gameRows, medTurns, rotated, ctx, watchGame };
   }, [data, file]);
 
-  const title = file.replace(/\.json$/, "");
+  // The matchup, not the filename: "sim_20260724_094940_rotated.json" tells a
+  // reader nothing. The filename stays in the sub-line and the footer for anyone
+  // who needs to find it on disk.
+  const title = view ? runTitle(view.rows.map((r) => r.name)) : file.replace(/\.json$/, "");
   const enc = encodeURIComponent(file);
 
   if (err) {
@@ -219,7 +222,9 @@ export default function ResultsPage() {
             <div className="sub">
               {rows.map((r) => r.name).join(" · ")}
               <span className="sep">·</span>
-              <span className="mono">{games}</span> games
+              <span className="mono">{file}</span>
+              <span className="sep">·</span>
+              <span className="mono">{games}</span> {games === 1 ? "game" : "games"}
               <span className="sep">·</span>
               {String(data.meta?.format ?? "Commander")}
             </div>
@@ -270,7 +275,7 @@ export default function ResultsPage() {
           <div className="sh">
             <h2>Win rates</h2>
             <span className="meta">
-              {games} games, {rows.length} {rows.length === 1 ? "deck" : "decks"}
+              {plural(games, "game")}, {plural(rows.length, "deck")}
             </span>
           </div>
           <table className="podt">
@@ -321,7 +326,7 @@ export default function ResultsPage() {
                 />
               </div>
               <span className="upd">
-                {filtered.length} of {games} games
+                {filtered.length} of {plural(games, "game")}
               </span>
             </div>
             <table className="games">

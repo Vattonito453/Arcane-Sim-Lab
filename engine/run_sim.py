@@ -116,7 +116,11 @@ def run(args: argparse.Namespace) -> None:
 
     print("$", " ".join(cmd))
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    raw_path = out_dir / f"forge_raw_{stamp}.log"
+    # With --run-id the log is addressable while it is still being written, which
+    # is what lets GET /sim-live parse the game in progress. Without one, keep the
+    # timestamped name so nothing else changes.
+    raw_path = out_dir / (f"forge_raw_{args.run_id}.log" if args.run_id
+                          else f"forge_raw_{stamp}.log")
 
     # Stream Forge's output live: show progress lines on screen, save everything.
     stdout_lines: list[str] = []
@@ -124,7 +128,9 @@ def run(args: argparse.Namespace) -> None:
     # Forge must run from its install dir so it finds the res/ folder.
     proc = subprocess.Popen(cmd, cwd=Path(jar).parent, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, text=True, bufsize=1)
-    with open(raw_path, "w", encoding="utf-8") as rawf:
+    # buffering=1 (line buffered): a reader tailing this file has to see turns as
+    # they happen, not in 8 KB bursts.
+    with open(raw_path, "w", encoding="utf-8", buffering=1) as rawf:
         assert proc.stdout is not None
         for line in proc.stdout:
             rawf.write(line)
@@ -210,6 +216,9 @@ def main() -> None:
     p.add_argument("--rotate", action="store_true",
                    help="Rotate seat order across sub-runs to cancel Forge's seat bias (recommended for 4-player)")
     p.add_argument("--out", default="./sim_results")
+    p.add_argument("--run-id", default=None,
+                   help="Job id. Names the raw log forge_raw_<id>.log so the API "
+                        "can read the game in progress (GET /sim-live).")
     run(p.parse_args())
 
 

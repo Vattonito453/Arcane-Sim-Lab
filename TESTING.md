@@ -61,11 +61,14 @@ until you restart it.
 
 ## The walkthrough
 
-1. **Home.** Prose line counts real decks and runs off the engine. Pick 2–4 decks,
-   set games to **2**, start the run.
-2. **Run progress.** Polls `/sim-status` and redirects to the result when the
-   worker finishes. A 2-deck 2-game run takes **~10 s**, 3 decks **~27 s**. The
-   10–60 minute figure in the docs is for 64-game 4-deck gauntlets, not this.
+1. **Decks** (`/`). Pick 2–4 decks. The estimate next to the button is
+   seat-aware: two decks costs ~2.5 s/game, three ~11 s, four ~52 s, plus ~7.5 s
+   of JVM and card-database startup. Start with **1 game** to see the loop.
+2. **Run progress.** Polls `/sim-status`, and once Forge writes its first turn it
+   shows the **live table** — the game as it is being played, updating every
+   1.5 s — then redirects to the result. Forge spends ~25 s loading its card
+   database first, which the page says rather than showing an empty box. Behind a
+   backlog the state reads "Queued — 2 runs ahead" instead of pretending to run.
 3. **Results.** Every deck in the pod appears in *Win rates*, winless ones
    included, and the baseline marker reads 25% for four decks / 33.3% for three.
    If a 3-deck run ever shows "1 deck" and a 100% baseline again, the summary lost
@@ -75,7 +78,10 @@ until you restart it.
    into one tile with a count (`Zombie Token 44`). Attackers get a red ring and an
    "attacking X →" line on the centre edge. Space plays, arrows step, shift+arrows
    jump a turn, `?t=<n>` deep-links an event.
-5. **Import.** Paste a Moxfield/Arena export. The response reports the main-deck
+5. **Results** (`/results`). Every finished run, filterable by deck. Runs are
+   named by matchup — "Wyleth vs Drana vs Kilo vs Wilhelt" — not by the result
+   filename, which is only the address and sits in the row tooltip.
+6. **Import.** Paste a Moxfield/Arena export. The response reports the main-deck
    count, duplicates, and `cards_cached` — how many card faces it pulled from
    Scryfall in one batch so replays don't fetch mid-scrub. ~100 names is two
    batched calls, about 2 s.

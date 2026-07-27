@@ -1,8 +1,8 @@
 /** Engine API client. Base URL is runtime-configurable per API_SPEC.md:
  *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
 import type {
-  DeckEntry, ImportResponse, JobStatus, ResultIndexEntry, RunGame, RunSummary,
-  SimResult,
+  DeckEntry, ImportResponse, JobStatus, LiveGame, ResultIndexEntry, RunGame,
+  RunSummary, SimResult,
 } from "./types";
 
 export function apiBase(): string {
@@ -108,6 +108,8 @@ export const api = {
   simulate: (decks: string[], games: number) =>
     post<{ ok: boolean; job_id: string; state: string }>("/simulate", { decks, games }),
   simStatus: (id?: string) => get<JobStatus>(`/sim-status${id ? `?id=${encodeURIComponent(id)}` : ""}`),
+  /** The game in flight. 404s until Forge has written its first line. */
+  simLive: (id: string) => get<LiveGame>(`/sim-live?id=${encodeURIComponent(id)}`),
   importDeck: (name: string, text: string, commander?: string, save = true) =>
     post<ImportResponse>("/decks", { name, text, commander, save }),
   rule: (n: string) => get<Record<string, unknown>>(`/rule/${encodeURIComponent(n)}`),

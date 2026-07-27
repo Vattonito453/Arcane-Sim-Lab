@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export interface TabDef {
   label: string;
@@ -6,7 +9,17 @@ export interface TabDef {
   on?: boolean;
 }
 
-/** Topbar + optional tab row. Matches mockups/simlab_v3_*.html chrome exactly. */
+/** The three places there are to go. Everything the top bar used to hold —
+ *  Feedback, Changelog, Docs — pointed at "#", and the "vincent · Pro" badge and
+ *  avatar were decoration that also shipped the owner's name to every visitor of
+ *  a hosted build. A nav item that does nothing is worse than no nav item. */
+const NAV = [
+  { label: "Decks", href: "/" },
+  { label: "Import", href: "/import" },
+  { label: "Results", href: "/results" },
+];
+
+/** Topbar + optional tab row. */
 export function Chrome({
   context,
   contextImg,
@@ -16,17 +29,21 @@ export function Chrome({
   contextImg?: string;
   tabs?: TabDef[];
 }) {
+  const path = usePathname() ?? "/";
+  // "/" only matches exactly; the others match their whole subtree, so a replay
+  // under /results/... still highlights Results.
+  const isOn = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+
   return (
     <header className="chrome">
       <div className="tb">
-        <svg className="glyph" viewBox="0 0 24 24" fill="none" aria-label="Sim Lab">
-          <path d="M12 2 2.5 21.5h19L12 2Z" stroke="#EDEDED" strokeWidth="1.6" strokeLinejoin="round" />
-          <path d="M12 8.5v6.5" stroke="#EDEDED" strokeWidth="1.6" strokeLinecap="round" />
-        </svg>
-        <span className="slash">/</span>
-        <div className="path">
-          <Link href="/">vincent</Link> <span className="plan">Pro</span>
-        </div>
+        <Link className="path" href="/">
+          <svg className="glyph" viewBox="0 0 24 24" fill="none" aria-label="Sim Lab">
+            <path d="M12 2 2.5 21.5h19L12 2Z" stroke="#EDEDED" strokeWidth="1.6" strokeLinejoin="round" />
+            <path d="M12 8.5v6.5" stroke="#EDEDED" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+          Sim Lab
+        </Link>
         {context && (
           <>
             <span className="slash">/</span>
@@ -39,12 +56,18 @@ export function Chrome({
             </div>
           </>
         )}
-        <div className="tb-links">
-          <a className="q" href="#">Feedback</a>
-          <a className="q" href="#">Changelog</a>
-          <a className="q" href="#">Docs</a>
-          <div className="avatar" />
-        </div>
+        <nav className="tb-links">
+          {NAV.map((n) => (
+            <Link
+              key={n.href}
+              className={`navlink${isOn(n.href) ? " on" : ""}`}
+              href={n.href}
+              aria-current={isOn(n.href) ? "page" : undefined}
+            >
+              {n.label}
+            </Link>
+          ))}
+        </nav>
       </div>
       {tabs && tabs.length > 0 && (
         <nav className="tabs">

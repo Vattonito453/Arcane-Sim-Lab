@@ -1,16 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { api } from "@/lib/api";
-import type { JobStatus, SimSummary } from "@/lib/types";
-import { deckSlug, fmtDuration, pct, stripAi, timeAgo } from "@/lib/format";
+import type { JobStatus, LiveGame, SimSummary } from "@/lib/types";
+import { deckSlug, estimateSeconds, fmtDuration, pct, plural, runTitle, scryfallArt, shortName, stripAi, timeAgo } from "@/lib/format";
+import { buildTimeline, commanderGuess, foldTo } from "@/lib/replay";
+import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
+import { Tabletop, TabletopNote } from "@/components/Tabletop";
 import { Chrome, Footer } from "@/components/Chrome";
 
 const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 const POLL_MS = 4000;
-const SECONDS_PER_GAME = 45; // rough estimate for the indeterminate bar
+const LIVE_POLL_MS = 1500;
 
 function topWin(s: SimSummary): [string, number] | null {
   const entries = Object.entries(s.win_rates);
@@ -60,6 +63,68 @@ export default function RunPage() {
     return () => clearInterval(iv);
   }, []);
 
+  // ── live game ────────────────────────────────────────────────────────────
+  // Forge streams its log to disk as it plays, so the run does not have to
+  // finish before there is something to watch. Polled faster than the status
+  // above, since this is the thing actually moving.
+  const [liveData, setLiveData] = useState<LiveGame | null>(null);
+  useEffect(() => {
+    if (!id) return;
+    let stopped = false;
+    const tick = async () => {
+      if (stopped) return;
+      try {
+        setLiveData(await api.simLive(id));
+      } catch {
+        // 404 until Forge writes its first line, and again once the job is done
+        // and we switch to the finished result. Neither is worth surfacing.
+      }
+    };
+    void tick();
+    const iv = setInterval(() => void tick(), LIVE_POLL_MS);
+    return () => {
+      stopped = true;
+      clearInterval(iv);
+    };
+  }, [id]);
+
+  const liveGame = liveData?.game ?? null;
+  const liveTimeline = useMemo(() => (liveGame ? buildTimeline(liveGame) : null), [liveGame]);
+  // Always the latest event: this is a live feed, not a scrubber.
+  const liveBoard = useMemo(
+    () => (liveTimeline ? foldTo(liveTimeline, liveTimeline.steps.length - 1) : null),
+    [liveTimeline],
+  );
+  const liveSeats = useMemo(() => {
+    if (!liveGame) return [];
+    return liveGame.players.map((p) => ({
+      player: p,
+      label: shortName(p, liveGame.players),
+      art: scryfallArt(commanderGuess(stripAi(p), [liveGame])),
+    }));
+  }, [liveGame]);
+
+  // Card facts for what is on the table right now. loadCards() memoises across
+  // polls, so a growing board only ever fetches the names it has not seen.
+  const [cardMap, setCardMap] = useState<CardMap>({});
+  useEffect(() => {
+    if (!liveBoard) return;
+    let alive = true;
+    const names = new Set<string>();
+    for (const cards of liveBoard.battlefield.values()) {
+      for (const c of cards) names.add(c.name);
+    }
+    if (!names.size) return;
+    void loadCards(Array.from(names)).then((m) => alive && setCardMap({ ...m }));
+    return () => {
+      alive = false;
+    };
+  }, [liveBoard]);
+  const facts = useCallback(
+    (name: string): CardFacts | undefined => cardMap[name.trim().toLowerCase()],
+    [cardMap],
+  );
+
   // The sandbox engine can answer {"error": ...} with no state — treat that as an error.
   const state = status ? (status.state ?? (status.error ? "error" : "idle")) : undefined;
 
@@ -69,7 +134,9 @@ export default function RunPage() {
   const started = status?.started;
   const live = started ? Math.max(0, now / 1000 - started) : (status?.elapsed ?? 0);
   const elapsed = state === "done" || state === "error" ? (status?.elapsed ?? live) : live;
-  const estimate = (games ?? 16) * SECONDS_PER_GAME;
+  // Seat-aware: a four-deck game costs ~20x a two-deck one, so a flat
+  // per-game figure quoted 12 minutes for runs that finish in 30 seconds.
+  const estimate = estimateSeconds(games ?? 16, decks.length || 4);
   const progress = Math.min(95, Math.max(2, (live / estimate) * 100));
   const short = id.length > 12 ? id.slice(0, 12) : id;
 
@@ -122,7 +189,7 @@ export default function RunPage() {
               Run <span className="mono">{short}</span>
             </h1>
             <p className="lede">
-              Simulating <b>{games ?? "—"} games</b> across <b>{decks.length} decks</b>
+              Simulating <b>{games != null ? plural(games, "game") : "—"}</b> across <b>{plural(decks.length, "deck")}</b>
               {started ? <> — started {timeAgo(started)}</> : null}. You can leave; this page
               keeps polling.
             </p>
@@ -131,8 +198,9 @@ export default function RunPage() {
                 <div className="fill" style={{ width: `${progress}%` }} />
               </div>
               <p className="note">
-                Rough progress — a {games ?? 16}-game run usually takes about{" "}
-                {fmtDuration(estimate)}.
+                Rough progress — {plural(decks.length || 4, "deck")} over{" "}
+                {plural(games ?? 16, "game")} usually takes about {fmtDuration(estimate)}. Pod
+                size drives this far more than game count.
               </p>
             </section>
             <div className="figs">
@@ -153,10 +221,61 @@ export default function RunPage() {
                   <i />
                   {state === "queued" ? "Queued" : "Running"}
                 </span>
-                <div className="l">state</div>
+                <div className="l">
+                  {state === "queued" && (status?.queued_ahead ?? 0) > 0
+                    ? `${status?.queued_ahead} ${status?.queued_ahead === 1 ? "run" : "runs"} ahead`
+                    : "state"}
+                </div>
               </div>
             </div>
             {deckNames.length > 0 && <p className="note">Decks: {deckNames.join(" · ")}</p>}
+
+            {/* Forge spends ~25 s loading its card database before it plays a
+                card, and the log has no turns to parse until then. Say so
+                rather than showing an empty space. */}
+            {state === "running" && !liveGame && (
+              <p className="note">
+                {liveData
+                  ? "Forge is loading its card database — the table appears as soon as the first turn is played."
+                  : "Waiting for the first turn…"}
+              </p>
+            )}
+
+            {liveBoard && liveGame && liveTimeline && (
+              <section>
+                <div className="sh">
+                  <h2>Watching game {liveData?.n ?? 1}</h2>
+                  <span className="meta">
+                    {liveData?.in_progress ? "in progress" : "just finished"} · turn{" "}
+                    <span className="mono">
+                      {liveTimeline.steps[liveTimeline.steps.length - 1]?.turn ?? 0}
+                    </span>{" "}
+                    · <span className="mono">{liveTimeline.steps.length.toLocaleString()}</span>{" "}
+                    events so far
+                  </span>
+                </div>
+                <div className="theater">
+                  <Tabletop
+                    board={liveBoard}
+                    seats={liveSeats}
+                    activePlayer={liveTimeline.steps[liveTimeline.steps.length - 1]?.active ?? ""}
+                    facts={facts}
+                  />
+                  <TabletopNote />
+                </div>
+                <div className="loglist tail">
+                  {/* Last few events only. The full log is scrubbable on the
+                      replay page once the run finishes. */}
+                  {liveTimeline.steps.slice(-8).map((s, k) => (
+                    <div key={`${s.seq}-${k}`} className="ev">
+                      <span className="tt">{s.turn > 0 ? `T${s.turn}` : "—"}</span>
+                      <div>{s.text}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {fetchErr && (
               <p className="note">
                 <span className="st warn">

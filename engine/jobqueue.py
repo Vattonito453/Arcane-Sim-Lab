@@ -57,6 +57,20 @@ def finish(job_id: str, result: dict | None = None, error: str | None = None) ->
                    json.dumps(result) if result else None, error, time.time(), job_id))
 
 
+def position(job_id: str) -> int:
+    """How many queued jobs sit ahead of this one. 0 once it is claimed.
+
+    claim() takes the oldest queued job, so "ahead" is simply the queued jobs
+    created earlier. Lets the UI say "2 runs ahead" instead of showing an elapsed
+    timer for a job that has not started.
+    """
+    with _conn() as c:
+        row = c.execute(
+            "SELECT COUNT(*) FROM jobs WHERE state='queued' AND created < "
+            "(SELECT created FROM jobs WHERE id=?)", (job_id,)).fetchone()
+    return int(row[0]) if row else 0
+
+
 def get(job_id: str | None = None) -> dict | None:
     """Job by id, or the most recent job if id is None."""
     q = ("SELECT id, created, state, payload, result, error, started, finished FROM jobs "

@@ -545,11 +545,3 @@ export function commanderGuess(deckName: string, games?: SimGame[]): string {
   }
   return clean.replace(/(\s+(alpha|omega|beta|b\d+|v\d+))+$/i, "");
 }
-
-/** "Wilhelt Zombies B3" → "Wilhelt" (first word), for tight UI labels. */
-export function shortName(deckName: string, all: string[] = []): string {
-  const clean = stripAi(deckName);
-  const first = clean.split(/\s+/)[0];
-  const clash = all.filter((o) => stripAi(o).split(/\s+/)[0] === first).length > 1;
-  return clash ? clean : first;
-}

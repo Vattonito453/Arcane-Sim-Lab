@@ -1,28 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
-import type { DeckEntry, ResultIndexEntry, SimSummary } from "@/lib/types";
-import { deckSlug, pct, stripAi, timeAgo } from "@/lib/format";
+import type { DeckEntry } from "@/lib/types";
+import { estimateSeconds, fmtDuration, plural } from "@/lib/format";
 import { Chrome, Footer } from "@/components/Chrome";
 import ApiBaseSetting from "@/components/ApiBaseSetting";
 
 const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
-const RUNS_SHOWN = 12;
 
 interface Health {
   rules: number;
   keywords: number;
   glossary_terms: number;
-}
-
-function topWin(s: SimSummary): [string, number] | null {
-  const entries = Object.entries(s.win_rates);
-  if (entries.length === 0) return null;
-  entries.sort((a, b) => b[1] - a[1]);
-  return entries[0];
 }
 
 function HomeInner() {
@@ -31,18 +23,15 @@ function HomeInner() {
   const preselect = searchParams.get("deck");
 
   const [decks, setDecks] = useState<DeckEntry[] | null>(null);
-  const [results, setResults] = useState<ResultIndexEntry[] | null>(null);
   const [health, setHealth] = useState<Health | null>(null);
   const [down, setDown] = useState(false);
   const [healthErr, setHealthErr] = useState(false);
-  const [resultsErr, setResultsErr] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
 
   const [selected, setSelected] = useState<string[]>([]);
   const [games, setGames] = useState(16);
   const [starting, setStarting] = useState(false);
   const [startErr, setStartErr] = useState<string | null>(null);
-  const [showAll, setShowAll] = useState(false);
   const appliedPreselect = useRef(false);
 
   const reload = useCallback(() => setReloadKey((k) => k + 1), []);
@@ -51,7 +40,6 @@ function HomeInner() {
     let stop = false;
     setDown(false);
     setHealthErr(false);
-    setResultsErr(false);
     api
       .health()
       .then((h) => {
@@ -72,17 +60,6 @@ function HomeInner() {
         if (!stop) {
           setDecks(null);
           setDown(true);
-        }
-      });
-    api
-      .results()
-      .then((r) => {
-        if (!stop) setResults(r);
-      })
-      .catch(() => {
-        if (!stop) {
-          setResults(null);
-          setResultsErr(true);
         }
       });
     return () => {
@@ -125,12 +102,6 @@ function HomeInner() {
     }
   };
 
-  const sorted = useMemo(
-    () => (results ? [...results].sort((a, b) => b.modified - a.modified) : null),
-    [results]
-  );
-  const visible = sorted ? (showAll ? sorted : sorted.slice(0, RUNS_SHOWN)) : [];
-
   const downNote = (
     <p className="note">
       <span className="st bad">
@@ -166,14 +137,8 @@ function HomeInner() {
           <p className="lede">Loading decks and past runs…</p>
         ) : (
           <p className="lede">
-            <b>{decks.length} decks</b>
-            {sorted ? (
-              <>
-                {" "}
-                and <b>{sorted.length} finished runs</b>
-              </>
-            ) : null}{" "}
-            on this engine. Pick two to four decks and run a gauntlet, or import a new list.
+            <b>{decks.length} decks</b> on this engine. Pick two to four and run a gauntlet —
+            results land under <Link className="bl" href="/results">Results</Link>.
           </p>
         )}
 
@@ -256,15 +221,26 @@ function HomeInner() {
                   aria-label="Games to simulate"
                   onChange={(e) => setGames(Number(e.target.value))}
                 >
+                  <option value={1}>1 game</option>
+                  <option value={2}>2 games</option>
                   <option value={8}>8 games</option>
                   <option value={16}>16 games</option>
                   <option value={32}>32 games</option>
                 </select>
                 <button className="btn pri" disabled={!canRun || starting} onClick={() => void start()}>
-                  {starting ? "Starting run…" : `Run ${games}-game simulation`}
+                  {starting ? "Starting run…" : `Run ${plural(games, "game")}`}
                 </button>
                 {selected.length === 1 && (
                   <span className="ctanote">select at least one more deck</span>
+                )}
+                {canRun && (
+                  // Shown before you commit, because the cost is driven by pod
+                  // size far more than by game count: four decks is ~20x the
+                  // per-game time of two.
+                  <span className="ctanote">
+                    about <span className="mono">{fmtDuration(estimateSeconds(games, selected.length))}</span>
+                    {games === 1 ? " — you can watch this one play out" : ""}
+                  </span>
                 )}
               </div>
               {startErr && (
@@ -280,82 +256,6 @@ function HomeInner() {
           )}
         </section>
 
-        <section>
-          <div className="sh">
-            <h2>Past runs</h2>
-            {sorted && <span className="meta">{sorted.length} on disk</span>}
-          </div>
-
-          {resultsErr ? (
-            downNote
-          ) : !sorted ? (
-            <p className="note">Loading past runs…</p>
-          ) : sorted.length === 0 ? (
-            <p className="note">No finished runs yet — start one above and it will land here.</p>
-          ) : (
-            <div className="tblwrap">
-              <table className="games">
-                <thead>
-                  <tr>
-                    <th>Run</th>
-                    <th>Decks</th>
-                    <th className="r">Games</th>
-                    <th>Winner</th>
-                    <th className="r">When</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {visible.map((r) => {
-                    const names = r.summary
-                      ? Object.keys(r.summary.win_rates).map(stripAi)
-                      : (r.decks ?? []).map(deckSlug);
-                    const win = r.summary ? topWin(r.summary) : null;
-                    return (
-                      <tr key={r.file}>
-                        <td className="id">
-                          <Link className="q" href={`/results/${encodeURIComponent(r.file)}`}>
-                            {r.file}
-                          </Link>
-                        </td>
-                        <td>{names.join(" · ")}</td>
-                        <td className="r mono">{r.games ?? r.summary?.games ?? "—"}</td>
-                        <td>
-                          {win ? (
-                            <>
-                              <span className="st win">
-                                <i />
-                                {stripAi(win[0])}
-                              </span>{" "}
-                              <span className="mono">{pct(win[1])}</span>
-                            </>
-                          ) : (
-                            <span className="st loss">
-                              <i />
-                              no summary
-                            </span>
-                          )}
-                        </td>
-                        <td className="r">{timeAgo(r.modified)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-              {sorted.length > RUNS_SHOWN && (
-                <div className="pager">
-                  <span>
-                    Showing {visible.length} of {sorted.length} runs
-                  </span>
-                  <div className="pg">
-                    <button onClick={() => setShowAll((s) => !s)}>
-                      {showAll ? "Show fewer" : "Show all"}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </section>
       </div>
       <Footer
         right={

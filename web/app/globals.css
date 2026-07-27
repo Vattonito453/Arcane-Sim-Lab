@@ -41,8 +41,10 @@ header.chrome { border-bottom: 1px solid var(--line); }
 .path { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 500; }
 .path img { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; background: #1a1a1a; }
 .path .plan { font-size: 10.5px; color: var(--gray); border: 1px solid var(--line2); border-radius: 9px; padding: 1px 7px; font-weight: 400; }
-.tb-links { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: 13px; }
-.avatar { width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #3e6fa8, #22334e); flex: none; }
+.tb-links { margin-left: auto; display: flex; align-items: center; gap: 4px; font-size: 13px; }
+.navlink { padding: 6px 10px; border-radius: 6px; color: var(--gray); transition: color 0.12s, background 0.12s; }
+.navlink:hover { color: var(--fg); background: var(--hover); }
+.navlink.on { color: var(--fg); background: var(--hover); }
 nav.tabs { max-width: 1200px; margin: 0 auto; padding: 0 16px; display: flex; }
 .tab { padding: 9px 10px 11px; font-size: 13.5px; color: var(--gray); position: relative; transition: color 0.12s; background: none; border: 0; }
 .tab:hover { color: var(--fg); }
@@ -270,6 +272,8 @@ input.txt:focus { outline: none; border-color: var(--blue); }
 .ev.cur .tt { color: var(--fg); }
 .ev .nowtag { color: var(--gray3); font-size: 11px; white-space: nowrap; padding-top: 2px; margin-left: auto; }
 .loglist { max-height: 640px; overflow-y: auto; }
+/* Live tail under the run-page table: the newest few lines, no scrolling. */
+.loglist.tail { max-height: none; overflow: visible; margin-top: 14px; }
 .logfoot { display: flex; gap: 16px; margin-top: 12px; font-size: 12.5px; }
 
 /* ── suggested-change rows ── */

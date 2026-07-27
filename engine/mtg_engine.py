@@ -126,10 +126,13 @@ class Engine:
     # ---------- simulation ----------
 
     def simulate(self, decks: list[str], games: int = 10, deck_dir: str | None = None,
-                 fmt: str = "Commander", forge_jar: str | None = None, out: str = "./sim_results") -> dict:
+                 fmt: str = "Commander", forge_jar: str | None = None, out: str = "./sim_results",
+                 run_id: str | None = None) -> dict:
         import subprocess
         cmd = [sys.executable, str(Path(__file__).parent / "run_sim.py"),
                "--decks", *decks, "--games", str(games), "--format", fmt, "--out", out]
+        if run_id:
+            cmd += ["--run-id", run_id]
         if deck_dir:
             cmd += ["--deck-dir", deck_dir]
         if forge_jar:
@@ -221,7 +224,10 @@ def _job_status(job_id: str | None) -> dict:
            "games": job["games"], "started": job["started"],
            "elapsed": job.get("elapsed"), "error": job["error"]}
     if job["state"] == "queued":
-        out["state"] = "running"  # dashboard treats queued as in-flight
+        # Report the truth. Calling a queued job "running" meant that behind a
+        # backlog you watched an elapsed timer tick for a job Forge had not
+        # started, with no way to tell the difference.
+        out["queued_ahead"] = jobqueue.position(job["id"])
     if job.get("result"):
         out["result"] = job["result"].get("summary")
         out["result_file"] = job["result"].get("result_file")
@@ -336,6 +342,51 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
         raise IndexError(f"game {n} not in {name} (has {len(games)})")
     return {"meta": data.get("meta", {}), "file": name, "n": n,
             "games_total": len(games), "game": games[n - 1]}
+
+
+_JOB_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
+
+
+def _read_live(job_id: str, n: int | None = None) -> dict:
+    """GET /sim-live — the game currently being played, from the partial log.
+
+    Forge's stdout is already streamed to forge_raw_<job_id>.log line by line
+    while the match runs, and parse_forge_log() is a pure function over whatever
+    text it is handed. So "watching live" is just parsing the prefix that exists
+    so far: the trailing game has no `Game Result` line yet and comes back with
+    the turns played up to this instant.
+
+    Shaped like /results/{file}/game/{n} so the front end can reuse the same
+    timeline fold for a live game and a finished one.
+    """
+    if not _JOB_ID_RE.match(job_id or ""):
+        raise ValueError("bad job id")            # keeps the id out of path building
+    f = RESULTS_DIR / f"forge_raw_{job_id}.log"
+    if not f.is_file():
+        raise FileNotFoundError("no live log for this job yet")
+
+    from forge_log_adapter import parse_forge_log
+    text = f.read_text(encoding="utf-8", errors="replace")
+    parsed = parse_forge_log(text, source="live")
+    games = parsed.get("games") or []
+    if not games:
+        # Forge is still loading its card database; nothing has been played yet.
+        return {"job_id": job_id, "games_done": 0, "n": 0, "game": None,
+                "in_progress": True, "bytes": len(text)}
+
+    idx = len(games) if n is None else n          # default to the newest game
+    if idx < 1 or idx > len(games):
+        raise IndexError(f"game {idx} not in this run (has {len(games)})")
+    game = dict(games[idx - 1])
+    live = game.get("result") is None
+    if live:
+        # The client's types require a result object; say plainly it is unfinished
+        # rather than inventing a winner.
+        game["result"] = {"winner": None, "draw": False, "duration_ms": 0, "raw": ""}
+    game["n"] = idx
+    return {"job_id": job_id, "games_done": sum(1 for g in games if g.get("result")),
+            "n": idx, "games_seen": len(games), "game": game,
+            "in_progress": live, "bytes": len(text)}
 
 
 def _cards_lookup(names: list[str], fetch: bool = True) -> dict:
@@ -550,6 +601,15 @@ def serve(port: int = 8484) -> None:
                     return self._send(_list_decks())
                 if parts[0] == "sim-status":
                     return self._send(_job_status(q.get("id", [None])[0]))
+                if parts[0] == "sim-live":
+                    raw_n = q.get("game", [None])[0]
+                    try:
+                        return self._send(_read_live(q.get("id", [""])[0],
+                                                     int(raw_n) if raw_n else None))
+                    except FileNotFoundError as e:
+                        return self._send({"error": str(e)}, 404)
+                    except (IndexError, ValueError) as e:
+                        return self._send({"error": str(e)}, 400)
                 if parts[0] == "rule" and len(parts) > 1:
                     return self._send(engine.rule(parts[1]))
                 if parts[0] == "keyword" and len(parts) > 1:

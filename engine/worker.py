@@ -32,6 +32,7 @@ def process_one(job: dict) -> None:
             deck_dir=payload.get("deck_dir") or str(Path(__file__).parent / "decks"),
             fmt=payload.get("format", "Commander"),
             out=str(jobqueue.DATA_DIR / "sim_results"),
+            run_id=job["id"],   # names the raw log so GET /sim-live can follow it
         )
         if res.get("returncode") == 0 and res.get("result"):
             jobqueue.finish(job["id"], result={

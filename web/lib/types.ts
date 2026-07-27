@@ -99,6 +99,20 @@ export interface JobStatus {
   error?: string | null;
   result?: SimSummary;
   result_file?: string;
+  /** Queued jobs ahead of this one. Present only while state is "queued". */
+  queued_ahead?: number;
+}
+
+/** GET /sim-live — the game currently being played, parsed from the partial
+ *  Forge log. Same `game` shape as RunGame so the timeline fold is reused. */
+export interface LiveGame {
+  job_id: string;
+  games_done: number;
+  games_seen?: number;
+  n: number;
+  game: SimGame | null;
+  in_progress: boolean;
+  bytes: number;
 }
 
 export interface ImportReport {

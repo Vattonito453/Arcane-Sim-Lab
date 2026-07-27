@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Import a deck · Sim Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A;
+  --fg:#EDEDED;
+  --gray:#A1A1A1;
+  --gray2:#7D7D7D;
+  --gray3:#525252;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.14);
+  --hover:rgba(255,255,255,.04);
+  --blue:#52A9FF;
+  --green:#4CC38A;
+  --red:#F2555A;
+  --amber:#F0B429;
+  --mono:'Geist Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,sans-serif;
+  font-feature-settings:'cv01','ss03';font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.93em}
+a{color:var(--fg);text-decoration:none}
+a.q{color:var(--gray);transition:color .12s}
+a.q:hover{color:var(--fg)}
+a.bl{color:var(--blue)}
+a.bl:hover{text-decoration:underline}
+button{font-family:inherit;cursor:pointer}
+
+/* ── chrome ── */
+header{border-bottom:1px solid var(--line)}
+.tb{max-width:1200px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:8px}
+.glyph{width:22px;height:22px;flex:none}
+.slash{color:var(--gray3);font-size:16px;font-weight:300;margin:0 2px}
+.path{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500}
+.path .plan{font-size:10.5px;color:var(--gray);border:1px solid var(--line2);border-radius:9px;padding:1px 7px;font-weight:400}
+.tb-links{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:13px}
+.avatar{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3E6FA8,#22334E);flex:none}
+
+/* ── page ── */
+.page{max-width:1000px;margin:0 auto;padding:32px 24px 96px}
+.back{font-size:13px;margin-bottom:14px;display:inline-block}
+.head{display:flex;align-items:flex-start;gap:16px;margin-bottom:6px}
+h1{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sub{color:var(--gray);font-size:13.5px;margin-top:6px}
+.lede{max-width:720px;margin:20px 0 26px;color:var(--gray);font-size:14px;line-height:1.65}
+.lede b{color:var(--fg);font-weight:560}
+
+/* source switch — text tabs, same idiom as chrome */
+.srcs{display:flex;border-bottom:1px solid var(--line);margin-bottom:24px}
+.src{padding:8px 10px 10px;font-size:13.5px;color:var(--gray);position:relative;background:none;border:0;
+  transition:color .12s}
+.src:hover{color:var(--fg)}
+.src.on{color:var(--fg)}
+.src.on:after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;background:var(--fg)}
+.srcs .sample{margin-left:auto;align-self:center;font-size:12.5px}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+
+/* paste area — functional input */
+textarea{width:100%;min-height:392px;background:transparent;border:1px solid var(--line2);border-radius:8px;
+  color:var(--fg);font-family:var(--mono);font-size:12.5px;line-height:1.75;padding:14px;resize:vertical;
+  transition:border-color .12s}
+textarea:focus{outline:none;border-color:var(--blue)}
+.inmeta{color:var(--gray3);font-size:12px;margin-top:8px;display:flex;gap:14px}
+.inmeta span:last-child{margin-left:auto}
+
+/* checks — plain rows */
+.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:2px}
+.sh h2{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.sh .meta{color:var(--gray2);font-size:12.5px;margin-left:auto}
+.ck{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:13px}
+.ck:first-of-type{border-top:0}
+.ck:last-of-type{border-bottom:1px solid var(--line)}
+.ck .lbl{color:var(--fg)}
+.ck .lbl small{color:var(--gray2);font-size:12.5px}
+.ck .res{margin-left:auto}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;white-space:nowrap}
+.st i{width:7px;height:7px;border-radius:50%;flex:none}
+.st.ok{color:var(--green)} .st.ok i{background:var(--green)}
+.st.warn{color:var(--amber)} .st.warn i{background:var(--amber)}
+
+/* parse preview — the one bordered table */
+.tblwrap{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:20px}
+.toolrow{display:flex;align-items:center;padding:9px 12px;border-bottom:1px solid var(--line);
+  color:var(--gray2);font-size:12.5px}
+.toolrow .upd{margin-left:auto;color:var(--gray3);font-size:12px}
+table{width:100%;border-collapse:collapse}
+td{padding:0 12px;height:38px;font-size:13px;border-bottom:1px solid var(--line);color:var(--gray)}
+tr:last-child td{border-bottom:0}
+td.qty{font-family:var(--mono);font-variant-numeric:tabular-nums;width:30px;color:var(--gray3);font-size:12px}
+td.card{color:var(--fg)}
+td.note{text-align:right;font-size:12.5px;color:var(--gray2)}
+tr.more td{color:var(--gray2)}
+tbody tr{transition:background .12s}
+tbody tr:hover{background:var(--hover)}
+
+/* cta */
+.ctarow{display:flex;align-items:center;gap:10px;margin-top:26px;flex-wrap:wrap}
+.btn{height:32px;padding:0 12px;border-radius:6px;font-size:13px;font-weight:500;
+  border:1px solid var(--line2);background:transparent;color:var(--fg);transition:border-color .12s,background .12s}
+.btn:hover{border-color:rgba(255,255,255,.28)}
+.btn.pri{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:560}
+.btn.pri:hover{background:#fff}
+.ctanote{color:var(--gray3);font-size:12.5px}
+
+footer{border-top:1px solid var(--line);margin-top:64px}
+.ft{max-width:1200px;margin:0 auto;padding:20px 24px;color:var(--gray3);font-size:12px;
+  display:flex;gap:20px;flex-wrap:wrap}
+.ft span:last-child{margin-left:auto}
+@media(max-width:900px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tb">
+    <svg class="glyph" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2 2.5 21.5h19L12 2Z" stroke="#EDEDED" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 8.5v6.5" stroke="#EDEDED" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <span class="slash">/</span>
+    <div class="path">vincent <span class="plan">Pro</span></div>
+    <span class="slash">/</span>
+    <div class="path">Import a deck</div>
+    <div class="tb-links">
+      <a class="q" href="#">Feedback</a>
+      <a class="q" href="#">Changelog</a>
+      <a class="q" href="#">Docs</a>
+      <div class="avatar"></div>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <a class="q back" href="#">‹ Back to decks</a>
+
+  <div class="head">
+    <div>
+      <h1>Import a deck</h1>
+      <div class="sub">From a Moxfield or Archidekt URL, an MTGO or Arena export, plain text, or a .dck file.</div>
+    </div>
+  </div>
+
+  <p class="lede">
+    Paste your list exactly as you have it — set codes, foil markers, collector numbers and
+    single-line exports all parse. <b>Your text is never modified:</b> anything unrecognized is
+    flagged inline with a suggested fix, and fixes apply only if you accept them.
+  </p>
+
+  <div class="srcs">
+    <button class="src on">Paste a list</button>
+    <button class="src">Moxfield URL</button>
+    <button class="src">Archidekt URL</button>
+    <button class="src">Upload .dck</button>
+    <span class="sample"><a class="bl" href="#">Or load the sample Kilo deck</a></span>
+  </div>
+
+  <div class="cols">
+    <div>
+      <textarea spellcheck="false">1 Kilo, Apogee Mind (EOC) 3
+1 Adarkar Wastes (EOC) 147
+1 Adamantium Bonding Tank (SLD) 1741
+1 Alibou, Ancient Witness (EOC) 113
+1 All Will Be One (PONE) 118p
+1 Arcane Signet (EOC) 53
+1 Buried Ruin (EOC) 150
+1 Cascade Bluffs (EOC) 153
+1 Cayth, Famed Mechanist (M3C) 10
+1 Chaos Warp (EOC) 49
+1 Coretapper (EOC) 132
+1 Crystaline Crawler (EOC) 133
+…</textarea>
+      <div class="inmeta">
+        <span>100 lines</span>
+        <span>checked as you type</span>
+        <span>last change 2 s ago</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="sh"><h2>Checks</h2><span class="meta">Commander, 100 cards</span></div>
+      <div class="ck"><span class="lbl">100 of 100 cards</span><span class="res st ok"><i></i>Passed</span></div>
+      <div class="ck"><span class="lbl">Singleton legal <small>— no duplicates outside basics</small></span><span class="res st ok"><i></i>Passed</span></div>
+      <div class="ck"><span class="lbl">Commander found <small>— Kilo, Apogee Mind (W U R)</small></span><span class="res st ok"><i></i>Passed</span></div>
+      <div class="ck"><span class="lbl">Color identity <small>— both faces of every card checked</small></span><span class="res st ok"><i></i>Passed</span></div>
+      <div class="ck"><span class="lbl">1 name not recognized</span><span class="res st warn"><i></i>Needs a look</span></div>
+
+      <div class="tblwrap">
+        <div class="toolrow">Parsed list <span class="upd">updates as you type</span></div>
+        <table>
+          <tbody>
+            <tr><td class="qty">1</td><td class="card">Kilo, Apogee Mind</td><td class="note">commander</td></tr>
+            <tr><td class="qty">1</td><td class="card">Adamantium Bonding Tank</td><td class="note">printed name of The Ozolith — kept as written</td></tr>
+            <tr><td class="qty">1</td><td class="card">Crystaline Crawler</td>
+              <td class="note"><span class="st warn"><i></i>not found</span> — <a class="bl" href="#">use “Crystalline Crawler”</a></td></tr>
+            <tr><td class="qty">1</td><td class="card">All Will Be One</td><td class="note"></td></tr>
+            <tr class="more"><td class="qty">…</td><td colspan="2">96 more parsed without issues — <a class="q" href="#">show all</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ctarow">
+        <button class="btn pri">Run the 16-game gauntlet · ~10 min</button>
+        <button class="btn">Save without running</button>
+      </div>
+      <p class="ctanote" style="margin-top:10px">Saving stores the list and its hash — coaching re-runs
+        only when the list changes. <a class="q" href="#">How runs are priced</a></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft">
+    <span>Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy.</span>
+    <span>Card data via Scryfall</span>
+    <span class="mono">parser 2.3 · Jul 24 build</span>
+  </div>
+</footer>
+
+</body>
+</html>

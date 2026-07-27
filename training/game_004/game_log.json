@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "source_video": "https://www.youtube.com/watch?v=zxqw4OxCQJo",
+    "title": "Friday Night Paper Fight - Commander Planechase",
+    "channel": "LRR Streams (LoadingReadyRun)",
+    "broadcast_date": "2018-10-19",
+    "video_length": "3:58:37",
+    "format": "Commander + PLANECHASE variant (CR 901), 4-player, 40 life, shared planar deck (~80 planes, phenomena removed)",
+    "variant_notes": "FIRST NON-STANDARD-VARIANT SAMPLE in the dataset. Shared single planar deck (one of the sanctioned options), planes shown digitally by Paul (off-screen judge/operator). House choices: no phenomena; occasional reroll allowances for dice off the table.",
+    "games": [
+      {
+        "window": "~10:54 to ~2:03:00",
+        "result": {"winner": "Graham (Brion Stoutarm)", "confidence": "medium",
+          "eliminations": [
+            {"order": 1, "player": "Adam", "t": "~54:20", "cause": "Act of Treason on his own Wurm + Brion Fling (steal-sac-throw line)"},
+            {"order": 2, "player": "Ian", "t": "~1:54:45", "cause": "Gisela-doubled Inferno Titan + plane-copied attackers"}
+          ]}
+      },
+      {
+        "window": "~2:05:30 to ~3:48:31",
+        "result": {"winner": "Graham (Brion Stoutarm) by concession - LOW confidence; alternate reading: Adam (Goreclaw)",
+          "confidence": "low",
+          "note": "Final minutes heavily garbled; 3:48:22 someone concedes after Stalking Vengeance + topdecked Boros Charm (both Graham's colors) are discussed"}
+      }
+    ],
+    "extraction_method": "YouTube auto-generated captions (ASR, unlabeled). Segments pre-filtered by game-keyword before capture (781 pure-banter segments dropped). Condensed key-event log.",
+    "extracted": "2026-07-23"
+  },
+  "players": [
+    {"name": "Ben", "commander": "Sapling of Colfenor", "deck": "BG Treefolk 'Dark Heart of the Wood' (indestructible commander, toughness matters)", "confidence": "high"},
+    {"name": "Graham", "commander": "Brion Stoutarm", "deck": "RW 'Yeet for Damage' - steal + Fling effects (7 Act of Treason variants), Gisela, Inferno Titan", "confidence": "high"},
+    {"name": "Adam", "commander": "Goreclaw, Terror of Qal Sisma", "deck": "Mono-G big creatures (built by Ben): Terastomper, Siege Behemoth, Woodfall Primus", "confidence": "high"},
+    {"name": "Ian", "commander": "Kangee, Aerie Keeper", "deck": "WU Bird tribal: Soulcatchers' Aerie, Skullclamp, Emeria Angel, Kindred Discovery", "confidence": "high"}
+  ],
+  "planechase_rules_observed": [
+    {"t": "1:53-2:41", "detail": "Setup explained: 6-sided planar die (1 Planeswalker face, 1 chaos face, 4 blank); one free roll per turn, each additional roll costs 1 more generic mana; sorcery timing (main phase, stack empty)", "rule_refs": ["901.3a", "901.9"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "20:27", "detail": "'Rolling the die does not use the stack - you can't respond to the die roll - but the [chaos/planeswalk] ability it triggers goes on the stack.' Matches CR: the roll itself doesn't use the stack; resulting triggered abilities do", "rule_refs": ["901.9", "901.8"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "2:58-3:20", "detail": "Shared-single-planar-deck option chosen over per-player decks ('funnier and more wacky')", "rule_refs": ["901.15 (single planar deck option - see kb)"], "validation": "CORRECT (sanctioned variant)", "confidence": "high"},
+    {"t": "various", "detail": "Planes identified: Dark Barony (nonblack card to graveyard = lose 1), Academy at Tolaria West (empty hand at end step = draw 7), The Great Forest (creatures assign damage equal to toughness), Furnace Layer (random player discards, land discard = lose 3), Feeding Grounds (R/G spells cheaper, chaos = +1/+1 counters), Mount Keralia (pressure counters, damage on leave), Tazeem (creatures can't block), Kharasha Foothills (attack copies vs each other opponent, chaos = sac creatures for damage), 'bird town' plane (noncreature spells countered -> X 1/1 Birds), Naar Isle (flame counters, damage on chaos), Glimmervoid Basin (all instants/sorceries copied), Quicksilver Sea (scry 4, chaos = free cast off top), a frozen plane (lands don't untap)", "confidence": "medium"}
+  ],
+  "key_events": [
+    {"t": "10:54", "event": "pregame", "detail": "Roll-off d20: Ian 18, goes first... (attribution loose); free mulligan discussion; commanders in command zone", "rule_refs": ["103.1"], "confidence": "medium"},
+    {"t": "23:03", "player": "Graham", "action": "cast_spell", "card": "Malevolent Whispers (steal Adam's Avenger of Zendikar) -> attack -> FLING it at Adam's face via Brion", "detail": "14 damage + card advantage; the deck's signature line. Mimic Vat imprints the dying Avenger (23:33)", "rule_refs": ["601.2"], "confidence": "high"},
+    {"t": "24:03", "event": "rules_teaching", "detail": "Mimic Vat imprint: reveal required, works on ANY nontoken creature dying, token copies exiled later; 1:31:56 CMC of X-spell copy on the stack discussion", "confidence": "medium"},
+    {"t": "26:41", "event": "rules_note", "detail": "The Great Forest plane: 0/1 tokens deal combat damage equal to TOUGHNESS - plane text overrides normal damage assignment while active", "validation": "CORRECT", "confidence": "high"},
+    {"t": "31:47", "event": "plane_rules", "detail": "Furnace Layer: 'select target player at RANDOM, that player discards' - table correctly notes the PLAYER is random but the discard is a CHOICE, and it can hit the roller ('that's not opponent, that's player')", "validation": "CORRECT", "confidence": "high"},
+    {"t": "53:42", "player": "Graham", "action": "kill", "detail": "Steals Adam's wurm (act of treason effect), attacks Adam with it, Brion FLINGS it -> ADAM ELIMINATED (~54:20, game 1's first kill)", "confidence": "high"},
+    {"t": "1:11:38", "event": "rules_teaching", "detail": "GOAD worked through correctly: goaded creature attacks each combat if able, must attack a player other than the goader; on its controller's own turn it can attack anyone except the goader; with one opponent dead it can only attack the remaining non-goader", "rule_refs": ["701.15"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:13:47", "event": "rules_discussion", "detail": "PERSIST vs Mimic Vat ordering on double-blocked Woodfall Primus: persist correctly identified as replacement-flavored trigger on death with no -1/-1 counters; simultaneous death triggers ordered by controller. FLAG: table concluded 'person who controls the creature when it dies controls the persisted creature' - CR 702.79a says it returns under its OWNER's control. In this game state owner=controller so no material error, but the stated rule is imprecise", "rule_refs": ["702.79", "603.3b"], "validation": "PARTIAL_ERROR (no material impact)", "confidence": "medium"},
+    {"t": "1:27:03", "event": "rules_teaching", "detail": "Two Sun Titans + Strip Mine: first Titan (already attacked) gets only its later trigger; ETB vs attack triggers distinguished cleanly per object; Strip Mine recursion loop executed correctly", "rule_refs": ["603.3"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:29:30", "event": "plane_rules", "detail": "'Bird town': noncreature spells countered -> caster gets X 1/1 Birds (X=MV). Correctly ruled: counter-and-replace happens from the plane's static/triggered text; lands aren't spells so land drops unaffected (echoes game_003's lesson)", "rule_refs": ["305.9"], "validation": "CORRECT", "confidence": "medium"},
+    {"t": "1:36:17", "event": "rules_discussion", "detail": "'Tokens DO go to the graveyard (then cease to exist)' - so Soulcatchers' Aerie gets feather counters from token birds dying; Kharasha Foothills' copies EXILE instead so those don't trigger it; Deadwood Treefolk 'leaves play' trigger fires regardless of destination. Sharp zone-change reasoning throughout", "rule_refs": ["111.7", "111.8"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:52:00", "player": "Graham", "action": "combat_setup", "card": "Gisela, Blade of Goldnight", "detail": "Damage from Graham's sources to opponents DOUBLED; combined with Inferno Titan + Kharasha Foothills copy-attackers", "confidence": "high"},
+    {"t": "1:53:05", "event": "rules_discussion", "detail": "Plane-created token copy of Inferno Titan: table works through which triggers each object gets. They granted the token an 'attack trigger' - FLAG: creatures PUT onto the battlefield attacking were never DECLARED as attackers, so 'whenever ~ attacks' abilities do NOT trigger for them (only real ETB triggers apply). Partial error in a complex stack", "rule_refs": ["508.4"], "validation": "PARTIAL_ERROR", "confidence": "medium"},
+    {"t": "1:54:45", "event": "elimination", "detail": "IAN ELIMINATED (game 1) - doubled Titan damage; 800.4a implications acknowledged ('it resolves, Ian leaves the game, this bird dies')", "rule_refs": ["800.4a"], "confidence": "medium"},
+    {"t": "2:02:42", "event": "game_1_end", "detail": "GRAHAM WINS game 1 (medium confidence); table immediately opts for game 2: 'I'm happy to play another game... Paul, where we started'", "confidence": "medium"},
+    {"t": "2:05:30", "event": "game_2_start", "detail": "Same four decks; new plane gives 'play any number of lands' -> explosive Boros Garrison/Hammer of Purphoros opening for Graham", "confidence": "high"},
+    {"t": "2:08:08", "event": "plane_rules", "detail": "Top-card-revealed plane: 'spells that share a type with your top card can't be cast'; correctly ruled lands still playable ('you don't cast lands') - third occurrence of this lesson in the dataset", "rule_refs": ["305.9"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "2:30:51", "event": "rules_note", "detail": "'I lose one mana to the aether' - unused floating mana empties at step/phase end (and the missed opportunity to spend it on a planar reroll)", "rule_refs": ["106.4"], "validation": "CORRECT", "confidence": "medium"},
+    {"t": "2:35:23", "event": "house_rule", "detail": "Quicksilver Sea chaos: 'top card is an island - go for it, house rule' - free-cast of a land allowed by table fiat ('you may PLAY it' actually covers lands; their instinct was right, labeled house rule unnecessarily)", "confidence": "medium"},
+    {"t": "2:39:19", "player": "Ben+Graham", "action": "combat_exchange", "detail": "Golgari Charm regenerate-all in response; Brion untaps via Thornbite Staff after sac ('two triggers: draw off Lokhust?/the wurm, Brion untaps from the staff') - staff untap engine online", "confidence": "medium"},
+    {"t": "2:50:04", "event": "plane_rules", "detail": "Glimmervoid Basin: every instant/sorcery copied, copies may choose new targets. 2:54:58 Deflecting Palm cast AND copied - double redirect. 2:58:30 Rending Vines copied: 'one of them is going to target [my own] - I know' - forced copy targeting handled", "rule_refs": ["707.10"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "3:13:32", "event": "rules_discussion", "detail": "Life-payment check: 'do I just die if I pay 10?' - you can't pay more life than you have, paying down to low totals is legal (they debated Phyrexian Processor payments)", "rule_refs": ["119.4? (see kb 119)", "118"], "validation": "CORRECT (approximate)", "confidence": "low"},
+    {"t": "3:25:13", "event": "rules_note", "detail": "Gisela doubling + lifelink: doubled damage means doubled lifelink gain - source deals the (doubled) damage, lifelink sees the full amount", "rule_refs": ["702.15", "616 (replacement interaction)"], "validation": "CORRECT", "confidence": "medium"},
+    {"t": "3:28:35", "event": "rules_teaching", "detail": "Trample assignment under The Great Forest (toughness-assigns-damage plane): attacker must still assign LETHAL to each blocker before excess tramples through - '2, 4 and 2... so 3 tramples over... which becomes 6 [Gisela]'", "rule_refs": ["702.19", "510.1"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "3:35:24", "player": "Adam", "action": "alpha_strike", "card": "Siege Behemoth (hexproof, creatures may assign damage as though unblocked)", "detail": "Adam's board goes wide + unblockable-ish; frozen-lands plane strands blockers ('your lands don't untap... creatures don't freeze')", "confidence": "medium"},
+    {"t": "3:46:43", "event": "endgame", "detail": "Chaos: 'draw a card for each land you control' - 9 cards; 'I think I just won the game'; Stalking Vengeance + Settle the Wreckage topdeck talk; 3:48:22 CONCESSION ends game 2. Winner attribution LOW confidence (Graham per Boros Charm/Stalking Vengeance colors; alternate: Adam)", "rule_refs": ["104.3a (concession)"], "confidence": "low"}
+  ],
+  "rules_moments_summary": {
+    "verified_correct": [
+      "Planar die mechanics: free roll, escalating cost, sorcery timing, roll bypasses stack but triggered abilities use it (901.3a, 901.8, 901.9)",
+      "Goad restrictions incl. two-player edge case (701.15)",
+      "Sun Titan ETB-vs-attack trigger separation (603.3)",
+      "Tokens hit the graveyard then cease to exist; exile-instead effects skip death triggers (111.7-111.8)",
+      "Lands are played, not cast - now confirmed on three separate planes/games (305.9)",
+      "Copy effects with new targets (Glimmervoid Basin, 707.10)",
+      "Trample lethal-assignment under altered damage rules (702.19, 510.1)",
+      "Floating mana empties (106.4); concession legal any time (104.3a)"
+    ],
+    "errors_or_flags": [
+      "1:13:47 persist stated as returning to 'controller when it died' - CR 702.79a says OWNER (no material impact here): PARTIAL_ERROR",
+      "1:53:05 token put onto battlefield attacking was granted an attacks-trigger - such tokens were never declared attackers (508.4): PARTIAL_ERROR",
+      "Game 2 winner attribution LOW confidence (garbled ASR in final minutes)",
+      "Plane identifications partly as-heard; 'bird town' plane not confidently named"
+    ]
+  }
+}

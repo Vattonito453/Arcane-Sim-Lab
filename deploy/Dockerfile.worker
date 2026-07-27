@@ -1,0 +1,30 @@
+# MTG Engine — simulation worker (Java 17 + Forge + the Python worker loop)
+# Build from the repo root:  docker build -f deploy/Dockerfile.worker -t mtg-worker .
+FROM eclipse-temurin:17-jre-jammy
+
+RUN apt-get update && apt-get install -y --no-install-recommends python3 curl bzip2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Forge (headless-capable desktop build, includes card DB + res/)
+ARG FORGE_VERSION=2.0.13
+RUN mkdir -p /opt/forge && cd /opt/forge \
+    && curl -L -o forge.tar.bz2 \
+       "https://github.com/Card-Forge/forge/releases/download/forge-${FORGE_VERSION}/forge-installer-${FORGE_VERSION}.tar.bz2" \
+    && tar xjf forge.tar.bz2 && rm forge.tar.bz2
+
+WORKDIR /app
+COPY rules/kb/ /app/rules/kb/
+COPY engine/*.py /app/engine/
+COPY engine/decks/*.dck /app/engine/decks/
+
+# Forge writes its profile under $HOME; run_sim stages decks via FORGE_USER_DIR
+ENV HOME=/root \
+    FORGE_USER_DIR=/root/.forge \
+    MTG_DATA_DIR=/data
+RUN bash -lc 'JAR=$(find /opt/forge -name "forge-gui-desktop-*jar-with-dependencies.jar" | head -1) && \
+    echo "export FORGE_JAR=$JAR" >> /etc/profile.d/forge.sh && \
+    ln -s "$JAR" /opt/forge/forge.jar'
+ENV FORGE_JAR=/opt/forge/forge.jar
+VOLUME /data
+
+CMD ["python3", "engine/worker.py"]

@@ -1,0 +1,47 @@
+# ── secrets ──────────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+deploy/.env
+*.pem
+*.key
+
+# ── front-end build output and dependencies ──────────────────────────────
+web/node_modules/
+web/.next/
+web/out/
+web/next-env.d.ts
+web/*.tsbuildinfo
+
+# ── generated runtime state ──────────────────────────────────────────────
+# The job queue. Recreated on first enqueue; needs POSIX locks (see deploy_plan.md).
+engine/jobs.db
+engine/jobs.db-*
+# Scryfall cache. Rebuild with: python3 engine/cards.py warm <result>.json
+engine/card_cache.json
+card_cache.json
+
+# ── simulation output (large, regenerable) ───────────────────────────────
+# ~108 MB of raw Forge logs and adapted results. Regenerate by running a sim.
+# A trimmed 2-game fixture IS committed at engine/tests/fixtures/sim_sample.json
+# so tests and board.py/cards.py verification work on a fresh clone.
+engine/sim_results/
+!engine/tests/fixtures/
+
+# ── archives / snapshots ─────────────────────────────────────────────────
+*.zip
+
+# STALE DUPLICATE of the whole project (snapshot from 2026-07-23, missing
+# engine/cards.py and engine/board.py). Excluded so agents and tools don't edit
+# the wrong copy. Safe to delete from disk — see CLAUDE.md.
+/MtG Rules Engine/
+
+# ── OS / editor noise ────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]

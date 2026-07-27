@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sim Lab — UI Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF8F4; --bench:#F3F0EA; --ink:#1C1917; --ink-2:#57534E; --ink-3:#8A8480;
+  --line:#E5E0D6; --line-2:#D6CFC2;
+  --ember:#C2410C; --ember-soft:#FBEDE4; --ember-line:#EFC9B2;
+  --ok:#1A7F4B; --ok-soft:#E8F3EC; --bad:#B42318; --bad-soft:#FBEAE8; --warn:#9A6700; --warn-soft:#FBF3DF;
+  --seat1:#2D5FA8; --seat2:#B23A3A; --seat3:#4C7A3D; --seat4:#A87A2D;
+  --mono:'IBM Plex Mono',monospace; --sans:'Archivo',sans-serif; --serif:'Fraunces',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bench)}
+body{font-family:var(--sans);color:var(--ink);background:var(--bench);font-size:14px;line-height:1.45;
+  -webkit-font-smoothing:antialiased}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ── top chrome ─────────────────────────────── */
+.topbar{background:var(--paper);border-bottom:1px solid var(--line-2);position:sticky;top:0;z-index:50}
+.topbar-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:0 24px;height:52px}
+.wordmark{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:.01em;display:flex;align-items:baseline;gap:7px}
+.wordmark .beaker{width:9px;height:9px;background:var(--ember);display:inline-block;border-radius:1px;transform:rotate(45deg)}
+.nav{display:flex;gap:2px;height:100%}
+.nav a{display:flex;align-items:center;padding:0 13px;color:var(--ink-2);text-decoration:none;font-weight:500;
+  font-size:13.5px;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav a.on{color:var(--ink);border-bottom-color:var(--ember)}
+.nav a:hover{color:var(--ink)}
+.top-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:#fff;
+  border-radius:4px;padding:5px 10px;color:var(--ink-3);font-size:13px;min-width:210px}
+.kbd{font-family:var(--mono);font-size:10.5px;border:1px solid var(--line-2);border-bottom-width:2px;
+  border-radius:3px;padding:0 4px;color:var(--ink-3);margin-left:auto}
+.avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#2D5FA8,#4C7A3D);
+  border:1px solid var(--line-2)}
+
+.shell{max-width:1280px;margin:0 auto;padding:26px 24px 80px}
+.crumbs{font-size:12.5px;color:var(--ink-3);margin-bottom:14px}
+.crumbs b{color:var(--ink-2);font-weight:500}
+.screen{display:none}
+.screen:target{display:block}
+.screen.default{display:block}
+.screen:target ~ .screen.default{display:none}
+
+/* ── shared primitives ──────────────────────── */
+.card{background:var(--paper);border:1px solid var(--line-2);border-radius:6px}
+.card + .card{margin-top:16px}
+.card-h{display:flex;align-items:baseline;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.sect-no{font-family:var(--mono);font-size:11px;color:var(--ember);font-weight:600;letter-spacing:.06em}
+.card-h h2{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:.005em}
+.card-h .hint{margin-left:auto;font-size:12px;color:var(--ink-3)}
+.card-b{padding:18px}
+.microlabel{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:7px;border-radius:4px;font-weight:600;font-size:13px;
+  padding:8px 14px;cursor:pointer;border:1px solid transparent;font-family:var(--sans)}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{background:#000}
+.btn-ghost{background:transparent;border-color:var(--line-2);color:var(--ink-2)}
+.btn-ghost:hover{border-color:var(--ink-3);color:var(--ink)}
+.tag{font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:3px;font-weight:500;letter-spacing:.02em}
+.tag.sim{background:var(--ok-soft);color:var(--ok)}
+.tag.consensus{background:#EBF0F8;color:var(--seat1)}
+.tag.theory{background:var(--warn-soft);color:var(--warn)}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:7px}
+
+/* ── screen 1 : report ──────────────────────── */
+.deck-head{display:flex;align-items:flex-start;gap:22px;margin-bottom:22px}
+.cmdr-art{width:72px;height:72px;border-radius:6px;border:1px solid var(--line-2);
+  background:
+   radial-gradient(circle at 30% 25%,#3d6db3 0 22%,transparent 23%),
+   radial-gradient(circle at 72% 70%,#a87a2d 0 18%,transparent 19%),
+   repeating-linear-gradient(45deg,#efe9df 0 6px,#e8e1d3 6px 12px);
+  position:relative}
+.cmdr-art:after{content:"KILO";position:absolute;inset:auto 0 6px 0;text-align:center;
+  font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:#4d4a44}
+.deck-title h1{font-family:var(--serif);font-weight:600;font-size:28px;line-height:1.1;letter-spacing:0}
+.deck-title .sub{color:var(--ink-2);font-size:13.5px;margin-top:5px;display:flex;gap:14px;align-items:center}
+.pip{width:13px;height:13px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2);margin-right:-4px}
+.deck-head .actions{margin-left:auto;display:flex;gap:9px;padding-top:6px}
+
+.verdict{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;border-top:1px solid var(--line)}
+.verdict>div{padding:16px 18px;border-right:1px solid var(--line)}
+.verdict>div:last-child{border-right:0}
+.verdict .big{font-family:var(--serif);font-size:24px;font-weight:600;margin-top:4px}
+.verdict .delta{font-family:var(--mono);font-size:12px;margin-top:3px}
+.up{color:var(--ok)} .down{color:var(--bad)}
+.verdict-note{grid-column:1/-1;border-top:1px solid var(--line);padding:13px 18px;font-size:13.5px;
+  color:var(--ink-2);background:var(--ember-soft);border-bottom-left-radius:6px;border-bottom-right-radius:6px}
+.verdict-note b{color:var(--ink)}
+
+.pods{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.pod{padding:16px 18px;border-right:1px solid var(--line)}
+.pod:last-child{border-right:0}
+.pod .name{font-weight:600;font-size:13px;margin-bottom:2px}
+.pod .opps{font-size:11.5px;color:var(--ink-3);margin-bottom:12px;line-height:1.5}
+.bar-row{display:flex;align-items:center;gap:8px;margin-top:7px}
+.bar-rail{flex:1;height:8px;background:var(--bench);border-radius:2px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:2px;background:var(--ink)}
+.bar-fill.mine{background:var(--ember)}
+.baseline{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink-3)}
+.bar-val{font-family:var(--mono);font-size:12px;width:38px;text-align:right}
+.pod .who{font-size:11px;color:var(--ink-3);width:52px}
+.podnote{font-size:11px;margin-top:11px;padding-top:9px;border-top:1px dashed var(--line)}
+.won{color:var(--ok);font-weight:600} .lost{color:var(--bad);font-weight:600}
+
+table.chain{width:100%;border-collapse:collapse;font-size:13px}
+.chain th{text-align:left;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
+  font-weight:600;padding:8px 18px;border-bottom:1px solid var(--line);background:var(--paper)}
+.chain td{padding:11px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+.chain tr:last-child td{border-bottom:0}
+.status{font-weight:600;font-size:12px;display:inline-flex;align-items:center}
+.st-ok{color:var(--ok)} .st-bad{color:var(--bad)} .st-warn{color:var(--warn)}
+.chain .metric{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.spark{display:inline-flex;align-items:flex-end;gap:2px;height:16px;margin-left:10px}
+.spark i{width:4px;background:var(--line-2);display:inline-block}
+.spark i.hot{background:var(--ember)}
+
+.swaps{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.swap{padding:14px 18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);display:flex;gap:12px}
+.swap:nth-child(2n){border-right:0}
+.swap:nth-last-child(-n+2){border-bottom:0}
+.swap .dir{font-family:var(--mono);font-size:11px;font-weight:600;padding-top:2px}
+.swap .in{color:var(--ok)} .swap .out{color:var(--bad)}
+.swap h4{font-size:13.5px;font-weight:600}
+.swap p{font-size:12.5px;color:var(--ink-2);margin-top:3px}
+.swap .tags{margin-top:7px;display:flex;gap:6px}
+
+/* ── screen 2 : replay ──────────────────────── */
+.replay-wrap{display:grid;grid-template-columns:1fr 300px;gap:16px}
+.table-card{background:var(--paper);border:1px solid var(--line-2);border-radius:6px;overflow:hidden}
+.replay-head{display:flex;align-items:center;gap:14px;padding:11px 16px;border-bottom:1px solid var(--line);font-size:12.5px}
+.replay-head .live{color:var(--ember);font-weight:700;font-size:11px;letter-spacing:.08em}
+.replay-head .gm{color:var(--ink-3)}
+.seats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.seat{background:var(--paper);padding:11px 14px}
+.seat .row1{display:flex;align-items:center;gap:8px}
+.seat .sname{font-weight:600;font-size:13px}
+.seat.dead{opacity:.45}
+.seat.dead .sname{text-decoration:line-through}
+.seat .stats{display:flex;gap:16px;margin-top:7px}
+.stat .microlabel{font-size:9.5px}
+.stat .v{font-family:var(--mono);font-size:16px;font-weight:600;line-height:1.2}
+.turnbadge{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.active-seat{box-shadow:inset 3px 0 0 var(--ember)}
+
+.battlefield{padding:18px 16px;background:
+  radial-gradient(var(--line-2) 1px, transparent 1.2px);
+  background-size:22px 22px;background-color:#F6F3ED;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bf-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.bf-row:last-child{margin-bottom:0}
+.bf-owner{width:74px;flex:none;font-size:10.5px;font-weight:600;letter-spacing:.05em;color:var(--ink-2)}
+.mtgcard{width:74px;height:52px;border-radius:4px;border:1px solid var(--line-2);background:#fff;
+  padding:5px 6px;font-size:9px;line-height:1.25;position:relative;flex:none}
+.mtgcard b{display:block;font-size:9.5px;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mtgcard .pt{position:absolute;right:5px;bottom:3px;font-family:var(--mono);font-size:9.5px;font-weight:600}
+.mtgcard .cnt{position:absolute;left:5px;bottom:3px;font-family:var(--mono);font-size:9px;color:var(--ember);font-weight:600}
+.mtgcard.tapped{transform:rotate(7deg);background:#F7F4EE}
+.mtgcard.attacking{border-color:var(--bad);box-shadow:0 0 0 1px var(--bad)}
+.mtgcard.token{border-style:dashed}
+.arrow{font-family:var(--mono);color:var(--bad);font-weight:600;font-size:11px;flex:none}
+
+.feed{background:var(--paper);border:1px solid var(--line-2);border-radius:6px;display:flex;flex-direction:column;overflow:hidden}
+.feed-h{padding:11px 14px;border-bottom:1px solid var(--line);font-weight:600;font-size:12.5px;display:flex;gap:8px;align-items:center}
+.feed-list{overflow:auto;max-height:520px}
+.evt{display:flex;gap:10px;padding:8px 14px;border-bottom:1px solid var(--line);font-size:12px}
+.evt:last-child{border-bottom:0}
+.evt .t{font-family:var(--mono);font-size:10px;color:var(--ink-3);flex:none;padding-top:2px;width:34px}
+.evt.combat{background:var(--bad-soft)}
+.evt.stack{background:var(--ok-soft)}
+.evt b{font-weight:600}
+
+.vcr{display:flex;align-items:center;gap:14px;padding:12px 16px}
+.vcr .btns{display:flex;gap:6px}
+.vcr button{width:30px;height:30px;border:1px solid var(--line-2);border-radius:4px;background:#fff;
+  font-family:var(--mono);font-size:12px;cursor:pointer;color:var(--ink-2)}
+.vcr button.play{background:var(--ink);color:#fff;border-color:var(--ink)}
+.scrubber{flex:1;position:relative;height:26px}
+.scrub-rail{position:absolute;top:12px;left:0;right:0;height:3px;background:var(--line-2);border-radius:2px}
+.scrub-done{position:absolute;top:12px;left:0;width:34%;height:3px;background:var(--ember);border-radius:2px}
+.scrub-head{position:absolute;top:6px;left:34%;width:14px;height:14px;border-radius:50%;
+  background:#fff;border:2px solid var(--ember)}
+.tick{position:absolute;top:10px;width:1px;height:8px;background:var(--ink-3);opacity:.5}
+.ticklab{position:absolute;top:-6px;font-family:var(--mono);font-size:9px;color:var(--ink-3);transform:translateX(-50%)}
+.vcr .clock{font-family:var(--mono);font-size:12px;color:var(--ink-2);width:110px;text-align:right}
+
+/* ── screen 3 : import ──────────────────────── */
+.import-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.paste{width:100%;min-height:330px;border:1px solid var(--line-2);border-radius:6px;background:#fff;
+  font-family:var(--mono);font-size:12px;line-height:1.7;padding:14px;color:var(--ink-2);resize:vertical}
+.paste:focus{outline:2px solid var(--ember);outline-offset:-1px}
+.src-row{display:flex;gap:8px;margin-bottom:12px}
+.src{border:1px solid var(--line-2);background:#fff;border-radius:4px;padding:7px 12px;font-size:12.5px;
+  color:var(--ink-2);cursor:pointer;font-weight:500}
+.src.on{border-color:var(--ink);color:var(--ink);font-weight:600;background:var(--paper)}
+.check{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.check:last-child{border-bottom:0}
+.check .num{margin-left:auto;font-size:12px;color:var(--ink-2)}
+.badge-ok{color:var(--ok);font-weight:700;font-family:var(--mono);font-size:12px}
+.badge-warn{color:var(--warn);font-weight:700;font-family:var(--mono);font-size:12px}
+.parse-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
+.parse-table td{padding:7px 0;border-bottom:1px solid var(--line)}
+.parse-table tr:last-child td{border-bottom:0}
+.parse-table .q{font-family:var(--mono);color:var(--ink-3);width:26px}
+.parse-table .warnrow td{background:var(--warn-soft)}
+.suggest{font-size:11.5px;color:var(--warn)}
+.suggest a{color:var(--ember);font-weight:600;text-decoration:none;border-bottom:1px dotted var(--ember)}
+.import-cta{display:flex;align-items:center;gap:12px;margin-top:16px}
+.import-cta .est{font-size:12px;color:var(--ink-3)}
+
+.footer{max-width:1280px;margin:30px auto 0;padding:18px 24px;border-top:1px solid var(--line);
+  color:var(--ink-3);font-size:11.5px;display:flex;gap:18px}
+.footer span:last-child{margin-left:auto}
+@media(max-width:980px){.verdict,.pods{grid-template-columns:1fr 1fr}.replay-wrap,.import-grid,.swaps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="wordmark"><span class="beaker"></span>Sim Lab</div>
+    <nav class="nav">
+      <a href="#report" class="on">Decks</a>
+      <a href="#replay">Replays</a>
+      <a href="#import">Import</a>
+      <a href="#">Rules</a>
+    </nav>
+    <div class="top-right">
+      <div class="search">Search decks, games, rules… <span class="kbd">⌘K</span></div>
+      <div class="avatar" title="Vincent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SCREEN 2 : REPLAY (targets) ════════ -->
+<div class="screen" id="replay">
+<div class="shell">
+  <div class="crumbs">Replays / Gauntlet #418 / <b>Game 7 of 16 — Fuckery Pod</b></div>
+
+  <div class="replay-wrap">
+    <div>
+      <div class="table-card">
+        <div class="replay-head">
+          <span class="live">● REPLAY</span>
+          <span><b>Kilo Helm Final</b> vs Nekusar · Slurrk · Kambal</span>
+          <span class="gm">Seat-rotated · seed 8841</span>
+          <span class="turnbadge">TURN 9 — COMBAT / DECLARE BLOCKERS</span>
+        </div>
+
+        <div class="seats">
+          <div class="seat active-seat">
+            <div class="row1"><span class="dot" style="background:var(--seat1)"></span><span class="sname">Kilo Helm Final</span><span class="turnbadge">YOU · ACTIVE</span></div>
+            <div class="stats">
+              <div class="stat"><div class="microlabel">Life</div><div class="v">31</div></div>
+              <div class="stat"><div class="microlabel">Cmdr Dmg</div><div class="v">7</div></div>
+              <div class="stat"><div class="microlabel">Poison</div><div class="v">0</div></div>
+              <div class="stat"><div class="microlabel">Hand</div><div class="v">5</div></div>
+              <div class="stat"><div class="microlabel">Counters on board</div><div class="v" style="color:var(--ember)">23</div></div>
+            </div>
+          </div>
+          <div class="seat">
+            <div class="row1"><span class="dot" style="background:var(--seat2)"></span><span class="sname">Nekusar Punisher</span></div>
+            <div class="stats">
+              <div class="stat"><div class="microlabel">Life</div><div class="v">26</div></div>
+              <div class="stat"><div class="microlabel">Cmdr Dmg</div><div class="v">0</div></div>
+              <div class="stat"><div class="microlabel">Poison</div><div class="v">0</div></div>
+              <div class="stat"><div class="microlabel">Hand</div><div class="v">7</div></div>
+            </div>
+          </div>
+          <div class="seat">
+            <div class="row1"><span class="dot" style="background:var(--seat3)"></span><span class="sname">Slurrk Oozes</span></div>
+            <div class="stats">
+              <div class="stat"><div class="microlabel">Life</div><div class="v">18</div></div>
+              <div class="stat"><div class="microlabel">Cmdr Dmg</div><div class="v">12</div></div>
+              <div class="stat"><div class="microlabel">Poison</div><div class="v">0</div></div>
+              <div class="stat"><div class="microlabel">Hand</div><div class="v">2</div></div>
+            </div>
+          </div>
+          <div class="seat dead">
+            <div class="row1"><span class="dot" style="background:var(--seat4)"></span><span class="sname">Kambal Taxes</span><span class="turnbadge">ELIMINATED T8</span></div>
+            <div class="stats">
+              <div class="stat"><div class="microlabel">Life</div><div class="v">0</div></div>
+              <div class="stat"><div class="microlabel">Cause</div><div class="v" style="font-size:11px;padding-top:4px">Cmdr dmg — Slurrk</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="battlefield">
+          <div class="bf-row">
+            <div class="bf-owner" style="color:var(--seat1)">YOU</div>
+            <div class="mtgcard attacking"><b>Kilo, Apogee Mind</b><span class="cnt">+3</span><span class="pt">5/5</span></div>
+            <div class="mtgcard attacking"><b>Hangarback Walker</b><span class="cnt">+4</span><span class="pt">4/4</span></div>
+            <div class="mtgcard tapped"><b>Thrummingbird</b><span class="pt">1/1</span></div>
+            <div class="mtgcard"><b>Lux Cannon</b><span class="cnt">◆2</span></div>
+            <div class="mtgcard"><b>Unwinding Clock</b></div>
+            <div class="mtgcard"><b>Adamantium Bonding Tank</b><span class="cnt">◆0</span></div>
+            <span class="arrow">⟶ atk Slurrk</span>
+          </div>
+          <div class="bf-row">
+            <div class="bf-owner" style="color:var(--seat2)">NEKUSAR</div>
+            <div class="mtgcard"><b>Nekusar, the Mindrazer</b><span class="pt">2/4</span></div>
+            <div class="mtgcard"><b>Spiteful Visions</b></div>
+            <div class="mtgcard"><b>Ebony Owl Netsuke</b></div>
+          </div>
+          <div class="bf-row">
+            <div class="bf-owner" style="color:var(--seat3)">SLURRK</div>
+            <div class="mtgcard"><b>Slurrk, All-Ingesting</b><span class="cnt">+9</span><span class="pt">10/10</span></div>
+            <div class="mtgcard token"><b>Ooze Token</b><span class="cnt">+2</span><span class="pt">3/3</span></div>
+            <div class="mtgcard token"><b>Ooze Token</b><span class="cnt">+2</span><span class="pt">3/3</span></div>
+            <div class="mtgcard"><b>Predator Ooze</b><span class="cnt">+1</span><span class="pt">4/4</span></div>
+          </div>
+        </div>
+
+        <div class="vcr">
+          <div class="btns">
+            <button>⏮</button><button>◀</button><button class="play">▶</button><button>▶▶</button><button>⏭</button>
+          </div>
+          <div class="scrubber">
+            <div class="scrub-rail"></div><div class="scrub-done"></div><div class="scrub-head"></div>
+            <div class="tick" style="left:11%"></div><div class="ticklab" style="left:11%">T3</div>
+            <div class="tick" style="left:22%"></div>
+            <div class="tick" style="left:34%"></div><div class="ticklab" style="left:34%">T9</div>
+            <div class="tick" style="left:47%"></div>
+            <div class="tick" style="left:61%"></div><div class="ticklab" style="left:61%">T15</div>
+            <div class="tick" style="left:78%"></div>
+            <div class="tick" style="left:96%"></div><div class="ticklab" style="left:96%">END</div>
+          </div>
+          <div class="clock">T9 · evt 214/598</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feed">
+      <div class="feed-h">Event feed <span class="turnbadge">follows playhead</span></div>
+      <div class="feed-list">
+        <div class="evt"><span class="t">T9</span><div><b>Kilo</b> untap step — Unwinding Clock untaps 4 artifacts</div></div>
+        <div class="evt stack"><span class="t">T9</span><div><b>You</b> activate <b>Lux Cannon</b> ◆+1 (now 2)</div></div>
+        <div class="evt stack"><span class="t">T9</span><div><b>Thrummingbird</b> trigger — proliferate ×2 <i>(Tekuthal)</i> · 6 permanents +1</div></div>
+        <div class="evt combat"><span class="t">T9</span><div><b>Combat</b> — Kilo (5/5) &amp; Hangarback (4/4) attack <b>Slurrk</b></div></div>
+        <div class="evt combat"><span class="t">T9</span><div><b>Slurrk</b> blocks Hangarback with Ooze Token (3/3)</div></div>
+        <div class="evt"><span class="t">T8</span><div><b>Kambal eliminated</b> — 21 commander damage from Slurrk</div></div>
+        <div class="evt"><span class="t">T8</span><div><b>Nekusar</b> casts <b>Windfall</b> — all players draw 6</div></div>
+        <div class="evt"><span class="t">T8</span><div>Spiteful Visions deals 6 to each drawing player</div></div>
+        <div class="evt stack"><span class="t">T7</span><div><b>You</b> cast <b>Inspirit, Flagship Vessel</b> from the 99</div></div>
+        <div class="evt"><span class="t">T7</span><div>Inspirit trigger — draw 1, ◆+1 charge</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ════════ SCREEN 3 : IMPORT ════════ -->
+<div class="screen" id="import">
+<div class="shell">
+  <div class="crumbs">Decks / <b>Import</b></div>
+  <div class="card">
+    <div class="card-h"><span class="sect-no">01</span><h2>Import a deck</h2><span class="hint">Moxfield · Archidekt · MTGO · plain text — paste anything</span></div>
+    <div class="card-b">
+      <div class="import-grid">
+        <div>
+          <div class="src-row">
+            <button class="src on">Paste list</button>
+            <button class="src">Moxfield URL</button>
+            <button class="src">Archidekt URL</button>
+            <button class="src">.dck file</button>
+          </div>
+          <textarea class="paste">1 Kilo, Apogee Mind (EOC) 3
+1 Adarkar Wastes (EOC) 147
+1 Adamantium Bonding Tank (SLD) 1741
+1 Alibou, Ancient Witness (EOC) 113
+1 All Will Be One (PONE) 118p
+1 Arcane Signet (EOC) 53
+1 Buried Ruin (EOC) 150
+1 Cascade Bluffs (EOC) 153
+1 Cayth, Famed Mechanist (M3C) 10
+1 Chaos Warp (EOC) 49
+1 Coretapper (EOC) 132
+1 Crystaline Crawler (EOC) 133
+…</textarea>
+        </div>
+        <div>
+          <div class="microlabel" style="margin-bottom:6px">Validation — live</div>
+          <div class="check"><span class="badge-ok">✓</span> Deck size <span class="num">100 / 100</span></div>
+          <div class="check"><span class="badge-ok">✓</span> Singleton legal (basics exempt) <span class="num">0 duplicates</span></div>
+          <div class="check"><span class="badge-ok">✓</span> Commander detected <span class="num">Kilo, Apogee Mind · WUR</span></div>
+          <div class="check"><span class="badge-ok">✓</span> Color identity (both faces checked) <span class="num">99 / 99 legal</span></div>
+          <div class="check"><span class="badge-warn">△</span> Unrecognized names <span class="num">1 issue</span></div>
+
+          <table class="parse-table">
+            <tr><td class="q">1</td><td>Kilo, Apogee Mind</td><td style="text-align:right;color:var(--ink-3)">Commander</td></tr>
+            <tr><td class="q">1</td><td>Adamantium Bonding Tank</td><td style="text-align:right;color:var(--ink-3)">= The Ozolith (SLD)</td></tr>
+            <tr class="warnrow"><td class="q">1</td><td>Crystaline Crawler</td>
+              <td style="text-align:right"><span class="suggest">not found — did you mean <a href="#import">Crystalline Crawler</a>?</span></td></tr>
+            <tr><td class="q">1</td><td>All Will Be One</td><td style="text-align:right;color:var(--ink-3)">ok</td></tr>
+            <tr><td class="q">…</td><td colspan="2" style="color:var(--ink-3)">96 more parsed without issues</td></tr>
+          </table>
+
+          <div class="import-cta">
+            <button class="btn btn-primary">Save &amp; run 16-game gauntlet <span class="num" style="font-weight:400">~10 min</span></button>
+            <button class="btn btn-ghost">Save only</button>
+            <span class="est">Your list is never modified — fixes are suggestions.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ════════ SCREEN 1 : REPORT (default) ════════ -->
+<div class="screen default" id="report">
+<div class="shell">
+  <div class="crumbs">Decks / <b>Kilo Helm Final</b> / Coaching report #418</div>
+
+  <div class="deck-head">
+    <div class="cmdr-art"></div>
+    <div class="deck-title">
+      <h1>Kilo Helm Final</h1>
+      <div class="sub">
+        <span><span class="pip" style="background:#F8F6D8"></span><span class="pip" style="background:#B3CEEA"></span><span class="pip" style="background:#EB9F82"></span>&nbsp;&nbsp;Kilo, Apogee Mind · Artifacts / Proliferate</span>
+        <span class="num" style="color:var(--ink-3)">v6 · hash 3f6a · 64 games · seat-rotated</span>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost">Export list</button>
+      <button class="btn btn-primary">Re-run gauntlet</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><span class="sect-no">01</span><h2>Verdict</h2><span class="hint">Archetype-adjusted · engine-class baseline 12%</span></div>
+    <div class="verdict">
+      <div>
+        <div class="microlabel">Seat-fair win rate</div>
+        <div class="big num">20.3%</div>
+        <div class="delta num up">▲ +8.3 vs engine baseline</div>
+      </div>
+      <div>
+        <div class="microlabel">vs Human pod</div>
+        <div class="big num">38%</div>
+        <div class="delta num up">▲ pod winner</div>
+      </div>
+      <div>
+        <div class="microlabel">Engine ignition</div>
+        <div class="big num">T4 med.</div>
+        <div class="delta num up">▲ was T7 (v3)</div>
+      </div>
+      <div>
+        <div class="microlabel">Worst matchup</div>
+        <div class="big">Drain-tax</div>
+        <div class="delta num down">▼ Kambal 62% · you 0%</div>
+      </div>
+      <div class="verdict-note"><b>Above class average, wins its most realistic pod.</b> Engine decks sim at a structural discount
+      (AI can't pilot politics or protection timing) — read these numbers as your floor. Full calibration notes in Methods.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><span class="sect-no">02</span><h2>Gauntlet results</h2><span class="hint">16 games/pod · 4 seat rotations · ▍= your class baseline</span></div>
+    <div class="pods">
+      <div class="pod">
+        <div class="name">Human decklists <span class="won">WON</span></div>
+        <div class="opps">Wildsear · Felix Five-Boots · Raggadragga</div>
+        <div class="bar-row"><span class="who">You</span><div class="bar-rail"><div class="bar-fill mine" style="width:38%"></div><div class="baseline" style="left:12%"></div></div><span class="bar-val num">38%</span></div>
+        <div class="bar-row"><span class="who">Ragga</span><div class="bar-rail"><div class="bar-fill" style="width:25%"></div></div><span class="bar-val num">25%</span></div>
+        <div class="bar-row"><span class="who">Felix</span><div class="bar-rail"><div class="bar-fill" style="width:19%"></div></div><span class="bar-val num">19%</span></div>
+        <div class="bar-row"><span class="who">Wildsear</span><div class="bar-rail"><div class="bar-fill" style="width:19%"></div></div><span class="bar-val num">19%</span></div>
+        <div class="podnote">Most predictive pod — real tuned decks from a real table.</div>
+      </div>
+      <div class="pod">
+        <div class="name">Pressure mix <span class="won">T-1st</span></div>
+        <div class="opps">Wilhelt · Wyleth · Drana</div>
+        <div class="bar-row"><span class="who">You</span><div class="bar-rail"><div class="bar-fill mine" style="width:38%"></div><div class="baseline" style="left:12%"></div></div><span class="bar-val num">38%</span></div>
+        <div class="bar-row"><span class="who">Drana</span><div class="bar-rail"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val num">38%</span></div>
+        <div class="bar-row"><span class="who">Wyleth</span><div class="bar-rail"><div class="bar-fill" style="width:19%"></div></div><span class="bar-val num">19%</span></div>
+        <div class="bar-row"><span class="who">Wilhelt</span><div class="bar-rail"><div class="bar-fill" style="width:6%"></div></div><span class="bar-val num">6%</span></div>
+        <div class="podnote">Bonding Tank rebuilds after every wipe — counters persist.</div>
+      </div>
+      <div class="pod">
+        <div class="name">Wipe-value <span class="lost">0-16</span></div>
+        <div class="opps">Atraxa · Meren · Ur-Dragon</div>
+        <div class="bar-row"><span class="who">UrDrgn</span><div class="bar-rail"><div class="bar-fill" style="width:44%"></div></div><span class="bar-val num">44%</span></div>
+        <div class="bar-row"><span class="who">Atraxa</span><div class="bar-rail"><div class="bar-fill" style="width:31%"></div></div><span class="bar-val num">31%</span></div>
+        <div class="bar-row"><span class="who">Meren</span><div class="bar-rail"><div class="bar-fill" style="width:19%"></div></div><span class="bar-val num">19%</span></div>
+        <div class="bar-row"><span class="who">You</span><div class="bar-rail"><div class="bar-fill mine" style="width:6%"></div><div class="baseline" style="left:12%"></div></div><span class="bar-val num">6%</span></div>
+        <div class="podnote">Chronic nemesis: dragon clock + wipe recursion. See play guide §3.</div>
+      </div>
+      <div class="pod">
+        <div class="name">Fuckery pod <span class="lost">0-16</span></div>
+        <div class="opps">Nekusar · Slurrk · Kambal</div>
+        <div class="bar-row"><span class="who">Kambal</span><div class="bar-rail"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val num">62%</span></div>
+        <div class="bar-row"><span class="who">Nekusar</span><div class="bar-rail"><div class="bar-fill" style="width:25%"></div></div><span class="bar-val num">25%</span></div>
+        <div class="bar-row"><span class="who">Slurrk</span><div class="bar-rail"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val num">12%</span></div>
+        <div class="bar-row"><span class="who">You</span><div class="bar-rail"><div class="bar-fill mine" style="width:0%"></div><div class="baseline" style="left:12%"></div></div><span class="bar-val num">0%</span></div>
+        <div class="podnote">Drain-tax punishes your 31 noncreature casts/game. Kill Kambal early.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><span class="sect-no">03</span><h2>Win-condition support chain</h2><span class="hint">Function telemetry across 64 games — a deck can lose sims and still be healthy</span></div>
+    <table class="chain">
+      <tr><th style="width:26%">Link</th><th style="width:14%">Status</th><th style="width:24%">Measured</th><th>Reading</th></tr>
+      <tr>
+        <td><b>Kilo ignition</b><div class="metric">commander on curve</div></td>
+        <td><span class="status st-ok">● RUNNING</span></td>
+        <td class="metric">median T4 · cast 61/64<span class="spark"><i style="height:4px"></i><i style="height:7px"></i><i class="hot" style="height:14px"></i><i class="hot" style="height:16px"></i></span></td>
+        <td style="font-size:12.5px;color:var(--ink-2)">Was T7-or-never with Inspirit at helm. Engine starts turn 4.</td>
+      </tr>
+      <tr>
+        <td><b>Proliferate engine</b><div class="metric">Tekuthal ×2 active</div></td>
+        <td><span class="status st-ok">● RUNNING</span></td>
+        <td class="metric">7.1 resolutions / game</td>
+        <td style="font-size:12.5px;color:var(--ink-2)">Highest measured in any build. Fuels every payoff below.</td>
+      </tr>
+      <tr>
+        <td><b>Charge accumulation</b><div class="metric">station + triggers</div></td>
+        <td><span class="status st-ok">● RUNNING</span></td>
+        <td class="metric">6.9 events / game <span style="color:var(--ok)">(was 0.7)</span></td>
+        <td style="font-size:12.5px;color:var(--ink-2)">10× v3. Inspirit tiers + Lux Cannon + Scepter-ready.</td>
+      </tr>
+      <tr>
+        <td><b>Lux Cannon conversion</b><div class="metric">counters → removal</div></td>
+        <td><span class="status st-warn">● PARTIAL</span></td>
+        <td class="metric">2.7 events / game</td>
+        <td style="font-size:12.5px;color:var(--ink-2)">Fires, but AI targets creatures — point it at enchantments vs tax decks.</td>
+      </tr>
+      <tr>
+        <td><b>Kappa clock</b><div class="metric">unblockable beats</div></td>
+        <td><span class="status st-ok">● RUNNING</span></td>
+        <td class="metric">2.8 dmg events / game</td>
+        <td style="font-size:12.5px;color:var(--ink-2)">Ward 4 sticks. Primary damage line in wins.</td>
+      </tr>
+      <tr>
+        <td><b>Dawnsire finisher</b><div class="metric">station 12+</div></td>
+        <td><span class="status st-bad">● COLD</span></td>
+        <td class="metric">0.7 events / game · 0 full stations</td>
+        <td style="font-size:12.5px;color:var(--ink-2)">Never fully stationed in 64 games. Candidate cut — or human-piloted line only.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><span class="sect-no">04</span><h2>Recommended changes</h2><span class="hint">Every suggestion tagged by evidence type</span></div>
+    <div class="swaps">
+      <div class="swap"><span class="dir out">− CUT</span>
+        <div><h4>Dawnsire, Sunstar Dreadnought</h4>
+        <p>0 full stations in 64 games. The 12-charge plan needs a pilot; the deck already wins on Kappa + Cannon lines.</p>
+        <div class="tags"><span class="tag sim">sim: 64g cold</span><span class="tag theory">keep if you pilot it</span></div></div>
+      </div>
+      <div class="swap"><span class="dir in">+ ADD</span>
+        <div><h4>Magistrate's Scepter</h4>
+        <p>Charge 6.9/game + Tekuthal doubling re-arms it every turn. Extra-turn engine — declare bracket to your table.</p>
+        <div class="tags"><span class="tag sim">charge rate supports</span><span class="tag consensus">30% of 17k decks</span></div></div>
+      </div>
+      <div class="swap"><span class="dir in">+ ADD</span>
+        <div><h4>Lux Artillery</h4>
+        <p>30+ counters among your permanents = 10 dmg to each opponent at your end step. You averaged 23 by T9.</p>
+        <div class="tags"><span class="tag sim">counter density: yes</span><span class="tag consensus">71% incl.</span></div></div>
+      </div>
+      <div class="swap"><span class="dir out">− CUT</span>
+        <div><h4>Walking Ballista</h4>
+        <p>1.1 events/game, never lethal. Slot funds the Artillery win line.</p>
+        <div class="tags"><span class="tag sim">low impact</span><span class="tag theory">flex slot</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Sim Lab · analysis tool — unaffiliated fan content per WotC Fan Content Policy</span>
+    <span>Methods: seat rotation · archetype baselines · n=64</span>
+    <span class="num">report 418 · 2026-07-24</span>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

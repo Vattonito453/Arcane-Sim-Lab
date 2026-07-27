@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kilo-helm-final — Overview · Sim Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A;
+  --fg:#EDEDED;
+  --gray:#A1A1A1;
+  --gray2:#7D7D7D;
+  --gray3:#525252;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.14);
+  --hover:rgba(255,255,255,.04);
+  --blue:#52A9FF;
+  --green:#4CC38A;
+  --red:#F2555A;
+  --amber:#F0B429;
+  --mono:'Geist Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,sans-serif;
+  font-feature-settings:'cv01','ss03';font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.93em}
+a{color:var(--fg);text-decoration:none}
+a.q{color:var(--gray);transition:color .12s}
+a.q:hover{color:var(--fg)}
+a.bl{color:var(--blue)}
+a.bl:hover{text-decoration:underline}
+button{font-family:inherit;cursor:pointer}
+
+/* ── chrome ── */
+header{border-bottom:1px solid var(--line)}
+.tb{max-width:1200px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:8px}
+.glyph{width:22px;height:22px;flex:none}
+.slash{color:var(--gray3);font-size:16px;font-weight:300;margin:0 2px}
+.path{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500}
+.path img{width:20px;height:20px;border-radius:50%;object-fit:cover;background:#1a1a1a}
+.path .plan{font-size:10.5px;color:var(--gray);border:1px solid var(--line2);border-radius:9px;padding:1px 7px;font-weight:400}
+.tb-links{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:13px}
+.avatar{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3E6FA8,#22334E);flex:none}
+nav.tabs{max-width:1200px;margin:0 auto;padding:0 16px;display:flex}
+.tab{padding:9px 10px 11px;font-size:13.5px;color:var(--gray);position:relative;transition:color .12s}
+.tab:hover{color:var(--fg)}
+.tab.on{color:var(--fg)}
+.tab.on:after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;background:var(--fg)}
+
+/* ── page ── */
+.page{max-width:1200px;margin:0 auto;padding:32px 24px 96px}
+.head{display:flex;align-items:flex-start;gap:16px;margin-bottom:6px}
+h1{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.head .btns{margin-left:auto;display:flex;gap:8px}
+.btn{height:32px;padding:0 12px;border-radius:6px;font-size:13px;font-weight:500;
+  border:1px solid var(--line2);background:transparent;color:var(--fg);transition:border-color .12s,background .12s}
+.btn:hover{border-color:rgba(255,255,255,.28)}
+.btn.pri{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:560}
+.btn.pri:hover{background:#fff}
+.sub{color:var(--gray);font-size:13.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sub .sep{color:var(--gray3)}
+
+.lede{max-width:760px;margin:22px 0 30px;color:var(--gray);font-size:14px;line-height:1.65}
+.lede b{color:var(--fg);font-weight:560}
+
+/* headline figures — plain type, hairline dividers, no boxes */
+.figs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);margin-bottom:44px}
+.fig{padding:18px 20px 18px 0}
+.fig+.fig{padding-left:20px;border-left:1px solid var(--line)}
+.fig .n{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:26px;font-weight:500;letter-spacing:-.01em}
+.fig .n small{font-size:15px;color:var(--gray2);font-weight:400}
+.fig .l{color:var(--gray);font-size:12.5px;margin-top:4px}
+
+/* sections */
+section{margin-bottom:48px}
+.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.sh h2{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.sh .meta{color:var(--gray2);font-size:12.5px}
+.sh .right{margin-left:auto;font-size:12.5px}
+.sdesc{color:var(--gray2);font-size:13px;margin-bottom:14px}
+
+/* status dot+word */
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500}
+.st i{width:7px;height:7px;border-radius:50%;flex:none}
+.st.win{color:var(--green)} .st.win i{background:var(--green)}
+.st.loss{color:var(--gray2)} .st.loss i{background:var(--gray3)}
+.st.bad{color:var(--red)} .st.bad i{background:var(--red)}
+.st.warn{color:var(--amber)} .st.warn i{background:var(--amber)}
+.st.ok{color:var(--green)} .st.ok i{background:var(--green)}
+
+/* pods — plain rows, hairlines only */
+.podt{width:100%;border-collapse:collapse}
+.podt td{padding:13px 0;border-top:1px solid var(--line);vertical-align:middle}
+.podt tr:last-child td{border-bottom:1px solid var(--line)}
+.podt .nm{font-weight:560;font-size:13.5px;width:170px;padding-right:16px}
+.podt .opp{color:var(--gray2);font-size:12.5px;width:250px;padding-right:24px}
+.rail{height:4px;background:rgba(255,255,255,.07);border-radius:2px;position:relative;min-width:120px}
+.rail .fill{position:absolute;left:0;top:0;bottom:0;background:var(--fg);border-radius:2px}
+.rail .base{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--gray3)}
+.podt .pct{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;width:64px;font-size:13px;padding-left:20px}
+.podt .res{width:110px;text-align:right}
+.note{color:var(--gray2);font-size:12.5px;margin-top:10px;max-width:760px;line-height:1.6}
+.note a{color:var(--gray)}
+.note a:hover{color:var(--fg)}
+
+/* games table — the one bordered container */
+.tblwrap{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.toolrow{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.inp{display:flex;align-items:center;gap:8px;height:30px;border:1px solid var(--line2);border-radius:6px;
+  padding:0 10px;font-size:13px;color:var(--gray2);min-width:230px;background:transparent}
+.sel{height:30px;border:1px solid var(--line2);border-radius:6px;background:transparent;color:var(--fg);
+  font-size:12.5px;padding:0 26px 0 10px;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23A1A1A1' stroke-width='2.4'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 9px center}
+.toolrow .upd{margin-left:auto;color:var(--gray3);font-size:12px}
+table.games{width:100%;border-collapse:collapse}
+.games th{font-size:11.5px;color:var(--gray2);font-weight:500;text-align:left;padding:8px 14px;
+  border-bottom:1px solid var(--line);white-space:nowrap}
+.games th.r,.games td.r{text-align:right}
+.games td{padding:0 14px;height:40px;font-size:13px;border-bottom:1px solid var(--line);
+  white-space:nowrap;color:var(--gray)}
+.games tbody tr{transition:background .12s;cursor:pointer}
+.games tbody tr:hover{background:var(--hover)}
+.games tbody tr:last-child td{border-bottom:0}
+.games .id{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--fg);font-size:12.5px}
+.games .by{display:flex;align-items:center;gap:9px;color:var(--fg)}
+.games .by img{width:22px;height:22px;border-radius:50%;object-fit:cover;background:#1a1a1a}
+.games .by span em{color:var(--gray2);font-style:normal}
+.games td.dur{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--gray2);font-size:12.5px}
+.pager{display:flex;align-items:center;padding:9px 14px;border-top:1px solid var(--line);
+  color:var(--gray2);font-size:12.5px}
+.pager .pg{margin-left:auto;display:flex;align-items:center;gap:14px}
+.pager button{background:none;border:0;color:var(--gray);font-size:12.5px;font-weight:500;padding:0}
+.pager button:hover{color:var(--fg)}
+.pager button:disabled{color:var(--gray3);cursor:default}
+
+/* two-col telemetry / changes */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.telet{width:100%;border-collapse:collapse}
+.telet td{padding:11px 0;border-top:1px solid var(--line)}
+.telet tr:last-child td{border-bottom:1px solid var(--line)}
+.telet .nm{font-size:13px;font-weight:500;width:150px;padding-right:12px}
+.telet .nm small{display:block;color:var(--gray3);font-weight:400;font-size:11.5px;margin-top:1px}
+.telet .val{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;width:64px;
+  font-size:12.5px;padding:0 18px 0 12px;color:var(--gray)}
+.telet .stc{width:76px;text-align:right}
+.chg{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line);align-items:flex-start}
+.chg:last-child{border-bottom:1px solid var(--line)}
+.chg img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#1a1a1a;flex:none;margin-top:1px}
+.chg .pm{font-family:var(--mono);width:14px;flex:none;font-size:14px;margin-top:2px}
+.chg .pm.a{color:var(--green)} .chg .pm.c{color:var(--red)}
+.chg .t{font-weight:560;font-size:13.5px}
+.chg .r{color:var(--gray2);font-size:12.5px;line-height:1.55;margin-top:2px}
+.chg .r .ev{color:var(--gray3)}
+
+footer{border-top:1px solid var(--line);margin-top:16px}
+.ft{max-width:1200px;margin:0 auto;padding:20px 24px;color:var(--gray3);font-size:12px;
+  display:flex;gap:20px;flex-wrap:wrap}
+.ft span:last-child{margin-left:auto}
+@media(max-width:900px){.figs{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}
+  .podt .opp{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tb">
+    <svg class="glyph" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2 2.5 21.5h19L12 2Z" stroke="#EDEDED" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 8.5v6.5" stroke="#EDEDED" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <span class="slash">/</span>
+    <div class="path">vincent <span class="plan">Pro</span></div>
+    <span class="slash">/</span>
+    <div class="path">
+      <img src="https://api.scryfall.com/cards/named?exact=Kilo%2C%20Apogee%20Mind&format=image&version=art_crop" onerror="this.remove()">
+      kilo-helm-final
+    </div>
+    <div class="tb-links">
+      <a class="q" href="#">Feedback</a>
+      <a class="q" href="#">Changelog</a>
+      <a class="q" href="#">Docs</a>
+      <div class="avatar"></div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <a class="tab on" href="#">Overview</a>
+    <a class="tab" href="#">Games</a>
+    <a class="tab" href="#">Telemetry</a>
+    <a class="tab" href="#">Replays</a>
+    <a class="tab" href="#">Changes</a>
+    <a class="tab" href="#">Play guide</a>
+    <a class="tab" href="#">Settings</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="head">
+    <div>
+      <h1>kilo-helm-final</h1>
+      <div class="sub" style="margin-top:6px">
+        Kilo, Apogee Mind <span class="sep">·</span> artifacts / proliferate
+        <span class="sep">·</span> <span class="mono">v6</span>
+        <span class="sep">·</span> <span class="mono">run 418</span> finished Jul 24, 9:41 PM
+      </div>
+    </div>
+    <div class="btns">
+      <button class="btn">Export</button>
+      <button class="btn">Compare runs</button>
+      <button class="btn pri">Run gauntlet</button>
+    </div>
+  </div>
+
+  <p class="lede">
+    This deck won <b>13 of 64 seat-rotated games (20.3%)</b> — 8.3 points above the
+    12% average for engine decks in this simulator, and it <b>won its most realistic
+    pod</b>, the one built from your table's actual decklists. The commander now lands
+    on a median of <b>turn&nbsp;4</b> (turn 7 in v3). Two matchups carry almost all of
+    the losses: drain-tax effects and wipe-recursion value — both are addressable in
+    play, not in the list. <a class="bl" href="#">Read the full coaching notes</a>
+  </p>
+
+  <div class="figs">
+    <div class="fig"><div class="n">20.3<small>%</small></div><div class="l">win rate across 64 games, vs 12% for its class</div></div>
+    <div class="fig"><div class="n">T4</div><div class="l">median commander turn, from T7 in v3</div></div>
+    <div class="fig"><div class="n">7.1<small>/game</small></div><div class="l">proliferate resolutions — highest of any build</div></div>
+    <div class="fig"><div class="n">0<small>&nbsp;of 16</small></div><div class="l">wins against the drain-tax pod</div></div>
+  </div>
+
+  <section>
+    <div class="sh">
+      <h2>Pods</h2>
+      <span class="meta">16 games each, 4 seat rotations</span>
+      <span class="right"><a class="q" href="#">Methodology</a></span>
+    </div>
+    <table class="podt">
+      <tr>
+        <td class="nm">Human decklists</td>
+        <td class="opp">Wildsear, Felix Five-Boots, Raggadragga</td>
+        <td><div class="rail"><div class="fill" style="width:38%"></div><div class="base" style="left:12%"></div></div></td>
+        <td class="pct">38%</td>
+        <td class="res"><span class="st win"><i></i>Won pod</span></td>
+      </tr>
+      <tr>
+        <td class="nm">Pressure mix</td>
+        <td class="opp">Wilhelt, Wyleth, Drana</td>
+        <td><div class="rail"><div class="fill" style="width:38%"></div><div class="base" style="left:12%"></div></div></td>
+        <td class="pct">38%</td>
+        <td class="res"><span class="st win"><i></i>Tied 1st</span></td>
+      </tr>
+      <tr>
+        <td class="nm">Wipe-value</td>
+        <td class="opp">Atraxa, Meren, The Ur-Dragon</td>
+        <td><div class="rail"><div class="fill" style="width:6%"></div><div class="base" style="left:12%"></div></div></td>
+        <td class="pct">6%</td>
+        <td class="res"><span class="st loss"><i></i>1 of 16</span></td>
+      </tr>
+      <tr>
+        <td class="nm">Drain-tax</td>
+        <td class="opp">Nekusar, Slurrk, Kambal</td>
+        <td><div class="rail"><div class="fill" style="width:1%"></div><div class="base" style="left:12%"></div></div></td>
+        <td class="pct">0%</td>
+        <td class="res"><span class="st bad"><i></i>0 of 16</span></td>
+      </tr>
+    </table>
+    <p class="note">The thin marker on each bar is the 12% baseline for engine-style decks —
+    the simulator's AI can't pilot politics or protection timing, so engine decks sim below
+    their table strength. Treat these numbers as your floor. <a href="#">How we calibrate →</a></p>
+  </section>
+
+  <section>
+    <div class="sh">
+      <h2>Games</h2>
+      <span class="meta">64 total</span>
+      <span class="right"><a class="q" href="#">View all</a></span>
+    </div>
+    <div class="tblwrap">
+      <div class="toolrow">
+        <div class="inp">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          Search by card, pod, or turn…
+        </div>
+        <select class="sel"><option>All pods</option></select>
+        <select class="sel"><option>Losses</option></select>
+        <span class="upd">Updated 21 min ago</span>
+      </div>
+      <table class="games">
+        <thead>
+          <tr>
+            <th style="width:64px">Game</th>
+            <th style="width:130px">Pod</th>
+            <th style="width:56px">Seat</th>
+            <th style="width:110px">Result</th>
+            <th style="width:70px">Ended</th>
+            <th>Decided by</th>
+            <th class="r" style="width:120px">Replay</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="id">#64</td><td>Drain-tax</td><td class="mono">2</td>
+            <td><span class="st loss"><i></i>3rd of 4</span></td><td class="mono">T11</td>
+            <td><div class="by"><img src="https://api.scryfall.com/cards/named?exact=Kambal%2C%20Consul%20of%20Allocation&format=image&version=art_crop" onerror="this.remove()"><span>Kambal <em>— Exsanguinate for 14</em></span></div></td>
+            <td class="r"><a class="bl" href="#">Watch</a> <span class="dur mono" style="color:var(--gray3)">&nbsp;0:38</span></td>
+          </tr>
+          <tr>
+            <td class="id">#61</td><td>Drain-tax</td><td class="mono">3</td>
+            <td><span class="st loss"><i></i>2nd of 4</span></td><td class="mono">T12</td>
+            <td><div class="by"><img src="https://api.scryfall.com/cards/named?exact=Nekusar%2C%20the%20Mindrazer&format=image&version=art_crop" onerror="this.remove()"><span>Nekusar <em>— Wheel of Misfortune into Spiteful Visions</em></span></div></td>
+            <td class="r"><a class="bl" href="#">Watch</a> <span class="dur mono" style="color:var(--gray3)">&nbsp;0:39</span></td>
+          </tr>
+          <tr>
+            <td class="id">#60</td><td>Pressure</td><td class="mono">4</td>
+            <td><span class="st win"><i></i>Won</span></td><td class="mono">T15</td>
+            <td><div class="by"><img src="https://api.scryfall.com/cards/named?exact=Kilo%2C%20Apogee%20Mind&format=image&version=art_crop" onerror="this.remove()"><span>You <em>— Bonding Tank rebuild into lethal Kappa</em></span></div></td>
+            <td class="r"><a class="bl" href="#">Watch</a> <span class="dur mono" style="color:var(--gray3)">&nbsp;0:47</span></td>
+          </tr>
+          <tr>
+            <td class="id">#59</td><td>Wipe-value</td><td class="mono">3</td>
+            <td><span class="st loss"><i></i>3rd of 4</span></td><td class="mono">T13</td>
+            <td><div class="by"><img src="https://api.scryfall.com/cards/named?exact=The%20Ur-Dragon&format=image&version=art_crop" onerror="this.remove()"><span>The Ur-Dragon <em>— 21 commander damage in the air</em></span></div></td>
+            <td class="r"><a class="bl" href="#">Watch</a> <span class="dur mono" style="color:var(--gray3)">&nbsp;0:52</span></td>
+          </tr>
+          <tr>
+            <td class="id">#58</td><td>Drain-tax</td><td class="mono">1</td>
+            <td><span class="st loss"><i></i>4th of 4</span></td><td class="mono">T9</td>
+            <td><div class="by"><img src="https://api.scryfall.com/cards/named?exact=Kambal%2C%20Consul%20of%20Allocation&format=image&version=art_crop" onerror="this.remove()"><span>Kambal <em>— Torment of Hailfire, X=9</em></span></div></td>
+            <td class="r"><a class="bl" href="#">Watch</a> <span class="dur mono" style="color:var(--gray3)">&nbsp;0:31</span></td>
+          </tr>
+          <tr>
+            <td class="id">#57</td><td>Human</td><td class="mono">4</td>
+            <td><span class="st win"><i></i>Won</span></td><td class="mono">T14</td>
+            <td><div class="by"><img src="https://api.scryfall.com/cards/named?exact=Kilo%2C%20Apogee%20Mind&format=image&version=art_crop" onerror="this.remove()"><span>You <em>— Lux Cannon clears blockers, Kappa closes</em></span></div></td>
+            <td class="r"><a class="bl" href="#">Watch</a> <span class="dur mono" style="color:var(--gray3)">&nbsp;0:44</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pager">
+        <span>Showing 6 of 64 games</span>
+        <div class="pg">
+          <button disabled>‹ Prev</button>
+          <span class="mono" style="color:var(--gray2)">1 / 11</span>
+          <button>Next ›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cols">
+    <section>
+      <div class="sh">
+        <h2>Win-condition telemetry</h2>
+        <span class="right"><a class="q" href="#">All metrics</a></span>
+      </div>
+      <p class="sdesc">Whether each piece of the deck's plan actually fired, measured per game across all 64.</p>
+      <table class="telet">
+        <tr>
+          <td class="nm">Commander ignition<small>Kilo cast on curve</small></td>
+          <td class="val">T4 med</td>
+          <td class="stc"><span class="st ok"><i></i>Healthy</span></td>
+        </tr>
+        <tr>
+          <td class="nm">Proliferate engine<small>with Tekuthal doubling</small></td>
+          <td class="val">7.1/g</td>
+          <td class="stc"><span class="st ok"><i></i>Healthy</span></td>
+        </tr>
+        <tr>
+          <td class="nm">Charge counters<small>station and triggers</small></td>
+          <td class="val">6.9/g</td>
+          <td class="stc"><span class="st ok"><i></i>Healthy</span></td>
+        </tr>
+        <tr>
+          <td class="nm">Lux Cannon<small>counters into removal</small></td>
+          <td class="val">2.7/g</td>
+          <td class="stc"><span class="st warn"><i></i>Partial</span></td>
+        </tr>
+        <tr>
+          <td class="nm">Kappa clock<small>unblockable damage</small></td>
+          <td class="val">2.8/g</td>
+          <td class="stc"><span class="st ok"><i></i>Healthy</span></td>
+        </tr>
+        <tr>
+          <td class="nm">Dawnsire finisher<small>station to 12</small></td>
+          <td class="val">0.7/g</td>
+          <td class="stc"><span class="st bad"><i></i>Never fired</span></td>
+        </tr>
+      </table>
+      <p class="note">Charge accumulation is 10× what it was in v3 (0.7/g), which is what
+      unlocked the two suggested additions on the right.</p>
+    </section>
+
+    <section>
+      <div class="sh">
+        <h2>Suggested changes</h2>
+        <span class="right"><a class="q" href="#">Why these</a></span>
+      </div>
+      <p class="sdesc">Each suggestion cites its evidence — simulation, community consensus, or theory.</p>
+      <div>
+        <div class="chg">
+          <span class="pm a">+</span>
+          <img src="https://api.scryfall.com/cards/named?exact=Magistrate%27s%20Scepter&format=image&version=art_crop" onerror="this.remove()">
+          <div>
+            <div class="t">Magistrate's Scepter</div>
+            <div class="r">Your 6.9 charge events per game plus Tekuthal doubling re-arms it
+            every turn — a repeatable extra-turn line. <span class="ev">Sim-backed; in 30% of 17k Kilo lists.</span></div>
+          </div>
+        </div>
+        <div class="chg">
+          <span class="pm a">+</span>
+          <img src="https://api.scryfall.com/cards/named?exact=Lux%20Artillery&format=image&version=art_crop" onerror="this.remove()">
+          <div>
+            <div class="t">Lux Artillery</div>
+            <div class="r">You average 23 counters on board by turn 9; at 30+ this deals 10 to
+            each opponent at your end step. <span class="ev">Sim-backed counter density.</span></div>
+          </div>
+        </div>
+        <div class="chg">
+          <span class="pm c">−</span>
+          <img src="https://api.scryfall.com/cards/named?exact=Dawnsire%2C%20Sunstar%20Dreadnought&format=image&version=art_crop" onerror="this.remove()">
+          <div>
+            <div class="t">Dawnsire, Sunstar Dreadnought</div>
+            <div class="r">Zero full stations in 64 games — the 12-charge plan needs a human
+            pilot the sim doesn't have. <span class="ev">Keep it if you'll pilot that line yourself.</span></div>
+          </div>
+        </div>
+        <div class="chg">
+          <span class="pm c">−</span>
+          <img src="https://api.scryfall.com/cards/named?exact=Walking%20Ballista&format=image&version=art_crop" onerror="this.remove()">
+          <div>
+            <div class="t">Walking Ballista</div>
+            <div class="r">1.1 events per game and never lethal here — this is the slot that
+            funds Lux Artillery. <span class="ev">Low sim impact; flex slot.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft">
+    <span>Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy.</span>
+    <span>Card images via Scryfall</span>
+    <span class="mono">run 418 · seed 8841</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "source_video": "https://www.youtube.com/watch?v=IIE4VeO1Cgs",
+    "title": "Commander Chaos Begins... | 4 Player MTG Commander Gameplay Episode 1",
+    "channel": "Roll and Conquer",
+    "video_length": "53:49",
+    "episode": "1 of 3 (game continues in later episodes; this log is partial)",
+    "format": "Commander (EDH), 4-player free-for-all",
+    "starting_life": 40,
+    "extraction_method": "YouTube auto-generated captions (ASR, no speaker labels). Speaker attribution and some card names are inferred; each entry carries a confidence flag.",
+    "extracted": "2026-07-22",
+    "schema": {
+      "confidence": "high = explicit in transcript; medium = inferred from context; low = ASR garbled, best guess",
+      "rule_refs": "MTG Comprehensive Rules numbers, resolvable against rules/kb/all_rules.json"
+    }
+  },
+  "players": [
+    {
+      "seat": 1,
+      "name": "Alex",
+      "commander": "Tidus (heard as 'Titus'; Final Fantasy Commander deck, likely 'Counter Blitz' precon)",
+      "colors": ["W", "U", "G"],
+      "theme": "+1/+1 counters, proliferate, trample",
+      "confidence": "medium"
+    },
+    {
+      "seat": 2,
+      "name": "Jared",
+      "commander": "Unidentified Spacecraft artifact commander (heard as 'All the world seat'; Edge of Eternities-style Station mechanic; Station 2+: {1},{T}, sac a land: draw 2, extra land play; Station 8+: becomes 6/7 legendary artifact creature)",
+      "colors": ["B", "R", "G"],
+      "theme": "Lands-sacrifice value, Station",
+      "confidence": "low"
+    },
+    {
+      "seat": 3,
+      "name": "Bolt",
+      "commander": "Cloud (Final Fantasy 'Limit Break' precon; commander not cast during episode 1)",
+      "colors": ["R", "G", "W"],
+      "theme": "Equipment / Limit Break",
+      "notes": "First-time Magic player",
+      "confidence": "medium"
+    },
+    {
+      "seat": 4,
+      "name": "Weston",
+      "commander": "Clavileño, First of the Blessed (heard as 'Clavaleno'; vampire cleric)",
+      "colors": ["W", "B"],
+      "theme": "Vampires, lifegain, demons",
+      "confidence": "high"
+    }
+  ],
+  "pregame": [
+    {"t": "3:18", "event": "All players shuffle and draw opening hands; table announces 'free mulligan for all'", "rule_refs": ["103.5", "103.5c"], "note": "In multiplayer games the first mulligan doesn't count (free), matching CR 103.5c", "confidence": "high"},
+    {"t": "3:52", "event": "Roll-off (d20) to determine turn order: Weston 13, Jared 17, Bolt 12; Jared wins and sets order; Alex plays first, proceeding clockwise", "rule_refs": ["103.1", "103.2"], "confidence": "medium"},
+    {"t": "4:31", "event": "All four players keep opening hands (no mulligans taken)", "rule_refs": ["103.5"], "confidence": "high"}
+  ],
+  "turns": [
+    {
+      "turn_cycle": 1,
+      "player_turns": [
+        {"active_player": "Alex", "t_start": "4:50", "actions": [
+          {"t": "4:50", "action": "land_drop", "card": "Tangled Islet", "detail": "Land - Forest Island, enters tapped", "rule_refs": ["305.1", "305.6"], "confidence": "high"}
+        ]},
+        {"active_player": "Jared", "t_start": "5:04", "actions": [
+          {"t": "5:04", "action": "draw_step", "detail": "Jared draws for turn (first turn-cycle draw allowed in multiplayer for all players incl. first player's successors; only the FIRST player would skip in a 2-player game, and nobody skips in multiplayer)", "rule_refs": ["103.8c"], "confidence": "high"},
+          {"t": "5:54", "action": "land_drop", "card": "Evolving Wilds", "confidence": "high"},
+          {"t": "6:29", "action": "activate_ability", "card": "Evolving Wilds", "detail": "Sacrifice, search library for a basic land, put onto battlefield tapped, shuffle", "rule_refs": ["602.2", "701.23"], "confidence": "high"}
+        ]},
+        {"active_player": "Bolt", "t_start": "8:16", "actions": [
+          {"t": "8:16", "action": "land_drop", "card": "Path of Ancestry (inferred)", "detail": "Enters tapped; taps for one mana of commander's color identity", "rule_refs": ["903.4"], "confidence": "medium", "note": "Confirmed on Bolt's board at 12:27"}
+        ]},
+        {"active_player": "Weston", "t_start": "9:15", "actions": [
+          {"t": "9:25", "action": "land_drop", "card": "Orzhov Basilica", "detail": "Enters tapped; bounce-land played as first land", "rule_refs": ["305.1"], "confidence": "high", "validation_flag": "Orzhov Basilica reads 'When this land enters, return an untapped land you control to its owner's hand.' Played as the only land, the trigger resolves with no legal object to return - legal but worth flagging; discussed at 29:41"}
+        ]}
+      ]
+    },
+    {
+      "turn_cycle": 2,
+      "player_turns": [
+        {"active_player": "Alex", "t_start": "9:40", "actions": [
+          {"t": "9:48", "action": "land_drop", "card": "Prairie Stream", "detail": "Enters tapped unless you control two basic lands (Alex does not - enters tapped)", "confidence": "high"},
+          {"t": "9:57", "action": "pass", "detail": "Holds one mana up, passes", "rule_refs": ["117.3d", "500.2"], "confidence": "high"}
+        ]},
+        {"active_player": "Jared", "t_start": "10:16", "actions": [
+          {"t": "10:16", "action": "unclear", "detail": "Land drop presumed; transcript is table-talk", "confidence": "low"}
+        ]},
+        {"active_player": "Bolt", "t_start": "11:37", "actions": [
+          {"t": "11:37", "action": "untap_draw", "detail": "Table walks Bolt through untap + draw sequencing", "rule_refs": ["502.1", "504.1"], "confidence": "high"},
+          {"t": "12:22", "action": "land_drop", "card": "Mountain", "confidence": "high"}
+        ]},
+        {"active_player": "Weston", "t_start": "12:52", "actions": [
+          {"t": "13:22", "action": "land_drop", "card": "Path of Ancestry", "detail": "Enters tapped", "confidence": "high"},
+          {"t": "13:29", "action": "cast_spell", "card": "Arcane Signet", "detail": "Paid with 2 mana from Orzhov Basilica; taps for one mana of commander color identity (W/B)", "rule_refs": ["601.2", "903.4"], "confidence": "high"}
+        ]}
+      ]
+    },
+    {
+      "turn_cycle": 3,
+      "player_turns": [
+        {"active_player": "Alex", "t_start": "13:52", "actions": [
+          {"t": "13:52", "action": "land_drop", "card": "Sun Petal Grove", "detail": "Enters untapped (controls a Forest [Tangled Islet] and a Plains [Prairie Stream])", "rule_refs": ["305.6"], "confidence": "high"},
+          {"t": "14:51", "action": "cast_spell", "card": "Shelinda, Yevon Acolyte (heard as 'Shelinda Yavon Acolyte')", "detail": "Tapped W + G. Lifelink; whenever another creature you control enters, put a +1/+1 counter on it if its power is less than Shelinda's, otherwise on Shelinda", "rule_refs": ["601.2", "702.15"], "confidence": "medium"}
+        ]},
+        {"active_player": "Jared", "t_start": "16:27", "actions": [
+          {"t": "16:27", "action": "cast_spell", "card": "Cultivate", "detail": "Search for up to two basic lands (revealed two Swamps at 18:24), one onto battlefield tapped, one to hand, shuffle", "rule_refs": ["601.2", "701.23"], "confidence": "high", "note": "Table confirms Cultivate's battlefield land is NOT a land drop (18:45-18:53) - correct"}
+        ]},
+        {"active_player": "Bolt", "t_start": "19:20", "actions": [
+          {"t": "19:20", "action": "land_drop", "card": "Rootbound Crag", "detail": "Enters untapped (controls a Mountain)", "confidence": "high"}
+        ]},
+        {"active_player": "Weston", "t_start": "19:57", "actions": [
+          {"t": "20:11", "action": "land_drop", "card": "Voldaren Estate", "confidence": "high"},
+          {"t": "20:36", "action": "cast_commander", "card": "Clavileño, First of the Blessed", "detail": "3 mana from command zone, first cast (no commander tax)", "rule_refs": ["903.8"], "confidence": "high"},
+          {"t": "21:28", "event": "rules_discussion", "detail": "Table states commander damage threshold is '20 damage through a commander' - INCORRECT, it is 21 combat damage from the same commander", "rule_refs": ["903.10a"], "validation_flag": "RULES_ERROR", "confidence": "high"}
+        ]}
+      ]
+    },
+    {
+      "turn_cycle": 4,
+      "player_turns": [
+        {"active_player": "Alex", "t_start": "21:51", "actions": [
+          {"t": "21:54", "action": "cast_spell", "card": "Duskshell Crawler", "detail": "2 mana. ETB: put +1/+1 counter on target creature (chose Shelinda). Shelinda trigger also puts a counter on Crawler (power less than Shelinda's). Static: creatures you control with +1/+1 counters have trample", "rule_refs": ["601.2", "603.3", "702.19"], "confidence": "high"},
+          {"t": "22:30", "action": "declare_attackers", "detail": "Initially declared Shelinda -> Jared and Duskshell Crawler -> Weston; table catches that Duskshell Crawler entered this turn and cannot attack (summoning sickness). Revised: Shelinda (3/3) attacks Weston", "rule_refs": ["302.6", "508.1a"], "validation_flag": "CORRECT_CATCH", "confidence": "high"},
+          {"t": "22:54", "action": "combat_damage", "detail": "Unblocked: Weston takes 3 (40->37); Alex gains 3 from lifelink (40->43)", "rule_refs": ["510.2", "702.15"], "confidence": "high"}
+        ]},
+        {"active_player": "Jared", "t_start": "23:50", "actions": [
+          {"t": "24:01", "action": "cast_spell", "card": "Hammer of Purphoros (heard as 'hammer of Peros')", "detail": "Creatures you control have haste; {2},{T}, sac a land: create a 3/3 colorless Golem enchantment artifact creature token. Left with 2 mana, cannot activate this turn", "rule_refs": ["601.2"], "confidence": "high"}
+        ]},
+        {"active_player": "Bolt", "t_start": "24:59", "actions": [
+          {"t": "25:04", "action": "cast_spell", "card": "Nature's Lore", "detail": "Search library for a Forest card, put onto battlefield (untapped), shuffle", "rule_refs": ["601.2"], "confidence": "high"},
+          {"t": "26:25", "action": "land_drop", "card": "Furycalm Snarl", "detail": "Revealed a Mountain-Forest dual from hand to have it enter untapped; table correctly explains land subtypes count (26:00-26:17)", "rule_refs": ["305.6"], "confidence": "high"},
+          {"t": "27:24", "action": "cast_spell", "card": "Wrecking Ball Arm (as heard; FF equipment)", "detail": "Equipment: equipped creature has base P/T 7/7, can't be blocked by creatures with power 2 or less", "rule_refs": ["301.5"], "confidence": "medium"},
+          {"t": "27:54", "event": "rules_discussion", "detail": "Table correctly explains equipment cannot be voluntarily unattached; it stays until the creature leaves or it is attached to another creature", "rule_refs": ["301.5c"], "validation_flag": "CORRECT", "confidence": "high"}
+        ]},
+        {"active_player": "Weston", "t_start": "28:19", "actions": [
+          {"t": "28:33", "action": "land_drop", "card": "Swamp", "confidence": "high"},
+          {"t": "29:20", "action": "cast_spell", "card": "Welcoming Vampire", "detail": "3 mana (Arcane Signet W + Orzhov Basilica 2). Flying 2/3; whenever one or more other creatures with power 2 or less enter under your control, draw a card (once each turn)", "rule_refs": ["601.2"], "confidence": "high"},
+          {"t": "30:11", "action": "declare_attackers", "detail": "Clavileño attacks Jared (2 damage, Jared 40->38). Clavileño's trigger: attacking vampire that isn't a demon becomes a demon (gains 'when this dies, draw a card and create a tapped 4/3 white Vampire Demon token')", "rule_refs": ["508.1", "903.10a"], "confidence": "high", "note": "2 commander combat damage to Jared tracked on the life app"}
+        ]}
+      ]
+    },
+    {
+      "turn_cycle": 5,
+      "player_turns": [
+        {"active_player": "Alex", "t_start": "31:15", "actions": [
+          {"t": "31:15", "action": "cast_commander", "card": "Tidus (commander)", "detail": "ETB: put +1/+1 counter on a creature. Beginning of combat: may move a +1/+1 counter from one target creature you control to a second (moved so Tidus gains one, gaining trample from Duskshell Crawler's static)", "rule_refs": ["903.8", "603.3"], "confidence": "medium"},
+          {"t": "32:24", "event": "rules_discussion", "detail": "Table states max hand size 7 but you discard 'at end of turn or beginning of upkeep' - INCORRECT: discard to hand size happens during the active player's own cleanup step", "rule_refs": ["402.2", "514.1"], "validation_flag": "RULES_ERROR", "confidence": "high"},
+          {"t": "32:31", "action": "declare_attackers", "detail": "Duskshell Crawler (1/3) and Shelinda (3/3) attack Bolt; Tidus does not attack (entered this turn)", "rule_refs": ["302.6", "508.1"], "confidence": "high"},
+          {"t": "32:51", "action": "combat_damage", "detail": "4 damage to Bolt (40->36); Alex gains 3 from Shelinda lifelink (43->46)", "rule_refs": ["510.2", "702.15"], "confidence": "high", "note": "Alex at 46 life confirmed by table at 44:34"},
+          {"t": "33:00", "action": "triggered_ability", "detail": "Tidus: whenever one or more creatures you control deal combat damage to a player, draw a card, then proliferate. Alex draws and proliferates (all creatures with counters get another)", "rule_refs": ["603.3", "701.34"], "confidence": "medium"}
+        ]},
+        {"active_player": "Jared", "t_start": "34:16", "actions": [
+          {"t": "34:16", "action": "land_drop", "card": "Myriad Landscape", "detail": "Enters tapped", "confidence": "high"},
+          {"t": "34:27", "action": "activate_ability", "card": "Hammer of Purphoros", "detail": "{2},{T}, sacrifice Myriad Landscape (just played): create 3/3 Golem token; Golem has haste from Hammer's static ability", "rule_refs": ["602.2", "614"], "confidence": "high"}
+        ]},
+        {"active_player": "Bolt", "t_start": "35:35", "actions": [
+          {"t": "35:44", "action": "note", "detail": "Bolt notes he already played a land and cannot play another (one land per turn) - correct", "rule_refs": ["305.2"], "validation_flag": "CORRECT", "confidence": "medium"},
+          {"t": "38:30", "action": "foretell", "card": "Unidentified white instant (later revealed ~49:01: 'if this spell is cast from exile... prevent all damage that would be dealt to you this turn')", "detail": "Taps 2, exiles a card face down (Foretell)", "rule_refs": ["702.143"], "confidence": "medium", "note": "Speaker attribution inferred from Bolt casting it from exile at 46:47"}
+        ]},
+        {"active_player": "Weston", "t_start": "40:38", "actions": [
+          {"t": "40:47", "action": "cast_spell", "card": "Drana, Liberator of Malakir (heard as 'Donna, Liberator of Malakir')", "detail": "3 mana; flying, first strike 2/3; whenever she deals combat damage to a player, put a +1/+1 counter on each attacking creature", "confidence": "high"},
+          {"t": "41:12", "action": "triggered_ability", "card": "Welcoming Vampire", "detail": "Drana has power 2 or less -> Weston draws a card", "rule_refs": ["603.2"], "validation_flag": "CORRECT", "confidence": "high"},
+          {"t": "41:38", "action": "cast_spell", "card": "Orzhov Signet (heard as 'wars off signant')", "detail": "2 mana artifact; {1},{T}: add two mana (W/B)", "confidence": "medium"},
+          {"t": "42:00", "action": "declare_attackers", "detail": "Welcoming Vampire (2/3 flying) attacks Bolt. Extended teaching moment: attackers are declared all at once; you cannot add attackers after priority passes; instants respond via the stack", "rule_refs": ["508.1", "508.1a", "601.3", "405.1"], "validation_flag": "CORRECT", "confidence": "high"},
+          {"t": "43:10", "action": "triggered_ability", "detail": "Clavileño converts attacking Welcoming Vampire to a Demon (death trigger rider). Bolt takes 2 (36->34)", "confidence": "high"}
+        ]}
+      ]
+    },
+    {
+      "turn_cycle": 6,
+      "player_turns": [
+        {"active_player": "Bolt", "t_start": "43:34", "actions": [
+          {"t": "44:10", "action": "cast_spell", "card": "Arcane Signet", "confidence": "high"},
+          {"t": "44:15", "action": "note", "detail": "Bolt missed his land drop (no land in hand)", "confidence": "medium"}
+        ], "note": "ORDERING ANOMALY: transcript suggests Bolt's turn here precedes Alex's; either an editing cut or attribution error. Flagged for manual review."},
+        {"active_player": "Alex", "t_start": "44:43", "actions": [
+          {"t": "44:53", "action": "cast_spell", "card": "Unidentified 2-mana creature (heard as 'Lord just Lotto' / 'Waddle W'; likely an FF card, possibly Wakka)", "detail": "Shelinda trigger puts +1/+1 counter on it (power less than Shelinda's) -> it has trample via Duskshell Crawler", "confidence": "low"},
+          {"t": "45:04", "action": "static_noted", "detail": "'At the beginning of each end step, if you put a counter on a creature this turn, investigate' - unidentified permanent of Alex's", "confidence": "low"},
+          {"t": "45:13", "event": "rules_discussion", "detail": "Table explains trample: excess over lethal damage to blockers carries to the player; blocker ordering chosen by attacking player when multi-blocked... (their explanation approximately correct; damage assignment order is chosen by the attacking player, defender chooses blocks)", "rule_refs": ["702.19", "702.19d", "509.1", "510.1"], "confidence": "high"},
+          {"t": "46:11", "action": "begin_combat_trigger", "detail": "Tidus: move a +1/+1 counter between creatures (Tidus up)", "confidence": "high"},
+          {"t": "46:18", "action": "declare_attackers", "detail": "Tidus (5/5) attacks Weston; two creatures attack Bolt (5 total)", "rule_refs": ["508.1"], "confidence": "high"},
+          {"t": "46:47", "action": "cast_from_exile", "player": "Bolt", "card": "Foretold white instant ('prevent all damage that would be dealt to you this turn')", "detail": "Bolt casts the foretold card (paid 2) in response during combat; all combat damage to Bolt prevented", "rule_refs": ["702.143", "615"], "confidence": "high"},
+          {"t": "47:38", "action": "combat_damage", "detail": "Weston takes 5 (37->32); Bolt takes 0 (prevented)", "rule_refs": ["510.2", "615.1"], "confidence": "medium"},
+          {"t": "47:47", "action": "triggered_ability", "detail": "Tidus trigger: draw a card, then proliferate (counters increment across Alex's board)", "rule_refs": ["701.34"], "confidence": "high", "validation_flag": "CHECK: if ALL combat damage to Bolt was prevented and Weston still took damage, the 'deal combat damage to a player' condition is still met via Weston - trigger valid"},
+          {"t": "48:09", "action": "end_step_trigger", "detail": "Investigate -> create a Clue token ({2}, sacrifice: draw a card)", "rule_refs": ["701.16"], "confidence": "high"}
+        ]},
+        {"active_player": "Jared", "t_start": "51:01", "actions": [
+          {"t": "51:01", "action": "cast_commander", "card": "Jared's Spacecraft commander (BRG)", "detail": "Cast as artifact (not a creature). Table correctly notes non-creature artifacts are not affected by summoning sickness for tap abilities", "rule_refs": ["302.6", "903.8"], "confidence": "high"},
+          {"t": "51:39", "action": "station", "detail": "Taps the 3/3 Golem to Station: puts 3 charge counters on the Spacecraft (equal to tapped creature's power), reaching the Station 2+ tier", "rule_refs": ["702.184"], "confidence": "high"},
+          {"t": "51:52", "action": "activate_ability", "detail": "{1},{T}, sacrifice a land (Mountain Valley): draw two cards, may play an additional land this turn", "rule_refs": ["602.2"], "confidence": "high"}
+        ]}
+      ]
+    }
+  ],
+  "life_totals_end_of_episode": {
+    "Alex": 46,
+    "Jared": 38,
+    "Bolt": 34,
+    "Weston": 32,
+    "commander_damage": {"Jared_from_Clavileno": 2},
+    "confidence": "medium"
+  },
+  "episode_end": {"t": "53:40", "state": "Mid turn-cycle 6/7; Bolt expected to cast Cloud next turn; game continues in Episode 2"}
+}

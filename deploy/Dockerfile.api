@@ -1,0 +1,15 @@
+# MTG Engine — API container (rules KB + HTTP API + dashboard; no Java needed)
+# Build from the repo root:  docker build -f deploy/Dockerfile.api -t mtg-api .
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY rules/kb/ /app/rules/kb/
+COPY engine/*.py /app/engine/
+COPY engine/decks/*.dck /app/engine/decks/
+
+ENV MTG_DATA_DIR=/data \
+    MTG_EMBEDDED_WORKER=0
+VOLUME /data
+EXPOSE 8484
+
+CMD ["python3", "engine/mtg_engine.py", "serve", "8484"]

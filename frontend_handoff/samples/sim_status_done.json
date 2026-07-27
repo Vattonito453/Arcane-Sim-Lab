@@ -1,0 +1,31 @@
+{
+ "state": "done",
+ "id": "a1b2c3d4e5f6",
+ "decks": [
+  "inspirit_alpha.dck",
+  "inspirit_omega.dck",
+  "kilo_alpha.dck",
+  "kilo_omega.dck"
+ ],
+ "games": 10,
+ "started": 1784800000.0,
+ "elapsed": 412,
+ "error": null,
+ "result": {
+  "games": 10,
+  "draws": 0,
+  "wins": {
+   "Ai(3)-Kilo Alpha": 1,
+   "Ai(1)-Inspirit Alpha": 2,
+   "Ai(4)-Kilo Omega": 3,
+   "Ai(2)-Inspirit Omega": 4
+  },
+  "win_rates": {
+   "Ai(3)-Kilo Alpha": 0.1,
+   "Ai(1)-Inspirit Alpha": 0.2,
+   "Ai(4)-Kilo Omega": 0.3,
+   "Ai(2)-Inspirit Omega": 0.4
+  }
+ },
+ "result_file": "/data/sim_results/sim_20260722_221551.json"
+}

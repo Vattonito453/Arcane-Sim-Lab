@@ -1,0 +1,281 @@
+{
+ "meta": {
+  "source": "java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d inspirit_alpha.dck inspirit_omega.dck kilo_alpha.dck kilo_omega.dck -f Commander -n 10 -c 120",
+  "generator": "forge_log_adapter.py",
+  "schema": "training/game_00X game_log schema (events carry raw Forge messages)",
+  "extracted": "2026-07-22",
+  "decks": [
+   "inspirit_alpha.dck",
+   "inspirit_omega.dck",
+   "kilo_alpha.dck",
+   "kilo_omega.dck"
+  ],
+  "format": "Commander"
+ },
+ "note": "excerpt: full file has games[] with one entry per game, all turns",
+ "game": {
+  "players": [
+   "Ai(4)-Kilo Omega",
+   "Ai(1)-Inspirit Alpha",
+   "Ai(2)-Inspirit Omega",
+   "Ai(3)-Kilo Alpha"
+  ],
+  "result": {
+   "winner": "Ai(3)-Kilo Alpha",
+   "draw": false,
+   "duration_ms": 120043,
+   "raw": "Game Result: Game 1 ended in 120043 ms. Ai(3)-Kilo Alpha has won!"
+  },
+  "turns": [
+   {
+    "turn": 1,
+    "active_player": "Ai(4)-Kilo Omega",
+    "events": [
+     {
+      "seq": 6,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Untap step"
+     },
+     {
+      "seq": 7,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Upkeep step"
+     },
+     {
+      "seq": 8,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Draw step"
+     },
+     {
+      "seq": 9,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Main phase, precombat"
+     },
+     {
+      "seq": 10,
+      "action": "land_drop",
+      "raw": "Ai(4)-Kilo Omega played Shivan Reef (342)"
+     },
+     {
+      "seq": 11,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Beginning of Combat Step"
+     },
+     {
+      "seq": 12,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Declare Attackers Step"
+     },
+     {
+      "seq": 13,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Declare Blockers Step"
+     },
+     {
+      "seq": 14,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's First Strike Damage Step"
+     },
+     {
+      "seq": 15,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Combat Damage Step"
+     },
+     {
+      "seq": 16,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's End of Combat Step"
+     },
+     {
+      "seq": 17,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Main phase, postcombat"
+     },
+     {
+      "seq": 18,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's End step"
+     },
+     {
+      "seq": 19,
+      "action": "phase",
+      "raw": "Ai(4)-Kilo Omega's Cleanup step"
+     }
+    ]
+   },
+   {
+    "turn": 2,
+    "active_player": "Ai(1)-Inspirit Alpha",
+    "events": [
+     {
+      "seq": 21,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Untap step"
+     },
+     {
+      "seq": 22,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Upkeep step"
+     },
+     {
+      "seq": 23,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Draw step"
+     },
+     {
+      "seq": 24,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Main phase, precombat"
+     },
+     {
+      "seq": 25,
+      "action": "replacement_effect",
+      "raw": "Rustvale Bridge enters tapped."
+     },
+     {
+      "seq": 26,
+      "action": "land_drop",
+      "raw": "Ai(1)-Inspirit Alpha played Rustvale Bridge (19)"
+     },
+     {
+      "seq": 27,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Beginning of Combat Step"
+     },
+     {
+      "seq": 28,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Declare Attackers Step"
+     },
+     {
+      "seq": 29,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Declare Blockers Step"
+     },
+     {
+      "seq": 30,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's First Strike Damage Step"
+     },
+     {
+      "seq": 31,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Combat Damage Step"
+     },
+     {
+      "seq": 32,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's End of Combat Step"
+     },
+     {
+      "seq": 33,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Main phase, postcombat"
+     },
+     {
+      "seq": 34,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's End step"
+     },
+     {
+      "seq": 35,
+      "action": "phase",
+      "raw": "Ai(1)-Inspirit Alpha's Cleanup step"
+     }
+    ]
+   },
+   {
+    "turn": 3,
+    "active_player": "Ai(2)-Inspirit Omega",
+    "events": [
+     {
+      "seq": 37,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Untap step"
+     },
+     {
+      "seq": 38,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Upkeep step"
+     },
+     {
+      "seq": 39,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Draw step"
+     },
+     {
+      "seq": 40,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Main phase, precombat"
+     },
+     {
+      "seq": 41,
+      "action": "land_drop",
+      "raw": "Ai(2)-Inspirit Omega played Karn's Bastion (120)"
+     },
+     {
+      "seq": 42,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Beginning of Combat Step"
+     },
+     {
+      "seq": 43,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Declare Attackers Step"
+     },
+     {
+      "seq": 44,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Declare Blockers Step"
+     },
+     {
+      "seq": 45,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's First Strike Damage Step"
+     },
+     {
+      "seq": 46,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Combat Damage Step"
+     },
+     {
+      "seq": 47,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's End of Combat Step"
+     },
+     {
+      "seq": 48,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Main phase, postcombat"
+     },
+     {
+      "seq": 49,
+      "action": "mana",
+      "raw": "Karn's Bastion (120) - {T}: Add {C}."
+     },
+     {
+      "seq": 50,
+      "action": "stack_add",
+      "raw": "Ai(2)-Inspirit Omega cast Adamantium Bonding Tank",
+      "object": "Adamantium Bonding Tank"
+     },
+     {
+      "seq": 51,
+      "action": "stack_resolve",
+      "raw": "The Ozolith"
+     },
+     {
+      "seq": 52,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's End step"
+     },
+     {
+      "seq": 53,
+      "action": "phase",
+      "raw": "Ai(2)-Inspirit Omega's Cleanup step"
+     }
+    ]
+   }
+  ]
+ }
+}

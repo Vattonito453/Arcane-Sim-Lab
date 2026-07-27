@@ -1,0 +1,660 @@
+"use client";
+
+/** Replay theater — /results/[file]/replay/[game] ([game] is 1-based).
+ *  Fetches exactly one game (GET /results/{file}/game/{n}) rather than the whole
+ *  run, so a 48-turn replay costs ~15 KB on the wire instead of ~235 KB.
+ *  All replay state comes from lib/replay.ts: buildTimeline() folds the raw
+ *  event log into steps; foldTo() derives a best-effort board at any step.
+ *  The event feed on the right is the authoritative record. */
+
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Chrome, Footer } from "@/components/Chrome";
+import { api, RateLimited } from "@/lib/api";
+import type { RunGame } from "@/lib/types";
+import { scryfallArt, stripAi } from "@/lib/format";
+import {
+  buildTimeline,
+  commanderGuess,
+  foldTo,
+  shortName,
+  summarizeGame,
+  type Step,
+} from "@/lib/replay";
+import {
+  cardFace,
+  kindOf,
+  loadCards,
+  ptOf,
+  type CardFacts,
+  type CardMap,
+  type Kind,
+} from "@/lib/cards";
+
+const SPEED_MS: Record<number, number> = { 1: 300, 2: 150, 4: 75 };
+
+function fmtClock(ms: number): string {
+  const s = Math.round(ms / 1000);
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
+function clamp(x: number, lo: number, hi: number): number {
+  return Math.max(lo, Math.min(hi, x));
+}
+
+/** Render step text with its key names bolded. */
+function Hi({ text, hi }: { text: string; hi?: string[] }) {
+  const ranges: [number, number][] = [];
+  if (hi) {
+    for (const h of Array.from(new Set(hi))) {
+      if (!h) continue;
+      const at = text.indexOf(h);
+      if (at < 0) continue;
+      if (ranges.some(([a, b]) => at < b && at + h.length > a)) continue; // overlap
+      ranges.push([at, at + h.length]);
+    }
+  }
+  if (!ranges.length) return <>{text}</>;
+  ranges.sort((a, b) => a[0] - b[0]);
+  const out: React.ReactNode[] = [];
+  let pos = 0;
+  ranges.forEach(([a, b], k) => {
+    if (a > pos) out.push(text.slice(pos, a));
+    out.push(<b key={k}>{text.slice(a, b)}</b>);
+    pos = b;
+  });
+  if (pos < text.length) out.push(text.slice(pos));
+  return <>{out}</>;
+}
+
+/** One permanent on the table. Identical copies collapse into a single tile with
+ *  a count, which is what makes a 43-token board readable. */
+function Tile({
+  name, n, facts, kind, attacking,
+}: {
+  name: string;
+  n: number;
+  facts?: CardFacts;
+  kind: Kind;
+  attacking: boolean;
+}) {
+  const face = cardFace(facts);
+  const tip = [
+    name,
+    facts?.type_line,
+    facts?.mana_cost,
+    ptOf(facts) ? `P/T ${ptOf(facts)}` : null,
+    facts?.oracle_text,
+    kind === "unknown" ? "Type unknown — no card data for this name" : null,
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const cls = `tc${kind === "token" ? " tok" : ""}${kind === "unknown" ? " unk" : ""}${
+    attacking ? " atk" : ""
+  }`;
+  return (
+    <span className={cls} title={tip}>
+      {face ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={face} alt={name} loading="lazy" onError={(e) => e.currentTarget.remove()} />
+      ) : (
+        // Tokens and unidentified names have no Scryfall face to hotlink.
+        <span className="nm">{name}</span>
+      )}
+      {n > 1 && <span className="xn">{n}</span>}
+    </span>
+  );
+}
+
+/** Battlefield split into the three bands a physical table has: the things that
+ *  fight (nearest the centre), the static permanents, and the mana base. */
+const BAND: Record<Kind, 0 | 1 | 2> = {
+  creature: 0, token: 0, planeswalker: 0, battle: 0,
+  artifact: 1, spell: 1, unknown: 1,
+  land: 2,
+};
+const BAND_LABEL = ["", "Artifacts, enchantments and unidentified", "Lands"];
+const BAND_CAP = [18, 14, 24];
+
+interface TileGroup { name: string; n: number; kind: Kind; }
+
+export default function ReplayPage() {
+  const params = useParams<{ file: string; game: string }>();
+  const file = decodeURIComponent(String(params?.file ?? ""));
+  const gameNum = Math.max(1, Number(params?.game ?? 1) || 1);
+  const enc = encodeURIComponent(file);
+
+  const [data, setData] = useState<RunGame | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [wait, setWait] = useState<number | null>(null);
+  const [absent, setAbsent] = useState(false);
+  const [idx, setIdx] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1);
+  const [copied, setCopied] = useState(false);
+  const seeded = useRef(false);
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const curRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let live = true;
+    // One fetch per game, so switching games has to clear the previous one.
+    setData(null);
+    setErr(null);
+    setWait(null);
+    setAbsent(false);
+    setIdx(0);
+    setPlaying(false);
+    api
+      .runGame(file, gameNum)
+      .then((r) => live && setData(r))
+      .catch((e: unknown) => {
+        if (!live) return;
+        if (e instanceof RateLimited) {
+          setWait(e.retryAfter);
+          setErr(e.message);
+          return;
+        }
+        const msg = e instanceof Error ? e.message : String(e);
+        // fail() formats unhandled statuses as "GET /path → 404: <engine error>".
+        if (/→ 404\b/.test(msg)) setAbsent(true);
+        setErr(msg);
+      });
+    return () => {
+      live = false;
+    };
+  }, [file, gameNum]);
+
+  const game = data?.game ?? null;
+  const timeline = useMemo(() => (game ? buildTimeline(game) : null), [game]);
+  const summary = useMemo(() => (game ? summarizeGame(game) : null), [game]);
+  const n = timeline?.steps.length ?? 0;
+
+  const seats = useMemo(() => {
+    if (!game) return [];
+    return game.players.map((p) => ({
+      player: p,
+      label: shortName(p, game.players),
+      art: scryfallArt(commanderGuess(stripAi(p), [game])),
+    }));
+  }, [game]);
+
+  const board = useMemo(() => (timeline ? foldTo(timeline, idx) : null), [timeline, idx]);
+  const cur: Step | null = timeline && n > 0 ? timeline.steps[clamp(idx, 0, n - 1)] : null;
+
+  // Static card facts (type line, P/T, oracle text) for every name this game
+  // touches. Fetched once per game; the board groups itself by type line, so a
+  // cold cache degrades to a single "Unidentified" row rather than breaking.
+  const [cardMap, setCardMap] = useState<CardMap>({});
+  useEffect(() => {
+    if (!timeline || !game) return;
+    let live = true;
+    const names = new Set<string>();
+    for (const p of game.players) {
+      for (const c of foldTo(timeline, timeline.steps.length - 1).battlefield.get(p) ?? []) {
+        names.add(c.name);
+      }
+    }
+    for (const s of timeline.steps) {
+      for (const h of s.hi ?? []) names.add(h);
+    }
+    loadCards(Array.from(names)).then((m) => live && setCardMap({ ...m }));
+    return () => {
+      live = false;
+    };
+  }, [timeline, game]);
+
+  const facts = useCallback(
+    (name: string): CardFacts | undefined => cardMap[name.trim().toLowerCase()],
+    [cardMap],
+  );
+
+  const seek = useCallback(
+    (i: number) => {
+      setPlaying(false);
+      setIdx(clamp(i, 0, Math.max(0, n - 1)));
+    },
+    [n],
+  );
+
+  const jumpTurn = useCallback(
+    (d: number) => {
+      if (!timeline || !cur) return;
+      const at = timeline.turns.findIndex((t) => t.turn === cur.turn);
+      const j = clamp((at < 0 ? (d > 0 ? -1 : 0) : at) + d, 0, timeline.turns.length - 1);
+      seek(timeline.turns[j]?.start ?? 0);
+    },
+    [timeline, cur, seek],
+  );
+
+  const playPause = useCallback(() => {
+    setPlaying((p) => {
+      if (!p && idx >= n - 1) setIdx(0); // replay from the top
+      return !p;
+    });
+  }, [idx, n]);
+
+  // playback clock
+  useEffect(() => {
+    if (!playing || n === 0) return;
+    const id = setInterval(() => setIdx((p) => Math.min(p + 1, n - 1)), SPEED_MS[speed] ?? 300);
+    return () => clearInterval(id);
+  }, [playing, speed, n]);
+  useEffect(() => {
+    if (playing && idx >= n - 1) setPlaying(false);
+  }, [playing, idx, n]);
+
+  // ?t= deep link, once the timeline exists
+  useEffect(() => {
+    if (seeded.current || !timeline) return;
+    seeded.current = true;
+    const t = new URLSearchParams(window.location.search).get("t");
+    if (t != null && Number.isFinite(Number(t))) {
+      setIdx(clamp(Math.round(Number(t)), 0, timeline.steps.length - 1));
+    }
+  }, [timeline]);
+
+  // keyboard: space play/pause, arrows step, shift+arrows jump turns
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (e.code === "Space") {
+        e.preventDefault();
+        playPause();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (e.shiftKey) jumpTurn(1);
+        else seek(idx + 1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (e.shiftKey) jumpTurn(-1);
+        else seek(idx - 1);
+      }
+    };
+    window.addEventListener("keydown", h);
+    return () => window.removeEventListener("keydown", h);
+  }, [idx, seek, jumpTurn, playPause]);
+
+  // keep the feed pinned to the playhead (scroll the list only, not the page)
+  useEffect(() => {
+    const list = listRef.current;
+    const row = curRef.current;
+    if (!list || !row) return;
+    const lr = list.getBoundingClientRect();
+    const rr = row.getBoundingClientRect();
+    list.scrollTop += rr.top - lr.top - lr.height / 2 + rr.height / 2;
+  }, [idx]);
+
+  const copyLink = useCallback(() => {
+    const url = `${window.location.origin}${window.location.pathname}?t=${idx}`;
+    navigator.clipboard
+      ?.writeText(url)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      })
+      .catch(() => {});
+  }, [idx]);
+
+  const tabs = [
+    { label: "Overview", href: `/results/${enc}` },
+    { label: "Replay", href: "#", on: true },
+  ];
+
+  if (err) {
+    return (
+      <>
+        <Chrome tabs={tabs} />
+        <div className="page">
+          <Link className="back q" href={`/results/${enc}`}>‹ {file}</Link>
+          <div className="head">
+            <div>
+              <h1>Game {gameNum}</h1>
+              <div className="sub">
+                {absent
+                  ? "No such game in this run"
+                  : wait != null
+                    ? "Rate limited"
+                    : "Could not load this replay"}
+              </div>
+            </div>
+          </div>
+          {absent ? (
+            <p className="note">
+              This run has no game <span className="mono">{gameNum}</span>. Pick one from the{" "}
+              <Link className="bl" href={`/results/${enc}`}>
+                run overview
+              </Link>
+              .
+            </p>
+          ) : wait != null ? (
+            <p className="note">
+              {err} — the engine is throttling reads. Try again in about{" "}
+              <span className="mono">{wait}</span> s.
+            </p>
+          ) : (
+            <p className="note">{err} — check that the engine API is running, then reload.</p>
+          )}
+        </div>
+        <Footer right={file} />
+      </>
+    );
+  }
+  if (!data || !timeline || !game || !board || !summary || !cur) {
+    return (
+      <>
+        <Chrome tabs={tabs} />
+        <div className="page">
+          <Link className="back q" href={`/results/${enc}`}>‹ {file}</Link>
+          <div className="head">
+            <div>
+              <h1>Game {gameNum}</h1>
+              <div className="sub">Loading replay…</div>
+            </div>
+          </div>
+        </div>
+        <Footer right={file} />
+      </>
+    );
+  }
+
+  const T = timeline.totalTurns;
+  const frac = n > 1 ? (idx / (n - 1)) * 100 : 0;
+  const tickEvery = Math.max(1, Math.ceil(T / 8));
+  const ticks = timeline.turns.filter((t) => t.turn % tickEvery === 0);
+  const decidingIdx = timeline.turns.length ? timeline.turns[timeline.turns.length - 1].start : 0;
+  const lo = Math.max(0, idx - 40);
+  const hi = Math.min(n, idx + 41);
+  const phaseLabel = cur.turn > 0 ? `Turn ${cur.turn} · ${cur.phase.replace(/ step$/i, "").toLowerCase()}` : "Pregame";
+  const ctx = data.meta.decks?.[0] ? data.meta.decks[0].replace(/\.dck$/, "").replace(/_/g, "-") : undefined;
+
+  return (
+    <>
+      <Chrome context={ctx} tabs={tabs} />
+      <div className="page">
+        <Link className="back q" href={`/results/${enc}`}>‹ {file}</Link>
+        <div className="head">
+          <div>
+            <h1>Game {gameNum}</h1>
+            <div className="sub">
+              {seats.map((s) => s.label).join(" · ")}
+              <span className="sep">·</span>
+              <span className="mono">{T}</span> turns
+              <span className="sep">·</span>
+              <span className="mono">{fmtClock(summary.durationMs)}</span>
+            </div>
+          </div>
+          <div className="btns">
+            <button className="btn" onClick={copyLink}>
+              {copied ? "Copied" : "Copy link at this event"}
+            </button>
+          </div>
+        </div>
+
+        <p className="lede">
+          {summary.draw ? (
+            <>This game ended in a <b>draw</b> after {T} turns.</>
+          ) : (
+            <>
+              <b>{summary.winnerName}</b> won on <b>turn {summary.endedTurn}</b> — {summary.decidedBy}.
+            </>
+          )}{" "}
+          Use space to play; arrows step events.{" "}
+          <a
+            className="bl"
+            href={`?t=${decidingIdx}`}
+            onClick={(e) => {
+              e.preventDefault();
+              seek(decidingIdx);
+            }}
+          >
+            Jump to the deciding turn
+          </a>
+        </p>
+
+        <div className="stage">
+          <div>
+            <div className="theater">
+              <div className="ttool">
+                <span className="now">{phaseLabel}</span>
+                <span className="right">
+                  <select
+                    className="sel"
+                    value={String(speed)}
+                    onChange={(e) => setSpeed(Number(e.target.value))}
+                    aria-label="Playback speed"
+                  >
+                    <option value="1">1× speed</option>
+                    <option value="2">2×</option>
+                    <option value="4">4×</option>
+                  </select>
+                  <span>
+                    event <span className="mono">{idx + 1}</span> of <span className="mono">{n}</span>
+                  </span>
+                </span>
+              </div>
+
+              <div className={`tbl p${board.seats.length}`}>
+                {board.seats.map((s, i) => {
+                  const meta = seats[i];
+                  const active = !!cur.active && s.player === cur.active;
+                  const cards = board.battlefield.get(s.player) ?? [];
+                  const atkRow = board.attacks?.from === s.player ? board.attacks : null;
+
+                  // Attackers the combat line proves are on the battlefield but
+                  // that Forge never logged entering — nearly always tokens.
+                  // Shown, because dropping them would hide real creatures.
+                  const ghosts: string[] = [];
+                  if (atkRow) {
+                    const have = new Map<string, number>();
+                    for (const c of cards) have.set(c.name, (have.get(c.name) ?? 0) + 1);
+                    for (const name of atkRow.cards) {
+                      const k = have.get(name) ?? 0;
+                      if (k > 0) have.set(name, k - 1);
+                      else ghosts.push(name);
+                    }
+                  }
+                  const defender = atkRow
+                    ? (seats.find((x) => x.player === atkRow.to)?.label ?? stripAi(atkRow.to))
+                    : null;
+
+                  // Collapse duplicates, then split into the three table bands.
+                  const bands: TileGroup[][] = [[], [], []];
+                  const seen = new Map<string, TileGroup>();
+                  for (const c of [...cards, ...ghosts.map((name) => ({ name }))]) {
+                    const kind = kindOf(c.name, facts(c.name));
+                    const at = seen.get(c.name);
+                    if (at) {
+                      at.n += 1;
+                      continue;
+                    }
+                    const g: TileGroup = { name: c.name, n: 1, kind };
+                    seen.set(c.name, g);
+                    bands[BAND[kind]].push(g);
+                  }
+
+                  // Top-row seats face down the page; bottom-row seats face up.
+                  const far = board.seats.length <= 2 ? i === 0 : i < 2;
+
+                  return (
+                    <div
+                      key={s.player}
+                      className={`parea${far ? " far" : ""}${s.eliminated ? " gone" : ""}${
+                        active ? " act" : ""
+                      }`}
+                    >
+                      <div className="plate">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={meta?.art} alt="" onError={(e) => e.currentTarget.remove()} />
+                        <span className="pn">{meta?.label ?? stripAi(s.player)}</span>
+                        {active && <em>· active</em>}
+                        {s.eliminated ? (
+                          <span className="pnums">
+                            <span className="st out">
+                              <i />
+                              Out turn {s.eliminated.turn}
+                            </span>
+                          </span>
+                        ) : (
+                          <span className="pnums">
+                            <b>{s.life}</b> life · {cards.length} on board
+                            {(s.poison ?? 0) > 0 && <> · {s.poison} poison</>}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="zones">
+                        {/* First child, so the reverse that `far` applies puts it
+                            on the centre edge for both rows of seats. */}
+                        {atkRow && <span className="atkbanner">attacking {defender} →</span>}
+                        {bands.map((band, b) => {
+                          if (!band.length) return null;
+                          const shown = band.slice(0, BAND_CAP[b]);
+                          const extra = band.length - shown.length;
+                          return (
+                            <div key={b} className={`zone${b === 2 ? " lands" : ""}`}>
+                              {BAND_LABEL[b] && <span className="zlab">{BAND_LABEL[b]}</span>}
+                              {shown.map((g) => (
+                                <Tile
+                                  key={g.name}
+                                  name={g.name}
+                                  n={g.n}
+                                  kind={g.kind}
+                                  facts={facts(g.name)}
+                                  attacking={!!atkRow && atkRow.cards.includes(g.name)}
+                                />
+                              ))}
+                              {extra > 0 && <span className="zmore">+{extra}</span>}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <p className="tblnote">
+                Card faces come from Scryfall. Which permanents are on the table is
+                reconstructed from the event log, not read from it — Forge logs cards
+                leaving the battlefield but not entering, so treat the table as an aid and
+                the event log as the record.
+              </p>
+
+
+              <div className="vcr">
+                <button className="vbtn" title="Previous turn" onClick={() => jumpTurn(-1)}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 20 9 12l10-8v16Z" />
+                    <path d="M5 19V5" />
+                  </svg>
+                </button>
+                <button className="vbtn" title="Step back" onClick={() => seek(idx - 1)}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                  </svg>
+                </button>
+                <button className="vbtn play" title={playing ? "Pause" : "Play"} onClick={playPause}>
+                  {playing ? (
+                    <svg viewBox="0 0 24 24">
+                      <path d="M8 5h3.2v14H8zM12.8 5H16v14h-3.2z" fill="currentColor" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7L8 5Z" fill="currentColor" />
+                    </svg>
+                  )}
+                </button>
+                <button className="vbtn" title="Step forward" onClick={() => seek(idx + 1)}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </button>
+                <button className="vbtn" title="Next turn" onClick={() => jumpTurn(1)}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m5 4 10 8-10 8V4Z" />
+                    <path d="M19 5v14" />
+                  </svg>
+                </button>
+                <div
+                  className="scrub"
+                  onClick={(e) => {
+                    const r = e.currentTarget.getBoundingClientRect();
+                    seek(Math.round(((e.clientX - r.left) / r.width) * (n - 1)));
+                  }}
+                >
+                  <div className="rail2" />
+                  <div className="done" style={{ width: `${frac}%` }} />
+                  <div className="headk" style={{ left: `${frac}%` }} />
+                  {ticks.map((t) => {
+                    const left = `${n > 1 ? (t.start / (n - 1)) * 100 : 0}%`;
+                    return (
+                      <Fragment key={t.turn}>
+                        <div className="tick" style={{ left }} />
+                        <div className="ticklab" style={{ left }}>
+                          T{t.turn}
+                        </div>
+                      </Fragment>
+                    );
+                  })}
+                </div>
+                <div className="clock">
+                  turn {cur.turn > 0 ? cur.turn : "–"} of {T}
+                </div>
+              </div>
+            </div>
+
+            <p className="note">
+              Keyboard: <span className="mono">space</span> play or pause ·{" "}
+              <span className="mono">← →</span> step one event ·{" "}
+              <span className="mono">shift ← →</span> jump a turn. Replays fold the event log into
+              board state locally — the feed on the right is the authoritative record.
+            </p>
+          </div>
+
+          <div>
+            <div className="sh">
+              <h2>Event log</h2>
+              <span className="meta">follows the playhead</span>
+            </div>
+            <div className="loglist" ref={listRef}>
+              {timeline.steps.slice(lo, hi).map((s, k) => {
+                const i = lo + k;
+                const isCur = i === idx;
+                return (
+                  <div
+                    key={`${s.seq}-${i}`}
+                    className={`ev${isCur ? " cur" : ""}`}
+                    ref={isCur ? curRef : undefined}
+                  >
+                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "—"}</span>
+                    <div>
+                      <Hi text={s.text} hi={s.hi} />
+                    </div>
+                    {isCur && <span className="nowtag">now</span>}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="logfoot">
+              <a
+                className="bl"
+                href={`?t=${decidingIdx}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  seek(decidingIdx);
+                }}
+              >
+                Skip to the deciding turn
+              </a>
+              <span className="mono">{n.toLocaleString()} events</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer right={`${file} · game ${gameNum} of ${data.games_total}`} />
+    </>
+  );
+}

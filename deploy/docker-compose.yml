@@ -1,0 +1,57 @@
+# MTG Engine — API + simulation workers, sharing a data volume.
+#
+#   cp deploy/.env.example deploy/.env     # then edit: MTG_API_KEYS is required
+#   docker compose -f deploy/docker-compose.yml --env-file deploy/.env up --build
+#   docker compose -f deploy/docker-compose.yml --env-file deploy/.env up --scale worker=3
+#
+# The API refuses to bind a public interface without MTG_API_KEYS set, because
+# POST /simulate spawns a 4 GB JVM for 10-60 minutes. See deploy_plan.md.
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.api
+    ports:
+      # Loopback by default; terminate TLS in a reverse proxy in front of this.
+      - "${MTG_PORT:-127.0.0.1:8484}:8484"
+    volumes:
+      - mtg-data:/data
+    environment:
+      MTG_DATA_DIR: /data
+      MTG_EMBEDDED_WORKER: "0"        # workers are separate containers here
+      MTG_BIND: "0.0.0.0"             # inside the container; the port map scopes it
+      MTG_API_KEYS: ${MTG_API_KEYS:?set MTG_API_KEYS in deploy/.env}
+      MTG_ALLOW_ORIGIN: ${MTG_ALLOW_ORIGIN:-*}
+      MTG_SIM_PER_HOUR: ${MTG_SIM_PER_HOUR:-6}
+      MTG_SIM_MAX_GAMES: ${MTG_SIM_MAX_GAMES:-64}
+      MTG_SIM_MAX_QUEUED: ${MTG_SIM_MAX_QUEUED:-3}
+      MTG_READ_PER_MIN: ${MTG_READ_PER_MIN:-240}
+    healthcheck:
+      test: ["CMD", "python3", "-c",
+             "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8484/health',timeout=5).status==200 else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.worker
+    volumes:
+      - mtg-data:/data
+    environment:
+      MTG_DATA_DIR: /data
+    deploy:
+      resources:
+        limits:
+          # Forge is invoked with -Xmx4g; give the container headroom above that.
+          memory: ${MTG_WORKER_MEM:-5g}
+          cpus: "${MTG_WORKER_CPUS:-2}"
+    restart: unless-stopped
+
+volumes:
+  # Must be a real filesystem with working POSIX locks — the job queue is SQLite.
+  # Network/9p mounts fail with "disk I/O error". See deploy_plan.md.
+  mtg-data:

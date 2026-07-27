@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilo Helm Final — Sim Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E1013; --panel:#141619; --panel2:#191C20; --hover:#1D2025;
+  --border:#22252B; --border2:#2D3138;
+  --t1:#E8EAED; --t2:#9DA3AB; --t3:#697079;
+  --blue:#5B8DEF; --blue-bg:rgba(91,141,239,.12);
+  --green:#42B883; --green-bg:rgba(66,184,131,.11);
+  --red:#E06651; --red-bg:rgba(224,102,81,.10);
+  --amber:#D9A144; --amber-bg:rgba(217,161,68,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t1);font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  font-size:13px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+a{color:var(--blue);text-decoration:none}
+svg{flex:none}
+
+.app{display:grid;grid-template-columns:224px 1fr;height:100vh;overflow:hidden}
+
+/* ── sidebar ── */
+.side{background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
+.ws{display:flex;align-items:center;gap:8px;padding:12px 12px;border-bottom:1px solid var(--border);cursor:pointer}
+.ws:hover{background:var(--hover)}
+.ws .mark{width:22px;height:22px;border-radius:5px;background:#23304B;color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px}
+.ws .n{font-weight:600;font-size:13px}
+.ws .p{font-size:11px;color:var(--t3);margin-top:-2px}
+.ws svg{margin-left:auto;color:var(--t3)}
+.snav{padding:8px 6px 4px}
+.sitem{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:5px;color:var(--t2);
+  cursor:pointer;font-weight:500}
+.sitem:hover{background:var(--hover);color:var(--t1)}
+.sitem.on{background:var(--hover);color:var(--t1)}
+.sitem.on svg{color:var(--blue)}
+.sitem svg{color:var(--t3)}
+.sitem .kbd{margin-left:auto;font-size:10px;color:var(--t3);border:1px solid var(--border2);
+  border-radius:3px;padding:0 4px}
+.slabel{font-size:10.5px;font-weight:600;letter-spacing:.06em;color:var(--t3);padding:14px 14px 5px;text-transform:uppercase;display:flex;align-items:center}
+.slabel svg{margin-left:auto;cursor:pointer}
+.deck-item{display:flex;align-items:center;gap:8px;padding:5px 8px 5px 14px;border-radius:5px;
+  color:var(--t2);cursor:pointer;font-size:12.5px}
+.deck-item:hover{background:var(--hover)}
+.deck-item.on{background:var(--blue-bg);color:var(--t1)}
+.deck-item .ci{display:flex;gap:2px}
+.deck-item .ci i{width:7px;height:7px;border-radius:50%;display:block}
+.deck-item .g{margin-left:auto;font-size:11px;color:var(--t3)}
+.side-foot{margin-top:auto;border-top:1px solid var(--border);padding:10px 12px}
+.workers{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--t3);padding-bottom:9px}
+.workers .ok{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.user{display:flex;align-items:center;gap:9px;cursor:pointer;padding:5px 6px;border-radius:5px;margin:0 -6px}
+.user:hover{background:var(--hover)}
+.user .av{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#3E5F8A,#7A4E3B);
+  font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.user .un{font-weight:500;font-size:12.5px}
+.user .ue{font-size:10.5px;color:var(--t3);margin-top:-2px}
+
+/* ── main ── */
+.main{display:flex;flex-direction:column;overflow:hidden}
+.topbar{display:flex;align-items:center;gap:10px;padding:0 16px;height:48px;border-bottom:1px solid var(--border);flex:none}
+.crumb{display:flex;align-items:center;gap:6px;color:var(--t3);font-size:12.5px}
+.crumb b{color:var(--t1);font-weight:600;display:flex;align-items:center;gap:7px}
+.crumb img{width:20px;height:20px;border-radius:4px;object-fit:cover}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:5px;
+  font-size:12.5px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:var(--panel2);color:var(--t1);font-family:inherit}
+.btn:hover{background:var(--hover);border-color:#3A3E46}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+.btn.primary:hover{background:#4A7CE0}
+.btn.icon{width:28px;padding:0;justify-content:center;color:var(--t2)}
+.runsel{color:var(--t2)}
+.runsel b{color:var(--t1);font-weight:600}
+
+.tabs{display:flex;gap:2px;padding:0 16px;border-bottom:1px solid var(--border);flex:none}
+.tab{padding:9px 11px;color:var(--t2);font-weight:500;font-size:12.5px;border-bottom:2px solid transparent;
+  margin-bottom:-1px;cursor:pointer}
+.tab:hover{color:var(--t1)}
+.tab.on{color:var(--t1);border-bottom-color:var(--blue)}
+.tab .cnt{color:var(--t3);font-size:11px;margin-left:4px}
+
+.content{overflow-y:auto;padding:14px 16px 60px}
+
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);
+  border-radius:7px;background:var(--panel);margin-bottom:14px}
+.stat{padding:12px 14px;border-right:1px solid var(--border)}
+.stat:last-child{border-right:0}
+.stat .l{font-size:11px;color:var(--t3);font-weight:500;display:flex;align-items:center;gap:5px}
+.stat .v{font-size:19px;font-weight:600;margin-top:3px;display:flex;align-items:baseline;gap:8px}
+.stat .d{font-size:11px;font-weight:600}
+.stat .d.up{color:var(--green)} .stat .d.down{color:var(--red)}
+.stat .sub{font-size:11px;color:var(--t3);margin-top:2px}
+.stat svg.spark{margin-left:auto}
+
+/* toolbar */
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 9px;border-radius:5px;
+  border:1px solid var(--border2);background:var(--panel);font-size:12px;color:var(--t2);cursor:pointer;font-family:inherit}
+.chip:hover{border-color:#3A3E46;color:var(--t1)}
+.chip b{color:var(--t1);font-weight:500}
+.chip.active{border-color:var(--blue);background:var(--blue-bg);color:var(--t1)}
+.searchbox{display:flex;align-items:center;gap:7px;height:26px;border:1px solid var(--border2);
+  border-radius:5px;padding:0 9px;color:var(--t3);font-size:12px;background:var(--panel);min-width:190px}
+.toolbar .right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.toolbar .count{font-size:11.5px;color:var(--t3)}
+
+/* layout */
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px;align-items:start}
+.mod{background:var(--panel);border:1px solid var(--border);border-radius:7px;overflow:hidden}
+.mod+.mod{margin-top:14px}
+.mod-h{display:flex;align-items:center;gap:8px;padding:10px 13px;border-bottom:1px solid var(--border)}
+.mod-h h3{font-size:12.5px;font-weight:600}
+.mod-h .hint{font-size:11px;color:var(--t3)}
+.mod-h .more{margin-left:auto;color:var(--t3);cursor:pointer;display:flex;gap:10px;align-items:center}
+.mod-h .more a{font-size:11.5px}
+
+/* pods */
+.podrow{display:flex;align-items:center;gap:10px;padding:8px 13px;border-bottom:1px solid var(--border);font-size:12.5px}
+.podrow:last-child{border-bottom:0}
+.podrow .nm{width:150px;flex:none;font-weight:500;display:flex;align-items:center;gap:7px}
+.result-pill{font-size:10px;font-weight:700;letter-spacing:.04em;padding:1px 6px;border-radius:4px}
+.rp-win{background:var(--green-bg);color:var(--green)}
+.rp-loss{background:var(--red-bg);color:var(--red)}
+.podrow .opps{width:210px;flex:none;color:var(--t3);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail{flex:1;height:6px;background:var(--panel2);border-radius:3px;position:relative;min-width:60px}
+.fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--blue)}
+.basetick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--t3);border-radius:1px}
+.podrow .pct{width:40px;text-align:right;font-weight:600}
+
+/* table */
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;color:var(--t3);font-weight:500;text-align:left;padding:7px 10px;
+  border-bottom:1px solid var(--border);white-space:nowrap;user-select:none}
+th.sortable{cursor:pointer}
+th.sortable:hover{color:var(--t1)}
+th .caret{display:inline-block;margin-left:3px;color:var(--blue)}
+td{padding:0 10px;height:36px;border-bottom:1px solid var(--border);font-size:12.5px;white-space:nowrap;color:var(--t2)}
+tr:last-child td{border-bottom:0}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:var(--hover)}
+tr.selected td{background:var(--blue-bg)}
+td.first,th.first{padding-left:13px;width:30px}
+td .g{color:var(--t1);font-weight:500}
+input[type=checkbox]{accent-color:var(--blue);width:13px;height:13px;background:var(--panel2)}
+.badge{font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:2px 7px;border-radius:4px}
+.b-win{background:var(--green-bg);color:var(--green)}
+.b-loss{background:var(--red-bg);color:var(--red)}
+.kb{display:flex;align-items:center;gap:7px}
+.kb img{width:22px;height:22px;border-radius:4px;object-fit:cover;background:var(--panel2)}
+.kb .fallback{width:22px;height:22px;border-radius:4px;background:var(--panel2);color:var(--t3);
+  display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600}
+td .dim{color:var(--t3)}
+.tfoot{display:flex;align-items:center;gap:6px;padding:9px 13px;font-size:12px;color:var(--t3)}
+.pgbtn{width:24px;height:24px;border:1px solid var(--border2);border-radius:4px;background:var(--panel2);
+  color:var(--t2);cursor:pointer;font-size:11.5px;font-family:inherit}
+.pgbtn.on{background:var(--blue-bg);border-color:var(--blue);color:var(--t1)}
+.pgbtn:hover{border-color:#3A3E46}
+.tfoot .pages{margin-left:auto;display:flex;gap:4px;align-items:center}
+
+/* right rail */
+.tele{padding:4px 0}
+.telerow{display:flex;align-items:center;gap:9px;padding:7px 13px;font-size:12px}
+.telerow .nm{width:118px;flex:none;color:var(--t1);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.telerow .val{width:44px;text-align:right;font-weight:600;flex:none}
+.telerow .chipst{flex:none;width:56px;text-align:center}
+.st{font-size:9.5px;font-weight:700;letter-spacing:.05em;padding:2px 6px;border-radius:4px}
+.st-ok{background:var(--green-bg);color:var(--green)}
+.st-part{background:var(--amber-bg);color:var(--amber)}
+.st-cold{background:var(--red-bg);color:var(--red)}
+.swaprow{display:flex;gap:10px;padding:9px 13px;border-bottom:1px solid var(--border);align-items:flex-start}
+.swaprow:last-child{border-bottom:0}
+.swaprow img{width:30px;height:30px;border-radius:4px;object-fit:cover;background:var(--panel2)}
+.swaprow .pm{font-weight:700;font-size:13px;width:12px;padding-top:1px}
+.swaprow .pm.add{color:var(--green)} .swaprow .pm.cut{color:var(--red)}
+.swaprow .t{font-weight:500;color:var(--t1);font-size:12.5px}
+.swaprow .r{font-size:11.5px;color:var(--t3);margin-top:1px;line-height:1.4}
+.evd{font-size:10px;padding:1px 5px;border-radius:3px;background:var(--panel2);border:1px solid var(--border2);color:var(--t3);margin-left:5px}
+.nemrow{display:flex;align-items:center;gap:9px;padding:7px 13px;border-bottom:1px solid var(--border);font-size:12.5px}
+.nemrow:last-child{border-bottom:0}
+.nemrow img{width:26px;height:26px;border-radius:4px;object-fit:cover;background:var(--panel2)}
+.nemrow .nm{font-weight:500;color:var(--t1)}
+.nemrow .why{font-size:11px;color:var(--t3);margin-top:-1px}
+.nemrow .wr{margin-left:auto;font-weight:600;color:var(--red)}
+
+.callout{display:flex;gap:9px;padding:10px 13px;background:var(--panel2);border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--t2);line-height:1.5}
+.callout svg{color:var(--amber);margin-top:1px}
+
+/* toast */
+.toast{position:fixed;right:16px;bottom:16px;background:var(--panel2);border:1px solid var(--border2);
+  border-radius:7px;padding:11px 14px;display:flex;gap:10px;align-items:center;font-size:12.5px;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);min-width:300px}
+.toast .ok{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.toast .x{margin-left:auto;color:var(--t3);cursor:pointer}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="side">
+    <div class="ws">
+      <div class="mark">SL</div>
+      <div><div class="n">Sim Lab</div><div class="p">vincent's workspace</div></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+    </div>
+
+    <div class="snav">
+      <div class="sitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</div>
+      <div class="sitem on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5z"/><path d="M12 12v9M4 7.5 12 12l8-4.5"/></svg>Decks</div>
+      <div class="sitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></svg>Replays</div>
+      <div class="sitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3v18M18 3v18M6 8h12M6 16h12"/></svg>Gauntlets<span class="kbd">G</span></div>
+      <div class="sitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h13"/></svg>Rules<span class="kbd">R</span></div>
+    </div>
+
+    <div class="slabel">My decks
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    </div>
+    <div class="snav" style="padding-top:0">
+      <div class="deck-item on">
+        <span class="ci"><i style="background:#E7E3D0"></i><i style="background:#7EA6D9"></i><i style="background:#D98B6A"></i></span>
+        Kilo Helm Final<span class="g">v6</span>
+      </div>
+      <div class="deck-item">
+        <span class="ci"><i style="background:#E7E3D0"></i><i style="background:#7EA6D9"></i><i style="background:#D98B6A"></i></span>
+        Inspirit B3 v3<span class="g">v3</span>
+      </div>
+      <div class="deck-item">
+        <span class="ci"><i style="background:#7EA6D9"></i><i style="background:#8A8F98"></i></span>
+        Talrand Control<span class="g">v1</span>
+      </div>
+    </div>
+    <div class="slabel">Opponent pool
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+    </div>
+    <div class="snav" style="padding-top:0">
+      <div class="deck-item" style="color:var(--t3)">16 decks · 4 pods</div>
+    </div>
+
+    <div class="side-foot">
+      <div class="workers"><span class="ok"></span>1 worker idle · queue empty</div>
+      <div class="user">
+        <div class="av">VA</div>
+        <div><div class="un">Vincent</div><div class="ue">Pro plan</div></div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:auto;color:var(--t3)"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+    <div class="topbar">
+      <div class="crumb">Decks <span>/</span>
+        <b><img src="https://api.scryfall.com/cards/named?exact=Kilo%2C%20Apogee%20Mind&format=image&version=art_crop" onerror="this.remove()">Kilo Helm Final</b>
+      </div>
+      <div class="top-actions">
+        <button class="btn runsel">Run <b>#418</b> · Jul 24 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="btn">Compare</button>
+        <button class="btn primary">Re-run gauntlet</button>
+        <button class="btn icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab on">Overview</div>
+      <div class="tab">Games <span class="cnt">64</span></div>
+      <div class="tab">Telemetry</div>
+      <div class="tab">Changes <span class="cnt">4</span></div>
+      <div class="tab">Play guide</div>
+      <div class="tab">Runs <span class="cnt">6</span></div>
+    </div>
+
+    <div class="content">
+
+      <!-- stat strip -->
+      <div class="stats tnum">
+        <div class="stat">
+          <div class="l">Seat-fair win rate</div>
+          <div class="v">20.3% <span class="d up">+8.3</span>
+            <svg class="spark" width="52" height="18" viewBox="0 0 52 18" fill="none"><polyline points="1,15 9,13 18,14 26,9 34,10 43,5 51,4" stroke="#42B883" stroke-width="1.5"/></svg>
+          </div>
+          <div class="sub">vs 12% engine-class baseline</div>
+        </div>
+        <div class="stat">
+          <div class="l">Games</div>
+          <div class="v">64</div>
+          <div class="sub">4 pods · 4 seat rotations</div>
+        </div>
+        <div class="stat">
+          <div class="l">Engine ignition</div>
+          <div class="v">T4 <span class="d up">was T7</span></div>
+          <div class="sub">median commander turn</div>
+        </div>
+        <div class="stat">
+          <div class="l">Best pod</div>
+          <div class="v">38%</div>
+          <div class="sub">Human decklists — won pod</div>
+        </div>
+        <div class="stat">
+          <div class="l">Worst matchup</div>
+          <div class="v">0/16 <span class="d down">Kambal 62%</span></div>
+          <div class="sub">drain-tax pod</div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <button class="chip">Pod: <b>All</b> <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="chip active">Result: <b>Losses</b> <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="chip">Seat: <b>All</b> <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="searchbox"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>Search games…</div>
+        <div class="right">
+          <span class="count">Updated 21 min ago</span>
+          <button class="chip">Export <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- LEFT COLUMN -->
+        <div>
+          <div class="mod">
+            <div class="mod-h"><h3>Pod performance</h3><span class="hint">16 games each · ▏= class baseline 12%</span>
+              <div class="more"><a href="#">Methods</a></div>
+            </div>
+            <div class="tnum">
+              <div class="podrow">
+                <div class="nm">Human decklists <span class="result-pill rp-win">WON</span></div>
+                <div class="opps">Wildsear · Felix Five-Boots · Raggadragga</div>
+                <div class="rail"><div class="fill" style="width:38%"></div><div class="basetick" style="left:12%"></div></div>
+                <div class="pct">38%</div>
+              </div>
+              <div class="podrow">
+                <div class="nm">Pressure mix <span class="result-pill rp-win">T-1ST</span></div>
+                <div class="opps">Wilhelt · Wyleth · Drana</div>
+                <div class="rail"><div class="fill" style="width:38%"></div><div class="basetick" style="left:12%"></div></div>
+                <div class="pct">38%</div>
+              </div>
+              <div class="podrow">
+                <div class="nm">Wipe-value <span class="result-pill rp-loss">0–16</span></div>
+                <div class="opps">Atraxa · Meren · The Ur-Dragon</div>
+                <div class="rail"><div class="fill" style="width:6%"></div><div class="basetick" style="left:12%"></div></div>
+                <div class="pct">6%</div>
+              </div>
+              <div class="podrow">
+                <div class="nm">Fuckery pod <span class="result-pill rp-loss">0–16</span></div>
+                <div class="opps">Nekusar · Slurrk · Kambal</div>
+                <div class="rail"><div class="fill" style="width:0%"></div><div class="basetick" style="left:12%"></div></div>
+                <div class="pct">0%</div>
+              </div>
+            </div>
+            <div class="callout">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+              <span>Engine decks sim below their table strength — the AI can't pilot politics or protection timing. Treat these as your floor, not your ceiling. <a href="#">Calibration notes →</a></span>
+            </div>
+          </div>
+
+          <div class="mod">
+            <div class="mod-h"><h3>Recent games</h3><span class="hint">filtered: losses</span>
+              <div class="more"><a href="#">Open games tab</a></div>
+            </div>
+            <table class="tnum">
+              <thead>
+                <tr>
+                  <th class="first"><input type="checkbox"></th>
+                  <th>Game</th>
+                  <th>Pod</th>
+                  <th>Seat</th>
+                  <th class="sortable">Result <span class="caret">↓</span></th>
+                  <th>Finish</th>
+                  <th>Ended</th>
+                  <th>Decided by</th>
+                  <th style="text-align:right">Dur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="first"><input type="checkbox"></td>
+                  <td><span class="g">#64</span></td><td>Fuckery</td><td>2</td>
+                  <td><span class="badge b-loss">LOSS</span></td><td>3rd of 4</td><td>T11</td>
+                  <td><div class="kb"><img src="https://api.scryfall.com/cards/named?exact=Kambal%2C%20Consul%20of%20Allocation&format=image&version=art_crop" onerror="this.outerHTML='<span class=fallback>K</span>'">Kambal — Exsanguinate for 14</div></td>
+                  <td style="text-align:right" class="dim">38s</td>
+                </tr>
+                <tr class="selected">
+                  <td class="first"><input type="checkbox" checked></td>
+                  <td><span class="g">#61</span></td><td>Fuckery</td><td>3</td>
+                  <td><span class="badge b-loss">LOSS</span></td><td>2nd of 4</td><td>T12</td>
+                  <td><div class="kb"><img src="https://api.scryfall.com/cards/named?exact=Nekusar%2C%20the%20Mindrazer&format=image&version=art_crop" onerror="this.outerHTML='<span class=fallback>N</span>'">Nekusar — Wheel of Misfortune + Visions</div></td>
+                  <td style="text-align:right" class="dim">39s</td>
+                </tr>
+                <tr>
+                  <td class="first"><input type="checkbox"></td>
+                  <td><span class="g">#63</span></td><td>Wipe-value</td><td>4</td>
+                  <td><span class="badge b-loss">LOSS</span></td><td>4th of 4</td><td>T10</td>
+                  <td><div class="kb"><img src="https://api.scryfall.com/cards/named?exact=Meren%20of%20Clan%20Nel%20Toth&format=image&version=art_crop" onerror="this.outerHTML='<span class=fallback>M</span>'">Meren — value grind after 2nd wipe</div></td>
+                  <td style="text-align:right" class="dim">41s</td>
+                </tr>
+                <tr>
+                  <td class="first"><input type="checkbox"></td>
+                  <td><span class="g">#62</span></td><td>Human</td><td>1</td>
+                  <td><span class="badge b-loss">LOSS</span></td><td>2nd of 4</td><td>T16</td>
+                  <td><div class="kb"><img src="https://api.scryfall.com/cards/named?exact=Raggadragga%2C%20Goreguts%20Boss&format=image&version=art_crop" onerror="this.outerHTML='<span class=fallback>R</span>'">Raggadragga — overrun, 23 power swing</div></td>
+                  <td style="text-align:right" class="dim">58s</td>
+                </tr>
+                <tr>
+                  <td class="first"><input type="checkbox"></td>
+                  <td><span class="g">#59</span></td><td>Wipe-value</td><td>3</td>
+                  <td><span class="badge b-loss">LOSS</span></td><td>3rd of 4</td><td>T13</td>
+                  <td><div class="kb"><img src="https://api.scryfall.com/cards/named?exact=The%20Ur-Dragon&format=image&version=art_crop" onerror="this.outerHTML='<span class=fallback>U</span>'">Ur-Dragon — commander damage in the air</div></td>
+                  <td style="text-align:right" class="dim">52s</td>
+                </tr>
+                <tr>
+                  <td class="first"><input type="checkbox"></td>
+                  <td><span class="g">#58</span></td><td>Fuckery</td><td>1</td>
+                  <td><span class="badge b-loss">LOSS</span></td><td>4th of 4</td><td>T9</td>
+                  <td><div class="kb"><img src="https://api.scryfall.com/cards/named?exact=Kambal%2C%20Consul%20of%20Allocation&format=image&version=art_crop" onerror="this.outerHTML='<span class=fallback>K</span>'">Kambal — Torment of Hailfire X=9</div></td>
+                  <td style="text-align:right" class="dim">31s</td>
+                </tr>
+                <tr>
+                  <td class="first"><input type="checkbox"></td>
+                  <td><span class="g">#55</span></td><td>Pressure</td><td>2</td>
+                  <td><span class="badge b-loss">LOSS</span></td><td>2nd of 4</td><td>T14</td>
+                  <td><div class="kb"><img src="https://api.scryfall.com/cards/named?exact=Drana%2C%20Liberator%20of%20Malakir&format=image&version=art_crop" onerror="this.outerHTML='<span class=fallback>D</span>'">Drana — +1/+1 aggro, race lost by 2</div></td>
+                  <td style="text-align:right" class="dim">47s</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="tfoot tnum">
+              <span>7 of 44 losses</span>
+              <div class="pages">
+                <button class="pgbtn">‹</button>
+                <button class="pgbtn on">1</button><button class="pgbtn">2</button><button class="pgbtn">3</button>
+                <span>…</span><button class="pgbtn">7</button>
+                <button class="pgbtn">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT RAIL -->
+        <div>
+          <div class="mod">
+            <div class="mod-h"><h3>Win-con telemetry</h3><span class="hint">per game, n=64</span></div>
+            <div class="tele tnum">
+              <div class="telerow"><span class="nm">Kilo ignition</span><div class="rail"><div class="fill" style="width:92%;background:var(--green)"></div></div><span class="val">T4</span><span class="chipst"><span class="st st-ok">OK</span></span></div>
+              <div class="telerow"><span class="nm">Proliferate</span><div class="rail"><div class="fill" style="width:71%;background:var(--green)"></div></div><span class="val">7.1/g</span><span class="chipst"><span class="st st-ok">OK</span></span></div>
+              <div class="telerow"><span class="nm">Charge counters</span><div class="rail"><div class="fill" style="width:69%;background:var(--green)"></div></div><span class="val">6.9/g</span><span class="chipst"><span class="st st-ok">OK</span></span></div>
+              <div class="telerow"><span class="nm">Lux Cannon</span><div class="rail"><div class="fill" style="width:27%;background:var(--amber)"></div></div><span class="val">2.7/g</span><span class="chipst"><span class="st st-part">PART</span></span></div>
+              <div class="telerow"><span class="nm">Kappa clock</span><div class="rail"><div class="fill" style="width:28%;background:var(--green)"></div></div><span class="val">2.8/g</span><span class="chipst"><span class="st st-ok">OK</span></span></div>
+              <div class="telerow"><span class="nm">Dawnsire station</span><div class="rail"><div class="fill" style="width:7%;background:var(--red)"></div></div><span class="val">0.7/g</span><span class="chipst"><span class="st st-cold">COLD</span></span></div>
+            </div>
+          </div>
+
+          <div class="mod">
+            <div class="mod-h"><h3>Suggested changes</h3><div class="more"><a href="#">All 4</a></div></div>
+            <div>
+              <div class="swaprow">
+                <span class="pm add">+</span>
+                <img src="https://api.scryfall.com/cards/named?exact=Magistrate%27s%20Scepter&format=image&version=art_crop" onerror="this.remove()">
+                <div><div class="t">Magistrate's Scepter</div>
+                <div class="r">Charge 6.9/g + Tekuthal re-arms it every turn<span class="evd">sim</span><span class="evd">30% of 17k</span></div></div>
+              </div>
+              <div class="swaprow">
+                <span class="pm add">+</span>
+                <img src="https://api.scryfall.com/cards/named?exact=Lux%20Artillery&format=image&version=art_crop" onerror="this.remove()">
+                <div><div class="t">Lux Artillery</div>
+                <div class="r">You average 23 counters by T9; 30+ = 10 dmg each<span class="evd">sim</span></div></div>
+              </div>
+              <div class="swaprow">
+                <span class="pm cut">−</span>
+                <img src="https://api.scryfall.com/cards/named?exact=Dawnsire%2C%20Sunstar%20Dreadnought&format=image&version=art_crop" onerror="this.remove()">
+                <div><div class="t">Dawnsire, Sunstar Dreadnought</div>
+                <div class="r">0 full stations in 64 games<span class="evd">sim: cold</span></div></div>
+              </div>
+              <div class="swaprow">
+                <span class="pm cut">−</span>
+                <img src="https://api.scryfall.com/cards/named?exact=Walking%20Ballista&format=image&version=art_crop" onerror="this.remove()">
+                <div><div class="t">Walking Ballista</div>
+                <div class="r">1.1 events/g, never lethal — funds the Artillery slot<span class="evd">sim</span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mod">
+            <div class="mod-h"><h3>Nemeses</h3><span class="hint">their win % vs you</span></div>
+            <div class="tnum">
+              <div class="nemrow">
+                <img src="https://api.scryfall.com/cards/named?exact=Kambal%2C%20Consul%20of%20Allocation&format=image&version=art_crop" onerror="this.remove()">
+                <div><div class="nm">Kambal Taxes</div><div class="why">punishes your 31 noncreature casts/g</div></div>
+                <div class="wr">62%</div>
+              </div>
+              <div class="nemrow">
+                <img src="https://api.scryfall.com/cards/named?exact=The%20Ur-Dragon&format=image&version=art_crop" onerror="this.remove()">
+                <div><div class="nm">Ur-Dragon</div><div class="why">flying clock outpaces rebuild</div></div>
+                <div class="wr">44%</div>
+              </div>
+              <div class="nemrow">
+                <img src="https://api.scryfall.com/cards/named?exact=Atraxa%2C%20Praetors%27%20Voice&format=image&version=art_crop" onerror="this.remove()">
+                <div><div class="nm">Atraxa Counters</div><div class="why">out-proliferates you at parity</div></div>
+                <div class="wr">31%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast">
+  <span class="ok"></span>
+  <span><b>Gauntlet #418</b> finished — 64/64 games in 41m</span>
+  <span class="x">✕</span>
+</div>
+
+</body>
+</html>

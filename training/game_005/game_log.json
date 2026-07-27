@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "source_video": "https://www.youtube.com/watch?v=pmbYi4R8bS8",
+    "title": "Mana Dorks Is Back! | Commander Gameplay | Episode 1",
+    "channel": "Mana Dorks",
+    "published": "2026-07 (4 days before extraction)",
+    "video_length": "1:51:18",
+    "chapters": {"intro": "0:00", "gameplay": "4:28", "after_game_chat": "1:38:27"},
+    "format": "Commander (EDH), 4-player, 40 life - played on a DIGITAL VIRTUAL TABLETOP (see platform_analysis)",
+    "result": {
+      "winner": "Dnide (Wildsear, Scouring Maw)",
+      "confidence": "high",
+      "attribution_correction": "Initially misattributed to N3cro from audio alone; the published decklists settled it - the mega-turn's exclusive cards (Sunbird's Invocation, Gratuitous Violence, Archetype of Aggression, Hammer of Purphoros, Nalfeshnee, Delayed Blast Fireball) appear ONLY in Dnide's list. Decklists as ground truth.",
+      "finish": "Mega-turn ~1:21-1:37: Wild-Magic Sorcerer/cascade chains into Gratuitous Violence + Archetype of Aggression + Hammer of Purphoros + Unnatural Growth; commander swings for 12 doubled to 24 commander damage ('that's a one shot'); NanMan's dying Vraska's Fall hands out poison counters; table dead ~1:38:17"
+    },
+    "decklists": {
+      "Shelly von Miller": "https://archidekt.com/decks/23173862/big_mommy_magic_the_remix",
+      "NanMan": "https://moxfield.com/decks/i9vzdRSj7Uip7G6_4CtjzA",
+      "Dnide": "https://moxfield.com/decks/61nIxzr4O0W6SfMQSh87qA",
+      "N3cro": "https://moxfield.com/decks/qZHKsi8wAEOsqgdtnQMeuQ"
+    },
+    "note": "FIRST game in the dataset with full published decklists - convertible to .dck via engine/convert_decklist.py for replay-in-Forge conformance testing. Also first digital-tabletop game and first poison-counter finish.",
+    "sim_replay": {
+      "file": "engine/sim_results/sim_20260723_101044.json",
+      "games": 20,
+      "win_rates": {"Dnide Wildsear": 0.40, "N3cro Raggadragga": 0.25, "NanMan Felix": 0.25, "Shelly Siona": 0.10},
+      "agreement": "Sim winner distribution matches the human outcome (Wildsear won both); avg sim game length 36.2 player-turns (~9 cycles) vs ~9-10 cycles in the human game; divergences: AI never assembles the one-turn Gratuitous Violence kill (wins on grind instead), poison relevant in 16/20 sims vs symbolic in the human game, and the AI pilots Siona's aura-voltron plan far below human level (commander median cast: player-turn 13, uncast in 3 games)"
+    },
+    "extraction_method": "YouTube auto-generated captions (ASR, unlabeled), keyword-prefiltered. Player attribution partly inferred; decklist links are authoritative for card identities.",
+    "extracted": "2026-07-23"
+  },
+  "players": [
+    {"name": "Shelly von Miller", "commander": "Siona, Captain of the Pyleas (GW auras - 'Big Mommy Magic the Remix'; held Austere Command all game)", "confidence": "high (from decklist)"},
+    {"name": "NanMan", "commander": "Felix Five-Boots (BUG swords/infect - deck 'Felix is completed'; trigger doubling)", "confidence": "high (from decklist)"},
+    {"name": "Dnide", "commander": "Wildsear, Scouring Maw (RG 'Enchanting Gruul' - enchantment cascade, damage doublers) - THE WINNER", "confidence": "high (from decklist)"},
+    {"name": "N3cro", "commander": "Raggadragga, Goreguts Boss (RG 'Mana Dorks' - dork ramp, Craterhoof/Triumph finishers)", "confidence": "high (from decklist)"}
+  ],
+  "platform_analysis": {
+    "question": "What system are they playing on?",
+    "evidence": [
+      "16:49 'I clicked the mountain. Did it open up a new town?' - cards are clicked, not physical",
+      "50:44 'there's a move top X cards and you just select graveyard' - zone-manipulation context menu (used for Sword of Body and Mind's mill 10)",
+      "26:04 'I got to make a wolf. Let's find a cool wolf' - token creation dialog with art search",
+      "19:59 'There is a commander damage option' - built-in life/commander-damage tracker",
+      "4:52 'people watching at home have perfect information of my hand' - hands rendered on stream",
+      "Triggers are missed and taken back freely; no game-rule enforcement anywhere - NOT a rules engine (not Arena/Forge/XMage), a free-form virtual tabletop"
+    ],
+    "verdict": "A rules-free virtual tabletop with deck import (their Moxfield/Archidekt lists), click-to-move cards, token art picker, and integrated commander-damage tracking. Most consistent with Tabletop Simulator (MTG mod) or Cockatrice; the menu wording ('move top X cards', token dialog) matches both. NOT SpellTable (no physical cards on camera). Confidence: medium - one look at a gameplay frame settles it instantly.",
+    "relevance_to_project": "Whatever the tool, the format is instructive for the front-end: deck-import from Moxfield, free-form zone manipulation, and human rules-keeping - the exact opposite end of the spectrum from the Forge engine (full enforcement). A product can sit between: free-form play + the rules RAG adjudicating on demand."
+  },
+  "key_events": [
+    {"t": "4:28", "event": "game_start", "detail": "Turn order: NanMan (Woodland Cemetery) -> N3cro (Forest + Fyndhorn Elves - 'not the classic Manador') -> Dnide -> Shelly", "confidence": "medium"},
+    {"t": "7:21", "player": "N3cro", "action": "cast_spell", "card": "Rhythm of the Wild", "detail": "Creature spells can't be countered; nontoken creatures get riot (counter or haste) - engine piece for the whole game", "confidence": "high"},
+    {"t": "7:51", "player": "Dnide", "action": "cast_spell", "card": "Sanctum Weaver", "detail": "Enchantment mana dork - taps for X = enchantments controlled", "confidence": "medium"},
+    {"t": "9:08", "player": "Shelly", "action": "cast_spell", "card": "Glissa Sunslayer (heard 'Glya Sunslayer')", "detail": "3/3 first strike deathtouch; combat damage -> modal value", "confidence": "medium"},
+    {"t": "10:08", "player": "N3cro", "action": "cast_commander", "card": "Raggadragga", "detail": "Riot gives haste, attacks Dnide immediately - commander damage tracked in the app (13:07 'that was commander damage, by the way')", "rule_refs": ["903.10a"], "confidence": "high"},
+    {"t": "12:36", "player": "Dnide", "action": "cast_spell", "card": "Beast Within on Glissa", "detail": "'I understand that I am on the enchantment deck' - threat-assessed removal; 3/3 Beast given", "confidence": "high"},
+    {"t": "20:45", "player": "N3cro", "action": "cast_spell", "card": "Decimate", "detail": "Destroys Rhythm of the Wild (his own? no - targets: Rhythm...(see 21:04) + Necro's Sol Ring + commander + dual land - ATTRIBUTION MUDDY; Decimate requires four DIFFERENT targets all present", "rule_refs": ["601.2c"], "confidence": "low"},
+    {"t": "35:20", "event": "rules_teaching", "detail": "Sword protection: pro-green equipped attacker - 'he has protection from green... you CAN block it [with white/other creatures]' - protection restricts blocks only by the named quality", "rule_refs": ["702.16"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "33:17", "event": "self_correction", "detail": "Serra Paragon P/T recount: 'it has the enchantment ART so you expect it to be an enchantment, but it's not' - 6/7 corrected to 5/6; card-type discipline", "validation": "CORRECT_CATCH", "confidence": "medium"},
+    {"t": "38:28", "event": "rules_teaching", "detail": "TRIGGER ORDERING: Noxious Newt(?) enters; player stacks Rhythm of the Wild riot counter BEFORE Tribute to the World Tree check so power stays under 3 for the two +1/+1 counters - 'so I can stack these triggers properly.' Controller orders own simultaneous triggers", "rule_refs": ["603.3b"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "47:12", "player": "N3cro", "action": "trigger_tracked", "card": "Shadow in the Warp", "detail": "2 damage to each opponent's first noncreature spell each turn - table reminds each other consistently", "confidence": "high"},
+    {"t": "50:31", "player": "NanMan", "action": "combat_trigger", "card": "Sword of Body and Mind", "detail": "Connect -> wolf token + defender mills 20 (double via Felix Five Boots' trigger doubling); digital 'move top X to graveyard' used", "confidence": "high"},
+    {"t": "57:33", "event": "rules_moment", "detail": "DATASET FIRST: player CHOOSES to put commander in the GRAVEYARD instead of command zone ('I'm going to put my commander in the graveyard') - 903.9 replacement is optional; later returns it with a graveyard-recursion spell (1:06:15). Correct and strategic", "rule_refs": ["903.9a"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:00:12", "event": "rules_teaching", "detail": "CASCADE CLUSTER: definition recited; 1:03:19 'you MAY cast it'; 1:21:19 'cascade spells are exiled - they are CAST FROM EXILE' (fuels copy-on-cast-from-exile synergies); 1:23:36 tracking which casts are from exile vs hand", "rule_refs": ["702.85"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:17:15", "player": "Dnide", "action": "cast_spell", "card": "Rapid Hybridization on a commander", "detail": "Commander becomes a 3/3 Frog Lizard token trade - 'frizzard'; removal by transformation", "confidence": "medium"},
+    {"t": "1:29:19", "player": "N3cro", "action": "mega_turn", "card": "Gratuitous Violence (+ Archetype of Aggression, Hammer of Purphoros, Unnatural Growth, Purphoros)", "detail": "Damage doubling + all-trample + haste + power doubling assembled in one cascade-chain turn", "confidence": "high"},
+    {"t": "1:30:24", "event": "rules_discussion", "detail": "Copy of legendary spell cast from exile: 'I copy it, but it's legendary so that doesn't matter' - copy enters, legend rule kills one, BUT its ETB still triggered Purphoros ('Purphoros is going to see [a creature enter] and trigger... 2 doubled to 4 damage each opponent'). Subtle and handled correctly", "rule_refs": ["704.5j", "603.6", "707.10"], "validation": "CORRECT", "confidence": "medium"},
+    {"t": "1:31:08", "event": "rules_note", "detail": "'He has to go down to max hand size' - cleanup discard acknowledged (correctly, unlike game_001's table)", "rule_refs": ["514.1"], "validation": "CORRECT", "confidence": "medium"},
+    {"t": "1:35:12", "player": "N3cro", "action": "lethal", "detail": "'This is 12 and he deals double, so it's 24 for whoever I swing my commander at - that's a one shot' - 21+ commander damage kill referenced implicitly", "rule_refs": ["903.10a", "616 (doubling order)"], "confidence": "high"},
+    {"t": "1:36:29", "player": "NanMan", "action": "cast_spell", "card": "Vraska's Fall", "detail": "Dying act: each opponent sacrifices + gets a POISON counter - first poison counters in the dataset (10 needed to kill; symbolic here)", "rule_refs": ["704.5c? (poison SBA - see kb 704)"], "confidence": "high"},
+    {"t": "1:38:17", "event": "game_end", "detail": "N3CRO WINS. Postgame: play-of-the-game voted the early Glissa removal; 'the most important play was made in the first couple turns'; winner reveals foretold Delayed Blast Fireball contingency vs Shelly's never-cast Austere Command", "confidence": "high"},
+    {"t": "0:00, 42:05, 1:29:00", "event": "culture_sample", "detail": "'You going to remember your trigger this time?' - missed triggers ribbed, taken back freely; casual REL, human rules-keeping on a digital table", "confidence": "high"}
+  ],
+  "rules_moments_summary": {
+    "verified_correct": [
+      "Trigger ordering to game the under-3-power check (603.3b)",
+      "Cascade: may-cast, exile, cast-from-exile status (702.85)",
+      "Protection blocking restrictions (702.16)",
+      "OPTIONAL commander-to-command-zone replacement - graveyard chosen strategically (903.9a) - dataset first",
+      "Legend-rule copy still generates ETB triggers before dying (704.5j + 603.6)",
+      "Cleanup-step hand-size discard (514.1)",
+      "Damage doubling stacks (Gratuitous Violence) applied to combat, commander damage, and Purphoros pings consistently"
+    ],
+    "errors_or_flags": [
+      "Multiple self-admitted missed triggers/misplays (celebrated postgame) - good casual-REL behavior samples",
+      "20:45 Decimate caster/target attribution muddy in ASR",
+      "Shelly's commander name unresolved from audio - decklist link is authoritative",
+      "Platform ID at medium confidence pending a visual check"
+    ]
+  }
+}

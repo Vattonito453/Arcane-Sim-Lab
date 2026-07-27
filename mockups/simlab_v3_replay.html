@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game 61 — Replay · Sim Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A;
+  --fg:#EDEDED;
+  --gray:#A1A1A1;
+  --gray2:#7D7D7D;
+  --gray3:#525252;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.14);
+  --hover:rgba(255,255,255,.04);
+  --blue:#52A9FF;
+  --green:#4CC38A;
+  --red:#F2555A;
+  --amber:#F0B429;
+  --mono:'Geist Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,sans-serif;
+  font-feature-settings:'cv01','ss03';font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.93em}
+a{color:var(--fg);text-decoration:none}
+a.q{color:var(--gray);transition:color .12s}
+a.q:hover{color:var(--fg)}
+a.bl{color:var(--blue)}
+a.bl:hover{text-decoration:underline}
+button{font-family:inherit;cursor:pointer}
+
+/* ── chrome ── */
+header{border-bottom:1px solid var(--line)}
+.tb{max-width:1200px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:8px}
+.glyph{width:22px;height:22px;flex:none}
+.slash{color:var(--gray3);font-size:16px;font-weight:300;margin:0 2px}
+.path{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500}
+.path img{width:20px;height:20px;border-radius:50%;object-fit:cover;background:#1a1a1a}
+.path .plan{font-size:10.5px;color:var(--gray);border:1px solid var(--line2);border-radius:9px;padding:1px 7px;font-weight:400}
+.tb-links{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:13px}
+.avatar{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3E6FA8,#22334E);flex:none}
+nav.tabs{max-width:1200px;margin:0 auto;padding:0 16px;display:flex}
+.tab{padding:9px 10px 11px;font-size:13.5px;color:var(--gray);position:relative;transition:color .12s}
+.tab:hover{color:var(--fg)}
+.tab.on{color:var(--fg)}
+.tab.on:after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;background:var(--fg)}
+
+/* ── page ── */
+.page{max-width:1200px;margin:0 auto;padding:32px 24px 96px}
+.head{display:flex;align-items:flex-start;gap:16px;margin-bottom:6px}
+h1{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.head .btns{margin-left:auto;display:flex;gap:8px}
+.btn{height:32px;padding:0 12px;border-radius:6px;font-size:13px;font-weight:500;
+  border:1px solid var(--line2);background:transparent;color:var(--fg);transition:border-color .12s,background .12s}
+.btn:hover{border-color:rgba(255,255,255,.28)}
+.sub{color:var(--gray);font-size:13.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sub .sep{color:var(--gray3)}
+.lede{max-width:760px;margin:22px 0 28px;color:var(--gray);font-size:14px;line-height:1.65}
+.lede b{color:var(--fg);font-weight:560}
+
+section{margin-bottom:48px}
+.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.sh h2{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.sh .meta{color:var(--gray2);font-size:12.5px}
+.sh .right{margin-left:auto;font-size:12.5px}
+.note{color:var(--gray2);font-size:12.5px;margin-top:10px;max-width:760px;line-height:1.6}
+.note a{color:var(--gray)}
+.note a:hover{color:var(--fg)}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500}
+.st i{width:7px;height:7px;border-radius:50%;flex:none}
+.st.bad{color:var(--red)} .st.bad i{background:var(--red)}
+.st.out{color:var(--gray2)} .st.out i{background:var(--gray3)}
+
+/* ── stage layout ── */
+.stage{display:grid;grid-template-columns:1fr 330px;gap:40px;align-items:start}
+
+/* theater — the one bordered container on this view */
+.theater{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ttool{display:flex;align-items:center;gap:16px;padding:10px 14px;border-bottom:1px solid var(--line);
+  font-size:12.5px;color:var(--gray)}
+.ttool .now{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--fg);font-size:12px}
+.ttool .right{margin-left:auto;display:flex;align-items:center;gap:14px;color:var(--gray3);font-size:12px}
+.sel{height:26px;border:1px solid var(--line2);border-radius:6px;background:transparent;color:var(--fg);
+  font-size:12px;padding:0 24px 0 9px;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23A1A1A1' stroke-width='2.4'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center}
+
+/* seats — hairline grid, no boxes */
+.seats{display:grid;grid-template-columns:repeat(4,1fr)}
+.seat{padding:12px 16px;border-left:1px solid var(--line)}
+.seat:first-child{border-left:0}
+.seat .who{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:560;white-space:nowrap;overflow:hidden}
+.seat .who img{width:20px;height:20px;border-radius:50%;object-fit:cover;background:#1a1a1a;flex:none}
+.seat .who em{font-style:normal;color:var(--gray2);font-weight:400;font-size:12px}
+.seat .nums{margin-top:6px;font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:12px;color:var(--gray2);line-height:1.7}
+.seat .nums b{color:var(--fg);font-weight:500}
+.seat.gone{opacity:.55}
+.seat.gone .who{color:var(--gray)}
+
+/* battlefield — rows split by hairlines */
+.bf{border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.bf .owner{width:120px;flex:none;display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--gray)}
+.bf .owner img{width:18px;height:18px;border-radius:50%;object-fit:cover;background:#1a1a1a;flex:none}
+.cd{display:inline-flex;align-items:baseline;gap:7px;border:1px solid var(--line2);border-radius:6px;
+  padding:4px 9px;font-size:12px;transition:border-color .12s}
+.cd:hover{border-color:rgba(255,255,255,.28)}
+.cd b{font-weight:500;color:var(--fg);white-space:nowrap}
+.cd .pt,.cd .ct{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11px;color:var(--gray2)}
+.cd.tapped{opacity:.45}
+.cd.token{border-style:dashed}
+.cd.atk{border-color:rgba(242,85,90,.55)}
+.atkline{font-size:12px;color:var(--red);font-weight:500;margin-left:2px;white-space:nowrap}
+
+/* transport */
+.vcr{display:flex;align-items:center;gap:14px;padding:12px 14px;border-top:1px solid var(--line)}
+.vbtn{width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line2);border-radius:6px;background:transparent;color:var(--gray);
+  transition:color .12s,border-color .12s}
+.vbtn:hover{color:var(--fg);border-color:rgba(255,255,255,.28)}
+.vbtn.play{width:32px;height:32px;background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.vbtn.play:hover{background:#fff}
+.vbtn svg{width:13px;height:13px}
+.scrub{flex:1;position:relative;height:28px}
+.rail{position:absolute;top:13px;left:0;right:0;height:3px;background:rgba(255,255,255,.09);border-radius:2px}
+.done{position:absolute;top:13px;left:0;width:55%;height:3px;background:var(--fg);border-radius:2px}
+.headk{position:absolute;top:8px;left:55%;width:13px;height:13px;border-radius:50%;background:var(--fg);
+  transform:translateX(-50%)}
+.tick{position:absolute;top:11px;width:1px;height:7px;background:var(--gray3)}
+.ticklab{position:absolute;top:-7px;font-family:var(--mono);font-size:10px;color:var(--gray3);transform:translateX(-50%)}
+.clock{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12px;color:var(--gray2);
+  width:96px;text-align:right;flex:none}
+
+/* event log — plain rows, no box */
+.ev{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:12.5px;
+  color:var(--gray);line-height:1.55}
+.ev:last-of-type{border-bottom:1px solid var(--line)}
+.ev .tt{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11px;color:var(--gray3);
+  width:28px;flex:none;padding-top:2px}
+.ev b{color:var(--fg);font-weight:500}
+.ev.cur{background:var(--hover);margin:0 -10px;padding-left:10px;padding-right:10px}
+.ev.cur .tt{color:var(--fg)}
+.ev .nowtag{color:var(--gray3);font-size:11px;white-space:nowrap;padding-top:2px;margin-left:auto}
+.logfoot{display:flex;gap:16px;margin-top:12px;font-size:12.5px}
+
+footer{border-top:1px solid var(--line);margin-top:16px}
+.ft{max-width:1200px;margin:0 auto;padding:20px 24px;color:var(--gray3);font-size:12px;
+  display:flex;gap:20px;flex-wrap:wrap}
+.ft span:last-child{margin-left:auto}
+@media(max-width:980px){.stage{grid-template-columns:1fr}.seats{grid-template-columns:1fr 1fr}
+  .seat:nth-child(3){border-left:0}.seat:nth-child(n+3){border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tb">
+    <svg class="glyph" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2 2.5 21.5h19L12 2Z" stroke="#EDEDED" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 8.5v6.5" stroke="#EDEDED" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <span class="slash">/</span>
+    <div class="path">vincent <span class="plan">Pro</span></div>
+    <span class="slash">/</span>
+    <div class="path">
+      <img src="https://api.scryfall.com/cards/named?exact=Kilo%2C%20Apogee%20Mind&format=image&version=art_crop" onerror="this.remove()">
+      kilo-helm-final
+    </div>
+    <div class="tb-links">
+      <a class="q" href="#">Feedback</a>
+      <a class="q" href="#">Changelog</a>
+      <a class="q" href="#">Docs</a>
+      <div class="avatar"></div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <a class="tab" href="simlab_v3_report.html">Overview</a>
+    <a class="tab" href="#">Games</a>
+    <a class="tab" href="#">Telemetry</a>
+    <a class="tab on" href="#">Replays</a>
+    <a class="tab" href="#">Changes</a>
+    <a class="tab" href="#">Play guide</a>
+    <a class="tab" href="#">Settings</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="head">
+    <div>
+      <h1>Game 61</h1>
+      <div class="sub" style="margin-top:6px">
+        Drain-tax pod <span class="sep">·</span> seat 3 of 4
+        <span class="sep">·</span> <span class="mono">run 418</span>
+        <span class="sep">·</span> <span class="mono">seed 8841</span>
+        <span class="sep">·</span> finished Jul 24, 9:38 PM
+      </div>
+    </div>
+    <div class="btns">
+      <button class="btn">Copy link at this turn</button>
+      <button class="btn">Download log</button>
+    </div>
+  </div>
+
+  <p class="lede">
+    A <b>second-place finish</b>, decided on turn 12 when Nekusar cast
+    <b>Wheel of Misfortune into Spiteful Visions</b> for 19. You are watching turn 9 —
+    the board is yours, 23 counters across six permanents, but the clock isn't:
+    Kambal's drains took 14 life before he was eliminated, and every wheel costs you six more.
+    <a class="bl" href="#">Jump to the deciding turn</a>
+  </p>
+
+  <div class="stage">
+    <div>
+      <div class="theater">
+        <div class="ttool">
+          <span class="now">Turn 9 · declare blockers</span>
+          <span class="right">
+            <select class="sel"><option>1× speed</option><option>2×</option><option>4×</option></select>
+            <span>event 214 of 598</span>
+          </span>
+        </div>
+
+        <div class="seats">
+          <div class="seat">
+            <div class="who">
+              <img src="https://api.scryfall.com/cards/named?exact=Kilo%2C%20Apogee%20Mind&format=image&version=art_crop" onerror="this.remove()">
+              Kilo <em>· you · active</em>
+            </div>
+            <div class="nums"><b>31</b> life · 7 cmdr taken<br>5 in hand · <b>23</b> counters</div>
+          </div>
+          <div class="seat">
+            <div class="who">
+              <img src="https://api.scryfall.com/cards/named?exact=Nekusar%2C%20the%20Mindrazer&format=image&version=art_crop" onerror="this.remove()">
+              Nekusar
+            </div>
+            <div class="nums"><b>26</b> life · 0 cmdr taken<br>7 in hand</div>
+          </div>
+          <div class="seat">
+            <div class="who">
+              <img src="https://api.scryfall.com/cards/named?exact=Slurrk%2C%20All-Ingesting&format=image&version=art_crop" onerror="this.remove()">
+              Slurrk
+            </div>
+            <div class="nums"><b>18</b> life · 12 cmdr taken<br>2 in hand</div>
+          </div>
+          <div class="seat gone">
+            <div class="who">
+              <img src="https://api.scryfall.com/cards/named?exact=Kambal%2C%20Consul%20of%20Allocation&format=image&version=art_crop" onerror="this.remove()">
+              Kambal
+            </div>
+            <div class="nums" style="margin-top:8px"><span class="st out"><i></i>Eliminated turn 8</span><br>commander damage, Slurrk</div>
+          </div>
+        </div>
+
+        <div class="bf">
+          <div class="owner">
+            <img src="https://api.scryfall.com/cards/named?exact=Kilo%2C%20Apogee%20Mind&format=image&version=art_crop" onerror="this.remove()">
+            You
+          </div>
+          <span class="cd atk"><b>Kilo, Apogee Mind</b><span class="ct">+3</span><span class="pt">5/5</span></span>
+          <span class="cd atk"><b>Hangarback Walker</b><span class="ct">+4</span><span class="pt">4/4</span></span>
+          <span class="cd tapped"><b>Thrummingbird</b><span class="pt">1/1</span></span>
+          <span class="cd"><b>Lux Cannon</b><span class="ct">2 charge</span></span>
+          <span class="cd"><b>Unwinding Clock</b></span>
+          <span class="cd"><b>Adamantium Bonding Tank</b><span class="ct">0 charge</span></span>
+          <span class="atkline">attacking Slurrk →</span>
+        </div>
+        <div class="bf">
+          <div class="owner">
+            <img src="https://api.scryfall.com/cards/named?exact=Nekusar%2C%20the%20Mindrazer&format=image&version=art_crop" onerror="this.remove()">
+            Nekusar
+          </div>
+          <span class="cd"><b>Nekusar, the Mindrazer</b><span class="pt">2/4</span></span>
+          <span class="cd"><b>Spiteful Visions</b></span>
+          <span class="cd"><b>Ebony Owl Netsuke</b></span>
+        </div>
+        <div class="bf">
+          <div class="owner">
+            <img src="https://api.scryfall.com/cards/named?exact=Slurrk%2C%20All-Ingesting&format=image&version=art_crop" onerror="this.remove()">
+            Slurrk
+          </div>
+          <span class="cd"><b>Slurrk, All-Ingesting</b><span class="ct">+9</span><span class="pt">10/10</span></span>
+          <span class="cd token"><b>Ooze token</b><span class="ct">+2</span><span class="pt">3/3</span></span>
+          <span class="cd token"><b>Ooze token</b><span class="ct">+2</span><span class="pt">3/3</span></span>
+          <span class="cd"><b>Predator Ooze</b><span class="ct">+1</span><span class="pt">4/4</span></span>
+        </div>
+
+        <div class="vcr">
+          <button class="vbtn" title="Previous turn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20 9 12l10-8v16Z"/><path d="M5 19V5"/></svg></button>
+          <button class="vbtn" title="Step back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+          <button class="vbtn play" title="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z" fill="currentColor"/></svg></button>
+          <button class="vbtn" title="Step forward"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+          <button class="vbtn" title="Next turn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 4 10 8-10 8V4Z"/><path d="M19 5v14"/></svg></button>
+          <div class="scrub">
+            <div class="rail"></div><div class="done"></div><div class="headk"></div>
+            <div class="tick" style="left:14%"></div><div class="ticklab" style="left:14%">T3</div>
+            <div class="tick" style="left:31%"></div><div class="ticklab" style="left:31%">T6</div>
+            <div class="tick" style="left:52%"></div><div class="ticklab" style="left:52%">T9</div>
+            <div class="tick" style="left:88%"></div><div class="ticklab" style="left:88%">T12</div>
+          </div>
+          <div class="clock">turn 9 of 12</div>
+        </div>
+      </div>
+
+      <p class="note">Keyboard: <span class="mono">space</span> play or pause ·
+        <span class="mono">← →</span> step one event · <span class="mono">shift ← →</span> jump a turn ·
+        <span class="mono">c</span> copy a link to this exact event. Replays fold the event log into
+        board state locally — <a href="#">how replays work</a></p>
+    </div>
+
+    <div>
+      <div class="sh">
+        <h2>Event log</h2>
+        <span class="meta">follows the playhead</span>
+      </div>
+      <div class="ev"><span class="tt">T7</span><div><b>You</b> cast <b>Inspirit, Flagship Vessel</b> from the 99</div></div>
+      <div class="ev"><span class="tt">T7</span><div>Inspirit — draw 1, add 1 charge</div></div>
+      <div class="ev"><span class="tt">T8</span><div><b>Nekusar</b> casts <b>Windfall</b> — every player draws 6</div></div>
+      <div class="ev"><span class="tt">T8</span><div>Spiteful Visions deals 6 to each player who drew</div></div>
+      <div class="ev"><span class="tt">T8</span><div><b>Kambal is eliminated</b> — 21 commander damage from Slurrk</div></div>
+      <div class="ev"><span class="tt">T9</span><div>Untap — Unwinding Clock untaps four artifacts</div></div>
+      <div class="ev"><span class="tt">T9</span><div><b>You</b> activate <b>Lux Cannon</b> — now 2 charge</div></div>
+      <div class="ev"><span class="tt">T9</span><div>Thrummingbird — proliferate twice with Tekuthal: six permanents get a counter</div></div>
+      <div class="ev"><span class="tt">T9</span><div><b>Combat</b> — Kilo (5/5) and Hangarback (4/4) attack Slurrk</div></div>
+      <div class="ev cur"><span class="tt">T9</span><div><b>Slurrk</b> blocks Hangarback with an Ooze token</div><span class="nowtag">now</span></div>
+      <div class="logfoot">
+        <a class="bl" href="#">Skip to turn 12 — the deciding turn</a>
+        <a class="q" href="#" style="margin-left:auto">Full log (598 events)</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft">
+    <span>Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy.</span>
+    <span>Card images via Scryfall</span>
+    <span class="mono">run 418 · game 61 · seed 8841</span>
+  </div>
+</footer>
+
+</body>
+</html>

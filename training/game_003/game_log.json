@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "source_video": "https://www.youtube.com/watch?v=HkSYycJ8KSU",
+    "title": "Friday Night Paper Fight - 4 Player Commander",
+    "channel": "LRR Streams (LoadingReadyRun)",
+    "broadcast_date": "2019-01-04",
+    "video_length": "2:31:30",
+    "format": "Commander (EDH), 4-player free-for-all, 40 life",
+    "game_window": "Game runs ~9:35 to ~2:17:30; intro/housekeeping before, subs/outro after",
+    "result": {
+      "winner": "Ben (Wort, the Raidmother)",
+      "winner_confidence": "medium - final sequence partially garbled in ASR; supported by elimination order and postgame chat",
+      "eliminations": [
+        {"order": 1, "player": "Adam", "t": "~2:05:30", "cause": "Two conspired X-damage fire spells from Ben ('took two fireballs to the face, I got murdered')"},
+        {"order": 2, "player": "Ian", "t": "~2:11:45", "cause": "Devil's Play X=13, conspired (copy) = 26 damage"},
+        {"order": 3, "player": "Graham", "t": "~2:16:23", "cause": "Burn from Within 23, conspired = 46 damage"}
+      ]
+    },
+    "extraction_method": "YouTube auto-generated captions (ASR, no speaker labels, 2019-era). Condensed key-event log; timestamps allow re-extraction of any segment.",
+    "extracted": "2026-07-23",
+    "note": "Complete game with winner. Exceptionally dense in rules-teaching moments - 15+ validated rulings including two on-camera CORRECT_CATCH moments (color identity violation, exile-vs-graveyard processor timing)."
+  },
+  "players": [
+    {"name": "Graham", "commander": "Teysa, Orzhov Scion", "deck": "WB tokens (spirits; sac three white creatures: exile target creature)", "confidence": "high"},
+    {"name": "Ian", "commander": "Mirri, Weatherlight Duelist", "deck": "GW cat Voltron / enchantress (bestow, auras, Grasp of Fate)", "confidence": "high"},
+    {"name": "Adam", "commander": "Kozilek, the Great Distortion", "deck": "Colorless Eldrazi ramp (built by Ben); Void Winnower, Ulamog, Emrakul", "confidence": "high"},
+    {"name": "Ben", "commander": "Wort, the Raidmother", "deck": "RG goblin tokens + conspire X-spells (Devil's Play, Fireball, Burn from Within)", "confidence": "high"}
+  ],
+  "key_events": [
+    {"t": "9:27", "event": "pregame", "detail": "Hands drawn pre-stream; roll-off: Adam rolled 9 on a d12, goes first. 'I draw my card because that's what you do in commander' - multiplayer first-turn draw", "rule_refs": ["103.1", "103.8c"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "9:18", "event": "rules_discussion", "detail": "Conspire: 'technically you can't tap green creatures to conspire a red spell' - conspire requires tapping two untapped creatures that EACH SHARE A COLOR with the spell. For Wort's RG spells either color works; statement is correct for a mono-red spell", "rule_refs": ["702.78"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "11:38", "player": "Adam", "action": "cast_spell", "card": "Sandstone Oracle? / early Eldrazi ramp; also names 'Eldrazi' with a naming effect (heard 'What are you naming - I named Eldrazi')", "confidence": "low"},
+    {"t": "11:54", "player": "Ben", "action": "cast_spell", "card": "Command Tower + Sylvan Library", "detail": "Sylvan Library rules recited correctly: draw 3 in draw step, keep extras for 4 life each", "rule_refs": ["601.2"], "confidence": "high"},
+    {"t": "13:08", "player": "Ian", "action": "cast_spell", "card": "Herald of the Pantheon", "detail": "Enchantment spells cost 1 less; gain 1 life on enchantment cast (confirmed at 21:02 'do I gain a life because this is an enchantment creature? yes' - bestowed/enchantment creature counts)", "confidence": "medium"},
+    {"t": "14:24", "player": "Ben", "action": "cast_spell", "card": "Ant Queen", "confidence": "high"},
+    {"t": "17:41", "player": "Ben", "action": "cast_spell", "card": "Artifact Mutation on Adam's Urza's Incubator", "detail": "Destroy artifact + create X 1/1 Saplings = its mana value", "confidence": "medium"},
+    {"t": "19:47", "player": "Ian", "action": "cast_spell", "card": "Boon Satyr (flash) end of turn", "detail": "Table notes he could have BESTOWED it instead (bestow = alternative cost, sorcery-timing aura mode)", "rule_refs": ["702.103"], "validation": "CORRECT teaching", "confidence": "high"},
+    {"t": "20:37", "player": "Adam", "action": "activate_ability", "card": "Wasteland (gold-bordered) destroys Ben's own wasteland-target", "detail": "Side discussion: gold-bordered cards allowed in this casual pod; house-rule territory", "confidence": "medium"},
+    {"t": "23:30", "player": "Adam", "action": "cast_spell", "card": "Void Winnower", "detail": "THE defining card of the game: opponents can't CAST spells with even mana value; creatures with even MV can't BLOCK. Table immediately hits the classic rulings: reminder text 'Zero is even' (25:07-25:17), token creatures (MV 0) can't block (25:23-25:30, initially said 'attack', corrected to block)", "rule_refs": ["202.3", "202.3a"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "25:50", "player": "Ian", "action": "cast_spell", "card": "Crystal Chimes", "detail": "3, tap, sac: return all enchantment cards from graveyard to hand", "confidence": "high"},
+    {"t": "26:52", "player": "Adam", "action": "counterspell", "card": "Not of This World (free - targets his own permanent being targeted?)", "detail": "28:52: casts it for free 'we knew those in your hand'; counters spell targeting his permanent", "confidence": "medium"},
+    {"t": "36:06", "player": "Ben", "action": "cast_spell", "card": "Goblin Ringleader (+ earlier Goblin Recruiter)", "detail": "Recruiter stacked goblins on top; Ringleader reveals top 4, puts goblins in hand - classic combo, notes at 41:18 he forgot Goblin Warchief was NOT in the deck for the full combo", "confidence": "high"},
+    {"t": "47:31", "player": "Ian", "action": "cast_spell", "card": "Banishing Light exiling Adam's Kozilek", "detail": "Kozilek's owner puts him in the COMMAND ZONE instead of exile (replacement choice)", "rule_refs": ["903.9a"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "48:39", "event": "rules_discussion", "detail": "EXCELLENT multi-minute ruling with chat judges: does Kozilek 'come back' if Banishing Light is destroyed? Conclusion: while the commander sits in the command zone Banishing Light has 'lost track' of it; if the commander is CAST again it is a NEW object and Banishing Light's return-effect can never bring it back; casting from CZ does not trigger legend-rule issues with the exiled 'copy'", "rule_refs": ["903.9a", "400.7"], "validation": "CORRECT - textbook object-identity ruling", "confidence": "high"},
+    {"t": "51:31", "event": "rules_teaching", "detail": "SECOND textbook moment: Ben plays Dryad Arbor under Void Winnower. 'Dryad Arbor isn't a spell - lands are not cast, lands are PLAYED' - so the even-MV restriction doesn't apply", "rule_refs": ["305.9", "112.1"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "52:51", "player": "Ben", "action": "activate_ability", "card": "Gempalm Incinerator (cycled)", "detail": "Deals X damage to target creature, X = goblins on battlefield (4) - targets Void Winnower... (53:16 'I'm gonna put four damage on the Widower')", "confidence": "medium"},
+    {"t": "54:47", "event": "rules_note", "detail": "Commander tax doesn't change mana value: Kozilek's MV 'never stops being even' under Void Winnower no matter how many times tax is added - cost increases don't change MV", "rule_refs": ["202.3", "903.8"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "58:11", "event": "rules_discussion", "detail": "'Is odd/even checked before or after discount effects? Before - discounts don't change the MV' - cost reduction never alters mana value", "rule_refs": ["202.3"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:00:11", "player": "Adam", "action": "combat", "detail": "Kozilek attacks Graham for 11-12 commander damage; commander damage tracked ('coming in for 11... 12 12')", "rule_refs": ["903.10a"], "confidence": "medium"},
+    {"t": "1:04:20", "event": "missed_trigger_avoided", "detail": "Ben nearly misses that Teysa's spirit trigger is NONTOKEN-only ('wait is it non token? oh whoops') - self-corrected", "validation": "CORRECT_CATCH", "confidence": "medium"},
+    {"t": "1:09:11", "player": "Ben", "action": "cast_spell", "card": "Hull Breach, conspired", "detail": "Modal spell copied via conspire; table works out the copy can choose its own mode targets... (1:10:50: 'you can do the artifact and enchantment mode and just target Mobilization both times')", "rule_refs": ["702.78", "707.10"], "validation": "CORRECT (copies of modal spells: mode is copied, targets may change)", "confidence": "medium"},
+    {"t": "1:14:19", "player": "Adam", "action": "cast_spell", "card": "Cast Out (flash)", "detail": "Exiles a nonland permanent; later (1:21:12) Grasp of Fate discussion mirrors the Banishing Light command-zone ruling - table now handles it fluently", "confidence": "high"},
+    {"t": "1:19:37", "player": "Graham", "action": "cast_spell", "card": "Nomads' Assembly", "detail": "Rebound explained: resolves, exiles, recast free at next upkeep ('that's next turn, don't worry about that for now'). Flashback? no - rebound; 1:26:04 recast makes 7 more Kor Soldiers", "rule_refs": ["702.88"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:25:48", "player": "Graham", "action": "activate_ability", "card": "Teysa, Orzhov Scion", "detail": "Sacrifices three white creatures: EXILES Void Winnower - the Winnower lock is broken by an ability (not a cast spell), neatly sidestepping the even-MV restriction", "validation": "CORRECT - activated abilities aren't casts", "confidence": "high"},
+    {"t": "1:27:06", "event": "rules_discussion", "detail": "Eldrazi processor timing: a spell cast from HAND that would exile - 'it was exiled, now it's in the graveyard, the processors never got their due' - processors need cards IN exile when they resolve", "validation": "CORRECT (approximate)", "confidence": "medium"},
+    {"t": "1:29:11", "player": "board_wipe", "detail": "Destroy-all-creatures wipe (can't be regenerated); Graham responds by sacking three creatures to exile Adam's Artisan of Kozilek; Ian's enchantress rebuilt via Crystal Chimes earlier", "rule_refs": ["601.3"], "confidence": "medium"},
+    {"t": "1:30:51", "event": "rules_teaching", "detail": "Stoneforge Mystic fetch: 'whenever a card says grab a specific type of thing it's always reveal - otherwise there's no way for us to know'. Ben must reveal Batterskull", "rule_refs": ["701.23b"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:40:10", "event": "rules_discussion", "detail": "Annihilator vs destroy-triggers: 'Annihilator is not destroyed, it's SACRIFICE' - sacrifice doesn't trigger destroy-watchers; distinct game terms", "rule_refs": ["702.86", "701.20 (sacrifice - see kb)"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:51:11", "player": "Ian", "action": "voltron_assembly", "detail": "Bestows Boon Satyr onto Mirri + Ethereal Armor: 3/2 base -> 7/4 -> +6/+6 from armor (6 enchantments) = 13/10 first strike. Correctly notes two instances of first strike are redundant, NOT double strike (1:52:12, 1:53:01)", "rule_refs": ["702.7 (first strike)", "613 (layers)"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "1:55:35", "player": "Adam?", "action": "mass_exile", "detail": "Ulamog attack exiles 20 cards from Graham's library ('I tap Ulamog exile 20 cards'); notable exiled cards listed incl. the other Teysa, Spectral Procession", "confidence": "medium"},
+    {"t": "1:57:06", "event": "rules_violation_caught", "detail": "COLOR IDENTITY CATCH: Ben has Westvale Abbey in his Wort (RG) deck - its flip side Ormendahl, Profane Prince is a BLACK creature, so the card's color identity includes black and it is ILLEGAL in an RG deck. Table catches it mid-game ('technically that should not be allowed'), house-rules it: land stays, may never flip. 'It's not cheating, it's just pulling a Serge'", "rule_refs": ["903.4", "903.5c"], "validation": "CORRECT_CATCH - color identity includes both faces", "confidence": "high"},
+    {"t": "2:00:30", "player": "Ben", "action": "cast_spell", "card": "Fireball, X=11, conspired", "detail": "Fireball mechanics worked through correctly: +1 cost per additional target, damage divided evenly rounded down; conspire copy may choose new targets (2:02:06 'you can change the target of the copy'). 26 total to one player after copy", "rule_refs": ["601.2b", "702.78", "707.10"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "2:02:14", "player": "Graham?", "action": "response", "detail": "Oblivion Stone cracked in response - all nonland permanents destroyed; Wort dies -> recast later ('it's a different Wort now') - object identity again", "rule_refs": ["400.7"], "validation": "CORRECT", "confidence": "medium"},
+    {"t": "2:05:30", "event": "elimination", "detail": "ADAM ELIMINATED - 'took two fireballs to the face, I got murdered'", "confidence": "high"},
+    {"t": "2:10:44", "player": "Ben", "action": "cast_spell", "card": "Devil's Play X=13, conspired = 26", "detail": "Graham Path to Exiles Wort in response; copy still resolves ('it still gets conspired, right? yeah' - the copy is already on the stack independent of its source)", "rule_refs": ["707.10", "112.1a"], "validation": "CORRECT - a copy is an independent spell on the stack; removing its source doesn't remove it", "confidence": "high"},
+    {"t": "2:11:45", "event": "elimination", "detail": "IAN ELIMINATED - 26 damage ('so I'm out'). 2:15:51 related ruling: 'if I die I'm not alive for the spell to resolve' - objects owned by a departed player leave the game", "rule_refs": ["800.4a"], "validation": "CORRECT", "confidence": "medium"},
+    {"t": "2:16:23", "player": "Ben", "action": "cast_spell", "card": "Burn from Within X=23, conspired = 46 at Graham", "detail": "Table double-checks: 'you can only conspire once' - one copy max per conspire ('Adam is correct')", "rule_refs": ["702.78"], "validation": "CORRECT", "confidence": "high"},
+    {"t": "2:16:40", "player": "Graham", "action": "last_stand", "detail": "Leech-Ridden Swamp activation (each opponent loses 1; needs two black permanents) + Tainted Sigil sac; not enough - GRAHAM ELIMINATED. BEN WINS", "confidence": "medium"},
+    {"t": "2:19:36", "event": "postgame", "detail": "'These are fun decks... everybody at one point was in control of the game'", "confidence": "high"}
+  ],
+  "rules_moments_summary": {
+    "verified_correct": [
+      "Conspire color-sharing requirement + one-copy limit + copy retargeting (702.78, 707.10)",
+      "Void Winnower: zero is even; MV of tokens is 0; blocks vs casts distinction (202.3a)",
+      "Lands are played, not cast - Dryad Arbor beats cast-restrictions (305.9)",
+      "Commander tax / cost changes never alter mana value (202.3)",
+      "Commander to command zone instead of exile; linked ability 'forgets'; recast = new object (903.9a, 400.7)",
+      "Rebound resolution (702.88)",
+      "Activated abilities aren't casting - Teysa exiles through Void Winnower",
+      "Tutors for a card type must reveal (701.23b)",
+      "Annihilator sacrifices, doesn't destroy (702.86)",
+      "First strike doesn't stack",
+      "X-spell pricing and damage division (Fireball), copies choosing new targets",
+      "Copies resolve even if source is removed (112.1a, 707.10)",
+      "Departed player's spells/objects leave the game (800.4a)"
+    ],
+    "errors_or_flags": [
+      "1:57:06 Westvale Abbey ILLEGAL in RG color identity - caught by the table mid-game, house-ruled (never flip) rather than removed: CORRECT_CATCH + house_rule_tolerance",
+      "25:23 'tokens can't attack' briefly stated before correcting to can't BLOCK (Void Winnower) - self-corrected",
+      "Winner attribution medium-confidence: final two minutes of game partially garbled in ASR",
+      "Several early-game card IDs are best-effort from 2019 ASR (marked low confidence)"
+    ]
+  }
+}

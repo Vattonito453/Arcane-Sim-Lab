@@ -374,9 +374,10 @@ def _read_live(job_id: str, n: int | None = None) -> dict:
         return {"job_id": job_id, "games_done": 0, "n": 0, "game": None,
                 "in_progress": True, "bytes": len(text)}
 
-    idx = len(games) if n is None else n          # default to the newest game
-    if idx < 1 or idx > len(games):
-        raise IndexError(f"game {idx} not in this run (has {len(games)})")
+    # Clamp rather than 404. A viewer plays games back in order while Forge runs
+    # ahead of it, so it asks for game N as a matter of course before N exists;
+    # that is a normal race, not a bad request. games_seen tells it where it is.
+    idx = len(games) if n is None else max(1, min(n, len(games)))
     game = dict(games[idx - 1])
     live = game.get("result") is None
     if live:

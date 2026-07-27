@@ -64,9 +64,15 @@ until you restart it.
 1. **Decks** (`/`). Pick 2–4 decks. The estimate next to the button is
    seat-aware: two decks costs ~2.5 s/game, three ~11 s, four ~52 s, plus ~7.5 s
    of JVM and card-database startup. Start with **1 game** to see the loop.
-2. **Run progress.** Polls `/sim-status`, and once Forge writes its first turn it
-   shows the **live table** — the game as it is being played, updating every
-   1.5 s — then redirects to the result. Forge spends ~25 s loading its card
+2. **Run progress.** Polls `/sim-status`, and once Forge has produced a game it
+   **plays that game back on the table** over ~20 s while the simulation runs
+   ahead, moving on to the next game as each finishes. It is playback from the
+   buffered log, not a live feed, and says so: Forge writes its log in bursts, so
+   following the newest event showed a still table that filled in exactly as the
+   game ended. Playback is paced against the wall clock, so a backgrounded tab
+   (which browsers throttle to ~1 timer callback a second) plays at the same rate
+   rather than stretching to minutes. The page will not redirect to the results
+   while you are still mid-playback; there is a "Skip to the results" link. Forge spends ~25 s loading its card
    database first, which the page says rather than showing an empty box. Behind a
    backlog the state reads "Queued — 2 runs ahead" instead of pretending to run.
 3. **Results.** Every deck in the pod appears in *Win rates*, winless ones

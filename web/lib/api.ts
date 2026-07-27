@@ -108,8 +108,12 @@ export const api = {
   simulate: (decks: string[], games: number) =>
     post<{ ok: boolean; job_id: string; state: string }>("/simulate", { decks, games }),
   simStatus: (id?: string) => get<JobStatus>(`/sim-status${id ? `?id=${encodeURIComponent(id)}` : ""}`),
-  /** The game in flight. 404s until Forge has written its first line. */
-  simLive: (id: string) => get<LiveGame>(`/sim-live?id=${encodeURIComponent(id)}`),
+  /** A game from the run in flight. 404s until Forge has written its first
+   *  line; `game` past the newest is clamped, so asking early is safe. */
+  simLive: (id: string, game?: number) =>
+    get<LiveGame>(
+      `/sim-live?id=${encodeURIComponent(id)}${game ? `&game=${game}` : ""}`,
+    ),
   importDeck: (name: string, text: string, commander?: string, save = true) =>
     post<ImportResponse>("/decks", { name, text, commander, save }),
   rule: (n: string) => get<Record<string, unknown>>(`/rule/${encodeURIComponent(n)}`),

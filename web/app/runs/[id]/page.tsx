@@ -14,6 +14,10 @@ import { Chrome, Footer } from "@/components/Chrome";
 const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 const POLL_MS = 4000;
 const LIVE_POLL_MS = 1500;
+const PLAY_TICK_MS = 50;
+// Target wall time to play one buffered game out over. Short enough that you see
+// several games of a gauntlet, long enough to follow what is happening.
+const PLAYBACK_SECONDS = 20;
 
 function topWin(s: SimSummary): [string, number] | null {
   const entries = Object.entries(s.win_rates);
@@ -63,10 +67,14 @@ export default function RunPage() {
     return () => clearInterval(iv);
   }, []);
 
-  // ── live game ────────────────────────────────────────────────────────────
-  // Forge streams its log to disk as it plays, so the run does not have to
-  // finish before there is something to watch. Polled faster than the status
-  // above, since this is the thing actually moving.
+  // ── watching the run ─────────────────────────────────────────────────────
+  // Buffer, then play back. Forge does not trickle its log out evenly — it
+  // arrives in bursts, most of a game at once, so pinning the view to the last
+  // event known showed a frozen table that filled in exactly as the game ended.
+  // Instead each game is played out from the buffer at a watchable pace while
+  // Forge runs ahead, which is a replay of a finished game rather than a live
+  // feed, and is labelled as one.
+  const [watchGame, setWatchGame] = useState(1);
   const [liveData, setLiveData] = useState<LiveGame | null>(null);
   useEffect(() => {
     if (!id) return;
@@ -74,10 +82,10 @@ export default function RunPage() {
     const tick = async () => {
       if (stopped) return;
       try {
-        setLiveData(await api.simLive(id));
+        // Asking for a game Forge has not reached is normal; the engine clamps.
+        setLiveData(await api.simLive(id, watchGame));
       } catch {
-        // 404 until Forge writes its first line, and again once the job is done
-        // and we switch to the finished result. Neither is worth surfacing.
+        // 404 until Forge writes its first line. Not worth surfacing.
       }
     };
     void tick();
@@ -86,14 +94,55 @@ export default function RunPage() {
       stopped = true;
       clearInterval(iv);
     };
-  }, [id]);
+  }, [id, watchGame]);
 
   const liveGame = liveData?.game ?? null;
   const liveTimeline = useMemo(() => (liveGame ? buildTimeline(liveGame) : null), [liveGame]);
-  // Always the latest event: this is a live feed, not a scrubber.
+  const liveSteps = liveTimeline?.steps.length ?? 0;
+
+  // Playhead. Advances on a clock, not with the buffer.
+  const [playIdx, setPlayIdx] = useState(0);
+  useEffect(() => {
+    setPlayIdx(0); // new game to watch — start it from the top
+  }, [liveData?.n]);
+
+  const lastTickRef = useRef(0);
+  useEffect(() => {
+    if (liveSteps === 0) return;
+    lastTickRef.current = performance.now();
+    const iv = setInterval(() => {
+      const now = performance.now();
+      const dt = now - lastTickRef.current;
+      lastTickRef.current = now;
+      setPlayIdx((i) => {
+        if (i >= liveSteps - 1) return i; // caught up; wait for more buffer
+        // Advance by elapsed time, not by one tick's worth. A background tab is
+        // throttled to roughly one timer callback a second, which on a
+        // per-tick rate stretched a 20-second game to minutes; against the
+        // clock the pace holds however often the callback actually runs.
+        // Games run 900–1400 events, so the rate is derived from the buffer
+        // rather than fixed per event — otherwise a long game outlasts the
+        // simulation producing it.
+        const perMs = liveSteps / (PLAYBACK_SECONDS * 1000);
+        return Math.min(i + Math.max(1, Math.round(dt * perMs)), liveSteps - 1);
+      });
+    }, PLAY_TICK_MS);
+    return () => clearInterval(iv);
+  }, [liveSteps]);
+
+  // Once this game is played out and a later one exists, move on to it.
+  const gamesSeen = liveData?.games_seen ?? 0;
+  const finishedWatching = liveSteps > 0 && playIdx >= liveSteps - 1 && !liveData?.in_progress;
+  useEffect(() => {
+    if (finishedWatching && gamesSeen > watchGame) {
+      const t = setTimeout(() => setWatchGame((g) => g + 1), 1200);
+      return () => clearTimeout(t);
+    }
+  }, [finishedWatching, gamesSeen, watchGame]);
+
   const liveBoard = useMemo(
-    () => (liveTimeline ? foldTo(liveTimeline, liveTimeline.steps.length - 1) : null),
-    [liveTimeline],
+    () => (liveTimeline ? foldTo(liveTimeline, playIdx) : null),
+    [liveTimeline, playIdx],
   );
   const liveSeats = useMemo(() => {
     if (!liveGame) return [];
@@ -143,12 +192,18 @@ export default function RunPage() {
   const resultBase = status?.result_file ? (status.result_file.split("/").pop() ?? null) : null;
   const resultHref = resultBase ? `/results/${encodeURIComponent(resultBase)}` : null;
 
+  // Don't yank the page away mid-playback. The sim finishing is not a reason to
+  // stop showing the game the viewer is in the middle of; wait until playback
+  // has run out of buffer and there is no later game queued up.
+  const stillWatching =
+    liveSteps > 0 && (playIdx < liveSteps - 1 || gamesSeen > watchGame);
+
   useEffect(() => {
-    if (state === "done" && resultHref) {
+    if (state === "done" && resultHref && !stillWatching) {
       const t = setTimeout(() => router.push(resultHref), 1500);
       return () => clearTimeout(t);
     }
-  }, [state, resultHref, router]);
+  }, [state, resultHref, router, stillWatching]);
 
   const res = status?.result;
   const win = res ? topWin(res) : null;
@@ -241,40 +296,6 @@ export default function RunPage() {
               </p>
             )}
 
-            {liveBoard && liveGame && liveTimeline && (
-              <section>
-                <div className="sh">
-                  <h2>Watching game {liveData?.n ?? 1}</h2>
-                  <span className="meta">
-                    {liveData?.in_progress ? "in progress" : "just finished"} · turn{" "}
-                    <span className="mono">
-                      {liveTimeline.steps[liveTimeline.steps.length - 1]?.turn ?? 0}
-                    </span>{" "}
-                    · <span className="mono">{liveTimeline.steps.length.toLocaleString()}</span>{" "}
-                    events so far
-                  </span>
-                </div>
-                <div className="theater">
-                  <Tabletop
-                    board={liveBoard}
-                    seats={liveSeats}
-                    activePlayer={liveTimeline.steps[liveTimeline.steps.length - 1]?.active ?? ""}
-                    facts={facts}
-                  />
-                  <TabletopNote />
-                </div>
-                <div className="loglist tail">
-                  {/* Last few events only. The full log is scrubbable on the
-                      replay page once the run finishes. */}
-                  {liveTimeline.steps.slice(-8).map((s, k) => (
-                    <div key={`${s.seq}-${k}`} className="ev">
-                      <span className="tt">{s.turn > 0 ? `T${s.turn}` : "—"}</span>
-                      <div>{s.text}</div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
 
             {fetchErr && (
               <p className="note">
@@ -287,6 +308,51 @@ export default function RunPage() {
             )}
           </>
         )}
+
+          {liveBoard && liveGame && liveTimeline && state !== "error" &&
+          (state !== "done" || stillWatching) && (
+            <section>
+              <div className="sh">
+                <h2>
+                  Game <span className="mono">{liveData?.n ?? 1}</span>
+                  {games ? <> of <span className="mono">{games}</span></> : null}
+                </h2>
+                <span className="meta">
+                  turn <span className="mono">{liveTimeline.steps[playIdx]?.turn ?? 0}</span> ·
+                  event <span className="mono">{(playIdx + 1).toLocaleString()}</span> of{" "}
+                  <span className="mono">{liveSteps.toLocaleString()}</span>
+                  {playIdx >= liveSteps - 1 && liveData?.in_progress
+                    ? " · waiting for Forge"
+                    : ""}
+                </span>
+              </div>
+              <div className="theater">
+                <Tabletop
+                  board={liveBoard}
+                  seats={liveSeats}
+                  activePlayer={liveTimeline.steps[liveTimeline.steps.length - 1]?.active ?? ""}
+                  facts={facts}
+                />
+                <TabletopNote />
+              </div>
+              <p className="note">
+                Played back from the finished log at a watchable pace, not a live
+                feed — Forge writes its log in bursts, so following the newest
+                event showed a still table that filled in as the game ended.
+                Simulation continues in the background.
+              </p>
+              <div className="loglist tail">
+                {/* Follows the playhead, not the buffer. The full log is
+                    scrubbable on the replay page once the run finishes. */}
+                {liveTimeline.steps.slice(Math.max(0, playIdx - 7), playIdx + 1).map((s, k) => (
+                  <div key={`${s.seq}-${k}`} className="ev">
+                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "—"}</span>
+                    <div>{s.text}</div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
         {status && state === "done" && (
           <>

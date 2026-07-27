@@ -135,6 +135,12 @@ view — but the win is real and grows with game count.
   test. Real numbers need seat rotation and 50+ games — `engine/SIM_CALIBRATION.md`.
 - **Forge's AI under-pilots combo and politics decks**, so those sim below their
   real strength. Treat a low win rate for them as a floor, not a verdict.
+- **Sol Ring on turn 2 is not a shuffling bug.** All 29 bundled decks run both
+  Sol Ring and Arcane Signet, so a four-deck pod holds four of each and one shows
+  up in ~58% of games. Verified with `python3 engine/shuffle_check.py`: across 415
+  games, one deck produced 91 distinct opening sequences in 91 games, and the
+  early-cast rate is *below* the hypergeometric prediction (4.4% by turn 3 against
+  10.1% expected), not above. Forge shuffles; the decks are just samey.
 - **Tokens have no card face.** Scryfall has no image for "Zombie Token", so those
   tiles are dashed and name-only. That is expected, not a broken image.
 

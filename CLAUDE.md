@@ -21,6 +21,7 @@ engine/            Python, stdlib only, no frameworks
   cards.py           Scryfall card-fact cache (type lines, P/T, oracle)
   board.py           battlefield reconstruction + accuracy report
   deck_telemetry.py  win-con support metrics (no UI yet)
+  shuffle_check.py   proves Forge shuffles; early-play rate vs the maths
   convert_decklist.py  decklist text -> validated .dck
   tests/             test_adapter.py (unit) + smoke_test.py (live API) + fixtures/
 rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)

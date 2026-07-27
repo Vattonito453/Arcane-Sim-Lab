@@ -52,12 +52,16 @@ The rest of the verification loops are in `CLAUDE.md`; all of them pass right no
 ```bash
 python3 engine/tests/test_adapter.py
 python3 engine/board.py engine/tests/fixtures/sim_sample.json --no-fetch
-cd web && npx tsc --noEmit && npx next build
+cd web && npm run verify
 ```
 
-`next build` writes into `web/.next`, which pulls the rug out from under a running
-`next dev`. Stop the dev server first, or expect `Cannot find module './941.js'`
-until you restart it.
+Use `npm run verify`, not `npx next build`, while anything is running. A plain
+build writes into `web/.next` — the directory `next dev` is serving from — and
+kills it mid-request with `Cannot find module './941.js'`, which persists until
+you restart dev. `verify` runs the same typecheck and build into `.next-verify`
+instead, so the dev server and the tunnel keep serving throughout.
+
+If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
 
 ## The walkthrough
 

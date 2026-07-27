@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "verify": "tsc --noEmit && NEXT_DIST_DIR=.next-verify next build"
   },
   "dependencies": {
     "next": "^15",

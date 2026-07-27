@@ -4,6 +4,16 @@ const ENGINE_ORIGIN = process.env.ENGINE_ORIGIN || "http://127.0.0.1:8484";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  /** Build output directory.
+   *
+   *  `next build` writes into the same place `next dev` is serving from, so a
+   *  verification build run against a live dev server pulls the rug out from
+   *  under it: the page dies with "Cannot find module './941.js'" and stays dead
+   *  until dev is restarted. Setting NEXT_DIST_DIR sends a build somewhere else,
+   *  which is what `npm run verify` does. Unset everywhere else, so dev, `npm
+   *  run build` and `npm start` all keep using .next as before.
+   */
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   images: {
     remotePatterns: [{ protocol: "https", hostname: "api.scryfall.com" }],
   },

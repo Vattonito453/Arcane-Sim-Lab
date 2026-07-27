@@ -162,8 +162,12 @@ MTG_DATA_DIR=/tmp/mtgdata MTG_API_KEYS=k1 MTG_EMBEDDED_WORKER=0 \
   python3 -u engine/mtg_engine.py serve 8484
 
 # Front end
-cd web && npx tsc --noEmit        # must be clean
-cd web && npx next build          # needs network on first run (next/font fetches Inter)
+cd web && npm run verify          # tsc + build into .next-verify
+                                  # NEVER `next build` with a dev server or tunnel
+                                  # running: it overwrites the .next they serve
+                                  # from and they die with "Cannot find module
+                                  # './941.js'" until restarted.
+                                  # First run needs network (next/font fetches Inter).
 ```
 
 **Test fixture:** `engine/tests/fixtures/sim_sample.json` — 2 real games, 2,874

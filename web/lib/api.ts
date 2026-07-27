@@ -17,10 +17,20 @@ export function setApiBase(url: string) {
   window.localStorage.setItem("simlab.apiBase", url.replace(/\/$/, ""));
 }
 
-/** API key for write endpoints (/simulate, /decks). Reads stay public. */
+/** API key for write endpoints (/simulate, /decks). Reads stay public.
+ *
+ *  Same precedence as apiBase(): a key saved in this browser wins, otherwise the
+ *  build-time default. The env fallback used to sit behind the `typeof window`
+ *  check, which made it server-only — and since every caller is a client
+ *  component fetching from an effect, it was never reachable. A deployment with
+ *  MTG_API_KEYS set therefore had no way to authenticate a write at all, so
+ *  "Start run" failed for everyone. Note NEXT_PUBLIC_* is inlined into the
+ *  client bundle: this is a shared key for a trusted playtest group, not a
+ *  per-user secret (tasks/06 replaces it with real identity). */
 export function apiKey(): string {
   if (typeof window !== "undefined") {
-    return window.localStorage.getItem("simlab.apiKey") ?? "";
+    const saved = window.localStorage.getItem("simlab.apiKey");
+    if (saved) return saved;
   }
   return process.env.NEXT_PUBLIC_API_KEY ?? "";
 }

@@ -32,10 +32,19 @@ Two settings are **not** optional once anything is reachable from outside:
 |---|---|
 | `MTG_API_KEYS=<random>` | `POST /simulate` spawns a 4 GB JVM. Without keys it is a free compute faucet, and the engine deliberately refuses to bind a public interface without them. Generate: `python3 -c "import secrets; print(secrets.token_urlsafe(32))"` |
 | `ENGINE_ORIGIN` | Where the proxy forwards. Same host: leave it. Separate API box: `http://10.0.0.5:8484`. |
+| `NEXT_PUBLIC_API_KEY` | The same key, baked into the front end at build time so playtesters can start runs without pasting anything. |
 
-Playtesters need the key to start runs. Reads are public, so they can browse and
-replay without one. There are no user accounts yet — one shared key is the whole
-auth model (`tasks/06-accounts-and-quotas.md` replaces it).
+That third one matters more than it looks. There is **no UI for entering an API
+key** — the "change" link next to "Engine" sets the base URL only, and nothing
+calls `setApiKey()`. So the key has to come from the build, or the *Run
+simulation* button fails with a 401 for everyone including you. Reads are public,
+so browsing and replaying work regardless.
+
+`NEXT_PUBLIC_*` is inlined into the client bundle, so anyone who can open the site
+can read that key out of it. For a trusted group behind an unguessable URL that is
+an acceptable trade — it is a shared group key, not a per-user secret, and the
+`MTG_SIM_PER_HOUR` / `MTG_SIM_MAX_QUEUED` caps still bound the damage. Real
+per-user identity is `tasks/06-accounts-and-quotas.md`.
 
 ---
 
@@ -54,18 +63,28 @@ Then run the app in hosted mode and expose it:
 
 ```bash
 cd "/Users/vincentattonito/Desktop/Personal/MtG Rules Engine"
-MTG_BIND=127.0.0.1 MTG_API_KEYS="$(python3 -c 'import secrets;print(secrets.token_urlsafe(32))' | tee /tmp/simlab.key)" \
-  python3 engine/mtg_engine.py serve 8484 &
-cd web && NEXT_PUBLIC_API_BASE=/engine npm run build && NEXT_PUBLIC_API_BASE=/engine npm run start -p 3000 &
+
+# One key, used by both halves. Keep it in the shell for the commands below.
+export SIMLAB_KEY="$(python3 -c 'import secrets; print(secrets.token_urlsafe(32))')"
+
+MTG_BIND=127.0.0.1 MTG_API_KEYS="$SIMLAB_KEY" python3 engine/mtg_engine.py serve 8484 &
+
+cd web
+NEXT_PUBLIC_API_BASE=/engine NEXT_PUBLIC_API_KEY="$SIMLAB_KEY" npm run build
+NEXT_PUBLIC_API_BASE=/engine NEXT_PUBLIC_API_KEY="$SIMLAB_KEY" npm run start -- -p 3000 &
 ```
 
 ```bash
 cloudflared tunnel --url http://localhost:3000
 ```
 
-`cloudflared` prints a `https://<random>.trycloudflare.com` URL — that is what you
-send people. The key is in `/tmp/simlab.key`; give it to whoever should be able to
-start runs (they paste it under **change** next to "Engine" in the header).
+`cloudflared` prints a `https://<random>.trycloudflare.com` URL — that is the whole
+thing you send people. They open it and everything works: no key to paste, no
+setup. Verified locally against a key-protected engine — a browser with empty
+local storage picked two decks and queued a 16-game run.
+
+The key must be set at **build** time, not just at start: `npm run build` inlines
+it. Rebuild after rotating it.
 
 Caveats, in order of how likely they are to bite:
 
@@ -95,6 +114,13 @@ is a stock Next.js app, so either Vercel (**you**, free tier) with
 `NEXT_PUBLIC_API_BASE=https://api.yourdomain` and `MTG_ALLOW_ORIGIN` set to the
 Vercel origin, or `npm run build && npm run start` on the same box behind the same
 reverse proxy, which keeps the single-origin `/engine` setup and is simpler.
+Either way `NEXT_PUBLIC_API_KEY` has to be set at build time, as above.
+
+Only the front end can go on Vercel. The engine and the worker cannot: the worker
+is a 4 GB JVM running for minutes at a time, the API is a long-lived process that
+reads 2.6 MB result files off local disk, and the job queue is SQLite needing
+POSIX locks on a shared volume. That combination rules out every serverless
+platform — it needs a real machine.
 
 Sizing, from measured behaviour rather than guesswork: a worker needs **>4 GB RAM**
 (Forge runs `-Xmx4g`) and Forge is single-threaded per game, so 2 vCPU per worker.

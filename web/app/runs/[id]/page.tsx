@@ -15,9 +15,23 @@ const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 const POLL_MS = 4000;
 const LIVE_POLL_MS = 1500;
 const PLAY_TICK_MS = 50;
-// Target wall time to play one buffered game out over. Short enough that you see
-// several games of a gauntlet, long enough to follow what is happening.
-const PLAYBACK_SECONDS = 20;
+
+/** Actions worth stopping on. 56% of a game log is bookkeeping — 41% phase and
+ *  step lines, 15% mana — and playing every event at a rate that finished a game
+ *  in 20 s meant ~80 events a second, which is unreadable. Playback steps
+ *  between these instead: things a player would actually watch for. Resolves are
+ *  left out because the cast already announced the card.
+ *
+ *  Skipped events are not discarded — foldTo() still folds every step up to the
+ *  playhead, so the board stays correct. Only the pauses change. */
+const BEATS = new Set([
+  "stack_add", "combat", "damage", "life_change", "zone_change", "land_drop",
+  "discard", "game_outcome",
+]);
+/** Beats per second at 1x. A 43-turn game holds ~370 of them, so 1x runs about a
+ *  minute — close to the pace Forge produces four-deck games at. */
+const BEATS_PER_SEC = 6;
+const SPEEDS = [0.5, 1, 2, 4];
 
 function topWin(s: SimSummary): [string, number] | null {
   const entries = Object.entries(s.win_rates);
@@ -98,7 +112,6 @@ export default function RunPage() {
 
   const liveGame = liveData?.game ?? null;
   const liveTimeline = useMemo(() => (liveGame ? buildTimeline(liveGame) : null), [liveGame]);
-  const liveSteps = liveTimeline?.steps.length ?? 0;
 
   // Playhead. Advances on a clock, not with the buffer.
   const [playIdx, setPlayIdx] = useState(0);
@@ -106,33 +119,51 @@ export default function RunPage() {
     setPlayIdx(0); // new game to watch — start it from the top
   }, [liveData?.n]);
 
+  // Indices of the steps playback stops on.
+  const beats = useMemo(() => {
+    if (!liveTimeline) return [];
+    const out: number[] = [];
+    liveTimeline.steps.forEach((s, i) => {
+      if (BEATS.has(s.kind)) out.push(i);
+    });
+    return out;
+  }, [liveTimeline]);
+
+  const [speed, setSpeed] = useState(1);
+  const [paused, setPaused] = useState(false);
   const lastTickRef = useRef(0);
+  const beatRef = useRef(0); // fractional position in `beats`, so slow speeds work
+
   useEffect(() => {
-    if (liveSteps === 0) return;
+    beatRef.current = 0;
+  }, [liveData?.n]);
+
+  useEffect(() => {
+    if (beats.length === 0 || paused) return;
     lastTickRef.current = performance.now();
     const iv = setInterval(() => {
       const now = performance.now();
       const dt = now - lastTickRef.current;
       lastTickRef.current = now;
-      setPlayIdx((i) => {
-        if (i >= liveSteps - 1) return i; // caught up; wait for more buffer
-        // Advance by elapsed time, not by one tick's worth. A background tab is
-        // throttled to roughly one timer callback a second, which on a
-        // per-tick rate stretched a 20-second game to minutes; against the
-        // clock the pace holds however often the callback actually runs.
-        // Games run 900–1400 events, so the rate is derived from the buffer
-        // rather than fixed per event — otherwise a long game outlasts the
-        // simulation producing it.
-        const perMs = liveSteps / (PLAYBACK_SECONDS * 1000);
-        return Math.min(i + Math.max(1, Math.round(dt * perMs)), liveSteps - 1);
-      });
+      // Advance by elapsed time, not by one tick's worth: browsers throttle a
+      // backgrounded tab to roughly one timer callback a second, and a per-tick
+      // rate stretched a one-minute game into many.
+      beatRef.current = Math.min(
+        beatRef.current + (dt / 1000) * BEATS_PER_SEC * speed,
+        beats.length - 1,
+      );
+      setPlayIdx(beats[Math.floor(beatRef.current)] ?? 0);
     }, PLAY_TICK_MS);
     return () => clearInterval(iv);
-  }, [liveSteps]);
+  }, [beats, speed, paused]);
 
   // Once this game is played out and a later one exists, move on to it.
   const gamesSeen = liveData?.games_seen ?? 0;
-  const finishedWatching = liveSteps > 0 && playIdx >= liveSteps - 1 && !liveData?.in_progress;
+  // Derived from state, not from beatRef: a ref read during render does not
+  // re-render when it changes, so the "waiting for Forge" hint and the
+  // advance-to-next-game check would both go stale.
+  const atEnd = beats.length > 0 && playIdx >= beats[beats.length - 1];
+  const finishedWatching = atEnd && !liveData?.in_progress;
   useEffect(() => {
     if (finishedWatching && gamesSeen > watchGame) {
       const t = setTimeout(() => setWatchGame((g) => g + 1), 1200);
@@ -195,8 +226,7 @@ export default function RunPage() {
   // Don't yank the page away mid-playback. The sim finishing is not a reason to
   // stop showing the game the viewer is in the middle of; wait until playback
   // has run out of buffer and there is no later game queued up.
-  const stillWatching =
-    liveSteps > 0 && (playIdx < liveSteps - 1 || gamesSeen > watchGame);
+  const stillWatching = beats.length > 0 && (!atEnd || gamesSeen > watchGame);
 
   useEffect(() => {
     if (state === "done" && resultHref && !stillWatching) {
@@ -318,19 +348,33 @@ export default function RunPage() {
                   {games ? <> of <span className="mono">{games}</span></> : null}
                 </h2>
                 <span className="meta">
-                  turn <span className="mono">{liveTimeline.steps[playIdx]?.turn ?? 0}</span> ·
-                  event <span className="mono">{(playIdx + 1).toLocaleString()}</span> of{" "}
-                  <span className="mono">{liveSteps.toLocaleString()}</span>
-                  {playIdx >= liveSteps - 1 && liveData?.in_progress
-                    ? " · waiting for Forge"
-                    : ""}
+                  turn <span className="mono">{liveTimeline.steps[playIdx]?.turn ?? 0}</span> of{" "}
+                  <span className="mono">{liveTimeline.totalTurns}</span>
+                  {atEnd && liveData?.in_progress ? " · waiting for Forge" : ""}
+                </span>
+                <span className="right">
+                  <button className="btn" onClick={() => setPaused((p) => !p)}>
+                    {paused ? "Play" : "Pause"}
+                  </button>
+                  <select
+                    className="sel"
+                    value={String(speed)}
+                    aria-label="Playback speed"
+                    onChange={(e) => setSpeed(Number(e.target.value))}
+                  >
+                    {SPEEDS.map((x) => (
+                      <option key={x} value={x}>
+                        {x}x speed
+                      </option>
+                    ))}
+                  </select>
                 </span>
               </div>
               <div className="theater">
                 <Tabletop
                   board={liveBoard}
                   seats={liveSeats}
-                  activePlayer={liveTimeline.steps[liveTimeline.steps.length - 1]?.active ?? ""}
+                  activePlayer={liveTimeline.steps[playIdx]?.active ?? ""}
                   facts={facts}
                 />
                 <TabletopNote />

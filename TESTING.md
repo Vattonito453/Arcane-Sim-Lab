@@ -73,10 +73,14 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    ahead, moving on to the next game as each finishes. It is playback from the
    buffered log, not a live feed, and says so: Forge writes its log in bursts, so
    following the newest event showed a still table that filled in exactly as the
-   game ended. Playback is paced against the wall clock, so a backgrounded tab
-   (which browsers throttle to ~1 timer callback a second) plays at the same rate
-   rather than stretching to minutes. The page will not redirect to the results
-   while you are still mid-playback; there is a "Skip to the results" link. Forge spends ~25 s loading its card
+   game ended. Playback stops on plays, attacks, damage and deaths — **56% of a
+   game log is phase and mana bookkeeping** (41% + 15%), which still updates the
+   board but no longer holds it up. Measured pace at 1x is ~0.7 turns/s, so a
+   43-turn game runs about a minute; Pause and 0.5x/1x/2x/4x are next to the
+   heading. Paced against the wall clock, so a backgrounded tab (throttled by
+   browsers to ~1 timer callback a second) plays at the same rate rather than
+   stretching to minutes. The page will not redirect to the results while you are
+   still mid-playback; there is a "Skip to the results" link. Forge spends ~25 s loading its card
    database first, which the page says rather than showing an empty box. Behind a
    backlog the state reads "Queued — 2 runs ahead" instead of pretending to run.
 3. **Results.** Every deck in the pod appears in *Win rates*, winless ones
@@ -95,6 +99,29 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    count, duplicates, and `cards_cached` — how many card faces it pulled from
    Scryfall in one batch so replays don't fetch mid-scrub. ~100 names is two
    batched calls, about 2 s.
+
+## How long a run takes, and why
+
+Pod size dominates everything. Measured medians across real runs:
+
+| Pod | Per game | 8 games |
+|---|---|---|
+| 2 decks | 2.5 s | ~30 s |
+| 3 decks | 11 s | ~1.5 min |
+| 4 decks | 32–52 s | ~5–7 min |
+
+Plus ~7.5 s of JVM and card-database startup per Forge invocation. **A four-deck
+game is roughly 13x a two-deck one**, so if you are iterating on a deck rather
+than testing a pod, two-deck matchups return in seconds.
+
+Forge's `sim` CLI has no lever for this — the options are `-d -D -n -m -t -p -f -c
+-q`, where `-c` only sets the draw timeout (lowering it would manufacture draws)
+and `-q` suppresses the log the replay needs. Single-game time is Forge's AI
+thinking, and patching Forge is off the table. What *is* available is running
+several Forge processes at once: measured, 3 games serial in one JVM took 96.4 s
+versus 66.2 s across three JVMs, and the machine has headroom for three 4 GB
+heaps. That is not implemented yet — it needs the shard logs merged for the live
+view — but the win is real and grows with game count.
 
 ## What to distrust while testing
 

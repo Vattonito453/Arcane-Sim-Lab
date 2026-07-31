@@ -7,6 +7,24 @@
 # The API refuses to bind a public interface without MTG_API_KEYS set, because
 # POST /simulate spawns a 4 GB JVM for 10-60 minutes. See deploy_plan.md.
 services:
+  web:
+    build:
+      context: ../web
+      dockerfile: ../deploy/Dockerfile.web
+      args:
+        NEXT_PUBLIC_API_BASE: /engine
+        # Inlined into the client bundle at BUILD time — rebuild to rotate.
+        # Use ONE key here (MTG_API_KEYS may be a comma-separated list).
+        NEXT_PUBLIC_API_KEY: ${WEB_API_KEY:?set WEB_API_KEY in deploy/.env (one of MTG_API_KEYS)}
+        # Baked into the routes manifest at build — a runtime env is ignored.
+        ENGINE_ORIGIN: http://api:8484
+    ports:
+      # The public face. 80 by default; put Caddy/nginx in front for TLS.
+      - "${WEB_PORT:-80}:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
   api:
     build:
       context: ..

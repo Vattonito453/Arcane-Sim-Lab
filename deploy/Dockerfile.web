@@ -1,0 +1,41 @@
+# Sim Lab front end — Next.js production build.
+#
+# Build context is web/ (see docker-compose.yml). NEXT_PUBLIC_* values are
+# inlined into the client bundle AT BUILD TIME, so they arrive as build args:
+#
+#   NEXT_PUBLIC_API_BASE  /engine — routes every API call through this app's
+#                         own origin (the rewrite below proxies to the engine),
+#                         so one public hostname covers both halves: no CORS,
+#                         no mixed content, no second DNS name.
+#   NEXT_PUBLIC_API_KEY   the shared write key. Inlined into the served JS, so
+#                         anyone who can load the page can read it — that is the
+#                         accepted trade for a trusted playtest group
+#                         (tasks/06 replaces it with real identity). Rebuild the
+#                         image to rotate it.
+#
+#   ENGINE_ORIGIN         where /engine/* proxies to. ALSO a build arg: next
+#                         build bakes rewrite destinations into
+#                         .next/routes-manifest.json, so a runtime env change
+#                         does nothing — measured, not assumed (a runtime-only
+#                         value left the container proxying to itself on
+#                         127.0.0.1:8484).
+FROM node:20-alpine
+
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+
+ARG NEXT_PUBLIC_API_BASE=/engine
+ARG NEXT_PUBLIC_API_KEY=
+ARG ENGINE_ORIGIN=http://api:8484
+ENV NEXT_PUBLIC_API_BASE=$NEXT_PUBLIC_API_BASE \
+    NEXT_PUBLIC_API_KEY=$NEXT_PUBLIC_API_KEY \
+    ENGINE_ORIGIN=$ENGINE_ORIGIN
+# First build needs network: next/font fetches and self-hosts Inter/Geist Mono.
+RUN npm run build
+
+ENV NODE_ENV=production
+EXPOSE 3000
+CMD ["npm", "run", "start"]

@@ -2,7 +2,17 @@
 # Build from the repo root:  docker build -f deploy/Dockerfile.worker -t mtg-worker .
 FROM eclipse-temurin:17-jre-jammy
 
-RUN apt-get update && apt-get install -y --no-install-recommends python3 curl bzip2 \
+# xvfb and the X11/font libraries are NOT optional, despite this being a
+# headless simulation. Forge ships one desktop jar for both GUI and `sim` mode,
+# and forge.GuiDesktop's static initializer calls initializeScreenScale() ->
+# getDefaultScreenDevice() before sim mode is reached. With no display it throws
+# HeadlessException; forcing -Djava.awt.headless=false instead fails on a
+# missing libXext.so.6. Both were reproduced in this image — and the failure is
+# SILENT, because Forge registers a Sentry handler that swallows the exception
+# and exits 1 with no output. A virtual framebuffer satisfies the AWT call.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      python3 curl bzip2 xvfb \
+      libxext6 libxrender1 libxtst6 libxi6 fontconfig libfreetype6 \
     && rm -rf /var/lib/apt/lists/*
 
 # Forge (headless-capable desktop build, includes card DB + res/)
@@ -27,4 +37,13 @@ RUN bash -lc 'JAR=$(find /opt/forge -name "forge-gui-desktop-*jar-with-dependenc
 ENV FORGE_JAR=/opt/forge/forge.jar
 VOLUME /data
 
-CMD ["python3", "engine/worker.py"]
+# The entrypoint starts Xvfb and exports DISPLAY, which every java child
+# inherits. It replaces xvfb-run, whose SIGUSR1 readiness handshake does not
+# complete as PID 1 — see the comments in worker-entrypoint.sh.
+# python3 -u because stdout to a pipe is block-buffered: without it
+# `docker compose logs worker` stays empty until 8 KB accumulates, which hid
+# this very failure behind a container that looked merely idle.
+COPY deploy/worker-entrypoint.sh /usr/local/bin/worker-entrypoint.sh
+RUN chmod +x /usr/local/bin/worker-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/worker-entrypoint.sh"]
+CMD ["python3", "-u", "engine/worker.py"]

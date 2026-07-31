@@ -31,7 +31,7 @@ Two settings are **not** optional once anything is reachable from outside:
 | Setting | Why |
 |---|---|
 | `MTG_API_KEYS=<random>` | `POST /simulate` spawns a 4 GB JVM. Without keys it is a free compute faucet, and the engine deliberately refuses to bind a public interface without them. Generate: `python3 -c "import secrets; print(secrets.token_urlsafe(32))"` |
-| `ENGINE_ORIGIN` | Where the proxy forwards. Same host: leave it. Separate API box: `http://10.0.0.5:8484`. |
+| `ENGINE_ORIGIN` | Where the proxy forwards — a BUILD-time value (`next build` bakes it into the routes manifest). The compose file passes `http://api:8484`. |
 | `NEXT_PUBLIC_API_KEY` | The same key, baked into the front end at build time so playtesters can start runs without pasting anything. |
 
 That third one matters more than it looks. There is **no UI for entering an API
@@ -48,91 +48,142 @@ per-user identity is `tasks/06-accounts-and-quotas.md`.
 
 ---
 
-## Option A — tunnel from your Mac (fastest; good for a weekend playtest)
+## The deployment: one GCP VM running docker compose
 
-No server, no deploy, no cost. Your Mac serves it; when you close the lid, it's
-down. Right choice for "can four friends try this on Saturday".
+Three containers — `web` (Next.js, the public face), `api` (the engine), and
+`worker` (Java 17 + Forge, runs the sims) — sharing one data volume. The web
+container proxies `/engine/*` to the api over the compose network, so the only
+thing exposed to the internet is the web port. Verified end to end in
+containers before this was written: **35/35 smoke checks pass against the
+containerized stack**, including a real 2-game Forge simulation executed by the
+worker container in 15 s, and the front end renders 29 decks through the
+proxy.
 
-**you** — install the tunnel client once:
+### What containerizing Forge actually required
+
+Two failures that only appear in a container, both found and fixed here — worth
+knowing because each looks like "the worker is doing nothing":
+
+1. **Forge needs a display even in `sim` mode.** It ships one desktop jar for
+   GUI and simulation, and `forge.GuiDesktop`'s static initializer calls
+   `getDefaultScreenDevice()` before sim mode is reached. Headless that throws
+   `java.awt.HeadlessException`; with `-Djava.awt.headless=false` it fails on a
+   missing `libXext.so.6`. The worker image therefore installs `xvfb` plus the
+   X11/font libraries and starts a virtual display before the worker runs.
+2. **The failure is silent.** Forge registers a Sentry handler that swallows the
+   exception and exits 1 with *no output at all* — no stack trace, no log file,
+   an empty raw log in the volume. Setting `-Dsentry.dsn=` is what surfaced the
+   real error. If a containerized worker ever "finishes" a sim in a few seconds
+   with zero games, run Forge by hand inside the container with Sentry disabled.
+
+Also: `xvfb-run` does **not** work as a container entrypoint. It starts Xvfb in
+a subshell and waits for a SIGUSR1 readiness signal, and that handshake never
+completes as PID 1 — measured here: Xvfb came up, the wait never returned, and
+the worker it was supposed to launch never started. `deploy/worker-entrypoint.sh`
+starts the server directly and polls for its socket instead.
+
+Both container images also run Python with `-u`. Without it, stdout to a pipe is
+block-buffered and `docker compose logs` stays empty until 8 KB accumulates,
+which is what disguised the Forge failure above as an idle container.
+
+### Sizing, from measured behaviour
+
+Forge runs with `-Xmx4g` and its JVM peaks near 5 GB resident. Games are
+single-threaded; game count parallelises across workers, one game does not.
+
+| Machine | RAM | Fits | Fully-used cost (us-central1, on demand) |
+|---|---|---|---|
+| e2-standard-2 | 8 GB | web + api + **1 worker** | ~$49/mo, ~$0.067/hr |
+| e2-standard-4 | 16 GB | web + api + **2 workers** | ~$98/mo, ~$0.134/hr |
+
+Start with e2-standard-2. **Stop the VM when nobody is playtesting** — a
+stopped instance bills only its disk (~$2/mo for 40 GB); `gcloud compute
+instances stop/start` takes seconds and the containers restart themselves
+(`restart: unless-stopped`). Prices are ballpark; check the calculator.
+
+### Steps only you can do (accounts and money)
+
+1. A GCP project with billing, and the `gcloud` CLI authenticated locally.
+2. Create the VM and open the web port:
 
 ```bash
-brew install cloudflared
-```
-
-Then run the app in hosted mode and expose it:
-
-```bash
-cd "/Users/vincentattonito/Desktop/Personal/MtG Rules Engine"
-
-# One key, used by both halves. Keep it in the shell for the commands below.
-export SIMLAB_KEY="$(python3 -c 'import secrets; print(secrets.token_urlsafe(32))')"
-
-MTG_BIND=127.0.0.1 MTG_API_KEYS="$SIMLAB_KEY" python3 engine/mtg_engine.py serve 8484 &
-
-cd web
-NEXT_PUBLIC_API_BASE=/engine NEXT_PUBLIC_API_KEY="$SIMLAB_KEY" npm run build
-NEXT_PUBLIC_API_BASE=/engine NEXT_PUBLIC_API_KEY="$SIMLAB_KEY" npm run start -- -p 3000 &
+gcloud compute instances create simlab   --zone=us-central1-a --machine-type=e2-standard-2   --image-family=ubuntu-2404-lts-amd64 --image-project=ubuntu-os-cloud   --boot-disk-size=40GB --tags=simlab-web
 ```
 
 ```bash
-cloudflared tunnel --url http://localhost:3000
+gcloud compute firewall-rules create simlab-web   --allow=tcp:80 --target-tags=simlab-web --description="Sim Lab playtest"
 ```
 
-`cloudflared` prints a `https://<random>.trycloudflare.com` URL — that is the whole
-thing you send people. They open it and everything works: no key to paste, no
-setup. Verified locally against a key-protected engine — a browser with empty
-local storage picked two decks and queued a 16-game run.
-
-The key must be set at **build** time, not just at start: `npm run build` inlines
-it. Rebuild after rotating it.
-
-Caveats, in order of how likely they are to bite:
-
-- **A quick tunnel URL is public and unguessable, not private.** Reads need no
-  key, so anyone with the link can browse your decks and replays. Fine for
-  friends; don't post it.
-- Every simulation runs on your Mac. Four people queuing 64-game gauntlets will
-  saturate it — `MTG_SIM_MAX_QUEUED=3` and `MTG_SIM_PER_HOUR=6` already cap this.
-- The URL changes every restart. A stable subdomain needs a Cloudflare account
-  and a domain (**you**).
-
-## Option B — a small VPS (persistent; the real deployment)
-
-Use when you want a URL that survives closing your laptop. `deploy/` already has
-the container kit and it is unchanged by this work; `deploy_plan.md` has the sizing
-and cost analysis.
-
-**you** — the account, the box, the DNS, the secrets. Then:
+3. Ship the repo to the VM. It is private, so copy it rather than cloning:
 
 ```bash
-cp deploy/.env.example deploy/.env      # set MTG_API_KEYS; leave MTG_PORT on loopback
-docker compose -f deploy/docker-compose.yml --env-file deploy/.env up --build -d
+cd "/Users/vincentattonito/Desktop/Personal" && tar czf /tmp/simlab.tgz --exclude='MtG Rules Engine/web/node_modules'   --exclude='MtG Rules Engine/web/.next*' --exclude='MtG Rules Engine/engine/sim_results'   --exclude='MtG Rules Engine/.git' --exclude='*.zip' "MtG Rules Engine" && gcloud compute scp /tmp/simlab.tgz simlab:~ --zone=us-central1-a
 ```
 
-That gets the engine and a Forge worker. The front end is a separate deploy — it
-is a stock Next.js app, so either Vercel (**you**, free tier) with
-`NEXT_PUBLIC_API_BASE=https://api.yourdomain` and `MTG_ALLOW_ORIGIN` set to the
-Vercel origin, or `npm run build && npm run start` on the same box behind the same
-reverse proxy, which keeps the single-origin `/engine` setup and is simpler.
-Either way `NEXT_PUBLIC_API_KEY` has to be set at build time, as above.
+### Steps on the VM (`gcloud compute ssh simlab --zone=us-central1-a`)
 
-Only the front end can go on Vercel. The engine and the worker cannot: the worker
-is a 4 GB JVM running for minutes at a time, the API is a long-lived process that
-reads 2.6 MB result files off local disk, and the job queue is SQLite needing
-POSIX locks on a shared volume. That combination rules out every serverless
-platform — it needs a real machine.
+```bash
+sudo apt-get update && sudo apt-get install -y docker.io docker-compose-v2 && sudo usermod -aG docker $USER && newgrp docker
+```
 
-Sizing, from measured behaviour rather than guesswork: a worker needs **>4 GB RAM**
-(Forge runs `-Xmx4g`) and Forge is single-threaded per game, so 2 vCPU per worker.
-A 2-deck 2-game run took 10 s and a 3-deck run 27 s on an M-series laptop; the
-10–60 minute figure in the docs is for 64-game 4-deck gauntlets.
+```bash
+tar xzf simlab.tgz && cd "MtG Rules Engine/deploy" && cp .env.example .env
+```
 
-Two things to know before you scale:
+Edit `.env`: set `MTG_API_KEYS` to a generated secret
+(`python3 -c "import secrets; print(secrets.token_urlsafe(32))"`), set
+`WEB_API_KEY` to the same value, leave `WEB_PORT=80`. Then:
 
-- **Scale workers, not the API.** Rate limiting in `_rate_ok()` is in-process, so
-  two API replicas double every quota (`tasks/04`, `tasks/06`).
-- The job queue is SQLite and needs working POSIX locks. Keep the volume on a real
-  filesystem — a network/9p mount fails with `disk I/O error`.
+```bash
+docker compose --env-file .env up -d --build
+```
+
+First build takes several minutes: the worker image downloads Forge (~290 MB)
+and the web image compiles the front end. **Build on the VM, not on the Mac** —
+this laptop produces arm64 images and an e2 instance is x86_64.
+
+### Verify before sending the link
+
+From the VM (or anywhere, using the external IP):
+
+```bash
+python3 engine/tests/smoke_test.py --sim --base http://localhost/engine --key "$YOUR_KEY"
+```
+
+35 checks including a real containerized Forge run. Then confirm the write
+guard from outside: an unkeyed `POST /engine/simulate` must return 401.
+
+The address to hand out is `http://EXTERNAL_IP/` (find it with
+`gcloud compute instances describe simlab --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'`).
+
+### Plain HTTP, and when to fix that
+
+This runbook serves HTTP on port 80: fine for a playtest link shared with
+friends, not for anything beyond that. The upgrade path is a domain + Caddy in
+front of the web container (automatic Let's Encrypt), moving `WEB_PORT` off 80.
+Do that before collecting anything resembling accounts (tasks/06).
+
+### Operating it
+
+```bash
+docker compose --env-file .env logs -f worker    # watch sims execute
+docker compose --env-file .env up -d --scale worker=2   # e2-standard-4 only
+docker compose --env-file .env up -d --build web        # redeploy front end after changes
+docker system prune -f                                   # reclaim old image layers
+```
+
+Two constraints inherited from the engine (see CLAUDE.md): scale **workers**,
+not the api — rate limits are in-process, so two api replicas double every
+quota. And the data volume must stay a real filesystem (the job queue is
+SQLite); the named docker volume on the VM's boot disk is exactly that.
+
+### The tunnel option, retired
+
+An earlier version of this doc led with a Cloudflare quick tunnel from the Mac.
+It worked, but corporate networks commonly blackhole `*.trycloudflare.com` (the
+Mac it ran on could not even resolve its own tunnel), the link died whenever
+the laptop slept, and every sim ran on the laptop. `Share for Playtest.command`
+still exists for a quick demo from a home network; the VM is the real answer.
 
 ## Not an option: putting the engine straight on 0.0.0.0
 

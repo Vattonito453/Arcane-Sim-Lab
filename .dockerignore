@@ -1,0 +1,34 @@
+# Build context hygiene for the api and worker images (context = repo root).
+# Without this, every image build uploads ~600 MB of node_modules, sim results
+# and git history to the docker daemon before COPY even runs.
+
+.git
+.gitignore
+.dockerignore
+
+# Front end builds from its own context (web/) with its own dockerignore.
+web
+
+# Generated runtime state — lives on the /data volume, never in an image.
+engine/sim_results
+engine/jobs.db*
+engine/card_cache.json
+engine/combo_cache.json
+engine/__pycache__
+**/__pycache__
+
+# WotC Comprehensive Rules source text: the KB under rules/kb is what ships.
+rules/raw
+
+# Local-only material.
+mockups
+training
+frontend_handoff
+tasks
+*.zip
+*.command
+*.md
+!deploy/*.md
+.DS_Store
+**/.DS_Store
+MtG Rules Engine

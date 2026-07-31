@@ -31,7 +31,7 @@ web/               Next.js 15 App Router, React 19, TypeScript strict
   app/globals.css    THE ENTIRE DESIGN SYSTEM. Pages add no CSS.
   lib/               api.ts, types.ts, format.ts, cards.ts, replay.ts
 mockups/           design_principles.md (BINDING) + v3 HTML wireframes
-deploy/            Dockerfiles, compose, .env.example
+deploy/            Dockerfiles (api/worker/web), compose, worker-entrypoint.sh
 tasks/             per-task specs with acceptance criteria — start here
 ```
 
@@ -145,6 +145,16 @@ cached on disk. A warm cache makes zero network calls. Never loop single lookups
   Two API replicas double every quota. Scale workers, not the API, until there's
   a shared store.
 - Result filenames are validated against path traversal. Keep that.
+
+### Containerized Forge needs a display
+
+The worker image installs xvfb and starts a virtual display before the worker
+runs (`deploy/worker-entrypoint.sh`). Forge's single desktop jar initializes AWT
+for DPI scaling even in `sim` mode, and it fails **silently** without a display —
+its Sentry handler swallows the exception and exits 1 with no output. Do not
+replace the entrypoint with `xvfb-run`: its SIGUSR1 readiness handshake does not
+complete as PID 1. Both images run Python with `-u` so container logs are not
+lost to block buffering. See deploy/HOSTING.md.
 
 ---
 

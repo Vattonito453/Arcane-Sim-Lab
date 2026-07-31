@@ -1,5 +1,7 @@
-/** Engine origin the /engine/* proxy forwards to. Only used by the rewrite
- *  below, so it is a server-side value and never reaches the browser bundle. */
+/** Engine origin the /engine/* proxy forwards to. Server-side only — it never
+ *  reaches the browser bundle — and read at BUILD time: next build bakes
+ *  rewrite destinations into .next/routes-manifest.json, so it must be set
+ *  when `next build` runs (see deploy/Dockerfile.web), not at `next start`. */
 const ENGINE_ORIGIN = process.env.ENGINE_ORIGIN || "http://127.0.0.1:8484";
 
 /** @type {import('next').NextConfig} */

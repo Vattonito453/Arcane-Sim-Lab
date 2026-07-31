@@ -49,6 +49,10 @@ New: `engine/deck_plan.py` — builds `deck_plan.json` at import time from:
 4. **Synergy keywords** per tag — e.g. `counters-proliferate` watches
    `charge counter`, `+1/+1 counter`, `poison counter`, `proliferate` —
    the same vocabulary `deck_telemetry.py` already greps for.
+5. **Threat signature** — the plan-critical card list (payoffs, combo pieces,
+   finishers) published to the *other* seats' controllers, so an opponent can
+   recognize a dangerous spell the moment it hits the stack. This is what
+   makes Stage 3's threat-aware countermagic possible.
 
 Example (Kilo): tags `counters-proliferate` + `combo`; payoffs Lux Cannon /
 Dawnsire; plan says: keep hands with a counter-payoff plus an enabler,
@@ -76,12 +80,31 @@ across 1,786 hands in sim_results logs).
 single-defender) and block valuation (stock block rate: 14%). Both have
 human targets in `training/ai_vs_human_analysis.md`.
 
-**Stage 3 — politics + personality.** Grudge/threat memory (who removed my
+**Stage 3 — interaction & stack awareness.** Replace stock Forge's CMC-based
+countermagic (Default.ai literally rolls "chance to counter by CMC") with
+threat-weighted interaction:
+- When a spell hits the stack, score it against the *caster's* threat
+  signature + public board context (a token payoff while its caster has ten
+  tokens outranks any CMC rule). Counter the win attempt; let chaff resolve.
+- Hold-mana policy: keep interaction mana open when a plan says an opponent
+  is visibly close (public zones only), instead of tapping out greedily.
+- Combat-trick timing rides the same machinery: instants held for blocks or
+  responses, valued by board context.
+- **Information hygiene rule (hard):** decisions may read the stack,
+  battlefield, graveyards, and exile — public zones — plus decklist-level
+  plans. Never opponents' hands or libraries, and never Forge's AI-cheat
+  preferences. A **table-familiarity dial** (blind / archetype-aware /
+  full-decklist) governs how much plan knowledge each seat gets, and results
+  are labeled with it — it measurably changes outcomes.
+
+**Stage 4 — politics + personality.** Grudge/threat memory (who removed my
 things, who is closest to winning), kingmaking avoidance, per-seat
 personality dials: aggression, greed (combo pursuit vs safety), optional-
-trigger miss probability. **Never** skip mandatory triggers — that produces
-illegal games and poisons win rates; human imperfection is modeled in
-*choices*, not rules violations.
+trigger miss probability. Politics also gates Stage 3's countermagic: humans
+in pods save interaction for the actual win attempt and let others spend
+theirs first. **Never** skip mandatory triggers — that produces illegal games
+and poisons win rates; human imperfection is modeled in *choices*, not rules
+violations.
 
 ## Training data track (parallel, not blocking)
 
@@ -93,9 +116,9 @@ decklists — those are replayable in Forge for direct human-vs-agent diffing.
 
 ## Acceptance criteria
 
-- [ ] Shim repo builds with `mvn package`; runs a 4-player Commander sim and
-      emits JSON parseable by the adapter; results flow to the existing UI
-      unchanged.
+- [ ] Shim repo builds with `./build.sh` (plain javac against the Forge jar —
+      no Maven on this machine); runs a 4-player Commander sim and emits JSON
+      parseable by the adapter; results flow to the existing UI unchanged.
 - [ ] `engine/deck_plan.py <deck.dck>` emits a plan JSON; import UI offers
       auto-suggested, editable win-con tags; plan stored beside the deck.
 - [ ] Stage 1: agent mulligan keep-rate and average kept-hand size move
@@ -105,6 +128,13 @@ decklists — those are replayable in Forge for direct human-vs-agent diffing.
       the standard 4-deck gauntlet; humanness scorecard shows improvement on
       its four metrics with no win-rate baseline corruption (re-run archetype
       baselines and update `SIM_CALIBRATION.md` in the same commit).
+- [ ] Stage 3: on a gauntlet where one deck runs countermagic, counterspells
+      land on threat-signature spells at a materially higher rate than on
+      chaff (report the split); every result JSON records the
+      table-familiarity dial it ran under, and the UI labels it.
+- [ ] Stage 3 hygiene: a code-review pass confirms no controller decision
+      path reads hidden zones (opponent hand/library) — call it out
+      explicitly in the task close-out.
 - [ ] A `humanness_scorecard.py` (new, engine/) computes the four scorecard
       metrics from any sim result so regressions are one command.
 - [ ] Docs: CLAUDE.md gotchas + SIM_CALIBRATION updated — sim numbers become

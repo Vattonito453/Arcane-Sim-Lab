@@ -39,7 +39,9 @@ def score(files: list[str]) -> dict:
         data = json.load(open(path, encoding="utf-8"))
         for g in data.get("games", []):
             defenders_by_turn: dict[int, set] = defaultdict(set)
-            for t in g.get("turns", []):
+            # Mulligans resolve before turn 1 and land in events_pregame.
+            pregame = [{"turn": 0, "events": g.get("events_pregame", [])}]
+            for t in pregame + g.get("turns", []):
                 for e in t.get("events", []):
                     raw = e.get("raw", "")
                     a = e.get("action")
@@ -55,9 +57,18 @@ def score(files: list[str]) -> dict:
                             blocks += 1
                         elif _NOBLOCK.search(raw):
                             declines += 1
+            # Agent self-telemetry (shim runs): authoritative for splits and
+            # added blocks — Forge's GameLog writes combat lines before the
+            # agent's adjustments, so log text under-reports them.
+            agent_split_turns = {(e.get("turn"), e.get("player"))
+                                 for e in g.get("agent_events", [])
+                                 if e.get("event") == "split"}
+            agent_blocks = sum(1 for e in g.get("agent_events", [])
+                               if e.get("event") == "added_block")
+            blocks += agent_blocks
             for turn, defs in defenders_by_turn.items():
                 attack_turns += 1
-                if len(defs) >= 2:
+                if len(defs) >= 2 or any(t == turn for t, _ in agent_split_turns):
                     split_turns += 1
             # Commander deploy: zones ground truth when present, else log text.
             seen: set[str] = set()

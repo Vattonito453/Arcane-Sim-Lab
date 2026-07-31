@@ -53,6 +53,7 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     entries: dict[int, list[dict]] = {}
     results: dict[int, dict] = {}
     zones: dict[int, list[dict]] = {}
+    agent_events: dict[int, list[dict]] = {}
 
     for line in text.splitlines():
         line = line.strip()
@@ -73,6 +74,9 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             zones.setdefault(r["game"], []).append(
                 {k: r[k] for k in ("turn", "card", "cardId", "from", "to",
                                    "fromPlayer", "toPlayer") if k in r})
+        elif rec == "agent":
+            agent_events.setdefault(r["game"], []).append(
+                {k: r[k] for k in ("turn", "player", "event", "detail") if k in r})
 
     # Rebuild the stdout Forge's sim mode would have printed.
     lines: list[str] = []
@@ -102,6 +106,9 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     for i, g in enumerate(game_order):
         if i < len(result["games"]):
             result["games"][i]["zones"] = zones.get(g, [])
+            # Agent self-telemetry: authoritative for agent behavior — the
+            # GameLog writes some combat lines before the agent's adjustments.
+            result["games"][i]["agent_events"] = agent_events.get(g, [])
     total_zones = sum(len(z) for z in zones.values())
     entries_bf = sum(1 for zz in zones.values() for z in zz if z.get("to") == "Battlefield")
     result["meta"]["zone_records"] = total_zones

@@ -520,6 +520,29 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .ck .lbl small { color: var(--ink-4); font-size: 12.5px; }
 .ck .res { margin-left: auto; }
 
+/* ── known combos (import) — one combo per row, payoff on the right ── */
+.combo-block { margin-top: 22px; }
+.combo-block .sh h2 { font-size: 14px; }
+.combo-block .sh h2 .st { font-size: 13.5px; }
+.combo-list { margin-top: 2px; }
+.combo-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  padding: 8px 0; border-top: 1px solid var(--hairline); font-size: 13px; min-width: 0; }
+.combo-row:last-child { border-bottom: 1px solid var(--hairline); }
+.combo-cards { color: var(--ink-2); min-width: 0; }
+.combo-cards b { color: var(--ink-1); font-weight: 600; }
+.combo-sep { color: var(--ink-4); }
+/* Violet is the analytics accent (§3) — payoff is a reading, not an action. */
+.combo-produces { flex: 0 0 auto; max-width: 38%; font: 400 var(--size-eyebrow)/1.4 var(--font-data);
+  letter-spacing: 0.06em; color: var(--arcane-violet-ink); text-align: right; }
+@media (max-width: 560px) {
+  .combo-row { flex-direction: column; gap: 2px; }
+  .combo-produces { max-width: none; text-align: left; }
+}
+.combo-more { display: block; margin-top: 8px; padding: 0; background: none; border: 0;
+  font: 500 12.5px var(--font-ui); color: var(--mana-cyan-ink); }
+.combo-more:hover { text-decoration: underline; }
+.combo-oneaway-h { margin-top: 14px; margin-bottom: 4px; }
+
 /* ── replay theater ── */
 .stage { display: grid; grid-template-columns: 1fr 330px; gap: 40px; align-items: start; }
 .theater { border: 1px solid var(--hairline-strong); border-radius: var(--r-action); overflow: hidden; background: var(--row-ground); }

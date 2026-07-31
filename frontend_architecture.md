@@ -126,8 +126,18 @@ a lawyer before public launch):
 - Oracle text: display via Scryfall data with attribution; don't bulk-republish.
 - Include the WotC Fan Content Policy notice; no WotC trademarks in the
   product name or branding; no implication of affiliation.
-- Forge stays server-side, unmodified, as a separate GPL process (also the
-  GPL-compliance posture).
+- **The GPL process boundary** (full statement: CLAUDE.md "Legal posture").
+  Forge runs server-side as a separate GPL-3.0 process. A thin GPL Java shim
+  that wraps `PlayerControllerAi` is permitted (it enables the §5 opponent
+  work), but it stays an adapter: decision policies, personality parameters,
+  and combo-line data cross into it as data, never as Java logic. Rationale:
+  the exit plan sells code we own exclusively; the AI/analysis layer must stay
+  engine-agnostic (an acquirer — WotC included — has a better rules engine
+  than Forge and would keep our layer, not the shim). Server-side use incurs
+  no GPL obligations; distributing a shim or forked-Forge binary requires
+  publishing that component's source.
+- Monetization order: passive ad revenue on free fan content first (the FCP's
+  most-tolerated form); any paid tier requires legal review beforehand.
 - No gameplay client, no card sales, no rehosted set images = the same posture
   as the long-tolerated deck-tool ecosystem.
 

@@ -65,6 +65,7 @@ export default function ImportPage() {
   const [busy, setBusy] = useState<"save" | "validate" | null>(null);
   const [resp, setResp] = useState<ImportResponse | null>(null);
   const [netErr, setNetErr] = useState<string | null>(null);
+  const [allCombos, setAllCombos] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setDebounced(text), 400);
@@ -365,53 +366,132 @@ export default function ImportPage() {
               )}
               {/* What the deck is trying to do, before a single game is simmed.
                   Known combos matter for reading results later: Forge's AI does
-                  not pilot loops, so a combo deck's win rate reads as a floor. */}
+                  not pilot loops, so a combo deck's win rate reads as a floor.
+                  One combo per row, payoff on the right, collapsed past six —
+                  17 combos as a run-on paragraph was unreadable. */}
               {resp?.ok && resp.combos?.status === "ok" && (
-                <div className="note">
-                  {(resp.combos.included?.length ?? 0) > 0 ? (
-                    <>
-                      <span className="st warn">
-                        <i />
-                        {plural(resp.combos.included?.length ?? 0, "known combo")} in this list
-                      </span>
-                      {resp.combos.included?.map((c) => (
-                        <span key={c.id} className="ctanote">
-                          {" "}· {c.cards.join(" + ")}
-                          {c.produces[0] ? ` (${c.produces[0].toLowerCase()})` : ""}
-                        </span>
-                      ))}
-                      <span className="ctanote">
-                        {" "}— sim win rates for this deck will be a floor, not a verdict:
-                        the AI assembles combos but rarely fires them.
-                      </span>
-                    </>
-                  ) : (
-                    <span className="ctanote">
-                      No known combos in this list
-                      {(resp.combos.almost_included ?? 0) > 0 && (
+                <div className="combo-block">
+                  {(() => {
+                    const combos = [...(resp.combos?.included ?? [])].sort(
+                      (a, b) =>
+                        (a.produces[0] ?? "").localeCompare(b.produces[0] ?? "") ||
+                        a.cards.length - b.cards.length,
+                    );
+                    const oneAway = resp.combos?.one_away ?? [];
+                    if (combos.length === 0) {
+                      return (
                         <>
-                          {" "}—{" "}
-                          <span className="mono">{resp.combos.almost_included}</span> are one
-                          card away (Commander Spellbook)
+                          <p className="note">
+                            No known combos in this list
+                            {(resp.combos?.almost_included ?? 0) > 0 && (
+                              <>
+                                {" "}—{" "}
+                                <span className="mono">{resp.combos?.almost_included}</span> are
+                                one card away (Commander Spellbook)
+                              </>
+                            )}
+                            .
+                          </p>
+                          {oneAway.length > 0 && (
+                            <div className="combo-list">
+                              {oneAway.map((o) => (
+                                <div key={o.missing} className="combo-row">
+                                  <span className="combo-cards">
+                                    <b>+ {o.missing}</b>
+                                    <span className="combo-sep"> unlocks </span>
+                                    <span className="mono">{o.unlocks}</span>
+                                    <span className="combo-sep">
+                                      {" "}
+                                      {o.unlocks === 1 ? "combo, e.g. " : "combos, e.g. "}
+                                    </span>
+                                    {o.example.join(" + ")}
+                                  </span>
+                                  {o.produces[0] && (
+                                    <span className="combo-produces">
+                                      {o.produces[0].toLowerCase()}
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </>
-                      )}
-                      .
-                    </span>
-                  )}
-                  {(resp.combos.one_away?.length ?? 0) > 0 && (
-                    <div className="ctanote">
-                      One swap away:
-                      {resp.combos.one_away?.map((o) => (
-                        <div key={o.missing}>
-                          + <b>{o.missing}</b> unlocks{" "}
-                          <span className="mono">{o.unlocks}</span>{" "}
-                          {o.unlocks === 1 ? "combo" : "combos"} — e.g.{" "}
-                          {o.example.join(" + ")}
-                          {o.produces[0] ? ` (${o.produces[0].toLowerCase()})` : ""}
+                      );
+                    }
+                    const shown = allCombos ? combos : combos.slice(0, 6);
+                    return (
+                      <>
+                        <div className="sh">
+                          <h2>
+                            <span className="st warn">
+                              <i />
+                              {plural(combos.length, "known combo")} in this list
+                            </span>
+                          </h2>
+                          <span className="meta">via Commander Spellbook</span>
                         </div>
-                      ))}
-                    </div>
-                  )}
+                        <p className="sdesc">
+                          Sim win rates for this deck will be a floor, not a verdict — the AI
+                          assembles combos but rarely fires them.
+                        </p>
+                        <div className="combo-list">
+                          {shown.map((c) => (
+                            <div key={c.id} className="combo-row" title={c.description}>
+                              <span className="combo-cards">
+                                {c.cards.map((card, i) => (
+                                  <span key={card}>
+                                    {i > 0 && <span className="combo-sep"> + </span>}
+                                    {card}
+                                  </span>
+                                ))}
+                              </span>
+                              {c.produces[0] && (
+                                <span className="combo-produces">
+                                  {c.produces[0].toLowerCase()}
+                                </span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        {combos.length > 6 && (
+                          <button
+                            className="combo-more"
+                            onClick={() => setAllCombos((v) => !v)}
+                          >
+                            {allCombos
+                              ? "Show fewer"
+                              : `Show all ${combos.length} combos`}
+                          </button>
+                        )}
+                        {oneAway.length > 0 && (
+                          <>
+                            <p className="sdesc combo-oneaway-h">One swap away:</p>
+                            <div className="combo-list">
+                              {oneAway.map((o) => (
+                                <div key={o.missing} className="combo-row">
+                                  <span className="combo-cards">
+                                    <b>+ {o.missing}</b>
+                                    <span className="combo-sep"> unlocks </span>
+                                    <span className="mono">{o.unlocks}</span>
+                                    <span className="combo-sep">
+                                      {" "}
+                                      {o.unlocks === 1 ? "combo, e.g. " : "combos, e.g. "}
+                                    </span>
+                                    {o.example.join(" + ")}
+                                  </span>
+                                  {o.produces[0] && (
+                                    <span className="combo-produces">
+                                      {o.produces[0].toLowerCase()}
+                                    </span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
               )}
               {resp?.ok && resp.saved === false && (

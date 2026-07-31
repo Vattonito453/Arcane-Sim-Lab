@@ -87,8 +87,10 @@ Consequences you must respect:
   to attack X` — and card names contain commas, so a reference list must be split
   on each `(instance id)`, never on commas. `board.py` `_refs()` and `replay.ts`
   `attackerNames()` implement the same rule; change them together.
-- There is no verbosity flag that fixes this, and **patching Forge is forbidden**
-  (see legal, below).
+- There is no verbosity flag that fixes this. Don't patch Forge for it either —
+  the sanctioned fix is the GPL shim driving `Match` programmatically, whose
+  typed `GameLog` (incl. `ZONE_CHANGE`, `MULLIGAN`) can replace stdout scraping
+  (see legal, below, and `training/forge_integration.md`).
 
 ### Sim results must be presented honestly
 
@@ -129,19 +131,51 @@ Mascot and mana pips are inline SVG (`web/components/Mascot.tsx`,
 `web/components/ManaPips.tsx`) — never raster exports, never emoji, never WotC
 mana symbols. Backdrop plates live in `web/public/art/`.
 
-### Legal posture — do not change these without a lawyer
+### Legal posture — two regimes, one bright line
 
-From `frontend_architecture.md` §5:
-- **No gameplay client.** A playable Magic experience competes with MTG Arena and
-  is the category WotC acts against. This tool analyses decks; it does not play.
-- **Forge stays a separate, unmodified process** invoked over its CLI. Do not
-  vendor, patch, or link Forge's code — that changes the GPL analysis.
+Two separate legal regimes apply and must never be conflated: **GPL** (Forge's
+license) and **WotC IP** (the Fan Content Policy). Forge's GPL cannot grant
+WotC rights; WotC's tolerance says nothing about GPL duties.
+
+**The GPL process boundary (posture set by Vincent, 2026-07-31).** Forge is
+GPL-3.0. The business goal is ad-funded revenue first, then an exit — and in an
+acquisition, buyers pay for code owned exclusively. GPL code can be sold but
+never exclusively (its copyright belongs to Forge's ~hundreds of contributors
+and it stays GPL for everyone), so **everything commercially valuable must live
+on our side of a process boundary**: the Python engine, the Next.js app,
+telemetry, coaching, the training corpus, and — critically — all AI decision
+*policies*. Rules that keep the boundary bright:
+
+- Java that links Forge (e.g. a `PlayerController` shim wrapping
+  `PlayerControllerAi`) is a GPL derivative. That is now **allowed**, but it
+  lives in its own repo/module under GPL-3.0 and stays a *thin adapter*:
+  personality params, combo lines, heuristic weights and anything clever cross
+  the boundary as data (JSON in, decisions out), never as Java logic. This
+  keeps the AI layer engine-agnostic — Arena's rules engine is better than
+  Forge, and an acquirer would retarget our analysis/AI layer onto their own
+  engine and discard the shim. Design for that.
+- Never vendor Forge or shim Java into this repo; the engine talks to them by
+  subprocess/CLI only. No in-process bridges (Py4J, JNI) into our code.
+- Distributing a modified Forge or a shim **binary** (public Docker image,
+  installer) requires publishing that component's source under GPL-3.0.
+  Running it server-side imposes nothing (GPL v3, not AGPL). Today the worker
+  image pulls the official Forge release verbatim — zero obligations.
+- Prefer upstream PRs to Card-Forge over carrying a fork; any fork we do carry
+  must be public from day one.
+- GPL non-compliance is the only path where Forge contributors could ever
+  claim money from us. Compliance is cheap; keep it boring.
+
+**The WotC side (confirm with a lawyer before public launch):**
+- **No gameplay client.** A playable Magic experience competes with MTG Arena
+  and is the category WotC acts against. This tool analyses decks; it does not
+  play. The humanized sim AI is batch-only, server-side; no user ever plays it.
 - **Card images are hotlinked from Scryfall**, never rehosted. Oracle text is
   displayed with attribution, not bulk-republished.
 - Keep the WotC Fan Content notice in the footer; no WotC trademarks in the
   product name or domain; imply no affiliation.
-- **A paid tier needs legal review first.** The Fan Content Policy permits fan
-  content but not commercialising WotC IP.
+- **Monetization order matters.** Passive ad revenue on free fan content is
+  what the Fan Content Policy most plainly tolerates. Paywalls, subscriptions,
+  or any paid tier are the risky category — legal review first.
 - `rules/raw/` and `rules/kb/` contain WotC Comprehensive Rules text. Fine in a
   private repo; **strip them before making this repo public.**
 

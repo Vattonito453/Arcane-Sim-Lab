@@ -17,10 +17,15 @@ Tier 1 — product value, no infra dependencies
   01-coaching-pipeline.md      the flagship feature; the product is a sim viewer without it
   02-telemetry-ui.md           deck_telemetry.py has no UI; small and high-value
   03-rules-assistant.md        retrieval already exists; needs generation + cache
+  07-humanlike-agent.md        CRITICAL for sim credibility — deck-plan-driven GPL shim,
+                               staged (skeleton → mulligans/plan → combat → politics)
+  08-goldfish-mode.md          deck speed/consistency vs an inert opponent; v1 needs
+                               nothing new, v2 wants 07's Stage 0
 
 Tier 2 — needed for multi-host scale (do when Tier 1 saturates one box)
   04-postgres-queue.md         unlocks workers on separate machines
   05-object-storage.md         moves 2.6 MB result files off the app host
+  09-multi-format.md           Pauper/Standard/etc; mostly plumbing + per-format calibration
 
 Tier 3 — needed for open signup
   06-accounts-and-quotas.md    replaces shared API keys with per-user identity
@@ -41,9 +46,11 @@ Don't rebuild these. See `deploy_plan.md` for the measurements.
 ## What is deliberately NOT here
 
 - **Playable game client.** Out of scope permanently; see `CLAUDE.md` legal.
-- **Patching or linking Forge.** Same.
-- **Paid tier.** Needs legal review before any code.
-- **Board snapshots via Forge's Java API.** Blocked on GPL review, not on effort.
+- **Patching Forge.** Still out — but *linking* it from a separate GPL shim is
+  now allowed under the 2026-07-31 posture (CLAUDE.md "Legal posture"); that
+  work is task 07, and it also unlocks board snapshots via the typed GameLog.
+- **Paid tier.** Needs legal review before any code. (Ad revenue is the
+  sanctioned first monetization — see CLAUDE.md.)
 
 ## Definition of done, for every task
 

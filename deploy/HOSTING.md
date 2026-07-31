@@ -126,7 +126,17 @@ gcloud compute instances create simlab   --zone=us-central1-a --machine-type=e2-
 gcloud compute firewall-rules create simlab-web   --allow=tcp:80 --target-tags=simlab-web --description="Sim Lab playtest"
 ```
 
-3. Ship the repo to the VM. It is private, so copy it rather than cloning:
+3. Get the repo onto the VM. Since 2026-07-31 it lives at
+   `github.com/Vattonito453/Arcane-Sim-Lab` (private) and the VM has a
+   **read-only deploy key** (`~/.ssh/github_deploy`), so clone it:
+
+```bash
+git clone git@github.com:Vattonito453/Arcane-Sim-Lab.git ~/simlab
+```
+
+The tarball route this replaced (kept for reference, e.g. bootstrapping a VM
+before a deploy key exists — `COPYFILE_DISABLE=1` is mandatory or AppleDouble
+`._*` sidecars ship and break `GET /decks`, which is how the first deploy died):
 
 ```bash
 cd "/Users/vincentattonito/Desktop/Personal" && COPYFILE_DISABLE=1 tar czf /tmp/simlab.tgz --exclude='MtG Rules Engine/web/node_modules'   --exclude='MtG Rules Engine/web/.next*' --exclude='MtG Rules Engine/engine/sim_results'   --exclude='MtG Rules Engine/.git' --exclude='MtG Rules Engine/deploy/.env' --exclude='*.zip' "MtG Rules Engine" && gcloud compute scp /tmp/simlab.tgz simlab:~ --zone=us-central1-a
@@ -188,9 +198,20 @@ Do that before collecting anything resembling accounts (tasks/06).
 ```bash
 docker compose --env-file .env logs -f worker    # watch sims execute
 docker compose --env-file .env up -d --scale worker=2   # e2-standard-4 only
-docker compose --env-file .env up -d --build web        # redeploy front end after changes
 docker system prune -f                                   # reclaim old image layers
 ```
+
+**Deploying changes** — commit, push to GitHub, then one command (deploys only
+what is on `origin/main`, so nothing uncommitted can reach the VM):
+
+```bash
+gcloud compute ssh simlab --zone=us-central1-a --command='~/simlab/deploy/redeploy.sh web'
+```
+
+`redeploy.sh` with no argument rebuilds the whole stack (needed when
+engine/worker code changes, not just `web/`). Rollback: on the VM,
+`git -C ~/simlab checkout <commit>` then re-run the compose build; return to
+tracking with `git checkout main`.
 
 Two constraints inherited from the engine (see CLAUDE.md): scale **workers**,
 not the api — rate limits are in-process, so two api replicas double every

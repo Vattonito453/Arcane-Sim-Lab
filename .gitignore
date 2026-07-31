@@ -20,6 +20,9 @@ engine/jobs.db-*
 # Scryfall cache. Rebuild with: python3 engine/cards.py warm <result>.json
 engine/card_cache.json
 card_cache.json
+# Commander Spellbook combo cache. Rebuilt per deck on demand (combos.py).
+engine/combo_cache.json
+combo_cache.json
 
 # ── simulation output (large, regenerable) ───────────────────────────────
 # ~108 MB of raw Forge logs and adapted results. Regenerate by running a sim.

@@ -1,8 +1,8 @@
 /** Engine API client. Base URL is runtime-configurable per API_SPEC.md:
  *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
 import type {
-  DeckEntry, ImportResponse, JobStatus, LiveGame, ResultIndexEntry, RunGame,
-  RunSummary, SimResult,
+  AnalysisReport, DeckEntry, ImportResponse, JobStatus, LiveGame,
+  ResultIndexEntry, RunGame, RunSummary, SimResult,
 } from "./types";
 
 export function apiBase(): string {
@@ -103,6 +103,9 @@ export const api = {
       `/results/${encodeURIComponent(file)}/game/${n}${snapshots ? "?snapshots=1" : ""}`,
       { cache: "force-cache" },
     ),
+  /** Wincon report: win methods + combo assembly/conversion. Immutable. */
+  analysis: (file: string) =>
+    get<AnalysisReport>(`/analysis/${encodeURIComponent(file)}`, { cache: "force-cache" }),
   /** Whole run including every event log. Prefer runSummary/runGame. */
   result: (file: string) => get<SimResult>(`/results/${encodeURIComponent(file)}`),
   simulate: (decks: string[], games: number) =>

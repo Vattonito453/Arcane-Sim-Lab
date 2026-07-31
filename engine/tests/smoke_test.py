@@ -152,6 +152,22 @@ def main() -> int:
         st, oob = call(base, f"/results/{enc}/game/99999")
         check("out-of-range game number is 404", oob is not None and st == 404, f"status {st}")
 
+        # Wincon analysis: win methods always classify; combo detection depends
+        # on Spellbook reachability, so only its PRESENCE is asserted.
+        st, an = call(base, f"/analysis/{enc}", timeout=180)
+        ok_an = check("GET /analysis/{file} is 200", st == 200, str(an)[:120])
+        if ok_an and isinstance(an, dict):
+            methods = (an.get("summary") or {}).get("methods") or {}
+            check("analysis classifies every game",
+                  sum(methods.values()) == (an.get("summary") or {}).get("games"),
+                  str(methods))
+            check("analysis carries per-deck combo status",
+                  bool(an.get("decks")) and all("combo_status" in d
+                                                for d in an["decks"].values()))
+            check("analysis states its inference ceiling", "inferred" in (an.get("note") or ""))
+        st, _ = call(base, "/analysis/..%2f..%2fetc%2fpasswd")
+        check("analysis blocks path traversal", st in (400, 404), f"status {st}")
+
     print("\nguards")
     st, _ = call(base, "/no-such-endpoint")
     check("unknown endpoint is 404", st == 404, f"status {st}")

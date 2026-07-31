@@ -14,7 +14,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Chrome, Footer } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
-import type { RunGameSummary, RunSummary } from "@/lib/types";
+import type { AnalysisReport, RunGameSummary, RunSummary } from "@/lib/types";
 import { deckSlug, pct, plural, runTitle, stripAi } from "@/lib/format";
 
 function fmtClock(ms: number): string {
@@ -72,6 +72,7 @@ export default function ResultsPage() {
   const file = decodeURIComponent(String(params?.file ?? ""));
 
   const [data, setData] = useState<RunSummary | null>(null);
+  const [an, setAn] = useState<AnalysisReport | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [wait, setWait] = useState<number | null>(null);
   const [q, setQ] = useState("");
@@ -90,6 +91,10 @@ export default function ResultsPage() {
           setErr(e instanceof Error ? e.message : String(e));
         }
       });
+    // Wincon analysis loads separately and the page works without it — the
+    // first request for an old run computes it server-side, which can take a
+    // few seconds, and a failure just means no Win conditions section.
+    api.analysis(file).then((r) => live && setAn(r)).catch(() => {});
     return () => {
       live = false;
     };
@@ -306,6 +311,107 @@ export default function ResultsPage() {
           </p>
         </section>
 
+        {an && Object.values(an.decks).some((d) => d.combos.length > 0 || d.combo_status === "unknown") && (
+          <section>
+            <div className="sh">
+              <h2>Win conditions</h2>
+              <span className="meta">
+                known combos via Commander Spellbook · assembly inferred from the event log
+              </span>
+            </div>
+            <div className="tblwrap">
+              <table className="games">
+                <thead>
+                  <tr>
+                    <th>Deck</th>
+                    <th>Combo</th>
+                    <th className="r">Assembled</th>
+                    <th className="r">Converted</th>
+                    <th>Reading</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(an.decks).flatMap(([name, d]) => {
+                    if (d.combo_status === "unknown") {
+                      return [
+                        <tr key={`${name}-unknown`}>
+                          <td>{name}</td>
+                          <td colSpan={4} className="ctanote">
+                            combos unknown — Spellbook was unreachable when this was analysed
+                          </td>
+                        </tr>,
+                      ];
+                    }
+                    if (d.combos.length === 0) {
+                      return [
+                        <tr key={`${name}-none`}>
+                          <td>{name}</td>
+                          <td colSpan={4} className="ctanote">
+                            no known combos in the 99
+                            {d.almost_included > 0 && (
+                              <> · <span className="mono">{d.almost_included}</span> one card away</>
+                            )}
+                          </td>
+                        </tr>,
+                      ];
+                    }
+                    return d.combos.map((c) => {
+                      // The reading is the product: does this deck's win rate
+                      // mean anything, or is the AI the bottleneck?
+                      const fired = c.converted_games > 0;
+                      const stuck = c.assembled_games > 0 && !fired;
+                      return (
+                        <tr key={`${name}-${c.id}`}>
+                          <td>{name}</td>
+                          <td title={c.produces.join(", ")}>{c.cards.join(" + ")}</td>
+                          <td className="r mono">
+                            {c.assembled_games} of {c.games_played}
+                            {c.median_assembled_turn != null && <> (T{c.median_assembled_turn})</>}
+                          </td>
+                          <td className="r mono">{c.converted_games}</td>
+                          <td>
+                            {fired ? (
+                              <span className="st win">
+                                <i />
+                                AI can fire this — results meaningful
+                              </span>
+                            ) : stuck ? (
+                              <span className="st warn">
+                                <i />
+                                assembled, never fired — win rate is a floor
+                              </span>
+                            ) : (
+                              <span className="st loss">
+                                <i />
+                                never assembled in this run
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    });
+                  })}
+                </tbody>
+              </table>
+              <p className="note">
+                Assembled counts games where every piece was on the battlefield at once, from board
+                reconstruction — an inference, not a read. Converted means that seat then won.
+                {Object.values(an.decks).some((d) => d.combos.some((c) => c.idle_online_turns > 0)) && (
+                  <>
+                    {" "}Combos here sat fully online{" "}
+                    <span className="mono">
+                      {Object.values(an.decks).reduce(
+                        (a, d) => a + d.combos.reduce((x, c) => x + c.idle_online_turns, 0), 0)}
+                    </span>{" "}
+                    turns without winning — Forge&apos;s AI does not pilot loops, so treat those decks&apos;
+                    numbers as a floor, not a verdict.
+                  </>
+                )}
+              </p>
+            </div>
+          </section>
+        )}
+
         <section>
           <div className="sh">
             <h2>Games</h2>
@@ -367,7 +473,21 @@ export default function ResultsPage() {
                     </td>
                     <td className="mono">T{g.endedTurn}</td>
                     <td className="dur">{fmtClock(g.durationMs)}</td>
-                    <td>{g.decidedBy}</td>
+                    <td>
+                    {g.decidedBy}
+                    {(() => {
+                      // The summary can only say who won and when; the analysis
+                      // knows HOW. Only annotate the non-default methods.
+                      const m = an?.games.find((x) => x.n === g.n);
+                      if (!m || m.method === "combat damage / life loss" || m.method === "not recorded")
+                        return null;
+                      return (
+                        <span className="ctanote">
+                          {" "}— {m.method === "spell" ? `won by ${m.detail}` : m.method}
+                        </span>
+                      );
+                    })()}
+                  </td>
                     <td className="r">
                       <Link
                         className="bl"

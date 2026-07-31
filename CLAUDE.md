@@ -22,6 +22,8 @@ engine/            Python, stdlib only, no frameworks
   board.py           battlefield reconstruction + accuracy report
   deck_telemetry.py  win-con support metrics (no UI yet)
   shuffle_check.py   proves Forge shuffles; early-play rate vs the maths
+  combos.py          known combos in a deck (Commander Spellbook, disk-cached)
+  analysis.py        win methods + combo assembled-vs-converted per run
   convert_decklist.py  decklist text -> validated .dck
   tests/             test_adapter.py (unit) + smoke_test.py (live API) + fixtures/
 rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)
@@ -151,7 +153,7 @@ cached on disk. A warm cache makes zero network calls. Never loop single lookups
 ```bash
 # Engine
 python3 engine/tests/test_adapter.py                          # must print ALL ASSERTIONS PASSED
-python3 engine/tests/smoke_test.py --sim                      # needs the API up; 29 checks
+python3 engine/tests/smoke_test.py --sim                      # needs the API up; 34 checks
                                                               # --sim runs real Forge (~40 s)
 python3 engine/board.py engine/tests/fixtures/sim_sample.json --no-fetch
                                                               # exit_match_rate must not regress

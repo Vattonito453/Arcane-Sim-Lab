@@ -34,10 +34,11 @@ Scryfall cache, and 30+ real simulation results in `engine/sim_results/`.
 python3 engine/tests/smoke_test.py --sim
 ```
 
-29 checks, ~40 s. Without `--sim` it is 23 checks and ~2 s. It exercises the rules
-KB, deck listing, the results index, run summaries, single-game payloads, `/cards`,
-three path-traversal probes, and the three ways `POST /simulate` should refuse a
-bad request — then queues a real 2-game Forge run and follows it through to a
+34 checks, ~40 s. Without `--sim` it is 28 checks and a few seconds. It exercises
+the rules KB, deck listing, the results index, run summaries, single-game
+payloads, `/cards`, the wincon analysis endpoint, path-traversal probes on both
+results and analysis, and the three ways `POST /simulate` should refuse a bad
+request — then queues a real 2-game Forge run and follows it through to a
 readable result file.
 
 Point it anywhere, including at a deployment:
@@ -87,6 +88,11 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    included, and the baseline marker reads 25% for four decks / 33.3% for three.
    If a 3-deck run ever shows "1 deck" and a 100% baseline again, the summary lost
    its winless seats — see `summarize()` in `engine/forge_log_adapter.py`.
+   Below the rates, **Win conditions**: which known combos each deck contains
+   (Commander Spellbook), how often all pieces were on the battlefield at once,
+   and whether that seat then won. "Assembled 2 of 16, converted 0" is the honest
+   reading that a combo deck's win rate is a floor. Import shows the same
+   detection the moment a deck is pasted.
 4. **Replay.** Top-down table: seats around a centre line, each seat's creatures
    pinned to the middle edge, real Scryfall card faces, identical copies collapsed
    into one tile with a count (`Zombie Token 44`). Attackers get a red ring and an

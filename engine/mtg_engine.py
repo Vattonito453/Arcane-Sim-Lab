@@ -21,6 +21,7 @@ zero-dependency API. Use it three ways:
                                   ?snapshots=1 adds board_snapshot events
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
        GET  /board/{file}         board-reconstruction accuracy report
+       GET  /analysis/{file}      wincon report: win methods, combo assembly/conversion
        POST /simulate             {"decks":[...], "games":N, "deck_dir":"..."} -> sim JSON
        POST /decks                {"name":..., "text":..., "commander"?} -> validated .dck
 """
@@ -390,6 +391,46 @@ def _read_live(job_id: str, n: int | None = None) -> dict:
             "in_progress": live, "bytes": len(text)}
 
 
+def _read_analysis(name: str, fetch: bool = True) -> dict:
+    """GET /analysis/{file} — wincon report for a finished run.
+
+    Result files never change, so the report is computed once and cached beside
+    them ("analysis_<file>"; _list_results globs sim_*.json, so no collision).
+    First computation may make one Spellbook POST per previously-unseen deck;
+    everything after that is disk reads.
+    """
+    result = _read_result(name)          # validates the name against traversal
+    cache = RESULTS_DIR / f"analysis_{name}"
+    src = RESULTS_DIR / name
+    if cache.is_file() and cache.stat().st_mtime >= src.stat().st_mtime:
+        return json.loads(cache.read_text(encoding="utf-8"))
+    import analysis
+    result.setdefault("file", name)
+    rep = analysis.analyse(result, fetch=fetch)
+    try:
+        cache.write_text(json.dumps(rep, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass                              # read-only volume: serve uncached
+    return rep
+
+
+def _deck_combos(content: str) -> dict:
+    """Combo block for an import response. Never fatal — the deck is already
+    saved, and 'unknown' is an honest answer when Spellbook is unreachable."""
+    try:
+        import combos
+        main, commanders = combos.parse_dck(content)
+        found = combos.find_combos(main, commanders)
+        if found is None:
+            return {"status": "unknown"}
+        return {"status": "ok",
+                "included": found["included"],
+                "almost_included": len(found["almost_included"])}
+    except Exception as e:  # noqa: BLE001
+        sys.stderr.write(f"combo lookup skipped: {e}\n")
+        return {"status": "unknown"}
+
+
 def _cards_lookup(names: list[str], fetch: bool = True) -> dict:
     """Scryfall facts for the UI: type lines, P/T, mana cost, oracle text, art."""
     import cards
@@ -426,7 +467,8 @@ def _import_deck(payload: dict) -> dict:
         IMPORTED_DECKS.mkdir(parents=True, exist_ok=True)
         (IMPORTED_DECKS / slug).write_text(content, encoding="utf-8")
     return {"ok": True, "file": slug, "saved": saved, "report": report,
-            "cards_cached": _warm_card_cache(content)}
+            "cards_cached": _warm_card_cache(content),
+            "combos": _deck_combos(content)}
 
 
 def _deck_card_names(dck: str) -> list[str]:
@@ -647,6 +689,14 @@ def serve(port: int = 8484) -> None:
                         return self._send({"error": "pass ?names=a|b|c"}, 400)
                     fetch = q.get("fetch", ["1"])[0] not in ("0", "", "false")
                     return self._send(_cards_lookup(names, fetch=fetch))
+                if parts[0] == "analysis" and len(parts) > 1:
+                    fetch = q.get("fetch", ["1"])[0] not in ("0", "", "false")
+                    try:
+                        return self._send(_read_analysis(parts[1], fetch=fetch),
+                                          cache="public, max-age=31536000, immutable")
+                    except (FileNotFoundError, ValueError):
+                        # ValueError is the traversal guard — same 404 as /results.
+                        return self._send({"error": "no such result"}, 404)
                 if parts[0] == "board" and len(parts) > 1:
                     import board
                     try:

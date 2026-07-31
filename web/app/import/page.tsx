@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
 import type { ImportResponse } from "@/lib/types";
+import { plural } from "@/lib/format";
 import { Chrome, Footer } from "@/components/Chrome";
 
 const SOURCES = ["Paste a list", "Moxfield URL", "Archidekt URL", "Upload .dck"];
@@ -342,6 +343,43 @@ export default function ImportPage() {
                     Run a gauntlet with it →
                   </Link>
                 </p>
+              )}
+              {/* What the deck is trying to do, before a single game is simmed.
+                  Known combos matter for reading results later: Forge's AI does
+                  not pilot loops, so a combo deck's win rate reads as a floor. */}
+              {resp?.ok && resp.combos?.status === "ok" && (
+                <div className="note">
+                  {(resp.combos.included?.length ?? 0) > 0 ? (
+                    <>
+                      <span className="st warn">
+                        <i />
+                        {plural(resp.combos.included?.length ?? 0, "known combo")} in this list
+                      </span>
+                      {resp.combos.included?.map((c) => (
+                        <span key={c.id} className="ctanote">
+                          {" "}· {c.cards.join(" + ")}
+                          {c.produces[0] ? ` (${c.produces[0].toLowerCase()})` : ""}
+                        </span>
+                      ))}
+                      <span className="ctanote">
+                        {" "}— sim win rates for this deck will be a floor, not a verdict:
+                        the AI assembles combos but rarely fires them.
+                      </span>
+                    </>
+                  ) : (
+                    <span className="ctanote">
+                      No known combos in this list
+                      {(resp.combos.almost_included ?? 0) > 0 && (
+                        <>
+                          {" "}—{" "}
+                          <span className="mono">{resp.combos.almost_included}</span> are one
+                          card away (Commander Spellbook)
+                        </>
+                      )}
+                      .
+                    </span>
+                  )}
+                </div>
               )}
               {resp?.ok && resp.saved === false && (
                 <p className="note">Validated only — nothing was saved to the engine.</p>

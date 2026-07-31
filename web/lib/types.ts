@@ -115,6 +115,57 @@ export interface LiveGame {
   bytes: number;
 }
 
+/** One known combo, from Commander Spellbook via the engine's cache. */
+export interface KnownCombo {
+  id: string;
+  cards: string[];
+  produces: string[];
+  description: string;
+  mana_needed: string;
+  prerequisites: string;
+}
+
+/** GET /analysis/{file} — how games ended and how each deck's combos fared. */
+export interface ComboGame {
+  n: number;
+  pieces: Record<string, number | null>;
+  assembled_turn: number | null;
+  online_turns: number;
+  won: boolean;
+}
+
+export interface AnalysedCombo extends KnownCombo {
+  games: ComboGame[];
+  games_played: number;
+  assembled_games: number;
+  converted_games: number;
+  median_assembled_turn: number | null;
+  idle_online_turns: number;
+}
+
+export interface AnalysisDeck {
+  deck_file: string;
+  combo_status: "ok" | "unknown";
+  combos: AnalysedCombo[];
+  almost_included: number;
+}
+
+export interface AnalysisGame {
+  n: number;
+  winner: string | null;
+  ended_turn: number;
+  method: string;
+  detail: string;
+}
+
+export interface AnalysisReport {
+  file: string | null;
+  games: AnalysisGame[];
+  decks: Record<string, AnalysisDeck>;
+  summary: { games: number; methods: Record<string, number> };
+  note: string;
+}
+
 export interface ImportReport {
   deck: string;
   commander: string;
@@ -125,12 +176,20 @@ export interface ImportReport {
   sideboard_dropped: number;
 }
 
+export interface DeckCombos {
+  status: "ok" | "unknown";
+  included?: KnownCombo[];
+  almost_included?: number;
+}
+
 export interface ImportResponse {
   ok: boolean;
   error?: string;
   file?: string;
   saved?: boolean;
   report?: ImportReport;
+  cards_cached?: number;
+  combos?: DeckCombos;
 }
 
 export interface RuleHit {

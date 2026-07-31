@@ -91,15 +91,27 @@ which is what disguised the Forge failure above as an idle container.
 Forge runs with `-Xmx4g` and its JVM peaks near 5 GB resident. Games are
 single-threaded; game count parallelises across workers, one game does not.
 
-| Machine | RAM | Fits | Fully-used cost (us-central1, on demand) |
+| Machine | RAM | Fits | Running (us-central1, on demand) |
 |---|---|---|---|
-| e2-standard-2 | 8 GB | web + api + **1 worker** | ~$49/mo, ~$0.067/hr |
-| e2-standard-4 | 16 GB | web + api + **2 workers** | ~$98/mo, ~$0.134/hr |
+| e2-standard-2 | 8 GB | web + api + **1 worker** | ~$0.067/hr → ~$49/mo if never stopped |
+| e2-standard-4 | 16 GB | web + api + **2 workers** | ~$0.134/hr → ~$98/mo if never stopped |
 
-Start with e2-standard-2. **Stop the VM when nobody is playtesting** — a
-stopped instance bills only its disk (~$2/mo for 40 GB); `gcloud compute
-instances stop/start` takes seconds and the containers restart themselves
-(`restart: unless-stopped`). Prices are ballpark; check the calculator.
+**Billing is per hour in the RUNNING state, not per simulation.** An idle VM
+costs the same as a busy one — there is no usage metering here, unlike a
+serverless product. So the only lever is stopping it:
+
+```bash
+gcloud compute instances stop simlab --zone=us-central1-a     # ~$4/mo, disk only
+gcloud compute instances start simlab --zone=us-central1-a    # back in ~30 s
+```
+
+Data survives on the boot disk and the containers come back by themselves
+(`restart: unless-stopped`). A stopped instance bills only that disk: ~$4/mo for
+40 GB pd-balanced, or ~$1.60/mo if created with `--boot-disk-type=pd-standard`.
+
+Realistic pattern — 10 hours of playtesting a week: 43 hrs x $0.067 = ~$2.90
+compute + ~$4 disk = **~$7/mo**, comfortably inside the $300 trial credit. Start
+with e2-standard-2. Figures are list prices; confirm on the GCP calculator.
 
 ### Steps only you can do (accounts and money)
 

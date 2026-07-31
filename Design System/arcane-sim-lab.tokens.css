@@ -1,0 +1,310 @@
+/* ==========================================================================
+   ARCANE SIM LAB — Design Tokens v1.0
+   Source of truth: Arcane_Sim_Lab_Design_System.md
+   Drop into :root. Every value below is canonical; do not hardcode hexes.
+   ========================================================================== */
+
+:root {
+  /* ---- Base & surface ------------------------------------------------- */
+  --bg-void:              #0D0F12;
+  --surface-obsidian:     #161B22;
+  --surface-instrument:   #111827;              /* tally banner, metallic bars */
+  --panel-glass:          rgba(15, 20, 28, 0.85); /* data panel over art */
+  --panel-blur:           blur(12px);
+  --panel-border:         rgba(56, 189, 248, 0.25);
+  --bar-instrument:       rgba(10, 13, 18, 0.86); /* tally bar, account pill */
+  --row-ground:           rgba(255, 255, 255, 0.035);
+  --row-ground-hover:     rgba(255, 255, 255, 0.06);
+  --surface-raised:       #1C2230;
+  --hairline:             rgba(148, 163, 184, 0.12);
+  --hairline-strong:      rgba(148, 163, 184, 0.22);
+  /* Backdrop stack — MANDATORY, in this order: art, scrim, vignette.
+     Two shipped plates (1448x1086, painted):
+       art/backdrop-hedron-ruins.png  — DEFAULT for app screens. Storm-lit
+         Dominaria ruins, glowing hedrons, dark base. Pairs with --backdrop-scrim.
+       art/backdrop-argent-spires.png — ALT, splash / marketing only. Daylit
+         capital: bright and busy, so it REQUIRES --backdrop-scrim-heavy.
+     --atmosphere sits UNDER the art so a failed load still reads as sky. */
+  --backdrop-art:     url("art/backdrop-hedron-ruins.png");
+  --backdrop-art-alt: url("art/backdrop-argent-spires.png");
+  --atmosphere: radial-gradient(120% 80% at 50% 8%,
+      #2C4A63 0%, #1B2E42 32%, #121C29 58%, #0D0F12 100%);
+  --atmosphere-leylines:
+      radial-gradient(45% 30% at 26% 16%, rgba(0,229,255,0.20), transparent 70%),
+      radial-gradient(40% 26% at 74% 12%, rgba(168,85,247,0.20), transparent 70%),
+      radial-gradient(60% 34% at 50% 30%, rgba(56,189,248,0.12), transparent 72%);
+  --backdrop-scrim: linear-gradient(180deg,
+      rgba(11,14,19,0.30), rgba(11,14,19,0.62) 55%, rgba(11,14,19,0.86));
+  /* For bright / high-detail plates (--backdrop-art-alt). Applied by
+     .backdrop--bright. Never use the light scrim under daylit art. */
+  --backdrop-scrim-heavy: linear-gradient(180deg,
+      rgba(11,14,19,0.58), rgba(11,14,19,0.80) 50%, rgba(11,14,19,0.94));
+  --backdrop-vignette: radial-gradient(ellipse 78% 68% at 50% 42%,
+      transparent 40%, rgba(13,15,18,0.60) 100%);
+
+  /* ---- Interaction accents (UI ONLY — never identity) ----------------- */
+  --mana-cyan:            #00E5FF;              /* primary CTA, active, live */
+  --mana-cyan-ink:        #7FF2FF;              /* cyan as text on void */
+  --arcane-violet:        #A855F7;              /* secondary accent, borders */
+  --arcane-violet-ink:    #C89BFA;              /* violet as text — 7.4:1 */
+  /* The bar is its own text scrim. Stops are ABSOLUTE, never percentages:
+     a percentage dark zone shrinks with the bar and slides out from under
+     the label. Do not brighten the first stop — in-row labels sit there. */
+  --winrate-fill: linear-gradient(90deg,
+      rgba(11,52,62,0.96) 0px, rgba(11,52,62,0.96) 165px,
+      rgba(45,212,191,0.68) 250px, rgba(103,232,249,0.94) 430px);
+  --winrate-fill-bare: linear-gradient(90deg,      /* no label on it */
+      rgba(45,212,191,0.55), rgba(103,232,249,0.90));
+  --text-shadow-on-fill: 0 1px 3px rgba(3, 10, 14, 0.85);
+  --label-budget: 165px;   /* the dark zone. Longer labels truncate. */
+  --glow-cyan:            0 0 15px rgba(0, 229, 255, 0.5);
+  --glow-cyan-strong:     0 0 24px rgba(0, 229, 255, 0.65);
+  --glow-violet:          0 0 15px rgba(168, 85, 247, 0.4);
+
+  /* ---- Ink ------------------------------------------------------------ */
+  --ink-max:              #FFFFFF;              /* 19.3:1 — winners, emphasis */
+  --ink-1:                #E6EDF3;              /* 15.1:1 — headings */
+  --ink-2:                #C3CEDA;              /* 10.8:1 — rows, body */
+  --ink-3:                #A9B7C6;              /*  9.0:1 — sim subtext */
+  --ink-4:                #7A8899;              /*  4.9:1 — FLOOR. footer */
+  --ink-on-fill:          #0B1418;              /* 11.4:1 on the BRIGHT end */
+  /* Nothing dimmer than --ink-4 may ever carry text.
+     In-row labels stay in the normal ramp + --text-shadow-on-fill, because
+     --winrate-fill is dark where they sit. Use --ink-on-fill only for a
+     label deliberately placed past ~60% of a fill. */
+
+  /* ---- Mana pips — data only, never controls -------------------------- */
+  /* Rendered as a filled disc + DISTINCT inset silhouette (see §05).
+     Disc colour alone never carries identity. */
+  --pip-w: #F5E9C8;  --pip-w-core: #B08D3F;   /* bone disc, gold core */
+  --pip-u: #67B7E8;  --pip-u-core: #0E3A5C;   /* teardrop */
+  --pip-b: #A855F7;  --pip-b-core: #2E1065;   /* void core */
+  --pip-r: #EF4444;  --pip-r-core: #7F1D1D;   /* flame */
+  --pip-g: #10B981;  --pip-g-core: #064E3B;   /* tree */
+  --pip-size-inline: 15px;   /* beside a deck name */
+  --pip-size-seat:   17px;   /* in a sim seat strip */
+
+  /* ---- Tally banner icon badges --------------------------------------- */
+  --badge-sun:   rgba(245, 158, 11, 0.14);
+  --badge-water: rgba(0, 229, 255, 0.12);
+  --badge-skull: rgba(168, 85, 247, 0.14);
+  --badge-combo: rgba(45, 212, 191, 0.12);
+
+  /* ---- Rarity --------------------------------------------------------- */
+  --rarity-common:        #94A3B8;
+  --rarity-uncommon:      #2DD4BF;
+  --rarity-rare:          #F59E0B;
+  --rarity-mythic:        #F97316;
+
+  /* ---- Semantic state ------------------------------------------------- */
+  --state-running:        var(--mana-cyan);
+  --state-queued:         var(--ink-4);
+  --state-done:           #10B981;
+  --state-failed:         #EF4444;
+  --state-failed-ink:     #FCA5A5;
+
+  /* ---- Type ----------------------------------------------------------- */
+  --font-display:  "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-ui:       "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-data:     "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --size-logo:     28px;   --lh-logo:   1.1;   --ls-logo:   0.08em;
+  --size-h1:       34px;   --lh-h1:     1.12;  --ls-h1:    -0.01em;
+  --size-h2:       19px;   --lh-h2:     1.25;  /* SANS, not serif */
+  --size-cta:      18px;   --lh-cta:    1.15;  /* two lines, uppercase */
+  --size-data:     13px;   --lh-data:   1.4;
+  --size-body:     15px;   --lh-body:   1.65;
+  --size-meta:     12px;   --lh-meta:   1.55;
+  --size-eyebrow:  11px;   --ls-eyebrow: 0.16em;
+
+  /* ---- Space (8pt base) ----------------------------------------------- */
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 24px;  --sp-6: 32px;  --sp-7: 48px;  --sp-8: 64px;  --sp-9: 96px;
+
+  --gutter:        40px;
+  --max-width:     1280px;
+  --row-h:         64px;   /* deck row */
+  --row-gap:        8px;
+  --action-h:      78px;   /* action-hub button */
+  --control-h:     44px;   /* input, account pill */
+
+  /* ---- Radius --------------------------------------------------------- */
+  --r-fill:    6px;    /* win-rate fill */
+  --r-control: 8px;    /* inputs, deck rows */
+  --r-action: 12px;    /* action buttons, tally bar */
+  --r-panel:  16px;    /* glass data panel */
+  --r-pill:  999px;
+
+  /* ---- Focus (WCAG 2.4.7) --------------------------------------------- */
+  --focus-ring:   2px solid var(--mana-cyan);
+  --focus-offset: 2px;
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease:          cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast:      120ms;
+  --dur-base:      200ms;
+  --dur-tally:     1400ms;  /* rolling counter settle */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-tally: 0ms; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   PRIMITIVES
+   ========================================================================== */
+
+.glass-panel {
+  background: var(--panel-glass);
+  backdrop-filter: var(--panel-blur) saturate(120%);
+  -webkit-backdrop-filter: var(--panel-blur) saturate(120%);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--r-panel);
+}
+
+/* Full-bleed art + mandatory scrim + vignette. Every screen starts here.
+   Markup: <div class="backdrop"><img class="backdrop__art" …></div> */
+/* NOTE: supersedes source spec §3.2. Do NOT put the Unsplash URL from that
+   rule on body/.app-root — wrong subject, external hotlink, and Unsplash
+   requires visible attribution. Ship --backdrop-art instead.
+   background-attachment:fixed is likewise dropped (unreliable on iOS, costly
+   repaints) — use .backdrop--app for the same locked-scene effect. */
+.backdrop { position: absolute; inset: 0; overflow: hidden;
+  background: var(--atmosphere); }
+.backdrop--app { position: fixed; z-index: 0; }
+/* Bright plate: heavier scrim + desaturated art so the UI still wins. */
+.backdrop--bright::after { background: var(--backdrop-scrim-heavy),
+  var(--backdrop-vignette); }
+.backdrop--bright .backdrop__art { filter: saturate(72%) brightness(84%); }
+.backdrop::before { content: ""; position: absolute; inset: 0;
+  background: var(--atmosphere-leylines); }
+.backdrop::after  { content: ""; position: absolute; inset: 0;
+  background: var(--backdrop-scrim), var(--backdrop-vignette);
+  pointer-events: none; }
+.backdrop__art { position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 0; }
+
+/* Mana badges — spec §5.1. Ringed disc + inset silhouette, never emoji,
+   never a WotC mana circle. Inline SVG only; do not recolour by CSS. */
+.mana-badge { flex: none; display: block; }
+.mana-badge--inline { width: 18px; height: 18px; }   /* beside a deck name */
+.mana-badge--seat   { width: 20px; height: 20px; }   /* sim seat strip */
+.mana-badge--legend { width: 44px; height: 44px; }
+
+/* Masthead mascot — spec §2.2, inline SVG, 200px, above the wordmark. */
+.masthead-robot-mascot { display: block;
+  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.55)); }
+
+/* Action hub — four EQUAL footprints; border + glow do the ranking.
+   Labels wrap to two lines rather than shrinking. Icon 26px, always left. */
+.action-btn {
+  display: flex; align-items: center; gap: 14px;
+  min-height: var(--action-h); padding: 0 20px;
+  border-radius: var(--r-action);
+  font: 700 var(--size-cta)/var(--lh-cta) var(--font-ui);
+  text-transform: uppercase; color: var(--ink-max);
+  border: 1.5px solid var(--hairline-strong);
+  background: rgba(13, 17, 23, 0.82);
+  transition: box-shadow var(--dur-base) var(--ease),
+              border-color var(--dur-base) var(--ease);
+}
+.action-btn:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+
+.action-btn--primary {
+  background: linear-gradient(180deg, rgba(0,229,255,0.16), rgba(8,20,26,0.82));
+  border-color: var(--mana-cyan);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
+}
+.action-btn--primary:hover { box-shadow: 0 0 26px rgba(0, 229, 255, 0.55); }
+
+.action-btn--violet {
+  background: linear-gradient(180deg, rgba(168,85,247,0.16), rgba(18,10,28,0.82));
+  border-color: var(--arcane-violet);
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.28);
+}
+.action-btn--violet:hover { box-shadow: 0 0 26px rgba(168, 85, 247, 0.45); }
+
+.action-btn--blue {
+  background: linear-gradient(180deg, rgba(56,189,248,0.12), rgba(9,17,26,0.82));
+  border-color: rgba(56, 189, 248, 0.6);
+}
+.action-btn--blue:hover { border-color: #38BDF8; }
+
+.action-btn--neutral:hover { border-color: var(--ink-3); }
+
+.field-label {
+  display: block;
+  font: 500 var(--size-meta)/1.4 var(--font-ui);
+  color: var(--ink-2);
+  margin-bottom: var(--sp-2);
+}
+.field-input {
+  width: 100%; height: var(--control-h);
+  padding: 0 var(--sp-4); box-sizing: border-box;
+  font: 400 var(--size-body)/1 var(--font-ui);
+  color: var(--ink-1);
+  background: var(--surface-obsidian);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-control);
+}
+.field-input::placeholder { color: var(--ink-4); }
+.field-input:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset);
+  border-color: var(--mana-cyan); }
+.field-input[aria-invalid="true"] { border-color: var(--state-failed); }
+.field-hint  { margin-top: var(--sp-2); font: 400 var(--size-meta)/var(--lh-meta) var(--font-ui); color: var(--ink-4); }
+.field-error { margin-top: var(--sp-2); font: 400 var(--size-meta)/var(--lh-meta) var(--font-ui); color: var(--state-failed-ink); }
+
+/* Deck row — THE BAR IS THE ROW. A full-height fill sits behind the deck
+   name, width = win %. Length is the chart; the panel needs no axis. */
+.deck-row {
+  display: grid; grid-template-columns: 52px 1fr 60px; gap: 14px;
+  align-items: center; min-height: var(--row-h);
+  border-radius: var(--r-control);
+  background: var(--row-ground);
+  transition: background var(--dur-fast) var(--ease);
+}
+.deck-row:hover { background: var(--row-ground-hover); }
+.deck-row:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+
+.deck-row__thumb {
+  width: 52px; height: var(--row-h);
+  border-radius: var(--r-control) 0 0 var(--r-control);   /* flush left, no inset */
+  background: repeating-linear-gradient(135deg, #2A3341 0 5px, #1B2230 5px 10px);
+}
+.deck-row__body { position: relative; align-self: stretch;
+  display: flex; flex-direction: column; justify-content: center; }
+.deck-row__fill {
+  position: absolute; inset: 0 auto 0 0;
+  border-radius: var(--r-fill);
+  background: var(--winrate-fill);   /* width set inline, = win % */
+}
+/* Both labels stay inside --label-budget so they never reach the bright stop. */
+.deck-row__name { position: relative; font-size: 16px; font-weight: 500;
+  color: var(--ink-max); text-shadow: var(--text-shadow-on-fill);
+  max-width: var(--label-budget);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck-row__meta { position: relative; font-size: 13px; margin-top: 3px;
+  color: var(--ink-2); text-shadow: var(--text-shadow-on-fill);
+  max-width: var(--label-budget);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck-row__pct {
+  font: 600 17px var(--font-ui); color: var(--ink-max);
+  text-align: right; padding-right: 14px;      /* OUTSIDE the fill */
+}
+
+/* Slim track — progress/status only, never a win rate */
+.progress-track {
+  position: relative; height: 6px; border-radius: var(--r-pill);
+  background: rgba(148, 163, 184, 0.14); overflow: hidden;
+}
+.progress-fill { position: absolute; inset: 0 auto 0 0;
+  border-radius: var(--r-pill); background: var(--winrate-fill-bare); }
+.progress-track--queued {   /* no fill drawn for work not started */
+  background: repeating-linear-gradient(90deg,
+    rgba(148,163,184,0.22) 0 7px, transparent 7px 14px);
+}

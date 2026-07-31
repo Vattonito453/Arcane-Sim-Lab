@@ -189,9 +189,18 @@ def _list_decks() -> list[dict]:
         for f in sorted(d.glob("*.dck")):
             if f.name in decks:
                 continue          # first match wins: imported shadows bundled
+            # AppleDouble sidecars: macOS tar emits "._name.dck" for any file
+            # carrying extended attributes, and they extract as real files on
+            # Linux. They are binary metadata, not decklists.
+            if f.name.startswith("._"):
+                continue
             name = f.stem
             try:
-                for line in f.read_text(encoding="utf-8").splitlines():
+                # errors="replace" on purpose: one deck file in a foreign
+                # encoding must not take down the whole deck list. This endpoint
+                # returned a 500 for all 29 decks because a single unreadable
+                # sidecar raised UnicodeDecodeError.
+                for line in f.read_text(encoding="utf-8", errors="replace").splitlines():
                     if line.startswith("Name="):
                         name = line[5:].strip()
                         break

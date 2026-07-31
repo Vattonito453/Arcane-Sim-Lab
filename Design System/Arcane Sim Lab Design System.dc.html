@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#0B0E13;font-family:"Space Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:#7FF2FF;text-decoration:none}
+a:hover{color:#00E5FF}
+::selection{background:#00E5FF;color:#0D0F12}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+
+<div style="max-width:1400px;margin:0 auto;padding:0 40px 120px">
+
+<div style="display:flex;align-items:center;justify-content:space-between;height:72px;border-bottom:1px solid rgba(148,163,184,.12)">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="font:700 16px/1 Cinzel,serif;letter-spacing:.08em;color:#E6EDF3;text-transform:uppercase">Arcane Sim Lab</span>
+<span style="font-size:15px;color:#3A4552">/</span>
+<span style="font-size:14px;color:#94A3B8">Design system</span>
+</div>
+<span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">v1.3 · art assets built</span>
+</div>
+
+<div style="padding:80px 0 0;max-width:82ch">
+<div style="font:400 11px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#7A8899;text-transform:uppercase">Foundations · Commander / EDH simulation</div>
+<h1 style="margin:22px 0 0;font:600 50px/1.08 Cinzel,serif;letter-spacing:-.01em;color:#FFFFFF">Arcane Sim Lab</h1>
+<p style="margin:22px 0 0;font-size:17px;line-height:1.65;color:#C3CEDA">Documented from the live build. Content floats on translucent glass over full-bleed Dominaria art; the wordmark is the only serif on the page; cyan is the only thing that glows. Win rates are read as <em>length</em> — a gradient bar that fills the row itself.</p>
+<p style="margin:18px 0 0;font-size:14px;line-height:1.65;color:#7A8899">Tokens: <span style="font:400 13px 'JetBrains Mono',monospace;color:#94A3B8">arcane-sim-lab.tokens.css</span> · build rules for Claude Code: <span style="font:400 13px 'JetBrains Mono',monospace;color:#94A3B8">DESIGN_SYSTEM.md</span> · source: <span style="font:400 13px 'JetBrains Mono',monospace;color:#94A3B8">Arcane_Sim_Lab_Design_System.md</span>. Ratios measured against <span style="font:400 13px 'JetBrains Mono',monospace;color:#94A3B8">#0D0F12</span>.</p>
+</div>
+
+<div style="margin-top:72px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="1" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">01</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Canonical screen</span><span style="font-size:13.5px;color:#7A8899">home, logged in — drop the real art into the slots</span></div>
+
+<div style="margin-top:24px;overflow-x:auto;border-radius:16px;border:1px solid rgba(148,163,184,.18)">
+<div style="width:1280px;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 8%,#2C4A63 0%,#1B2E42 32%,#121C29 58%,#0D0F12 100%)"></div>
+<div style="position:absolute;inset:0;background:radial-gradient(45% 30% at 26% 16%,rgba(0,229,255,.20),transparent 70%),radial-gradient(40% 26% at 74% 12%,rgba(168,85,247,.20),transparent 70%),radial-gradient(60% 34% at 50% 30%,rgba(56,189,248,.12),transparent 72%)"></div>
+<div style="position:absolute;inset:0"><image-slot id="asl-backdrop" shape="rect" fit="cover" src="art/backdrop-hedron-ruins.png" placeholder="Dominaria backdrop — drop a replacement here"></image-slot></div>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,14,19,.30),rgba(11,14,19,.62) 55%,rgba(11,14,19,.86));pointer-events:none"></div>
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse 78% 68% at 50% 42%,transparent 40%,rgba(13,15,18,.60) 100%);pointer-events:none"></div>
+
+<div style="position:relative;padding:0 0 44px">
+
+<div style="display:flex;justify-content:flex-end;padding:20px 26px 0">
+<a href="#01" style="display:flex;align-items:center;gap:10px;height:44px;padding:0 16px 0 8px;border-radius:10px;background:rgba(13,17,23,.78);border:1px solid rgba(148,163,184,.22)" style-hover="border-color:rgba(0,229,255,.5)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#2A3341"></circle><circle cx="12" cy="9.6" r="3.4" fill="#94A3B8"></circle><path d="M5.6 20a6.8 6.8 0 0 1 12.8 0" fill="#94A3B8"></path></svg>
+<span style="font-size:15px;color:#E6EDF3">Account</span>
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+</a>
+</div>
+
+<div style="display:flex;flex-direction:column;align-items:center;margin-top:-4px;padding:0 26px">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="200" height="200" style="display:block;filter:drop-shadow(0 8px 28px rgba(0,0,0,.55))">
+<defs>
+<linearGradient id="brassMetallic" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F59E0B"></stop><stop offset="50%" stop-color="#D97706"></stop><stop offset="100%" stop-color="#78350F"></stop></linearGradient>
+<radialGradient id="arcaneCyanGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#00E5FF" stop-opacity="1"></stop><stop offset="70%" stop-color="#00E5FF" stop-opacity="0.4"></stop><stop offset="100%" stop-color="#00E5FF" stop-opacity="0"></stop></radialGradient>
+</defs>
+<circle cx="60" cy="45" r="38" fill="url(#arcaneCyanGlow)" opacity="0.6"></circle>
+<circle cx="60" cy="45" r="28" stroke="#00E5FF" stroke-width="1.5" stroke-dasharray="3,3" fill="none" opacity="0.8"></circle>
+<rect x="36" y="22" width="48" height="42" rx="14" fill="url(#brassMetallic)" stroke="#FDE68A" stroke-width="2"></rect>
+<circle cx="32" cy="43" r="5" fill="#D97706" stroke="#78350F" stroke-width="1.5"></circle>
+<circle cx="88" cy="43" r="5" fill="#D97706" stroke="#78350F" stroke-width="1.5"></circle>
+<rect x="42" y="32" width="36" height="16" rx="8" fill="#0D0F12" stroke="#00E5FF" stroke-width="1"></rect>
+<ellipse cx="50" cy="40" rx="4" ry="5" fill="#00E5FF"></ellipse>
+<ellipse cx="70" cy="40" rx="4" ry="5" fill="#00E5FF"></ellipse>
+<circle cx="51" cy="38" r="1.5" fill="#FFFFFF"></circle>
+<circle cx="71" cy="38" r="1.5" fill="#FFFFFF"></circle>
+<path d="M 48 54 Q 60 62 72 54" stroke="#F59E0B" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+<path d="M 40 68 L 80 68 L 76 92 L 44 92 Z" fill="url(#brassMetallic)" stroke="#78350F" stroke-width="1.5"></path>
+<circle cx="60" cy="80" r="6" fill="#00E5FF" opacity="0.9"></circle>
+<rect x="42" y="70" width="12" height="18" rx="2" fill="#1E293B" stroke="#00E5FF" stroke-width="1" transform="rotate(-20 48 79)"></rect>
+<rect x="54" y="67" width="12" height="18" rx="2" fill="#1E293B" stroke="#A855F7" stroke-width="1" transform="rotate(0 60 76)"></rect>
+<rect x="66" y="70" width="12" height="18" rx="2" fill="#1E293B" stroke="#EF4444" stroke-width="1" transform="rotate(20 72 79)"></rect>
+<circle cx="42" cy="82" r="4" fill="#D97706"></circle>
+<circle cx="78" cy="82" r="4" fill="#D97706"></circle>
+</svg>
+<h2 style="margin:-6px 0 0;font:700 clamp(34px,4.2vw,56px)/1 Cinzel,serif;letter-spacing:.06em;color:#FFFFFF;text-transform:uppercase;text-shadow:0 2px 24px rgba(0,0,0,.7)">Arcane Sim Lab</h2>
+</div>
+
+<div style="max-width:1240px;margin:0 auto;padding:0 26px">
+<div style="display:flex;align-items:stretch;border-radius:12px;background:rgba(10,13,18,.86);border:1px solid rgba(148,163,184,.26);overflow:hidden">
+<div style="flex:1;display:flex;align-items:center;gap:12px;padding:14px 18px">
+<span style="width:34px;height:34px;border-radius:8px;background:rgba(245,158,11,.14);display:flex;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg></span>
+<span style="font-size:16px;color:#E6EDF3"><strong style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF">52,365</strong> decks tested</span>
+</div>
+<span style="width:1px;background:rgba(148,163,184,.22)"></span>
+<div style="flex:1;display:flex;align-items:center;gap:12px;padding:14px 18px">
+<span style="width:34px;height:34px;border-radius:8px;background:rgba(0,229,255,.12);display:flex;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" stroke-width="1.5"></circle><path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF"></path></svg></span>
+<span style="font-size:16px;color:#E6EDF3"><strong style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF">343,621</strong> games simulated</span>
+</div>
+<span style="width:1px;background:rgba(148,163,184,.22)"></span>
+<div style="flex:1;display:flex;align-items:center;gap:12px;padding:14px 18px">
+<span style="width:34px;height:34px;border-radius:8px;background:rgba(168,85,247,.14);display:flex;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg></span>
+<span style="font-size:16px;color:#E6EDF3"><strong style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF">32,013</strong> commanders used</span>
+</div>
+<span style="width:1px;background:rgba(148,163,184,.22)"></span>
+<div style="flex:1;display:flex;align-items:center;gap:12px;padding:14px 18px">
+<span style="width:34px;height:34px;border-radius:8px;background:rgba(45,212,191,.12);display:flex;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#08201E" stroke="#2DD4BF" stroke-width="1.5"></circle><path d="M12 5 19 12 12 19 5 12Z" fill="none" stroke="#2DD4BF" stroke-width="1.4" stroke-linejoin="round"></path><path d="M12 8.6 15.4 12 12 15.4 8.6 12Z" fill="#5EEAD4"></path></svg></span>
+<span style="font-size:16px;color:#E6EDF3"><strong style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF">1,121</strong> infinite combos detected</span>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:center;gap:0;margin-top:-1px">
+<span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(148,163,184,.3))"></span>
+<a href="#01" style="padding:7px 20px;border:1px solid rgba(148,163,184,.26);border-top:none;border-radius:0 0 10px 10px;background:rgba(10,13,18,.86);font-size:14px;color:#C3CEDA" style-hover="color:#00E5FF">Calculators &amp; Tools</a>
+<span style="flex:1;height:1px;background:linear-gradient(270deg,transparent,rgba(148,163,184,.3))"></span>
+</div>
+
+<div style="text-align:center;margin-top:30px;font-size:22px;color:#E6EDF3;text-shadow:0 1px 12px rgba(0,0,0,.5)">What would you like to do today?</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:24px">
+<a href="#01" style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,rgba(0,229,255,.16),rgba(8,20,26,.82));border:1.5px solid #00E5FF;box-shadow:0 0 18px rgba(0,229,255,.35)" style-hover="box-shadow:0 0 26px rgba(0,229,255,.55)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="#00E5FF" style="flex:none"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12Z"></path></svg>
+<span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Run new<br>simulation</span>
+</a>
+<a href="#01" style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,rgba(168,85,247,.16),rgba(18,10,28,.82));border:1.5px solid #A855F7;box-shadow:0 0 18px rgba(168,85,247,.28)" style-hover="box-shadow:0 0 26px rgba(168,85,247,.45)">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C89BFA" stroke-width="2" stroke-linecap="round" style="flex:none"><path d="M5 20V9M12 20V4M19 20v-7"></path></svg>
+<span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Sim history<br>&amp; analytics</span>
+</a>
+<a href="#01" style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,rgba(56,189,248,.12),rgba(9,17,26,.82));border:1.5px solid rgba(56,189,248,.6)" style-hover="border-color:#38BDF8">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3v11m-4.5-4.5L12 14l4.5-4.5M4 19h16"></path></svg>
+<span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Import deck</span>
+</a>
+<a href="#01" style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:rgba(13,17,23,.82);border:1.5px solid rgba(148,163,184,.34)" style-hover="border-color:#94A3B8">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C3CEDA" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+<span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Explore<br>decklists</span>
+</a>
+</div>
+
+<div style="margin-top:26px;padding:26px 28px;border-radius:16px;background:rgba(15,20,28,.85);border:1px solid rgba(56,189,248,.25);backdrop-filter:blur(12px);display:grid;grid-template-columns:1fr 1fr;gap:40px">
+
+<div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<span style="display:flex;align-items:baseline;gap:10px"><span style="font-size:19px;font-weight:600;color:#FFFFFF">Top decklists</span><span style="font-size:15px;color:#8FA0B3">most run</span></span>
+<a href="#01" style="font-size:15px;color:#C3CEDA" style-hover="color:#00E5FF">All 29</a>
+</div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+
+<a href="#01" style="display:grid;grid-template-columns:52px 1fr 60px;gap:14px;align-items:center;min-height:64px;border-radius:8px;background:rgba(255,255,255,.035)" style-hover="background:rgba(255,255,255,.06)">
+<span style="width:52px;height:64px;border-radius:8px 0 0 8px;background:repeating-linear-gradient(135deg,#2A3341 0 5px,#1B2230 5px 10px)"></span>
+<span style="position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+<span style="position:absolute;inset:0 auto 0 0;width:69%;border-radius:6px;background:linear-gradient(90deg,rgba(11,52,62,.96) 0px,rgba(11,52,62,.96) 165px,rgba(45,212,191,.68) 250px,rgba(103,232,249,.94) 430px)"></span>
+<span style="position:relative;display:flex;align-items:center;gap:8px"><span style="font-size:16px;color:#FFFFFF;font-weight:500;text-shadow:0 1px 3px rgba(3,10,14,.85)">Krenko Goblins</span><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg></span>
+<span style="position:relative;font-size:13px;color:#C3CEDA;margin-top:3px;text-shadow:0 1px 3px rgba(3,10,14,.85)">6 runs</span>
+</span>
+<span style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF;text-align:right;padding-right:14px">69%</span>
+</a>
+
+<a href="#01" style="display:grid;grid-template-columns:52px 1fr 60px;gap:14px;align-items:center;min-height:64px;border-radius:8px;background:rgba(255,255,255,.035)" style-hover="background:rgba(255,255,255,.06)">
+<span style="width:52px;height:64px;border-radius:8px 0 0 8px;background:repeating-linear-gradient(135deg,#2A3341 0 5px,#1B2230 5px 10px)"></span>
+<span style="position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+<span style="position:absolute;inset:0 auto 0 0;width:52%;border-radius:6px;background:linear-gradient(90deg,rgba(11,52,62,.96) 0px,rgba(11,52,62,.96) 165px,rgba(45,212,191,.68) 250px,rgba(103,232,249,.94) 430px)"></span>
+<span style="position:relative;display:flex;align-items:center;gap:8px"><span style="font-size:16px;color:#FFFFFF;font-weight:500;text-shadow:0 1px 3px rgba(3,10,14,.85)">Drana Vampires</span><span style="display:flex;gap:4px"><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg></span></span>
+<span style="position:relative;font-size:13px;color:#C3CEDA;margin-top:3px;text-shadow:0 1px 3px rgba(3,10,14,.85)">11 runs</span>
+</span>
+<span style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF;text-align:right;padding-right:14px">52%</span>
+</a>
+
+<a href="#01" style="display:grid;grid-template-columns:52px 1fr 60px;gap:14px;align-items:center;min-height:64px;border-radius:8px;background:rgba(255,255,255,.035)" style-hover="background:rgba(255,255,255,.06)">
+<span style="width:52px;height:64px;border-radius:8px 0 0 8px;background:repeating-linear-gradient(135deg,#2A3341 0 5px,#1B2230 5px 10px)"></span>
+<span style="position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+<span style="position:absolute;inset:0 auto 0 0;width:38%;border-radius:6px;background:linear-gradient(90deg,rgba(11,52,62,.96) 0px,rgba(11,52,62,.96) 165px,rgba(45,212,191,.68) 250px,rgba(103,232,249,.94) 430px)"></span>
+<span style="position:relative;display:flex;align-items:center;gap:8px"><span style="font-size:16px;color:#FFFFFF;font-weight:500;text-shadow:0 1px 3px rgba(3,10,14,.85)">Kilo Helm Final</span><span style="display:flex;gap:4px"><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg></span></span>
+<span style="position:relative;font-size:13px;color:#C3CEDA;margin-top:3px;text-shadow:0 1px 3px rgba(3,10,14,.85)">14 runs</span>
+</span>
+<span style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF;text-align:right;padding-right:14px">38%</span>
+</a>
+
+<a href="#01" style="display:grid;grid-template-columns:52px 1fr 60px;gap:14px;align-items:center;min-height:64px;border-radius:8px;background:rgba(255,255,255,.035)" style-hover="background:rgba(255,255,255,.06)">
+<span style="width:52px;height:64px;border-radius:8px 0 0 8px;background:repeating-linear-gradient(135deg,#2A3341 0 5px,#1B2230 5px 10px)"></span>
+<span style="position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+<span style="position:absolute;inset:0 auto 0 0;width:31%;border-radius:6px;background:linear-gradient(90deg,rgba(11,52,62,.96) 0px,rgba(11,52,62,.96) 165px,rgba(45,212,191,.68) 250px,rgba(103,232,249,.94) 430px)"></span>
+<span style="position:relative;display:flex;align-items:center;gap:8px"><span style="font-size:16px;color:#FFFFFF;font-weight:500;text-shadow:0 1px 3px rgba(3,10,14,.85)">Wilhelt Zombies B3</span><span style="display:flex;gap:4px"><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" stroke-width="1.5"></circle><path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg></span></span>
+<span style="position:relative;font-size:13px;color:#C3CEDA;margin-top:3px;text-shadow:0 1px 3px rgba(3,10,14,.85)">9 runs</span>
+</span>
+<span style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF;text-align:right;padding-right:14px">31%</span>
+</a>
+
+<a href="#01" style="display:grid;grid-template-columns:52px 1fr 60px;gap:14px;align-items:center;min-height:64px;border-radius:8px;background:rgba(255,255,255,.035)" style-hover="background:rgba(255,255,255,.06)">
+<span style="width:52px;height:64px;border-radius:8px 0 0 8px;background:repeating-linear-gradient(135deg,#2A3341 0 5px,#1B2230 5px 10px)"></span>
+<span style="position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+<span style="position:absolute;inset:0 auto 0 0;width:29%;border-radius:6px;background:linear-gradient(90deg,rgba(11,52,62,.96) 0px,rgba(11,52,62,.96) 165px,rgba(45,212,191,.68) 250px,rgba(103,232,249,.94) 430px)"></span>
+<span style="position:relative;display:flex;align-items:center;gap:8px"><span style="font-size:16px;color:#FFFFFF;font-weight:500;text-shadow:0 1px 3px rgba(3,10,14,.85)">Wyleth Voltron B3</span><span style="display:flex;gap:4px"><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg></span></span>
+<span style="position:relative;font-size:13px;color:#C3CEDA;margin-top:3px;text-shadow:0 1px 3px rgba(3,10,14,.85)">8 runs</span>
+</span>
+<span style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF;text-align:right;padding-right:14px">29%</span>
+</a>
+
+</div>
+</div>
+
+<div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<span style="display:flex;align-items:baseline;gap:10px"><span style="font-size:19px;font-weight:600;color:#FFFFFF">Most recent sims</span><span style="font-size:15px;color:#8FA0B3">52 finished</span></span>
+<a href="#01" style="font-size:15px;color:#C3CEDA" style-hover="color:#00E5FF">All results</a>
+</div>
+<div style="margin-top:16px;display:flex;flex-direction:column">
+
+<a href="#01" style="display:block;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)" style-hover="background:rgba(255,255,255,.03)">
+<span style="display:block;font-size:16px;color:#FFFFFF">Kilo vs Wilhelt vs Wyleth vs Drana</span>
+<span style="display:block;margin-top:6px;font-size:14px;color:#A9B7C6"><strong style="color:#E6EDF3;font-weight:600">Wyleth Voltron B3 50%</strong> · 4 games · 8 d ago</span>
+<span style="display:flex;gap:6px;margin-top:9px">
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" stroke-width="1.5"></circle><path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#0B261A" stroke="#10B981" stroke-width="1.5"></circle><path d="M12 4 C8 8 6 12 6 16 h12 C18 12 16 8 12 4 Z" fill="#34D399"></path><line x1="12" y1="9" x2="12" y2="18" stroke="#0B261A" stroke-width="1.5"></line></svg>
+</span>
+</a>
+
+<a href="#01" style="display:block;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)" style-hover="background:rgba(255,255,255,.03)">
+<span style="display:block;font-size:16px;color:#FFFFFF">Kilo Omega vs Meren vs Kilo Alpha vs Kilo Helm Final</span>
+<span style="display:block;margin-top:6px;font-size:14px;color:#A9B7C6"><strong style="color:#E6EDF3;font-weight:600">Meren Graveyard B3 100%</strong> · 1 game · 1 d ago</span>
+<span style="display:flex;gap:6px;margin-top:9px">
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" stroke-width="1.5"></circle><path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg>
+</span>
+</a>
+
+<a href="#01" style="display:block;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)" style-hover="background:rgba(255,255,255,.03)">
+<span style="display:block;font-size:16px;color:#FFFFFF">Inspirit B3 vs Inspirit B3 v3 vs Dnide vs Drana</span>
+<span style="display:block;margin-top:6px;font-size:14px;color:#A9B7C6"><strong style="color:#E6EDF3;font-weight:600">Drana Vampires 38%</strong> · 16 games · 1 d ago</span>
+<span style="display:flex;gap:6px;margin-top:9px">
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" stroke-width="1.5"></circle><path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#0B261A" stroke="#10B981" stroke-width="1.5"></circle><path d="M12 4 C8 8 6 12 6 16 h12 C18 12 16 8 12 4 Z" fill="#34D399"></path><line x1="12" y1="9" x2="12" y2="18" stroke="#0B261A" stroke-width="1.5"></line></svg>
+</span>
+</a>
+
+<a href="#01" style="display:block;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)" style-hover="background:rgba(255,255,255,.03)">
+<span style="display:block;font-size:16px;color:#FFFFFF">Krenko Goblins vs Torbran Burn B3</span>
+<span style="display:block;margin-top:6px;font-size:14px;color:#A9B7C6"><strong style="color:#E6EDF3;font-weight:600">Krenko Goblins 100%</strong> · 1 game · 1 d ago</span>
+<span style="display:flex;gap:6px;margin-top:9px">
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" stroke-width="1.5"></circle><path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF"></path></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg>
+<svg width="20" height="20" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg>
+</span>
+</a>
+
+<a href="#01" style="display:block;padding:14px 0" style-hover="background:rgba(255,255,255,.03)">
+<span style="display:block;font-size:16px;color:#FFFFFF">Atraxa vs Dnide vs Drana vs Inspirit</span>
+<span style="display:block;margin-top:6px;font-size:14px;color:#A9B7C6"><strong style="color:#E6EDF3;font-weight:600">Dnide Wildsear 100%</strong> · 2 games · 1 d ago</span>
+</a>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#7A8899;max-width:88ch">Rendered at its true 1280px design width — it scrolls rather than squeezing, because the component's legibility depends on real column proportions. Both image slots are live — drag the backdrop plate and the mascot cut-out onto them and they persist. The scrim above the art is <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">linear-gradient(180deg, .30 → .62 → .86)</span>: light at the sky so the hedrons read, heavy at the base so the data panel never fights the ruins.</p>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="2" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">02</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Corrections to the written spec</span></div>
+<p style="margin:12px 0 0;font-size:14px;line-height:1.65;color:#94A3B8;max-width:84ch">Five places where the build differs from <span style="font:400 13px 'JetBrains Mono',monospace">Arcane_Sim_Lab_Design_System.md</span>. The build wins — these are now canon in the tokens and rules files.</p>
+<div style="margin-top:22px;border-top:1px solid rgba(148,163,184,.22)">
+<div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:10px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span style="font-size:12px;color:#7A8899">Element</span><span style="font-size:12px;color:#7A8899">Spec said</span><span style="font-size:12px;color:#7A8899">Build does — canon</span></div>
+<div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:15px 0;border-bottom:1px solid rgba(148,163,184,.12);align-items:start"><span style="font-size:14px;color:#E6EDF3">Section headers</span><span style="font-size:13px;line-height:1.6;color:#94A3B8">Serif, 16–18pt semi-bold</span><span style="font-size:13px;line-height:1.6;color:#C3CEDA"><strong style="color:#FFFFFF;font-weight:600">Sans, 19px, 600.</strong> Serif is the wordmark only — one serif moment per page keeps it ceremonial.</span></div>
+<div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:15px 0;border-bottom:1px solid rgba(148,163,184,.12);align-items:start"><span style="font-size:14px;color:#E6EDF3">Win-rate gauge</span><span style="font-size:13px;line-height:1.6;color:#94A3B8">Progress bar inside each deck card</span><span style="font-size:13px;line-height:1.6;color:#C3CEDA"><strong style="color:#FFFFFF;font-weight:600">The bar is the row.</strong> A full-height teal→cyan fill behind the deck name, width = win %. Length is the chart.</span></div>
+<div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:15px 0;border-bottom:1px solid rgba(148,163,184,.12);align-items:start"><span style="font-size:14px;color:#E6EDF3">Tally counters</span><span style="font-size:13px;line-height:1.6;color:#94A3B8">Emoji + figure + stacked label</span><span style="font-size:13px;line-height:1.6;color:#C3CEDA"><strong style="color:#FFFFFF;font-weight:600">Inline.</strong> Rounded icon badge, then “<strong style="color:#FFFFFF;font-weight:600">52,365</strong> decks tested” on one line, hairline dividers between.</span></div>
+<div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:15px 0;border-bottom:1px solid rgba(148,163,184,.12);align-items:start"><span style="font-size:14px;color:#E6EDF3">Action buttons</span><span style="font-size:13px;line-height:1.6;color:#94A3B8">12–14pt all-caps, 44px tall</span><span style="font-size:13px;line-height:1.6;color:#C3CEDA"><strong style="color:#FFFFFF;font-weight:600">78px tall, 18px caps, two lines, icon left.</strong> Four equal footprints; only the border colour and glow rank them.</span></div>
+<div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:15px 0;border-bottom:1px solid rgba(148,163,184,.12);align-items:start"><span style="font-size:14px;color:#E6EDF3">Calculators &amp; Tools</span><span style="font-size:13px;line-height:1.6;color:#94A3B8">Not in the spec</span><span style="font-size:13px;line-height:1.6;color:#C3CEDA"><strong style="color:#FFFFFF;font-weight:600">A notch tab</strong> hanging off the tally bar's bottom edge, flanked by fading hairlines. Document it or it gets rebuilt wrong.</span></div>
+<div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:24px;padding:15px 0;align-items:start"><span style="font-size:14px;color:#E6EDF3">Page background</span><span style="font-size:13px;line-height:1.6;color:#94A3B8">§3.2 — <span style="font:400 12px 'JetBrains Mono',monospace">body</span> background-image with a hardcoded Unsplash URL, plus <span style="font:400 12px 'JetBrains Mono',monospace">background-attachment:&nbsp;fixed</span></span><span style="font-size:13px;line-height:1.6;color:#C3CEDA"><strong style="color:#FFFFFF;font-weight:600">The <span style="font:400 12px 'JetBrains Mono',monospace">.backdrop</span> primitive + a shipped local plate.</strong> The spec's URL is <strong style="color:#FFFFFF;font-weight:600">superseded</strong> — see <a href="#13">§13</a> for the three reasons. Parallax intent is kept by making <span style="font:400 12px 'JetBrains Mono',monospace">.backdrop</span> position-fixed, not by <span style="font:400 12px 'JetBrains Mono',monospace">background-attachment</span>.</span></div>
+</div>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="3" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">03</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Ink</span><span style="font-size:13.5px;color:#7A8899">measured on the scrimmed backdrop, not on flat void</span></div>
+<div style="margin-top:22px;border-top:1px solid rgba(148,163,184,.22)">
+<div style="display:grid;grid-template-columns:44px 130px 1fr 280px 84px;gap:20px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span></span><span style="font-size:12px;color:#7A8899">Token</span><span style="font-size:12px;color:#7A8899">Sample</span><span style="font-size:12px;color:#7A8899">Use</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:#7A8899;text-align:right">Ratio</span></sc-if></div>
+<div style="display:grid;grid-template-columns:44px 130px 1fr 280px 84px;gap:20px;align-items:center;min-height:58px;border-bottom:1px solid rgba(148,163,184,.12)"><span style="width:38px;height:26px;border-radius:4px;background:#FFFFFF"></span><span style="font:400 12.5px 'JetBrains Mono',monospace;color:#C3CEDA">--ink-max</span><span style="font-size:16px;color:#FFFFFF;font-weight:500;text-shadow:0 1px 3px rgba(3,10,14,.85)">Krenko Goblins</span><span style="font-size:13px;color:#94A3B8">Deck names, run titles, figures</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899;text-align:right">19.3:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:44px 130px 1fr 280px 84px;gap:20px;align-items:center;min-height:58px;border-bottom:1px solid rgba(148,163,184,.12)"><span style="width:38px;height:26px;border-radius:4px;background:#E6EDF3"></span><span style="font:400 12.5px 'JetBrains Mono',monospace;color:#C3CEDA">--ink-1</span><span style="font-size:16px;color:#E6EDF3;font-weight:600">Wyleth Voltron B3 50%</span><span style="font-size:13px;color:#94A3B8">Winner phrase, account label</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899;text-align:right">15.1:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:44px 130px 1fr 280px 84px;gap:20px;align-items:center;min-height:58px;border-bottom:1px solid rgba(148,163,184,.12)"><span style="width:38px;height:26px;border-radius:4px;background:#C3CEDA"></span><span style="font:400 12.5px 'JetBrains Mono',monospace;color:#C3CEDA">--ink-2</span><span style="font-size:16px;color:#C3CEDA">14 runs</span><span style="font-size:13px;color:#94A3B8">Row metadata on dark ground</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899;text-align:right">10.8:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:44px 130px 1fr 280px 84px;gap:20px;align-items:center;min-height:58px;border-bottom:1px solid rgba(148,163,184,.12)"><span style="width:38px;height:26px;border-radius:4px;background:#A9B7C6"></span><span style="font:400 12.5px 'JetBrains Mono',monospace;color:#C3CEDA">--ink-3</span><span style="font-size:15px;color:#A9B7C6">4 games · 8 d ago</span><span style="font-size:13px;color:#94A3B8">Sim subtext, “most run”</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899;text-align:right">9.0:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:44px 130px 1fr 280px 84px;gap:20px;align-items:center;min-height:58px;border-bottom:1px solid rgba(148,163,184,.12)"><span style="width:38px;height:26px;border-radius:4px;background:#7A8899"></span><span style="font:400 12.5px 'JetBrains Mono',monospace;color:#C3CEDA">--ink-4</span><span style="font-size:14px;color:#7A8899">Fan Content disclaimer</span><span style="font-size:13px;color:#94A3B8">Footer. <strong style="color:#E6EDF3;font-weight:600">The floor.</strong></span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'JetBrains Mono',monospace;color:#00E5FF;text-align:right">4.9:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:44px 130px 1fr 280px 84px;gap:20px;align-items:center;min-height:58px"><span style="width:38px;height:26px;border-radius:4px;background:#0B1418"></span><span style="font:400 12.5px 'JetBrains Mono',monospace;color:#C3CEDA">--ink-on-fill</span><span style="font-size:14px;padding:3px 9px;border-radius:4px;background:rgba(103,232,249,.92)"><span style="color:#0B1418;font-weight:500">69%</span></span><span style="font-size:13px;color:#94A3B8">Only for a label past ~60% of a fill, on the bright end</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899;text-align:right">11.4:1</span></sc-if></div>
+</div>
+<p style="margin:16px 0 0;font-size:13px;line-height:1.6;color:#7A8899;max-width:88ch"><strong style="color:#E6EDF3;font-weight:600">The fill carries its own scrim.</strong> <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">--winrate-fill</span> starts at deep teal <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">rgba(13,58,68,.95)</span> and only reaches bright cyan past 46%, so the label zone is always dark ground. Both the deck name and the runs count also carry <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">--text-shadow-on-fill</span>. <strong style="color:#E6EDF3;font-weight:600">The stops are absolute, not percentages</strong> — the dark zone is a fixed <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">165px</span> however short the bar, so it cannot shrink out from under the label. That 165px is the label budget: names longer than it truncate with an ellipsis.</p>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="4" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">04</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Surfaces over artwork</span></div>
+<div style="margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+<div><div style="height:76px;border-radius:12px;background:rgba(15,20,28,.85);border:1px solid rgba(56,189,248,.25)"></div><div style="margin-top:11px;font:400 12px 'JetBrains Mono',monospace;color:#C3CEDA">--panel-glass</div><div style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899;margin-top:3px">rgba(15,20,28,.85)</div><div style="font-size:12px;color:#94A3B8;margin-top:5px">Data panel · blur 12px</div></div>
+<div><div style="height:76px;border-radius:12px;background:rgba(10,13,18,.86);border:1px solid rgba(148,163,184,.26)"></div><div style="margin-top:11px;font:400 12px 'JetBrains Mono',monospace;color:#C3CEDA">--bar-instrument</div><div style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899;margin-top:3px">rgba(10,13,18,.86)</div><div style="font-size:12px;color:#94A3B8;margin-top:5px">Tally bar · account pill</div></div>
+<div><div style="height:76px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(148,163,184,.12)"></div><div style="margin-top:11px;font:400 12px 'JetBrains Mono',monospace;color:#C3CEDA">--row-ground</div><div style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899;margin-top:3px">rgba(255,255,255,.035)</div><div style="font-size:12px;color:#94A3B8;margin-top:5px">Deck row base under the fill</div></div>
+<div><div style="height:76px;border-radius:12px;background:linear-gradient(90deg,rgba(11,52,62,.96) 0px,rgba(11,52,62,.96) 165px,rgba(45,212,191,.68) 250px,rgba(103,232,249,.94) 430px)"></div><div style="margin-top:11px;font:400 12px 'JetBrains Mono',monospace;color:#C3CEDA">--winrate-fill</div><div style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899;margin-top:3px">teal .55 → cyan .90</div><div style="font-size:12px;color:#94A3B8;margin-top:5px">The only gradient in the product</div></div>
+</div>
+<p style="margin:16px 0 0;font-size:13px;line-height:1.6;color:#7A8899;max-width:88ch">Panels never nest — one glass sheet holds both data columns. Rows inside it use <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">--row-ground</span>, not a second panel. Backdrop treatment is mandatory and stacks in this order: <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">art → linear scrim → radial vignette</span>. No text ever sits on unscrimmed artwork.</p>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="5" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">05</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Mana pips</span><span style="font-size:13.5px;color:#7A8899">filled disc + inset glyph · no WotC symbols, no emoji</span></div>
+<div style="margin-top:24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;max-width:1100px">
+<div style="padding:20px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14)"><svg width="44" height="44" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4" fill="#FDE68A"></circle><path d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"></path></svg><div style="margin-top:14px;font-size:14px;font-weight:600;color:#E6EDF3">White</div><div style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899;margin-top:4px">--pip-w #F5E9C8</div><div style="font-size:12px;color:#94A3B8;margin-top:6px">Bone disc, gold core</div></div>
+<div style="padding:20px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14)"><svg width="44" height="44" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" stroke-width="1.5"></circle><path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF"></path></svg><div style="margin-top:14px;font-size:14px;font-weight:600;color:#E6EDF3">Blue</div><div style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899;margin-top:4px">--pip-u #67B7E8</div><div style="font-size:12px;color:#94A3B8;margin-top:6px">Teardrop</div></div>
+<div style="padding:20px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14)"><svg width="44" height="44" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" stroke-width="1.5"></circle><path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC"></path><circle cx="10" cy="10" r="1" fill="#1D1526"></circle><circle cx="14" cy="10" r="1" fill="#1D1526"></circle></svg><div style="margin-top:14px;font-size:14px;font-weight:600;color:#E6EDF3">Black</div><div style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899;margin-top:4px">--pip-b #A855F7</div><div style="font-size:12px;color:#94A3B8;margin-top:6px">Void core</div></div>
+<div style="padding:20px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14)"><svg width="44" height="44" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg><div style="margin-top:14px;font-size:14px;font-weight:600;color:#E6EDF3">Red</div><div style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899;margin-top:4px">--pip-r #EF4444</div><div style="font-size:12px;color:#94A3B8;margin-top:6px">Flame</div></div>
+<div style="padding:20px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14)"><svg width="44" height="44" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#0B261A" stroke="#10B981" stroke-width="1.5"></circle><path d="M12 4 C8 8 6 12 6 16 h12 C18 12 16 8 12 4 Z" fill="#34D399"></path><line x1="12" y1="9" x2="12" y2="18" stroke="#0B261A" stroke-width="1.5"></line></svg><div style="margin-top:14px;font-size:14px;font-weight:600;color:#E6EDF3">Green</div><div style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899;margin-top:4px">--pip-g #10B981</div><div style="font-size:12px;color:#94A3B8;margin-top:6px">Tree</div></div>
+</div>
+<p style="margin:16px 0 0;font-size:13px;line-height:1.6;color:#7A8899;max-width:88ch"><span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">.mana-badge--inline</span> 18px beside a deck name, <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">.mana-badge--seat</span> 20px in a sim's seat strip, <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">gap 4–6px</span>, always WUBRG order. Every pip is disc + <em>distinct inset silhouette</em>, so identity survives greyscale and colourblindness. Pips are data — <strong style="color:#E6EDF3;font-weight:600">never place one inside a button.</strong></p>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="6" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">06</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Type</span><span style="font-size:13.5px;color:#7A8899">Cinzel for the wordmark · Space Grotesk for everything else</span></div>
+<div style="margin-top:22px;border-top:1px solid rgba(148,163,184,.22)">
+<div style="display:grid;grid-template-columns:210px 1fr;gap:30px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(148,163,184,.12)"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">Cinzel 56 / 700 / .06em / upper</span></sc-if><span style="font:700 40px/1 Cinzel,serif;letter-spacing:.06em;color:#FFFFFF;text-transform:uppercase">Arcane Sim Lab</span></div>
+<div style="display:grid;grid-template-columns:210px 1fr;gap:30px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(148,163,184,.12)"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">Grotesk 22 / 400 — page prompt</span></sc-if><span style="font-size:22px;color:#E6EDF3">What would you like to do today?</span></div>
+<div style="display:grid;grid-template-columns:210px 1fr;gap:30px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(148,163,184,.12)"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">Grotesk 19 / 600 — section</span></sc-if><span style="display:flex;align-items:baseline;gap:10px"><span style="font-size:19px;font-weight:600;color:#FFFFFF">Top decklists</span><span style="font-size:15px;color:#8FA0B3">most run</span></span></div>
+<div style="display:grid;grid-template-columns:210px 1fr;gap:30px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(148,163,184,.12)"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">Grotesk 18 / 700 / upper — CTA</span></sc-if><span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Run new simulation</span></div>
+<div style="display:grid;grid-template-columns:210px 1fr;gap:30px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(148,163,184,.12)"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">Grotesk 16 — row title</span></sc-if><span style="font-size:16px;color:#FFFFFF">Kilo vs Wilhelt vs Wyleth vs Drana</span></div>
+<div style="display:grid;grid-template-columns:210px 1fr;gap:30px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(148,163,184,.12)"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">Grotesk 17 / 600 + 16 / 400 — tally</span></sc-if><span style="font-size:16px;color:#E6EDF3"><strong style="font-weight:600;color:#FFFFFF">343,621</strong> games simulated</span></div>
+<div style="display:grid;grid-template-columns:210px 1fr;gap:30px;align-items:baseline;padding:20px 0"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">Grotesk 14 — sim subtext</span></sc-if><span style="font-size:14px;color:#A9B7C6"><strong style="color:#E6EDF3;font-weight:600">Wyleth Voltron B3 50%</strong> · 4 games · 8 d ago</span></div>
+</div>
+<p style="margin:16px 0 0;font-size:13px;line-height:1.6;color:#7A8899;max-width:88ch"><strong style="color:#E6EDF3;font-weight:600">Cinzel appears exactly once per page</strong> — the wordmark. Everything else is Space Grotesk. Figures inside prose are weight-600, not a different family; the mono face is for detail views (run ids, filenames), not the home screen.</p>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="7" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">07</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Action hub</span><span style="font-size:13.5px;color:#7A8899">four equal footprints, ranked by border and glow</span></div>
+<div style="margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1200px">
+<div><div style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,rgba(0,229,255,.16),rgba(8,20,26,.82));border:1.5px solid #00E5FF;box-shadow:0 0 18px rgba(0,229,255,.35)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#00E5FF" style="flex:none"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12Z"></path></svg><span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Run new<br>simulation</span></div><div style="margin-top:10px;font-size:12.5px;line-height:1.55;color:#7A8899">Primary. Cyan border + glow. One per view.</div></div>
+<div><div style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,rgba(168,85,247,.16),rgba(18,10,28,.82));border:1.5px solid #A855F7;box-shadow:0 0 18px rgba(168,85,247,.28)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C89BFA" stroke-width="2" stroke-linecap="round" style="flex:none"><path d="M5 20V9M12 20V4M19 20v-7"></path></svg><span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Sim history<br>&amp; analytics</span></div><div style="margin-top:10px;font-size:12.5px;line-height:1.55;color:#7A8899">Violet. Analytics and distributions.</div></div>
+<div><div style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:linear-gradient(180deg,rgba(56,189,248,.12),rgba(9,17,26,.82));border:1.5px solid rgba(56,189,248,.6)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3v11m-4.5-4.5L12 14l4.5-4.5M4 19h16"></path></svg><span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Import deck</span></div><div style="margin-top:10px;font-size:12.5px;line-height:1.55;color:#7A8899">Sky blue, no glow. Ingest.</div></div>
+<div><div style="display:flex;align-items:center;gap:14px;min-height:78px;padding:0 20px;border-radius:12px;background:rgba(13,17,23,.82);border:1.5px solid rgba(148,163,184,.34)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C3CEDA" stroke-width="2" stroke-linecap="round" style="flex:none"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><span style="font:700 18px/1.15 'Space Grotesk',sans-serif;color:#FFFFFF;text-transform:uppercase">Explore<br>decklists</span></div><div style="margin-top:10px;font-size:12.5px;line-height:1.55;color:#7A8899">Neutral. Browse.</div></div>
+</div>
+<div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:34px;max-width:1000px">
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7A8899">Labels wrap to two lines rather than shrinking — the four footprints stay identical so the row reads as one instrument panel. Icon is 26px, always left, always the accent colour of its own border.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7A8899"><strong style="color:#E6EDF3;font-weight:600">Never disable the primary.</strong> Keep it live and state the blocker beside it — "Pick at least 2 decks — you have 1." Focus ring is 2px <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">--mana-cyan</span> at 2px offset, outside the glow.</p>
+</div>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="8" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">08</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Deck row anatomy</span></div>
+<div style="margin-top:24px;max-width:760px">
+<div style="display:grid;grid-template-columns:52px 1fr 60px;gap:14px;align-items:center;min-height:64px;border-radius:8px;background:rgba(255,255,255,.035)">
+<span style="width:52px;height:64px;border-radius:8px 0 0 8px;background:repeating-linear-gradient(135deg,#2A3341 0 5px,#1B2230 5px 10px)"></span>
+<span style="position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+<span style="position:absolute;inset:0 auto 0 0;width:69%;border-radius:6px;background:linear-gradient(90deg,rgba(11,52,62,.96) 0px,rgba(11,52,62,.96) 165px,rgba(45,212,191,.68) 250px,rgba(103,232,249,.94) 430px)"></span>
+<span style="position:relative;display:flex;align-items:center;gap:8px"><span style="font-size:16px;color:#FFFFFF;font-weight:500;text-shadow:0 1px 3px rgba(3,10,14,.85)">Krenko Goblins</span><svg width="18" height="18" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#331414" stroke="#EF4444" stroke-width="1.5"></circle><path d="M12 4 C10 8 7 10 7 14 A5 5 0 0 0 17 14 C17 10 14 8 12 4 Z" fill="#F87171"></path><path d="M12 9 C11 11 9.5 12 9.5 14 A2.5 2.5 0 0 0 14.5 14 C14.5 12 13 11 12 9 Z" fill="#FEF08A"></path></svg></span>
+<span style="position:relative;font-size:13px;color:#C3CEDA;margin-top:3px;text-shadow:0 1px 3px rgba(3,10,14,.85)">6 runs</span>
+</span>
+<span style="font:600 17px 'Space Grotesk',sans-serif;color:#FFFFFF;text-align:right;padding-right:14px">69%</span>
+</div>
+<div style="margin-top:14px;display:grid;grid-template-columns:52px 1fr 60px;gap:14px">
+<span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899;text-align:center">52px<br>thumb</span>
+<span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899;text-align:center">name + pips over the fill · runs beneath</span>
+<span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899;text-align:center">%<br>outside</span>
+</div>
+</div>
+<div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;max-width:1200px">
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7A8899"><strong style="color:#E6EDF3;font-weight:600">Row height 64px</strong>, gap 8px, radius 8px. Thumbnail is flush to the left edge with matching corner radius — no inset, no gap.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7A8899"><strong style="color:#E6EDF3;font-weight:600">The fill sits behind the text</strong>, width = win %, radius 6px — chart and row background at once, so the panel needs no axis. Its gradient is dark for a fixed 165px — absolute stops, not percentages — so the label zone stays legible at every win rate.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7A8899"><strong style="color:#E6EDF3;font-weight:600">The percentage lives outside the fill</strong>, right-aligned in a fixed 60px column, so the figures stack readably however long the bars run. The name and runs count live inside the fixed <strong style="color:#E6EDF3;font-weight:600">165px dark zone</strong>; anything longer truncates rather than running onto the bright end.</p>
+</div>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="9" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">09</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Status &amp; progress</span><span style="font-size:13.5px;color:#7A8899">shape, not hue</span></div>
+<div style="margin-top:22px;display:flex;gap:34px;flex-wrap:wrap">
+<span style="display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;border-radius:99px;background:#00E5FF;box-shadow:0 0 10px rgba(0,229,255,.8)"></span><span style="font-size:15px;color:#E6EDF3">Running</span></span>
+<span style="display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;border-radius:99px;border:1.5px solid #7A8899"></span><span style="font-size:15px;color:#A9B7C6">Queued</span></span>
+<span style="display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;background:#10B981"></span><span style="font-size:15px;color:#E6EDF3">Done</span></span>
+<span style="display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;border-radius:99px;background:#EF4444"></span><span style="font-size:15px;color:#FCA5A5">Failed</span></span>
+</div>
+<div style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px">
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:flex;align-items:center;gap:9px"><span style="width:8px;height:8px;border-radius:99px;border:1.5px solid #7A8899"></span><span style="font-size:14px;color:#A9B7C6">Queued</span></span><span style="font-size:13px;color:#7A8899">2nd in line</span></div>
+<div style="margin-top:12px;height:6px;border-radius:99px;background:repeating-linear-gradient(90deg,rgba(148,163,184,.22) 0 7px,transparent 7px 14px)"></div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7A8899">No fill drawn — Forge has not started. 2 decks over 1 game is about 10 s once it does.</div>
+</div>
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:flex;align-items:center;gap:9px"><span style="width:8px;height:8px;border-radius:99px;background:#00E5FF;box-shadow:0 0 10px rgba(0,229,255,.8)"></span><span style="font-size:14px;color:#E6EDF3">Running</span></span><span style="font-size:13px;color:#A9B7C6">about 1 min 53 s left</span></div>
+<div style="margin-top:12px;height:6px;border-radius:99px;background:rgba(148,163,184,.14);overflow:hidden"><div style="width:64%;height:100%;border-radius:99px;background:linear-gradient(90deg,rgba(45,212,191,.55),rgba(103,232,249,.9))"></div></div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7A8899">Game 4 of 6 · 3 min 27 s elapsed · <a href="#9">notify me instead</a></div>
+</div>
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:flex;align-items:center;gap:9px"><span style="width:8px;height:8px;background:#10B981"></span><span style="font-size:14px;color:#E6EDF3">Done</span></span><a href="#09" style="font-size:13px">Open the report</a></div>
+<div style="margin-top:12px;height:6px;border-radius:99px;background:#10B981"></div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7A8899">6 games in 5 min 12 s · Drana Vampires took 38%.</div>
+</div>
+</div>
+<p style="margin:20px 0 0;font-size:13px;line-height:1.6;color:#7A8899;max-width:88ch">Filled disc, hollow disc, square, red disc — distinguishable with no colour vision. A queued job draws no fill it does not have. Any wait over 10 s shows a live estimate and an escape route; four decks over sixteen games is 8–14 minutes and must never look instant. Completion swaps the header in place and announces via <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">aria-live="polite"</span>.</p>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="10" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">10</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Inputs</span><span style="font-size:13.5px;color:#7A8899">label above, always — placeholder is a hint, never the label</span></div>
+<div style="margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px;max-width:1200px">
+<div>
+<div style="font:400 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#7A8899;text-transform:uppercase;margin-bottom:14px">Default</div>
+<label style="display:block;font-size:13px;font-weight:500;color:#C3CEDA;margin-bottom:8px">Deck name</label>
+<div style="display:flex;align-items:center;height:44px;padding:0 16px;border-radius:8px;background:rgba(13,17,23,.8);border:1px solid rgba(148,163,184,.22)"><span style="font-size:15px;color:#7A8899">e.g. Kilo Helm Final</span></div>
+<div style="margin-top:8px;font-size:12.5px;line-height:1.55;color:#7A8899">Optional — defaults to the commander name.</div>
+</div>
+<div>
+<div style="font:400 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#7A8899;text-transform:uppercase;margin-bottom:14px">Focused</div>
+<label style="display:block;font-size:13px;font-weight:500;color:#C3CEDA;margin-bottom:8px">Deck name</label>
+<div style="display:flex;align-items:center;height:44px;padding:0 16px;border-radius:8px;background:rgba(13,17,23,.8);border:1px solid #00E5FF;outline:2px solid #00E5FF;outline-offset:2px"><span style="font-size:15px;color:#FFFFFF">Kilo Helm Final</span><span style="width:1.5px;height:19px;background:#00E5FF;margin-left:2px"></span></div>
+<div style="margin-top:8px;font-size:12.5px;line-height:1.55;color:#7A8899">Optional — defaults to the commander name.</div>
+</div>
+<div>
+<div style="font:400 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#7A8899;text-transform:uppercase;margin-bottom:14px">Error</div>
+<label style="display:block;font-size:13px;font-weight:500;color:#C3CEDA;margin-bottom:8px">Decklist</label>
+<div style="display:flex;align-items:center;height:44px;padding:0 16px;border-radius:8px;background:rgba(13,17,23,.8);border:1px solid #EF4444"><span style="font:400 13px 'JetBrains Mono',monospace;color:#E6EDF3">1 Kilo, Apogee Mnid (EOC) 3</span></div>
+<div style="margin-top:8px;font-size:12.5px;line-height:1.55;color:#FCA5A5">Line 1 — no card called “Apogee Mnid”. Closest match is <strong style="color:#FFFFFF;font-weight:600">Kilo, Apogee Mind</strong>. <a href="#10" style="color:#FCA5A5;border-bottom:1px solid rgba(252,165,165,.4)">Use it</a> · <a href="#10" style="color:#FCA5A5;border-bottom:1px solid rgba(252,165,165,.4)">Keep mine</a></div>
+</div>
+</div>
+<p style="margin:20px 0 0;font-size:13px;line-height:1.6;color:#7A8899;max-width:88ch">Error copy states the requirement and offers the fix, never just the violation. The user's text is never modified — corrections are always suggestions they accept.</p>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="11" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">11</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Accessibility contract</span><span style="font-size:13.5px;color:#7A8899">WCAG 2.2 AA</span></div>
+<div style="margin-top:22px;border-top:1px solid rgba(148,163,184,.22)">
+<div style="display:grid;grid-template-columns:130px 1fr;gap:24px;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">1.4.3</span><span style="font-size:14px;color:#C3CEDA">All text ≥ 4.9:1. <span style="color:#7A8899">Text over the win-rate fill inverts to <span style="font:400 12px 'JetBrains Mono',monospace">--ink-on-fill</span>.</span></span></div>
+<div style="display:grid;grid-template-columns:130px 1fr;gap:24px;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">1.4.1</span><span style="font-size:14px;color:#C3CEDA">No meaning by hue alone. <span style="color:#7A8899">Pips carry inset silhouettes; status carries shape; rank carries order and bar length.</span></span></div>
+<div style="display:grid;grid-template-columns:130px 1fr;gap:24px;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">1.4.11</span><span style="font-size:14px;color:#C3CEDA">Button borders and panel edges ≥ 3:1 against their backdrop. <span style="color:#7A8899">The scrim guarantees it over artwork.</span></span></div>
+<div style="display:grid;grid-template-columns:130px 1fr;gap:24px;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">2.4.7</span><span style="font-size:14px;color:#C3CEDA">2px <span style="font:400 12px 'JetBrains Mono',monospace">--mana-cyan</span> ring at 2px offset, drawn <em>outside</em> any glow so it stays distinguishable.</span></div>
+<div style="display:grid;grid-template-columns:130px 1fr;gap:24px;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">2.5.8</span><span style="font-size:14px;color:#C3CEDA">64px deck rows, 78px action buttons, 44px controls and account pill.</span></div>
+<div style="display:grid;grid-template-columns:130px 1fr;gap:24px;padding:14px 0;border-bottom:1px solid rgba(148,163,184,.12)"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">2.3.3</span><span style="font-size:14px;color:#C3CEDA">Rolling tallies and glow pulses honour <span style="font:400 12px 'JetBrains Mono',monospace">prefers-reduced-motion</span> — final value renders immediately.</span></div>
+<div style="display:grid;grid-template-columns:130px 1fr;gap:24px;padding:14px 0"><span style="font:400 12px 'JetBrains Mono',monospace;color:#7A8899">3.3.2 · 4.1.3</span><span style="font-size:14px;color:#C3CEDA">Persistent visible labels on every field; run completion announced via live region.</span></div>
+</div>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="12" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">12</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Compliance &amp; monetisation</span></div>
+<div style="margin-top:22px;display:grid;grid-template-columns:1.3fr 1fr;gap:34px;max-width:1200px;align-items:start">
+<div>
+<p style="margin:0;font-size:13.5px;line-height:1.7;color:#94A3B8">No official WotC mana symbols — the disc-and-silhouette pips in §05 are the only mana notation. No “Magic: The Gathering” or “Planeswalker” branding in chrome. Card images hotlinked from Scryfall and attributed. The disclaimer is always present at <span style="font:400 12px 'JetBrains Mono',monospace;color:#C3CEDA">--ink-4</span> or brighter:</p>
+<div style="margin-top:16px;padding:16px 18px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14)"><span style="font-size:13px;line-height:1.6;color:#7A8899">Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy. Card images via Scryfall. 3,152 rules · 262 keywords.</span></div>
+</div>
+<div>
+<div style="height:92px;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;justify-content:center"><span style="font-size:13px;color:#64748B">Display ad · 970×90</span></div>
+<div style="margin-top:9px;font:400 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#7A8899;text-transform:uppercase">Advertisement</div>
+<p style="margin:12px 0 0;font-size:12.5px;line-height:1.6;color:#7A8899">Full-width, anchored above the footer, <span style="font:400 11.5px 'JetBrains Mono',monospace;color:#94A3B8">--sp-5</span> clear all round. Deliberately isolated from the dark UI for viewability. <strong style="color:#E6EDF3;font-weight:600">Never inside a glass panel</strong>, never between the action hub and the data.</p>
+</div>
+</div>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="13" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">13</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Background imagery</span><span style="font-size:13.5px;color:#7A8899">art direction &amp; the three-layer stack</span></div>
+<div style="margin-top:24px;display:grid;grid-template-columns:1.15fr 1fr;gap:34px;max-width:1200px;align-items:start">
+<div>
+<div style="font-size:15px;font-weight:600;color:#FFFFFF">Art direction</div>
+<p style="margin:9px 0 0;font-size:13.5px;line-height:1.7;color:#94A3B8">High-fantasy landscape on the plane of Dominaria: ancient moss-covered stone archways and ruins, floating diamond hedron monoliths drifting through an atmospheric sky, subtle glowing blue-violet mana leylines in the clouds. Palette runs cool slate blue, deep emerald moss, warm cyan and violet horizon glow. <strong style="color:#E6EDF3;font-weight:600">Twilight, epic and still</strong> — the art is a stage, never a subject; nothing in it should compete with the mascot or the data.</p>
+<div style="margin-top:18px;font-size:15px;font-weight:600;color:#FFFFFF">The three-layer stack</div>
+<div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+<div style="display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:baseline"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">1</span><span style="font-size:13px;line-height:1.6;color:#94A3B8"><strong style="color:#E6EDF3;font-weight:600">Art</strong> — full-bleed, <span style="font:400 12px 'JetBrains Mono',monospace">object-fit:cover</span>, anchored top.</span></div>
+<div style="display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:baseline"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">2</span><span style="font-size:13px;line-height:1.6;color:#94A3B8"><strong style="color:#E6EDF3;font-weight:600">Linear scrim</strong> — <span style="font:400 12px 'JetBrains Mono',monospace">--backdrop-scrim</span>, light at the sky so the hedrons read, heavy at the base so the data panel wins.</span></div>
+<div style="display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:baseline"><span style="font:400 11.5px 'JetBrains Mono',monospace;color:#7A8899">3</span><span style="font-size:13px;line-height:1.6;color:#94A3B8"><strong style="color:#E6EDF3;font-weight:600">Radial vignette</strong> — <span style="font:400 12px 'JetBrains Mono',monospace">--backdrop-vignette</span>, <span style="font:400 12px 'JetBrains Mono',monospace">rgba(13,15,18,.60)</span> at the edges, framing the UI toward centre.</span></div>
+</div>
+<p style="margin:16px 0 0;font-size:13px;line-height:1.65;color:#7A8899">Beneath all three sits <span style="font:400 12px 'JetBrains Mono',monospace;color:#94A3B8">--atmosphere</span> — a twilight sky gradient with two leyline glows. It carries the masthead on its own if the art fails to load, so the page never renders as a black rectangle.</p>
+</div>
+<div>
+<div style="font-size:15px;font-weight:600;color:#FFFFFF">Plate library</div>
+<p style="margin:8px 0 0;font-size:12.5px;line-height:1.6;color:#7A8899">Two plates ship, both 1448×1086 and both cropped by <span style="font:400 11.5px 'JetBrains Mono',monospace;color:#94A3B8">cover</span> — compose to the centre, never the corners.</p>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:20px">
+
+<div>
+<div style="position:relative;height:150px;border-radius:12px;overflow:hidden;border:1px solid rgba(148,163,184,.18)">
+<img src="art/backdrop-hedron-ruins.png" alt="Storm-lit Dominaria ruins with floating hedrons" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,14,19,.30),rgba(11,14,19,.62) 55%,rgba(11,14,19,.86))"></div>
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse 78% 68% at 50% 42%,transparent 40%,rgba(13,15,18,.60) 100%)"></div>
+<span style="position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:999px;background:rgba(0,229,255,.16);border:1px solid rgba(0,229,255,.42);font:400 10px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#7FE9FF">DEFAULT</span>
+</div>
+<div style="margin-top:9px;font:400 11.5px 'JetBrains Mono',monospace;color:#C3CEDA">backdrop-hedron-ruins.png</div>
+<p style="margin:5px 0 0;font-size:12.5px;line-height:1.6;color:#7A8899">Every app screen. Storm-lit ruins, violet-cyan hedrons, near-black base — the masthead lands in the quiet centre sky. Shown here under the full three-layer stack.</p>
+</div>
+
+<div>
+<div style="position:relative;height:150px;border-radius:12px;overflow:hidden;border:1px solid rgba(148,163,184,.18)">
+<img src="art/backdrop-argent-spires.png" alt="Daylit fantasy capital of spires and bridges" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;filter:saturate(72%) brightness(84%)">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,14,19,.58),rgba(11,14,19,.80) 50%,rgba(11,14,19,.94))"></div>
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse 78% 68% at 50% 42%,transparent 40%,rgba(13,15,18,.60) 100%)"></div>
+<span style="position:absolute;top:10px;left:10px;padding:4px 9px;border-radius:999px;background:rgba(168,85,247,.16);border:1px solid rgba(168,85,247,.42);font:400 10px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#C9A6FF">SPLASH ONLY</span>
+</div>
+<div style="margin-top:9px;font:400 11.5px 'JetBrains Mono',monospace;color:#C3CEDA">backdrop-argent-spires.png</div>
+<p style="margin:5px 0 0;font-size:12.5px;line-height:1.6;color:#7A8899">Splash and marketing only. Daylit and detailed at every height, so it takes <span style="font:400 11.5px 'JetBrains Mono',monospace;color:#94A3B8">.backdrop--bright</span> — heavy scrim plus <span style="font:400 11.5px 'JetBrains Mono',monospace;color:#94A3B8">saturate(72%) brightness(84%)</span>. Never behind data.</p>
+</div>
+
+</div>
+
+<div style="margin-top:22px;font-size:15px;font-weight:600;color:#FFFFFF">Fallback sky</div>
+<div style="margin-top:10px;height:110px;border-radius:12px;position:relative;overflow:hidden;border:1px solid rgba(148,163,184,.18)">
+<div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 8%,#2C4A63 0%,#1B2E42 32%,#121C29 58%,#0D0F12 100%)"></div>
+<div style="position:absolute;inset:0;background:radial-gradient(45% 34% at 26% 18%,rgba(0,229,255,.22),transparent 70%),radial-gradient(40% 30% at 74% 14%,rgba(168,85,247,.22),transparent 70%)"></div>
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse 78% 68% at 50% 42%,transparent 40%,rgba(13,15,18,.60) 100%)"></div>
+<span style="position:absolute;left:50%;bottom:12px;transform:translateX(-50%);font:400 11px 'JetBrains Mono',monospace;color:#94A3B8">--atmosphere + --backdrop-vignette</span>
+</div>
+<div style="margin-top:14px;font-size:15px;font-weight:600;color:#FFFFFF">Generation prompt</div>
+<div style="margin-top:10px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14)"><span style="font:400 12.5px/1.65 'JetBrains Mono',monospace;color:#A9B7C6">High-fantasy landscape of ancient overgrown stone ruins on Dominaria, floating diamond monoliths in the sky, mystical mana leyline energy swirling in clouds, twilight lighting, epic atmospheric mood, dark fantasy UI background style --ar 16:9 --v 6.0</span></div>
+<p style="margin:12px 0 0;font-size:12.5px;line-height:1.6;color:#7A8899">Use this to commission a third plate. Keep the horizon in the lower third and the sky uncluttered above it — the masthead and mascot land there.</p>
+<div style="margin-top:16px;padding:14px 16px;border-radius:10px;border:1px solid rgba(245,158,11,.32);background:rgba(245,158,11,.05)">
+<div style="font-size:13px;font-weight:600;color:#F5C97B">§3.2's Unsplash URL is superseded</div>
+<p style="margin:7px 0 0;font-size:12.5px;line-height:1.65;color:#94A3B8">The source spec hardcodes an external photo into <span style="font:400 11.5px 'JetBrains Mono',monospace;color:#C3CEDA">body</span>. Three reasons it does not ship: the photo is woodland, not Dominaria ruins; an external hotlink breaks offline and can rot; and Unsplash requires visible attribution the rule provides no place for. The local plate has none of those problems. <span style="font:400 11.5px 'JetBrains Mono',monospace;color:#C3CEDA">background-attachment:&nbsp;fixed</span> is also dropped — it is unreliable on iOS and costly to repaint; use <span style="font:400 11.5px 'JetBrains Mono',monospace;color:#C3CEDA">.backdrop--app</span>, which is position-fixed and achieves the same lock.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div style="margin-top:76px;padding-top:28px;border-top:1px solid rgba(148,163,184,.12)">
+<div id="14" style="display:flex;align-items:baseline;gap:16px;scroll-margin-top:24px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#7A8899">14</span><span style="font-size:22px;font-weight:600;color:#E6EDF3">Do not</span></div>
+<div style="margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px 34px;max-width:1200px">
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Hardcode a hex — use a token</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Put a mana pip inside a button</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Set Cinzel on anything but the wordmark</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Give <span style="font:400 12px 'JetBrains Mono',monospace">--winrate-fill</span> percentage stops</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Nest a panel inside a panel</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Place text on unscrimmed artwork</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Ship art without the scrim <em>and</em> vignette</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Use a backdrop with a busy upper third</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Use emoji as UI</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Disable the primary without saying why</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Draw a progress fill for a queued job</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Add a gradient outside the win-rate fill</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Glow anything that is not primary or live</span>
+<span style="font-size:13.5px;line-height:1.6;color:#94A3B8;padding-left:18px;position:relative"><span style="position:absolute;left:0;color:#EF4444">×</span>Put body text below <span style="font:400 12px 'JetBrains Mono',monospace">--ink-4</span></span>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showSpecs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Documentation&quot;},&quot;showContrast&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Documentation&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showSpecs: this.props.showSpecs ?? true,
+      showContrast: this.props.showContrast ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

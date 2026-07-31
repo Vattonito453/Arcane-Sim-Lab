@@ -129,7 +129,7 @@ gcloud compute firewall-rules create simlab-web   --allow=tcp:80 --target-tags=s
 3. Ship the repo to the VM. It is private, so copy it rather than cloning:
 
 ```bash
-cd "/Users/vincentattonito/Desktop/Personal" && tar czf /tmp/simlab.tgz --exclude='MtG Rules Engine/web/node_modules'   --exclude='MtG Rules Engine/web/.next*' --exclude='MtG Rules Engine/engine/sim_results'   --exclude='MtG Rules Engine/.git' --exclude='*.zip' "MtG Rules Engine" && gcloud compute scp /tmp/simlab.tgz simlab:~ --zone=us-central1-a
+cd "/Users/vincentattonito/Desktop/Personal" && COPYFILE_DISABLE=1 tar czf /tmp/simlab.tgz --exclude='MtG Rules Engine/web/node_modules'   --exclude='MtG Rules Engine/web/.next*' --exclude='MtG Rules Engine/engine/sim_results'   --exclude='MtG Rules Engine/.git' --exclude='MtG Rules Engine/deploy/.env' --exclude='*.zip' "MtG Rules Engine" && gcloud compute scp /tmp/simlab.tgz simlab:~ --zone=us-central1-a
 ```
 
 ### Steps on the VM (`gcloud compute ssh simlab --zone=us-central1-a`)
@@ -153,6 +153,14 @@ docker compose --env-file .env up -d --build
 First build takes several minutes: the worker image downloads Forge (~290 MB)
 and the web image compiles the front end. **Build on the VM, not on the Mac** —
 this laptop produces arm64 images and an e2 instance is x86_64.
+
+`COPYFILE_DISABLE=1` is not optional on macOS. Without it, tar emits AppleDouble
+`._name` sidecars for every file carrying an extended attribute; they extract as
+real files on Linux, match `engine/decks/*.dck`, and being binary they made
+`GET /decks` return a 500 for the entire deck list on the first deploy. The
+engine now skips `._*` and reads deck files with `errors="replace"`, so a single
+odd file can no longer take the endpoint down — but shipping the sidecars at all
+is still wrong.
 
 ### Verify before sending the link
 

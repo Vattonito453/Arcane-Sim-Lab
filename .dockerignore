@@ -31,4 +31,10 @@ tasks
 !deploy/*.md
 .DS_Store
 **/.DS_Store
+# AppleDouble sidecars. macOS tar writes "._name" for any file with extended
+# attributes; on Linux they extract as real files and match globs like
+# engine/decks/*.dck. Keeping them out of the build context is the last line of
+# defence behind COPYFILE_DISABLE=1 at archive time.
+._*
+**/._*
 MtG Rules Engine

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0a0a0a;font-family:Geist,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:#e8e4da;text-decoration:none}
+a:hover{color:#ffffff}
+::selection{background:#e8e4da;color:#0a0a0a}
+</style>
+</helmet>
+
+<div style="max-width:1360px;margin:0 auto;padding:0 40px 120px">
+
+<div style="display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid #1a1a1a">
+<div style="display:flex;align-items:center;gap:11px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ededed" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.5 22 20.5H2Z"></path><path d="M12 10v4.5" stroke-linecap="round"></path></svg>
+<span style="font-size:15px;font-weight:500;color:#ededed;letter-spacing:-.01em">Sim Lab</span>
+<span style="font-size:15px;color:#3a3a3a">/</span>
+<span style="font-size:15px;color:#9a9a9a">Design system</span>
+</div>
+<span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a">v1.0 · achromatic instrument</span>
+</div>
+
+<div style="padding:88px 0 0;max-width:80ch">
+<div style="font:400 10.5px 'Geist Mono',monospace;letter-spacing:.16em;color:#7a7a7a;text-transform:uppercase">Foundations for Sim Lab</div>
+<h1 style="margin:20px 0 0;font-size:52px;line-height:1.04;font-weight:600;letter-spacing:-.034em;color:#ffffff">Brightness is the ranking. Colour belongs to the cards.</h1>
+<p style="margin:24px 0 0;font-size:17px;line-height:1.65;color:#9a9a9a">Sim Lab is an instrument, not a dashboard. Its interface is entirely greyscale — hierarchy, state and outcome are carried by <em>brightness</em>, weight and position. The only chroma in the product is the five Magic colour-identity pips, so any colour a user sees means one thing: this belongs to the game.</p>
+<p style="margin:16px 0 0;font-size:15px;line-height:1.65;color:#7a7a7a">Every value here is drawn from the production build, corrected for WCAG 2.2 AA. Contrast ratios are computed against <span style="font:400 14px 'Geist Mono',monospace;color:#9a9a9a">#0A0A0A</span>.</p>
+</div>
+
+<div style="margin-top:80px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">01</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">The five laws</span></div>
+<div style="margin-top:24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px">
+<div style="padding-top:16px;border-top:1px solid #262626"><div style="font-size:15px;font-weight:500;color:#ffffff">Brightness ranks</div><p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#9a9a9a">The winner is the brightest thing in the row. Never a badge, never a hue.</p></div>
+<div style="padding-top:16px;border-top:1px solid #262626"><div style="font-size:15px;font-weight:500;color:#ffffff">Colour is domain-only</div><p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#9a9a9a">W U B R G pips and nothing else. No coloured buttons, links or statuses.</p></div>
+<div style="padding-top:16px;border-top:1px solid #262626"><div style="font-size:15px;font-weight:500;color:#ffffff">Hairlines, not cards</div><p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#9a9a9a">Content sits on the page. Regions are separated by 1px rules, never containers.</p></div>
+<div style="padding-top:16px;border-top:1px solid #262626"><div style="font-size:15px;font-weight:500;color:#ffffff">Left-aligned, wide measure</div><p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#9a9a9a">Prose caps at 76ch. Nothing centres except a genuinely empty state.</p></div>
+<div style="padding-top:16px;border-top:1px solid #262626"><div style="font-size:15px;font-weight:500;color:#ffffff">Fixes subtract</div><p style="margin:8px 0 0;font-size:13px;line-height:1.6;color:#9a9a9a">If a problem needs a new decorated component, it is the wrong solution.</p></div>
+</div>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">02</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Ink</span><span style="font-size:13.5px;color:#7a7a7a">five steps, and the step decides the meaning</span></div>
+<div style="margin-top:20px;border-top:1px solid #262626">
+<div style="display:grid;grid-template-columns:40px 110px 1fr 300px 90px;gap:20px;align-items:center;padding:10px 0;border-bottom:1px solid #161616">
+<span></span><span style="font-size:12px;color:#7a7a7a">Token</span><span style="font-size:12px;color:#7a7a7a">Sample</span><span style="font-size:12px;color:#7a7a7a">Use</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;color:#7a7a7a;text-align:right">Contrast</span></sc-if>
+</div>
+<div style="display:grid;grid-template-columns:40px 110px 1fr 300px 90px;gap:20px;align-items:center;min-height:56px;border-bottom:1px solid #161616"><span style="width:34px;height:24px;border-radius:3px;background:#ffffff"></span><span style="font:400 12.5px 'Geist Mono',monospace;color:#c9c9c9">ink-max</span><span style="font-size:16px;color:#ffffff;font-weight:500">Krenko Goblins 69%</span><span style="font-size:13px;color:#9a9a9a">Winner, leader, emphasised numerals</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a;text-align:right">20.4:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:40px 110px 1fr 300px 90px;gap:20px;align-items:center;min-height:56px;border-bottom:1px solid #161616"><span style="width:34px;height:24px;border-radius:3px;background:#ededed"></span><span style="font:400 12.5px 'Geist Mono',monospace;color:#c9c9c9">ink-1</span><span style="font-size:16px;color:#ededed">Recent runs</span><span style="font-size:13px;color:#9a9a9a">Headings, section labels, nav current</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a;text-align:right">16.6:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:40px 110px 1fr 300px 90px;gap:20px;align-items:center;min-height:56px;border-bottom:1px solid #161616"><span style="width:34px;height:24px;border-radius:3px;background:#c9c9c9"></span><span style="font:400 12.5px 'Geist Mono',monospace;color:#c9c9c9">ink-2</span><span style="font-size:16px;color:#c9c9c9">Drana Vampires</span><span style="font-size:13px;color:#9a9a9a">Table rows — everything not leading</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a;text-align:right">11.9:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:40px 110px 1fr 300px 90px;gap:20px;align-items:center;min-height:56px;border-bottom:1px solid #161616"><span style="width:34px;height:24px;border-radius:3px;background:#9a9a9a"></span><span style="font:400 12.5px 'Geist Mono',monospace;color:#c9c9c9">ink-3</span><span style="font-size:16px;color:#9a9a9a">Pick two to four decks.</span><span style="font-size:13px;color:#9a9a9a">Body prose, secondary values</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a;text-align:right">7.0:1</span></sc-if></div>
+<div style="display:grid;grid-template-columns:40px 110px 1fr 300px 90px;gap:20px;align-items:center;min-height:56px"><span style="width:34px;height:24px;border-radius:3px;background:#7a7a7a"></span><span style="font:400 12.5px 'Geist Mono',monospace;color:#c9c9c9">ink-4</span><span style="font-size:16px;color:#7a7a7a">16 games · 1 d ago</span><span style="font-size:13px;color:#9a9a9a">Metadata, captions, footer. <strong style="color:#ededed;font-weight:500">The floor</strong> — nothing dimmer is ever text.</span><sc-if value="{{ showContrast }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px 'Geist Mono',monospace;color:#ffffff;text-align:right">4.6:1</span></sc-if></div>
+</div>
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#7a7a7a;max-width:82ch">The production build shipped <span style="font:400 12px 'Geist Mono',monospace">#6B6B6B</span> (3.7:1), <span style="font:400 12px 'Geist Mono',monospace">#5C5C5C</span> (3.0:1) and <span style="font:400 12px 'Geist Mono',monospace">#4A4A4A</span> (2.2:1) as text. All three fail AA and are retired — they survive only as rules and borders.</p>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">03</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Surfaces and rules</span><span style="font-size:13.5px;color:#7a7a7a">never text</span></div>
+<div style="margin-top:20px;display:grid;grid-template-columns:repeat(6,1fr);gap:16px">
+<div><div style="height:56px;border-radius:4px;background:#0a0a0a;border:1px solid #2a2a2a"></div><div style="margin-top:9px;font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#0A0A0A</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">page</div></div>
+<div><div style="height:56px;border-radius:4px;background:#101010;border:1px solid #2a2a2a"></div><div style="margin-top:9px;font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#101010</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">row hover</div></div>
+<div><div style="height:56px;border-radius:4px;background:#161616;border:1px solid #2a2a2a"></div><div style="margin-top:9px;font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#161616</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">row rule · button fill</div></div>
+<div><div style="height:56px;border-radius:4px;background:#1f1f1f;border:1px solid #2a2a2a"></div><div style="margin-top:9px;font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#1F1F1F</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">section rule · track</div></div>
+<div><div style="height:56px;border-radius:4px;background:#2a2a2a;border:1px solid #3a3a3a"></div><div style="margin-top:9px;font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#2A2A2A</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">border · avatar</div></div>
+<div><div style="height:56px;border-radius:4px;background:#3a3a3a;border:1px solid #4a4a4a"></div><div style="margin-top:9px;font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#3A3A3A</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">link underline · slash</div></div>
+</div>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">04</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Chroma</span><span style="font-size:13.5px;color:#7a7a7a">the only colour in the product</span></div>
+<div style="margin-top:20px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:800px">
+<div style="display:flex;align-items:center;gap:11px"><span style="width:22px;height:22px;border-radius:99px;background:#e0d8c2;flex:none"></span><div><div style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#E0D8C2</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">White</div></div></div>
+<div style="display:flex;align-items:center;gap:11px"><span style="width:22px;height:22px;border-radius:99px;background:#5385b8;flex:none"></span><div><div style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#5385B8</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">Blue</div></div></div>
+<div style="display:flex;align-items:center;gap:11px"><span style="width:22px;height:22px;border-radius:99px;background:#6a6070;flex:none"></span><div><div style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#6A6070</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">Black</div></div></div>
+<div style="display:flex;align-items:center;gap:11px"><span style="width:22px;height:22px;border-radius:99px;background:#b85440;flex:none"></span><div><div style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#B85440</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">Red</div></div></div>
+<div style="display:flex;align-items:center;gap:11px"><span style="width:22px;height:22px;border-radius:99px;background:#4e8257;flex:none"></span><div><div style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#4E8257</div><div style="font-size:12px;color:#7a7a7a;margin-top:2px">Green</div></div></div>
+</div>
+<p style="margin:16px 0 0;font-size:13px;line-height:1.6;color:#7a7a7a;max-width:82ch">Aged down from the official hues so they sit inside a greyscale page rather than shouting out of it. Permitted on deck rows, seats and card metadata. Forbidden on buttons, links, statuses and headings. <span style="color:#c9c9c9">Red is the one exception</span> — it doubles as the single alarm state, borrowed from this ramp rather than added to the system.</p>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">05</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Type</span><span style="font-size:13.5px;color:#7a7a7a">Geist · Geist Mono</span></div>
+<div style="margin-top:20px;border-top:1px solid #262626">
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0;border-bottom:1px solid #161616"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">46 / 1.06 / 600 / −.032em</span></sc-if><span style="font-size:46px;line-height:1.06;font-weight:600;letter-spacing:-.032em;color:#ffffff">Knowing is half the battle</span></div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0;border-bottom:1px solid #161616"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">30 / 600 / −.026em</span></sc-if><span style="font-size:30px;font-weight:600;letter-spacing:-.026em;color:#f4f4f4">Drana vs Kilo vs Wyleth</span></div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0;border-bottom:1px solid #161616"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">15 / 600 — section</span></sc-if><span style="display:flex;align-items:baseline;gap:10px"><span style="font-size:15px;font-weight:600;color:#ededed">Recent runs</span><span style="font-size:13px;color:#7a7a7a">52 finished, 517 games</span></span></div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0;border-bottom:1px solid #161616"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">17 / 1.65 — lead</span></sc-if><span style="font-size:17px;line-height:1.65;color:#9a9a9a;max-width:76ch"><strong style="color:#ffffff;font-weight:500">29 decks</strong> on this engine. Pick two to four and run a gauntlet.</span></div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0;border-bottom:1px solid #161616"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">14 — row</span></sc-if><span style="font-size:14px;color:#c9c9c9">Wilhelt Zombies B3</span></div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0;border-bottom:1px solid #161616"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">12.5 — meta / column head</span></sc-if><span style="font-size:12.5px;color:#7a7a7a">16 games · 1 d ago</span></div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0;border-bottom:1px solid #161616"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">12.5 mono — machine text</span></sc-if><span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">wilhelt_zombies.dck · sim_20260724_094940.json</span></div>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;padding:18px 0"><sc-if value="{{ showSpecs }}" hint-placeholder-val="{{ true }}"><span style="font:400 11.5px 'Geist Mono',monospace;color:#7a7a7a">10.5 mono / .16em — eyebrow</span></sc-if><span style="font:400 10.5px 'Geist Mono',monospace;letter-spacing:.16em;color:#7a7a7a;text-transform:uppercase">Magic Sim Lab · Commander</span></div>
+</div>
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#7a7a7a;max-width:82ch">Mono is reserved for machine-generated strings — filenames, job ids, hex values, run hashes — and for the eyebrow. Never for prose.</p>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">06</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Space and radius</span></div>
+<div style="margin-top:22px;display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap">
+<div><div style="width:4px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">4</div></div>
+<div><div style="width:8px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">8</div></div>
+<div><div style="width:12px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">12</div></div>
+<div><div style="width:20px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">20</div></div>
+<div><div style="width:26px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">26</div></div>
+<div><div style="width:40px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">40</div></div>
+<div><div style="width:56px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">56</div></div>
+<div><div style="width:64px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">64</div></div>
+<div><div style="width:80px;height:40px;background:#2e2e2e"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">80</div></div>
+<span style="width:1px;height:56px;background:#262626;margin:0 12px"></span>
+<div><div style="width:44px;height:40px;background:#2e2e2e;border-radius:2px"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">2 card</div></div>
+<div><div style="width:44px;height:40px;background:#2e2e2e;border-radius:6px"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">6 control</div></div>
+<div><div style="width:44px;height:40px;background:#2e2e2e;border-radius:99px"></div><div style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a;margin-top:8px">pip</div></div>
+</div>
+<p style="margin:18px 0 0;font-size:13px;line-height:1.6;color:#7a7a7a;max-width:82ch">Page gutter 40, section gap 56–80, row min-height 56, control height 42. Radius has exactly three values; there is no 8, 10 or 12.</p>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">07</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Buttons and links</span></div>
+<div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+<span style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:6px;background:#e8e4da;color:#0a0a0a;font-size:14px;font-weight:600">Set up a run</span>
+<span style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:6px;background:#161616;border:1px solid #2a2a2a;color:#ededed;font-size:14px;font-weight:500">Validate only</span>
+<span style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:6px;background:#e8e4da;color:#0a0a0a;font-size:14px;font-weight:600;outline:2px solid #ffffff;outline-offset:2px">Focused</span>
+<a href="#07" style="font-size:14px;color:#e8e4da;border-bottom:1px solid #3a3a3a;padding-bottom:2px">Import a deck</a>
+<a href="#07" style="font-size:14px;color:#ffffff;border-bottom:1px solid #8a8a8a;padding-bottom:2px">Hovered link</a>
+</div>
+<div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px">
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7a7a7a">Bone <span style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#E8E4DA</span> is the only fill. One primary per view — the action that costs the most time. Everything else is <span style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#161616</span> with a border, or a bone link with a rule under it.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7a7a7a">Focus is 2px <span style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#FFFFFF</span> at 2px offset on every interactive element — maximum contrast on this page, and it keeps the achromatic rule intact. <strong style="color:#ededed;font-weight:500">Never disable a primary button.</strong> Keep it live and explain the blocker beside it.</p>
+</div>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">08</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Inputs</span><span style="font-size:13.5px;color:#7a7a7a">label above, always — placeholder is a hint, never the label</span></div>
+<div style="margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px">
+<div>
+<div style="font-size:12px;color:#7a7a7a;margin-bottom:12px">Default</div>
+<label style="display:block;font-size:12.5px;font-weight:500;color:#c9c9c9;margin-bottom:8px">Deck name</label>
+<div style="display:flex;align-items:center;height:44px;padding:0 14px;border-radius:6px;background:#101010;border:1px solid #2a2a2a"><span style="font-size:14px;color:#7a7a7a">e.g. Kilo Helm Final</span></div>
+<div style="margin-top:9px;font-size:12px;color:#7a7a7a">Optional — defaults to the commander name.</div>
+</div>
+<div>
+<div style="font-size:12px;color:#7a7a7a;margin-bottom:12px">Focused</div>
+<label style="display:block;font-size:12.5px;font-weight:500;color:#c9c9c9;margin-bottom:8px">Deck name</label>
+<div style="display:flex;align-items:center;height:44px;padding:0 14px;border-radius:6px;background:#101010;border:1px solid #2a2a2a;outline:2px solid #ffffff;outline-offset:2px"><span style="font-size:14px;color:#ffffff">Kilo Helm Final</span><span style="width:1.5px;height:18px;background:#ffffff;margin-left:1px"></span></div>
+<div style="margin-top:9px;font-size:12px;color:#7a7a7a">Optional — defaults to the commander name.</div>
+</div>
+<div>
+<div style="font-size:12px;color:#7a7a7a;margin-bottom:12px">Error</div>
+<label style="display:block;font-size:12.5px;font-weight:500;color:#c9c9c9;margin-bottom:8px">Decklist</label>
+<div style="display:flex;align-items:center;height:44px;padding:0 14px;border-radius:6px;background:#101010;border:1px solid #b85440"><span style="font:400 13px 'Geist Mono',monospace;color:#ededed">1 Kilo, Apogee Mnid (EOC) 3</span></div>
+<div style="margin-top:9px;font-size:12px;line-height:1.55;color:#d9a396">Line 1 — no card called “Apogee Mnid”. Closest match is <strong style="color:#ffffff;font-weight:500">Kilo, Apogee Mind</strong>. <a href="#08" style="border-bottom:1px solid #6a4038">Use it</a> · <a href="#08" style="border-bottom:1px solid #6a4038">Keep mine</a></div>
+</div>
+</div>
+<p style="margin:20px 0 0;font-size:13px;line-height:1.6;color:#7a7a7a;max-width:82ch">Error copy states the requirement and offers the fix, never just the violation. Your text is never modified — corrections are always suggestions the user accepts.</p>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">09</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Rows and tables</span><span style="font-size:13.5px;color:#7a7a7a">56px minimum, whole row is the target</span></div>
+<div style="margin-top:20px;border-top:1px solid #262626">
+<div style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;padding:9px 0;border-bottom:1px solid #161616">
+<span></span><span></span><span style="font-size:12.5px;color:#7a7a7a">Deck</span><span style="font-size:12.5px;color:#7a7a7a">File</span><span style="font-size:12.5px;color:#7a7a7a">Runs</span><span style="font-size:12.5px;color:#7a7a7a">Average win rate</span>
+</div>
+<a href="#09" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px;border-bottom:1px solid #161616" style-hover="background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#b85440"></span></span>
+<span style="font-size:14px;color:#ffffff;font-weight:500">Krenko Goblins</span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">krenko_goblins.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">6</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:69%;background:#ffffff"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#ffffff;width:32px;text-align:right">69%</span></span>
+</a>
+<a href="#09" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px;border-bottom:1px solid #161616;background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#6a6070"></span><span style="width:8px;height:8px;border-radius:99px;background:#b85440"></span></span>
+<span style="font-size:14px;color:#c9c9c9">Drana Vampires <span style="font-size:12px;color:#7a7a7a">— hovered</span></span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">drana_vampires.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">11</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:52%;background:#8a8a8a"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#c9c9c9;width:32px;text-align:right">52%</span></span>
+</a>
+<a href="#09" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px" style-hover="background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#e0d8c2"></span><span style="width:8px;height:8px;border-radius:99px;background:#5385b8"></span><span style="width:8px;height:8px;border-radius:99px;background:#b85440"></span></span>
+<span style="font-size:14px;color:#c9c9c9">Kilo Helm Final</span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">kilo_helm_final.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">14</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:38%;background:#8a8a8a"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#c9c9c9;width:32px;text-align:right">38%</span></span>
+</a>
+</div>
+<div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px">
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7a7a7a">The identifying attribute sits immediately after the control — never a wide empty gutter before the name. Machine strings are right of it as metadata. Whole row is the link, so no repeated “Watch” column.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7a7a7a">Win-rate bars are 2px with a 1px tick at 25% — the even-seats baseline for a four-player pod. The leading deck's bar and figure go to <span style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#FFFFFF</span>; everything else is <span style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">#8A8A8A</span>.</p>
+</div>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">10</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Status and progress</span><span style="font-size:13.5px;color:#7a7a7a">shape, not hue</span></div>
+<div style="margin-top:22px;display:flex;gap:32px;flex-wrap:wrap">
+<span style="display:flex;align-items:center;gap:9px"><span style="width:7px;height:7px;border-radius:99px;background:#ffffff"></span><span style="font-size:14px;color:#ededed">Running</span></span>
+<span style="display:flex;align-items:center;gap:9px"><span style="width:7px;height:7px;border-radius:99px;border:1px solid #7a7a7a"></span><span style="font-size:14px;color:#9a9a9a">Queued</span></span>
+<span style="display:flex;align-items:center;gap:9px"><span style="width:7px;height:7px;background:#ededed"></span><span style="font-size:14px;color:#ededed">Done</span></span>
+<span style="display:flex;align-items:center;gap:9px"><span style="width:7px;height:7px;border-radius:99px;background:#b85440"></span><span style="font-size:14px;color:#d9a396">Failed</span></span>
+</div>
+<div style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px">
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:99px;border:1px solid #7a7a7a"></span><span style="font-size:14px;color:#9a9a9a">Queued</span></span><span style="font-size:12.5px;color:#7a7a7a">2nd in line</span></div>
+<div style="margin-top:11px;height:2px;background:repeating-linear-gradient(90deg,#242424 0 6px,transparent 6px 12px)"></div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7a7a7a">Forge has not started this job, so nothing is drawn. 2 decks over 1 game takes about 10 s once it does.</div>
+</div>
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:flex;align-items:center;gap:9px"><span style="width:6px;height:6px;border-radius:99px;background:#ffffff"></span><span style="font-size:14px;color:#ededed">Running</span></span><span style="font-size:12.5px;color:#9a9a9a">about 1 min 53 s left</span></div>
+<div style="margin-top:11px;height:2px;background:#1f1f1f"><div style="width:64%;height:100%;background:#ffffff"></div></div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7a7a7a">Game 4 of 6 · 3 min 27 s elapsed · <a href="#10" style="border-bottom:1px solid #3a3a3a">notify me instead</a></div>
+</div>
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:flex;align-items:center;gap:9px"><span style="width:6px;height:6px;background:#ededed"></span><span style="font-size:14px;color:#ededed">Done</span></span><a href="#10" style="font-size:12.5px;border-bottom:1px solid #3a3a3a">Open the report</a></div>
+<div style="margin-top:11px;height:2px;background:#ededed"></div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7a7a7a">6 games in 5 min 12 s · Drana Vampires took 38%.</div>
+</div>
+</div>
+<p style="margin:20px 0 0;font-size:13px;line-height:1.6;color:#7a7a7a;max-width:82ch">Filled dot, hollow dot, square, red dot — distinguishable with no colour vision at all. A queued job draws no progress it does not have. Any wait over ten seconds shows a live estimate and an escape route; four decks over sixteen games is eight to fourteen minutes and must never look instant.</p>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">11</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Navigation</span></div>
+<div style="margin-top:22px;border:1px solid #1f1f1f;border-radius:6px;overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 20px;border-bottom:1px solid #1a1a1a">
+<div style="display:flex;align-items:center;gap:10px;min-width:0">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ededed" stroke-width="1.6" stroke-linejoin="round" style="flex:none"><path d="M12 3.5 22 20.5H2Z"></path><path d="M12 10v4.5" stroke-linecap="round"></path></svg>
+<a href="#11" style="font-size:15px;font-weight:500;color:#ededed">Sim Lab</a>
+<span style="font-size:15px;color:#3a3a3a">/</span>
+<a href="#11" style="font-size:15px;color:#9a9a9a">Results</a>
+<span style="font-size:15px;color:#3a3a3a">/</span>
+<span style="font-size:15px;color:#ededed;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Drana vs Kilo vs Wyleth vs Wilhelt</span>
+</div>
+<div style="display:flex;align-items:center;gap:2px;flex:none">
+<a href="#11" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#9a9a9a">My decks</a>
+<a href="#11" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#9a9a9a">My sims</a>
+<a href="#11" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#9a9a9a">Import</a>
+<a href="#11" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#ededed;background:#1e1e1e">Results</a>
+<span style="width:1px;height:18px;background:#242424;margin:0 10px"></span>
+<span style="width:28px;height:28px;border-radius:99px;background:#2a2a2a;color:#c9c9c9;font:500 10px 'Geist Mono',monospace;display:flex;align-items:center;justify-content:center">VD</span>
+</div>
+</div>
+<div style="display:flex;gap:22px;padding:0 20px">
+<span style="padding:12px 0;font-size:14px;color:#ededed;border-bottom:1.5px solid #ededed">Overview</span>
+<a href="#11" style="padding:12px 0;font-size:14px;color:#9a9a9a">Replay</a>
+</div>
+</div>
+<div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px">
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7a7a7a">The breadcrumb is the trail to <em>this</em> page — never the first deck in the pod. Middle crumbs are links; the last is plain and truncates. My decks and My sims live in the nav, not in the account menu; the account menu holds only account, preferences and sign-out.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;color:#7a7a7a">The tab row renders nothing below two tabs. Footer carries the Fan Content notice and the Scryfall credit at <span style="font:400 12px 'Geist Mono',monospace;color:#c9c9c9">ink-4</span> — both are obligations, so both must be legible.</p>
+</div>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">12</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Empty and unknown</span></div>
+<div style="margin-top:22px;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px;max-width:1100px;align-items:start">
+<div style="padding:40px 20px;border:1px solid #1f1f1f;border-radius:6px;text-align:center">
+<div style="font-size:15px;color:#ededed">No runs match “zombi”</div>
+<div style="margin-top:7px;font-size:13px;color:#7a7a7a">52 runs are hidden by this filter.</div>
+<a href="#12" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;margin-top:16px;border-radius:6px;background:#161616;border:1px solid #2a2a2a;color:#ededed;font-size:13px">Clear filter</a>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+<div style="width:64px;height:88px;border-radius:3px;border:1.5px dashed #3a3a3a;background:repeating-linear-gradient(135deg,#161616 0 5px,#101010 5px 10px);display:flex;align-items:flex-end;padding:8px;box-sizing:border-box"><span style="font-size:11px;color:#9a9a9a;line-height:1.25">Zombie Token</span></div>
+<span style="font-size:12.5px;color:#7a7a7a;text-align:center;line-height:1.5">Type unknown — dashed, hatched, named at 11px. Deliberate, not a failed image.</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+<div style="width:44px;height:44px;border-radius:99px;background:#1e1e1e;border:1px solid #2c2c2c;display:flex;align-items:center;justify-content:center;font:500 13px 'Geist Mono',monospace;color:#9a9a9a">UD</div>
+<span style="font-size:12.5px;color:#7a7a7a;text-align:center;line-height:1.5">Commander art unresolved — a monogram fallback. Never an empty seat.</span>
+</div>
+</div>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">13</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Accessibility contract</span><span style="font-size:13.5px;color:#7a7a7a">WCAG 2.2 AA</span></div>
+<div style="margin-top:20px;border-top:1px solid #262626">
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:13px 0;border-bottom:1px solid #161616"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a">1.4.3</span><span style="font-size:13.5px;color:#c9c9c9">All text at or above 4.6:1. <span style="color:#7a7a7a">ink-4 is the floor; nothing dimmer carries words.</span></span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:13px 0;border-bottom:1px solid #161616"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a">1.4.1</span><span style="font-size:13.5px;color:#c9c9c9">No meaning carried by hue alone. <span style="color:#7a7a7a">Winner is position plus brightness; status is dot shape.</span></span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:13px 0;border-bottom:1px solid #161616"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a">2.4.7 · 2.4.13</span><span style="font-size:13.5px;color:#c9c9c9">2px white ring at 2px offset on every focusable element. <span style="color:#7a7a7a">The replay is keyboard-first — it needs this most.</span></span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:13px 0;border-bottom:1px solid #161616"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a">2.5.8</span><span style="font-size:13.5px;color:#c9c9c9">56px row targets, 42–48px controls. <span style="color:#7a7a7a">Comfortably past the 24px floor and the 44px platform guidance.</span></span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:13px 0;border-bottom:1px solid #161616"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a">3.3.2</span><span style="font-size:13.5px;color:#c9c9c9">Every field has a persistent visible label. <span style="color:#7a7a7a">Placeholder is a format hint only.</span></span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:13px 0"><span style="font:400 12px 'Geist Mono',monospace;color:#7a7a7a">4.1.3</span><span style="font-size:13.5px;color:#c9c9c9">Run completion announces via a live region and swaps the header in place. <span style="color:#7a7a7a">The page never grows a second heading underneath itself.</span></span></div>
+</div>
+</div>
+
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">14</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Handoff</span><span style="font-size:13.5px;color:#7a7a7a">drop into :root</span></div>
+<div style="margin-top:20px;padding:24px 26px;border:1px solid #1f1f1f;border-radius:6px;background:#0d0d0d;overflow-x:auto">
+<pre style="margin:0;font:400 12.5px/1.85 'Geist Mono',monospace;color:#c9c9c9">:root {
+  --ink-max:#FFFFFF;  --ink-1:#EDEDED;  --ink-2:#C9C9C9;  --ink-3:#9A9A9A;  --ink-4:#7A7A7A;
+  --page:#0A0A0A;     --hover:#101010;  --rule:#161616;   --rule-2:#1F1F1F;
+  --border:#2A2A2A;   --underline:#3A3A3A;  --fill:#161616;  --bone:#E8E4DA;
+  --mtg-w:#E0D8C2;  --mtg-u:#5385B8;  --mtg-b:#6A6070;  --mtg-r:#B85440;  --mtg-g:#4E8257;
+  --alarm:#B85440;  --alarm-ink:#D9A396;
+  --font:"Geist",system-ui,sans-serif;  --mono:"Geist Mono",ui-monospace,monospace;
+  --gutter:40px;  --row-h:56px;  --control-h:42px;
+  --r-card:2px;   --r-control:6px;  --r-pip:999px;
+  --focus:2px solid var(--ink-max);  --focus-offset:2px;
+}</pre>
+</div>
+<p style="margin:16px 0 0;font-size:13px;line-height:1.6;color:#7a7a7a;max-width:82ch">Retired and must not reappear: <span style="font:400 12px 'Geist Mono',monospace">#3D8BFF</span>, <span style="font:400 12px 'Geist Mono',monospace">#4EC98A</span>, <span style="font:400 12px 'Geist Mono',monospace">#6B6B6B</span>, <span style="font:400 12px 'Geist Mono',monospace">#5C5C5C</span>, <span style="font:400 12px 'Geist Mono',monospace">#4A4A4A</span> as text.</p>
+</div>
+
+<sc-if value="{{ showCanonicalScreen }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top:72px;padding-top:26px;border-top:1px solid #1f1f1f">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 11px 'Geist Mono',monospace;color:#7a7a7a">15</span><span style="font-size:22px;font-weight:600;color:#ededed;letter-spacing:-.018em">Canonical screen</span><span style="font-size:13.5px;color:#7a7a7a">home, logged in — every rule above, in place</span></div>
+
+<div style="margin-top:24px;border:1px solid #1f1f1f;border-radius:6px;overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 40px;border-bottom:1px solid #1a1a1a">
+<div style="display:flex;align-items:center;gap:11px">
+<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ededed" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.5 22 20.5H2Z"></path><path d="M12 10v4.5" stroke-linecap="round"></path></svg>
+<span style="font-size:15px;font-weight:500;color:#ededed;letter-spacing:-.01em">Sim Lab</span>
+</div>
+<div style="display:flex;align-items:center;gap:2px">
+<a href="#15" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#9a9a9a" style-hover="color:#ffffff;background:#141414">My decks</a>
+<a href="#15" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#9a9a9a" style-hover="color:#ffffff;background:#141414">My sims</a>
+<a href="#15" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#9a9a9a" style-hover="color:#ffffff;background:#141414">Import</a>
+<a href="#15" style="display:flex;align-items:center;height:34px;padding:0 12px;border-radius:6px;font-size:13px;color:#9a9a9a" style-hover="color:#ffffff;background:#141414">Results</a>
+<span style="width:1px;height:18px;background:#242424;margin:0 10px"></span>
+<a href="#15" style="display:flex;align-items:center;gap:8px;height:34px;padding:0 8px 0 4px;border-radius:6px" style-hover="background:#141414">
+<span style="width:26px;height:26px;border-radius:99px;background:#2a2a2a;color:#c9c9c9;font:500 10px 'Geist Mono',monospace;display:flex;align-items:center;justify-content:center">VD</span>
+<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#7a7a7a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+</a>
+</div>
+</div>
+
+<div style="padding:76px 40px 0">
+<h1 style="margin:0;font-size:46px;line-height:1.06;font-weight:600;letter-spacing:-.032em;color:#ffffff;max-width:30ch">Knowing is half the battle</h1>
+<p style="margin:22px 0 0;font-size:17px;line-height:1.65;color:#9a9a9a;max-width:76ch"><strong style="color:#ffffff;font-weight:500">29 decks</strong> on this engine, <strong style="color:#ffffff;font-weight:500">52 finished runs</strong> covering <strong style="color:#ffffff;font-weight:500">517 games</strong>. Pick two to four decks and run a gauntlet — every game gets a replay, and win rates are scored against the even-seats baseline.</p>
+<div style="display:flex;align-items:center;gap:26px;margin-top:32px;flex-wrap:wrap">
+<a href="#15" style="display:flex;align-items:center;height:42px;padding:0 20px;border-radius:6px;background:#e8e4da;color:#0a0a0a;font-size:14px;font-weight:600" style-hover="background:#ffffff">Set up a run</a>
+<a href="#15" style="font-size:14px;color:#e8e4da;border-bottom:1px solid #3a3a3a;padding-bottom:2px" style-hover="color:#ffffff;border-color:#8a8a8a">Import a deck</a>
+<a href="#15" style="font-size:14px;color:#e8e4da;border-bottom:1px solid #3a3a3a;padding-bottom:2px" style-hover="color:#ffffff;border-color:#8a8a8a">Explore decklists</a>
+<a href="#15" style="font-size:14px;color:#e8e4da;border-bottom:1px solid #3a3a3a;padding-bottom:2px" style-hover="color:#ffffff;border-color:#8a8a8a">Explore past simulations</a>
+</div>
+<div style="margin-top:14px;font-size:13px;color:#7a7a7a">Two decks is about 2.5 s a game; four is 32–52 s. Pod size drives the wait far more than game count.</div>
+
+<div style="margin-top:56px">
+<div style="display:flex;align-items:baseline;gap:10px"><span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:99px;background:#ffffff"></span><span style="font-size:15px;font-weight:600;color:#ededed">Running now</span></span><span style="font-size:13px;color:#7a7a7a">1 job · you can leave, this keeps polling</span></div>
+<div style="margin-top:14px;height:2px;background:#1f1f1f"><div style="width:64%;height:100%;background:#ffffff"></div></div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-top:12px">
+<div style="font-size:14px;color:#ededed">Atraxa vs Ur-Dragon vs Meren vs Kilo<span style="color:#7a7a7a"> · game 4 of 6 · turn 17 of 33</span></div>
+<div style="display:flex;align-items:baseline;gap:20px"><span style="font-size:13.5px;color:#9a9a9a">about 1 min 53 s left</span><a href="#15" style="font-size:13.5px;color:#e8e4da;border-bottom:1px solid #3a3a3a;padding-bottom:2px">Watch</a></div>
+</div>
+</div>
+
+<div style="margin-top:64px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px">
+<div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:15px;font-weight:600;color:#ededed">Your decks</span><span style="font-size:13px;color:#7a7a7a">most run · 29 on this engine</span></div>
+<a href="#15" style="font-size:13.5px;color:#e8e4da;border-bottom:1px solid #3a3a3a;padding-bottom:2px">All decks</a>
+</div>
+<div style="margin-top:14px;border-top:1px solid #1f1f1f">
+<div style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;padding:9px 0;border-bottom:1px solid #161616">
+<span></span><span></span><span style="font-size:12.5px;color:#7a7a7a">Deck</span><span style="font-size:12.5px;color:#7a7a7a">File</span><span style="font-size:12.5px;color:#7a7a7a">Runs</span><span style="font-size:12.5px;color:#7a7a7a">Average win rate</span>
+</div>
+<a href="#15" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px;border-bottom:1px solid #161616" style-hover="background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#b85440"></span></span>
+<span style="font-size:14px;color:#ffffff;font-weight:500">Krenko Goblins</span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">krenko_goblins.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">6</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:69%;background:#ffffff"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#ffffff;width:32px;text-align:right">69%</span></span>
+</a>
+<a href="#15" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px;border-bottom:1px solid #161616" style-hover="background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#6a6070"></span><span style="width:8px;height:8px;border-radius:99px;background:#b85440"></span></span>
+<span style="font-size:14px;color:#c9c9c9">Drana Vampires</span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">drana_vampires.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">11</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:52%;background:#8a8a8a"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#c9c9c9;width:32px;text-align:right">52%</span></span>
+</a>
+<a href="#15" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px;border-bottom:1px solid #161616" style-hover="background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#e0d8c2"></span><span style="width:8px;height:8px;border-radius:99px;background:#5385b8"></span><span style="width:8px;height:8px;border-radius:99px;background:#b85440"></span></span>
+<span style="font-size:14px;color:#c9c9c9">Kilo Helm Final</span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">kilo_helm_final.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">14</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:38%;background:#8a8a8a"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#c9c9c9;width:32px;text-align:right">38%</span></span>
+</a>
+<a href="#15" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px;border-bottom:1px solid #161616" style-hover="background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#5385b8"></span><span style="width:8px;height:8px;border-radius:99px;background:#6a6070"></span></span>
+<span style="font-size:14px;color:#c9c9c9">Wilhelt Zombies B3</span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">wilhelt_zombies.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">9</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:31%;background:#8a8a8a"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#c9c9c9;width:32px;text-align:right">31%</span></span>
+</a>
+<a href="#15" style="display:grid;grid-template-columns:46px 42px 1fr 230px 80px 170px;gap:18px;align-items:center;min-height:56px" style-hover="background:#101010">
+<span style="width:34px;height:47px;border-radius:2px;background:repeating-linear-gradient(135deg,#232323 0 4px,#191919 4px 8px);border:1px solid #2c2c2c"></span>
+<span style="display:flex;gap:3px"><span style="width:8px;height:8px;border-radius:99px;background:#e0d8c2"></span><span style="width:8px;height:8px;border-radius:99px;background:#b85440"></span></span>
+<span style="font-size:14px;color:#c9c9c9">Wyleth Voltron B3</span>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">wyleth_voltron.dck</span>
+<span style="font-size:13.5px;color:#9a9a9a">8</span>
+<span style="display:flex;align-items:center;gap:12px"><span style="flex:1;height:2px;background:#1f1f1f;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:29%;background:#8a8a8a"></span><span style="position:absolute;left:25%;top:-3px;width:1px;height:8px;background:#4a4a4a"></span></span><span style="font-size:13.5px;color:#c9c9c9;width:32px;text-align:right">29%</span></span>
+</a>
+</div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7a7a7a;max-width:82ch">The thin marker on each bar sits at 25.0% — the even-seats baseline for a four-player pod. A deck to the right of it is beating an equal share of its games. Pips are colour identity; thumbnails are commander art, hotlinked from Scryfall.</div>
+</div>
+
+<div style="margin-top:56px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px">
+<div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:15px;font-weight:600;color:#ededed">Recent runs</span><span style="font-size:13px;color:#7a7a7a">52 finished, 517 games</span></div>
+<a href="#15" style="font-size:13.5px;color:#e8e4da;border-bottom:1px solid #3a3a3a;padding-bottom:2px">All results</a>
+</div>
+<div style="margin-top:14px;border-top:1px solid #1f1f1f">
+<div style="display:grid;grid-template-columns:1fr 80px 260px 110px;gap:20px;align-items:center;padding:9px 0;border-bottom:1px solid #161616">
+<span style="font-size:12.5px;color:#7a7a7a">Run</span><span style="font-size:12.5px;color:#7a7a7a">Games</span><span style="font-size:12.5px;color:#7a7a7a">Winner</span><span style="font-size:12.5px;color:#7a7a7a">When</span>
+</div>
+<a href="#15" style="display:grid;grid-template-columns:1fr 80px 260px 110px;gap:20px;align-items:center;min-height:52px;border-bottom:1px solid #161616" style-hover="background:#101010"><span style="font-size:14px;color:#c9c9c9">Kilo vs Wilhelt vs Wyleth vs Drana</span><span style="font-size:13.5px;color:#9a9a9a">4</span><span><span style="font-size:13.5px;color:#ffffff">Wyleth Voltron B3</span><span style="font-size:13.5px;color:#7a7a7a"> 50%</span></span><span style="font-size:13.5px;color:#9a9a9a">8 s ago</span></a>
+<a href="#15" style="display:grid;grid-template-columns:1fr 80px 260px 110px;gap:20px;align-items:center;min-height:52px;border-bottom:1px solid #161616" style-hover="background:#101010"><span style="font-size:14px;color:#c9c9c9">Kilo Omega vs Meren vs Kilo Alpha vs Kilo Helm Final</span><span style="font-size:13.5px;color:#9a9a9a">1</span><span><span style="font-size:13.5px;color:#ffffff">Meren Graveyard B3</span><span style="font-size:13.5px;color:#7a7a7a"> 100%</span></span><span style="font-size:13.5px;color:#9a9a9a">1 d ago</span></a>
+<a href="#15" style="display:grid;grid-template-columns:1fr 80px 260px 110px;gap:20px;align-items:center;min-height:52px;border-bottom:1px solid #161616" style-hover="background:#101010"><span style="font-size:14px;color:#c9c9c9">Inspirit B3 vs Inspirit B3 v3 vs Dnide vs Drana</span><span style="font-size:13.5px;color:#9a9a9a">16</span><span><span style="font-size:13.5px;color:#ffffff">Drana Vampires</span><span style="font-size:13.5px;color:#7a7a7a"> 38%</span></span><span style="font-size:13.5px;color:#9a9a9a">1 d ago</span></a>
+<a href="#15" style="display:grid;grid-template-columns:1fr 80px 260px 110px;gap:20px;align-items:center;min-height:52px;border-bottom:1px solid #161616" style-hover="background:#101010"><span style="font-size:14px;color:#c9c9c9">Krenko Goblins vs Torbran Burn B3</span><span style="font-size:13.5px;color:#9a9a9a">1</span><span><span style="font-size:13.5px;color:#ffffff">Krenko Goblins</span><span style="font-size:13.5px;color:#7a7a7a"> 100%</span></span><span style="font-size:13.5px;color:#9a9a9a">1 d ago</span></a>
+<a href="#15" style="display:grid;grid-template-columns:1fr 80px 260px 110px;gap:20px;align-items:center;min-height:52px" style-hover="background:#101010"><span style="font-size:14px;color:#c9c9c9">Atraxa vs Dnide vs Drana vs Inspirit</span><span style="font-size:13.5px;color:#9a9a9a">2</span><span><span style="font-size:13.5px;color:#ffffff">Dnide Wildsear</span><span style="font-size:13.5px;color:#7a7a7a"> 100%</span></span><span style="font-size:13.5px;color:#9a9a9a">1 d ago</span></a>
+</div>
+<div style="margin-top:11px;font-size:12.5px;line-height:1.55;color:#7a7a7a;max-width:82ch">No dot, no green — the column is headed <em>Winner</em> and the winner is simply the brightest thing in the row. The whole row opens the report.</div>
+</div>
+
+<div style="margin-top:80px;padding:22px 0;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;gap:24px">
+<div style="display:flex;gap:26px"><span style="font-size:12.5px;color:#7a7a7a">Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy.</span><span style="font-size:12.5px;color:#7a7a7a">Card images via Scryfall</span></div>
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#7a7a7a">3,152 rules · 262 keywords</span>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showSpecs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Documentation&quot;},&quot;showContrast&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Documentation&quot;},&quot;showCanonicalScreen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Documentation&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showSpecs: this.props.showSpecs ?? true,
+      showContrast: this.props.showContrast ?? true,
+      showCanonicalScreen: this.props.showCanonicalScreen ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

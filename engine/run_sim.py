@@ -30,6 +30,28 @@ FORGE_SEARCH_GLOBS = [
     "~/Forge/forge-gui-desktop-*.jar",
 ]
 
+# The GPL shim (separate repo — see CLAUDE.md "Legal posture") that drives
+# Forge programmatically and emits typed logs + zone ground truth.
+SHIM_SEARCH_GLOBS = [
+    "~/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar",
+    "/opt/simlab-forge-shim/simlab-forge-shim.jar",
+]
+
+
+def find_shim_jar(explicit: str | None) -> str:
+    candidates = []
+    if explicit:
+        candidates.append(explicit)
+    if os.environ.get("SIMLAB_SHIM_JAR"):
+        candidates.append(os.environ["SIMLAB_SHIM_JAR"])
+    for pattern in SHIM_SEARCH_GLOBS:
+        candidates.extend(sorted(glob.glob(os.path.expanduser(pattern)), reverse=True))
+    for c in candidates:
+        if c and Path(os.path.expanduser(c)).is_file():
+            return os.path.expanduser(c)
+    sys.exit("shim jar not found. Build simlab-forge-shim (./build.sh), or pass "
+             "--shim-jar / set SIMLAB_SHIM_JAR.")
+
 
 def find_forge_jar(explicit: str | None) -> str:
     candidates = []
@@ -76,6 +98,38 @@ def stage_decks(decks: list[str], deck_dir: str | None, fmt: str) -> None:
             sys.exit(f"deck file not found: {src}")
 
 
+def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
+                   deck_order: list[str], games: int) -> dict:
+    """One shim invocation with a fixed seat order; returns parsed result.
+
+    Decks must already be staged (the shim takes absolute .dck paths; the
+    staged copies in Forge's profile deck dir are the canonical ones)."""
+    from shim_log_adapter import parse_shim_jsonl
+    staged = forge_profile_deck_dir(args.format)
+    abs_decks = [str(staged / Path(d).name) for d in deck_order]
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    jsonl_path = out_dir / (f"shim_raw_{args.run_id}.jsonl" if args.run_id and not args.rotate
+                            else f"shim_raw_{stamp}.jsonl")
+    cmd = ["java", f"-Xmx{args.heap}", "-cp", f"{shim_jar}{os.pathsep}{jar}",
+           "simlab.shim.SimShim", "--decks", *abs_decks,
+           "--games", str(games), "--timeout", str(args.clock),
+           "--out", str(jsonl_path)]
+    print("$", " ".join(cmd))
+    # Forge must run from its install dir so it finds the res/ folder.
+    proc = subprocess.Popen(cmd, cwd=Path(jar).parent, stdout=subprocess.DEVNULL,
+                            stderr=subprocess.PIPE, text=True, bufsize=1)
+    assert proc.stderr is not None
+    for line in proc.stderr:  # shim progress arrives on stderr
+        s = line.strip()
+        if s.startswith("shim:"):
+            print(f"  {s}", flush=True)
+    proc.wait(timeout=60)
+    if proc.returncode != 0:
+        print(f"WARNING: shim exited {proc.returncode}", file=sys.stderr)
+    return parse_shim_jsonl(jsonl_path.read_text(encoding="utf-8"),
+                            source=" ".join(cmd))
+
+
 def run(args: argparse.Namespace) -> None:
     jar = find_forge_jar(args.forge_jar)
     out_dir = Path(args.out)
@@ -83,6 +137,36 @@ def run(args: argparse.Namespace) -> None:
 
     stage_decks(args.decks, args.deck_dir, args.format)
     deck_names = [Path(d).name for d in args.decks]
+
+    if args.agent == "shim":
+        shim_jar = find_shim_jar(args.shim_jar)
+        stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        if args.rotate:
+            rotations = len(deck_names)
+            per = max(1, args.games // rotations)
+            all_games = []
+            for i in range(rotations):
+                order = deck_names[i:] + deck_names[:i]
+                print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
+                sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per)
+                all_games.extend(sub["games"])
+            result = {"meta": {"source": "rotated", "agent": "simlab-forge-shim",
+                               "decks": args.decks, "format": args.format,
+                               "rotations": rotations},
+                      "games": all_games, "summary": _summarize_by_deck(all_games)}
+            json_path = out_dir / f"sim_{stamp}_rotated.json"
+        else:
+            result = _run_shim_once(args, jar, shim_jar, out_dir, deck_names, args.games)
+            result["meta"]["decks"] = args.decks
+            result["meta"]["format"] = args.format
+            json_path = out_dir / f"sim_{stamp}.json"
+        json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
+        s = result["summary"]
+        print(f"\n{s['games']} game(s) parsed | draws: {s['draws']}")
+        for player, rate in sorted(s["win_rates"].items(), key=lambda kv: -kv[1]):
+            print(f"  {player}: {s['wins'][player]} wins ({rate:.0%})")
+        print(f"json    : {json_path}")
+        return
 
     if args.rotate:
         # Forge's AI has a strong seat bias (measured: seat 1 wins ~11%, seat 4
@@ -212,6 +296,12 @@ def main() -> None:
     p.add_argument("--clock", type=int, default=120, help="Per-game timeout seconds (draw when exceeded)")
     p.add_argument("--quiet", action="store_true", help="Result-only logs (no per-action events)")
     p.add_argument("--forge-jar", default=None)
+    p.add_argument("--agent", choices=["forge", "shim"], default="forge",
+                   help="'forge' = stock sim CLI (default). 'shim' = simlab-forge-shim: "
+                        "same stock AI for now, but typed logs + zone ground truth "
+                        "(battlefield entries) attached per game under 'zones'.")
+    p.add_argument("--shim-jar", default=None,
+                   help="Path to simlab-forge-shim.jar (or set SIMLAB_SHIM_JAR)")
     p.add_argument("--heap", default="4g", help="JVM max heap (default 4g)")
     p.add_argument("--rotate", action="store_true",
                    help="Rotate seat order across sub-runs to cancel Forge's seat bias (recommended for 4-player)")

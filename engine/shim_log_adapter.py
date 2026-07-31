@@ -93,6 +93,9 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
 
     result = parse_forge_log("\n".join(lines), source=source)
     result["meta"]["agent"] = f"simlab-forge-shim/{meta_rec.get('shim', '?')}"
+    # Honesty label: plan-agent results are NOT stock-Forge numbers and must
+    # never be compared against stock baselines unlabeled (SIM_CALIBRATION).
+    result["meta"]["humanized"] = bool(meta_rec.get("humanized"))
 
     # Attach ground-truth zone movements per game (order matches game_order
     # because every shim game produces turn entries).

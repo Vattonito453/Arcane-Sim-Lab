@@ -114,6 +114,8 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
            "simlab.shim.SimShim", "--decks", *abs_decks,
            "--games", str(games), "--timeout", str(args.clock),
            "--out", str(jsonl_path)]
+    if getattr(args, "plans_file", None):
+        cmd += ["--plans", str(args.plans_file)]
     print("$", " ".join(cmd))
     # Forge must run from its install dir so it finds the res/ folder.
     proc = subprocess.Popen(cmd, cwd=Path(jar).parent, stdout=subprocess.DEVNULL,
@@ -138,9 +140,23 @@ def run(args: argparse.Namespace) -> None:
     stage_decks(args.decks, args.deck_dir, args.format)
     deck_names = [Path(d).name for d in args.decks]
 
+    if args.humanize:
+        args.agent = "shim"  # plan agents only exist behind the shim
+
     if args.agent == "shim":
         shim_jar = find_shim_jar(args.shim_jar)
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        args.plans_file = None
+        if args.humanize:
+            # Deck plans are OUR strategy data; they cross to the GPL shim
+            # as JSON (CLAUDE.md legal posture — the boundary is the design).
+            from deck_plan import build_plans
+            staged = forge_profile_deck_dir(args.format)
+            plans = build_plans([staged / Path(d).name for d in deck_names])
+            args.plans_file = out_dir / f"plans_{stamp}.json"
+            args.plans_file.write_text(json.dumps(plans, indent=2), encoding="utf-8")
+            print(f"plans   : {args.plans_file} "
+                  f"({', '.join(plans['decks'])})")
         if args.rotate:
             rotations = len(deck_names)
             per = max(1, args.games // rotations)
@@ -302,6 +318,11 @@ def main() -> None:
                         "(battlefield entries) attached per game under 'zones'.")
     p.add_argument("--shim-jar", default=None,
                    help="Path to simlab-forge-shim.jar (or set SIMLAB_SHIM_JAR)")
+    p.add_argument("--humanize", action="store_true",
+                   help="Generate deck plans (deck_plan.py) and run plan agents "
+                        "in the shim: human-like mulligans, split attacks, danger "
+                        "blocks, threat-gated counterspells. Implies --agent shim. "
+                        "Results are 'Sim Lab agent' numbers — label them as such.")
     p.add_argument("--heap", default="4g", help="JVM max heap (default 4g)")
     p.add_argument("--rotate", action="store_true",
                    help="Rotate seat order across sub-runs to cancel Forge's seat bias (recommended for 4-player)")

@@ -27,6 +27,13 @@ COPY rules/kb/ /app/rules/kb/
 COPY engine/*.py /app/engine/
 COPY engine/decks/*.dck /app/engine/decks/
 
+# simlab-forge-shim (optional): run deploy/sync-shim.sh before building to
+# stage the jar; without it the directory carries only its README and the
+# worker supports only --agent forge. SIMLAB_SHIM_JAR is where run_sim.py
+# looks; a missing file just disables the shim agent.
+COPY deploy/vendor/ /opt/simlab-forge-shim/
+ENV SIMLAB_SHIM_JAR=/opt/simlab-forge-shim/simlab-forge-shim.jar
+
 # Forge writes its profile under $HOME; run_sim stages decks via FORGE_USER_DIR
 ENV HOME=/root \
     FORGE_USER_DIR=/root/.forge \

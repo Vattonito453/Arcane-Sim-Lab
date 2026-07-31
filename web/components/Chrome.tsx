@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Mascot } from "@/components/Mascot";
 
 export interface TabDef {
   label: string;
@@ -14,7 +15,7 @@ export interface TabDef {
  *  avatar were decoration that also shipped the owner's name to every visitor of
  *  a hosted build. A nav item that does nothing is worse than no nav item. */
 const NAV = [
-  { label: "Decks", href: "/" },
+  { label: "New run", href: "/new" },
   { label: "Import", href: "/import" },
   { label: "Results", href: "/results" },
 ];
@@ -24,10 +25,14 @@ export function Chrome({
   context,
   contextImg,
   tabs,
+  noBrand,
 }: {
   context?: string;
   contextImg?: string;
   tabs?: TabDef[];
+  /** Home renders the full masthead below, and Cinzel appears exactly once
+   *  per page — so the top bar yields its wordmark there. */
+  noBrand?: boolean;
 }) {
   const path = usePathname() ?? "/";
   // "/" only matches exactly; the others match their whole subtree, so a replay
@@ -37,12 +42,9 @@ export function Chrome({
   return (
     <header className="chrome">
       <div className="tb">
-        <Link className="path" href="/">
-          <svg className="glyph" viewBox="0 0 24 24" fill="none" aria-label="Sim Lab">
-            <path d="M12 2 2.5 21.5h19L12 2Z" stroke="#EDEDED" strokeWidth="1.6" strokeLinejoin="round" />
-            <path d="M12 8.5v6.5" stroke="#EDEDED" strokeWidth="1.6" strokeLinecap="round" />
-          </svg>
-          Sim Lab
+        <Link className="path brand" href="/" aria-label="Arcane Sim Lab home">
+          <Mascot size={26} />
+          {!noBrand && <span className="wordmark">Arcane Sim Lab</span>}
         </Link>
         {context && (
           <>
@@ -85,6 +87,7 @@ export function Chrome({
 export function Footer({ right }: { right?: string }) {
   return (
     <footer className="chrome">
+      {/* Legal obligations (DESIGN_SYSTEM.md §9) — rendered at --ink-4, never below. */}
       <div className="ft">
         <span>Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy.</span>
         <span>Card images via Scryfall</span>

@@ -10,7 +10,8 @@
  *  themselves. */
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import type { ResultIndexEntry, SimSummary } from "@/lib/types";
 import { deckSlug, fmtDate, pct, runTitle, stripAi, timeAgo } from "@/lib/format";
@@ -26,11 +27,13 @@ function topWin(s: SimSummary): [string, number] | null {
   return entries[0];
 }
 
-export default function ResultsIndexPage() {
+function ResultsIndexInner() {
+  const searchParams = useSearchParams();
   const [results, setResults] = useState<ResultIndexEntry[] | null>(null);
   const [err, setErr] = useState(false);
   const [showAll, setShowAll] = useState(false);
-  const [q, setQ] = useState("");
+  // ?q= deep link — the home page's deck rows land here pre-filtered.
+  const [q, setQ] = useState(searchParams.get("q") ?? "");
 
   useEffect(() => {
     let stop = false;
@@ -86,7 +89,7 @@ export default function ResultsIndexPage() {
         ) : rows.length === 0 ? (
           <p className="lede">
             No finished runs yet.{" "}
-            <Link className="bl" href="/">
+            <Link className="bl" href="/new">
               Pick some decks
             </Link>{" "}
             and the results will land here.
@@ -194,5 +197,13 @@ export default function ResultsIndexPage() {
       </div>
       <Footer />
     </>
+  );
+}
+
+export default function ResultsIndexPage() {
+  return (
+    <Suspense fallback={null}>
+      <ResultsIndexInner />
+    </Suspense>
   );
 }

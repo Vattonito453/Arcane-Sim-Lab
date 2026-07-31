@@ -30,7 +30,8 @@ rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)
 web/               Next.js 15 App Router, React 19, TypeScript strict
   app/globals.css    THE ENTIRE DESIGN SYSTEM. Pages add no CSS.
   lib/               api.ts, types.ts, format.ts, cards.ts, replay.ts
-mockups/           design_principles.md (BINDING) + v3 HTML wireframes
+Design System/     DESIGN_SYSTEM.md (BINDING) + tokens css + backdrop art + dc.html specs
+mockups/           design_principles.md (superseded for visuals) + v3 HTML wireframes
 deploy/            Dockerfiles (api/worker/web), compose, worker-entrypoint.sh
 tasks/             per-task specs with acceptance criteria — start here
 ```
@@ -39,7 +40,8 @@ tasks/             per-task specs with acceptance criteria — start here
 
 | Doc | Why you need it |
 |---|---|
-| `mockups/design_principles.md` | Binding UI rules. Part 3 is non-negotiable. |
+| `Design System/DESIGN_SYSTEM.md` | **Binding UI spec** (Arcane reskin): tokens, type, components, backdrop, a11y contract. Tokens in `Design System/arcane-sim-lab.tokens.css`. |
+| `mockups/design_principles.md` | Superseded for visual language; its structural rules (prose openers, one primary, honesty notes) still bind. |
 | `frontend_architecture.md` | Product scope, topology, token economics, legal posture |
 | `deploy_plan.md` | Deployment state, remaining phases, costs, legal checklist |
 | `web/README.md` | Front-end architecture, card data, board-accuracy ceiling |
@@ -99,19 +101,33 @@ From `engine/SIM_CALIBRATION.md`:
 
 ### UI design rules are binding
 
-`mockups/design_principles.md` Part 3, in short:
-- Sentence case everywhere. No ALL-CAPS microlabels.
-- No pill badges. Status is a dot + word: `<span className="st ok"><i/>Passed</span>`
-- Exactly **one** `.btn.pri` per view. Everything else is `.btn` or a text link.
-- Every page opens with 1–2 sentences of real prose computed from real data.
-- All numerals in `.mono` (tabular figures).
-- One accent colour (blue) for links/focus only. No gradients. No emoji — inline
-  stroke SVGs only.
-- **All styling lives in `web/app/globals.css`.** Pages add no CSS files and no
-  inline styles except computed percentages (bar widths, scrub position).
+`Design System/DESIGN_SYSTEM.md` (the Arcane Sim Lab reskin, applied 2026-07-31)
+is the binding spec. In short:
+- **Never hardcode a hex** — every colour is a token from
+  `arcane-sim-lab.tokens.css` (mirrored into `web/app/globals.css` `:root`).
+- Cyan is interaction, violet is secondary, WUBRG pips are data — a colour never
+  means two things. Pips never go inside a button.
+- Glow marks only the primary action and live activity.
+- Status is **shape**, not hue: running = filled circle + glow, queued = hollow
+  circle (and no progress fill it hasn't earned), done = filled square,
+  failed = filled circle.
+- Cinzel appears exactly once per page — the wordmark. Body is Space Grotesk;
+  data/figures are JetBrains Mono.
+- Content sits on glass panels over the fixed backdrop; never text on unscrimmed
+  art; panels never nest.
+- Never disable the primary — state the blocker beside it.
+- Every field keeps a persistent visible label; 2px cyan focus ring everywhere.
+- `--ink-4` is the text floor; the Fan Content + Scryfall footer lines render at
+  it, never below.
+- Still true from the old spec: every page opens with 1–2 sentences of real
+  prose computed from real data; one primary per view; honesty notes on
+  inferred data; **all styling lives in `web/app/globals.css`** — pages add no
+  CSS files and no inline styles except computed percentages.
 
-The v3 wireframes in `mockups/simlab_v3_*.html` are the reference DOM. New screens
-should reuse existing classes rather than inventing any.
+Reference DOM: `Design System/*.dc.html` (visual spec + canonical screens).
+Mascot and mana pips are inline SVG (`web/components/Mascot.tsx`,
+`web/components/ManaPips.tsx`) — never raster exports, never emoji, never WotC
+mana symbols. Backdrop plates live in `web/public/art/`.
 
 ### Legal posture — do not change these without a lawyer
 

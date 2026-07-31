@@ -15,7 +15,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Chrome, Footer } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { AnalysisReport, RunGameSummary, RunSummary } from "@/lib/types";
-import { deckSlug, pct, plural, runTitle, stripAi } from "@/lib/format";
+import { pct, plural, runTitle, stripAi } from "@/lib/format";
 
 function fmtClock(ms: number): string {
   const s = Math.round(ms / 1000);
@@ -130,11 +130,9 @@ export default function ResultsPage() {
     const medTurns = median(gameRows.map((g) => g.endedTurn));
     const rotated = data.meta?.source === "rotated";
 
-    // Chrome context: first deck of the run. The commander-art guess needs cast
-    // events from the logs, which the summary does not carry — so the breadcrumb
-    // shows the deck name alone here, and the replay keeps the art.
-    const firstDeckFile = data.meta.decks?.[0] ?? "";
-    const ctx = firstDeckFile ? deckSlug(firstDeckFile) : file.replace(/\.json$/, "");
+    // Chrome context: the matchup, same as the H1 — a breadcrumb that names
+    // only the first deck reads as a different page than the one it heads.
+    const ctx = runTitle(rows.map((r) => r.name));
 
     // First game the leading deck actually won — target for the primary action.
     let watchGame = 1;
@@ -156,7 +154,7 @@ export default function ResultsPage() {
   if (err) {
     return (
       <>
-        <Chrome tabs={[{ label: "Overview", href: "#", on: true }]} />
+        <Chrome />
         <div className="page">
           <div className="head">
             <div>
@@ -180,7 +178,7 @@ export default function ResultsPage() {
   if (!data || !view) {
     return (
       <>
-        <Chrome tabs={[{ label: "Overview", href: "#", on: true }]} />
+        <Chrome />
         <div className="page">
           <div className="head">
             <div>
@@ -219,7 +217,9 @@ export default function ResultsPage() {
 
   return (
     <>
-      <Chrome context={view.ctx} tabs={[{ label: "Overview", href: "#", on: true }]} />
+      {/* No tab row: a one-item tab bar is chrome with no function. The replay
+          links back here through the breadcrumb and its own Back link. */}
+      <Chrome context={view.ctx} />
       <div className="page">
         <div className="head">
           <div>

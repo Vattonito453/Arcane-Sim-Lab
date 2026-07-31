@@ -182,18 +182,27 @@ export default function ImportPage() {
         ) : (
           <div className="cols">
             <div>
+              {/* Every field keeps a persistent visible label (WCAG 3.3.2) —
+                  placeholders below are format hints only. */}
+              <label className="field-label" htmlFor="deck-name">
+                Deck name
+              </label>
               <input
+                id="deck-name"
                 className="txt"
-                placeholder="Deck name"
-                aria-label="Deck name"
+                placeholder="Follows the first card until you edit it"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
                   setNameEdited(true);
                 }}
               />
-              <div className="note">
+              <label className="field-label" htmlFor="deck-list">
+                Decklist
+              </label>
+              <div>
                 <textarea
+                  id="deck-list"
                   className="paste"
                   spellCheck={false}
                   placeholder={"1 Kilo, Apogee Mind (EOC) 3\n1 Arcane Signet (EOC) 53\n…one card per line, Moxfield or Arena export format"}
@@ -317,10 +326,15 @@ export default function ImportPage() {
               )}
 
               <div className="ctarow">
+                {/* The primary stays live; when there's nothing to save, the
+                    blocker is stated beside it (DESIGN_SYSTEM.md §6). */}
                 <button
                   className="btn pri"
-                  disabled={busy !== null || !text.trim()}
-                  onClick={() => void submit(true)}
+                  aria-disabled={busy !== null || !text.trim()}
+                  aria-describedby={!text.trim() ? "import-blocker" : undefined}
+                  onClick={() => {
+                    if (text.trim()) void submit(true);
+                  }}
                 >
                   {busy === "save" ? "Saving…" : "Save deck to engine"}
                 </button>
@@ -331,6 +345,11 @@ export default function ImportPage() {
                 >
                   {busy === "validate" ? "Validating…" : "Validate only"}
                 </button>
+                {!text.trim() && (
+                  <span className="ctanote" id="import-blocker">
+                    Paste a list first — the checks run as you type.
+                  </span>
+                )}
               </div>
 
               {resp?.ok && resp.saved && resp.file && (
@@ -339,7 +358,7 @@ export default function ImportPage() {
                     <i />
                     Saved as <span className="mono">{resp.file}</span>
                   </span>{" "}
-                  <Link className="bl" href={`/?deck=${encodeURIComponent(resp.file)}`}>
+                  <Link className="bl" href={`/new?deck=${encodeURIComponent(resp.file)}`}>
                     Run a gauntlet with it →
                   </Link>
                 </p>

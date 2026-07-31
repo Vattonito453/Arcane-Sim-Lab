@@ -1,9 +1,17 @@
 # Sim Lab — UI design principles (from research)
 
+> **Superseded for visual language (2026-07-31).** The Arcane Sim Lab reskin in
+> `Design System/DESIGN_SYSTEM.md` (+ `arcane-sim-lab.tokens.css`) is now the
+> binding spec for colour, type, components and imagery — it deliberately breaks
+> Part 3's monochrome/no-gradient rules. What still binds from this doc: the
+> structural principles both specs share — every page opens with real prose
+> computed from real data, exactly one primary action per view, honesty notes on
+> inferred data, no dead chrome, and no meaning carried by colour alone.
+
 Research pass over published teardowns of acclaimed product UIs (Linear, Vercel/Geist,
 Stripe), the Refactoring UI methodology, enterprise data-table guidelines, and the
-"vibe-coded design tells" literature. This doc is the binding spec for all Sim Lab
-front-end work. Sources at bottom.
+"vibe-coded design tells" literature. This doc was the binding spec for the v3
+front end. Sources at bottom.
 
 ## Part 1 — The AI tells (what outs a UI as generated)
 

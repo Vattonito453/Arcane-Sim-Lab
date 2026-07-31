@@ -177,11 +177,15 @@ export default function RunPage() {
   );
   const liveSeats = useMemo(() => {
     if (!liveGame) return [];
-    return liveGame.players.map((p) => ({
-      player: p,
-      label: shortName(p, liveGame.players),
-      art: scryfallArt(commanderGuess(stripAi(p), [liveGame])),
-    }));
+    return liveGame.players.map((p) => {
+      const commander = commanderGuess(stripAi(p), [liveGame]);
+      return {
+        player: p,
+        label: shortName(p, liveGame.players),
+        art: scryfallArt(commander),
+        commander,
+      };
+    });
   }, [liveGame]);
 
   // Card facts for what is on the table right now. loadCards() memoises across
@@ -194,12 +198,13 @@ export default function RunPage() {
     for (const cards of liveBoard.battlefield.values()) {
       for (const c of cards) names.add(c.name);
     }
+    for (const s of liveSeats) if (s.commander) names.add(s.commander);
     if (!names.size) return;
     void loadCards(Array.from(names)).then((m) => alive && setCardMap({ ...m }));
     return () => {
       alive = false;
     };
-  }, [liveBoard]);
+  }, [liveBoard, liveSeats]);
   const facts = useCallback(
     (name: string): CardFacts | undefined => cardMap[name.trim().toLowerCase()],
     [cardMap],
@@ -268,30 +273,49 @@ export default function RunPage() {
           </>
         )}
 
+        {/* One live region holds every state's header, so completion swaps the
+            heading in place and is announced (DESIGN_SYSTEM.md §7, WCAG 4.1.3).
+            The page never grows a second heading below the tabletop. */}
+        <div aria-live="polite">
         {status && (state === "queued" || state === "running") && (
           <>
             <h1>
               Run <span className="mono">{short}</span>
             </h1>
             <p className="lede">
-              Simulating <b>{games != null ? plural(games, "game") : "—"}</b> across <b>{plural(decks.length, "deck")}</b>
-              {started ? <> — started {timeAgo(started)}</> : null}. You can leave; this page
-              keeps polling.
+              {state === "queued" ? (
+                <>
+                  Queued — <b>{games != null ? plural(games, "game") : "—"}</b> across{" "}
+                  <b>{plural(decks.length, "deck")}</b> waiting for the worker
+                  {(status?.queued_ahead ?? 0) > 0
+                    ? ` behind ${plural(status?.queued_ahead ?? 0, "other run")}`
+                    : ""}. You can leave; this page keeps polling.
+                </>
+              ) : (
+                <>
+                  Simulating <b>{games != null ? plural(games, "game") : "—"}</b> across <b>{plural(decks.length, "deck")}</b>
+                  {started ? <> — started {timeAgo(started)}</> : null}. You can leave; this page
+                  keeps polling.
+                </>
+              )}
             </p>
             <section>
-              <div className="prog">
+              {/* A queued job draws no progress bar it doesn't have — dashed
+                  track, no fill (DESIGN_SYSTEM.md §7). */}
+              <div className={state === "queued" ? "prog queued" : "prog"}>
                 <div className="fill" style={{ width: `${progress}%` }} />
               </div>
               <p className="note">
-                Rough progress — {plural(decks.length || 4, "deck")} over{" "}
-                {plural(games ?? 16, "game")} usually takes about {fmtDuration(estimate)}. Pod
-                size drives this far more than game count.
+                {state === "queued"
+                  ? `Nothing has started yet, so there is no progress to draw. Once Forge picks
+                     this up, ${plural(decks.length || 4, "deck")} over ${plural(games ?? 16, "game")} usually takes about ${fmtDuration(estimate)}.`
+                  : `Rough progress — ${plural(decks.length || 4, "deck")} over ${plural(games ?? 16, "game")} usually takes about ${fmtDuration(estimate)}. Pod size drives this far more than game count.`}
               </p>
             </section>
             <div className="figs">
               <div className="fig">
-                <div className="n">{fmtDuration(elapsed)}</div>
-                <div className="l">elapsed</div>
+                <div className="n">{state === "queued" ? "—" : fmtDuration(elapsed)}</div>
+                <div className="l">{state === "queued" ? "not started" : "elapsed"}</div>
               </div>
               <div className="fig">
                 <div className="n">{games ?? "—"}</div>
@@ -302,7 +326,7 @@ export default function RunPage() {
                 <div className="l">decks in the pod</div>
               </div>
               <div className="fig">
-                <span className="st run">
+                <span className={state === "queued" ? "st queue" : "st run"}>
                   <i />
                   {state === "queued" ? "Queued" : "Running"}
                 </span>
@@ -338,6 +362,86 @@ export default function RunPage() {
             )}
           </>
         )}
+
+        {status && state === "done" && (
+          <>
+            <div className="head">
+              <div>
+                <h1>
+                  Run <span className="mono">{short}</span>
+                </h1>
+              </div>
+              <div className="btns">
+                {resultHref && (
+                  <Link className="btn pri" href={resultHref}>
+                    View results
+                  </Link>
+                )}
+              </div>
+            </div>
+            <p className="lede">
+              {win ? (
+                <>
+                  Done — <b>{stripAi(win[0])}</b> won{" "}
+                  <b>
+                    {res?.wins[win[0]] ?? 0} of {res?.games ?? games ?? 0} games ({pct(win[1])})
+                  </b>
+                  .
+                </>
+              ) : (
+                <>Done — the run finished.</>
+              )}{" "}
+              {resultHref
+                ? stillWatching
+                  ? "The playback below finishes first — the full report is one click away."
+                  : "Taking you to the full report…"
+                : "The result file isn't listed yet — check past runs on the home page."}
+            </p>
+            <div className="figs">
+              <div className="fig">
+                <div className="n">{res?.games ?? games ?? "—"}</div>
+                <div className="l">games played</div>
+              </div>
+              <div className="fig">
+                <div className="n">{res?.draws ?? 0}</div>
+                <div className="l">draws</div>
+              </div>
+              <div className="fig">
+                <div className="n">{win ? pct(win[1]) : "—"}</div>
+                <div className="l">{win ? `${stripAi(win[0])} win rate` : "top win rate"}</div>
+              </div>
+              <div className="fig">
+                <div className="n">{fmtDuration(elapsed)}</div>
+                <div className="l">wall-clock time</div>
+              </div>
+            </div>
+            {deckNames.length > 0 && <p className="note">Decks: {deckNames.join(" · ")}</p>}
+          </>
+        )}
+
+        {status && state === "error" && (
+          <>
+            <h1>
+              Run <span className="mono">{short}</span>
+            </h1>
+            <p className="lede">
+              The engine reported an error for this run — the message below is verbatim.
+            </p>
+            <p className="note">
+              <span className="st bad">
+                <i />
+                Failed
+              </span>{" "}
+              {status.error ?? "Unknown engine error."}
+            </p>
+            <p className="note">
+              <Link className="q" href="/">
+                ‹ Back to Sim Lab
+              </Link>
+            </p>
+          </>
+        )}
+        </div>
 
           {liveBoard && liveGame && liveTimeline && state !== "error" &&
           (state !== "done" || stillWatching) && (
@@ -397,83 +501,6 @@ export default function RunPage() {
               </div>
             </section>
           )}
-
-        {status && state === "done" && (
-          <>
-            <div className="head">
-              <div>
-                <h1>
-                  Run <span className="mono">{short}</span>
-                </h1>
-              </div>
-              <div className="btns">
-                {resultHref && (
-                  <Link className="btn pri" href={resultHref}>
-                    View results
-                  </Link>
-                )}
-              </div>
-            </div>
-            <p className="lede">
-              {win ? (
-                <>
-                  Done — <b>{stripAi(win[0])}</b> won{" "}
-                  <b>
-                    {res?.wins[win[0]] ?? 0} of {res?.games ?? games ?? 0} games ({pct(win[1])})
-                  </b>
-                  .
-                </>
-              ) : (
-                <>Done — the run finished.</>
-              )}{" "}
-              {resultHref
-                ? "Taking you to the full report…"
-                : "The result file isn't listed yet — check past runs on the home page."}
-            </p>
-            <div className="figs">
-              <div className="fig">
-                <div className="n">{res?.games ?? games ?? "—"}</div>
-                <div className="l">games played</div>
-              </div>
-              <div className="fig">
-                <div className="n">{res?.draws ?? 0}</div>
-                <div className="l">draws</div>
-              </div>
-              <div className="fig">
-                <div className="n">{win ? pct(win[1]) : "—"}</div>
-                <div className="l">{win ? `${stripAi(win[0])} win rate` : "top win rate"}</div>
-              </div>
-              <div className="fig">
-                <div className="n">{fmtDuration(elapsed)}</div>
-                <div className="l">wall-clock time</div>
-              </div>
-            </div>
-            {deckNames.length > 0 && <p className="note">Decks: {deckNames.join(" · ")}</p>}
-          </>
-        )}
-
-        {status && state === "error" && (
-          <>
-            <h1>
-              Run <span className="mono">{short}</span>
-            </h1>
-            <p className="lede">
-              The engine reported an error for this run — the message below is verbatim.
-            </p>
-            <p className="note">
-              <span className="st bad">
-                <i />
-                Failed
-              </span>{" "}
-              {status.error ?? "Unknown engine error."}
-            </p>
-            <p className="note">
-              <Link className="q" href="/">
-                ‹ Back to Sim Lab
-              </Link>
-            </p>
-          </>
-        )}
 
         {status && state === "idle" && (
           <>

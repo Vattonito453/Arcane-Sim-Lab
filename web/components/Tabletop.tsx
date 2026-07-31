@@ -14,11 +14,14 @@
 import { stripAi } from "@/lib/format";
 import type { BoardState } from "@/lib/replay";
 import { cardFace, kindOf, ptOf, type CardFacts, type Kind } from "@/lib/cards";
+import { ManaPips } from "@/components/ManaPips";
 
 export interface SeatMeta {
   player: string;
   label: string;
   art: string;
+  /** Best-effort commander name — drives the seat's colour-identity pips. */
+  commander?: string;
 }
 
 /** One permanent on the table. Identical copies collapse into a single tile with
@@ -134,6 +137,10 @@ export function Tabletop({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={meta?.art} alt="" onError={(e) => e.currentTarget.remove()} />
               <span className="pn">{meta?.label ?? stripAi(s.player)}</span>
+              {/* Identity is data (pips beside the name), never a control. */}
+              {meta?.commander && (
+                <ManaPips colors={facts(meta.commander)?.color_identity} variant="seat" />
+              )}
               {active && <em>· active</em>}
               {s.eliminated ? (
                 <span className="pnums">

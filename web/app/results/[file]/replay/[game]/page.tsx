@@ -108,11 +108,15 @@ export default function ReplayPage() {
 
   const seats = useMemo(() => {
     if (!game) return [];
-    return game.players.map((p) => ({
-      player: p,
-      label: shortName(p, game.players),
-      art: scryfallArt(commanderGuess(stripAi(p), [game])),
-    }));
+    return game.players.map((p) => {
+      const commander = commanderGuess(stripAi(p), [game]);
+      return {
+        player: p,
+        label: shortName(p, game.players),
+        art: scryfallArt(commander),
+        commander,
+      };
+    });
   }, [game]);
 
   // Back-link reads as the matchup; the filename stays in the footer.
@@ -137,11 +141,12 @@ export default function ReplayPage() {
     for (const s of timeline.steps) {
       for (const h of s.hi ?? []) names.add(h);
     }
+    for (const s of seats) if (s.commander) names.add(s.commander);
     loadCards(Array.from(names)).then((m) => live && setCardMap({ ...m }));
     return () => {
       live = false;
     };
-  }, [timeline, game]);
+  }, [timeline, game, seats]);
 
   const facts = useCallback(
     (name: string): CardFacts | undefined => cardMap[name.trim().toLowerCase()],
@@ -306,7 +311,9 @@ export default function ReplayPage() {
   const lo = Math.max(0, idx - 40);
   const hi = Math.min(n, idx + 41);
   const phaseLabel = cur.turn > 0 ? `Turn ${cur.turn} · ${cur.phase.replace(/ step$/i, "").toLowerCase()}` : "Pregame";
-  const ctx = data.meta.decks?.[0] ? data.meta.decks[0].replace(/\.dck$/, "").replace(/_/g, "-") : undefined;
+  // The matchup, same as the back link — a breadcrumb naming only the first
+  // deck reads as a different page than the one it heads.
+  const ctx = backLabel;
 
   return (
     <>

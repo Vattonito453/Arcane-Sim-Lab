@@ -379,6 +379,20 @@ export default function ImportPage() {
                       .
                     </span>
                   )}
+                  {(resp.combos.one_away?.length ?? 0) > 0 && (
+                    <div className="ctanote">
+                      One swap away:
+                      {resp.combos.one_away?.map((o) => (
+                        <div key={o.missing}>
+                          + <b>{o.missing}</b> unlocks{" "}
+                          <span className="mono">{o.unlocks}</span>{" "}
+                          {o.unlocks === 1 ? "combo" : "combos"} — e.g.{" "}
+                          {o.example.join(" + ")}
+                          {o.produces[0] ? ` (${o.produces[0].toLowerCase()})` : ""}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
               {resp?.ok && resp.saved === false && (

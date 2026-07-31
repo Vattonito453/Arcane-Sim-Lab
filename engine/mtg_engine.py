@@ -400,11 +400,15 @@ def _read_analysis(name: str, fetch: bool = True) -> dict:
     everything after that is disk reads.
     """
     result = _read_result(name)          # validates the name against traversal
+    import analysis
     cache = RESULTS_DIR / f"analysis_{name}"
     src = RESULTS_DIR / name
     if cache.is_file() and cache.stat().st_mtime >= src.stat().st_mtime:
-        return json.loads(cache.read_text(encoding="utf-8"))
-    import analysis
+        cached = json.loads(cache.read_text(encoding="utf-8"))
+        # The maths and payload evolve; a cached report from an older analysis
+        # version silently serving the old shape is worse than recomputing.
+        if cached.get("version") == analysis.ANALYSIS_VERSION:
+            return cached
     result.setdefault("file", name)
     rep = analysis.analyse(result, fetch=fetch)
     try:
@@ -423,9 +427,27 @@ def _deck_combos(content: str) -> dict:
         found = combos.find_combos(main, commanders)
         if found is None:
             return {"status": "unknown"}
+        # "One card away": which single add unlocks the most known combos. The
+        # deck's own names, normalized, subtracted from each almost-combo's
+        # card list leave exactly the missing piece.
+        import cards
+        def norm(n: str) -> str:
+            return cards.normalize_name(n.split(" // ")[0]).lower()
+        have = {norm(n) for n, _ in main} | {norm(n) for n in commanders}
+        by_missing: dict = {}
+        for c in found["almost_included"]:
+            missing = [n for n in c["cards"] if norm(n) not in have]
+            if len(missing) != 1:
+                continue          # colour-identity or multi-card gaps: not a swap
+            slot = by_missing.setdefault(missing[0], {
+                "missing": missing[0], "unlocks": 0,
+                "example": c["cards"], "produces": c["produces"][:3]})
+            slot["unlocks"] += 1
+        one_away = sorted(by_missing.values(), key=lambda x: -x["unlocks"])[:6]
         return {"status": "ok",
                 "included": found["included"],
-                "almost_included": len(found["almost_included"])}
+                "almost_included": len(found["almost_included"]),
+                "one_away": one_away}
     except Exception as e:  # noqa: BLE001
         sys.stderr.write(f"combo lookup skipped: {e}\n")
         return {"status": "unknown"}
@@ -692,8 +714,12 @@ def serve(port: int = 8484) -> None:
                 if parts[0] == "analysis" and len(parts) > 1:
                     fetch = q.get("fetch", ["1"])[0] not in ("0", "", "false")
                     try:
-                        return self._send(_read_analysis(parts[1], fetch=fetch),
-                                          cache="public, max-age=31536000, immutable")
+                        # No immutable header: the report is versioned and can be
+                        # recomputed with new maths for the same result file. A
+                        # client that pinned v1 forever kept rendering it after
+                        # the engine moved to v2. Computation is disk-cached
+                        # server-side, so serving it fresh is cheap.
+                        return self._send(_read_analysis(parts[1], fetch=fetch))
                     except (FileNotFoundError, ValueError):
                         # ValueError is the traversal guard — same 404 as /results.
                         return self._send({"error": "no such result"}, 404)

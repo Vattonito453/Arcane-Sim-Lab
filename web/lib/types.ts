@@ -132,6 +132,8 @@ export interface ComboGame {
   assembled_turn: number | null;
   online_turns: number;
   won: boolean;
+  cards_seen?: number;
+  p_all_drawn?: number;
 }
 
 export interface AnalysedCombo extends KnownCombo {
@@ -141,6 +143,9 @@ export interface AnalysedCombo extends KnownCombo {
   converted_games: number;
   median_assembled_turn: number | null;
   idle_online_turns: number;
+  /** Sum of per-game P(all library pieces drawn by game end) — what raw draws
+   *  alone predicted. Actual above it means tutors did work. */
+  expected_drawn_games?: number;
 }
 
 export interface AnalysisDeck {
@@ -148,6 +153,9 @@ export interface AnalysisDeck {
   combo_status: "ok" | "unknown";
   combos: AnalysedCombo[];
   almost_included: number;
+  deck_size?: number;
+  commanders?: string[];
+  draws?: { games: number; avg_cards_seen: number; per_own_turn: number | null };
 }
 
 export interface AnalysisGame {
@@ -159,6 +167,7 @@ export interface AnalysisGame {
 }
 
 export interface AnalysisReport {
+  version?: number;
   file: string | null;
   games: AnalysisGame[];
   decks: Record<string, AnalysisDeck>;
@@ -176,10 +185,18 @@ export interface ImportReport {
   sideboard_dropped: number;
 }
 
+export interface OneAway {
+  missing: string;
+  unlocks: number;
+  example: string[];
+  produces: string[];
+}
+
 export interface DeckCombos {
   status: "ok" | "unknown";
   included?: KnownCombo[];
   almost_included?: number;
+  one_away?: OneAway[];
 }
 
 export interface ImportResponse {

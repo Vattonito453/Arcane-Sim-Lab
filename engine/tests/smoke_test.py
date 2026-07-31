@@ -165,6 +165,10 @@ def main() -> int:
                   bool(an.get("decks")) and all("combo_status" in d
                                                 for d in an["decks"].values()))
             check("analysis states its inference ceiling", "inferred" in (an.get("note") or ""))
+            check("analysis is versioned and carries the draw model",
+                  isinstance(an.get("version"), int)
+                  and any(d.get("draws") for d in an["decks"].values()),
+                  f"version={an.get('version')}")
         st, _ = call(base, "/analysis/..%2f..%2fetc%2fpasswd")
         check("analysis blocks path traversal", st in (400, 404), f"status {st}")
 

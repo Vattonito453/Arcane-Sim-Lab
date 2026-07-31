@@ -28,13 +28,23 @@ import os
 import re
 import statistics
 import sys
+from math import comb
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import board  # noqa: E402
 import combos  # noqa: E402
 
+# Bump when the payload shape or the maths change: the API caches reports on
+# disk beside the results, and a stale cache would silently serve the old shape.
+ANALYSIS_VERSION = 2
+
 _AI = re.compile(r"^Ai\(\d+\)-")
+# "X has kept a hand of 7 cards" / "X has mulliganed down to 6 cards" — take the
+# last line per player, so a mulligan followed by a keep lands on the keep.
+_KEPT = re.compile(r"^(.+?) has (?:kept a hand of|mulliganed down to) (\d+) cards?")
+_WORDNUM = {"a": 1, "an": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+            "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 # Forge phrases losses both ways: "has lost because life total reached 0" and
 # "has lost due to accumulation of 21 damage from generals". Match both, or
 # every commander-damage kill classifies as unknown.
@@ -61,6 +71,69 @@ def _norm(name: str) -> str:
     """Combo card name -> the form board.py stores: front face, normalized."""
     import cards
     return cards.normalize_name(name.split(" // ")[0]).lower()
+
+
+def _count_effect_draws(raw: str, player: str) -> int:
+    """Cards `player` drew in this resolution line. Forge narrates resolved
+    effect draws in the third person — "Ai(1)-X draws two cards." — while
+    ability TEXT uses the imperative ("draw a card"), so matching the player's
+    own name followed by "draws" counts resolutions and skips rules text."""
+    total = 0
+    for m in re.finditer(re.escape(player) + r" draws (\w+) (?:additional )?cards?",
+                         raw):
+        w = m.group(1).lower()
+        total += _WORDNUM.get(w, int(w) if w.isdigit() else 0)
+    return total
+
+
+def draw_model(game: dict) -> dict[str, int]:
+    """Cards each player has SEEN from their library by game end: kept opening
+    hand + one per draw step + logged effect draws.
+
+    A model, not a count Forge reports: natural draw-step draws are never
+    logged, so they are inferred one per turn the player took (heads-up games
+    skip the starting player's first, per rule 103.8a; multiplayer skips
+    nobody). Effect draws are parsed from resolution lines. What was drawn is
+    hidden information and stays that way — this is how MANY, which is all the
+    hypergeometric needs.
+    """
+    players = list(game.get("players") or [])
+    kept = {p: 7 for p in players}
+    for e in game.get("events_pregame") or []:
+        m = _KEPT.match(e.get("raw", ""))
+        if m and m.group(1) in kept:
+            kept[m.group(1)] = int(m.group(2))
+
+    steps = {p: 0 for p in players}
+    effect = {p: 0 for p in players}
+    first_active = None
+    for t in game.get("turns") or []:
+        ap = t.get("active_player")
+        if first_active is None and ap:
+            first_active = ap
+        if ap in steps:
+            steps[ap] += 1
+        for e in t.get("events") or []:
+            raw = e.get("raw", "")
+            if " draws " not in raw:
+                continue
+            for p in players:
+                effect[p] += _count_effect_draws(raw, p)
+    if len(players) == 2 and first_active in steps and steps[first_active] > 0:
+        steps[first_active] -= 1
+    return {p: {"seen": kept[p] + steps[p] + effect[p], "turns": steps[p]}
+            for p in players}
+
+
+def p_all_drawn(seen: int, lib_pieces: int, deck_size: int = 99) -> float:
+    """Hypergeometric: chance every one of `lib_pieces` singletons is among the
+    `seen` cards taken from a `deck_size` library. Commanders are excluded by
+    the caller — the command zone makes them always available."""
+    if lib_pieces == 0:
+        return 1.0
+    if seen < lib_pieces or deck_size < seen:
+        return 0.0
+    return comb(deck_size - lib_pieces, seen - lib_pieces) / comb(deck_size, seen)
 
 
 def win_method(game: dict) -> dict:
@@ -130,8 +203,11 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
             continue
         name = deck_name_of(p)
         found = combos.combos_for_dck(p, fetch=fetch)
+        main, commanders = combos.parse_dck(p.read_text(encoding="utf-8"))
         per_deck[name] = {
             "deck_file": Path(f).name,
+            "deck_size": sum(q for _, q in main) or 99,
+            "commanders": commanders,
             # None = not analysed (Spellbook unreachable, cold cache) — distinct
             # from "no combos", which is an empty list.
             "combo_status": "ok" if found is not None else "unknown",
@@ -153,9 +229,18 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
             **method,
         })
 
+        # Draw model covers every seated deck, combos or not — draw velocity is
+        # deck health information in its own right.
+        players = game.get("players") or []
+        seen = draw_model(game)
+        for key in players:
+            d = per_deck.get(_bare(key))
+            if d is not None:
+                dm = seen.get(key) or {"seen": 7, "turns": 0}
+                d.setdefault("_draw_games", []).append((dm["seen"], dm["turns"]))
+
         # Assembly: fold the log into per-turn battlefields once per game, then
         # test each known combo of each seated deck against its owner's board.
-        players = game.get("players") or []
         seated = {name: key for key in players
                   if (name := _bare(key)) in per_deck and per_deck[name]["combos"]}
         if not seated:
@@ -163,6 +248,8 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
         _, snapshots = board.reconstruct(game, fetch=False)
 
         for name, key in seated.items():
+            cmdrs = {_norm(c) for c in per_deck[name].get("commanders", [])}
+            deck_size = per_deck[name].get("deck_size", 99)
             for combo in per_deck[name]["combos"]:
                 pieces = {c: _norm(c) for c in combo["cards"]}
                 first_seen: dict[str, int | None] = {c: None for c in pieces}
@@ -177,12 +264,19 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
                         online_turns += 1
                         if assembled_turn is None:
                             assembled_turn = snap["turn"]
+                # Draw odds: how likely the deck had DRAWN every library piece
+                # by game end. Commander pieces are always available, so they
+                # drop out of the hypergeometric.
+                lib_pieces = sum(1 for norm in pieces.values() if norm not in cmdrs)
                 combo["games"].append({
                     "n": n,
                     "pieces": first_seen,
                     "assembled_turn": assembled_turn,
                     "online_turns": online_turns,
                     "won": bool(winner) and _bare(winner) == name,
+                    "cards_seen": (seen.get(key) or {}).get("seen", 7),
+                    "p_all_drawn": round(p_all_drawn(
+                        (seen.get(key) or {}).get("seen", 7), lib_pieces, deck_size), 3),
                 })
 
     # Aggregates.
@@ -200,12 +294,30 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
             # Turns spent fully online without winning — the AI-pilot gap on record.
             combo["idle_online_turns"] = sum(
                 g["online_turns"] for g in assembled if not g["won"])
+            # What raw draws alone predicted. Actual below this means pieces sat
+            # in hand or died; actual above it means tutors did work.
+            combo["expected_drawn_games"] = round(
+                sum(g["p_all_drawn"] for g in plays), 1)
+
+    for d in per_deck.values():
+        dg = d.pop("_draw_games", [])
+        if dg:
+            # Per OWN turn taken, not per global player-turn: a player draws on
+            # their turns, so this reads "cards seen per turn cycle" — 1.0 is
+            # topdecking, higher means the draw engine is doing something.
+            d["draws"] = {
+                "games": len(dg),
+                "avg_cards_seen": round(statistics.mean(s for s, _ in dg), 1),
+                "per_own_turn": round(statistics.mean(
+                    s / t for s, t in dg if t > 0), 2) if any(t for _, t in dg) else None,
+            }
 
     methods: dict[str, int] = {}
     for g in games_out:
         methods[g["method"]] = methods.get(g["method"], 0) + 1
 
     return {
+        "version": ANALYSIS_VERSION,
         "file": result.get("file"),
         "games": games_out,
         "decks": per_deck,
@@ -231,6 +343,9 @@ def main() -> int:
                                      sorted(rep["summary"]["methods"].items(),
                                             key=lambda kv: -kv[1])))
         for name, d in rep["decks"].items():
+            if d.get("draws"):
+                print(f"  {name}: sees ~{d['draws']['avg_cards_seen']} cards/game"
+                      f" ({d['draws']['per_own_turn']}/turn cycle)")
             if d["combo_status"] != "ok":
                 print(f"  {name}: combos unknown (Spellbook not reachable)")
                 continue
@@ -243,8 +358,9 @@ def main() -> int:
                 print(f"  {name}: {' + '.join(c['cards'])}")
                 print(f"    assembled {c['assembled_games']}/{c['games_played']} games"
                       + (f" (median turn {med:.0f})" if med is not None else "")
-                      + f", converted {c['converted_games']}"
-                      + (f", sat online {c['idle_online_turns']} turns without winning"
+                      + f" | draw odds predicted ~{c['expected_drawn_games']}"
+                      + f" | converted {c['converted_games']}"
+                      + (f" | sat online {c['idle_online_turns']} turns without winning"
                          if c["idle_online_turns"] else ""))
     return 0
 

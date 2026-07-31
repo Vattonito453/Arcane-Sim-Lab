@@ -153,7 +153,7 @@ cached on disk. A warm cache makes zero network calls. Never loop single lookups
 ```bash
 # Engine
 python3 engine/tests/test_adapter.py                          # must print ALL ASSERTIONS PASSED
-python3 engine/tests/smoke_test.py --sim                      # needs the API up; 34 checks
+python3 engine/tests/smoke_test.py --sim                      # needs the API up; 35 checks
                                                               # --sim runs real Forge (~40 s)
 python3 engine/board.py engine/tests/fixtures/sim_sample.json --no-fetch
                                                               # exit_match_rate must not regress

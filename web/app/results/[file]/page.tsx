@@ -326,6 +326,7 @@ export default function ResultsPage() {
                     <th>Deck</th>
                     <th>Combo</th>
                     <th className="r">Assembled</th>
+                    <th className="r">From draws</th>
                     <th className="r">Converted</th>
                     <th>Reading</th>
                   </tr>
@@ -336,7 +337,7 @@ export default function ResultsPage() {
                       return [
                         <tr key={`${name}-unknown`}>
                           <td>{name}</td>
-                          <td colSpan={4} className="ctanote">
+                          <td colSpan={5} className="ctanote">
                             combos unknown — Spellbook was unreachable when this was analysed
                           </td>
                         </tr>,
@@ -346,7 +347,7 @@ export default function ResultsPage() {
                       return [
                         <tr key={`${name}-none`}>
                           <td>{name}</td>
-                          <td colSpan={4} className="ctanote">
+                          <td colSpan={5} className="ctanote">
                             no known combos in the 99
                             {d.almost_included > 0 && (
                               <> · <span className="mono">{d.almost_included}</span> one card away</>
@@ -367,6 +368,12 @@ export default function ResultsPage() {
                           <td className="r mono">
                             {c.assembled_games} of {c.games_played}
                             {c.median_assembled_turn != null && <> (T{c.median_assembled_turn})</>}
+                          </td>
+                          <td
+                            className="r mono"
+                            title="How many of these games raw draw odds alone predicted every library piece would be drawn by game end. Assembled above this means tutors did work; far below means pieces sat in hand or died."
+                          >
+                            {c.expected_drawn_games != null ? `~${c.expected_drawn_games}` : "—"}
                           </td>
                           <td className="r mono">{c.converted_games}</td>
                           <td>
@@ -395,7 +402,20 @@ export default function ResultsPage() {
               </table>
               <p className="note">
                 Assembled counts games where every piece was on the battlefield at once, from board
-                reconstruction — an inference, not a read. Converted means that seat then won.
+                reconstruction — an inference, not a read. From draws is the hypergeometric chance of
+                having drawn every piece by each game&apos;s end, given cards seen (opening hand, one
+                per turn cycle, plus logged effect draws; commanders are always available). Converted
+                means that seat then won.
+                {an && (
+                  <>
+                    {" "}Draw velocity:{" "}
+                    {Object.entries(an.decks)
+                      .filter(([, d]) => d.draws?.per_own_turn != null)
+                      .map(([name, d]) => `${name} ${d.draws?.per_own_turn}/turn cycle`)
+                      .join(" · ")}
+                    .
+                  </>
+                )}
                 {Object.values(an.decks).some((d) => d.combos.some((c) => c.idle_online_turns > 0)) && (
                   <>
                     {" "}Combos here sat fully online{" "}

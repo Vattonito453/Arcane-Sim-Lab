@@ -103,9 +103,13 @@ export const api = {
       `/results/${encodeURIComponent(file)}/game/${n}${snapshots ? "?snapshots=1" : ""}`,
       { cache: "force-cache" },
     ),
-  /** Wincon report: win methods + combo assembly/conversion. Immutable. */
+  /** Wincon report: win methods + combo assembly/conversion. Deliberately NOT
+   *  force-cached: the payload carries an analysis version and evolves — a
+   *  browser that pinned v1 under an immutable header kept serving it after the
+   *  engine moved on. The report is a few KB and the engine disk-caches the
+   *  computation, so refetching costs almost nothing. */
   analysis: (file: string) =>
-    get<AnalysisReport>(`/analysis/${encodeURIComponent(file)}`, { cache: "force-cache" }),
+    get<AnalysisReport>(`/analysis/${encodeURIComponent(file)}`),
   /** Whole run including every event log. Prefer runSummary/runGame. */
   result: (file: string) => get<SimResult>(`/results/${encodeURIComponent(file)}`),
   simulate: (decks: string[], games: number) =>

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Convert Moxfield/Arena-style decklist exports to Forge .dck files.
+"""Convert decklist exports (Moxfield/Arena/MTGO/plain text) to Forge .dck files.
 
 Handles entries like:
   1 Inspirit, Flagship Vessel (EOC) 2 F
   3 Island (EOE) 269
   1 Flux Channeler (PLST) WAR-52
   1 Tekuthal, Inquiry Dominus (PONE) 71p
+  1 Kilo, Apogee Mind          (plain lines, no set code — MTGO exports)
+  3x Island
 
 Rules applied:
   - set codes, collector numbers, and foil markers are stripped (Forge wants names)
@@ -39,6 +41,28 @@ ENTRY = re.compile(
     r"(\s+F\b)?"                      # optional foil marker
 )
 
+# Plain "1 Card Name" / "3x Island" line, MTGO-style. Applied per line and only
+# when ENTRY found nothing on that line, so multi-entry single-line Moxfield
+# exports (which always carry set codes) still split on each "(SET) num" anchor
+# rather than being swallowed whole. The whole remainder is ONE name — card
+# names contain commas ("Kilo, Apogee Mind"), so a plain line is never split.
+PLAIN = re.compile(r"^(\d+)\s*[xX]?\s+(.+?)\s*$")
+# Trailing junk stripped off plain names — keep in lockstep with parseList()
+# in web/app/import/page.tsx, which runs the same two substitutions.
+FOIL_TAIL = re.compile(r"\s*\*[A-Za-z]+\*\s*$")               # foil markers like *F*
+SET_TAIL = re.compile(r"\s*\([A-Za-z0-9]{2,6}\)\s*[\w★-]*\s*$")  # (SET) 123p
+
+
+def _line_entries(line: str) -> list[tuple[int, str]]:
+    hits = [(int(m.group(1)), m.group(2).strip()) for m in ENTRY.finditer(line)]
+    if hits:
+        return hits
+    m = PLAIN.match(line)
+    if not m:
+        return []
+    name = SET_TAIL.sub("", FOIL_TAIL.sub("", m.group(2))).strip()
+    return [(int(m.group(1)), name)] if name else []
+
 
 def parse(text: str) -> tuple[list[tuple[int, str]], list[tuple[int, str]]]:
     """Return (main_entries, sideboard_entries) as (count, name) lists."""
@@ -47,7 +71,15 @@ def parse(text: str) -> tuple[list[tuple[int, str]], list[tuple[int, str]]]:
     else:
         main_text, side_text = text, ""
     def entries(t: str) -> list[tuple[int, str]]:
-        return [(int(m.group(1)), m.group(2).strip()) for m in ENTRY.finditer(t)]
+        out: list[tuple[int, str]] = []
+        for line in t.splitlines():
+            line = line.strip()
+            # Comment lines match PLAIN ("# 85 more cards…" would parse as
+            # 85 "more cards…"), so they are skipped exactly like the client.
+            if not line or line.startswith("#") or line.startswith("//"):
+                continue
+            out.extend(_line_entries(line))
+        return out
     return entries(main_text), entries(side_text)
 
 

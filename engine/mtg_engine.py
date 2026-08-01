@@ -19,6 +19,9 @@ zero-dependency API. Use it three ways:
        GET  /results              index of adapted sim result files
        GET  /results/{file}       one full sim result (games -> turns -> events)
                                   ?snapshots=1 adds board_snapshot events
+       GET  /results/{file}/summary   run without event logs (~KB, not MB)
+       GET  /results/{file}/game/{n}  one game's events
+       GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
        GET  /board/{file}         board-reconstruction accuracy report
        GET  /analysis/{file}      wincon report: win methods, combo assembly/conversion
@@ -150,11 +153,28 @@ class Engine:
             cmd += ["--humanize"]
         elif os.environ.get("MTG_SIM_AGENT") in ("forge", "shim"):
             cmd += ["--agent", os.environ["MTG_SIM_AGENT"]]
-        proc = subprocess.run(cmd, capture_output=True, text=True)
-        latest = sorted(Path(out).glob("sim_*.json"))
-        return {"stdout": (proc.stdout + "\n" + proc.stderr)[-2000:], "returncode": proc.returncode,
+        # A hung JVM must not wedge the worker forever: cap the subprocess. On
+        # timeout run_sim dies and Forge follows on its next stdout write
+        # (EPIPE); the job then finishes as an error instead of running
+        # indefinitely. Ceiling is deliberately generous — big humanized
+        # gauntlets are tens of minutes (SIM_CALIBRATION.md).
+        timeout = float(os.environ.get("MTG_SIM_TIMEOUT_SECONDS", 2 * 3600))
+        t0 = time.time()
+        try:
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+            rc, out_txt, err_txt = proc.returncode, proc.stdout or "", proc.stderr or ""
+        except subprocess.TimeoutExpired as e:
+            rc = -1
+            out_txt = e.stdout if isinstance(e.stdout, str) else ""
+            err_txt = (e.stderr if isinstance(e.stderr, str) else "") + \
+                f"\nsimulation killed after {int(timeout)} s (MTG_SIM_TIMEOUT_SECONDS)"
+        # Only accept a result file written by THIS run. The old newest-by-name
+        # glob could hand a failed run the previous run's file, marking the job
+        # done with someone else's numbers.
+        latest = sorted(p for p in Path(out).glob("sim_*.json") if p.stat().st_mtime >= t0)
+        return {"stdout": (out_txt + "\n" + err_txt)[-2000:], "returncode": rc,
                 "result_file": str(latest[-1]) if latest else None,
-                "result": json.loads(latest[-1].read_text()) if latest and proc.returncode == 0 else None}
+                "result": json.loads(latest[-1].read_text()) if latest and rc == 0 else None}
 
     # ---------- helpers ----------
 
@@ -356,6 +376,22 @@ def _read_result_summary(name: str) -> dict:
             "games": games, "file": name}
 
 
+def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None) -> dict:
+    """Win-condition telemetry for one deck in one result.
+
+    Derived from an immutable file and deterministic for a given query string,
+    so the route serves it with the same immutable cache header as its sibling
+    summary/game payloads. Goes through _read_result() — the path-traversal
+    guard lives there and this must stay on that single path.
+    """
+    data = _read_result(name)
+    import deck_telemetry
+    report = deck_telemetry.compute(data, deck, watch)
+    report["file"] = name
+    report["decks"] = data.get("meta", {}).get("decks", [])
+    return report
+
+
 def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
     """One game out of a run — the payload a replay actually needs."""
     data = _read_result(name, snapshots=snapshots)
@@ -372,11 +408,12 @@ _JOB_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 def _read_live(job_id: str, n: int | None = None) -> dict:
     """GET /sim-live — the game currently being played, from the partial log.
 
-    Forge's stdout is already streamed to forge_raw_<job_id>.log line by line
-    while the match runs, and parse_forge_log() is a pure function over whatever
-    text it is handed. So "watching live" is just parsing the prefix that exists
-    so far: the trailing game has no `Game Result` line yet and comes back with
-    the turns played up to this instant.
+    A stock-Forge run streams stdout to forge_raw_<job_id>.log; a shim run
+    (humanized is the default agent) streams typed JSONL to
+    shim_raw_<job_id>.jsonl instead. Both parsers are pure functions over
+    whatever prefix exists so far, so "watching live" is just parsing the
+    partial file: the trailing game has no result yet and comes back with the
+    turns played up to this instant.
 
     Shaped like /results/{file}/game/{n} so the front end can reuse the same
     timeline fold for a live game and a finished one.
@@ -384,12 +421,19 @@ def _read_live(job_id: str, n: int | None = None) -> dict:
     if not _JOB_ID_RE.match(job_id or ""):
         raise ValueError("bad job id")            # keeps the id out of path building
     f = RESULTS_DIR / f"forge_raw_{job_id}.log"
-    if not f.is_file():
+    j = RESULTS_DIR / f"shim_raw_{job_id}.jsonl"
+    if f.is_file():
+        from forge_log_adapter import parse_forge_log
+        text = f.read_text(encoding="utf-8", errors="replace")
+        parsed = parse_forge_log(text, source="live")
+    elif j.is_file():
+        # parse_shim_jsonl skips a truncated trailing line, so reading a file
+        # the shim is mid-write is safe.
+        from shim_log_adapter import parse_shim_jsonl
+        text = j.read_text(encoding="utf-8", errors="replace")
+        parsed = parse_shim_jsonl(text, source="live")
+    else:
         raise FileNotFoundError("no live log for this job yet")
-
-    from forge_log_adapter import parse_forge_log
-    text = f.read_text(encoding="utf-8", errors="replace")
-    parsed = parse_forge_log(text, source="live")
     games = parsed.get("games") or []
     if not games:
         # Forge is still loading its card database; nothing has been played yet.
@@ -719,6 +763,17 @@ def serve(port: int = 8484) -> None:
                                 cache=IMMUTABLE)
                         if len(parts) >= 3 and parts[2] == "summary":
                             return self._send(_read_result_summary(parts[1]), cache=IMMUTABLE)
+                        # /results/{file}/telemetry?deck=sub&watch=a|b|c
+                        if len(parts) >= 3 and parts[2] == "telemetry":
+                            deck = q.get("deck", [""])[0].strip()
+                            if not deck:
+                                return self._send(
+                                    {"error": "pass ?deck=<deck substring>"}, 400)
+                            raw_watch = q.get("watch", [""])[0]
+                            watch = [w.strip() for w in raw_watch.split("|") if w.strip()]
+                            return self._send(
+                                _read_result_telemetry(parts[1], deck, watch),
+                                cache=IMMUTABLE)
                         return self._send(_read_result(parts[1], snapshots=snaps),
                                           cache=IMMUTABLE)
                     except FileNotFoundError:

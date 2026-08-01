@@ -11,6 +11,7 @@
 
 import Link from "next/link";
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import type { DeckCards, DeckEntry } from "@/lib/types";
@@ -67,7 +68,12 @@ function DeckListPop({
     return byKind;
   }, [contents, facts]);
 
-  return (
+  // Portaled to <body>: our glass panels carry backdrop-filter, and a
+  // filtered ancestor captures position:fixed in some browsers — the popover
+  // then pins to the top of the DOCUMENT and scrolls out of view. On body
+  // there is no ancestor to capture it, so fixed means the viewport
+  // everywhere.
+  return createPortal(
     <div
       className="glass-panel dl-pop"
       role="dialog"
@@ -118,11 +124,16 @@ function DeckListPop({
           </div>
         ))}
       <div className="grp-h">
+        <Link className="bl" href={`/decks/${encodeURIComponent(deck.file)}`}>
+          Open deck →
+        </Link>
+        {"  "}
         <Link className="bl" href={`/playtest/${encodeURIComponent(deck.file)}`}>
-          Open in playtest →
+          Playtest →
         </Link>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -199,13 +210,15 @@ function NewRunInner() {
   }, [preselect, decks]);
 
   /** Anchor the popover beside a tile: to its right, flipping left when the
-   *  viewport edge is near, clamped so the 70vh panel always fits. */
+   *  viewport edge is near, top aligned with the tile but pushed up just
+   *  enough that the panel's max height always fits the viewport. */
   const openPop = (file: string, el: HTMLElement) => {
     const r = el.getBoundingClientRect();
     let x = r.right + 12;
     if (x + 312 > window.innerWidth) x = r.left - 312;
     x = Math.max(8, x);
-    const y = Math.max(8, Math.min(r.top - 8, window.innerHeight * 0.3));
+    const maxH = Math.min(window.innerHeight * 0.56, 560); // mirrors .dl-pop max-height
+    const y = Math.max(8, Math.min(r.top - 8, window.innerHeight - maxH - 16));
     setInspect({ file, x, y });
   };
 
@@ -419,26 +432,36 @@ function NewRunInner() {
                     const seat = selected.indexOf(d.file);
                     const art = artOf(d);
                     return (
-                      <button
+                      // Two interactive things per tile, so no nesting: the
+                      // full-bleed button seats the deck for a run; the name
+                      // in the scrim (layered above it) opens the deck page.
+                      <div
                         key={d.file}
-                        type="button"
                         className="dg-tile"
-                        aria-pressed={seat >= 0}
-                        aria-label={`${d.name}${seat >= 0 ? `, selected as player ${seat + 1}` : ""}`}
-                        onClick={() => toggle(d.file)}
+                        data-on={seat >= 0 || undefined}
                         onMouseEnter={(e) => openPop(d.file, e.currentTarget)}
-                        onFocus={(e) => openPop(d.file, e.currentTarget)}
                       >
-                        {art && (
-                          // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink, never rehosted
-                          <img src={art} alt="" loading="lazy" />
-                        )}
-                        {seat >= 0 && <span className="seat">P{seat + 1}</span>}
+                        <button
+                          type="button"
+                          className="pick"
+                          aria-pressed={seat >= 0}
+                          aria-label={`Seat ${d.name}${seat >= 0 ? ` (currently player ${seat + 1})` : ""}`}
+                          onClick={() => toggle(d.file)}
+                          onFocus={(e) => openPop(d.file, e.currentTarget)}
+                        >
+                          {art && (
+                            // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink, never rehosted
+                            <img src={art} alt="" loading="lazy" />
+                          )}
+                          {seat >= 0 && <span className="seat">P{seat + 1}</span>}
+                        </button>
                         <span className="scrim">
-                          <span className="t">{d.name}</span>
+                          <Link className="t bl" href={`/decks/${encodeURIComponent(d.file)}`}>
+                            {d.name}
+                          </Link>
                           <ManaPips colors={identityOf(d) ?? undefined} />
                         </span>
-                      </button>
+                      </div>
                     );
                   })}
                   {visible.length === 0 && (

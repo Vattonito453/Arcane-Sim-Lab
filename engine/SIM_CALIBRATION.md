@@ -80,3 +80,32 @@ available and falls back to stock Forge with a stderr warning and
 `meta.humanized: false` otherwise. Opt-outs: `--agent forge` (CLI),
 `MTG_SIM_HUMANIZE=0` (worker env). Every result now carries
 `meta.humanized` on all paths, including stock and rotated runs.
+
+## Sim Lab agent v2 (Stage 4 politics, measured 2026-08-01)
+
+Adds grudge memory, kingmaker avoidance, politics-gated countermagic, and an
+optional-trigger miss chance. All dials are per-seat data in the deck plan
+(`grudgeWeight`, `kingmakerRatio`, `politics`, `triggerMiss`); mechanisms
+live in the shim. Same 4-deck pod, 8 games, seat-rotated. Agent telemetry
+(shim JSONL events) is authoritative for agent actions, as with v1.
+
+| metric                       | agent v1 | agent v2 | human reference |
+|------------------------------|----------|----------|-----------------|
+| mulligan rate (decisions)    | 14.3%    | 15.8% (6/38)          | ~15-25% |
+| attack-split rate (turns)    | 23.3%    | 35.7% (56 splits)     | "constantly" |
+| block rate (raw log text)    | —        | 14.7% + 6 agent-added | routine blocks |
+| counterspells                | 9 vetoed / 1 fired | 19 vetoed / 2 fired, bar raised to 6.0 by politics; both fires hit threat-signature spells | held for the win attempt |
+| kingmaker re-aims            | n/a      | 6 across 32 seats — attacks moved off the weakest seat onto the leader | avoid kingmaking |
+| optional triggers missed     | n/a      | 5 (all optional; `isOptionalTrigger()` guard means a mandatory trigger can never be skipped) | humans miss triggers |
+
+Notes:
+- Politics gate observed working end-to-end: chaff vetoed at threat 1-4
+  (Swiftfoot Boots, Read the Bones), fires only on threat-signature spells
+  (Endless Ranks of the Dead, Baneful Omen) at the raised bar.
+- Hidden-zone hygiene re-confirmed for the new paths: grudge accumulates
+  from public combat declarations, table threat reads battlefield + life,
+  the open-mana check counts untapped lands on the battlefield. No hand or
+  library reads anywhere in the controller.
+- Wins this sample: Drana 50%, Wyleth 25%, Kilo 25%, Wilhelt 0% (n=8 — for
+  behavior measurement, not win-rate conclusions). Archetype baselines above
+  remain STOCK-AI baselines until re-measured under the agent at scale.

@@ -52,20 +52,37 @@ TAG_MARKERS: dict[str, list[str]] = {
 }
 
 # Personality defaults per dominant tag; everything is a starting point the
-# import UI can expose later.
+# import UI can expose later. Stage 4 dials: grudgeWeight scales how much
+# being attacked raises a seat's threat in my eyes; kingmakerRatio is the
+# leader/weakest threat ratio past which attacks re-aim off the weakest seat;
+# politics raises the counterspell bar while another opponent holds open
+# mana; triggerMiss is the decline chance for OPTIONAL triggers only
+# (mandatory triggers can never be missed — that would be an illegal game).
 TAG_PERSONALITY: dict[str, dict] = {
     "go-wide-tokens": {"aggression": 0.7, "splitAttacks": 0.85, "blockiness": 0.5,
-                       "counterThreshold": 6, "dangerLife": 8},
+                       "counterThreshold": 6, "dangerLife": 8,
+                       "grudgeWeight": 0.25, "kingmakerRatio": 1.6,
+                       "politics": 0.4, "triggerMiss": 0.04},
     "voltron-commander-damage": {"aggression": 0.8, "splitAttacks": 0.4, "blockiness": 0.4,
-                                 "counterThreshold": 6, "dangerLife": 8},
+                                 "counterThreshold": 6, "dangerLife": 8,
+                                 "grudgeWeight": 0.3, "kingmakerRatio": 1.4,
+                                 "politics": 0.3, "triggerMiss": 0.04},
     "spellslinger-burn": {"aggression": 0.6, "splitAttacks": 0.7, "blockiness": 0.5,
-                          "counterThreshold": 4, "dangerLife": 10},
+                          "counterThreshold": 4, "dangerLife": 10,
+                          "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
+                          "politics": 0.6, "triggerMiss": 0.03},
     "stax-control": {"aggression": 0.35, "splitAttacks": 0.6, "blockiness": 0.75,
-                     "counterThreshold": 4, "dangerLife": 12},
+                     "counterThreshold": 4, "dangerLife": 12,
+                     "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
+                     "politics": 0.8, "triggerMiss": 0.02},
     "mill": {"aggression": 0.35, "splitAttacks": 0.6, "blockiness": 0.75,
-             "counterThreshold": 4, "dangerLife": 12},
+             "counterThreshold": 4, "dangerLife": 12,
+             "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
+             "politics": 0.8, "triggerMiss": 0.02},
     "_default": {"aggression": 0.55, "splitAttacks": 0.7, "blockiness": 0.6,
-                 "counterThreshold": 5, "dangerLife": 8},
+                 "counterThreshold": 5, "dangerLife": 8,
+                 "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
+                 "politics": 0.5, "triggerMiss": 0.03},
 }
 
 _REMOVAL = re.compile(r"destroy target|exile target|deals \d+ damage to target creature",

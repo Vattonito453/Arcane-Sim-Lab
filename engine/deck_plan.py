@@ -97,6 +97,9 @@ _REMOVAL = re.compile(r"destroy target|exile target|deals \d+ damage to target c
 # knowingly a little optimistic; Forge only offers legal search targets, so
 # a mismatch costs nothing at choice time.
 _TUTOR_CLAUSE = re.compile(r"search your librar(?:y|ies) for ([^.;\n]*)", re.I)
+# Land fetch isn't tutoring: catch both the word "land" and basic type names
+# ("a Forest card" — Wood Elves; "a Plains card" — plainscycling).
+_LAND_CLAUSE = re.compile(r"land|plains|island|swamp|mountain|forest|gate\b", re.I)
 _PROTECTION = re.compile(r"hexproof|indestructible|protection from|counter target spell|"
                          r"can't be countered|phase(s)? out", re.I)
 _FINISHER = re.compile(r"wins? the game|loses? the game|combat damage to a player|"
@@ -184,7 +187,7 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
             roles[n] = "land"
             continue
         tm = _TUTOR_CLAUSE.search(text)
-        if tm and "land" not in tm.group(1).lower():
+        if tm and not _LAND_CLAUSE.search(tm.group(1)):
             tutors.append(n)
         if n in combo_pieces:
             roles[n], weights[n] = "combo-piece", 8

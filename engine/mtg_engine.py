@@ -25,8 +25,10 @@ zero-dependency API. Use it three ways:
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
        GET  /board/{file}         board-reconstruction accuracy report
        GET  /analysis/{file}      wincon report: win methods, combo assembly/conversion
+       GET  /ask?q=...            cached rules answer (never generates)
        POST /simulate             {"decks":[...], "games":N, "deck_dir":"..."} -> sim JSON
        POST /decks                {"name":..., "text":..., "commander"?} -> validated .dck
+       POST /ask                  {"q":"..."} -> grounded rules answer (authed, quota'd)
 """
 from __future__ import annotations
 
@@ -291,6 +293,9 @@ SIM_PER_HOUR = int(os.environ.get("MTG_SIM_PER_HOUR", "6"))
 SIM_MAX_GAMES = int(os.environ.get("MTG_SIM_MAX_GAMES", "64"))
 SIM_MAX_QUEUED = int(os.environ.get("MTG_SIM_MAX_QUEUED", "3"))
 READ_PER_MIN = int(os.environ.get("MTG_READ_PER_MIN", "240"))
+# Rules-assistant generation is the only paid-token path besides coaching;
+# GET /ask is cache-only so crawlers can never spend money.
+ASK_PER_HOUR = int(os.environ.get("MTG_ASK_PER_HOUR", "30"))
 ALLOW_OPEN_PUBLIC = os.environ.get("MTG_ALLOW_OPEN_PUBLIC", "0") == "1"
 
 _rate_lock = threading.Lock()
@@ -750,6 +755,19 @@ def serve(port: int = 8484) -> None:
                     return self._send(engine.turn_structure())
                 if parts[0] == "search":
                     return self._send(engine.search(q.get("q", [""])[0], int(q.get("k", ["8"])[0])))
+                if parts[0] == "ask":
+                    # Cache-only read: never generates, so a crawler cannot
+                    # spend tokens on GETs. POST /ask (authed) generates.
+                    question = q.get("q", [""])[0].strip()
+                    if not question:
+                        return self._send({"error": "pass ?q=<question>"}, 400)
+                    import rules_qa
+                    stored = rules_qa.cached_answer(question)
+                    if stored is not None:
+                        return self._send(stored)
+                    return self._send({
+                        "ok": False, "reason": "not generated",
+                        "hits": rules_qa.retrieve(question, engine=engine)})
                 if parts[0] == "results":
                     if len(parts) == 1:
                         return self._send(_list_results())
@@ -815,8 +833,22 @@ def serve(port: int = 8484) -> None:
             payload = json.loads(self.rfile.read(length) or b"{}")
             try:
                 route = u.path.strip("/")
-                if route in ("simulate", "decks") and not self._authed():
+                if route in ("simulate", "decks", "ask") and not self._authed():
                     return self._deny(401, "an API key is required for this endpoint")
+
+                if route == "ask":
+                    question = str(payload.get("q") or "").strip()
+                    if not question:
+                        return self._send({"error": "pass {\"q\": \"...\"}"}, 400)
+                    if len(question) > 500:
+                        return self._send(
+                            {"error": "question too long (500 chars max)"}, 413)
+                    ok, retry = _rate_ok(f"ask:{self.client_key}", ASK_PER_HOUR, 3600.0)
+                    if not ok:
+                        return self._deny(
+                            429, f"ask quota is {ASK_PER_HOUR}/hour", retry)
+                    import rules_qa
+                    return self._send(rules_qa.answer(question, engine=engine))
 
                 if route == "simulate":
                     import jobqueue

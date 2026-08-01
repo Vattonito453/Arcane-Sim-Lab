@@ -257,3 +257,28 @@ export interface RuleHit {
   text?: string;
   [k: string]: unknown;
 }
+
+/** GET /rule/{n} — exact rule plus its direct subrules. */
+export interface RuleLookup {
+  rule?: string;
+  entries?: { rule: string; text: string }[];
+  error?: string;
+  suggestion?: string;
+}
+
+/** GET/POST /ask — rules_qa.answer(). ok:false carries `reason` and still
+ *  populates `hits`, so the UI can degrade to plain rules search. */
+export interface RulesAnswer {
+  ok: boolean;
+  reason?: string;
+  question?: string;
+  normalized?: string;
+  key?: string;
+  answer?: string;
+  citations?: { rule: string; text: string }[];
+  hits: RuleHit[];
+  covered?: boolean;
+  cached?: boolean;
+  ungrounded?: string[];
+  meta?: { model: string; generated: string; kb: string };
+}

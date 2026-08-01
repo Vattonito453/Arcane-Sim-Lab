@@ -2,7 +2,8 @@
  *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
 import type {
   AnalysisReport, DeckEntry, ImportResponse, JobStatus, LiveGame,
-  ResultIndexEntry, RunGame, RunSummary, SimResult, TelemetryReport,
+  ResultIndexEntry, RuleLookup, RulesAnswer, RunGame, RunSummary, SimResult,
+  TelemetryReport,
 } from "./types";
 
 export function apiBase(): string {
@@ -131,7 +132,13 @@ export const api = {
     ),
   importDeck: (name: string, text: string, commander?: string, save = true) =>
     post<ImportResponse>("/decks", { name, text, commander, save }),
-  rule: (n: string) => get<Record<string, unknown>>(`/rule/${encodeURIComponent(n)}`),
+  rule: (n: string) => get<RuleLookup>(`/rule/${encodeURIComponent(n)}`),
   search: (q: string, k = 8) =>
     get<unknown[]>(`/search?q=${encodeURIComponent(q)}&k=${k}`),
+  /** Generate a grounded rules answer. Authed + quota'd: the only paid-token
+   *  path besides coaching. Cached server-side per normalized question. */
+  ask: (q: string) => post<RulesAnswer>("/ask", { q }),
+  /** Cache-only read of a previously generated answer. Never spends tokens. */
+  askCached: (q: string) =>
+    get<RulesAnswer>(`/ask?q=${encodeURIComponent(q)}`),
 };

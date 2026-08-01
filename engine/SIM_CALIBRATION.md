@@ -73,3 +73,10 @@ Notes:
   plausible: interaction punishes runaway starts).
 - Familiarity level is full-decklist (every seat knows every plan's threat
   signature). Blind/archetype-aware dials are not implemented yet.
+
+**Default change (2026-08-01):** humanized is now the DEFAULT agent.
+`run_sim.py` resolves `--agent auto` to plan agents whenever the shim jar is
+available and falls back to stock Forge with a stderr warning and
+`meta.humanized: false` otherwise. Opt-outs: `--agent forge` (CLI),
+`MTG_SIM_HUMANIZE=0` (worker env). Every result now carries
+`meta.humanized` on all paths, including stock and rotated runs.

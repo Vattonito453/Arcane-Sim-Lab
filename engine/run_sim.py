@@ -38,7 +38,7 @@ SHIM_SEARCH_GLOBS = [
 ]
 
 
-def find_shim_jar(explicit: str | None) -> str:
+def find_shim_jar(explicit: str | None, required: bool = True) -> str | None:
     candidates = []
     if explicit:
         candidates.append(explicit)
@@ -49,8 +49,10 @@ def find_shim_jar(explicit: str | None) -> str:
     for c in candidates:
         if c and Path(os.path.expanduser(c)).is_file():
             return os.path.expanduser(c)
-    sys.exit("shim jar not found. Build simlab-forge-shim (./build.sh), or pass "
-             "--shim-jar / set SIMLAB_SHIM_JAR.")
+    if required:
+        sys.exit("shim jar not found. Build simlab-forge-shim (./build.sh), or pass "
+                 "--shim-jar / set SIMLAB_SHIM_JAR.")
+    return None
 
 
 def find_forge_jar(explicit: str | None) -> str:
@@ -140,7 +142,22 @@ def run(args: argparse.Namespace) -> None:
     stage_decks(args.decks, args.deck_dir, args.format)
     deck_names = [Path(d).name for d in args.decks]
 
-    if args.humanize:
+    # Agent resolution. "auto" (the default) means HUMANIZED — that is the
+    # product: plan agents whenever the shim jar is available, with a loud,
+    # labeled fallback to stock Forge when it is not (a machine without the
+    # shim should still sim, but never silently pretend to be humanized).
+    if args.agent == "auto":
+        if find_shim_jar(args.shim_jar, required=False):
+            args.agent = "shim"
+            args.humanize = True
+        else:
+            print("WARNING: shim jar not found — falling back to STOCK Forge AI. "
+                  "Results will carry humanized:false. Build simlab-forge-shim "
+                  "and/or set SIMLAB_SHIM_JAR to restore the default agent.",
+                  file=sys.stderr)
+            args.agent = "forge"
+            args.humanize = False
+    elif args.humanize:
         args.agent = "shim"  # plan agents only exist behind the shim
 
     if args.agent == "shim":
@@ -167,6 +184,7 @@ def run(args: argparse.Namespace) -> None:
                 sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per)
                 all_games.extend(sub["games"])
             result = {"meta": {"source": "rotated", "agent": "simlab-forge-shim",
+                               "humanized": bool(args.humanize),
                                "decks": args.decks, "format": args.format,
                                "rotations": rotations},
                       "games": all_games, "summary": _summarize_by_deck(all_games)}
@@ -196,7 +214,8 @@ def run(args: argparse.Namespace) -> None:
             print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
             sub = _run_once(args, jar, out_dir, order, per)
             all_games.extend(sub["games"])
-        result = {"meta": {"source": "rotated", "decks": args.decks,
+        result = {"meta": {"source": "rotated", "humanized": False,
+                           "decks": args.decks,
                            "format": args.format, "rotations": rotations},
                   "games": all_games, "summary": _summarize_by_deck(all_games)}
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -248,6 +267,7 @@ def run(args: argparse.Namespace) -> None:
     result = parse_forge_log("".join(stdout_lines), source=" ".join(cmd))
     result["meta"]["decks"] = args.decks
     result["meta"]["format"] = args.format
+    result["meta"]["humanized"] = False
     json_path = out_dir / f"sim_{stamp}.json"
     json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
 
@@ -312,10 +332,11 @@ def main() -> None:
     p.add_argument("--clock", type=int, default=120, help="Per-game timeout seconds (draw when exceeded)")
     p.add_argument("--quiet", action="store_true", help="Result-only logs (no per-action events)")
     p.add_argument("--forge-jar", default=None)
-    p.add_argument("--agent", choices=["forge", "shim"], default="forge",
-                   help="'forge' = stock sim CLI (default). 'shim' = simlab-forge-shim: "
-                        "same stock AI for now, but typed logs + zone ground truth "
-                        "(battlefield entries) attached per game under 'zones'.")
+    p.add_argument("--agent", choices=["auto", "forge", "shim"], default="auto",
+                   help="'auto' (default) = HUMANIZED plan agents via the shim, "
+                        "falling back to stock Forge (labeled) if no shim jar. "
+                        "'forge' = stock sim CLI. 'shim' = shim with stock AI "
+                        "(typed logs + zone ground truth, no plan agents).")
     p.add_argument("--shim-jar", default=None,
                    help="Path to simlab-forge-shim.jar (or set SIMLAB_SHIM_JAR)")
     p.add_argument("--humanize", action="store_true",

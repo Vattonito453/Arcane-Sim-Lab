@@ -57,6 +57,46 @@ def finish(job_id: str, result: dict | None = None, error: str | None = None) ->
                    json.dumps(result) if result else None, error, time.time(), job_id))
 
 
+def recover_orphans() -> int:
+    """Requeue every job stuck in 'running' — call ONLY at worker startup.
+
+    A container restart (redeploy, crash, VM reboot) kills the sim mid-run and
+    nothing ever moves the job out of 'running': claim() only looks at
+    'queued', so the run lingers forever and its UI page polls until the sun
+    burns out. At worker startup any 'running' row is provably orphaned — this
+    assumes ONE worker per queue, which is how every deployment runs today.
+    If workers are ever scaled out, set MTG_RECOVER_ORPHANS=0 on all of them
+    (a restarting worker would otherwise requeue its siblings' live jobs) and
+    rely on reap_stale() instead.
+    """
+    if os.environ.get("MTG_RECOVER_ORPHANS", "1") == "0":
+        return 0
+    with _conn() as c:
+        return c.execute("UPDATE jobs SET state='queued', started=NULL "
+                         "WHERE state='running'").rowcount
+
+
+def reap_stale(max_seconds: float | None = None) -> int:
+    """Fail 'running' jobs older than the ceiling; returns how many.
+
+    Backstop for a worker that died and never came back (recover_orphans only
+    runs when a worker starts). Called from get(), so the same /sim-status
+    poll a viewer's run page makes is what eventually turns a zombie into an
+    honest error. The ceiling must exceed the worst legitimate sim — those are
+    tens of minutes (SIM_CALIBRATION.md), and Engine.simulate kills the
+    subprocess after MTG_SIM_TIMEOUT_SECONDS (2 h default) anyway.
+    """
+    if max_seconds is None:
+        max_seconds = float(os.environ.get("MTG_JOB_TIMEOUT_SECONDS", 3 * 3600))
+    now = time.time()
+    with _conn() as c:
+        return c.execute(
+            "UPDATE jobs SET state='error', finished=?, error=? "
+            "WHERE state='running' AND started < ?",
+            (now, "the worker running this simulation was lost (restarted or "
+                  "timed out) — start the run again", now - max_seconds)).rowcount
+
+
 def position(job_id: str) -> int:
     """How many queued jobs sit ahead of this one. 0 once it is claimed.
 
@@ -73,6 +113,7 @@ def position(job_id: str) -> int:
 
 def get(job_id: str | None = None) -> dict | None:
     """Job by id, or the most recent job if id is None."""
+    reap_stale()  # status reads are frequent; zombies get reported honestly
     q = ("SELECT id, created, state, payload, result, error, started, finished FROM jobs "
          + ("WHERE id=?" if job_id else "ORDER BY created DESC LIMIT 1"))
     with _conn() as c:

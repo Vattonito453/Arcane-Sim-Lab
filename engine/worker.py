@@ -34,11 +34,19 @@ def process_one(job: dict) -> None:
             out=str(jobqueue.DATA_DIR / "sim_results"),
             run_id=job["id"],   # names the raw log so GET /sim-live can follow it
         )
-        if res.get("returncode") == 0 and res.get("result"):
+        summary = (res.get("result") or {}).get("summary") or {}
+        if res.get("returncode") == 0 and res.get("result") and summary.get("games", 0) > 0:
             jobqueue.finish(job["id"], result={
-                "summary": res["result"]["summary"],
+                "summary": summary,
                 "result_file": res.get("result_file"),
             })
+        elif res.get("returncode") == 0 and res.get("result"):
+            # Forge exited 0 but played nothing — a silent failure (bad deck,
+            # missing display, dead shim). "Done, 0 games" looked like nothing
+            # happened; say what we know instead.
+            jobqueue.finish(job["id"], error=(
+                "the simulation produced no games — Forge started but played "
+                "nothing. Engine output:\n" + (res.get("stdout") or "")[-700:]))
         else:
             jobqueue.finish(job["id"], error=(res.get("stdout") or "simulation failed")[-800:])
     except Exception as e:  # noqa: BLE001
@@ -47,6 +55,13 @@ def process_one(job: dict) -> None:
 
 def loop() -> None:
     print(f"worker: polling {jobqueue.DB_PATH}")
+    # A restart mid-sim (redeploy, crash) leaves the job 'running' forever —
+    # nothing else ever touches that state. We are the only worker on this
+    # queue, so anything 'running' right now is provably dead: requeue it and
+    # the sim simply runs again.
+    recovered = jobqueue.recover_orphans()
+    if recovered:
+        print(f"worker: requeued {recovered} orphaned job(s) from a previous worker")
     while True:
         job = jobqueue.claim()
         if job:

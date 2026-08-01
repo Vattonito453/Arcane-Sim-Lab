@@ -2,7 +2,7 @@
  *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
 import type {
   AnalysisReport, DeckEntry, ImportResponse, JobStatus, LiveGame,
-  ResultIndexEntry, RunGame, RunSummary, SimResult,
+  ResultIndexEntry, RunGame, RunSummary, SimResult, TelemetryReport,
 } from "./types";
 
 export function apiBase(): string {
@@ -101,6 +101,14 @@ export const api = {
   runGame: (file: string, n: number, snapshots = false) =>
     get<RunGame>(
       `/results/${encodeURIComponent(file)}/game/${n}${snapshots ? "?snapshots=1" : ""}`,
+      { cache: "force-cache" },
+    ),
+  /** Win-condition telemetry for one deck — computed server-side so the
+   *  browser never fetches the whole ~235 KB run (CLAUDE.md gotcha 4). */
+  runTelemetry: (file: string, deck: string, watch?: string[]) =>
+    get<TelemetryReport>(
+      `/results/${encodeURIComponent(file)}/telemetry?deck=${encodeURIComponent(deck)}` +
+        (watch?.length ? `&watch=${encodeURIComponent(watch.join("|"))}` : ""),
       { cache: "force-cache" },
     ),
   /** Wincon report: win methods + combo assembly/conversion. Deliberately NOT

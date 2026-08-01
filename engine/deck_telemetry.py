@@ -13,11 +13,12 @@ but "proliferate" also matches oracle reminder text, and zero hits can mean
 actually present in the payload, never by ``summary.games`` (the committed
 fixture carries a 16-game summary over a 2-game payload — see task 02).
 
-Watched-card status thresholds (documented so the UI and the coach agree;
-never recompute these elsewhere):
-    healthy: >= 2.0 events/game
-    partial: > 0 events/game
-    cold:    0 events
+Status thresholds (documented so the UI and the coach agree; never recompute
+these elsewhere — the UI maps the status strings, nothing more):
+    watched cards and engine metrics, by events/game:
+        healthy: >= 2.0    partial: > 0    cold: 0
+    commander, by share of games with at least one cast:
+        healthy: >= 0.8    partial: > 0    cold: 0
 
 Usage:
   python3 deck_telemetry.py <deck_substring> [--cards "Lux Cannon,Dawnsire,..."]
@@ -31,6 +32,7 @@ from pathlib import Path
 
 _AI_PREFIX = re.compile(r"^Ai\(\d+\)-")
 HEALTHY_EVENTS_PER_GAME = 2.0
+HEALTHY_COMMANDER_CAST_RATE = 0.8
 
 
 def _strip_ai(key: str) -> str:
@@ -185,12 +187,16 @@ def compute(result: dict, deck_substring: str, watch: list[str] | None = None,
             "median_turn": (statistics.median(first_cast_turns)
                             if first_cast_turns else None),
             "casts_per_game": round(cmd_casts / n, 2),
+            "status": ("healthy" if games_cast / n >= HEALTHY_COMMANDER_CAST_RATE
+                       else "partial" if games_cast else "cold"),
         } if commander else None),
         "engine": {
             "charge_events": charge,
             "charge_events_per_game": round(charge / n, 2),
+            "charge_status": _status(charge / n),
             "proliferate_events": prolif,
             "proliferate_per_game": round(prolif / n, 2),
+            "proliferate_status": _status(prolif / n),
         },
         "watched": [{
             "name": c,

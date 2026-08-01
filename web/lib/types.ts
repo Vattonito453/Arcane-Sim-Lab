@@ -209,6 +209,48 @@ export interface ImportResponse {
   combos?: DeckCombos;
 }
 
+/** GET /results/{file}/telemetry?deck= — deck_telemetry.compute() output.
+ *  Statuses come from documented thresholds in engine/deck_telemetry.py;
+ *  never recompute them client-side. */
+export interface TelemetryWatched {
+  name: string;
+  events: number;
+  events_per_game: number;
+  status: "healthy" | "partial" | "cold";
+}
+
+export interface TelemetryReport {
+  games: number; // games actually present in the payload, not summary.games
+  deck: string;
+  player_key: string | null;
+  source: string | null; // "rotated" when seat-rotated
+  commander: {
+    name: string;
+    cast_rate: number; // 0..1, share of games with >=1 cast
+    median_turn: number | null;
+    casts_per_game: number;
+    status: "healthy" | "partial" | "cold";
+  } | null;
+  engine: {
+    charge_events: number;
+    charge_events_per_game: number;
+    charge_status: "healthy" | "partial" | "cold";
+    proliferate_events: number;
+    proliferate_per_game: number;
+    proliferate_status: "healthy" | "partial" | "cold";
+  };
+  watched: TelemetryWatched[];
+  deaths: {
+    by_source: { source: string; damage: number }[];
+    median_turn: number | null;
+  };
+  wins: number;
+  win_rate: number;
+  method: string;
+  file: string;
+  decks: string[];
+}
+
 export interface RuleHit {
   rule?: string;
   score?: number;

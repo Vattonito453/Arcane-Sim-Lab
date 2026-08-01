@@ -12,7 +12,7 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, Footer, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { AnalysisReport, RunGameSummary, RunSummary } from "@/lib/types";
 import { pct, plural, runTitle, stripAi } from "@/lib/format";
@@ -151,10 +151,17 @@ export default function ResultsPage() {
   const title = view ? runTitle(view.rows.map((r) => r.name)) : file.replace(/\.json$/, "");
   const enc = encodeURIComponent(file);
 
+  // Two real destinations now that telemetry exists — the row is present on the
+  // loading and error states too, so it does not vanish mid-load.
+  const tabs: TabDef[] = [
+    { label: "Overview", href: `/results/${enc}`, on: true },
+    { label: "Telemetry", href: `/results/${enc}/telemetry` },
+  ];
+
   if (err) {
     return (
       <>
-        <Chrome />
+        <Chrome tabs={tabs} />
         <div className="page">
           <div className="head">
             <div>
@@ -178,7 +185,7 @@ export default function ResultsPage() {
   if (!data || !view) {
     return (
       <>
-        <Chrome />
+        <Chrome tabs={tabs} />
         <div className="page">
           <div className="head">
             <div>
@@ -217,9 +224,7 @@ export default function ResultsPage() {
 
   return (
     <>
-      {/* No tab row: a one-item tab bar is chrome with no function. The replay
-          links back here through the breadcrumb and its own Back link. */}
-      <Chrome context={view.ctx} />
+      <Chrome context={view.ctx} tabs={tabs} />
       <div className="page">
         <div className="head">
           <div>

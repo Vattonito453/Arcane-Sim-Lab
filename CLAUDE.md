@@ -169,6 +169,11 @@ telemetry, coaching, the training corpus, and — critically — all AI decision
 - **No gameplay client.** A playable Magic experience competes with MTG Arena
   and is the category WotC acts against. This tool analyses decks; it does not
   play. The humanized sim AI is batch-only, server-side; no user ever plays it.
+  **Carve-out (2026-08-02):** a solo, rules-free playtest sandbox (draw hands,
+  drag cards — Moxfield/Archidekt-style goldfishing) is allowed. The tripwires
+  that make something a gameplay client are: an opponent of any kind, rules
+  adjudication by the app, or a declared win/loss. Cross any one → legal
+  review first. See `tasks/08-goldfish-mode.md`.
 - **Card images are hotlinked from Scryfall**, never rehosted. Oracle text is
   displayed with attribution, not bulk-republished.
 - Keep the WotC Fan Content notice in the footer; no WotC trademarks in the

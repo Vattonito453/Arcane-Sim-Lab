@@ -219,6 +219,7 @@ def _find_deck(filename: str) -> Path | None:
 
 
 def _list_decks() -> list[dict]:
+    import combos
     decks: dict[str, dict] = {}
     for d in _deck_dirs():
         if not d.is_dir():
@@ -237,13 +238,21 @@ def _list_decks() -> list[dict]:
                 # encoding must not take down the whole deck list. This endpoint
                 # returned a 500 for all 29 decks because a single unreadable
                 # sidecar raised UnicodeDecodeError.
-                for line in f.read_text(encoding="utf-8", errors="replace").splitlines():
-                    if line.startswith("Name="):
-                        name = line[5:].strip()
-                        break
+                text = f.read_text(encoding="utf-8", errors="replace")
             except OSError:
                 continue
+            for line in text.splitlines():
+                if line.startswith("Name="):
+                    name = line[5:].strip()
+                    break
+            # Commander name feeds the picker's art tiles; a deck without a
+            # [Commander] section honestly reports null (name-only tile).
+            try:
+                _, commanders = combos.parse_dck(text)
+            except Exception:  # noqa: BLE001 — one odd file must not 500 the list
+                commanders = []
             decks[f.name] = {"file": f.name, "name": name,
+                             "commander": commanders[0] if commanders else None,
                              "source": "imported" if d == IMPORTED_DECKS else "bundled"}
     return [decks[k] for k in sorted(decks)]
 

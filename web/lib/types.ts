@@ -3,6 +3,10 @@
 export interface DeckEntry {
   file: string;
   name: string;
+  /** From the .dck [Commander] section; null when the deck has none. The
+   *  picker resolves art + color identity through /cards, batched. */
+  commander?: string | null;
+  source?: "imported" | "bundled";
 }
 
 /** GET /decks/{file} — one deck's contents, counts expanded. Pure data for

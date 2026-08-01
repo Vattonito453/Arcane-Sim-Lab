@@ -1,25 +1,118 @@
 "use client";
 
 /** New run — /new
- *  The deck picker. Used to be the home page; home is now the splash hub, and
- *  "Run new simulation" / "Explore decklists" both land here. The ?deck= param
- *  preselects a deck (the import page links here after a save). */
+ *  The deck picker, rebuilt as an art gallery (task 12). Each deck is a tile
+ *  showing its commander's Scryfall art_crop (hotlinked, resolved through the
+ *  engine's cached /cards path in ONE batched call) with the name on a scrim.
+ *  Selection is the cyan interaction treatment; the single primary lives in
+ *  the right rail with the games select and the runtime estimate. Hovering or
+ *  keyboard-focusing a tile surfaces the decklist in a fixed popover layer
+ *  (Escape dismisses). The ?deck= param preselects (import links here). */
 
 import Link from "next/link";
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
-import type { DeckEntry } from "@/lib/types";
+import type { DeckCards, DeckEntry } from "@/lib/types";
 import { estimateSeconds, fmtDuration, plural } from "@/lib/format";
 import { Chrome, Footer } from "@/components/Chrome";
+import { ManaPip, ManaPips } from "@/components/ManaPips";
+import {
+  KIND_LABEL, KIND_ORDER, kindOf, loadCards, normalizeName,
+  type CardMap, type Kind,
+} from "@/lib/cards";
 import ApiBaseSetting from "@/components/ApiBaseSetting";
 
 const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
+const WUBRG = ["W", "U", "B", "R", "G"] as const;
+const COLOR_NAME: Record<string, string> = {
+  W: "White", U: "Blue", B: "Black", R: "Red", G: "Green",
+};
 
 interface Health {
   rules: number;
   keywords: number;
   glossary_terms: number;
+}
+
+function factsKey(name: string): string {
+  return normalizeName(name).toLowerCase();
+}
+
+/** Decklist popover content: contents grouped by type where card facts are
+ *  cached; unknown types group honestly under "Unidentified". */
+function DeckListPop({
+  deck, contents, facts, onClose,
+}: {
+  deck: DeckEntry;
+  contents: DeckCards | null;
+  facts: CardMap;
+  onClose: () => void;
+}) {
+  const groups = useMemo(() => {
+    if (!contents) return null;
+    const counts = new Map<string, number>();
+    for (const n of contents.main) counts.set(n, (counts.get(n) ?? 0) + 1);
+    const byKind = new Map<Kind, { name: string; count: number }[]>();
+    for (const [name, count] of counts) {
+      const k = kindOf(name, facts[factsKey(name)]);
+      const arr = byKind.get(k) ?? [];
+      arr.push({ name, count });
+      byKind.set(k, arr);
+    }
+    for (const arr of byKind.values()) arr.sort((a, b) => a.name.localeCompare(b.name));
+    return byKind;
+  }, [contents, facts]);
+
+  return (
+    <div className="glass-panel dl-pop" role="dialog" aria-label={`Decklist: ${deck.name}`}>
+      <h3>{deck.name}</h3>
+      <div className="row">
+        <span>
+          {contents ? `${contents.main.length} cards` : "loading decklist…"}
+        </span>
+        <a
+          className="q"
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            onClose();
+          }}
+        >
+          Close (Esc)
+        </a>
+      </div>
+      {contents && contents.commanders.length > 0 && (
+        <>
+          <div className="grp-h">Commander</div>
+          {contents.commanders.map((c) => (
+            <div key={c} className="row">
+              <span>{c}</span>
+            </div>
+          ))}
+        </>
+      )}
+      {groups &&
+        KIND_ORDER.filter((k) => groups.has(k)).map((k) => (
+          <div key={k}>
+            <div className="grp-h">
+              {KIND_LABEL[k]} · {groups.get(k)!.reduce((a, r) => a + r.count, 0)}
+            </div>
+            {groups.get(k)!.map((r) => (
+              <div key={r.name} className="row">
+                <span>{r.name}</span>
+                <span className="n">{r.count}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      <div className="grp-h">
+        <Link className="bl" href={`/playtest/${encodeURIComponent(deck.file)}`}>
+          Open in playtest →
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 function NewRunInner() {
@@ -28,12 +121,16 @@ function NewRunInner() {
   const preselect = searchParams.get("deck");
 
   const [decks, setDecks] = useState<DeckEntry[] | null>(null);
+  const [facts, setFacts] = useState<CardMap>({});
   const [health, setHealth] = useState<Health | null>(null);
   const [down, setDown] = useState(false);
   const [healthErr, setHealthErr] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
 
   const [selected, setSelected] = useState<string[]>([]);
+  const [filter, setFilter] = useState<Set<string>>(new Set());
+  const [inspect, setInspect] = useState<string | null>(null);
+  const [contents, setContents] = useState<Record<string, DeckCards>>({});
   const [games, setGames] = useState(16);
   const [starting, setStarting] = useState(false);
   const [startErr, setStartErr] = useState<string | null>(null);
@@ -47,9 +144,7 @@ function NewRunInner() {
     setHealthErr(false);
     api
       .health()
-      .then((h) => {
-        if (!stop) setHealth(h);
-      })
+      .then((h) => !stop && setHealth(h))
       .catch(() => {
         if (!stop) {
           setHealth(null);
@@ -58,8 +153,14 @@ function NewRunInner() {
       });
     api
       .decks()
-      .then((d) => {
-        if (!stop) setDecks(d);
+      .then(async (d) => {
+        if (stop) return;
+        setDecks(d);
+        // ONE batched, engine-cached lookup resolves every tile's art and
+        // color identity. Warm cache = zero Scryfall calls.
+        const commanders = d.map((x) => x.commander).filter((c): c is string => !!c);
+        const map = await loadCards(commanders);
+        if (!stop) setFacts({ ...map });
       })
       .catch(() => {
         if (!stop) {
@@ -82,6 +183,35 @@ function NewRunInner() {
     }
   }, [preselect, decks]);
 
+  // Fetch decklist contents lazily, once per inspected deck.
+  useEffect(() => {
+    if (!inspect || contents[inspect]) return;
+    let stop = false;
+    api
+      .deck(inspect)
+      .then(async (dc) => {
+        if (stop) return;
+        setContents((prev) => ({ ...prev, [inspect]: dc }));
+        // Facts for type grouping — batched and memoized; repeat inspections
+        // of the same deck cost nothing.
+        const map = await loadCards([...dc.commanders, ...dc.main]);
+        if (!stop) setFacts({ ...map });
+      })
+      .catch(() => {});
+    return () => {
+      stop = true;
+    };
+  }, [inspect, contents]);
+
+  // Escape dismisses the popover from anywhere.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setInspect(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   const toggle = (file: string) => {
     setStartErr(null);
     setSelected((prev) => {
@@ -91,7 +221,39 @@ function NewRunInner() {
     });
   };
 
+  const toggleFilter = (c: string) => {
+    setFilter((prev) => {
+      const next = new Set(prev);
+      if (next.has(c)) next.delete(c);
+      else next.add(c);
+      return next;
+    });
+  };
+
+  const identityOf = useCallback(
+    (d: DeckEntry): string[] | null => {
+      if (!d.commander) return null;
+      const f = facts[factsKey(d.commander)];
+      return f?.color_identity ?? null;
+    },
+    [facts],
+  );
+
+  const visible = useMemo(() => {
+    if (!decks) return [];
+    if (filter.size === 0) return decks;
+    return decks.filter((d) => {
+      const id = identityOf(d);
+      if (id == null) return true; // unknown identity: never hidden
+      if (filter.has("C") && id.length === 0) return true;
+      return id.some((c) => filter.has(c.toUpperCase()));
+    });
+  }, [decks, filter, identityOf]);
+
   const canRun = selected.length >= 2 && selected.length <= 4;
+  const selectedDecks = selected
+    .map((f) => decks?.find((d) => d.file === f))
+    .filter((d): d is DeckEntry => !!d);
 
   const start = async () => {
     if (!canRun || starting) return;
@@ -107,25 +269,10 @@ function NewRunInner() {
     }
   };
 
-  const downNote = (
-    <p className="note">
-      <span className="st bad">
-        <i />
-        Engine unreachable
-      </span>{" "}
-      — is <span className="mono">{ENGINE_CMD}</span> running?{" "}
-      <a
-        className="q"
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          reload();
-        }}
-      >
-        Retry
-      </a>
-    </p>
-  );
+  const artOf = (d: DeckEntry): string | null =>
+    d.commander ? (facts[factsKey(d.commander)]?.art_crop ?? null) : null;
+
+  const inspectDeck = inspect ? decks?.find((d) => d.file === inspect) : undefined;
 
   return (
     <>
@@ -143,142 +290,233 @@ function NewRunInner() {
         ) : (
           <p className="lede">
             <b>{decks.length} decks</b> on this engine. Pick two to four and run a gauntlet —
-            results land under <Link className="bl" href="/results">Results</Link>.
+            results land under <Link className="bl" href="/results">Results</Link>. Hover or
+            focus a tile to read its decklist.
           </p>
         )}
 
-        <section>
-          <div className="sh">
-            <h2>Pick decks</h2>
-            <span className="meta">two to four</span>
-            <span className="right">
-              <ApiBaseSetting onChanged={reload} />
-              <span className="meta"> · </span>
-              {health ? (
-                <span className="meta">
-                  <span className="mono">{health.rules.toLocaleString("en-US")}</span> rules loaded
-                </span>
-              ) : healthErr ? (
-                <span className="st bad">
-                  <i />
-                  Engine unreachable
-                </span>
-              ) : (
-                <span className="meta">checking engine…</span>
-              )}
-              <span className="meta"> · </span>
-              <Link className="bl" href="/import">
-                Import a deck →
-              </Link>
-            </span>
-          </div>
-
-          {down ? (
-            downNote
-          ) : !decks ? (
-            <p className="note">Loading decks…</p>
-          ) : decks.length === 0 ? (
-            <p className="note">
-              No decks on this engine yet —{" "}
-              <Link className="bl" href="/import">
-                import one
-              </Link>{" "}
-              to get started.
-            </p>
-          ) : (
-            <>
-              <div className="tblwrap">
-                <div className="toolrow">
-                  {selected.length === 0
-                    ? "Select decks by clicking rows"
-                    : `${selected.length} of 2–4 selected`}
-                  <span className="upd">{decks.length} decks</span>
-                </div>
-                <table className="games">
-                  <tbody>
-                    {decks.map((d) => {
-                      const on = selected.includes(d.file);
-                      return (
-                        <tr key={d.file} className="click" onClick={() => toggle(d.file)}>
-                          <td>
-                            <input
-                              type="checkbox"
-                              checked={on}
-                              aria-label={`Select ${d.name}`}
-                              onClick={(e) => e.stopPropagation()}
-                              onChange={() => toggle(d.file)}
-                            />
-                          </td>
-                          <td>
-                            <div className="by">{d.name}</div>
-                          </td>
-                          <td className="mono">{d.file}</td>
-                          <td className="r">
-                            <Link
-                              className="bl"
-                              href={`/playtest/${encodeURIComponent(d.file)}`}
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              Playtest
-                            </Link>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-              <div className="ctarow">
-                <select
-                  className="sel"
-                  value={games}
-                  aria-label="Games to simulate"
-                  onChange={(e) => setGames(Number(e.target.value))}
-                >
-                  <option value={1}>1 game</option>
-                  <option value={2}>2 games</option>
-                  <option value={8}>8 games</option>
-                  <option value={16}>16 games</option>
-                  <option value={32}>32 games</option>
-                </select>
-                {/* The primary stays live (DESIGN_SYSTEM.md §6): when the run
-                    can't start, the blocker is stated beside it instead. */}
-                <button
-                  className="btn pri"
-                  aria-disabled={!canRun || starting}
-                  aria-describedby={!canRun ? "run-blocker" : undefined}
-                  onClick={() => void start()}
-                >
-                  {starting ? "Starting run…" : `Run ${plural(games, "game")}`}
-                </button>
-                {!canRun && (
-                  <span className="ctanote" id="run-blocker">
-                    Pick at least 2 decks — you have {selected.length}.
+        {down ? (
+          <p className="note">
+            <span className="st bad">
+              <i />
+              Engine unreachable
+            </span>{" "}
+            — is <span className="mono">{ENGINE_CMD}</span> running?{" "}
+            <a
+              className="q"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                reload();
+              }}
+            >
+              Retry
+            </a>
+          </p>
+        ) : !decks ? (
+          <p className="note">Loading decks…</p>
+        ) : decks.length === 0 ? (
+          <p className="note">
+            No decks on this engine yet —{" "}
+            <Link className="bl" href="/import">
+              import one
+            </Link>{" "}
+            to get started.
+          </p>
+        ) : (
+          <div className="stage">
+            <div>
+              <section>
+                <div className="sh">
+                  <h2>Pick decks</h2>
+                  <span className="meta">
+                    {visible.length} of {plural(decks.length, "deck")}
                   </span>
+                  <span className="right">
+                    <ApiBaseSetting onChanged={reload} />
+                    <span className="meta"> · </span>
+                    {health ? (
+                      <span className="meta">
+                        <span className="mono">{health.rules.toLocaleString("en-US")}</span> rules loaded
+                      </span>
+                    ) : healthErr ? (
+                      <span className="st bad">
+                        <i />
+                        Engine unreachable
+                      </span>
+                    ) : (
+                      <span className="meta">checking engine…</span>
+                    )}
+                    <span className="meta"> · </span>
+                    <Link className="bl" href="/import">
+                      Import a deck →
+                    </Link>
+                  </span>
+                </div>
+
+                <div className="dg-filter">
+                  <span className="flab">Filter by color identity</span>
+                  {WUBRG.map((c) => (
+                    <label key={c}>
+                      <input
+                        type="checkbox"
+                        checked={filter.has(c)}
+                        onChange={() => toggleFilter(c)}
+                      />
+                      <ManaPip color={c} />
+                      {COLOR_NAME[c]}
+                    </label>
+                  ))}
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={filter.has("C")}
+                      onChange={() => toggleFilter("C")}
+                    />
+                    Colorless
+                  </label>
+                </div>
+
+                <div className="dg" onMouseLeave={() => setInspect(null)}>
+                  {visible.map((d) => {
+                    const seat = selected.indexOf(d.file);
+                    const art = artOf(d);
+                    return (
+                      <button
+                        key={d.file}
+                        type="button"
+                        className="dg-tile"
+                        aria-pressed={seat >= 0}
+                        aria-label={`${d.name}${seat >= 0 ? `, selected as player ${seat + 1}` : ""}`}
+                        onClick={() => toggle(d.file)}
+                        onMouseEnter={() => setInspect(d.file)}
+                        onFocus={() => setInspect(d.file)}
+                      >
+                        {art && (
+                          // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink, never rehosted
+                          <img src={art} alt="" loading="lazy" />
+                        )}
+                        {seat >= 0 && <span className="seat">P{seat + 1}</span>}
+                        <span className="scrim">
+                          <span className="t">{d.name}</span>
+                          <ManaPips colors={identityOf(d) ?? undefined} />
+                        </span>
+                      </button>
+                    );
+                  })}
+                  {visible.length === 0 && (
+                    <p className="note">No decks match this color filter.</p>
+                  )}
+                </div>
+                <p className="note">
+                  Commander art via Scryfall, resolved through the engine&apos;s card cache in
+                  one batched call. A deck with no commander (or unresolved art) shows a
+                  name-only tile.
+                </p>
+              </section>
+            </div>
+
+            <div>
+              <section>
+                <div className="sh">
+                  <h2>Selected decks</h2>
+                  <span className="meta">{selected.length} of 2–4</span>
+                </div>
+                {selectedDecks.length === 0 && (
+                  <p className="note">Click tiles to seat decks — order here is seat order.</p>
+                )}
+                {selectedDecks.map((d, i) => {
+                  const art = artOf(d);
+                  return (
+                    <div className="rail-deck" key={d.file}>
+                      {art ? (
+                        // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink
+                        <img src={art} alt="" />
+                      ) : (
+                        <span className="noart" aria-hidden="true" />
+                      )}
+                      <span className="t">
+                        <span className="mono">P{i + 1}</span> {d.name}
+                        <small>{d.commander ?? d.file}</small>
+                      </span>
+                      <a
+                        className="q"
+                        href="#"
+                        aria-label={`Remove ${d.name}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggle(d.file);
+                        }}
+                      >
+                        Remove
+                      </a>
+                    </div>
+                  );
+                })}
+
+                <div className="ctarow">
+                  <span className="ctanote">Games</span>
+                  <select
+                    className="sel"
+                    value={games}
+                    aria-label="Games to simulate"
+                    onChange={(e) => setGames(Number(e.target.value))}
+                  >
+                    <option value={1}>1 game</option>
+                    <option value={2}>2 games</option>
+                    <option value={8}>8 games</option>
+                    <option value={16}>16 games</option>
+                    <option value={32}>32 games</option>
+                  </select>
+                </div>
+                <div className="ctarow">
+                  {/* The primary stays live (DESIGN_SYSTEM.md §6): when the run
+                      can't start, the blocker is stated beside it instead. */}
+                  <button
+                    className="btn pri"
+                    aria-disabled={!canRun || starting}
+                    aria-describedby={!canRun ? "run-blocker" : undefined}
+                    onClick={() => void start()}
+                  >
+                    {starting ? "Starting run…" : `Run ${plural(games, "game")}`}
+                  </button>
+                </div>
+                {!canRun && (
+                  <p className="ctanote" id="run-blocker">
+                    Pick at least 2 decks — you have {selected.length}.
+                  </p>
                 )}
                 {canRun && (
                   // Shown before you commit, because the cost is driven by pod
                   // size far more than by game count: four decks is ~20x the
                   // per-game time of two.
-                  <span className="ctanote">
+                  <p className="ctanote">
                     about <span className="mono">{fmtDuration(estimateSeconds(games, selected.length))}</span>
                     {games === 1 ? " — you can watch this one play out" : ""}
-                  </span>
+                  </p>
                 )}
-              </div>
-              {startErr && (
-                <p className="note">
-                  <span className="st bad">
-                    <i />
-                    Couldn&apos;t start
-                  </span>{" "}
-                  {startErr}
-                </p>
-              )}
-            </>
-          )}
-        </section>
+                {startErr && (
+                  <p className="note">
+                    <span className="st bad">
+                      <i />
+                      Couldn&apos;t start
+                    </span>{" "}
+                    {startErr}
+                  </p>
+                )}
+              </section>
+            </div>
+          </div>
+        )}
 
+        {inspectDeck && (
+          <DeckListPop
+            deck={inspectDeck}
+            contents={contents[inspectDeck.file] ?? null}
+            facts={facts}
+            onClose={() => setInspect(null)}
+          />
+        )}
       </div>
       <Footer
         right={

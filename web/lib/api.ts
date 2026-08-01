@@ -1,9 +1,9 @@
 /** Engine API client. Base URL is runtime-configurable per API_SPEC.md:
  *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
 import type {
-  AnalysisReport, CoachingReport, DeckEntry, ImportResponse, JobStatus,
-  LiveGame, ResultIndexEntry, RuleLookup, RulesAnswer, RunGame, RunSummary,
-  SimResult, TelemetryReport,
+  AnalysisReport, CoachingReport, DeckCards, DeckEntry, ImportResponse,
+  JobStatus, LiveGame, ResultIndexEntry, RuleLookup, RulesAnswer, RunGame,
+  RunSummary, SimResult, TelemetryReport,
 } from "./types";
 
 export function apiBase(): string {
@@ -93,6 +93,8 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 export const api = {
   health: () => get<{ rules: number; keywords: number; glossary_terms: number }>("/health"),
   decks: () => get<DeckEntry[]>("/decks"),
+  /** One deck's card names, counts expanded — the playtest sandbox's load. */
+  deck: (file: string) => get<DeckCards>(`/decks/${encodeURIComponent(file)}`),
   results: () => get<ResultIndexEntry[]>("/results"),
 
   /** Run overview WITHOUT event logs — a few KB instead of ~2.6 MB. */

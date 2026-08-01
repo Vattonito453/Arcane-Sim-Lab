@@ -5,6 +5,15 @@ export interface DeckEntry {
   name: string;
 }
 
+/** GET /decks/{file} — one deck's contents, counts expanded. Pure data for
+ *  the playtest sandbox: no legality, no validation, no rules. */
+export interface DeckCards {
+  file: string;
+  name: string;
+  commanders: string[];
+  main: string[];
+}
+
 export interface ResultIndexEntry {
   file: string;
   bytes: number;

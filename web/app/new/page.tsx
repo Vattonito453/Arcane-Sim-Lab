@@ -213,6 +213,15 @@ function NewRunInner() {
                             <div className="by">{d.name}</div>
                           </td>
                           <td className="mono">{d.file}</td>
+                          <td className="r">
+                            <Link
+                              className="bl"
+                              href={`/playtest/${encodeURIComponent(d.file)}`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Playtest
+                            </Link>
+                          </td>
                         </tr>
                       );
                     })}

@@ -16,6 +16,7 @@ zero-dependency API. Use it three ways:
        GET  /glossary/monarch     glossary term
        GET  /turn-structure       ordered phases/steps with rules attached
        GET  /health               KB stats
+       GET  /decks                deck index; /decks/{file} one deck's cards
        GET  /results              index of adapted sim result files
        GET  /results/{file}       one full sim result (games -> turns -> events)
                                   ?snapshots=1 adds board_snapshot events
@@ -245,6 +246,36 @@ def _list_decks() -> list[dict]:
             decks[f.name] = {"file": f.name, "name": name,
                              "source": "imported" if d == IMPORTED_DECKS else "bundled"}
     return [decks[k] for k in sorted(decks)]
+
+
+def _read_deck_cards(path: Path) -> dict:
+    """One deck's contents with counts expanded — what the playtest sandbox
+    shuffles. Pure data: no legality, no validation, no rules."""
+    name = path.stem
+    commanders: list[str] = []
+    main: list[str] = []
+    section = None
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith("["):
+            section = line.strip("[]").lower()
+            continue
+        if section == "metadata":
+            if line.lower().startswith("name="):
+                name = line.split("=", 1)[1].strip()
+            continue
+        m = re.match(r"(\d+)\s+(.+?)(?:\|.*)?$", line)
+        if not m:
+            continue
+        count, card = int(m.group(1)), m.group(2).strip()
+        if section == "commander":
+            commanders.extend([card] * count)
+        elif section == "main":
+            main.extend([card] * count)
+    return {"file": path.name, "name": name,
+            "commanders": commanders, "main": main}
 
 
 def _queued_count() -> int:
@@ -736,6 +767,12 @@ def serve(port: int = 8484) -> None:
                 if parts[0] == "health":
                     return self._send(engine.stats())
                 if parts[0] == "decks":
+                    if len(parts) > 1:
+                        # _find_deck refuses traversal; imported shadows bundled.
+                        p = _find_deck(parts[1])
+                        if p is None:
+                            return self._send({"error": "no such deck"}, 404)
+                        return self._send(_read_deck_cards(p))
                     return self._send(_list_decks())
                 if parts[0] == "sim-status":
                     return self._send(_job_status(q.get("id", [None])[0]))

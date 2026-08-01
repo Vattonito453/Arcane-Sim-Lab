@@ -670,6 +670,35 @@ footer.chrome {
 .ctarow { display: flex; align-items: center; gap: 10px; margin-top: 26px; flex-wrap: wrap; }
 .ctanote { color: var(--ink-4); font-size: 12.5px; }
 
+/* ── playtest sandbox — rules-free goldfishing (task 08 Part A) ──
+   The app moves cards and keeps counts; it never enforces a rule. */
+.pt-hud { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+.pt-hud .grp { display: flex; align-items: center; gap: 6px; }
+.pt-hud .grp .lab { font-size: 12px; color: var(--ink-4); }
+.pt-hud .grp .val { font-family: var(--font-data); font-variant-numeric: tabular-nums; font-size: 14px; color: var(--ink-1); min-width: 30px; text-align: center; }
+.pt-mini { height: 26px; min-width: 26px; padding: 0 8px; border: 1px solid var(--hairline-strong); border-radius: var(--r-control); background: var(--surface-obsidian); color: var(--ink-1); font: inherit; font-size: 13px; cursor: pointer; transition: border-color var(--dur-fast); }
+.pt-mini:hover { border-color: var(--mana-cyan); }
+.pt-zone { position: relative; border: 1px dashed var(--hairline-strong); border-radius: var(--r-control); padding: 14px; min-height: 148px; display: flex; flex-wrap: wrap; gap: 12px; align-content: flex-start; margin-bottom: 14px; }
+.pt-zone.over { border-color: var(--mana-cyan); border-style: solid; }
+.pt-zone .zl { position: absolute; top: 8px; right: 12px; font-size: 11px; color: var(--ink-4); pointer-events: none; }
+.pt-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.pt-row .pt-zone { margin-bottom: 0; min-height: 164px; }
+.pt-card { width: 84px; aspect-ratio: 5 / 7; flex: none; position: relative; border: 1px solid var(--hairline-strong); border-radius: 6px; background: var(--surface-obsidian); cursor: grab; user-select: none; transition: transform var(--dur-fast), border-color var(--dur-fast); }
+.pt-card:hover { border-color: var(--mana-cyan); }
+.pt-card.tapped { transform: rotate(90deg); margin: 6px 14px; }
+.pt-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; display: block; pointer-events: none; }
+.pt-card .nm { position: absolute; left: 0; right: 0; bottom: 0; padding: 3px 5px; font-size: 9.5px; line-height: 1.25; color: var(--ink-1); background: var(--bar-instrument); border-radius: 0 0 5px 5px; pointer-events: none; }
+.pt-card .ctr { position: absolute; top: -7px; right: -7px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: var(--r-pill); background: var(--surface-obsidian); border: 1px solid var(--mana-cyan); color: var(--ink-1); font-family: var(--font-data); font-size: 11px; display: flex; align-items: center; justify-content: center; }
+.pt-card .cbtns { position: absolute; top: -8px; left: -8px; display: none; gap: 3px; }
+.pt-card:hover .cbtns { display: flex; }
+.pt-card .cbtns button { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--hairline-strong); background: var(--bar-instrument); color: var(--ink-1); font-size: 11px; line-height: 1; cursor: pointer; padding: 0; }
+.pt-card .cbtns button:hover { border-color: var(--mana-cyan); }
+.pt-pile { width: 84px; aspect-ratio: 5 / 7; flex: none; border: 1px solid var(--hairline-strong); border-radius: 6px; background: repeating-linear-gradient(45deg, var(--row-ground) 0 6px, transparent 6px 12px) var(--surface-obsidian); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; color: var(--ink-3); transition: border-color var(--dur-fast); }
+.pt-pile:hover { border-color: var(--mana-cyan); }
+.pt-pile .n { font-family: var(--font-data); font-size: 18px; color: var(--ink-1); }
+.pt-pile .l { font-size: 10.5px; color: var(--ink-4); }
+@media (max-width: 980px) { .pt-row { grid-template-columns: 1fr 1fr; } }
+
 @media (max-width: 980px) {
   .page { padding: 24px 20px 36px; }
   .figs { grid-template-columns: 1fr 1fr; }

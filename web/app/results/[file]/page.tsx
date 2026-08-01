@@ -12,7 +12,7 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, Footer, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { AnalysisReport, RunGameSummary, RunSummary } from "@/lib/types";
 import { pct, plural, runTitle, stripAi } from "@/lib/format";
@@ -151,10 +151,18 @@ export default function ResultsPage() {
   const title = view ? runTitle(view.rows.map((r) => r.name)) : file.replace(/\.json$/, "");
   const enc = encodeURIComponent(file);
 
+  // Real destinations now that telemetry and coaching exist — the row is
+  // present on the loading and error states too, so it does not vanish mid-load.
+  const tabs: TabDef[] = [
+    { label: "Overview", href: `/results/${enc}`, on: true },
+    { label: "Telemetry", href: `/results/${enc}/telemetry` },
+    { label: "Coaching", href: `/results/${enc}/coaching` },
+  ];
+
   if (err) {
     return (
       <>
-        <Chrome />
+        <Chrome tabs={tabs} />
         <div className="page">
           <div className="head">
             <div>
@@ -178,7 +186,7 @@ export default function ResultsPage() {
   if (!data || !view) {
     return (
       <>
-        <Chrome />
+        <Chrome tabs={tabs} />
         <div className="page">
           <div className="head">
             <div>
@@ -217,9 +225,7 @@ export default function ResultsPage() {
 
   return (
     <>
-      {/* No tab row: a one-item tab bar is chrome with no function. The replay
-          links back here through the breadcrumb and its own Back link. */}
-      <Chrome context={view.ctx} />
+      <Chrome context={view.ctx} tabs={tabs} />
       <div className="page">
         <div className="head">
           <div>
@@ -358,13 +364,29 @@ export default function ResultsPage() {
                     }
                     return d.combos.map((c) => {
                       // The reading is the product: does this deck's win rate
-                      // mean anything, or is the AI the bottleneck?
-                      const fired = c.converted_games > 0;
-                      const stuck = c.assembled_games > 0 && !fired;
+                      // mean anything, or is the AI the bottleneck? Server-
+                      // computed since v3; derive it for older payloads.
+                      const reading =
+                        c.reading ??
+                        (c.converted_games > 0
+                          ? "fired"
+                          : c.assembled_games > 0
+                            ? "assembled_not_fired"
+                            : "not_assembled");
+                      const spellPieces = c.nonpermanent_pieces ?? [];
                       return (
                         <tr key={`${name}-${c.id}`}>
                           <td>{name}</td>
-                          <td title={c.produces.join(", ")}>{c.cards.join(" + ")}</td>
+                          <td
+                            title={
+                              c.produces.join(", ") +
+                              (spellPieces.length > 0
+                                ? ` — ${spellPieces.join(", ")} is a spell piece: counted when cast, not from the battlefield`
+                                : "")
+                            }
+                          >
+                            {c.cards.join(" + ")}
+                          </td>
                           <td className="r mono">
                             {c.assembled_games} of {c.games_played}
                             {c.median_assembled_turn != null && <> (T{c.median_assembled_turn})</>}
@@ -377,20 +399,27 @@ export default function ResultsPage() {
                           </td>
                           <td className="r mono">{c.converted_games}</td>
                           <td>
-                            {fired ? (
+                            {reading === "fired" ? (
                               <span className="st win">
                                 <i />
                                 AI can fire this — results meaningful
                               </span>
-                            ) : stuck ? (
+                            ) : reading === "assembled_not_fired" ? (
                               <span className="st warn">
                                 <i />
                                 assembled, never fired — win rate is a floor
                               </span>
-                            ) : (
+                            ) : reading === "sample_too_small" ? (
                               <span className="st loss">
                                 <i />
-                                never assembled in this run
+                                draw odds predicted ~{c.expected_drawn_games ?? 0} — too few
+                                games to measure this
+                              </span>
+                            ) : (
+                              <span className="st warn">
+                                <i />
+                                never assembled despite draw odds ~{c.expected_drawn_games} —
+                                pieces sat in hand or died
                               </span>
                             )}
                           </td>
@@ -402,7 +431,8 @@ export default function ResultsPage() {
               </table>
               <p className="note">
                 Assembled counts games where every piece was on the battlefield at once, from board
-                reconstruction — an inference, not a read. From draws is the hypergeometric chance of
+                reconstruction — an inference, not a read. Instant and sorcery pieces count as
+                present on turns they were cast. From draws is the hypergeometric chance of
                 having drawn every piece by each game&apos;s end, given cards seen (opening hand, one
                 per turn cycle, plus logged effect draws; commanders are always available). Converted
                 means that seat then won.

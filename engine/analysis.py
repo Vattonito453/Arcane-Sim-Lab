@@ -33,11 +33,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import board  # noqa: E402
+import cards  # noqa: E402
 import combos  # noqa: E402
 
 # Bump when the payload shape or the maths change: the API caches reports on
 # disk beside the results, and a stale cache would silently serve the old shape.
-ANALYSIS_VERSION = 2
+ANALYSIS_VERSION = 3
 
 _AI = re.compile(r"^Ai\(\d+\)-")
 # "X has kept a hand of 7 cards" / "X has mulliganed down to 6 cards" — take the
@@ -50,6 +51,9 @@ _WORDNUM = {"a": 1, "an": 1, "two": 2, "three": 3, "four": 4, "five": 5,
 # every commander-damage kill classifies as unknown.
 _LOST = re.compile(r"(.+?) has lost (?:because|due to)\s*(?:of\s+)?(.+?)\.?\s*$")
 _SPELL = re.compile(r"won by spell '([^']+)'")
+# Actual casts only — board._CAST also matches "triggered"/"activated", which
+# would count ability text as a spell piece being cast.
+_CAST_LINE = re.compile(r"^(.+?)\s+cast\s+(.+?)(?:\s+targeting|\.|$)", re.I)
 
 # Loss-reason text -> method label. Matched as substrings of Forge's reason.
 _METHODS = [
@@ -69,8 +73,28 @@ def _bare(player: str) -> str:
 
 def _norm(name: str) -> str:
     """Combo card name -> the form board.py stores: front face, normalized."""
-    import cards
     return cards.normalize_name(name.split(" // ")[0]).lower()
+
+
+def _cast_turns(game: dict) -> dict[tuple[str, str], set[int]]:
+    """(player key, normalized card name) -> turns the player cast it.
+
+    Non-permanent combo pieces (a sorcery like Rite of Replication) never sit
+    on the battlefield, so battlefield membership can't detect them — their
+    assembly criterion is "cast on a turn the permanent pieces were online".
+    """
+    out: dict[tuple[str, str], set[int]] = {}
+    for t in game.get("turns") or []:
+        turn = t.get("turn", 0)
+        for e in t.get("events") or []:
+            if e.get("action") != "stack_add":
+                continue
+            m = _CAST_LINE.match(e.get("raw", ""))
+            if not m:
+                continue
+            norm = cards.normalize_name(m.group(2)).lower()
+            out.setdefault((m.group(1).strip(), norm), set()).add(turn)
+    return out
 
 
 def _count_effect_draws(raw: str, player: str) -> int:
@@ -215,6 +239,14 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
             "almost_included": len((found or {}).get("almost_included", [])),
         }
 
+    # One batched lookup warms the type cache for every combo piece (Scryfall
+    # etiquette: never loop single fetches). is_permanent() below then runs
+    # cache-only.
+    piece_names = sorted({c for d in per_deck.values()
+                          for combo in d["combos"] for c in combo["cards"]})
+    if piece_names:
+        cards.get_many(piece_names, fetch=fetch)
+
     games_out: list[dict] = []
     for game in result.get("games") or []:
         n = len(games_out) + 1
@@ -246,24 +278,36 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
         if not seated:
             continue
         _, snapshots = board.reconstruct(game, fetch=False)
+        casts = _cast_turns(game)
 
         for name, key in seated.items():
             cmdrs = {_norm(c) for c in per_deck[name].get("commanders", [])}
             deck_size = per_deck[name].get("deck_size", 99)
             for combo in per_deck[name]["combos"]:
                 pieces = {c: _norm(c) for c in combo["cards"]}
-                first_seen: dict[str, int | None] = {c: None for c in pieces}
+                # A sorcery/instant piece never sits on the battlefield: its
+                # criterion is "cast this turn", the permanents' is "on board".
+                spell = {c: n for c, n in pieces.items()
+                         if cards.is_permanent(c) is False}
+                perm = {c: n for c, n in pieces.items() if c not in spell}
+                first_seen: dict[str, int | None] = {
+                    c: (min(casts[(key, n)]) if (key, n) in casts else None)
+                    for c, n in spell.items()}
+                first_seen.update({c: None for c in perm})
                 assembled_turn: int | None = None
                 online_turns = 0
                 for snap in snapshots:
                     on_board = {c["name"].lower() for c in (snap["board"].get(key) or [])}
-                    for c, norm in pieces.items():
+                    turn = snap["turn"]
+                    for c, norm in perm.items():
                         if first_seen[c] is None and norm in on_board:
-                            first_seen[c] = snap["turn"]
-                    if all(norm in on_board for norm in pieces.values()):
+                            first_seen[c] = turn
+                    if (all(n in on_board for n in perm.values())
+                            and all(turn in casts.get((key, n), ())
+                                    for n in spell.values())):
                         online_turns += 1
                         if assembled_turn is None:
-                            assembled_turn = snap["turn"]
+                            assembled_turn = turn
                 # Draw odds: how likely the deck had DRAWN every library piece
                 # by game end. Commander pieces are always available, so they
                 # drop out of the hypergeometric.
@@ -298,6 +342,19 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
             # in hand or died; actual above it means tutors did work.
             combo["expected_drawn_games"] = round(
                 sum(g["p_all_drawn"] for g in plays), 1)
+            combo["nonpermanent_pieces"] = [
+                c for c in combo["cards"] if cards.is_permanent(c) is False]
+            # The verdict the UI shows. "sample_too_small" is the honesty fix:
+            # when raw draw odds predicted ~0 assemblies across the whole run,
+            # a zero is the expected outcome, not a finding about the deck.
+            if combo["converted_games"] > 0:
+                combo["reading"] = "fired"
+            elif combo["assembled_games"] > 0:
+                combo["reading"] = "assembled_not_fired"
+            elif combo["expected_drawn_games"] < 0.5:
+                combo["reading"] = "sample_too_small"
+            else:
+                combo["reading"] = "not_assembled"
 
     for d in per_deck.values():
         dg = d.pop("_draw_games", [])
@@ -323,7 +380,8 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
         "decks": per_deck,
         "summary": {"games": total, "methods": methods},
         "note": ("Assembly is inferred from board reconstruction (Forge never "
-                 "logs battlefield entries; 83-86% exit-match). 'Converted' "
+                 "logs battlefield entries; 83-86% exit-match). Instant/sorcery "
+                 "pieces count as present on turns they were cast. 'Converted' "
                  "means won after assembling, not proven causation."),
     }
 
@@ -360,6 +418,7 @@ def main() -> int:
                       + (f" (median turn {med:.0f})" if med is not None else "")
                       + f" | draw odds predicted ~{c['expected_drawn_games']}"
                       + f" | converted {c['converted_games']}"
+                      + f" | reading: {c['reading']}"
                       + (f" | sat online {c['idle_online_turns']} turns without winning"
                          if c["idle_online_turns"] else ""))
     return 0

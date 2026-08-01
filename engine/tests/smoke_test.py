@@ -109,6 +109,12 @@ def main() -> int:
     if ok_decks:
         check("deck entries carry file and name",
               all(isinstance(d, dict) and "file" in d and "name" in d for d in decks))
+        # The picker gallery needs commander names for art tiles; every entry
+        # carries the key, and the bundled decks resolve a real commander.
+        check("deck entries carry commander (null allowed)",
+              all("commander" in d for d in decks))
+        check("at least one deck resolves a commander name",
+              any(d.get("commander") for d in decks))
 
     print("\nresults index and payloads")
     st, results = call(base, "/results")

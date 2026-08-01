@@ -3,6 +3,19 @@
 export interface DeckEntry {
   file: string;
   name: string;
+  /** From the .dck [Commander] section; null when the deck has none. The
+   *  picker resolves art + color identity through /cards, batched. */
+  commander?: string | null;
+  source?: "imported" | "bundled";
+}
+
+/** GET /decks/{file} — one deck's contents, counts expanded. Pure data for
+ *  the playtest sandbox: no legality, no validation, no rules. */
+export interface DeckCards {
+  file: string;
+  name: string;
+  commanders: string[];
+  main: string[];
 }
 
 export interface ResultIndexEntry {
@@ -146,6 +159,12 @@ export interface AnalysedCombo extends KnownCombo {
   /** Sum of per-game P(all library pieces drawn by game end) — what raw draws
    *  alone predicted. Actual above it means tutors did work. */
   expected_drawn_games?: number;
+  /** Instant/sorcery pieces: counted as present on turns they were cast,
+   *  since they never sit on the battlefield. */
+  nonpermanent_pieces?: string[];
+  /** Server-computed verdict. "sample_too_small" means draw odds predicted
+   *  ~0 assemblies across the run, so a zero is expected, not a finding. */
+  reading?: "fired" | "assembled_not_fired" | "sample_too_small" | "not_assembled";
 }
 
 export interface AnalysisDeck {
@@ -209,9 +228,109 @@ export interface ImportResponse {
   combos?: DeckCombos;
 }
 
+/** GET /results/{file}/telemetry?deck= — deck_telemetry.compute() output.
+ *  Statuses come from documented thresholds in engine/deck_telemetry.py;
+ *  never recompute them client-side. */
+export interface TelemetryWatched {
+  name: string;
+  events: number;
+  events_per_game: number;
+  status: "healthy" | "partial" | "cold";
+}
+
+export interface TelemetryReport {
+  games: number; // games actually present in the payload, not summary.games
+  deck: string;
+  player_key: string | null;
+  source: string | null; // "rotated" when seat-rotated
+  commander: {
+    name: string;
+    cast_rate: number; // 0..1, share of games with >=1 cast
+    median_turn: number | null;
+    casts_per_game: number;
+    status: "healthy" | "partial" | "cold";
+  } | null;
+  engine: {
+    charge_events: number;
+    charge_events_per_game: number;
+    charge_status: "healthy" | "partial" | "cold";
+    proliferate_events: number;
+    proliferate_per_game: number;
+    proliferate_status: "healthy" | "partial" | "cold";
+  };
+  watched: TelemetryWatched[];
+  deaths: {
+    by_source: { source: string; damage: number }[];
+    median_turn: number | null;
+  };
+  wins: number;
+  win_rate: number;
+  method: string;
+  file: string;
+  decks: string[];
+}
+
 export interface RuleHit {
   rule?: string;
   score?: number;
   text?: string;
   [k: string]: unknown;
+}
+
+/** GET/POST /coaching — coach.report(). Verdict numbers are enforced facts
+ *  from the run and archetype tables, never model output. */
+export interface CoachingReport {
+  ok: boolean;
+  reason?: string;
+  cached?: boolean;
+  deck?: string;
+  games?: number;
+  verdict?: {
+    headline: string;
+    prose: string;
+    win_rate: number;
+    baseline: number | null;
+    sim_is_floor: boolean;
+  };
+  support_chain?: {
+    link: string;
+    status: "running" | "partial" | "cold";
+    measured: string;
+    reading: string;
+  }[];
+  matchups?: { pod: string; win_rate: number; note: string }[];
+  changes?: {
+    action: "add" | "cut";
+    card: string;
+    reason: string;
+    evidence: string;
+  }[];
+  play_guide?: string[];
+  archetype?: { class: string; baseline: number | null; sim_is_floor: boolean; why: string };
+  meta?: { model: string; deck_hash: string; gauntlet_id: string; generated: string };
+}
+
+/** GET /rule/{n} — exact rule plus its direct subrules. */
+export interface RuleLookup {
+  rule?: string;
+  entries?: { rule: string; text: string }[];
+  error?: string;
+  suggestion?: string;
+}
+
+/** GET/POST /ask — rules_qa.answer(). ok:false carries `reason` and still
+ *  populates `hits`, so the UI can degrade to plain rules search. */
+export interface RulesAnswer {
+  ok: boolean;
+  reason?: string;
+  question?: string;
+  normalized?: string;
+  key?: string;
+  answer?: string;
+  citations?: { rule: string; text: string }[];
+  hits: RuleHit[];
+  covered?: boolean;
+  cached?: boolean;
+  ungrounded?: string[];
+  meta?: { model: string; generated: string; kb: string };
 }

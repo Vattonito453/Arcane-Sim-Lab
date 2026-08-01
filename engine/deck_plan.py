@@ -52,24 +52,54 @@ TAG_MARKERS: dict[str, list[str]] = {
 }
 
 # Personality defaults per dominant tag; everything is a starting point the
-# import UI can expose later.
+# import UI can expose later. Stage 4 dials: grudgeWeight scales how much
+# being attacked raises a seat's threat in my eyes; kingmakerRatio is the
+# leader/weakest threat ratio past which attacks re-aim off the weakest seat;
+# politics raises the counterspell bar while another opponent holds open
+# mana; triggerMiss is the decline chance for OPTIONAL triggers only
+# (mandatory triggers can never be missed — that would be an illegal game).
+# Stage 5 dial: greed is combo pursuit vs safety — how willing the agent is
+# to jam the final piece of a line into open enemy mana instead of waiting.
+# Pursuit itself only activates behind the line-of-sight gate (≤1 piece
+# missing, or 2 with a tutor in hand) and never alters combat decisions.
 TAG_PERSONALITY: dict[str, dict] = {
     "go-wide-tokens": {"aggression": 0.7, "splitAttacks": 0.85, "blockiness": 0.5,
-                       "counterThreshold": 6, "dangerLife": 8},
+                       "counterThreshold": 6, "dangerLife": 8,
+                       "grudgeWeight": 0.25, "kingmakerRatio": 1.6,
+                       "politics": 0.4, "triggerMiss": 0.04, "greed": 0.5},
     "voltron-commander-damage": {"aggression": 0.8, "splitAttacks": 0.4, "blockiness": 0.4,
-                                 "counterThreshold": 6, "dangerLife": 8},
+                                 "counterThreshold": 6, "dangerLife": 8,
+                                 "grudgeWeight": 0.3, "kingmakerRatio": 1.4,
+                                 "politics": 0.3, "triggerMiss": 0.04, "greed": 0.5},
     "spellslinger-burn": {"aggression": 0.6, "splitAttacks": 0.7, "blockiness": 0.5,
-                          "counterThreshold": 4, "dangerLife": 10},
+                          "counterThreshold": 4, "dangerLife": 10,
+                          "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
+                          "politics": 0.6, "triggerMiss": 0.03, "greed": 0.55},
     "stax-control": {"aggression": 0.35, "splitAttacks": 0.6, "blockiness": 0.75,
-                     "counterThreshold": 4, "dangerLife": 12},
+                     "counterThreshold": 4, "dangerLife": 12,
+                     "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
+                     "politics": 0.8, "triggerMiss": 0.02, "greed": 0.4},
     "mill": {"aggression": 0.35, "splitAttacks": 0.6, "blockiness": 0.75,
-             "counterThreshold": 4, "dangerLife": 12},
+             "counterThreshold": 4, "dangerLife": 12,
+             "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
+             "politics": 0.8, "triggerMiss": 0.02, "greed": 0.4},
     "_default": {"aggression": 0.55, "splitAttacks": 0.7, "blockiness": 0.6,
-                 "counterThreshold": 5, "dangerLife": 8},
+                 "counterThreshold": 5, "dangerLife": 8,
+                 "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
+                 "politics": 0.5, "triggerMiss": 0.03, "greed": 0.5},
 }
 
 _REMOVAL = re.compile(r"destroy target|exile target|deals \d+ damage to target creature",
                       re.I)
+# Nonland tutors: what the clause after "search your library for" names.
+# Land-only fetch (Cultivate, fetchlands) is ramp, not a path to a combo
+# piece. Type-restricted tutors (Worldly Tutor) still count — the gate is
+# knowingly a little optimistic; Forge only offers legal search targets, so
+# a mismatch costs nothing at choice time.
+_TUTOR_CLAUSE = re.compile(r"search your librar(?:y|ies) for ([^.;\n]*)", re.I)
+# Land fetch isn't tutoring: catch both the word "land" and basic type names
+# ("a Forest card" — Wood Elves; "a Plains card" — plainscycling).
+_LAND_CLAUSE = re.compile(r"land|plains|island|swamp|mountain|forest|gate\b", re.I)
 _PROTECTION = re.compile(r"hexproof|indestructible|protection from|counter target spell|"
                          r"can't be countered|phase(s)? out", re.I)
 _FINISHER = re.compile(r"wins? the game|loses? the game|combat damage to a player|"
@@ -128,16 +158,26 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
     tag_cards = {n for t in tags for n in tag_hits[t]}
 
     # Combo lines from the Spellbook disk cache (offline unless --fetch).
+    # Lines cross the GPL boundary as data: the shim tracks their completion
+    # and steers tutors/casting, but only when a line is nearly done (the
+    # line-of-sight gate) — knowledge here, mechanism there.
     combo_pieces: set[str] = set()
+    lines: list[dict] = []
     try:
         combo = combos.combos_for_dck(path, fetch=fetch)
-        for v in (combo or {}).get("combos", []):
-            combo_pieces.update(v.get("cards", []))
+        for v in (combo or {}).get("included", []):
+            pieces = v.get("cards", [])
+            combo_pieces.update(pieces)
+            lines.append({"cards": pieces, "produces": v.get("produces", [])})
+        # Fewest pieces first: shorter lines are the achievable ones, and the
+        # shim prefers the most-complete line when steering a tutor.
+        lines.sort(key=lambda ln: len(ln["cards"]))
     except Exception:
         pass  # no cache and no network — plans work without combos
 
     weights: dict[str, int] = {}
     roles: dict[str, str] = {}
+    tutors: list[str] = []
     for n in names:
         f = facts.get(cards.key(n)) or facts.get(n) or {}
         text = f.get("oracle_text") or ""
@@ -146,6 +186,9 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         if "Land" in tline and "Creature" not in tline:
             roles[n] = "land"
             continue
+        tm = _TUTOR_CLAUSE.search(text)
+        if tm and not _LAND_CLAUSE.search(tm.group(1)):
+            tutors.append(n)
         if n in combo_pieces:
             roles[n], weights[n] = "combo-piece", 8
         elif n in tag_cards and (_FINISHER.search(text) or cmc >= 4):
@@ -162,6 +205,15 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         weights[c] = max(weights.get(c, 0), 8)
         roles[c] = "commander"
 
+    # A tutor is a path to a missing combo piece — but only when the deck
+    # has known lines does that earn it plan weight (and thus keep/cast
+    # priority in the shim).
+    if lines:
+        for n in tutors:
+            if weights.get(n, 0) < 5:
+                weights[n] = 5
+                roles[n] = "tutor"
+
     keep = sorted((n for n, w in weights.items() if w >= 5),
                   key=lambda n: -weights[n])[:16]
     threat = sorted((n for n, w in weights.items() if w >= 7), key=lambda n: -weights[n])
@@ -175,6 +227,8 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         "threat": threat,
         "roles": roles,           # for the UI / coaching; the shim ignores it
         "personality": personality,
+        "lines": lines,           # known combo piece-sets, fewest pieces first
+        "tutors": tutors,         # nonland tutors — the line-of-sight gate's reach
     }
     return deck_name, plan
 

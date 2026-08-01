@@ -1,8 +1,9 @@
 /** Engine API client. Base URL is runtime-configurable per API_SPEC.md:
  *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
 import type {
-  AnalysisReport, DeckEntry, ImportResponse, JobStatus, LiveGame,
-  ResultIndexEntry, RunGame, RunSummary, SimResult,
+  AnalysisReport, CoachingReport, DeckCards, DeckEntry, ImportResponse,
+  JobStatus, LiveGame, ResultIndexEntry, RuleLookup, RulesAnswer, RunGame,
+  RunSummary, SimResult, TelemetryReport,
 } from "./types";
 
 export function apiBase(): string {
@@ -92,6 +93,8 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 export const api = {
   health: () => get<{ rules: number; keywords: number; glossary_terms: number }>("/health"),
   decks: () => get<DeckEntry[]>("/decks"),
+  /** One deck's card names, counts expanded — the playtest sandbox's load. */
+  deck: (file: string) => get<DeckCards>(`/decks/${encodeURIComponent(file)}`),
   results: () => get<ResultIndexEntry[]>("/results"),
 
   /** Run overview WITHOUT event logs — a few KB instead of ~2.6 MB. */
@@ -101,6 +104,14 @@ export const api = {
   runGame: (file: string, n: number, snapshots = false) =>
     get<RunGame>(
       `/results/${encodeURIComponent(file)}/game/${n}${snapshots ? "?snapshots=1" : ""}`,
+      { cache: "force-cache" },
+    ),
+  /** Win-condition telemetry for one deck — computed server-side so the
+   *  browser never fetches the whole ~235 KB run (CLAUDE.md gotcha 4). */
+  runTelemetry: (file: string, deck: string, watch?: string[]) =>
+    get<TelemetryReport>(
+      `/results/${encodeURIComponent(file)}/telemetry?deck=${encodeURIComponent(deck)}` +
+        (watch?.length ? `&watch=${encodeURIComponent(watch.join("|"))}` : ""),
       { cache: "force-cache" },
     ),
   /** Wincon report: win methods + combo assembly/conversion. Deliberately NOT
@@ -123,7 +134,22 @@ export const api = {
     ),
   importDeck: (name: string, text: string, commander?: string, save = true) =>
     post<ImportResponse>("/decks", { name, text, commander, save }),
-  rule: (n: string) => get<Record<string, unknown>>(`/rule/${encodeURIComponent(n)}`),
+  rule: (n: string) => get<RuleLookup>(`/rule/${encodeURIComponent(n)}`),
   search: (q: string, k = 8) =>
     get<unknown[]>(`/search?q=${encodeURIComponent(q)}&k=${k}`),
+  /** Cache-only read of a coaching report. Never spends tokens. */
+  coaching: (file: string, deck: string) =>
+    get<CoachingReport>(
+      `/coaching/${encodeURIComponent(file)}?deck=${encodeURIComponent(deck)}`,
+    ),
+  /** Generate a coaching report. Authed + quota'd paid-token path; the
+   *  engine caches one report per (deck, gauntlet) forever. */
+  coach: (file: string, deck: string) =>
+    post<CoachingReport>("/coaching", { result_file: file, deck }),
+  /** Generate a grounded rules answer. Authed + quota'd: the only paid-token
+   *  path besides coaching. Cached server-side per normalized question. */
+  ask: (q: string) => post<RulesAnswer>("/ask", { q }),
+  /** Cache-only read of a previously generated answer. Never spends tokens. */
+  askCached: (q: string) =>
+    get<RulesAnswer>(`/ask?q=${encodeURIComponent(q)}`),
 };

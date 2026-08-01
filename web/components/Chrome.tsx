@@ -18,6 +18,7 @@ const NAV = [
   { label: "New run", href: "/new" },
   { label: "Import", href: "/import" },
   { label: "Results", href: "/results" },
+  { label: "Rules", href: "/rules" },
 ];
 
 /** Topbar + optional tab row. */

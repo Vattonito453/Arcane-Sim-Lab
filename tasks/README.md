@@ -22,6 +22,14 @@ Tier 1 — product value, no infra dependencies
   08-goldfish-mode.md          Part A: solo rules-free playtest sandbox (web-only,
                                no opponent/adjudication/outcome — see its legal
                                line); Part B: AI goldfish telemetry after 07 Stage 0
+  10-counter-events-replay.md  parse counter triggers (+1/+1, charge, energy,
+                               experience) from the Forge log into replay events
+                               and badges — proof the triggers fired
+  11-card-art-coverage.md      audit + fix missing card art: stale cache entries,
+                               the _offline latch, name-normalization parity
+  12-deck-picker-gallery.md    rebuild /new as an art-forward deck gallery
+                               (commander art tiles, hover decklist, selected-decks
+                               rail) in the design system; needs commander in /decks
 
 Tier 2 — needed for multi-host scale (do when Tier 1 saturates one box)
   04-postgres-queue.md         unlocks workers on separate machines

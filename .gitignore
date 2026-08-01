@@ -48,3 +48,6 @@ Thumbs.db
 .vscode/
 __pycache__/
 *.py[cod]
+
+# shim binary staged by deploy/sync-shim.sh — never committed
+deploy/vendor/*.jar

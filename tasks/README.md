@@ -19,8 +19,9 @@ Tier 1 — product value, no infra dependencies
   03-rules-assistant.md        retrieval already exists; needs generation + cache
   07-humanlike-agent.md        CRITICAL for sim credibility — deck-plan-driven GPL shim,
                                staged (skeleton → mulligans/plan → combat → politics)
-  08-goldfish-mode.md          deck speed/consistency vs an inert opponent; v1 needs
-                               nothing new, v2 wants 07's Stage 0
+  08-goldfish-mode.md          Part A: solo rules-free playtest sandbox (web-only,
+                               no opponent/adjudication/outcome — see its legal
+                               line); Part B: AI goldfish telemetry after 07 Stage 0
 
 Tier 2 — needed for multi-host scale (do when Tier 1 saturates one box)
   04-postgres-queue.md         unlocks workers on separate machines

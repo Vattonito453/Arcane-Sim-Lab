@@ -44,3 +44,32 @@ identically to a broken one: the simulator, not the decks, is the ceiling.
 5. The most human-predictive opponents in the pool are the real decklists
    (dnide_wildsear / nanman_felix / n3cro_raggadragga): the sim's winner
    distribution on that pod matched the actual human game outcome.
+
+## Sim Lab agent v1 (humanized shim, measured 2026-07-31)
+
+`run_sim.py --humanize` runs plan agents (simlab-forge-shim + deck_plan.py)
+instead of stock Forge AI. Results carry `meta.humanized: true` — NEVER mix
+them with stock numbers unlabeled; the archetype baselines above are
+stock-AI baselines and need re-measuring under the agent before use.
+
+A/B, same 4-deck pod (kilo/drana/wilhelt/wyleth), 8 games each, seat-rotated
+(`humanness_scorecard.py`; agent telemetry is authoritative for agent
+actions — Forge's GameLog writes combat lines before the agent's
+adjustments, so raw log text under-reports them):
+
+| metric                    | stock AI | agent v1 | human reference |
+|---------------------------|----------|----------|-----------------|
+| mulligan rate (decisions) | ~3-6%    | 14.3%    | ~15-25%         |
+| attack-split rate (turns) | 0.0%     | 23.3%    | "constantly"    |
+| block rate                | 8.1%     | 22.7%    | routine blocks  |
+| counterspells             | CMC dice | 9 vetoed / 1 fired (threat-gated) | held for threats |
+
+Notes:
+- keep-7 rate from log text (93.8% both) is misleading for the agent: the
+  free Commander mulligan redraws to 7, so a mulled hand still logs "kept a
+  hand of 7". Use agent `mull_take`/`mull_keep` events for the true rate.
+- Win-rate spread compressed under the agent (38/25/25/12 vs stock
+  38/38/12/12 on 8-game samples — n too small for conclusions, direction
+  plausible: interaction punishes runaway starts).
+- Familiarity level is full-decklist (every seat knows every plan's threat
+  signature). Blind/archetype-aware dials are not implemented yet.

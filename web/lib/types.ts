@@ -159,6 +159,12 @@ export interface AnalysedCombo extends KnownCombo {
   /** Sum of per-game P(all library pieces drawn by game end) — what raw draws
    *  alone predicted. Actual above it means tutors did work. */
   expected_drawn_games?: number;
+  /** Instant/sorcery pieces: counted as present on turns they were cast,
+   *  since they never sit on the battlefield. */
+  nonpermanent_pieces?: string[];
+  /** Server-computed verdict. "sample_too_small" means draw odds predicted
+   *  ~0 assemblies across the run, so a zero is expected, not a finding. */
+  reading?: "fired" | "assembled_not_fired" | "sample_too_small" | "not_assembled";
 }
 
 export interface AnalysisDeck {

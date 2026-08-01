@@ -202,6 +202,15 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         weights[c] = max(weights.get(c, 0), 8)
         roles[c] = "commander"
 
+    # A tutor is a path to a missing combo piece — but only when the deck
+    # has known lines does that earn it plan weight (and thus keep/cast
+    # priority in the shim).
+    if lines:
+        for n in tutors:
+            if weights.get(n, 0) < 5:
+                weights[n] = 5
+                roles[n] = "tutor"
+
     keep = sorted((n for n, w in weights.items() if w >= 5),
                   key=lambda n: -weights[n])[:16]
     threat = sorted((n for n, w in weights.items() if w >= 7), key=lambda n: -weights[n])

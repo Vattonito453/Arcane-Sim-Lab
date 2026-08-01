@@ -138,13 +138,18 @@ class Engine:
             cmd += ["--deck-dir", deck_dir]
         if forge_jar:
             cmd += ["--forge-jar", forge_jar]
-        # Worker-wide agent selection (deploy-time knobs, not per-request):
-        # MTG_SIM_HUMANIZE=1 runs plan agents via the GPL shim (implies shim);
-        # MTG_SIM_AGENT=shim runs stock AI through the shim (typed logs+zones).
-        if os.environ.get("MTG_SIM_HUMANIZE") == "1":
+        # HUMANIZED IS THE DEFAULT: run_sim's agent defaults to 'auto' (plan
+        # agents whenever the shim jar exists, labeled stock fallback
+        # otherwise). Deploy-time opt-outs only:
+        #   MTG_SIM_HUMANIZE=0    force stock Forge AI
+        #   MTG_SIM_HUMANIZE=1    force plan agents (fail loudly if no shim)
+        #   MTG_SIM_AGENT=shim    shim with stock AI (typed logs, no plans)
+        if os.environ.get("MTG_SIM_HUMANIZE") == "0":
+            cmd += ["--agent", "forge"]
+        elif os.environ.get("MTG_SIM_HUMANIZE") == "1":
             cmd += ["--humanize"]
-        elif os.environ.get("MTG_SIM_AGENT") == "shim":
-            cmd += ["--agent", "shim"]
+        elif os.environ.get("MTG_SIM_AGENT") in ("forge", "shim"):
+            cmd += ["--agent", os.environ["MTG_SIM_AGENT"]]
         proc = subprocess.run(cmd, capture_output=True, text=True)
         latest = sorted(Path(out).glob("sim_*.json"))
         return {"stdout": (proc.stdout + "\n" + proc.stderr)[-2000:], "returncode": proc.returncode,

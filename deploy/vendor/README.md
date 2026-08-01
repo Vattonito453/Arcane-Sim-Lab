@@ -1,12 +1,15 @@
 # deploy/vendor
 
-Drop point for the `simlab-forge-shim.jar` binary (built from the separate
-GPL-3.0 `simlab-forge-shim` repository — see CLAUDE.md "Legal posture" for
-why it is a separate repo). Run `deploy/sync-shim.sh` before building the
-worker image if you want shim/humanized simulation available in it.
+Local-dev override for the `simlab-forge-shim.jar` binary (built from the
+separate GPL-3.0 `simlab-forge-shim` repository — see CLAUDE.md "Legal
+posture" for why it is a separate repo).
 
-The jar itself is gitignored: this directory vendors nothing into the repo,
-and the worker image builds fine without it (the worker then supports only
-`--agent forge`). If the image containing the jar is ever pushed to a public
-registry, the shim's source must be published under GPL-3.0 — publishing its
-repo satisfies that.
+Humanized simulation is the product default, so the worker image ALWAYS
+carries the shim. The Dockerfile's shim-builder stage takes the jar from
+here when `deploy/sync-shim.sh` has staged it (fast local path, no network);
+otherwise it clones `SIMLAB_SHIM_REPO` and builds from source — that is the
+VM/redeploy path and requires the shim repo to be reachable (public).
+
+The jar itself is gitignored: this repo vendors no GPL code or binaries.
+Since the shim repo is public, distributing an image containing the jar
+already satisfies GPL source availability.

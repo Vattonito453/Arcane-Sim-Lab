@@ -1,5 +1,42 @@
 # MTG Engine — simulation worker (Java 17 + Forge + the Python worker loop)
 # Build from the repo root:  docker build -f deploy/Dockerfile.worker -t mtg-worker .
+
+# ---- Forge download (shared by the shim builder and the runtime) ----
+FROM eclipse-temurin:17-jre-jammy AS forge
+ARG FORGE_VERSION=2.0.13
+RUN apt-get update && apt-get install -y --no-install-recommends curl bzip2 \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /opt/forge && cd /opt/forge \
+    && curl -L -o forge.tar.bz2 \
+       "https://github.com/Card-Forge/forge/releases/download/forge-${FORGE_VERSION}/forge-installer-${FORGE_VERSION}.tar.bz2" \
+    && tar xjf forge.tar.bz2 && rm forge.tar.bz2
+
+# ---- simlab-forge-shim (GPL, separate repo — see CLAUDE.md legal posture) ----
+# Humanized simulation is the product default, so the worker image must carry
+# the shim. Source of the jar, in order:
+#   1. deploy/vendor/simlab-forge-shim.jar if staged (deploy/sync-shim.sh —
+#      the local-dev path; the file is gitignored)
+#   2. otherwise clone SIMLAB_SHIM_REPO and build from source (the VM path;
+#      requires the shim repo to be public/reachable)
+FROM eclipse-temurin:17-jdk-jammy AS shim-builder
+ARG SIMLAB_SHIM_REPO=https://github.com/Vattonito453/simlab-forge-shim.git
+ARG SIMLAB_SHIM_REF=main
+COPY --from=forge /opt/forge /opt/forge
+COPY deploy/vendor/ /vendor/
+RUN if [ -f /vendor/simlab-forge-shim.jar ]; then \
+      echo "shim: using staged vendor jar" && cp /vendor/simlab-forge-shim.jar /shim.jar; \
+    else \
+      echo "shim: building from ${SIMLAB_SHIM_REPO}@${SIMLAB_SHIM_REF}" \
+      && apt-get update && apt-get install -y --no-install-recommends git \
+      && rm -rf /var/lib/apt/lists/* \
+      && git clone --depth 1 -b "${SIMLAB_SHIM_REF}" "${SIMLAB_SHIM_REPO}" /shim-src \
+      && cd /shim-src \
+      && FORGE_JAR="$(find /opt/forge -name 'forge-gui-desktop-*jar-with-dependencies.jar' | head -1)" \
+         ./build.sh \
+      && cp simlab-forge-shim.jar /shim.jar; \
+    fi
+
+# ---- runtime ----
 FROM eclipse-temurin:17-jre-jammy
 
 # xvfb and the X11/font libraries are NOT optional, despite this being a
@@ -15,23 +52,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libxext6 libxrender1 libxtst6 libxi6 fontconfig libfreetype6 \
     && rm -rf /var/lib/apt/lists/*
 
-# Forge (headless-capable desktop build, includes card DB + res/)
-ARG FORGE_VERSION=2.0.13
-RUN mkdir -p /opt/forge && cd /opt/forge \
-    && curl -L -o forge.tar.bz2 \
-       "https://github.com/Card-Forge/forge/releases/download/forge-${FORGE_VERSION}/forge-installer-${FORGE_VERSION}.tar.bz2" \
-    && tar xjf forge.tar.bz2 && rm forge.tar.bz2
+# Forge (headless-capable desktop build, includes card DB + res/) — pulled
+# verbatim in the shared `forge` stage above.
+COPY --from=forge /opt/forge /opt/forge
 
 WORKDIR /app
 COPY rules/kb/ /app/rules/kb/
 COPY engine/*.py /app/engine/
 COPY engine/decks/*.dck /app/engine/decks/
 
-# simlab-forge-shim (optional): run deploy/sync-shim.sh before building to
-# stage the jar; without it the directory carries only its README and the
-# worker supports only --agent forge. SIMLAB_SHIM_JAR is where run_sim.py
-# looks; a missing file just disables the shim agent.
-COPY deploy/vendor/ /opt/simlab-forge-shim/
+# The shim jar (vendor-staged or built from source in shim-builder).
+# run_sim.py's default agent is 'auto' = humanized via this jar.
+COPY --from=shim-builder /shim.jar /opt/simlab-forge-shim/simlab-forge-shim.jar
 ENV SIMLAB_SHIM_JAR=/opt/simlab-forge-shim/simlab-forge-shim.jar
 
 # Forge writes its profile under $HOME; run_sim stages decks via FORGE_USER_DIR

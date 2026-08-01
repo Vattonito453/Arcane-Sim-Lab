@@ -684,8 +684,11 @@ footer.chrome {
 .dg-filter { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
 .dg-filter .flab { font-size: 12px; color: var(--ink-4); }
 .dg-filter label { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--ink-3); cursor: pointer; }
-/* Decklist popover — its own fixed layer, never a panel inside a panel. */
-.dl-pop { position: fixed; left: 24px; top: 90px; max-height: calc(100vh - 140px); width: 300px; overflow-y: auto; z-index: 30; padding: 16px 18px; }
+/* Decklist popover — its own fixed layer, never a panel inside a panel.
+   Anchored beside the hovered tile (left/top are computed by the page), so
+   it can never cover the tile that opened it — a fixed slot overlapped the
+   grid's left column and flicker-looped mouseenter/mouseleave. */
+.dl-pop { position: fixed; max-height: 70vh; width: 300px; overflow-y: auto; z-index: 30; padding: 16px 18px; }
 .dl-pop h3 { font-size: 13.5px; margin: 0 0 4px; color: var(--ink-1); }
 .dl-pop .grp-h { font-size: 11px; color: var(--ink-4); margin: 12px 0 4px; }
 .dl-pop .row { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--ink-3); padding: 2px 0; }

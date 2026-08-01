@@ -151,11 +151,12 @@ export default function ResultsPage() {
   const title = view ? runTitle(view.rows.map((r) => r.name)) : file.replace(/\.json$/, "");
   const enc = encodeURIComponent(file);
 
-  // Two real destinations now that telemetry exists — the row is present on the
-  // loading and error states too, so it does not vanish mid-load.
+  // Real destinations now that telemetry and coaching exist — the row is
+  // present on the loading and error states too, so it does not vanish mid-load.
   const tabs: TabDef[] = [
     { label: "Overview", href: `/results/${enc}`, on: true },
     { label: "Telemetry", href: `/results/${enc}/telemetry` },
+    { label: "Coaching", href: `/results/${enc}/coaching` },
   ];
 
   if (err) {

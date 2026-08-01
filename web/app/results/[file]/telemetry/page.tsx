@@ -95,6 +95,10 @@ function TelemetryInner() {
       href: `/results/${enc}/telemetry${deck ? `?deck=${encodeURIComponent(deck)}` : ""}`,
       on: true,
     },
+    {
+      label: "Coaching",
+      href: `/results/${enc}/coaching${deck ? `?deck=${encodeURIComponent(deck)}` : ""}`,
+    },
   ];
 
   const title = summary

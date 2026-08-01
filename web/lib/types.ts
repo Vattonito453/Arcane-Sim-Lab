@@ -258,6 +258,39 @@ export interface RuleHit {
   [k: string]: unknown;
 }
 
+/** GET/POST /coaching — coach.report(). Verdict numbers are enforced facts
+ *  from the run and archetype tables, never model output. */
+export interface CoachingReport {
+  ok: boolean;
+  reason?: string;
+  cached?: boolean;
+  deck?: string;
+  games?: number;
+  verdict?: {
+    headline: string;
+    prose: string;
+    win_rate: number;
+    baseline: number | null;
+    sim_is_floor: boolean;
+  };
+  support_chain?: {
+    link: string;
+    status: "running" | "partial" | "cold";
+    measured: string;
+    reading: string;
+  }[];
+  matchups?: { pod: string; win_rate: number; note: string }[];
+  changes?: {
+    action: "add" | "cut";
+    card: string;
+    reason: string;
+    evidence: string;
+  }[];
+  play_guide?: string[];
+  archetype?: { class: string; baseline: number | null; sim_is_floor: boolean; why: string };
+  meta?: { model: string; deck_hash: string; gauntlet_id: string; generated: string };
+}
+
 /** GET /rule/{n} — exact rule plus its direct subrules. */
 export interface RuleLookup {
   rule?: string;

@@ -26,9 +26,11 @@ zero-dependency API. Use it three ways:
        GET  /board/{file}         board-reconstruction accuracy report
        GET  /analysis/{file}      wincon report: win methods, combo assembly/conversion
        GET  /ask?q=...            cached rules answer (never generates)
+       GET  /coaching/{file}?deck=x.dck   cached coaching report (never generates)
        POST /simulate             {"decks":[...], "games":N, "deck_dir":"..."} -> sim JSON
        POST /decks                {"name":..., "text":..., "commander"?} -> validated .dck
        POST /ask                  {"q":"..."} -> grounded rules answer (authed, quota'd)
+       POST /coaching             {"result_file":..., "deck":...} -> coaching report (authed)
 """
 from __future__ import annotations
 
@@ -296,6 +298,7 @@ READ_PER_MIN = int(os.environ.get("MTG_READ_PER_MIN", "240"))
 # Rules-assistant generation is the only paid-token path besides coaching;
 # GET /ask is cache-only so crawlers can never spend money.
 ASK_PER_HOUR = int(os.environ.get("MTG_ASK_PER_HOUR", "30"))
+COACH_PER_HOUR = int(os.environ.get("MTG_COACH_PER_HOUR", "20"))
 ALLOW_OPEN_PUBLIC = os.environ.get("MTG_ALLOW_OPEN_PUBLIC", "0") == "1"
 
 _rate_lock = threading.Lock()
@@ -817,6 +820,16 @@ def serve(port: int = 8484) -> None:
                     except (FileNotFoundError, ValueError):
                         # ValueError is the traversal guard — same 404 as /results.
                         return self._send({"error": "no such result"}, 404)
+                if parts[0] == "coaching" and len(parts) > 1:
+                    # Cache-only read; POST /coaching (authed) generates.
+                    deck = q.get("deck", [""])[0].strip()
+                    if not deck:
+                        return self._send({"error": "pass ?deck=<deck.dck>"}, 400)
+                    import coach
+                    stored = coach.cached_report(parts[1], deck)
+                    if stored is not None:
+                        return self._send(stored)
+                    return self._send({"ok": False, "reason": "not generated"})
                 if parts[0] == "board" and len(parts) > 1:
                     import board
                     try:
@@ -833,8 +846,27 @@ def serve(port: int = 8484) -> None:
             payload = json.loads(self.rfile.read(length) or b"{}")
             try:
                 route = u.path.strip("/")
-                if route in ("simulate", "decks", "ask") and not self._authed():
+                if route in ("simulate", "decks", "ask", "coaching") and not self._authed():
                     return self._deny(401, "an API key is required for this endpoint")
+
+                if route == "coaching":
+                    result_file = str(payload.get("result_file") or "").strip()
+                    deck = str(payload.get("deck") or "").strip()
+                    if not result_file or not deck:
+                        return self._send(
+                            {"error": "pass {\"result_file\": ..., \"deck\": ...}"}, 400)
+                    if _find_deck(deck) is None:
+                        return self._send({"error": f"unknown deck: {deck}"}, 400)
+                    ok, retry = _rate_ok(f"coach:{self.client_key}",
+                                         COACH_PER_HOUR, 3600.0)
+                    if not ok:
+                        return self._deny(
+                            429, f"coaching quota is {COACH_PER_HOUR}/hour", retry)
+                    import coach
+                    try:
+                        return self._send(coach.report(result_file, deck))
+                    except (FileNotFoundError, ValueError):
+                        return self._send({"error": "no such result"}, 404)
 
                 if route == "ask":
                     question = str(payload.get("q") or "").strip()

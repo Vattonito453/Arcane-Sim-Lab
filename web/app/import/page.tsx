@@ -61,6 +61,9 @@ export default function ImportPage() {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [nameEdited, setNameEdited] = useState(false);
+  // "" = auto (the engine's default: first card in the list). Anything else
+  // is an explicit designation, passed through to POST /decks.
+  const [commanderPick, setCommanderPick] = useState("");
   const [debounced, setDebounced] = useState("");
   const [busy, setBusy] = useState<"save" | "validate" | null>(null);
   const [resp, setResp] = useState<ImportResponse | null>(null);
@@ -93,8 +96,24 @@ export default function ImportPage() {
     const dups = [...seen.values()].filter((v) => v.qty > 1).map((v) => v.display);
     const dupSet = new Set(dups.map((d) => d.toLowerCase()));
     const commander = lines.length > 0 ? lines[0].name : null;
-    return { lines, count: lines.length, total, dups, dupSet, commander };
+    // Unique names, list order — the options for an explicit commander pick.
+    const names: string[] = [];
+    const nameSeen = new Set<string>();
+    for (const l of lines) {
+      const k = l.name.toLowerCase();
+      if (!nameSeen.has(k)) {
+        nameSeen.add(k);
+        names.push(l.name);
+      }
+    }
+    return { lines, count: lines.length, total, dups, dupSet, commander, names };
   }, [debounced]);
+
+  // An explicit pick only holds while that card is still in the list; if the
+  // paste changes underneath it, fall back to auto rather than sending a
+  // commander the engine will reject.
+  const commander = checks.names.includes(commanderPick) ? commanderPick : "";
+  const effectiveCommander = commander || checks.commander;
 
   const lineCount = useMemo(() => text.split("\n").filter((l) => l.trim()).length, [text]);
 
@@ -104,7 +123,7 @@ export default function ImportPage() {
     setResp(null);
     setNetErr(null);
     try {
-      const r = await api.importDeck(name.trim() || "Untitled deck", text, undefined, save);
+      const r = await api.importDeck(name.trim() || "Untitled deck", text, commander || undefined, save);
       setResp(r);
     } catch (e) {
       setNetErr(e instanceof Error ? e.message : String(e));
@@ -198,6 +217,27 @@ export default function ImportPage() {
                   setNameEdited(true);
                 }}
               />
+              <label className="field-label" htmlFor="deck-commander">
+                Commander
+              </label>
+              <select
+                id="deck-commander"
+                className="sel"
+                value={commander}
+                onChange={(e) => setCommanderPick(e.target.value)}
+                disabled={checks.names.length === 0}
+              >
+                <option value="">
+                  {checks.commander
+                    ? `Auto — first card (${checks.commander})`
+                    : "Auto — first card in the list"}
+                </option>
+                {checks.names.map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
               <label className="field-label" htmlFor="deck-list">
                 Decklist
               </label>
@@ -229,7 +269,7 @@ export default function ImportPage() {
                 <h2>Checks</h2>
                 <span className="meta">
                   {checks.count > 0
-                    ? `${checks.commander ?? "no commander"}, ${checks.total} cards`
+                    ? `${effectiveCommander ?? "no commander"}, ${checks.total} cards`
                     : "advisory — the engine is authoritative"}
                 </span>
               </div>
@@ -270,11 +310,15 @@ export default function ImportPage() {
                   </div>
                   <div className="ck">
                     <span className="lbl">
-                      Commander guess <small>— {checks.commander}</small>
+                      {commander ? "Commander" : "Commander guess"}{" "}
+                      <small>
+                        — {effectiveCommander}
+                        {commander ? ", your designation" : ", first card — pick another above"}
+                      </small>
                     </span>
                     <span className="res st ok">
                       <i />
-                      Found
+                      {commander ? "Set" : "Found"}
                     </span>
                   </div>
                 </>

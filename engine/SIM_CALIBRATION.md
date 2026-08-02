@@ -10,6 +10,15 @@ Fixed deck order gives seat 1 an 11% win rate and seat 4 a 36% win rate
 opponent. `run_sim.py --rotate` cycles every deck through every seat and merges
 by deck name. Never report unrotated 4-player results.
 
+**Wired into production as of 2026-08-02** (was previously CLI-only, so every
+sim launched through `POST /simulate` — worker → `Engine.simulate()` →
+`run_sim.py` — ran fixed-seat despite this doc's rule; see the `_rotated`
+suffix on the result filename as the tell). `Engine.simulate()` now passes
+`--rotate` by default; `MTG_SIM_ROTATE=0` is a debug-only escape hatch for a
+faster single-seat run. Any `sim_*.json` without the `_rotated` suffix (or
+without `meta.source == "rotated"`) predates this fix and should not be read
+as a verdict on the deck.
+
 ## Bias 2: Archetype (UNFIXABLE at AI level — report against class baselines)
 
 Seat-fair measurement across 320+ deck-games:

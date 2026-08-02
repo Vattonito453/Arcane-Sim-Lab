@@ -164,6 +164,28 @@ First build takes several minutes: the worker image downloads Forge (~290 MB)
 and the web image compiles the front end. **Build on the VM, not on the Mac** —
 this laptop produces arm64 images and an e2 instance is x86_64.
 
+### Confirming which shim the worker carries
+
+The `--build` in that command is load-bearing for the agent: the shim is built
+from its own repo inside the worker image. Before 2026-08-02 the clone sat
+behind a cached layer that never invalidated, so shim commits pushed after the
+first build silently never shipped — the VM ran a Stage-3 agent while the shim
+was on Stage 5. An `ADD` of the shim ref's GitHub commits API now busts that
+layer whenever the ref moves (verified: the response is byte-stable per commit,
+so builds are not repeated needlessly, and differs across commits, so a new
+shim commit does invalidate).
+
+Verify after any deploy that touches the agent — one line, no jar archaeology:
+
+```bash
+sudo docker logs deploy-worker-1 2>&1 | grep 'shim commit'
+git -C /path/to/simlab-forge-shim ls-remote origin main   # should match
+```
+
+If it prints `vendor-staged`, a jar from `deploy/sync-shim.sh` is being used and
+the clone was skipped — fine locally, wrong on the VM. Delete
+`deploy/vendor/simlab-forge-shim.jar` and rebuild.
+
 `COPYFILE_DISABLE=1` is not optional on macOS. Without it, tar emits AppleDouble
 `._name` sidecars for every file carrying an extended attribute; they extract as
 real files on Linux, match `engine/decks/*.dck`, and being binary they made

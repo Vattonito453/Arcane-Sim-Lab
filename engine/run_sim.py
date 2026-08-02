@@ -101,17 +101,26 @@ def stage_decks(decks: list[str], deck_dir: str | None, fmt: str) -> None:
 
 
 def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
-                   deck_order: list[str], games: int) -> dict:
+                   deck_order: list[str], games: int,
+                   rotate_index: int | None = None) -> dict:
     """One shim invocation with a fixed seat order; returns parsed result.
 
     Decks must already be staged (the shim takes absolute .dck paths; the
-    staged copies in Forge's profile deck dir are the canonical ones)."""
+    staged copies in Forge's profile deck dir are the canonical ones).
+
+    rotate_index, when set, names the live log <run_id>_rot<i> instead of
+    dropping run_id altogether — GET /sim-live globs for that suffix so
+    watching a rotated run (the default) doesn't go dark for its whole
+    duration. See mtg_engine.py _read_live."""
     from shim_log_adapter import parse_shim_jsonl
     staged = forge_profile_deck_dir(args.format)
     abs_decks = [str(staged / Path(d).name) for d in deck_order]
-    stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
-    jsonl_path = out_dir / (f"shim_raw_{args.run_id}.jsonl" if args.run_id and not args.rotate
-                            else f"shim_raw_{stamp}.jsonl")
+    if args.run_id:
+        suffix = f"_rot{rotate_index}" if rotate_index is not None else ""
+        jsonl_path = out_dir / f"shim_raw_{args.run_id}{suffix}.jsonl"
+    else:
+        stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+        jsonl_path = out_dir / f"shim_raw_{stamp}.jsonl"
     cmd = ["java", f"-Xmx{args.heap}", "-cp", f"{shim_jar}{os.pathsep}{jar}",
            "simlab.shim.SimShim", "--decks", *abs_decks,
            "--games", str(games), "--timeout", str(args.clock),
@@ -181,7 +190,7 @@ def run(args: argparse.Namespace) -> None:
             for i in range(rotations):
                 order = deck_names[i:] + deck_names[:i]
                 print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
-                sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per)
+                sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per, rotate_index=i)
                 all_games.extend(sub["games"])
             result = {"meta": {"source": "rotated", "agent": "simlab-forge-shim",
                                "humanized": bool(args.humanize),
@@ -212,7 +221,7 @@ def run(args: argparse.Namespace) -> None:
         for i in range(rotations):
             order = deck_names[i:] + deck_names[:i]
             print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
-            sub = _run_once(args, jar, out_dir, order, per)
+            sub = _run_once(args, jar, out_dir, order, per, rotate_index=i)
             all_games.extend(sub["games"])
         result = {"meta": {"source": "rotated", "humanized": False,
                            "decks": args.decks,
@@ -280,8 +289,12 @@ def run(args: argparse.Namespace) -> None:
         print(f"WARNING: Forge exited {proc.returncode} — check the raw log.", file=sys.stderr)
 
 
-def _run_once(args, jar, out_dir, deck_order, games) -> dict:
-    """One Forge invocation with a fixed seat order; returns parsed result."""
+def _run_once(args, jar, out_dir, deck_order, games, rotate_index: int | None = None) -> dict:
+    """One Forge invocation with a fixed seat order; returns parsed result.
+
+    rotate_index, when set alongside --run-id, names the raw log
+    <run_id>_rot<i> so GET /sim-live can glob for the in-flight rotation
+    (see _run_shim_once's identical concern for the humanized path)."""
     cmd = ["java", f"-Xmx{args.heap}", "-jar", jar, "sim", "-d", *deck_order]
     cmd += ["-f", args.format, "-n", str(games), "-c", str(args.clock)]
     print("$", " ".join(cmd))
@@ -294,8 +307,13 @@ def _run_once(args, jar, out_dir, deck_order, games) -> dict:
         if line.strip().startswith("Game Result"):
             print("  " + line.strip(), flush=True)
     proc.wait(timeout=60)
-    stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
-    (out_dir / f"forge_raw_{stamp}.log").write_text("".join(lines), encoding="utf-8")
+    if args.run_id:
+        suffix = f"_rot{rotate_index}" if rotate_index is not None else ""
+        raw_path = out_dir / f"forge_raw_{args.run_id}{suffix}.log"
+    else:
+        stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+        raw_path = out_dir / f"forge_raw_{stamp}.log"
+    raw_path.write_text("".join(lines), encoding="utf-8")
     return parse_forge_log("".join(lines), source=" ".join(cmd))
 
 

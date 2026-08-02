@@ -29,6 +29,7 @@ zero-dependency API. Use it three ways:
        GET  /ask?q=...            cached rules answer (never generates)
        GET  /coaching/{file}?deck=x.dck   cached coaching report (never generates)
        POST /simulate             {"decks":[...], "games":N, "deck_dir":"..."} -> sim JSON
+                                  (seat-rotated by default, SIM_CALIBRATION.md Bias 1)
        POST /decks                {"name":..., "text":..., "commander"?} -> validated .dck
        POST /ask                  {"q":"..."} -> grounded rules answer (authed, quota'd)
        POST /coaching             {"result_file":..., "deck":...} -> coaching report (authed)
@@ -137,7 +138,7 @@ class Engine:
 
     def simulate(self, decks: list[str], games: int = 10, deck_dir: str | None = None,
                  fmt: str = "Commander", forge_jar: str | None = None, out: str = "./sim_results",
-                 run_id: str | None = None) -> dict:
+                 run_id: str | None = None, rotate: bool = True) -> dict:
         import subprocess
         cmd = [sys.executable, str(Path(__file__).parent / "run_sim.py"),
                "--decks", *decks, "--games", str(games), "--format", fmt, "--out", out]
@@ -147,6 +148,13 @@ class Engine:
             cmd += ["--deck-dir", deck_dir]
         if forge_jar:
             cmd += ["--forge-jar", forge_jar]
+        # SEAT ROTATION IS THE DEFAULT — SIM_CALIBRATION.md "Bias 1": a fixed
+        # seat order gives seat 1 an 11% win rate and seat 4 36%, so an
+        # unrotated 4-player result is not a verdict on the deck. Debug-only
+        # opt-out (a single fixed-seat run finishes faster to iterate on):
+        #   MTG_SIM_ROTATE=0
+        if rotate and os.environ.get("MTG_SIM_ROTATE") != "0":
+            cmd += ["--rotate"]
         # HUMANIZED IS THE DEFAULT: run_sim's agent defaults to 'auto' (plan
         # agents whenever the shim jar exists, labeled stock fallback
         # otherwise). Deploy-time opt-outs only:
@@ -467,6 +475,12 @@ def _read_live(job_id: str, n: int | None = None) -> dict:
     partial file: the trailing game has no result yet and comes back with the
     turns played up to this instant.
 
+    A rotated run (the default — SIM_CALIBRATION.md) is several sub-runs, one
+    JVM per seat order, and each writes its own <id>_rot<i> file rather than
+    one continuous log; run_sim.py names them predictably so this can glob for
+    the newest one, which is always the rotation currently in flight. Progress
+    resets to game 1 at each rotation boundary — a live view, not a summary.
+
     Shaped like /results/{file}/game/{n} so the front end can reuse the same
     timeline fold for a live game and a finished one.
     """
@@ -474,6 +488,16 @@ def _read_live(job_id: str, n: int | None = None) -> dict:
         raise ValueError("bad job id")            # keeps the id out of path building
     f = RESULTS_DIR / f"forge_raw_{job_id}.log"
     j = RESULTS_DIR / f"shim_raw_{job_id}.jsonl"
+    if not f.is_file():
+        rots = sorted(RESULTS_DIR.glob(f"forge_raw_{job_id}_rot*.log"),
+                      key=lambda p: p.stat().st_mtime)
+        if rots:
+            f = rots[-1]
+    if not j.is_file():
+        rots = sorted(RESULTS_DIR.glob(f"shim_raw_{job_id}_rot*.jsonl"),
+                      key=lambda p: p.stat().st_mtime)
+        if rots:
+            j = rots[-1]
     if f.is_file():
         from forge_log_adapter import parse_forge_log
         text = f.read_text(encoding="utf-8", errors="replace")

@@ -674,22 +674,37 @@ footer.chrome {
    Art tiles with the deck name on a scrim; selection is the cyan interaction
    treatment (border, no glow — glow stays on the primary). */
 .dg { display: grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap: 14px; }
-.dg-tile { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--hairline-strong); border-radius: var(--r-control); background: var(--surface-obsidian); padding: 0; overflow: hidden; cursor: pointer; text-align: left; transition: border-color var(--dur-fast); }
+.dg-tile { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--hairline-strong); border-radius: var(--r-control); background: var(--surface-obsidian); overflow: hidden; transition: border-color var(--dur-fast); }
 .dg-tile:hover { border-color: var(--mana-cyan); }
-.dg-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.dg-tile .scrim { position: absolute; left: 0; right: 0; bottom: 0; padding: 7px 10px; background: var(--bar-instrument); display: flex; align-items: center; gap: 8px; }
-.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; color: var(--ink-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
-.dg-tile[aria-pressed="true"] { border-color: var(--mana-cyan); box-shadow: inset 0 0 0 1px var(--mana-cyan); }
+.dg-tile .pick { position: absolute; inset: 0; display: block; width: 100%; border: 0; background: transparent; padding: 0; cursor: pointer; }
+.dg-tile .pick img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dg-tile .scrim { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 7px 10px; background: var(--bar-instrument); display: flex; align-items: center; gap: 8px; }
+.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.dg-tile[data-on] { border-color: var(--mana-cyan); box-shadow: inset 0 0 0 1px var(--mana-cyan); }
 .dg-tile .seat { position: absolute; top: 8px; left: 8px; height: 22px; min-width: 30px; padding: 0 7px; border-radius: var(--r-pill); background: var(--surface-obsidian); border: 1px solid var(--mana-cyan); color: var(--mana-cyan-ink); font-family: var(--font-data); font-size: 11px; display: flex; align-items: center; justify-content: center; }
 .dg-filter { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
 .dg-filter .flab { font-size: 12px; color: var(--ink-4); }
 .dg-filter label { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--ink-3); cursor: pointer; }
-/* Decklist popover — its own fixed layer, never a panel inside a panel. */
-.dl-pop { position: fixed; left: 24px; top: 90px; max-height: calc(100vh - 140px); width: 300px; overflow-y: auto; z-index: 30; padding: 16px 18px; }
+/* Decklist popover — its own fixed layer, never a panel inside a panel.
+   Anchored beside the hovered tile (left/top are computed by the page), so
+   it can never cover the tile that opened it — a fixed slot overlapped the
+   grid's left column and flicker-looped mouseenter/mouseleave. */
+.dl-pop { position: fixed; max-height: min(56vh, 560px); width: 300px; overflow-y: auto; z-index: 30; padding: 16px 18px; }
 .dl-pop h3 { font-size: 13.5px; margin: 0 0 4px; color: var(--ink-1); }
 .dl-pop .grp-h { font-size: 11px; color: var(--ink-4); margin: 12px 0 4px; }
 .dl-pop .row { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--ink-3); padding: 2px 0; }
 .dl-pop .row .n { font-family: var(--font-data); color: var(--ink-4); flex: none; }
+/* Deck detail page — readable card rows, grouped by type. */
+.card-row { display: flex; gap: 14px; padding: 12px 0; border-top: 1px solid var(--hairline); align-items: flex-start; }
+.card-row:last-child { border-bottom: 1px solid var(--hairline); }
+.card-row img, .card-row .noart { width: 48px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 5px; border: 1px solid var(--hairline-strong); background: var(--surface-obsidian); flex: none; }
+.card-row .cr-b { flex: 1; min-width: 0; }
+.card-row .cr-n { font-size: 13.5px; font-weight: 600; color: var(--ink-1); display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.card-row .cr-n .cost { font-family: var(--font-data); font-size: 11.5px; color: var(--ink-4); font-weight: 400; }
+.card-row .cr-n .qty { font-family: var(--font-data); font-size: 11.5px; color: var(--ink-4); font-weight: 400; }
+.card-row .cr-t { font-size: 11.5px; color: var(--ink-4); margin-top: 1px; }
+.card-row .cr-o { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 5px; white-space: pre-line; }
+
 /* Right-rail selected-deck rows. */
 .rail-deck { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--hairline); }
 .rail-deck:last-of-type { border-bottom: 1px solid var(--hairline); }

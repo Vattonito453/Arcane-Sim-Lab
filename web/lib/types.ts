@@ -10,10 +10,12 @@ export interface DeckEntry {
 }
 
 /** GET /decks/{file} — one deck's contents, counts expanded. Pure data for
- *  the playtest sandbox: no legality, no validation, no rules. */
+ *  the playtest sandbox and the deck page: no legality, no rules. */
 export interface DeckCards {
   file: string;
   name: string;
+  /** "imported" decks are deletable; "bundled" ship inside the image. */
+  source?: "imported" | "bundled";
   commanders: string[];
   main: string[];
 }

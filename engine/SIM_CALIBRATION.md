@@ -109,3 +109,57 @@ Notes:
 - Wins this sample: Drana 50%, Wyleth 25%, Kilo 25%, Wilhelt 0% (n=8 — for
   behavior measurement, not win-rate conclusions). Archetype baselines above
   remain STOCK-AI baselines until re-measured under the agent at scale.
+
+## Sim Lab agent v3 (Stage 5 combo pursuit, measured 2026-08-01)
+
+The agent now pursues its own win condition — the last human behavior from
+`training/ai_vs_human_analysis.md` no prior stage attempted. Knowledge
+crosses the boundary as plan JSON (`lines`, `tutors`, personality `greed`);
+mechanisms live in the shim. The **line-of-sight gate** is the design rule:
+pursuit activates only when every piece of a known line is on the agent's
+battlefield or in its own hand, or exactly one piece short with a tutor in
+hand. It acts only on an empty stack and never touches attack/block paths —
+combat and interaction stay exactly as Stages 2-4 tuned them.
+
+Mechanism validation (synthetic 2-piece line, Scourge of Valkas + Rite of
+Replication, vs Torbran):
+- `combo_cast` sequencing: Scourge deployed, Rite cast the same turn to
+  complete the line; the seat won. One-shot (instant/sorcery) pieces are
+  only ever cast when they complete the line.
+- `tutor_cast` + `tutor_steer`: one piece short, the agent cast Diabolic
+  Tutor — which stock AI draws and NEVER casts (measured) — and the search
+  took Rite over stock's pick (Dragonlord Atarka).
+- `combo_hold` line discipline: stock AI burns Rite as an early value play
+  with Scourge still in hand (measured twice in 4 games); the veto keeps
+  the piece for the line. No priority stalls from the deferral.
+
+Combo pod, 8 seat-rotated games (atraxa/urdragon/meren/kilo_helm_final),
+behavior vs training-data human reference:
+
+| metric | stock Forge | agent v3 (this run) | human reference |
+|---|---|---|---|
+| mulligan rate (agent events) | ~3% | 23.7% (9/38) | 15-25% |
+| attack-split rate (turns)    | 0%  | 22.7%        | "constantly" |
+| block rate                   | 14% | 23.2%        | routine blocks |
+| commander deploy (median game-turn) | 30+ for synergy decks | 19 (≈ player-turn 5) | player-turn 4-5 |
+| pursues own win condition    | never | gated: 1 `combo_cast` in the run's single sighted moment; 88 searches, none mis-steered | every human winner |
+
+Stage 4 behaviors intact this run: 11 kingmaker re-aims, 6 counter vetoes /
+2 fires, 5 optional-trigger misses, 32 splits. Wins 38/38/12/12
+(UrD/Meren/Kilo/Atraxa) vs the pre-agent run's 67/17/17/0 — n=8, direction
+only.
+
+Honesty notes:
+- This pod cannot showcase pursuit: Atraxa's five known lines are all
+  4-card packages and the deck runs ZERO nonland tutors (draw odds predict
+  ~0 assemblies in 8 games — the wincon table now says `sample_too_small`
+  instead of implying a deck problem). Ur-Dragon's line is 2 cards but also
+  tutorless. The gate held: no tutor was ever burned on a combo hunt
+  without line of sight, per the design rule.
+- Rite-style completion still relies on stock targeting after the cast:
+  the shim sequences and deploys but does not (yet) steer the copy target
+  onto the dragon. Assembled-but-not-converted remains the expected reading
+  for such lines.
+- Hidden-zone hygiene (Stage 5 paths): reads own battlefield / own hand /
+  own command zone plus the search option list Forge reveals to the
+  searching player. Opponents' hands and libraries stay unread.

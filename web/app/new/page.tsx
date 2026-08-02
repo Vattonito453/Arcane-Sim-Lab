@@ -11,6 +11,7 @@
 
 import Link from "next/link";
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import type { DeckCards, DeckEntry } from "@/lib/types";
@@ -42,11 +43,14 @@ function factsKey(name: string): string {
 /** Decklist popover content: contents grouped by type where card facts are
  *  cached; unknown types group honestly under "Unidentified". */
 function DeckListPop({
-  deck, contents, facts, onClose,
+  deck, contents, facts, x, y, onClose,
 }: {
   deck: DeckEntry;
   contents: DeckCards | null;
   facts: CardMap;
+  /** Computed anchor beside the opening tile — see openPop(). */
+  x: number;
+  y: number;
   onClose: () => void;
 }) {
   const groups = useMemo(() => {
@@ -64,8 +68,21 @@ function DeckListPop({
     return byKind;
   }, [contents, facts]);
 
-  return (
-    <div className="glass-panel dl-pop" role="dialog" aria-label={`Decklist: ${deck.name}`}>
+  // Portaled to <body>: our glass panels carry backdrop-filter, and a
+  // filtered ancestor captures position:fixed in some browsers — the popover
+  // then pins to the top of the DOCUMENT and scrolls out of view. On body
+  // there is no ancestor to capture it, so fixed means the viewport
+  // everywhere.
+  return createPortal(
+    <div
+      className="glass-panel dl-pop"
+      role="dialog"
+      aria-label={`Decklist: ${deck.name}`}
+      // Computed anchor position — the "computed values" inline-style
+      // exemption; everything else lives in globals.css.
+      style={{ left: x, top: y }}
+      onMouseLeave={onClose}
+    >
       <h3>{deck.name}</h3>
       <div className="row">
         <span>
@@ -107,11 +124,16 @@ function DeckListPop({
           </div>
         ))}
       <div className="grp-h">
+        <Link className="bl" href={`/decks/${encodeURIComponent(deck.file)}`}>
+          Open deck →
+        </Link>
+        {"  "}
         <Link className="bl" href={`/playtest/${encodeURIComponent(deck.file)}`}>
-          Open in playtest →
+          Playtest →
         </Link>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -129,7 +151,11 @@ function NewRunInner() {
 
   const [selected, setSelected] = useState<string[]>([]);
   const [filter, setFilter] = useState<Set<string>>(new Set());
-  const [inspect, setInspect] = useState<string | null>(null);
+  // Popover anchor: the inspected deck plus a computed fixed position beside
+  // its tile. Anchoring beside the tile (not a fixed slot) is load-bearing:
+  // a popover that can appear under the cursor unmounts itself in a
+  // mouseenter/mouseleave loop and flickers.
+  const [inspect, setInspect] = useState<{ file: string; x: number; y: number } | null>(null);
   const [contents, setContents] = useState<Record<string, DeckCards>>({});
   const [games, setGames] = useState(16);
   const [starting, setStarting] = useState(false);
@@ -183,15 +209,29 @@ function NewRunInner() {
     }
   }, [preselect, decks]);
 
+  /** Anchor the popover beside a tile: to its right, flipping left when the
+   *  viewport edge is near, top aligned with the tile but pushed up just
+   *  enough that the panel's max height always fits the viewport. */
+  const openPop = (file: string, el: HTMLElement) => {
+    const r = el.getBoundingClientRect();
+    let x = r.right + 12;
+    if (x + 312 > window.innerWidth) x = r.left - 312;
+    x = Math.max(8, x);
+    const maxH = Math.min(window.innerHeight * 0.56, 560); // mirrors .dl-pop max-height
+    const y = Math.max(8, Math.min(r.top - 8, window.innerHeight - maxH - 16));
+    setInspect({ file, x, y });
+  };
+
   // Fetch decklist contents lazily, once per inspected deck.
+  const inspectFile = inspect?.file ?? null;
   useEffect(() => {
-    if (!inspect || contents[inspect]) return;
+    if (!inspectFile || contents[inspectFile]) return;
     let stop = false;
     api
-      .deck(inspect)
+      .deck(inspectFile)
       .then(async (dc) => {
         if (stop) return;
-        setContents((prev) => ({ ...prev, [inspect]: dc }));
+        setContents((prev) => ({ ...prev, [inspectFile]: dc }));
         // Facts for type grouping — batched and memoized; repeat inspections
         // of the same deck cost nothing.
         const map = await loadCards([...dc.commanders, ...dc.main]);
@@ -201,7 +241,7 @@ function NewRunInner() {
     return () => {
       stop = true;
     };
-  }, [inspect, contents]);
+  }, [inspectFile, contents]);
 
   // Escape dismisses the popover from anywhere.
   useEffect(() => {
@@ -272,7 +312,7 @@ function NewRunInner() {
   const artOf = (d: DeckEntry): string | null =>
     d.commander ? (facts[factsKey(d.commander)]?.art_crop ?? null) : null;
 
-  const inspectDeck = inspect ? decks?.find((d) => d.file === inspect) : undefined;
+  const inspectDeck = inspect ? decks?.find((d) => d.file === inspect.file) : undefined;
 
   return (
     <>
@@ -377,31 +417,51 @@ function NewRunInner() {
                   </label>
                 </div>
 
-                <div className="dg" onMouseLeave={() => setInspect(null)}>
+                <div
+                  className="dg"
+                  onMouseLeave={(e) => {
+                    // Moving INTO the popover must not dismiss it — that is
+                    // how it stays hoverable (and scrollable) without a
+                    // dismiss/re-open flicker at the boundary.
+                    const to = e.relatedTarget;
+                    if (to instanceof Node && document.querySelector(".dl-pop")?.contains(to)) return;
+                    setInspect(null);
+                  }}
+                >
                   {visible.map((d) => {
                     const seat = selected.indexOf(d.file);
                     const art = artOf(d);
                     return (
-                      <button
+                      // Two interactive things per tile, so no nesting: the
+                      // full-bleed button seats the deck for a run; the name
+                      // in the scrim (layered above it) opens the deck page.
+                      <div
                         key={d.file}
-                        type="button"
                         className="dg-tile"
-                        aria-pressed={seat >= 0}
-                        aria-label={`${d.name}${seat >= 0 ? `, selected as player ${seat + 1}` : ""}`}
-                        onClick={() => toggle(d.file)}
-                        onMouseEnter={() => setInspect(d.file)}
-                        onFocus={() => setInspect(d.file)}
+                        data-on={seat >= 0 || undefined}
+                        onMouseEnter={(e) => openPop(d.file, e.currentTarget)}
                       >
-                        {art && (
-                          // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink, never rehosted
-                          <img src={art} alt="" loading="lazy" />
-                        )}
-                        {seat >= 0 && <span className="seat">P{seat + 1}</span>}
+                        <button
+                          type="button"
+                          className="pick"
+                          aria-pressed={seat >= 0}
+                          aria-label={`Seat ${d.name}${seat >= 0 ? ` (currently player ${seat + 1})` : ""}`}
+                          onClick={() => toggle(d.file)}
+                          onFocus={(e) => openPop(d.file, e.currentTarget)}
+                        >
+                          {art && (
+                            // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink, never rehosted
+                            <img src={art} alt="" loading="lazy" />
+                          )}
+                          {seat >= 0 && <span className="seat">P{seat + 1}</span>}
+                        </button>
                         <span className="scrim">
-                          <span className="t">{d.name}</span>
+                          <Link className="t bl" href={`/decks/${encodeURIComponent(d.file)}`}>
+                            {d.name}
+                          </Link>
                           <ManaPips colors={identityOf(d) ?? undefined} />
                         </span>
-                      </button>
+                      </div>
                     );
                   })}
                   {visible.length === 0 && (
@@ -509,11 +569,13 @@ function NewRunInner() {
           </div>
         )}
 
-        {inspectDeck && (
+        {inspectDeck && inspect && (
           <DeckListPop
             deck={inspectDeck}
             contents={contents[inspectDeck.file] ?? null}
             facts={facts}
+            x={inspect.x}
+            y={inspect.y}
             onClose={() => setInspect(null)}
           />
         )}

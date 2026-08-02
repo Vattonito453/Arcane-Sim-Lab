@@ -76,6 +76,16 @@ async function get<T>(path: string, opts: { cache?: RequestCache } = {}): Promis
   return r.json();
 }
 
+async function del<T>(path: string): Promise<T> {
+  const key = apiKey();
+  const r = await fetch(`${apiBase()}${path}`, {
+    method: "DELETE",
+    headers: key ? { Authorization: `Bearer ${key}` } : {},
+  });
+  if (!r.ok) return fail(r, "DELETE", path);
+  return r.json();
+}
+
 async function post<T>(path: string, body: unknown): Promise<T> {
   const key = apiKey();
   const r = await fetch(`${apiBase()}${path}`, {
@@ -95,6 +105,11 @@ export const api = {
   decks: () => get<DeckEntry[]>("/decks"),
   /** One deck's card names, counts expanded — the playtest sandbox's load. */
   deck: (file: string) => get<DeckCards>(`/decks/${encodeURIComponent(file)}`),
+  /** Remove an imported deck. Authed and destructive; bundled decks refuse. */
+  deleteDeck: (file: string) =>
+    del<{ ok: boolean; deleted?: string; error?: string }>(
+      `/decks/${encodeURIComponent(file)}`,
+    ),
   results: () => get<ResultIndexEntry[]>("/results"),
 
   /** Run overview WITHOUT event logs — a few KB instead of ~2.6 MB. */

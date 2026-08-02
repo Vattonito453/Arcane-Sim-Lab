@@ -32,6 +32,7 @@ zero-dependency API. Use it three ways:
        POST /decks                {"name":..., "text":..., "commander"?} -> validated .dck
        POST /ask                  {"q":"..."} -> grounded rules answer (authed, quota'd)
        POST /coaching             {"result_file":..., "deck":...} -> coaching report (authed)
+       DELETE /decks/{file}       remove an IMPORTED deck (authed; bundled refuse)
 """
 from __future__ import annotations
 
@@ -283,7 +284,10 @@ def _read_deck_cards(path: Path) -> dict:
             commanders.extend([card] * count)
         elif section == "main":
             main.extend([card] * count)
-    return {"file": path.name, "name": name,
+    # Imported decks are deletable; bundled decks ship inside the image and
+    # are not — the front end needs to know which it is looking at.
+    source = "imported" if path.parent == IMPORTED_DECKS else "bundled"
+    return {"file": path.name, "name": name, "source": source,
             "commanders": commanders, "main": main}
 
 
@@ -974,12 +978,36 @@ def serve(port: int = 8484) -> None:
             except Exception as e:  # noqa: BLE001
                 return self._send({"error": str(e)}, 500)
 
+        def do_DELETE(self):
+            u = urlparse(self.path)
+            parts = [unquote(p) for p in u.path.strip("/").split("/") if p]
+            try:
+                if len(parts) == 2 and parts[0] == "decks":
+                    # Destructive and writing: same gate as the other writes.
+                    if not self._authed():
+                        return self._deny(
+                            401, "an API key is required for this endpoint")
+                    p = _find_deck(parts[1])
+                    if p is None:
+                        return self._send({"error": "no such deck"}, 404)
+                    if p.parent != IMPORTED_DECKS:
+                        # Bundled decks live inside the image; deleting them
+                        # would silently reappear on the next deploy.
+                        return self._send(
+                            {"error": "bundled decks cannot be deleted — "
+                                      "only imported ones"}, 400)
+                    p.unlink()
+                    return self._send({"ok": True, "deleted": parts[1]})
+                return self._send({"error": "unknown endpoint"}, 404)
+            except Exception as e:  # noqa: BLE001
+                return self._send({"error": str(e)}, 500)
+
         def do_OPTIONS(self):  # CORS preflight for cross-origin front ends
             self.send_response(204)
             # Same origin policy as the real responses. Hardcoding "*" here let a
             # deployment that set MTG_ALLOW_ORIGIN preflight from any origin.
             self._cors()
-            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
             # Authorization and X-Api-Key must be listed or the browser drops the
             # header before the request is sent: _authed() would then see no
             # credential and 401 every keyed POST from the front end.

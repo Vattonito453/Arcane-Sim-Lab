@@ -55,7 +55,7 @@ function toRow(g: RunGameSummary): GameRow {
       ? endedTurn
         ? `${winnerName} won on turn ${endedTurn}`
         : `${winnerName} won`
-      : "—";
+      : "–";
   return {
     n: g.n,
     winnerName,
@@ -168,11 +168,11 @@ export default function ResultsPage() {
           </div>
           {wait != null ? (
             <p className="note">
-              {err} — the engine is throttling reads. Try again in about{" "}
+              {err}. The engine is throttling reads. Try again in about{" "}
               <span className="mono">{wait}</span> s.
             </p>
           ) : (
-            <p className="note">{err} — check that the engine API is running, then reload.</p>
+            <p className="note">{err}. Check that the engine API is running, then reload.</p>
           )}
         </div>
         <Footer />
@@ -214,7 +214,7 @@ export default function ResultsPage() {
 
   const tieText =
     tops.length > 1
-      ? ` — tied with ${tops.slice(1).map((t) => t.name).join(" and ")}`
+      ? `, tied with ${tops.slice(1).map((t) => t.name).join(" and ")}`
       : second
         ? `, ${top.wins - second.wins} ${top.wins - second.wins === 1 ? "win" : "wins"} clear of ${second.name} (${pct(second.rate)})`
         : "";
@@ -280,7 +280,7 @@ export default function ResultsPage() {
               {(top.rate * 100).toFixed(0)}
               <small>%</small>
             </div>
-            <div className="l">top win rate — {top.name}</div>
+            <div className="l">top win rate ({top.name})</div>
           </div>
           <div className="fig">
             <div className="n">{draws}</div>
@@ -318,7 +318,7 @@ export default function ResultsPage() {
             </tbody>
           </table>
           <p className="note">
-            The thin marker on each bar sits at {pct(baseline, 1)} — the even-seats baseline for a{" "}
+            The thin marker on each bar sits at {pct(baseline, 1)}, the even-seats baseline for a{" "}
             {rows.length}-player pod. A deck to the right of it is beating an equal share of its games.
           </p>
         </section>
@@ -354,7 +354,7 @@ export default function ResultsPage() {
                         <tr key={`${name}-unknown`}>
                           <td>{name}</td>
                           <td colSpan={5} className="ctanote">
-                            combos unknown — Spellbook was unreachable when this was analysed
+                            combos unknown; Spellbook was unreachable when this was analysed
                           </td>
                         </tr>,
                       ];
@@ -391,7 +391,7 @@ export default function ResultsPage() {
                             title={
                               c.produces.join(", ") +
                               (spellPieces.length > 0
-                                ? ` — ${spellPieces.join(", ")} is a spell piece: counted when cast, not from the battlefield`
+                                ? `. ${spellPieces.join(", ")} is a spell piece: counted when cast, not from the battlefield`
                                 : "")
                             }
                           >
@@ -405,30 +405,30 @@ export default function ResultsPage() {
                             className="r mono"
                             title="How many of these games raw draw odds alone predicted every library piece would be drawn by game end. Assembled above this means tutors did work; far below means pieces sat in hand or died."
                           >
-                            {c.expected_drawn_games != null ? `~${c.expected_drawn_games}` : "—"}
+                            {c.expected_drawn_games != null ? `~${c.expected_drawn_games}` : "–"}
                           </td>
                           <td className="r mono">{c.converted_games}</td>
                           <td>
                             {reading === "fired" ? (
                               <span className="st win">
                                 <i />
-                                AI can fire this — results meaningful
+                                AI can fire this; results meaningful
                               </span>
                             ) : reading === "assembled_not_fired" ? (
                               <span className="st warn">
                                 <i />
-                                assembled, never fired — win rate is a floor
+                                assembled, never fired; win rate is a floor
                               </span>
                             ) : reading === "sample_too_small" ? (
                               <span className="st loss">
                                 <i />
-                                draw odds predicted ~{c.expected_drawn_games ?? 0} — too few
+                                draw odds predicted ~{c.expected_drawn_games ?? 0}; too few
                                 games to measure this
                               </span>
                             ) : (
                               <span className="st warn">
                                 <i />
-                                never assembled despite draw odds ~{c.expected_drawn_games} —
+                                never assembled despite draw odds ~{c.expected_drawn_games};
                                 pieces sat in hand or died
                               </span>
                             )}
@@ -441,7 +441,7 @@ export default function ResultsPage() {
               </table>
               <p className="note">
                 Assembled counts games where every piece was on the battlefield at once, from board
-                reconstruction — an inference, not a read. Instant and sorcery pieces count as
+                reconstruction, an inference rather than a read. Instant and sorcery pieces count as
                 present on turns they were cast. From draws is the hypergeometric chance of
                 having drawn every piece by each game&apos;s end, given cards seen (opening hand, one
                 per turn cycle, plus logged effect draws; commanders are always available). Converted
@@ -463,7 +463,7 @@ export default function ResultsPage() {
                       {Object.values(an.decks).reduce(
                         (a, d) => a + d.combos.reduce((x, c) => x + c.idle_online_turns, 0), 0)}
                     </span>{" "}
-                    turns without winning — Forge&apos;s AI does not pilot loops, so treat those decks&apos;
+                    turns without winning. Forge&apos;s AI does not pilot loops, so treat those decks&apos;
                     numbers as a floor, not a verdict.
                   </>
                 )}
@@ -536,7 +536,7 @@ export default function ResultsPage() {
                           {g.winnerName}
                         </span>
                       ) : (
-                        (g.winnerName ?? "—")
+                        (g.winnerName ?? "–")
                       )}
                     </td>
                     <td className="mono c-meta">T{g.endedTurn}</td>
@@ -551,7 +551,7 @@ export default function ResultsPage() {
                         return null;
                       return (
                         <span className="ctanote">
-                          {" "}— {m.method === "spell" ? `won by ${m.detail}` : m.method}
+                          {" ("}{m.method === "spell" ? `won by ${m.detail}` : m.method}{")"}
                         </span>
                       );
                     })()}
@@ -576,7 +576,7 @@ export default function ResultsPage() {
             </table>
           </div>
           <p className="note">
-            “Decided by” reports the run summary’s result line — the winner and the turn the log
+            “Decided by” reports the run summary’s result line: the winner and the turn the log
             ended on. Naming the final swing, drain, or poison total needs the event record, so open
             a replay for that.
           </p>

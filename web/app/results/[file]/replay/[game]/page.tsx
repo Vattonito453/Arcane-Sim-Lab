@@ -274,11 +274,11 @@ export default function ReplayPage() {
             </p>
           ) : wait != null ? (
             <p className="note">
-              {err} — the engine is throttling reads. Try again in about{" "}
+              {err}. The engine is throttling reads. Try again in about{" "}
               <span className="mono">{wait}</span> s.
             </p>
           ) : (
-            <p className="note">{err} — check that the engine API is running, then reload.</p>
+            <p className="note">{err}. Check that the engine API is running, then reload.</p>
           )}
         </div>
         <Footer />
@@ -339,7 +339,7 @@ export default function ReplayPage() {
             <>This game ended in a <b>draw</b> after {T} turns.</>
           ) : (
             <>
-              <b>{summary.winnerName}</b> won on <b>turn {summary.endedTurn}</b> — {summary.decidedBy}.
+              <b>{summary.winnerName}</b> won on <b>turn {summary.endedTurn}</b> via {summary.decidedBy}.
             </>
           )}{" "}
           <span className="only-fine-pointer">Use space to play; arrows step events. </span>
@@ -457,7 +457,7 @@ export default function ReplayPage() {
                 not a keyboard hint. "on the right" was also wrong on a phone,
                 where the log stacks below the table. */}
             <p className="note">
-              Replays fold the event log into board state locally — the event log is the
+              Replays fold the event log into board state locally. The event log is the
               authoritative record.
             </p>
           </div>
@@ -477,7 +477,7 @@ export default function ReplayPage() {
                     className={`ev${isCur ? " cur" : ""}`}
                     ref={isCur ? curRef : undefined}
                   >
-                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "—"}</span>
+                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "–"}</span>
                     <div>
                       <Hi text={s.text} hi={s.hi} />
                     </div>

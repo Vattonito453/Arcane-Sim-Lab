@@ -41,7 +41,7 @@ function CardRow({ name, qty, facts }: { name: string; qty: number; facts?: Card
           {facts?.mana_cost && <span className="cost">{facts.mana_cost}</span>}
         </div>
         <div className="cr-t">
-          {facts?.type_line ?? "type unresolved — not in the card cache yet"}
+          {facts?.type_line ?? "type unresolved, not in the card cache yet"}
           {facts?.power != null && facts?.toughness != null && (
             <> · {facts.power}/{facts.toughness}</>
           )}
@@ -143,7 +143,7 @@ export default function DeckPage() {
               <div className="sub">Could not load this deck</div>
             </div>
           </div>
-          <p className="note">{err} — check that the engine API is running, then reload.</p>
+          <p className="note">{err}. Check that the engine API is running, then reload.</p>
         </div>
         <Footer />
       </>
@@ -199,7 +199,7 @@ export default function DeckPage() {
             {deck?.source === "imported" && armed && (
               <>
                 <button className="btn" onClick={() => void doDelete()} aria-disabled={deleting}>
-                  {deleting ? "Deleting…" : "Delete permanently — cannot be undone"}
+                  {deleting ? "Deleting…" : "Delete permanently (cannot be undone)"}
                 </button>
                 <a
                   className="q"
@@ -232,7 +232,7 @@ export default function DeckPage() {
               <b>{deck.main.length} cards</b>, {view.unique} distinct
               {view.lands > 0 && (
                 <>
-                  {" "}— <b>{view.lands} lands</b>
+                  {", including "}<b>{view.lands} lands</b>
                   {view.avgMv && (
                     <>
                       , average mana value <b>{view.avgMv}</b> outside them
@@ -243,7 +243,7 @@ export default function DeckPage() {
               .{" "}
               {deck.source === "bundled"
                 ? "This deck ships with the engine and cannot be deleted."
-                : "Imported — it can be deleted from here."}
+                : "Imported, so it can be deleted from here."}
             </>
           ) : (
             <>Loading the deck…</>
@@ -277,7 +277,7 @@ export default function DeckPage() {
           ))}
 
         <p className="note">
-          Card text and images via Scryfall, © Wizards of the Coast — shown for reference.
+          Card text and images via Scryfall, © Wizards of the Coast, shown for reference.
           Cards the cache hasn&apos;t resolved yet group under Unidentified and fill in as
           facts arrive.
         </p>

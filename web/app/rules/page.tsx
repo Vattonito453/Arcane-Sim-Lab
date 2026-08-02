@@ -178,7 +178,7 @@ export default function RulesPage() {
         </div>
 
         <p className="lede">
-          Grounded in the June 2026 Comprehensive Rules —{" "}
+          Grounded in the June 2026 Comprehensive Rules:{" "}
           <b>{rulesCount != null ? rulesCount.toLocaleString("en-US") : "3,152"} numbered rules</b>,
           searched locally. Answers cite only retrieved rule text; a question the
           excerpts don&apos;t reach says so instead of guessing.
@@ -193,7 +193,7 @@ export default function RulesPage() {
             <section>
               <div className="sh">
                 <h2>Ask a rules question</h2>
-                <span className="meta">answers are cached — repeat questions are instant</span>
+                <span className="meta">answers are cached; repeat questions are instant</span>
               </div>
               <input
                 className="txt"
@@ -217,14 +217,14 @@ export default function RulesPage() {
 
               {wait != null && (
                 <p className="note">
-                  {err} — try again in about <span className="mono">{wait}</span> s.
+                  {err}. Try again in about <span className="mono">{wait}</span> s.
                 </p>
               )}
               {err && wait == null && (
                 <p className="note">
                   {err}
                   {err.includes("API key") &&
-                    " — asking generates a paid answer, so it needs the shared key; searching is free."}
+                    ". Asking generates a paid answer, so it needs the shared key; searching is free."}
                 </p>
               )}
             </section>
@@ -242,9 +242,9 @@ export default function RulesPage() {
                     <span className="st warn">
                       <i />
                       Not covered
-                    </span>{" "}
-                    — the retrieved excerpts don&apos;t reach this question, so no answer is
-                    offered. The closest rules are in the panel on the right.
+                    </span>{": "}
+                    the retrieved excerpts don&apos;t reach this question, so no answer is
+                    offered. The closest rules are listed below.
                   </p>
                 )}
                 {resp.covered !== false && (
@@ -263,7 +263,7 @@ export default function RulesPage() {
                   <h2>Matching rules</h2>
                   <span className="meta">
                     {resp.reason === "search only"
-                      ? "retrieval only — no tokens spent"
+                      ? "retrieval only; no tokens spent"
                       : resp.reason === "no LLM configured"
                         ? "the engine has no model configured, so this is plain search"
                         : resp.reason}
@@ -274,8 +274,8 @@ export default function RulesPage() {
                     <span className="st warn">
                       <i />
                       Answer withheld
-                    </span>{" "}
-                    — the model cited rule numbers that were not in the retrieved text, twice.
+                    </span>{": "}
+                    the model cited rule numbers that were not in the retrieved text, twice.
                     Showing the retrieved rules instead of a possibly-wrong answer.
                   </p>
                 )}

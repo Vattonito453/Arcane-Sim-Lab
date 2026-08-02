@@ -8,7 +8,7 @@ const jbMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jbmono" })
 
 export const metadata: Metadata = {
   title: "Arcane Sim Lab",
-  description: "Commander deck testing lab — simulate, replay, coach.",
+  description: "Commander deck testing lab: simulate, replay, coach.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

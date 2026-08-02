@@ -415,7 +415,7 @@ export function summarizeGame(game: SimGame): GameSummary {
     winnerName: winner ? stripAi(winner) : null,
     draw: game.result.draw,
     durationMs: game.result.duration_ms,
-    decidedBy: game.result.draw ? "Draw" : "—",
+    decidedBy: game.result.draw ? "Draw" : "–",
   };
   if (game.result.draw) return base;
 
@@ -473,7 +473,7 @@ export function summarizeGame(game: SimGame): GameSummary {
         break;
       }
     }
-    base.decidedBy = src ? `Poison — ${src}` : "Poison";
+    base.decidedBy = src ? `Poison from ${src}` : "Poison";
     return base;
   }
   if (kind === "commander") {
@@ -490,7 +490,7 @@ export function summarizeGame(game: SimGame): GameSummary {
         }
       }
     }
-    base.decidedBy = src ? `Commander damage — ${src}` : "Commander damage";
+    base.decidedBy = src ? `Commander damage from ${src}` : "Commander damage";
     return base;
   }
 

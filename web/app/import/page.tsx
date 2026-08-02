@@ -153,7 +153,7 @@ export default function ImportPage() {
         </div>
 
         <p className="lede">
-          Paste your list exactly as you have it — set codes, foil markers, collector numbers and
+          Paste your list exactly as you have it. Set codes, foil markers, collector numbers and
           single-line exports all parse. <b>Your text is never modified:</b> anything unrecognized
           is flagged with a suggested fix, and fixes apply only if you accept them.
         </p>
@@ -187,7 +187,7 @@ export default function ImportPage() {
 
         {tab !== 0 ? (
           <p className="note">
-            {SOURCES[tab]} import is coming soon — the engine only takes pasted text today.{" "}
+            {SOURCES[tab]} import is coming soon. The engine only takes pasted text today.{" "}
             <a
               className="bl"
               href="#"
@@ -229,8 +229,8 @@ export default function ImportPage() {
               >
                 <option value="">
                   {checks.commander
-                    ? `Auto — first card (${checks.commander})`
-                    : "Auto — first card in the list"}
+                    ? `Auto: first card (${checks.commander})`
+                    : "Auto: first card in the list"}
                 </option>
                 {checks.names.map((n) => (
                   <option key={n} value={n}>
@@ -270,7 +270,7 @@ export default function ImportPage() {
                 <span className="meta">
                   {checks.count > 0
                     ? `${effectiveCommander ?? "no commander"}, ${checks.total} cards`
-                    : "advisory — the engine is authoritative"}
+                    : "advisory; the engine is authoritative"}
                 </span>
               </div>
 
@@ -281,7 +281,7 @@ export default function ImportPage() {
                   <div className="ck">
                     <span className="lbl">
                       {checks.total} of 100 cards
-                      {checks.total !== 100 && <small> — Commander decks run exactly 100</small>}
+                      {checks.total !== 100 && <small> (Commander decks run exactly 100)</small>}
                     </span>
                     <span className={`res st ${checks.total === 100 ? "ok" : "warn"}`}>
                       <i />
@@ -291,14 +291,14 @@ export default function ImportPage() {
                   <div className="ck">
                     {checks.dups.length === 0 ? (
                       <span className="lbl">
-                        Singleton legal <small>— no duplicates outside basics</small>
+                        Singleton legal <small>(no duplicates outside basics)</small>
                       </span>
                     ) : (
                       <span className="lbl">
                         {checks.dups.length} duplicated{" "}
                         {checks.dups.length === 1 ? "name" : "names"}{" "}
                         <small>
-                          — {checks.dups.slice(0, 3).join(", ")}
+                          {checks.dups.slice(0, 3).join(", ")}
                           {checks.dups.length > 3 ? ` + ${checks.dups.length - 3} more` : ""}
                         </small>
                       </span>
@@ -312,8 +312,8 @@ export default function ImportPage() {
                     <span className="lbl">
                       {commander ? "Commander" : "Commander guess"}{" "}
                       <small>
-                        — {effectiveCommander}
-                        {commander ? ", your designation" : ", first card — pick another above"}
+                        {effectiveCommander}
+                        {commander ? ", your designation" : ", first card; pick another above"}
                       </small>
                     </span>
                     <span className="res st ok">
@@ -347,7 +347,7 @@ export default function ImportPage() {
                   <span className="lbl">
                     Engine check{" "}
                     <small>
-                      — {report.commander}, {report.main_count} of {report.expected} main-deck
+                      {report.commander}, {report.main_count} of {report.expected} main-deck
                       cards
                       {report.sideboard_dropped > 0
                         ? `, ${report.sideboard_dropped} sideboard dropped`
@@ -366,7 +366,7 @@ export default function ImportPage() {
 
               {checks.count > 0 && (
                 <p className="note">
-                  These checks are advisory — the engine re-validates the full list when you save.
+                  These checks are advisory. The engine re-validates the full list when you save.
                 </p>
               )}
 
@@ -392,7 +392,7 @@ export default function ImportPage() {
                 </button>
                 {!text.trim() && (
                   <span className="ctanote" id="import-blocker">
-                    Paste a list first — the checks run as you type.
+                    Paste a list first. The checks run as you type.
                   </span>
                 )}
               </div>
@@ -429,7 +429,7 @@ export default function ImportPage() {
                             No known combos in this list
                             {(resp.combos?.almost_included ?? 0) > 0 && (
                               <>
-                                {" "}—{" "}
+                                {" "}
                                 <span className="mono">{resp.combos?.almost_included}</span> are
                                 one card away (Commander Spellbook)
                               </>
@@ -475,7 +475,7 @@ export default function ImportPage() {
                           <span className="meta">via Commander Spellbook</span>
                         </div>
                         <p className="sdesc">
-                          Sim win rates for this deck will be a floor, not a verdict — the AI
+                          Sim win rates for this deck will be a floor, not a verdict. The AI
                           assembles combos but rarely fires them.
                         </p>
                         <div className="combo-list">
@@ -539,10 +539,10 @@ export default function ImportPage() {
                 </div>
               )}
               {resp?.ok && resp.saved === false && (
-                <p className="note">Validated only — nothing was saved to the engine.</p>
+                <p className="note">Validated only. Nothing was saved to the engine.</p>
               )}
 
-              <p className="note ctanote">Your text is never modified — fixes are suggestions.</p>
+              <p className="note ctanote">Your text is never modified; fixes are suggestions.</p>
             </div>
           </div>
         )}

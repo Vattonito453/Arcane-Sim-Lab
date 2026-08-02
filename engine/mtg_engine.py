@@ -1018,7 +1018,7 @@ def serve(port: int = 8484) -> None:
                         # Bundled decks live inside the image; deleting them
                         # would silently reappear on the next deploy.
                         return self._send(
-                            {"error": "bundled decks cannot be deleted — "
+                            {"error": "bundled decks cannot be deleted, "
                                       "only imported ones"}, 400)
                     p.unlink()
                     return self._send({"ok": True, "deleted": parts[1]})

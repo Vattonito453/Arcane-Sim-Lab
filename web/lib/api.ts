@@ -65,7 +65,7 @@ async function fail(r: Response, method: string, path: string): Promise<never> {
     throw new RateLimited(msg || "rate limited", retry || 60);
   }
   if (r.status === 401) {
-    throw new Error(msg || "this action needs an API key — set one under Engine");
+    throw new Error(msg || "this action needs an API key. Set one under Engine");
   }
   throw new Error(`${method} ${path} → ${r.status}${msg ? `: ${msg.slice(0, 200)}` : ""}`);
 }

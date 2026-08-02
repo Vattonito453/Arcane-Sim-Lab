@@ -118,11 +118,11 @@ function TelemetryInner() {
           </div>
           {wait != null ? (
             <p className="note">
-              {err} — the engine is throttling reads. Try again in about{" "}
+              {err}. The engine is throttling reads. Try again in about{" "}
               <span className="mono">{wait}</span> s.
             </p>
           ) : (
-            <p className="note">{err} — check that the engine API is running, then reload.</p>
+            <p className="note">{err}. Check that the engine API is running, then reload.</p>
           )}
         </div>
         <Footer />
@@ -160,7 +160,7 @@ function TelemetryInner() {
       <div className="page">
         <div className="head">
           <div>
-            <h1>{deckName} — telemetry</h1>
+            <h1>{deckName} telemetry</h1>
             {/* The .dck filename used to lead this line; it is in the details
                 disclosure at the foot with the rest of the addresses. */}
             <div className="sub">
@@ -294,7 +294,7 @@ function TelemetryInner() {
             </table>
             {coldWatched.length > 0 && (
               <p className="note">
-                Zero events can mean the card was never drawn as easily as never cast — the log
+                Zero events can mean the card was never drawn as easily as never cast; the log
                 only records what happened, not why it didn&apos;t.
               </p>
             )}
@@ -326,7 +326,7 @@ function TelemetryInner() {
                       No damage was recorded against this deck
                       <small>it may have lost to life loss, poison, or decking instead</small>
                     </td>
-                    <td className="val">—</td>
+                    <td className="val">–</td>
                   </tr>
                 )}
               </tbody>
@@ -338,7 +338,7 @@ function TelemetryInner() {
           Counts are event-log substring matches, not rules-level reads, and every per-game rate
           divides by the <span className="mono">{games}</span> {games === 1 ? "game" : "games"}{" "}
           actually present in this file. A deck can lose its sims and still show healthy
-          telemetry — the machinery firing is a separate question from the pod outcome.
+          telemetry; the machinery firing is a separate question from the pod outcome.
         </p>
 
         <PageDetails label="Run details">

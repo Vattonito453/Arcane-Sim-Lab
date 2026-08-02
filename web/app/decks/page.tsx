@@ -68,7 +68,7 @@ export default function DecksPage() {
           <p className="lede">
             The engine at the configured address isn&apos;t answering, so the collection
             can&apos;t be listed. Start it with <span className="mono">{ENGINE_CMD}</span> and
-            reload — nothing here is lost.
+            reload. Nothing here is lost.
           </p>
         ) : !decks ? (
           <p className="lede">Loading the collection…</p>
@@ -87,7 +87,7 @@ export default function DecksPage() {
                 MTG_DATA_DIR reports every deck as imported, and "0 bundled"
                 reads like a fault. */}
             {imported > 0 && bundled > 0 && (
-              <> — {imported} imported, {bundled} bundled with the engine</>
+              <> ({imported} imported, {bundled} bundled with the engine)</>
             )}
             . Open one to read every card, take it to the{" "}
             <Link className="bl" href="/playtest">
@@ -106,8 +106,8 @@ export default function DecksPage() {
             <DeckGallery decks={decks} facts={facts} mode="link" hrefFor={(d) => `/decks/${encodeURIComponent(d.file)}`} />
             <p className="note">
               Commander art via Scryfall, resolved through the engine&apos;s card cache in one
-              batched call. A deck whose commander isn&apos;t listed — or whose art hasn&apos;t
-              resolved yet — shows its name and colour identity instead of a picture.
+              batched call. A deck whose commander isn&apos;t listed, or whose art hasn&apos;t
+              resolved yet, shows its name and colour identity instead of a picture.
             </p>
           </section>
         )}

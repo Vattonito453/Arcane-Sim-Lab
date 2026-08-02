@@ -57,7 +57,7 @@ export default function PlaytestIndexPage() {
           </p>
         ) : (
           <p className="lede">
-            Goldfish a deck on your own — draw, mulligan, drag cards between zones, keep counters.
+            Goldfish a deck on your own: draw, mulligan, drag cards between zones, keep counters.
             The app moves cards and keeps count; <b>nothing here enforces a rule</b>. There is no
             opponent and no outcome is declared.
           </p>
@@ -65,9 +65,9 @@ export default function PlaytestIndexPage() {
 
         {decks && decks.length === 0 && (
           <p className="note">
-            No decks yet —{" "}
+            No decks yet.{" "}
             <Link className="bl" href="/import">
-              import one
+              Import one
             </Link>{" "}
             and it appears here.
           </p>
@@ -87,7 +87,7 @@ export default function PlaytestIndexPage() {
               hrefFor={(d) => `/playtest/${encodeURIComponent(d.file)}`}
             />
             <p className="note">
-              Everything on the table is ephemeral — reloading reshuffles. Nothing is adjudicated
+              Everything on the table is ephemeral; reloading reshuffles. Nothing is adjudicated
               and nothing declares a winner; this is a kitchen-table goldfish with the counting
               done for you.
             </p>

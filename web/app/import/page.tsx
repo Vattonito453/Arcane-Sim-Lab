@@ -145,17 +145,16 @@ export default function ImportPage() {
         <div className="head">
           <div>
             <h1>Import a deck</h1>
-            <div className="sub">
-              From a Moxfield or Archidekt URL, an MTGO or Arena export, plain text, or a .dck
-              file.
-            </div>
+            {/* The tab row directly below IS this list: Paste a list · Moxfield
+                URL · Archidekt URL · Upload .dck. Saying it twice does not make
+                it truer. */}
           </div>
         </div>
 
         <p className="lede">
-          Paste your list exactly as you have it. Set codes, foil markers, collector numbers and
-          single-line exports all parse. <b>Your text is never modified:</b> anything unrecognized
-          is flagged with a suggested fix, and fixes apply only if you accept them.
+          Paste your list exactly as you have it; set codes, foil markers and collector numbers
+          all parse. <b>Your text is never modified:</b> anything unrecognized is flagged with a
+          suggested fix, and fixes apply only if you accept them.
         </p>
 
         <div className="srcs">
@@ -180,7 +179,7 @@ export default function ImportPage() {
                 setNetErr(null);
               }}
             >
-              Or load the sample Kilo deck
+              Load a sample deck
             </a>
           </span>
         </div>
@@ -255,13 +254,14 @@ export default function ImportPage() {
                   }}
                 />
               </div>
-              <div className="inmeta">
-                <span>
-                  <span className="mono">{lineCount}</span> lines
-                </span>
-                <span>checked as you type</span>
-                <span>checks run 400 ms after you pause</span>
-              </div>
+              {lineCount > 0 && (
+                <div className="inmeta">
+                  <span>
+                    <span className="mono">{lineCount}</span>{" "}
+                    {lineCount === 1 ? "line" : "lines"}
+                  </span>
+                </div>
+              )}
             </div>
 
             <div>
@@ -275,7 +275,7 @@ export default function ImportPage() {
               </div>
 
               {checks.count === 0 ? (
-                <p className="note">Paste a list on the left and the checks run here as you type.</p>
+                <p className="note">Checks appear as you paste.</p>
               ) : (
                 <>
                   <div className="ck">
@@ -392,7 +392,7 @@ export default function ImportPage() {
                 </button>
                 {!text.trim() && (
                   <span className="ctanote" id="import-blocker">
-                    Paste a list first. The checks run as you type.
+                    Paste a list first.
                   </span>
                 )}
               </div>
@@ -542,7 +542,7 @@ export default function ImportPage() {
                 <p className="note">Validated only. Nothing was saved to the engine.</p>
               )}
 
-              <p className="note ctanote">Your text is never modified; fixes are suggestions.</p>
+              
             </div>
           </div>
         )}

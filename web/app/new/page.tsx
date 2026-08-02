@@ -142,15 +142,7 @@ function NewRunInner() {
           <p className="lede">Loading decks…</p>
         ) : (
           <p className="lede">
-            Seat two to four decks and run a gauntlet. Results land under{" "}
-            <Link className="bl" href="/results">
-              Results
-            </Link>
-            . To read a list before you commit, open it under{" "}
-            <Link className="bl" href="/decks">
-              Decks
-            </Link>
-            .
+            Tap two to four decks to seat them, then run the gauntlet.
           </p>
         )}
 
@@ -188,7 +180,6 @@ function NewRunInner() {
               <section>
                 <div className="sh">
                   <h2>Pick decks</h2>
-                  <span className="meta">tap a tile to seat it</span>
                 </div>
                 <DeckGallery
                   decks={decks}
@@ -197,10 +188,7 @@ function NewRunInner() {
                   selected={selected}
                   onToggle={toggle}
                 />
-                <p className="note">
-                  Commander art via Scryfall, resolved through the engine&apos;s card cache in
-                  one batched call. Seat order is the order you pick.
-                </p>
+
               </section>
             </div>
 
@@ -211,7 +199,7 @@ function NewRunInner() {
                   <span className="meta">{selected.length} of 2–4</span>
                 </div>
                 {selectedDecks.length === 0 && (
-                  <p className="note">Tap tiles to seat decks. Order here is seat order.</p>
+                  <p className="note">Seat order is the order you pick.</p>
                 )}
                 {selectedDecks.map((d, i) => {
                   const art = artOf(d);

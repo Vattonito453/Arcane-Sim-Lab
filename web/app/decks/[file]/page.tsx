@@ -18,16 +18,32 @@ import {
   cardFace, KIND_LABEL, KIND_ORDER, kindOf, loadCards, normalizeName,
   type CardFacts, type CardMap, type Kind,
 } from "@/lib/cards";
+import { useCardPreview } from "@/components/CardPreview";
 import type { DeckCards } from "@/lib/types";
 
 function factsKey(name: string): string {
   return normalizeName(name).toLowerCase();
 }
 
-function CardRow({ name, qty, facts }: { name: string; qty: number; facts?: CardFacts }) {
+function CardRow({
+  name, qty, facts, bind,
+}: {
+  name: string;
+  qty: number;
+  facts?: CardFacts;
+  /** Preview handlers. `tap: true` is safe here — a card row has no other
+   *  click action, so tap cannot fight anything (ui-review §2). */
+  bind: ReturnType<typeof useCardPreview>["bind"];
+}) {
   const face = cardFace(facts);
   return (
-    <div className="card-row">
+    <div
+      className="card-row"
+      tabIndex={0}
+      role="button"
+      aria-label={`${name} — read at full size`}
+      {...bind(name, { tap: true })}
+    >
       {face ? (
         // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink, never rehosted
         <img src={face} alt="" loading="lazy" />
@@ -63,6 +79,7 @@ export default function DeckPage() {
   const [armed, setArmed] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [delErr, setDelErr] = useState<string | null>(null);
+  const preview = useCardPreview(facts);
 
   useEffect(() => {
     let live = true;
@@ -256,7 +273,7 @@ export default function DeckPage() {
               <h2>Commander</h2>
             </div>
             {deck.commanders.map((c) => (
-              <CardRow key={c} name={c} qty={1} facts={facts[factsKey(c)]} />
+              <CardRow key={c} name={c} qty={1} facts={facts[factsKey(c)]} bind={preview.bind} />
             ))}
           </section>
         )}
@@ -271,15 +288,21 @@ export default function DeckPage() {
                 </span>
               </div>
               {view.byKind.get(k)!.map((r) => (
-                <CardRow key={r.name} name={r.name} qty={r.qty} facts={facts[factsKey(r.name)]} />
+                <CardRow
+                  key={r.name}
+                  name={r.name}
+                  qty={r.qty}
+                  facts={facts[factsKey(r.name)]}
+                  bind={preview.bind}
+                />
               ))}
             </section>
           ))}
 
+        {/* Oracle text is shown with attribution (CLAUDE.md legal posture), so
+            this line stays. How the cache fills is our problem, not the reader's. */}
         <p className="note">
           Card text and images via Scryfall, © Wizards of the Coast, shown for reference.
-          Cards the cache hasn&apos;t resolved yet group under Unidentified and fill in as
-          facts arrive.
         </p>
 
         <PageDetails label="Deck details">
@@ -289,6 +312,7 @@ export default function DeckPage() {
           </div>
         </PageDetails>
       </div>
+      {preview.layer}
       <Footer />
     </>
   );

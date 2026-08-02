@@ -193,8 +193,7 @@ export default function RulesPage() {
             <section>
               <div className="sh">
                 <h2>Ask a rules question</h2>
-                <span className="meta">answers are cached; repeat questions are instant</span>
-              </div>
+                              </div>
               <input
                 className="txt"
                 value={q}
@@ -310,10 +309,11 @@ export default function RulesPage() {
 
         {/* Attribution stays on the page whether or not a rule panel is open —
             the search hits quote rule text too. */}
+        {/* Attribution is a legal obligation and stays. The two clauses that
+            followed it just restated the lede. */}
         <p className="note">
           Rule text from the Magic: The Gathering Comprehensive Rules (June 2026),
-          © Wizards of the Coast, quoted for reference. Cited rule numbers open here;
-          answers are generated only from retrieved excerpts.
+          © Wizards of the Coast, quoted for reference.
         </p>
       </div>
       <Footer />

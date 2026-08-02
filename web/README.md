@@ -22,21 +22,45 @@ npm run dev     # http://localhost:3000
 
 The API base URL is runtime-configurable (per `frontend_handoff/API_SPEC.md`):
 it reads `localStorage["simlab.apiBase"]`, then `NEXT_PUBLIC_API_BASE`, then
-defaults to `http://127.0.0.1:8484`. Change it in the UI from the "Engine" link
-on the home page — no rebuild needed.
+defaults to `http://127.0.0.1:8484`. Change it from the **Engine** row at the
+bottom of the nav menu — no rebuild needed. It lives there and nowhere else; it
+used to be printed into two different section headers, which put an
+infrastructure address in the middle of the deck picker.
 
 `npm run build` requires network access on first run (Google Fonts are fetched
 and self-hosted at build time by `next/font`).
 
 ## Routes
 
+Five top-level destinations, all nouns. `Decks`, `Simulate` and `Playtest` all
+render the same `DeckGallery`; they differ only in what a tile does.
+
 | Route | Screen |
 |---|---|
-| `/` | Decks, past runs, start a gauntlet |
-| `/import` | Paste/validate a decklist → `POST /decks` |
-| `/runs/[id]` | Live run progress, polls `/sim-status` every 4 s |
-| `/results/[file]` | Run report — win rates, games table |
+| `/` | Splash hub — tallies, action hub, top decks, recent runs |
+| `/decks` | **Nav.** Gallery of every deck; Import is the primary here |
+| `/decks/[file]` | One deck: every card with cost, type line, oracle text |
+| `/new` | **Nav: Simulate.** Seat 2–4 decks, pick games, run |
+| `/playtest` | **Nav.** Deck chooser for the sandbox |
+| `/playtest/[deck]` | Solo goldfish sandbox (no opponent, no rules, no outcome) |
+| `/results` | **Nav.** Run history |
+| `/results/[file]` | Run report — win rates, win conditions, games table |
+| `/results/[file]/telemetry` | Did the deck's plan actually fire? |
+| `/results/[file]/coaching` | Cached coach report, or the one generate action |
 | `/results/[file]/replay/[game]` | Replay theater, `?t=` deep-links an event |
+| `/rules` | **Nav.** Grounded rules Q&A over the CR |
+| `/import` | Paste/validate a decklist → `POST /decks`; reached from `/decks` |
+| `/runs/[id]` | Live run progress, polls `/sim-status` every 4 s |
+
+There is no breadcrumb in the top bar. The `<h1>` is the page title; where a
+page has a real parent (a replay belongs to a run, a deck to the collection) it
+renders a `.back` link. A breadcrumb here only restated the H1, and on a narrow
+screen its width pushed the nav off the edge.
+
+**Addresses are not content.** A result filename, `.dck` name, port or job id
+never appears in a heading, a sub-line or the footer — it goes in the
+`<PageDetails>` disclosure at the foot of the page, closed by default. The
+footer carries the two legal lines and nothing else.
 
 ## Layout
 
@@ -44,17 +68,39 @@ and self-hosted at build time by `next/font`).
 app/
   globals.css                     the whole design system — tokens + component
                                   classes. Pages add no CSS and no inline styles
-                                  beyond computed percentages.
-  page.tsx  import/  runs/[id]/  results/[file]/  results/[file]/replay/[game]/
+                                  beyond computed percentages. Responsive lives
+                                  in three blocks at the bottom: max-width 980,
+                                  max-width 720, and pointer:coarse.
+  page.tsx  decks/  decks/[file]/  new/  playtest/  playtest/[deck]/
+  import/  rules/  runs/[id]/  results/  results/[file]/{,telemetry,coaching}
+  results/[file]/replay/[game]/
 components/
-  Chrome.tsx                      topbar + tab row + footer
-  ApiBaseSetting.tsx              engine URL control
+  Chrome.tsx                      topbar + nav (+ narrow-screen sheet), tab row,
+                                  footer, PageDetails disclosure
+  DeckGallery.tsx                 the gallery, shared by /decks /playtest /new
+  ApiBaseSetting.tsx              engine URL control (used only by Chrome)
+  Tabletop.tsx  Mascot.tsx  ManaPips.tsx
 lib/
   api.ts                          engine client, configurable base URL
   types.ts                        response shapes, mirroring the engine exactly
-  format.ts                       stripAi, pct, timeAgo, scryfallArt, …
+  format.ts                       stripAi, pct, timeAgo, runDate, scryfallArt, …
+  cards.ts                        Scryfall card-fact client + memo
   replay.ts                       event-folding engine (pure, testable)
 ```
+
+## Responsive contract
+
+- **720px** is the breakpoint between the wide layout and the narrow one.
+- Data tables that carry a list (`/results`, the run report's Games table) get
+  `class="games stackable"` and tag their cells `c-title` / `c-meta` / `c-act` /
+  `c-drop`. Below 720px the same markup renders as stacked rows. Wide *analytic*
+  tables (Win conditions) keep their grid and gain a visible scroll cue instead.
+- `.only-narrow`, `.only-narrow-inline`, `.only-wide` and `.only-fine-pointer`
+  gate copy that is only true at some widths or on some inputs — a keyboard hint
+  does not belong on a touch device.
+- Touch targets come up to `--control-h` (44px) under `@media (pointer: coarse)`,
+  and hover-only controls (the playtest counter buttons) become always-visible
+  there. Nothing in the product may be reachable by hover alone.
 
 ## `lib/replay.ts`
 

@@ -11,7 +11,7 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api } from "@/lib/api";
 import { ManaPips } from "@/components/ManaPips";
 import {
@@ -135,7 +135,7 @@ export default function DeckPage() {
   if (err) {
     return (
       <>
-        <Chrome context="Deck" />
+        <Chrome />
         <div className="page">
           <div className="head">
             <div>
@@ -145,28 +145,35 @@ export default function DeckPage() {
           </div>
           <p className="note">{err} — check that the engine API is running, then reload.</p>
         </div>
-        <Footer right={file} />
+        <Footer />
       </>
     );
   }
 
   return (
     <>
-      <Chrome context={name} />
+      <Chrome />
       <div className="page">
+        {/* A deck belongs to the collection, so the page says so and offers the
+            way back. This is the kind of hierarchy the top-bar breadcrumb was
+            pretending to serve while actually just repeating the H1. */}
+        <Link className="back" href="/decks">
+          ‹ All decks
+        </Link>
         <div className="head">
           <div>
             <h1>{name}</h1>
+            {/* The .dck filename used to lead this line. It is the deck's
+                address on disk, not a fact about the deck — it moved to the
+                details disclosure at the foot of the page. */}
             <div className="sub">
-              <span className="mono">{file}</span>
               {deck && (
                 <>
-                  <span className="sep">·</span>
                   {deck.commanders.join(" · ") || "no commander"}
                   <span className="sep">·</span>
                   <span className="mono">{deck.main.length}</span> cards
                   <span className="sep">·</span>
-                  {deck.source ?? "…"}
+                  {deck.source === "bundled" ? "bundled with the engine" : "imported"}
                 </>
               )}
               {view?.identity && (
@@ -274,8 +281,15 @@ export default function DeckPage() {
           Cards the cache hasn&apos;t resolved yet group under Unidentified and fill in as
           facts arrive.
         </p>
+
+        <PageDetails label="Deck details">
+          <div>{file}</div>
+          <div>
+            {deck?.source === "bundled" ? "bundled with the engine image" : "imported deck"}
+          </div>
+        </PageDetails>
       </div>
-      <Footer right={file} />
+      <Footer />
     </>
   );
 }

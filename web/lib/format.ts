@@ -65,6 +65,28 @@ export function fmtDate(unixSeconds: number): string {
   });
 }
 
+/** Short calendar day: "1 Aug 2026". */
+export function fmtDay(d: Date): string {
+  return d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+}
+
+/** The run date, read out of the result filename.
+ *
+ *  Runs are addressed by a timestamped name — "sim_20260801_193328.json". The
+ *  filename is an address and has no business being on screen, but the
+ *  timestamp inside it is the one thing that distinguishes two runs of the same
+ *  matchup, and the summary payload carries no date of its own. So the date is
+ *  lifted out and the address stays in the details disclosure. Returns null for
+ *  any filename that isn't this shape.
+ */
+export function runDate(file: string): Date | null {
+  const m = file.match(/(\d{4})(\d{2})(\d{2})[_-](\d{2})(\d{2})(\d{2})/);
+  if (!m) return null;
+  const [, y, mo, d, h, mi, s] = m;
+  const dt = new Date(+y, +mo - 1, +d, +h, +mi, +s);
+  return Number.isNaN(dt.getTime()) ? null : dt;
+}
+
 export function fmtDuration(totalSeconds: number): string {
   const m = Math.floor(totalSeconds / 60);
   const s = Math.round(totalSeconds % 60);

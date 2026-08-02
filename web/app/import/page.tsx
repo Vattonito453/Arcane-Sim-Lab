@@ -136,10 +136,10 @@ export default function ImportPage() {
 
   return (
     <>
-      <Chrome context="Import a deck" />
+      <Chrome />
       <div className="page narrow">
-        <Link className="q back" href="/">
-          ‹ Back to Sim Lab
+        <Link className="q back" href="/decks">
+          ‹ All decks
         </Link>
 
         <div className="head">
@@ -547,7 +547,7 @@ export default function ImportPage() {
           </div>
         )}
       </div>
-      <Footer right="parser: convert_decklist.py" />
+      <Footer />
     </>
   );
 }

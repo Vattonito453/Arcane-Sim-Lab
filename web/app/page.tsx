@@ -17,7 +17,8 @@ import type { DeckEntry, ResultIndexEntry } from "@/lib/types";
 import { pct, runTitle, stripAi, timeAgo } from "@/lib/format";
 import { Chrome, Footer } from "@/components/Chrome";
 import { Mascot } from "@/components/Mascot";
-import ApiBaseSetting from "@/components/ApiBaseSetting";
+import { factsKey } from "@/components/DeckGallery";
+import { loadCards, type CardMap } from "@/lib/cards";
 
 const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 
@@ -132,13 +133,26 @@ export default function Home() {
   const [decks, setDecks] = useState<DeckEntry[] | null>(null);
   const [results, setResults] = useState<ResultIndexEntry[] | null>(null);
   const [health, setHealth] = useState<Health | null>(null);
+  const [facts, setFacts] = useState<CardMap>({});
   const [down, setDown] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     let stop = false;
     setDown(false);
-    api.decks().then((d) => !stop && setDecks(d)).catch(() => !stop && setDown(true));
+    api
+      .decks()
+      .then(async (d) => {
+        if (stop) return;
+        setDecks(d);
+        // Same one batched, engine-cached call the galleries make — it fills the
+        // leaderboard thumbnails, which used to be a hardcoded stripe pattern
+        // standing in for art we already had.
+        const commanders = d.map((x) => x.commander).filter((c): c is string => !!c);
+        const map = await loadCards(commanders);
+        if (!stop) setFacts({ ...map });
+      })
+      .catch(() => !stop && setDown(true));
     api.results().then((r) => !stop && setResults(r)).catch(() => {});
     api.health().then((h) => !stop && setHealth(h)).catch(() => {});
     return () => {
@@ -253,12 +267,14 @@ export default function Home() {
             </svg>
             Import deck
           </Link>
-          <Link className="action-btn action-btn--neutral" href="/new">
+          {/* Was /new — the same route as "Run new simulation", so two of the
+              four buttons went to one place. Browsing has its own page now. */}
+          <Link className="action-btn action-btn--neutral" href="/decks">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C3CEDA" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-4-4" />
             </svg>
-            Explore decklists
+            Explore decks
           </Link>
         </div>
         {/* The primary carries its cost estimate (§6): pod size, not game
@@ -272,7 +288,7 @@ export default function Home() {
               <h2>Top decklists</h2>
               <span className="meta">most run</span>
               <span className="right">
-                <Link className="bl" href="/new">
+                <Link className="bl" href="/decks">
                   All {decks?.length ?? "—"}
                 </Link>
               </span>
@@ -288,30 +304,52 @@ export default function Home() {
             ) : (
               <>
                 <div className="deck-rows">
-                  {view.top.map((d) => (
-                    <Link
-                      key={d.name}
-                      className="deck-row"
-                      href={`/results?q=${encodeURIComponent(d.name)}`}
-                    >
-                      <span className="deck-row__thumb" />
-                      <span className="deck-row__body">
-                        <span
-                          className="deck-row__fill"
-                          style={{ width: `${Math.round(d.rate * 100)}%` }}
-                        />
-                        <span className="deck-row__name">{d.name}</span>
-                        <span className="deck-row__meta">
-                          {d.runs} {d.runs === 1 ? "run" : "runs"}
+                  {view.top.map((d) => {
+                    // The heading says decklists, so the row opens the deck. It
+                    // used to open a filtered run list, which is a different
+                    // thing wearing the same label.
+                    const entry = decks?.find((x) => x.name === d.name);
+                    const art = entry?.commander
+                      ? (facts[factsKey(entry.commander)]?.art_crop ?? null)
+                      : null;
+                    return (
+                      <Link
+                        key={d.name}
+                        className="deck-row"
+                        href={
+                          entry
+                            ? `/decks/${encodeURIComponent(entry.file)}`
+                            : `/results?q=${encodeURIComponent(d.name)}`
+                        }
+                      >
+                        <span className="deck-row__thumb">
+                          {art && (
+                            // eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink
+                            <img src={art} alt="" loading="lazy" />
+                          )}
                         </span>
-                      </span>
-                      <span className="deck-row__pct mono">{pct(d.rate)}</span>
-                    </Link>
-                  ))}
+                        <span className="deck-row__body">
+                          <span
+                            className="deck-row__fill"
+                            style={{ width: `${Math.round(d.rate * 100)}%` }}
+                          />
+                          <span className="deck-row__name">{d.name}</span>
+                          <span className="deck-row__meta">
+                            {d.runs} {d.runs === 1 ? "run" : "runs"}
+                          </span>
+                        </span>
+                        <span className="deck-row__pct mono">{pct(d.rate)}</span>
+                      </Link>
+                    );
+                  })}
                 </div>
                 <p className="note">
                   Win rates pool every pod size and seat, so compare a deck against its own pod&apos;s
-                  baseline in the run report — not against this list.
+                  baseline in the run report — not against this list. Rows open the deck;{" "}
+                  <Link className="bl" href="/results">
+                    Results
+                  </Link>{" "}
+                  has the runs behind them.
                 </p>
               </>
             )}
@@ -349,18 +387,9 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="splash-engine">
-          <ApiBaseSetting onChanged={() => setReloadKey((k) => k + 1)} />
-        </p>
       </div>
 
-      <Footer
-        right={
-          health
-            ? `${health.rules.toLocaleString("en-US")} rules · ${health.keywords} keywords`
-            : undefined
-        }
-      />
+      <Footer />
     </>
   );
 }

@@ -11,9 +11,10 @@
  *  State is ephemeral client state. After the initial deck + card-image
  *  load, the server is never touched. */
 
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api } from "@/lib/api";
 import { cardFace, loadCards, normalizeName, type CardMap } from "@/lib/cards";
 import type { DeckCards } from "@/lib/types";
@@ -282,7 +283,7 @@ export default function PlaytestPage() {
   if (err) {
     return (
       <>
-        <Chrome context="Playtest" />
+        <Chrome />
         <div className="page">
           <div className="head">
             <div>
@@ -292,22 +293,27 @@ export default function PlaytestPage() {
           </div>
           <p className="note">{err} — check that the engine API is running, then reload.</p>
         </div>
-        <Footer right={deckFile} />
+        <Footer />
       </>
     );
   }
 
   return (
     <>
-      <Chrome context={`${deckName} — playtest`} />
+      <Chrome />
       <div className="page">
+        <Link className="back" href="/playtest">
+          ‹ All decks
+        </Link>
         <div className="head">
           <div>
             <h1>{deckName} — playtest</h1>
             <div className="sub">
-              <span className="mono">{deckFile}</span>
-              <span className="sep">·</span>
               goldfishing — you pilot everything, nothing here enforces a rule
+              <span className="sep">·</span>
+              <Link className="bl" href={`/decks/${encodeURIComponent(deckFile)}`}>
+                read the decklist
+              </Link>
             </div>
           </div>
         </div>
@@ -326,7 +332,7 @@ export default function PlaytestPage() {
                   )}
                 </>
               ) : null}
-              . Click a hand or command-zone card to put it onto the battlefield, click a
+              . Tap a hand or command-zone card to put it onto the battlefield, tap a
               permanent to tap it, and drag cards anywhere else. The app only moves cards
               and keeps count — legality, costs, and triggers are yours to pilot.
             </>
@@ -412,7 +418,7 @@ export default function PlaytestPage() {
               onClick={() => draw(1)}
             >
               <span className="n">{zones?.library.length ?? "—"}</span>
-              <span className="l">click to draw</span>
+              <span className="l">tap to draw</span>
               <span className="l">drop to bottom</span>
             </div>
           </div>
@@ -423,8 +429,12 @@ export default function PlaytestPage() {
           adjudicated and nothing declares an outcome; this is a kitchen-table goldfish with
           the counting done for you.
         </p>
+
+        <PageDetails label="Deck details">
+          <div>{deckFile}</div>
+        </PageDetails>
       </div>
-      <Footer right={deckFile} />
+      <Footer />
     </>
   );
 }

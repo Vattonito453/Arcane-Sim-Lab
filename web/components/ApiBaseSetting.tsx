@@ -69,19 +69,23 @@ export default function ApiBaseSetting({ onChanged }: { onChanged?: () => void }
   }
 
   return (
-    <span className="ctanote">
-      Engine: <span className="mono">{host}</span>{" "}
-      <a
-        className="q"
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
+    <span className="ctanote eng">
+      <span>
+        Engine <span className="mono">{host}</span>
+      </span>
+      {/* Was an <a href="#"> reading "· change" — a link that goes nowhere, with
+          the separator inside its own label, which wrapped to a line of its
+          own in the nav sheet. It opens an editor, so it is a button. */}
+      <button
+        type="button"
+        className="rail-x"
+        onClick={() => {
           setDraft(base);
           setEditing(true);
         }}
       >
-        · change
-      </a>
+        Change
+      </button>
     </span>
   );
 }

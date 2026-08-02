@@ -10,7 +10,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { RunGame } from "@/lib/types";
 import { runTitle, scryfallArt, shortName, stripAi } from "@/lib/format";
@@ -281,7 +281,7 @@ export default function ReplayPage() {
             <p className="note">{err} — check that the engine API is running, then reload.</p>
           )}
         </div>
-        <Footer right={file} />
+        <Footer />
       </>
     );
   }
@@ -298,7 +298,7 @@ export default function ReplayPage() {
             </div>
           </div>
         </div>
-        <Footer right={file} />
+        <Footer />
       </>
     );
   }
@@ -311,13 +311,9 @@ export default function ReplayPage() {
   const lo = Math.max(0, idx - 40);
   const hi = Math.min(n, idx + 41);
   const phaseLabel = cur.turn > 0 ? `Turn ${cur.turn} · ${cur.phase.replace(/ step$/i, "").toLowerCase()}` : "Pregame";
-  // The matchup, same as the back link — a breadcrumb naming only the first
-  // deck reads as a different page than the one it heads.
-  const ctx = backLabel;
-
   return (
     <>
-      <Chrome context={ctx} tabs={tabs} />
+      <Chrome tabs={tabs} />
       <div className="page">
         <Link className="back q" href={`/results/${enc}`}>‹ {backLabel}</Link>
         <div className="head">
@@ -346,7 +342,7 @@ export default function ReplayPage() {
               <b>{summary.winnerName}</b> won on <b>turn {summary.endedTurn}</b> — {summary.decidedBy}.
             </>
           )}{" "}
-          Use space to play; arrows step events.{" "}
+          <span className="only-fine-pointer">Use space to play; arrows step events. </span>
           <a
             className="bl"
             href={`?t=${decidingIdx}`}
@@ -452,11 +448,17 @@ export default function ReplayPage() {
               </div>
             </div>
 
-            <p className="note">
+            <p className="note only-fine-pointer">
               Keyboard: <span className="mono">space</span> play or pause ·{" "}
               <span className="mono">← →</span> step one event ·{" "}
-              <span className="mono">shift ← →</span> jump a turn. Replays fold the event log into
-              board state locally — the feed on the right is the authoritative record.
+              <span className="mono">shift ← →</span> jump a turn.
+            </p>
+            {/* Stays at every width and on every input: it is the honesty note,
+                not a keyboard hint. "on the right" was also wrong on a phone,
+                where the log stacks below the table. */}
+            <p className="note">
+              Replays fold the event log into board state locally — the event log is the
+              authoritative record.
             </p>
           </div>
 
@@ -499,8 +501,13 @@ export default function ReplayPage() {
             </div>
           </div>
         </div>
+
+        <PageDetails label="Game details">
+          <div>{file}</div>
+          <div>game {gameNum} of {data.games_total} · {n.toLocaleString()} events</div>
+        </PageDetails>
       </div>
-      <Footer right={`${file} · game ${gameNum} of ${data.games_total}`} />
+      <Footer />
     </>
   );
 }

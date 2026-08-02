@@ -23,14 +23,23 @@ ARG SIMLAB_SHIM_REPO=https://github.com/Vattonito453/simlab-forge-shim.git
 ARG SIMLAB_SHIM_REF=main
 COPY --from=forge /opt/forge /opt/forge
 COPY deploy/vendor/ /vendor/
+# CACHE BUSTER — do not remove. The clone below is a fixed command string, so
+# Docker happily reuses its cached layer forever: shim commits pushed after the
+# image was first built NEVER reached the worker. Measured 2026-08-02, the VM
+# was running a Stage-3 shim while main carried Stage 5, with nothing in the
+# build output saying so. ADD of a URL re-fetches and hashes its content, so
+# when the shim's ref moves this layer (and the clone after it) invalidates.
+ADD https://api.github.com/repos/Vattonito453/simlab-forge-shim/commits/${SIMLAB_SHIM_REF} /shim-ref.json
 RUN if [ -f /vendor/simlab-forge-shim.jar ]; then \
-      echo "shim: using staged vendor jar" && cp /vendor/simlab-forge-shim.jar /shim.jar; \
+      echo "shim: using staged vendor jar" && cp /vendor/simlab-forge-shim.jar /shim.jar \
+      && echo "vendor-staged" > /shim.commit; \
     else \
       echo "shim: building from ${SIMLAB_SHIM_REPO}@${SIMLAB_SHIM_REF}" \
       && apt-get update && apt-get install -y --no-install-recommends git \
       && rm -rf /var/lib/apt/lists/* \
       && git clone --depth 1 -b "${SIMLAB_SHIM_REF}" "${SIMLAB_SHIM_REPO}" /shim-src \
       && cd /shim-src \
+      && git rev-parse HEAD > /shim.commit \
       && FORGE_JAR="$(find /opt/forge -name 'forge-gui-desktop-*jar-with-dependencies.jar' | head -1)" \
          ./build.sh \
       && cp simlab-forge-shim.jar /shim.jar; \
@@ -64,6 +73,10 @@ COPY engine/decks/*.dck /app/engine/decks/
 # The shim jar (vendor-staged or built from source in shim-builder).
 # run_sim.py's default agent is 'auto' = humanized via this jar.
 COPY --from=shim-builder /shim.jar /opt/simlab-forge-shim/simlab-forge-shim.jar
+# Provenance: which shim commit this image actually carries. Without it, the
+# only way to tell was unzipping the jar and grepping the constant pool — which
+# is how the stale-shim bug above went unnoticed. The worker logs it at startup.
+COPY --from=shim-builder /shim.commit /opt/simlab-forge-shim/COMMIT
 ENV SIMLAB_SHIM_JAR=/opt/simlab-forge-shim/simlab-forge-shim.jar
 
 # Forge writes its profile under $HOME; run_sim stages decks via FORGE_USER_DIR

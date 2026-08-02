@@ -37,6 +37,14 @@ while [ ! -e "/tmp/.X11-unix/X$DISPLAY_NUM" ]; do
 done
 
 export DISPLAY=":$DISPLAY_NUM"
+# Say which shim this image carries. A stale cached build layer once pinned the
+# VM to a Stage-3 shim while main was on Stage 5, and nothing in the logs said
+# so — the agent's own behavior was the only clue. Now it is one line.
+if [ -f /opt/simlab-forge-shim/COMMIT ]; then
+    echo "entrypoint: shim commit $(cat /opt/simlab-forge-shim/COMMIT)"
+else
+    echo "entrypoint: WARNING no shim provenance file — image predates the fix" >&2
+fi
 echo "entrypoint: Xvfb ready on $DISPLAY, starting $*"
 # exec so the worker becomes the main process and receives signals directly.
 exec "$@"

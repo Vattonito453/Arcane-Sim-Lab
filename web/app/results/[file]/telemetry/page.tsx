@@ -11,7 +11,7 @@
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { Chrome, Footer, type TabDef } from "@/components/Chrome";
+import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { RunSummary, TelemetryReport } from "@/lib/types";
 import { plural, runTitle, stripAi } from "@/lib/format";
@@ -125,7 +125,7 @@ function TelemetryInner() {
             <p className="note">{err} — check that the engine API is running, then reload.</p>
           )}
         </div>
-        <Footer right={file} />
+        <Footer />
       </>
     );
   }
@@ -141,7 +141,7 @@ function TelemetryInner() {
             </div>
           </div>
         </div>
-        <Footer right={file} />
+        <Footer />
       </>
     );
   }
@@ -156,17 +156,19 @@ function TelemetryInner() {
 
   return (
     <>
-      <Chrome context={title} tabs={tabs} />
+      <Chrome tabs={tabs} />
       <div className="page">
         <div className="head">
           <div>
             <h1>{deckName} — telemetry</h1>
+            {/* The .dck filename used to lead this line; it is in the details
+                disclosure at the foot with the rest of the addresses. */}
             <div className="sub">
-              <span className="mono">{rep.deck}</span>
-              <span className="sep">·</span>
-              <span className="mono">{games}</span> {games === 1 ? "game" : "games"} in this file
+              <span className="mono">{games}</span> {games === 1 ? "game" : "games"} in this run
               <span className="sep">·</span>
               won <span className="mono">{rep.wins}</span> of <span className="mono">{games}</span>
+              <span className="sep">·</span>
+              {rotated ? "seat-rotated" : "fixed seats"}
             </div>
           </div>
         </div>
@@ -338,8 +340,13 @@ function TelemetryInner() {
           actually present in this file. A deck can lose its sims and still show healthy
           telemetry — the machinery firing is a separate question from the pod outcome.
         </p>
+
+        <PageDetails label="Run details">
+          <div>{file}</div>
+          <div>{rep.deck}</div>
+        </PageDetails>
       </div>
-      <Footer right={file} />
+      <Footer />
     </>
   );
 }

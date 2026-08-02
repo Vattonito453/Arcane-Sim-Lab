@@ -259,7 +259,6 @@ input[type="checkbox"] { accent-color: var(--mana-cyan); width: 15px; height: 15
 .simrow__meta { display: block; margin-top: 4px; font-size: 14px; color: var(--ink-3); }
 .simrow__meta b { color: var(--ink-1); font-weight: 600; }
 
-.splash-engine { margin-top: 20px; text-align: right; font-size: 12.5px; color: var(--ink-4); }
 
 @media (max-width: 980px) {
   .hub { grid-template-columns: 1fr 1fr; }
@@ -289,6 +288,25 @@ header.chrome {
 .navlink { padding: 8px 12px; border-radius: var(--r-control); color: var(--ink-3); transition: color var(--dur-fast), background var(--dur-fast); }
 .navlink:hover { color: var(--ink-1); background: var(--row-ground-hover); }
 .navlink.on { color: var(--mana-cyan-ink); background: rgba(0, 229, 255, 0.08); }
+
+/* Narrow-screen nav: a disclosure in the bar, a full-width sheet beneath it.
+   Deliberately not a bottom tab bar — design_principles.md Part 1 lists that as
+   one of the loudest template tells, and this is a tool used in sessions rather
+   than a thumb-driven feed. Both controls are always in the DOM; the 720px
+   breakpoint decides which one is shown. */
+.navbtn { display: none; margin-left: auto; width: 40px; height: 40px; flex: none;
+  align-items: center; justify-content: center; background: transparent;
+  border: 1px solid var(--hairline-strong); border-radius: var(--r-control);
+  color: var(--ink-2); transition: border-color var(--dur-fast), color var(--dur-fast); }
+.navbtn:hover { border-color: var(--ink-3); color: var(--ink-1); }
+.navsheet { display: none; border-top: 1px solid var(--hairline);
+  padding: 6px var(--sp-4) 10px; }
+.navsheet a { display: flex; align-items: center; height: var(--control-h); padding: 0 12px;
+  border-radius: var(--r-control); color: var(--ink-2); font-size: 15px; }
+.navsheet a.on { color: var(--mana-cyan-ink); background: rgba(0, 229, 255, 0.08); }
+.navsheet .div { height: 1px; background: var(--hairline); margin: 6px 12px; }
+.navsheet-eng { padding: 2px 12px 4px; }
+.ctanote.eng { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 nav.tabs { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--sp-4); display: flex; }
 .tab { padding: 9px 12px 11px; font-size: 13.5px; color: var(--ink-3); position: relative; transition: color var(--dur-fast); background: none; border: 0; }
 .tab:hover { color: var(--ink-1); }
@@ -326,6 +344,34 @@ section { margin-bottom: 48px; }
 .note { color: var(--ink-4); font-size: 12.5px; margin-top: 10px; max-width: 760px; line-height: 1.6; }
 .note a { color: var(--ink-3); }
 .note a:hover { color: var(--ink-1); }
+
+/* The one place an address may appear. A filename, port or job id is an address,
+   not content: it used to sit in sub-lines and in the footer of every page
+   ("sim_20260801_193328.json", "atraxa_counters.dck", "rules_qa",
+   "parser: convert_decklist.py"). Now it lives here, closed, at the foot of the
+   page it addresses — findable by anyone who needs the file on disk, invisible
+   to everyone who doesn't. */
+.details { margin-top: 28px; border-top: 1px solid var(--hairline); padding-top: 12px; }
+.details summary { font-size: 12.5px; color: var(--ink-4); cursor: pointer; list-style: none;
+  display: inline-flex; align-items: center; min-height: 28px; }
+.details summary::-webkit-details-marker { display: none; }
+.details summary::before { content: "\25B8"; margin-right: 6px; color: var(--ink-4); }
+.details[open] summary::before { content: "\25BE"; }
+.details summary:hover { color: var(--ink-3); }
+.details-body { margin-top: 8px; font-family: var(--font-data); font-size: 11.5px;
+  color: var(--ink-4); line-height: 1.9; word-break: break-word; }
+
+/* Width-conditional copy. A keyboard hint on a touch device, or a "scroll
+   sideways" cue on a screen with no scroll, is noise — so the pages that need
+   either say it only where it is true. */
+.only-narrow { display: none; }
+.only-narrow-inline { display: none; }
+@media (max-width: 720px) {
+  .only-narrow { display: block; }
+  .only-narrow-inline { display: inline; }
+  .only-wide { display: none; }
+}
+@media (hover: none), (pointer: coarse) { .only-fine-pointer { display: none; } }
 
 /* ── buttons — cyan marks the one primary action; nothing else glows ── */
 .btn {
@@ -368,12 +414,15 @@ section { margin-bottom: 48px; }
   box-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
 }
 .action-btn--primary:hover { box-shadow: 0 0 26px rgba(0, 229, 255, 0.55); }
+/* Glow marks ONLY the primary action and live activity (DESIGN_SYSTEM.md §3).
+   Violet and blue used to carry a resting box-shadow too, so three of the hub's
+   four buttons glowed and nothing read as primary. They keep their border
+   colour — which is what distinguishes them — and drop the shadow. */
 .action-btn--violet {
   background: linear-gradient(180deg, rgba(168,85,247,0.16), rgba(18,10,28,0.82));
   border-color: var(--arcane-violet);
-  box-shadow: 0 0 18px rgba(168, 85, 247, 0.28);
 }
-.action-btn--violet:hover { box-shadow: 0 0 26px rgba(168, 85, 247, 0.45); }
+.action-btn--violet:hover { border-color: var(--arcane-violet-ink); }
 .action-btn--blue {
   background: linear-gradient(180deg, rgba(56,189,248,0.12), rgba(9,17,26,0.82));
   border-color: rgba(56, 189, 248, 0.6);
@@ -425,11 +474,15 @@ section { margin-bottom: 48px; }
   transition: background var(--dur-fast) var(--ease);
 }
 .deck-row:hover { background: var(--row-ground-hover); }
+/* Commander art, hotlinked from Scryfall. The diagonal-stripe gradient this
+   replaced was the only hardcoded pattern in the sheet and it stood in for art
+   we already had — it survives only as the no-art fallback. */
 .deck-row__thumb {
-  width: 52px; height: var(--row-h);
+  width: 52px; height: var(--row-h); flex: none; overflow: hidden;
   border-radius: var(--r-control) 0 0 var(--r-control);
-  background: repeating-linear-gradient(135deg, #2A3341 0 5px, #1B2230 5px 10px);
+  background: linear-gradient(160deg, var(--surface-raised), var(--surface-obsidian));
 }
+.deck-row__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .deck-row__body { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
 .deck-row__fill { position: absolute; inset: 0 auto 0 0; border-radius: var(--r-fill); background: var(--winrate-fill); }
 .deck-row__name { position: relative; font-size: 16px; font-weight: 500; color: var(--ink-max);
@@ -452,9 +505,11 @@ section { margin-bottom: 48px; }
 /* ── bordered functional table ── */
 .tblwrap { border: 1px solid var(--hairline-strong); border-radius: var(--r-action); overflow: hidden; background: var(--row-ground); }
 .tblwrap { overflow-x: auto; }   /* wide tables scroll inside their own container */
-.toolrow { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--hairline); color: var(--ink-4); font-size: 12.5px; }
-.toolrow .upd { margin-left: auto; color: var(--ink-4); font-size: 12px; }
+.toolrow { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--hairline); color: var(--ink-4); font-size: 12.5px; }
+.toolrow .upd { margin-left: auto; color: var(--ink-4); font-size: 12px; white-space: nowrap; flex: none; }
+.toolrow .inp { flex: 1; min-width: 0; }
 .inp { display: flex; align-items: center; gap: 8px; height: 34px; border: 1px solid var(--hairline-strong); border-radius: var(--r-control); padding: 0 10px; font-size: 13px; color: var(--ink-4); min-width: 230px; background: var(--surface-obsidian); }
+@media (max-width: 720px) { .inp { min-width: 0; } }
 .inp input { background: none; border: 0; outline: none; color: var(--ink-1); font: inherit; width: 100%; }
 .inp input::placeholder { color: var(--ink-4); }
 .inp:focus-within { border-color: var(--mana-cyan); }
@@ -545,6 +600,8 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 
 /* ── replay theater ── */
 .stage { display: grid; grid-template-columns: 1fr 330px; gap: 40px; align-items: start; }
+/* A rail with nothing in it is not a layout — it is 330px of apology. */
+.stage--one { grid-template-columns: 1fr; }
 .theater { border: 1px solid var(--hairline-strong); border-radius: var(--r-action); overflow: hidden; background: var(--row-ground); }
 .ttool { display: flex; align-items: center; gap: 16px; padding: 10px 14px; border-bottom: 1px solid var(--hairline); font-size: 12.5px; color: var(--ink-3); }
 .ttool .now { font-family: var(--font-data); font-variant-numeric: tabular-nums; color: var(--ink-1); font-size: 12px; }
@@ -677,31 +734,58 @@ footer.chrome {
 .dg-tile { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; border: 1px solid var(--hairline-strong); border-radius: var(--r-control); background: var(--surface-obsidian); overflow: hidden; transition: border-color var(--dur-fast); }
 .dg-tile:hover { border-color: var(--mana-cyan); }
 .dg-tile .pick { position: absolute; inset: 0; display: block; width: 100%; border: 0; background: transparent; padding: 0; cursor: pointer; }
+/* Keyboard focus on a gallery tile was invisible, in two stacked ways. The
+   action fills the tile (inset:0) inside an overflow:hidden parent, so the
+   normal outline — element edge plus a 2px offset — is clipped away entirely.
+   And an inset box-shadow doesn't help either: the tile's <img> is also
+   inset:0, so it paints over the parent's shadow. The ring therefore has to be
+   an overlay above the art. Same 2px cyan (WCAG 2.4.7, DESIGN_SYSTEM.md §8). */
+.dg-tile .pick:focus-visible { outline: none; }
+.dg-tile .pick:focus-visible::after {
+  content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  border: 2px solid var(--mana-cyan); border-radius: inherit;
+}
 .dg-tile .pick img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 /* pointer-events:none is load-bearing: the scrim covers the bottom strip of
    the tile — where the deck name sits, and where people naturally click — so
    without it that strip is dead space instead of seating the deck. Nothing
    inside the scrim is interactive (the name is text, pips are data). */
 .dg-tile .scrim { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; pointer-events: none; padding: 7px 10px; background: var(--bar-instrument); display: flex; align-items: center; gap: 8px; }
-.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; color: var(--ink-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
-/* The tile's second action needs its own visible control — a labeled button,
-   always rendered (not hover-only: undiscoverable, and dead on touch). */
-.dg-tile .dg-view { position: absolute; top: 8px; right: 8px; z-index: 2; height: 24px; padding: 0 9px; border-radius: var(--r-pill); background: var(--bar-instrument); border: 1px solid var(--hairline-strong); color: var(--mana-cyan-ink); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; transition: border-color var(--dur-fast); }
-.dg-tile .dg-view:hover, .dg-tile .dg-view:focus-visible { border-color: var(--mana-cyan); text-decoration: none; }
+.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; color: var(--ink-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+/* A five-colour identity at the inline size ate 90px of a 230px tile and left
+   "Meren Graveyard…" for the name. The name is what you are scanning for; the
+   pips are a secondary read and survive being smaller. */
+.dg-tile .scrim .mana-strip { gap: 3px; }
+.dg-tile .scrim .mana-badge { width: 13px; height: 13px; }
+/* The "Cards" pill that used to sit here is gone with the page split: a tile
+   now has exactly one action on every page that shows one (open on /decks and
+   /playtest, seat on /new), so there is no second control to give a home to. */
+/* A gallery whose premise is art needs an honest state for when there is none.
+   Before this, a deck with no resolvable commander art rendered as an empty
+   16:10 rectangle — and with the engine briefly serving commander:null for
+   every deck, that meant a wall of identical grey boxes. The plate carries what
+   we do know: the colour identity and the size of the list. */
+.dg-tile .plate { position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 7px; padding: 10px 12px 34px;
+  background: linear-gradient(160deg, var(--surface-raised), var(--surface-obsidian)); }
+.dg-tile .plate .k { font-family: var(--font-data); font-size: 11px; color: var(--ink-4);
+  text-align: center; }
 .dg-tile[data-on] { border-color: var(--mana-cyan); box-shadow: inset 0 0 0 1px var(--mana-cyan); }
 .dg-tile .seat { position: absolute; top: 8px; left: 8px; height: 22px; min-width: 30px; padding: 0 7px; border-radius: var(--r-pill); background: var(--surface-obsidian); border: 1px solid var(--mana-cyan); color: var(--mana-cyan-ink); font-family: var(--font-data); font-size: 11px; display: flex; align-items: center; justify-content: center; }
 .dg-filter { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
 .dg-filter .flab { font-size: 12px; color: var(--ink-4); }
 .dg-filter label { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--ink-3); cursor: pointer; }
-/* Decklist popover — its own fixed layer, never a panel inside a panel.
-   Anchored beside the hovered tile (left/top are computed by the page), so
-   it can never cover the tile that opened it — a fixed slot overlapped the
-   grid's left column and flicker-looped mouseenter/mouseleave. */
-.dl-pop { position: fixed; max-height: min(56vh, 560px); width: 300px; overflow-y: auto; z-index: 30; padding: 16px 18px; }
-.dl-pop h3 { font-size: 13.5px; margin: 0 0 4px; color: var(--ink-1); }
-.dl-pop .grp-h { font-size: 11px; color: var(--ink-4); margin: 12px 0 4px; }
-.dl-pop .row { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--ink-3); padding: 2px 0; }
-.dl-pop .row .n { font-family: var(--font-data); color: var(--ink-4); flex: none; }
+.dg-filter .dg-search { flex: 1 1 220px; max-width: 320px; min-width: 180px; }
+.dg-filter .dg-count { margin-left: auto; }
+@media (max-width: 720px) {
+  .dg-filter .dg-search { flex-basis: 100%; max-width: none; }
+  .dg-filter .dg-count { margin-left: auto; }
+  .dg-filter label { font-size: 12px; }
+}
+/* The decklist popover is gone. It was hover-triggered — undiscoverable, and
+   dead on touch — and display:none below 980px, so the two routes it carried
+   ("Open deck", "Playtest") did not exist on a phone at all. Both are nav
+   items now. */
 /* Deck detail page — readable card rows, grouped by type. */
 .card-row { display: flex; gap: 14px; padding: 12px 0; border-top: 1px solid var(--hairline); align-items: flex-start; }
 .card-row:last-child { border-bottom: 1px solid var(--hairline); }
@@ -719,7 +803,13 @@ footer.chrome {
 .rail-deck img, .rail-deck .noart { width: 64px; height: 44px; object-fit: cover; border-radius: 6px; border: 1px solid var(--hairline-strong); background: var(--surface-obsidian); flex: none; }
 .rail-deck .t { flex: 1; min-width: 0; font-size: 12.5px; color: var(--ink-1); }
 .rail-deck .t small { display: block; color: var(--ink-4); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-@media (max-width: 980px) { .dl-pop { display: none; } }
+/* Remove was an <a href="#"> that preventDefault'd — a link that isn't one.
+   It removes a deck from the pod, so it is a button. */
+.rail-x { flex: none; min-height: 32px; padding: 0 8px; background: none; border: 0;
+  color: var(--ink-3); font: inherit; font-size: 12.5px; border-radius: var(--r-control);
+  transition: color var(--dur-fast); }
+.rail-x:hover { color: var(--ink-1); }
+@media (pointer: coarse) { .rail-x { min-height: var(--control-h); } }
 
 /* ── playtest sandbox — rules-free goldfishing (task 08 Part A) ──
    The app moves cards and keeps counts; it never enforces a rule. */
@@ -752,10 +842,191 @@ footer.chrome {
 
 @media (max-width: 980px) {
   .page { padding: 24px 20px 36px; }
-  .figs { grid-template-columns: 1fr 1fr; }
   .cols, .stage { grid-template-columns: 1fr; }
   .seats { grid-template-columns: 1fr 1fr; }
   .seat:nth-child(3) { border-left: 0; }
   .seat:nth-child(n + 3) { border-top: 1px solid var(--hairline); }
   .podt .opp { display: none; }
+
+  /* .fig + .fig puts a left border on every cell after the first, which at two
+     columns lands one on cell 3 — the START of row 2, not a column boundary.
+     Row 2 rendered indented and out of line with row 1 on every run report.
+     Borders key off the grid position instead. */
+  .figs { grid-template-columns: 1fr 1fr; }
+  .fig:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .fig:nth-child(n + 3) { border-top: 1px solid var(--hairline); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Narrow screens. Everything below is layout only — no colour, no type scale
+   that isn't already a token, no component the wide layout doesn't have.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  .tb-links { display: none; }
+  .navbtn { display: flex; }
+  .navsheet { display: block; }
+
+  .page { width: calc(100% - 20px); padding: 20px 16px 32px; margin: 14px auto 32px; }
+  h1 { font-size: 23px; }
+  .lede { margin: 14px 0 22px; }
+  section { margin-bottom: 32px; }
+  .head .btns { margin-left: 0; width: 100%; }
+  .head .btns .btn { flex: 1; justify-content: center; }
+  /* .btn is nowrap by design so labels don't break mid-phrase on a wide screen.
+     At 390px a long one ("Generate coaching report (~$0.01, about 20 s)") is
+     simply wider than the viewport, so here it wraps and grows instead. */
+  .btns { flex-wrap: wrap; }
+  .btn { white-space: normal; height: auto; min-height: var(--control-h);
+    padding: 9px 14px; text-align: center; }
+
+  /* A section heading and its qualifier fought over one line and the heading
+     lost, wrapping to "Win / conditions". The qualifier takes the next line. */
+  .sh { flex-wrap: wrap; }
+  .sh h2 { flex: 1 1 100%; }
+  .sh .right { margin-left: 0; }
+
+  /* A five-cell scroll-snap strip clipped mid-word at this width — "29 decks on
+     this engir". Nothing here needs to scroll; it needs to fit. */
+  .tally { display: grid; grid-template-columns: 1fr 1fr; overflow-x: visible; }
+  .tally-cell { min-width: 0; padding: 11px 12px; }
+  .tally-cell:nth-child(odd) { border-left: 0; }
+  .tally-cell:nth-child(n + 3) { border-top: 1px solid var(--hairline); }
+  .tally-text { white-space: normal; line-height: 1.3; font-size: 12.5px; }
+  .tally-text b { font-size: 15px; }
+
+  /* The masthead was spending ~700px of an 844px viewport before the page said
+     anything. Same composition, sized to the screen it is on. */
+  /* The mascot ships at a fixed 200px and, with the wordmark under it, was
+     taking ~700px of an 844px viewport before the page said anything. The SVG
+     scales cleanly, so it is sized to the screen rather than to the desktop. */
+  .masthead { padding: 14px 0 10px; }
+  .masthead .masthead-robot-mascot { width: clamp(96px, 26vw, 200px); height: auto; }
+  .masthead .wordmark { font-size: clamp(24px, 7.5vw, 32px); }
+  .splash-prompt { font-size: 17px; margin: 22px 0 14px; }
+  .action-btn { min-height: 62px; font-size: 15px; gap: 12px; padding: 0 16px; }
+  .datapanel { gap: 28px; }
+
+  .dg { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dg-tile .scrim .t { font-size: 12px; }
+  .dg-filter { gap: 10px; }
+
+  /* Tables: the payload was off-canvas.
+     /results is five columns in an overflow-x box; at 375px only the run title
+     was visible, so nine rows read "Kilo vs Atraxa vs Ur-Dragon vs Meren" with
+     the winner, the sample and the date all behind a scroll nobody finds. Same
+     markup, stacked: title on line one, the facts that distinguish rows on line
+     two, the action pinned right. */
+  .games.stackable, .games.stackable tbody, .games.stackable tr { display: block; }
+  .games.stackable thead { display: none; }
+  .games.stackable tr { position: relative; padding: 12px 14px;
+    border-bottom: 1px solid var(--hairline); }
+  .games.stackable tbody tr:last-child { border-bottom: 0; }
+  .games.stackable td { display: inline; padding: 0; height: auto; border: 0;
+    white-space: normal; }
+  .games.stackable td.c-title { display: block; font-size: 15px; font-weight: 500;
+    color: var(--ink-max); margin-bottom: 5px; padding-right: 62px; line-height: 1.35; }
+  .games.stackable td.c-meta { font-size: 12.5px; color: var(--ink-3); }
+  .games.stackable td.c-meta + td.c-meta::before { content: " · "; color: var(--ink-4); }
+  .games.stackable td.c-act { position: absolute; top: 12px; right: 14px; text-align: right; }
+  .games.stackable td.c-drop { display: none; }
+  .games.stackable .gnum { font-family: var(--font-data); color: var(--ink-4);
+    font-size: 13px; font-weight: 400; }
+  .games.stackable td.c-empty { display: block; padding: 14px 0; color: var(--ink-4); }
+
+  /* Win rates: four columns left "Ur-" / "Dragon" / "B3" stacked over three
+     lines beside a 120px rail. The deck name takes the full width and the bar,
+     the figure and the tally share the line below it. */
+  .podt, .podt tbody { display: block; }
+  .podt tr { display: grid; grid-template-columns: 1fr auto auto; gap: 6px 12px;
+    align-items: center; padding: 11px 0; border-top: 1px solid var(--hairline); }
+  .podt tr:last-child { border-bottom: 1px solid var(--hairline); }
+  .podt td { display: block; border: 0; padding: 0; }
+  .podt tr:last-child td { border-bottom: 0; }
+  .podt .nm { grid-column: 1 / -1; padding-right: 0; }
+  .podt .pct { width: auto; padding-left: 0; }
+  .podt .res { width: auto; }
+
+  /* Seat plates rendered on top of each other at two columns — "40 life · 0 on
+     board" written through the next seat's text. */
+  .tbl.p3, .tbl.p4 { grid-template-columns: 1fr; }
+  .tbl.p3 .parea:last-child { grid-column: auto; }
+  .parea { border-left: 0 !important; }
+  /* Four seat pips at 20px left "A…" for the deck name. */
+  .plate .mana-badge--seat { width: 14px; height: 14px; }
+  .plate .mana-strip { gap: 3px; }
+  .seats { grid-template-columns: 1fr; }
+  .seat { border-left: 0; }
+  .seat + .seat { border-top: 1px solid var(--hairline); }
+
+  /* Transport: the scrubber gets its own full-width row so the tick labels stop
+     colliding with the clock and the buttons can reach a real touch size. */
+  .vcr { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
+  .vcr .scrub { order: -1; flex: 1 0 100%; }
+  .scrub .ticklab { display: none; }
+  .clock { width: auto; margin-left: auto; font-size: 11px; }
+  /* The row is already marked by its cyan wash and cyan turn stamp; the tag
+     only pushed itself past the edge of a 390px log. */
+  .ev .nowtag { display: none; }
+  .loglist { max-height: 60vh; }
+
+  .pt-row { grid-template-columns: 1fr 1fr; }
+  .pt-zone { padding: 12px; }
+
+  .ft { padding: 16px var(--sp-4); gap: 10px; font-size: 11.5px; }
+  .ft span:last-child { margin-left: 0; }
+}
+
+@media (max-width: 560px) {
+  .dg { grid-template-columns: 1fr 1fr; }
+  .figs { grid-template-columns: 1fr 1fr; }
+  .pt-row { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Touch. --control-h (44px) is already the token for a comfortable target; the
+   controls below were built at 18–34px and are unusable with a finger. Nothing
+   here changes a colour or a shape — only the box.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (pointer: coarse) {
+  .pt-mini { height: var(--control-h); min-width: var(--control-h); font-size: 16px; }
+  .vbtn { width: var(--control-h); height: var(--control-h); }
+  .vbtn.play { width: 52px; height: 52px; }
+  .tab { padding: 13px 14px 15px; }
+  .navlink { padding: 12px; }
+  .pager button { min-height: var(--control-h); }
+
+  /* Counter +/- was display:none until :hover, so on a phone there was NO way
+     to put a counter on a permanent. They are always drawn on a touch device
+     and sized to be hit. */
+  .pt-card .cbtns { display: flex; top: -10px; left: -10px; gap: 5px; }
+  .pt-card .cbtns button { width: 28px; height: 28px; font-size: 15px; }
+  .pt-card .ctr { min-width: 24px; height: 24px; font-size: 12px; }
+}
+
+/* ── sticky run bar (Simulate) ──
+   The right rail — games select and the one primary — is a second grid column
+   that stacks AFTER the gallery below 980px, so on a phone the action was
+   ~7,000px beneath twenty-nine deck tiles. Once a deck is seated the action
+   follows you down the page instead. */
+.runbar { display: none; }
+@media (max-width: 980px) {
+  .runbar {
+    position: sticky; bottom: 0; z-index: 4;
+    display: flex; align-items: center; gap: 10px;
+    margin: 16px -20px -36px; padding: 10px 16px;
+    background: var(--bar-instrument);
+    backdrop-filter: var(--panel-blur);
+    -webkit-backdrop-filter: var(--panel-blur);
+    border-top: 1px solid var(--hairline-strong);
+  }
+  .runbar .cnt { flex: 1; min-width: 0; font-size: 12px; color: var(--ink-3); line-height: 1.35; }
+  .runbar .cnt b { color: var(--ink-max); font-family: var(--font-data); }
+  .runbar .cnt small { display: block; color: var(--ink-4); overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+  .runbar .sel, .runbar .btn { flex: none; }
+  /* The rail's own copy of the action would be a second primary on the page. */
+  .rail-cta { display: none; }
+}
+@media (max-width: 720px) {
+  .runbar { margin: 16px -16px -32px; padding: 10px 14px; }
 }

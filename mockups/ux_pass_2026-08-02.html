@@ -1,0 +1,1239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sim Lab — UX pass proposal, 2026-08-02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   Tokens — verbatim from Design System/arcane-sim-lab.tokens.css as
+   mirrored in web/app/globals.css. Nothing below invents a hex.
+   ══════════════════════════════════════════════════════════════════════ */
+:root{
+  --bg-void:#0D0F12; --surface-obsidian:#161B22; --surface-instrument:#111827;
+  --panel-glass:rgba(15,20,28,0.85); --panel-blur:blur(12px);
+  --panel-border:rgba(56,189,248,0.25); --bar-instrument:rgba(10,13,18,0.86);
+  --row-ground:rgba(255,255,255,0.035); --row-ground-hover:rgba(255,255,255,0.06);
+  --surface-raised:#1C2230;
+  --hairline:rgba(148,163,184,0.12); --hairline-strong:rgba(148,163,184,0.22);
+  --atmosphere:radial-gradient(120% 80% at 50% 8%,#2C4A63 0%,#1B2E42 32%,#121C29 58%,#0D0F12 100%);
+  --mana-cyan:#00E5FF; --mana-cyan-ink:#7FF2FF;
+  --arcane-violet:#A855F7; --arcane-violet-ink:#C89BFA;
+  --winrate-fill-bare:linear-gradient(90deg,rgba(45,212,191,0.55),rgba(103,232,249,0.90));
+  --winrate-fill:linear-gradient(90deg,rgba(11,52,62,0.96) 0px,rgba(11,52,62,0.96) 165px,rgba(45,212,191,0.68) 250px,rgba(103,232,249,0.94) 430px);
+  --text-shadow-on-fill:0 1px 3px rgba(3,10,14,0.85);
+  --glow-cyan:0 0 15px rgba(0,229,255,0.5); --glow-cyan-strong:0 0 24px rgba(0,229,255,0.65);
+  --ink-max:#FFFFFF; --ink-1:#E6EDF3; --ink-2:#C3CEDA; --ink-3:#A9B7C6; --ink-4:#7A8899;
+  --ink-on-fill:#0B1418;
+  --pip-w:#F5E9C8; --pip-u:#67B7E8; --pip-b:#A855F7; --pip-r:#EF4444; --pip-g:#10B981;
+  --state-done:#10B981; --state-failed:#EF4444; --state-failed-ink:#FCA5A5;
+  --state-warn:#F59E0B; --state-warn-ink:#FCD34D; --state-running:var(--mana-cyan);
+  --state-queued:var(--ink-4);
+  --font-display:"Cinzel","Trajan Pro",Georgia,serif;
+  --font-ui:"Space Grotesk",system-ui,-apple-system,sans-serif;
+  --font-data:"JetBrains Mono",ui-monospace,"SF Mono",monospace;
+  --size-logo:28px; --lh-logo:1.1; --ls-logo:0.08em;
+  --size-h2:19px; --lh-h2:1.25; --size-cta:18px; --lh-cta:1.15;
+  --size-body:15px; --lh-body:1.65; --size-meta:12px; --lh-meta:1.55;
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px;
+  --gutter:40px; --max-width:1280px; --row-h:64px; --row-gap:8px;
+  --action-h:78px; --control-h:44px;
+  --r-fill:6px; --r-control:8px; --r-action:12px; --r-panel:16px; --r-pill:999px;
+  --ease:cubic-bezier(0.2,0.8,0.2,1); --dur-fast:120ms; --dur-base:200ms;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   Spec chrome — the document around the mockups. Prefixed .sp- so it can
+   never collide with app classes.
+   ══════════════════════════════════════════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-void);color:var(--ink-2);font-family:var(--font-ui);
+  font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-image:var(--atmosphere);background-attachment:fixed}
+.sp-wrap{max-width:1180px;margin:0 auto;padding:56px 24px 120px}
+.sp-mast{border-bottom:1px solid var(--hairline-strong);padding-bottom:28px;margin-bottom:44px}
+.sp-mast h1{font:700 clamp(26px,4vw,38px)/1.1 var(--font-display);letter-spacing:0.06em;
+  text-transform:uppercase;color:var(--ink-max)}
+.sp-mast .sub{margin-top:10px;color:var(--ink-3);max-width:70ch}
+.sp-mast .rule{margin-top:18px;padding:12px 16px;border-left:2px solid var(--mana-cyan);
+  background:var(--row-ground);color:var(--ink-2);max-width:80ch;border-radius:0 var(--r-control) var(--r-control) 0}
+.sp-mast .rule b{color:var(--ink-max)}
+
+.sp-sec{margin-top:72px}
+.sp-sec > h2{font:600 24px/1.2 var(--font-ui);color:var(--ink-max);
+  padding-bottom:10px;border-bottom:1px solid var(--hairline-strong)}
+.sp-sec > .why{margin-top:14px;color:var(--ink-3);max-width:78ch}
+.sp-sec > .why + .why{margin-top:10px}
+.sp-sec .kicker{font:500 11px/1 var(--font-ui);letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--ink-4);margin-bottom:8px;display:block}
+.sp-sec h3{font:600 17px/1.3 var(--font-ui);color:var(--ink-1);margin:34px 0 8px}
+code,.sp-code{font-family:var(--font-data);font-size:0.88em;color:var(--mana-cyan-ink)}
+.sp-file{font-family:var(--font-data);font-size:12px;color:var(--ink-4)}
+
+/* verdict chips — shape-led, matching the app's status language */
+.sp-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;
+  padding:3px 10px;border-radius:var(--r-pill);border:1px solid var(--hairline-strong);
+  color:var(--ink-3);white-space:nowrap}
+.sp-tag i{width:8px;height:8px;flex:none}
+.sp-tag.bad{color:var(--state-failed-ink);border-color:rgba(239,68,68,0.4)}
+.sp-tag.bad i{background:var(--state-failed);border-radius:50%}
+.sp-tag.good{color:var(--state-done);border-color:rgba(16,185,129,0.4)}
+.sp-tag.good i{background:var(--state-done);border-radius:1.5px}
+
+/* side-by-side comparison */
+.sp-ab{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px;align-items:start}
+@media (max-width:900px){.sp-ab{grid-template-columns:1fr}}
+/* Desktop frames must be shown at a desktop width or the comparison lies —
+   half a grid column wraps the nav and reads as the bug we're describing. */
+.sp-ab.stacked{grid-template-columns:1fr;gap:36px}
+.sp-col > .lab{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sp-col > .lab .t{font:600 13px/1 var(--font-ui);color:var(--ink-2)}
+.sp-note{margin-top:12px;font-size:13px;color:var(--ink-4);line-height:1.6}
+.sp-note b{color:var(--ink-2);font-weight:600}
+.sp-list{margin-top:14px;padding-left:0;list-style:none;max-width:80ch}
+.sp-list li{position:relative;padding-left:20px;margin-bottom:9px;color:var(--ink-3);font-size:14.5px}
+.sp-list li:before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;
+  border-radius:50%;background:var(--ink-4)}
+.sp-list li b{color:var(--ink-1);font-weight:600}
+.sp-list.tick li:before{background:var(--state-done);border-radius:1px}
+
+/* device frames */
+.sp-phone{width:390px;max-width:100%;border:1px solid var(--hairline-strong);
+  border-radius:22px;overflow:hidden;background:var(--bg-void);
+  box-shadow:0 24px 60px rgba(0,0,0,0.55);position:relative}
+.sp-phone .art{position:absolute;inset:0;background:var(--atmosphere);z-index:0}
+.sp-phone .art:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(11,14,19,0.30),rgba(11,14,19,0.62) 55%,rgba(11,14,19,0.86))}
+.sp-phone .vp{position:relative;z-index:1;height:660px;overflow:hidden}
+.sp-phone.tall .vp{height:760px}
+.sp-desk{border:1px solid var(--hairline-strong);border-radius:var(--r-panel);
+  overflow:hidden;background:var(--bg-void);position:relative}
+.sp-desk .art{position:absolute;inset:0;background:var(--atmosphere);z-index:0}
+.sp-desk .vp{position:relative;z-index:1}
+.sp-cap{margin-top:10px;font-size:12.5px;color:var(--ink-4);font-family:var(--font-data)}
+
+/* callout pins inside a frame */
+.sp-pin{position:absolute;z-index:5;width:20px;height:20px;border-radius:50%;
+  background:var(--state-failed);color:#fff;font:700 11px/20px var(--font-ui);
+  text-align:center;box-shadow:0 0 0 3px rgba(13,15,18,0.8)}
+.sp-key{margin-top:14px;font-size:13px;color:var(--ink-3);max-width:70ch}
+.sp-key div{display:flex;gap:9px;margin-bottom:6px;align-items:flex-start}
+.sp-key .n{flex:none;width:19px;height:19px;border-radius:50%;background:var(--state-failed);
+  color:#fff;font:700 11px/19px var(--font-ui);text-align:center;margin-top:2px}
+
+/* leak inventory table */
+.sp-tbl{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px}
+.sp-tbl th{text-align:left;font:500 11.5px/1 var(--font-ui);letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--ink-4);padding:0 14px 9px 0;
+  border-bottom:1px solid var(--hairline-strong)}
+.sp-tbl td{padding:11px 14px 11px 0;border-bottom:1px solid var(--hairline);
+  color:var(--ink-3);vertical-align:top}
+.sp-tbl td.leak{font-family:var(--font-data);font-size:12.5px;color:var(--state-failed-ink)}
+.sp-tbl td.src{font-family:var(--font-data);font-size:11.5px;color:var(--ink-4);white-space:nowrap}
+@media (max-width:760px){
+  .sp-tbl thead{display:none}
+  .sp-tbl tr{display:block;padding:12px 0;border-bottom:1px solid var(--hairline)}
+  .sp-tbl td{display:block;border:0;padding:1px 0}
+}
+
+/* IA map */
+.sp-ia{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px}
+@media (max-width:760px){.sp-ia{grid-template-columns:1fr}}
+.sp-iabox{border:1px solid var(--hairline-strong);border-radius:var(--r-action);
+  padding:20px;background:var(--row-ground)}
+.sp-iabox.now{border-color:rgba(239,68,68,0.28)}
+.sp-iabox.next{border-color:var(--panel-border)}
+.sp-iabox h4{font:600 13px/1 var(--font-ui);letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink-4);margin-bottom:14px}
+.sp-iarow{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--hairline);
+  align-items:baseline;font-size:14px}
+.sp-iarow:first-of-type{border-top:0}
+.sp-iarow .rt{font-family:var(--font-data);font-size:12px;color:var(--mana-cyan-ink);
+  flex:none;width:88px}
+.sp-iarow .ds{color:var(--ink-3);font-size:13px}
+.sp-iarow.orphan .rt{color:var(--state-failed-ink)}
+.sp-iarow.added .rt{color:var(--state-done)}
+
+/* ══════════════════════════════════════════════════════════════════════
+   App CSS — the real classes, so a mockup translates 1:1 to globals.css.
+   Scoped to .vp so it never leaks into the spec chrome.
+   ══════════════════════════════════════════════════════════════════════ */
+.vp{font-family:var(--font-ui);font-size:14px;line-height:1.55;color:var(--ink-2)}
+.vp a{color:var(--ink-1);text-decoration:none}
+.vp a.bl{color:var(--mana-cyan-ink)}
+.vp a.q{color:var(--ink-3)}
+.vp button{font-family:inherit;cursor:pointer}
+.vp .mono{font-family:var(--font-data);font-variant-numeric:tabular-nums;font-size:0.93em}
+
+.vp header.chrome{background:var(--bar-instrument);border-bottom:1px solid var(--hairline-strong);
+  position:relative;z-index:2}
+.vp .tb{max-width:var(--max-width);margin:0 auto;padding:0 var(--sp-5);height:60px;
+  display:flex;align-items:center;gap:10px}
+.vp .wordmark{font:700 var(--size-logo)/var(--lh-logo) var(--font-display);
+  letter-spacing:var(--ls-logo);text-transform:uppercase;color:var(--ink-max);white-space:nowrap}
+.vp .tb .wordmark{font-size:17px;letter-spacing:0.09em}
+.vp .path{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;
+  color:var(--ink-1);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vp .path.brand{flex:none;overflow:visible}
+.vp .slash{color:var(--ink-4);font-size:16px;font-weight:300;margin:0 2px}
+.vp .tb-links{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:13.5px}
+.vp .navlink{padding:8px 12px;border-radius:var(--r-control);color:var(--ink-3)}
+.vp .navlink.on{color:var(--mana-cyan-ink);background:rgba(0,229,255,0.08)}
+.vp nav.tabs{max-width:var(--max-width);margin:0 auto;padding:0 var(--sp-4);display:flex}
+.vp .tab{padding:9px 12px 11px;font-size:13.5px;color:var(--ink-3);position:relative}
+.vp .tab.on{color:var(--ink-1)}
+.vp .tab.on:after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;
+  background:var(--mana-cyan)}
+
+.vp .page{width:calc(100% - 32px);margin:20px auto 40px;padding:24px 20px 36px;
+  background:var(--panel-glass);border:1px solid var(--panel-border);border-radius:var(--r-panel)}
+.vp .page.wide{width:calc(100% - 48px);padding:32px var(--gutter) 40px;margin:24px auto}
+.vp h1{font-size:26px;font-weight:600;letter-spacing:-0.01em;line-height:1.12;color:var(--ink-1)}
+.vp .head{display:flex;align-items:flex-start;gap:16px;margin-bottom:6px;flex-wrap:wrap}
+.vp .head .btns{margin-left:auto;display:flex;gap:8px}
+.vp .sub{color:var(--ink-3);font-size:13.5px;display:flex;gap:8px;align-items:center;
+  flex-wrap:wrap;margin-top:6px}
+.vp .sub .sep{color:var(--ink-4)}
+.vp .lede{margin:16px 0 24px;color:var(--ink-3);font-size:var(--size-body);line-height:var(--lh-body)}
+.vp .lede b{color:var(--ink-1);font-weight:600}
+.vp section{margin-bottom:30px}
+.vp .sh{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.vp .sh h2{font-size:var(--size-h2);font-weight:600;line-height:var(--lh-h2);color:var(--ink-1)}
+.vp .sh .meta{color:var(--ink-4);font-size:12.5px}
+.vp .sh .right{margin-left:auto;font-size:12.5px}
+.vp .note{color:var(--ink-4);font-size:12.5px;margin-top:10px;line-height:1.6}
+.vp .back{font-size:13px;margin-bottom:12px;display:inline-block;color:var(--ink-3)}
+
+.vp .btn{height:var(--control-h);padding:0 16px;border-radius:var(--r-control);
+  font-size:13px;font-weight:500;border:1px solid var(--hairline-strong);
+  background:rgba(13,17,23,0.6);color:var(--ink-1);display:inline-flex;align-items:center;
+  gap:7px;white-space:nowrap}
+.vp .btn.pri{background:linear-gradient(180deg,rgba(0,229,255,0.16),rgba(8,20,26,0.82));
+  color:var(--ink-max);border:1.5px solid var(--mana-cyan);font-weight:700;
+  text-transform:uppercase;letter-spacing:0.04em;box-shadow:0 0 18px rgba(0,229,255,0.35)}
+.vp .action-btn{display:flex;align-items:center;gap:14px;min-height:var(--action-h);
+  padding:0 20px;border-radius:var(--r-action);
+  font:700 var(--size-cta)/var(--lh-cta) var(--font-ui);text-transform:uppercase;
+  color:var(--ink-max);border:1.5px solid var(--hairline-strong);background:rgba(13,17,23,0.82)}
+.vp .action-btn--primary{background:linear-gradient(180deg,rgba(0,229,255,0.16),rgba(8,20,26,0.82));
+  border-color:var(--mana-cyan);box-shadow:0 0 18px rgba(0,229,255,0.35)}
+.vp .action-btn--violet{background:linear-gradient(180deg,rgba(168,85,247,0.16),rgba(18,10,28,0.82));
+  border-color:var(--arcane-violet)}
+.vp .action-btn--blue{background:linear-gradient(180deg,rgba(56,189,248,0.12),rgba(9,17,26,0.82));
+  border-color:rgba(56,189,248,0.6)}
+.vp .action-btn--neutral{}
+.vp .action-btn.glowbad{box-shadow:0 0 18px rgba(168,85,247,0.28)}
+.vp .action-btn.glowbad2{box-shadow:0 0 18px rgba(56,189,248,0.28)}
+
+.vp .st{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;
+  white-space:nowrap}
+.vp .st i{width:8px;height:8px;border-radius:50%;flex:none}
+.vp .st.win{color:var(--state-done)} .vp .st.win i{background:var(--state-done);border-radius:1.5px}
+.vp .st.loss,.vp .st.out{color:var(--ink-4)}
+.vp .st.loss i,.vp .st.out i{background:transparent;border:1.5px solid var(--ink-4)}
+.vp .st.warn{color:var(--state-warn-ink)}
+.vp .st.warn i{background:var(--state-warn);border-radius:1px;transform:rotate(45deg) scale(.92)}
+.vp .st.bad{color:var(--state-failed-ink)} .vp .st.bad i{background:var(--state-failed)}
+.vp .st.run{color:var(--mana-cyan-ink)}
+.vp .st.run i{background:var(--state-running);box-shadow:var(--glow-cyan)}
+
+.vp .figs{display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin-bottom:24px}
+.vp .fig{padding:14px 16px 14px 0}
+.vp .fig+.fig{padding-left:16px;border-left:1px solid var(--hairline)}
+.vp .fig .n{font-family:var(--font-data);font-variant-numeric:tabular-nums;font-size:24px;
+  font-weight:500;color:var(--ink-max)}
+.vp .fig .n small{font-size:14px;color:var(--ink-4);font-weight:400}
+.vp .fig .l{color:var(--ink-3);font-size:12.5px;margin-top:3px}
+/* the fix: 2-col grid, borders per column not per sibling */
+.vp .figs.fixed2{grid-template-columns:1fr 1fr}
+.vp .figs.fixed2 .fig{padding:14px 16px}
+.vp .figs.fixed2 .fig+.fig{border-left:0;padding-left:16px}
+.vp .figs.fixed2 .fig:nth-child(even){border-left:1px solid var(--hairline)}
+.vp .figs.fixed2 .fig:nth-child(n+3){border-top:1px solid var(--hairline)}
+/* the bug: what ships today at 2 columns */
+.vp .figs.broken2{grid-template-columns:1fr 1fr}
+
+.vp .rail{height:6px;background:rgba(148,163,184,0.14);border-radius:var(--r-pill);
+  position:relative;overflow:hidden}
+.vp .rail .fill{position:absolute;left:0;top:0;bottom:0;background:var(--winrate-fill-bare);
+  border-radius:var(--r-pill)}
+.vp .rail .base{position:absolute;top:-4px;bottom:-4px;width:1.5px;background:var(--ink-3)}
+
+.vp .tblwrap{border:1px solid var(--hairline-strong);border-radius:var(--r-action);
+  overflow:hidden;background:var(--row-ground)}
+.vp .toolrow{display:flex;align-items:center;gap:8px;padding:10px 12px;
+  border-bottom:1px solid var(--hairline);color:var(--ink-4);font-size:12.5px}
+.vp .toolrow .upd{margin-left:auto}
+.vp .inp{display:flex;align-items:center;gap:8px;height:34px;border:1px solid var(--hairline-strong);
+  border-radius:var(--r-control);padding:0 10px;font-size:13px;color:var(--ink-4);
+  background:var(--surface-obsidian);flex:1}
+.vp table.games{width:100%;border-collapse:collapse}
+.vp .games th{font-size:11.5px;color:var(--ink-4);font-weight:500;text-align:left;
+  padding:8px 14px;border-bottom:1px solid var(--hairline);white-space:nowrap}
+.vp .games th.r,.vp .games td.r{text-align:right}
+.vp .games td{padding:0 14px;height:42px;font-size:13px;border-bottom:1px solid var(--hairline);
+  white-space:nowrap;color:var(--ink-3)}
+.vp .games .id{font-family:var(--font-data);color:var(--ink-1);font-size:12.5px}
+.vp .games tbody tr:last-child td{border-bottom:0}
+
+/* PROPOSED: the same <table> markup, stacked at ≤720px. Pure CSS. */
+.vp .games.stack{display:block}
+.vp .games.stack thead{display:none}
+.vp .games.stack tbody,.vp .games.stack tr{display:block}
+.vp .games.stack tr{padding:12px 14px;border-bottom:1px solid var(--hairline);position:relative}
+.vp .games.stack tr:last-child{border-bottom:0}
+.vp .games.stack td{display:inline;padding:0;height:auto;border:0;white-space:normal}
+.vp .games.stack td.t{display:block;font-size:15px;font-weight:500;color:var(--ink-max);
+  margin-bottom:5px;padding-right:64px;line-height:1.35}
+.vp .games.stack td.m{color:var(--ink-3);font-size:12.5px}
+.vp .games.stack td.m + td.m:before{content:" · ";color:var(--ink-4)}
+.vp .games.stack td.act{position:absolute;top:12px;right:14px;font-size:12.5px}
+.vp .games.stack td.act a{color:var(--mana-cyan-ink)}
+
+.vp .dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:14px}
+.vp .dg.m2{grid-template-columns:1fr 1fr;gap:10px}
+.vp .dg-tile{position:relative;display:block;width:100%;aspect-ratio:16/10;
+  border:1px solid var(--hairline-strong);border-radius:var(--r-control);
+  background:var(--surface-obsidian);overflow:hidden}
+.vp .dg-tile[data-on]{border-color:var(--mana-cyan);box-shadow:inset 0 0 0 1px var(--mana-cyan)}
+.vp .dg-tile .scrim{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:7px 9px;
+  background:var(--bar-instrument);display:flex;align-items:center;gap:7px}
+.vp .dg-tile .scrim .t{font-size:12px;font-weight:600;color:var(--ink-1);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;flex:1}
+.vp .dg-tile .seat{position:absolute;top:7px;left:7px;height:22px;min-width:30px;padding:0 7px;
+  border-radius:var(--r-pill);background:var(--surface-obsidian);border:1px solid var(--mana-cyan);
+  color:var(--mana-cyan-ink);font-family:var(--font-data);font-size:11px;display:flex;
+  align-items:center;justify-content:center;z-index:2}
+/* PROPOSED fallback plate — a deck with no commander art is not an empty box */
+.vp .dg-tile .plate{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;padding:10px 12px 30px;
+  background:linear-gradient(160deg,var(--surface-raised),var(--surface-obsidian))}
+.vp .dg-tile .plate .k{font-family:var(--font-data);font-size:11px;color:var(--ink-4)}
+.vp .dg-tile .plate .pips{display:flex;gap:4px}
+.vp .dg-tile .fauxart{position:absolute;inset:0;
+  background:radial-gradient(70% 90% at 30% 20%,#2C4A63,#151d2b 70%),var(--surface-obsidian)}
+.vp .dg-tile .fauxart.b{background:radial-gradient(70% 90% at 60% 30%,#3a2a52,#1a1526 70%)}
+.vp .dg-tile .fauxart.c{background:radial-gradient(70% 90% at 40% 60%,#1f4436,#141f1d 70%)}
+.vp .dg-tile .fauxart.d{background:radial-gradient(70% 90% at 50% 25%,#5a2d2d,#241618 70%)}
+
+.vp .pip{width:14px;height:14px;border-radius:50%;flex:none;display:block}
+.vp .pip.w{background:var(--pip-w)} .vp .pip.u{background:var(--pip-u)}
+.vp .pip.b{background:var(--pip-b)} .vp .pip.r{background:var(--pip-r)}
+.vp .pip.g{background:var(--pip-g)}
+
+.vp .tally{display:flex;background:var(--bar-instrument);border:1px solid var(--hairline-strong);
+  border-radius:var(--r-action);overflow-x:auto}
+.vp .tally-cell{flex:1 1 0;min-width:200px;display:flex;align-items:center;gap:12px;
+  padding:14px 20px;border-left:1px solid var(--hairline)}
+.vp .tally-cell:first-child{border-left:0}
+/* PROPOSED: 2×2, nothing clipped, no scroll */
+.vp .tally.grid2{display:grid;grid-template-columns:1fr 1fr;overflow:visible}
+.vp .tally.grid2 .tally-cell{min-width:0;padding:11px 12px}
+.vp .tally.grid2 .tally-cell:nth-child(odd){border-left:0}
+.vp .tally.grid2 .tally-cell:nth-child(n+3){border-top:1px solid var(--hairline)}
+.vp .tally-badge{width:30px;height:30px;border-radius:var(--r-control);flex:none;display:flex;
+  align-items:center;justify-content:center;font-size:15px}
+.vp .tally-badge[data-tone="sun"]{background:rgba(245,158,11,0.14)}
+.vp .tally-badge[data-tone="water"]{background:rgba(0,229,255,0.12)}
+.vp .tally-badge[data-tone="skull"]{background:rgba(168,85,247,0.14)}
+.vp .tally-badge[data-tone="combo"]{background:rgba(45,212,191,0.12)}
+.vp .tally-text{font-size:13.5px;color:var(--ink-1);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis}
+.vp .tally.grid2 .tally-text{white-space:normal;line-height:1.3;font-size:12.5px}
+.vp .tally-text b{font-size:16px;font-weight:600;color:var(--ink-max);font-family:var(--font-data)}
+
+.vp .masthead{display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:var(--sp-6) 0 var(--sp-5)}
+.vp .masthead .wordmark{margin-top:-4px;font-size:clamp(26px,7vw,34px);letter-spacing:0.06em}
+.vp .masthead.tight{padding:16px 0 12px}
+.vp .robot{display:block}
+.vp .splash{width:calc(100% - 28px);margin:0 auto 28px}
+.vp .splash-prompt{text-align:center;font:400 17px/1.3 var(--font-ui);color:var(--ink-2);
+  margin:22px 0 14px}
+.vp .hub{display:grid;grid-template-columns:1fr;gap:10px}
+.vp .hub-est{margin:9px 2px 0;font:400 var(--size-meta)/var(--lh-meta) var(--font-data);
+  color:var(--ink-4)}
+
+/* PROPOSED: mobile nav sheet */
+.vp .navbtn{margin-left:auto;height:38px;width:38px;display:none;align-items:center;
+  justify-content:center;border:1px solid var(--hairline-strong);border-radius:var(--r-control);
+  background:transparent;color:var(--ink-2)}
+.vp .navsheet{border-top:1px solid var(--hairline);background:var(--bar-instrument);
+  padding:6px var(--sp-4) 10px}
+.vp .navsheet a{display:flex;align-items:center;height:var(--control-h);padding:0 12px;
+  border-radius:var(--r-control);color:var(--ink-2);font-size:15px}
+.vp .navsheet a.on{color:var(--mana-cyan-ink);background:rgba(0,229,255,0.08)}
+.vp .navsheet .div{height:1px;background:var(--hairline);margin:6px 12px}
+.vp .navsheet a.q2{color:var(--ink-4);font-size:13.5px;height:38px}
+.vp.mobilechrome .tb-links{display:none}
+.vp.mobilechrome .navbtn{display:flex}
+
+/* PROPOSED: sticky run bar */
+.vp .runbar{position:sticky;bottom:0;z-index:4;display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:var(--bar-instrument);border-top:1px solid var(--hairline-strong);
+  margin:0 -20px -36px}
+.vp .runbar .cnt{font-family:var(--font-data);font-size:12px;color:var(--ink-3);flex:1;
+  line-height:1.3}
+.vp .runbar .cnt b{color:var(--ink-max)}
+.vp .sel{height:34px;border:1px solid var(--hairline-strong);border-radius:var(--r-control);
+  background:var(--surface-obsidian);color:var(--ink-1);font-size:12.5px;padding:0 10px;
+  font-family:var(--font-ui);flex:none}
+
+/* PROPOSED: details disclosure — where addresses go */
+.vp .details{margin-top:22px;border-top:1px solid var(--hairline);padding-top:12px}
+.vp .details summary{font-size:12.5px;color:var(--ink-4);cursor:pointer;list-style:none}
+.vp .details summary::-webkit-details-marker{display:none}
+.vp .details summary:before{content:"▸ ";color:var(--ink-4)}
+.vp .details[open] summary:before{content:"▾ "}
+.vp .details .body{margin-top:9px;font-family:var(--font-data);font-size:11.5px;
+  color:var(--ink-4);line-height:1.8}
+
+.vp footer.chrome{background:var(--bar-instrument);border-top:1px solid var(--hairline-strong);
+  margin-top:12px}
+.vp .ft{padding:14px var(--sp-4);color:var(--ink-4);font-size:11.5px;display:flex;gap:14px;
+  flex-wrap:wrap;line-height:1.5}
+.vp .ft span:last-child{margin-left:auto}
+.vp .ft.clean span:last-child{margin-left:0}
+
+/* replay bits */
+.vp .theater{border:1px solid var(--hairline-strong);border-radius:var(--r-action);
+  overflow:hidden;background:var(--row-ground)}
+.vp .tbl{display:grid}
+.vp .tbl.p4{grid-template-columns:1fr 1fr}
+.vp .tbl.one{grid-template-columns:1fr}
+.vp .parea{display:flex;flex-direction:column;gap:8px;padding:10px 12px;
+  border-left:1px solid var(--hairline);border-top:1px solid var(--hairline);min-width:0}
+.vp .tbl .parea:nth-child(odd){border-left:0}
+.vp .tbl.one .parea{border-left:0}
+.vp .plate2{display:flex;align-items:center;gap:8px;min-width:0}
+.vp .plate2 .pn{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;color:var(--ink-1)}
+.vp .plate2 .pnums{margin-left:auto;flex:none;font-family:var(--font-data);font-size:11.5px;
+  color:var(--ink-4)}
+.vp .plate2 .pnums b{color:var(--ink-1);font-weight:500;font-size:13px}
+.vp .zone{display:flex;gap:4px;flex-wrap:wrap;min-height:20px}
+.vp .tc{width:34px;height:48px;border:1px solid var(--hairline-strong);border-radius:4px;
+  background:var(--surface-obsidian);flex:none}
+.vp .tc.land{width:24px;height:34px}
+.vp .vcr{display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-top:1px solid var(--hairline);flex-wrap:wrap}
+.vp .vcr.two{flex-direction:column;align-items:stretch;gap:10px}
+.vp .vcr .btns{display:flex;align-items:center;gap:10px;justify-content:center}
+.vp .vbtn{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--hairline-strong);border-radius:var(--r-control);background:transparent;
+  color:var(--ink-3);font-size:13px}
+.vp .vbtn.play{background:var(--mana-cyan);border-color:var(--mana-cyan);color:var(--ink-on-fill);
+  box-shadow:var(--glow-cyan)}
+.vp .scrub{flex:1;position:relative;height:26px}
+.vp .scrub .rail2{position:absolute;top:12px;left:0;right:0;height:3px;
+  background:rgba(148,163,184,0.14);border-radius:2px}
+.vp .scrub .done{position:absolute;top:12px;left:0;width:38%;height:3px;background:var(--mana-cyan);
+  border-radius:2px}
+.vp .scrub .headk{position:absolute;top:7px;left:38%;width:13px;height:13px;border-radius:50%;
+  background:var(--mana-cyan);box-shadow:var(--glow-cyan);transform:translateX(-50%)}
+.vp .clock{font-family:var(--font-data);font-size:11.5px;color:var(--ink-4);flex:none}
+.vp .tblnote{padding:9px 12px;border-top:1px solid var(--hairline);font-size:11.5px;color:var(--ink-4)}
+
+.vp .card-row{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--hairline);
+  align-items:flex-start}
+.vp .card-row .noart{width:42px;aspect-ratio:5/7;border-radius:5px;
+  border:1px solid var(--hairline-strong);background:var(--surface-obsidian);flex:none}
+.vp .card-row .cr-n{font-size:13px;font-weight:600;color:var(--ink-1)}
+.vp .card-row .cr-t{font-size:11.5px;color:var(--ink-4);margin-top:1px}
+
+.vp .rail-deck{display:flex;align-items:center;gap:10px;padding:8px 0;
+  border-top:1px solid var(--hairline)}
+.vp .rail-deck .noart{width:54px;height:38px;border-radius:6px;
+  border:1px solid var(--hairline-strong);background:var(--surface-obsidian);flex:none}
+.vp .rail-deck .t{flex:1;min-width:0;font-size:12.5px;color:var(--ink-1)}
+.vp .rail-deck .t small{display:block;color:var(--ink-4)}
+</style>
+</head>
+<body>
+<div class="sp-wrap">
+
+<header class="sp-mast">
+  <h1>Sim Lab — UX pass</h1>
+  <p class="sub">2026-08-02. Proposal only: this document changes nothing in <code>web/</code>.
+  Observed in the running app against a live engine — 29 decks, 58 finished runs — at
+  1280&thinsp;px and 375–533&thinsp;px.</p>
+  <div class="rule"><b>Binding constraint:</b> the UI does not change. Same tokens, same type,
+  same components, same look. Everything proposed here is information architecture,
+  responsive behaviour, or removing things that should never have been on screen.
+  No new colour, no new visual language, no redesign. Every frame below is built from
+  <code>arcane-sim-lab.tokens.css</code> and existing class names.</div>
+</header>
+
+<!-- ═══════════════════════════════ 1. IA ═══════════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">01 — Information architecture</span>
+  <h2>Two whole modes of the product have no address</h2>
+  <p class="why">Deck exploration and the goldfish sandbox both exist and both work. Neither is
+  in the nav. The only route into a deck page is a <code>Cards</code> pill on a tile inside
+  <code>/new</code> — the <em>simulation setup</em> page — or an "Open deck →" link inside a hover
+  popover that is <code>display:none</code> below 980&thinsp;px. On a phone, that second route
+  does not exist at all.</p>
+  <p class="why">Meanwhile <b>Import</b> occupies a top-level slot even though it is one action
+  performed on decks, and <b>New run</b> is a verb sitting in a list of nouns.</p>
+
+  <div class="sp-ia">
+    <div class="sp-iabox now">
+      <h4>Now — 4 items, 2 orphans</h4>
+      <div class="sp-iarow"><span class="rt">/new</span><span class="ds"><b>New run</b> — a verb, and the page does two unrelated jobs: browse every deck <em>and</em> configure a gauntlet</span></div>
+      <div class="sp-iarow"><span class="rt">/import</span><span class="ds"><b>Import</b> — a sub-action of decks, promoted to a peer of Results</span></div>
+      <div class="sp-iarow"><span class="rt">/results</span><span class="ds"><b>Results</b></span></div>
+      <div class="sp-iarow"><span class="rt">/rules</span><span class="ds"><b>Rules</b></span></div>
+      <div class="sp-iarow orphan"><span class="rt">/decks/[file]</span><span class="ds">orphan — reachable only from a tile inside <code>/new</code></span></div>
+      <div class="sp-iarow orphan"><span class="rt">/playtest/[deck]</span><span class="ds">orphan — reachable only from a deck page, or a popover that doesn't exist on mobile</span></div>
+    </div>
+    <div class="sp-iabox next">
+      <h4>Proposed — 5 items, all nouns, all places</h4>
+      <div class="sp-iarow added"><span class="rt">/decks</span><span class="ds"><b>Decks</b> — the gallery, lifted out of <code>/new</code>. Import is the primary action here.</span></div>
+      <div class="sp-iarow"><span class="rt">/new</span><span class="ds"><b>Simulate</b> — picker + games + run. Route unchanged; it stops being a browser.</span></div>
+      <div class="sp-iarow added"><span class="rt">/playtest</span><span class="ds"><b>Playtest</b> — deck chooser → sandbox</span></div>
+      <div class="sp-iarow"><span class="rt">/results</span><span class="ds"><b>Results</b> — report · replay · telemetry · coaching</span></div>
+      <div class="sp-iarow"><span class="rt">/rules</span><span class="ds"><b>Rules</b></span></div>
+    </div>
+  </div>
+  <p class="sp-note"><b>On the home hub</b>, "Explore decklists" and "Run new simulation" both
+  point at <code>/new</code> today — two of four buttons going to one place, which is the
+  clearest symptom of the orphan. Explore repoints at <code>/decks</code>. The hub stays four
+  buttons; nothing is added.</p>
+</section>
+
+<!-- ═══════════════════════════ 2. Top bar ══════════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">02 — Global chrome</span>
+  <h2>The breadcrumb duplicates the H1 and costs us the nav</h2>
+  <p class="why"><code>Chrome.tsx</code> renders <code>brand / &lt;context&gt;</code> on the left.
+  The context string is always a restatement of the H1 forty pixels below it. On desktop that is
+  duplication. On a narrow screen <code>.path</code> is <code>white-space:nowrap</code> and
+  <code>.tb-links</code> has <code>margin-left:auto</code> with no wrap rule — so the breadcrumb
+  pushes the nav off the edge.</p>
+
+  <div class="sp-ab stacked">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span><span class="t">1280&thinsp;px — every word appears twice</span></div>
+      <div class="sp-desk"><div class="art"></div><div class="vp">
+        <header class="chrome"><div class="tb">
+          <span class="path brand">🤖 <span class="wordmark">Arcane Sim Lab</span></span>
+          <span class="slash">/</span>
+          <span class="path">Rules assistant</span>
+          <nav class="tb-links">
+            <a class="navlink">New run</a><a class="navlink">Import</a>
+            <a class="navlink">Results</a><a class="navlink on">Rules</a>
+          </nav>
+        </div></header>
+        <div class="page wide" style="margin-bottom:18px">
+          <h1>Rules assistant</h1>
+          <div class="sub">Comprehensive Rules <span class="sep">·</span> June 2026</div>
+        </div>
+      </div></div>
+      <p class="sp-note">"Rules assistant" is on screen twice, 40&thinsp;px apart, in two
+      different type styles.</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span><span class="t">the H1 is the title; the bar is for going places</span></div>
+      <div class="sp-desk"><div class="art"></div><div class="vp">
+        <header class="chrome"><div class="tb">
+          <span class="path brand">🤖 <span class="wordmark">Arcane Sim Lab</span></span>
+          <nav class="tb-links">
+            <a class="navlink">Decks</a><a class="navlink">Simulate</a>
+            <a class="navlink">Playtest</a><a class="navlink">Results</a>
+            <a class="navlink on">Rules</a>
+          </nav>
+        </div></header>
+        <div class="page wide" style="margin-bottom:18px">
+          <h1>Rules assistant</h1>
+          <div class="sub">Comprehensive Rules <span class="sep">·</span> June 2026
+            <span class="sep">·</span> 3,152 numbered rules</div>
+        </div>
+      </div></div>
+      <p class="sp-note">Five items now fit where four sat, because the breadcrumb's width is
+      gone. Real hierarchy — replay belongs to a run — keeps the <code>.back</code> link the
+      pages already render, which is the correct affordance for it.</p>
+    </div>
+  </div>
+
+  <h3>The same bar at 390&thinsp;px</h3>
+  <div class="sp-ab">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span><span class="t">Results and Rules are unreachable</span></div>
+      <div class="sp-phone" style="height:auto">
+        <div class="art"></div>
+        <div class="vp" style="height:auto">
+          <header class="chrome"><div class="tb" style="padding:0 14px">
+            <span class="path brand">🤖 <span class="wordmark">Arcane Sim Lab</span></span>
+            <span class="slash">/</span>
+            <nav class="tb-links" style="margin-left:6px">
+              <a class="navlink" style="padding:8px 6px">New run</a>
+              <a class="navlink" style="padding:8px 6px">Impo</a>
+            </nav>
+          </div></header>
+        </div>
+      </div>
+      <p class="sp-note">Measured at 533&thinsp;px on a run report: <b>"Results" and "Rules"
+      render off-canvas</b> and "Import" clips mid-word. At 390&thinsp;px the wordmark is dropped
+      too — the brand is the first casualty, which is backwards.</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span><span class="t">disclosure + sheet, 44&thinsp;px rows</span></div>
+      <div class="sp-phone" style="height:auto">
+        <div class="art"></div>
+        <div class="vp mobilechrome" style="height:auto">
+          <header class="chrome">
+            <div class="tb" style="padding:0 14px">
+              <span class="path brand">🤖 <span class="wordmark">Arcane Sim Lab</span></span>
+              <button class="navbtn" aria-expanded="true" aria-label="Close menu">✕</button>
+            </div>
+            <nav class="navsheet">
+              <a>Decks</a>
+              <a class="on">Simulate</a>
+              <a>Playtest</a>
+              <a>Results</a>
+              <a>Rules</a>
+              <div class="div"></div>
+              <a class="q2">Engine · 127.0.0.1:8484</a>
+            </nav>
+          </header>
+        </div>
+      </div>
+      <p class="sp-note">Full-width sheet under the bar, same <code>--bar-instrument</code>
+      surface, rows at <code>--control-h</code> (44&thinsp;px). The wordmark stays at every width.
+      <b>No bottom tab bar</b> — <code>design_principles.md</code> Part 1 lists it as one of the
+      loudest template tells, and this is a tool used in sessions, not a thumb-driven feed.
+      The engine address lives here, in one place, instead of in two section headers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 3. Addresses, not content ═════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">03 — Leakage</span>
+  <h2>Filenames, ports and job ids are on screen as if they were content</h2>
+  <p class="why">Every one of these was read off the running app. None of it is information a
+  person came here for.</p>
+
+  <table class="sp-tbl">
+    <thead><tr><th>Where it shows</th><th>What the user sees</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Run report — sub-line, right under the H1</td><td class="leak">· sim_20260801_193328.json ·</td><td class="src">results/[file]/page.tsx:236</td></tr>
+      <tr><td>Run report — footer</td><td class="leak">sim_20260801_193328.json</td><td class="src">:567</td></tr>
+      <tr><td>Replay — footer</td><td class="leak">sim_…json · game 1 of 6</td><td class="src">replay/[game]/page.tsx:503</td></tr>
+      <tr><td>Deck page — sub-line and footer</td><td class="leak">atraxa_counters.dck</td><td class="src">decks/[file]/page.tsx:161, 278</td></tr>
+      <tr><td>Playtest — sub-line and footer</td><td class="leak">atraxa_counters.dck</td><td class="src">playtest/[deck]/page.tsx:308, 427</td></tr>
+      <tr><td>Rules — footer</td><td class="leak">rules_qa</td><td class="src">rules/page.tsx:310</td></tr>
+      <tr><td>Import — footer</td><td class="leak">parser: convert_decklist.py</td><td class="src">import/page.tsx:550</td></tr>
+      <tr><td>Run status — footer</td><td class="leak">job 4f2c8a91…</td><td class="src">runs/[id]/page.tsx:522</td></tr>
+      <tr><td>New run — inside a section header</td><td class="leak">Engine: 127.0.0.1:8484 · change · 3,152 rules loaded</td><td class="src">new/page.tsx:376–394</td></tr>
+    </tbody>
+  </table>
+
+  <div class="rule" style="margin-top:24px;padding:12px 16px;border-left:2px solid var(--mana-cyan);background:var(--row-ground);border-radius:0 8px 8px 0">
+    <b>Rule to adopt:</b> a filename, port, job id or script name is an <em>address</em>, not
+    content. It never appears in a heading, a sub-line, or the footer. The footer carries the two
+    legal lines and nothing else. Addresses go in exactly one place per page — a closed
+    <code>details</code> disclosure at the foot — for the person who needs to find the file on disk.
+  </div>
+
+  <div class="sp-ab stacked">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span><span class="t">run report header</span></div>
+      <div class="sp-desk"><div class="art"></div><div class="vp">
+        <div class="page wide">
+          <h1>Ur-Dragon vs Atraxa vs Meren vs Kilo</h1>
+          <div class="sub">Ur-Dragon B3 · Atraxa Counters B3 · Meren Graveyard B3 · Kilo Helm Final
+            <span class="sep">·</span><span class="mono" style="color:var(--state-failed-ink)">sim_20260801_193328.json</span>
+            <span class="sep">·</span><span class="mono">6</span> games
+            <span class="sep">·</span>Commander</div>
+          <p class="lede"><b>Ur-Dragon B3</b> won <b>4 of 6</b> games (67%), 3 wins clear of
+            Atraxa Counters B3 (17%). No draws; the median game ran <b>49 turns</b>.</p>
+        </div>
+        <footer class="chrome"><div class="ft">
+          <span>Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy.</span>
+          <span>Card images via Scryfall</span>
+          <span class="mono" style="color:var(--state-failed-ink)">sim_20260801_193328.json</span>
+        </div></footer>
+      </div></div>
+      <p class="sp-note">The filename appears twice on one page and is the third thing the
+      sub-line says, ahead of the game count and the format.</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span><span class="t">sub-line reads like a sentence; address is one click away</span></div>
+      <div class="sp-desk"><div class="art"></div><div class="vp">
+        <div class="page wide">
+          <h1>Ur-Dragon vs Atraxa vs Meren vs Kilo</h1>
+          <div class="sub">Commander <span class="sep">·</span> 4 decks
+            <span class="sep">·</span> <span class="mono">6</span> seat-rotated games
+            <span class="sep">·</span> 1 Aug 2026</div>
+          <p class="lede"><b>Ur-Dragon B3</b> won <b>4 of 6</b> games (67%), 3 wins clear of
+            Atraxa Counters B3 (17%). No draws; the median game ran <b>49 turns</b>.</p>
+          <details class="details">
+            <summary>Run details</summary>
+            <div class="body">sim_20260801_193328.json · adapted 2026-08-01 19:33 · Forge 2.0.04 · 2,874 events</div>
+          </details>
+        </div>
+        <footer class="chrome"><div class="ft clean">
+          <span>Sim Lab is unofficial Fan Content permitted under the Wizards of the Coast Fan Content Policy.</span>
+          <span>Card images via Scryfall</span>
+        </div></footer>
+      </div></div>
+      <p class="sp-note">The sub-line now carries what a reader needs to size the result —
+      format, pod, sample, date. The date also fixes a real problem: today four different runs
+      are titled <em>Kilo vs Atraxa vs Ur-Dragon vs Meren</em> with nothing to tell them apart.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 4. Tables on mobile ═══════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">04 — Mobile, severity 1</span>
+  <h2>Data tables hide their payload behind a scroll nobody finds</h2>
+  <p class="why"><code>/results</code> is a 5-column table inside
+  <code>.tblwrap { overflow-x:auto }</code>. At 375&thinsp;px only the <em>Run</em> column is
+  visible. Winner, games, when and Watch are all off-screen. The result is nine consecutive rows
+  reading <code>Kilo vs Atraxa vs Ur-Dragon vs Meren</code> with no way to distinguish them —
+  which is the entire purpose of the page. The run report's Games table (6 columns) and the Win
+  conditions table (6 columns) fail the same way.</p>
+
+  <div class="sp-ab">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span><span class="t">375&thinsp;px — the payload is off-canvas</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="page">
+          <h1>Results</h1>
+          <p class="lede"><b>58 finished runs</b> covering <b>546 games</b>. Open one to see win
+            rates against the even-seats baseline.</p>
+          <div class="tblwrap">
+            <div class="toolrow"><div class="inp">Filter by deck…</div><span class="upd">58 of 58</span></div>
+            <table class="games" style="width:640px">
+              <thead><tr><th>Run</th><th class="r">Games</th><th>Winner</th><th class="r">When</th><th class="r">Replay</th></tr></thead>
+              <tbody>
+                <tr><td>Atraxa vs Ur-Dragon vs Meren vs Kilo</td><td class="r mono">16</td><td><span class="st win"><i></i>Atraxa</span></td><td class="r">2d ago</td><td class="r"><a class="bl">Watch</a></td></tr>
+                <tr><td>Kilo vs Atraxa vs Ur-Dragon vs Meren</td><td class="r mono">6</td><td><span class="st win"><i></i>Ur-Dragon</span></td><td class="r">2d ago</td><td class="r"><a class="bl">Watch</a></td></tr>
+                <tr><td>Kilo vs Atraxa vs Ur-Dragon vs Meren</td><td class="r mono">8</td><td><span class="st win"><i></i>Kilo</span></td><td class="r">3d ago</td><td class="r"><a class="bl">Watch</a></td></tr>
+                <tr><td>Atraxa vs Ur-Dragon vs Meren vs Kilo</td><td class="r mono">16</td><td><span class="st win"><i></i>Meren</span></td><td class="r">4d ago</td><td class="r"><a class="bl">Watch</a></td></tr>
+                <tr><td>Torbran Burn B3 vs Krenko Goblins</td><td class="r mono">32</td><td><span class="st win"><i></i>Torbran</span></td><td class="r">5d ago</td><td class="r"><a class="bl">Watch</a></td></tr>
+                <tr><td>Kilo vs Atraxa vs Ur-Dragon vs Meren</td><td class="r mono">6</td><td><span class="st win"><i></i>Atraxa</span></td><td class="r">6d ago</td><td class="r"><a class="bl">Watch</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">Four rows share a title. The only differentiators are in columns 2–4,
+      which are ~260&thinsp;px past the right edge.</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span><span class="t">same &lt;table&gt; markup, stacked by CSS</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="page">
+          <h1>Results</h1>
+          <p class="lede"><b>58 finished runs</b> covering <b>546 games</b>. Open one to see win
+            rates against the even-seats baseline.</p>
+          <div class="tblwrap">
+            <div class="toolrow"><div class="inp">Filter by deck…</div><span class="upd">58 of 58</span></div>
+            <table class="games stack">
+              <tbody>
+                <tr>
+                  <td class="t">Atraxa vs Ur-Dragon vs Meren vs Kilo</td>
+                  <td class="m"><span class="st win"><i></i>Atraxa Counters B3 44%</span></td>
+                  <td class="m">16 games</td><td class="m">2 Aug</td>
+                  <td class="act"><a>Watch</a></td>
+                </tr>
+                <tr>
+                  <td class="t">Kilo vs Atraxa vs Ur-Dragon vs Meren</td>
+                  <td class="m"><span class="st win"><i></i>Ur-Dragon B3 67%</span></td>
+                  <td class="m">6 games</td><td class="m">1 Aug</td>
+                  <td class="act"><a>Watch</a></td>
+                </tr>
+                <tr>
+                  <td class="t">Kilo vs Atraxa vs Ur-Dragon vs Meren</td>
+                  <td class="m"><span class="st win"><i></i>Kilo Helm Final 38%</span></td>
+                  <td class="m">8 games</td><td class="m">31 Jul</td>
+                  <td class="act"><a>Watch</a></td>
+                </tr>
+                <tr>
+                  <td class="t">Torbran Burn B3 vs Krenko Goblins</td>
+                  <td class="m"><span class="st win"><i></i>Torbran Burn B3 56%</span></td>
+                  <td class="m">32 games</td><td class="m">30 Jul</td>
+                  <td class="act"><a>Watch</a></td>
+                </tr>
+                <tr>
+                  <td class="t">Kilo vs Atraxa vs Ur-Dragon vs Meren</td>
+                  <td class="m"><span class="st out"><i></i>no summary</span></td>
+                  <td class="m">6 games</td><td class="m">29 Jul</td>
+                  <td class="act"><a>Watch</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">Identical markup — <code>thead</code> hides, <code>tr</code> becomes a
+      block, cells reflow to two lines. Winner and date are now the thing you read, so the four
+      same-named runs are finally distinguishable. Applied under one
+      <code>@media (max-width:720px)</code> block; the page components don't change.</p>
+    </div>
+  </div>
+  <p class="sp-note"><b>Wide analytic tables keep their grid.</b> Win conditions has six genuinely
+  independent numeric columns; stacking it would destroy the comparison. It keeps
+  <code>overflow-x</code> but gains a sticky first column and a visible
+  <span class="mono" style="font-size:12px">scroll for more →</span> cue, so the scroll stops
+  being invisible.</p>
+</section>
+
+<!-- ═════════════════════ 5. Simulate + sticky action ═══════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">05 — Mobile, severity 2</span>
+  <h2>The Run button is below twenty-nine deck tiles</h2>
+  <p class="why">On <code>/new</code> the right rail — games select and the one primary — is a
+  second grid column that stacks <em>after</em> the gallery at ≤980&thinsp;px. On a phone you
+  scroll past every deck in the collection to reach the action you came for. Meanwhile the
+  section header carries the engine address, a rules count and an import link, and the tiles are
+  one per row.</p>
+
+  <div class="sp-ab">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span><span class="t">1 tile per row · infra in the header · action 7,000&thinsp;px down</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="page">
+          <h1>New run</h1>
+          <p class="lede"><b>29 decks</b> on this engine. Click a tile to seat it, or <b>Cards</b>
+            to read the whole decklist.</p>
+          <div class="sh" style="flex-wrap:wrap">
+            <h2>Pick decks</h2><span class="meta">29 of 29 decks</span>
+            <span class="right" style="margin-left:0;color:var(--state-failed-ink)">
+              Engine: 127.0.0.1:8484 · change · 3,152 rules loaded · Import a deck →</span>
+          </div>
+          <div class="dg" style="grid-template-columns:1fr">
+            <div class="dg-tile"><span class="scrim"><span class="t">Atraxa Counters B3</span></span></div>
+            <div class="dg-tile"><span class="scrim"><span class="t">Dnide Wildsear</span></span></div>
+          </div>
+          <p class="note" style="color:var(--state-failed-ink)">…27 more tiles, then the games
+          select, then the Run button.</p>
+        </div>
+      </div></div>
+      <p class="sp-note">Tiles render as empty boxes because <code>GET /decks</code> is returning
+      <code>commander: null</code> for all 29 — see §7. Even with art, one 16:10 tile per row
+      makes a 29-deck collection a 7,200&thinsp;px scroll.</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span><span class="t">2-up tiles · sticky action · header cleared</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="page" style="display:flex;flex-direction:column;height:100%">
+          <div style="flex:1;overflow:hidden">
+            <h1>Simulate</h1>
+            <p class="lede">Seat two to four decks and run a gauntlet. Results land under
+              <a class="bl">Results</a>.</p>
+            <div class="sh"><h2>Pick decks</h2><span class="meta">29 decks</span></div>
+            <div class="dg m2">
+              <div class="dg-tile" data-on><span class="fauxart"></span><span class="seat">P1</span>
+                <span class="scrim"><span class="t">Atraxa Counters</span>
+                  <span class="pip w"></span><span class="pip u"></span></span></div>
+              <div class="dg-tile"><span class="fauxart b"></span>
+                <span class="scrim"><span class="t">Dnide Wildsear</span>
+                  <span class="pip b"></span><span class="pip r"></span></span></div>
+              <div class="dg-tile" data-on><span class="fauxart c"></span><span class="seat">P2</span>
+                <span class="scrim"><span class="t">Meren Graveyard</span>
+                  <span class="pip b"></span><span class="pip g"></span></span></div>
+              <div class="dg-tile"><span class="fauxart d"></span>
+                <span class="scrim"><span class="t">Torbran Burn</span>
+                  <span class="pip r"></span></span></div>
+              <div class="dg-tile"><span class="plate"><span class="k">no commander art</span>
+                  <span class="pips"><span class="pip u"></span><span class="pip b"></span></span>
+                  <span class="k">99 cards</span></span>
+                <span class="scrim"><span class="t">Kilo Helm Final</span></span></div>
+              <div class="dg-tile"><span class="fauxart"></span>
+                <span class="scrim"><span class="t">Ur-Dragon B3</span>
+                  <span class="pip w"></span><span class="pip u"></span><span class="pip b"></span></span></div>
+            </div>
+          </div>
+          <div class="runbar">
+            <span class="cnt"><b>2</b> seated<br>Atraxa · Meren</span>
+            <select class="sel"><option>16 games</option></select>
+            <button class="btn pri">Run</button>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">Once one deck is seated the action collapses into a sticky bar at the
+      bottom of the viewport — seat count, games, primary. Same <code>.ctarow</code> components,
+      <code>position:sticky; bottom:0</code>. The engine address moved to the nav sheet; the
+      import link moved to <code>/decks</code>. Two tiles per row halves the scroll.</p>
+    </div>
+  </div>
+  <p class="sp-note"><b>The fifth tile is the honest empty state.</b> A deck with no resolvable
+  commander art gets a plate with its colour identity and card count on
+  <code>--surface-obsidian</code> — not a blank rectangle. The same plate replaces the hardcoded
+  diagonal-stripe <code>.deck-row__thumb</code> on the home page.</p>
+</section>
+
+<!-- ═════════════════════ 6. Decks + Playtest ═══════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">06 — The two new front doors</span>
+  <h2>/decks and /playtest</h2>
+  <p class="why">Neither page needs new components. <code>/decks</code> is the gallery that
+  already exists inside <code>/new</code>, with the search and colour filter it already has and
+  Import as its primary. <code>/playtest</code> is the same gallery with a different verb.
+  Selecting on <code>/decks</code> opens the deck; selecting on <code>/new</code> seats it — one
+  destination per tile per page, so the two-actions-on-one-tile problem the
+  <code>Cards</code> pill was invented to solve disappears.</p>
+
+  <div class="sp-ab">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>New</span><span class="t">/decks — browsing is the job</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp mobilechrome">
+        <header class="chrome"><div class="tb" style="padding:0 14px">
+          <span class="path brand">🤖 <span class="wordmark">Arcane Sim Lab</span></span>
+          <button class="navbtn">☰</button></div></header>
+        <div class="page">
+          <div class="head"><div><h1>Decks</h1></div>
+            <div class="btns"><button class="btn pri">Import</button></div></div>
+          <p class="lede"><b>29 decks</b> — 12 imported, 17 bundled. Open one to read every card,
+            or take it to the sandbox.</p>
+          <div class="inp" style="margin-bottom:12px">Search decks…</div>
+          <div class="dg m2">
+            <div class="dg-tile"><span class="fauxart"></span>
+              <span class="scrim"><span class="t">Atraxa Counters</span>
+                <span class="pip w"></span><span class="pip u"></span></span></div>
+            <div class="dg-tile"><span class="fauxart b"></span>
+              <span class="scrim"><span class="t">Dnide Wildsear</span>
+                <span class="pip b"></span><span class="pip r"></span></span></div>
+            <div class="dg-tile"><span class="fauxart c"></span>
+              <span class="scrim"><span class="t">Meren Graveyard</span>
+                <span class="pip b"></span><span class="pip g"></span></span></div>
+            <div class="dg-tile"><span class="fauxart d"></span>
+              <span class="scrim"><span class="t">Torbran Burn</span>
+                <span class="pip r"></span></span></div>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">The whole tile opens the deck. No second control, no hover popover, no
+      pill — the affordance that was invented because the tile already had another job.</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>New</span><span class="t">/playtest — the sandbox gets a front door</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp mobilechrome">
+        <header class="chrome"><div class="tb" style="padding:0 14px">
+          <span class="path brand">🤖 <span class="wordmark">Arcane Sim Lab</span></span>
+          <button class="navbtn">☰</button></div></header>
+        <div class="page">
+          <h1>Playtest</h1>
+          <p class="lede">Goldfish a deck solo — draw, mulligan, drag cards between zones. The
+            app moves cards and keeps count; <b>nothing here enforces a rule</b> and no outcome
+            is declared.</p>
+          <div class="sh"><h2>Choose a deck</h2><span class="meta">29</span></div>
+          <div class="dg m2">
+            <div class="dg-tile"><span class="fauxart c"></span>
+              <span class="scrim"><span class="t">Meren Graveyard</span>
+                <span class="pip b"></span><span class="pip g"></span></span></div>
+            <div class="dg-tile"><span class="fauxart"></span>
+              <span class="scrim"><span class="t">Atraxa Counters</span>
+                <span class="pip w"></span><span class="pip u"></span></span></div>
+            <div class="dg-tile"><span class="fauxart d"></span>
+              <span class="scrim"><span class="t">Torbran Burn</span><span class="pip r"></span></span></div>
+            <div class="dg-tile"><span class="fauxart b"></span>
+              <span class="scrim"><span class="t">Krenko Goblins</span><span class="pip r"></span></span></div>
+          </div>
+          <p class="note">Solo only — no opponent, no adjudication, no win or loss. Reloading
+            reshuffles.</p>
+        </div>
+      </div></div>
+      <p class="sp-note">The lede states the legal carve-out in the product's own voice
+      (<code>CLAUDE.md</code>: no opponent, no adjudication, no declared outcome), which is worth
+      having on a page that now has a nav entry pointing at it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 7. Splash + figs + glow ═══════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">07 — Mobile, severity 3</span>
+  <h2>The splash spends a screen before it says anything, and three of four buttons glow</h2>
+  <p class="why">At 390&thinsp;px the mascot and wordmark occupy roughly 700&thinsp;px of an
+  844&thinsp;px viewport. The tally bar below scroll-snaps horizontally and clips mid-word —
+  <em>"29 decks on this engir"</em>. And <code>DESIGN_SYSTEM.md</code> says glow marks only the
+  primary action; <code>--primary</code>, <code>--violet</code> and <code>--blue</code> all carry
+  a <code>box-shadow</code>, so nothing reads as primary.</p>
+
+  <div class="sp-ab">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="masthead">
+          <div class="robot" style="font-size:88px;line-height:1">🤖</div>
+          <div class="wordmark" style="font-size:31px">Arcane Sim Lab</div>
+        </div>
+        <div class="splash">
+          <div class="tally">
+            <div class="tally-cell"><span class="tally-badge" data-tone="sun">☀</span>
+              <span class="tally-text"><b>29</b> decks on this engir</span></div>
+            <div class="tally-cell"><span class="tally-badge" data-tone="water">💧</span>
+              <span class="tally-text"><b>546</b> games s</span></div>
+          </div>
+          <p class="splash-prompt">What would you like to do today?</p>
+          <div class="hub">
+            <a class="action-btn action-btn--primary">⚡ Run new simulation</a>
+            <a class="action-btn action-btn--violet glowbad">▮▮ Sim history &amp; analytics</a>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">Two of the four tally cells are cut off. Both visible hub buttons glow.
+      "Explore decklists", below the fold, points at the same route as "Run new simulation".</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="masthead tight">
+          <div class="robot" style="font-size:54px;line-height:1">🤖</div>
+          <div class="wordmark" style="font-size:26px">Arcane Sim Lab</div>
+        </div>
+        <div class="splash">
+          <div class="tally grid2">
+            <div class="tally-cell"><span class="tally-badge" data-tone="sun">☀</span>
+              <span class="tally-text"><b>29</b> decks</span></div>
+            <div class="tally-cell"><span class="tally-badge" data-tone="water">💧</span>
+              <span class="tally-text"><b>546</b> games simulated</span></div>
+            <div class="tally-cell"><span class="tally-badge" data-tone="skull">☠</span>
+              <span class="tally-text"><b>58</b> finished runs</span></div>
+            <div class="tally-cell"><span class="tally-badge" data-tone="combo">◈</span>
+              <span class="tally-text"><b>3,152</b> rules loaded</span></div>
+          </div>
+          <p class="splash-prompt">What would you like to do today?</p>
+          <div class="hub">
+            <a class="action-btn action-btn--primary" style="min-height:64px">⚡ Run new simulation</a>
+            <a class="action-btn action-btn--violet" style="min-height:64px">▮▮ Sim history</a>
+            <a class="action-btn action-btn--blue" style="min-height:64px">⬇ Import deck</a>
+            <a class="action-btn action-btn--neutral" style="min-height:64px">🔍 Explore decks</a>
+          </div>
+          <p class="hub-est">two decks ≈ 5 s a game · four decks ≈ 8 min for 16</p>
+        </div>
+      </div></div>
+      <p class="sp-note">Mascot to <code>clamp()</code>, tally to a 2×2 grid with no scroll and
+      nothing clipped, hub buttons to 64&thinsp;px so all four fit one screen. <b>Only the
+      primary glows</b> — violet and blue keep their border colour and drop the shadow, which is
+      what the spec already says. "Explore decks" now points at <code>/decks</code>.</p>
+    </div>
+  </div>
+
+  <h3>And <code>.figs</code> renders a broken grid at two columns</h3>
+  <p class="why"><code>.fig + .fig</code> puts a left border on every cell after the first. At
+  <code>grid-template-columns: 1fr 1fr</code> that lands a border on cell 3 — which is the start
+  of row 2, not a column boundary. Visible on every run report on mobile.</p>
+  <div class="sp-ab">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span></div>
+      <div class="sp-desk" style="max-width:340px"><div class="art"></div><div class="vp">
+        <div style="padding:16px">
+          <div class="figs broken2">
+            <div class="fig"><div class="n">6</div><div class="l">games in this run</div></div>
+            <div class="fig"><div class="n">49</div><div class="l">median turns per game</div></div>
+            <div class="fig"><div class="n">67<small>%</small></div><div class="l">top win rate</div></div>
+            <div class="fig"><div class="n">0</div><div class="l">draws</div></div>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">Row 2 is indented by a stray left border and its cells no longer line up
+      with row 1.</p>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span></div>
+      <div class="sp-desk" style="max-width:340px"><div class="art"></div><div class="vp">
+        <div style="padding:16px">
+          <div class="figs fixed2">
+            <div class="fig"><div class="n">6</div><div class="l">games in this run</div></div>
+            <div class="fig"><div class="n">49</div><div class="l">median turns per game</div></div>
+            <div class="fig"><div class="n">67<small>%</small></div><div class="l">top win rate</div></div>
+            <div class="fig"><div class="n">0</div><div class="l">draws</div></div>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">Borders keyed to <code>:nth-child</code> — vertical on even cells,
+      horizontal from cell 3 on. Four lines of CSS.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 8. Replay ═════════════════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">08 — Mobile, severity 4</span>
+  <h2>The replay theater overlaps itself</h2>
+  <p class="why"><code>.tbl.p4</code> stays two columns at every width, so at 375&thinsp;px the
+  seat plates render on top of each other — <em>"40 life · 0 on board"</em> written through the
+  next seat's text. The transport bar's tick labels collide with the clock. And the lede tells a
+  touch device to "use space to play; arrows step events".</p>
+
+  <div class="sp-ab">
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag bad"><i></i>Now</span><span class="t">seats collide, transport crowds</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="page">
+          <h1 style="font-size:22px">Game 1</h1>
+          <p class="lede" style="margin:10px 0 14px"><b>Ur-Dragon B3</b> won on <b>turn 52</b>.
+            Use space to play; arrows step events.</p>
+          <div class="theater">
+            <div class="tbl p4">
+              <div class="parea" style="position:relative">
+                <div class="plate2"><span class="pn">Atraxa Coun…</span>
+                  <span class="pnums" style="position:absolute;left:96px;white-space:nowrap"><b>40</b> life · 0 on board</span></div>
+                <div class="zone"><span class="tc"></span><span class="tc"></span></div>
+              </div>
+              <div class="parea" style="position:relative">
+                <div class="plate2"><span class="pn">Ur-Dragon</span>
+                  <span class="pnums" style="position:absolute;left:70px;white-space:nowrap"><b>40</b> life · 0 on board</span></div>
+                <div class="zone"><span class="tc"></span></div>
+              </div>
+            </div>
+            <div class="vcr">
+              <button class="vbtn" style="width:34px;height:34px">⏮</button>
+              <button class="vbtn" style="width:34px;height:34px">‹</button>
+              <button class="vbtn play" style="width:38px;height:38px">▶</button>
+              <button class="vbtn" style="width:34px;height:34px">›</button>
+              <button class="vbtn" style="width:34px;height:34px">⏭</button>
+              <div class="scrub" style="min-width:40px"><div class="rail2"></div><div class="done"></div>
+                <div class="headk"></div>
+                <span style="position:absolute;top:-4px;left:20%;font:10px var(--font-data);color:var(--ink-4)">T12</span>
+                <span style="position:absolute;top:-4px;left:26%;font:10px var(--font-data);color:var(--ink-4)">T24</span></div>
+              <span class="clock">turn –</span>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="sp-col">
+      <div class="lab"><span class="sp-tag good"><i></i>Proposed</span><span class="t">one seat per row, transport on two rows</span></div>
+      <div class="sp-phone"><div class="art"></div><div class="vp">
+        <div class="page">
+          <a class="back">‹ Ur-Dragon vs Atraxa vs Meren vs Kilo</a>
+          <h1 style="font-size:22px">Game 1</h1>
+          <p class="lede" style="margin:10px 0 14px"><b>Ur-Dragon B3</b> won on <b>turn 52</b> —
+            Keiga, the Tide Star and more (75 life). <a class="bl">Jump to the deciding turn</a></p>
+          <div class="theater">
+            <div class="tbl one">
+              <div class="parea">
+                <div class="plate2"><span class="pn">Atraxa Counters B3</span>
+                  <span class="pnums"><b>40</b> life · 0 board</span></div>
+                <div class="zone"><span class="tc"></span><span class="tc"></span>
+                  <span class="tc land"></span><span class="tc land"></span></div>
+              </div>
+              <div class="parea">
+                <div class="plate2"><span class="pn">Ur-Dragon B3</span>
+                  <span class="pnums"><b>40</b> life · 1 board</span></div>
+                <div class="zone"><span class="tc"></span><span class="tc land"></span></div>
+              </div>
+            </div>
+            <div class="vcr two">
+              <div class="scrub"><div class="rail2"></div><div class="done"></div><div class="headk"></div></div>
+              <div class="btns">
+                <button class="vbtn">⏮</button><button class="vbtn">‹</button>
+                <button class="vbtn play">▶</button>
+                <button class="vbtn">›</button><button class="vbtn">⏭</button>
+                <span class="clock" style="margin-left:4px">T19</span>
+              </div>
+            </div>
+            <div class="tblnote">Board membership is reconstructed from the event log, not read
+              from it — the log is the record.</div>
+          </div>
+        </div>
+      </div></div>
+      <p class="sp-note">One seat per row at ≤720&thinsp;px, scrubber gets its own full-width
+      row above the buttons, tick labels drop below 560&thinsp;px, transport buttons go to
+      44&thinsp;px. The keyboard hint hides behind
+      <code>@media (hover:hover) and (pointer:fine)</code>. The <code>.back</code> link to the
+      parent run is the breadcrumb we actually need — and the page already renders it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 9. Touch + hover ══════════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">09 — Touch</span>
+  <h2>Targets under 44&thinsp;px, and controls that only exist on hover</h2>
+  <div class="sp-ab" style="grid-template-columns:1fr 1fr">
+    <div>
+      <h3 style="margin-top:0">Undersized targets</h3>
+      <ul class="sp-list">
+        <li><code>.dg-view</code> "Cards" pill — <b>24&thinsp;px</b></li>
+        <li><code>.pt-mini</code> life ± — <b>26&thinsp;px</b></li>
+        <li><code>.vbtn</code> transport — <b>34&thinsp;px</b></li>
+        <li><code>.tab</code> Overview/Telemetry/Coaching — <b>~40&thinsp;px</b></li>
+        <li><code>.pt-card .cbtns button</code> counters — <b>18&thinsp;px</b></li>
+      </ul>
+      <p class="sp-note"><code>--control-h: 44px</code> already exists as a token. These take it
+      under <code>@media (pointer: coarse)</code>. No new values.</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Dead on touch</h3>
+      <ul class="sp-list">
+        <li><code>.pt-card .cbtns</code> is <code>display:none</code> until <code>:hover</code> —
+          <b>there is no way to put a counter on a permanent from a phone.</b> Becomes
+          always-visible at <code>pointer: coarse</code>.</li>
+        <li><code>.dl-pop</code> decklist popover is hover-triggered and <code>display:none</code>
+          below 980&thinsp;px, so its "Open deck →" and "Playtest →" links don't exist on mobile.
+          <b>The real fix is §01</b> — both destinations get nav entries, and the popover stops
+          being load-bearing.</li>
+        <li><code>.dg-tile</code> opens the popover on <code>mouseenter</code>; on touch the first
+          tap seats the deck with no preview at all.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 10. Smaller ═══════════════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">10 — Smaller, same pass</span>
+  <h2>Loose ends worth closing while we're in here</h2>
+  <ul class="sp-list">
+    <li><b>Home's "Top decklists" rows link to <code>/results?q=&lt;name&gt;</code>.</b> The
+      heading says decklists; clicking one should open the deck. Repoint at
+      <code>/decks/&lt;file&gt;</code>, keep "see its runs" as a secondary.</li>
+    <li><b><code>.deck-row__thumb</code> is a hardcoded diagonal-stripe placeholder</b> where
+      commander art belongs — the only pattern in the sheet that isn't a token. Replaced by the
+      §05 fallback plate.</li>
+    <li><b><code>/rules</code> wastes its right column.</b> "Rule text" is an empty panel holding
+      two paragraphs of apology until you ask something. Collapse to one column until there is an
+      answer to sit beside.</li>
+    <li><b><code>GET /decks</code> returns <code>commander: null</code> for all 29 decks</b> on
+      the local engine, so the gallery has no art anywhere.
+      <code>combos.parse_dck</code> parses the same files correctly in isolation, which points at
+      a stale server process rather than a code bug — <b>verify on the VM before changing
+      anything</b>. The design fix (an honest fallback plate) is worth doing either way.</li>
+    <li><b>Four runs are titled <code>Kilo vs Atraxa vs Ur-Dragon vs Meren</code>.</b> The date is
+      the differentiator and it is the fourth column. It moves into the row's second line at every
+      width (§04).</li>
+    <li><b>The engine-address control is duplicated</b> on home and inside <code>/new</code>'s
+      section header. One instance, in the nav sheet / overflow.</li>
+  </ul>
+</section>
+
+<!-- ═════════════════════ 11. Surface ═══════════════════════════════════ -->
+<section class="sp-sec">
+  <span class="kicker">11 — What this actually touches</span>
+  <h2>Scope</h2>
+  <ul class="sp-list tick">
+    <li><code>web/components/Chrome.tsx</code> — drop the breadcrumb, new <code>NAV</code>,
+      mobile disclosure + sheet, <code>Footer</code> loses its <code>right</code> prop</li>
+    <li><code>web/app/decks/page.tsx</code> — <b>new</b>, the gallery lifted out of
+      <code>/new</code></li>
+    <li><code>web/app/playtest/page.tsx</code> — <b>new</b>, deck chooser</li>
+    <li><code>web/app/new/page.tsx</code> — picker only; sticky action bar; engine row removed;
+      lede updated</li>
+    <li><code>web/app/globals.css</code> — one <code>@media (max-width:720px)</code> block, one
+      <code>@media (pointer:coarse)</code> block, the <code>.figs</code> border fix, glow removed
+      from two <code>action-btn</code> variants, the fallback plate.
+      <b>No new tokens, no new hexes.</b></li>
+    <li>Every page — <code>&lt;Footer right=…&gt;</code> removed; addresses move into a
+      <code>Run details</code> / <code>Deck details</code> disclosure</li>
+  </ul>
+  <p class="sp-note" style="margin-top:20px">Verification is unchanged:
+  <code>cd web &amp;&amp; npm run verify</code>, plus a real-pointer pass at 390&thinsp;px and
+  1280&thinsp;px per the <code>ui-review</code> skill before the PR. Written up in
+  <code>mockups/ux_pass_2026-08-02.md</code>.</p>
+</section>
+
+</div>
+</body>
+</html>

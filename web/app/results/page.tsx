@@ -11,7 +11,7 @@
 
 import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import type { ResultIndexEntry, SimSummary } from "@/lib/types";
 import { deckSlug, fmtDate, pct, runTitle, stripAi, timeAgo } from "@/lib/format";
@@ -28,6 +28,7 @@ function topWin(s: SimSummary): [string, number] | null {
 }
 
 function ResultsIndexInner() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [results, setResults] = useState<ResultIndexEntry[] | null>(null);
   const [err, setErr] = useState(false);
@@ -122,7 +123,12 @@ function ResultsIndexInner() {
                   {filtered?.length ?? 0} of {rows.length} runs
                 </span>
               </div>
-              <table className="games">
+              {/* `stackable` + the c- cell classes are the narrow-screen
+                  contract (globals.css). At 375px this table showed only its
+                  first column, so nine rows read "Kilo vs Atraxa vs Ur-Dragon
+                  vs Meren" with the winner, the sample and the date — the only
+                  things that tell two runs of one matchup apart — off-canvas. */}
+              <table className="games stackable">
                 <thead>
                   <tr>
                     <th>Run</th>
@@ -136,16 +142,41 @@ function ResultsIndexInner() {
                   {visible.map(({ r, title, win }) => {
                     const enc = encodeURIComponent(r.file);
                     return (
-                      <tr key={r.file}>
-                        <td>
-                          {/* The matchup, not the result filename — the filename is
-                              only the address, so it lives in the row title. */}
-                          <Link className="q" href={`/results/${enc}`} title={r.file}>
+                      // Stacked at ≤720px the row reads as a card, so the whole
+                      // card is the target — not just the two words of the
+                      // title. Safe against the competing-target trap because
+                      // the row and its title link go to the SAME place; Watch
+                      // is the one divergent action and it has its own control
+                      // and stops propagation. Keyboard reaches both links.
+                      <tr
+                        key={r.file}
+                        className="click"
+                        onClick={() => router.push(`/results/${enc}`)}
+                      >
+                        <td className="c-title">
+                          {/* The matchup, not the result filename — the filename
+                              is only the address. */}
+                          <Link className="q" href={`/results/${enc}`}>
                             {title}
                           </Link>
                         </td>
-                        <td className="r mono">{r.games ?? r.summary?.games ?? "—"}</td>
-                        <td>
+                        <td className="r mono c-meta">
+                          {(() => {
+                            const g = r.games ?? r.summary?.games;
+                            if (g == null) return "—";
+                            // The header carries the unit on a wide screen; a
+                            // stacked row has no header, so it carries its own.
+                            return (
+                              <>
+                                {g}
+                                <span className="only-narrow-inline">
+                                  {g === 1 ? " game" : " games"}
+                                </span>
+                              </>
+                            );
+                          })()}
+                        </td>
+                        <td className="c-meta">
                           {win ? (
                             <>
                               <span className="st win">
@@ -161,11 +192,19 @@ function ResultsIndexInner() {
                             </span>
                           )}
                         </td>
-                        <td className="r" title={fmtDate(r.modified)}>
-                          {timeAgo(r.modified)}
+                        {/* Absolute, not "2 d ago": four runs of this matchup
+                            are all "2 d ago", and the relative form was also
+                            only disambiguated by a title attribute — which a
+                            touch device has no way to show. */}
+                        <td className="r c-meta" title={timeAgo(r.modified)}>
+                          {fmtDate(r.modified)}
                         </td>
-                        <td className="r">
-                          <Link className="bl" href={`/results/${enc}/replay/1`}>
+                        <td className="r c-act">
+                          <Link
+                            className="bl"
+                            href={`/results/${enc}/replay/1`}
+                            onClick={(e) => e.stopPropagation()}
+                          >
                             Watch
                           </Link>
                         </td>

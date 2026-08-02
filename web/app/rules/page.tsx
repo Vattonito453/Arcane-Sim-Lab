@@ -166,7 +166,7 @@ export default function RulesPage() {
 
   return (
     <>
-      <Chrome context="Rules assistant" />
+      <Chrome />
       <div className="page">
         <div className="head">
           <div>
@@ -184,7 +184,11 @@ export default function RulesPage() {
           excerpts don&apos;t reach says so instead of guessing.
         </p>
 
-        <div className="stage">
+        {/* One column until there is a rule to put in the second. The right
+            rail used to render an empty 330px panel holding two paragraphs of
+            apology for being empty — on mobile it stacked below the fold and
+            said the same nothing. */}
+        <div className={ruleN == null ? "stage stage--one" : "stage"}>
           <div>
             <section>
               <div className="sh">
@@ -280,34 +284,39 @@ export default function RulesPage() {
             )}
           </div>
 
-          <div>
-            <section>
-              <div className="sh">
-                <h2>Rule text</h2>
-                {ruleN && <span className="meta mono">{ruleN}</span>}
-              </div>
-              {ruleN == null && (
-                <p className="note">
-                  Cited rule numbers land here. Until then, ask something — the closest
-                  retrieved rules show under the answer.
-                </p>
-              )}
-              {ruleN != null && rule == null && <p className="note">Loading rule {ruleN}…</p>}
-              {rule?.error && <p className="note">{rule.error}</p>}
-              {rule?.entries?.map((e) => (
-                <p key={e.rule} className="sdesc">
-                  <span className="mono">{e.rule}</span> {e.text}
-                </p>
-              ))}
-              <p className="note">
-                Rule text from the Magic: The Gathering Comprehensive Rules (June 2026),
-                © Wizards of the Coast, quoted for reference.
-              </p>
-            </section>
-          </div>
+          {ruleN != null && (
+            <div>
+              <section>
+                <div className="sh">
+                  <h2>Rule text</h2>
+                  <span className="meta mono">{ruleN}</span>
+                  <span className="right">
+                    <button className="rail-x" onClick={() => setRuleN(null)}>
+                      Close
+                    </button>
+                  </span>
+                </div>
+                {rule == null && <p className="note">Loading rule {ruleN}…</p>}
+                {rule?.error && <p className="note">{rule.error}</p>}
+                {rule?.entries?.map((e) => (
+                  <p key={e.rule} className="sdesc">
+                    <span className="mono">{e.rule}</span> {e.text}
+                  </p>
+                ))}
+              </section>
+            </div>
+          )}
         </div>
+
+        {/* Attribution stays on the page whether or not a rule panel is open —
+            the search hits quote rule text too. */}
+        <p className="note">
+          Rule text from the Magic: The Gathering Comprehensive Rules (June 2026),
+          © Wizards of the Coast, quoted for reference. Cited rule numbers open here;
+          answers are generated only from retrieved excerpts.
+        </p>
       </div>
-      <Footer right="rules_qa" />
+      <Footer />
     </>
   );
 }

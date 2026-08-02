@@ -12,10 +12,10 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { Chrome, Footer, type TabDef } from "@/components/Chrome";
+import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { AnalysisReport, RunGameSummary, RunSummary } from "@/lib/types";
-import { pct, plural, runTitle, stripAi } from "@/lib/format";
+import { fmtDay, pct, plural, runDate, runTitle, stripAi } from "@/lib/format";
 
 function fmtClock(ms: number): string {
   const s = Math.round(ms / 1000);
@@ -130,10 +130,6 @@ export default function ResultsPage() {
     const medTurns = median(gameRows.map((g) => g.endedTurn));
     const rotated = data.meta?.source === "rotated";
 
-    // Chrome context: the matchup, same as the H1 — a breadcrumb that names
-    // only the first deck reads as a different page than the one it heads.
-    const ctx = runTitle(rows.map((r) => r.name));
-
     // First game the leading deck actually won — target for the primary action.
     let watchGame = 1;
     for (const g of gameRows) {
@@ -142,14 +138,14 @@ export default function ResultsPage() {
         break;
       }
     }
-    return { games, baseline, rows, tops, topNames, gameRows, medTurns, rotated, ctx, watchGame };
+    return { games, baseline, rows, tops, topNames, gameRows, medTurns, rotated, watchGame };
   }, [data, file]);
 
   // The matchup, not the filename: "sim_20260724_094940_rotated.json" tells a
-  // reader nothing. The filename stays in the sub-line and the footer for anyone
-  // who needs to find it on disk.
+  // reader nothing. The address lives in the details disclosure at the foot.
   const title = view ? runTitle(view.rows.map((r) => r.name)) : file.replace(/\.json$/, "");
   const enc = encodeURIComponent(file);
+  const when = runDate(file);
 
   // Real destinations now that telemetry and coaching exist — the row is
   // present on the loading and error states too, so it does not vanish mid-load.
@@ -179,7 +175,7 @@ export default function ResultsPage() {
             <p className="note">{err} — check that the engine API is running, then reload.</p>
           )}
         </div>
-        <Footer right={file} />
+        <Footer />
       </>
     );
   }
@@ -195,7 +191,7 @@ export default function ResultsPage() {
             </div>
           </div>
         </div>
-        <Footer right={file} />
+        <Footer />
       </>
     );
   }
@@ -225,19 +221,29 @@ export default function ResultsPage() {
 
   return (
     <>
-      <Chrome context={view.ctx} tabs={tabs} />
+      <Chrome tabs={tabs} />
       <div className="page">
         <div className="head">
           <div>
             <h1>{title}</h1>
+            {/* What sizes the result: format, pod, sample, date. The result
+                filename used to be the third item here — an address, and the
+                only one of the five that told a reader nothing. The date
+                replaces it and earns its place: four runs of this matchup are
+                otherwise indistinguishable. */}
             <div className="sub">
-              {rows.map((r) => r.name).join(" · ")}
-              <span className="sep">·</span>
-              <span className="mono">{file}</span>
-              <span className="sep">·</span>
-              <span className="mono">{games}</span> {games === 1 ? "game" : "games"}
-              <span className="sep">·</span>
               {String(data.meta?.format ?? "Commander")}
+              <span className="sep">·</span>
+              {plural(rows.length, "deck")}
+              <span className="sep">·</span>
+              <span className="mono">{games}</span> {rotated ? "seat-rotated " : ""}
+              {games === 1 ? "game" : "games"}
+              {when && (
+                <>
+                  <span className="sep">·</span>
+                  {fmtDay(when)}
+                </>
+              )}
             </div>
           </div>
           <div className="btns">
@@ -325,6 +331,10 @@ export default function ResultsPage() {
                 known combos via Commander Spellbook · assembly inferred from the event log
               </span>
             </div>
+            {/* Six independent numeric columns that only mean anything side by
+                side, so this one keeps its grid instead of stacking. What it
+                needed was for the scroll to stop being invisible. */}
+            <p className="note only-narrow">Scroll the table sideways for the full breakdown.</p>
             <div className="tblwrap">
               <table className="games">
                 <thead>
@@ -485,7 +495,11 @@ export default function ResultsPage() {
                 {filtered.length} of {plural(games, "game")}
               </span>
             </div>
-            <table className="games">
+            {/* `stackable` + the c- cell classes are the narrow-screen contract
+                (globals.css): below 720px the head hides and each row reflows to
+                two lines rather than hiding four of its six columns behind a
+                horizontal scroll nobody discovers. */}
+            <table className="games stackable">
               <thead>
                 <tr>
                   <th style={{ width: 64 }}>Game</th>
@@ -505,8 +519,12 @@ export default function ResultsPage() {
                     className="click"
                     onClick={() => router.push(`/results/${enc}/replay/${g.n}`)}
                   >
-                    <td className="id">#{g.n}</td>
-                    <td>
+                    {/* Wide: its own column. Narrow: it belongs on the title
+                        line, not orphaned above it — a block-level title after
+                        an inline cell starts a new line box. */}
+                    <td className="id c-drop">#{g.n}</td>
+                    <td className="c-title">
+                      <span className="only-narrow-inline gnum">#{g.n} </span>
                       {g.draw ? (
                         <span className="st out">
                           <i />
@@ -521,9 +539,9 @@ export default function ResultsPage() {
                         (g.winnerName ?? "—")
                       )}
                     </td>
-                    <td className="mono">T{g.endedTurn}</td>
-                    <td className="dur">{fmtClock(g.durationMs)}</td>
-                    <td>
+                    <td className="mono c-meta">T{g.endedTurn}</td>
+                    <td className="dur c-meta">{fmtClock(g.durationMs)}</td>
+                    <td className="c-meta">
                     {g.decidedBy}
                     {(() => {
                       // The summary can only say who won and when; the analysis
@@ -538,7 +556,7 @@ export default function ResultsPage() {
                       );
                     })()}
                   </td>
-                    <td className="r">
+                    <td className="r c-act">
                       <Link
                         className="bl"
                         href={`/results/${enc}/replay/${g.n}`}
@@ -551,7 +569,7 @@ export default function ResultsPage() {
                 ))}
                 {filtered.length === 0 && (
                   <tr>
-                    <td colSpan={6}>No games match “{q}”.</td>
+                    <td className="c-empty" colSpan={6}>No games match “{q}”.</td>
                   </tr>
                 )}
               </tbody>
@@ -563,8 +581,17 @@ export default function ResultsPage() {
             a replay for that.
           </p>
         </section>
+
+        <PageDetails label="Run details">
+          <div>{file}</div>
+          {when && <div>{when.toLocaleString()}</div>}
+          <div>
+            {plural(games, "game")} · {data.games.reduce((a, g) => a + g.events, 0).toLocaleString("en-US")} events
+            {data.meta?.source ? ` · ${String(data.meta.source)}` : ""}
+          </div>
+        </PageDetails>
       </div>
-      <Footer right={file} />
+      <Footer />
     </>
   );
 }

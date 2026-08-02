@@ -9,7 +9,7 @@ import { deckSlug, estimateSeconds, fmtDuration, pct, plural, runTitle, scryfall
 import { buildTimeline, commanderGuess, foldTo } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 
 const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 const POLL_MS = 4000;
@@ -224,6 +224,9 @@ export default function RunPage() {
   const estimate = estimateSeconds(games ?? 16, decks.length || 4);
   const progress = Math.min(95, Math.max(2, (live / estimate) * 100));
   const short = id.length > 12 ? id.slice(0, 12) : id;
+  // A truncated job id is an address, not a title. Name the run by what it is —
+  // the matchup — and keep the id in the details disclosure at the foot.
+  const podTitle = deckNames.length ? runTitle(deckNames) : "Simulation run";
 
   const resultBase = status?.result_file ? (status.result_file.split("/").pop() ?? null) : null;
   const resultHref = resultBase ? `/results/${encodeURIComponent(resultBase)}` : null;
@@ -245,14 +248,14 @@ export default function RunPage() {
 
   return (
     <>
-      <Chrome context={`run ${short}`} />
+      <Chrome />
       <div className="page">
         {!status && !fetchErr && <p className="lede">Checking run status…</p>}
 
         {!status && fetchErr && (
           <>
             <h1>
-              Run <span className="mono">{short}</span>
+              {podTitle}
             </h1>
             <p className="lede">
               Can&apos;t reach the engine yet — this page retries every 4 seconds, so you can
@@ -266,8 +269,8 @@ export default function RunPage() {
               — is <span className="mono">{ENGINE_CMD}</span> running?
             </p>
             <p className="note">
-              <Link className="q" href="/">
-                ‹ Back to Sim Lab
+              <Link className="q" href="/results">
+                ‹ All results
               </Link>
             </p>
           </>
@@ -280,7 +283,7 @@ export default function RunPage() {
         {status && (state === "queued" || state === "running") && (
           <>
             <h1>
-              Run <span className="mono">{short}</span>
+              {podTitle}
             </h1>
             <p className="lede">
               {state === "queued" ? (
@@ -367,9 +370,7 @@ export default function RunPage() {
           <>
             <div className="head">
               <div>
-                <h1>
-                  Run <span className="mono">{short}</span>
-                </h1>
+                <h1>{podTitle}</h1>
               </div>
               <div className="btns">
                 {resultHref && (
@@ -422,7 +423,7 @@ export default function RunPage() {
         {status && state === "error" && (
           <>
             <h1>
-              Run <span className="mono">{short}</span>
+              {podTitle}
             </h1>
             <p className="lede">
               The engine reported an error for this run — the message below is verbatim.
@@ -435,8 +436,8 @@ export default function RunPage() {
               {status.error ?? "Unknown engine error."}
             </p>
             <p className="note">
-              <Link className="q" href="/">
-                ‹ Back to Sim Lab
+              <Link className="q" href="/results">
+                ‹ All results
               </Link>
             </p>
           </>
@@ -505,21 +506,25 @@ export default function RunPage() {
         {status && state === "idle" && (
           <>
             <h1>
-              Run <span className="mono">{short}</span>
+              {podTitle}
             </h1>
             <p className="lede">
               The engine has no record of this run — it may have been restarted since the run was
               queued.
             </p>
             <p className="note">
-              <Link className="q" href="/">
-                ‹ Back to Sim Lab
+              <Link className="q" href="/results">
+                ‹ All results
               </Link>
             </p>
           </>
         )}
+        <PageDetails label="Run details">
+          <div>job {id}</div>
+          {status?.result_file && <div>{status.result_file.split("/").pop()}</div>}
+        </PageDetails>
       </div>
-      <Footer right={`job ${id}`} />
+      <Footer />
     </>
   );
 }

@@ -329,9 +329,9 @@ function NewRunInner() {
           <p className="lede">Loading decks…</p>
         ) : (
           <p className="lede">
-            <b>{decks.length} decks</b> on this engine. Pick two to four and run a gauntlet —
-            results land under <Link className="bl" href="/results">Results</Link>. Hover or
-            focus a tile to read its decklist.
+            <b>{decks.length} decks</b> on this engine. Click a tile to seat it, or{" "}
+            <b>Cards</b> to read the whole decklist. Pick two to four and run a gauntlet —
+            results land under <Link className="bl" href="/results">Results</Link>.
           </p>
         )}
 
@@ -432,9 +432,11 @@ function NewRunInner() {
                     const seat = selected.indexOf(d.file);
                     const art = artOf(d);
                     return (
-                      // Two interactive things per tile, so no nesting: the
-                      // full-bleed button seats the deck for a run; the name
-                      // in the scrim (layered above it) opens the deck page.
+                      // Two actions per tile, so both get a real control: the
+                      // full-bleed button seats the deck for a run, and a
+                      // labeled "Cards" button opens the deck page. The
+                      // second action used to be bare text in the scrim —
+                      // invisible, so nobody found it.
                       <div
                         key={d.file}
                         className="dg-tile"
@@ -455,10 +457,21 @@ function NewRunInner() {
                           )}
                           {seat >= 0 && <span className="seat">P{seat + 1}</span>}
                         </button>
+                        <Link
+                          className="dg-view"
+                          href={`/decks/${encodeURIComponent(d.file)}`}
+                          aria-label={`Read every card in ${d.name}`}
+                        >
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                               stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                               strokeLinejoin="round" aria-hidden="true">
+                            <path d="M4 5h7a2 2 0 0 1 2 2v12a1.5 1.5 0 0 0-1.5-1.5H4Z" />
+                            <path d="M20 5h-7a2 2 0 0 0-2 2v12a1.5 1.5 0 0 1 1.5-1.5H20Z" />
+                          </svg>
+                          Cards
+                        </Link>
                         <span className="scrim">
-                          <Link className="t bl" href={`/decks/${encodeURIComponent(d.file)}`}>
-                            {d.name}
-                          </Link>
+                          <span className="t">{d.name}</span>
                           <ManaPips colors={identityOf(d) ?? undefined} />
                         </span>
                       </div>
@@ -496,7 +509,10 @@ function NewRunInner() {
                         <span className="noart" aria-hidden="true" />
                       )}
                       <span className="t">
-                        <span className="mono">P{i + 1}</span> {d.name}
+                        <span className="mono">P{i + 1}</span>{" "}
+                        <Link className="bl" href={`/decks/${encodeURIComponent(d.file)}`}>
+                          {d.name}
+                        </Link>
                         <small>{d.commander ?? d.file}</small>
                       </span>
                       <a

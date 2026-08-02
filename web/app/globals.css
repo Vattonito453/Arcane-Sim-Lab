@@ -678,8 +678,16 @@ footer.chrome {
 .dg-tile:hover { border-color: var(--mana-cyan); }
 .dg-tile .pick { position: absolute; inset: 0; display: block; width: 100%; border: 0; background: transparent; padding: 0; cursor: pointer; }
 .dg-tile .pick img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.dg-tile .scrim { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 7px 10px; background: var(--bar-instrument); display: flex; align-items: center; gap: 8px; }
-.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+/* pointer-events:none is load-bearing: the scrim covers the bottom strip of
+   the tile — where the deck name sits, and where people naturally click — so
+   without it that strip is dead space instead of seating the deck. Nothing
+   inside the scrim is interactive (the name is text, pips are data). */
+.dg-tile .scrim { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; pointer-events: none; padding: 7px 10px; background: var(--bar-instrument); display: flex; align-items: center; gap: 8px; }
+.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; color: var(--ink-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+/* The tile's second action needs its own visible control — a labeled button,
+   always rendered (not hover-only: undiscoverable, and dead on touch). */
+.dg-tile .dg-view { position: absolute; top: 8px; right: 8px; z-index: 2; height: 24px; padding: 0 9px; border-radius: var(--r-pill); background: var(--bar-instrument); border: 1px solid var(--hairline-strong); color: var(--mana-cyan-ink); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; transition: border-color var(--dur-fast); }
+.dg-tile .dg-view:hover, .dg-tile .dg-view:focus-visible { border-color: var(--mana-cyan); text-decoration: none; }
 .dg-tile[data-on] { border-color: var(--mana-cyan); box-shadow: inset 0 0 0 1px var(--mana-cyan); }
 .dg-tile .seat { position: absolute; top: 8px; left: 8px; height: 22px; min-width: 30px; padding: 0 7px; border-radius: var(--r-pill); background: var(--surface-obsidian); border: 1px solid var(--mana-cyan); color: var(--mana-cyan-ink); font-family: var(--font-data); font-size: 11px; display: flex; align-items: center; justify-content: center; }
 .dg-filter { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }

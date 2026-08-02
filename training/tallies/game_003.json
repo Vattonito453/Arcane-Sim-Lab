@@ -1,0 +1,25 @@
+{
+  "game_id": "game_003",
+  "source": "youtube:HkSYycJ8KSU",
+  "decklists": null,
+  "players": 4,
+  "winner_archetype": "burn",
+  "mulligans": {"decisions": 0, "taken": 0},
+  "attacks": {"attack_turns": 2, "split_turns": 0},
+  "blocks": {"opportunities": 0, "blocks_made": 0},
+  "commander_deploys": [],
+  "tutors": {
+    "cast": 2,
+    "held_castable": 0,
+    "targets": ["Goblin cards stacked on top (Goblin Recruiter)", "Batterskull (Stoneforge Mystic)"]
+  },
+  "combo": {
+    "lines_present": false,
+    "assembled": 0,
+    "pieces_held_turns": 0,
+    "jammed_into_open_mana": 0,
+    "waited_for_protection": 0
+  },
+  "hidden": null,
+  "notes": "Counted from training/game_003/game_log.json only - a condensed key-event extraction of 2019-era ASR captions; no transcript_raw.txt exists for this game, so every denominator here is a floor, not a measurement. Mulligans: hands were drawn PRE-STREAM (log 9:27), so 0/0 means unobservable, not zero mulligans taken. Attacks: only two combat turns are explicitly narrated (1:00:11 Kozilek attacks Graham for 11-12 commander damage; 1:55:35 Ulamog attacks, exile-20 trigger) across a ~2h8m game whose eliminations all came from conspired X-spells - actual attack turns are certainly far higher; both counted attacks hit a single defender, so split_turns=0 is also a floor. Blocks: no block/no-block decision is discernible in the condensed log (Void Winnower also barred even-MV and token blockers for much of the game), so 0/0; the double-block + Golgari Charm moment referenced in task docs does not appear in this game's log and no deck at the table has BG color identity - it likely belongs to a different corpus game. Commander deploys: all four commanders saw play (Wort recast after dying, Kozilek to command zone via Banishing Light, Teysa activated, Mirri voltron) but no first-cast player-turn number is narrated, so the list is empty. Tutors: 2 counted (Goblin Recruiter stacking Goblins on top at ~36:06 context; Stoneforge Mystic revealing Batterskull at 1:30:51); held_castable stays 0 - hidden hands are invisible on video. Combo: no known multi-card combo deck at the table (WB tokens / GW voltron-enchantress / colorless Eldrazi ramp / RG conspire burn); Recruiter+Ringleader is a value engine, not a combo line."
+}

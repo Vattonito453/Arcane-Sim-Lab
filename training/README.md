@@ -10,7 +10,7 @@ Real-game data extracted from YouTube Commander gameplay, structured turn-by-tur
 | `game_002/` | LoadingReadyRun, "LRRMtG — 4 Player Commander" (tjo4sJcK7Ik), broadcast 2017 | 2h05 (game ≈ 11:34–1:41:49) | **Complete** — winner: Ben (Phenax mill); includes a 21-commander-damage kill and a mill-out loss |
 | `game_003/` | LoadingReadyRun, "Friday Night Paper Fight — 4 Player Commander" (HkSYycJ8KSU), broadcast 2019 | 2h31 (game ≈ 9:35–2:17:30) | **Complete** — winner: Ben (Wort conspire burn); densest rules content: Void Winnower rulings, lands-played-not-cast, commander/object identity, an on-camera color-identity violation catch |
 | `game_004/` | LoadingReadyRun, "Friday Night Paper Fight — Commander Planechase" (zxqw4OxCQJo), broadcast 2018 | 3h58, **two complete games** | First VARIANT sample (Planechase, CR 901): planar die mechanics, 12+ planes' rules interactions, goad, persist, myriad-style token triggers — including two PARTIAL_ERROR rulings the KB corrects |
-| `game_005/` | Mana Dorks, "Mana Dorks Is Back! Ep 1" (pmbYi4R8bS8), 2026 | 1h51 | **Complete** — winner: N3cro (Raggadragga, 24 commander damage one-shot). Firsts: full published decklists (Moxfield/Archidekt links in meta — convertible to .dck for Forge replay), digital virtual-tabletop play, poison counters, and a player *choosing* graveyard over command zone (903.9a is optional) |
+| `game_005/` | Mana Dorks, "Mana Dorks Is Back! Ep 1" (pmbYi4R8bS8), 2026 | 1h51 | **Complete** — winner: Dnide (Wildsear, 24 commander damage one-shot; initially misattributed to N3cro from audio, settled by the published decklists — see the log's `attribution_correction`). Firsts: full published decklists (Moxfield/Archidekt links in meta — convertible to .dck for Forge replay), digital virtual-tabletop play, poison counters, and a player *choosing* graveyard over command zone (903.9a is optional) |
 
 ## Files per game
 
@@ -41,8 +41,21 @@ Known KB gaps found: **none** — every keyword encountered (station, foretell, 
 3. Cite CR rules for each action; verify each ref with `python3 ../rules/query_rules.py <rule>`.
 4. Log table mistakes as RULES_ERROR entries — these are the highest-value training samples (question → correct rule).
 
+## Behavior corpus (agent calibration)
+
+`BEHAVIOR_CAPTURE.md` is the scaling plan toward 30-50 games: a recording
+protocol for self-played games (the only source of hidden-information
+ground truth — tutor intent, holds, greed), YouTube selection criteria,
+and a per-game `tallies/<game_id>.json` counting schema.
+`python3 training/behavior_bands.py training/tallies/*.json` turns the
+tallies into the quantified human reference bands the humanness scorecard
+compares against. Rules-KB extraction (the game_00N/ treatment) and
+behavior tallies are independent passes — a game can have either or both.
+
 ## Next steps
 
 - Extract Ep 3 to complete game_001 (winner + endgame states).
+- Grow `tallies/` to the BEHAVIOR_CAPTURE.md targets (≥8 combo-deck games,
+  ≥5 self-recorded with .dck exports).
 - Add non-Commander formats (per plan) — schema already format-agnostic except `starting_life` / commander fields.
 - Consider embedding `game_log` events alongside `chunks.jsonl` so retrieval can pull "real play example" context next to the rule text.

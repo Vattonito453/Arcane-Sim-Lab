@@ -18,7 +18,7 @@ context for any AI feature that evaluates or explains plays.
    constantly (game_001 "Shelinda at Jared, Duskshell at Weston"; game_003 Teysa dual attack).
    Artifact of Forge's AiAttackController (single-defender selection).
 2. **Block rate 14%** (34 blocks vs 214 declines). Human games feature routine blocks,
-   chumps, double-blocks (game_003 double-block + Golgari Charm; game_004 assign-lethal puzzles).
+   chumps, double-blocks (game_004 double-block + Golgari Charm and assign-lethal puzzles).
    Partially confounded by unblockable/protection attackers; still race-mode.
 3. **No politics or memory**: zero retaliation, deals, threats, or kingmaking avoidance —
    the layer that decided every human game (game_005's winner was removal-revenge driven).

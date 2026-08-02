@@ -1,0 +1,25 @@
+{
+  "game_id": "game_001",
+  "source": "youtube:IIE4VeO1Cgs",
+  "decklists": null,
+  "players": 4,
+  "winner_archetype": null,
+  "mulligans": {"decisions": 4, "taken": 0},
+  "attacks": {"attack_turns": 10, "split_turns": 2},
+  "blocks": {"opportunities": 5, "blocks_made": 2},
+  "commander_deploys": [5, 6, 7, 3],
+  "tutors": {
+    "cast": 0,
+    "held_castable": 0,
+    "targets": []
+  },
+  "combo": {
+    "lines_present": false,
+    "assembled": 0,
+    "pieces_held_turns": 0,
+    "jammed_into_open_mana": 0,
+    "waited_for_protection": 0
+  },
+  "hidden": null,
+  "notes": "PARTIAL GAME: covers episodes 1-2 only; episode 3 ('The Victor is Chosen...', 1:26:45) was never extracted, so the winner is unknown (winner_archetype null) and every denominator covers roughly the first two-thirds of the game at most. Likely undercounts: (1) attack_turns/split_turns - one ambiguous possible Alex attack in ep2 (~30:31-31:09, 'Set it out the attack though') was not counted because the ASR transcript never shows a target or damage; (2) blocks.opportunities is the biggest undercount - the ASR transcript (no speaker labels) rarely shows whether a defender had untapped/legal blockers, so several unblocked swings (e.g. Weston's 18 flying at Jared at ep2 48:13, Weston's 7:50 swing at Jared) were excluded rather than guessed; (3) mulligans covers only the one visible pregame round (free mulligan announced, all four kept). tutors=0 is a definition effect, not an absence of searches: the decks cast many land-search spells (Evolving Wilds, Cultivate, Nature's Lore, Myriad Landscape, Fabled Passage, Farseek) which are excluded as land ramp, and no nonland tutor was cast. commander_deploys is seat order [Alex, Jared, Bolt, Weston] = own-turn [5, 6, 7, 3]; Bolt's 7 counts his own turns (6 in ep1 + first ep2 turn) and is robust to the flagged turn-order anomaly in ep1 turn-cycle 6. Combo zeros: all four decks are precon-level (FF Counter Blitz counters, EOE Spacecraft lands-sac, FF Limit Break equipment, WB vampires) with no known multi-card combo line at the table."
+}

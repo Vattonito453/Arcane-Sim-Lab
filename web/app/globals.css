@@ -798,6 +798,35 @@ footer.chrome {
    dead on touch — and display:none below 980px, so the two routes it carried
    ("Open deck", "Playtest") did not exist on a phone at all. Both are nav
    items now. */
+/* ── card preview — read the card at full size (components/CardPreview) ──
+   Anchored beside the trigger on a wide screen, a centred sheet on a phone
+   where nothing fits beside anything. z-index sits above the nav sheet. */
+.cardpv { position: fixed; z-index: 60; width: 300px; pointer-events: none; filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.6)); }
+.cardpv img { width: 100%; height: auto; display: block; border-radius: 14px; }
+.cardpv--centred { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(78vw, 340px); pointer-events: auto; cursor: zoom-out; }
+.cardpv-scrim { position: fixed; inset: 0; z-index: 59; background: rgba(6, 9, 13, 0.72); }
+/* Cache miss: the honest fallback is what we know, not a blank card back. */
+.cardpv-text { padding: 16px 18px; }
+.cardpv-nm { font-size: 14px; font-weight: 600; color: var(--ink-1); }
+.cardpv-tl { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+.cardpv-or { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 8px; white-space: pre-line; }
+/* Touch-only magnifier. On /playtest a tap already plays or taps the card, so
+   the preview needs its own control there — but only where hover is absent,
+   or it would be clutter on a desktop that already previews on hover. */
+.pt-card .pt-zoom { position: absolute; bottom: -7px; right: -7px; display: none; width: 22px; height: 22px; align-items: center; justify-content: center; padding: 0; border-radius: 50%; border: 1px solid var(--hairline-strong); background: var(--bar-instrument); color: var(--ink-1); cursor: pointer; }
+.pt-card .pt-zoom svg { display: block; }
+/* The visible dot has to stay small — the card it sits on is only 84px wide —
+   so the hit area is grown past the glyph instead. 28px drawn, 44px touchable,
+   which is the same trade the counter +/- controls already make below. */
+.pt-card .pt-zoom::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; }
+@media (hover: none) and (pointer: coarse) {
+  .pt-card .pt-zoom { display: flex; width: 28px; height: 28px; bottom: -9px; right: -9px; }
+  .pt-card .pt-zoom::after { inset: -8px; }
+  /* The counter controls were hover-only, so on a touch device there was no
+     way to add a counter at all. Same reasoning, same fix. */
+  .pt-card .cbtns { display: flex; }
+}
+
 /* Deck detail page — readable card rows, grouped by type. */
 .card-row { display: flex; gap: 14px; padding: 12px 0; border-top: 1px solid var(--hairline); align-items: flex-start; }
 .card-row:last-child { border-bottom: 1px solid var(--hairline); }
@@ -808,6 +837,13 @@ footer.chrome {
 .card-row .cr-n .qty { font-family: var(--font-data); font-size: 11.5px; color: var(--ink-4); font-weight: 400; }
 .card-row .cr-t { font-size: 11.5px; color: var(--ink-4); margin-top: 1px; }
 .card-row .cr-o { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 5px; white-space: pre-line; }
+/* A row opens the full-size card, so it has to read as touchable: the cursor
+   says zoom, the row lifts on hover, and the thumbnail gets the cyan edge that
+   means interaction everywhere else. */
+.card-row[role="button"] { cursor: zoom-in; padding-left: 8px; padding-right: 8px; margin-left: -8px; margin-right: -8px; border-radius: 8px; }
+.card-row[role="button"]:hover { background: var(--surface-raised); }
+.card-row[role="button"]:hover img, .card-row[role="button"]:hover .noart { border-color: var(--mana-cyan); }
+.card-row[role="button"]:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
 
 /* Right-rail selected-deck rows. */
 .rail-deck { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--hairline); }

@@ -36,6 +36,10 @@
   --mana-cyan-ink:        #7FF2FF;
   --arcane-violet:        #A855F7;
   --arcane-violet-ink:    #C89BFA;
+  /* The Import action's sky accent. It was a bare hex in the hover rule — the
+     one hardcoded colour left outside this block, which the design system
+     forbids. Same value the action's own gradient and border already use. */
+  --accent-sky:           #38BDF8;
   /* Stops are ABSOLUTE, never percentages — the dark zone is the label scrim. */
   --winrate-fill: linear-gradient(90deg,
       rgba(11,52,62,0.96) 0px, rgba(11,52,62,0.96) 165px,
@@ -294,7 +298,10 @@ header.chrome {
    one of the loudest template tells, and this is a tool used in sessions rather
    than a thumb-driven feed. Both controls are always in the DOM; the 720px
    breakpoint decides which one is shown. */
-.navbtn { display: none; margin-left: auto; width: 40px; height: 40px; flex: none;
+/* 44px, not 40: this is the only nav control on a phone, and 44 is the
+   long-standing touch-target floor (Apple HIG; WCAG 2.5.5). It passed the
+   24px AA minimum at 40px but was still small for a thumb. */
+.navbtn { display: none; margin-left: auto; width: 44px; height: 44px; flex: none;
   align-items: center; justify-content: center; background: transparent;
   border: 1px solid var(--hairline-strong); border-radius: var(--r-control);
   color: var(--ink-2); transition: border-color var(--dur-fast), color var(--dur-fast); }
@@ -427,7 +434,7 @@ section { margin-bottom: 48px; }
   background: linear-gradient(180deg, rgba(56,189,248,0.12), rgba(9,17,26,0.82));
   border-color: rgba(56, 189, 248, 0.6);
 }
-.action-btn--blue:hover { border-color: #38BDF8; }
+.action-btn--blue:hover { border-color: var(--accent-sky); }
 .action-btn--neutral:hover { border-color: var(--ink-3); }
 
 /* ── status — shape carries the state, hue is secondary (§7) ── */
@@ -751,7 +758,12 @@ footer.chrome {
    without it that strip is dead space instead of seating the deck. Nothing
    inside the scrim is interactive (the name is text, pips are data). */
 .dg-tile .scrim { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; pointer-events: none; padding: 7px 10px; background: var(--bar-instrument); display: flex; align-items: center; gap: 8px; }
-.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; color: var(--ink-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+/* Two lines, not one. Single-line truncation cut exactly the part that tells
+   these decks apart: four "Kilo, Apogee Mind - …" variants (Mostly Precon,
+   Rock Pop, Upgrade with Swaps) all rendered as "Kilo, Apogee Mi…", so on
+   /new you could seat the wrong one into a gauntlet with no way to tell.
+   Measured: 4 decks in 1 ambiguous group at this width, 0 with two lines. */
+.dg-tile .scrim .t { font-size: 12.5px; font-weight: 600; color: var(--ink-1); flex: 1; min-width: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.25; overflow-wrap: anywhere; }
 /* A five-colour identity at the inline size ate 90px of a 230px tile and left
    "Meren Graveyard…" for the name. The name is what you are scanning for; the
    pips are a secondary read and survive being smaller. */

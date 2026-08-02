@@ -87,10 +87,17 @@ export function runDate(file: string): Date | null {
   return Number.isNaN(dt.getTime()) ? null : dt;
 }
 
+/** "14 min", "3 min 20 s", "45 s".
+ *
+ *  Rounds the total BEFORE splitting. Rounding the remainder separately printed
+ *  "13 min 60 s" for 839.5 s (and "60 s" for 59.7), because 59.5 rounds up to a
+ *  full minute that never carried. Whole minutes drop the " 0 s" tail. */
 export function fmtDuration(totalSeconds: number): string {
-  const m = Math.floor(totalSeconds / 60);
-  const s = Math.round(totalSeconds % 60);
-  return m ? `${m} min ${s} s` : `${s} s`;
+  const total = Math.max(0, Math.round(totalSeconds));
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  if (!m) return `${s} s`;
+  return s ? `${m} min ${s} s` : `${m} min`;
 }
 
 /** Scryfall art-crop URL for a card/commander name (hotlinked per legal posture). */
@@ -116,7 +123,27 @@ export function estimateSeconds(games: number, decks: number): number {
   return STARTUP_SECONDS + games * per;
 }
 
-/** Deck display name from a .dck filename: "kilo_helm_final.dck" → "kilo-helm-final" */
+/** Readable deck name from whatever the job payload carries.
+ *
+ *  A job's `decks` are the paths /simulate was handed, and in a container those
+ *  are absolute: "/data/decks/ant-man-396be140.dck". Slugging that without
+ *  stripping the directory put
+ *  "/data/decks/ant-man-396be140 vs /app/engine/decks/atraxa-counters" in the
+ *  run page's H1 — a filesystem path as a page title, and it leaked the image
+ *  layout too. Take the basename, drop the extension and the import hash
+ *  suffix, then space out the separators.
+ *
+ *    "/data/decks/ant-man-396be140.dck" → "Ant Man"
+ *    "kilo_helm_final.dck"              → "Kilo Helm Final"
+ */
 export function deckSlug(file: string): string {
-  return file.replace(/\.dck$/, "").replace(/_/g, "-");
+  const base = file.split(/[\\/]/).pop() ?? file;
+  return base
+    .replace(/\.dck$/i, "")
+    // Imported decks get an 8-hex uniqueness suffix; it is an address, not a name.
+    .replace(/-[0-9a-f]{8}$/i, "")
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 }

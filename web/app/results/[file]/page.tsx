@@ -318,8 +318,7 @@ export default function ResultsPage() {
             </tbody>
           </table>
           <p className="note">
-            The thin marker on each bar sits at {pct(baseline, 1)}, the even-seats baseline for a{" "}
-            {rows.length}-player pod. A deck to the right of it is beating an equal share of its games.
+            The marker sits at {pct(baseline, 1)}, an even share of a {rows.length}-player pod.
           </p>
         </section>
 
@@ -439,7 +438,14 @@ export default function ResultsPage() {
                   })}
                 </tbody>
               </table>
+              {/* DESIGN_SYSTEM.md requires an honesty note on inferred data. It
+                  does not require 95 words of method on every visit. The caveat
+                  that changes how you read the column stays inline; the method
+                  moves one click away. */}
               <p className="note">
+                Assembled is inferred from board reconstruction, not read from the log.
+              </p>
+              <PageDetails label="How these numbers are measured">
                 Assembled counts games where every piece was on the battlefield at once, from board
                 reconstruction, an inference rather than a read. Instant and sorcery pieces count as
                 present on turns they were cast. From draws is the hypergeometric chance of
@@ -467,7 +473,7 @@ export default function ResultsPage() {
                     numbers as a floor, not a verdict.
                   </>
                 )}
-              </p>
+              </PageDetails>
             </div>
           </section>
         )}
@@ -576,9 +582,7 @@ export default function ResultsPage() {
             </table>
           </div>
           <p className="note">
-            “Decided by” reports the run summary’s result line: the winner and the turn the log
-            ended on. Naming the final swing, drain, or poison total needs the event record, so open
-            a replay for that.
+            Open a replay to see what actually did the killing.
           </p>
         </section>
 

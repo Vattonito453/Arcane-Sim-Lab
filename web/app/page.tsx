@@ -344,12 +344,8 @@ export default function Home() {
                   })}
                 </div>
                 <p className="note">
-                  Win rates pool every pod size and seat, so compare a deck against its own pod&apos;s
-                  baseline in the run report, not against this list. Rows open the deck;{" "}
-                  <Link className="bl" href="/results">
-                    Results
-                  </Link>{" "}
-                  has the runs behind them.
+                  Pooled across every pod and seat, so read a deck against its own pod&apos;s
+                  baseline in the run report, not against this list.
                 </p>
               </>
             )}

@@ -289,16 +289,16 @@ export default function RunPage() {
               {state === "queued" ? (
                 <>
                   Queued: <b>{games != null ? plural(games, "game") : "–"}</b> across{" "}
-                  <b>{plural(decks.length, "deck")}</b> waiting for the worker
+                  <b>{plural(decks.length, "deck")}</b>
                   {(status?.queued_ahead ?? 0) > 0
-                    ? ` behind ${plural(status?.queued_ahead ?? 0, "other run")}`
-                    : ""}. You can leave; this page keeps polling.
+                    ? `, behind ${plural(status?.queued_ahead ?? 0, "other run")}`
+                    : ""}.
                 </>
               ) : (
                 <>
-                  Simulating <b>{games != null ? plural(games, "game") : "–"}</b> across <b>{plural(decks.length, "deck")}</b>
-                  {started ? <>, started {timeAgo(started)}</> : null}. You can leave; this page
-                  keeps polling.
+                  Simulating <b>{games != null ? plural(games, "game") : "–"}</b> across{" "}
+                  <b>{plural(decks.length, "deck")}</b>
+                  {started ? <>, started {timeAgo(started)}</> : null}.
                 </>
               )}
             </p>
@@ -310,9 +310,8 @@ export default function RunPage() {
               </div>
               <p className="note">
                 {state === "queued"
-                  ? `Nothing has started yet, so there is no progress to draw. Once Forge picks
-                     this up, ${plural(decks.length || 4, "deck")} over ${plural(games ?? 16, "game")} usually takes about ${fmtDuration(estimate)}.`
-                  : `Rough progress. ${plural(decks.length || 4, "deck")} over ${plural(games ?? 16, "game")} usually takes about ${fmtDuration(estimate)}. Pod size drives this far more than game count.`}
+                  ? `Not started yet. This pod usually takes about ${fmtDuration(estimate)}.`
+                  : `Usually about ${fmtDuration(estimate)} for this pod. Rough: pod size drives the time far more than game count.`}
               </p>
             </section>
             <div className="figs">
@@ -340,7 +339,6 @@ export default function RunPage() {
                 </div>
               </div>
             </div>
-            {deckNames.length > 0 && <p className="note">Decks: {deckNames.join(" · ")}</p>}
 
             {/* Forge spends ~25 s loading its card database before it plays a
                 card, and the log has no turns to parse until then. Say so
@@ -416,7 +414,6 @@ export default function RunPage() {
                 <div className="l">wall-clock time</div>
               </div>
             </div>
-            {deckNames.length > 0 && <p className="note">Decks: {deckNames.join(" · ")}</p>}
           </>
         )}
 
@@ -485,10 +482,7 @@ export default function RunPage() {
                 <TabletopNote />
               </div>
               <p className="note">
-                Played back from the finished log at a watchable pace, not a live
-                feed. Forge writes its log in bursts, so following the newest
-                event showed a still table that filled in as the game ended.
-                Simulation continues in the background.
+                Played back at a watchable pace, not live. The simulation keeps running.
               </p>
               <div className="loglist tail">
                 {/* Follows the playhead, not the buffer. The full log is

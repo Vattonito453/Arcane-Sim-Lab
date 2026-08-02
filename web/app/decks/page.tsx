@@ -82,33 +82,17 @@ export default function DecksPage() {
           </p>
         ) : (
           <p className="lede">
-            <b>{plural(decks.length, "deck")}</b>
-            {/* Only worth splitting when there is a split — an engine with no
-                MTG_DATA_DIR reports every deck as imported, and "0 bundled"
-                reads like a fault. */}
-            {imported > 0 && bundled > 0 && (
-              <> ({imported} imported, {bundled} bundled with the engine)</>
-            )}
-            . Open one to read every card, take it to the{" "}
-            <Link className="bl" href="/playtest">
-              sandbox
-            </Link>
-            , or{" "}
-            <Link className="bl" href="/new">
-              seat it in a gauntlet
-            </Link>
-            .
+            {/* Where a deck came from is bookkeeping, not something anyone
+                chooses a deck by, and the three destinations were just the nav
+                written out again. */}
+            <b>{plural(decks.length, "deck")}</b>. Open one to read every card.
           </p>
         )}
 
         {decks && decks.length > 0 && (
           <section>
             <DeckGallery decks={decks} facts={facts} mode="link" hrefFor={(d) => `/decks/${encodeURIComponent(d.file)}`} />
-            <p className="note">
-              Commander art via Scryfall, resolved through the engine&apos;s card cache in one
-              batched call. A deck whose commander isn&apos;t listed, or whose art hasn&apos;t
-              resolved yet, shows its name and colour identity instead of a picture.
-            </p>
+
           </section>
         )}
       </div>

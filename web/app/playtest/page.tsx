@@ -86,11 +86,7 @@ export default function PlaytestIndexPage() {
               actionVerb="Playtest"
               hrefFor={(d) => `/playtest/${encodeURIComponent(d.file)}`}
             />
-            <p className="note">
-              Everything on the table is ephemeral; reloading reshuffles. Nothing is adjudicated
-              and nothing declares a winner; this is a kitchen-table goldfish with the counting
-              done for you.
-            </p>
+
           </section>
         )}
 

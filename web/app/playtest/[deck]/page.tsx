@@ -17,6 +17,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api } from "@/lib/api";
 import { cardFace, loadCards, normalizeName, type CardMap } from "@/lib/cards";
+import { useCardPreview } from "@/components/CardPreview";
 import type { DeckCards } from "@/lib/types";
 
 type ZoneName = "library" | "hand" | "battlefield" | "graveyard" | "exile" | "command";
@@ -74,6 +75,7 @@ export default function PlaytestPage() {
   const [toBottom, setToBottom] = useState(0);
   const [over, setOver] = useState<ZoneName | null>(null);
   const tokenSeq = useRef(0);
+  const preview = useCardPreview(facts);
 
   useEffect(() => {
     let live = true;
@@ -93,6 +95,14 @@ export default function PlaytestPage() {
       live = false;
     };
   }, [deckFile]);
+
+  // Any board mutation dismisses an open preview. Playing a card unmounts the
+  // element the preview was anchored to, so no pointerleave ever fires and the
+  // card image hangs over the battlefield until you hover something else —
+  // measured: play a card from hand, its full-size face stays on screen.
+  useEffect(() => {
+    preview.hide();
+  }, [zones, preview.hide]);
 
   const stats = useMemo(() => {
     if (!deck) return null;
@@ -237,6 +247,9 @@ export default function PlaytestPage() {
 
   const card = (c: PCard, zone: ZoneName) => {
     const face = c.token ? null : cardFace(facts[normalizeName(c.name).toLowerCase()]);
+    // No `tap: true` here — a tap already plays or taps the card, so the
+    // preview gets hover, focus, press-and-hold, and the magnifier below.
+    const previewBind = c.token ? {} : preview.bind(c.name);
     return (
       <div
         key={c.id}
@@ -246,14 +259,40 @@ export default function PlaytestPage() {
           e.dataTransfer.setData("text/plain", JSON.stringify({ id: c.id, from: zone }))
         }
         onClick={() => tap(zone, c.id)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            tap(zone, c.id);
+          }
+        }}
         role="button"
+        tabIndex={0}
         aria-label={`${c.name}${c.tapped ? ", tapped" : ""}`}
-        title={c.name}
+        {...previewBind}
       >
         {/* eslint-disable-next-line @next/next/no-img-element -- Scryfall hotlink, never rehosted */}
         {face && <img src={face} alt="" loading="lazy" />}
         {(!face || c.token) && <span className="nm">{c.name}</span>}
         {c.counters > 0 && <span className="ctr">{c.counters}</span>}
+        {/* Touch-only: where hover exists this is hidden, because hovering the
+            card already previews it. Without it there is no way to read a card
+            on a phone, since tap is taken. */}
+        {!c.token && (
+          <button
+            className="pt-zoom"
+            aria-label={`Read ${c.name} at full size`}
+            onClick={(e) => {
+              e.stopPropagation();
+              preview.open(c.name, e.currentTarget);
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 strokeWidth="2.4" strokeLinecap="round" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m20 20-4.7-4.7" />
+            </svg>
+          </button>
+        )}
         <span className="cbtns">
           <button
             aria-label={`Add a counter to ${c.name}`}
@@ -332,9 +371,8 @@ export default function PlaytestPage() {
                   )}
                 </>
               ) : null}
-              . Tap a hand or command-zone card to put it onto the battlefield, tap a
-              permanent to tap it, and drag cards anywhere else. The app only moves cards
-              and keeps count; legality, costs, and triggers are yours to pilot.
+              . Tap to play or tap a permanent; drag anything anywhere. Legality, costs
+              and triggers are yours to pilot.
             </>
           ) : (
             <>Loading the deck…</>
@@ -425,15 +463,14 @@ export default function PlaytestPage() {
         </div>
 
         <p className="note">
-          Everything on this table is ephemeral; reloading the page reshuffles. Nothing is
-          adjudicated and nothing declares an outcome; this is a kitchen-table goldfish with
-          the counting done for you.
+          Ephemeral: reloading reshuffles. Nothing here is adjudicated and no outcome is declared.
         </p>
 
         <PageDetails label="Deck details">
           <div>{deckFile}</div>
         </PageDetails>
       </div>
+      {preview.layer}
       <Footer />
     </>
   );

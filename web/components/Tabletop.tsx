@@ -42,7 +42,7 @@ function Tile({
     facts?.mana_cost,
     ptOf(facts) ? `P/T ${ptOf(facts)}` : null,
     facts?.oracle_text,
-    kind === "unknown" ? "Type unknown — no card data for this name" : null,
+    kind === "unknown" ? "Type unknown: no card data for this name" : null,
   ]
     .filter(Boolean)
     .join("\n");
@@ -195,7 +195,7 @@ export function TabletopNote() {
   return (
     <p className="tblnote">
       Card faces come from Scryfall. Which permanents are on the table is
-      reconstructed from the event log, not read from it — Forge logs cards leaving
+      reconstructed from the event log rather than read from it. Forge logs cards leaving
       the battlefield but not entering, so treat the table as an aid and the event
       log as the record.
     </p>

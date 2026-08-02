@@ -101,7 +101,7 @@ function NewRunInner() {
     try {
       const r = await api.simulate(selected, games);
       if (!r.ok || !r.job_id)
-        throw new Error("The engine refused the run — is another simulation in progress?");
+        throw new Error("The engine refused the run. Is another simulation in progress?");
       router.push(`/runs/${encodeURIComponent(r.job_id)}`);
     } catch (e) {
       setStartErr(e instanceof Error ? e.message : String(e));
@@ -136,13 +136,13 @@ function NewRunInner() {
         {down ? (
           <p className="lede">
             The engine at the configured address isn&apos;t answering. Start it with{" "}
-            <span className="mono">{ENGINE_CMD}</span> and retry — nothing here is lost.
+            <span className="mono">{ENGINE_CMD}</span> and retry. Nothing here is lost.
           </p>
         ) : !decks ? (
           <p className="lede">Loading decks…</p>
         ) : (
           <p className="lede">
-            Seat two to four decks and run a gauntlet — results land under{" "}
+            Seat two to four decks and run a gauntlet. Results land under{" "}
             <Link className="bl" href="/results">
               Results
             </Link>
@@ -159,8 +159,8 @@ function NewRunInner() {
             <span className="st bad">
               <i />
               Engine unreachable
-            </span>{" "}
-            — is <span className="mono">{ENGINE_CMD}</span> running?{" "}
+            </span>{": "}
+            is <span className="mono">{ENGINE_CMD}</span> running?{" "}
             <a
               className="q"
               href="#"
@@ -176,9 +176,9 @@ function NewRunInner() {
           <p className="note">Loading decks…</p>
         ) : decks.length === 0 ? (
           <p className="note">
-            No decks on this engine yet —{" "}
+            No decks on this engine yet.{" "}
             <Link className="bl" href="/import">
-              import one
+              Import one
             </Link>{" "}
             to get started.
           </p>
@@ -211,7 +211,7 @@ function NewRunInner() {
                   <span className="meta">{selected.length} of 2–4</span>
                 </div>
                 {selectedDecks.length === 0 && (
-                  <p className="note">Tap tiles to seat decks — order here is seat order.</p>
+                  <p className="note">Tap tiles to seat decks. Order here is seat order.</p>
                 )}
                 {selectedDecks.map((d, i) => {
                   const art = artOf(d);
@@ -264,7 +264,7 @@ function NewRunInner() {
                   </div>
                   {!canRun && (
                     <p className="ctanote" id="run-blocker">
-                      Pick at least 2 decks — you have {selected.length}.
+                      Pick at least 2 decks; you have {selected.length}.
                     </p>
                   )}
                   {canRun && (
@@ -276,7 +276,7 @@ function NewRunInner() {
                       <span className="mono">
                         {fmtDuration(estimateSeconds(games, selected.length))}
                       </span>
-                      {games === 1 ? " — you can watch this one play out" : ""}
+                      {games === 1 ? ", so you can watch this one play out" : ""}
                     </p>
                   )}
                 </div>

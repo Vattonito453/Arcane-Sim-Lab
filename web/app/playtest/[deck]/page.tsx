@@ -287,11 +287,11 @@ export default function PlaytestPage() {
         <div className="page">
           <div className="head">
             <div>
-              <h1>{deckName} — playtest</h1>
+              <h1>{deckName} playtest</h1>
               <div className="sub">Could not load this deck</div>
             </div>
           </div>
-          <p className="note">{err} — check that the engine API is running, then reload.</p>
+          <p className="note">{err}. Check that the engine API is running, then reload.</p>
         </div>
         <Footer />
       </>
@@ -307,9 +307,9 @@ export default function PlaytestPage() {
         </Link>
         <div className="head">
           <div>
-            <h1>{deckName} — playtest</h1>
+            <h1>{deckName} playtest</h1>
             <div className="sub">
-              goldfishing — you pilot everything, nothing here enforces a rule
+              goldfishing: you pilot everything, and nothing here enforces a rule
               <span className="sep">·</span>
               <Link className="bl" href={`/decks/${encodeURIComponent(deckFile)}`}>
                 read the decklist
@@ -324,7 +324,7 @@ export default function PlaytestPage() {
               Drawing from <b>{deckName}</b>&apos;s {deck.main.length}
               {stats && stats.lands > 0 ? (
                 <>
-                  {" "}— <b>{stats.lands} lands</b>
+                  {", including "}<b>{stats.lands} lands</b>
                   {stats.avgMv && (
                     <>
                       , average mana value <b>{stats.avgMv}</b> outside them
@@ -334,7 +334,7 @@ export default function PlaytestPage() {
               ) : null}
               . Tap a hand or command-zone card to put it onto the battlefield, tap a
               permanent to tap it, and drag cards anywhere else. The app only moves cards
-              and keeps count — legality, costs, and triggers are yours to pilot.
+              and keeps count; legality, costs, and triggers are yours to pilot.
             </>
           ) : (
             <>Loading the deck…</>
@@ -357,7 +357,7 @@ export default function PlaytestPage() {
             <span className="val">{turn}</span>
           </div>
           <button className="btn pri" onClick={nextTurn} disabled={!zones}>
-            Next turn — untap all, draw 1
+            Next turn: untap all, draw 1
           </button>
           <button className="btn" onClick={mulligan} disabled={!zones}>
             Mulligan
@@ -381,18 +381,18 @@ export default function PlaytestPage() {
         {toBottom > 0 && (
           <p className="note">
             London mulligan: put <span className="mono">{toBottom}</span>{" "}
-            {toBottom === 1 ? "card" : "cards"} on the bottom — drag{" "}
+            {toBottom === 1 ? "card" : "cards"} on the bottom. Drag{" "}
             {toBottom === 1 ? "it" : "them"} from your hand onto the library pile.
           </p>
         )}
 
         <div className={`pt-zone${over === "battlefield" ? " over" : ""}`} {...dropProps("battlefield")}>
-          <span className="zl">Battlefield — click to tap</span>
+          <span className="zl">Battlefield (tap to tap)</span>
           {zones?.battlefield.map((c) => card(c, "battlefield"))}
         </div>
 
         <div className={`pt-zone${over === "hand" ? " over" : ""}`} {...dropProps("hand")}>
-          <span className="zl">Hand — click to play</span>
+          <span className="zl">Hand (tap to play)</span>
           {zones?.hand.map((c) => card(c, "hand"))}
         </div>
 
@@ -417,7 +417,7 @@ export default function PlaytestPage() {
               aria-label="Draw a card"
               onClick={() => draw(1)}
             >
-              <span className="n">{zones?.library.length ?? "—"}</span>
+              <span className="n">{zones?.library.length ?? "–"}</span>
               <span className="l">tap to draw</span>
               <span className="l">drop to bottom</span>
             </div>
@@ -425,7 +425,7 @@ export default function PlaytestPage() {
         </div>
 
         <p className="note">
-          Everything on this table is ephemeral — reloading the page reshuffles. Nothing is
+          Everything on this table is ephemeral; reloading the page reshuffles. Nothing is
           adjudicated and nothing declares an outcome; this is a kitchen-table goldfish with
           the counting done for you.
         </p>

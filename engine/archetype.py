@@ -133,22 +133,22 @@ def classify(decklist: list[str], commander: str | None = None,
         return result("voltron", (
             f"{len(equip_aura)} Equipment/Aura cards and "
             f"{tag_counts.get('voltron-commander-damage', 0)} of {total} nonland "
-            f"cards carry voltron text — a commander-damage deck. The AI cannot "
+            f"cards carry voltron text: a commander-damage deck. The AI cannot "
             f"time protection, so simulated results are a floor"))
     if len(politics) >= POLITICS_CARDS_MIN:
         return result("politics", (
             f"{len(politics)} of {total} nonland cards vote, goad, or pass the "
-            f"monarch — a politics deck. The AI cannot pilot table politics, so "
+            f"monarch: a politics deck. The AI cannot pilot table politics, so "
             f"simulated results are a floor"))
     if engine_count / total >= ENGINE_TAG_SHARE:
         return result("engine", (
             f"{engine_count} of {total} nonland cards support the {engine_tag} "
-            f"engine ({len(creatures)} creatures do not change the plan) — an "
+            f"engine ({len(creatures)} creatures do not change the plan): an "
             f"engine deck, read against the 12% stock-AI class average"))
     if creature_share >= CREATURE_SHARE:
         return result("creature", (
             f"{len(creatures)} of {total} nonland cards are creatures "
-            f"({creature_share:.0%}) — a creature-forward deck, read against "
+            f"({creature_share:.0%}): a creature-forward deck, read against "
             f"the 38% class average"))
     return result("unknown", (
         f"no signal is decisive: {len(creatures)}/{total} creatures, "

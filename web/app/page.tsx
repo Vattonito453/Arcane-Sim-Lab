@@ -289,15 +289,15 @@ export default function Home() {
               <span className="meta">most run</span>
               <span className="right">
                 <Link className="bl" href="/decks">
-                  All {decks?.length ?? "—"}
+                  All {decks?.length ?? "–"}
                 </Link>
               </span>
             </div>
             {!view || view.top.length === 0 ? (
               <p className="note">
-                No finished runs yet —{" "}
+                No finished runs yet.{" "}
                 <Link className="bl" href="/new">
-                  run a gauntlet
+                  Run a gauntlet
                 </Link>{" "}
                 and the leaderboard builds itself.
               </p>
@@ -345,7 +345,7 @@ export default function Home() {
                 </div>
                 <p className="note">
                   Win rates pool every pod size and seat, so compare a deck against its own pod&apos;s
-                  baseline in the run report — not against this list. Rows open the deck;{" "}
+                  baseline in the run report, not against this list. Rows open the deck;{" "}
                   <Link className="bl" href="/results">
                     Results
                   </Link>{" "}

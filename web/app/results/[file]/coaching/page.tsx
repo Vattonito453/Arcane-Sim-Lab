@@ -125,7 +125,7 @@ function CoachingInner() {
       <div className="page">
         <div className="head">
           <div>
-            <h1>{deckName} — coaching</h1>
+            <h1>{deckName} coaching</h1>
             {/* The .dck filename led this line; it is in the details
                 disclosure at the foot with the rest of the addresses. */}
             <div className="sub">
@@ -147,7 +147,7 @@ function CoachingInner() {
             {err}
             {wait != null && (
               <>
-                {" "}— try again in about <span className="mono">{wait}</span> s.
+                {". "}Try again in about <span className="mono">{wait}</span> s.
               </>
             )}
           </p>
@@ -162,7 +162,7 @@ function CoachingInner() {
               {rep.archetype?.class ?? "deck"} archetype baseline
               {v.sim_is_floor && (
                 <>
-                  {" "}— and this archetype&apos;s sim result is <b>a floor, not a verdict</b>
+                  {", and "}this archetype&apos;s sim result is <b>a floor, not a verdict</b>
                 </>
               )}
               .
@@ -222,7 +222,7 @@ function CoachingInner() {
                   <span className="meta">evidence-tagged</span>
                 </div>
                 <p className="sdesc">
-                  Each suggestion cites its evidence — this run&apos;s numbers, or theory.
+                  Each suggestion cites its evidence: this run&apos;s numbers, or theory.
                 </p>
                 <div>
                   {(rep.changes ?? []).map((c) => (
@@ -253,7 +253,7 @@ function CoachingInner() {
 
             <p className="note">
               Written by a model from this run&apos;s summary, telemetry, and archetype
-              classification only — {rep.archetype?.why ?? ""}. Engine and combo decks
+              classification only: {rep.archetype?.why ?? ""}. Engine and combo decks
               simulate below their real strength, so read low numbers as a floor when
               the machinery is running.
             </p>

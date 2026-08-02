@@ -163,7 +163,7 @@ function ResultsIndexInner() {
                         <td className="r mono c-meta">
                           {(() => {
                             const g = r.games ?? r.summary?.games;
-                            if (g == null) return "—";
+                            if (g == null) return "–";
                             // The header carries the unit on a wide screen; a
                             // stacked row has no header, so it carries its own.
                             return (

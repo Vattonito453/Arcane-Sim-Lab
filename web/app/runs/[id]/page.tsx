@@ -258,15 +258,15 @@ export default function RunPage() {
               {podTitle}
             </h1>
             <p className="lede">
-              Can&apos;t reach the engine yet — this page retries every 4 seconds, so you can
+              Can&apos;t reach the engine yet. This page retries every 4 seconds, so you can
               leave it open.
             </p>
             <p className="note">
               <span className="st bad">
                 <i />
                 Engine unreachable
-              </span>{" "}
-              — is <span className="mono">{ENGINE_CMD}</span> running?
+              </span>{": "}
+              is <span className="mono">{ENGINE_CMD}</span> running?
             </p>
             <p className="note">
               <Link className="q" href="/results">
@@ -288,7 +288,7 @@ export default function RunPage() {
             <p className="lede">
               {state === "queued" ? (
                 <>
-                  Queued — <b>{games != null ? plural(games, "game") : "—"}</b> across{" "}
+                  Queued: <b>{games != null ? plural(games, "game") : "–"}</b> across{" "}
                   <b>{plural(decks.length, "deck")}</b> waiting for the worker
                   {(status?.queued_ahead ?? 0) > 0
                     ? ` behind ${plural(status?.queued_ahead ?? 0, "other run")}`
@@ -296,8 +296,8 @@ export default function RunPage() {
                 </>
               ) : (
                 <>
-                  Simulating <b>{games != null ? plural(games, "game") : "—"}</b> across <b>{plural(decks.length, "deck")}</b>
-                  {started ? <> — started {timeAgo(started)}</> : null}. You can leave; this page
+                  Simulating <b>{games != null ? plural(games, "game") : "–"}</b> across <b>{plural(decks.length, "deck")}</b>
+                  {started ? <>, started {timeAgo(started)}</> : null}. You can leave; this page
                   keeps polling.
                 </>
               )}
@@ -312,16 +312,16 @@ export default function RunPage() {
                 {state === "queued"
                   ? `Nothing has started yet, so there is no progress to draw. Once Forge picks
                      this up, ${plural(decks.length || 4, "deck")} over ${plural(games ?? 16, "game")} usually takes about ${fmtDuration(estimate)}.`
-                  : `Rough progress — ${plural(decks.length || 4, "deck")} over ${plural(games ?? 16, "game")} usually takes about ${fmtDuration(estimate)}. Pod size drives this far more than game count.`}
+                  : `Rough progress. ${plural(decks.length || 4, "deck")} over ${plural(games ?? 16, "game")} usually takes about ${fmtDuration(estimate)}. Pod size drives this far more than game count.`}
               </p>
             </section>
             <div className="figs">
               <div className="fig">
-                <div className="n">{state === "queued" ? "—" : fmtDuration(elapsed)}</div>
+                <div className="n">{state === "queued" ? "–" : fmtDuration(elapsed)}</div>
                 <div className="l">{state === "queued" ? "not started" : "elapsed"}</div>
               </div>
               <div className="fig">
-                <div className="n">{games ?? "—"}</div>
+                <div className="n">{games ?? "–"}</div>
                 <div className="l">games requested</div>
               </div>
               <div className="fig">
@@ -348,7 +348,7 @@ export default function RunPage() {
             {state === "running" && !liveGame && (
               <p className="note">
                 {liveData
-                  ? "Forge is loading its card database — the table appears as soon as the first turn is played."
+                  ? "Forge is loading its card database. The table appears as soon as the first turn is played."
                   : "Waiting for the first turn…"}
               </p>
             )}
@@ -359,8 +359,8 @@ export default function RunPage() {
                 <span className="st warn">
                   <i />
                   Connection hiccup
-                </span>{" "}
-                — still polling every 4 seconds.
+                </span>{": "}
+                still polling every 4 seconds.
               </p>
             )}
           </>
@@ -383,24 +383,24 @@ export default function RunPage() {
             <p className="lede">
               {win ? (
                 <>
-                  Done — <b>{stripAi(win[0])}</b> won{" "}
+                  Done. <b>{stripAi(win[0])}</b> won{" "}
                   <b>
                     {res?.wins[win[0]] ?? 0} of {res?.games ?? games ?? 0} games ({pct(win[1])})
                   </b>
                   .
                 </>
               ) : (
-                <>Done — the run finished.</>
+                <>Done. The run finished.</>
               )}{" "}
               {resultHref
                 ? stillWatching
-                  ? "The playback below finishes first — the full report is one click away."
+                  ? "The playback below finishes first; the full report is one click away."
                   : "Taking you to the full report…"
-                : "The result file isn't listed yet — check past runs on the home page."}
+                : "The result file isn't listed yet. Check past runs on the home page."}
             </p>
             <div className="figs">
               <div className="fig">
-                <div className="n">{res?.games ?? games ?? "—"}</div>
+                <div className="n">{res?.games ?? games ?? "–"}</div>
                 <div className="l">games played</div>
               </div>
               <div className="fig">
@@ -408,7 +408,7 @@ export default function RunPage() {
                 <div className="l">draws</div>
               </div>
               <div className="fig">
-                <div className="n">{win ? pct(win[1]) : "—"}</div>
+                <div className="n">{win ? pct(win[1]) : "–"}</div>
                 <div className="l">{win ? `${stripAi(win[0])} win rate` : "top win rate"}</div>
               </div>
               <div className="fig">
@@ -426,7 +426,7 @@ export default function RunPage() {
               {podTitle}
             </h1>
             <p className="lede">
-              The engine reported an error for this run — the message below is verbatim.
+              The engine reported an error for this run. The message below is verbatim.
             </p>
             <p className="note">
               <span className="st bad">
@@ -486,7 +486,7 @@ export default function RunPage() {
               </div>
               <p className="note">
                 Played back from the finished log at a watchable pace, not a live
-                feed — Forge writes its log in bursts, so following the newest
+                feed. Forge writes its log in bursts, so following the newest
                 event showed a still table that filled in as the game ended.
                 Simulation continues in the background.
               </p>
@@ -495,7 +495,7 @@ export default function RunPage() {
                     scrubbable on the replay page once the run finishes. */}
                 {liveTimeline.steps.slice(Math.max(0, playIdx - 7), playIdx + 1).map((s, k) => (
                   <div key={`${s.seq}-${k}`} className="ev">
-                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "—"}</span>
+                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "–"}</span>
                     <div>{s.text}</div>
                   </div>
                 ))}
@@ -509,7 +509,7 @@ export default function RunPage() {
               {podTitle}
             </h1>
             <p className="lede">
-              The engine has no record of this run — it may have been restarted since the run was
+              The engine has no record of this run. It may have been restarted since the run was
               queued.
             </p>
             <p className="note">

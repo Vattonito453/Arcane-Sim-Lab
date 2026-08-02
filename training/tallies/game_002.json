@@ -1,0 +1,25 @@
+{
+  "game_id": "game_002",
+  "source": "youtube:tjo4sJcK7Ik",
+  "decklists": null,
+  "players": 4,
+  "winner_archetype": "mill",
+  "mulligans": {"decisions": 0, "taken": 0},
+  "attacks": {"attack_turns": 5, "split_turns": 0},
+  "blocks": {"opportunities": 4, "blocks_made": 0},
+  "commander_deploys": [null, null, null, null],
+  "tutors": {
+    "cast": 1,
+    "held_castable": 0,
+    "targets": ["Sol Ring (Trinket Mage, artifact MV<=1)"]
+  },
+  "combo": {
+    "lines_present": true,
+    "assembled": 0,
+    "pieces_held_turns": 0,
+    "jammed_into_open_mana": 0,
+    "waited_for_protection": 0
+  },
+  "hidden": null,
+  "notes": "LOG-ONLY extraction: the raw 2h transcript was never stored (training/game_002/game_log.json is a condensed key-event log from noisy 2017 auto-captions), so every count here is a floor, not a measurement. Most under-counted denominators: (1) attacks/blocks — only 5 attack turns are explicit in the log; a ~90-minute 4-player game plausibly had 15-25+, and zero declared blocks appear even though some almost certainly happened, so blocks_made=0/4 reflects log coverage, not player behavior; (2) mulligans — 0/0 because no keep/take decisions were logged at all, not because none occurred. Attack-turn evidence: 48:41 Ian->Kathleen 9, 1:09:17 Ian->Kathleen 12 (exact 21 commander damage kill), 1:12:39 Ian->Ben 9, 1:17:19 Ian air attack (attackers destroyed by Avatar of Woe in response — excluded from block opportunities since no block decision was reached), 1:26:48 attack putting Serge to 5 commander damage taken. commander_deploys are null: Ben cast Phenax at 30:05 and Ian cast Ramos at 40:48 (video timestamps), but the log records no turn numbers, and Kathleen's Drana and Serge's Breya casts are absent entirely. combo.lines_present=true because the 1:42:04 postmortem states Mindcrank + Duskmantle Guildmage (2-card infinite) was in Ben's deck and never assembled; hold/jam fields are 0 because a log without hand info cannot observe them. Serge's elimination mechanics at ~1:31 are flagged low-confidence in the source log (ASR attribution unclear)."
+}

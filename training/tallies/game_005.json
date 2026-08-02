@@ -1,0 +1,30 @@
+{
+  "game_id": "game_005",
+  "source": "youtube:pmbYi4R8bS8",
+  "decklists": [
+    "https://archidekt.com/decks/23173862/big_mommy_magic_the_remix",
+    "https://moxfield.com/decks/i9vzdRSj7Uip7G6_4CtjzA",
+    "https://moxfield.com/decks/61nIxzr4O0W6SfMQSh87qA",
+    "https://moxfield.com/decks/qZHKsi8wAEOsqgdtnQMeuQ"
+  ],
+  "players": 4,
+  "winner_archetype": "enchantment midrange (cascade + damage doublers)",
+  "mulligans": {"decisions": 0, "taken": 0},
+  "attacks": {"attack_turns": 4, "split_turns": 0},
+  "blocks": {"opportunities": 1, "blocks_made": 0},
+  "commander_deploys": [5, null, null, 4],
+  "tutors": {
+    "cast": 0,
+    "held_castable": 0,
+    "targets": []
+  },
+  "combo": {
+    "lines_present": false,
+    "assembled": 0,
+    "pieces_held_turns": 0,
+    "jammed_into_open_mana": 0,
+    "waited_for_protection": 0
+  },
+  "hidden": null,
+  "notes": "Tallied from training/game_005/game_log.json only; the raw transcript and validation report are not present in the repo, so every denominator here is a floor, not a measurement. WINNER: meta.result's attribution correction identifies Dnide (Wildsear, Scouring Maw) as the winner via decklist ground truth (the mega-turn's exclusive cards appear only in Dnide's list); the key_events lines still reading 'N3CRO WINS' are stale pre-correction text, and ai_vs_human_analysis.md corroborates Dnide ('Wildsear won both realities'). MULLIGANS: certainly an undercount - gameplay chapter starts at 4:28 and the log captures no pregame keep/take decisions; 4 decisions actually occurred off-log. ATTACKS: 4 turns with explicit declared-attack evidence (10:08 Raggadragga at Dnide; ~35:20 pro-green sword attacker; 50:31 Sword of Body and Mind connect; 1:35:12 lethal 24-commander-damage swing); a ~9-10 cycle 4-player game plainly had far more combats - a severe undercount. split_turns 0 is 'none discernible', not 'none happened'. BLOCKS: only the 35:20 protection discussion explicitly evidences a defender with creatures weighing a block (none declared); opportunities is a severe undercount. COMMANDER_DEPLOYS (order matches players array: Shelly, NanMan, Dnide, N3cro): the event log gives no explicit turn numbers, so Shelly=5 (Siona) and N3cro=4 (Raggadragga) are taken from training/ai_vs_human_analysis.md's measured human figures for this game ('human: ~turn 4' Raggadragga, '~turn 5' Siona) and are consistent with the log's timeline (N3cro: T1 Forest+Fyndhorn Elves, T2-ish Rhythm of the Wild, Raggadragga at 10:08 with riot haste); NanMan (Felix) and Dnide (Wildsear) first-cast turns are nowhere evidenced - Wildsear was on the battlefield by the 1:29 mega-turn but its cast is unlogged - so both are null rather than guessed. TUTORS: zero library-search-for-nonland casts narrated in the log; with a BUG swords deck and an enchantment cascade deck at the table this may still be an undercount of the actual game. COMBO: no known multi-card combo deck evidenced at the table (auras voltron / swords+infect trigger doubling / enchantment cascade / dork ramp); Shelly's Siona list COULD contain the known Siona+Shielded by Faith token combo but nothing in-game evidences it (her only referenced held card was Austere Command, never cast), so lines_present=false per the conservative rule. Notable behavior samples for other dials: 57:33 commander voluntarily sent to graveyard for recursion (903.9a optional), foretold Delayed Blast Fireball held all game as contingency vs Austere Command (hold/greed evidence), and the postgame table voted the turn-2 Glissa removal as play of the game."
+}

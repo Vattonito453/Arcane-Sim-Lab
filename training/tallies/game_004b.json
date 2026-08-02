@@ -1,0 +1,21 @@
+{
+  "game_id": "game_004b",
+  "source": "youtube:zxqw4OxCQJo",
+  "decklists": null,
+  "players": 4,
+  "winner_archetype": "unknown — LOW confidence (Graham/aggro per Boros Charm + Stalking Vengeance colors; alternate reading Adam/mono-G stompy); game ended by concession at 3:48:22",
+  "mulligans": {"decisions": 0, "taken": 0},
+  "attacks": {"attack_turns": 3, "split_turns": 0},
+  "blocks": {"opportunities": 1, "blocks_made": 1},
+  "commander_deploys": [],
+  "tutors": {"cast": 0, "held_castable": 0, "targets": []},
+  "combo": {
+    "lines_present": false,
+    "assembled": 0,
+    "pieces_held_turns": 0,
+    "jammed_into_open_mana": 0,
+    "waited_for_protection": 0
+  },
+  "hidden": null,
+  "notes": "Game 2 of two in the same video (window ~2:05:30-3:48:31), same four decks. PLANECHASE VARIANT (CR 901), shared planar deck: rates NOT comparable to plain Commander — planes distort combat and resources (Glimmervoid Basin copied every instant/sorcery, a frozen plane stopped lands untapping and 'stranded blockers', a plane allowed unlimited land drops), so these counts describe variant-shaped play. SOURCE IS A CONDENSED KEY-EVENT LOG from ASR captions, not a full transcript: only 3 combat turns are explicitly evidenced across ~103 minutes (2:39:19 Ben/Graham combat exchange with Golgari Charm regenerate-all; 3:28:35 combat with a trample attacker assigning lethal to multiple blockers under The Great Forest; 3:35:24 Adam alpha strike with Siege Behemoth). Denominators are severe undercounts — evidence floors, not rates. No turn shows explicit attacks at 2+ different defenders, so split_turns is 0 (the 3:35:24 'board goes wide' alpha strike may have split, but defenders are not identified — not counted). Blocks: the 3:28:35 combat explicitly had multiple blockers on the trampler (1 opportunity, 1 block made); the 2:39:19 exchange likely involved blocks but none is stated, and 3:35:24 blocker status is ambiguous (Siege Behemoth assigns damage as though unblocked; the plane stranded mana, not clearly creatures) — neither counted. The 2:54:58 Deflecting Palm (cast and plane-copied) implies incoming damage but not provably combat damage, so no attack turn was counted for it. Mulligans: none visible for game 2 (0/0). Commander first-cast turns never stated (Brion was clearly redeployed — Thornbite Staff untap engine at 2:39:19 — but no cast turn is logged), so commander_deploys is empty. No tutors logged. No known multi-card combo deck at the table, so combo counts are zero by definition. Winner attribution is LOW confidence per the log (final minutes garbled). Split at the explicit game boundary (game_1_end 2:02:42 / game_2_start 2:05:30); no event needed conservative attribution across the boundary — every counted event carries a timestamp clearly inside one window. held_castable is 0 (not observable from video; hidden block null)."
+}

@@ -41,8 +41,21 @@ Known KB gaps found: **none** — every keyword encountered (station, foretell, 
 3. Cite CR rules for each action; verify each ref with `python3 ../rules/query_rules.py <rule>`.
 4. Log table mistakes as RULES_ERROR entries — these are the highest-value training samples (question → correct rule).
 
+## Behavior corpus (agent calibration)
+
+`BEHAVIOR_CAPTURE.md` is the scaling plan toward 30-50 games: a recording
+protocol for self-played games (the only source of hidden-information
+ground truth — tutor intent, holds, greed), YouTube selection criteria,
+and a per-game `tallies/<game_id>.json` counting schema.
+`python3 training/behavior_bands.py training/tallies/*.json` turns the
+tallies into the quantified human reference bands the humanness scorecard
+compares against. Rules-KB extraction (the game_00N/ treatment) and
+behavior tallies are independent passes — a game can have either or both.
+
 ## Next steps
 
 - Extract Ep 3 to complete game_001 (winner + endgame states).
+- Grow `tallies/` to the BEHAVIOR_CAPTURE.md targets (≥8 combo-deck games,
+  ≥5 self-recorded with .dck exports).
 - Add non-Commander formats (per plan) — schema already format-agnostic except `starting_life` / commander fields.
 - Consider embedding `game_log` events alongside `chunks.jsonl` so retrieval can pull "real play example" context next to the rule text.

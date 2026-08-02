@@ -1,0 +1,21 @@
+{
+  "game_id": "game_004a",
+  "source": "youtube:zxqw4OxCQJo",
+  "decklists": null,
+  "players": 4,
+  "winner_archetype": "aggro (RW steal-and-Fling, Brion Stoutarm) — medium confidence",
+  "mulligans": {"decisions": 0, "taken": 0},
+  "attacks": {"attack_turns": 4, "split_turns": 1},
+  "blocks": {"opportunities": 1, "blocks_made": 1},
+  "commander_deploys": [],
+  "tutors": {"cast": 0, "held_castable": 0, "targets": []},
+  "combo": {
+    "lines_present": false,
+    "assembled": 0,
+    "pieces_held_turns": 0,
+    "jammed_into_open_mana": 0,
+    "waited_for_protection": 0
+  },
+  "hidden": null,
+  "notes": "Game 1 of two in LRR Friday Night Paper Fight Planechase Commander (video window ~10:54-2:03:00). PLANECHASE VARIANT (CR 901), shared planar deck: rates are NOT comparable to plain Commander — planes force/warp combat decisions (Kharasha Foothills creates token copies attacking each other opponent, Tazeem forbids blocking, The Great Forest makes toughness assign damage, goad appeared via plane/card effects), so attack, split, and block rates here measure variant-shaped play. SOURCE IS A CONDENSED KEY-EVENT LOG built from ASR captions, not a full transcript: a ~110-minute 4-player game surely had far more combat turns than the 4 explicitly evidenced (23:03 Graham steal-attack-Fling; 53:42 Graham steal-attack-Fling eliminating Adam; ~1:13:47 combat inferred from the double-blocked Woodfall Primus persist discussion; ~1:52-1:54 Gisela+Inferno Titan+Kharasha copies eliminating Ian). All denominators are therefore severe undercounts — usable only as evidence floors, not rates. The 1 split_turn is the 1:52 combat where Kharasha Foothills put token copies onto the battlefield attacking each other opponent — a plane-forced multi-defender attack, not a chosen split (and those copies were never declared attackers, per the log's own 508.4 flag). A goad rules walkthrough at 1:11:38 implies at least one goad-forced attack occurred, but no specific attack turn for it is logged, so none was counted. Blocks: only the ~1:13:47 double-block is explicit (opportunity and block both counted); no other combat shows a discernible block decision. Mulligans: pregame at 10:54 mentions only a 'free mulligan discussion' — no individual keep/take decision is visible, so 0/0 rather than guessed. Commander first-cast turns are never stated for any player, so commander_deploys is empty. No tutor casts appear in the log. No known multi-card combo deck at the table (BG Treefolk toughness, RW steal-Fling, mono-G stompy, WU Bird tribal), so combo counts are zero by definition. held_castable is 0 (not observable from video; hidden block null per BEHAVIOR_CAPTURE.md)."
+}

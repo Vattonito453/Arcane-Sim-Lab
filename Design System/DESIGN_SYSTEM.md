@@ -55,6 +55,35 @@ Grotesk; one serif moment keeps it ceremonial. Figures inside prose are weight-6
 not a different family. Mono is for detail views (run ids, filenames, hex values),
 not the home screen.
 
+### Punctuation in copy
+
+**No em dash (`—`) in anything a user reads.** Pick the mark that says what the
+dash was vaguely gesturing at:
+
+| The dash was joining | Use | Example |
+|---|---|---|
+| two independent clauses | a period | `The engine refused the run. Is another simulation in progress?` |
+| a claim and its explanation | a colon | `Not covered: the retrieved excerpts don't reach this question` |
+| two tightly coupled clauses | a semicolon | `Assembled, never fired; win rate is a floor` |
+| an aside to the main clause | parentheses | `top win rate (Ur-Dragon B3)` |
+
+An em dash is almost always a decision the writer declined to make, and a
+screen reader gives it no useful pause. Forcing the choice makes the sentence
+say what it means.
+
+**Empty values use an en dash (`–`), not an em dash.** A table cell or headline
+figure with no value shows `–`. That is the conventional mark for "no data" and
+it is visually distinct from the minus sign and from a hyphen.
+
+**Scope is everything a user can read**: JSX text, string literals, `aria-label`,
+`title`, `placeholder`, page metadata, and any engine string that reaches the
+UI (error messages, the archetype "why" sentences).
+
+**Two exemptions.** Card text from Scryfall keeps its em dashes verbatim, because
+it is Wizards' printed text shown under the Fan Content Policy and rewriting it
+would be false: `Legendary Creature — Phyrexian Angel Horror`, `Choose one —`.
+Code comments and repo docs are not copy and are unaffected.
+
 ---
 
 ## 2. Ink & contrast (WCAG 2.2 AA — non-negotiable)
@@ -320,6 +349,9 @@ Distinguishable with no colour vision at all.
 - Draw a progress bar for a queued job
 - Put body text below `--ink-4`
 - Set Cinzel on anything but the wordmark
+- Put an em dash in copy — use a period, colon, semicolon or parentheses (§1).
+  Scryfall card text is the only exemption
+- Use an em dash for an empty value; that is an en dash (`–`)
 - Give `--winrate-fill` percentage stops — the dark zone must be absolute
 - Brighten the first stop of `--winrate-fill` — it is load-bearing for legibility
 - Let a deck name or runs count exceed `--label-budget` without truncating

@@ -119,6 +119,13 @@ is the binding spec. In short:
   art; panels never nest.
 - Never disable the primary — state the blocker beside it.
 - Every field keeps a persistent visible label; 2px cyan focus ring everywhere.
+- **No em dash in copy.** Anything a user reads (JSX text, string literals,
+  `aria-label`/`title`/`placeholder`, page metadata, and engine strings that
+  surface in the UI) uses a period, colon, semicolon or parentheses instead.
+  An empty value in a table or figure is an en dash `–`. The one exemption is
+  Scryfall card text, which is WotC's printed wording shown verbatim
+  ("Legendary Creature — Phyrexian Angel Horror"). Comments and docs are not
+  copy. Full rule and the substitution table: `DESIGN_SYSTEM.md` §1.
 - `--ink-4` is the text floor; the Fan Content + Scryfall footer lines render at
   it, never below.
 - Still true from the old spec: every page opens with 1–2 sentences of real
@@ -236,6 +243,11 @@ cd web && npm run verify          # tsc + build into .next-verify
                                   # from and they die with "Cannot find module
                                   # './941.js'" until restarted.
                                   # First run needs network (next/font fetches Inter).
+
+# No em dash in copy. Comments are exempt, so this is a first pass, not a verdict:
+# read each hit and confirm it is a comment before dismissing it.
+grep -rn "—" web/app web/components web/lib --include='*.tsx' --include='*.ts' \
+  | grep -vE ':\s*(//|\*|/\*|\{/\*)'
 ```
 
 **Test fixture:** `engine/tests/fixtures/sim_sample.json` — 2 real games, 2,874

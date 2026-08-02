@@ -86,6 +86,12 @@ actions; interactions ≤200ms; hover states subtle and instant; details over de
    dividers — no stat cards, no delta chips; deltas are written into the sentence.
 6. **Prose:** every report leads with 1–2 written sentences (the coaching voice).
    Real products write; slop chips.
+6b. **Punctuation:** no em dash in copy. Use a period for two independent clauses,
+   a colon before an explanation, a semicolon for tightly coupled clauses, and
+   parentheses for an aside. An empty value in a table or figure is an en dash
+   (`–`). Scryfall card text keeps its dashes verbatim. An em dash is usually a
+   choice the writer declined to make, and forcing the choice makes the sentence
+   say what it means. See `DESIGN_SYSTEM.md` §1 for the substitution table.
 7. **Badges:** dot + word ("● Won") in status color. Zero pills unless functionally
    required (max one style per view).
 8. **Icons:** few, stroke, 14–16px, never emoji. Prefer text links over icon buttons.

@@ -62,6 +62,18 @@ never appears in a heading, a sub-line or the footer — it goes in the
 `<PageDetails>` disclosure at the foot of the page, closed by default. The
 footer carries the two legal lines and nothing else.
 
+**No em dash in copy.** Anything a user reads uses a period, colon, semicolon or
+parentheses instead, and an empty value in a table or figure is an en dash
+(`–`). This covers JSX text, string literals, `aria-label` / `title` /
+`placeholder`, page metadata, and engine strings that surface in the UI.
+Scryfall card text is exempt: it is WotC's printed wording shown verbatim. Code
+comments are not copy. Rule and substitution table:
+`Design System/DESIGN_SYSTEM.md` §1. Check with:
+
+```bash
+grep -rn "—" app components lib --include='*.tsx' --include='*.ts' | grep -vE ':\s*(//|\*|/\*|\{/\*)'
+```
+
 ## Layout
 
 ```

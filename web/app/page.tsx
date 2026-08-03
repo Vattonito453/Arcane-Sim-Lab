@@ -81,24 +81,23 @@ function TallyCell({
   );
 }
 
-/* Tally badges — spec markup: 34px rounded tile holding a 22px icon.
- *
- * These are the mana medallions used as ornament, not as colour identity, so
- * they take alt="" and the cell's text carries the meaning. They were
- * previously hand-drawn copies of the old pip SVGs, which then went stale when
- * the pips became artwork; drawing them from PIP_SRC keeps one source.
+/* Tally badges: the mana medallion alone in a bare 34px slot, no tinted tile
+ * behind it (see .tally-badge). The medallions are ornament here, not colour
+ * identity, so they take alt="" and each cell's text carries the meaning. They
+ * were previously hand-drawn copies of the old pip SVGs, which then went stale
+ * when the pips became artwork; drawing them from PIP_SRC keeps one source.
  * "Rules loaded" is not a colour, so it takes the colourless medallion. */
-function TallyPip({ tone, src }: { tone: string; src: string }) {
+function TallyPip({ src }: { src: string }) {
   return (
-    <span className="tally-badge" data-tone={tone}>
-      <img src={src} width={22} height={22} alt="" draggable={false} />
+    <span className="tally-badge">
+      <img src={src} width={30} height={30} alt="" draggable={false} />
     </span>
   );
 }
-const BADGE_SUN = <TallyPip tone="sun" src={PIP_SRC.W} />;
-const BADGE_WATER = <TallyPip tone="water" src={PIP_SRC.U} />;
-const BADGE_SKULL = <TallyPip tone="skull" src={PIP_SRC.B} />;
-const BADGE_COMBO = <TallyPip tone="combo" src={PIP_SRC.C} />;
+const BADGE_SUN = <TallyPip src={PIP_SRC.W} />;
+const BADGE_WATER = <TallyPip src={PIP_SRC.U} />;
+const BADGE_SKULL = <TallyPip src={PIP_SRC.B} />;
+const BADGE_COMBO = <TallyPip src={PIP_SRC.C} />;
 
 interface DeckAgg {
   name: string;

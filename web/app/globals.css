@@ -234,12 +234,13 @@ input[type="checkbox"] { accent-color: var(--mana-cyan); width: 15px; height: 15
   border-left: 1px solid var(--hairline);
 }
 .tally-cell:first-child { border-left: 0; }
-.tally-badge { width: 34px; height: 34px; border-radius: var(--r-control); flex: none;
+/* The badge is a bare 34px slot, no tile. The mana medallions carry their own
+   ring, silhouette and glow, so a tinted rounded square behind one reads as a
+   second competing container and dulls the art it sits on. Keep the slot for
+   the row's rhythm; let the medallion itself be the mark. */
+.tally-badge { width: 34px; height: 34px; flex: none;
   display: flex; align-items: center; justify-content: center; }
-.tally-badge[data-tone="sun"]   { background: rgba(245, 158, 11, 0.14); }
-.tally-badge[data-tone="water"] { background: rgba(0, 229, 255, 0.12); }
-.tally-badge[data-tone="skull"] { background: rgba(168, 85, 247, 0.14); }
-.tally-badge[data-tone="combo"] { background: rgba(45, 212, 191, 0.12); }
+.tally-badge img { width: 30px; height: 30px; display: block; }
 .tally-text { font-size: 15px; color: var(--ink-1); white-space: nowrap; }
 .tally-text b { font-size: 17px; font-weight: 600; color: var(--ink-max); }
 

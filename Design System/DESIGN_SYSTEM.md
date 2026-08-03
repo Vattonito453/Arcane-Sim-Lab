@@ -220,9 +220,16 @@ pill: avatar + name + chevron, `--r-control`, 44px tall.
 
 ### Rolling tally banner
 `--bar-instrument`, `--r-action`, 1px `--hairline-strong` border, hairline
-dividers between cells. Counters are **inline, not stacked**: a 34px rounded icon
-badge, then "**52,365** decks tested" on one line (figure 17px/600 `--ink-max`,
+dividers between cells. Counters are **inline, not stacked**: a 34px icon slot,
+then "**52,365** decks tested" on one line (figure 17px/600 `--ink-max`,
 label 16px/400 `--ink-1`).
+
+The icon is a **mana medallion (§4) on nothing** — a 30px pip in a bare 34px
+slot, no tinted tile behind it. The medallions carry their own ring, silhouette
+and glow, so a rounded colour-tinted square reads as a second competing
+container and dulls the art. Used as ornament here rather than colour identity,
+so each takes `alt=""` and the cell's text carries the meaning; "rules loaded"
+is not a colour and takes the colourless medallion.
 
 **Calculators & Tools notch** — a tab hanging off the banner's bottom edge:
 same fill and border, `border-top: none`, `border-radius: 0 0 10px 10px`,

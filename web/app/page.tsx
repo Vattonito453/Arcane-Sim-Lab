@@ -17,6 +17,7 @@ import type { DeckEntry, ResultIndexEntry } from "@/lib/types";
 import { pct, runTitle, stripAi, timeAgo } from "@/lib/format";
 import { Chrome, Footer } from "@/components/Chrome";
 import { Mascot } from "@/components/Mascot";
+import { PIP_SRC } from "@/components/ManaPips";
 import { factsKey } from "@/components/DeckGallery";
 import { loadCards, type CardMap } from "@/lib/cards";
 
@@ -80,46 +81,24 @@ function TallyCell({
   );
 }
 
-/* Tally badges — spec markup: 34px rounded tile, ringed disc icon. */
-const BADGE_SUN = (
-  <span className="tally-badge" data-tone="sun">
-    <svg width="22" height="22" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="11" fill="#292010" stroke="#F59E0B" strokeWidth="1.5" />
-      <circle cx="12" cy="12" r="4" fill="#FDE68A" />
-      <path
-        d="M12 3v3 M12 18v3 M3 12h3 M18 12h3 M5.6 5.6l2.1 2.1 M16.3 16.3l2.1 2.1 M5.6 18.4l2.1-2.1 M16.3 7.7l2.1-2.1"
-        fill="none" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round"
-      />
-    </svg>
-  </span>
-);
-const BADGE_WATER = (
-  <span className="tally-badge" data-tone="water">
-    <svg width="22" height="22" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="11" fill="#092537" stroke="#00E5FF" strokeWidth="1.5" />
-      <path d="M12 4 C12 4 6 11 6 15 A6 6 0 0 0 18 15 C18 11 12 4 12 4 Z" fill="#00E5FF" />
-    </svg>
-  </span>
-);
-const BADGE_SKULL = (
-  <span className="tally-badge" data-tone="skull">
-    <svg width="22" height="22" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="11" fill="#1D1526" stroke="#A855F7" strokeWidth="1.5" />
-      <path d="M8 10 a4 4 0 0 1 8 0 c0 3 -1.5 4 -2 6 h-4 c-.5 -2 -2 -3 -2 -6 Z" fill="#C084FC" />
-      <circle cx="10" cy="10" r="1" fill="#1D1526" />
-      <circle cx="14" cy="10" r="1" fill="#1D1526" />
-    </svg>
-  </span>
-);
-const BADGE_COMBO = (
-  <span className="tally-badge" data-tone="combo">
-    <svg width="22" height="22" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="11" fill="#08201E" stroke="#2DD4BF" strokeWidth="1.5" />
-      <path d="M12 5 19 12 12 19 5 12Z" fill="none" stroke="#2DD4BF" strokeWidth="1.4" strokeLinejoin="round" />
-      <path d="M12 8.6 15.4 12 12 15.4 8.6 12Z" fill="#5EEAD4" />
-    </svg>
-  </span>
-);
+/* Tally badges — spec markup: 34px rounded tile holding a 22px icon.
+ *
+ * These are the mana medallions used as ornament, not as colour identity, so
+ * they take alt="" and the cell's text carries the meaning. They were
+ * previously hand-drawn copies of the old pip SVGs, which then went stale when
+ * the pips became artwork; drawing them from PIP_SRC keeps one source.
+ * "Rules loaded" is not a colour, so it takes the colourless medallion. */
+function TallyPip({ tone, src }: { tone: string; src: string }) {
+  return (
+    <span className="tally-badge" data-tone={tone}>
+      <img src={src} width={22} height={22} alt="" draggable={false} />
+    </span>
+  );
+}
+const BADGE_SUN = <TallyPip tone="sun" src={PIP_SRC.W} />;
+const BADGE_WATER = <TallyPip tone="water" src={PIP_SRC.U} />;
+const BADGE_SKULL = <TallyPip tone="skull" src={PIP_SRC.B} />;
+const BADGE_COMBO = <TallyPip tone="combo" src={PIP_SRC.C} />;
 
 interface DeckAgg {
   name: string;

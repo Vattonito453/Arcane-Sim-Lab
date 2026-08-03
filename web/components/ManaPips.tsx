@@ -25,7 +25,11 @@ const NAMES: Record<Mana, string> = {
 /** Rendered px per variant, mirroring .mana-badge--* in globals.css. */
 const PX: Record<"inline" | "seat", number> = { inline: 18, seat: 20 };
 
-const SRC: Record<Mana, string> = {
+/** The artwork, one source of truth. Exported because a few places need the
+ *  medallion as a decorative motif at their own size (the splash tally badges)
+ *  rather than as a colour-identity pip. Those use `alt=""` — the medallion is
+ *  ornament there and the adjacent text carries the meaning. */
+export const PIP_SRC: Record<Mana, string> = {
   W: "/art/pips/pip-w.webp",
   U: "/art/pips/pip-u.webp",
   B: "/art/pips/pip-b.webp",
@@ -39,7 +43,7 @@ export function ManaPip({ color, variant = "inline" }: { color: Mana; variant?: 
   return (
     <img
       className={`mana-badge mana-badge--${variant}`}
-      src={SRC[color]}
+      src={PIP_SRC[color]}
       width={px}
       height={px}
       alt={`${NAMES[color]} mana`}

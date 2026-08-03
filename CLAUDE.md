@@ -134,9 +134,20 @@ is the binding spec. In short:
   CSS files and no inline styles except computed percentages.
 
 Reference DOM: `Design System/*.dc.html` (visual spec + canonical screens).
-Mascot and mana pips are inline SVG (`web/components/Mascot.tsx`,
-`web/components/ManaPips.tsx`) — never raster exports, never emoji, never WotC
-mana symbols. Backdrop plates live in `web/public/art/`.
+Mascot and mana pips are **commissioned painted artwork served as WebP** from
+`web/public/art/` (`mascot-brass-archivist*.webp`, `pips/pip-{w,u,b,r,g,c}.webp`),
+wrapped by `web/components/Mascot.tsx` and `web/components/ManaPips.tsx`. They
+are the only sanctioned bitmaps besides the backdrop plates; everything else is
+inline SVG or CSS. Never emoji, never WotC mana symbols, never recoloured by CSS.
+
+Tracing this art to vector is a dead end that has already been tried: it is
+painted with continuous gradients, so tracing posterizes it into flat bands and
+costs ~15x the bytes. Re-export with `Design System/tools/export_pips.py`
+(needs Pillow + numpy, hence outside stdlib-only `engine/`), which is verified
+to reproduce the committed WebPs byte-for-byte. Two traps it encodes: the source
+PNGs are ~70% transparent with junk RGB behind, so **never `convert("RGB")`** (it
+bakes in a grey plate), and **never clip to a circle** (it amputates the
+medallion's spikes and wing flourishes). The source PNGs are not committed.
 
 ### Legal posture — two regimes, one bright line
 

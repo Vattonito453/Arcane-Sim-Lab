@@ -17,8 +17,10 @@ analytics platform for Magic: The Gathering Commander/EDH.
 | `art/backdrop-argent-spires.png` | Alternate daylit plate — splash only. |
 | `Arcane Sim Lab Design System.dc.html` | Visual spec + canonical screen. |
 
-Mascot and mana badges are **inline SVG**, defined in spec §2.2 and §5.1 — copy
-the markup, don't export them to raster.
+Mascot (§6) and mana pips (§4) are **painted artwork shipped as WebP** from
+`web/public/art/`, alongside the backdrop plates. They are the only sanctioned
+bitmaps; every other graphic is inline SVG or CSS. Re-export with
+`Design System/tools/export_pips.py`, never by hand.
 
 ---
 
@@ -144,23 +146,47 @@ Status = dot *shape* (§7). Identity = glyph *shape* + colour.
 ## 4. Mana pips (IP-safe)
 
 WotC mana symbols are **prohibited**. Do not use official mana circles, and do not
-use emoji — they render inconsistently and read as unserious. Each pip is a
-**filled disc with a distinct inset silhouette**, so identity survives greyscale
-and colourblindness. Disc colour alone never carries meaning.
+use emoji — they render inconsistently and read as unserious. Each pip is an
+ornate arcane medallion (ringed frame, cardinal spikes, side sparkles, wing
+flourish) with a **distinct central silhouette**, so identity survives greyscale
+and colourblindness. Medallion colour alone never carries meaning.
 
-| Colour | Disc | Core | Silhouette |
-|---|---|---|---|
-| White (W) | `--pip-w #F5E9C8` | `--pip-w-core` | Gold core |
-| Blue (U) | `--pip-u #67B7E8` | `--pip-u-core` | Teardrop |
-| Black (B) | `--pip-b #A855F7` | `--pip-b-core` | Void core |
-| Red (R) | `--pip-r #EF4444` | `--pip-r-core` | Flame |
-| Green (G) | `--pip-g #10B981` | `--pip-g-core` | Tree |
+| Colour | Token | Central silhouette |
+|---|---|---|
+| White (W) | `--pip-w #F5E9C8` | Sun: white-hot disc, twelve fine rays |
+| Blue (U) | `--pip-u #67B7E8` | Droplet |
+| Black (B) | `--pip-b #A855F7` | Skull |
+| Red (R) | `--pip-r #EF4444` | Mountain with a lava fissure |
+| Green (G) | `--pip-g #10B981` | Leaf |
+| Colourless (C) | `--pip-c #CBD5E1` | Four-point star |
 
-Markup is the inline SVG in spec §5.1 — a ringed disc (dark fill, coloured
-1.5px stroke) with the silhouette inset. `.mana-badge--inline` 18px beside a
-deck name, `.mana-badge--seat` 20px in a sim seat strip, gap 4–6px, always
-WUBRG order. Do not recolour by CSS; do not substitute emoji or a WotC mana
-circle. Pips are data — **never place one inside a button.**
+**Pips are bitmaps, not inline SVG** — the one deliberate exception to the
+"never a raster export" rule, alongside the mascot (§6) and the backdrop plates.
+The source is painted illustration with continuous gradients and fine metalwork;
+vector tracing has to posterize that into flat colour bands, which loses the art
+*and* costs roughly 15x more bytes. Assets live in `web/public/art/pips/` as
+96px WebP with real alpha, ~7 KB each (~41 KB for the set).
+
+Two rules the export must keep, both learned by getting them wrong:
+- **Never discard the source alpha.** The source PNGs are ~70% transparent and
+  carry junk RGB in those pixels; a `convert("RGB")` bakes it in as a grey plate.
+- **Crop to true content bounds, never to a circle.** The spikes and wing
+  flourishes extend past the ring; a circular clip amputates them.
+
+Downscale premultiplied (premultiply → Lanczos → un-premultiply) so no colour
+bleeds out of transparent pixels. Black is graded to lift its shadows
+(gamma 0.50, gain 1.45) or the skull vanishes below ~20px. Export script:
+`Design System/tools/export_pips.py` (needs Pillow + numpy, hence outside
+stdlib-only `engine/`).
+
+`.mana-badge--inline` 18px beside a deck name, `.mana-badge--seat` 20px in a
+sim seat strip, gap 4–6px, always WUBRG order. Colourless has no place in a
+Scryfall `color_identity` array, so `<ManaPips>` never emits it; use `<ManaPip
+color="C">` directly where colourless is its own option, as the deck gallery's
+colour-identity filter does (every row in that filter carries its pip). The
+96px source gives headroom to ~48px; re-export larger if a bigger display use
+appears. Do not recolour by CSS; do not substitute emoji or a WotC mana circle.
+Pips are data — **never place one inside a button.**
 
 ---
 
@@ -184,10 +210,12 @@ to do today?" + action hub → two-column data panel → media block → footer.
 ### Masthead
 Mascot seated **directly above** the `ARCANE SIM LAB` wordmark, upper-centre —
 not beside it. The two form one locked brand unit; no sub-title beneath.
-Mascot: the inline SVG in spec §2.2 — cheerful brass-and-bronze artifact robot,
-seated, holding a fan of three cards, cyan visor and a dashed arcane aura ring.
-Rendered at 200px with `.masthead-robot-mascot`. Ship it as inline SVG, never a
-raster export, so the brass gradient and glow stay crisp at any density. Account widget top-right as a translucent
+Mascot: **the brass archivist**, a gold artifact robot seated on a card stack
+holding a fan of glowing cyan cards. Painted artwork, shipped as WebP from
+`art/mascot-brass-archivist.webp` and rendered at 200px with
+`.masthead-robot-mascot`. Below ~48px the seated figure turns to mush, so
+`<Mascot>` swaps to `art/mascot-brass-archivist-head.webp`, a head-only crop
+that still reads at the 26px nav size. Account widget top-right as a translucent
 pill: avatar + name + chevron, `--r-control`, 44px tall.
 
 ### Rolling tally banner
@@ -330,7 +358,7 @@ Distinguishable with no colour vision at all.
 
 ## 9. Compliance (WotC Fan Content Policy)
 
-- No official mana symbols — geometric glyphs only (§4)
+- No official mana symbols — our own medallion artwork only (§4)
 - No "Magic: The Gathering" or "Planeswalker" branding in chrome
 - Card images via Scryfall, hotlinked, attributed
 - Footer disclaimer, always present, `--ink-4` minimum:

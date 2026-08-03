@@ -74,13 +74,17 @@
      label deliberately placed past ~60% of a fill. */
 
   /* ---- Mana pips — data only, never controls -------------------------- */
-  /* Rendered as a filled disc + DISTINCT inset silhouette (see §05).
-     Disc colour alone never carries identity. */
+  /* The pips themselves are artwork (web/public/art/pips/*.webp, see §04):
+     an ornate medallion with a DISTINCT central silhouette, because colour
+     alone never carries identity. These tokens are the matching accent for
+     text, borders and filter chips that reference a colour — they do NOT
+     tint the pip, which is never recoloured by CSS. */
   --pip-w: #F5E9C8;  --pip-w-core: #B08D3F;   /* bone disc, gold core */
   --pip-u: #67B7E8;  --pip-u-core: #0E3A5C;   /* teardrop */
   --pip-b: #A855F7;  --pip-b-core: #2E1065;   /* void core */
   --pip-r: #EF4444;  --pip-r-core: #7F1D1D;   /* flame */
   --pip-g: #10B981;  --pip-g-core: #064E3B;   /* tree */
+  --pip-c: #CBD5E1;  --pip-c-core: #64748B;   /* colourless, four-point sparkle */
   --pip-size-inline: 15px;   /* beside a deck name */
   --pip-size-seat:   17px;   /* in a sim seat strip */
 

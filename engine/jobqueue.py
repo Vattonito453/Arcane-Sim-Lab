@@ -98,16 +98,20 @@ def reap_stale(max_seconds: float | None = None) -> int:
 
 
 def position(job_id: str) -> int:
-    """How many queued jobs sit ahead of this one. 0 once it is claimed.
+    """How many runs are ahead of this queued job. 0 once it is claimed.
 
-    claim() takes the oldest queued job, so "ahead" is simply the queued jobs
-    created earlier. Lets the UI say "2 runs ahead" instead of showing an elapsed
-    timer for a job that has not started.
+    Two sources of "ahead": whatever is already 'running' (the worker has to
+    finish that before it can claim anything else, regardless of when this
+    job was created) and any older still-'queued' job (claim() takes the
+    oldest queued job first). Missing the 'running' half of this used to
+    make the very-next-in-line job report 0 whenever nothing else was
+    queued, so the UI showed a bare "Queued" with no indication it was
+    waiting on the job currently in flight.
     """
     with _conn() as c:
         row = c.execute(
-            "SELECT COUNT(*) FROM jobs WHERE state='queued' AND created < "
-            "(SELECT created FROM jobs WHERE id=?)", (job_id,)).fetchone()
+            "SELECT COUNT(*) FROM jobs WHERE state='running' OR (state='queued' "
+            "AND created < (SELECT created FROM jobs WHERE id=?))", (job_id,)).fetchone()
     return int(row[0]) if row else 0
 
 

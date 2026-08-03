@@ -347,11 +347,16 @@ def main() -> None:
     p.add_argument("--deck-dir", default=None, help="Directory containing the .dck files (-D)")
     p.add_argument("--games", type=int, default=10)
     p.add_argument("--format", default="Commander")
-    # Measured 2026-08-03: the humanized agent's own per-decision overhead
-    # (threat assessment, kingmaker re-aim, combo-pursuit gating) routinely
-    # blew through the old 120s default in 4-player pods — most sampled
-    # games landed at or past that ceiling instead of concluding naturally.
-    p.add_argument("--clock", type=int, default=300, help="Per-game timeout seconds (draw when exceeded)")
+    # 300s (the prior default here) was itself an unvalidated guess and
+    # turned out to be wrong: a real uncensored calibration batch on the VM
+    # (6 games, one fixed 4-deck matchup, no rotation, run at a 900s ceiling
+    # so nothing got cut off) measured naturally-concluding games from 81s to
+    # 354s (median ~159s) — 300s would have cut off 1 of those 6. 900s is
+    # the number we've actually tested against, not another multiplier
+    # guess, though this sample is small and one matchup; slower archetypes
+    # (stax/mill/politics-heavy, see deck_plan.py TAG_PERSONALITY) weren't
+    # represented and could run longer.
+    p.add_argument("--clock", type=int, default=900, help="Per-game timeout seconds (draw when exceeded)")
     p.add_argument("--quiet", action="store_true", help="Result-only logs (no per-action events)")
     p.add_argument("--forge-jar", default=None)
     p.add_argument("--agent", choices=["auto", "forge", "shim"], default="auto",

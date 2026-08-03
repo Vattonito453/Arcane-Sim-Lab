@@ -112,6 +112,7 @@ export function DeckGallery({
         ))}
         <label>
           <input type="checkbox" checked={filter.has("C")} onChange={() => toggleFilter("C")} />
+          <ManaPip color="C" />
           Colorless
         </label>
         <span className="flab dg-count">

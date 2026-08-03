@@ -66,6 +66,7 @@
   --pip-b: #A855F7;  --pip-b-core: #2E1065;
   --pip-r: #EF4444;  --pip-r-core: #7F1D1D;
   --pip-g: #10B981;  --pip-g-core: #064E3B;
+  --pip-c: #CBD5E1;  --pip-c-core: #64748B;
 
   /* ---- Rarity --------------------------------------------------------- */
   --rarity-common:        #94A3B8;
@@ -945,8 +946,8 @@ footer.chrome {
   /* The masthead was spending ~700px of an 844px viewport before the page said
      anything. Same composition, sized to the screen it is on. */
   /* The mascot ships at a fixed 200px and, with the wordmark under it, was
-     taking ~700px of an 844px viewport before the page said anything. The SVG
-     scales cleanly, so it is sized to the screen rather than to the desktop. */
+     taking ~700px of an 844px viewport before the page said anything. The art
+     is served at 2x, so it is sized to the screen rather than to the desktop. */
   .masthead { padding: 14px 0 10px; }
   .masthead .masthead-robot-mascot { width: clamp(96px, 26vw, 200px); height: auto; }
   .masthead .wordmark { font-size: clamp(24px, 7.5vw, 32px); }

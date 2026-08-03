@@ -88,11 +88,10 @@
   --pip-size-inline: 15px;   /* beside a deck name */
   --pip-size-seat:   17px;   /* in a sim seat strip */
 
-  /* ---- Tally banner icon badges --------------------------------------- */
-  --badge-sun:   rgba(245, 158, 11, 0.14);
-  --badge-water: rgba(0, 229, 255, 0.12);
-  --badge-skull: rgba(168, 85, 247, 0.14);
-  --badge-combo: rgba(45, 212, 191, 0.12);
+  /* Retired 2026-08-03: --badge-sun/water/skull/combo were tinted tiles behind
+     the tally banner's icons. The icons are now the mana medallions, which
+     carry their own ring and glow, so the tile read as a competing container.
+     The badge is a bare slot; see .tally-badge. */
 
   /* ---- Rarity --------------------------------------------------------- */
   --rarity-common:        #94A3B8;

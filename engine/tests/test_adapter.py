@@ -76,6 +76,7 @@ def main() -> None:
     assert s == {
         "games": 2,
         "draws": 1,
+        "timeouts": 0,
         "wins": {"Alice": 1, "Ai(9)-Nested Parens Deck": 0, "Bob": 0},
         "win_rates": {"Alice": 0.5, "Ai(9)-Nested Parens Deck": 0.0, "Bob": 0.0},
     }, s

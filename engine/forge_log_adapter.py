@@ -152,11 +152,20 @@ def summarize(games: list[dict]) -> dict:
     # Turn lines, so they land on the seeded key rather than creating a new one.
     wins: dict[str, int] = {}
     draws = 0
+    # Shim-only: a game the clock cut off, forced to a draw rather than let
+    # Forge's outcome object decide (simlab-forge-shim SimShim.java). Stock
+    # Forge games never carry this key, so it stays 0 for those runs — this
+    # is the number that would have surfaced the timeout-declares-a-winner
+    # bug and the too-short clock immediately instead of needing a manual
+    # raw-log audit to notice 71% of games were hitting it.
+    timeouts = 0
     for g in games:
         for p in g.get("players") or []:
             wins.setdefault(p, 0)
     for g in games:
         r = g.get("result") or {}
+        if r.get("timedOut"):
+            timeouts += 1
         if r.get("draw"):
             draws += 1
         elif r.get("winner"):
@@ -165,6 +174,7 @@ def summarize(games: list[dict]) -> dict:
     return {
         "games": total,
         "draws": draws,
+        "timeouts": timeouts,
         "wins": wins,
         "win_rates": {p: round(w / total, 3) for p, w in wins.items()} if total else {},
     }

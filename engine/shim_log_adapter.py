@@ -20,7 +20,7 @@ from __future__ import annotations
 import json
 import sys
 
-from forge_log_adapter import parse_forge_log
+from forge_log_adapter import parse_forge_log, summarize
 
 # GameLogEntryType enum name -> the caption Forge prints in sim mode
 # (forge_log_adapter's CAPTION_TO_ACTION is keyed on the captions).
@@ -109,10 +109,21 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             # Agent self-telemetry: authoritative for agent behavior — the
             # GameLog writes some combat lines before the agent's adjustments.
             result["games"][i]["agent_events"] = agent_events.get(g, [])
+            # The reconstructed text line above only carries draw/winner —
+            # timedOut has no stock-Forge equivalent to rebuild it from, so
+            # stamp it on directly from the raw shim record. Recompute the
+            # summary after: it was built from the text-only result dict,
+            # before this key existed, so its "timeouts" count would
+            # otherwise silently stay 0 no matter how many games hit the
+            # clock (see forge_log_adapter.summarize).
+            res = results.get(g)
+            if res is not None:
+                result["games"][i]["result"]["timedOut"] = bool(res.get("timedOut"))
     total_zones = sum(len(z) for z in zones.values())
     entries_bf = sum(1 for zz in zones.values() for z in zz if z.get("to") == "Battlefield")
     result["meta"]["zone_records"] = total_zones
     result["meta"]["battlefield_entries"] = entries_bf
+    result["summary"] = summarize(result["games"])
     return result
 
 

@@ -96,7 +96,7 @@ function TallyPip({ src }: { src: string }) {
 }
 const BADGE_SUN = <TallyPip src={PIP_SRC.W} />;
 const BADGE_WATER = <TallyPip src={PIP_SRC.U} />;
-const BADGE_SKULL = <TallyPip src={PIP_SRC.B} />;
+const BADGE_FIRE = <TallyPip src={PIP_SRC.R} />;
 const BADGE_COMBO = <TallyPip src={PIP_SRC.C} />;
 
 interface DeckAgg {
@@ -218,7 +218,7 @@ export default function Home() {
         <div className="tally" aria-live="off">
           <TallyCell badge={BADGE_SUN} value={decks?.length ?? 0} label="decks on this engine" />
           <TallyCell badge={BADGE_WATER} value={view?.totalGames ?? 0} label="games simulated" />
-          <TallyCell badge={BADGE_SKULL} value={view?.runs ?? 0} label="finished runs" />
+          <TallyCell badge={BADGE_FIRE} value={view?.runs ?? 0} label="finished runs" />
           <TallyCell badge={BADGE_COMBO} value={health?.rules ?? 0} label="rules loaded" />
         </div>
 

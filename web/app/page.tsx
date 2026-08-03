@@ -32,10 +32,14 @@ interface Health {
 /** Counter that rolls up on load (spec §6). Honours prefers-reduced-motion by
  *  rendering the final value immediately; the wrapper is aria-live="off" so the
  *  roll is never announced. */
-function useTally(target: number): number {
+function useTally(target: number | null): number {
   const [v, setV] = useState(0);
   const done = useRef(false);
   useEffect(() => {
+    // Nothing to roll to yet (fetch still in flight) — don't animate toward
+    // the 0 placeholder, or the real value arriving a moment later would
+    // restart the roll from scratch instead of playing once on load.
+    if (target == null) return;
     if (done.current) {
       setV(target);
       return;
@@ -56,7 +60,17 @@ function useTally(target: number): number {
       else done.current = true;
     };
     raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    // A backgrounded tab throttles or fully suspends requestAnimationFrame,
+    // which can strand the counter mid-roll with no way to recover. This
+    // timer guarantees the true value lands even if no frame ever fires.
+    const fallback = setTimeout(() => {
+      done.current = true;
+      setV(target);
+    }, dur + 200);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(fallback);
+    };
   }, [target]);
   return v;
 }
@@ -67,7 +81,7 @@ function TallyCell({
   label,
 }: {
   badge: React.ReactNode;
-  value: number;
+  value: number | null;
   label: string;
 }) {
   const v = useTally(value);
@@ -216,10 +230,10 @@ export default function Home() {
         {/* Rolling tally banner — real figures from this engine, not the
             mockup's placeholders. aria-live off: the roll is never announced. */}
         <div className="tally" aria-live="off">
-          <TallyCell badge={BADGE_SUN} value={decks?.length ?? 0} label="decks on this engine" />
-          <TallyCell badge={BADGE_WATER} value={view?.totalGames ?? 0} label="games simulated" />
-          <TallyCell badge={BADGE_FIRE} value={view?.runs ?? 0} label="finished runs" />
-          <TallyCell badge={BADGE_COMBO} value={health?.rules ?? 0} label="rules loaded" />
+          <TallyCell badge={BADGE_SUN} value={decks?.length ?? null} label="decks on this engine" />
+          <TallyCell badge={BADGE_WATER} value={view?.totalGames ?? null} label="games simulated" />
+          <TallyCell badge={BADGE_FIRE} value={view?.runs ?? null} label="finished runs" />
+          <TallyCell badge={BADGE_COMBO} value={health?.rules ?? null} label="rules loaded" />
         </div>
 
         <p className="splash-prompt">What would you like to do today?</p>

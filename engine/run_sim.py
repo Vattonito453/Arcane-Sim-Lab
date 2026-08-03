@@ -347,7 +347,11 @@ def main() -> None:
     p.add_argument("--deck-dir", default=None, help="Directory containing the .dck files (-D)")
     p.add_argument("--games", type=int, default=10)
     p.add_argument("--format", default="Commander")
-    p.add_argument("--clock", type=int, default=120, help="Per-game timeout seconds (draw when exceeded)")
+    # Measured 2026-08-03: the humanized agent's own per-decision overhead
+    # (threat assessment, kingmaker re-aim, combo-pursuit gating) routinely
+    # blew through the old 120s default in 4-player pods — most sampled
+    # games landed at or past that ceiling instead of concluding naturally.
+    p.add_argument("--clock", type=int, default=300, help="Per-game timeout seconds (draw when exceeded)")
     p.add_argument("--quiet", action="store_true", help="Result-only logs (no per-action events)")
     p.add_argument("--forge-jar", default=None)
     p.add_argument("--agent", choices=["auto", "forge", "shim"], default="auto",

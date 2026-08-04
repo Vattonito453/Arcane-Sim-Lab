@@ -1,0 +1,1865 @@
+Error handling registered!
+18:23:02 [INFO ] GuiBase: ##########################################
+18:23:02 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+18:23:02 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+18:23:02 [INFO ] GuiBase: OS: Mac OS X 15.7.7 aarch64
+18:23:02 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+18:23:02 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+An unsupported card was requested: "Empty the Laboratories" from "null". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+An unsupported card was requested: "Empty the Laboratories" from "[N.A.]". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+Ai(1)-Kilo Helm Final vs Ai(2)-Wilhelt Zombies B3 vs Ai(3)-Wyleth Voltron B3 vs Ai(4)-Drana Vampires - one game of Commander
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kilo, Apogee Mind for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wyleth, Soul of Steel for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wyleth, Soul of Steel for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kilo, Apogee Mind for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wyleth, Soul of Steel for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wyleth, Soul of Steel for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kilo, Apogee Mind for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kilo, Apogee Mind for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kilo, Apogee Mind for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wyleth, Soul of Steel for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Mulligan: Ai(2)-Wilhelt Zombies B3 has kept a hand of 7 cards
+Mulligan: Ai(3)-Wyleth Voltron B3 has kept a hand of 7 cards
+Mulligan: Ai(4)-Drana Vampires has kept a hand of 7 cards
+Mulligan: Ai(1)-Kilo Helm Final has kept a hand of 7 cards
+Turn: Turn 1 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Land: Ai(2)-Wilhelt Zombies B3 played Swamp (182)
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 2 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Plains (259)
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Mana: Plains (259) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Steelshaper's Gift
+Resolve Stack: Steelshaper's Gift (240) - Ai(3)-Wyleth Voltron B3 searches their library for an Equipment card, reveals it, puts it into their hand, then shuffles.
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 3 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (398)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 4 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Land: Ai(1)-Kilo Helm Final played Cascade Bluffs (22)
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 5 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Land: Ai(2)-Wilhelt Zombies B3 played Command Tower (113)
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Mana: Swamp (182) - {T}: Add {B}.
+Mana: Command Tower (113) - {T}: Add one mana of any color in your commander's color identity.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast Charcoal Diamond
+Replacement Effect: Charcoal Diamond enters tapped.
+Resolve Stack: Charcoal Diamond
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 6 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Slayers' Stronghold (271)
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 7 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (356)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Mana: Swamp (398) - {T}: Add {B}.
+Mana: Swamp (356) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Child of Night
+Resolve Stack: Child of Night - Creature 2 / 1
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 8 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Replacement Effect: Silverbluff Bridge enters tapped.
+Land: Ai(1)-Kilo Helm Final played Silverbluff Bridge (25)
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 9 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Land: Ai(2)-Wilhelt Zombies B3 played Swamp (192)
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Mana: Command Tower (113) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Swamp (182) - {T}: Add {B}.
+Mana: Charcoal Diamond (157) - {T}: Add {B}.
+Mana: Swamp (192) - {T}: Add {B}.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast Wilhelt, the Rotcleaver
+Resolve Stack: Wilhelt, the Rotcleaver - Creature 3 / 3
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: At the beginning of your end step, you may sacrifice a Zombie. If you do, draw a card. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 10 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Mountain (287)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Wyleth, Soul of Steel
+Resolve Stack: Wyleth, Soul of Steel - Creature 2 / 2
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 11 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Land: Ai(4)-Drana Vampires played Swamp (386)
+Mana: Swamp (398) - {T}: Add {B}.
+Mana: Swamp (356) - {T}: Add {B}.
+Mana: Swamp (386) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Drana, Liberator of Malakir
+Resolve Stack: Drana, Liberator of Malakir - Creature 2 / 3
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 12 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Land: Ai(1)-Kilo Helm Final played Ancient Den (89)
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Emry, Lurker of the Loch
+Resolve Stack: Emry, Lurker of the Loch - Creature 1 / 2
+Add To Stack: Ai(1)-Kilo Helm Final triggered Emry, Lurker of the Loch
+Zone Change: Ai(1)-Kilo Helm Final milled Razortide Bridge (21), Resourceful Defense (74), Swan Song (44) and Swords to Plowshares (46).
+Resolve Stack: When Emry, Lurker of the Loch enters, mill four cards. [Zone Changer: Emry, Lurker of the Loch (47)]
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 13 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Land: Ai(2)-Wilhelt Zombies B3 played Swamp (184)
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Combat: Ai(2)-Wilhelt Zombies B3 assigned Wilhelt, the Rotcleaver (200) to attack Ai(4)-Drana Vampires.
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires didn't block Wilhelt, the Rotcleaver (200).
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Damage: Wilhelt, the Rotcleaver (200) deals 3 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 40 > 37
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Mana: Swamp (182) - {T}: Add {B}.
+Mana: Charcoal Diamond (157) - {T}: Add {B}.
+Mana: Swamp (192) - {T}: Add {B}.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast Diregraf Colossus
+Replacement Effect: Diregraf Colossus enters with a +1/+1 counter on it for each Zombie card in your graveyard.
+Resolve Stack: Diregraf Colossus - Creature 2 / 2
+Mana: Swamp (184) - {T}: Add {B}.
+Mana: Command Tower (113) - {T}: Add one mana of any color in your commander's color identity.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast Shepherd of Rot
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Diregraf Colossus
+Resolve Stack: Whenever you cast a Zombie spell, create a tapped 2/2 black Zombie creature token. [Card: Shepherd of Rot (129), Activator: Ai(2)-Wilhelt Zombies B3, SpellAbility: Shepherd of Rot - Creature 1 / 1]
+Resolve Stack: Shepherd of Rot - Creature 1 / 1
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: At the beginning of your end step, you may sacrifice a Zombie. If you do, draw a card. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 14 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Plains (251)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Whispersilk Cloak
+Resolve Stack: Whispersilk Cloak
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 15 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (389)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Mana: Swamp (398) - {T}: Add {B}.
+Mana: Swamp (356) - {T}: Add {B}.
+Mana: Swamp (386) - {T}: Add {B}.
+Mana: Swamp (389) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Tendrils of Corruption targeting [Emry, Lurker of the Loch (47)]
+Damage: Tendrils of Corruption (346) deals 4 damage to Emry, Lurker of the Loch (47).
+Life: Life: Ai(4)-Drana Vampires 37 > 41
+Resolve Stack: Tendrils of Corruption (346) - Tendrils of Corruption (346) deals 4 damage to Emry, Lurker of the Loch (47). Ai(4)-Drana Vampires gains 4 life.
+Zone Change: Emry, Lurker of the Loch (47) was put into Graveyard from Battlefield.
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Drana, Liberator of Malakir (402) to attack Ai(2)-Wilhelt Zombies B3.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Drana, Liberator of Malakir (402).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Damage: Drana, Liberator of Malakir (402) deals 2 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 40 > 38
+Add To Stack: Ai(4)-Drana Vampires triggered Drana, Liberator of Malakir
+Resolve Stack: Whenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control. [Damage Source: Drana, Liberator of Malakir (402), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 2]
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 16 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Land: Ai(1)-Kilo Helm Final played Inkmoth Nexus (41)
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Inkmoth Nexus (41) - {T}: Add {C}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Unwinding Clock
+Resolve Stack: Unwinding Clock
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 17 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Mana: Command Tower (113) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Swamp (182) - {T}: Add {B}.
+Mana: Charcoal Diamond (157) - {T}: Add {B}.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast Gleaming Overseer
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Diregraf Colossus
+Resolve Stack: Whenever you cast a Zombie spell, create a tapped 2/2 black Zombie creature token. [Card: Gleaming Overseer (130), Activator: Ai(2)-Wilhelt Zombies B3, SpellAbility: Gleaming Overseer - Creature 1 / 4]
+Resolve Stack: Gleaming Overseer - Creature 1 / 4
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Gleaming Overseer
+Resolve Stack: When Gleaming Overseer enters, amass Zombies 1. (Put a +1/+1 counter on an Army you control. If you don't control one, create a 0/0 black Zombie Army creature token first.) [Zone Changer: Gleaming Overseer (130)]
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Combat: Ai(2)-Wilhelt Zombies B3 assigned Wilhelt, the Rotcleaver (200), Diregraf Colossus (122), Zombie Token (424) and Shepherd of Rot (129) to attack Ai(4)-Drana Vampires.
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires didn't block Wilhelt, the Rotcleaver (200).
+Ai(4)-Drana Vampires didn't block Diregraf Colossus (122).
+Ai(4)-Drana Vampires didn't block Zombie Token (424).
+Ai(4)-Drana Vampires didn't block Shepherd of Rot (129).
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Damage: Wilhelt, the Rotcleaver (200) deals 3 combat damage to Ai(4)-Drana Vampires.
+Damage: Diregraf Colossus (122) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Zombie Token (424) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Shepherd of Rot (129) deals 1 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 41 > 33
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: At the beginning of your end step, you may sacrifice a Zombie. If you do, draw a card. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 18 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Plains (252)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Plains (251) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Whispersilk Cloak targeting [Wyleth, Soul of Steel (301)]
+Resolve Stack: Whispersilk Cloak (224) -  Attach to Wyleth, Soul of Steel (301)
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Sword of Hearth and Home
+Resolve Stack: Sword of Hearth and Home
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Wyleth, Soul of Steel (301) to attack Ai(2)-Wilhelt Zombies B3.
+Add To Stack: Ai(3)-Wyleth Voltron B3 triggered Wyleth, Soul of Steel
+Resolve Stack: Whenever Wyleth, Soul of Steel attacks, draw a card for each Aura and Equipment attached to it. [Attacker: Wyleth, Soul of Steel (301)]
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Wyleth, Soul of Steel (301).
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Damage: Wyleth, Soul of Steel (301) deals 2 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 38 > 36
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 19 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (357)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Drana, Liberator of Malakir (402) to attack Ai(2)-Wilhelt Zombies B3.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Drana, Liberator of Malakir (402).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Damage: Drana, Liberator of Malakir (402) deals 3 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 36 > 33
+Add To Stack: Ai(4)-Drana Vampires triggered Drana, Liberator of Malakir
+Resolve Stack: Whenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control. [Damage Source: Drana, Liberator of Malakir (402), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 3]
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Mana: Swamp (398) - {T}: Add {B}.
+Mana: Swamp (356) - {T}: Add {B}.
+Mana: Swamp (386) - {T}: Add {B}.
+Mana: Swamp (389) - {T}: Add {B}.
+Mana: Swamp (357) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Anowon, the Ruin Sage
+Resolve Stack: Anowon, the Ruin Sage - Creature 4 / 3
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 20 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Land: Ai(1)-Kilo Helm Final played Spire of Industry (10)
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Life: Life: Ai(1)-Kilo Helm Final 40 > 39
+Mana: Spire of Industry (10) - {T}, Pay 1 life: Add one mana of any color. Activate only if you control an artifact.
+Add To Stack: Ai(1)-Kilo Helm Final cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Add To Stack: Ai(1)-Kilo Helm Final activated Inkmoth Nexus
+Resolve Stack: Inkmoth Nexus (41) - Inkmoth Nexus (41) has base power and toughness 1/1  and becomes a creature artifact Phyrexian Blinkmoth and  gains flying and infect until end of turn.
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(1)-Kilo Helm Final assigned Inkmoth Nexus (41) to attack Ai(2)-Wilhelt Zombies B3.
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Inkmoth Nexus (41).
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Damage: Inkmoth Nexus (41) deals 1 combat damage to Ai(2)-Wilhelt Zombies B3(as poison counters).
+Damage: Ai(2)-Wilhelt Zombies B3 receives 1 poison counter from Ai(1)-Kilo Helm Final
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 21 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Ripples of Potential
+Damage: Ai(2)-Wilhelt Zombies B3 receives 1 poison counter from Ai(1)-Kilo Helm Final
+Resolve Stack: Ripples of Potential (39) - Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)  phase out. 
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Combat: Ai(2)-Wilhelt Zombies B3 assigned Wilhelt, the Rotcleaver (200) to attack Ai(4)-Drana Vampires.
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires didn't block Wilhelt, the Rotcleaver (200).
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Damage: Wilhelt, the Rotcleaver (200) deals 3 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 33 > 30
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Mana: Swamp (182) - {T}: Add {B}.
+Mana: Charcoal Diamond (157) - {T}: Add {B}.
+Mana: Swamp (192) - {T}: Add {B}.
+Mana: Swamp (184) - {T}: Add {B}.
+Mana: Command Tower (113) - {T}: Add one mana of any color in your commander's color identity.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast From Under the Floorboards
+Life: Life: Ai(2)-Wilhelt Zombies B3 33 > 36
+Resolve Stack: From Under the Floorboards (134) - Ai(2)-Wilhelt Zombies B3 creates three tapped 2/2 black Zombie creature tokens and you gain 3 life. If From Under the Floorboards's madness cost was paid, instead create X of those tokens and you gain X life. Ai(2)-Wilhelt Zombies B3 gains 3 life.
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: At the beginning of your end step, you may sacrifice a Zombie. If you do, draw a card. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 22 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Mountain (285)
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Wyleth, Soul of Steel (301) to attack Ai(2)-Wilhelt Zombies B3.
+Add To Stack: Ai(3)-Wyleth Voltron B3 triggered Wyleth, Soul of Steel
+Resolve Stack: Whenever Wyleth, Soul of Steel attacks, draw a card for each Aura and Equipment attached to it. [Attacker: Wyleth, Soul of Steel (301)]
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Wyleth, Soul of Steel (301).
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Damage: Wyleth, Soul of Steel (301) deals 2 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 36 > 34
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Plains (252) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Champion's Helm
+Resolve Stack: Champion's Helm
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Mountain (285) - {T}: Add {R}.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Loxodon Warhammer
+Resolve Stack: Loxodon Warhammer
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 23 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Add To Stack: Ai(4)-Drana Vampires triggered Anowon, the Ruin Sage
+Mana: Ancient Den (89) - {T}: Add {W}.
+Add To Stack: Ai(1)-Kilo Helm Final activated Inkmoth Nexus
+Mana: Swamp (398) - {T}: Add {B}.
+Mana: Swamp (356) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Doom Blade targeting [Kilo, Apogee Mind (100)]
+Zone Change: Kilo, Apogee Mind (100) was put into Graveyard from Battlefield.
+Resolve Stack: Doom Blade (334) - Destroy Kilo, Apogee Mind (100).
+Resolve Stack: Inkmoth Nexus (41) - Inkmoth Nexus (41) has base power and toughness 1/1  and becomes a creature artifact Phyrexian Blinkmoth and  gains flying and infect until end of turn.
+Zone Change: Inkmoth Nexus (41) was put into Graveyard from Battlefield.
+Zone Change: Zombie Army Token (433) was put into Graveyard from Battlefield.
+Zone Change: Wyleth, Soul of Steel (301) was put into Graveyard from Battlefield.
+Resolve Stack: At the beginning of your upkeep, each player sacrifices a non-Vampire creature. [Phase: Ai(4)-Drana Vampires]
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: Whenever another Zombie you control dies, if it didn't have decayed, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.) [Zone Changer: Zombie Army Token (433)]
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (372)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Drana, Liberator of Malakir (402) and Anowon, the Ruin Sage (313) to attack Ai(2)-Wilhelt Zombies B3.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Drana, Liberator of Malakir (402).
+Ai(2)-Wilhelt Zombies B3 didn't block Anowon, the Ruin Sage (313).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Damage: Drana, Liberator of Malakir (402) deals 4 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 34 > 30
+Add To Stack: Ai(4)-Drana Vampires triggered Drana, Liberator of Malakir
+Resolve Stack: Whenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control. [Damage Source: Drana, Liberator of Malakir (402), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 4]
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Anowon, the Ruin Sage (313) deals 5 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 30 > 25
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Mana: Swamp (386) - {T}: Add {B}.
+Mana: Swamp (389) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Gifted Aetherborn
+Resolve Stack: Gifted Aetherborn - Creature 2 / 3
+Mana: Swamp (357) - {T}: Add {B}.
+Mana: Swamp (372) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Bloodghast
+Resolve Stack: Bloodghast - Creature 2 / 1
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 24 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Spire of Industry (10) - {T}: Add {C}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Everflowing Chalice
+Replacement Effect: Everflowing Chalice enters with a charge counter on it for each time it was kicked.
+Resolve Stack: Everflowing Chalice
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 activated Shepherd of Rot
+Life: Life: Ai(1)-Kilo Helm Final 39 > 29
+Life: Life: Ai(2)-Wilhelt Zombies B3 25 > 15
+Life: Life: Ai(3)-Wyleth Voltron B3 40 > 30
+Life: Life: Ai(4)-Drana Vampires 30 > 20
+Resolve Stack: Shepherd of Rot (129) - Ai(1)-Kilo Helm Final, Ai(2)-Wilhelt Zombies B3, Ai(3)-Wyleth Voltron B3 and Ai(4)-Drana Vampires each lose 10 life.
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 25 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Land: Ai(2)-Wilhelt Zombies B3 played Island (153)
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: At the beginning of your end step, you may sacrifice a Zombie. If you do, draw a card. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 26 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Mountain (283)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Mountain (285) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Wyleth, Soul of Steel
+Resolve Stack: Wyleth, Soul of Steel - Creature 2 / 2
+Mana: Mountain (283) - {T}: Add {R}.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Whispersilk Cloak targeting [Wyleth, Soul of Steel (301)]
+Resolve Stack: Whispersilk Cloak (224) -  Attach to Wyleth, Soul of Steel (301)
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 27 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Add To Stack: Ai(4)-Drana Vampires triggered Anowon, the Ruin Sage
+Zone Change: Shepherd of Rot (129) was put into Graveyard from Battlefield.
+Zone Change: Wyleth, Soul of Steel (301) was put into Graveyard from Battlefield.
+Resolve Stack: At the beginning of your upkeep, each player sacrifices a non-Vampire creature. [Phase: Ai(4)-Drana Vampires]
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: Whenever another Zombie you control dies, if it didn't have decayed, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.) [Zone Changer: Shepherd of Rot (129)]
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (369)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Drana, Liberator of Malakir (402) and Anowon, the Ruin Sage (313) to attack Ai(2)-Wilhelt Zombies B3.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Drana, Liberator of Malakir (402).
+Ai(2)-Wilhelt Zombies B3 didn't block Anowon, the Ruin Sage (313).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Damage: Drana, Liberator of Malakir (402) deals 5 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 15 > 10
+Add To Stack: Ai(4)-Drana Vampires triggered Drana, Liberator of Malakir
+Resolve Stack: Whenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control. [Damage Source: Drana, Liberator of Malakir (402), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 5]
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Anowon, the Ruin Sage (313) deals 6 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 10 > 4
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Mana: Swamp (398) - {T}: Add {B}.
+Mana: Swamp (356) - {T}: Add {B}.
+Mana: Swamp (386) - {T}: Add {B}.
+Mana: Swamp (389) - {T}: Add {B}.
+Mana: Swamp (357) - {T}: Add {B}.
+Mana: Swamp (372) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Necropolis Regent
+Resolve Stack: Necropolis Regent - Creature 6 / 5
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 28 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Life: Life: Ai(1)-Kilo Helm Final 29 > 28
+Mana: Spire of Industry (10) - {T}, Pay 1 life: Add one mana of any color. Activate only if you control an artifact.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Everflowing Chalice (30) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Add To Stack: Ai(1)-Kilo Helm Final cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 29 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Mana: Swamp (182) - {T}: Add {B}.
+Mana: Charcoal Diamond (157) - {T}: Add {B}.
+Mana: Island (153) - {T}: Add {U}.
+Mana: Swamp (192) - {T}: Add {B}.
+Mana: Swamp (184) - {T}: Add {B}.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast Gray Merchant of Asphodel
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Diregraf Colossus
+Resolve Stack: Whenever you cast a Zombie spell, create a tapped 2/2 black Zombie creature token. [Card: Gray Merchant of Asphodel (116), Activator: Ai(2)-Wilhelt Zombies B3, SpellAbility: Gray Merchant of Asphodel - Creature 2 / 4]
+Resolve Stack: Gray Merchant of Asphodel - Creature 2 / 4
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Gray Merchant of Asphodel
+Life: Life: Ai(3)-Wyleth Voltron B3 30 > 25
+Life: Life: Ai(4)-Drana Vampires 20 > 15
+Life: Life: Ai(1)-Kilo Helm Final 28 > 23
+Life: Life: Ai(2)-Wilhelt Zombies B3 4 > 19
+Resolve Stack: When Gray Merchant of Asphodel enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way. [Zone Changer: Gray Merchant of Asphodel (116)]
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: At the beginning of your end step, you may sacrifice a Zombie. If you do, draw a card. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 30 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Mountain (292)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Mountain (285) - {T}: Add {R}.
+Mana: Mountain (283) - {T}: Add {R}.
+Mana: Mountain (292) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Wyleth, Soul of Steel
+Resolve Stack: Wyleth, Soul of Steel - Creature 2 / 2
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Champion's Helm targeting [Wyleth, Soul of Steel (301)]
+Resolve Stack: Champion's Helm (276) -  Attach to Wyleth, Soul of Steel (301)
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 31 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Add To Stack: Ai(4)-Drana Vampires triggered Anowon, the Ruin Sage
+Zone Change: Kilo, Apogee Mind (100) was put into Graveyard from Battlefield.
+Zone Change: Diregraf Colossus (122) was put into Graveyard from Battlefield.
+Zone Change: Wyleth, Soul of Steel (301) was put into Graveyard from Battlefield.
+Resolve Stack: At the beginning of your upkeep, each player sacrifices a non-Vampire creature. [Phase: Ai(4)-Drana Vampires]
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: Whenever another Zombie you control dies, if it didn't have decayed, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.) [Zone Changer: Diregraf Colossus (122)]
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (368)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 32 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Everflowing Chalice (30) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Add To Stack: Ai(1)-Kilo Helm Final cast Illustrious Wanderglyph
+Resolve Stack: Illustrious Wanderglyph - Creature 2 / 2
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 33 (Ai(2)-Wilhelt Zombies B3)
+Phase: Ai(2)-Wilhelt Zombies B3's Untap step
+Phase: Ai(2)-Wilhelt Zombies B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Draw step
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, precombat
+Phase: Ai(2)-Wilhelt Zombies B3's Beginning of Combat Step
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Attackers Step
+Combat: Ai(2)-Wilhelt Zombies B3 assigned Wilhelt, the Rotcleaver (200), Zombie Token (424), Zombie Token (431), Zombie Token (444), Zombie Token (445), Zombie Token (446), Zombie Token (451), Zombie Token (457), Zombie Token (461), Gray Merchant of Asphodel (116), Zombie Token (467) and Gleaming Overseer (130) to attack Ai(4)-Drana Vampires.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Zombie Token
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Zombie Token
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Zombie Token
+Resolve Stack: When a creature with decayed attacks, sacrifice it at end of combat. [Attacker: Zombie Token (467)]
+Resolve Stack: When a creature with decayed attacks, sacrifice it at end of combat. [Attacker: Zombie Token (457)]
+Resolve Stack: When a creature with decayed attacks, sacrifice it at end of combat. [Attacker: Zombie Token (451)]
+Phase: Ai(2)-Wilhelt Zombies B3's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires assigned Child of Night (401) to block Wilhelt, the Rotcleaver (200).
+Ai(4)-Drana Vampires assigned Drana, Liberator of Malakir (402) and Necropolis Regent (345) to block Zombie Token (424).
+Ai(4)-Drana Vampires didn't block Zombie Token (431).
+Ai(4)-Drana Vampires didn't block Zombie Token (444).
+Ai(4)-Drana Vampires didn't block Zombie Token (445).
+Ai(4)-Drana Vampires didn't block Zombie Token (446).
+Ai(4)-Drana Vampires didn't block Zombie Token (451).
+Ai(4)-Drana Vampires didn't block Zombie Token (457).
+Ai(4)-Drana Vampires didn't block Zombie Token (461).
+Ai(4)-Drana Vampires assigned Gifted Aetherborn (316) to block Gray Merchant of Asphodel (116).
+Ai(4)-Drana Vampires didn't block Zombie Token (467).
+Ai(4)-Drana Vampires assigned Anowon, the Ruin Sage (313) to block Gleaming Overseer (130).
+Phase: Ai(2)-Wilhelt Zombies B3's First Strike Damage Step
+Damage: Drana, Liberator of Malakir (402) deals 6 damage to Zombie Token (424).
+Zone Change: Zombie Token (424) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: Whenever another Zombie you control dies, if it didn't have decayed, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.) [Zone Changer: Zombie Token (424)]
+Phase: Ai(2)-Wilhelt Zombies B3's Combat Damage Step
+Damage: Wilhelt, the Rotcleaver (200) deals 3 damage to Child of Night (401).
+Damage: Zombie Token (431) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Zombie Token (444) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Zombie Token (445) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Zombie Token (446) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Zombie Token (451) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Zombie Token (457) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Zombie Token (461) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Gray Merchant of Asphodel (116) deals 2 damage to Gifted Aetherborn (316).
+Damage: Zombie Token (467) deals 2 combat damage to Ai(4)-Drana Vampires.
+Damage: Gleaming Overseer (130) deals 1 damage to Anowon, the Ruin Sage (313).
+Damage: Child of Night (401) deals 2 damage to Wilhelt, the Rotcleaver (200).
+Life: Life: Ai(4)-Drana Vampires 15 > 17
+Damage: Gifted Aetherborn (316) deals 2 damage (Deathtouch) to Gray Merchant of Asphodel (116).
+Life: Life: Ai(4)-Drana Vampires 17 > 19
+Damage: Anowon, the Ruin Sage (313) deals 6 damage to Gleaming Overseer (130).
+Life: Life: Ai(4)-Drana Vampires 19 > 3
+Zone Change: Gleaming Overseer (130) was put into Graveyard from Battlefield.
+Zone Change: Gray Merchant of Asphodel (116) was put into Graveyard from Battlefield.
+Zone Change: Child of Night (401) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: Whenever another Zombie you control dies, if it didn't have decayed, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.) [Zone Changer: Gray Merchant of Asphodel (116)]
+Resolve Stack: Whenever another Zombie you control dies, if it didn't have decayed, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.) [Zone Changer: Gleaming Overseer (130)]
+Phase: Ai(2)-Wilhelt Zombies B3's End of Combat Step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Zombie Token
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Zombie Token
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Zombie Token
+Zone Change: Zombie Token (451) was put into Graveyard from Battlefield.
+Resolve Stack: At end of combat, sacrifice Zombie Token. [Phase: Ai(2)-Wilhelt Zombies B3]
+Zone Change: Zombie Token (457) was put into Graveyard from Battlefield.
+Resolve Stack: At end of combat, sacrifice Zombie Token. [Phase: Ai(2)-Wilhelt Zombies B3]
+Zone Change: Zombie Token (467) was put into Graveyard from Battlefield.
+Resolve Stack: At end of combat, sacrifice Zombie Token. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Main phase, postcombat
+Mana: Swamp (182) - {T}: Add {B}.
+Mana: Charcoal Diamond (157) - {T}: Add {B}.
+Mana: Island (153) - {T}: Add {U}.
+Mana: Swamp (192) - {T}: Add {B}.
+Add To Stack: Ai(2)-Wilhelt Zombies B3 cast Endless Ranks of the Dead
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Everflowing Chalice (30) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Add To Stack: Ai(1)-Kilo Helm Final cast Fierce Guardianship targeting [Endless Ranks of the Dead]
+Zone Change: Send countered spell to Graveyard
+Resolve Stack: Fierce Guardianship (17) - Counter Endless Ranks of the Dead (132).
+Phase: Ai(2)-Wilhelt Zombies B3's End step
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: At the beginning of your end step, you may sacrifice a Zombie. If you do, draw a card. [Phase: Ai(2)-Wilhelt Zombies B3]
+Phase: Ai(2)-Wilhelt Zombies B3's Cleanup step
+Turn: Turn 34 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(3)-Wyleth Voltron B3]
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Mountain (286)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Mountain (285) - {T}: Add {R}.
+Mana: Mountain (283) - {T}: Add {R}.
+Mana: Mountain (292) - {T}: Add {R}.
+Mana: Mountain (286) - {T}: Add {R}.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Wyleth, Soul of Steel
+Resolve Stack: Wyleth, Soul of Steel - Creature 2 / 2
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 35 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Add To Stack: Ai(4)-Drana Vampires triggered Anowon, the Ruin Sage
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(4)-Drana Vampires]
+Zone Change: Gnome Token (470) was put into Graveyard from Battlefield.
+Zone Change: Zombie Token (431) was put into Graveyard from Battlefield.
+Zone Change: Wyleth, Soul of Steel (301) was put into Graveyard from Battlefield.
+Resolve Stack: At the beginning of your upkeep, each player sacrifices a non-Vampire creature. [Phase: Ai(4)-Drana Vampires]
+Add To Stack: Ai(2)-Wilhelt Zombies B3 triggered Wilhelt, the Rotcleaver
+Resolve Stack: Whenever another Zombie you control dies, if it didn't have decayed, create a 2/2 black Zombie creature token with decayed. (It can't block. When it attacks, sacrifice it at end of combat.) [Zone Changer: Zombie Token (431)]
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (395)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Drana, Liberator of Malakir (402), Anowon, the Ruin Sage (313), Necropolis Regent (345), Gifted Aetherborn (316) and Bloodghast (322) to attack Ai(2)-Wilhelt Zombies B3.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(2)-Wilhelt Zombies B3 didn't block Drana, Liberator of Malakir (402).
+Ai(2)-Wilhelt Zombies B3 didn't block Anowon, the Ruin Sage (313).
+Ai(2)-Wilhelt Zombies B3 didn't block Necropolis Regent (345).
+Ai(2)-Wilhelt Zombies B3 didn't block Gifted Aetherborn (316).
+Ai(2)-Wilhelt Zombies B3 didn't block Bloodghast (322).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Damage: Drana, Liberator of Malakir (402) deals 6 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 19 > 13
+Add To Stack: Ai(4)-Drana Vampires triggered Drana, Liberator of Malakir
+Add To Stack: Ai(4)-Drana Vampires triggered Necropolis Regent
+Resolve Stack: Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it. [Damage Source: Drana, Liberator of Malakir (402), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 6]
+Resolve Stack: Whenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control. [Damage Source: Drana, Liberator of Malakir (402), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 6]
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Anowon, the Ruin Sage (313) deals 7 combat damage to Ai(2)-Wilhelt Zombies B3.
+Damage: Necropolis Regent (345) deals 7 combat damage to Ai(2)-Wilhelt Zombies B3.
+Damage: Gifted Aetherborn (316) deals 3 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(4)-Drana Vampires 3 > 6
+Damage: Bloodghast (322) deals 3 combat damage to Ai(2)-Wilhelt Zombies B3.
+Life: Life: Ai(2)-Wilhelt Zombies B3 13 > -7
+Add To Stack: Ai(4)-Drana Vampires triggered Necropolis Regent
+Add To Stack: Ai(4)-Drana Vampires triggered Necropolis Regent
+Add To Stack: Ai(4)-Drana Vampires triggered Necropolis Regent
+Add To Stack: Ai(4)-Drana Vampires triggered Necropolis Regent
+Resolve Stack: Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it. [Damage Source: Bloodghast (322), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 3]
+Resolve Stack: Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it. [Damage Source: Gifted Aetherborn (316), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 3]
+Resolve Stack: Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it. [Damage Source: Necropolis Regent (345), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 7]
+Resolve Stack: Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it. [Damage Source: Anowon, the Ruin Sage (313), Damaged: Ai(2)-Wilhelt Zombies B3, Amount: 7]
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 36 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(1)-Kilo Helm Final]
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Replacement Effect: Glacial Fortress enters tapped unless you control a Plains or an Island.
+Land: Ai(1)-Kilo Helm Final played Glacial Fortress (78)
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(1)-Kilo Helm Final assigned Gnome Token (487), Gnome Token (490) and Illustrious Wanderglyph (29) to attack Ai(4)-Drana Vampires.
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires didn't block Gnome Token (487).
+Ai(4)-Drana Vampires didn't block Gnome Token (490).
+Ai(4)-Drana Vampires didn't block Illustrious Wanderglyph (29).
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Damage: Gnome Token (487) deals 3 combat damage to Ai(4)-Drana Vampires.
+Damage: Gnome Token (490) deals 3 combat damage to Ai(4)-Drana Vampires.
+Damage: Illustrious Wanderglyph (29) deals 2 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 6 > -2
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Moxite Refinery
+Resolve Stack: Moxite Refinery
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 37 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(3)-Wyleth Voltron B3]
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Plains (252) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Danitha Capashen, Paragon
+Resolve Stack: Danitha Capashen, Paragon - Creature 2 / 2
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Mountain (285) - {T}: Add {R}.
+Mana: Mountain (283) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Loxodon Warhammer targeting [Danitha Capashen, Paragon (300)]
+Resolve Stack: Loxodon Warhammer (299) -  Attach to Danitha Capashen, Paragon (300)
+Mana: Mountain (292) - {T}: Add {R}.
+Mana: Mountain (286) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Whispersilk Cloak targeting [Danitha Capashen, Paragon (300)]
+Resolve Stack: Whispersilk Cloak (224) -  Attach to Danitha Capashen, Paragon (300)
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Mask of Memory
+Resolve Stack: Mask of Memory
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 38 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(1)-Kilo Helm Final]
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Land: Ai(1)-Kilo Helm Final played Great Furnace (96)
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Great Furnace (96) - {T}: Add {R}.
+Mana: Glacial Fortress (78) - {T}: Add {W} or {U}.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Everflowing Chalice (30) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Add To Stack: Ai(1)-Kilo Helm Final cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(1)-Kilo Helm Final assigned Kilo, Apogee Mind (100), Gnome Token (487), Gnome Token (490), Gnome Token (497), Gnome Token (500) and Illustrious Wanderglyph (29) to attack Ai(3)-Wyleth Voltron B3.
+Add To Stack: Ai(1)-Kilo Helm Final triggered Kilo, Apogee Mind
+Resolve Stack: Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Tapped: Kilo, Apogee Mind (100)]
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to block Kilo, Apogee Mind (100).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (487).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (490).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (497).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (500).
+Ai(3)-Wyleth Voltron B3 didn't block Illustrious Wanderglyph (29).
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 damage to Kilo, Apogee Mind (100).
+Life: Life: Ai(3)-Wyleth Voltron B3 25 > 30
+Zone Change: Kilo, Apogee Mind (100) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Damage: Gnome Token (487) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (490) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (497) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (500) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Illustrious Wanderglyph (29) deals 2 combat damage to Ai(3)-Wyleth Voltron B3.
+Life: Life: Ai(3)-Wyleth Voltron B3 30 > 16
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 39 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(3)-Wyleth Voltron B3]
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Plains (253)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Plains (251) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Sram, Senior Edificer
+Resolve Stack: Sram, Senior Edificer - Creature 2 / 2
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Plains (253) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Sword of Hearth and Home targeting [Sram, Senior Edificer (269)]
+Resolve Stack: Sword of Hearth and Home (294) -  Attach to Sram, Senior Edificer (269)
+Mana: Mountain (287) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Champion's Helm targeting [Sram, Senior Edificer (269)]
+Resolve Stack: Champion's Helm (276) -  Attach to Sram, Senior Edificer (269)
+Mana: Mountain (285) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Mask of Memory targeting [Sram, Senior Edificer (269)]
+Resolve Stack: Mask of Memory (241) -  Attach to Sram, Senior Edificer (269)
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to attack Ai(1)-Kilo Helm Final.
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Helm Final didn't block Danitha Capashen, Paragon (300).
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 combat damage to Ai(1)-Kilo Helm Final.
+Life: Life: Ai(3)-Wyleth Voltron B3 16 > 21
+Life: Life: Ai(1)-Kilo Helm Final 23 > 18
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 40 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(1)-Kilo Helm Final]
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Great Furnace (96) - {T}: Add {R}.
+Mana: Glacial Fortress (78) - {T}: Add {W} or {U}.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Everflowing Chalice (30) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Mana: Spire of Industry (10) - {T}: Add {C}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(1)-Kilo Helm Final assigned Kilo, Apogee Mind (100), Illustrious Wanderglyph (29), Gnome Token (487), Gnome Token (490), Gnome Token (497), Gnome Token (500), Gnome Token (503) and Gnome Token (506) to attack Ai(3)-Wyleth Voltron B3.
+Add To Stack: Ai(1)-Kilo Helm Final triggered Kilo, Apogee Mind
+Resolve Stack: Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Tapped: Kilo, Apogee Mind (100)]
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Sram, Senior Edificer (269) to block Kilo, Apogee Mind (100).
+Ai(3)-Wyleth Voltron B3 didn't block Illustrious Wanderglyph (29).
+Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to block Gnome Token (487).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (490).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (497).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (500).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (503).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (506).
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 damage to Gnome Token (487).
+Life: Life: Ai(3)-Wyleth Voltron B3 21 > 26
+Zone Change: Gnome Token (487) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Replacement Effect: Protection from white
+Damage: Illustrious Wanderglyph (29) deals 2 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (490) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (497) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (500) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (503) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (506) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Sram, Senior Edificer (269) deals 6 damage to Kilo, Apogee Mind (100).
+Life: Life: Ai(3)-Wyleth Voltron B3 26 > 9
+Zone Change: Kilo, Apogee Mind (100) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 41 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(3)-Wyleth Voltron B3]
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Mana: Plains (259) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Kor Duelist
+Resolve Stack: Kor Duelist - Creature 1 / 1
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to attack Ai(1)-Kilo Helm Final.
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Helm Final didn't block Danitha Capashen, Paragon (300).
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 combat damage to Ai(1)-Kilo Helm Final.
+Life: Life: Ai(3)-Wyleth Voltron B3 9 > 14
+Life: Life: Ai(1)-Kilo Helm Final 18 > 13
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 42 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(1)-Kilo Helm Final]
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(1)-Kilo Helm Final assigned Gnome Token (490), Gnome Token (497), Gnome Token (500), Gnome Token (503), Gnome Token (506), Gnome Token (509), Gnome Token (512) and Illustrious Wanderglyph (29) to attack Ai(3)-Wyleth Voltron B3.
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Kor Duelist (268) to block Gnome Token (490).
+Ai(3)-Wyleth Voltron B3 assigned Sram, Senior Edificer (269) to block Gnome Token (497).
+Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to block Gnome Token (500).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (503).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (506).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (509).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (512).
+Ai(3)-Wyleth Voltron B3 didn't block Illustrious Wanderglyph (29).
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Boros Charm
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Add To Stack: Ai(1)-Kilo Helm Final cast An Offer You Can't Refuse targeting [Choose one —
+• Boros Charm deals 4 damage to target player or planeswalker.
+• Permanents you control gain indestructible until end of turn.
+• Target creature gains double strike until end of turn.
+
+ Permanents you control gain indestructible until end of turn.]
+Zone Change: Send countered spell to Graveyard
+Resolve Stack: An Offer You Can't Refuse (92) - Counter Boros Charm (273). Its controller creates two Treasure tokens.
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Mountain (285) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Slayers' Stronghold targeting [Kor Duelist (268)]
+Resolve Stack: Slayers' Stronghold (271) - Kor Duelist (268) gets +2/+0 and gains vigilance and haste until end of turn.
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 damage to Gnome Token (500).
+Life: Life: Ai(3)-Wyleth Voltron B3 14 > 19
+Zone Change: Gnome Token (500) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Damage: Gnome Token (490) deals 3 damage to Kor Duelist (268).
+Damage: Gnome Token (497) deals 3 damage to Sram, Senior Edificer (269).
+Damage: Gnome Token (503) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (506) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (509) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (512) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Illustrious Wanderglyph (29) deals 2 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Kor Duelist (268) deals 3 damage to Gnome Token (490).
+Damage: Sram, Senior Edificer (269) deals 6 damage to Gnome Token (497).
+Life: Life: Ai(3)-Wyleth Voltron B3 19 > 5
+Zone Change: Gnome Token (490) was put into Graveyard from Battlefield.
+Zone Change: Gnome Token (497) was put into Graveyard from Battlefield.
+Zone Change: Kor Duelist (268) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Mana: Great Furnace (96) - {T}: Add {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Arcane Signet
+Resolve Stack: Arcane Signet
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 43 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(3)-Wyleth Voltron B3]
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Plains (259) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Wear targeting [Gnome Token (503)]
+Zone Change: Gnome Token (503) was put into Graveyard from Battlefield.
+Resolve Stack: Wear (205) - Destroy Gnome Token (503).
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to attack Ai(1)-Kilo Helm Final.
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Helm Final didn't block Danitha Capashen, Paragon (300).
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 combat damage to Ai(1)-Kilo Helm Final.
+Life: Life: Ai(3)-Wyleth Voltron B3 5 > 10
+Life: Life: Ai(1)-Kilo Helm Final 13 > 8
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Mana: Mountain (285) - {T}: Add {R}.
+Mana: Mountain (283) - {T}: Add {R}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Plains (253) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Reforge the Soul
+Discard: Ai(1)-Kilo Helm Final discards Tezzeret's Gambit (83).
+Discard: Ai(1)-Kilo Helm Final discards Filigree Vector (67).
+Discard: Ai(1)-Kilo Helm Final discards Dispatch (16).
+Discard: Ai(3)-Wyleth Voltron B3 discards Embercleave (293).
+Resolve Stack: Reforge the Soul (249) - Ai(3)-Wyleth Voltron B3 and Ai(1)-Kilo Helm Final discard their hands. Ai(3)-Wyleth Voltron B3 and Ai(1)-Kilo Helm Final each draw seven cards.
+Land: Ai(3)-Wyleth Voltron B3 played Battlefield Forge (220)
+Damage: Battlefield Forge (220) deals 1 non-combat damage to Ai(3)-Wyleth Voltron B3.
+Life: Life: Ai(3)-Wyleth Voltron B3 10 > 9
+Mana: Battlefield Forge (220) - {T}: Add {R} or {W}. Battlefield Forge deals 1 damage to you. 
+Mana: Mountain (292) - {T}: Add {R}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Maul of the Skyclaves
+Add To Stack: Ai(3)-Wyleth Voltron B3 triggered Sram, Senior Edificer
+Resolve Stack: Whenever you cast an Aura, Equipment, or Vehicle spell, draw a card. [Card: Maul of the Skyclaves (239), Activator: Ai(3)-Wyleth Voltron B3, SpellAbility: Maul of the Skyclaves]
+Resolve Stack: Maul of the Skyclaves
+Zone Change: Treasure Token (518) was put into Graveyard from Battlefield.
+Mana: Treasure Token (518) - {T}, Sacrifice this token: Add one mana of any color.
+Zone Change: Treasure Token (517) was put into Graveyard from Battlefield.
+Mana: Treasure Token (517) - {T}, Sacrifice this token: Add one mana of any color.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Puresteel Paladin
+Resolve Stack: Puresteel Paladin - Creature 2 / 2
+Add To Stack: Ai(3)-Wyleth Voltron B3 activated Maul of the Skyclaves targeting [Puresteel Paladin (227)]
+Resolve Stack: Maul of the Skyclaves (239) -  Attach to Puresteel Paladin (227)
+Mana: Mountain (286) - {T}: Add {R}.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Arcane Signet
+Resolve Stack: Arcane Signet
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 44 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(1)-Kilo Helm Final]
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Land: Ai(1)-Kilo Helm Final played Mountain (87)
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Great Furnace (96) - {T}: Add {R}.
+Mana: Mountain (87) - {T}: Add {R}.
+Mana: Glacial Fortress (78) - {T}: Add {W} or {U}.
+Mana: Arcane Signet (94) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Everflowing Chalice (30) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Add To Stack: Ai(1)-Kilo Helm Final cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(1)-Kilo Helm Final assigned Kilo, Apogee Mind (100), Gnome Token (506), Gnome Token (509), Gnome Token (512), Gnome Token (515), Gnome Token (521) and Illustrious Wanderglyph (29) to attack Ai(3)-Wyleth Voltron B3.
+Add To Stack: Ai(1)-Kilo Helm Final triggered Kilo, Apogee Mind
+Resolve Stack: Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Tapped: Kilo, Apogee Mind (100)]
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Puresteel Paladin (227) to block Kilo, Apogee Mind (100).
+Ai(3)-Wyleth Voltron B3 assigned Sram, Senior Edificer (269) to block Gnome Token (506).
+Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to block Gnome Token (509).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (512).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (515).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (521).
+Ai(3)-Wyleth Voltron B3 didn't block Illustrious Wanderglyph (29).
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Damage: Puresteel Paladin (227) deals 4 damage to Kilo, Apogee Mind (100).
+Damage: Danitha Capashen, Paragon (300) deals 5 damage to Gnome Token (509).
+Life: Life: Ai(3)-Wyleth Voltron B3 9 > 14
+Zone Change: Gnome Token (509) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Damage: Kilo, Apogee Mind (100) deals 5 damage to Puresteel Paladin (227).
+Damage: Gnome Token (506) deals 3 damage to Sram, Senior Edificer (269).
+Damage: Gnome Token (512) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (515) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (521) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Illustrious Wanderglyph (29) deals 2 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Sram, Senior Edificer (269) deals 6 damage to Gnome Token (506).
+Life: Life: Ai(3)-Wyleth Voltron B3 14 > 3
+Zone Change: Gnome Token (506) was put into Graveyard from Battlefield.
+Zone Change: Puresteel Paladin (227) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 45 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Plains (259) - {T}: Add {W}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Abrade
+Zone Change: Kilo, Apogee Mind (100) was put into Graveyard from Battlefield.
+Resolve Stack: Abrade (247) -  Destroy target artifact. (Targeting: Kilo, Apogee Mind (100))
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(3)-Wyleth Voltron B3]
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Buried Ruin (217)
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Mountain (285) - {T}: Add {R}.
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Mountain (283) - {T}: Add {R}.
+Mana: Mountain (292) - {T}: Add {R}.
+Mana: Mountain (286) - {T}: Add {R}.
+Mana: Plains (253) - {T}: Add {W}.
+Mana: Arcane Signet (298) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Mana: Buried Ruin (217) - {T}: Add {C}.
+Mana: Battlefield Forge (220) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Wyleth, Soul of Steel
+Resolve Stack: Wyleth, Soul of Steel - Creature 2 / 2
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to attack Ai(1)-Kilo Helm Final.
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Helm Final didn't block Danitha Capashen, Paragon (300).
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 combat damage to Ai(1)-Kilo Helm Final.
+Life: Life: Ai(3)-Wyleth Voltron B3 3 > 8
+Life: Life: Ai(1)-Kilo Helm Final 8 > 3
+Phase: Ai(3)-Wyleth Voltron B3's Combat Damage Step
+Phase: Ai(3)-Wyleth Voltron B3's End of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, postcombat
+Phase: Ai(3)-Wyleth Voltron B3's End step
+Phase: Ai(3)-Wyleth Voltron B3's Cleanup step
+Turn: Turn 46 (Ai(1)-Kilo Helm Final)
+Phase: Ai(1)-Kilo Helm Final's Untap step
+Phase: Ai(1)-Kilo Helm Final's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(1)-Kilo Helm Final]
+Phase: Ai(1)-Kilo Helm Final's Draw step
+Phase: Ai(1)-Kilo Helm Final's Main phase, precombat
+Replacement Effect: This land enters tapped.
+Land: Ai(1)-Kilo Helm Final played Adagia, Windswept Bastion (58)
+Mana: Silverbluff Bridge (25) - {T}: Add {U} or {R}.
+Mana: Ancient Den (89) - {T}: Add {W}.
+Mana: Great Furnace (96) - {T}: Add {R}.
+Mana: Mountain (87) - {T}: Add {R}.
+Mana: Glacial Fortress (78) - {T}: Add {W} or {U}.
+Mana: Arcane Signet (94) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Cascade Bluffs (22) - {T}: Add {C}.
+Mana: Everflowing Chalice (30) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Mana: Spire of Industry (10) - {T}: Add {C}.
+Add To Stack: Ai(1)-Kilo Helm Final cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(1)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(1)-Kilo Helm Final assigned Kilo, Apogee Mind (100), Gnome Token (512), Gnome Token (515), Gnome Token (521), Gnome Token (524), Gnome Token (527) and Illustrious Wanderglyph (29) to attack Ai(3)-Wyleth Voltron B3.
+Add To Stack: Ai(1)-Kilo Helm Final triggered Kilo, Apogee Mind
+Resolve Stack: Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Tapped: Kilo, Apogee Mind (100)]
+Phase: Ai(1)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Wyleth, Soul of Steel (301) to block Kilo, Apogee Mind (100).
+Ai(3)-Wyleth Voltron B3 assigned Sram, Senior Edificer (269) to block Gnome Token (512).
+Ai(3)-Wyleth Voltron B3 assigned Danitha Capashen, Paragon (300) to block Gnome Token (515).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (521).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (524).
+Ai(3)-Wyleth Voltron B3 didn't block Gnome Token (527).
+Ai(3)-Wyleth Voltron B3 didn't block Illustrious Wanderglyph (29).
+Phase: Ai(1)-Kilo Helm Final's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 damage to Gnome Token (515).
+Life: Life: Ai(3)-Wyleth Voltron B3 8 > 13
+Zone Change: Gnome Token (515) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's Combat Damage Step
+Damage: Kilo, Apogee Mind (100) deals 5 damage to Wyleth, Soul of Steel (301).
+Damage: Gnome Token (512) deals 3 damage to Sram, Senior Edificer (269).
+Damage: Gnome Token (521) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (524) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Gnome Token (527) deals 3 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Illustrious Wanderglyph (29) deals 2 combat damage to Ai(3)-Wyleth Voltron B3.
+Damage: Wyleth, Soul of Steel (301) deals 2 damage to Kilo, Apogee Mind (100).
+Damage: Sram, Senior Edificer (269) deals 6 damage to Gnome Token (512).
+Life: Life: Ai(3)-Wyleth Voltron B3 13 > 2
+Zone Change: Gnome Token (512) was put into Graveyard from Battlefield.
+Zone Change: Wyleth, Soul of Steel (301) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Kilo Helm Final's End of Combat Step
+Phase: Ai(1)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(1)-Kilo Helm Final's End step
+Phase: Ai(1)-Kilo Helm Final's Cleanup step
+Turn: Turn 47 (Ai(3)-Wyleth Voltron B3)
+Phase: Ai(3)-Wyleth Voltron B3's Untap step
+Phase: Ai(3)-Wyleth Voltron B3's Upkeep step
+Add To Stack: Ai(1)-Kilo Helm Final triggered Illustrious Wanderglyph
+Resolve Stack: At the beginning of each upkeep, create a 1/1 colorless Gnome artifact creature token. [Phase: Ai(3)-Wyleth Voltron B3]
+Phase: Ai(3)-Wyleth Voltron B3's Draw step
+Phase: Ai(3)-Wyleth Voltron B3's Main phase, precombat
+Land: Ai(3)-Wyleth Voltron B3 played Plains (264)
+Mana: Plains (259) - {T}: Add {W}.
+Mana: Mountain (287) - {T}: Add {R}.
+Mana: Plains (251) - {T}: Add {W}.
+Mana: Plains (252) - {T}: Add {W}.
+Mana: Mountain (285) - {T}: Add {R}.
+Mana: Mountain (283) - {T}: Add {R}.
+Mana: Mountain (292) - {T}: Add {R}.
+Mana: Mountain (286) - {T}: Add {R}.
+Mana: Plains (253) - {T}: Add {W}.
+Mana: Plains (264) - {T}: Add {W}.
+Mana: Arcane Signet (298) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Slayers' Stronghold (271) - {T}: Add {C}.
+Mana: Buried Ruin (217) - {T}: Add {C}.
+Add To Stack: Ai(3)-Wyleth Voltron B3 cast Wyleth, Soul of Steel
+Resolve Stack: Wyleth, Soul of Steel - Creature 2 / 2
+Phase: Ai(3)-Wyleth Voltron B3's Beginning of Combat Step
+Phase: Ai(3)-Wyleth Voltron B3's Declare Attackers Step
+Combat: Ai(3)-Wyleth Voltron B3 assigned Sram, Senior Edificer (269) and Danitha Capashen, Paragon (300) to attack Ai(1)-Kilo Helm Final.
+Phase: Ai(3)-Wyleth Voltron B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Helm Final assigned Gnome Token (521) and Gnome Token (524) to block Sram, Senior Edificer (269).
+Ai(1)-Kilo Helm Final didn't block Danitha Capashen, Paragon (300).
+Phase: Ai(3)-Wyleth Voltron B3's First Strike Damage Step
+Damage: Danitha Capashen, Paragon (300) deals 5 combat damage to Ai(1)-Kilo Helm Final.
+Life: Life: Ai(3)-Wyleth Voltron B3 2 > 7
+Life: Life: Ai(1)-Kilo Helm Final 3 > -2
+Player Control: Ai(1)-Kilo Helm Final has restored control over themself
+Player Control: Ai(2)-Wilhelt Zombies B3 has restored control over themself
+Player Control: Ai(3)-Wyleth Voltron B3 has restored control over themself
+Player Control: Ai(4)-Drana Vampires has restored control over themself
+Game Outcome: Turn 24
+Game Outcome: Ai(1)-Kilo Helm Final has lost because life total reached 0
+Game Outcome: Ai(2)-Wilhelt Zombies B3 has lost because life total reached 0
+Game Outcome: Ai(3)-Wyleth Voltron B3 has won because all opponents have lost
+Game Outcome: Ai(4)-Drana Vampires has lost because life total reached 0
+Match Result: Ai(1)-Kilo Helm Final: 0 Ai(2)-Wilhelt Zombies B3: 0 Ai(3)-Wyleth Voltron B3: 1 Ai(4)-Drana Vampires: 0 
+
+Game Result: Game 1 ended in 42979 ms. Ai(3)-Wyleth Voltron B3 has won!
+

@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "source": "java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d krenko_goblins.dck drana_vampires.dck selvala_ramp.dck talrand_control.dck -D ./decks -f Commander -n 5 -c 120",
+    "generator": "forge_log_adapter.py",
+    "schema": "training/game_00X game_log schema (events carry raw Forge messages)",
+    "extracted": "2026-07-22",
+    "decks": [
+      "krenko_goblins.dck",
+      "drana_vampires.dck",
+      "selvala_ramp.dck",
+      "talrand_control.dck"
+    ],
+    "format": "Commander"
+  },
+  "games": [],
+  "summary": {
+    "games": 0,
+    "draws": 0,
+    "wins": {},
+    "win_rates": {}
+  }
+}

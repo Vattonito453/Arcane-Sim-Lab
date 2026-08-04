@@ -1,0 +1,3478 @@
+{
+  "meta": {
+    "source": "java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d atraxa_counters.dck dnide_wildsear.dck -f Commander -n 2 -c 120",
+    "generator": "forge_log_adapter.py",
+    "schema": "training/game_00X game_log schema (events carry raw Forge messages)",
+    "extracted": "2026-07-27",
+    "decks": [
+      "atraxa_counters.dck",
+      "dnide_wildsear.dck"
+    ],
+    "format": "Commander"
+  },
+  "games": [
+    {
+      "players": [
+        "Ai(2)-Dnide Wildsear",
+        "Ai(1)-Atraxa Counters B3"
+      ],
+      "turns": [
+        {
+          "turn": 1,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 5,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 6,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 7,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 8,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 9,
+              "action": "replacement_effect",
+              "raw": "Cinder Glade enters tapped unless you control two or more basic lands."
+            },
+            {
+              "seq": 10,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Cinder Glade (110)"
+            },
+            {
+              "seq": 11,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 12,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 13,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 14,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 15,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 16,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 17,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 18,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 19,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 21,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 22,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 23,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 24,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 25,
+              "action": "replacement_effect",
+              "raw": "Temple of Mystery enters tapped."
+            },
+            {
+              "seq": 26,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Temple of Mystery (1)"
+            },
+            {
+              "seq": 27,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Temple of Mystery",
+              "object": "Temple of Mystery"
+            },
+            {
+              "seq": 28,
+              "action": "stack_resolve",
+              "raw": "Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library"
+            },
+            {
+              "seq": 29,
+              "action": "stack_resolve",
+              "raw": "When Temple of Mystery enters, scry 1. [Zone Changer: Temple of Mystery (1)]"
+            },
+            {
+              "seq": 30,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 31,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 32,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 33,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 34,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 35,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 36,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 37,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 38,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 40,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 41,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 42,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 43,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 44,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (180)"
+            },
+            {
+              "seq": 45,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 46,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 47,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 48,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 49,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 50,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 51,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 52,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 53,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 55,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 56,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 57,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 58,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 59,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Karn's Bastion (18)"
+            },
+            {
+              "seq": 60,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 61,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 62,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 63,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 64,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 65,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 66,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 67,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 68,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 70,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 71,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 72,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 73,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 74,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (182)"
+            },
+            {
+              "seq": 75,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 76,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 77,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 78,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 79,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 80,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 81,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 82,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 83,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 6,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 85,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 86,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 87,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 88,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 89,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Forest (54)"
+            },
+            {
+              "seq": 90,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 91,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 92,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 93,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 94,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 95,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 96,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 97,
+              "action": "mana",
+              "raw": "Forest (54) - {T}: Add {G}."
+            },
+            {
+              "seq": 98,
+              "action": "mana",
+              "raw": "Temple of Mystery (1) - {T}: Add {U} or {G}."
+            },
+            {
+              "seq": 99,
+              "action": "mana",
+              "raw": "Karn's Bastion (18) - {T}: Add {C}."
+            },
+            {
+              "seq": 100,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 cast Eternal Witness",
+              "object": "Eternal Witness"
+            },
+            {
+              "seq": 101,
+              "action": "stack_resolve",
+              "raw": "Eternal Witness - Creature 2 / 1"
+            },
+            {
+              "seq": 102,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 103,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 7,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 105,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 106,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 107,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 108,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 109,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 110,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 111,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 112,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 113,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 114,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 115,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 116,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {G}."
+            },
+            {
+              "seq": 117,
+              "action": "mana",
+              "raw": "Mountain (180) - {T}: Add {R}."
+            },
+            {
+              "seq": 118,
+              "action": "mana",
+              "raw": "Mountain (182) - {T}: Add {R}."
+            },
+            {
+              "seq": 119,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 120,
+              "action": "stack_resolve",
+              "raw": "Setessan Champion - Creature 1 / 3"
+            },
+            {
+              "seq": 121,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 122,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 8,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 124,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 125,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 126,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 127,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 128,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Island (61)"
+            },
+            {
+              "seq": 129,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 130,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 131,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 132,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 133,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 134,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 135,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 136,
+              "action": "mana",
+              "raw": "Island (61) - {T}: Add {U}."
+            },
+            {
+              "seq": 137,
+              "action": "mana",
+              "raw": "Forest (54) - {T}: Add {G}."
+            },
+            {
+              "seq": 138,
+              "action": "mana",
+              "raw": "Temple of Mystery (1) - {T}: Add {U} or {G}."
+            },
+            {
+              "seq": 139,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 cast Chasm Skulker",
+              "object": "Chasm Skulker"
+            },
+            {
+              "seq": 140,
+              "action": "stack_resolve",
+              "raw": "Chasm Skulker - Creature 1 / 1"
+            },
+            {
+              "seq": 141,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 142,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 9,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 144,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 145,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 146,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 147,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 148,
+              "action": "mana",
+              "raw": "Mountain (180) - {T}: Add {R}."
+            },
+            {
+              "seq": 149,
+              "action": "mana",
+              "raw": "Mountain (182) - {T}: Add {R}."
+            },
+            {
+              "seq": 150,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {R}."
+            },
+            {
+              "seq": 151,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Count on Luck",
+              "object": "Count on Luck"
+            },
+            {
+              "seq": 152,
+              "action": "stack_resolve",
+              "raw": "Count on Luck"
+            },
+            {
+              "seq": 153,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 154,
+              "action": "stack_resolve",
+              "raw": "Constellation \u2014 Whenever an enchantment you control enters, put a +1/+1 counter on Setessan Champion and draw a card. [Zone Changer: Count on Luck (130)]"
+            },
+            {
+              "seq": 155,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 156,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 157,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear assigned Setessan Champion (162) to attack Ai(1)-Atraxa Counters B3."
+            },
+            {
+              "seq": 158,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 159,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 didn't block Setessan Champion (162)."
+            },
+            {
+              "seq": 160,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 161,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 162,
+              "action": "damage",
+              "raw": "Setessan Champion (162) deals 2 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Setessan Champion (162)",
+              "amount": 2,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 163,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 40 > 38"
+            },
+            {
+              "seq": 164,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 165,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 166,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 167,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 10,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 169,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 170,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 171,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 172,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Chasm Skulker",
+              "object": "Chasm Skulker"
+            },
+            {
+              "seq": 173,
+              "action": "stack_resolve",
+              "raw": "Whenever you draw a card, put a +1/+1 counter on Chasm Skulker. [Player: Ai(1)-Atraxa Counters B3]"
+            },
+            {
+              "seq": 174,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 175,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 176,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 177,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 assigned Eternal Witness (5) and Chasm Skulker (33) to attack Ai(2)-Dnide Wildsear."
+            },
+            {
+              "seq": 178,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 179,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear didn't block Eternal Witness (5)."
+            },
+            {
+              "seq": 180,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 181,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 182,
+              "action": "damage",
+              "raw": "Eternal Witness (5) deals 2 combat damage to Ai(2)-Dnide Wildsear.",
+              "source": "Eternal Witness (5)",
+              "amount": 2,
+              "target": "Ai(2)-Dnide Wildsear"
+            },
+            {
+              "seq": 183,
+              "action": "damage",
+              "raw": "Chasm Skulker (33) deals 2 combat damage to Ai(2)-Dnide Wildsear.",
+              "source": "Chasm Skulker (33)",
+              "amount": 2,
+              "target": "Ai(2)-Dnide Wildsear"
+            },
+            {
+              "seq": 184,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Dnide Wildsear 40 > 36"
+            },
+            {
+              "seq": 185,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 186,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 187,
+              "action": "replacement_effect",
+              "raw": "Temple of Silence enters tapped."
+            },
+            {
+              "seq": 188,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Temple of Silence (85)"
+            },
+            {
+              "seq": 189,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Temple of Silence",
+              "object": "Temple of Silence"
+            },
+            {
+              "seq": 190,
+              "action": "stack_resolve",
+              "raw": "Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library"
+            },
+            {
+              "seq": 191,
+              "action": "stack_resolve",
+              "raw": "When Temple of Silence enters, scry 1. [Zone Changer: Temple of Silence (85)]"
+            },
+            {
+              "seq": 192,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 193,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 11,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 195,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 196,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 197,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Count on Luck",
+              "object": "Count on Luck"
+            },
+            {
+              "seq": 198,
+              "action": "stack_resolve",
+              "raw": "At the beginning of your upkeep, exile the top card of your library. You may play it this turn. [Phase: Ai(2)-Dnide Wildsear]"
+            },
+            {
+              "seq": 199,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 200,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 201,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Forest (150)"
+            },
+            {
+              "seq": 202,
+              "action": "mana",
+              "raw": "Forest (150) - {T}: Add {G}."
+            },
+            {
+              "seq": 203,
+              "action": "mana",
+              "raw": "Mountain (180) - {T}: Add {R}."
+            },
+            {
+              "seq": 204,
+              "action": "mana",
+              "raw": "Mountain (182) - {T}: Add {R}."
+            },
+            {
+              "seq": 205,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Shadow in the Warp",
+              "object": "Shadow in the Warp"
+            },
+            {
+              "seq": 206,
+              "action": "stack_resolve",
+              "raw": "Shadow in the Warp"
+            },
+            {
+              "seq": 207,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 208,
+              "action": "stack_resolve",
+              "raw": "Constellation \u2014 Whenever an enchantment you control enters, put a +1/+1 counter on Setessan Champion and draw a card. [Zone Changer: Shadow in the Warp (192)]"
+            },
+            {
+              "seq": 209,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 210,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 211,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear assigned Setessan Champion (162) to attack Ai(1)-Atraxa Counters B3."
+            },
+            {
+              "seq": 212,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 213,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 didn't block Setessan Champion (162)."
+            },
+            {
+              "seq": 214,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 215,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 216,
+              "action": "damage",
+              "raw": "Setessan Champion (162) deals 3 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Setessan Champion (162)",
+              "amount": 3,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 217,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 38 > 35"
+            },
+            {
+              "seq": 218,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 219,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 220,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 221,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            },
+            {
+              "seq": 222,
+              "action": "discard",
+              "raw": "Ai(2)-Dnide Wildsear discards Flaming Tyrannosaurus (123)."
+            }
+          ]
+        },
+        {
+          "turn": 12,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 224,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 225,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 226,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 227,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Chasm Skulker",
+              "object": "Chasm Skulker"
+            },
+            {
+              "seq": 228,
+              "action": "stack_resolve",
+              "raw": "Whenever you draw a card, put a +1/+1 counter on Chasm Skulker. [Player: Ai(1)-Atraxa Counters B3]"
+            },
+            {
+              "seq": 229,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 230,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 231,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 232,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 assigned Chasm Skulker (33) and Eternal Witness (5) to attack Ai(2)-Dnide Wildsear."
+            },
+            {
+              "seq": 233,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 234,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear didn't block Chasm Skulker (33)."
+            },
+            {
+              "seq": 235,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 236,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 237,
+              "action": "damage",
+              "raw": "Chasm Skulker (33) deals 3 combat damage to Ai(2)-Dnide Wildsear.",
+              "source": "Chasm Skulker (33)",
+              "amount": 3,
+              "target": "Ai(2)-Dnide Wildsear"
+            },
+            {
+              "seq": 238,
+              "action": "damage",
+              "raw": "Eternal Witness (5) deals 2 combat damage to Ai(2)-Dnide Wildsear.",
+              "source": "Eternal Witness (5)",
+              "amount": 2,
+              "target": "Ai(2)-Dnide Wildsear"
+            },
+            {
+              "seq": 239,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Dnide Wildsear 36 > 31"
+            },
+            {
+              "seq": 240,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 241,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 242,
+              "action": "mana",
+              "raw": "Forest (54) - {T}: Add {G}."
+            },
+            {
+              "seq": 243,
+              "action": "mana",
+              "raw": "Island (61) - {T}: Add {U}."
+            },
+            {
+              "seq": 244,
+              "action": "mana",
+              "raw": "Temple of Silence (85) - {T}: Add {W} or {B}."
+            },
+            {
+              "seq": 245,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 cast Managorger Hydra",
+              "object": "Managorger Hydra"
+            },
+            {
+              "seq": 246,
+              "action": "stack_resolve",
+              "raw": "Managorger Hydra - Creature 1 / 1"
+            },
+            {
+              "seq": 247,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 248,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 13,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 250,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 251,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 252,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Count on Luck",
+              "object": "Count on Luck"
+            },
+            {
+              "seq": 253,
+              "action": "stack_resolve",
+              "raw": "At the beginning of your upkeep, exile the top card of your library. You may play it this turn. [Phase: Ai(2)-Dnide Wildsear]"
+            },
+            {
+              "seq": 254,
+              "action": "mana",
+              "raw": "Mountain (180) - {T}: Add {R}."
+            },
+            {
+              "seq": 255,
+              "action": "mana",
+              "raw": "Mountain (182) - {T}: Add {R}."
+            },
+            {
+              "seq": 256,
+              "action": "mana",
+              "raw": "Forest (150) - {T}: Add {G}."
+            },
+            {
+              "seq": 257,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Delayed Blast Fireball",
+              "object": "Delayed Blast Fireball"
+            },
+            {
+              "seq": 258,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Managorger Hydra",
+              "object": "Managorger Hydra"
+            },
+            {
+              "seq": 259,
+              "action": "stack_resolve",
+              "raw": "Whenever a player casts a spell, put a +1/+1 counter on Managorger Hydra. [Card: Delayed Blast Fireball (169), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Delayed Blast Fireball deals 2 damage to each opponent and each creature they control. If this spell was cast from exile, it deals 5 damage to each opponent and each creature they control instead. by Count on Luck (130)]",
+              "object": "a spell, put a +1/+1 counter on Managorger Hydra"
+            },
+            {
+              "seq": 260,
+              "action": "damage",
+              "raw": "Delayed Blast Fireball (169) deals 5 damage to Eternal Witness (5).",
+              "source": "Delayed Blast Fireball (169)",
+              "amount": 5,
+              "target": "Eternal Witness (5)"
+            },
+            {
+              "seq": 261,
+              "action": "damage",
+              "raw": "Delayed Blast Fireball (169) deals 5 damage to Chasm Skulker (33).",
+              "source": "Delayed Blast Fireball (169)",
+              "amount": 5,
+              "target": "Chasm Skulker (33)"
+            },
+            {
+              "seq": 262,
+              "action": "damage",
+              "raw": "Delayed Blast Fireball (169) deals 5 damage to Managorger Hydra (73).",
+              "source": "Delayed Blast Fireball (169)",
+              "amount": 5,
+              "target": "Managorger Hydra (73)"
+            },
+            {
+              "seq": 263,
+              "action": "damage",
+              "raw": "Delayed Blast Fireball (169) deals 5 non-combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Delayed Blast Fireball (169)",
+              "amount": 5,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 264,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 35 > 30"
+            },
+            {
+              "seq": 265,
+              "action": "stack_resolve",
+              "raw": "Delayed Blast Fireball (169) - Deals 5 damage to each opponent and each creature they control."
+            },
+            {
+              "seq": 266,
+              "action": "zone_change",
+              "raw": "Eternal Witness (5) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 267,
+              "action": "zone_change",
+              "raw": "Chasm Skulker (33) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 268,
+              "action": "zone_change",
+              "raw": "Managorger Hydra (73) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 269,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Chasm Skulker",
+              "object": "Chasm Skulker"
+            },
+            {
+              "seq": 270,
+              "action": "stack_resolve",
+              "raw": "When Chasm Skulker dies, create X 1/1 blue Squid creature tokens with islandwalk, where X is the number of +1/+1 counters on Chasm Skulker. [Zone Changer: Chasm Skulker (33)]"
+            },
+            {
+              "seq": 271,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 272,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 273,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {G}."
+            },
+            {
+              "seq": 274,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Sanctum Weaver",
+              "object": "Sanctum Weaver"
+            },
+            {
+              "seq": 275,
+              "action": "stack_resolve",
+              "raw": "Sanctum Weaver - Creature 0 / 2"
+            },
+            {
+              "seq": 276,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 277,
+              "action": "stack_resolve",
+              "raw": "Constellation \u2014 Whenever an enchantment you control enters, put a +1/+1 counter on Setessan Champion and draw a card. [Zone Changer: Sanctum Weaver (163)]"
+            },
+            {
+              "seq": 278,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (187)"
+            },
+            {
+              "seq": 279,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 280,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 281,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear assigned Setessan Champion (162) to attack Ai(1)-Atraxa Counters B3."
+            },
+            {
+              "seq": 282,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 283,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 didn't block Setessan Champion (162)."
+            },
+            {
+              "seq": 284,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 285,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 286,
+              "action": "damage",
+              "raw": "Setessan Champion (162) deals 4 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Setessan Champion (162)",
+              "amount": 4,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 287,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 30 > 26"
+            },
+            {
+              "seq": 288,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 289,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 290,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 291,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 14,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 293,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 294,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 295,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 296,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 297,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 298,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 299,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 300,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 301,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 302,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 303,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 304,
+              "action": "replacement_effect",
+              "raw": "Temple of Plenty enters tapped."
+            },
+            {
+              "seq": 305,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Temple of Plenty (39)"
+            },
+            {
+              "seq": 306,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Temple of Plenty",
+              "object": "Temple of Plenty"
+            },
+            {
+              "seq": 307,
+              "action": "stack_resolve",
+              "raw": "Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library"
+            },
+            {
+              "seq": 308,
+              "action": "stack_resolve",
+              "raw": "When Temple of Plenty enters, scry 1. [Zone Changer: Temple of Plenty (39)]"
+            },
+            {
+              "seq": 309,
+              "action": "mana",
+              "raw": "Temple of Silence (85) - {T}: Add {W} or {B}."
+            },
+            {
+              "seq": 310,
+              "action": "mana",
+              "raw": "Forest (54) - {T}: Add {G}."
+            },
+            {
+              "seq": 311,
+              "action": "mana",
+              "raw": "Island (61) - {T}: Add {U}."
+            },
+            {
+              "seq": 312,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 cast Painful Truths",
+              "object": "Painful Truths"
+            },
+            {
+              "seq": 313,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Shadow in the Warp",
+              "object": "Shadow in the Warp"
+            },
+            {
+              "seq": 314,
+              "action": "damage",
+              "raw": "Shadow in the Warp (192) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Shadow in the Warp (192)",
+              "amount": 2,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 315,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 26 > 24"
+            },
+            {
+              "seq": 316,
+              "action": "stack_resolve",
+              "raw": "Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Painful Truths (24), Activator: Ai(1)-Atraxa Counters B3, SpellAbility: Converge \u2014 You draw X cards and you lose X life, where X is the number of colors of mana spent to cast this spell. ]",
+              "object": "their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player"
+            },
+            {
+              "seq": 317,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 24 > 21"
+            },
+            {
+              "seq": 318,
+              "action": "stack_resolve",
+              "raw": "Painful Truths (24) - Ai(1)-Atraxa Counters B3 draws three cards. Ai(1)-Atraxa Counters B3 loses 3 life."
+            },
+            {
+              "seq": 319,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 320,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 15,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 322,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 323,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 324,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Count on Luck",
+              "object": "Count on Luck"
+            },
+            {
+              "seq": 325,
+              "action": "stack_resolve",
+              "raw": "At the beginning of your upkeep, exile the top card of your library. You may play it this turn. [Phase: Ai(2)-Dnide Wildsear]"
+            },
+            {
+              "seq": 326,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 327,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 328,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (176)"
+            },
+            {
+              "seq": 329,
+              "action": "mana",
+              "raw": "Mountain (180) - {T}: Add {R}."
+            },
+            {
+              "seq": 330,
+              "action": "mana",
+              "raw": "Mountain (182) - {T}: Add {R}."
+            },
+            {
+              "seq": 331,
+              "action": "mana",
+              "raw": "Mountain (187) - {T}: Add {R}."
+            },
+            {
+              "seq": 332,
+              "action": "mana",
+              "raw": "Mountain (176) - {T}: Add {R}."
+            },
+            {
+              "seq": 333,
+              "action": "mana",
+              "raw": "Forest (150) - {T}: Add {G}."
+            },
+            {
+              "seq": 334,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {G}."
+            },
+            {
+              "seq": 335,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Sunbird's Invocation",
+              "object": "Sunbird's Invocation"
+            },
+            {
+              "seq": 336,
+              "action": "stack_resolve",
+              "raw": "Sunbird's Invocation"
+            },
+            {
+              "seq": 337,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 338,
+              "action": "stack_resolve",
+              "raw": "Constellation \u2014 Whenever an enchantment you control enters, put a +1/+1 counter on Setessan Champion and draw a card. [Zone Changer: Sunbird's Invocation (136)]"
+            },
+            {
+              "seq": 339,
+              "action": "mana",
+              "raw": "Sanctum Weaver (163) - {T}: Add X mana of any one color, where X is the number of enchantments you control."
+            },
+            {
+              "seq": 340,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Keeper of Secrets",
+              "object": "Keeper of Secrets"
+            },
+            {
+              "seq": 341,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Sunbird's Invocation",
+              "object": "Sunbird's Invocation"
+            },
+            {
+              "seq": 342,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Archetype of Aggression",
+              "object": "Archetype of Aggression"
+            },
+            {
+              "seq": 343,
+              "action": "stack_resolve",
+              "raw": "Whenever you cast a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value X or less from among cards revealed this way without paying its mana cost. Put the rest on the bottom of your library in a random order. [Card: Keeper of Secrets (120), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Keeper of Secrets - Creature 6 / 4]",
+              "object": "a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value"
+            },
+            {
+              "seq": 344,
+              "action": "stack_resolve",
+              "raw": "Archetype of Aggression - Creature 3 / 2"
+            },
+            {
+              "seq": 345,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 346,
+              "action": "stack_resolve",
+              "raw": "Constellation \u2014 Whenever an enchantment you control enters, put a +1/+1 counter on Setessan Champion and draw a card. [Zone Changer: Archetype of Aggression (113)]"
+            },
+            {
+              "seq": 347,
+              "action": "stack_resolve",
+              "raw": "Keeper of Secrets - Creature 6 / 4"
+            },
+            {
+              "seq": 348,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 349,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 350,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear assigned Setessan Champion (162) and Keeper of Secrets (120) to attack Ai(1)-Atraxa Counters B3."
+            },
+            {
+              "seq": 351,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 352,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 didn't block Setessan Champion (162)."
+            },
+            {
+              "seq": 353,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 354,
+              "action": "damage",
+              "raw": "Keeper of Secrets (120) deals 6 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Keeper of Secrets (120)",
+              "amount": 6,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 355,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 21 > 15"
+            },
+            {
+              "seq": 356,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 357,
+              "action": "damage",
+              "raw": "Setessan Champion (162) deals 6 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Setessan Champion (162)",
+              "amount": 6,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 358,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 15 > 9"
+            },
+            {
+              "seq": 359,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 360,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 361,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 362,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 16,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 364,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 365,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 366,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 367,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 368,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Forest (56)"
+            },
+            {
+              "seq": 369,
+              "action": "mana",
+              "raw": "Forest (54) - {T}: Add {G}."
+            },
+            {
+              "seq": 370,
+              "action": "mana",
+              "raw": "Forest (56) - {T}: Add {G}."
+            },
+            {
+              "seq": 371,
+              "action": "mana",
+              "raw": "Island (61) - {T}: Add {U}."
+            },
+            {
+              "seq": 372,
+              "action": "mana",
+              "raw": "Temple of Plenty (39) - {T}: Add {G} or {W}."
+            },
+            {
+              "seq": 373,
+              "action": "mana",
+              "raw": "Temple of Silence (85) - {T}: Add {W} or {B}."
+            },
+            {
+              "seq": 374,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 cast Acidic Slime",
+              "object": "Acidic Slime"
+            },
+            {
+              "seq": 375,
+              "action": "stack_resolve",
+              "raw": "Acidic Slime - Creature 2 / 2"
+            },
+            {
+              "seq": 376,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Acidic Slime targeting [Sunbird's Invocation (136)]",
+              "object": "Acidic Slime"
+            },
+            {
+              "seq": 377,
+              "action": "zone_change",
+              "raw": "Sunbird's Invocation (136) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 378,
+              "action": "stack_resolve",
+              "raw": "When Acidic Slime enters, destroy target artifact, enchantment, or land. (Targeting: [[Sunbird's Invocation (136)]]) [Zone Changer: Acidic Slime (47)]"
+            },
+            {
+              "seq": 379,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 380,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 381,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 382,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 383,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 384,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 385,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 386,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 387,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 17,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 389,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 390,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 391,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Count on Luck",
+              "object": "Count on Luck"
+            },
+            {
+              "seq": 392,
+              "action": "stack_resolve",
+              "raw": "At the beginning of your upkeep, exile the top card of your library. You may play it this turn. [Phase: Ai(2)-Dnide Wildsear]"
+            },
+            {
+              "seq": 393,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 394,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 395,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (175)"
+            },
+            {
+              "seq": 396,
+              "action": "mana",
+              "raw": "Forest (150) - {T}: Add {G}."
+            },
+            {
+              "seq": 397,
+              "action": "mana",
+              "raw": "Mountain (180) - {T}: Add {R}."
+            },
+            {
+              "seq": 398,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Klothys, God of Destiny",
+              "object": "Klothys, God of Destiny"
+            },
+            {
+              "seq": 399,
+              "action": "stack_resolve",
+              "raw": "Klothys, God of Destiny - Creature 4 / 5"
+            },
+            {
+              "seq": 400,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 401,
+              "action": "stack_resolve",
+              "raw": "Constellation \u2014 Whenever an enchantment you control enters, put a +1/+1 counter on Setessan Champion and draw a card. [Zone Changer: Klothys, God of Destiny (116)]"
+            },
+            {
+              "seq": 402,
+              "action": "mana",
+              "raw": "Mountain (182) - {T}: Add {R}."
+            },
+            {
+              "seq": 403,
+              "action": "mana",
+              "raw": "Mountain (187) - {T}: Add {R}."
+            },
+            {
+              "seq": 404,
+              "action": "mana",
+              "raw": "Mountain (176) - {T}: Add {R}."
+            },
+            {
+              "seq": 405,
+              "action": "mana",
+              "raw": "Mountain (175) - {T}: Add {R}."
+            },
+            {
+              "seq": 406,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Purphoros, God of the Forge",
+              "object": "Purphoros, God of the Forge"
+            },
+            {
+              "seq": 407,
+              "action": "stack_resolve",
+              "raw": "Purphoros, God of the Forge - Creature 6 / 5"
+            },
+            {
+              "seq": 408,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Setessan Champion",
+              "object": "Setessan Champion"
+            },
+            {
+              "seq": 409,
+              "action": "stack_resolve",
+              "raw": "Constellation \u2014 Whenever an enchantment you control enters, put a +1/+1 counter on Setessan Champion and draw a card. [Zone Changer: Purphoros, God of the Forge (105)]"
+            },
+            {
+              "seq": 410,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {R}."
+            },
+            {
+              "seq": 411,
+              "action": "mana",
+              "raw": "Sanctum Weaver (163) - {T}: Add X mana of any one color, where X is the number of enchantments you control."
+            },
+            {
+              "seq": 412,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Wildsear, Scouring Maw",
+              "object": "Wildsear, Scouring Maw"
+            },
+            {
+              "seq": 413,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Keeper of Secrets targeting [Ai(1)-Atraxa Counters B3]",
+              "object": "Keeper of Secrets"
+            },
+            {
+              "seq": 414,
+              "action": "damage",
+              "raw": "Keeper of Secrets (120) deals 5 non-combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Keeper of Secrets (120)",
+              "amount": 5,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 415,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 9 > 4"
+            },
+            {
+              "seq": 416,
+              "action": "stack_resolve",
+              "raw": "Symphony of Pain \u2014 Whenever you cast a spell from anywhere other than your hand, Keeper of Secrets deals damage equal to that spell's mana value to target opponent. (Targeting: [[Ai(1)-Atraxa Counters B3]]) [Card: Wildsear, Scouring Maw (201), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Wildsear, Scouring Maw - Creature 6 / 6]",
+              "object": "a spell from anywhere other than your hand, Keeper of Secrets deals damage equal to that spell's mana value to target opponent"
+            },
+            {
+              "seq": 417,
+              "action": "stack_resolve",
+              "raw": "Wildsear, Scouring Maw - Creature 6 / 6"
+            },
+            {
+              "seq": 418,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Purphoros, God of the Forge",
+              "object": "Purphoros, God of the Forge"
+            },
+            {
+              "seq": 419,
+              "action": "damage",
+              "raw": "Purphoros, God of the Forge (105) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Purphoros, God of the Forge (105)",
+              "amount": 2,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 420,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 4 > 2"
+            },
+            {
+              "seq": 421,
+              "action": "stack_resolve",
+              "raw": "Whenever another creature you control enters, Purphoros, God of the Forge deals 2 damage to each opponent. [Zone Changer: Wildsear, Scouring Maw (201)]"
+            },
+            {
+              "seq": 422,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Herald of the Pantheon",
+              "object": "Herald of the Pantheon"
+            },
+            {
+              "seq": 423,
+              "action": "stack_resolve",
+              "raw": "Herald of the Pantheon - Creature 2 / 2"
+            },
+            {
+              "seq": 424,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Purphoros, God of the Forge",
+              "object": "Purphoros, God of the Forge"
+            },
+            {
+              "seq": 425,
+              "action": "damage",
+              "raw": "Purphoros, God of the Forge (105) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Purphoros, God of the Forge (105)",
+              "amount": 2,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 426,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 2 > 0"
+            },
+            {
+              "seq": 427,
+              "action": "stack_resolve",
+              "raw": "Whenever another creature you control enters, Purphoros, God of the Forge deals 2 damage to each opponent. [Zone Changer: Herald of the Pantheon (172)]"
+            },
+            {
+              "seq": 428,
+              "action": "player_control",
+              "raw": "Ai(1)-Atraxa Counters B3 has restored control over themself"
+            },
+            {
+              "seq": 429,
+              "action": "player_control",
+              "raw": "Ai(2)-Dnide Wildsear has restored control over themself"
+            },
+            {
+              "seq": 430,
+              "action": "game_outcome",
+              "raw": "Turn 9",
+              "detail": "Turn 9"
+            },
+            {
+              "seq": 431,
+              "action": "game_outcome",
+              "raw": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0",
+              "detail": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0"
+            },
+            {
+              "seq": 432,
+              "action": "game_outcome",
+              "raw": "Ai(2)-Dnide Wildsear has won because all opponents have lost",
+              "detail": "Ai(2)-Dnide Wildsear has won because all opponents have lost"
+            },
+            {
+              "seq": 433,
+              "action": "match_result",
+              "raw": "Ai(1)-Atraxa Counters B3: 0 Ai(2)-Dnide Wildsear: 1"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "winner": "Ai(2)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 3497,
+        "raw": "Game Result: Game 1 ended in 3497 ms. Ai(2)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "mulligan",
+          "raw": "Ai(1)-Atraxa Counters B3 has mulliganed down to 6 cards."
+        },
+        {
+          "seq": 2,
+          "action": "mulligan",
+          "raw": "Ai(2)-Dnide Wildsear has kept a hand of 7 cards"
+        },
+        {
+          "seq": 3,
+          "action": "mulligan",
+          "raw": "Ai(1)-Atraxa Counters B3 has kept a hand of 6 cards"
+        }
+      ]
+    },
+    {
+      "players": [
+        "Ai(1)-Atraxa Counters B3",
+        "Ai(2)-Dnide Wildsear"
+      ],
+      "turns": [
+        {
+          "turn": 1,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 4,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 5,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 6,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 7,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 8,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Brushland (93)"
+            },
+            {
+              "seq": 9,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 10,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 11,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 12,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 13,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 14,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 15,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 16,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 17,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 19,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 20,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 21,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 22,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 23,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Forest (147)"
+            },
+            {
+              "seq": 24,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 25,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 26,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 27,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 28,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 29,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 30,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 31,
+              "action": "mana",
+              "raw": "Forest (147) - {T}: Add {G}."
+            },
+            {
+              "seq": 32,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Sol Ring",
+              "object": "Sol Ring"
+            },
+            {
+              "seq": 33,
+              "action": "stack_resolve",
+              "raw": "Sol Ring"
+            },
+            {
+              "seq": 34,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 35,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 37,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 38,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 39,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 40,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 41,
+              "action": "replacement_effect",
+              "raw": "Seaside Citadel enters tapped."
+            },
+            {
+              "seq": 42,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Seaside Citadel (76)"
+            },
+            {
+              "seq": 43,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 44,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 45,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 46,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 47,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 48,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 49,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 50,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 51,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 53,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 54,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 55,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 56,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 57,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (176)"
+            },
+            {
+              "seq": 58,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 59,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 60,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 61,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 62,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 63,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 64,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 65,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 66,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 68,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 69,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 70,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 71,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 72,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Evolving Wilds (21)"
+            },
+            {
+              "seq": 73,
+              "action": "zone_change",
+              "raw": "Evolving Wilds (21) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 74,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 activated Evolving Wilds",
+              "object": "Evolving Wilds"
+            },
+            {
+              "seq": 75,
+              "action": "stack_resolve",
+              "raw": "Evolving Wilds (21) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles."
+            },
+            {
+              "seq": 76,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 77,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 78,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 79,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 80,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 81,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 82,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 83,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 84,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 6,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 86,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 87,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 88,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 89,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 90,
+              "action": "replacement_effect",
+              "raw": "Cinder Glade enters tapped unless you control two or more basic lands."
+            },
+            {
+              "seq": 91,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Cinder Glade (110)"
+            },
+            {
+              "seq": 92,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 93,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 94,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 95,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 96,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 97,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 98,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 99,
+              "action": "mana",
+              "raw": "Mountain (176) - {T}: Add {R}."
+            },
+            {
+              "seq": 100,
+              "action": "mana",
+              "raw": "Forest (147) - {T}: Add {G}."
+            },
+            {
+              "seq": 101,
+              "action": "mana",
+              "raw": "Sol Ring (112) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 102,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {G}."
+            },
+            {
+              "seq": 103,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Wildsear, Scouring Maw",
+              "object": "Wildsear, Scouring Maw"
+            },
+            {
+              "seq": 104,
+              "action": "stack_resolve",
+              "raw": "Wildsear, Scouring Maw - Creature 6 / 6"
+            },
+            {
+              "seq": 105,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 106,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 7,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 108,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 109,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 110,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 111,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 112,
+              "action": "replacement_effect",
+              "raw": "Temple of Enlightenment enters tapped."
+            },
+            {
+              "seq": 113,
+              "action": "land_drop",
+              "raw": "Ai(1)-Atraxa Counters B3 played Temple of Enlightenment (66)"
+            },
+            {
+              "seq": 114,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 triggered Temple of Enlightenment",
+              "object": "Temple of Enlightenment"
+            },
+            {
+              "seq": 115,
+              "action": "stack_resolve",
+              "raw": "Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library"
+            },
+            {
+              "seq": 116,
+              "action": "stack_resolve",
+              "raw": "When Temple of Enlightenment enters, scry 1. [Zone Changer: Temple of Enlightenment (66)]"
+            },
+            {
+              "seq": 117,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 118,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 119,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 120,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 121,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 122,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 123,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 124,
+              "action": "mana",
+              "raw": "Seaside Citadel (76) - {T}: Add {G}, {W}, or {U}."
+            },
+            {
+              "seq": 125,
+              "action": "mana",
+              "raw": "Plains (50) - {T}: Add {W}."
+            },
+            {
+              "seq": 126,
+              "action": "mana",
+              "raw": "Brushland (93) - {T}: Add {C}."
+            },
+            {
+              "seq": 127,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 cast Tuskguard Captain",
+              "object": "Tuskguard Captain"
+            },
+            {
+              "seq": 128,
+              "action": "stack_resolve",
+              "raw": "Tuskguard Captain - Creature 2 / 3"
+            },
+            {
+              "seq": 129,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 130,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 8,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 132,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 133,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 134,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 135,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 136,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (174)"
+            },
+            {
+              "seq": 137,
+              "action": "mana",
+              "raw": "Mountain (176) - {T}: Add {R}."
+            },
+            {
+              "seq": 138,
+              "action": "mana",
+              "raw": "Mountain (174) - {T}: Add {R}."
+            },
+            {
+              "seq": 139,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {R}."
+            },
+            {
+              "seq": 140,
+              "action": "mana",
+              "raw": "Sol Ring (112) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 141,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Gratuitous Violence",
+              "object": "Gratuitous Violence"
+            },
+            {
+              "seq": 142,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Gratuitous Violence",
+              "object": "Gratuitous Violence"
+            },
+            {
+              "seq": 143,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Hammer of Purphoros",
+              "object": "Hammer of Purphoros"
+            },
+            {
+              "seq": 144,
+              "action": "stack_resolve",
+              "raw": "Cascade - Gratuitous Violence [Card: Gratuitous Violence (168), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Gratuitous Violence]"
+            },
+            {
+              "seq": 145,
+              "action": "stack_resolve",
+              "raw": "Hammer of Purphoros"
+            },
+            {
+              "seq": 146,
+              "action": "stack_resolve",
+              "raw": "Gratuitous Violence"
+            },
+            {
+              "seq": 147,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 148,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 149,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) to attack Ai(1)-Atraxa Counters B3."
+            },
+            {
+              "seq": 150,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 151,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 didn't block Wildsear, Scouring Maw (201)."
+            },
+            {
+              "seq": 152,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 153,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 154,
+              "action": "replacement_effect",
+              "raw": "If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 155,
+              "action": "damage",
+              "raw": "Wildsear, Scouring Maw (201) deals 12 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Wildsear, Scouring Maw (201)",
+              "amount": 12,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 156,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 40 > 28"
+            },
+            {
+              "seq": 157,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End of Combat Step"
+            },
+            {
+              "seq": 158,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, postcombat"
+            },
+            {
+              "seq": 159,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's End step"
+            },
+            {
+              "seq": 160,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 9,
+          "active_player": "Ai(1)-Atraxa Counters B3",
+          "events": [
+            {
+              "seq": 162,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Untap step"
+            },
+            {
+              "seq": 163,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Upkeep step"
+            },
+            {
+              "seq": 164,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Draw step"
+            },
+            {
+              "seq": 165,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, precombat"
+            },
+            {
+              "seq": 166,
+              "action": "mana",
+              "raw": "Plains (50) - {T}: Add {W}."
+            },
+            {
+              "seq": 167,
+              "action": "mana",
+              "raw": "Temple of Enlightenment (66) - {T}: Add {W} or {U}."
+            },
+            {
+              "seq": 168,
+              "action": "mana",
+              "raw": "Seaside Citadel (76) - {T}: Add {G}, {W}, or {U}."
+            },
+            {
+              "seq": 169,
+              "action": "mana",
+              "raw": "Brushland (93) - {T}: Add {C}."
+            },
+            {
+              "seq": 170,
+              "action": "stack_add",
+              "raw": "Ai(1)-Atraxa Counters B3 cast Abzan Battle Priest",
+              "object": "Abzan Battle Priest"
+            },
+            {
+              "seq": 171,
+              "action": "stack_resolve",
+              "raw": "Abzan Battle Priest - Creature 3 / 2"
+            },
+            {
+              "seq": 172,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 173,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Attackers Step"
+            },
+            {
+              "seq": 174,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Declare Blockers Step"
+            },
+            {
+              "seq": 175,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's First Strike Damage Step"
+            },
+            {
+              "seq": 176,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Combat Damage Step"
+            },
+            {
+              "seq": 177,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End of Combat Step"
+            },
+            {
+              "seq": 178,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Main phase, postcombat"
+            },
+            {
+              "seq": 179,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's End step"
+            },
+            {
+              "seq": 180,
+              "action": "phase",
+              "raw": "Ai(1)-Atraxa Counters B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 10,
+          "active_player": "Ai(2)-Dnide Wildsear",
+          "events": [
+            {
+              "seq": 182,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Untap step"
+            },
+            {
+              "seq": 183,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Upkeep step"
+            },
+            {
+              "seq": 184,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Draw step"
+            },
+            {
+              "seq": 185,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Main phase, precombat"
+            },
+            {
+              "seq": 186,
+              "action": "land_drop",
+              "raw": "Ai(2)-Dnide Wildsear played Mountain (183)"
+            },
+            {
+              "seq": 187,
+              "action": "mana",
+              "raw": "Forest (147) - {T}: Add {G}."
+            },
+            {
+              "seq": 188,
+              "action": "mana",
+              "raw": "Cinder Glade (110) - {T}: Add {G}."
+            },
+            {
+              "seq": 189,
+              "action": "mana",
+              "raw": "Sol Ring (112) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 190,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Nyxborn Behemoth",
+              "object": "Nyxborn Behemoth"
+            },
+            {
+              "seq": 191,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear triggered Nyxborn Behemoth",
+              "object": "Nyxborn Behemoth"
+            },
+            {
+              "seq": 192,
+              "action": "stack_add",
+              "raw": "Ai(2)-Dnide Wildsear cast Keeper of Secrets",
+              "object": "Keeper of Secrets"
+            },
+            {
+              "seq": 193,
+              "action": "stack_resolve",
+              "raw": "Cascade - Nyxborn Behemoth [Card: Nyxborn Behemoth (134), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Nyxborn Behemoth - Creature 10 / 10]"
+            },
+            {
+              "seq": 194,
+              "action": "stack_resolve",
+              "raw": "Keeper of Secrets - Creature 6 / 4"
+            },
+            {
+              "seq": 195,
+              "action": "stack_resolve",
+              "raw": "Nyxborn Behemoth - Creature 10 / 10"
+            },
+            {
+              "seq": 196,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Beginning of Combat Step"
+            },
+            {
+              "seq": 197,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Attackers Step"
+            },
+            {
+              "seq": 198,
+              "action": "combat",
+              "raw": "Ai(2)-Dnide Wildsear assigned Nyxborn Behemoth (134), Wildsear, Scouring Maw (201) and Keeper of Secrets (120) to attack Ai(1)-Atraxa Counters B3."
+            },
+            {
+              "seq": 199,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Declare Blockers Step"
+            },
+            {
+              "seq": 200,
+              "action": "combat",
+              "raw": "Ai(1)-Atraxa Counters B3 didn't block Nyxborn Behemoth (134)."
+            },
+            {
+              "seq": 201,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's First Strike Damage Step"
+            },
+            {
+              "seq": 202,
+              "action": "replacement_effect",
+              "raw": "If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 203,
+              "action": "damage",
+              "raw": "Keeper of Secrets (120) deals 12 damage to Tuskguard Captain (45).",
+              "source": "Keeper of Secrets (120)",
+              "amount": 12,
+              "target": "Tuskguard Captain (45)"
+            },
+            {
+              "seq": 204,
+              "action": "zone_change",
+              "raw": "Tuskguard Captain (45) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 205,
+              "action": "phase",
+              "raw": "Ai(2)-Dnide Wildsear's Combat Damage Step"
+            },
+            {
+              "seq": 206,
+              "action": "replacement_effect",
+              "raw": "If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 207,
+              "action": "replacement_effect",
+              "raw": "If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 208,
+              "action": "replacement_effect",
+              "raw": "If a creature you control would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 209,
+              "action": "damage",
+              "raw": "Nyxborn Behemoth (134) deals 20 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Nyxborn Behemoth (134)",
+              "amount": 20,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 210,
+              "action": "damage",
+              "raw": "Wildsear, Scouring Maw (201) deals 10 combat damage to Ai(1)-Atraxa Counters B3.",
+              "source": "Wildsear, Scouring Maw (201)",
+              "amount": 10,
+              "target": "Ai(1)-Atraxa Counters B3"
+            },
+            {
+              "seq": 211,
+              "action": "damage",
+              "raw": "Wildsear, Scouring Maw (201) deals 2 damage to Abzan Battle Priest (81).",
+              "source": "Wildsear, Scouring Maw (201)",
+              "amount": 2,
+              "target": "Abzan Battle Priest (81)"
+            },
+            {
+              "seq": 212,
+              "action": "damage",
+              "raw": "Abzan Battle Priest (81) deals 3 damage to Wildsear, Scouring Maw (201).",
+              "source": "Abzan Battle Priest (81)",
+              "amount": 3,
+              "target": "Wildsear, Scouring Maw (201)"
+            },
+            {
+              "seq": 213,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Atraxa Counters B3 28 > -2"
+            },
+            {
+              "seq": 214,
+              "action": "player_control",
+              "raw": "Ai(1)-Atraxa Counters B3 has restored control over themself"
+            },
+            {
+              "seq": 215,
+              "action": "player_control",
+              "raw": "Ai(2)-Dnide Wildsear has restored control over themself"
+            },
+            {
+              "seq": 216,
+              "action": "game_outcome",
+              "raw": "Turn 5",
+              "detail": "Turn 5"
+            },
+            {
+              "seq": 217,
+              "action": "game_outcome",
+              "raw": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0",
+              "detail": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0"
+            },
+            {
+              "seq": 218,
+              "action": "game_outcome",
+              "raw": "Ai(2)-Dnide Wildsear has won because all opponents have lost",
+              "detail": "Ai(2)-Dnide Wildsear has won because all opponents have lost"
+            },
+            {
+              "seq": 219,
+              "action": "match_result",
+              "raw": "Ai(1)-Atraxa Counters B3: 0 Ai(2)-Dnide Wildsear: 2"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "winner": "Ai(2)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 2182,
+        "raw": "Game Result: Game 2 ended in 2182 ms. Ai(2)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "mulligan",
+          "raw": "Ai(1)-Atraxa Counters B3 has kept a hand of 7 cards"
+        },
+        {
+          "seq": 2,
+          "action": "mulligan",
+          "raw": "Ai(2)-Dnide Wildsear has kept a hand of 7 cards"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "games": 2,
+    "draws": 0,
+    "wins": {
+      "Ai(2)-Dnide Wildsear": 2,
+      "Ai(1)-Atraxa Counters B3": 0
+    },
+    "win_rates": {
+      "Ai(2)-Dnide Wildsear": 1.0,
+      "Ai(1)-Atraxa Counters B3": 0.0
+    }
+  }
+}

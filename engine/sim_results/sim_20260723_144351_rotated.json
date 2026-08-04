@@ -1,0 +1,783 @@
+{
+  "meta": {
+    "source": "rotated",
+    "decks": [
+      "inspirit_b3.dck",
+      "krenko_goblins.dck",
+      "talrand_control.dck",
+      "drana_vampires.dck"
+    ],
+    "format": "Commander",
+    "rotations": 4
+  },
+  "games": [
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Inspirit B3",
+        "draw": false,
+        "duration_ms": 119586,
+        "raw": "Game Result: Game 1 ended in 119586 ms. Ai(1)-Inspirit B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 24",
+          "detail": "Turn 24"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(2)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(3)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(4)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 0 Ai(4)-Drana Vampires: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Talrand Control",
+        "draw": false,
+        "duration_ms": 44093,
+        "raw": "Game Result: Game 2 ended in 44093 ms. Ai(3)-Talrand Control has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 27",
+          "detail": "Turn 27"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(2)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Talrand Control has won because all opponents have lost",
+          "detail": "Ai(3)-Talrand Control has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Drana Vampires has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(4)-Drana Vampires has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 1 Ai(4)-Drana Vampires: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Talrand Control",
+        "draw": false,
+        "duration_ms": 23753,
+        "raw": "Game Result: Game 3 ended in 23753 ms. Ai(3)-Talrand Control has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 21",
+          "detail": "Turn 21"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(2)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Talrand Control has won because all opponents have lost",
+          "detail": "Ai(3)-Talrand Control has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(4)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 2 Ai(4)-Drana Vampires: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Talrand Control",
+        "draw": false,
+        "duration_ms": 40292,
+        "raw": "Game Result: Game 4 ended in 40292 ms. Ai(3)-Talrand Control has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 25",
+          "detail": "Turn 25"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(2)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Talrand Control has won because all opponents have lost",
+          "detail": "Ai(3)-Talrand Control has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(4)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 3 Ai(4)-Drana Vampires: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Drana Vampires",
+        "draw": false,
+        "duration_ms": 221425,
+        "raw": "Game Result: Game 1 ended in 221425 ms. Ai(3)-Drana Vampires has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 29",
+          "detail": "Turn 29"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(1)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(2)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Drana Vampires has won because all opponents have lost",
+          "detail": "Ai(3)-Drana Vampires has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Krenko Goblins: 0 Ai(2)-Talrand Control: 0 Ai(3)-Drana Vampires: 1 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 16570,
+        "raw": "Game Result: Game 2 ended in 16570 ms. Ai(1)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Krenko Goblins has won because all opponents have lost",
+          "detail": "Ai(1)-Krenko Goblins has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(2)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(3)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Krenko Goblins: 1 Ai(2)-Talrand Control: 0 Ai(3)-Drana Vampires: 1 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Drana Vampires",
+        "draw": false,
+        "duration_ms": 30190,
+        "raw": "Game Result: Game 3 ended in 30190 ms. Ai(3)-Drana Vampires has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 27",
+          "detail": "Turn 27"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(1)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(2)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Drana Vampires has won because all opponents have lost",
+          "detail": "Ai(3)-Drana Vampires has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Krenko Goblins: 1 Ai(2)-Talrand Control: 0 Ai(3)-Drana Vampires: 2 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Drana Vampires",
+        "draw": false,
+        "duration_ms": 71803,
+        "raw": "Game Result: Game 4 ended in 71803 ms. Ai(3)-Drana Vampires has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 21",
+          "detail": "Turn 21"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(1)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(2)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Drana Vampires has won because all opponents have lost",
+          "detail": "Ai(3)-Drana Vampires has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Krenko Goblins: 1 Ai(2)-Talrand Control: 0 Ai(3)-Drana Vampires: 3 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 24535,
+        "raw": "Game Result: Game 1 ended in 24535 ms. Ai(4)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 20",
+          "detail": "Turn 20"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(1)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(2)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Krenko Goblins has won because all opponents have lost",
+          "detail": "Ai(4)-Krenko Goblins has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Talrand Control: 0 Ai(2)-Drana Vampires: 0 Ai(3)-Inspirit B3: 0 Ai(4)-Krenko Goblins: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Drana Vampires",
+        "draw": false,
+        "duration_ms": 53333,
+        "raw": "Game Result: Game 2 ended in 53333 ms. Ai(2)-Drana Vampires has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 30",
+          "detail": "Turn 30"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(1)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Drana Vampires has won because all opponents have lost",
+          "detail": "Ai(2)-Drana Vampires has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(4)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Talrand Control: 0 Ai(2)-Drana Vampires: 1 Ai(3)-Inspirit B3: 0 Ai(4)-Krenko Goblins: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Inspirit B3",
+        "draw": false,
+        "duration_ms": 30051,
+        "raw": "Game Result: Game 3 ended in 30051 ms. Ai(3)-Inspirit B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 18",
+          "detail": "Turn 18"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(1)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(2)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(4)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Talrand Control: 0 Ai(2)-Drana Vampires: 1 Ai(3)-Inspirit B3: 1 Ai(4)-Krenko Goblins: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Drana Vampires",
+        "draw": false,
+        "duration_ms": 24738,
+        "raw": "Game Result: Game 4 ended in 24738 ms. Ai(2)-Drana Vampires has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(1)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Drana Vampires has won because all opponents have lost",
+          "detail": "Ai(2)-Drana Vampires has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(4)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Talrand Control: 0 Ai(2)-Drana Vampires: 2 Ai(3)-Inspirit B3: 1 Ai(4)-Krenko Goblins: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Drana Vampires",
+        "draw": false,
+        "duration_ms": 69888,
+        "raw": "Game Result: Game 1 ended in 69888 ms. Ai(1)-Drana Vampires has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 29",
+          "detail": "Turn 29"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Drana Vampires has won because all opponents have lost",
+          "detail": "Ai(1)-Drana Vampires has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Krenko Goblins has lost because life total reached 0",
+          "detail": "Ai(3)-Krenko Goblins has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(4)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Drana Vampires: 1 Ai(2)-Inspirit B3: 0 Ai(3)-Krenko Goblins: 0 Ai(4)-Talrand Control: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 240005,
+        "raw": "Game Result: Game 2 ended in 240005 ms. Ai(3)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 20",
+          "detail": "Turn 20"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Drana Vampires has won because all opponents have lost",
+          "detail": "Ai(1)-Drana Vampires has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Krenko Goblins has won because all opponents have lost",
+          "detail": "Ai(3)-Krenko Goblins has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Talrand Control has won because all opponents have lost",
+          "detail": "Ai(4)-Talrand Control has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Drana Vampires: 1 Ai(2)-Inspirit B3: 0 Ai(3)-Krenko Goblins: 1 Ai(4)-Talrand Control: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 98331,
+        "raw": "Game Result: Game 3 ended in 98331 ms. Ai(3)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 16",
+          "detail": "Turn 16"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(1)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Krenko Goblins has won because all opponents have lost",
+          "detail": "Ai(3)-Krenko Goblins has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(4)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Drana Vampires: 1 Ai(2)-Inspirit B3: 0 Ai(3)-Krenko Goblins: 2 Ai(4)-Talrand Control: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 134334,
+        "raw": "Game Result: Game 4 ended in 134334 ms. Ai(3)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 28",
+          "detail": "Turn 28"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Drana Vampires has lost because life total reached 0",
+          "detail": "Ai(1)-Drana Vampires has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Krenko Goblins has won because all opponents have lost",
+          "detail": "Ai(3)-Krenko Goblins has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Talrand Control has lost because life total reached 0",
+          "detail": "Ai(4)-Talrand Control has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Drana Vampires: 1 Ai(2)-Inspirit B3: 0 Ai(3)-Krenko Goblins: 3 Ai(4)-Talrand Control: 0"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "games": 16,
+    "draws": 0,
+    "wins": {
+      "Inspirit B3": 2,
+      "Talrand Control": 3,
+      "Drana Vampires": 6,
+      "Krenko Goblins": 5
+    },
+    "win_rates": {
+      "Inspirit B3": 0.125,
+      "Talrand Control": 0.188,
+      "Drana Vampires": 0.375,
+      "Krenko Goblins": 0.312
+    }
+  }
+}

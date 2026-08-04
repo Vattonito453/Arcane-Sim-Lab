@@ -1,0 +1,1472 @@
+Error handling registered!
+18:58:56 [INFO ] GuiBase: ##########################################
+18:58:56 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+18:58:56 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+18:58:56 [INFO ] GuiBase: OS: Mac OS X 15.7.7 aarch64
+18:58:56 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+18:58:56 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Atraxa Counters B3 vs Ai(2)-Dnide Wildsear vs Ai(3)-Inspirit Alpha vs Ai(4)-Drana Vampires - one game of Commander
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+No AI assigned for API: Incubate
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Drana, Liberator of Malakir for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Active player is no longer in the game...
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Drana, Liberator of Malakir for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Mulligan: Ai(2)-Dnide Wildsear has mulliganed down to 7 cards.
+Mulligan: Ai(3)-Inspirit Alpha has kept a hand of 7 cards
+Mulligan: Ai(4)-Drana Vampires has kept a hand of 7 cards
+Mulligan: Ai(1)-Atraxa Counters B3 has kept a hand of 7 cards
+Mulligan: Ai(2)-Dnide Wildsear has kept a hand of 7 cards
+Turn: Turn 1 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Land: Ai(3)-Inspirit Alpha played Shivan Reef (241)
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 2 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (367)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 3 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Replacement Effect: Temple of Mystery enters tapped.
+Land: Ai(1)-Atraxa Counters B3 played Temple of Mystery (1)
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Temple of Mystery
+Resolve Stack: Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library
+Resolve Stack: When Temple of Mystery enters, scry 1. [Zone Changer: Temple of Mystery (1)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 4 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Replacement Effect: Cinder Glade enters tapped unless you control two or more basic lands.
+Land: Ai(2)-Dnide Wildsear played Cinder Glade (110)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 5 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Land: Ai(3)-Inspirit Alpha played Rugged Prairie (247)
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Mana: Rugged Prairie (247) - {T}: Add {C}.
+Mana: Shivan Reef (241) - {T}: Add {C}.
+Add To Stack: Ai(3)-Inspirit Alpha cast Moxite Refinery
+Resolve Stack: Moxite Refinery
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 6 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (376)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 7 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Swamp (89)
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Mana: Swamp (89) - {T}: Add {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Farseek
+Resolve Stack: Farseek (69) - Ai(1)-Atraxa Counters B3 searches their library for a Plains, Island, Swamp or Mountain card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 8 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Mountain (182)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 9 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Land: Ai(3)-Inspirit Alpha played Island (265)
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Mana: Island (265) - {T}: Add {U}.
+Mana: Rugged Prairie (247) - {T}: Add {C}.
+Mana: Shivan Reef (241) - {T}: Add {C}.
+Add To Stack: Ai(3)-Inspirit Alpha cast Chrome Host Seedshark
+Resolve Stack: Chrome Host Seedshark - Creature 2 / 4
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 10 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (388)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Mana: Swamp (388) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Drana, Liberator of Malakir
+Resolve Stack: Drana, Liberator of Malakir - Creature 2 / 3
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 11 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Plains (49)
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Mana: Swamp (89) - {T}: Add {B}.
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Island (61) - {T}: Add {U}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Atraxa, Praetors' Voice
+Resolve Stack: Atraxa, Praetors' Voice - Creature 4 / 4
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 12 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Forest (155)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Mountain (182) - {T}: Add {R}.
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Cinder Glade (110) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Shadow in the Warp
+Resolve Stack: Shadow in the Warp
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 13 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Land: Ai(3)-Inspirit Alpha played Battlefield Forge (214)
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Damage: Battlefield Forge (214) deals 1 non-combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 40 > 39
+Mana: Battlefield Forge (214) - {T}: Add {R} or {W}. Battlefield Forge deals 1 damage to you. 
+Mana: Island (265) - {T}: Add {U}.
+Damage: Shivan Reef (241) deals 1 non-combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 39 > 38
+Mana: Shivan Reef (241) - {T}: Add {U} or {R}. Shivan Reef deals 1 damage to you. 
+Mana: Rugged Prairie (247) - {T}: Add {C}.
+Add To Stack: Ai(3)-Inspirit Alpha cast Crystalline Crawler
+Replacement Effect: Converge — Crystalline Crawler enters with a +1/+1 counter on it for each color of mana spent to cast it.
+Resolve Stack: Crystalline Crawler - Creature 1 / 1
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 14 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (385)
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead - Creature 5 / 7
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 15 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Mana: Swamp (89) - {T}: Add {B}.
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Island (61) - {T}: Add {U}.
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Utter End targeting [Crystalline Crawler (273)]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 40 > 38
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Utter End (36), Activator: Ai(1)-Atraxa Counters B3, SpellAbility: Exile target nonland permanent.]
+Zone Change: Crystalline Crawler (273) was put into Exile from Battlefield.
+Resolve Stack: Utter End (36) - Exile Crystalline Crawler (273).
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Atraxa, Praetors' Voice (100) to attack Ai(4)-Drana Vampires.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires didn't block Atraxa, Praetors' Voice (100).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Atraxa, Praetors' Voice (100) deals 4 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 40 > 36
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Land: Ai(1)-Atraxa Counters B3 played Forest (56)
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 16 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Mountain (181)
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Mountain (182) - {T}: Add {R}.
+Mana: Mountain (181) - {T}: Add {R}.
+Mana: Cinder Glade (110) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Decimate targeting [Moxite Refinery (256)] [Atraxa, Praetors' Voice (100)] [Erebos, God of the Dead (344)] [Battlefield Forge (214)]
+Zone Change: Moxite Refinery (256) was put into Graveyard from Battlefield.
+Zone Change: Battlefield Forge (214) was put into Graveyard from Battlefield.
+Zone Change: Atraxa, Praetors' Voice (100) was put into Graveyard from Battlefield.
+Resolve Stack: Decimate (146) -     Destroy Moxite Refinery (256), Atraxa, Praetors' Voice (100), Erebos, God of the Dead (344) and Battlefield Forge (214).
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 17 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Replacement Effect: Sulfur Falls enters tapped unless you control an Island or a Mountain.
+Land: Ai(3)-Inspirit Alpha played Sulfur Falls (219)
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Mana: Island (265) - {T}: Add {U}.
+Mana: Sulfur Falls (219) - {T}: Add {U} or {R}.
+Mana: Rugged Prairie (247) - {T}: Add {C}.
+Mana: Shivan Reef (241) - {T}: Add {C}.
+Add To Stack: Ai(3)-Inspirit Alpha cast Darksteel Reactor
+Add To Stack: Ai(3)-Inspirit Alpha triggered Chrome Host Seedshark
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 38 > 36
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Darksteel Reactor (225), Activator: Ai(3)-Inspirit Alpha, SpellAbility: Darksteel Reactor]
+Resolve Stack: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value. (Create an Incubator token with X +1/+1 counters on it and "{2}: Transform this artifact." It transforms into a 0/0 Phyrexian artifact creature.) [Card: Darksteel Reactor (225), Activator: Ai(3)-Inspirit Alpha, SpellAbility: Darksteel Reactor]
+Resolve Stack: Darksteel Reactor
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 18 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Life: Life: Ai(4)-Drana Vampires 36 > 34
+Add To Stack: Ai(4)-Drana Vampires activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (344) - Ai(4)-Drana Vampires draws a card.
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (382)
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Mana: Swamp (382) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Captivating Vampire
+Resolve Stack: Captivating Vampire - Creature 2 / 2
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Erebos, God of the Dead (344) to attack Ai(3)-Inspirit Alpha.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(3)-Inspirit Alpha didn't block Erebos, God of the Dead (344).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Erebos, God of the Dead (344) deals 5 combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 36 > 31
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 19 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Mana: Swamp (89) - {T}: Add {B}.
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Forest (56) - {T}: Add {G}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Mortify targeting [Drana, Liberator of Malakir (403)]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 38 > 36
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Mortify (43), Activator: Ai(1)-Atraxa Counters B3, SpellAbility: Destroy target creature or enchantment.]
+Zone Change: Drana, Liberator of Malakir (403) was put into Graveyard from Battlefield.
+Resolve Stack: Mortify (43) - Destroy Drana, Liberator of Malakir (403).
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Island (61) - {T}: Add {U}.
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Thrummingbird
+Resolve Stack: Thrummingbird - Creature 1 / 1
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 20 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Mountain (178)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Mountain (182) - {T}: Add {R}.
+Mana: Mountain (181) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Wildsear, Scouring Maw
+Resolve Stack: Wildsear, Scouring Maw - Creature 6 / 6
+Mana: Cinder Glade (110) - {T}: Add {G}.
+Mana: Mountain (178) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Herald of the Pantheon
+Resolve Stack: Herald of the Pantheon - Creature 2 / 2
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 21 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Add To Stack: Ai(3)-Inspirit Alpha triggered Darksteel Reactor
+Resolve Stack: At the beginning of your upkeep, you may put a charge counter on Darksteel Reactor. [Phase: Ai(3)-Inspirit Alpha]
+Mana: Island (265) - {T}: Add {U}.
+Mana: Sulfur Falls (219) - {T}: Add {U} or {R}.
+Add To Stack: Ai(3)-Inspirit Alpha activated Incubator Token
+Resolve Stack: Phyrexian Token (406) - Transform Phyrexian Token (406).
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Combat: Ai(3)-Inspirit Alpha assigned Chrome Host Seedshark (278) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Chrome Host Seedshark (278).
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Damage: Chrome Host Seedshark (278) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 40 > 38
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Damage: Shivan Reef (241) deals 1 non-combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 31 > 30
+Mana: Shivan Reef (241) - {T}: Add {U} or {R}. Shivan Reef deals 1 damage to you. 
+Add To Stack: Ai(3)-Inspirit Alpha cast Emry, Lurker of the Loch
+Resolve Stack: Emry, Lurker of the Loch - Creature 1 / 2
+Add To Stack: Ai(3)-Inspirit Alpha triggered Emry, Lurker of the Loch
+Zone Change: Ai(3)-Inspirit Alpha milled Chain Reaction (217), Cloud Key (261), Surge Conductor (285) and Depthshaker Titan (205).
+Resolve Stack: When Emry, Lurker of the Loch enters, mill four cards. [Zone Changer: Emry, Lurker of the Loch (255)]
+Mana: Rugged Prairie (247) - {T}: Add {C}.
+Add To Stack: Ai(3)-Inspirit Alpha cast Sol Ring
+Add To Stack: Ai(3)-Inspirit Alpha triggered Chrome Host Seedshark
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 30 > 28
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Sol Ring (210), Activator: Ai(3)-Inspirit Alpha, SpellAbility: Sol Ring]
+Resolve Stack: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value. (Create an Incubator token with X +1/+1 counters on it and "{2}: Transform this artifact." It transforms into a 0/0 Phyrexian artifact creature.) [Card: Sol Ring (210), Activator: Ai(3)-Inspirit Alpha, SpellAbility: Sol Ring]
+Resolve Stack: Sol Ring
+Mana: Sol Ring (210) - {T}: Add {C}{C}.
+Add To Stack: Ai(3)-Inspirit Alpha activated Incubator Token
+Resolve Stack: Phyrexian Token (408) - Transform Phyrexian Token (408).
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 22 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Life: Life: Ai(4)-Drana Vampires 34 > 32
+Add To Stack: Ai(4)-Drana Vampires activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (344) - Ai(4)-Drana Vampires draws a card.
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (381)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 23 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Life: Life: Ai(4)-Drana Vampires 32 > 30
+Add To Stack: Ai(4)-Drana Vampires activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (344) - Ai(4)-Drana Vampires draws a card.
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Thrummingbird (14) to attack Ai(3)-Inspirit Alpha.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(3)-Inspirit Alpha didn't block Thrummingbird (14).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Thrummingbird (14) deals 1 combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 28 > 27
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Thrummingbird
+Resolve Stack: Whenever Thrummingbird deals combat damage to a player, proliferate. [Damage Source: Thrummingbird (14), Damaged: Ai(3)-Inspirit Alpha, Amount: 1]
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Forest (56) - {T}: Add {G}.
+Mana: Swamp (89) - {T}: Add {B}.
+Mana: Island (61) - {T}: Add {U}.
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Doubling Season
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 36 > 34
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Doubling Season (35), Activator: Ai(1)-Atraxa Counters B3, SpellAbility: Doubling Season]
+Resolve Stack: Doubling Season
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 24 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Forest (154)
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Mountain (182) - {T}: Add {R}.
+Mana: Mountain (181) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Krosan Grip targeting [Phyrexian Token (406)]
+Zone Change: Phyrexian Token (406) was put into Graveyard from Battlefield.
+Resolve Stack: Krosan Grip (138) - Destroy Phyrexian Token (406).
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) and Herald of the Pantheon (172) to attack Ai(3)-Inspirit Alpha.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(3)-Inspirit Alpha didn't block Wildsear, Scouring Maw (201).
+Ai(3)-Inspirit Alpha assigned Phyrexian Token (408) and Emry, Lurker of the Loch (255) to block Herald of the Pantheon (172).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Wildsear, Scouring Maw (201) deals 6 combat damage to Ai(3)-Inspirit Alpha.
+Damage: Herald of the Pantheon (172) deals 2 damage to Emry, Lurker of the Loch (255).
+Damage: Phyrexian Token (408) deals 1 damage to Herald of the Pantheon (172).
+Damage: Emry, Lurker of the Loch (255) deals 1 damage to Herald of the Pantheon (172).
+Life: Life: Ai(3)-Inspirit Alpha 27 > 21
+Zone Change: Herald of the Pantheon (172) was put into Graveyard from Battlefield.
+Zone Change: Emry, Lurker of the Loch (255) was put into Graveyard from Battlefield.
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (154) - {T}: Add {G}.
+Mana: Mountain (178) - {T}: Add {R}.
+Mana: Cinder Glade (110) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Cultivate
+Resolve Stack: Cultivate (126) - Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.   
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 25 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Add To Stack: Ai(3)-Inspirit Alpha triggered Darksteel Reactor
+Resolve Stack: At the beginning of your upkeep, you may put a charge counter on Darksteel Reactor. [Phase: Ai(3)-Inspirit Alpha]
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Combat: Ai(3)-Inspirit Alpha assigned Chrome Host Seedshark (278) and Phyrexian Token (408) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Chrome Host Seedshark (278).
+Ai(2)-Dnide Wildsear didn't block Phyrexian Token (408).
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Damage: Chrome Host Seedshark (278) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Damage: Phyrexian Token (408) deals 1 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 38 > 35
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Mana: Sulfur Falls (219) - {T}: Add {U} or {R}.
+Mana: Sol Ring (210) - {T}: Add {C}{C}.
+Add To Stack: Ai(3)-Inspirit Alpha cast Long-Range Sensor
+Add To Stack: Ai(3)-Inspirit Alpha triggered Chrome Host Seedshark
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 21 > 19
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Long-Range Sensor (235), Activator: Ai(3)-Inspirit Alpha, SpellAbility: Long-Range Sensor]
+Resolve Stack: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value. (Create an Incubator token with X +1/+1 counters on it and "{2}: Transform this artifact." It transforms into a 0/0 Phyrexian artifact creature.) [Card: Long-Range Sensor (235), Activator: Ai(3)-Inspirit Alpha, SpellAbility: Long-Range Sensor]
+Resolve Stack: Long-Range Sensor
+Mana: Island (265) - {T}: Add {U}.
+Mana: Rugged Prairie (247) - {T}: Add {C}.
+Mana: Shivan Reef (241) - {T}: Add {C}.
+Add To Stack: Ai(3)-Inspirit Alpha cast Solar Array
+Add To Stack: Ai(3)-Inspirit Alpha triggered Chrome Host Seedshark
+Resolve Stack: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value. (Create an Incubator token with X +1/+1 counters on it and "{2}: Transform this artifact." It transforms into a 0/0 Phyrexian artifact creature.) [Card: Solar Array (252), Activator: Ai(3)-Inspirit Alpha, SpellAbility: Solar Array]
+Resolve Stack: Solar Array
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 26 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (397)
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Mana: Swamp (382) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Malakir Bloodwitch
+Resolve Stack: Malakir Bloodwitch - Creature 4 / 4
+Add To Stack: Ai(4)-Drana Vampires triggered Malakir Bloodwitch
+Life: Life: Ai(1)-Atraxa Counters B3 34 > 32
+Life: Life: Ai(2)-Dnide Wildsear 35 > 33
+Life: Life: Ai(3)-Inspirit Alpha 19 > 17
+Life: Life: Ai(4)-Drana Vampires 30 > 36
+Resolve Stack: When Malakir Bloodwitch enters, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way. [Zone Changer: Malakir Bloodwitch (311)]
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Erebos, God of the Dead (344) and Captivating Vampire (332) to attack Ai(3)-Inspirit Alpha.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(3)-Inspirit Alpha didn't block Erebos, God of the Dead (344).
+Ai(3)-Inspirit Alpha didn't block Captivating Vampire (332).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Erebos, God of the Dead (344) deals 5 combat damage to Ai(3)-Inspirit Alpha.
+Damage: Captivating Vampire (332) deals 2 combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 17 > 10
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 27 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Mana: Swamp (381) - {T}: Add {B}.
+Mana: Swamp (397) - {T}: Add {B}.
+Life: Life: Ai(4)-Drana Vampires 36 > 34
+Add To Stack: Ai(4)-Drana Vampires activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (344) - Ai(4)-Drana Vampires draws a card.
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Forest (56) - {T}: Add {G}.
+Mana: Swamp (89) - {T}: Add {B}.
+Mana: Island (61) - {T}: Add {U}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Fertilid
+Replacement Effect: Fertilid enters with two +1/+1 counters on it.
+Replacement Effect: If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.
+Resolve Stack: Fertilid - Creature 0 / 0
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Mana: Plains (49) - {T}: Add {W}.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Fertilid targeting [Ai(1)-Atraxa Counters B3]
+Resolve Stack: Fertilid (84) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 28 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) to attack Ai(4)-Drana Vampires.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires didn't block Wildsear, Scouring Maw (201).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Wildsear, Scouring Maw (201) deals 6 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 34 > 28
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Land: Ai(2)-Dnide Wildsear played Mountain (174)
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Mountain (182) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Klothys, God of Destiny
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny
+Add To Stack: Ai(2)-Dnide Wildsear cast Kenrith's Transformation targeting [Erebos, God of the Dead (344)]
+Resolve Stack: Cascade - Klothys, God of Destiny [Card: Klothys, God of Destiny (116), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Klothys, God of Destiny - Creature 4 / 5]
+Resolve Stack: Kenrith's Transformation (170) -  Attach to Erebos, God of the Dead (344)
+Add To Stack: Ai(2)-Dnide Wildsear triggered Kenrith's Transformation
+Resolve Stack: When Kenrith's Transformation enters, draw a card. [Zone Changer: Kenrith's Transformation (170)]
+Resolve Stack: Klothys, God of Destiny - Creature 4 / 5
+Mana: Forest (154) - {T}: Add {G}.
+Mana: Forest (148) - {T}: Add {G}.
+Mana: Mountain (181) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Verduran Enchantress
+Resolve Stack: Verduran Enchantress - Creature 0 / 2
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 29 (Ai(3)-Inspirit Alpha)
+Phase: Ai(3)-Inspirit Alpha's Untap step
+Phase: Ai(3)-Inspirit Alpha's Upkeep step
+Add To Stack: Ai(3)-Inspirit Alpha triggered Darksteel Reactor
+Resolve Stack: At the beginning of your upkeep, you may put a charge counter on Darksteel Reactor. [Phase: Ai(3)-Inspirit Alpha]
+Mana: Sol Ring (210) - {T}: Add {C}{C}.
+Add To Stack: Ai(3)-Inspirit Alpha activated Incubator Token
+Resolve Stack: Phyrexian Token (410) - Transform Phyrexian Token (410).
+Mana: Island (265) - {T}: Add {U}.
+Mana: Sulfur Falls (219) - {T}: Add {U} or {R}.
+Add To Stack: Ai(3)-Inspirit Alpha activated Incubator Token
+Resolve Stack: Phyrexian Token (412) - Transform Phyrexian Token (412).
+Phase: Ai(3)-Inspirit Alpha's Draw step
+Phase: Ai(3)-Inspirit Alpha's Main phase, precombat
+Replacement Effect: Clifftop Retreat enters tapped unless you control a Mountain or a Plains.
+Land: Ai(3)-Inspirit Alpha played Clifftop Retreat (234)
+Phase: Ai(3)-Inspirit Alpha's Beginning of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Declare Attackers Step
+Combat: Ai(3)-Inspirit Alpha assigned Chrome Host Seedshark (278) to attack Ai(2)-Dnide Wildsear.
+Add To Stack: Ai(3)-Inspirit Alpha triggered Long-Range Sensor
+Resolve Stack: Whenever you attack a player, put a charge counter on this artifact. [Number Attackers: [Chrome Host Seedshark (278)]]
+Phase: Ai(3)-Inspirit Alpha's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Chrome Host Seedshark (278).
+Phase: Ai(3)-Inspirit Alpha's First Strike Damage Step
+Phase: Ai(3)-Inspirit Alpha's Combat Damage Step
+Damage: Chrome Host Seedshark (278) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 33 > 31
+Phase: Ai(3)-Inspirit Alpha's End of Combat Step
+Phase: Ai(3)-Inspirit Alpha's Main phase, postcombat
+Phase: Ai(3)-Inspirit Alpha's End step
+Phase: Ai(3)-Inspirit Alpha's Cleanup step
+Turn: Turn 30 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (370)
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Mana: Swamp (382) - {T}: Add {B}.
+Mana: Swamp (381) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Corrupt targeting [Ai(3)-Inspirit Alpha]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 28 > 26
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Corrupt (330), Activator: Ai(4)-Drana Vampires, SpellAbility: Corrupt deals damage to any target equal to the number of Swamps you control. You gain life equal to the damage dealt this way. ]
+Damage: Corrupt (330) deals 8 non-combat damage to Ai(3)-Inspirit Alpha.
+Life: Life: Ai(3)-Inspirit Alpha 10 > 2
+Life: Life: Ai(4)-Drana Vampires 26 > 34
+Resolve Stack: Corrupt (330) - Corrupt (330) deals 8 damage to Ai(3)-Inspirit Alpha. You gain life equal to the damage dealt this way.
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Malakir Bloodwitch (311), Erebos, God of the Dead (344) and Captivating Vampire (332) to attack Ai(3)-Inspirit Alpha.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(3)-Inspirit Alpha didn't block Malakir Bloodwitch (311).
+Ai(3)-Inspirit Alpha assigned Phyrexian Token (408) and Phyrexian Token (412) to block Erebos, God of the Dead (344).
+Ai(3)-Inspirit Alpha assigned Phyrexian Token (410) to block Captivating Vampire (332).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Malakir Bloodwitch (311) deals 5 combat damage to Ai(3)-Inspirit Alpha.
+Damage: Erebos, God of the Dead (344) deals 3 damage to Phyrexian Token (412).
+Damage: Captivating Vampire (332) deals 2 damage to Phyrexian Token (410).
+Damage: Phyrexian Token (408) deals 1 damage to Erebos, God of the Dead (344).
+Damage: Phyrexian Token (412) deals 3 damage to Erebos, God of the Dead (344).
+Damage: Phyrexian Token (410) deals 3 damage to Captivating Vampire (332).
+Life: Life: Ai(3)-Inspirit Alpha 2 > -3
+Zone Change: Erebos, God of the Dead (344) was put into Graveyard from Battlefield.
+Zone Change: Captivating Vampire (332) was put into Graveyard from Battlefield.
+Zone Change: Kenrith's Transformation (170) was put into Graveyard from Battlefield.
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 31 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Mana: Forest (56) - {T}: Add {G}.
+Mana: Swamp (89) - {T}: Add {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Fertilid targeting [Ai(1)-Atraxa Counters B3]
+Resolve Stack: Fertilid (84) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Mana: Island (61) - {T}: Add {U}.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Fertilid targeting [Ai(1)-Atraxa Counters B3]
+Resolve Stack: Fertilid (84) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Thrummingbird (14) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Thrummingbird (14).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Thrummingbird (14) deals 1 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 31 > 30
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Thrummingbird
+Replacement Effect: If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.
+Resolve Stack: Whenever Thrummingbird deals combat damage to a player, proliferate. [Damage Source: Thrummingbird (14), Damaged: Ai(2)-Dnide Wildsear, Amount: 1]
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Replacement Effect: Temple of Plenty enters tapped.
+Land: Ai(1)-Atraxa Counters B3 played Temple of Plenty (39)
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Temple of Plenty
+Resolve Stack: Ai(1)-Atraxa Counters B3 scried 1 card(s) to the bottom of the library
+Resolve Stack: When Temple of Plenty enters, scry 1. [Zone Changer: Temple of Plenty (39)]
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Plains (51) - {T}: Add {W}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Contagion Clasp
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 32 > 30
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Contagion Clasp (32), Activator: Ai(1)-Atraxa Counters B3, SpellAbility: Contagion Clasp]
+Resolve Stack: Contagion Clasp
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Contagion Clasp targeting [Wildsear, Scouring Maw (201)]
+Resolve Stack: When Contagion Clasp enters, put a -1/-1 counter on target creature. (Targeting: [[Wildsear, Scouring Maw (201)]]) [Zone Changer: Contagion Clasp (32)]
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 32 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Corrupt (330)]
+Life: Life: Ai(2)-Dnide Wildsear 30 > 32
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(1)-Atraxa Counters B3 30 > 28
+Life: Life: Ai(4)-Drana Vampires 34 > 32
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Corrupt (330)]]) [Phase: Ai(2)-Dnide Wildsear]
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) and Klothys, God of Destiny (116) to attack Ai(1)-Atraxa Counters B3.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(1)-Atraxa Counters B3 didn't block Wildsear, Scouring Maw (201).
+Ai(1)-Atraxa Counters B3 didn't block Klothys, God of Destiny (116).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Wildsear, Scouring Maw (201) deals 5 combat damage to Ai(1)-Atraxa Counters B3.
+Damage: Klothys, God of Destiny (116) deals 4 combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 28 > 19
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Replacement Effect: Rootbound Crag enters tapped unless you control a Mountain or a Forest.
+Land: Ai(2)-Dnide Wildsear played Rootbound Crag (198)
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 33 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Whip of Erebos
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 32 > 30
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Whip of Erebos (318), Activator: Ai(4)-Drana Vampires, SpellAbility: Whip of Erebos]
+Resolve Stack: Whip of Erebos
+Land: Ai(4)-Drana Vampires played Swamp (380)
+Mana: Swamp (382) - {T}: Add {B}.
+Mana: Swamp (381) - {T}: Add {B}.
+Mana: Swamp (397) - {T}: Add {B}.
+Mana: Swamp (370) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires activated Whip of Erebos targeting [Erebos, God of the Dead (344)]
+Resolve Stack: Whip of Erebos (318) - Return Erebos, God of the Dead (344) from the graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. 
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Erebos, God of the Dead (344) and Malakir Bloodwitch (311) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Erebos, God of the Dead (344).
+Ai(2)-Dnide Wildsear didn't block Malakir Bloodwitch (311).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Erebos, God of the Dead (344) deals 5 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(4)-Drana Vampires 30 > 35
+Damage: Malakir Bloodwitch (311) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(4)-Drana Vampires 35 > 39
+Life: Life: Ai(2)-Dnide Wildsear 32 > 23
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Add To Stack: Ai(4)-Drana Vampires triggered Whip of Erebos
+Zone Change: Erebos, God of the Dead (344) was put into Exile from Battlefield.
+Resolve Stack: Exile Erebos, God of the Dead (344) at the beginning of the next end step. ([Erebos, God of the Dead (344)]) [Phase: Ai(4)-Drana Vampires]
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 34 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Mana: Forest (56) - {T}: Add {G}.
+Mana: Swamp (89) - {T}: Add {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Fertilid targeting [Ai(1)-Atraxa Counters B3]
+Resolve Stack: Fertilid (84) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Mana: Temple of Mystery (1) - {T}: Add {U} or {G}.
+Mana: Swamp (86) - {T}: Add {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Fertilid targeting [Ai(1)-Atraxa Counters B3]
+Resolve Stack: Fertilid (84) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Mana: Temple of Plenty (39) - {T}: Add {G} or {W}.
+Mana: Island (61) - {T}: Add {U}.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Fertilid targeting [Ai(1)-Atraxa Counters B3]
+Zone Change: Fertilid (84) was put into Graveyard from Battlefield.
+Resolve Stack: Fertilid (84) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Thrummingbird (14) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Thrummingbird (14).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Thrummingbird (14) deals 1 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 23 > 22
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Thrummingbird
+Resolve Stack: Whenever Thrummingbird deals combat damage to a player, proliferate. [Damage Source: Thrummingbird (14), Damaged: Ai(2)-Dnide Wildsear, Amount: 1]
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 35 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Utter End (36)]
+Life: Life: Ai(2)-Dnide Wildsear 22 > 24
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(1)-Atraxa Counters B3 19 > 17
+Life: Life: Ai(4)-Drana Vampires 39 > 37
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Utter End (36)]]) [Phase: Ai(2)-Dnide Wildsear]
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) and Klothys, God of Destiny (116) to attack Ai(4)-Drana Vampires.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires didn't block Wildsear, Scouring Maw (201).
+Ai(4)-Drana Vampires didn't block Klothys, God of Destiny (116).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Wildsear, Scouring Maw (201) deals 4 combat damage to Ai(4)-Drana Vampires.
+Damage: Klothys, God of Destiny (116) deals 4 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 37 > 29
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Land: Ai(2)-Dnide Wildsear played Forest (156)
+Mana: Mountain (182) - {T}: Add {R}.
+Mana: Mountain (181) - {T}: Add {R}.
+Mana: Mountain (178) - {T}: Add {R}.
+Mana: Mountain (174) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Overlord of the Boilerbilges
+Add To Stack: Ai(2)-Dnide Wildsear triggered Overlord of the Boilerbilges
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Overlord of the Boilerbilges (121), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Overlord of the Boilerbilges - Creature 5 / 5]
+Add To Stack: Ai(2)-Dnide Wildsear cast Gruul Signet
+Resolve Stack: Cascade - Overlord of the Boilerbilges [Card: Overlord of the Boilerbilges (121), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Overlord of the Boilerbilges - Creature 5 / 5]
+Resolve Stack: Gruul Signet
+Resolve Stack: Overlord of the Boilerbilges - Creature 5 / 5
+Add To Stack: Ai(2)-Dnide Wildsear triggered Overlord of the Boilerbilges targeting [Thrummingbird (14)]
+Damage: Overlord of the Boilerbilges (121) deals 4 damage to Thrummingbird (14).
+Resolve Stack: Whenever Overlord of the Boilerbilges enters or attacks, it deals 4 damage to any target. (Targeting: [[Thrummingbird (14)]]) [Zone Changer: Overlord of the Boilerbilges (121)]
+Zone Change: Thrummingbird (14) was put into Graveyard from Battlefield.
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (154) - {T}: Add {G}.
+Mana: Forest (148) - {T}: Add {G}.
+Mana: Forest (156) - {T}: Add {G}.
+Mana: Rootbound Crag (198) - {T}: Add {R} or {G}.
+Mana: Cinder Glade (110) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Mana Reflection
+Add To Stack: Ai(2)-Dnide Wildsear triggered Mana Reflection
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Mana Reflection (193), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Mana Reflection]
+Add To Stack: Ai(2)-Dnide Wildsear cast Rhythm of the Wild
+Resolve Stack: Cascade - Mana Reflection [Card: Mana Reflection (193), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Mana Reflection]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Rhythm of the Wild (142), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Rhythm of the Wild (without paying its mana cost)]
+Resolve Stack: Rhythm of the Wild
+Resolve Stack: Mana Reflection
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 36 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Go for the Throat targeting [Overlord of the Boilerbilges (121)]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 29 > 27
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Go for the Throat (340), Activator: Ai(4)-Drana Vampires, SpellAbility: Destroy target nonartifact creature.]
+Zone Change: Overlord of the Boilerbilges (121) was put into Graveyard from Battlefield.
+Resolve Stack: Go for the Throat (340) - Destroy Overlord of the Boilerbilges (121).
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (374)
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Mana: Swamp (382) - {T}: Add {B}.
+Mana: Swamp (381) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires activated Whip of Erebos targeting [Captivating Vampire (332)]
+Resolve Stack: Whip of Erebos (318) - Return Captivating Vampire (332) from the graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step or if it would leave the battlefield. 
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Combat: Ai(4)-Drana Vampires assigned Captivating Vampire (332) and Malakir Bloodwitch (311) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Captivating Vampire (332).
+Ai(2)-Dnide Wildsear didn't block Malakir Bloodwitch (311).
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Damage: Captivating Vampire (332) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(4)-Drana Vampires 27 > 29
+Damage: Malakir Bloodwitch (311) deals 5 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(4)-Drana Vampires 29 > 34
+Life: Life: Ai(2)-Dnide Wildsear 24 > 17
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Phase: Ai(4)-Drana Vampires' End step
+Add To Stack: Ai(4)-Drana Vampires triggered Whip of Erebos
+Zone Change: Captivating Vampire (332) was put into Exile from Battlefield.
+Resolve Stack: Exile Captivating Vampire (332) at the beginning of the next end step. ([Captivating Vampire (332)]) [Phase: Ai(4)-Drana Vampires]
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 37 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Plains (51) - {T}: Add {W}.
+Mana: Swamp (89) - {T}: Add {B}.
+Mana: Swamp (86) - {T}: Add {B}.
+Mana: Plains (50) - {T}: Add {W}.
+Mana: Forest (56) - {T}: Add {G}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Elspeth, Sun's Champion
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Damage: Shadow in the Warp (192) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 17 > 15
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Elspeth, Sun's Champion (52), Activator: Ai(1)-Atraxa Counters B3, SpellAbility: Elspeth, Sun's Champion]
+Replacement Effect: Elspeth, Sun's Champion enters with four loyalty counters on it.
+Replacement Effect: If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.
+Resolve Stack: Elspeth, Sun's Champion
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Elspeth, Sun's Champion
+Resolve Stack: Elspeth, Sun's Champion (52) - -7: You get an emblem with "Creatures you control get +2/+2 and have flying."
+Mana: Forest (55) - {T}: Add {G}.
+Mana: Island (61) - {T}: Add {U}.
+Mana: Island (60) - {T}: Add {U}.
+Mana: Island (62) - {T}: Add {U}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Master Biomancer
+Resolve Stack: Master Biomancer - Creature 2 / 4
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 38 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Fertilid (84)]
+Life: Life: Ai(2)-Dnide Wildsear 17 > 19
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(1)-Atraxa Counters B3 15 > 13
+Life: Life: Ai(4)-Drana Vampires 34 > 32
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Fertilid (84)]]) [Phase: Ai(2)-Dnide Wildsear]
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (182) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (181) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (155) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Fiery Emancipation
+Add To Stack: Ai(2)-Dnide Wildsear triggered Fiery Emancipation
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Fiery Emancipation (199), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Fiery Emancipation]
+Resolve Stack: Cascade - Fiery Emancipation [Card: Fiery Emancipation (199), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Fiery Emancipation]
+Resolve Stack: Fiery Emancipation
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (178) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (154) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Nalfeshnee
+Replacement Effect: Riot
+Resolve Stack: Nalfeshnee - Creature 4 / 6
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (174) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (148) - {T}: Add {G}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (156) - {T}: Add {G}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Rootbound Crag (198) - {T}: Add {R} or {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Flaming Tyrannosaurus
+Replacement Effect: Riot
+Resolve Stack: Flaming Tyrannosaurus - Creature 5 / 5
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 39 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (387)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Mana: Swamp (382) - {T}: Add {B}.
+Mana: Swamp (381) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Necropolis Regent
+Resolve Stack: Necropolis Regent - Creature 6 / 5
+Mana: Swamp (397) - {T}: Add {B}.
+Mana: Swamp (370) - {T}: Add {B}.
+Mana: Swamp (380) - {T}: Add {B}.
+Mana: Swamp (374) - {T}: Add {B}.
+Mana: Swamp (387) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Drana, Liberator of Malakir
+Resolve Stack: Drana, Liberator of Malakir - Creature 2 / 3
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 40 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Mana: Swamp (89) - {T}: Add {B}.
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Plains (51) - {T}: Add {W}.
+Mana: Swamp (86) - {T}: Add {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Contagion Clasp
+Replacement Effect: If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.
+Resolve Stack: Contagion Clasp (32) - Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)
+Mana: Island (61) - {T}: Add {U}.
+Mana: Plains (50) - {T}: Add {W}.
+Mana: Forest (56) - {T}: Add {G}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Steady Progress
+Add To Stack: Ai(2)-Dnide Wildsear triggered Shadow in the Warp
+Replacement Effect: If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.
+Damage: Shadow in the Warp (192) deals 6 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 13 > 7
+Resolve Stack: Whenever an opponent casts their first noncreature spell each turn, Shadow in the Warp deals 2 damage to that player. [Card: Steady Progress (8), Activator: Ai(1)-Atraxa Counters B3, SpellAbility: Proliferate. Draw a card. ]
+Replacement Effect: If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.
+Resolve Stack: Steady Progress (8) - Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) Ai(1)-Atraxa Counters B3 draws a card.
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Elspeth, Sun's Champion
+Zone Change: Master Biomancer (7) was put into Graveyard from Battlefield.
+Zone Change: Nalfeshnee (133) was put into Graveyard from Battlefield.
+Zone Change: Flaming Tyrannosaurus (123) was put into Graveyard from Battlefield.
+Zone Change: Malakir Bloodwitch (311) was put into Graveyard from Battlefield.
+Zone Change: Necropolis Regent (346) was put into Graveyard from Battlefield.
+Resolve Stack: Elspeth, Sun's Champion (52) - Destroy all creatures with power 4 or greater.
+Add To Stack: Ai(2)-Dnide Wildsear triggered Flaming Tyrannosaurus
+Replacement Effect: If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.
+Replacement Effect: If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.
+Damage: Flaming Tyrannosaurus (123) deals 18 non-combat damage to Ai(4)-Drana Vampires.
+Damage: Flaming Tyrannosaurus (123) deals 18 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 7 > -11
+Life: Life: Ai(4)-Drana Vampires 32 > 14
+Resolve Stack: When Flaming Tyrannosaurus dies, it deals damage equal to its power to each opponent. [Zone Changer: Flaming Tyrannosaurus (123)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 41 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Necropolis Regent (346)]
+Life: Life: Ai(2)-Dnide Wildsear 19 > 21
+Replacement Effect: If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.
+Damage: Klothys, God of Destiny (116) deals 6 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 14 > 8
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Necropolis Regent (346)]]) [Phase: Ai(2)-Dnide Wildsear]
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (182) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Detective's Phoenix
+Add To Stack: Ai(2)-Dnide Wildsear triggered Detective's Phoenix
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Detective's Phoenix (164), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Detective's Phoenix - Creature 2 / 2]
+Add To Stack: Ai(2)-Dnide Wildsear cast Fertile Ground targeting [Rootbound Crag (198)]
+Resolve Stack: Cascade - Detective's Phoenix [Card: Detective's Phoenix (164), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Detective's Phoenix - Creature 2 / 2]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Fertile Ground (165), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Fertile Ground (without paying its mana cost)]
+Resolve Stack: Fertile Ground (165) -  Attach to Rootbound Crag (198)
+Replacement Effect: Riot
+Resolve Stack: Detective's Phoenix - Creature 2 / 2
+Land: Ai(2)-Dnide Wildsear played Forest (160)
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (181) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (155) - {T}: Add {G}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (154) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Etali, Primal Storm
+Replacement Effect: Riot
+Resolve Stack: Etali, Primal Storm - Creature 6 / 6
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Klothys, God of Destiny (116) and Detective's Phoenix (164) to attack Ai(4)-Drana Vampires.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(4)-Drana Vampires assigned Drana, Liberator of Malakir (403) to block Klothys, God of Destiny (116).
+Ai(4)-Drana Vampires didn't block Detective's Phoenix (164).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Damage: Drana, Liberator of Malakir (403) deals 2 damage to Klothys, God of Destiny (116).
+Life: Life: Ai(4)-Drana Vampires 8 > 10
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Replacement Effect: If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.
+Replacement Effect: If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.
+Damage: Klothys, God of Destiny (116) deals 12 damage to Drana, Liberator of Malakir (403).
+Damage: Detective's Phoenix (164) deals 9 combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 10 > 1
+Zone Change: Drana, Liberator of Malakir (403) was put into Graveyard from Battlefield.
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (178) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (174) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Count on Luck
+Add To Stack: Ai(2)-Dnide Wildsear triggered Count on Luck
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Count on Luck (130), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Count on Luck]
+Add To Stack: Ai(2)-Dnide Wildsear cast Goblin Anarchomancer
+Resolve Stack: Cascade - Count on Luck [Card: Count on Luck (130), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Count on Luck]
+Replacement Effect: Riot
+Resolve Stack: Goblin Anarchomancer - Creature 2 / 2
+Resolve Stack: Count on Luck
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (148) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Cindervines
+Add To Stack: Ai(2)-Dnide Wildsear triggered Cindervines
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Cindervines (200), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Cindervines]
+Add To Stack: Ai(2)-Dnide Wildsear cast Wild Growth targeting [Cinder Glade (110)]
+Resolve Stack: Cascade - Cindervines [Card: Cindervines (200), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Cindervines]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Wild Growth (107), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Wild Growth (without paying its mana cost)]
+Resolve Stack: Wild Growth (107) -  Attach to Cinder Glade (110)
+Resolve Stack: Cindervines
+Add To Stack: Ai(2)-Dnide Wildsear cast Destiny Spinner
+Add To Stack: Ai(2)-Dnide Wildsear triggered Destiny Spinner
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Destiny Spinner (117), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Destiny Spinner - Creature 2 / 3]
+Add To Stack: Ai(2)-Dnide Wildsear cast Sol Ring
+Resolve Stack: Cascade - Destiny Spinner [Card: Destiny Spinner (117), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Destiny Spinner - Creature 2 / 3]
+Resolve Stack: Sol Ring
+Replacement Effect: Riot
+Resolve Stack: Destiny Spinner - Creature 2 / 3
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (156) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Sanctum Weaver
+Add To Stack: Ai(2)-Dnide Wildsear triggered Sanctum Weaver
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Sanctum Weaver (163), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Sanctum Weaver - Creature 0 / 2]
+Add To Stack: Ai(2)-Dnide Wildsear cast Vandalblast targeting [Whip of Erebos (318)]
+Resolve Stack: Cascade - Sanctum Weaver [Card: Sanctum Weaver (163), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Sanctum Weaver - Creature 0 / 2]
+Zone Change: Whip of Erebos (318) was put into Graveyard from Battlefield.
+Resolve Stack: Vandalblast (166) - Destroy Whip of Erebos (318).
+Replacement Effect: Riot
+Resolve Stack: Sanctum Weaver - Creature 0 / 2
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (160) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Bear Umbra targeting [Etali, Primal Storm (171)]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Bear Umbra
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Bear Umbra (194), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Bear Umbra]
+Add To Stack: Ai(2)-Dnide Wildsear cast Dryad of the Ilysian Grove
+Resolve Stack: Cascade - Bear Umbra [Card: Bear Umbra (194), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Bear Umbra]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Dryad of the Ilysian Grove (108), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Dryad of the Ilysian Grove - Creature 2 / 4 (without paying its mana cost)]
+Replacement Effect: Riot
+Resolve Stack: Dryad of the Ilysian Grove - Creature 2 / 4
+Resolve Stack: Bear Umbra (194) -  Attach to Etali, Primal Storm (171)
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Cinder Glade (110) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Sunbird's Invocation
+Add To Stack: Ai(2)-Dnide Wildsear triggered Sunbird's Invocation
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Sunbird's Invocation (136), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Sunbird's Invocation]
+Add To Stack: Ai(2)-Dnide Wildsear cast Laelia, the Blade Reforged
+Resolve Stack: Cascade - Sunbird's Invocation [Card: Sunbird's Invocation (136), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Sunbird's Invocation]
+Replacement Effect: Riot
+Resolve Stack: Laelia, the Blade Reforged - Creature 2 / 2
+Resolve Stack: Sunbird's Invocation
+Land: Ai(2)-Dnide Wildsear played Command Tower (109)
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Command Tower (109) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Gruul Cluestone
+Add To Stack: Ai(2)-Dnide Wildsear triggered Sunbird's Invocation
+Add To Stack: Ai(2)-Dnide Wildsear cast Enduring Vitality
+Resolve Stack: Whenever you cast a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value X or less from among cards revealed this way without paying its mana cost. Put the rest on the bottom of your library in a random order. [Card: Gruul Cluestone (132), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Gruul Cluestone]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Verduran Enchantress
+Resolve Stack: Whenever you cast an enchantment spell, you may draw a card. [Card: Enduring Vitality (143), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Enduring Vitality - Creature 3 / 3 (without paying its mana cost)]
+Replacement Effect: Riot
+Resolve Stack: Enduring Vitality - Creature 3 / 3
+Resolve Stack: Gruul Cluestone
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 42 (Ai(4)-Drana Vampires)
+Phase: Ai(4)-Drana Vampires' Untap step
+Phase: Ai(4)-Drana Vampires' Upkeep step
+Phase: Ai(4)-Drana Vampires' Draw step
+Phase: Ai(4)-Drana Vampires' Main phase, precombat
+Land: Ai(4)-Drana Vampires played Swamp (375)
+Phase: Ai(4)-Drana Vampires' Beginning of Combat Step
+Phase: Ai(4)-Drana Vampires' Declare Attackers Step
+Phase: Ai(4)-Drana Vampires' Declare Blockers Step
+Phase: Ai(4)-Drana Vampires' First Strike Damage Step
+Phase: Ai(4)-Drana Vampires' Combat Damage Step
+Phase: Ai(4)-Drana Vampires' End of Combat Step
+Phase: Ai(4)-Drana Vampires' Main phase, postcombat
+Mana: Swamp (367) - {T}: Add {B}.
+Mana: Swamp (376) - {T}: Add {B}.
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Mana: Swamp (382) - {T}: Add {B}.
+Mana: Swamp (381) - {T}: Add {B}.
+Mana: Swamp (397) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Drana, Liberator of Malakir
+Resolve Stack: Drana, Liberator of Malakir - Creature 2 / 3
+Mana: Swamp (370) - {T}: Add {B}.
+Add To Stack: Ai(4)-Drana Vampires cast Indulgent Aristocrat
+Resolve Stack: Indulgent Aristocrat - Creature 1 / 1
+Phase: Ai(4)-Drana Vampires' End step
+Phase: Ai(4)-Drana Vampires' Cleanup step
+Turn: Turn 43 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Add To Stack: Ai(2)-Dnide Wildsear triggered Count on Luck
+Resolve Stack: At the beginning of your upkeep, exile the top card of your library. You may play it this turn. [Phase: Ai(2)-Dnide Wildsear]
+Add To Stack: Ai(2)-Dnide Wildsear triggered Laelia, the Blade Reforged
+Resolve Stack: Whenever one or more cards are put into exile from your library and/or your graveyard, put a +1/+1 counter on Laelia. [Amount: 1]
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Mountain (182) - {T}: Add {R}.
+Replacement Effect: If you tap a permanent for mana, it produces twice as much of that mana instead.
+Mana: Forest (155) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Gruul Charm
+Add To Stack: Ai(2)-Dnide Wildsear triggered Sunbird's Invocation
+Add To Stack: Ai(2)-Dnide Wildsear cast Heroic Intervention
+Resolve Stack: Whenever you cast a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value X or less from among cards revealed this way without paying its mana cost. Put the rest on the bottom of your library in a random order. [Card: Gruul Charm (135), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Choose one —
+• Creatures without flying can't block this turn.
+• Gain control of all permanents you own.
+• Gruul Charm deals 3 damage to each creature with flying.
+
+ Creatures without flying can't block this turn.]
+Resolve Stack: Heroic Intervention (190) - Permanents you control gain hexproof and indestructible until end of turn.
+Resolve Stack: Gruul Charm (135) -  Creatures without flying can't block this turn.
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Malakir Bloodwitch (311)]
+Life: Life: Ai(2)-Dnide Wildsear 21 > 23
+Replacement Effect: If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.
+Damage: Klothys, God of Destiny (116) deals 6 non-combat damage to Ai(4)-Drana Vampires.
+Life: Life: Ai(4)-Drana Vampires 1 > -5
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Malakir Bloodwitch (311)]]) [Phase: Ai(2)-Dnide Wildsear]
+Player Control: Ai(1)-Atraxa Counters B3 has restored control over themself
+Player Control: Ai(2)-Dnide Wildsear has restored control over themself
+Player Control: Ai(3)-Inspirit Alpha has restored control over themself
+Player Control: Ai(4)-Drana Vampires has restored control over themself
+Game Outcome: Turn 22
+Game Outcome: Ai(1)-Atraxa Counters B3 has lost because life total reached 0
+Game Outcome: Ai(2)-Dnide Wildsear has won because all opponents have lost
+Game Outcome: Ai(3)-Inspirit Alpha has lost because life total reached 0
+Game Outcome: Ai(4)-Drana Vampires has lost because life total reached 0
+Match Result: Ai(1)-Atraxa Counters B3: 0 Ai(2)-Dnide Wildsear: 1 Ai(3)-Inspirit Alpha: 0 Ai(4)-Drana Vampires: 0 
+
+Game Result: Game 1 ended in 72514 ms. Ai(2)-Dnide Wildsear has won!
+

@@ -1,0 +1,1581 @@
+Error handling registered!
+21:02:51 [INFO ] GuiBase: ##########################################
+21:02:51 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+21:02:51 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+21:02:51 [INFO ] GuiBase: OS: Mac OS X 15.7.7 aarch64
+21:02:51 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+21:02:51 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Kilo Alpha vs Ai(2)-Kilo Helm Final vs Ai(3)-Kilo Omega vs Ai(4)-Meren Graveyard B3 - one game of Commander
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Warning: default (ie. inherited from base class) implementation of chooseSingleCard is used by Ripples of Potential for forge.ai.ability.PhasesAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSingleCard is used by Ripples of Potential for forge.ai.ability.PhasesAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSingleCard is used by Ripples of Potential for forge.ai.ability.PhasesAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Meren of Clan Nel Toth for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kilo, Apogee Mind for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Mulligan: Ai(3)-Kilo Omega has kept a hand of 7 cards
+Mulligan: Ai(4)-Meren Graveyard B3 has kept a hand of 7 cards
+Mulligan: Ai(1)-Kilo Alpha has kept a hand of 7 cards
+Mulligan: Ai(2)-Kilo Helm Final has kept a hand of 7 cards
+Turn: Turn 1 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Replacement Effect: Irrigated Farmland enters tapped.
+Land: Ai(3)-Kilo Omega played Irrigated Farmland (227)
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Phase: Ai(3)-Kilo Omega's End step
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 2 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Swamp (388)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Swamp (388) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Deathrite Shaman
+Resolve Stack: Deathrite Shaman - Creature 1 / 2
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 3 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Land: Ai(1)-Kilo Alpha played Command Tower (6)
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Mana: Command Tower (6) - {T}: Add one mana of any color in your commander's color identity.
+Add To Stack: Ai(1)-Kilo Alpha cast Sol Ring
+Resolve Stack: Sol Ring
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 4 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Shivan Reef (135)
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 5 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Land: Ai(3)-Kilo Omega played Rugged Prairie (245)
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Phase: Ai(3)-Kilo Omega's End step
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 6 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Forest (367)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Deathrite Shaman (383) to attack Ai(1)-Kilo Alpha.
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Alpha didn't block Deathrite Shaman (383).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Deathrite Shaman (383) deals 1 combat damage to Ai(1)-Kilo Alpha.
+Life: Life: Ai(1)-Kilo Alpha 40 > 39
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 7 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Replacement Effect: Irrigated Farmland enters tapped.
+Land: Ai(1)-Kilo Alpha played Irrigated Farmland (28)
+Mana: Command Tower (6) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Sol Ring (8) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Kilo Alpha cast Long-Range Sensor
+Resolve Stack: Long-Range Sensor
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 8 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Karn's Bastion (120)
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 9 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Land: Ai(3)-Kilo Omega played Battlefield Forge (212)
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Mana: Irrigated Farmland (227) - {T}: Add {U}.
+Mana: Rugged Prairie (245) - {T}: Add {C}.
+Mana: Battlefield Forge (212) - {T}: Add {C}.
+Add To Stack: Ai(3)-Kilo Omega cast Relic of Legends
+Resolve Stack: Relic of Legends
+Phase: Ai(3)-Kilo Omega's End step
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 10 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Forest (368)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Deathrite Shaman (383) to attack Ai(1)-Kilo Alpha.
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Alpha didn't block Deathrite Shaman (383).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Deathrite Shaman (383) deals 1 combat damage to Ai(1)-Kilo Alpha.
+Life: Life: Ai(1)-Kilo Alpha 39 > 38
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Forest (368) - {T}: Add {G}.
+Mana: Swamp (388) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Eternal Witness
+Resolve Stack: Eternal Witness - Creature 2 / 1
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 11 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Land: Ai(1)-Kilo Alpha played Mountain (83)
+Mana: Mountain (83) - {T}: Add {R}.
+Mana: Irrigated Farmland (28) - {T}: Add {W}.
+Mana: Command Tower (6) - {T}: Add one mana of any color in your commander's color identity.
+Add To Stack: Ai(1)-Kilo Alpha cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Combat: Ai(1)-Kilo Alpha assigned Kilo, Apogee Mind (100) to attack Ai(4)-Meren Graveyard B3.
+Add To Stack: Ai(1)-Kilo Alpha triggered Kilo, Apogee Mind
+Add To Stack: Ai(1)-Kilo Alpha triggered Long-Range Sensor
+Resolve Stack: Whenever you attack a player, put a charge counter on this artifact. [Number Attackers: [Kilo, Apogee Mind (100)]]
+Resolve Stack: Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Tapped: Kilo, Apogee Mind (100)]
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Combat: Ai(4)-Meren Graveyard B3 didn't block Kilo, Apogee Mind (100).
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Damage: Kilo, Apogee Mind (100) deals 3 combat damage to Ai(4)-Meren Graveyard B3.
+Life: Life: Ai(4)-Meren Graveyard B3 40 > 37
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 12 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Island (164)
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Mana: Island (164) - {T}: Add {U}.
+Mana: Karn's Bastion (120) - {T}: Add {C}.
+Mana: Shivan Reef (135) - {T}: Add {C}.
+Add To Stack: Ai(2)-Kilo Helm Final cast Emry, Lurker of the Loch
+Resolve Stack: Emry, Lurker of the Loch - Creature 1 / 2
+Add To Stack: Ai(2)-Kilo Helm Final triggered Emry, Lurker of the Loch
+Zone Change: Ai(2)-Kilo Helm Final milled Dispatch (117), Adarkar Wastes (198), Glittering Massif (146) and Command Tower (107).
+Resolve Stack: When Emry, Lurker of the Loch enters, mill four cards. [Zone Changer: Emry, Lurker of the Loch (148)]
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 13 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Land: Ai(3)-Kilo Omega played Evolving Wilds (226)
+Zone Change: Evolving Wilds (226) was put into Graveyard from Battlefield.
+Add To Stack: Ai(3)-Kilo Omega activated Evolving Wilds
+Resolve Stack: Evolving Wilds (226) - Ai(3)-Kilo Omega searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Damage: Battlefield Forge (212) deals 1 non-combat damage to Ai(3)-Kilo Omega.
+Life: Life: Ai(3)-Kilo Omega 40 > 39
+Mana: Battlefield Forge (212) - {T}: Add {R} or {W}. Battlefield Forge deals 1 damage to you. 
+Mana: Irrigated Farmland (227) - {T}: Add {U}.
+Mana: Relic of Legends (203) - {T}: Add one mana of any color.
+Add To Stack: Ai(3)-Kilo Omega cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Combat: Ai(3)-Kilo Omega assigned Kilo, Apogee Mind (302) to attack Ai(1)-Kilo Alpha.
+Add To Stack: Ai(3)-Kilo Omega triggered Kilo, Apogee Mind
+Resolve Stack: Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Tapped: Kilo, Apogee Mind (302)]
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Combat: Ai(1)-Kilo Alpha didn't block Kilo, Apogee Mind (302).
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Damage: Kilo, Apogee Mind (302) deals 3 combat damage to Ai(1)-Kilo Alpha.
+Life: Life: Ai(1)-Kilo Alpha 38 > 35
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Phase: Ai(3)-Kilo Omega's End step
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 14 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Swamp (393)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Eternal Witness (307) and Deathrite Shaman (383) to attack Ai(1)-Kilo Alpha.
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Alpha didn't block Eternal Witness (307).
+Ai(1)-Kilo Alpha didn't block Deathrite Shaman (383).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Eternal Witness (307) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Deathrite Shaman (383) deals 1 combat damage to Ai(1)-Kilo Alpha.
+Life: Life: Ai(1)-Kilo Alpha 35 > 32
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Forest (368) - {T}: Add {G}.
+Mana: Swamp (393) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Poison-Tip Archer
+Resolve Stack: Poison-Tip Archer - Creature 2 / 3
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 15 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Mana: Mountain (83) - {T}: Add {R}.
+Mana: Sol Ring (8) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Kilo Alpha cast Chaos Warp targeting [Poison-Tip Archer (326)]
+Resolve Stack: Chaos Warp (37) - Shuffle Poison-Tip Archer (326) into its owner's library. Ai(1)-Kilo Alpha reveals the top card of Ai(4)-Meren Graveyard B3's library.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Sidisi, Undead Vizier
+Zone Change: Eternal Witness (307) was put into Graveyard from Battlefield.
+Resolve Stack: Exploit (When this creature enters, you may sacrifice a creature.) [Zone Changer: Sidisi, Undead Vizier (346)]
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Sidisi, Undead Vizier
+Resolve Stack: When Sidisi, Undead Vizier exploits a creature, you may search your library for a card, put it into your hand, then shuffle. [Exploited: Eternal Witness (307), Exploiter: Sidisi, Undead Vizier (346)]
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Replacement Effect: Sulfur Falls enters tapped unless you control an Island or a Mountain.
+Land: Ai(1)-Kilo Alpha played Sulfur Falls (17)
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Mana: Sulfur Falls (17) - {T}: Add {U} or {R}.
+Mana: Irrigated Farmland (28) - {T}: Add {U}.
+Add To Stack: Ai(1)-Kilo Alpha cast Moxite Refinery
+Resolve Stack: Moxite Refinery
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 16 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Spire of Industry (111)
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Mana: Island (164) - {T}: Add {U}.
+Damage: Shivan Reef (135) deals 1 non-combat damage to Ai(2)-Kilo Helm Final.
+Life: Life: Ai(2)-Kilo Helm Final 40 > 39
+Mana: Shivan Reef (135) - {T}: Add {U} or {R}. Shivan Reef deals 1 damage to you. 
+Mana: Karn's Bastion (120) - {T}: Add {C}.
+Mana: Spire of Industry (111) - {T}: Add {C}.
+Add To Stack: Ai(2)-Kilo Helm Final cast Tekuthal, Inquiry Dominus
+Resolve Stack: Tekuthal, Inquiry Dominus - Creature 3 / 5
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 17 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Land: Ai(3)-Kilo Omega played Island (262)
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Mana: Mountain (288) - {T}: Add {R}.
+Mana: Island (262) - {T}: Add {U}.
+Mana: Irrigated Farmland (227) - {T}: Add {U}.
+Mana: Rugged Prairie (245) - {T}: Add {C}.
+Add To Stack: Ai(3)-Kilo Omega cast Voltaic Construct
+Resolve Stack: Voltaic Construct - Creature 2 / 2
+Phase: Ai(3)-Kilo Omega's End step
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 18 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Sidisi, Undead Vizier (346) to attack Ai(3)-Kilo Omega.
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(3)-Kilo Omega didn't block Sidisi, Undead Vizier (346).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Sidisi, Undead Vizier (346) deals 4 combat damage to Ai(3)-Kilo Omega.
+Life: Life: Ai(3)-Kilo Omega 39 > 35
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Replacement Effect: Bojuka Bog enters tapped.
+Land: Ai(4)-Meren Graveyard B3 played Bojuka Bog (341)
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Bojuka Bog targeting [Ai(2)-Kilo Helm Final]
+Resolve Stack: When Bojuka Bog enters, exile all cards from target player's graveyard. (Targeting: [[Ai(2)-Kilo Helm Final]]) [Zone Changer: Bojuka Bog (341)]
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Forest (368) - {T}: Add {G}.
+Mana: Swamp (393) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Meren of Clan Nel Toth
+Resolve Stack: Meren of Clan Nel Toth - Creature 3 / 4
+Phase: Ai(4)-Meren Graveyard B3's End step
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Meren of Clan Nel Toth targeting [Eternal Witness (307)]
+Resolve Stack: At the beginning of your end step, choose target creature card in your graveyard. If that card's mana value is less than or equal to the number of experience counters you have, return it to the battlefield. Otherwise, put it into your hand. (Targeting: [[Eternal Witness (307)]]) [Phase: Ai(4)-Meren Graveyard B3]
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 19 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Land: Ai(1)-Kilo Alpha played Ancient Den (87)
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Mana: Sol Ring (8) - {T}: Add {C}{C}.
+Mana: Mountain (83) - {T}: Add {R}.
+Mana: Ancient Den (87) - {T}: Add {W}.
+Add To Stack: Ai(1)-Kilo Alpha cast Empowered Autogenerator
+Replacement Effect: Empowered Autogenerator enters tapped.
+Resolve Stack: Empowered Autogenerator
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 20 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Buried Ruin (110)
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(2)-Kilo Helm Final assigned Tekuthal, Inquiry Dominus (128) to attack Ai(4)-Meren Graveyard B3.
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(4)-Meren Graveyard B3 didn't block Tekuthal, Inquiry Dominus (128).
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Damage: Tekuthal, Inquiry Dominus (128) deals 3 combat damage to Ai(4)-Meren Graveyard B3.
+Life: Life: Ai(4)-Meren Graveyard B3 37 > 34
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Mana: Island (164) - {T}: Add {U}.
+Mana: Karn's Bastion (120) - {T}: Add {C}.
+Add To Stack: Ai(2)-Kilo Helm Final cast Arcane Signet
+Resolve Stack: Arcane Signet
+Mana: Arcane Signet (195) - {T}: Add one mana of any color in your commander's color identity.
+Damage: Shivan Reef (135) deals 1 non-combat damage to Ai(2)-Kilo Helm Final.
+Life: Life: Ai(2)-Kilo Helm Final 39 > 38
+Mana: Shivan Reef (135) - {T}: Add {U} or {R}. Shivan Reef deals 1 damage to you. 
+Life: Life: Ai(2)-Kilo Helm Final 38 > 37
+Mana: Spire of Industry (111) - {T}, Pay 1 life: Add one mana of any color. Activate only if you control an artifact.
+Add To Stack: Ai(2)-Kilo Helm Final cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 21 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Replacement Effect: Razortide Bridge enters tapped.
+Land: Ai(3)-Kilo Omega played Razortide Bridge (224)
+Mana: Island (262) - {T}: Add {U}.
+Mana: Mountain (288) - {T}: Add {R}.
+Mana: Irrigated Farmland (227) - {T}: Add {U}.
+Mana: Rugged Prairie (245) - {T}: Add {C}.
+Add To Stack: Ai(3)-Kilo Omega cast Phyrexian Metamorph
+Replacement Effect: You may have Sidisi, Undead Vizier enter as a copy of any artifact or creature on the battlefield, except it's an artifact in addition to its other types.
+Resolve Stack: Phyrexian Metamorph - Creature 0 / 0
+Add To Stack: Ai(3)-Kilo Omega triggered Sidisi, Undead Vizier
+Zone Change: Voltaic Construct (246) was put into Graveyard from Battlefield.
+Resolve Stack: Exploit (When this creature enters, you may sacrifice a creature.) [Zone Changer: Sidisi, Undead Vizier (228)]
+Add To Stack: Ai(3)-Kilo Omega triggered Sidisi, Undead Vizier
+Resolve Stack: When Sidisi, Undead Vizier exploits a creature, you may search your library for a card, put it into your hand, then shuffle. [Exploited: Voltaic Construct (246), Exploiter: Sidisi, Undead Vizier (228)]
+Phase: Ai(3)-Kilo Omega's End step
+Add To Stack: Ai(4)-Meren Graveyard B3 activated Deathrite Shaman targeting [Evolving Wilds (226)]
+Resolve Stack: Deathrite Shaman (383) - Exile Evolving Wilds (226) from the graveyard. Ai(4)-Meren Graveyard B3 adds mana.
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 22 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Evolving Wilds (327)
+Zone Change: Evolving Wilds (327) was put into Graveyard from Battlefield.
+Add To Stack: Ai(4)-Meren Graveyard B3 activated Evolving Wilds
+Resolve Stack: Evolving Wilds (327) - Ai(4)-Meren Graveyard B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Sidisi, Undead Vizier (346) and Meren of Clan Nel Toth (403) to attack Ai(2)-Kilo Helm Final.
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(2)-Kilo Helm Final didn't block Sidisi, Undead Vizier (346).
+Ai(2)-Kilo Helm Final didn't block Meren of Clan Nel Toth (403).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Sidisi, Undead Vizier (346) deals 4 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Meren of Clan Nel Toth (403) deals 3 combat damage to Ai(2)-Kilo Helm Final.
+Life: Life: Ai(2)-Kilo Helm Final 37 > 30
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Forest (368) - {T}: Add {G}.
+Mana: Swamp (393) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Pitiless Plunderer
+Resolve Stack: Pitiless Plunderer - Creature 1 / 4
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 23 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Land: Ai(1)-Kilo Alpha played Plains (53)
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Mana: Sulfur Falls (17) - {T}: Add {U} or {R}.
+Mana: Sol Ring (8) - {T}: Add {C}{C}.
+Mana: Mountain (83) - {T}: Add {R}.
+Add To Stack: Ai(1)-Kilo Alpha cast Kappa Cannoneer
+Resolve Stack: Kappa Cannoneer - Creature 4 / 4
+Add To Stack: Ai(1)-Kilo Alpha triggered Kappa Cannoneer
+Resolve Stack: Whenever an artifact you control enters, put a +1/+1 counter on Kappa Cannoneer and it can't be blocked this turn. [Zone Changer: Kappa Cannoneer (97)]
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 24 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Mana: Empowered Autogenerator (57) - {T}: Put a charge counter on Empowered Autogenerator. Add X mana of any one color, where X is the number of charge counters on Empowered Autogenerator. 
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Island (163)
+Mana: Arcane Signet (195) - {T}: Add one mana of any color in your commander's color identity.
+Damage: Shivan Reef (135) deals 1 non-combat damage to Ai(2)-Kilo Helm Final.
+Life: Life: Ai(2)-Kilo Helm Final 30 > 29
+Mana: Shivan Reef (135) - {T}: Add {U} or {R}. Shivan Reef deals 1 damage to you. 
+Mana: Island (164) - {T}: Add {U}.
+Mana: Island (163) - {T}: Add {U}.
+Mana: Karn's Bastion (120) - {T}: Add {C}.
+Add To Stack: Ai(2)-Kilo Helm Final cast Alibou, Ancient Witness
+Resolve Stack: Alibou, Ancient Witness - Creature 4 / 5
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(2)-Kilo Helm Final assigned Tekuthal, Inquiry Dominus (128) to attack Ai(1)-Kilo Alpha.
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(1)-Kilo Alpha didn't block Tekuthal, Inquiry Dominus (128).
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Damage: Tekuthal, Inquiry Dominus (128) deals 3 combat damage to Ai(1)-Kilo Alpha.
+Life: Life: Ai(1)-Kilo Alpha 32 > 29
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 25 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Combat: Ai(3)-Kilo Omega assigned Sidisi, Undead Vizier (228) to attack Ai(2)-Kilo Helm Final.
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Combat: Ai(2)-Kilo Helm Final didn't block Sidisi, Undead Vizier (228).
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Damage: Sidisi, Undead Vizier (228) deals 4 combat damage to Ai(2)-Kilo Helm Final.
+Life: Life: Ai(2)-Kilo Helm Final 29 > 25
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Mana: Island (262) - {T}: Add {U}.
+Add To Stack: Ai(3)-Kilo Omega cast Thoughtcast
+Resolve Stack: Thoughtcast (269) - Ai(3)-Kilo Omega draws two cards.
+Mana: Mountain (288) - {T}: Add {R}.
+Mana: Razortide Bridge (224) - {T}: Add {W} or {U}.
+Mana: Irrigated Farmland (227) - {T}: Add {U}.
+Mana: Rugged Prairie (245) - {T}: Add {C}.
+Mana: Battlefield Forge (212) - {T}: Add {C}.
+Mana: Relic of Legends (203) - {T}: Add one mana of any color.
+Add To Stack: Ai(3)-Kilo Omega cast Everflowing Chalice
+Replacement Effect: Everflowing Chalice enters with a charge counter on it for each time it was kicked.
+Resolve Stack: Everflowing Chalice
+Mana: Relic of Legends (203) - Tap an untapped untapped legendary creature you control: Add one mana of any color.
+Mana: Everflowing Chalice (236) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Add To Stack: Ai(3)-Kilo Omega cast Long-Range Sensor
+Add To Stack: Ai(3)-Kilo Omega triggered Kilo, Apogee Mind
+Resolve Stack: Whenever Kilo becomes tapped, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Tapped: Kilo, Apogee Mind (302)]
+Resolve Stack: Long-Range Sensor
+Phase: Ai(3)-Kilo Omega's End step
+Mana: Bojuka Bog (341) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 activated Deathrite Shaman targeting [Thoughtcast (269)]
+Life: Life: Ai(3)-Kilo Omega 35 > 33
+Life: Life: Ai(1)-Kilo Alpha 29 > 27
+Life: Life: Ai(2)-Kilo Helm Final 25 > 23
+Resolve Stack: Deathrite Shaman (383) - Exile Thoughtcast (269) from the graveyard. Ai(3)-Kilo Omega, Ai(1)-Kilo Alpha and Ai(2)-Kilo Helm Final each lose 2 life.
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 26 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Swamp (385)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Sidisi, Undead Vizier (346) to attack Ai(2)-Kilo Helm Final.
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(2)-Kilo Helm Final didn't block Sidisi, Undead Vizier (346).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Sidisi, Undead Vizier (346) deals 4 combat damage to Ai(2)-Kilo Helm Final.
+Life: Life: Ai(2)-Kilo Helm Final 23 > 19
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Swamp (393) - {T}: Add {B}.
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Forest (368) - {T}: Add {G}.
+Mana: Bojuka Bog (341) - {T}: Add {B}.
+Mana: Swamp (387) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Grave Titan
+Resolve Stack: Grave Titan - Creature 6 / 6
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Grave Titan
+Resolve Stack: Whenever Grave Titan enters or attacks, create two 2/2 black Zombie creature tokens. [Zone Changer: Grave Titan (398)]
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 27 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 28 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Mana: Empowered Autogenerator (57) - {T}: Put a charge counter on Empowered Autogenerator. Add X mana of any one color, where X is the number of charge counters on Empowered Autogenerator. 
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Exotic Orchard (200)
+Mana: Island (164) - {T}: Add {U}.
+Mana: Exotic Orchard (200) - {T}: Add one mana of any color that a land an opponent controls could produce.
+Mana: Island (163) - {T}: Add {U}.
+Mana: Arcane Signet (195) - {T}: Add one mana of any color in your commander's color identity.
+Add To Stack: Ai(2)-Kilo Helm Final cast Thought Monitor
+Resolve Stack: Thought Monitor - Creature 2 / 2
+Add To Stack: Ai(2)-Kilo Helm Final triggered Thought Monitor
+Resolve Stack: When Thought Monitor enters, draw two cards. [Zone Changer: Thought Monitor (196)]
+Life: Life: Ai(2)-Kilo Helm Final 19 > 18
+Mana: Spire of Industry (111) - {T}, Pay 1 life: Add one mana of any color. Activate only if you control an artifact.
+Add To Stack: Ai(2)-Kilo Helm Final cast Swords to Plowshares targeting [Grave Titan (398)]
+Mana: Sulfur Falls (17) - {T}: Add {U} or {R}.
+Add To Stack: Ai(1)-Kilo Alpha cast Swan Song targeting [Exile target creature. Its controller gains life equal to its power.]
+Zone Change: Send countered spell to Graveyard
+Resolve Stack: Swan Song (48) - Counter Swords to Plowshares (147). 
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Combat: Ai(2)-Kilo Helm Final assigned Tekuthal, Inquiry Dominus (128) and Thought Monitor (196) to attack Ai(4)-Meren Graveyard B3.
+Add To Stack: Ai(2)-Kilo Helm Final triggered Alibou, Ancient Witness targeting [Ai(1)-Kilo Alpha]
+Damage: Alibou, Ancient Witness (172) deals 2 non-combat damage to Ai(1)-Kilo Alpha.
+Life: Life: Ai(1)-Kilo Alpha 27 > 25
+Resolve Stack: Ai(2)-Kilo Helm Final scried 2 card(s) to the bottom of the library
+Resolve Stack: Whenever one or more artifact creatures you control attack, Alibou, Ancient Witness deals X damage to any target and you scry X, where X is the number of tapped artifacts you control. (Targeting: [[Ai(1)-Kilo Alpha]]) [Number Attackers: [Thought Monitor (196)]]
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Combat: Ai(4)-Meren Graveyard B3 didn't block Tekuthal, Inquiry Dominus (128).
+Ai(4)-Meren Graveyard B3 didn't block Thought Monitor (196).
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Damage: Tekuthal, Inquiry Dominus (128) deals 3 combat damage to Ai(4)-Meren Graveyard B3.
+Damage: Thought Monitor (196) deals 2 combat damage to Ai(4)-Meren Graveyard B3.
+Life: Life: Ai(4)-Meren Graveyard B3 34 > 29
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 29 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Mana: Mountain (288) - {T}: Add {R}.
+Mana: Island (262) - {T}: Add {U}.
+Mana: Razortide Bridge (224) - {T}: Add {W} or {U}.
+Add To Stack: Ai(3)-Kilo Omega cast Magistrate's Scepter
+Resolve Stack: Magistrate's Scepter
+Phase: Ai(3)-Kilo Omega's End step
+Mana: Swamp (385) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 activated Deathrite Shaman targeting [Chaos Warp (37)]
+Life: Life: Ai(3)-Kilo Omega 33 > 31
+Life: Life: Ai(1)-Kilo Alpha 25 > 23
+Life: Life: Ai(2)-Kilo Helm Final 18 > 16
+Resolve Stack: Deathrite Shaman (383) - Exile Chaos Warp (37) from the graveyard. Ai(3)-Kilo Omega, Ai(1)-Kilo Alpha and Ai(2)-Kilo Helm Final each lose 2 life.
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 30 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Swamp (395)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Grave Titan (398) and Sidisi, Undead Vizier (346) to attack Ai(2)-Kilo Helm Final.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Grave Titan
+Resolve Stack: Whenever Grave Titan enters or attacks, create two 2/2 black Zombie creature tokens. [Attacker: Grave Titan (398)]
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(2)-Kilo Helm Final didn't block Grave Titan (398).
+Ai(2)-Kilo Helm Final didn't block Sidisi, Undead Vizier (346).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Grave Titan (398) deals 6 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Sidisi, Undead Vizier (346) deals 4 combat damage to Ai(2)-Kilo Helm Final.
+Life: Life: Ai(2)-Kilo Helm Final 16 > 6
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Forest (368) - {T}: Add {G}.
+Mana: Swamp (388) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Eternal Witness
+Mana: Irrigated Farmland (227) - {T}: Add {U}.
+Mana: Rugged Prairie (245) - {T}: Add {C}.
+Mana: Everflowing Chalice (236) - {T}: Add {C} for each charge counter on Everflowing Chalice.
+Add To Stack: Ai(3)-Kilo Omega activated Magistrate's Scepter
+Resolve Stack: Magistrate's Scepter (293) - Ai(3)-Kilo Omega puts a charge counter on Magistrate's Scepter (293).
+Resolve Stack: Eternal Witness - Creature 2 / 1
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Eternal Witness targeting [Evolving Wilds (327)]
+Resolve Stack: When Eternal Witness enters, you may return target card from your graveyard to your hand. (Targeting: [[Evolving Wilds (327)]]) [Zone Changer: Eternal Witness (307)]
+Mana: Swamp (393) - {T}: Add {B}.
+Mana: Bojuka Bog (341) - {T}: Add {B}.
+Mana: Swamp (387) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Bone Shredder
+Resolve Stack: Bone Shredder - Creature 1 / 1
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Bone Shredder targeting [Tekuthal, Inquiry Dominus (128)]
+Zone Change: Tekuthal, Inquiry Dominus (128) was put into Graveyard from Battlefield.
+Resolve Stack: When Bone Shredder enters, destroy target nonartifact, nonblack creature. (Targeting: [[Tekuthal, Inquiry Dominus (128)]]) [Zone Changer: Bone Shredder (311)]
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 31 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Replacement Effect: Archway of Innovation enters tapped unless you control an Island.
+Land: Ai(1)-Kilo Alpha played Archway of Innovation (38)
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 32 (Ai(2)-Kilo Helm Final)
+Phase: Ai(2)-Kilo Helm Final's Untap step
+Phase: Ai(2)-Kilo Helm Final's Upkeep step
+Mana: Empowered Autogenerator (57) - {T}: Put a charge counter on Empowered Autogenerator. Add X mana of any one color, where X is the number of charge counters on Empowered Autogenerator. 
+Phase: Ai(2)-Kilo Helm Final's Draw step
+Phase: Ai(2)-Kilo Helm Final's Main phase, precombat
+Land: Ai(2)-Kilo Helm Final played Inventors' Fair (103)
+Phase: Ai(2)-Kilo Helm Final's Beginning of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Declare Attackers Step
+Phase: Ai(2)-Kilo Helm Final's Declare Blockers Step
+Phase: Ai(2)-Kilo Helm Final's First Strike Damage Step
+Phase: Ai(2)-Kilo Helm Final's Combat Damage Step
+Phase: Ai(2)-Kilo Helm Final's End of Combat Step
+Phase: Ai(2)-Kilo Helm Final's Main phase, postcombat
+Mana: Exotic Orchard (200) - {T}: Add one mana of any color that a land an opponent controls could produce.
+Mana: Island (164) - {T}: Add {U}.
+Mana: Island (163) - {T}: Add {U}.
+Mana: Arcane Signet (195) - {T}: Add one mana of any color in your commander's color identity.
+Zone Change: Inventors' Fair (103) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Kilo Helm Final activated Inventors' Fair
+Resolve Stack: Inventors' Fair (103) - Ai(2)-Kilo Helm Final searches their library for an artifact card, reveals it, puts it into their hand, then shuffles.
+Mana: Karn's Bastion (120) - {T}: Add {C}.
+Mana: Buried Ruin (110) - {T}: Add {C}.
+Add To Stack: Ai(2)-Kilo Helm Final cast Moxite Refinery
+Resolve Stack: Moxite Refinery
+Phase: Ai(2)-Kilo Helm Final's End step
+Phase: Ai(2)-Kilo Helm Final's Cleanup step
+Turn: Turn 33 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Land: Ai(3)-Kilo Omega played Plains (257)
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Combat: Ai(3)-Kilo Omega assigned Sidisi, Undead Vizier (228) to attack Ai(4)-Meren Graveyard B3.
+Add To Stack: Ai(3)-Kilo Omega triggered Long-Range Sensor
+Resolve Stack: Whenever you attack a player, put a charge counter on this artifact. [Number Attackers: [Sidisi, Undead Vizier (228)]]
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Combat: Ai(4)-Meren Graveyard B3 didn't block Sidisi, Undead Vizier (228).
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Damage: Sidisi, Undead Vizier (228) deals 4 combat damage to Ai(4)-Meren Graveyard B3.
+Life: Life: Ai(4)-Meren Graveyard B3 29 > 25
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Phase: Ai(3)-Kilo Omega's End step
+Add To Stack: Ai(4)-Meren Graveyard B3 activated Deathrite Shaman targeting [Inventors' Fair (103)]
+Resolve Stack: Deathrite Shaman (383) - Exile Inventors' Fair (103) from the graveyard. Ai(4)-Meren Graveyard B3 adds mana.
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 34 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Bone Shredder
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Forest (368) - {T}: Add {G}.
+Resolve Stack: At the beginning of your upkeep, if this permanent came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost. [Phase: Ai(4)-Meren Graveyard B3]
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Forest (369)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Grave Titan (398), Sidisi, Undead Vizier (346), Meren of Clan Nel Toth (403), Zombie Token (413), Zombie Token (414), Zombie Token (419), Zombie Token (420), Eternal Witness (307), Deathrite Shaman (383), Pitiless Plunderer (400) and Bone Shredder (311) to attack Ai(2)-Kilo Helm Final.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Grave Titan
+Resolve Stack: Whenever Grave Titan enters or attacks, create two 2/2 black Zombie creature tokens. [Attacker: Grave Titan (398)]
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(2)-Kilo Helm Final assigned Bird Token (416) to block Grave Titan (398).
+Ai(2)-Kilo Helm Final assigned Emry, Lurker of the Loch (148) to block Sidisi, Undead Vizier (346).
+Ai(2)-Kilo Helm Final assigned Kilo, Apogee Mind (201) to block Meren of Clan Nel Toth (403).
+Ai(2)-Kilo Helm Final assigned Thought Monitor (196) to block Zombie Token (413).
+Ai(2)-Kilo Helm Final assigned Alibou, Ancient Witness (172) to block Zombie Token (414).
+Ai(2)-Kilo Helm Final didn't block Zombie Token (419).
+Ai(2)-Kilo Helm Final didn't block Zombie Token (420).
+Ai(2)-Kilo Helm Final didn't block Eternal Witness (307).
+Ai(2)-Kilo Helm Final didn't block Deathrite Shaman (383).
+Ai(2)-Kilo Helm Final didn't block Pitiless Plunderer (400).
+Ai(2)-Kilo Helm Final didn't block Bone Shredder (311).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Grave Titan (398) deals 6 damage (Deathtouch) to Bird Token (416).
+Damage: Sidisi, Undead Vizier (346) deals 4 damage (Deathtouch) to Emry, Lurker of the Loch (148).
+Damage: Meren of Clan Nel Toth (403) deals 3 damage to Kilo, Apogee Mind (201).
+Damage: Zombie Token (413) deals 2 damage to Thought Monitor (196).
+Damage: Zombie Token (414) deals 2 damage to Alibou, Ancient Witness (172).
+Damage: Zombie Token (419) deals 2 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Zombie Token (420) deals 2 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Eternal Witness (307) deals 2 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Deathrite Shaman (383) deals 1 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Pitiless Plunderer (400) deals 1 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Bone Shredder (311) deals 1 combat damage to Ai(2)-Kilo Helm Final.
+Damage: Bird Token (416) deals 2 damage to Grave Titan (398).
+Damage: Emry, Lurker of the Loch (148) deals 1 damage to Sidisi, Undead Vizier (346).
+Damage: Kilo, Apogee Mind (201) deals 3 damage to Meren of Clan Nel Toth (403).
+Damage: Thought Monitor (196) deals 2 damage to Zombie Token (413).
+Damage: Alibou, Ancient Witness (172) deals 4 damage to Zombie Token (414).
+Life: Life: Ai(2)-Kilo Helm Final 6 > -3
+Zone Change: Zombie Token (413) was put into Graveyard from Battlefield.
+Zone Change: Zombie Token (414) was put into Graveyard from Battlefield.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Meren of Clan Nel Toth
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Meren of Clan Nel Toth
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Pitiless Plunderer
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Pitiless Plunderer
+Resolve Stack: Whenever another creature you control dies, create a Treasure token. [Zone Changer: Zombie Token (414)]
+Resolve Stack: Whenever another creature you control dies, create a Treasure token. [Zone Changer: Zombie Token (413)]
+Resolve Stack: Whenever another creature you control dies, you get an experience counter. [Zone Changer: Zombie Token (414)]
+Resolve Stack: Whenever another creature you control dies, you get an experience counter. [Zone Changer: Zombie Token (413)]
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Forest (369) - {T}: Add {G}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Spore Frog
+Mana: Mountain (288) - {T}: Add {R}.
+Mana: Island (262) - {T}: Add {U}.
+Mana: Plains (257) - {T}: Add {W}.
+Mana: Razortide Bridge (224) - {T}: Add {W} or {U}.
+Add To Stack: Ai(3)-Kilo Omega activated Magistrate's Scepter
+Resolve Stack: Magistrate's Scepter (293) - Ai(3)-Kilo Omega puts a charge counter on Magistrate's Scepter (293).
+Resolve Stack: Spore Frog - Creature 1 / 1
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 35 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Replacement Effect: Clifftop Retreat enters tapped unless you control a Mountain or a Plains.
+Land: Ai(1)-Kilo Alpha played Clifftop Retreat (33)
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 36 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Mana: Empowered Autogenerator (57) - {T}: Put a charge counter on Empowered Autogenerator. Add X mana of any one color, where X is the number of charge counters on Empowered Autogenerator. 
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Combat: Ai(3)-Kilo Omega assigned Sidisi, Undead Vizier (228) to attack Ai(4)-Meren Graveyard B3.
+Add To Stack: Ai(3)-Kilo Omega triggered Long-Range Sensor
+Resolve Stack: Whenever you attack a player, put a charge counter on this artifact. [Number Attackers: [Sidisi, Undead Vizier (228)]]
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Combat: Ai(4)-Meren Graveyard B3 didn't block Sidisi, Undead Vizier (228).
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Damage: Sidisi, Undead Vizier (228) deals 4 combat damage to Ai(4)-Meren Graveyard B3.
+Life: Life: Ai(4)-Meren Graveyard B3 25 > 21
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Mana: Island (262) - {T}: Add {U}.
+Mana: Mountain (288) - {T}: Add {R}.
+Mana: Plains (257) - {T}: Add {W}.
+Mana: Razortide Bridge (224) - {T}: Add {W} or {U}.
+Add To Stack: Ai(3)-Kilo Omega cast Kappa Cannoneer
+Resolve Stack: Kappa Cannoneer - Creature 4 / 4
+Add To Stack: Ai(3)-Kilo Omega triggered Kappa Cannoneer
+Resolve Stack: Whenever an artifact you control enters, put a +1/+1 counter on Kappa Cannoneer and it can't be blocked this turn. [Zone Changer: Kappa Cannoneer (299)]
+Phase: Ai(3)-Kilo Omega's End step
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 37 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Swamp (391)
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Grave Titan (398), Sidisi, Undead Vizier (346) and Bone Shredder (311) to attack Ai(3)-Kilo Omega.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Grave Titan
+Resolve Stack: Whenever Grave Titan enters or attacks, create two 2/2 black Zombie creature tokens. [Attacker: Grave Titan (398)]
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(3)-Kilo Omega didn't block Grave Titan (398).
+Ai(3)-Kilo Omega didn't block Sidisi, Undead Vizier (346).
+Ai(3)-Kilo Omega didn't block Bone Shredder (311).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Grave Titan (398) deals 6 combat damage to Ai(3)-Kilo Omega.
+Damage: Sidisi, Undead Vizier (346) deals 4 combat damage to Ai(3)-Kilo Omega.
+Damage: Bone Shredder (311) deals 1 combat damage to Ai(3)-Kilo Omega.
+Life: Life: Ai(3)-Kilo Omega 31 > 20
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Phase: Ai(4)-Meren Graveyard B3's End step
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 38 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Mana: Sulfur Falls (17) - {T}: Add {U} or {R}.
+Mana: Sol Ring (8) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Kilo Alpha cast Ripples of Potential
+Resolve Stack: Ripples of Potential (43) - Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)  phase out. 
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 39 (Ai(3)-Kilo Omega)
+Phase: Ai(3)-Kilo Omega's Untap step
+Phase: Ai(3)-Kilo Omega's Upkeep step
+Phase: Ai(3)-Kilo Omega's Draw step
+Phase: Ai(3)-Kilo Omega's Main phase, precombat
+Land: Ai(3)-Kilo Omega played Spire of Industry (210)
+Phase: Ai(3)-Kilo Omega's Beginning of Combat Step
+Phase: Ai(3)-Kilo Omega's Declare Attackers Step
+Phase: Ai(3)-Kilo Omega's Declare Blockers Step
+Phase: Ai(3)-Kilo Omega's First Strike Damage Step
+Phase: Ai(3)-Kilo Omega's Combat Damage Step
+Phase: Ai(3)-Kilo Omega's End of Combat Step
+Phase: Ai(3)-Kilo Omega's Main phase, postcombat
+Phase: Ai(3)-Kilo Omega's End step
+Mana: Swamp (388) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 activated Deathrite Shaman targeting [Ripples of Potential (43)]
+Life: Life: Ai(3)-Kilo Omega 20 > 18
+Life: Life: Ai(1)-Kilo Alpha 23 > 21
+Resolve Stack: Deathrite Shaman (383) - Exile Ripples of Potential (43) from the graveyard. Ai(3)-Kilo Omega and Ai(1)-Kilo Alpha each lose 2 life.
+Phase: Ai(3)-Kilo Omega's Cleanup step
+Turn: Turn 40 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Mana: Mountain (288) - {T}: Add {R}.
+Mana: Island (262) - {T}: Add {U}.
+Mana: Plains (257) - {T}: Add {W}.
+Mana: Razortide Bridge (224) - {T}: Add {W} or {U}.
+Add To Stack: Ai(3)-Kilo Omega activated Magistrate's Scepter
+Resolve Stack: Magistrate's Scepter (293) - Ai(3)-Kilo Omega puts a charge counter on Magistrate's Scepter (293).
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Land: Ai(4)-Meren Graveyard B3 played Evolving Wilds (327)
+Zone Change: Evolving Wilds (327) was put into Graveyard from Battlefield.
+Add To Stack: Ai(4)-Meren Graveyard B3 activated Evolving Wilds
+Resolve Stack: Evolving Wilds (327) - Ai(4)-Meren Graveyard B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Grave Titan (398), Sidisi, Undead Vizier (346), Meren of Clan Nel Toth (403), Zombie Token (419), Zombie Token (420), Eternal Witness (307), Zombie Token (423), Zombie Token (424), Zombie Token (434), Zombie Token (435), Deathrite Shaman (383), Pitiless Plunderer (400), Bone Shredder (311) and Spore Frog (338) to attack Ai(3)-Kilo Omega.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Grave Titan
+Resolve Stack: Whenever Grave Titan enters or attacks, create two 2/2 black Zombie creature tokens. [Attacker: Grave Titan (398)]
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(3)-Kilo Omega assigned Kilo, Apogee Mind (302) to block Grave Titan (398).
+Ai(3)-Kilo Omega assigned Kappa Cannoneer (299) to block Sidisi, Undead Vizier (346).
+Ai(3)-Kilo Omega assigned Sidisi, Undead Vizier (228) to block Meren of Clan Nel Toth (403).
+Ai(3)-Kilo Omega didn't block Zombie Token (419).
+Ai(3)-Kilo Omega didn't block Zombie Token (420).
+Ai(3)-Kilo Omega didn't block Eternal Witness (307).
+Ai(3)-Kilo Omega didn't block Zombie Token (423).
+Ai(3)-Kilo Omega didn't block Zombie Token (424).
+Ai(3)-Kilo Omega didn't block Zombie Token (434).
+Ai(3)-Kilo Omega didn't block Zombie Token (435).
+Ai(3)-Kilo Omega didn't block Deathrite Shaman (383).
+Ai(3)-Kilo Omega didn't block Pitiless Plunderer (400).
+Ai(3)-Kilo Omega didn't block Bone Shredder (311).
+Ai(3)-Kilo Omega didn't block Spore Frog (338).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Grave Titan (398) deals 6 damage (Deathtouch) to Kilo, Apogee Mind (302).
+Damage: Sidisi, Undead Vizier (346) deals 4 damage (Deathtouch) to Kappa Cannoneer (299).
+Damage: Meren of Clan Nel Toth (403) deals 3 damage to Sidisi, Undead Vizier (228).
+Damage: Zombie Token (419) deals 2 combat damage to Ai(3)-Kilo Omega.
+Damage: Zombie Token (420) deals 2 combat damage to Ai(3)-Kilo Omega.
+Damage: Eternal Witness (307) deals 2 combat damage to Ai(3)-Kilo Omega.
+Damage: Zombie Token (423) deals 2 combat damage to Ai(3)-Kilo Omega.
+Damage: Zombie Token (424) deals 2 combat damage to Ai(3)-Kilo Omega.
+Damage: Zombie Token (434) deals 2 combat damage to Ai(3)-Kilo Omega.
+Damage: Zombie Token (435) deals 2 combat damage to Ai(3)-Kilo Omega.
+Damage: Deathrite Shaman (383) deals 1 combat damage to Ai(3)-Kilo Omega.
+Damage: Pitiless Plunderer (400) deals 1 combat damage to Ai(3)-Kilo Omega.
+Damage: Bone Shredder (311) deals 1 combat damage to Ai(3)-Kilo Omega.
+Damage: Spore Frog (338) deals 1 combat damage to Ai(3)-Kilo Omega.
+Damage: Kilo, Apogee Mind (302) deals 3 damage to Grave Titan (398).
+Damage: Kappa Cannoneer (299) deals 5 damage to Sidisi, Undead Vizier (346).
+Damage: Sidisi, Undead Vizier (228) deals 4 damage (Deathtouch) to Meren of Clan Nel Toth (403).
+Life: Life: Ai(3)-Kilo Omega 18 > 0
+Zone Change: Meren of Clan Nel Toth (403) was put into Graveyard from Battlefield.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Pitiless Plunderer
+Resolve Stack: Whenever another creature you control dies, create a Treasure token. [Zone Changer: Meren of Clan Nel Toth (403)]
+Phase: Ai(4)-Meren Graveyard B3's End of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, postcombat
+Mana: Forest (367) - {T}: Add {G}.
+Mana: Swamp (388) - {T}: Add {B}.
+Mana: Forest (368) - {T}: Add {G}.
+Mana: Forest (369) - {T}: Add {G}.
+Mana: Swamp (393) - {T}: Add {B}.
+Mana: Bojuka Bog (341) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Meren of Clan Nel Toth
+Resolve Stack: Meren of Clan Nel Toth - Creature 3 / 4
+Mana: Swamp (387) - {T}: Add {B}.
+Mana: Swamp (385) - {T}: Add {B}.
+Mana: Swamp (395) - {T}: Add {B}.
+Add To Stack: Ai(4)-Meren Graveyard B3 cast Fleshbag Marauder
+Resolve Stack: Fleshbag Marauder - Creature 3 / 1
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Fleshbag Marauder
+Zone Change: Spore Frog (338) was put into Graveyard from Battlefield.
+Zone Change: Kilo, Apogee Mind (100) was put into Graveyard from Battlefield.
+Resolve Stack: When Fleshbag Marauder enters, each player sacrifices a creature. [Zone Changer: Fleshbag Marauder (345)]
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Meren of Clan Nel Toth
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Pitiless Plunderer
+Resolve Stack: Whenever another creature you control dies, create a Treasure token. [Zone Changer: Spore Frog (338)]
+Resolve Stack: Whenever another creature you control dies, you get an experience counter. [Zone Changer: Spore Frog (338)]
+Phase: Ai(4)-Meren Graveyard B3's End step
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Meren of Clan Nel Toth targeting [Spore Frog (338)]
+Resolve Stack: At the beginning of your end step, choose target creature card in your graveyard. If that card's mana value is less than or equal to the number of experience counters you have, return it to the battlefield. Otherwise, put it into your hand. (Targeting: [[Spore Frog (338)]]) [Phase: Ai(4)-Meren Graveyard B3]
+Phase: Ai(4)-Meren Graveyard B3's Cleanup step
+Turn: Turn 41 (Ai(1)-Kilo Alpha)
+Phase: Ai(1)-Kilo Alpha's Untap step
+Phase: Ai(1)-Kilo Alpha's Upkeep step
+Phase: Ai(1)-Kilo Alpha's Draw step
+Phase: Ai(1)-Kilo Alpha's Main phase, precombat
+Land: Ai(1)-Kilo Alpha played Rugged Prairie (45)
+Mana: Mountain (83) - {T}: Add {R}.
+Mana: Sulfur Falls (17) - {T}: Add {U} or {R}.
+Mana: Ancient Den (87) - {T}: Add {W}.
+Mana: Sol Ring (8) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Kilo Alpha cast Kilo, Apogee Mind
+Resolve Stack: Kilo, Apogee Mind - Creature 3 / 3
+Add To Stack: Ai(1)-Kilo Alpha triggered Kappa Cannoneer
+Resolve Stack: Whenever an artifact you control enters, put a +1/+1 counter on Kappa Cannoneer and it can't be blocked this turn. [Zone Changer: Kilo, Apogee Mind (100)]
+Phase: Ai(1)-Kilo Alpha's Beginning of Combat Step
+Phase: Ai(1)-Kilo Alpha's Declare Attackers Step
+Phase: Ai(1)-Kilo Alpha's Declare Blockers Step
+Phase: Ai(1)-Kilo Alpha's First Strike Damage Step
+Phase: Ai(1)-Kilo Alpha's Combat Damage Step
+Phase: Ai(1)-Kilo Alpha's End of Combat Step
+Phase: Ai(1)-Kilo Alpha's Main phase, postcombat
+Phase: Ai(1)-Kilo Alpha's End step
+Phase: Ai(1)-Kilo Alpha's Cleanup step
+Turn: Turn 42 (Ai(4)-Meren Graveyard B3)
+Phase: Ai(4)-Meren Graveyard B3's Untap step
+Phase: Ai(4)-Meren Graveyard B3's Upkeep step
+Mana: Empowered Autogenerator (57) - {T}: Put a charge counter on Empowered Autogenerator. Add X mana of any one color, where X is the number of charge counters on Empowered Autogenerator. 
+Phase: Ai(4)-Meren Graveyard B3's Draw step
+Phase: Ai(4)-Meren Graveyard B3's Main phase, precombat
+Phase: Ai(4)-Meren Graveyard B3's Beginning of Combat Step
+Phase: Ai(4)-Meren Graveyard B3's Declare Attackers Step
+Combat: Ai(4)-Meren Graveyard B3 assigned Grave Titan (398), Sidisi, Undead Vizier (346), Meren of Clan Nel Toth (403), Fleshbag Marauder (345), Zombie Token (419), Zombie Token (420), Eternal Witness (307), Zombie Token (423), Zombie Token (424), Zombie Token (434), Zombie Token (435), Zombie Token (438), Zombie Token (439), Deathrite Shaman (383), Pitiless Plunderer (400), Bone Shredder (311) and Spore Frog (338) to attack Ai(1)-Kilo Alpha.
+Add To Stack: Ai(4)-Meren Graveyard B3 triggered Grave Titan
+Resolve Stack: Whenever Grave Titan enters or attacks, create two 2/2 black Zombie creature tokens. [Attacker: Grave Titan (398)]
+Phase: Ai(4)-Meren Graveyard B3's Declare Blockers Step
+Combat: Ai(1)-Kilo Alpha assigned Kilo, Apogee Mind (100) to block Grave Titan (398).
+Ai(1)-Kilo Alpha assigned Kappa Cannoneer (97) to block Sidisi, Undead Vizier (346).
+Ai(1)-Kilo Alpha didn't block Meren of Clan Nel Toth (403).
+Ai(1)-Kilo Alpha didn't block Fleshbag Marauder (345).
+Ai(1)-Kilo Alpha didn't block Zombie Token (419).
+Ai(1)-Kilo Alpha didn't block Zombie Token (420).
+Ai(1)-Kilo Alpha didn't block Eternal Witness (307).
+Ai(1)-Kilo Alpha didn't block Zombie Token (423).
+Ai(1)-Kilo Alpha didn't block Zombie Token (424).
+Ai(1)-Kilo Alpha didn't block Zombie Token (434).
+Ai(1)-Kilo Alpha didn't block Zombie Token (435).
+Ai(1)-Kilo Alpha didn't block Zombie Token (438).
+Ai(1)-Kilo Alpha didn't block Zombie Token (439).
+Ai(1)-Kilo Alpha didn't block Deathrite Shaman (383).
+Ai(1)-Kilo Alpha didn't block Pitiless Plunderer (400).
+Ai(1)-Kilo Alpha didn't block Bone Shredder (311).
+Ai(1)-Kilo Alpha didn't block Spore Frog (338).
+Phase: Ai(4)-Meren Graveyard B3's First Strike Damage Step
+Phase: Ai(4)-Meren Graveyard B3's Combat Damage Step
+Damage: Grave Titan (398) deals 6 damage (Deathtouch) to Kilo, Apogee Mind (100).
+Damage: Sidisi, Undead Vizier (346) deals 4 damage (Deathtouch) to Kappa Cannoneer (97).
+Damage: Meren of Clan Nel Toth (403) deals 3 combat damage to Ai(1)-Kilo Alpha.
+Damage: Fleshbag Marauder (345) deals 3 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (419) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (420) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Eternal Witness (307) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (423) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (424) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (434) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (435) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (438) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Zombie Token (439) deals 2 combat damage to Ai(1)-Kilo Alpha.
+Damage: Deathrite Shaman (383) deals 1 combat damage to Ai(1)-Kilo Alpha.
+Damage: Pitiless Plunderer (400) deals 1 combat damage to Ai(1)-Kilo Alpha.
+Damage: Bone Shredder (311) deals 1 combat damage to Ai(1)-Kilo Alpha.
+Damage: Spore Frog (338) deals 1 combat damage to Ai(1)-Kilo Alpha.
+Damage: Kilo, Apogee Mind (100) deals 3 damage to Grave Titan (398).
+Damage: Kappa Cannoneer (97) deals 7 damage to Sidisi, Undead Vizier (346).
+Life: Life: Ai(1)-Kilo Alpha 21 > -7
+Player Control: Ai(1)-Kilo Alpha has restored control over themself
+Player Control: Ai(2)-Kilo Helm Final has restored control over themself
+Player Control: Ai(3)-Kilo Omega has restored control over themself
+Player Control: Ai(4)-Meren Graveyard B3 has restored control over themself
+Game Outcome: Turn 21
+Game Outcome: Ai(1)-Kilo Alpha has lost because life total reached 0
+Game Outcome: Ai(2)-Kilo Helm Final has lost because life total reached 0
+Game Outcome: Ai(3)-Kilo Omega has lost because life total reached 0
+Game Outcome: Ai(4)-Meren Graveyard B3 has won because all opponents have lost
+Match Result: Ai(1)-Kilo Alpha: 0 Ai(2)-Kilo Helm Final: 0 Ai(3)-Kilo Omega: 0 Ai(4)-Meren Graveyard B3: 1 
+
+Game Result: Game 1 ended in 52952 ms. Ai(4)-Meren Graveyard B3 has won!
+

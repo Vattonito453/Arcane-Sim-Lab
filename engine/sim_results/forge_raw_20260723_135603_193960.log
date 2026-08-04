@@ -1,0 +1,94 @@
+Error handling registered!
+13:52:03 [INFO ] GuiBase: ##########################################
+13:52:03 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+13:52:03 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+13:52:03 [INFO ] GuiBase: OS: Mac OS X 15.7.5 aarch64
+13:52:03 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+13:52:03 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Ur-Dragon B3 vs Ai(2)-Inspirit B3 vs Ai(3)-Atraxa Counters B3 vs Ai(4)-Meren Graveyard B3 - four games of Commander
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSingleCard is used by Ripples of Potential for forge.ai.ability.PhasesAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Game Outcome: Turn 20
+Game Outcome: Ai(1)-Ur-Dragon B3 has won because all opponents have lost
+Game Outcome: Ai(2)-Inspirit B3 has lost because life total reached 0
+Game Outcome: Ai(3)-Atraxa Counters B3 has lost because life total reached 0
+Game Outcome: Ai(4)-Meren Graveyard B3 has lost because life total reached 0
+Match Result: Ai(1)-Ur-Dragon B3: 1 Ai(2)-Inspirit B3: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 0 
+
+Game Result: Game 1 ended in 145115 ms. Ai(1)-Ur-Dragon B3 has won!
+
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by The Ur-Dragon for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Meren of Clan Nel Toth for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by The Ur-Dragon for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Game Outcome: Turn 20
+Game Outcome: Ai(1)-Ur-Dragon B3 has won because all opponents have lost
+Game Outcome: Ai(2)-Inspirit B3 has lost because life total reached 0
+Game Outcome: Ai(3)-Atraxa Counters B3 has lost because life total reached 0
+Game Outcome: Ai(4)-Meren Graveyard B3 has lost because life total reached 0
+Match Result: Ai(1)-Ur-Dragon B3: 2 Ai(2)-Inspirit B3: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 0 
+
+Game Result: Game 2 ended in 16200 ms. Ai(1)-Ur-Dragon B3 has won!
+
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Meren of Clan Nel Toth for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by The Ur-Dragon for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Correcting zone for Butcher of Malakir (350)
+Game Outcome: Turn 25
+Game Outcome: Ai(1)-Ur-Dragon B3 has lost because life total reached 0
+Game Outcome: Ai(2)-Inspirit B3 has lost because life total reached 0
+Game Outcome: Ai(3)-Atraxa Counters B3 has lost because life total reached 0
+Game Outcome: Ai(4)-Meren Graveyard B3 has won because all opponents have lost
+Match Result: Ai(1)-Ur-Dragon B3: 2 Ai(2)-Inspirit B3: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 1 
+
+Game Result: Game 3 ended in 35684 ms. Ai(4)-Meren Graveyard B3 has won!
+
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Atraxa, Praetors' Voice for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Correcting zone for Plant Token (554)
+Correcting zone for Dragonlord's Servant (90)
+Correcting zone for Patrolling Peacemaker (174)
+Correcting zone for Cayth, Famed Mechanist (114)
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by The Ur-Dragon for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSingleCard is used by Ripples of Potential for forge.ai.ability.PhasesAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSingleCard is used by Ripples of Potential for forge.ai.ability.PhasesAi. Consider declaring an overloaded method
+Game Outcome: Turn 24
+Game Outcome: Ai(1)-Ur-Dragon B3 has won because all opponents have lost
+Game Outcome: Ai(2)-Inspirit B3 has lost because life total reached 0
+Game Outcome: Ai(3)-Atraxa Counters B3 has lost because life total reached 0
+Game Outcome: Ai(4)-Meren Graveyard B3 has lost because life total reached 0
+Match Result: Ai(1)-Ur-Dragon B3: 3 Ai(2)-Inspirit B3: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 1 
+
+Game Result: Game 4 ended in 39015 ms. Ai(1)-Ur-Dragon B3 has won!
+

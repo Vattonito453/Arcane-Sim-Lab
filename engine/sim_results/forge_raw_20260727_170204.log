@@ -1,0 +1,931 @@
+Error handling registered!
+17:02:05 [INFO ] GuiBase: ##########################################
+17:02:05 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+17:02:05 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+17:02:05 [INFO ] GuiBase: OS: Mac OS X 15.7.7 aarch64
+17:02:05 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+17:02:05 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Atraxa Counters B3 vs Ai(2)-Dnide Wildsear - two games of Commander
+Mulligan: Ai(2)-Dnide Wildsear has mulliganed down to 6 cards.
+Mulligan: Ai(2)-Dnide Wildsear has kept a hand of 6 cards
+Mulligan: Ai(1)-Atraxa Counters B3 has kept a hand of 7 cards
+Turn: Turn 1 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Forest (150)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 2 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Replacement Effect: Temple of Plenty enters tapped.
+Land: Ai(1)-Atraxa Counters B3 played Temple of Plenty (39)
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Temple of Plenty
+Resolve Stack: Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library
+Resolve Stack: When Temple of Plenty enters, scry 1. [Zone Changer: Temple of Plenty (39)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 3 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Mountain (177)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (150) - {T}: Add {G}.
+Mana: Mountain (177) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Herald of the Pantheon
+Resolve Stack: Herald of the Pantheon - Creature 2 / 2
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 4 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Replacement Effect: Temple of Deceit enters tapped.
+Land: Ai(1)-Atraxa Counters B3 played Temple of Deceit (10)
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Temple of Deceit
+Resolve Stack: Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library
+Resolve Stack: When Temple of Deceit enters, scry 1. [Zone Changer: Temple of Deceit (10)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 5 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Herald of the Pantheon (172) to attack Ai(1)-Atraxa Counters B3.
+Mana: Temple of Plenty (39) - {T}: Add {G} or {W}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Path to Exile targeting [Herald of the Pantheon (172)]
+Zone Change: Herald of the Pantheon (172) was put into Exile from Battlefield.
+Resolve Stack: Path to Exile (6) - Exile Herald of the Pantheon (172). Ai(2)-Dnide Wildsear may search their library for a basic land card, put that card onto the battlefield tapped, then shuffle their library. 
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 6 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Replacement Effect: Temple of Malady enters tapped.
+Land: Ai(1)-Atraxa Counters B3 played Temple of Malady (20)
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Temple of Malady
+Resolve Stack: Ai(1)-Atraxa Counters B3 scried 1 card(s) to the top of the library
+Resolve Stack: When Temple of Malady enters, scry 1. [Zone Changer: Temple of Malady (20)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 7 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Mountain (181)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (150) - {T}: Add {G}.
+Mana: Mountain (177) - {T}: Add {R}.
+Mana: Mountain (187) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Klothys, God of Destiny
+Resolve Stack: Klothys, God of Destiny - Creature 4 / 5
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 8 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Island (61)
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Temple of Plenty (39) - {T}: Add {G} or {W}.
+Mana: Temple of Malady (20) - {T}: Add {B} or {G}.
+Mana: Island (61) - {T}: Add {U}.
+Mana: Temple of Deceit (10) - {T}: Add {U} or {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Atraxa, Praetors' Voice
+Resolve Stack: Atraxa, Praetors' Voice - Creature 4 / 4
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 9 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Path to Exile (6)]
+Life: Life: Ai(2)-Dnide Wildsear 40 > 42
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 40 > 38
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Path to Exile (6)]]) [Phase: Ai(2)-Dnide Wildsear]
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 10 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Forest (58)
+Mana: Forest (58) - {T}: Add {G}.
+Mana: Island (61) - {T}: Add {U}.
+Mana: Temple of Deceit (10) - {T}: Add {U} or {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Tuskguard Captain
+Resolve Stack: Tuskguard Captain - Creature 2 / 3
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Atraxa, Praetors' Voice (100) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Atraxa, Praetors' Voice (100).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Atraxa, Praetors' Voice (100) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(1)-Atraxa Counters B3 38 > 42
+Life: Life: Ai(2)-Dnide Wildsear 42 > 38
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 11 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 12 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Evolving Wilds (21)
+Zone Change: Evolving Wilds (21) was put into Graveyard from Battlefield.
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Evolving Wilds
+Resolve Stack: Evolving Wilds (21) - Ai(1)-Atraxa Counters B3 searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Atraxa, Praetors' Voice (100) and Tuskguard Captain (45) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Atraxa, Praetors' Voice (100).
+Ai(2)-Dnide Wildsear didn't block Tuskguard Captain (45).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Atraxa, Praetors' Voice (100) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(1)-Atraxa Counters B3 42 > 46
+Damage: Tuskguard Captain (45) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 38 > 32
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Forest (58) - {T}: Add {G}.
+Mana: Island (61) - {T}: Add {U}.
+Mana: Temple of Deceit (10) - {T}: Add {U} or {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Evolution Sage
+Resolve Stack: Evolution Sage - Creature 3 / 2
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 13 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Evolving Wilds (21)]
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Evolving Wilds (21)]]) [Phase: Ai(2)-Dnide Wildsear]
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 14 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Plains (48)
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Evolution Sage
+Resolve Stack: Landfall — Whenever a land you control enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Zone Changer: Plains (48)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Atraxa, Praetors' Voice (100), Evolution Sage (77) and Tuskguard Captain (45) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Atraxa, Praetors' Voice (100).
+Ai(2)-Dnide Wildsear didn't block Evolution Sage (77).
+Ai(2)-Dnide Wildsear didn't block Tuskguard Captain (45).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Atraxa, Praetors' Voice (100) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(1)-Atraxa Counters B3 46 > 50
+Damage: Evolution Sage (77) deals 3 combat damage to Ai(2)-Dnide Wildsear.
+Damage: Tuskguard Captain (45) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 32 > 23
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Island (61) - {T}: Add {U}.
+Mana: Plains (49) - {T}: Add {W}.
+Mana: Plains (48) - {T}: Add {W}.
+Mana: Forest (58) - {T}: Add {G}.
+Mana: Temple of Deceit (10) - {T}: Add {U} or {B}.
+Mana: Temple of Plenty (39) - {T}: Add {G} or {W}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Contagion Engine
+Resolve Stack: Contagion Engine
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Contagion Engine targeting [Ai(2)-Dnide Wildsear]
+Resolve Stack: When Contagion Engine enters, put a -1/-1 counter on each creature target player controls. (Targeting: [[Ai(2)-Dnide Wildsear]]) [Zone Changer: Contagion Engine (91)]
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 15 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Replacement Effect: Spire Garden enters tapped unless you have two or more opponents.
+Land: Ai(2)-Dnide Wildsear played Spire Garden (195)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 16 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Atraxa, Praetors' Voice (100), Evolution Sage (77) and Tuskguard Captain (45) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Atraxa, Praetors' Voice (100).
+Ai(2)-Dnide Wildsear didn't block Evolution Sage (77).
+Ai(2)-Dnide Wildsear didn't block Tuskguard Captain (45).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Atraxa, Praetors' Voice (100) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(1)-Atraxa Counters B3 50 > 54
+Damage: Evolution Sage (77) deals 3 combat damage to Ai(2)-Dnide Wildsear.
+Damage: Tuskguard Captain (45) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 23 > 14
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Temple of Deceit (10) - {T}: Add {U} or {B}.
+Mana: Forest (58) - {T}: Add {G}.
+Mana: Island (61) - {T}: Add {U}.
+Mana: Plains (49) - {T}: Add {W}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Corpsejack Menace
+Resolve Stack: Corpsejack Menace - Creature 4 / 4
+Mana: Temple of Malady (20) - {T}: Add {B} or {G}.
+Mana: Temple of Plenty (39) - {T}: Add {G} or {W}.
+Mana: Plains (48) - {T}: Add {W}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Painful Truths
+Life: Life: Ai(1)-Atraxa Counters B3 54 > 51
+Resolve Stack: Painful Truths (24) - Ai(1)-Atraxa Counters B3 draws three cards. Ai(1)-Atraxa Counters B3 loses 3 life.
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 17 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Painful Truths (24)]
+Life: Life: Ai(2)-Dnide Wildsear 14 > 16
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 51 > 49
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Painful Truths (24)]]) [Phase: Ai(2)-Dnide Wildsear]
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (150) - {T}: Add {G}.
+Mana: Mountain (177) - {T}: Add {R}.
+Mana: Mountain (187) - {T}: Add {R}.
+Mana: Mountain (181) - {T}: Add {R}.
+Mana: Spire Garden (195) - {T}: Add {R} or {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Wildsear, Scouring Maw
+Resolve Stack: Wildsear, Scouring Maw - Creature 6 / 6
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Discard: Ai(2)-Dnide Wildsear discards Fiery Emancipation (199).
+Turn: Turn 18 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Corpsejack Menace (38), Evolution Sage (77), Tuskguard Captain (45) and Atraxa, Praetors' Voice (100) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) to block Corpsejack Menace (38).
+Ai(2)-Dnide Wildsear didn't block Evolution Sage (77).
+Ai(2)-Dnide Wildsear didn't block Tuskguard Captain (45).
+Ai(2)-Dnide Wildsear didn't block Atraxa, Praetors' Voice (100).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Corpsejack Menace (38) deals 4 damage to Wildsear, Scouring Maw (201).
+Damage: Evolution Sage (77) deals 3 combat damage to Ai(2)-Dnide Wildsear.
+Damage: Tuskguard Captain (45) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Damage: Atraxa, Praetors' Voice (100) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(1)-Atraxa Counters B3 49 > 53
+Damage: Wildsear, Scouring Maw (201) deals 6 damage to Corpsejack Menace (38).
+Life: Life: Ai(2)-Dnide Wildsear 16 > 7
+Zone Change: Corpsejack Menace (38) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Island (61) - {T}: Add {U}.
+Mana: Forest (58) - {T}: Add {G}.
+Mana: Plains (49) - {T}: Add {W}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Gilder Bairn
+Resolve Stack: Gilder Bairn - Creature 1 / 3
+Mana: Temple of Plenty (39) - {T}: Add {G} or {W}.
+Mana: Plains (48) - {T}: Add {W}.
+Mana: Temple of Deceit (10) - {T}: Add {U} or {B}.
+Mana: Temple of Malady (20) - {T}: Add {B} or {G}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Forgotten Ancient
+Resolve Stack: Forgotten Ancient - Creature 0 / 3
+Phase: Ai(1)-Atraxa Counters B3's End step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Atraxa, Praetors' Voice
+Resolve Stack: At the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 19 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Add To Stack: Ai(2)-Dnide Wildsear triggered Klothys, God of Destiny targeting [Corpsejack Menace (38)]
+Life: Life: Ai(2)-Dnide Wildsear 7 > 9
+Damage: Klothys, God of Destiny (116) deals 2 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 53 > 51
+Resolve Stack: At the beginning of your first main phase, exile target card from a graveyard. If it was a land card, add {R} or {G}. Otherwise, you gain 2 life and Klothys deals 2 damage to each opponent. (Targeting: [[Corpsejack Menace (38)]]) [Phase: Ai(2)-Dnide Wildsear]
+Land: Ai(2)-Dnide Wildsear played Forest (155)
+Mana: Mountain (177) - {T}: Add {R}.
+Mana: Mountain (187) - {T}: Add {R}.
+Mana: Mountain (181) - {T}: Add {R}.
+Mana: Forest (150) - {T}: Add {G}.
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Spire Garden (195) - {T}: Add {R} or {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Keeper of Secrets
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Forgotten Ancient
+Resolve Stack: Whenever a player casts a spell, you may put a +1/+1 counter on Forgotten Ancient. [Card: Keeper of Secrets (120), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Keeper of Secrets - Creature 6 / 4]
+Resolve Stack: Keeper of Secrets - Creature 6 / 4
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 20 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Forgotten Ancient
+Resolve Stack: At the beginning of your upkeep, you may move any number of +1/+1 counters from Forgotten Ancient onto other creatures. [Phase: Ai(1)-Atraxa Counters B3]
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Forest (56)
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Evolution Sage
+Resolve Stack: Landfall — Whenever a land you control enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.) [Zone Changer: Forest (56)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Atraxa, Praetors' Voice (100) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Atraxa, Praetors' Voice (100).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Atraxa, Praetors' Voice (100) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(1)-Atraxa Counters B3 51 > 55
+Life: Life: Ai(2)-Dnide Wildsear 9 > 5
+Player Control: Ai(1)-Atraxa Counters B3 has restored control over themself
+Player Control: Ai(2)-Dnide Wildsear has restored control over themself
+Game Outcome: Turn 10
+Game Outcome: Ai(1)-Atraxa Counters B3 has won because all opponents have lost
+Game Outcome: Ai(2)-Dnide Wildsear has lost due to accumulation of 21 damage from generals
+Match Result: Ai(1)-Atraxa Counters B3: 1 Ai(2)-Dnide Wildsear: 0 
+
+Game Result: Game 1 ended in 3481 ms. Ai(1)-Atraxa Counters B3 has won!
+
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wildsear, Scouring Maw for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Mulligan: Ai(2)-Dnide Wildsear has kept a hand of 7 cards
+Mulligan: Ai(1)-Atraxa Counters B3 has kept a hand of 7 cards
+Turn: Turn 1 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Forest (160)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (160) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Sol Ring
+Resolve Stack: Sol Ring
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 2 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Land: Ai(1)-Atraxa Counters B3 played Llanowar Wastes (70)
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Llanowar Wastes (70) - {T}: Add {C}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Sol Ring
+Resolve Stack: Sol Ring
+Mana: Sol Ring (13) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Arcane Signet
+Resolve Stack: Arcane Signet
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 3 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Mountain (175)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (160) - {T}: Add {G}.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Sanctum Weaver
+Resolve Stack: Sanctum Weaver - Creature 0 / 2
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 4 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Land: Ai(1)-Atraxa Counters B3 played Swamp (87)
+Mana: Arcane Signet (92) - {T}: Add one mana of any color in your commander's color identity.
+Damage: Llanowar Wastes (70) deals 1 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 40 > 39
+Mana: Llanowar Wastes (70) - {T}: Add {B} or {G}. Llanowar Wastes deals 1 damage to you. 
+Mana: Sol Ring (13) - {T}: Add {C}{C}.
+Mana: Swamp (87) - {T}: Add {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Juniper Order Ranger
+Resolve Stack: Juniper Order Ranger - Creature 2 / 4
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 5 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Land: Ai(2)-Dnide Wildsear played Forest (158)
+Mana: Forest (160) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Bear Umbra targeting [Sanctum Weaver (163)]
+Resolve Stack: Bear Umbra (194) -  Attach to Sanctum Weaver (163)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Sanctum Weaver (163) to attack Ai(1)-Atraxa Counters B3.
+Add To Stack: Ai(2)-Dnide Wildsear triggered Sanctum Weaver
+Resolve Stack: Whenever this creature attacks, untap all lands you control. [Attacker: Sanctum Weaver (163)]
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Juniper Order Ranger (15) to block Sanctum Weaver (163).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Sanctum Weaver (163) deals 2 damage to Juniper Order Ranger (15).
+Damage: Juniper Order Ranger (15) deals 2 damage to Sanctum Weaver (163).
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 6 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Mana: Arcane Signet (92) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Swamp (87) - {T}: Add {B}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Winding Constrictor
+Resolve Stack: Winding Constrictor - Creature 2 / 3
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Juniper Order Ranger
+Replacement Effect: If one or more counters would be put on an artifact or creature you control, that many plus one of each of those kinds of counters are put on that permanent instead.
+Replacement Effect: If one or more counters would be put on an artifact or creature you control, that many plus one of each of those kinds of counters are put on that permanent instead.
+Resolve Stack: Whenever another creature you control enters, put a +1/+1 counter on that creature and a +1/+1 counter on Juniper Order Ranger. [Zone Changer: Winding Constrictor (97)]
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Juniper Order Ranger (15) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Juniper Order Ranger (15).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Juniper Order Ranger (15) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 40 > 36
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Sol Ring (13) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Contagion Clasp
+Resolve Stack: Contagion Clasp
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Contagion Clasp targeting [Sanctum Weaver (163)]
+Resolve Stack: When Contagion Clasp enters, put a -1/-1 counter on target creature. (Targeting: [[Sanctum Weaver (163)]]) [Zone Changer: Contagion Clasp (32)]
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 7 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Mana: Mountain (175) - {T}: Add {R}.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Mana: Forest (160) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Sanctum Weaver (163) - {T}: Add X mana of any one color, where X is the number of enchantments you control.
+Add To Stack: Ai(2)-Dnide Wildsear cast Blasphemous Act
+Damage: Blasphemous Act (114) deals 13 damage to Juniper Order Ranger (15).
+Damage: Blasphemous Act (114) deals 13 damage to Winding Constrictor (97).
+Damage: Blasphemous Act (114) deals 13 damage to Sanctum Weaver (163).
+Resolve Stack: Blasphemous Act (114) - Deals 13 damage to each creature.
+Zone Change: Bear Umbra (194) was put into Graveyard from Battlefield.
+Replacement Effect: Umbra armor (If enchanted permanent would be destroyed, instead remove all damage marked on it and destroy this Aura.)
+Zone Change: Juniper Order Ranger (15) was put into Graveyard from Battlefield.
+Zone Change: Winding Constrictor (97) was put into Graveyard from Battlefield.
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Land: Ai(2)-Dnide Wildsear played Mountain (179)
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 8 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Arcane Signet (92) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Swamp (87) - {T}: Add {B}.
+Mana: Sol Ring (13) - {T}: Add {C}{C}.
+Mana: Llanowar Wastes (70) - {T}: Add {C}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Vraska the Unseen
+Replacement Effect: Vraska the Unseen enters with five loyalty counters on it.
+Resolve Stack: Vraska the Unseen
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Vraska the Unseen targeting [Sanctum Weaver (163)]
+Zone Change: Sanctum Weaver (163) was put into Graveyard from Battlefield.
+Resolve Stack: Vraska the Unseen (80) - Destroy Sanctum Weaver (163).
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 9 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Land: Ai(2)-Dnide Wildsear played Forest (150)
+Mana: Mountain (175) - {T}: Add {R}.
+Mana: Forest (160) - {T}: Add {G}.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Mana: Forest (158) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Wildsear, Scouring Maw
+Resolve Stack: Wildsear, Scouring Maw - Creature 6 / 6
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 10 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Add To Stack: Ai(1)-Atraxa Counters B3 activated Vraska the Unseen
+Resolve Stack: Vraska the Unseen (80) - Until your next turn, whenever a creature deals combat damage to Vraska the Unseen, destroy that creature.
+Mana: Arcane Signet (92) - {T}: Add one mana of any color in your commander's color identity.
+Mana: Swamp (87) - {T}: Add {B}.
+Mana: Sol Ring (13) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Corpsejack Menace
+Resolve Stack: Corpsejack Menace - Creature 4 / 4
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 11 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) to attack Vraska the Unseen (80).
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(1)-Atraxa Counters B3 didn't block Wildsear, Scouring Maw (201).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Zone Change: Vraska the Unseen (80) was put into Graveyard from Battlefield.
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Vraska the Unseen
+Zone Change: Wildsear, Scouring Maw (201) was put into Graveyard from Battlefield.
+Resolve Stack: Until your next turn, whenever a creature deals combat damage to Vraska the Unseen, destroy that creature. [Damage Source: Wildsear, Scouring Maw (201), Damaged: Vraska the Unseen (80), Amount: 6]
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Land: Ai(2)-Dnide Wildsear played Mountain (173)
+Mana: Forest (160) - {T}: Add {G}.
+Mana: Mountain (175) - {T}: Add {R}.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Mana: Mountain (179) - {T}: Add {R}.
+Mana: Mountain (173) - {T}: Add {R}.
+Mana: Forest (158) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Wildsear, Scouring Maw
+Resolve Stack: Wildsear, Scouring Maw - Creature 6 / 6
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 12 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Mana: Arcane Signet (92) - {T}: Add one mana of any color in your commander's color identity.
+Damage: Llanowar Wastes (70) deals 1 non-combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 39 > 38
+Mana: Llanowar Wastes (70) - {T}: Add {B} or {G}. Llanowar Wastes deals 1 damage to you. 
+Mana: Sol Ring (13) - {T}: Add {C}{C}.
+Add To Stack: Ai(1)-Atraxa Counters B3 cast Eternal Witness
+Resolve Stack: Eternal Witness - Creature 2 / 1
+Add To Stack: Ai(1)-Atraxa Counters B3 triggered Eternal Witness targeting [Juniper Order Ranger (15)]
+Resolve Stack: When Eternal Witness enters, you may return target card from your graveyard to your hand. (Targeting: [[Juniper Order Ranger (15)]]) [Zone Changer: Eternal Witness (5)]
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 13 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Mana: Mountain (175) - {T}: Add {R}.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Mana: Mountain (179) - {T}: Add {R}.
+Mana: Mountain (173) - {T}: Add {R}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Vandalblast
+Zone Change: Sol Ring (13) was put into Graveyard from Battlefield.
+Zone Change: Arcane Signet (92) was put into Graveyard from Battlefield.
+Zone Change: Contagion Clasp (32) was put into Graveyard from Battlefield.
+Resolve Stack: Vandalblast (166) - Destroy each artifact you don't control.
+Land: Ai(2)-Dnide Wildsear played Forest (154)
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) to attack Ai(1)-Atraxa Counters B3.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(1)-Atraxa Counters B3 didn't block Wildsear, Scouring Maw (201).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Wildsear, Scouring Maw (201) deals 6 combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 38 > 32
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Mana: Forest (160) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (150) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Cultivate
+Resolve Stack: Cultivate (126) - Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.   
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 14 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Corpsejack Menace (38) and Eternal Witness (5) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Corpsejack Menace (38).
+Ai(2)-Dnide Wildsear didn't block Eternal Witness (5).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Corpsejack Menace (38) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Damage: Eternal Witness (5) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 36 > 30
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 15 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) to attack Ai(1)-Atraxa Counters B3.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(1)-Atraxa Counters B3 didn't block Wildsear, Scouring Maw (201).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Wildsear, Scouring Maw (201) deals 6 combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 32 > 26
+Phase: Ai(2)-Dnide Wildsear's End of Combat Step
+Phase: Ai(2)-Dnide Wildsear's Main phase, postcombat
+Replacement Effect: As Stomping Ground enters, you may pay 2 life. If you don't, it enters tapped.
+Land: Ai(2)-Dnide Wildsear played Stomping Ground (104)
+Phase: Ai(2)-Dnide Wildsear's End step
+Phase: Ai(2)-Dnide Wildsear's Cleanup step
+Turn: Turn 16 (Ai(1)-Atraxa Counters B3)
+Phase: Ai(1)-Atraxa Counters B3's Untap step
+Phase: Ai(1)-Atraxa Counters B3's Upkeep step
+Phase: Ai(1)-Atraxa Counters B3's Draw step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, precombat
+Phase: Ai(1)-Atraxa Counters B3's Beginning of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Declare Attackers Step
+Combat: Ai(1)-Atraxa Counters B3 assigned Corpsejack Menace (38) and Eternal Witness (5) to attack Ai(2)-Dnide Wildsear.
+Phase: Ai(1)-Atraxa Counters B3's Declare Blockers Step
+Combat: Ai(2)-Dnide Wildsear didn't block Corpsejack Menace (38).
+Ai(2)-Dnide Wildsear didn't block Eternal Witness (5).
+Phase: Ai(1)-Atraxa Counters B3's First Strike Damage Step
+Phase: Ai(1)-Atraxa Counters B3's Combat Damage Step
+Damage: Corpsejack Menace (38) deals 4 combat damage to Ai(2)-Dnide Wildsear.
+Damage: Eternal Witness (5) deals 2 combat damage to Ai(2)-Dnide Wildsear.
+Life: Life: Ai(2)-Dnide Wildsear 30 > 24
+Phase: Ai(1)-Atraxa Counters B3's End of Combat Step
+Phase: Ai(1)-Atraxa Counters B3's Main phase, postcombat
+Phase: Ai(1)-Atraxa Counters B3's End step
+Phase: Ai(1)-Atraxa Counters B3's Cleanup step
+Turn: Turn 17 (Ai(2)-Dnide Wildsear)
+Phase: Ai(2)-Dnide Wildsear's Untap step
+Phase: Ai(2)-Dnide Wildsear's Upkeep step
+Phase: Ai(2)-Dnide Wildsear's Draw step
+Phase: Ai(2)-Dnide Wildsear's Main phase, precombat
+Mana: Forest (160) - {T}: Add {G}.
+Mana: Mountain (175) - {T}: Add {R}.
+Mana: Sol Ring (112) - {T}: Add {C}{C}.
+Mana: Forest (158) - {T}: Add {G}.
+Add To Stack: Ai(2)-Dnide Wildsear cast Xenagos, God of Revels
+Add To Stack: Ai(2)-Dnide Wildsear triggered Xenagos, God of Revels
+Add To Stack: Ai(2)-Dnide Wildsear cast Count on Luck
+Resolve Stack: Cascade - Xenagos, God of Revels [Card: Xenagos, God of Revels (125), Activator: Ai(2)-Dnide Wildsear, SpellAbility: Xenagos, God of Revels - Creature 6 / 5]
+Resolve Stack: Count on Luck
+Resolve Stack: Xenagos, God of Revels - Creature 6 / 5
+Phase: Ai(2)-Dnide Wildsear's Beginning of Combat Step
+Add To Stack: Ai(2)-Dnide Wildsear triggered Xenagos, God of Revels targeting [Wildsear, Scouring Maw (201)]
+Resolve Stack: At the beginning of combat on your turn, another target creature you control gains haste and gets +X/+X until end of turn, where X is that creature's power. (Targeting: [[Wildsear, Scouring Maw (201)]]) [Phase: Ai(2)-Dnide Wildsear]
+Phase: Ai(2)-Dnide Wildsear's Declare Attackers Step
+Combat: Ai(2)-Dnide Wildsear assigned Wildsear, Scouring Maw (201) to attack Ai(1)-Atraxa Counters B3.
+Phase: Ai(2)-Dnide Wildsear's Declare Blockers Step
+Combat: Ai(1)-Atraxa Counters B3 didn't block Wildsear, Scouring Maw (201).
+Phase: Ai(2)-Dnide Wildsear's First Strike Damage Step
+Phase: Ai(2)-Dnide Wildsear's Combat Damage Step
+Damage: Wildsear, Scouring Maw (201) deals 12 combat damage to Ai(1)-Atraxa Counters B3.
+Life: Life: Ai(1)-Atraxa Counters B3 26 > 14
+Player Control: Ai(1)-Atraxa Counters B3 has restored control over themself
+Player Control: Ai(2)-Dnide Wildsear has restored control over themself
+Game Outcome: Turn 9
+Game Outcome: Ai(1)-Atraxa Counters B3 has lost due to accumulation of 21 damage from generals
+Game Outcome: Ai(2)-Dnide Wildsear has won because all opponents have lost
+Match Result: Ai(1)-Atraxa Counters B3: 1 Ai(2)-Dnide Wildsear: 1 
+
+Game Result: Game 2 ended in 2079 ms. Ai(2)-Dnide Wildsear has won!
+

@@ -1,0 +1,1051 @@
+Error handling registered!
+16:30:53 [INFO ] GuiBase: ##########################################
+16:30:53 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+16:30:53 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+16:30:53 [INFO ] GuiBase: OS: Mac OS X 15.7.7 aarch64
+16:30:53 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+16:30:53 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Krenko Goblins vs Ai(2)-Talrand Control - two games of Commander
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Talrand, Sky Summoner for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Krenko, Mob Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSinglePlayer is used by Fact or Fiction for forge.ai.ability.TwoPilesAi. Consider declaring an overloaded method
+Mulligan: Ai(1)-Krenko Goblins has kept a hand of 7 cards
+Mulligan: Ai(2)-Talrand Control has kept a hand of 7 cards
+Turn: Turn 1 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (91)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 2 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (174)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (174) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Mystic Remora
+Resolve Stack: Mystic Remora
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 3 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (54)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 4 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Add To Stack: Ai(2)-Talrand Control triggered Mystic Remora
+Mana: Island (174) - {T}: Add {U}.
+Resolve Stack: Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.) [Phase: Ai(2)-Talrand Control]
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (140)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 5 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (50)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 6 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Add To Stack: Ai(2)-Talrand Control triggered Mystic Remora
+Mana: Island (174) - {T}: Add {U}.
+Mana: Island (140) - {T}: Add {U}.
+Resolve Stack: Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.) [Phase: Ai(2)-Talrand Control]
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 7 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (76)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (50) - {T}: Add {R}.
+Mana: Mountain (76) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss - Creature 3 / 3
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 8 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Add To Stack: Ai(2)-Talrand Control triggered Mystic Remora
+Zone Change: Mystic Remora (112) was put into Graveyard from Battlefield.
+Resolve Stack: Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.) [Phase: Ai(2)-Talrand Control]
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (153)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (174) - {T}: Add {U}.
+Mana: Island (140) - {T}: Add {U}.
+Mana: Island (153) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Mulldrifter
+Resolve Stack: Mulldrifter (Evoked)
+Add To Stack: Ai(2)-Talrand Control triggered Mulldrifter
+Add To Stack: Ai(2)-Talrand Control triggered Mulldrifter
+Resolve Stack: When Mulldrifter enters, draw two cards. [Zone Changer: Mulldrifter (132)]
+Zone Change: Mulldrifter (132) was put into Graveyard from Battlefield.
+Resolve Stack: Evoke (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.) [Zone Changer: Mulldrifter (132)]
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Discard: Ai(2)-Talrand Control discards Island (151).
+Turn: Turn 9 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (78)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 40 > 37
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (50) - {T}: Add {R}.
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (78) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Siege-Gang Commander
+Resolve Stack: Siege-Gang Commander - Creature 2 / 2
+Add To Stack: Ai(1)-Krenko Goblins triggered Siege-Gang Commander
+Resolve Stack: When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens. [Zone Changer: Siege-Gang Commander (10)]
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 10 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (162)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (174) - {T}: Add {U}.
+Mana: Island (140) - {T}: Add {U}.
+Mana: Island (153) - {T}: Add {U}.
+Mana: Island (162) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Talrand, Sky Summoner
+Resolve Stack: Talrand, Sky Summoner - Creature 2 / 2
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 11 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (54) - {T}: Add {R}.
+Zone Change: Goblin Token (311) was put into Graveyard from Battlefield.
+Add To Stack: Ai(1)-Krenko Goblins activated Siege-Gang Commander targeting [Talrand, Sky Summoner (201)]
+Damage: Siege-Gang Commander (10) deals 2 damage to Talrand, Sky Summoner (201).
+Resolve Stack: Siege-Gang Commander (10) - Siege-Gang Commander (10) deals 2 damage to Talrand, Sky Summoner (201).
+Zone Change: Talrand, Sky Summoner (201) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (72)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Siege-Gang Commander (10), Goblin Token (312) and Goblin Token (313) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100).
+Ai(2)-Talrand Control didn't block Siege-Gang Commander (10).
+Ai(2)-Talrand Control didn't block Goblin Token (312).
+Ai(2)-Talrand Control didn't block Goblin Token (313).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.
+Damage: Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (312) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (313) deals 1 combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 37 > 30
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 12 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (171)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (174) - {T}: Add {U}.
+Mana: Island (140) - {T}: Add {U}.
+Mana: Island (153) - {T}: Add {U}.
+Mana: Island (162) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Dissipation Field
+Resolve Stack: Dissipation Field
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 13 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (59)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Siege-Gang Commander (10), Goblin Token (312) and Goblin Token (313) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100).
+Ai(2)-Talrand Control didn't block Siege-Gang Commander (10).
+Ai(2)-Talrand Control didn't block Goblin Token (312).
+Ai(2)-Talrand Control didn't block Goblin Token (313).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.
+Damage: Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (312) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (313) deals 1 combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 30 > 23
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (313), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (312), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Siege-Gang Commander (10), Damaged: Ai(2)-Talrand Control, Amount: 2]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Krenko, Mob Boss (100), Damaged: Ai(2)-Talrand Control, Amount: 3]
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (50) - {T}: Add {R}.
+Mana: Mountain (76) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss - Creature 3 / 3
+Mana: Mountain (78) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Spikeshot Elder
+Resolve Stack: Spikeshot Elder - Creature 1 / 1
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 14 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (139)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (174) - {T}: Add {U}.
+Mana: Island (140) - {T}: Add {U}.
+Mana: Island (153) - {T}: Add {U}.
+Mana: Island (162) - {T}: Add {U}.
+Mana: Island (171) - {T}: Add {U}.
+Mana: Island (139) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Mahamoti Djinn
+Resolve Stack: Mahamoti Djinn - Creature 5 / 6
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 15 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (79)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (50) - {T}: Add {R}.
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (78) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Siege-Gang Commander
+Resolve Stack: Siege-Gang Commander - Creature 2 / 2
+Add To Stack: Ai(1)-Krenko Goblins triggered Siege-Gang Commander
+Resolve Stack: When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens. [Zone Changer: Siege-Gang Commander (10)]
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 16 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (179)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Combat: Ai(2)-Talrand Control assigned Mahamoti Djinn (200) to attack Ai(1)-Krenko Goblins.
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Combat: Ai(1)-Krenko Goblins didn't block Mahamoti Djinn (200).
+Add To Stack: Ai(1)-Krenko Goblins activated Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss (100) - Ai(1)-Krenko Goblins creates twelve 1/1 red Goblin creature tokens.
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Damage: Mahamoti Djinn (200) deals 5 combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 40 > 35
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (174) - {T}: Add {U}.
+Mana: Island (140) - {T}: Add {U}.
+Mana: Island (153) - {T}: Add {U}.
+Mana: Island (162) - {T}: Add {U}.
+Mana: Island (171) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Air Elemental
+Resolve Stack: Air Elemental - Creature 4 / 4
+Phase: Ai(2)-Talrand Control's End step
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (59) - {T}: Add {R}.
+Mana: Mountain (79) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins activated Spikeshot Elder targeting [Ai(2)-Talrand Control]
+Damage: Spikeshot Elder (18) deals 1 non-combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 23 > 22
+Resolve Stack: Spikeshot Elder (18) - Spikeshot Elder (18) deals 1 damage to Ai(2)-Talrand Control.
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Spikeshot Elder (18), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 17 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (87)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Siege-Gang Commander (10), Goblin Token (446), Goblin Token (447), Goblin Token (448), Goblin Token (478), Goblin Token (479), Goblin Token (480), Goblin Token (481), Goblin Token (482) and Goblin Token (483) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control assigned Air Elemental (120) to block Krenko, Mob Boss (100).
+Ai(2)-Talrand Control didn't block Siege-Gang Commander (10).
+Ai(2)-Talrand Control didn't block Goblin Token (446).
+Ai(2)-Talrand Control didn't block Goblin Token (447).
+Ai(2)-Talrand Control didn't block Goblin Token (448).
+Ai(2)-Talrand Control didn't block Goblin Token (478).
+Ai(2)-Talrand Control didn't block Goblin Token (479).
+Ai(2)-Talrand Control didn't block Goblin Token (480).
+Ai(2)-Talrand Control didn't block Goblin Token (481).
+Ai(2)-Talrand Control didn't block Goblin Token (482).
+Ai(2)-Talrand Control didn't block Goblin Token (483).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 3 damage to Air Elemental (120).
+Damage: Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (446) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (447) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (448) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (478) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (479) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (480) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (481) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (482) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (483) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Air Elemental (120) deals 4 damage to Krenko, Mob Boss (100).
+Life: Life: Ai(2)-Talrand Control 22 > 11
+Zone Change: Krenko, Mob Boss (100) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Add To Stack: Ai(2)-Talrand Control triggered Dissipation Field
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (54) - {T}: Add {R}.
+Zone Change: Goblin Token (446) was put into Graveyard from Battlefield.
+Add To Stack: Ai(1)-Krenko Goblins activated Siege-Gang Commander targeting [Air Elemental (120)]
+Damage: Siege-Gang Commander (10) deals 2 damage to Air Elemental (120).
+Resolve Stack: Siege-Gang Commander (10) - Siege-Gang Commander (10) deals 2 damage to Air Elemental (120).
+Zone Change: Air Elemental (120) was put into Graveyard from Battlefield.
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (483), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (482), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (481), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (480), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (479), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (478), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (448), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (447), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (446), Damaged: Ai(2)-Talrand Control, Amount: 1]
+Resolve Stack: Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Siege-Gang Commander (10), Damaged: Ai(2)-Talrand Control, Amount: 2]
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (50) - {T}: Add {R}.
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (78) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (59) - {T}: Add {R}.
+Mana: Mountain (79) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss - Creature 3 / 3
+Mana: Mountain (87) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Spikeshot Elder
+Resolve Stack: Spikeshot Elder - Creature 1 / 1
+Phase: Ai(1)-Krenko Goblins' End step
+Mana: Island (139) - {T}: Add {U}.
+Mana: Island (179) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Impulse
+Resolve Stack: Impulse (187) - Ai(2)-Talrand Control looks at the top four cards of their library. They put one of them into their hand and put the rest on the bottom of their library in any order.
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 18 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Mana: Island (174) - {T}: Add {U}.
+Mana: Island (140) - {T}: Add {U}.
+Mana: Island (153) - {T}: Add {U}.
+Mana: Island (162) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Fact or Fiction
+Resolve Stack: Fact or Fiction (119) - Ai(2)-Talrand Control reveals the top five cards of their library. An opponent separates those cards into two piles. Ai(2)-Talrand Control puts one pile into their hand and the other into their graveyard.
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (167)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Combat: Ai(2)-Talrand Control assigned Mahamoti Djinn (200) to attack Ai(1)-Krenko Goblins.
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Combat: Ai(1)-Krenko Goblins didn't block Mahamoti Djinn (200).
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Damage: Mahamoti Djinn (200) deals 5 combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 35 > 30
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (171) - {T}: Add {U}.
+Mana: Island (139) - {T}: Add {U}.
+Mana: Island (179) - {T}: Add {U}.
+Mana: Island (167) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Stroke of Genius targeting [Ai(2)-Talrand Control]
+Resolve Stack: Stroke of Genius (189) - Ai(2)-Talrand Control draws a card. (X=1)
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 19 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (63)
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (50) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Goblin Warchief
+Resolve Stack: Goblin Warchief - Creature 2 / 2
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (78) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (59) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Siege-Gang Commander
+Resolve Stack: Siege-Gang Commander - Creature 2 / 2
+Add To Stack: Ai(1)-Krenko Goblins triggered Siege-Gang Commander
+Resolve Stack: When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens. [Zone Changer: Siege-Gang Commander (10)]
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Goblin Warchief (21), Siege-Gang Commander (10), Spikeshot Elder (18), Goblin Token (564), Goblin Token (565) and Goblin Token (566) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100).
+Ai(2)-Talrand Control didn't block Goblin Warchief (21).
+Ai(2)-Talrand Control didn't block Siege-Gang Commander (10).
+Ai(2)-Talrand Control didn't block Spikeshot Elder (18).
+Ai(2)-Talrand Control didn't block Goblin Token (564).
+Ai(2)-Talrand Control didn't block Goblin Token (565).
+Ai(2)-Talrand Control didn't block Goblin Token (566).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Warchief (21) deals 2 combat damage to Ai(2)-Talrand Control.
+Damage: Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.
+Damage: Spikeshot Elder (18) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (564) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (565) deals 1 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (566) deals 1 combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 11 > 0
+Player Control: Ai(1)-Krenko Goblins has restored control over themself
+Player Control: Ai(2)-Talrand Control has restored control over themself
+Game Outcome: Turn 10
+Game Outcome: Ai(1)-Krenko Goblins has won because all opponents have lost
+Game Outcome: Ai(2)-Talrand Control has lost because life total reached 0
+Match Result: Ai(1)-Krenko Goblins: 1 Ai(2)-Talrand Control: 0 
+
+Game Result: Game 1 ended in 2708 ms. Ai(1)-Krenko Goblins has won!
+
+Warning: default (ie. inherited from base class) implementation of chooseSinglePlayer is used by Fact or Fiction for forge.ai.ability.TwoPilesAi. Consider declaring an overloaded method
+Mulligan: Ai(2)-Talrand Control has kept a hand of 7 cards
+Mulligan: Ai(1)-Krenko Goblins has kept a hand of 7 cards
+Turn: Turn 1 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (138)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 2 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (76)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Island (138) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Brainstorm
+Resolve Stack: Brainstorm (191) - Ai(2)-Talrand Control draws three cards, then puts two cards from their hand on top of their library in any order.
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 3 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (156)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 4 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Mana: Island (138) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Opt
+Resolve Stack: Ai(2)-Talrand Control scried 1 card(s) to the top of the library
+Resolve Stack: Opt (116) - Ai(2)-Talrand Control scries 1. Ai(2)-Talrand Control draws a card.
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (70)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 5 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (158)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 6 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (93)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (70) - {T}: Add {R}.
+Mana: Mountain (93) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Goblin King
+Mana: Island (138) - {T}: Add {U}.
+Mana: Island (156) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Arcane Denial targeting [Goblin King - Creature 2 / 2]
+Zone Change: Send countered spell to Graveyard
+Resolve Stack: Arcane Denial (180) - Counter Goblin King (33). Draw a card. Draw up to two cards. 
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 7 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Add To Stack: Ai(2)-Talrand Control triggered Arcane Denial
+Add To Stack: Ai(2)-Talrand Control triggered Arcane Denial
+Resolve Stack: Draw up to two cards. ([Ai(1)-Krenko Goblins]) [Phase: Ai(2)-Talrand Control]
+Resolve Stack: Draw a card. [Phase: Ai(2)-Talrand Control]
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (146)
+Mana: Island (138) - {T}: Add {U}.
+Mana: Island (156) - {T}: Add {U}.
+Mana: Island (158) - {T}: Add {U}.
+Mana: Island (146) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Fact or Fiction
+Resolve Stack: Fact or Fiction (119) - Ai(2)-Talrand Control reveals the top five cards of their library. An opponent separates those cards into two piles. Ai(2)-Talrand Control puts one pile into their hand and the other into their graveyard.
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 8 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (55)
+Mana: Mountain (76) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Raging Goblin
+Resolve Stack: Raging Goblin - Creature 1 / 1
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Raging Goblin (49) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control didn't block Raging Goblin (49).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Raging Goblin (49) deals 1 combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 40 > 39
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (70) - {T}: Add {R}.
+Mana: Mountain (93) - {T}: Add {R}.
+Mana: Mountain (55) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Hordeling Outburst
+Resolve Stack: Hordeling Outburst (20) - Ai(1)-Krenko Goblins creates three 1/1 red Goblin creature tokens.
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 9 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (142)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Mana: Island (138) - {T}: Add {U}.
+Mana: Island (156) - {T}: Add {U}.
+Mana: Island (158) - {T}: Add {U}.
+Mana: Island (146) - {T}: Add {U}.
+Mana: Island (142) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Evacuation
+Resolve Stack: Evacuation (129) - Return all creatures to their owners' hands.
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 10 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (61)
+Mana: Mountain (76) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Raging Goblin
+Resolve Stack: Raging Goblin - Creature 1 / 1
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Raging Goblin (49) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control didn't block Raging Goblin (49).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Raging Goblin (49) deals 1 combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 39 > 38
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (70) - {T}: Add {R}.
+Mana: Mountain (93) - {T}: Add {R}.
+Mana: Mountain (55) - {T}: Add {R}.
+Mana: Mountain (61) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss - Creature 3 / 3
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 11 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (168)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (138) - {T}: Add {U}.
+Mana: Island (156) - {T}: Add {U}.
+Mana: Island (158) - {T}: Add {U}.
+Mana: Island (146) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Talrand, Sky Summoner
+Resolve Stack: Talrand, Sky Summoner - Creature 2 / 2
+Mana: Island (142) - {T}: Add {U}.
+Mana: Island (168) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Augur of Bolas
+Resolve Stack: Augur of Bolas - Creature 1 / 3
+Add To Stack: Ai(2)-Talrand Control triggered Augur of Bolas
+Resolve Stack: When Augur of Bolas enters, look at the top three cards from your library. You may reveal an instant or sorcery card from among them and put it into your hand. Put the rest on the bottom of your library in any order. [Zone Changer: Augur of Bolas (183)]
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 12 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (63)
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (70) - {T}: Add {R}.
+Mana: Mountain (93) - {T}: Add {R}.
+Mana: Mountain (55) - {T}: Add {R}.
+Mana: Mountain (61) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Coat of Arms
+Resolve Stack: Coat of Arms
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 4 combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 38 > 34
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 13 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Mana: Island (138) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Unsummon targeting [Krenko, Mob Boss (100)]
+Add To Stack: Ai(2)-Talrand Control triggered Talrand, Sky Summoner
+Resolve Stack: Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Unsummon (190), Activator: Ai(2)-Talrand Control, SpellAbility: Return target creature to its owner's hand.]
+Resolve Stack: Unsummon (190) - Return Krenko, Mob Boss (100) to its owner's hand.
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (149)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Combat: Ai(2)-Talrand Control assigned Talrand, Sky Summoner (201) and Augur of Bolas (183) to attack Ai(1)-Krenko Goblins.
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Combat: Ai(1)-Krenko Goblins didn't block Talrand, Sky Summoner (201).
+Ai(1)-Krenko Goblins didn't block Augur of Bolas (183).
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Damage: Talrand, Sky Summoner (201) deals 3 combat damage to Ai(1)-Krenko Goblins.
+Damage: Augur of Bolas (183) deals 2 combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 40 > 35
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (156) - {T}: Add {U}.
+Mana: Island (158) - {T}: Add {U}.
+Mana: Island (146) - {T}: Add {U}.
+Mana: Island (142) - {T}: Add {U}.
+Mana: Island (168) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Jace's Ingenuity
+Add To Stack: Ai(2)-Talrand Control triggered Talrand, Sky Summoner
+Resolve Stack: Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Jace's Ingenuity (103), Activator: Ai(2)-Talrand Control, SpellAbility: Draw three cards.]
+Resolve Stack: Jace's Ingenuity (103) - Ai(2)-Talrand Control draws three cards.
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 14 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (90)
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (70) - {T}: Add {R}.
+Mana: Mountain (93) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Goblin War Drums
+Resolve Stack: Goblin War Drums
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (55) - {T}: Add {R}.
+Mana: Mountain (61) - {T}: Add {R}.
+Mana: Mountain (63) - {T}: Add {R}.
+Mana: Mountain (90) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss - Creature 3 / 3
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 15 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (170)
+Mana: Island (138) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Preordain
+Add To Stack: Ai(2)-Talrand Control triggered Talrand, Sky Summoner
+Resolve Stack: Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Preordain (121), Activator: Ai(2)-Talrand Control, SpellAbility: Scry 2, then draw a card. (To scry 2, look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.) ]
+Resolve Stack: Ai(2)-Talrand Control scried 1 card(s) to the top of the library and 1 card(s) to the bottom of the library
+Resolve Stack: Preordain (121) - Ai(2)-Talrand Control scries 2. Ai(2)-Talrand Control draws a card.
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Combat: Ai(2)-Talrand Control assigned Drake Token (232) and Drake Token (235) to attack Ai(1)-Krenko Goblins.
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Combat: Ai(1)-Krenko Goblins didn't block Drake Token (232).
+Ai(1)-Krenko Goblins didn't block Drake Token (235).
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Damage: Drake Token (232) deals 4 combat damage to Ai(1)-Krenko Goblins.
+Damage: Drake Token (235) deals 4 combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 35 > 27
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Mana: Island (156) - {T}: Add {U}.
+Mana: Island (158) - {T}: Add {U}.
+Mana: Island (146) - {T}: Add {U}.
+Mana: Island (142) - {T}: Add {U}.
+Mana: Island (168) - {T}: Add {U}.
+Mana: Island (149) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Mahamoti Djinn
+Resolve Stack: Mahamoti Djinn - Creature 5 / 6
+Mana: Island (170) - {T}: Add {U}.
+Add To Stack: Ai(2)-Talrand Control cast Sol Ring
+Resolve Stack: Sol Ring
+Mana: Sol Ring (117) - {T}: Add {C}{C}.
+Add To Stack: Ai(2)-Talrand Control cast Mind Stone
+Resolve Stack: Mind Stone
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 16 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Land: Ai(1)-Krenko Goblins played Mountain (78)
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (70) - {T}: Add {R}.
+Mana: Mountain (93) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Browbeat targeting [Ai(1)-Krenko Goblins]
+Damage: Browbeat (99) deals 5 non-combat damage to Ai(2)-Talrand Control.
+Life: Life: Ai(2)-Talrand Control 34 > 29
+Resolve Stack: Browbeat (99) - Any player may have Browbeat deal 5 damage to them. If no one does, target player draws three cards. (Targeting: Ai(1)-Krenko Goblins)
+Mana: Mountain (55) - {T}: Add {R}.
+Mana: Mountain (61) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Krenko's Command
+Resolve Stack: Krenko's Command (9) - Ai(1)-Krenko Goblins creates two 1/1 red Goblin creature tokens.
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 17 (Ai(2)-Talrand Control)
+Phase: Ai(2)-Talrand Control's Untap step
+Phase: Ai(2)-Talrand Control's Upkeep step
+Phase: Ai(2)-Talrand Control's Draw step
+Phase: Ai(2)-Talrand Control's Main phase, precombat
+Land: Ai(2)-Talrand Control played Island (144)
+Phase: Ai(2)-Talrand Control's Beginning of Combat Step
+Phase: Ai(2)-Talrand Control's Declare Attackers Step
+Combat: Ai(2)-Talrand Control assigned Mahamoti Djinn (200), Drake Token (232), Drake Token (235) and Drake Token (241) to attack Ai(1)-Krenko Goblins.
+Phase: Ai(2)-Talrand Control's Declare Blockers Step
+Combat: Ai(1)-Krenko Goblins didn't block Mahamoti Djinn (200).
+Ai(1)-Krenko Goblins didn't block Drake Token (232).
+Ai(1)-Krenko Goblins didn't block Drake Token (235).
+Ai(1)-Krenko Goblins didn't block Drake Token (241).
+Add To Stack: Ai(1)-Krenko Goblins activated Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss (100) - Ai(1)-Krenko Goblins creates eight 1/1 red Goblin creature tokens.
+Phase: Ai(2)-Talrand Control's First Strike Damage Step
+Phase: Ai(2)-Talrand Control's Combat Damage Step
+Damage: Mahamoti Djinn (200) deals 5 combat damage to Ai(1)-Krenko Goblins.
+Damage: Drake Token (232) deals 4 combat damage to Ai(1)-Krenko Goblins.
+Damage: Drake Token (235) deals 4 combat damage to Ai(1)-Krenko Goblins.
+Damage: Drake Token (241) deals 4 combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 27 > 10
+Phase: Ai(2)-Talrand Control's End of Combat Step
+Phase: Ai(2)-Talrand Control's Main phase, postcombat
+Phase: Ai(2)-Talrand Control's End step
+Phase: Ai(2)-Talrand Control's Cleanup step
+Turn: Turn 18 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Mana: Mountain (76) - {T}: Add {R}.
+Mana: Mountain (70) - {T}: Add {R}.
+Mana: Mountain (93) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Fervor
+Mana: Island (138) - {T}: Add {U}.
+Mana: Island (156) - {T}: Add {U}.
+Mana: Sol Ring (117) - {T}: Add {C}{C}.
+Add To Stack: Ai(2)-Talrand Control cast Cancel targeting [Fervor]
+Add To Stack: Ai(2)-Talrand Control triggered Talrand, Sky Summoner
+Resolve Stack: Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Cancel (124), Activator: Ai(2)-Talrand Control, SpellAbility: Counter target spell.]
+Zone Change: Send countered spell to Graveyard
+Resolve Stack: Cancel (124) - Counter Fervor (26).
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Raging Goblin (49), Goblin Token (254), Goblin Token (255), Goblin Token (267), Goblin Token (268), Goblin Token (269) and Goblin Token (270) to attack Ai(2)-Talrand Control.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Talrand Control assigned Talrand, Sky Summoner (201) and Augur of Bolas (183) to block Krenko, Mob Boss (100).
+Ai(2)-Talrand Control didn't block Raging Goblin (49).
+Ai(2)-Talrand Control didn't block Goblin Token (254).
+Ai(2)-Talrand Control didn't block Goblin Token (255).
+Ai(2)-Talrand Control didn't block Goblin Token (267).
+Ai(2)-Talrand Control didn't block Goblin Token (268).
+Ai(2)-Talrand Control didn't block Goblin Token (269).
+Ai(2)-Talrand Control didn't block Goblin Token (270).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 7 damage to Augur of Bolas (183).
+Damage: Krenko, Mob Boss (100) deals 3 damage to Talrand, Sky Summoner (201).
+Damage: Raging Goblin (49) deals 8 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (254) deals 8 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (255) deals 8 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (267) deals 8 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (268) deals 8 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (269) deals 8 combat damage to Ai(2)-Talrand Control.
+Damage: Goblin Token (270) deals 8 combat damage to Ai(2)-Talrand Control.
+Damage: Talrand, Sky Summoner (201) deals 3 damage to Krenko, Mob Boss (100).
+Damage: Augur of Bolas (183) deals 2 damage to Krenko, Mob Boss (100).
+Life: Life: Ai(2)-Talrand Control 29 > -27
+Player Control: Ai(1)-Krenko Goblins has restored control over themself
+Player Control: Ai(2)-Talrand Control has restored control over themself
+Game Outcome: Turn 9
+Game Outcome: Ai(1)-Krenko Goblins has won because all opponents have lost
+Game Outcome: Ai(2)-Talrand Control has lost because life total reached 0
+Match Result: Ai(1)-Krenko Goblins: 2 Ai(2)-Talrand Control: 0 
+
+Game Result: Game 2 ended in 2391 ms. Ai(1)-Krenko Goblins has won!
+

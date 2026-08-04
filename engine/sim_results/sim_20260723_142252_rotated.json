@@ -1,0 +1,783 @@
+{
+  "meta": {
+    "source": "rotated",
+    "decks": [
+      "inspirit_b3.dck",
+      "dnide_wildsear.dck",
+      "nanman_felix.dck",
+      "n3cro_raggadragga.dck"
+    ],
+    "format": "Commander",
+    "rotations": 4
+  },
+  "games": [
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 56495,
+        "raw": "Game Result: Game 1 ended in 56495 ms. Ai(2)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(2)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(3)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-N3cro Raggadragga has lost because life total reached 0",
+          "detail": "Ai(4)-N3cro Raggadragga has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Dnide Wildsear: 1 Ai(3)-NanMan Felix Five-Boots: 0 Ai(4)-N3cro Raggadragga: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 240003,
+        "raw": "Game Result: Game 2 ended in 240003 ms. Ai(2)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 16",
+          "detail": "Turn 16"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(2)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-NanMan Felix Five-Boots has won because all opponents have lost",
+          "detail": "Ai(3)-NanMan Felix Five-Boots has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-N3cro Raggadragga has won because all opponents have lost",
+          "detail": "Ai(4)-N3cro Raggadragga has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Dnide Wildsear: 2 Ai(3)-NanMan Felix Five-Boots: 0 Ai(4)-N3cro Raggadragga: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-N3cro Raggadragga",
+        "draw": false,
+        "duration_ms": 66846,
+        "raw": "Game Result: Game 3 ended in 66846 ms. Ai(4)-N3cro Raggadragga has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 22",
+          "detail": "Turn 22"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Dnide Wildsear has lost because life total reached 0",
+          "detail": "Ai(2)-Dnide Wildsear has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(3)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-N3cro Raggadragga has won because all opponents have lost",
+          "detail": "Ai(4)-N3cro Raggadragga has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Dnide Wildsear: 2 Ai(3)-NanMan Felix Five-Boots: 0 Ai(4)-N3cro Raggadragga: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 56241,
+        "raw": "Game Result: Game 4 ended in 56241 ms. Ai(2)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 18",
+          "detail": "Turn 18"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(1)-Inspirit B3 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(2)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(3)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-N3cro Raggadragga has lost because of obtaining 10 poison counters",
+          "detail": "Ai(4)-N3cro Raggadragga has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Dnide Wildsear: 3 Ai(3)-NanMan Felix Five-Boots: 0 Ai(4)-N3cro Raggadragga: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-N3cro Raggadragga",
+        "draw": false,
+        "duration_ms": 81593,
+        "raw": "Game Result: Game 1 ended in 81593 ms. Ai(3)-N3cro Raggadragga has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 16",
+          "detail": "Turn 16"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Dnide Wildsear has lost because of obtaining 10 poison counters",
+          "detail": "Ai(1)-Dnide Wildsear has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-NanMan Felix Five-Boots has lost because of obtaining 10 poison counters",
+          "detail": "Ai(2)-NanMan Felix Five-Boots has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-N3cro Raggadragga has won because all opponents have lost",
+          "detail": "Ai(3)-N3cro Raggadragga has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(4)-Inspirit B3 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Dnide Wildsear: 0 Ai(2)-NanMan Felix Five-Boots: 0 Ai(3)-N3cro Raggadragga: 1 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 73244,
+        "raw": "Game Result: Game 2 ended in 73244 ms. Ai(1)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(1)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(2)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-N3cro Raggadragga has lost because of obtaining 10 poison counters",
+          "detail": "Ai(3)-N3cro Raggadragga has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Dnide Wildsear: 1 Ai(2)-NanMan Felix Five-Boots: 0 Ai(3)-N3cro Raggadragga: 1 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 70285,
+        "raw": "Game Result: Game 3 ended in 70285 ms. Ai(1)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(1)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(2)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-N3cro Raggadragga has lost because life total reached 0",
+          "detail": "Ai(3)-N3cro Raggadragga has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Dnide Wildsear: 2 Ai(2)-NanMan Felix Five-Boots: 0 Ai(3)-N3cro Raggadragga: 1 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 52170,
+        "raw": "Game Result: Game 4 ended in 52170 ms. Ai(1)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 17",
+          "detail": "Turn 17"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(1)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(2)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-N3cro Raggadragga has lost because life total reached 0",
+          "detail": "Ai(3)-N3cro Raggadragga has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Dnide Wildsear: 3 Ai(2)-NanMan Felix Five-Boots: 0 Ai(3)-N3cro Raggadragga: 1 Ai(4)-Inspirit B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Inspirit B3",
+        "draw": false,
+        "duration_ms": 142303,
+        "raw": "Game Result: Game 1 ended in 142303 ms. Ai(3)-Inspirit B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(1)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-N3cro Raggadragga has lost because life total reached 0",
+          "detail": "Ai(2)-N3cro Raggadragga has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Dnide Wildsear has lost because life total reached 0",
+          "detail": "Ai(4)-Dnide Wildsear has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-NanMan Felix Five-Boots: 0 Ai(2)-N3cro Raggadragga: 0 Ai(3)-Inspirit B3: 1 Ai(4)-Dnide Wildsear: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-NanMan Felix Five-Boots",
+        "draw": false,
+        "duration_ms": 154855,
+        "raw": "Game Result: Game 2 ended in 154855 ms. Ai(1)-NanMan Felix Five-Boots has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 24",
+          "detail": "Turn 24"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-NanMan Felix Five-Boots has won because all opponents have lost",
+          "detail": "Ai(1)-NanMan Felix Five-Boots has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-N3cro Raggadragga has lost because life total reached 0",
+          "detail": "Ai(2)-N3cro Raggadragga has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(3)-Inspirit B3 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Dnide Wildsear has lost because of obtaining 10 poison counters",
+          "detail": "Ai(4)-Dnide Wildsear has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-NanMan Felix Five-Boots: 1 Ai(2)-N3cro Raggadragga: 0 Ai(3)-Inspirit B3: 1 Ai(4)-Dnide Wildsear: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Dnide Wildsear",
+        "draw": false,
+        "duration_ms": 31086,
+        "raw": "Game Result: Game 3 ended in 31086 ms. Ai(4)-Dnide Wildsear has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 13",
+          "detail": "Turn 13"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-NanMan Felix Five-Boots has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(1)-NanMan Felix Five-Boots has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-N3cro Raggadragga has lost because life total reached 0",
+          "detail": "Ai(2)-N3cro Raggadragga has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(4)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-NanMan Felix Five-Boots: 1 Ai(2)-N3cro Raggadragga: 0 Ai(3)-Inspirit B3: 1 Ai(4)-Dnide Wildsear: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-N3cro Raggadragga",
+        "draw": false,
+        "duration_ms": 46071,
+        "raw": "Game Result: Game 4 ended in 46071 ms. Ai(2)-N3cro Raggadragga has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 17",
+          "detail": "Turn 17"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(1)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-N3cro Raggadragga has won because all opponents have lost",
+          "detail": "Ai(2)-N3cro Raggadragga has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Dnide Wildsear has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(4)-Dnide Wildsear has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-NanMan Felix Five-Boots: 1 Ai(2)-N3cro Raggadragga: 1 Ai(3)-Inspirit B3: 1 Ai(4)-Dnide Wildsear: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Inspirit B3",
+        "draw": false,
+        "duration_ms": 240038,
+        "raw": "Game Result: Game 1 ended in 240038 ms. Ai(2)-Inspirit B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 17",
+          "detail": "Turn 17"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-N3cro Raggadragga has won because all opponents have lost",
+          "detail": "Ai(1)-N3cro Raggadragga has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(3)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-NanMan Felix Five-Boots has won because all opponents have lost",
+          "detail": "Ai(4)-NanMan Felix Five-Boots has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-N3cro Raggadragga: 0 Ai(2)-Inspirit B3: 1 Ai(3)-Dnide Wildsear: 0 Ai(4)-NanMan Felix Five-Boots: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-NanMan Felix Five-Boots",
+        "draw": false,
+        "duration_ms": 32642,
+        "raw": "Game Result: Game 2 ended in 32642 ms. Ai(4)-NanMan Felix Five-Boots has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 20",
+          "detail": "Turn 20"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-N3cro Raggadragga has lost because of obtaining 10 poison counters",
+          "detail": "Ai(1)-N3cro Raggadragga has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(2)-Inspirit B3 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Dnide Wildsear has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(3)-Dnide Wildsear has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-NanMan Felix Five-Boots has won because all opponents have lost",
+          "detail": "Ai(4)-NanMan Felix Five-Boots has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-N3cro Raggadragga: 0 Ai(2)-Inspirit B3: 1 Ai(3)-Dnide Wildsear: 0 Ai(4)-NanMan Felix Five-Boots: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Inspirit B3",
+        "draw": false,
+        "duration_ms": 240005,
+        "raw": "Game Result: Game 3 ended in 240005 ms. Ai(2)-Inspirit B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 18",
+          "detail": "Turn 18"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-N3cro Raggadragga has won because all opponents have lost",
+          "detail": "Ai(1)-N3cro Raggadragga has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Dnide Wildsear has won because all opponents have lost",
+          "detail": "Ai(3)-Dnide Wildsear has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-NanMan Felix Five-Boots has won because all opponents have lost",
+          "detail": "Ai(4)-NanMan Felix Five-Boots has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-N3cro Raggadragga: 0 Ai(2)-Inspirit B3: 2 Ai(3)-Dnide Wildsear: 0 Ai(4)-NanMan Felix Five-Boots: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-N3cro Raggadragga",
+        "draw": false,
+        "duration_ms": 9106,
+        "raw": "Game Result: Game 4 ended in 9106 ms. Ai(1)-N3cro Raggadragga has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 13",
+          "detail": "Turn 13"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-N3cro Raggadragga has won because all opponents have lost",
+          "detail": "Ai(1)-N3cro Raggadragga has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Dnide Wildsear has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(3)-Dnide Wildsear has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-NanMan Felix Five-Boots has lost because life total reached 0",
+          "detail": "Ai(4)-NanMan Felix Five-Boots has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-N3cro Raggadragga: 1 Ai(2)-Inspirit B3: 2 Ai(3)-Dnide Wildsear: 0 Ai(4)-NanMan Felix Five-Boots: 1"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "games": 16,
+    "draws": 0,
+    "wins": {
+      "Dnide Wildsear": 7,
+      "N3cro Raggadragga": 4,
+      "Inspirit B3": 3,
+      "NanMan Felix Five-Boots": 2
+    },
+    "win_rates": {
+      "Dnide Wildsear": 0.438,
+      "N3cro Raggadragga": 0.25,
+      "Inspirit B3": 0.188,
+      "NanMan Felix Five-Boots": 0.125
+    }
+  }
+}

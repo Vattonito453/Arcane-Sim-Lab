@@ -1,0 +1,2246 @@
+Error handling registered!
+16:33:36 [INFO ] GuiBase: ##########################################
+16:33:36 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+16:33:36 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+16:33:36 [INFO ] GuiBase: OS: Mac OS X 15.7.7 aarch64
+16:33:36 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+16:33:36 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Torbran Burn B3 vs Ai(2)-Selvala Ramp vs Ai(3)-Kambal Taxes B3 - two games of Commander
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Selvala, Heart of the Wilds for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kambal, Consul of Allocation for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Torbran, Thane of Red Fell for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Torbran, Thane of Red Fell for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kambal, Consul of Allocation for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Torbran, Thane of Red Fell for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kambal, Consul of Allocation for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Mulligan: Ai(2)-Selvala Ramp has kept a hand of 7 cards
+Mulligan: Ai(3)-Kambal Taxes B3 has kept a hand of 7 cards
+Mulligan: Ai(1)-Torbran Burn B3 has kept a hand of 7 cards
+Turn: Turn 1 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (155)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Fyndhorn Elves
+Resolve Stack: Fyndhorn Elves - Creature 1 / 1
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 2 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (290)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 3 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (88)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 4 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (171)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Combat: Ai(2)-Selvala Ramp assigned Fyndhorn Elves (119) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Fyndhorn Elves (119).
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Damage: Fyndhorn Elves (119) deals 1 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 40 > 39
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Sakura-Tribe Elder
+Resolve Stack: Sakura-Tribe Elder - Creature 1 / 1
+Zone Change: Sakura-Tribe Elder (190) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Selvala Ramp activated Sakura-Tribe Elder
+Resolve Stack: Sakura-Tribe Elder (190) - Ai(2)-Selvala Ramp searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 5 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (275)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 6 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (64)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Ruby Medallion
+Resolve Stack: Ruby Medallion
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 7 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (172)
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (172) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Explosive Vegetation
+Resolve Stack: Explosive Vegetation (105) - Ai(2)-Selvala Ramp searches their library for  up to two basic land cards, puts them onto the battlefield tapped, then shuffles.
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Combat: Ai(2)-Selvala Ramp assigned Fyndhorn Elves (119) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Fyndhorn Elves (119).
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Damage: Fyndhorn Elves (119) deals 1 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 39 > 38
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 8 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Replacement Effect: Temple of Silence enters tapped.
+Land: Ai(3)-Kambal Taxes B3 played Temple of Silence (272)
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Temple of Silence
+Resolve Stack: Ai(3)-Kambal Taxes B3 scried 1 card(s) to the top of the library
+Resolve Stack: When Temple of Silence enters, scry 1. [Zone Changer: Temple of Silence (272)]
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 9 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (79)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Mana: Mountain (79) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 10 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (179)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (172) - {T}: Add {G}.
+Mana: Forest (162) - {T}: Add {G}.
+Mana: Forest (140) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Grave Sifter
+Resolve Stack: Grave Sifter - Creature 5 / 7
+Add To Stack: Ai(2)-Selvala Ramp triggered Grave Sifter
+Resolve Stack: When Grave Sifter enters, each player chooses a creature type and returns any number of cards of that type from their graveyard to their hand. [Zone Changer: Grave Sifter (137)]
+Mana: Forest (179) - {T}: Add {G}.
+Mana: Fyndhorn Elves (119) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Sakura-Tribe Elder
+Resolve Stack: Sakura-Tribe Elder - Creature 1 / 1
+Zone Change: Sakura-Tribe Elder (190) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Selvala Ramp activated Sakura-Tribe Elder
+Resolve Stack: Sakura-Tribe Elder (190) - Ai(2)-Selvala Ramp searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 11 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (254)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (290) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Ayli, Eternal Pilgrim
+Resolve Stack: Ayli, Eternal Pilgrim - Creature 2 / 3
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Soul Warden
+Resolve Stack: Soul Warden - Creature 1 / 1
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 12 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (72)
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Anger of the Gods
+Mana: Swamp (275) - {T}: Add {B}.
+Zone Change: Soul Warden (241) was put into Graveyard from Battlefield.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Ayli, Eternal Pilgrim
+Life: Life: Ai(3)-Kambal Taxes B3 40 > 41
+Resolve Stack: Ayli, Eternal Pilgrim (223) - Ai(3)-Kambal Taxes B3 gains life equal to the sacrificed creature's toughness.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Anger of the Gods (99) deals 3 damage to Torbran, Thane of Red Fell (100).
+Damage: Anger of the Gods (99) deals 5 damage to Fyndhorn Elves (119).
+Damage: Anger of the Gods (99) deals 5 damage to Grave Sifter (137).
+Damage: Anger of the Gods (99) deals 5 damage to Ayli, Eternal Pilgrim (223).
+Resolve Stack: Anger of the Gods (99) - Anger of the Gods deals 3 damage to each creature. If a creature dealt damage this way would die this turn, exile it instead. 
+Zone Change: Fyndhorn Elves (119) was put into Exile from Battlefield.
+Replacement Effect: If that permanent would die this turn, exile it instead.
+Zone Change: Ayli, Eternal Pilgrim (223) was put into Exile from Battlefield.
+Replacement Effect: If that permanent would die this turn, exile it instead.
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (79) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Thought Vessel
+Resolve Stack: Thought Vessel
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 13 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (181)
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (172) - {T}: Add {G}.
+Mana: Forest (162) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Overrun
+Resolve Stack: Overrun (130) - Creatures you control get +3/+3 and gain trample until end of turn.
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Combat: Ai(2)-Selvala Ramp assigned Grave Sifter (137) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Grave Sifter (137).
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Damage: Grave Sifter (137) deals 8 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 38 > 30
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (140) - {T}: Add {G}.
+Mana: Forest (179) - {T}: Add {G}.
+Mana: Forest (142) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Selvala, Heart of the Wilds
+Resolve Stack: Selvala, Heart of the Wilds - Creature 2 / 3
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 14 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (276)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (275) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Vito, Thorn of the Dusk Rose
+Resolve Stack: Vito, Thorn of the Dusk Rose - Creature 1 / 3
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Swords to Plowshares targeting [Grave Sifter (137)]
+Zone Change: Grave Sifter (137) was put into Exile from Battlefield.
+Life: Life: Ai(2)-Selvala Ramp 40 > 45
+Resolve Stack: Swords to Plowshares (242) - Exile Grave Sifter (137). Ai(2)-Selvala Ramp gains life equal to its power.
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Vito, Thorn of the Dusk Rose (270)]
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 15 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (89)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Thought Vessel (29) - {T}: Add {C}.
+Mana: Mountain (88) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Fire Diamond
+Replacement Effect: Fire Diamond enters tapped.
+Resolve Stack: Fire Diamond
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 16 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (139)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Eternal Witness
+Resolve Stack: Eternal Witness - Creature 2 / 1
+Add To Stack: Ai(2)-Selvala Ramp triggered Eternal Witness targeting [Sakura-Tribe Elder (190)]
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Eternal Witness (104)]
+Resolve Stack: When Eternal Witness enters, you may return target card from your graveyard to your hand. (Targeting: [[Sakura-Tribe Elder (190)]]) [Zone Changer: Eternal Witness (104)]
+Mana: Forest (172) - {T}: Add {G}.
+Mana: Forest (162) - {T}: Add {G}.
+Mana: Forest (140) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Cultivate
+Resolve Stack: Cultivate (118) - Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.   
+Mana: Forest (179) - {T}: Add {G}.
+Mana: Forest (142) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Sakura-Tribe Elder
+Resolve Stack: Sakura-Tribe Elder - Creature 1 / 1
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Sakura-Tribe Elder (190)]
+Zone Change: Sakura-Tribe Elder (190) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Selvala Ramp activated Sakura-Tribe Elder
+Resolve Stack: Sakura-Tribe Elder (190) - Ai(2)-Selvala Ramp searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 17 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Kambal, Consul of Allocation
+Resolve Stack: Kambal, Consul of Allocation - Creature 2 / 3
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Kambal, Consul of Allocation (302)]
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 18 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (86)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 19 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (147)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 20 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (275) - {T}: Add {B}.
+Mana: Swamp (276) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Crypt Ghast
+Resolve Stack: Crypt Ghast - Creature 2 / 2
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Mana: Mountain (88) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Shock targeting [Crypt Ghast (203)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(1)-Torbran Burn B3 30 > 28
+Life: Life: Ai(3)-Kambal Taxes B3 41 > 43
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Shock (28), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Shock deals 2 damage to any target.]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Vito, Thorn of the Dusk Rose targeting [Ai(1)-Torbran Burn B3]
+Life: Life: Ai(1)-Torbran Burn B3 28 > 26
+Resolve Stack: Whenever you gain life, target opponent loses that much life. (Targeting: [[Ai(1)-Torbran Burn B3]]) [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Shock (28) deals 4 damage to Crypt Ghast (203).
+Resolve Stack: Shock (28) - Shock (28) deals 2 damage to Crypt Ghast (203).
+Zone Change: Crypt Ghast (203) was put into Graveyard from Battlefield.
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Crypt Ghast (203)]
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 21 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (84)
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Mana: Thought Vessel (29) - {T}: Add {C}.
+Mana: Mountain (79) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Reforge the Soul
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(1)-Torbran Burn B3 26 > 24
+Life: Life: Ai(3)-Kambal Taxes B3 43 > 45
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Reforge the Soul (38), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Each player discards their hand, then draws seven cards. ]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Vito, Thorn of the Dusk Rose targeting [Ai(1)-Torbran Burn B3]
+Life: Life: Ai(1)-Torbran Burn B3 24 > 22
+Resolve Stack: Whenever you gain life, target opponent loses that much life. (Targeting: [[Ai(1)-Torbran Burn B3]]) [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Discard: Ai(1)-Torbran Burn B3 discards Cathartic Reunion (8).
+Discard: Ai(2)-Selvala Ramp discards Forest (163).
+Discard: Ai(3)-Kambal Taxes B3 discards Phyrexian Arena (269).
+Discard: Ai(3)-Kambal Taxes B3 discards Orzhov Signet (231).
+Discard: Ai(3)-Kambal Taxes B3 discards Commander's Sphere (212).
+Discard: Ai(3)-Kambal Taxes B3 discards Ghostly Prison (211).
+Resolve Stack: Reforge the Soul (38) - Ai(1)-Torbran Burn B3, Ai(2)-Selvala Ramp and Ai(3)-Kambal Taxes B3 discard their hands. Ai(1)-Torbran Burn B3, Ai(2)-Selvala Ramp and Ai(3)-Kambal Taxes B3 each draw seven cards.
+Mana: Mountain (72) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Electrostatic Field
+Resolve Stack: Electrostatic Field - Creature 0 / 4
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Electrostatic Field (5)]
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Fire Diamond (23) - {T}: Add {R}.
+Mana: Mountain (86) - {T}: Add {R}.
+Mana: Mountain (84) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Fault Line
+Add To Stack: Ai(1)-Torbran Burn B3 triggered Electrostatic Field
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(1)-Torbran Burn B3 22 > 20
+Life: Life: Ai(3)-Kambal Taxes B3 45 > 47
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Fault Line (17), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Fault Line deals X damage to each creature without flying and each player.]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Vito, Thorn of the Dusk Rose targeting [Ai(1)-Torbran Burn B3]
+Life: Life: Ai(1)-Torbran Burn B3 20 > 18
+Resolve Stack: Whenever you gain life, target opponent loses that much life. (Targeting: [[Ai(1)-Torbran Burn B3]]) [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Electrostatic Field (5) deals 3 non-combat damage to Ai(2)-Selvala Ramp.
+Damage: Electrostatic Field (5) deals 3 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(2)-Selvala Ramp 45 > 42
+Life: Life: Ai(3)-Kambal Taxes B3 47 > 44
+Resolve Stack: Whenever you cast an instant or sorcery spell, Electrostatic Field deals 1 damage to each opponent. [Card: Fault Line (17), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Fault Line deals X damage to each creature without flying and each player.]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Fault Line (17) deals 3 damage to Torbran, Thane of Red Fell (100).
+Damage: Fault Line (17) deals 3 damage to Electrostatic Field (5).
+Damage: Fault Line (17) deals 5 damage to Selvala, Heart of the Wilds (201).
+Damage: Fault Line (17) deals 5 damage to Eternal Witness (104).
+Damage: Fault Line (17) deals 5 damage to Vito, Thorn of the Dusk Rose (270).
+Damage: Fault Line (17) deals 5 damage to Kambal, Consul of Allocation (302).
+Damage: Fault Line (17) deals 3 non-combat damage to Ai(1)-Torbran Burn B3.
+Damage: Fault Line (17) deals 5 non-combat damage to Ai(2)-Selvala Ramp.
+Damage: Fault Line (17) deals 5 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(1)-Torbran Burn B3 18 > 15
+Life: Life: Ai(2)-Selvala Ramp 42 > 37
+Life: Life: Ai(3)-Kambal Taxes B3 44 > 39
+Resolve Stack: Fault Line (17) - Deals 3 damage to each creature without flying and each player. (X=3)
+Zone Change: Selvala, Heart of the Wilds (201) was put into Graveyard from Battlefield.
+Zone Change: Eternal Witness (104) was put into Graveyard from Battlefield.
+Zone Change: Vito, Thorn of the Dusk Rose (270) was put into Graveyard from Battlefield.
+Zone Change: Kambal, Consul of Allocation (302) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 22 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (182)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (172) - {T}: Add {G}.
+Mana: Forest (162) - {T}: Add {G}.
+Mana: Forest (140) - {T}: Add {G}.
+Mana: Forest (179) - {T}: Add {G}.
+Mana: Forest (142) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Terastodon
+Resolve Stack: Terastodon - Creature 9 / 9
+Add To Stack: Ai(2)-Selvala Ramp triggered Terastodon targeting [Ruby Medallion (11), Thought Vessel (29), Fire Diamond (23)]
+Zone Change: Ruby Medallion (11) was put into Graveyard from Battlefield.
+Zone Change: Thought Vessel (29) was put into Graveyard from Battlefield.
+Zone Change: Fire Diamond (23) was put into Graveyard from Battlefield.
+Resolve Stack: When Terastodon enters, you may destroy up to three target noncreature permanents. For each permanent put into a graveyard this way, its controller creates a 3/3 green Elephant creature token. (Targeting: [[Ruby Medallion (11), Thought Vessel (29), Fire Diamond (23)]]) [Zone Changer: Terastodon (195)]
+Mana: Forest (181) - {T}: Add {G}.
+Mana: Forest (139) - {T}: Add {G}.
+Mana: Forest (176) - {T}: Add {G}.
+Mana: Forest (151) - {T}: Add {G}.
+Mana: Forest (147) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Selvala, Heart of the Wilds
+Resolve Stack: Selvala, Heart of the Wilds - Creature 2 / 3
+Mana: Forest (182) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Llanowar Elves
+Resolve Stack: Llanowar Elves - Creature 1 / 1
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Llanowar Elves (185)]
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 23 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Mortify targeting [Terastodon (195)]
+Zone Change: Terastodon (195) was put into Graveyard from Battlefield.
+Resolve Stack: Mortify (243) - Destroy Terastodon (195).
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (264)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (264) - {T}: Add {W}.
+Mana: Swamp (276) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Karlov of the Ghost Council
+Resolve Stack: Karlov of the Ghost Council - Creature 2 / 2
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Karlov of the Ghost Council (271)]
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Soul's Attendant
+Resolve Stack: Soul's Attendant - Creature 1 / 1
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Soul's Attendant (205)]
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 24 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Combat: Ai(1)-Torbran Burn B3 assigned Elephant Token (306), Elephant Token (308) and Elephant Token (310) to attack Ai(2)-Selvala Ramp.
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Combat: Ai(2)-Selvala Ramp didn't block Elephant Token (306).
+Ai(2)-Selvala Ramp didn't block Elephant Token (308).
+Ai(2)-Selvala Ramp didn't block Elephant Token (310).
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Damage: Elephant Token (306) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Damage: Elephant Token (308) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Damage: Elephant Token (310) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Life: Life: Ai(2)-Selvala Ramp 37 > 28
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (78)
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 25 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (141)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Arcane Signet
+Resolve Stack: Arcane Signet
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 26 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (250)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Plains (264) - {T}: Add {W}.
+Mana: Plains (250) - {T}: Add {W}.
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Norn's Annex
+Resolve Stack: Norn's Annex
+Mana: Swamp (276) - {T}: Add {B}.
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Sign in Blood targeting [Ai(3)-Kambal Taxes B3]
+Life: Life: Ai(3)-Kambal Taxes B3 39 > 37
+Resolve Stack: Sign in Blood (268) - Ai(3)-Kambal Taxes B3 draws two cards. Ai(3)-Kambal Taxes B3 loses 2 life.
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 27 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (85)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Combat: Ai(1)-Torbran Burn B3 assigned Elephant Token (306), Elephant Token (308) and Elephant Token (310) to attack Ai(2)-Selvala Ramp.
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Combat: Ai(2)-Selvala Ramp didn't block Elephant Token (306).
+Ai(2)-Selvala Ramp didn't block Elephant Token (308).
+Ai(2)-Selvala Ramp didn't block Elephant Token (310).
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Damage: Elephant Token (306) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Damage: Elephant Token (308) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Damage: Elephant Token (310) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Life: Life: Ai(2)-Selvala Ramp 28 > 19
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Discard: Ai(1)-Torbran Burn B3 discards Mountain (77).
+Add To Stack: Ai(1)-Torbran Burn B3 cast Tormenting Voice
+Add To Stack: Ai(1)-Torbran Burn B3 triggered Electrostatic Field
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Electrostatic Field (5) deals 3 non-combat damage to Ai(2)-Selvala Ramp.
+Damage: Electrostatic Field (5) deals 3 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(2)-Selvala Ramp 19 > 16
+Life: Life: Ai(3)-Kambal Taxes B3 37 > 34
+Resolve Stack: Whenever you cast an instant or sorcery spell, Electrostatic Field deals 1 damage to each opponent. [Card: Tormenting Voice (30), Activator: Ai(1)-Torbran Burn B3, SpellAbility: As an additional cost to cast this spell, discard a card. Draw two cards.]
+Resolve Stack: Tormenting Voice (30) - Ai(1)-Torbran Burn B3 draws two cards.
+Mana: Mountain (79) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Thermo-Alchemist
+Resolve Stack: Thermo-Alchemist - Creature 0 / 3
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Soul's Attendant
+Life: Life: Ai(3)-Kambal Taxes B3 34 > 35
+Resolve Stack: Whenever another creature enters, you may gain 1 life. [Zone Changer: Thermo-Alchemist (45)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 1]
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Thermo-Alchemist (45)]
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 28 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (174)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Mana: Forest (171) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (172) - {T}: Add {G}.
+Mana: Forest (162) - {T}: Add {G}.
+Mana: Forest (140) - {T}: Add {G}.
+Mana: Forest (179) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Zendikar Resurgent
+Resolve Stack: Zendikar Resurgent
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 29 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (273)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Karlov of the Ghost Council (271).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Karlov of the Ghost Council (271) deals 4 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 15 > 11
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (276) - {T}: Add {B}.
+Mana: Plains (264) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Exquisite Blood
+Resolve Stack: Exquisite Blood
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 30 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (48)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Combat: Ai(1)-Torbran Burn B3 assigned Elephant Token (306), Elephant Token (308) and Elephant Token (310) to attack Ai(2)-Selvala Ramp.
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Combat: Ai(2)-Selvala Ramp didn't block Elephant Token (306).
+Ai(2)-Selvala Ramp didn't block Elephant Token (308).
+Ai(2)-Selvala Ramp didn't block Elephant Token (310).
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Damage: Elephant Token (306) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Damage: Elephant Token (308) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Damage: Elephant Token (310) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Life: Life: Ai(2)-Selvala Ramp 16 > 7
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 35 > 44
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 9]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 9]
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Mana: Mountain (79) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Solphim, Mayhem Dominus
+Resolve Stack: Solphim, Mayhem Dominus - Creature 5 / 4
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Soul's Attendant
+Life: Life: Ai(3)-Kambal Taxes B3 44 > 45
+Resolve Stack: Whenever another creature enters, you may gain 1 life. [Zone Changer: Solphim, Mayhem Dominus (7)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 1]
+Mana: Plains (250) - {T}: Add {W}.
+Mana: Swamp (273) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Karlov of the Ghost Council targeting [Solphim, Mayhem Dominus (7)]
+Zone Change: Solphim, Mayhem Dominus (7) was put into Exile from Battlefield.
+Resolve Stack: Karlov of the Ghost Council (271) - Exile Solphim, Mayhem Dominus (7).
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Solphim, Mayhem Dominus (7)]
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 31 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (143)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (155) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Moss Diamond
+Replacement Effect: Moss Diamond enters tapped.
+Resolve Stack: Moss Diamond
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 32 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (260)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Mana: Swamp (276) - {T}: Add {B}.
+Mana: Plains (264) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Kambal, Consul of Allocation
+Resolve Stack: Kambal, Consul of Allocation - Creature 2 / 3
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Soul's Attendant
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Kambal, Consul of Allocation (302)]
+Life: Life: Ai(3)-Kambal Taxes B3 45 > 46
+Resolve Stack: Whenever another creature enters, you may gain 1 life. [Zone Changer: Kambal, Consul of Allocation (302)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 1]
+Phase: Ai(3)-Kambal Taxes B3's End step
+Add To Stack: Ai(1)-Torbran Burn B3 activated Thermo-Alchemist
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Thermo-Alchemist (45) deals 3 non-combat damage to Ai(2)-Selvala Ramp.
+Damage: Thermo-Alchemist (45) deals 3 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(2)-Selvala Ramp 7 > 4
+Life: Life: Ai(3)-Kambal Taxes B3 46 > 43
+Resolve Stack: Thermo-Alchemist (45) - Thermo-Alchemist (45) deals 1 damage to Ai(2)-Selvala Ramp and Ai(3)-Kambal Taxes B3.
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 43 > 46
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 3]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 3]
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 33 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Add To Stack: Ai(1)-Torbran Burn B3 activated Thermo-Alchemist
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Thermo-Alchemist (45) deals 3 non-combat damage to Ai(2)-Selvala Ramp.
+Damage: Thermo-Alchemist (45) deals 3 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(2)-Selvala Ramp 4 > 1
+Life: Life: Ai(3)-Kambal Taxes B3 46 > 43
+Resolve Stack: Thermo-Alchemist (45) - Thermo-Alchemist (45) deals 1 damage to Ai(2)-Selvala Ramp and Ai(3)-Kambal Taxes B3.
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 43 > 46
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 3]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 3]
+Mana: Swamp (273) - {T}: Add {B}.
+Mana: Plains (250) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Karlov of the Ghost Council targeting [Torbran, Thane of Red Fell (100)]
+Zone Change: Torbran, Thane of Red Fell (100) was put into Exile from Battlefield.
+Resolve Stack: Karlov of the Ghost Council (271) - Exile Torbran, Thane of Red Fell (100).
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Mana: Mountain (79) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (86) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Soul's Attendant
+Life: Life: Ai(3)-Kambal Taxes B3 46 > 47
+Resolve Stack: Whenever another creature enters, you may gain 1 life. [Zone Changer: Torbran, Thane of Red Fell (100)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 1]
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Torbran, Thane of Red Fell (100)]
+Land: Ai(1)-Torbran Burn B3 played Mountain (87)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Combat: Ai(1)-Torbran Burn B3 assigned Elephant Token (306), Elephant Token (308) and Elephant Token (310) to attack Ai(2)-Selvala Ramp.
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Combat: Ai(2)-Selvala Ramp assigned Llanowar Elves (185) to block Elephant Token (306).
+Ai(2)-Selvala Ramp assigned Selvala, Heart of the Wilds (201) to block Elephant Token (308).
+Ai(2)-Selvala Ramp didn't block Elephant Token (310).
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Damage: Elephant Token (306) deals 3 damage to Llanowar Elves (185).
+Damage: Elephant Token (308) deals 3 damage to Selvala, Heart of the Wilds (201).
+Damage: Elephant Token (310) deals 3 combat damage to Ai(2)-Selvala Ramp.
+Damage: Llanowar Elves (185) deals 1 damage to Elephant Token (306).
+Damage: Selvala, Heart of the Wilds (201) deals 2 damage to Elephant Token (308).
+Life: Life: Ai(2)-Selvala Ramp 1 > -2
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 47 > 50
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 3]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 3]
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 34 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (248)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Karlov of the Ghost Council (271).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Karlov of the Ghost Council (271) deals 6 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 11 > 5
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 50 > 56
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 6]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 6]
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Plains (254) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Karlov of the Ghost Council targeting [Torbran, Thane of Red Fell (100)]
+Zone Change: Torbran, Thane of Red Fell (100) was put into Exile from Battlefield.
+Resolve Stack: Karlov of the Ghost Council (271) - Exile Torbran, Thane of Red Fell (100).
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 35 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Mana: Mountain (79) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (89) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Dictate of the Twin Gods
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(1)-Torbran Burn B3 5 > 3
+Life: Life: Ai(3)-Kambal Taxes B3 56 > 58
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Dictate of the Twin Gods (2), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Dictate of the Twin Gods]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Life: Life: Ai(3)-Kambal Taxes B3 58 > 60
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 2]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Resolve Stack: Dictate of the Twin Gods
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 36 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (282)
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (276) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead - Creature 5 / 7
+Mana: Swamp (273) - {T}: Add {B}.
+Mana: Plains (264) - {T}: Add {W}.
+Life: Life: Ai(3)-Kambal Taxes B3 60 > 58
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (266) - Ai(3)-Kambal Taxes B3 draws a card.
+Mana: Swamp (282) - {T}: Add {B}.
+Mana: Plains (250) - {T}: Add {W}.
+Life: Life: Ai(3)-Kambal Taxes B3 58 > 56
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (266) - Ai(3)-Kambal Taxes B3 draws a card.
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Mana: Plains (260) - {T}: Add {W}.
+Life: Life: Ai(3)-Kambal Taxes B3 56 > 54
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (266) - Ai(3)-Kambal Taxes B3 draws a card.
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271) and Kambal, Consul of Allocation (302) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 assigned Elephant Token (306) to block Karlov of the Ghost Council (271).
+Ai(1)-Torbran Burn B3 assigned Elephant Token (308) to block Kambal, Consul of Allocation (302).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Damage: Karlov of the Ghost Council (271) deals 12 damage to Elephant Token (306).
+Damage: Kambal, Consul of Allocation (302) deals 4 damage to Elephant Token (308).
+Damage: Elephant Token (306) deals 6 damage to Karlov of the Ghost Council (271).
+Damage: Elephant Token (308) deals 6 damage to Kambal, Consul of Allocation (302).
+Zone Change: Karlov of the Ghost Council (271) was put into Graveyard from Battlefield.
+Zone Change: Kambal, Consul of Allocation (302) was put into Graveyard from Battlefield.
+Zone Change: Elephant Token (306) was put into Graveyard from Battlefield.
+Zone Change: Elephant Token (308) was put into Graveyard from Battlefield.
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Add To Stack: Ai(1)-Torbran Burn B3 activated Thermo-Alchemist
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Damage: Thermo-Alchemist (45) deals 2 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(3)-Kambal Taxes B3 54 > 52
+Resolve Stack: Thermo-Alchemist (45) - Thermo-Alchemist (45) deals 1 damage to Ai(3)-Kambal Taxes B3.
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 37 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Mana: Mountain (88) - {T}: Add {R}.
+Mana: Mountain (64) - {T}: Add {R}.
+Mana: Mountain (79) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (86) - {T}: Add {R}.
+Mana: Mountain (84) - {T}: Add {R}.
+Mana: Mountain (78) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Soul's Attendant
+Life: Life: Ai(3)-Kambal Taxes B3 52 > 53
+Resolve Stack: Whenever another creature enters, you may gain 1 life. [Zone Changer: Torbran, Thane of Red Fell (100)]
+Land: Ai(1)-Torbran Burn B3 played Mountain (68)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Life: Life: Ai(1)-Torbran Burn B3 3 > 1
+Combat: Ai(1)-Torbran Burn B3 assigned Elephant Token (310) to attack Ai(3)-Kambal Taxes B3.
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 53 > 55
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 2]
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Combat: Ai(3)-Kambal Taxes B3 didn't block Elephant Token (310).
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Damage: Elephant Token (310) deals 6 combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(3)-Kambal Taxes B3 55 > 49
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 38 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Life: Life: Ai(3)-Kambal Taxes B3 49 > 47
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (266) - Ai(3)-Kambal Taxes B3 draws a card.
+Mana: Swamp (276) - {T}: Add {B}.
+Mana: Swamp (273) - {T}: Add {B}.
+Life: Life: Ai(3)-Kambal Taxes B3 47 > 45
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (266) - Ai(3)-Kambal Taxes B3 draws a card.
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (289)
+Mana: Swamp (282) - {T}: Add {B}.
+Mana: Plains (254) - {T}: Add {W}.
+Mana: Swamp (289) - {T}: Add {B}.
+Mana: Plains (264) - {T}: Add {W}.
+Mana: Plains (250) - {T}: Add {W}.
+Mana: Plains (260) - {T}: Add {W}.
+Mana: Plains (248) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Kambal, Consul of Allocation
+Resolve Stack: Kambal, Consul of Allocation - Creature 2 / 3
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Soul's Attendant
+Life: Life: Ai(3)-Kambal Taxes B3 45 > 46
+Resolve Stack: Whenever another creature enters, you may gain 1 life. [Zone Changer: Kambal, Consul of Allocation (302)]
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Add To Stack: Ai(1)-Torbran Burn B3 activated Thermo-Alchemist
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Damage: Thermo-Alchemist (45) deals 6 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(3)-Kambal Taxes B3 46 > 40
+Resolve Stack: Thermo-Alchemist (45) - Thermo-Alchemist (45) deals 1 damage to Ai(3)-Kambal Taxes B3.
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 39 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Land: Ai(1)-Torbran Burn B3 played Ramunap Ruins (21)
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 40 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Mana: Plains (254) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Path to Exile targeting [Torbran, Thane of Red Fell (100)]
+Zone Change: Torbran, Thane of Red Fell (100) was put into Exile from Battlefield.
+Resolve Stack: Path to Exile (207) - Exile Torbran, Thane of Red Fell (100). Ai(1)-Torbran Burn B3 may search their library for a basic land card, put that card onto the battlefield tapped, then shuffle their library. 
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (261)
+Mana: Swamp (290) - {T}: Add {B}.
+Mana: Swamp (275) - {T}: Add {B}.
+Life: Life: Ai(3)-Kambal Taxes B3 40 > 38
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (266) - Ai(3)-Kambal Taxes B3 draws a card.
+Mana: Swamp (276) - {T}: Add {B}.
+Mana: Swamp (273) - {T}: Add {B}.
+Mana: Swamp (282) - {T}: Add {B}.
+Mana: Swamp (289) - {T}: Add {B}.
+Mana: Plains (264) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Sanguine Bond
+Resolve Stack: Sanguine Bond
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Mana: Plains (250) - {T}: Add {W}.
+Life: Life: Ai(3)-Kambal Taxes B3 38 > 36
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Erebos, God of the Dead
+Resolve Stack: Erebos, God of the Dead (266) - Ai(3)-Kambal Taxes B3 draws a card.
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Erebos, God of the Dead (266), Kambal, Consul of Allocation (302) and Soul's Attendant (205) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 assigned Thermo-Alchemist (45) to block Erebos, God of the Dead (266).
+Ai(1)-Torbran Burn B3 assigned Elephant Token (310) to block Kambal, Consul of Allocation (302).
+Ai(1)-Torbran Burn B3 assigned Electrostatic Field (5) to block Soul's Attendant (205).
+Add To Stack: Ai(1)-Torbran Burn B3 activated Thermo-Alchemist
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Damage: Thermo-Alchemist (45) deals 2 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(3)-Kambal Taxes B3 36 > 34
+Resolve Stack: Thermo-Alchemist (45) - Thermo-Alchemist (45) deals 1 damage to Ai(3)-Kambal Taxes B3.
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Replacement Effect: If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.
+Damage: Erebos, God of the Dead (266) deals 10 damage to Thermo-Alchemist (45).
+Damage: Kambal, Consul of Allocation (302) deals 4 damage to Elephant Token (310).
+Damage: Soul's Attendant (205) deals 2 damage to Electrostatic Field (5).
+Damage: Elephant Token (310) deals 6 damage to Kambal, Consul of Allocation (302).
+Zone Change: Kambal, Consul of Allocation (302) was put into Graveyard from Battlefield.
+Zone Change: Elephant Token (310) was put into Graveyard from Battlefield.
+Zone Change: Thermo-Alchemist (45) was put into Graveyard from Battlefield.
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (260) - {T}: Add {W}.
+Mana: Plains (248) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Suture Priest
+Resolve Stack: Suture Priest - Creature 1 / 1
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Soul's Attendant
+Life: Life: Ai(3)-Kambal Taxes B3 34 > 35
+Resolve Stack: Whenever another creature enters, you may gain 1 life. [Zone Changer: Suture Priest (239)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Sanguine Bond targeting [Ai(1)-Torbran Burn B3]
+Life: Life: Ai(1)-Torbran Burn B3 1 > 0
+Resolve Stack: Whenever you gain life, target opponent loses that much life. (Targeting: [[Ai(1)-Torbran Burn B3]]) [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 1]
+Player Control: Ai(1)-Torbran Burn B3 has restored control over themself
+Player Control: Ai(2)-Selvala Ramp has restored control over themself
+Player Control: Ai(3)-Kambal Taxes B3 has restored control over themself
+Game Outcome: Turn 20
+Game Outcome: Ai(1)-Torbran Burn B3 has lost because life total reached 0
+Game Outcome: Ai(2)-Selvala Ramp has lost because life total reached 0
+Game Outcome: Ai(3)-Kambal Taxes B3 has won because all opponents have lost
+Match Result: Ai(1)-Torbran Burn B3: 0 Ai(2)-Selvala Ramp: 0 Ai(3)-Kambal Taxes B3: 1 
+
+Game Result: Game 1 ended in 16348 ms. Ai(3)-Kambal Taxes B3 has won!
+
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Selvala, Heart of the Wilds for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Selvala, Heart of the Wilds for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Torbran, Thane of Red Fell for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Torbran, Thane of Red Fell for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Torbran, Thane of Red Fell for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Selvala, Heart of the Wilds for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kambal, Consul of Allocation for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Kambal, Consul of Allocation for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Mulligan: Ai(1)-Torbran Burn B3 has kept a hand of 7 cards
+Mulligan: Ai(2)-Selvala Ramp has kept a hand of 7 cards
+Mulligan: Ai(3)-Kambal Taxes B3 has kept a hand of 7 cards
+Turn: Turn 1 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (89)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 2 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (166)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (166) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Elvish Mystic
+Resolve Stack: Elvish Mystic - Creature 1 / 1
+Mana: Mountain (89) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Lightning Bolt targeting [Elvish Mystic (122)]
+Damage: Lightning Bolt (9) deals 3 damage to Elvish Mystic (122).
+Resolve Stack: Lightning Bolt (9) - Lightning Bolt (9) deals 3 damage to Elvish Mystic (122).
+Zone Change: Elvish Mystic (122) was put into Graveyard from Battlefield.
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 3 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Replacement Effect: Temple of Silence enters tapped.
+Land: Ai(3)-Kambal Taxes B3 played Temple of Silence (272)
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Temple of Silence
+Resolve Stack: Ai(3)-Kambal Taxes B3 scried 1 card(s) to the bottom of the library
+Resolve Stack: When Temple of Silence enters, scry 1. [Zone Changer: Temple of Silence (272)]
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 4 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (60)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Mind Stone
+Resolve Stack: Mind Stone
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 5 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (158)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 6 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (248)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Mana: Plains (248) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Karlov of the Ghost Council
+Resolve Stack: Karlov of the Ghost Council - Creature 2 / 2
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 7 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Barbarian Ring (16)
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Mana: Mind Stone (6) - {T}: Add {C}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Light Up the Stage
+Resolve Stack: Light Up the Stage (97) - Ai(1)-Torbran Burn B3 exiles the top two cards of their library.  
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 8 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (154)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (166) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (154) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Selvala, Heart of the Wilds
+Resolve Stack: Selvala, Heart of the Wilds - Creature 2 / 3
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 9 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (288)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (248) - {T}: Add {W}.
+Mana: Swamp (288) - {T}: Add {B}.
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Kambal, Consul of Allocation
+Resolve Stack: Kambal, Consul of Allocation - Creature 2 / 3
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Kambal, Consul of Allocation (302)]
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 10 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Abrade
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(1)-Torbran Burn B3 40 > 38
+Life: Life: Ai(3)-Kambal Taxes B3 40 > 42
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Abrade (36), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Choose one —
+• Abrade deals 3 damage to target creature.
+• Destroy target artifact.
+
+ Abrade deals 3 damage to target creature.]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Damage: Abrade (36) deals 3 damage to Selvala, Heart of the Wilds (201).
+Resolve Stack: Abrade (36) -  Abrade deals 3 damage to target creature. (Targeting: Selvala, Heart of the Wilds (201))
+Zone Change: Selvala, Heart of the Wilds (201) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (56)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (56) - {T}: Add {R}.
+Mana: Mind Stone (6) - {T}: Add {C}.
+Damage: Barbarian Ring (16) deals 1 non-combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 38 > 37
+Mana: Barbarian Ring (16) - {T}: Add {R}. Barbarian Ring deals 1 damage to you. 
+Add To Stack: Ai(1)-Torbran Burn B3 cast Fireball targeting [Ai(2)-Selvala Ramp]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(1)-Torbran Burn B3 37 > 35
+Life: Life: Ai(3)-Kambal Taxes B3 42 > 44
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Fireball (34), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Fireball deals X damage divided evenly, rounded down, among any number of targets. by Light Up the Stage (97)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Damage: Fireball (34) deals 2 non-combat damage to Ai(2)-Selvala Ramp.
+Life: Life: Ai(2)-Selvala Ramp 40 > 38
+Resolve Stack: Fireball (34) - Fireball (34) deals 2 damage divided evenly (rounded down) to 
+Ai(2)-Selvala Ramp. (X=2)
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 11 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (169)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (166) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (154) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Eternal Witness
+Resolve Stack: Eternal Witness - Creature 2 / 1
+Add To Stack: Ai(2)-Selvala Ramp triggered Eternal Witness targeting [Elvish Mystic (122)]
+Resolve Stack: When Eternal Witness enters, you may return target card from your graveyard to your hand. (Targeting: [[Elvish Mystic (122)]]) [Zone Changer: Eternal Witness (104)]
+Mana: Forest (169) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Elvish Mystic
+Resolve Stack: Elvish Mystic - Creature 1 / 1
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 12 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (253)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271) and Kambal, Consul of Allocation (302) to attack Ai(2)-Selvala Ramp.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(2)-Selvala Ramp didn't block Karlov of the Ghost Council (271).
+Ai(2)-Selvala Ramp didn't block Kambal, Consul of Allocation (302).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Karlov of the Ghost Council (271) deals 6 combat damage to Ai(2)-Selvala Ramp.
+Damage: Kambal, Consul of Allocation (302) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Life: Life: Ai(2)-Selvala Ramp 38 > 30
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Swamp (288) - {T}: Add {B}.
+Mana: Plains (248) - {T}: Add {W}.
+Mana: Plains (253) - {T}: Add {W}.
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Teysa Karlov
+Resolve Stack: Teysa Karlov - Creature 2 / 4
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 13 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (72)
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Earthquake
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(1)-Torbran Burn B3 35 > 33
+Life: Life: Ai(3)-Kambal Taxes B3 44 > 46
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Earthquake (20), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Earthquake deals X damage to each creature without flying and each player.]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Damage: Earthquake (20) deals 1 damage to Eternal Witness (104).
+Damage: Earthquake (20) deals 1 damage to Elvish Mystic (122).
+Damage: Earthquake (20) deals 1 damage to Karlov of the Ghost Council (271).
+Damage: Earthquake (20) deals 1 damage to Kambal, Consul of Allocation (302).
+Damage: Earthquake (20) deals 1 damage to Teysa Karlov (236).
+Damage: Earthquake (20) deals 1 non-combat damage to Ai(1)-Torbran Burn B3.
+Damage: Earthquake (20) deals 1 non-combat damage to Ai(2)-Selvala Ramp.
+Damage: Earthquake (20) deals 1 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(1)-Torbran Burn B3 33 > 32
+Life: Life: Ai(2)-Selvala Ramp 30 > 29
+Life: Life: Ai(3)-Kambal Taxes B3 46 > 45
+Resolve Stack: Earthquake (20) - Deals 1 damage to Creature.withoutFlying. (X=1)
+Zone Change: Eternal Witness (104) was put into Graveyard from Battlefield.
+Zone Change: Elvish Mystic (122) was put into Graveyard from Battlefield.
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (56) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Damage: Barbarian Ring (16) deals 1 non-combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 32 > 31
+Mana: Barbarian Ring (16) - {T}: Add {R}. Barbarian Ring deals 1 damage to you. 
+Mana: Mind Stone (6) - {T}: Add {C}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 14 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (146)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (166) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (154) - {T}: Add {G}.
+Mana: Forest (169) - {T}: Add {G}.
+Mana: Forest (146) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Selvala, Heart of the Wilds
+Resolve Stack: Selvala, Heart of the Wilds - Creature 2 / 3
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 15 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Mana: Swamp (288) - {T}: Add {B}.
+Mana: Plains (248) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Karlov of the Ghost Council targeting [Selvala, Heart of the Wilds (201)]
+Zone Change: Selvala, Heart of the Wilds (201) was put into Exile from Battlefield.
+Resolve Stack: Karlov of the Ghost Council (271) - Exile Selvala, Heart of the Wilds (201).
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Mana: Plains (253) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Despark targeting [Torbran, Thane of Red Fell (100)]
+Zone Change: Torbran, Thane of Red Fell (100) was put into Exile from Battlefield.
+Resolve Stack: Despark (217) - Exile Torbran, Thane of Red Fell (100).
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (291)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271), Kambal, Consul of Allocation (302) and Teysa Karlov (236) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Karlov of the Ghost Council (271).
+Ai(1)-Torbran Burn B3 didn't block Kambal, Consul of Allocation (302).
+Ai(1)-Torbran Burn B3 didn't block Teysa Karlov (236).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Karlov of the Ghost Council (271) deals 2 combat damage to Ai(1)-Torbran Burn B3.
+Damage: Kambal, Consul of Allocation (302) deals 2 combat damage to Ai(1)-Torbran Burn B3.
+Damage: Teysa Karlov (236) deals 2 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 31 > 25
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 16 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (91)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Mana: Mountain (56) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mind Stone (6) - {T}: Add {C}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 17 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (142)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (166) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (154) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Yavimaya Elder
+Resolve Stack: Yavimaya Elder - Creature 2 / 1
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 18 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (258)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (248) - {T}: Add {W}.
+Mana: Swamp (288) - {T}: Add {B}.
+Mana: Swamp (291) - {T}: Add {B}.
+Mana: Plains (253) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Windborn Muse
+Resolve Stack: Windborn Muse - Creature 2 / 3
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 19 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (53)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Electrostatic Field
+Resolve Stack: Electrostatic Field - Creature 0 / 4
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 20 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (145)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (166) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (154) - {T}: Add {G}.
+Mana: Forest (169) - {T}: Add {G}.
+Mana: Forest (146) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Shamanic Revelation
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(2)-Selvala Ramp 29 > 27
+Life: Life: Ai(3)-Kambal Taxes B3 45 > 47
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Shamanic Revelation (197), Activator: Ai(2)-Selvala Ramp, SpellAbility: Draw a card for each creature you control. Ferocious — You gain 4 life for each creature you control with power 4 or greater. ]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Resolve Stack: Shamanic Revelation (197) - Ai(2)-Selvala Ramp draws a card. Ai(2)-Selvala Ramp gains 0 life.
+Mana: Forest (142) - {T}: Add {G}.
+Mana: Forest (145) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Arcane Signet
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Kambal, Consul of Allocation
+Life: Life: Ai(2)-Selvala Ramp 27 > 25
+Life: Life: Ai(3)-Kambal Taxes B3 47 > 49
+Resolve Stack: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life. [Card: Arcane Signet (200), Activator: Ai(2)-Selvala Ramp, SpellAbility: Arcane Signet]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Resolve Stack: Arcane Signet
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 21 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (255)
+Mana: Plains (248) - {T}: Add {W}.
+Mana: Swamp (288) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Blind Obedience
+Resolve Stack: Blind Obedience
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271) and Windborn Muse (300) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Karlov of the Ghost Council (271).
+Ai(1)-Torbran Burn B3 didn't block Windborn Muse (300).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Karlov of the Ghost Council (271) deals 6 combat damage to Ai(1)-Torbran Burn B3.
+Damage: Windborn Muse (300) deals 2 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 25 > 17
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Swamp (291) - {T}: Add {B}.
+Mana: Plains (253) - {T}: Add {W}.
+Mana: Plains (258) - {T}: Add {W}.
+Mana: Plains (255) - {T}: Add {W}.
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Exquisite Blood
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Blind Obedience
+Resolve Stack: Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.) [Card: Exquisite Blood (216), Activator: Ai(3)-Kambal Taxes B3, SpellAbility: Exquisite Blood]
+Resolve Stack: Exquisite Blood
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 22 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Cemetery Gatekeeper
+Replacement Effect: Artifacts and creatures your opponents control enter tapped.
+Resolve Stack: Cemetery Gatekeeper - Creature 2 / 1
+Add To Stack: Ai(1)-Torbran Burn B3 triggered Cemetery Gatekeeper
+Resolve Stack: When Cemetery Gatekeeper enters, exile a card from a graveyard. [Zone Changer: Cemetery Gatekeeper (94)]
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 23 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (144)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Mana: Forest (166) - {T}: Add {G}.
+Mana: Forest (158) - {T}: Add {G}.
+Mana: Forest (154) - {T}: Add {G}.
+Mana: Forest (169) - {T}: Add {G}.
+Mana: Forest (146) - {T}: Add {G}.
+Mana: Forest (142) - {T}: Add {G}.
+Mana: Forest (145) - {T}: Add {G}.
+Add To Stack: Ai(2)-Selvala Ramp cast Selvala, Heart of the Wilds
+Add To Stack: Ai(1)-Torbran Burn B3 triggered Cemetery Gatekeeper
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Cemetery Gatekeeper (94) deals 4 non-combat damage to Ai(2)-Selvala Ramp.
+Life: Life: Ai(2)-Selvala Ramp 25 > 21
+Resolve Stack: Whenever a player plays a land or casts a spell, if it shares a card type with the exiled card, Cemetery Gatekeeper deals 2 damage to that player. [Card: Selvala, Heart of the Wilds (201), Activator: Ai(2)-Selvala Ramp, SpellAbility: Selvala, Heart of the Wilds - Creature 2 / 3]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 49 > 53
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 4]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 4]
+Replacement Effect: Artifacts and creatures your opponents control enter tapped.
+Resolve Stack: Selvala, Heart of the Wilds - Creature 2 / 3
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 24 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Mana: Swamp (288) - {T}: Add {B}.
+Mana: Plains (248) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Karlov of the Ghost Council targeting [Torbran, Thane of Red Fell (100)]
+Zone Change: Torbran, Thane of Red Fell (100) was put into Exile from Battlefield.
+Resolve Stack: Karlov of the Ghost Council (271) - Exile Torbran, Thane of Red Fell (100).
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271), Kambal, Consul of Allocation (302), Teysa Karlov (236) and Windborn Muse (300) to attack Ai(2)-Selvala Ramp.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(2)-Selvala Ramp didn't block Karlov of the Ghost Council (271).
+Ai(2)-Selvala Ramp didn't block Kambal, Consul of Allocation (302).
+Ai(2)-Selvala Ramp didn't block Teysa Karlov (236).
+Ai(2)-Selvala Ramp didn't block Windborn Muse (300).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Karlov of the Ghost Council (271) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Damage: Kambal, Consul of Allocation (302) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Damage: Teysa Karlov (236) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Damage: Windborn Muse (300) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Life: Life: Ai(2)-Selvala Ramp 21 > 13
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 53 > 61
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 8]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 8]
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Swamp (291) - {T}: Add {B}.
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Mana: Plains (253) - {T}: Add {W}.
+Mana: Plains (258) - {T}: Add {W}.
+Mana: Plains (255) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Gray Merchant of Asphodel
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Blind Obedience
+Add To Stack: Ai(1)-Torbran Burn B3 triggered Cemetery Gatekeeper
+Damage: Cemetery Gatekeeper (94) deals 2 non-combat damage to Ai(3)-Kambal Taxes B3.
+Life: Life: Ai(3)-Kambal Taxes B3 61 > 59
+Resolve Stack: Whenever a player plays a land or casts a spell, if it shares a card type with the exiled card, Cemetery Gatekeeper deals 2 damage to that player. [Card: Gray Merchant of Asphodel (215), Activator: Ai(3)-Kambal Taxes B3, SpellAbility: Gray Merchant of Asphodel - Creature 2 / 4]
+Resolve Stack: Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.) [Card: Gray Merchant of Asphodel (215), Activator: Ai(3)-Kambal Taxes B3, SpellAbility: Gray Merchant of Asphodel - Creature 2 / 4]
+Resolve Stack: Gray Merchant of Asphodel - Creature 2 / 4
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Gray Merchant of Asphodel
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Gray Merchant of Asphodel (215)]
+Life: Life: Ai(1)-Torbran Burn B3 17 > 11
+Life: Life: Ai(2)-Selvala Ramp 13 > 7
+Life: Life: Ai(3)-Kambal Taxes B3 59 > 71
+Resolve Stack: When Gray Merchant of Asphodel enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way. [Zone Changer: Gray Merchant of Asphodel (215)]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 12]
+Life: Life: Ai(3)-Kambal Taxes B3 71 > 77
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 6]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 6]
+Life: Life: Ai(3)-Kambal Taxes B3 77 > 83
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 6]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 6]
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 25 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (75)
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Mana: Mountain (56) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (53) - {T}: Add {R}.
+Mana: Mountain (75) - {T}: Add {R}.
+Mana: Mind Stone (6) - {T}: Add {C}.
+Add To Stack: Ai(1)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Add To Stack: Ai(1)-Torbran Burn B3 triggered Cemetery Gatekeeper
+Damage: Cemetery Gatekeeper (94) deals 2 non-combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 11 > 9
+Resolve Stack: Whenever a player plays a land or casts a spell, if it shares a card type with the exiled card, Cemetery Gatekeeper deals 2 damage to that player. [Card: Torbran, Thane of Red Fell (100), Activator: Ai(1)-Torbran Burn B3, SpellAbility: Torbran, Thane of Red Fell - Creature 2 / 4]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 83 > 85
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 2]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 2]
+Replacement Effect: Artifacts and creatures your opponents control enter tapped.
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Add To Stack: Ai(2)-Selvala Ramp triggered Selvala, Heart of the Wilds
+Resolve Stack: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power. [Zone Changer: Torbran, Thane of Red Fell (100)]
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 26 (Ai(2)-Selvala Ramp)
+Phase: Ai(2)-Selvala Ramp's Untap step
+Phase: Ai(2)-Selvala Ramp's Upkeep step
+Phase: Ai(2)-Selvala Ramp's Draw step
+Phase: Ai(2)-Selvala Ramp's Main phase, precombat
+Land: Ai(2)-Selvala Ramp played Forest (159)
+Phase: Ai(2)-Selvala Ramp's Beginning of Combat Step
+Phase: Ai(2)-Selvala Ramp's Declare Attackers Step
+Phase: Ai(2)-Selvala Ramp's Declare Blockers Step
+Phase: Ai(2)-Selvala Ramp's First Strike Damage Step
+Phase: Ai(2)-Selvala Ramp's Combat Damage Step
+Phase: Ai(2)-Selvala Ramp's End of Combat Step
+Phase: Ai(2)-Selvala Ramp's Main phase, postcombat
+Phase: Ai(2)-Selvala Ramp's End step
+Phase: Ai(2)-Selvala Ramp's Cleanup step
+Turn: Turn 27 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Mana: Swamp (288) - {T}: Add {B}.
+Mana: Plains (248) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Karlov of the Ghost Council targeting [Torbran, Thane of Red Fell (100)]
+Zone Change: Torbran, Thane of Red Fell (100) was put into Exile from Battlefield.
+Resolve Stack: Karlov of the Ghost Council (271) - Exile Torbran, Thane of Red Fell (100).
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Land: Ai(3)-Kambal Taxes B3 played Swamp (284)
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Karlov of the Ghost Council (271), Kambal, Consul of Allocation (302), Teysa Karlov (236), Windborn Muse (300) and Gray Merchant of Asphodel (215) to attack Ai(2)-Selvala Ramp.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(2)-Selvala Ramp assigned Yavimaya Elder (129) to block Karlov of the Ghost Council (271).
+Ai(2)-Selvala Ramp assigned Selvala, Heart of the Wilds (201) to block Kambal, Consul of Allocation (302).
+Ai(2)-Selvala Ramp didn't block Teysa Karlov (236).
+Ai(2)-Selvala Ramp didn't block Windborn Muse (300).
+Ai(2)-Selvala Ramp didn't block Gray Merchant of Asphodel (215).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Karlov of the Ghost Council (271) deals 6 damage to Yavimaya Elder (129).
+Damage: Kambal, Consul of Allocation (302) deals 2 damage to Selvala, Heart of the Wilds (201).
+Damage: Teysa Karlov (236) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Damage: Windborn Muse (300) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Damage: Gray Merchant of Asphodel (215) deals 2 combat damage to Ai(2)-Selvala Ramp.
+Damage: Selvala, Heart of the Wilds (201) deals 2 damage to Kambal, Consul of Allocation (302).
+Damage: Yavimaya Elder (129) deals 2 damage to Karlov of the Ghost Council (271).
+Life: Life: Ai(2)-Selvala Ramp 7 > 1
+Zone Change: Yavimaya Elder (129) was put into Graveyard from Battlefield.
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Add To Stack: Ai(2)-Selvala Ramp triggered Yavimaya Elder
+Resolve Stack: When Yavimaya Elder dies, you may search your library for up to two basic land cards, reveal them, put them into your hand, then shuffle. [Zone Changer: Yavimaya Elder (129)]
+Life: Life: Ai(3)-Kambal Taxes B3 85 > 91
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 6]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Karlov of the Ghost Council
+Resolve Stack: Whenever you gain life, put two +1/+1 counters on Karlov of the Ghost Council. [Player: Ai(3)-Kambal Taxes B3, Gained Amount: 6]
+Mana: Swamp (291) - {T}: Add {B}.
+Mana: Plains (253) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 activated Karlov of the Ghost Council targeting [Selvala, Heart of the Wilds (201)]
+Zone Change: Karlov of the Ghost Council (271) was put into Graveyard from Battlefield.
+Zone Change: Selvala, Heart of the Wilds (201) was put into Exile from Battlefield.
+Resolve Stack: Karlov of the Ghost Council (271) - Exile Selvala, Heart of the Wilds (201).
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Mana: Plains (258) - {T}: Add {W}.
+Mana: Plains (255) - {T}: Add {W}.
+Mana: Swamp (284) - {T}: Add {B}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Ghostly Prison
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Blind Obedience
+Mana: Temple of Silence (272) - {T}: Add {W} or {B}.
+Life: Life: Ai(1)-Torbran Burn B3 9 > 8
+Life: Life: Ai(2)-Selvala Ramp 1 > 0
+Life: Life: Ai(3)-Kambal Taxes B3 91 > 93
+Resolve Stack: Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.) [Card: Ghostly Prison (211), Activator: Ai(3)-Kambal Taxes B3, SpellAbility: Ghostly Prison]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 93 > 94
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(2)-Selvala Ramp, Lost Amount: 1]
+Life: Life: Ai(3)-Kambal Taxes B3 94 > 95
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 1]
+Resolve Stack: Ghostly Prison
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 28 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played War Room (31)
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Mana: Mountain (56) - {T}: Add {R}.
+Mana: Mountain (72) - {T}: Add {R}.
+Mana: Mountain (91) - {T}: Add {R}.
+Mana: Mountain (53) - {T}: Add {R}.
+Mana: Mountain (75) - {T}: Add {R}.
+Mana: Mind Stone (6) - {T}: Add {C}.
+Mana: War Room (31) - {T}: Add {C}.
+Damage: Barbarian Ring (16) deals 1 non-combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 8 > 7
+Mana: Barbarian Ring (16) - {T}: Add {R}. Barbarian Ring deals 1 damage to you. 
+Add To Stack: Ai(1)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 95 > 96
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 1]
+Replacement Effect: Artifacts and creatures your opponents control enter tapped.
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 29 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Windborn Muse (300) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Windborn Muse (300).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Damage: Windborn Muse (300) deals 2 combat damage to Ai(1)-Torbran Burn B3.
+Life: Life: Ai(1)-Torbran Burn B3 7 > 5
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 96 > 98
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 2]
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (247)
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 30 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (79)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (89) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Mana: Mountain (56) - {T}: Add {R}.
+Life: Life: Ai(1)-Torbran Burn B3 5 > 4
+Add To Stack: Ai(1)-Torbran Burn B3 activated War Room
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 98 > 99
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 1]
+Resolve Stack: War Room (31) - Ai(1)-Torbran Burn B3 draws a card.
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 31 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Kambal, Consul of Allocation (302), Teysa Karlov (236), Windborn Muse (300) and Gray Merchant of Asphodel (215) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 assigned Cemetery Gatekeeper (94) to block Kambal, Consul of Allocation (302).
+Ai(1)-Torbran Burn B3 assigned Torbran, Thane of Red Fell (100) to block Teysa Karlov (236).
+Ai(1)-Torbran Burn B3 didn't block Windborn Muse (300).
+Ai(1)-Torbran Burn B3 assigned Electrostatic Field (5) to block Gray Merchant of Asphodel (215).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Cemetery Gatekeeper (94) deals 4 damage to Kambal, Consul of Allocation (302).
+Zone Change: Kambal, Consul of Allocation (302) was put into Graveyard from Battlefield.
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Teysa Karlov (236) deals 2 damage to Torbran, Thane of Red Fell (100).
+Damage: Windborn Muse (300) deals 2 combat damage to Ai(1)-Torbran Burn B3.
+Damage: Gray Merchant of Asphodel (215) deals 2 damage to Electrostatic Field (5).
+Damage: Torbran, Thane of Red Fell (100) deals 4 damage to Teysa Karlov (236).
+Life: Life: Ai(1)-Torbran Burn B3 4 > 2
+Zone Change: Teysa Karlov (236) was put into Graveyard from Battlefield.
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 99 > 101
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 2]
+Phase: Ai(3)-Kambal Taxes B3's End of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, postcombat
+Land: Ai(3)-Kambal Taxes B3 played Plains (259)
+Mana: Swamp (288) - {T}: Add {B}.
+Mana: Plains (248) - {T}: Add {W}.
+Mana: Plains (253) - {T}: Add {W}.
+Mana: Swamp (291) - {T}: Add {B}.
+Mana: Plains (258) - {T}: Add {W}.
+Add To Stack: Ai(3)-Kambal Taxes B3 cast Kambal, Consul of Allocation
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Blind Obedience
+Mana: Plains (255) - {T}: Add {W}.
+Life: Life: Ai(1)-Torbran Burn B3 2 > 1
+Life: Life: Ai(3)-Kambal Taxes B3 101 > 102
+Resolve Stack: Extort (Whenever you cast a spell, you may pay {W/B}. If you do, each opponent loses 1 life and you gain that much life.) [Card: Kambal, Consul of Allocation (302), Activator: Ai(3)-Kambal Taxes B3, SpellAbility: Kambal, Consul of Allocation - Creature 2 / 3]
+Add To Stack: Ai(3)-Kambal Taxes B3 triggered Exquisite Blood
+Life: Life: Ai(3)-Kambal Taxes B3 102 > 103
+Resolve Stack: Whenever an opponent loses life, you gain that much life. [Player: Ai(1)-Torbran Burn B3, Lost Amount: 1]
+Resolve Stack: Kambal, Consul of Allocation - Creature 2 / 3
+Phase: Ai(3)-Kambal Taxes B3's End step
+Phase: Ai(3)-Kambal Taxes B3's Cleanup step
+Turn: Turn 32 (Ai(1)-Torbran Burn B3)
+Phase: Ai(1)-Torbran Burn B3's Untap step
+Phase: Ai(1)-Torbran Burn B3's Upkeep step
+Phase: Ai(1)-Torbran Burn B3's Draw step
+Phase: Ai(1)-Torbran Burn B3's Main phase, precombat
+Land: Ai(1)-Torbran Burn B3 played Mountain (48)
+Phase: Ai(1)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(1)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(1)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(1)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(1)-Torbran Burn B3's End of Combat Step
+Phase: Ai(1)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(1)-Torbran Burn B3's End step
+Phase: Ai(1)-Torbran Burn B3's Cleanup step
+Turn: Turn 33 (Ai(3)-Kambal Taxes B3)
+Phase: Ai(3)-Kambal Taxes B3's Untap step
+Phase: Ai(3)-Kambal Taxes B3's Upkeep step
+Phase: Ai(3)-Kambal Taxes B3's Draw step
+Phase: Ai(3)-Kambal Taxes B3's Main phase, precombat
+Phase: Ai(3)-Kambal Taxes B3's Beginning of Combat Step
+Phase: Ai(3)-Kambal Taxes B3's Declare Attackers Step
+Combat: Ai(3)-Kambal Taxes B3 assigned Windborn Muse (300), Gray Merchant of Asphodel (215) and Kambal, Consul of Allocation (302) to attack Ai(1)-Torbran Burn B3.
+Phase: Ai(3)-Kambal Taxes B3's Declare Blockers Step
+Combat: Ai(1)-Torbran Burn B3 didn't block Windborn Muse (300).
+Ai(1)-Torbran Burn B3 assigned Electrostatic Field (5) and Torbran, Thane of Red Fell (100) to block Gray Merchant of Asphodel (215).
+Ai(1)-Torbran Burn B3 assigned Cemetery Gatekeeper (94) to block Kambal, Consul of Allocation (302).
+Phase: Ai(3)-Kambal Taxes B3's First Strike Damage Step
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Cemetery Gatekeeper (94) deals 4 damage to Kambal, Consul of Allocation (302).
+Zone Change: Kambal, Consul of Allocation (302) was put into Graveyard from Battlefield.
+Phase: Ai(3)-Kambal Taxes B3's Combat Damage Step
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Windborn Muse (300) deals 2 combat damage to Ai(1)-Torbran Burn B3.
+Damage: Gray Merchant of Asphodel (215) deals 2 damage to Torbran, Thane of Red Fell (100).
+Damage: Torbran, Thane of Red Fell (100) deals 4 damage to Gray Merchant of Asphodel (215).
+Life: Life: Ai(1)-Torbran Burn B3 1 > -1
+Player Control: Ai(1)-Torbran Burn B3 has restored control over themself
+Player Control: Ai(2)-Selvala Ramp has restored control over themself
+Player Control: Ai(3)-Kambal Taxes B3 has restored control over themself
+Game Outcome: Turn 17
+Game Outcome: Ai(1)-Torbran Burn B3 has lost because life total reached 0
+Game Outcome: Ai(2)-Selvala Ramp has lost because life total reached 0
+Game Outcome: Ai(3)-Kambal Taxes B3 has won because all opponents have lost
+Match Result: Ai(1)-Torbran Burn B3: 0 Ai(2)-Selvala Ramp: 0 Ai(3)-Kambal Taxes B3: 2 
+
+Game Result: Game 2 ended in 6150 ms. Ai(3)-Kambal Taxes B3 has won!
+

@@ -1,0 +1,783 @@
+{
+  "meta": {
+    "source": "rotated",
+    "decks": [
+      "inspirit_b3_v2.dck",
+      "atraxa_counters.dck",
+      "meren_graveyard.dck",
+      "urdragon_dragons.dck"
+    ],
+    "format": "Commander",
+    "rotations": 4
+  },
+  "games": [
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Meren Graveyard B3",
+        "draw": false,
+        "duration_ms": 21258,
+        "raw": "Game Result: Game 1 ended in 21258 ms. Ai(3)-Meren Graveyard B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Meren Graveyard B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Meren Graveyard B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Ur-Dragon B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Ur-Dragon B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3 v2: 0 Ai(2)-Atraxa Counters B3: 0 Ai(3)-Meren Graveyard B3: 1 Ai(4)-Ur-Dragon B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Atraxa Counters B3",
+        "draw": false,
+        "duration_ms": 25724,
+        "raw": "Game Result: Game 2 ended in 25724 ms. Ai(2)-Atraxa Counters B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 24",
+          "detail": "Turn 24"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Atraxa Counters B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Atraxa Counters B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Ur-Dragon B3 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(4)-Ur-Dragon B3 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3 v2: 0 Ai(2)-Atraxa Counters B3: 1 Ai(3)-Meren Graveyard B3: 1 Ai(4)-Ur-Dragon B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 95766,
+        "raw": "Game Result: Game 3 ended in 95766 ms. Ai(4)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 35",
+          "detail": "Turn 35"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(4)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3 v2: 0 Ai(2)-Atraxa Counters B3: 1 Ai(3)-Meren Graveyard B3: 1 Ai(4)-Ur-Dragon B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Inspirit B3 v2",
+        "draw": false,
+        "duration_ms": 52152,
+        "raw": "Game Result: Game 4 ended in 52152 ms. Ai(1)-Inspirit B3 v2 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 v2 has won because all opponents have lost",
+          "detail": "Ai(1)-Inspirit B3 v2 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Ur-Dragon B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Ur-Dragon B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3 v2: 1 Ai(2)-Atraxa Counters B3: 1 Ai(3)-Meren Graveyard B3: 1 Ai(4)-Ur-Dragon B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Atraxa Counters B3",
+        "draw": false,
+        "duration_ms": 26663,
+        "raw": "Game Result: Game 1 ended in 26663 ms. Ai(1)-Atraxa Counters B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 25",
+          "detail": "Turn 25"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Atraxa Counters B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Atraxa Counters B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Meren Graveyard B3 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(2)-Meren Graveyard B3 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Ur-Dragon B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Ur-Dragon B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 v2 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(4)-Inspirit B3 v2 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Atraxa Counters B3: 1 Ai(2)-Meren Graveyard B3: 0 Ai(3)-Ur-Dragon B3: 0 Ai(4)-Inspirit B3 v2: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Atraxa Counters B3",
+        "draw": false,
+        "duration_ms": 179010,
+        "raw": "Game Result: Game 2 ended in 179010 ms. Ai(1)-Atraxa Counters B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 22",
+          "detail": "Turn 22"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Atraxa Counters B3 has won due to effect of 'Simic Ascendancy'",
+          "detail": "Ai(1)-Atraxa Counters B3 has won due to effect of 'Simic Ascendancy'"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Ur-Dragon B3 has lost because an opponent has won by spell 'Simic Ascendancy'",
+          "detail": "Ai(3)-Ur-Dragon B3 has lost because an opponent has won by spell 'Simic Ascendancy'"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 v2 has lost because an opponent has won by spell 'Simic Ascendancy'",
+          "detail": "Ai(4)-Inspirit B3 v2 has lost because an opponent has won by spell 'Simic Ascendancy'"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Atraxa Counters B3: 2 Ai(2)-Meren Graveyard B3: 0 Ai(3)-Ur-Dragon B3: 0 Ai(4)-Inspirit B3 v2: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 57335,
+        "raw": "Game Result: Game 3 ended in 57335 ms. Ai(3)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Atraxa Counters B3: 2 Ai(2)-Meren Graveyard B3: 0 Ai(3)-Ur-Dragon B3: 1 Ai(4)-Inspirit B3 v2: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 18377,
+        "raw": "Game Result: Game 4 ended in 18377 ms. Ai(3)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 18",
+          "detail": "Turn 18"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Meren Graveyard B3 has lost because of obtaining 10 poison counters",
+          "detail": "Ai(2)-Meren Graveyard B3 has lost because of obtaining 10 poison counters"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Atraxa Counters B3: 2 Ai(2)-Meren Graveyard B3: 0 Ai(3)-Ur-Dragon B3: 2 Ai(4)-Inspirit B3 v2: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Atraxa Counters B3",
+        "draw": false,
+        "duration_ms": 40170,
+        "raw": "Game Result: Game 1 ended in 40170 ms. Ai(4)-Atraxa Counters B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 20",
+          "detail": "Turn 20"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Ur-Dragon B3 has lost because an opponent has won by spell 'Simic Ascendancy'",
+          "detail": "Ai(2)-Ur-Dragon B3 has lost because an opponent has won by spell 'Simic Ascendancy'"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Atraxa Counters B3 has won due to effect of 'Simic Ascendancy'",
+          "detail": "Ai(4)-Atraxa Counters B3 has won due to effect of 'Simic Ascendancy'"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Meren Graveyard B3: 0 Ai(2)-Ur-Dragon B3: 0 Ai(3)-Inspirit B3 v2: 0 Ai(4)-Atraxa Counters B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 35728,
+        "raw": "Game Result: Game 2 ended in 35728 ms. Ai(2)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 21",
+          "detail": "Turn 21"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Meren Graveyard B3: 0 Ai(2)-Ur-Dragon B3: 1 Ai(3)-Inspirit B3 v2: 0 Ai(4)-Atraxa Counters B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 16324,
+        "raw": "Game Result: Game 3 ended in 16324 ms. Ai(2)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 20",
+          "detail": "Turn 20"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Meren Graveyard B3: 0 Ai(2)-Ur-Dragon B3: 2 Ai(3)-Inspirit B3 v2: 0 Ai(4)-Atraxa Counters B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Atraxa Counters B3",
+        "draw": false,
+        "duration_ms": 130663,
+        "raw": "Game Result: Game 4 ended in 130663 ms. Ai(4)-Atraxa Counters B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 37",
+          "detail": "Turn 37"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Ur-Dragon B3 has lost because an opponent has won by spell 'Simic Ascendancy'",
+          "detail": "Ai(2)-Ur-Dragon B3 has lost because an opponent has won by spell 'Simic Ascendancy'"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Atraxa Counters B3 has won due to effect of 'Simic Ascendancy'",
+          "detail": "Ai(4)-Atraxa Counters B3 has won due to effect of 'Simic Ascendancy'"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Meren Graveyard B3: 0 Ai(2)-Ur-Dragon B3: 2 Ai(3)-Inspirit B3 v2: 0 Ai(4)-Atraxa Counters B3: 2"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 48716,
+        "raw": "Game Result: Game 1 ended in 48716 ms. Ai(1)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Atraxa Counters B3 has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(3)-Atraxa Counters B3 has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Ur-Dragon B3: 1 Ai(2)-Inspirit B3 v2: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Meren Graveyard B3",
+        "draw": false,
+        "duration_ms": 61474,
+        "raw": "Game Result: Game 2 ended in 61474 ms. Ai(4)-Meren Graveyard B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 25",
+          "detail": "Turn 25"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Ur-Dragon B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Ur-Dragon B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Meren Graveyard B3 has won because all opponents have lost",
+          "detail": "Ai(4)-Meren Graveyard B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Ur-Dragon B3: 1 Ai(2)-Inspirit B3 v2: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 58662,
+        "raw": "Game Result: Game 3 ended in 58662 ms. Ai(1)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Ur-Dragon B3: 2 Ai(2)-Inspirit B3 v2: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Ur-Dragon B3",
+        "draw": false,
+        "duration_ms": 26500,
+        "raw": "Game Result: Game 4 ended in 26500 ms. Ai(1)-Ur-Dragon B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 20",
+          "detail": "Turn 20"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Ur-Dragon B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Ur-Dragon B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 v2 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Atraxa Counters B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Atraxa Counters B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Meren Graveyard B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Meren Graveyard B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Ur-Dragon B3: 3 Ai(2)-Inspirit B3 v2: 0 Ai(3)-Atraxa Counters B3: 0 Ai(4)-Meren Graveyard B3: 1"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "games": 16,
+    "draws": 0,
+    "wins": {
+      "Meren Graveyard B3": 2,
+      "Atraxa Counters B3": 5,
+      "Ur-Dragon B3": 8,
+      "Inspirit B3 v2": 1
+    },
+    "win_rates": {
+      "Meren Graveyard B3": 0.125,
+      "Atraxa Counters B3": 0.312,
+      "Ur-Dragon B3": 0.5,
+      "Inspirit B3 v2": 0.062
+    }
+  }
+}

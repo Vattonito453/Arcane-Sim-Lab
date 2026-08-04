@@ -1,0 +1,341 @@
+Error handling registered!
+15:07:23 [INFO ] GuiBase: ##########################################
+15:07:23 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+15:07:23 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+15:07:23 [INFO ] GuiBase: OS: Mac OS X 15.7.5 aarch64
+15:07:23 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+15:07:23 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Inspirit B3 v2 vs Ai(2)-Dnide Wildsear vs Ai(3)-NanMan Felix Five-Boots vs Ai(4)-N3cro Raggadragga - four games of Commander
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Raggadragga, Goreguts Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Felix Five-Boots for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Game Outcome: Turn 19
+Game Outcome: Ai(1)-Inspirit B3 v2 has lost due to accumulation of 21 damage from generals
+Game Outcome: Ai(2)-Dnide Wildsear has won because all opponents have lost
+Game Outcome: Ai(3)-NanMan Felix Five-Boots has lost due to accumulation of 21 damage from generals
+Game Outcome: Ai(4)-N3cro Raggadragga has lost because life total reached 0
+Match Result: Ai(1)-Inspirit B3 v2: 0 Ai(2)-Dnide Wildsear: 1 Ai(3)-NanMan Felix Five-Boots: 0 Ai(4)-N3cro Raggadragga: 0 
+
+Game Result: Game 1 ended in 62961 ms. Ai(2)-Dnide Wildsear has won!
+
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wildsear, Scouring Maw for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wildsear, Scouring Maw for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+SVar 'Double' not found in ability, fallback to Card (Zopandrel, Hunger Dominus). Ability is ()
+SVar 'Double' not defined in Card (Zopandrel, Hunger Dominus)
+Game Outcome: Turn 23
+Game Outcome: Ai(1)-Inspirit B3 v2 has lost because life total reached 0
+Game Outcome: Ai(2)-Dnide Wildsear has lost because of obtaining 10 poison counters
+Game Outcome: Ai(3)-NanMan Felix Five-Boots has won because all opponents have lost
+Game Outcome: Ai(4)-N3cro Raggadragga has lost because life total reached 0
+Match Result: Ai(1)-Inspirit B3 v2: 0 Ai(2)-Dnide Wildsear: 1 Ai(3)-NanMan Felix Five-Boots: 1 Ai(4)-N3cro Raggadragga: 0 
+
+Game Result: Game 2 ended in 57424 ms. Ai(3)-NanMan Felix Five-Boots has won!
+
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Raggadragga, Goreguts Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Wildsear, Scouring Maw for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+SVar 'Double' not found in ability, fallback to Card (Unnatural Growth). Ability is ()
+SVar 'Double' not defined in Card (Unnatural Growth)
+Correcting zone for Gratuitous Violence (168)
+Game Outcome: Turn 20
+Game Outcome: Ai(1)-Inspirit B3 v2 has lost because of obtaining 10 poison counters
+Game Outcome: Ai(2)-Dnide Wildsear has won because all opponents have lost
+Game Outcome: Ai(3)-NanMan Felix Five-Boots has lost because life total reached 0
+Game Outcome: Ai(4)-N3cro Raggadragga has lost because life total reached 0
+Match Result: Ai(1)-Inspirit B3 v2: 0 Ai(2)-Dnide Wildsear: 2 Ai(3)-NanMan Felix Five-Boots: 1 Ai(4)-N3cro Raggadragga: 0 
+
+Game Result: Game 3 ended in 59717 ms. Ai(2)-Dnide Wildsear has won!
+
+[Ai(2)-Dnide Wildsear] AI failed to play Detective's Phoenix (164) [Stack]
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Raggadragga, Goreguts Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+java.util.concurrent.ExecutionException: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:205)
+	at forge.ai.AiController.chooseSpellAbilityToPlayFromList(AiController.java:1680)
+	at forge.ai.AiController.getSpellAbilityToPlay(AiController.java:1569)
+	at forge.ai.AiController.chooseSpellAbilityToPlay(AiController.java:1389)
+	at forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay(PlayerControllerAi.java:833)
+	at forge.game.phase.PhaseHandler.mainLoopStep(PhaseHandler.java:1063)
+	at forge.game.phase.PhaseHandler.mainGameLoop(PhaseHandler.java:1042)
+	at forge.game.phase.PhaseHandler.startFirstTurn(PhaseHandler.java:1036)
+	at forge.game.GameAction.startGame(GameAction.java:2373)
+	at forge.game.Match.startGame(Match.java:92)
+	at forge.game.Match.startGame(Match.java:77)
+	at forge.view.SimulateMatch.lambda$simulateSingleMatch$0(SimulateMatch.java:182)
+	at forge.view.TimeLimitedCodeBlock.lambda$runWithTimeout$0(TimeLimitedCodeBlock.java:18)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.NullPointerException: Cannot invoke "forge.game.card.CounterType.is(forge.game.card.CounterEnumType)" because "type" is null
+	at forge.ai.ComputerUtilCost.checkRemoveCounterCost(ComputerUtilCost.java:100)
+	at forge.ai.SpellAbilityAi.willPayCosts(SpellAbilityAi.java:389)
+	at forge.ai.SpellAbilityAi.canPlayWithoutRestrict(SpellAbilityAi.java:105)
+	at forge.ai.SpellAbilityAi.canPlay(SpellAbilityAi.java:76)
+	at forge.ai.SpellAbilityAi.canPlayWithSubs(SpellAbilityAi.java:55)
+	at forge.ai.AiController.canPlaySa(AiController.java:911)
+	at forge.ai.AiController.canPlayAndPayForFace(AiController.java:855)
+	at forge.ai.AiController.canPlayAndPayFor(AiController.java:833)
+	at forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9(AiController.java:1661)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 1 more
+Stopping slow match as draw
+Game Outcome: Turn 21
+Game Outcome: Ai(1)-Inspirit B3 v2 has won because all opponents have lost
+Game Outcome: Ai(2)-Dnide Wildsear has won because all opponents have lost
+Game Outcome: Ai(3)-NanMan Felix Five-Boots has won because all opponents have lost
+Game Outcome: Ai(4)-N3cro Raggadragga has won because all opponents have lost
+Match Result: Ai(1)-Inspirit B3 v2: 0 Ai(2)-Dnide Wildsear: 3 Ai(3)-NanMan Felix Five-Boots: 1 Ai(4)-N3cro Raggadragga: 0 
+
+Game Result: Game 4 ended in 240002 ms. Ai(2)-Dnide Wildsear has won!
+

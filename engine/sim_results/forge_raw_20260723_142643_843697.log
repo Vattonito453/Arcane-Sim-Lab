@@ -1,0 +1,96 @@
+Error handling registered!
+14:22:52 [INFO ] GuiBase: ##########################################
+14:22:52 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+14:22:52 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+14:22:52 [INFO ] GuiBase: OS: Mac OS X 15.7.5 aarch64
+14:22:52 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+14:22:52 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Inspirit B3 vs Ai(2)-Krenko Goblins vs Ai(3)-Talrand Control vs Ai(4)-Drana Vampires - four games of Commander
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Talrand, Sky Summoner for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Krenko, Mob Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Krenko, Mob Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Moving spell to Library
+Game Outcome: Turn 24
+Game Outcome: Ai(1)-Inspirit B3 has won because all opponents have lost
+Game Outcome: Ai(2)-Krenko Goblins has lost because life total reached 0
+Game Outcome: Ai(3)-Talrand Control has lost because life total reached 0
+Game Outcome: Ai(4)-Drana Vampires has lost because life total reached 0
+Match Result: Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 0 Ai(4)-Drana Vampires: 0 
+
+Game Result: Game 1 ended in 119586 ms. Ai(1)-Inspirit B3 has won!
+
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Mountain Did not have activator set in SpellAbilityRestriction.canPlay()
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Drana, Liberator of Malakir for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+No AI assigned for API: Incubate
+Correcting zone for Tekuthal, Inquiry Dominus (34)
+Correcting zone for Tekuthal, Inquiry Dominus (34)
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Talrand, Sky Summoner for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSinglePlayer is used by Sphinx of Uthuun for forge.ai.ability.TwoPilesAi. Consider declaring an overloaded method
+Game Outcome: Turn 27
+Game Outcome: Ai(1)-Inspirit B3 has lost because life total reached 0
+Game Outcome: Ai(2)-Krenko Goblins has lost because life total reached 0
+Game Outcome: Ai(3)-Talrand Control has won because all opponents have lost
+Game Outcome: Ai(4)-Drana Vampires has lost due to accumulation of 21 damage from generals
+Match Result: Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 1 Ai(4)-Drana Vampires: 0 
+
+Game Result: Game 2 ended in 44093 ms. Ai(3)-Talrand Control has won!
+
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Krenko, Mob Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Moving spell to Library
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Talrand, Sky Summoner for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSinglePlayer is used by Sphinx of Uthuun for forge.ai.ability.TwoPilesAi. Consider declaring an overloaded method
+Game Outcome: Turn 21
+Game Outcome: Ai(1)-Inspirit B3 has lost because life total reached 0
+Game Outcome: Ai(2)-Krenko Goblins has lost because life total reached 0
+Game Outcome: Ai(3)-Talrand Control has won because all opponents have lost
+Game Outcome: Ai(4)-Drana Vampires has lost because life total reached 0
+Match Result: Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 2 Ai(4)-Drana Vampires: 0 
+
+Game Result: Game 3 ended in 23753 ms. Ai(3)-Talrand Control has won!
+
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Krenko, Mob Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of chooseSinglePlayer is used by Fact or Fiction for forge.ai.ability.TwoPilesAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Inspirit, Flagship Vessel for forge.ai.ability.PermanentNoncreatureAi. Consider declaring an overloaded method
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Talrand, Sky Summoner for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Moving spell to Library
+Game Outcome: Turn 25
+Game Outcome: Ai(1)-Inspirit B3 has lost because life total reached 0
+Game Outcome: Ai(2)-Krenko Goblins has lost because life total reached 0
+Game Outcome: Ai(3)-Talrand Control has won because all opponents have lost
+Game Outcome: Ai(4)-Drana Vampires has lost because life total reached 0
+Match Result: Ai(1)-Inspirit B3: 1 Ai(2)-Krenko Goblins: 0 Ai(3)-Talrand Control: 3 Ai(4)-Drana Vampires: 0 
+
+Game Result: Game 4 ended in 40292 ms. Ai(3)-Talrand Control has won!
+

@@ -1,0 +1,2423 @@
+{
+  "meta": {
+    "source": "java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d krenko_goblins.dck torbran_burn.dck -f Commander -n 1 -c 120",
+    "generator": "forge_log_adapter.py",
+    "schema": "training/game_00X game_log schema (events carry raw Forge messages)",
+    "extracted": "2026-07-27",
+    "decks": [
+      "krenko_goblins.dck",
+      "torbran_burn.dck"
+    ],
+    "format": "Commander"
+  },
+  "games": [
+    {
+      "players": [
+        "Ai(2)-Torbran Burn B3",
+        "Ai(1)-Krenko Goblins"
+      ],
+      "turns": [
+        {
+          "turn": 1,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 6,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 7,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 8,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 9,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 10,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Mountain (151)"
+            },
+            {
+              "seq": 11,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 12,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 13,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 14,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 15,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 16,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 17,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 18,
+              "action": "mana",
+              "raw": "Mountain (151) - {T}: Add {R}."
+            },
+            {
+              "seq": 19,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Sol Ring",
+              "object": "Sol Ring"
+            },
+            {
+              "seq": 20,
+              "action": "stack_resolve",
+              "raw": "Sol Ring"
+            },
+            {
+              "seq": 21,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 22,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 24,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 25,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 26,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 27,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 28,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (75)"
+            },
+            {
+              "seq": 29,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 30,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 31,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 32,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 33,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 34,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 35,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 36,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 37,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Goblin Balloon Brigade",
+              "object": "Goblin Balloon Brigade"
+            },
+            {
+              "seq": 38,
+              "action": "stack_resolve",
+              "raw": "Goblin Balloon Brigade - Creature 1 / 1"
+            },
+            {
+              "seq": 39,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 40,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 42,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 43,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 44,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 45,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 46,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Mountain (172)"
+            },
+            {
+              "seq": 47,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 48,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 49,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 50,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 51,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 52,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 53,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 54,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 55,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 57,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 58,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 59,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 60,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 61,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (63)"
+            },
+            {
+              "seq": 62,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 63,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 64,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Goblin Balloon Brigade (41) to attack Ai(2)-Torbran Burn B3."
+            },
+            {
+              "seq": 65,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 66,
+              "action": "combat",
+              "raw": "Ai(2)-Torbran Burn B3 didn't block Goblin Balloon Brigade (41)."
+            },
+            {
+              "seq": 67,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 68,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 69,
+              "action": "damage",
+              "raw": "Goblin Balloon Brigade (41) deals 1 combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Goblin Balloon Brigade (41)",
+              "amount": 1,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 70,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Torbran Burn B3 40 > 39"
+            },
+            {
+              "seq": 71,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 72,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 73,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 74,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 75,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko's Command",
+              "object": "Krenko's Command"
+            },
+            {
+              "seq": 76,
+              "action": "stack_resolve",
+              "raw": "Krenko's Command (9) - Ai(1)-Krenko Goblins creates two 1/1 red Goblin creature tokens."
+            },
+            {
+              "seq": 77,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 78,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 80,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 81,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 82,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 83,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 84,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Mountain (155)"
+            },
+            {
+              "seq": 85,
+              "action": "mana",
+              "raw": "Mountain (151) - {T}: Add {R}."
+            },
+            {
+              "seq": 86,
+              "action": "mana",
+              "raw": "Mountain (172) - {T}: Add {R}."
+            },
+            {
+              "seq": 87,
+              "action": "mana",
+              "raw": "Sol Ring (113) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 88,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Anger of the Gods",
+              "object": "Anger of the Gods"
+            },
+            {
+              "seq": 89,
+              "action": "damage",
+              "raw": "Anger of the Gods (200) deals 3 damage to Goblin Balloon Brigade (41).",
+              "source": "Anger of the Gods (200)",
+              "amount": 3,
+              "target": "Goblin Balloon Brigade (41)"
+            },
+            {
+              "seq": 90,
+              "action": "damage",
+              "raw": "Anger of the Gods (200) deals 3 damage to Goblin Token (212).",
+              "source": "Anger of the Gods (200)",
+              "amount": 3,
+              "target": "Goblin Token (212)"
+            },
+            {
+              "seq": 91,
+              "action": "damage",
+              "raw": "Anger of the Gods (200) deals 3 damage to Goblin Token (213).",
+              "source": "Anger of the Gods (200)",
+              "amount": 3,
+              "target": "Goblin Token (213)"
+            },
+            {
+              "seq": 92,
+              "action": "stack_resolve",
+              "raw": "Anger of the Gods (200) - Anger of the Gods deals 3 damage to each creature. If a creature dealt damage this way would die this turn, exile it instead."
+            },
+            {
+              "seq": 93,
+              "action": "zone_change",
+              "raw": "Goblin Balloon Brigade (41) was put into Exile from Battlefield."
+            },
+            {
+              "seq": 94,
+              "action": "replacement_effect",
+              "raw": "If that permanent would die this turn, exile it instead."
+            },
+            {
+              "seq": 95,
+              "action": "zone_change",
+              "raw": "Goblin Token (212) was put into Exile from Battlefield."
+            },
+            {
+              "seq": 96,
+              "action": "replacement_effect",
+              "raw": "If that permanent would die this turn, exile it instead."
+            },
+            {
+              "seq": 97,
+              "action": "zone_change",
+              "raw": "Goblin Token (213) was put into Exile from Battlefield."
+            },
+            {
+              "seq": 98,
+              "action": "replacement_effect",
+              "raw": "If that permanent would die this turn, exile it instead."
+            },
+            {
+              "seq": 99,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 100,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 101,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 102,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 103,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 104,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 105,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 106,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 107,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 6,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 109,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 110,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 111,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 112,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 113,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (64)"
+            },
+            {
+              "seq": 114,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 115,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 116,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 117,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 118,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 119,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 120,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 121,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 122,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 123,
+              "action": "mana",
+              "raw": "Mountain (64) - {T}: Add {R}."
+            },
+            {
+              "seq": 124,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Fervor",
+              "object": "Fervor"
+            },
+            {
+              "seq": 125,
+              "action": "stack_resolve",
+              "raw": "Fervor"
+            },
+            {
+              "seq": 126,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 127,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 7,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 129,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 130,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 131,
+              "action": "mana",
+              "raw": "Mountain (151) - {T}: Add {R}."
+            },
+            {
+              "seq": 132,
+              "action": "mana",
+              "raw": "Mountain (172) - {T}: Add {R}."
+            },
+            {
+              "seq": 133,
+              "action": "mana",
+              "raw": "Sol Ring (113) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 134,
+              "action": "mana",
+              "raw": "Mountain (155) - {T}: Add {R}."
+            },
+            {
+              "seq": 135,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Dictate of the Twin Gods",
+              "object": "Dictate of the Twin Gods"
+            },
+            {
+              "seq": 136,
+              "action": "stack_resolve",
+              "raw": "Dictate of the Twin Gods"
+            },
+            {
+              "seq": 137,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 138,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 139,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Mountain (150)"
+            },
+            {
+              "seq": 140,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 141,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 142,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 143,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 144,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 145,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 146,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 147,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 148,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 8,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 150,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 151,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 152,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 153,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 154,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 155,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 156,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 157,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 158,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 159,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 160,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 161,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (52)"
+            },
+            {
+              "seq": 162,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 163,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 164,
+              "action": "mana",
+              "raw": "Mountain (64) - {T}: Add {R}."
+            },
+            {
+              "seq": 165,
+              "action": "mana",
+              "raw": "Mountain (52) - {T}: Add {R}."
+            },
+            {
+              "seq": 166,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 167,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss - Creature 3 / 3"
+            },
+            {
+              "seq": 168,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 169,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 9,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 171,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 172,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 173,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 174,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 175,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Shivan Gorge (138)"
+            },
+            {
+              "seq": 176,
+              "action": "mana",
+              "raw": "Mountain (151) - {T}: Add {R}."
+            },
+            {
+              "seq": 177,
+              "action": "mana",
+              "raw": "Sol Ring (113) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 178,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Earthquake",
+              "object": "Earthquake"
+            },
+            {
+              "seq": 179,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 180,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 181,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 182,
+              "action": "damage",
+              "raw": "Earthquake (121) deals 4 damage to Krenko, Mob Boss (100).",
+              "source": "Earthquake (121)",
+              "amount": 4,
+              "target": "Krenko, Mob Boss (100)"
+            },
+            {
+              "seq": 183,
+              "action": "damage",
+              "raw": "Earthquake (121) deals 4 non-combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Earthquake (121)",
+              "amount": 4,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 184,
+              "action": "damage",
+              "raw": "Earthquake (121) deals 4 non-combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Earthquake (121)",
+              "amount": 4,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 185,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 40 > 36"
+            },
+            {
+              "seq": 186,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Torbran Burn B3 39 > 35"
+            },
+            {
+              "seq": 187,
+              "action": "stack_resolve",
+              "raw": "Earthquake (121) - Deals 2 damage to Creature.withoutFlying. (X=2)"
+            },
+            {
+              "seq": 188,
+              "action": "zone_change",
+              "raw": "Krenko, Mob Boss (100) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 189,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 190,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 191,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 192,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 193,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 194,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 195,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 196,
+              "action": "mana",
+              "raw": "Mountain (172) - {T}: Add {R}."
+            },
+            {
+              "seq": 197,
+              "action": "mana",
+              "raw": "Mountain (155) - {T}: Add {R}."
+            },
+            {
+              "seq": 198,
+              "action": "mana",
+              "raw": "Mountain (150) - {T}: Add {R}."
+            },
+            {
+              "seq": 199,
+              "action": "mana",
+              "raw": "Shivan Gorge (138) - {T}: Add {C}."
+            },
+            {
+              "seq": 200,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Torbran, Thane of Red Fell",
+              "object": "Torbran, Thane of Red Fell"
+            },
+            {
+              "seq": 201,
+              "action": "stack_resolve",
+              "raw": "Torbran, Thane of Red Fell - Creature 2 / 4"
+            },
+            {
+              "seq": 202,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 203,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 10,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 205,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 206,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 207,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 208,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 209,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 210,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 211,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 212,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 213,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 214,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 215,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 216,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (76)"
+            },
+            {
+              "seq": 217,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 218,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 219,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Fire Diamond",
+              "object": "Fire Diamond"
+            },
+            {
+              "seq": 220,
+              "action": "replacement_effect",
+              "raw": "Fire Diamond enters tapped."
+            },
+            {
+              "seq": 221,
+              "action": "stack_resolve",
+              "raw": "Fire Diamond"
+            },
+            {
+              "seq": 222,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 223,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 11,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 225,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 226,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 227,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 228,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 229,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Mountain (153)"
+            },
+            {
+              "seq": 230,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 231,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 232,
+              "action": "combat",
+              "raw": "Ai(2)-Torbran Burn B3 assigned Torbran, Thane of Red Fell (201) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 233,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 234,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Torbran, Thane of Red Fell (201)."
+            },
+            {
+              "seq": 235,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 236,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 237,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 238,
+              "action": "replacement_effect",
+              "raw": "If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead."
+            },
+            {
+              "seq": 239,
+              "action": "damage",
+              "raw": "Torbran, Thane of Red Fell (201) deals 6 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Torbran, Thane of Red Fell (201)",
+              "amount": 6,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 240,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 36 > 30"
+            },
+            {
+              "seq": 241,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 242,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 243,
+              "action": "mana",
+              "raw": "Sol Ring (113) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 244,
+              "action": "mana",
+              "raw": "Mountain (151) - {T}: Add {R}."
+            },
+            {
+              "seq": 245,
+              "action": "mana",
+              "raw": "Mountain (172) - {T}: Add {R}."
+            },
+            {
+              "seq": 246,
+              "action": "mana",
+              "raw": "Mountain (155) - {T}: Add {R}."
+            },
+            {
+              "seq": 247,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Pyromancer's Goggles",
+              "object": "Pyromancer's Goggles"
+            },
+            {
+              "seq": 248,
+              "action": "stack_resolve",
+              "raw": "Pyromancer's Goggles"
+            },
+            {
+              "seq": 249,
+              "action": "mana",
+              "raw": "Mountain (150) - {T}: Add {R}."
+            },
+            {
+              "seq": 250,
+              "action": "mana",
+              "raw": "Mountain (153) - {T}: Add {R}."
+            },
+            {
+              "seq": 251,
+              "action": "mana",
+              "raw": "Pyromancer's Goggles (147) - {T}: Add {R}. When that mana is spent to cast a red instant or sorcery spell, copy that spell and you may choose new targets for the copy."
+            },
+            {
+              "seq": 252,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Spellgorger Weird",
+              "object": "Spellgorger Weird"
+            },
+            {
+              "seq": 253,
+              "action": "stack_resolve",
+              "raw": "Spellgorger Weird - Creature 2 / 2"
+            },
+            {
+              "seq": 254,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 255,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 12,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 257,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 258,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 259,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 260,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 261,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 262,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 263,
+              "action": "mana",
+              "raw": "Mountain (64) - {T}: Add {R}."
+            },
+            {
+              "seq": 264,
+              "action": "mana",
+              "raw": "Mountain (52) - {T}: Add {R}."
+            },
+            {
+              "seq": 265,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 266,
+              "action": "mana",
+              "raw": "Fire Diamond (23) - {T}: Add {R}."
+            },
+            {
+              "seq": 267,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 268,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss - Creature 3 / 3"
+            },
+            {
+              "seq": 269,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (55)"
+            },
+            {
+              "seq": 270,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 271,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 272,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 273,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 274,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 275,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 276,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 277,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 278,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 13,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 280,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 281,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 282,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 283,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 284,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Mountain (188)"
+            },
+            {
+              "seq": 285,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 286,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 287,
+              "action": "combat",
+              "raw": "Ai(2)-Torbran Burn B3 assigned Torbran, Thane of Red Fell (201) and Spellgorger Weird (116) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 288,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 289,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss (100) - Ai(1)-Krenko Goblins creates two 1/1 red Goblin creature tokens."
+            },
+            {
+              "seq": 290,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 291,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Torbran, Thane of Red Fell (201)."
+            },
+            {
+              "seq": 292,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 293,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 294,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 295,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 296,
+              "action": "replacement_effect",
+              "raw": "If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead."
+            },
+            {
+              "seq": 297,
+              "action": "replacement_effect",
+              "raw": "If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead."
+            },
+            {
+              "seq": 298,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 299,
+              "action": "damage",
+              "raw": "Torbran, Thane of Red Fell (201) deals 6 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Torbran, Thane of Red Fell (201)",
+              "amount": 6,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 300,
+              "action": "damage",
+              "raw": "Spellgorger Weird (116) deals 6 damage to Goblin Token (233).",
+              "source": "Spellgorger Weird (116)",
+              "amount": 6,
+              "target": "Goblin Token (233)"
+            },
+            {
+              "seq": 301,
+              "action": "damage",
+              "raw": "Goblin Token (233) deals 2 damage to Spellgorger Weird (116).",
+              "source": "Goblin Token (233)",
+              "amount": 2,
+              "target": "Spellgorger Weird (116)"
+            },
+            {
+              "seq": 302,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 30 > 24"
+            },
+            {
+              "seq": 303,
+              "action": "zone_change",
+              "raw": "Spellgorger Weird (116) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 304,
+              "action": "zone_change",
+              "raw": "Goblin Token (233) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 305,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 306,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 307,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 308,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 14,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 310,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 311,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 312,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 313,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 314,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 315,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 316,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100) to attack Ai(2)-Torbran Burn B3."
+            },
+            {
+              "seq": 317,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 318,
+              "action": "combat",
+              "raw": "Ai(2)-Torbran Burn B3 didn't block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 319,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 320,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 321,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 322,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 6 combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 6,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 323,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Torbran Burn B3 35 > 29"
+            },
+            {
+              "seq": 324,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 325,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 326,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 327,
+              "action": "mana",
+              "raw": "Mountain (151) - {T}: Add {R}."
+            },
+            {
+              "seq": 328,
+              "action": "mana",
+              "raw": "Sol Ring (113) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 329,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 activated Shivan Gorge",
+              "object": "Shivan Gorge"
+            },
+            {
+              "seq": 330,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 331,
+              "action": "damage",
+              "raw": "Shivan Gorge (138) deals 2 non-combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Shivan Gorge (138)",
+              "amount": 2,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 332,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 24 > 22"
+            },
+            {
+              "seq": 333,
+              "action": "stack_resolve",
+              "raw": "Shivan Gorge (138) - Shivan Gorge (138) deals 1 damage to Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 334,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 15,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 336,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 337,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 338,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 339,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 340,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 341,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 342,
+              "action": "combat",
+              "raw": "Ai(2)-Torbran Burn B3 assigned Torbran, Thane of Red Fell (201) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 343,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 344,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Torbran, Thane of Red Fell (201)."
+            },
+            {
+              "seq": 345,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 346,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 347,
+              "action": "mana",
+              "raw": "Mountain (64) - {T}: Add {R}."
+            },
+            {
+              "seq": 348,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Chaos Warp targeting [Torbran, Thane of Red Fell (201)]",
+              "object": "Chaos Warp"
+            },
+            {
+              "seq": 349,
+              "action": "replacement_effect",
+              "raw": "If a commander would be put into its owner's hand or library from anywhere, its owner may put it into the command zone instead."
+            },
+            {
+              "seq": 350,
+              "action": "stack_resolve",
+              "raw": "Chaos Warp (28) - Shuffle Torbran, Thane of Red Fell (201) into its owner's library. Ai(1)-Krenko Goblins reveals the top card of Ai(2)-Torbran Burn B3's library."
+            },
+            {
+              "seq": 351,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 352,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 353,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 354,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 355,
+              "action": "mana",
+              "raw": "Mountain (151) - {T}: Add {R}."
+            },
+            {
+              "seq": 356,
+              "action": "mana",
+              "raw": "Mountain (172) - {T}: Add {R}."
+            },
+            {
+              "seq": 357,
+              "action": "mana",
+              "raw": "Mountain (155) - {T}: Add {R}."
+            },
+            {
+              "seq": 358,
+              "action": "mana",
+              "raw": "Sol Ring (113) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 359,
+              "action": "mana",
+              "raw": "Mountain (150) - {T}: Add {R}."
+            },
+            {
+              "seq": 360,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Torbran, Thane of Red Fell",
+              "object": "Torbran, Thane of Red Fell"
+            },
+            {
+              "seq": 361,
+              "action": "stack_resolve",
+              "raw": "Torbran, Thane of Red Fell - Creature 2 / 4"
+            },
+            {
+              "seq": 362,
+              "action": "mana",
+              "raw": "Mountain (153) - {T}: Add {R}."
+            },
+            {
+              "seq": 363,
+              "action": "mana",
+              "raw": "Pyromancer's Goggles (147) - {T}: Add {R}. When that mana is spent to cast a red instant or sorcery spell, copy that spell and you may choose new targets for the copy."
+            },
+            {
+              "seq": 364,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 cast Arcane Signet",
+              "object": "Arcane Signet"
+            },
+            {
+              "seq": 365,
+              "action": "stack_resolve",
+              "raw": "Arcane Signet"
+            },
+            {
+              "seq": 366,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 367,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 16,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 369,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 370,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 371,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 372,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 373,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 374,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 375,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 376,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 377,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 378,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 379,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 380,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 381,
+              "action": "mana",
+              "raw": "Mountain (188) - {T}: Add {R}."
+            },
+            {
+              "seq": 382,
+              "action": "mana",
+              "raw": "Mountain (179) - {T}: Add {R}."
+            },
+            {
+              "seq": 383,
+              "action": "mana",
+              "raw": "Arcane Signet (199) - {T}: Add one mana of any color in your commander's color identity."
+            },
+            {
+              "seq": 384,
+              "action": "stack_add",
+              "raw": "Ai(2)-Torbran Burn B3 activated Shivan Gorge",
+              "object": "Shivan Gorge"
+            },
+            {
+              "seq": 385,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 386,
+              "action": "damage",
+              "raw": "Shivan Gorge (138) deals 2 non-combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Shivan Gorge (138)",
+              "amount": 2,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 387,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 22 > 20"
+            },
+            {
+              "seq": 388,
+              "action": "stack_resolve",
+              "raw": "Shivan Gorge (138) - Shivan Gorge (138) deals 1 damage to Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 389,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 17,
+          "active_player": "Ai(2)-Torbran Burn B3",
+          "events": [
+            {
+              "seq": 391,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Untap step"
+            },
+            {
+              "seq": 392,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Upkeep step"
+            },
+            {
+              "seq": 393,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Draw step"
+            },
+            {
+              "seq": 394,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, precombat"
+            },
+            {
+              "seq": 395,
+              "action": "land_drop",
+              "raw": "Ai(2)-Torbran Burn B3 played Mountain (171)"
+            },
+            {
+              "seq": 396,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Beginning of Combat Step"
+            },
+            {
+              "seq": 397,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Attackers Step"
+            },
+            {
+              "seq": 398,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Declare Blockers Step"
+            },
+            {
+              "seq": 399,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's First Strike Damage Step"
+            },
+            {
+              "seq": 400,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Combat Damage Step"
+            },
+            {
+              "seq": 401,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End of Combat Step"
+            },
+            {
+              "seq": 402,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 403,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss (100) - Ai(1)-Krenko Goblins creates two 1/1 red Goblin creature tokens."
+            },
+            {
+              "seq": 404,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Main phase, postcombat"
+            },
+            {
+              "seq": 405,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's End step"
+            },
+            {
+              "seq": 406,
+              "action": "phase",
+              "raw": "Ai(2)-Torbran Burn B3's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 18,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 408,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 409,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 410,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 411,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 412,
+              "action": "mana",
+              "raw": "Mountain (75) - {T}: Add {R}."
+            },
+            {
+              "seq": 413,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 414,
+              "action": "mana",
+              "raw": "Mountain (64) - {T}: Add {R}."
+            },
+            {
+              "seq": 415,
+              "action": "mana",
+              "raw": "Mountain (52) - {T}: Add {R}."
+            },
+            {
+              "seq": 416,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 417,
+              "action": "mana",
+              "raw": "Fire Diamond (23) - {T}: Add {R}."
+            },
+            {
+              "seq": 418,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Inferno Titan",
+              "object": "Inferno Titan"
+            },
+            {
+              "seq": 419,
+              "action": "stack_resolve",
+              "raw": "Inferno Titan - Creature 6 / 6"
+            },
+            {
+              "seq": 420,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins triggered Inferno Titan targeting [Torbran, Thane of Red Fell (201), Ai(2)-Torbran Burn B3]",
+              "object": "Inferno Titan"
+            },
+            {
+              "seq": 421,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 422,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 423,
+              "action": "damage",
+              "raw": "Inferno Titan (48) deals 4 damage to Torbran, Thane of Red Fell (201).",
+              "source": "Inferno Titan (48)",
+              "amount": 4,
+              "target": "Torbran, Thane of Red Fell (201)"
+            },
+            {
+              "seq": 424,
+              "action": "damage",
+              "raw": "Inferno Titan (48) deals 2 non-combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Inferno Titan (48)",
+              "amount": 2,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 425,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Torbran Burn B3 29 > 27"
+            },
+            {
+              "seq": 426,
+              "action": "stack_resolve",
+              "raw": "Whenever Inferno Titan enters or attacks, it deals 3 damage divided as you choose among one, two, or three targets. (Targeting: [[Torbran, Thane of Red Fell (201), Ai(2)-Torbran Burn B3]]) [Zone Changer: Inferno Titan (48)]"
+            },
+            {
+              "seq": 427,
+              "action": "zone_change",
+              "raw": "Torbran, Thane of Red Fell (201) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 428,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 429,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 430,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Inferno Titan (48), Krenko, Mob Boss (100) and Goblin Token (257) to attack Ai(2)-Torbran Burn B3."
+            },
+            {
+              "seq": 431,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins triggered Inferno Titan targeting [Ai(2)-Torbran Burn B3]",
+              "object": "Inferno Titan"
+            },
+            {
+              "seq": 432,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 433,
+              "action": "damage",
+              "raw": "Inferno Titan (48) deals 6 non-combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Inferno Titan (48)",
+              "amount": 6,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 434,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Torbran Burn B3 27 > 21"
+            },
+            {
+              "seq": 435,
+              "action": "stack_resolve",
+              "raw": "Whenever Inferno Titan enters or attacks, it deals 3 damage divided as you choose among one, two, or three targets. (Targeting: [[Ai(2)-Torbran Burn B3]]) [Attacker: Inferno Titan (48)]"
+            },
+            {
+              "seq": 436,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 437,
+              "action": "combat",
+              "raw": "Ai(2)-Torbran Burn B3 didn't block Inferno Titan (48)."
+            },
+            {
+              "seq": 438,
+              "action": "mana",
+              "raw": "Mountain (55) - {T}: Add {R}."
+            },
+            {
+              "seq": 439,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Inferno Titan",
+              "object": "Inferno Titan"
+            },
+            {
+              "seq": 440,
+              "action": "stack_resolve",
+              "raw": "Inferno Titan (48) - Inferno Titan (48) gets +1/+0  until end of turn."
+            },
+            {
+              "seq": 441,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 442,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 443,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 444,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 445,
+              "action": "replacement_effect",
+              "raw": "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead."
+            },
+            {
+              "seq": 446,
+              "action": "damage",
+              "raw": "Inferno Titan (48) deals 14 combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Inferno Titan (48)",
+              "amount": 14,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 447,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 6 combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 6,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 448,
+              "action": "damage",
+              "raw": "Goblin Token (257) deals 2 combat damage to Ai(2)-Torbran Burn B3.",
+              "source": "Goblin Token (257)",
+              "amount": 2,
+              "target": "Ai(2)-Torbran Burn B3"
+            },
+            {
+              "seq": 449,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Torbran Burn B3 21 > -1"
+            },
+            {
+              "seq": 450,
+              "action": "player_control",
+              "raw": "Ai(1)-Krenko Goblins has restored control over themself"
+            },
+            {
+              "seq": 451,
+              "action": "player_control",
+              "raw": "Ai(2)-Torbran Burn B3 has restored control over themself"
+            },
+            {
+              "seq": 452,
+              "action": "game_outcome",
+              "raw": "Turn 9",
+              "detail": "Turn 9"
+            },
+            {
+              "seq": 453,
+              "action": "game_outcome",
+              "raw": "Ai(1)-Krenko Goblins has won because all opponents have lost",
+              "detail": "Ai(1)-Krenko Goblins has won because all opponents have lost"
+            },
+            {
+              "seq": 454,
+              "action": "game_outcome",
+              "raw": "Ai(2)-Torbran Burn B3 has lost because life total reached 0",
+              "detail": "Ai(2)-Torbran Burn B3 has lost because life total reached 0"
+            },
+            {
+              "seq": 455,
+              "action": "match_result",
+              "raw": "Ai(1)-Krenko Goblins: 1 Ai(2)-Torbran Burn B3: 0"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "winner": "Ai(1)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 2688,
+        "raw": "Game Result: Game 1 ended in 2688 ms. Ai(1)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "mulligan",
+          "raw": "Ai(1)-Krenko Goblins has mulliganed down to 6 cards."
+        },
+        {
+          "seq": 2,
+          "action": "mulligan",
+          "raw": "Ai(1)-Krenko Goblins has mulliganed down to 5 cards."
+        },
+        {
+          "seq": 3,
+          "action": "mulligan",
+          "raw": "Ai(2)-Torbran Burn B3 has kept a hand of 7 cards"
+        },
+        {
+          "seq": 4,
+          "action": "mulligan",
+          "raw": "Ai(1)-Krenko Goblins has kept a hand of 5 cards"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "games": 1,
+    "draws": 0,
+    "wins": {
+      "Ai(2)-Torbran Burn B3": 0,
+      "Ai(1)-Krenko Goblins": 1
+    },
+    "win_rates": {
+      "Ai(2)-Torbran Burn B3": 0.0,
+      "Ai(1)-Krenko Goblins": 1.0
+    }
+  }
+}

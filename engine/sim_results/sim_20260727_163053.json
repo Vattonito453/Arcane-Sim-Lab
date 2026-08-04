@@ -1,0 +1,5211 @@
+{
+  "meta": {
+    "source": "java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d krenko_goblins.dck talrand_control.dck -f Commander -n 2 -c 120",
+    "generator": "forge_log_adapter.py",
+    "schema": "training/game_00X game_log schema (events carry raw Forge messages)",
+    "extracted": "2026-07-27",
+    "decks": [
+      "krenko_goblins.dck",
+      "talrand_control.dck"
+    ],
+    "format": "Commander"
+  },
+  "games": [
+    {
+      "players": [
+        "Ai(1)-Krenko Goblins",
+        "Ai(2)-Talrand Control"
+      ],
+      "turns": [
+        {
+          "turn": 1,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 4,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 5,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 6,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 7,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 8,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (91)"
+            },
+            {
+              "seq": 9,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 10,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 11,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 12,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 13,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 14,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 15,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 16,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 17,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 19,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 20,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 21,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 22,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 23,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (174)"
+            },
+            {
+              "seq": 24,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 25,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 26,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 27,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 28,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 29,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 30,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 31,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 32,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Mystic Remora",
+              "object": "Mystic Remora"
+            },
+            {
+              "seq": 33,
+              "action": "stack_resolve",
+              "raw": "Mystic Remora"
+            },
+            {
+              "seq": 34,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 35,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 37,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 38,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 39,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 40,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 41,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (54)"
+            },
+            {
+              "seq": 42,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 43,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 44,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 45,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 46,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 47,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 48,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 49,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 50,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 52,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 53,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 54,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Mystic Remora",
+              "object": "Mystic Remora"
+            },
+            {
+              "seq": 55,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 56,
+              "action": "stack_resolve",
+              "raw": "Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.) [Phase: Ai(2)-Talrand Control]"
+            },
+            {
+              "seq": 57,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 58,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 59,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (140)"
+            },
+            {
+              "seq": 60,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 61,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 62,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 63,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 64,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 65,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 66,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 67,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 68,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 70,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 71,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 72,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 73,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 74,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (50)"
+            },
+            {
+              "seq": 75,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 76,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 77,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 78,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 79,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 80,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 81,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 82,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 83,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 6,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 85,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 86,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 87,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Mystic Remora",
+              "object": "Mystic Remora"
+            },
+            {
+              "seq": 88,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 89,
+              "action": "mana",
+              "raw": "Island (140) - {T}: Add {U}."
+            },
+            {
+              "seq": 90,
+              "action": "stack_resolve",
+              "raw": "Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.) [Phase: Ai(2)-Talrand Control]"
+            },
+            {
+              "seq": 91,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 92,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 93,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 94,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 95,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 96,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 97,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 98,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 99,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 100,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 101,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 7,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 103,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 104,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 105,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 106,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 107,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (76)"
+            },
+            {
+              "seq": 108,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 109,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 110,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 111,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 112,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 113,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 114,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 115,
+              "action": "mana",
+              "raw": "Mountain (91) - {T}: Add {R}."
+            },
+            {
+              "seq": 116,
+              "action": "mana",
+              "raw": "Mountain (54) - {T}: Add {R}."
+            },
+            {
+              "seq": 117,
+              "action": "mana",
+              "raw": "Mountain (50) - {T}: Add {R}."
+            },
+            {
+              "seq": 118,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 119,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 120,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss - Creature 3 / 3"
+            },
+            {
+              "seq": 121,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 122,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 8,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 124,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 125,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 126,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Mystic Remora",
+              "object": "Mystic Remora"
+            },
+            {
+              "seq": 127,
+              "action": "zone_change",
+              "raw": "Mystic Remora (112) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 128,
+              "action": "stack_resolve",
+              "raw": "Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.) [Phase: Ai(2)-Talrand Control]"
+            },
+            {
+              "seq": 129,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 130,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 131,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (153)"
+            },
+            {
+              "seq": 132,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 133,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 134,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 135,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 136,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 137,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 138,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 139,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 140,
+              "action": "mana",
+              "raw": "Island (140) - {T}: Add {U}."
+            },
+            {
+              "seq": 141,
+              "action": "mana",
+              "raw": "Island (153) - {T}: Add {U}."
+            },
+            {
+              "seq": 142,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Mulldrifter",
+              "object": "Mulldrifter"
+            },
+            {
+              "seq": 143,
+              "action": "stack_resolve",
+              "raw": "Mulldrifter (Evoked)"
+            },
+            {
+              "seq": 144,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Mulldrifter",
+              "object": "Mulldrifter"
+            },
+            {
+              "seq": 145,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Mulldrifter",
+              "object": "Mulldrifter"
+            },
+            {
+              "seq": 146,
+              "action": "stack_resolve",
+              "raw": "When Mulldrifter enters, draw two cards. [Zone Changer: Mulldrifter (132)]"
+            },
+            {
+              "seq": 147,
+              "action": "zone_change",
+              "raw": "Mulldrifter (132) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 148,
+              "action": "stack_resolve",
+              "raw": "Evoke (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.) [Zone Changer: Mulldrifter (132)]",
+              "object": "this spell for its evoke cost"
+            },
+            {
+              "seq": 149,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 150,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            },
+            {
+              "seq": 151,
+              "action": "discard",
+              "raw": "Ai(2)-Talrand Control discards Island (151)."
+            }
+          ]
+        },
+        {
+          "turn": 9,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 153,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 154,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 155,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 156,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 157,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (78)"
+            },
+            {
+              "seq": 158,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 159,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 160,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 161,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 162,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 163,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 164,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 165,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 3,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 166,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 40 > 37"
+            },
+            {
+              "seq": 167,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 168,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 169,
+              "action": "mana",
+              "raw": "Mountain (91) - {T}: Add {R}."
+            },
+            {
+              "seq": 170,
+              "action": "mana",
+              "raw": "Mountain (54) - {T}: Add {R}."
+            },
+            {
+              "seq": 171,
+              "action": "mana",
+              "raw": "Mountain (50) - {T}: Add {R}."
+            },
+            {
+              "seq": 172,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 173,
+              "action": "mana",
+              "raw": "Mountain (78) - {T}: Add {R}."
+            },
+            {
+              "seq": 174,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Siege-Gang Commander",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 175,
+              "action": "stack_resolve",
+              "raw": "Siege-Gang Commander - Creature 2 / 2"
+            },
+            {
+              "seq": 176,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins triggered Siege-Gang Commander",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 177,
+              "action": "stack_resolve",
+              "raw": "When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens. [Zone Changer: Siege-Gang Commander (10)]"
+            },
+            {
+              "seq": 178,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 179,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 10,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 181,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 182,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 183,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 184,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 185,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (162)"
+            },
+            {
+              "seq": 186,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 187,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 188,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 189,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 190,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 191,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 192,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 193,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 194,
+              "action": "mana",
+              "raw": "Island (140) - {T}: Add {U}."
+            },
+            {
+              "seq": 195,
+              "action": "mana",
+              "raw": "Island (153) - {T}: Add {U}."
+            },
+            {
+              "seq": 196,
+              "action": "mana",
+              "raw": "Island (162) - {T}: Add {U}."
+            },
+            {
+              "seq": 197,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Talrand, Sky Summoner",
+              "object": "Talrand, Sky Summoner"
+            },
+            {
+              "seq": 198,
+              "action": "stack_resolve",
+              "raw": "Talrand, Sky Summoner - Creature 2 / 2"
+            },
+            {
+              "seq": 199,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 200,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 11,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 202,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 203,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 204,
+              "action": "mana",
+              "raw": "Mountain (91) - {T}: Add {R}."
+            },
+            {
+              "seq": 205,
+              "action": "mana",
+              "raw": "Mountain (54) - {T}: Add {R}."
+            },
+            {
+              "seq": 206,
+              "action": "zone_change",
+              "raw": "Goblin Token (311) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 207,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Siege-Gang Commander targeting [Talrand, Sky Summoner (201)]",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 208,
+              "action": "damage",
+              "raw": "Siege-Gang Commander (10) deals 2 damage to Talrand, Sky Summoner (201).",
+              "source": "Siege-Gang Commander (10)",
+              "amount": 2,
+              "target": "Talrand, Sky Summoner (201)"
+            },
+            {
+              "seq": 209,
+              "action": "stack_resolve",
+              "raw": "Siege-Gang Commander (10) - Siege-Gang Commander (10) deals 2 damage to Talrand, Sky Summoner (201)."
+            },
+            {
+              "seq": 210,
+              "action": "zone_change",
+              "raw": "Talrand, Sky Summoner (201) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 211,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 212,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 213,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (72)"
+            },
+            {
+              "seq": 214,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 215,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 216,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Siege-Gang Commander (10), Goblin Token (312) and Goblin Token (313) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 217,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 218,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 219,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 220,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 221,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 3,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 222,
+              "action": "damage",
+              "raw": "Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.",
+              "source": "Siege-Gang Commander (10)",
+              "amount": 2,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 223,
+              "action": "damage",
+              "raw": "Goblin Token (312) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (312)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 224,
+              "action": "damage",
+              "raw": "Goblin Token (313) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (313)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 225,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 37 > 30"
+            },
+            {
+              "seq": 226,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 227,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 228,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 229,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 12,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 231,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 232,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 233,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 234,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 235,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (171)"
+            },
+            {
+              "seq": 236,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 237,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 238,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 239,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 240,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 241,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 242,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 243,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 244,
+              "action": "mana",
+              "raw": "Island (140) - {T}: Add {U}."
+            },
+            {
+              "seq": 245,
+              "action": "mana",
+              "raw": "Island (153) - {T}: Add {U}."
+            },
+            {
+              "seq": 246,
+              "action": "mana",
+              "raw": "Island (162) - {T}: Add {U}."
+            },
+            {
+              "seq": 247,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 248,
+              "action": "stack_resolve",
+              "raw": "Dissipation Field"
+            },
+            {
+              "seq": 249,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 250,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 13,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 252,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 253,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 254,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 255,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 256,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (59)"
+            },
+            {
+              "seq": 257,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 258,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 259,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Siege-Gang Commander (10), Goblin Token (312) and Goblin Token (313) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 260,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 261,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 262,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 263,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 264,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 3,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 265,
+              "action": "damage",
+              "raw": "Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.",
+              "source": "Siege-Gang Commander (10)",
+              "amount": 2,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 266,
+              "action": "damage",
+              "raw": "Goblin Token (312) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (312)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 267,
+              "action": "damage",
+              "raw": "Goblin Token (313) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (313)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 268,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 30 > 23"
+            },
+            {
+              "seq": 269,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 270,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 271,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 272,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 273,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (313), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 274,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (312), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 275,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Siege-Gang Commander (10), Damaged: Ai(2)-Talrand Control, Amount: 2]"
+            },
+            {
+              "seq": 276,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Krenko, Mob Boss (100), Damaged: Ai(2)-Talrand Control, Amount: 3]"
+            },
+            {
+              "seq": 277,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 278,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 279,
+              "action": "mana",
+              "raw": "Mountain (91) - {T}: Add {R}."
+            },
+            {
+              "seq": 280,
+              "action": "mana",
+              "raw": "Mountain (54) - {T}: Add {R}."
+            },
+            {
+              "seq": 281,
+              "action": "mana",
+              "raw": "Mountain (50) - {T}: Add {R}."
+            },
+            {
+              "seq": 282,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 283,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 284,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss - Creature 3 / 3"
+            },
+            {
+              "seq": 285,
+              "action": "mana",
+              "raw": "Mountain (78) - {T}: Add {R}."
+            },
+            {
+              "seq": 286,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Spikeshot Elder",
+              "object": "Spikeshot Elder"
+            },
+            {
+              "seq": 287,
+              "action": "stack_resolve",
+              "raw": "Spikeshot Elder - Creature 1 / 1"
+            },
+            {
+              "seq": 288,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 289,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 14,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 291,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 292,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 293,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 294,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 295,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (139)"
+            },
+            {
+              "seq": 296,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 297,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 298,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 299,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 300,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 301,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 302,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 303,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 304,
+              "action": "mana",
+              "raw": "Island (140) - {T}: Add {U}."
+            },
+            {
+              "seq": 305,
+              "action": "mana",
+              "raw": "Island (153) - {T}: Add {U}."
+            },
+            {
+              "seq": 306,
+              "action": "mana",
+              "raw": "Island (162) - {T}: Add {U}."
+            },
+            {
+              "seq": 307,
+              "action": "mana",
+              "raw": "Island (171) - {T}: Add {U}."
+            },
+            {
+              "seq": 308,
+              "action": "mana",
+              "raw": "Island (139) - {T}: Add {U}."
+            },
+            {
+              "seq": 309,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Mahamoti Djinn",
+              "object": "Mahamoti Djinn"
+            },
+            {
+              "seq": 310,
+              "action": "stack_resolve",
+              "raw": "Mahamoti Djinn - Creature 5 / 6"
+            },
+            {
+              "seq": 311,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 312,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 15,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 314,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 315,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 316,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 317,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 318,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (79)"
+            },
+            {
+              "seq": 319,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 320,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 321,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 322,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 323,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 324,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 325,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 326,
+              "action": "mana",
+              "raw": "Mountain (91) - {T}: Add {R}."
+            },
+            {
+              "seq": 327,
+              "action": "mana",
+              "raw": "Mountain (54) - {T}: Add {R}."
+            },
+            {
+              "seq": 328,
+              "action": "mana",
+              "raw": "Mountain (50) - {T}: Add {R}."
+            },
+            {
+              "seq": 329,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 330,
+              "action": "mana",
+              "raw": "Mountain (78) - {T}: Add {R}."
+            },
+            {
+              "seq": 331,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Siege-Gang Commander",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 332,
+              "action": "stack_resolve",
+              "raw": "Siege-Gang Commander - Creature 2 / 2"
+            },
+            {
+              "seq": 333,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins triggered Siege-Gang Commander",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 334,
+              "action": "stack_resolve",
+              "raw": "When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens. [Zone Changer: Siege-Gang Commander (10)]"
+            },
+            {
+              "seq": 335,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 336,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 16,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 338,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 339,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 340,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 341,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 342,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (179)"
+            },
+            {
+              "seq": 343,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 344,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 345,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control assigned Mahamoti Djinn (200) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 346,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 347,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Mahamoti Djinn (200)."
+            },
+            {
+              "seq": 348,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 349,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss (100) - Ai(1)-Krenko Goblins creates twelve 1/1 red Goblin creature tokens."
+            },
+            {
+              "seq": 350,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 351,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 352,
+              "action": "damage",
+              "raw": "Mahamoti Djinn (200) deals 5 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Mahamoti Djinn (200)",
+              "amount": 5,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 353,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 40 > 35"
+            },
+            {
+              "seq": 354,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 355,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 356,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 357,
+              "action": "mana",
+              "raw": "Island (140) - {T}: Add {U}."
+            },
+            {
+              "seq": 358,
+              "action": "mana",
+              "raw": "Island (153) - {T}: Add {U}."
+            },
+            {
+              "seq": 359,
+              "action": "mana",
+              "raw": "Island (162) - {T}: Add {U}."
+            },
+            {
+              "seq": 360,
+              "action": "mana",
+              "raw": "Island (171) - {T}: Add {U}."
+            },
+            {
+              "seq": 361,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Air Elemental",
+              "object": "Air Elemental"
+            },
+            {
+              "seq": 362,
+              "action": "stack_resolve",
+              "raw": "Air Elemental - Creature 4 / 4"
+            },
+            {
+              "seq": 363,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 364,
+              "action": "mana",
+              "raw": "Mountain (72) - {T}: Add {R}."
+            },
+            {
+              "seq": 365,
+              "action": "mana",
+              "raw": "Mountain (59) - {T}: Add {R}."
+            },
+            {
+              "seq": 366,
+              "action": "mana",
+              "raw": "Mountain (79) - {T}: Add {R}."
+            },
+            {
+              "seq": 367,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Spikeshot Elder targeting [Ai(2)-Talrand Control]",
+              "object": "Spikeshot Elder"
+            },
+            {
+              "seq": 368,
+              "action": "damage",
+              "raw": "Spikeshot Elder (18) deals 1 non-combat damage to Ai(2)-Talrand Control.",
+              "source": "Spikeshot Elder (18)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 369,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 23 > 22"
+            },
+            {
+              "seq": 370,
+              "action": "stack_resolve",
+              "raw": "Spikeshot Elder (18) - Spikeshot Elder (18) deals 1 damage to Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 371,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 372,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Spikeshot Elder (18), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 373,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 17,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 375,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 376,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 377,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 378,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 379,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (87)"
+            },
+            {
+              "seq": 380,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 381,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 382,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Siege-Gang Commander (10), Goblin Token (446), Goblin Token (447), Goblin Token (448), Goblin Token (478), Goblin Token (479), Goblin Token (480), Goblin Token (481), Goblin Token (482) and Goblin Token (483) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 383,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 384,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control assigned Air Elemental (120) to block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 385,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 386,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 387,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 3 damage to Air Elemental (120).",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 3,
+              "target": "Air Elemental (120)"
+            },
+            {
+              "seq": 388,
+              "action": "damage",
+              "raw": "Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.",
+              "source": "Siege-Gang Commander (10)",
+              "amount": 2,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 389,
+              "action": "damage",
+              "raw": "Goblin Token (446) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (446)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 390,
+              "action": "damage",
+              "raw": "Goblin Token (447) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (447)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 391,
+              "action": "damage",
+              "raw": "Goblin Token (448) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (448)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 392,
+              "action": "damage",
+              "raw": "Goblin Token (478) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (478)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 393,
+              "action": "damage",
+              "raw": "Goblin Token (479) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (479)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 394,
+              "action": "damage",
+              "raw": "Goblin Token (480) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (480)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 395,
+              "action": "damage",
+              "raw": "Goblin Token (481) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (481)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 396,
+              "action": "damage",
+              "raw": "Goblin Token (482) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (482)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 397,
+              "action": "damage",
+              "raw": "Goblin Token (483) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (483)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 398,
+              "action": "damage",
+              "raw": "Air Elemental (120) deals 4 damage to Krenko, Mob Boss (100).",
+              "source": "Air Elemental (120)",
+              "amount": 4,
+              "target": "Krenko, Mob Boss (100)"
+            },
+            {
+              "seq": 399,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 22 > 11"
+            },
+            {
+              "seq": 400,
+              "action": "zone_change",
+              "raw": "Krenko, Mob Boss (100) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 401,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 402,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 403,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 404,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 405,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 406,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 407,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 408,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 409,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 410,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Dissipation Field",
+              "object": "Dissipation Field"
+            },
+            {
+              "seq": 411,
+              "action": "mana",
+              "raw": "Mountain (91) - {T}: Add {R}."
+            },
+            {
+              "seq": 412,
+              "action": "mana",
+              "raw": "Mountain (54) - {T}: Add {R}."
+            },
+            {
+              "seq": 413,
+              "action": "zone_change",
+              "raw": "Goblin Token (446) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 414,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Siege-Gang Commander targeting [Air Elemental (120)]",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 415,
+              "action": "damage",
+              "raw": "Siege-Gang Commander (10) deals 2 damage to Air Elemental (120).",
+              "source": "Siege-Gang Commander (10)",
+              "amount": 2,
+              "target": "Air Elemental (120)"
+            },
+            {
+              "seq": 416,
+              "action": "stack_resolve",
+              "raw": "Siege-Gang Commander (10) - Siege-Gang Commander (10) deals 2 damage to Air Elemental (120)."
+            },
+            {
+              "seq": 417,
+              "action": "zone_change",
+              "raw": "Air Elemental (120) was put into Graveyard from Battlefield."
+            },
+            {
+              "seq": 418,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (483), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 419,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (482), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 420,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (481), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 421,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (480), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 422,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (479), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 423,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (478), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 424,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (448), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 425,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (447), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 426,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Goblin Token (446), Damaged: Ai(2)-Talrand Control, Amount: 1]"
+            },
+            {
+              "seq": 427,
+              "action": "stack_resolve",
+              "raw": "Whenever a permanent deals damage to you, return it to its owner's hand. [Damage Source: Siege-Gang Commander (10), Damaged: Ai(2)-Talrand Control, Amount: 2]"
+            },
+            {
+              "seq": 428,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 429,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 430,
+              "action": "mana",
+              "raw": "Mountain (50) - {T}: Add {R}."
+            },
+            {
+              "seq": 431,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 432,
+              "action": "mana",
+              "raw": "Mountain (78) - {T}: Add {R}."
+            },
+            {
+              "seq": 433,
+              "action": "mana",
+              "raw": "Mountain (72) - {T}: Add {R}."
+            },
+            {
+              "seq": 434,
+              "action": "mana",
+              "raw": "Mountain (59) - {T}: Add {R}."
+            },
+            {
+              "seq": 435,
+              "action": "mana",
+              "raw": "Mountain (79) - {T}: Add {R}."
+            },
+            {
+              "seq": 436,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 437,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss - Creature 3 / 3"
+            },
+            {
+              "seq": 438,
+              "action": "mana",
+              "raw": "Mountain (87) - {T}: Add {R}."
+            },
+            {
+              "seq": 439,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Spikeshot Elder",
+              "object": "Spikeshot Elder"
+            },
+            {
+              "seq": 440,
+              "action": "stack_resolve",
+              "raw": "Spikeshot Elder - Creature 1 / 1"
+            },
+            {
+              "seq": 441,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 442,
+              "action": "mana",
+              "raw": "Island (139) - {T}: Add {U}."
+            },
+            {
+              "seq": 443,
+              "action": "mana",
+              "raw": "Island (179) - {T}: Add {U}."
+            },
+            {
+              "seq": 444,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Impulse",
+              "object": "Impulse"
+            },
+            {
+              "seq": 445,
+              "action": "stack_resolve",
+              "raw": "Impulse (187) - Ai(2)-Talrand Control looks at the top four cards of their library. They put one of them into their hand and put the rest on the bottom of their library in any order."
+            },
+            {
+              "seq": 446,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 18,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 448,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 449,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 450,
+              "action": "mana",
+              "raw": "Island (174) - {T}: Add {U}."
+            },
+            {
+              "seq": 451,
+              "action": "mana",
+              "raw": "Island (140) - {T}: Add {U}."
+            },
+            {
+              "seq": 452,
+              "action": "mana",
+              "raw": "Island (153) - {T}: Add {U}."
+            },
+            {
+              "seq": 453,
+              "action": "mana",
+              "raw": "Island (162) - {T}: Add {U}."
+            },
+            {
+              "seq": 454,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Fact or Fiction",
+              "object": "Fact or Fiction"
+            },
+            {
+              "seq": 455,
+              "action": "stack_resolve",
+              "raw": "Fact or Fiction (119) - Ai(2)-Talrand Control reveals the top five cards of their library. An opponent separates those cards into two piles. Ai(2)-Talrand Control puts one pile into their hand and the other into their graveyard."
+            },
+            {
+              "seq": 456,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 457,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 458,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (167)"
+            },
+            {
+              "seq": 459,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 460,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 461,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control assigned Mahamoti Djinn (200) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 462,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 463,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Mahamoti Djinn (200)."
+            },
+            {
+              "seq": 464,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 465,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 466,
+              "action": "damage",
+              "raw": "Mahamoti Djinn (200) deals 5 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Mahamoti Djinn (200)",
+              "amount": 5,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 467,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 35 > 30"
+            },
+            {
+              "seq": 468,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 469,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 470,
+              "action": "mana",
+              "raw": "Island (171) - {T}: Add {U}."
+            },
+            {
+              "seq": 471,
+              "action": "mana",
+              "raw": "Island (139) - {T}: Add {U}."
+            },
+            {
+              "seq": 472,
+              "action": "mana",
+              "raw": "Island (179) - {T}: Add {U}."
+            },
+            {
+              "seq": 473,
+              "action": "mana",
+              "raw": "Island (167) - {T}: Add {U}."
+            },
+            {
+              "seq": 474,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Stroke of Genius targeting [Ai(2)-Talrand Control]",
+              "object": "Stroke of Genius"
+            },
+            {
+              "seq": 475,
+              "action": "stack_resolve",
+              "raw": "Stroke of Genius (189) - Ai(2)-Talrand Control draws a card. (X=1)"
+            },
+            {
+              "seq": 476,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 477,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 19,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 479,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 480,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 481,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 482,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 483,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (63)"
+            },
+            {
+              "seq": 484,
+              "action": "mana",
+              "raw": "Mountain (91) - {T}: Add {R}."
+            },
+            {
+              "seq": 485,
+              "action": "mana",
+              "raw": "Mountain (54) - {T}: Add {R}."
+            },
+            {
+              "seq": 486,
+              "action": "mana",
+              "raw": "Mountain (50) - {T}: Add {R}."
+            },
+            {
+              "seq": 487,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Goblin Warchief",
+              "object": "Goblin Warchief"
+            },
+            {
+              "seq": 488,
+              "action": "stack_resolve",
+              "raw": "Goblin Warchief - Creature 2 / 2"
+            },
+            {
+              "seq": 489,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 490,
+              "action": "mana",
+              "raw": "Mountain (78) - {T}: Add {R}."
+            },
+            {
+              "seq": 491,
+              "action": "mana",
+              "raw": "Mountain (72) - {T}: Add {R}."
+            },
+            {
+              "seq": 492,
+              "action": "mana",
+              "raw": "Mountain (59) - {T}: Add {R}."
+            },
+            {
+              "seq": 493,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Siege-Gang Commander",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 494,
+              "action": "stack_resolve",
+              "raw": "Siege-Gang Commander - Creature 2 / 2"
+            },
+            {
+              "seq": 495,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins triggered Siege-Gang Commander",
+              "object": "Siege-Gang Commander"
+            },
+            {
+              "seq": 496,
+              "action": "stack_resolve",
+              "raw": "When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens. [Zone Changer: Siege-Gang Commander (10)]"
+            },
+            {
+              "seq": 497,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 498,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 499,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Goblin Warchief (21), Siege-Gang Commander (10), Spikeshot Elder (18), Goblin Token (564), Goblin Token (565) and Goblin Token (566) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 500,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 501,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 502,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 503,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 504,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Talrand Control.",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 3,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 505,
+              "action": "damage",
+              "raw": "Goblin Warchief (21) deals 2 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Warchief (21)",
+              "amount": 2,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 506,
+              "action": "damage",
+              "raw": "Siege-Gang Commander (10) deals 2 combat damage to Ai(2)-Talrand Control.",
+              "source": "Siege-Gang Commander (10)",
+              "amount": 2,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 507,
+              "action": "damage",
+              "raw": "Spikeshot Elder (18) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Spikeshot Elder (18)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 508,
+              "action": "damage",
+              "raw": "Goblin Token (564) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (564)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 509,
+              "action": "damage",
+              "raw": "Goblin Token (565) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (565)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 510,
+              "action": "damage",
+              "raw": "Goblin Token (566) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (566)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 511,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 11 > 0"
+            },
+            {
+              "seq": 512,
+              "action": "player_control",
+              "raw": "Ai(1)-Krenko Goblins has restored control over themself"
+            },
+            {
+              "seq": 513,
+              "action": "player_control",
+              "raw": "Ai(2)-Talrand Control has restored control over themself"
+            },
+            {
+              "seq": 514,
+              "action": "game_outcome",
+              "raw": "Turn 10",
+              "detail": "Turn 10"
+            },
+            {
+              "seq": 515,
+              "action": "game_outcome",
+              "raw": "Ai(1)-Krenko Goblins has won because all opponents have lost",
+              "detail": "Ai(1)-Krenko Goblins has won because all opponents have lost"
+            },
+            {
+              "seq": 516,
+              "action": "game_outcome",
+              "raw": "Ai(2)-Talrand Control has lost because life total reached 0",
+              "detail": "Ai(2)-Talrand Control has lost because life total reached 0"
+            },
+            {
+              "seq": 517,
+              "action": "match_result",
+              "raw": "Ai(1)-Krenko Goblins: 1 Ai(2)-Talrand Control: 0"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "winner": "Ai(1)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 2708,
+        "raw": "Game Result: Game 1 ended in 2708 ms. Ai(1)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "mulligan",
+          "raw": "Ai(1)-Krenko Goblins has kept a hand of 7 cards"
+        },
+        {
+          "seq": 2,
+          "action": "mulligan",
+          "raw": "Ai(2)-Talrand Control has kept a hand of 7 cards"
+        }
+      ]
+    },
+    {
+      "players": [
+        "Ai(2)-Talrand Control",
+        "Ai(1)-Krenko Goblins"
+      ],
+      "turns": [
+        {
+          "turn": 1,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 4,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 5,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 6,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 7,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 8,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (138)"
+            },
+            {
+              "seq": 9,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 10,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 11,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 12,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 13,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 14,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 15,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 16,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 17,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 2,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 19,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 20,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 21,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 22,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 23,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (76)"
+            },
+            {
+              "seq": 24,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 25,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 26,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 27,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 28,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 29,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 30,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 31,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 32,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Brainstorm",
+              "object": "Brainstorm"
+            },
+            {
+              "seq": 33,
+              "action": "stack_resolve",
+              "raw": "Brainstorm (191) - Ai(2)-Talrand Control draws three cards, then puts two cards from their hand on top of their library in any order."
+            },
+            {
+              "seq": 34,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 35,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 3,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 37,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 38,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 39,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 40,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 41,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (156)"
+            },
+            {
+              "seq": 42,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 43,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 44,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 45,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 46,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 47,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 48,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 49,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 50,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 4,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 52,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 53,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 54,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 55,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 56,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Opt",
+              "object": "Opt"
+            },
+            {
+              "seq": 57,
+              "action": "stack_resolve",
+              "raw": "Ai(2)-Talrand Control scried 1 card(s) to the top of the library"
+            },
+            {
+              "seq": 58,
+              "action": "stack_resolve",
+              "raw": "Opt (116) - Ai(2)-Talrand Control scries 1. Ai(2)-Talrand Control draws a card."
+            },
+            {
+              "seq": 59,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 60,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (70)"
+            },
+            {
+              "seq": 61,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 62,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 63,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 64,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 65,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 66,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 67,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 68,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 69,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 5,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 71,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 72,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 73,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 74,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 75,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (158)"
+            },
+            {
+              "seq": 76,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 77,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 78,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 79,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 80,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 81,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 82,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 83,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 84,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 6,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 86,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 87,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 88,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 89,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 90,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (93)"
+            },
+            {
+              "seq": 91,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 92,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 93,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 94,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 95,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 96,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 97,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 98,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 99,
+              "action": "mana",
+              "raw": "Mountain (70) - {T}: Add {R}."
+            },
+            {
+              "seq": 100,
+              "action": "mana",
+              "raw": "Mountain (93) - {T}: Add {R}."
+            },
+            {
+              "seq": 101,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Goblin King",
+              "object": "Goblin King"
+            },
+            {
+              "seq": 102,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 103,
+              "action": "mana",
+              "raw": "Island (156) - {T}: Add {U}."
+            },
+            {
+              "seq": 104,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Arcane Denial targeting [Goblin King - Creature 2 / 2]",
+              "object": "Arcane Denial"
+            },
+            {
+              "seq": 105,
+              "action": "zone_change",
+              "raw": "Send countered spell to Graveyard"
+            },
+            {
+              "seq": 106,
+              "action": "stack_resolve",
+              "raw": "Arcane Denial (180) - Counter Goblin King (33). Draw a card. Draw up to two cards."
+            },
+            {
+              "seq": 107,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 108,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 7,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 110,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 111,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 112,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Arcane Denial",
+              "object": "Arcane Denial"
+            },
+            {
+              "seq": 113,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Arcane Denial",
+              "object": "Arcane Denial"
+            },
+            {
+              "seq": 114,
+              "action": "stack_resolve",
+              "raw": "Draw up to two cards. ([Ai(1)-Krenko Goblins]) [Phase: Ai(2)-Talrand Control]"
+            },
+            {
+              "seq": 115,
+              "action": "stack_resolve",
+              "raw": "Draw a card. [Phase: Ai(2)-Talrand Control]"
+            },
+            {
+              "seq": 116,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 117,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 118,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (146)"
+            },
+            {
+              "seq": 119,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 120,
+              "action": "mana",
+              "raw": "Island (156) - {T}: Add {U}."
+            },
+            {
+              "seq": 121,
+              "action": "mana",
+              "raw": "Island (158) - {T}: Add {U}."
+            },
+            {
+              "seq": 122,
+              "action": "mana",
+              "raw": "Island (146) - {T}: Add {U}."
+            },
+            {
+              "seq": 123,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Fact or Fiction",
+              "object": "Fact or Fiction"
+            },
+            {
+              "seq": 124,
+              "action": "stack_resolve",
+              "raw": "Fact or Fiction (119) - Ai(2)-Talrand Control reveals the top five cards of their library. An opponent separates those cards into two piles. Ai(2)-Talrand Control puts one pile into their hand and the other into their graveyard."
+            },
+            {
+              "seq": 125,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 126,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 127,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 128,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 129,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 130,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 131,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 132,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 133,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 8,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 135,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 136,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 137,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 138,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 139,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (55)"
+            },
+            {
+              "seq": 140,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 141,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Raging Goblin",
+              "object": "Raging Goblin"
+            },
+            {
+              "seq": 142,
+              "action": "stack_resolve",
+              "raw": "Raging Goblin - Creature 1 / 1"
+            },
+            {
+              "seq": 143,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 144,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 145,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Raging Goblin (49) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 146,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 147,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control didn't block Raging Goblin (49)."
+            },
+            {
+              "seq": 148,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 149,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 150,
+              "action": "damage",
+              "raw": "Raging Goblin (49) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Raging Goblin (49)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 151,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 40 > 39"
+            },
+            {
+              "seq": 152,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 153,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 154,
+              "action": "mana",
+              "raw": "Mountain (70) - {T}: Add {R}."
+            },
+            {
+              "seq": 155,
+              "action": "mana",
+              "raw": "Mountain (93) - {T}: Add {R}."
+            },
+            {
+              "seq": 156,
+              "action": "mana",
+              "raw": "Mountain (55) - {T}: Add {R}."
+            },
+            {
+              "seq": 157,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Hordeling Outburst",
+              "object": "Hordeling Outburst"
+            },
+            {
+              "seq": 158,
+              "action": "stack_resolve",
+              "raw": "Hordeling Outburst (20) - Ai(1)-Krenko Goblins creates three 1/1 red Goblin creature tokens."
+            },
+            {
+              "seq": 159,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 160,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 9,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 162,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 163,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 164,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 165,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 166,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (142)"
+            },
+            {
+              "seq": 167,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 168,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 169,
+              "action": "mana",
+              "raw": "Island (156) - {T}: Add {U}."
+            },
+            {
+              "seq": 170,
+              "action": "mana",
+              "raw": "Island (158) - {T}: Add {U}."
+            },
+            {
+              "seq": 171,
+              "action": "mana",
+              "raw": "Island (146) - {T}: Add {U}."
+            },
+            {
+              "seq": 172,
+              "action": "mana",
+              "raw": "Island (142) - {T}: Add {U}."
+            },
+            {
+              "seq": 173,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Evacuation",
+              "object": "Evacuation"
+            },
+            {
+              "seq": 174,
+              "action": "stack_resolve",
+              "raw": "Evacuation (129) - Return all creatures to their owners' hands."
+            },
+            {
+              "seq": 175,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 176,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 177,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 178,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 179,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 180,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 181,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 182,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 10,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 184,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 185,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 186,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 187,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 188,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (61)"
+            },
+            {
+              "seq": 189,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 190,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Raging Goblin",
+              "object": "Raging Goblin"
+            },
+            {
+              "seq": 191,
+              "action": "stack_resolve",
+              "raw": "Raging Goblin - Creature 1 / 1"
+            },
+            {
+              "seq": 192,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 193,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 194,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Raging Goblin (49) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 195,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 196,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control didn't block Raging Goblin (49)."
+            },
+            {
+              "seq": 197,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 198,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 199,
+              "action": "damage",
+              "raw": "Raging Goblin (49) deals 1 combat damage to Ai(2)-Talrand Control.",
+              "source": "Raging Goblin (49)",
+              "amount": 1,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 200,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 39 > 38"
+            },
+            {
+              "seq": 201,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 202,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 203,
+              "action": "mana",
+              "raw": "Mountain (70) - {T}: Add {R}."
+            },
+            {
+              "seq": 204,
+              "action": "mana",
+              "raw": "Mountain (93) - {T}: Add {R}."
+            },
+            {
+              "seq": 205,
+              "action": "mana",
+              "raw": "Mountain (55) - {T}: Add {R}."
+            },
+            {
+              "seq": 206,
+              "action": "mana",
+              "raw": "Mountain (61) - {T}: Add {R}."
+            },
+            {
+              "seq": 207,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 208,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss - Creature 3 / 3"
+            },
+            {
+              "seq": 209,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 210,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 11,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 212,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 213,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 214,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 215,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 216,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (168)"
+            },
+            {
+              "seq": 217,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 218,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 219,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 220,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 221,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 222,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 223,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 224,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 225,
+              "action": "mana",
+              "raw": "Island (156) - {T}: Add {U}."
+            },
+            {
+              "seq": 226,
+              "action": "mana",
+              "raw": "Island (158) - {T}: Add {U}."
+            },
+            {
+              "seq": 227,
+              "action": "mana",
+              "raw": "Island (146) - {T}: Add {U}."
+            },
+            {
+              "seq": 228,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Talrand, Sky Summoner",
+              "object": "Talrand, Sky Summoner"
+            },
+            {
+              "seq": 229,
+              "action": "stack_resolve",
+              "raw": "Talrand, Sky Summoner - Creature 2 / 2"
+            },
+            {
+              "seq": 230,
+              "action": "mana",
+              "raw": "Island (142) - {T}: Add {U}."
+            },
+            {
+              "seq": 231,
+              "action": "mana",
+              "raw": "Island (168) - {T}: Add {U}."
+            },
+            {
+              "seq": 232,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Augur of Bolas",
+              "object": "Augur of Bolas"
+            },
+            {
+              "seq": 233,
+              "action": "stack_resolve",
+              "raw": "Augur of Bolas - Creature 1 / 3"
+            },
+            {
+              "seq": 234,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Augur of Bolas",
+              "object": "Augur of Bolas"
+            },
+            {
+              "seq": 235,
+              "action": "stack_resolve",
+              "raw": "When Augur of Bolas enters, look at the top three cards from your library. You may reveal an instant or sorcery card from among them and put it into your hand. Put the rest on the bottom of your library in any order. [Zone Changer: Augur of Bolas (183)]"
+            },
+            {
+              "seq": 236,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 237,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 12,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 239,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 240,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 241,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 242,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 243,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (63)"
+            },
+            {
+              "seq": 244,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 245,
+              "action": "mana",
+              "raw": "Mountain (70) - {T}: Add {R}."
+            },
+            {
+              "seq": 246,
+              "action": "mana",
+              "raw": "Mountain (93) - {T}: Add {R}."
+            },
+            {
+              "seq": 247,
+              "action": "mana",
+              "raw": "Mountain (55) - {T}: Add {R}."
+            },
+            {
+              "seq": 248,
+              "action": "mana",
+              "raw": "Mountain (61) - {T}: Add {R}."
+            },
+            {
+              "seq": 249,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Coat of Arms",
+              "object": "Coat of Arms"
+            },
+            {
+              "seq": 250,
+              "action": "stack_resolve",
+              "raw": "Coat of Arms"
+            },
+            {
+              "seq": 251,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 252,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 253,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 254,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 255,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control didn't block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 256,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 257,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 258,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 4 combat damage to Ai(2)-Talrand Control.",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 4,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 259,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 38 > 34"
+            },
+            {
+              "seq": 260,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 261,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 262,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 263,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 13,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 265,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 266,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 267,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 268,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Unsummon targeting [Krenko, Mob Boss (100)]",
+              "object": "Unsummon"
+            },
+            {
+              "seq": 269,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Talrand, Sky Summoner",
+              "object": "Talrand, Sky Summoner"
+            },
+            {
+              "seq": 270,
+              "action": "stack_resolve",
+              "raw": "Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Unsummon (190), Activator: Ai(2)-Talrand Control, SpellAbility: Return target creature to its owner's hand.]",
+              "object": "an instant or sorcery spell, create a 2/2 blue Drake creature token with flying"
+            },
+            {
+              "seq": 271,
+              "action": "stack_resolve",
+              "raw": "Unsummon (190) - Return Krenko, Mob Boss (100) to its owner's hand."
+            },
+            {
+              "seq": 272,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 273,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 274,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (149)"
+            },
+            {
+              "seq": 275,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 276,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 277,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control assigned Talrand, Sky Summoner (201) and Augur of Bolas (183) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 278,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 279,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Talrand, Sky Summoner (201)."
+            },
+            {
+              "seq": 280,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 281,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 282,
+              "action": "damage",
+              "raw": "Talrand, Sky Summoner (201) deals 3 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Talrand, Sky Summoner (201)",
+              "amount": 3,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 283,
+              "action": "damage",
+              "raw": "Augur of Bolas (183) deals 2 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Augur of Bolas (183)",
+              "amount": 2,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 284,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 40 > 35"
+            },
+            {
+              "seq": 285,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 286,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 287,
+              "action": "mana",
+              "raw": "Island (156) - {T}: Add {U}."
+            },
+            {
+              "seq": 288,
+              "action": "mana",
+              "raw": "Island (158) - {T}: Add {U}."
+            },
+            {
+              "seq": 289,
+              "action": "mana",
+              "raw": "Island (146) - {T}: Add {U}."
+            },
+            {
+              "seq": 290,
+              "action": "mana",
+              "raw": "Island (142) - {T}: Add {U}."
+            },
+            {
+              "seq": 291,
+              "action": "mana",
+              "raw": "Island (168) - {T}: Add {U}."
+            },
+            {
+              "seq": 292,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Jace's Ingenuity",
+              "object": "Jace's Ingenuity"
+            },
+            {
+              "seq": 293,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Talrand, Sky Summoner",
+              "object": "Talrand, Sky Summoner"
+            },
+            {
+              "seq": 294,
+              "action": "stack_resolve",
+              "raw": "Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Jace's Ingenuity (103), Activator: Ai(2)-Talrand Control, SpellAbility: Draw three cards.]",
+              "object": "an instant or sorcery spell, create a 2/2 blue Drake creature token with flying"
+            },
+            {
+              "seq": 295,
+              "action": "stack_resolve",
+              "raw": "Jace's Ingenuity (103) - Ai(2)-Talrand Control draws three cards."
+            },
+            {
+              "seq": 296,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 297,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 14,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 299,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 300,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 301,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 302,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 303,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (90)"
+            },
+            {
+              "seq": 304,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 305,
+              "action": "mana",
+              "raw": "Mountain (70) - {T}: Add {R}."
+            },
+            {
+              "seq": 306,
+              "action": "mana",
+              "raw": "Mountain (93) - {T}: Add {R}."
+            },
+            {
+              "seq": 307,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Goblin War Drums",
+              "object": "Goblin War Drums"
+            },
+            {
+              "seq": 308,
+              "action": "stack_resolve",
+              "raw": "Goblin War Drums"
+            },
+            {
+              "seq": 309,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 310,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 311,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 312,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 313,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 314,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 315,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 316,
+              "action": "mana",
+              "raw": "Mountain (55) - {T}: Add {R}."
+            },
+            {
+              "seq": 317,
+              "action": "mana",
+              "raw": "Mountain (61) - {T}: Add {R}."
+            },
+            {
+              "seq": 318,
+              "action": "mana",
+              "raw": "Mountain (63) - {T}: Add {R}."
+            },
+            {
+              "seq": 319,
+              "action": "mana",
+              "raw": "Mountain (90) - {T}: Add {R}."
+            },
+            {
+              "seq": 320,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 321,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss - Creature 3 / 3"
+            },
+            {
+              "seq": 322,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 323,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 15,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 325,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 326,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 327,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 328,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 329,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (170)"
+            },
+            {
+              "seq": 330,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 331,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Preordain",
+              "object": "Preordain"
+            },
+            {
+              "seq": 332,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Talrand, Sky Summoner",
+              "object": "Talrand, Sky Summoner"
+            },
+            {
+              "seq": 333,
+              "action": "stack_resolve",
+              "raw": "Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Preordain (121), Activator: Ai(2)-Talrand Control, SpellAbility: Scry 2, then draw a card. (To scry 2, look at the top two cards of your library, then put any number of them on the bottom of your library and the rest on top in any order.) ]",
+              "object": "an instant or sorcery spell, create a 2/2 blue Drake creature token with flying"
+            },
+            {
+              "seq": 334,
+              "action": "stack_resolve",
+              "raw": "Ai(2)-Talrand Control scried 1 card(s) to the top of the library and 1 card(s) to the bottom of the library"
+            },
+            {
+              "seq": 335,
+              "action": "stack_resolve",
+              "raw": "Preordain (121) - Ai(2)-Talrand Control scries 2. Ai(2)-Talrand Control draws a card."
+            },
+            {
+              "seq": 336,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 337,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 338,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control assigned Drake Token (232) and Drake Token (235) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 339,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 340,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Drake Token (232)."
+            },
+            {
+              "seq": 341,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 342,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 343,
+              "action": "damage",
+              "raw": "Drake Token (232) deals 4 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Drake Token (232)",
+              "amount": 4,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 344,
+              "action": "damage",
+              "raw": "Drake Token (235) deals 4 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Drake Token (235)",
+              "amount": 4,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 345,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 35 > 27"
+            },
+            {
+              "seq": 346,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 347,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 348,
+              "action": "mana",
+              "raw": "Island (156) - {T}: Add {U}."
+            },
+            {
+              "seq": 349,
+              "action": "mana",
+              "raw": "Island (158) - {T}: Add {U}."
+            },
+            {
+              "seq": 350,
+              "action": "mana",
+              "raw": "Island (146) - {T}: Add {U}."
+            },
+            {
+              "seq": 351,
+              "action": "mana",
+              "raw": "Island (142) - {T}: Add {U}."
+            },
+            {
+              "seq": 352,
+              "action": "mana",
+              "raw": "Island (168) - {T}: Add {U}."
+            },
+            {
+              "seq": 353,
+              "action": "mana",
+              "raw": "Island (149) - {T}: Add {U}."
+            },
+            {
+              "seq": 354,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Mahamoti Djinn",
+              "object": "Mahamoti Djinn"
+            },
+            {
+              "seq": 355,
+              "action": "stack_resolve",
+              "raw": "Mahamoti Djinn - Creature 5 / 6"
+            },
+            {
+              "seq": 356,
+              "action": "mana",
+              "raw": "Island (170) - {T}: Add {U}."
+            },
+            {
+              "seq": 357,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Sol Ring",
+              "object": "Sol Ring"
+            },
+            {
+              "seq": 358,
+              "action": "stack_resolve",
+              "raw": "Sol Ring"
+            },
+            {
+              "seq": 359,
+              "action": "mana",
+              "raw": "Sol Ring (117) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 360,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Mind Stone",
+              "object": "Mind Stone"
+            },
+            {
+              "seq": 361,
+              "action": "stack_resolve",
+              "raw": "Mind Stone"
+            },
+            {
+              "seq": 362,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 363,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 16,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 365,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 366,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 367,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 368,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 369,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 370,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 371,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 372,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 373,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 374,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End of Combat Step"
+            },
+            {
+              "seq": 375,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, postcombat"
+            },
+            {
+              "seq": 376,
+              "action": "land_drop",
+              "raw": "Ai(1)-Krenko Goblins played Mountain (78)"
+            },
+            {
+              "seq": 377,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 378,
+              "action": "mana",
+              "raw": "Mountain (70) - {T}: Add {R}."
+            },
+            {
+              "seq": 379,
+              "action": "mana",
+              "raw": "Mountain (93) - {T}: Add {R}."
+            },
+            {
+              "seq": 380,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Browbeat targeting [Ai(1)-Krenko Goblins]",
+              "object": "Browbeat"
+            },
+            {
+              "seq": 381,
+              "action": "damage",
+              "raw": "Browbeat (99) deals 5 non-combat damage to Ai(2)-Talrand Control.",
+              "source": "Browbeat (99)",
+              "amount": 5,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 382,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 34 > 29"
+            },
+            {
+              "seq": 383,
+              "action": "stack_resolve",
+              "raw": "Browbeat (99) - Any player may have Browbeat deal 5 damage to them. If no one does, target player draws three cards. (Targeting: Ai(1)-Krenko Goblins)"
+            },
+            {
+              "seq": 384,
+              "action": "mana",
+              "raw": "Mountain (55) - {T}: Add {R}."
+            },
+            {
+              "seq": 385,
+              "action": "mana",
+              "raw": "Mountain (61) - {T}: Add {R}."
+            },
+            {
+              "seq": 386,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Krenko's Command",
+              "object": "Krenko's Command"
+            },
+            {
+              "seq": 387,
+              "action": "stack_resolve",
+              "raw": "Krenko's Command (9) - Ai(1)-Krenko Goblins creates two 1/1 red Goblin creature tokens."
+            },
+            {
+              "seq": 388,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' End step"
+            },
+            {
+              "seq": 389,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 17,
+          "active_player": "Ai(2)-Talrand Control",
+          "events": [
+            {
+              "seq": 391,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Untap step"
+            },
+            {
+              "seq": 392,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Upkeep step"
+            },
+            {
+              "seq": 393,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Draw step"
+            },
+            {
+              "seq": 394,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, precombat"
+            },
+            {
+              "seq": 395,
+              "action": "land_drop",
+              "raw": "Ai(2)-Talrand Control played Island (144)"
+            },
+            {
+              "seq": 396,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Beginning of Combat Step"
+            },
+            {
+              "seq": 397,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Attackers Step"
+            },
+            {
+              "seq": 398,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control assigned Mahamoti Djinn (200), Drake Token (232), Drake Token (235) and Drake Token (241) to attack Ai(1)-Krenko Goblins."
+            },
+            {
+              "seq": 399,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Declare Blockers Step"
+            },
+            {
+              "seq": 400,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins didn't block Mahamoti Djinn (200)."
+            },
+            {
+              "seq": 401,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins activated Krenko, Mob Boss",
+              "object": "Krenko, Mob Boss"
+            },
+            {
+              "seq": 402,
+              "action": "stack_resolve",
+              "raw": "Krenko, Mob Boss (100) - Ai(1)-Krenko Goblins creates eight 1/1 red Goblin creature tokens."
+            },
+            {
+              "seq": 403,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's First Strike Damage Step"
+            },
+            {
+              "seq": 404,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Combat Damage Step"
+            },
+            {
+              "seq": 405,
+              "action": "damage",
+              "raw": "Mahamoti Djinn (200) deals 5 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Mahamoti Djinn (200)",
+              "amount": 5,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 406,
+              "action": "damage",
+              "raw": "Drake Token (232) deals 4 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Drake Token (232)",
+              "amount": 4,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 407,
+              "action": "damage",
+              "raw": "Drake Token (235) deals 4 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Drake Token (235)",
+              "amount": 4,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 408,
+              "action": "damage",
+              "raw": "Drake Token (241) deals 4 combat damage to Ai(1)-Krenko Goblins.",
+              "source": "Drake Token (241)",
+              "amount": 4,
+              "target": "Ai(1)-Krenko Goblins"
+            },
+            {
+              "seq": 409,
+              "action": "life_change",
+              "raw": "Life: Ai(1)-Krenko Goblins 27 > 10"
+            },
+            {
+              "seq": 410,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End of Combat Step"
+            },
+            {
+              "seq": 411,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Main phase, postcombat"
+            },
+            {
+              "seq": 412,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's End step"
+            },
+            {
+              "seq": 413,
+              "action": "phase",
+              "raw": "Ai(2)-Talrand Control's Cleanup step"
+            }
+          ]
+        },
+        {
+          "turn": 18,
+          "active_player": "Ai(1)-Krenko Goblins",
+          "events": [
+            {
+              "seq": 415,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Untap step"
+            },
+            {
+              "seq": 416,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Upkeep step"
+            },
+            {
+              "seq": 417,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Draw step"
+            },
+            {
+              "seq": 418,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Main phase, precombat"
+            },
+            {
+              "seq": 419,
+              "action": "mana",
+              "raw": "Mountain (76) - {T}: Add {R}."
+            },
+            {
+              "seq": 420,
+              "action": "mana",
+              "raw": "Mountain (70) - {T}: Add {R}."
+            },
+            {
+              "seq": 421,
+              "action": "mana",
+              "raw": "Mountain (93) - {T}: Add {R}."
+            },
+            {
+              "seq": 422,
+              "action": "stack_add",
+              "raw": "Ai(1)-Krenko Goblins cast Fervor",
+              "object": "Fervor"
+            },
+            {
+              "seq": 423,
+              "action": "mana",
+              "raw": "Island (138) - {T}: Add {U}."
+            },
+            {
+              "seq": 424,
+              "action": "mana",
+              "raw": "Island (156) - {T}: Add {U}."
+            },
+            {
+              "seq": 425,
+              "action": "mana",
+              "raw": "Sol Ring (117) - {T}: Add {C}{C}."
+            },
+            {
+              "seq": 426,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control cast Cancel targeting [Fervor]",
+              "object": "Cancel"
+            },
+            {
+              "seq": 427,
+              "action": "stack_add",
+              "raw": "Ai(2)-Talrand Control triggered Talrand, Sky Summoner",
+              "object": "Talrand, Sky Summoner"
+            },
+            {
+              "seq": 428,
+              "action": "stack_resolve",
+              "raw": "Whenever you cast an instant or sorcery spell, create a 2/2 blue Drake creature token with flying. [Card: Cancel (124), Activator: Ai(2)-Talrand Control, SpellAbility: Counter target spell.]",
+              "object": "an instant or sorcery spell, create a 2/2 blue Drake creature token with flying"
+            },
+            {
+              "seq": 429,
+              "action": "zone_change",
+              "raw": "Send countered spell to Graveyard"
+            },
+            {
+              "seq": 430,
+              "action": "stack_resolve",
+              "raw": "Cancel (124) - Counter Fervor (26)."
+            },
+            {
+              "seq": 431,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Beginning of Combat Step"
+            },
+            {
+              "seq": 432,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Attackers Step"
+            },
+            {
+              "seq": 433,
+              "action": "combat",
+              "raw": "Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Raging Goblin (49), Goblin Token (254), Goblin Token (255), Goblin Token (267), Goblin Token (268), Goblin Token (269) and Goblin Token (270) to attack Ai(2)-Talrand Control."
+            },
+            {
+              "seq": 434,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Declare Blockers Step"
+            },
+            {
+              "seq": 435,
+              "action": "combat",
+              "raw": "Ai(2)-Talrand Control assigned Talrand, Sky Summoner (201) and Augur of Bolas (183) to block Krenko, Mob Boss (100)."
+            },
+            {
+              "seq": 436,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' First Strike Damage Step"
+            },
+            {
+              "seq": 437,
+              "action": "phase",
+              "raw": "Ai(1)-Krenko Goblins' Combat Damage Step"
+            },
+            {
+              "seq": 438,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 7 damage to Augur of Bolas (183).",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 7,
+              "target": "Augur of Bolas (183)"
+            },
+            {
+              "seq": 439,
+              "action": "damage",
+              "raw": "Krenko, Mob Boss (100) deals 3 damage to Talrand, Sky Summoner (201).",
+              "source": "Krenko, Mob Boss (100)",
+              "amount": 3,
+              "target": "Talrand, Sky Summoner (201)"
+            },
+            {
+              "seq": 440,
+              "action": "damage",
+              "raw": "Raging Goblin (49) deals 8 combat damage to Ai(2)-Talrand Control.",
+              "source": "Raging Goblin (49)",
+              "amount": 8,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 441,
+              "action": "damage",
+              "raw": "Goblin Token (254) deals 8 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (254)",
+              "amount": 8,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 442,
+              "action": "damage",
+              "raw": "Goblin Token (255) deals 8 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (255)",
+              "amount": 8,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 443,
+              "action": "damage",
+              "raw": "Goblin Token (267) deals 8 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (267)",
+              "amount": 8,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 444,
+              "action": "damage",
+              "raw": "Goblin Token (268) deals 8 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (268)",
+              "amount": 8,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 445,
+              "action": "damage",
+              "raw": "Goblin Token (269) deals 8 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (269)",
+              "amount": 8,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 446,
+              "action": "damage",
+              "raw": "Goblin Token (270) deals 8 combat damage to Ai(2)-Talrand Control.",
+              "source": "Goblin Token (270)",
+              "amount": 8,
+              "target": "Ai(2)-Talrand Control"
+            },
+            {
+              "seq": 447,
+              "action": "damage",
+              "raw": "Talrand, Sky Summoner (201) deals 3 damage to Krenko, Mob Boss (100).",
+              "source": "Talrand, Sky Summoner (201)",
+              "amount": 3,
+              "target": "Krenko, Mob Boss (100)"
+            },
+            {
+              "seq": 448,
+              "action": "damage",
+              "raw": "Augur of Bolas (183) deals 2 damage to Krenko, Mob Boss (100).",
+              "source": "Augur of Bolas (183)",
+              "amount": 2,
+              "target": "Krenko, Mob Boss (100)"
+            },
+            {
+              "seq": 449,
+              "action": "life_change",
+              "raw": "Life: Ai(2)-Talrand Control 29 > -27"
+            },
+            {
+              "seq": 450,
+              "action": "player_control",
+              "raw": "Ai(1)-Krenko Goblins has restored control over themself"
+            },
+            {
+              "seq": 451,
+              "action": "player_control",
+              "raw": "Ai(2)-Talrand Control has restored control over themself"
+            },
+            {
+              "seq": 452,
+              "action": "game_outcome",
+              "raw": "Turn 9",
+              "detail": "Turn 9"
+            },
+            {
+              "seq": 453,
+              "action": "game_outcome",
+              "raw": "Ai(1)-Krenko Goblins has won because all opponents have lost",
+              "detail": "Ai(1)-Krenko Goblins has won because all opponents have lost"
+            },
+            {
+              "seq": 454,
+              "action": "game_outcome",
+              "raw": "Ai(2)-Talrand Control has lost because life total reached 0",
+              "detail": "Ai(2)-Talrand Control has lost because life total reached 0"
+            },
+            {
+              "seq": 455,
+              "action": "match_result",
+              "raw": "Ai(1)-Krenko Goblins: 2 Ai(2)-Talrand Control: 0"
+            }
+          ]
+        }
+      ],
+      "result": {
+        "winner": "Ai(1)-Krenko Goblins",
+        "draw": false,
+        "duration_ms": 2391,
+        "raw": "Game Result: Game 2 ended in 2391 ms. Ai(1)-Krenko Goblins has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "mulligan",
+          "raw": "Ai(2)-Talrand Control has kept a hand of 7 cards"
+        },
+        {
+          "seq": 2,
+          "action": "mulligan",
+          "raw": "Ai(1)-Krenko Goblins has kept a hand of 7 cards"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "games": 2,
+    "draws": 0,
+    "wins": {
+      "Ai(1)-Krenko Goblins": 2
+    },
+    "win_rates": {
+      "Ai(1)-Krenko Goblins": 1.0
+    }
+  }
+}

@@ -1,0 +1,155 @@
+staged kilo_helm_final.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged nekusar_punisher.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged slurrk_oozes.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged kambal_taxes.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+
+--- rotation 1/4: seats = ['kilo_helm_final.dck', 'nekusar_punisher.dck', 'slurrk_oozes.dck', 'kambal_taxes.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d kilo_helm_final.dck nekusar_punisher.dck slurrk_oozes.dck kambal_taxes.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 16704 ms. Ai(4)-Kambal Taxes B3 has won!
+  Game Result: Game 2 ended in 16872 ms. Ai(4)-Kambal Taxes B3 has won!
+  Game Result: Game 3 ended in 40323 ms. Ai(4)-Kambal Taxes B3 has won!
+  Game Result: Game 4 ended in 22672 ms. Ai(4)-Kambal Taxes B3 has won!
+
+--- rotation 2/4: seats = ['nekusar_punisher.dck', 'slurrk_oozes.dck', 'kambal_taxes.dck', 'kilo_helm_final.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d nekusar_punisher.dck slurrk_oozes.dck kambal_taxes.dck kilo_helm_final.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 22976 ms. Ai(2)-Slurrk Oozes B3 has won!
+  Game Result: Game 2 ended in 29478 ms. Ai(2)-Slurrk Oozes B3 has won!
+  Game Result: Game 3 ended in 19842 ms. Ai(3)-Kambal Taxes B3 has won!
+  Game Result: Game 4 ended in 20005 ms. Ai(3)-Kambal Taxes B3 has won!
+
+--- rotation 3/4: seats = ['slurrk_oozes.dck', 'kambal_taxes.dck', 'kilo_helm_final.dck', 'nekusar_punisher.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d slurrk_oozes.dck kambal_taxes.dck kilo_helm_final.dck nekusar_punisher.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 26406 ms. Ai(4)-Nekusar Punisher B3 has won!
+  Game Result: Game 2 ended in 21513 ms. Ai(2)-Kambal Taxes B3 has won!
+  Game Result: Game 3 ended in 14756 ms. Ai(2)-Kambal Taxes B3 has won!
+  Game Result: Game 4 ended in 43511 ms. Ai(4)-Nekusar Punisher B3 has won!
+
+--- rotation 4/4: seats = ['kambal_taxes.dck', 'kilo_helm_final.dck', 'nekusar_punisher.dck', 'slurrk_oozes.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d kambal_taxes.dck kilo_helm_final.dck nekusar_punisher.dck slurrk_oozes.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 24950 ms. Ai(1)-Kambal Taxes B3 has won!
+  Game Result: Game 2 ended in 30453 ms. Ai(3)-Nekusar Punisher B3 has won!
+  Game Result: Game 3 ended in 20735 ms. Ai(1)-Kambal Taxes B3 has won!
+  Game Result: Game 4 ended in 26489 ms. Ai(3)-Nekusar Punisher B3 has won!
+
+16 game(s) total across 4 seat rotations | draws: 0
+  Kambal Taxes B3: 10 wins (62%)
+  Nekusar Punisher B3: 4 wins (25%)
+  Slurrk Oozes B3: 2 wins (12%)
+json    : sim_results/sim_20260724_084812_rotated.json
+staged kilo_helm_final.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged dnide_wildsear.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged nanman_felix.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged n3cro_raggadragga.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+
+--- rotation 1/4: seats = ['kilo_helm_final.dck', 'dnide_wildsear.dck', 'nanman_felix.dck', 'n3cro_raggadragga.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d kilo_helm_final.dck dnide_wildsear.dck nanman_felix.dck n3cro_raggadragga.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 64905 ms. Ai(4)-N3cro Raggadragga has won!
+  Game Result: Game 2 ended in 139140 ms. Ai(3)-NanMan Felix Five-Boots has won!
+  Game Result: Game 3 ended in 97159 ms. Ai(1)-Kilo Helm Final has won!
+  Game Result: Game 4 ended in 66437 ms. Ai(1)-Kilo Helm Final has won!
+
+--- rotation 2/4: seats = ['dnide_wildsear.dck', 'nanman_felix.dck', 'n3cro_raggadragga.dck', 'kilo_helm_final.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d dnide_wildsear.dck nanman_felix.dck n3cro_raggadragga.dck kilo_helm_final.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 60977 ms. Ai(4)-Kilo Helm Final has won!
+  Game Result: Game 2 ended in 11810 ms. Ai(3)-N3cro Raggadragga has won!
+  Game Result: Game 3 ended in 57148 ms. Ai(1)-Dnide Wildsear has won!
+  Game Result: Game 4 ended in 87215 ms. Ai(1)-Dnide Wildsear has won!
+
+--- rotation 3/4: seats = ['nanman_felix.dck', 'n3cro_raggadragga.dck', 'kilo_helm_final.dck', 'dnide_wildsear.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d nanman_felix.dck n3cro_raggadragga.dck kilo_helm_final.dck dnide_wildsear.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 30428 ms. Ai(4)-Dnide Wildsear has won!
+  Game Result: Game 2 ended in 76750 ms. Ai(2)-N3cro Raggadragga has won!
+  Game Result: Game 3 ended in 77715 ms. Ai(1)-NanMan Felix Five-Boots has won!
+  Game Result: Game 4 ended in 240005 ms. Ai(2)-N3cro Raggadragga has won!
+
+--- rotation 4/4: seats = ['n3cro_raggadragga.dck', 'kilo_helm_final.dck', 'dnide_wildsear.dck', 'nanman_felix.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d n3cro_raggadragga.dck kilo_helm_final.dck dnide_wildsear.dck nanman_felix.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 128672 ms. Ai(4)-NanMan Felix Five-Boots has won!
+  Game Result: Game 2 ended in 240003 ms. Ai(2)-Kilo Helm Final has won!
+  Game Result: Game 3 ended in 166578 ms. Ai(2)-Kilo Helm Final has won!
+  Game Result: Game 4 ended in 240002 ms. Ai(2)-Kilo Helm Final has won!
+
+16 game(s) total across 4 seat rotations | draws: 0
+  Kilo Helm Final: 6 wins (38%)
+  N3cro Raggadragga: 4 wins (25%)
+  NanMan Felix Five-Boots: 3 wins (19%)
+  Dnide Wildsear: 3 wins (19%)
+json    : sim_results/sim_20260724_091813_rotated.json
+staged kilo_helm_final.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged atraxa_counters.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged meren_graveyard.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged urdragon_dragons.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+
+--- rotation 1/4: seats = ['kilo_helm_final.dck', 'atraxa_counters.dck', 'meren_graveyard.dck', 'urdragon_dragons.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d kilo_helm_final.dck atraxa_counters.dck meren_graveyard.dck urdragon_dragons.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 240034 ms. Ai(2)-Atraxa Counters B3 has won!
+  Game Result: Game 2 ended in 20307 ms. Ai(4)-Ur-Dragon B3 has won!
+  Game Result: Game 3 ended in 33039 ms. Ai(4)-Ur-Dragon B3 has won!
+  Game Result: Game 4 ended in 44112 ms. Ai(2)-Atraxa Counters B3 has won!
+
+--- rotation 2/4: seats = ['atraxa_counters.dck', 'meren_graveyard.dck', 'urdragon_dragons.dck', 'kilo_helm_final.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d atraxa_counters.dck meren_graveyard.dck urdragon_dragons.dck kilo_helm_final.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 14528 ms. Ai(3)-Ur-Dragon B3 has won!
+  Game Result: Game 2 ended in 39629 ms. Ai(3)-Ur-Dragon B3 has won!
+  Game Result: Game 3 ended in 21964 ms. Ai(2)-Meren Graveyard B3 has won!
+  Game Result: Game 4 ended in 24222 ms. Ai(2)-Meren Graveyard B3 has won!
+
+--- rotation 3/4: seats = ['meren_graveyard.dck', 'urdragon_dragons.dck', 'kilo_helm_final.dck', 'atraxa_counters.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d meren_graveyard.dck urdragon_dragons.dck kilo_helm_final.dck atraxa_counters.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 18624 ms. Ai(4)-Atraxa Counters B3 has won!
+  Game Result: Game 2 ended in 24055 ms. Ai(3)-Kilo Helm Final has won!
+  Game Result: Game 3 ended in 33996 ms. Ai(2)-Ur-Dragon B3 has won!
+  Game Result: Game 4 ended in 23011 ms. Ai(2)-Ur-Dragon B3 has won!
+
+--- rotation 4/4: seats = ['urdragon_dragons.dck', 'kilo_helm_final.dck', 'atraxa_counters.dck', 'meren_graveyard.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d urdragon_dragons.dck kilo_helm_final.dck atraxa_counters.dck meren_graveyard.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 36539 ms. Ai(3)-Atraxa Counters B3 has won!
+  Game Result: Game 2 ended in 60054 ms. Ai(3)-Atraxa Counters B3 has won!
+  Game Result: Game 3 ended in 32162 ms. Ai(4)-Meren Graveyard B3 has won!
+  Game Result: Game 4 ended in 33120 ms. Ai(1)-Ur-Dragon B3 has won!
+
+16 game(s) total across 4 seat rotations | draws: 0
+  Ur-Dragon B3: 7 wins (44%)
+  Atraxa Counters B3: 5 wins (31%)
+  Meren Graveyard B3: 3 wins (19%)
+  Kilo Helm Final: 1 wins (6%)
+json    : sim_results/sim_20260724_093009_rotated.json
+staged kilo_helm_final.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged wilhelt_zombies.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged wyleth_voltron.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+staged drana_vampires.dck -> /Users/vincentattonito/Library/Application Support/Forge/decks/commander
+
+--- rotation 1/4: seats = ['kilo_helm_final.dck', 'wilhelt_zombies.dck', 'wyleth_voltron.dck', 'drana_vampires.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d kilo_helm_final.dck wilhelt_zombies.dck wyleth_voltron.dck drana_vampires.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 75203 ms. Ai(2)-Wilhelt Zombies B3 has won!
+  Game Result: Game 2 ended in 212233 ms. Ai(4)-Drana Vampires has won!
+  Game Result: Game 3 ended in 100100 ms. Ai(3)-Wyleth Voltron B3 has won!
+  Game Result: Game 4 ended in 22312 ms. Ai(1)-Kilo Helm Final has won!
+
+--- rotation 2/4: seats = ['wilhelt_zombies.dck', 'wyleth_voltron.dck', 'drana_vampires.dck', 'kilo_helm_final.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d wilhelt_zombies.dck wyleth_voltron.dck drana_vampires.dck kilo_helm_final.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 153173 ms. Ai(4)-Kilo Helm Final has won!
+  Game Result: Game 2 ended in 65747 ms. Ai(4)-Kilo Helm Final has won!
+  Game Result: Game 3 ended in 66971 ms. Ai(4)-Kilo Helm Final has won!
+  Game Result: Game 4 ended in 27336 ms. Ai(2)-Wyleth Voltron B3 has won!
+
+--- rotation 3/4: seats = ['wyleth_voltron.dck', 'drana_vampires.dck', 'kilo_helm_final.dck', 'wilhelt_zombies.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d wyleth_voltron.dck drana_vampires.dck kilo_helm_final.dck wilhelt_zombies.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 139181 ms. Ai(3)-Kilo Helm Final has won!
+  Game Result: Game 2 ended in 23041 ms. Ai(2)-Drana Vampires has won!
+  Game Result: Game 3 ended in 58616 ms. Ai(2)-Drana Vampires has won!
+  Game Result: Game 4 ended in 53109 ms. Ai(2)-Drana Vampires has won!
+
+--- rotation 4/4: seats = ['drana_vampires.dck', 'kilo_helm_final.dck', 'wilhelt_zombies.dck', 'wyleth_voltron.dck'] ---
+$ java -Xmx4g -jar /Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar sim -d drana_vampires.dck kilo_helm_final.dck wilhelt_zombies.dck wyleth_voltron.dck -f Commander -n 4 -c 240
+  Game Result: Game 1 ended in 46657 ms. Ai(4)-Wyleth Voltron B3 has won!
+  Game Result: Game 2 ended in 18517 ms. Ai(1)-Drana Vampires has won!
+  Game Result: Game 3 ended in 37852 ms. Ai(2)-Kilo Helm Final has won!
+  Game Result: Game 4 ended in 53790 ms. Ai(1)-Drana Vampires has won!
+
+16 game(s) total across 4 seat rotations | draws: 0
+  Drana Vampires: 6 wins (38%)
+  Kilo Helm Final: 6 wins (38%)
+  Wyleth Voltron B3: 3 wins (19%)
+  Wilhelt Zombies B3: 1 wins (6%)
+json    : sim_results/sim_20260724_094940_rotated.json

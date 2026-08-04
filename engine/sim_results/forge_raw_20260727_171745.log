@@ -1,0 +1,353 @@
+Error handling registered!
+17:17:45 [INFO ] GuiBase: ##########################################
+17:17:45 [INFO ] GuiBase: APP: Forge v.2.0.13-SNAPSHOT-06.22
+17:17:45 [INFO ] GuiBase: Java: 17.0.20 (Homebrew)
+17:17:45 [INFO ] GuiBase: OS: Mac OS X 15.7.7 aarch64
+17:17:45 [INFO ] GuiBase: RAM: 4096 MB max, 12 CPUs
+17:17:45 [INFO ] GuiBase: ##########################################
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Simulation mode
+Ai(1)-Krenko Goblins vs Ai(2)-Torbran Burn B3 - one game of Commander
+Correcting zone for Torbran, Thane of Red Fell (201)
+Correcting zone for Torbran, Thane of Red Fell (201)
+Warning: default (ie. inherited from base class) implementation of confirmAction is used by Krenko, Mob Boss for forge.ai.ability.PermanentCreatureAi. Consider declaring an overloaded method
+Mulligan: Ai(2)-Torbran Burn B3 has kept a hand of 7 cards
+Mulligan: Ai(1)-Krenko Goblins has kept a hand of 7 cards
+Turn: Turn 1 (Ai(2)-Torbran Burn B3)
+Phase: Ai(2)-Torbran Burn B3's Untap step
+Phase: Ai(2)-Torbran Burn B3's Upkeep step
+Phase: Ai(2)-Torbran Burn B3's Draw step
+Phase: Ai(2)-Torbran Burn B3's Main phase, precombat
+Land: Ai(2)-Torbran Burn B3 played Mountain (173)
+Phase: Ai(2)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(2)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(2)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(2)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(2)-Torbran Burn B3's End of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(2)-Torbran Burn B3's End step
+Phase: Ai(2)-Torbran Burn B3's Cleanup step
+Turn: Turn 2 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (54)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (54) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Goblin Balloon Brigade
+Resolve Stack: Goblin Balloon Brigade - Creature 1 / 1
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 3 (Ai(2)-Torbran Burn B3)
+Phase: Ai(2)-Torbran Burn B3's Untap step
+Phase: Ai(2)-Torbran Burn B3's Upkeep step
+Phase: Ai(2)-Torbran Burn B3's Draw step
+Phase: Ai(2)-Torbran Burn B3's Main phase, precombat
+Land: Ai(2)-Torbran Burn B3 played Mountain (166)
+Phase: Ai(2)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(2)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(2)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(2)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(2)-Torbran Burn B3's End of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (173) - {T}: Add {R}.
+Mana: Mountain (166) - {T}: Add {R}.
+Add To Stack: Ai(2)-Torbran Burn B3 cast Ruby Medallion
+Resolve Stack: Ruby Medallion
+Phase: Ai(2)-Torbran Burn B3's End step
+Phase: Ai(2)-Torbran Burn B3's Cleanup step
+Turn: Turn 4 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (60)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Goblin Balloon Brigade (41) to attack Ai(2)-Torbran Burn B3.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Torbran Burn B3 didn't block Goblin Balloon Brigade (41).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Goblin Balloon Brigade (41) deals 1 combat damage to Ai(2)-Torbran Burn B3.
+Life: Life: Ai(2)-Torbran Burn B3 40 > 39
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Ruby Medallion
+Resolve Stack: Ruby Medallion
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 5 (Ai(2)-Torbran Burn B3)
+Phase: Ai(2)-Torbran Burn B3's Untap step
+Phase: Ai(2)-Torbran Burn B3's Upkeep step
+Mana: Mountain (173) - {T}: Add {R}.
+Add To Stack: Ai(2)-Torbran Burn B3 cast Lightning Bolt targeting [Goblin Balloon Brigade (41)]
+Damage: Lightning Bolt (110) deals 3 damage to Goblin Balloon Brigade (41).
+Resolve Stack: Lightning Bolt (110) - Lightning Bolt (110) deals 3 damage to Goblin Balloon Brigade (41).
+Zone Change: Goblin Balloon Brigade (41) was put into Graveyard from Battlefield.
+Phase: Ai(2)-Torbran Burn B3's Draw step
+Phase: Ai(2)-Torbran Burn B3's Main phase, precombat
+Phase: Ai(2)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(2)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(2)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(2)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(2)-Torbran Burn B3's End of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Main phase, postcombat
+Phase: Ai(2)-Torbran Burn B3's End step
+Phase: Ai(2)-Torbran Burn B3's Cleanup step
+Turn: Turn 6 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (81)
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Mana: Mountain (81) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Krenko, Mob Boss
+Resolve Stack: Krenko, Mob Boss - Creature 3 / 3
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 7 (Ai(2)-Torbran Burn B3)
+Phase: Ai(2)-Torbran Burn B3's Untap step
+Phase: Ai(2)-Torbran Burn B3's Upkeep step
+Phase: Ai(2)-Torbran Burn B3's Draw step
+Phase: Ai(2)-Torbran Burn B3's Main phase, precombat
+Land: Ai(2)-Torbran Burn B3 played Mountain (164)
+Phase: Ai(2)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Declare Attackers Step
+Phase: Ai(2)-Torbran Burn B3's Declare Blockers Step
+Phase: Ai(2)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(2)-Torbran Burn B3's Combat Damage Step
+Phase: Ai(2)-Torbran Burn B3's End of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (173) - {T}: Add {R}.
+Mana: Mountain (166) - {T}: Add {R}.
+Mana: Mountain (164) - {T}: Add {R}.
+Add To Stack: Ai(2)-Torbran Burn B3 cast Torbran, Thane of Red Fell
+Resolve Stack: Torbran, Thane of Red Fell - Creature 2 / 4
+Phase: Ai(2)-Torbran Burn B3's End step
+Phase: Ai(2)-Torbran Burn B3's Cleanup step
+Turn: Turn 8 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (78)
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Mana: Mountain (81) - {T}: Add {R}.
+Mana: Mountain (78) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Zealous Conscripts
+Resolve Stack: Zealous Conscripts - Creature 3 / 3
+Add To Stack: Ai(1)-Krenko Goblins triggered Zealous Conscripts targeting [Torbran, Thane of Red Fell (201)]
+Resolve Stack: When Zealous Conscripts enters, untap target permanent and gain control of it until end of turn. It gains haste until end of turn. (Targeting: [[Torbran, Thane of Red Fell (201)]]) [Zone Changer: Zealous Conscripts (19)]
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100), Zealous Conscripts (19) and Torbran, Thane of Red Fell (201) to attack Ai(2)-Torbran Burn B3.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Torbran Burn B3 didn't block Krenko, Mob Boss (100).
+Ai(2)-Torbran Burn B3 didn't block Zealous Conscripts (19).
+Ai(2)-Torbran Burn B3 didn't block Torbran, Thane of Red Fell (201).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Krenko, Mob Boss (100) deals 5 combat damage to Ai(2)-Torbran Burn B3.
+Damage: Zealous Conscripts (19) deals 5 combat damage to Ai(2)-Torbran Burn B3.
+Damage: Torbran, Thane of Red Fell (201) deals 4 combat damage to Ai(2)-Torbran Burn B3.
+Life: Life: Ai(2)-Torbran Burn B3 39 > 25
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 9 (Ai(2)-Torbran Burn B3)
+Phase: Ai(2)-Torbran Burn B3's Untap step
+Phase: Ai(2)-Torbran Burn B3's Upkeep step
+Phase: Ai(2)-Torbran Burn B3's Draw step
+Phase: Ai(2)-Torbran Burn B3's Main phase, precombat
+Land: Ai(2)-Torbran Burn B3 played Mountain (151)
+Phase: Ai(2)-Torbran Burn B3's Beginning of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Declare Attackers Step
+Combat: Ai(2)-Torbran Burn B3 assigned Torbran, Thane of Red Fell (201) to attack Ai(1)-Krenko Goblins.
+Phase: Ai(2)-Torbran Burn B3's Declare Blockers Step
+Combat: Ai(1)-Krenko Goblins didn't block Torbran, Thane of Red Fell (201).
+Phase: Ai(2)-Torbran Burn B3's First Strike Damage Step
+Phase: Ai(2)-Torbran Burn B3's Combat Damage Step
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Torbran, Thane of Red Fell (201) deals 4 combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 40 > 36
+Phase: Ai(2)-Torbran Burn B3's End of Combat Step
+Phase: Ai(2)-Torbran Burn B3's Main phase, postcombat
+Mana: Mountain (173) - {T}: Add {R}.
+Mana: Mountain (166) - {T}: Add {R}.
+Add To Stack: Ai(2)-Torbran Burn B3 cast Spellgorger Weird
+Resolve Stack: Spellgorger Weird - Creature 2 / 2
+Mana: Mountain (164) - {T}: Add {R}.
+Mana: Mountain (151) - {T}: Add {R}.
+Add To Stack: Ai(2)-Torbran Burn B3 cast Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Spellgorger Weird
+Resolve Stack: Whenever you cast a noncreature spell, put a +1/+1 counter on Spellgorger Weird. [Card: Repercussion (119), Activator: Ai(2)-Torbran Burn B3, SpellAbility: Repercussion]
+Resolve Stack: Repercussion
+Phase: Ai(2)-Torbran Burn B3's End step
+Phase: Ai(2)-Torbran Burn B3's Cleanup step
+Turn: Turn 10 (Ai(1)-Krenko Goblins)
+Phase: Ai(1)-Krenko Goblins' Untap step
+Phase: Ai(1)-Krenko Goblins' Upkeep step
+Phase: Ai(1)-Krenko Goblins' Draw step
+Phase: Ai(1)-Krenko Goblins' Main phase, precombat
+Land: Ai(1)-Krenko Goblins played Mountain (86)
+Mana: Mountain (54) - {T}: Add {R}.
+Mana: Mountain (60) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Goblin Warchief
+Resolve Stack: Goblin Warchief - Creature 2 / 2
+Mana: Mountain (81) - {T}: Add {R}.
+Mana: Mountain (78) - {T}: Add {R}.
+Mana: Mountain (86) - {T}: Add {R}.
+Add To Stack: Ai(1)-Krenko Goblins cast Siege-Gang Commander
+Resolve Stack: Siege-Gang Commander - Creature 2 / 2
+Add To Stack: Ai(1)-Krenko Goblins triggered Siege-Gang Commander
+Resolve Stack: When Siege-Gang Commander enters, create three 1/1 red Goblin creature tokens. [Zone Changer: Siege-Gang Commander (10)]
+Phase: Ai(1)-Krenko Goblins' Beginning of Combat Step
+Phase: Ai(1)-Krenko Goblins' Declare Attackers Step
+Combat: Ai(1)-Krenko Goblins assigned Krenko, Mob Boss (100) and Zealous Conscripts (19) to attack Ai(2)-Torbran Burn B3.
+Phase: Ai(1)-Krenko Goblins' Declare Blockers Step
+Combat: Ai(2)-Torbran Burn B3 didn't block Krenko, Mob Boss (100).
+Ai(2)-Torbran Burn B3 didn't block Zealous Conscripts (19).
+Phase: Ai(1)-Krenko Goblins' First Strike Damage Step
+Phase: Ai(1)-Krenko Goblins' Combat Damage Step
+Damage: Krenko, Mob Boss (100) deals 3 combat damage to Ai(2)-Torbran Burn B3.
+Damage: Zealous Conscripts (19) deals 3 combat damage to Ai(2)-Torbran Burn B3.
+Life: Life: Ai(2)-Torbran Burn B3 25 > 19
+Phase: Ai(1)-Krenko Goblins' End of Combat Step
+Phase: Ai(1)-Krenko Goblins' Main phase, postcombat
+Phase: Ai(1)-Krenko Goblins' End step
+Phase: Ai(1)-Krenko Goblins' Cleanup step
+Turn: Turn 11 (Ai(2)-Torbran Burn B3)
+Phase: Ai(2)-Torbran Burn B3's Untap step
+Phase: Ai(2)-Torbran Burn B3's Upkeep step
+Phase: Ai(2)-Torbran Burn B3's Draw step
+Mana: Mountain (173) - {T}: Add {R}.
+Mana: Mountain (166) - {T}: Add {R}.
+Mana: Mountain (164) - {T}: Add {R}.
+Mana: Mountain (151) - {T}: Add {R}.
+Add To Stack: Ai(2)-Torbran Burn B3 cast Fault Line
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Spellgorger Weird
+Resolve Stack: Whenever you cast a noncreature spell, put a +1/+1 counter on Spellgorger Weird. [Card: Fault Line (118), Activator: Ai(2)-Torbran Burn B3, SpellAbility: Fault Line deals X damage to each creature without flying and each player.]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Fault Line (118) deals 5 damage to Krenko, Mob Boss (100).
+Damage: Fault Line (118) deals 5 damage to Zealous Conscripts (19).
+Damage: Fault Line (118) deals 5 damage to Goblin Warchief (21).
+Damage: Fault Line (118) deals 5 damage to Siege-Gang Commander (10).
+Damage: Fault Line (118) deals 5 damage to Goblin Token (221).
+Damage: Fault Line (118) deals 5 damage to Goblin Token (222).
+Damage: Fault Line (118) deals 5 damage to Goblin Token (223).
+Damage: Fault Line (118) deals 3 damage to Torbran, Thane of Red Fell (201).
+Damage: Fault Line (118) deals 3 damage to Spellgorger Weird (116).
+Damage: Fault Line (118) deals 5 non-combat damage to Ai(1)-Krenko Goblins.
+Damage: Fault Line (118) deals 3 non-combat damage to Ai(2)-Torbran Burn B3.
+Life: Life: Ai(1)-Krenko Goblins 36 > 31
+Life: Life: Ai(2)-Torbran Burn B3 19 > 16
+Resolve Stack: Fault Line (118) - Deals 3 damage to each creature without flying and each player. (X=3)
+Zone Change: Krenko, Mob Boss (100) was put into Graveyard from Battlefield.
+Zone Change: Zealous Conscripts (19) was put into Graveyard from Battlefield.
+Zone Change: Goblin Warchief (21) was put into Graveyard from Battlefield.
+Zone Change: Siege-Gang Commander (10) was put into Graveyard from Battlefield.
+Zone Change: Goblin Token (221) was put into Graveyard from Battlefield.
+Zone Change: Goblin Token (222) was put into Graveyard from Battlefield.
+Zone Change: Goblin Token (223) was put into Graveyard from Battlefield.
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Add To Stack: Ai(2)-Torbran Burn B3 triggered Repercussion
+Damage: Repercussion (119) deals 3 non-combat damage to Ai(2)-Torbran Burn B3.
+Life: Life: Ai(2)-Torbran Burn B3 16 > 13
+Resolve Stack: Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller. [Damaged: Spellgorger Weird (116), Amount: 3]
+Damage: Repercussion (119) deals 3 non-combat damage to Ai(2)-Torbran Burn B3.
+Life: Life: Ai(2)-Torbran Burn B3 13 > 10
+Resolve Stack: Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller. [Damaged: Torbran, Thane of Red Fell (201), Amount: 3]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Repercussion (119) deals 7 non-combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 31 > 24
+Resolve Stack: Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller. [Damaged: Goblin Token (223), Amount: 5]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Repercussion (119) deals 7 non-combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 24 > 17
+Resolve Stack: Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller. [Damaged: Goblin Token (222), Amount: 5]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Repercussion (119) deals 7 non-combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 17 > 10
+Resolve Stack: Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller. [Damaged: Goblin Token (221), Amount: 5]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Repercussion (119) deals 7 non-combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 10 > 3
+Resolve Stack: Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller. [Damaged: Siege-Gang Commander (10), Amount: 5]
+Replacement Effect: If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead.
+Damage: Repercussion (119) deals 7 non-combat damage to Ai(1)-Krenko Goblins.
+Life: Life: Ai(1)-Krenko Goblins 3 > -4
+Resolve Stack: Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller. [Damaged: Goblin Warchief (21), Amount: 5]
+Player Control: Ai(1)-Krenko Goblins has restored control over themself
+Player Control: Ai(2)-Torbran Burn B3 has restored control over themself
+Game Outcome: Turn 6
+Game Outcome: Ai(1)-Krenko Goblins has lost because life total reached 0
+Game Outcome: Ai(2)-Torbran Burn B3 has won because all opponents have lost
+Match Result: Ai(1)-Krenko Goblins: 0 Ai(2)-Torbran Burn B3: 1 
+
+Game Result: Game 1 ended in 1765 ms. Ai(2)-Torbran Burn B3 has won!
+

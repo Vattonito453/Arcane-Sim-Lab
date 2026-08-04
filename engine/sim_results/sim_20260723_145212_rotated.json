@@ -1,0 +1,783 @@
+{
+  "meta": {
+    "source": "rotated",
+    "decks": [
+      "inspirit_b3.dck",
+      "torbran_burn.dck",
+      "wilhelt_zombies.dck",
+      "wyleth_voltron.dck"
+    ],
+    "format": "Commander",
+    "rotations": 4
+  },
+  "games": [
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Wilhelt Zombies B3",
+        "draw": false,
+        "duration_ms": 23833,
+        "raw": "Game Result: Game 1 ended in 23833 ms. Ai(3)-Wilhelt Zombies B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Torbran Burn B3: 0 Ai(3)-Wilhelt Zombies B3: 1 Ai(4)-Wyleth Voltron B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Wilhelt Zombies B3",
+        "draw": false,
+        "duration_ms": 44673,
+        "raw": "Game Result: Game 2 ended in 44673 ms. Ai(3)-Wilhelt Zombies B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 17",
+          "detail": "Turn 17"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Torbran Burn B3: 0 Ai(3)-Wilhelt Zombies B3: 2 Ai(4)-Wyleth Voltron B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Wilhelt Zombies B3",
+        "draw": false,
+        "duration_ms": 38127,
+        "raw": "Game Result: Game 3 ended in 38127 ms. Ai(3)-Wilhelt Zombies B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 21",
+          "detail": "Turn 21"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Torbran Burn B3: 0 Ai(3)-Wilhelt Zombies B3: 3 Ai(4)-Wyleth Voltron B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Wilhelt Zombies B3",
+        "draw": false,
+        "duration_ms": 15500,
+        "raw": "Game Result: Game 4 ended in 15500 ms. Ai(3)-Wilhelt Zombies B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 25",
+          "detail": "Turn 25"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Wilhelt Zombies B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Inspirit B3: 0 Ai(2)-Torbran Burn B3: 0 Ai(3)-Wilhelt Zombies B3: 4 Ai(4)-Wyleth Voltron B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Inspirit B3",
+        "draw": false,
+        "duration_ms": 6814,
+        "raw": "Game Result: Game 1 ended in 6814 ms. Ai(4)-Inspirit B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 14",
+          "detail": "Turn 14"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has won because all opponents have lost",
+          "detail": "Ai(4)-Inspirit B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Torbran Burn B3: 0 Ai(2)-Wilhelt Zombies B3: 0 Ai(3)-Wyleth Voltron B3: 0 Ai(4)-Inspirit B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Wyleth Voltron B3",
+        "draw": false,
+        "duration_ms": 38483,
+        "raw": "Game Result: Game 2 ended in 38483 ms. Ai(3)-Wyleth Voltron B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wyleth Voltron B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Wyleth Voltron B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Torbran Burn B3: 0 Ai(2)-Wilhelt Zombies B3: 0 Ai(3)-Wyleth Voltron B3: 1 Ai(4)-Inspirit B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Wilhelt Zombies B3",
+        "draw": false,
+        "duration_ms": 27048,
+        "raw": "Game Result: Game 3 ended in 27048 ms. Ai(2)-Wilhelt Zombies B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wilhelt Zombies B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Wilhelt Zombies B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Torbran Burn B3: 0 Ai(2)-Wilhelt Zombies B3: 1 Ai(3)-Wyleth Voltron B3: 1 Ai(4)-Inspirit B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(3)-Wyleth Voltron B3",
+        "draw": false,
+        "duration_ms": 34228,
+        "raw": "Game Result: Game 4 ended in 34228 ms. Ai(3)-Wyleth Voltron B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Torbran Burn B3 has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(1)-Torbran Burn B3 has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Wyleth Voltron B3 has won because all opponents have lost",
+          "detail": "Ai(3)-Wyleth Voltron B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Torbran Burn B3: 0 Ai(2)-Wilhelt Zombies B3: 1 Ai(3)-Wyleth Voltron B3: 2 Ai(4)-Inspirit B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Wyleth Voltron B3",
+        "draw": false,
+        "duration_ms": 22837,
+        "raw": "Game Result: Game 1 ended in 22837 ms. Ai(2)-Wyleth Voltron B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wyleth Voltron B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Wyleth Voltron B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wilhelt Zombies B3: 0 Ai(2)-Wyleth Voltron B3: 1 Ai(3)-Inspirit B3: 0 Ai(4)-Torbran Burn B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Wyleth Voltron B3",
+        "draw": false,
+        "duration_ms": 17170,
+        "raw": "Game Result: Game 2 ended in 17170 ms. Ai(2)-Wyleth Voltron B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 15",
+          "detail": "Turn 15"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wyleth Voltron B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Wyleth Voltron B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Torbran Burn B3 has lost due to accumulation of 21 damage from generals",
+          "detail": "Ai(4)-Torbran Burn B3 has lost due to accumulation of 21 damage from generals"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wilhelt Zombies B3: 0 Ai(2)-Wyleth Voltron B3: 2 Ai(3)-Inspirit B3: 0 Ai(4)-Torbran Burn B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(2)-Wyleth Voltron B3",
+        "draw": false,
+        "duration_ms": 23443,
+        "raw": "Game Result: Game 3 ended in 23443 ms. Ai(2)-Wyleth Voltron B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 22",
+          "detail": "Turn 22"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wyleth Voltron B3 has won because all opponents have lost",
+          "detail": "Ai(2)-Wyleth Voltron B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wilhelt Zombies B3: 0 Ai(2)-Wyleth Voltron B3: 3 Ai(3)-Inspirit B3: 0 Ai(4)-Torbran Burn B3: 0"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Torbran Burn B3",
+        "draw": false,
+        "duration_ms": 32721,
+        "raw": "Game Result: Game 4 ended in 32721 ms. Ai(4)-Torbran Burn B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 19",
+          "detail": "Turn 19"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Torbran Burn B3 has won because all opponents have lost",
+          "detail": "Ai(4)-Torbran Burn B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wilhelt Zombies B3: 0 Ai(2)-Wyleth Voltron B3: 3 Ai(3)-Inspirit B3: 0 Ai(4)-Torbran Burn B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Wilhelt Zombies B3",
+        "draw": false,
+        "duration_ms": 23986,
+        "raw": "Game Result: Game 1 ended in 23986 ms. Ai(4)-Wilhelt Zombies B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 20",
+          "detail": "Turn 20"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wilhelt Zombies B3 has won because all opponents have lost",
+          "detail": "Ai(4)-Wilhelt Zombies B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wyleth Voltron B3: 0 Ai(2)-Inspirit B3: 0 Ai(3)-Torbran Burn B3: 0 Ai(4)-Wilhelt Zombies B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Wyleth Voltron B3",
+        "draw": false,
+        "duration_ms": 18277,
+        "raw": "Game Result: Game 2 ended in 18277 ms. Ai(1)-Wyleth Voltron B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 15",
+          "detail": "Turn 15"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wyleth Voltron B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Wyleth Voltron B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wyleth Voltron B3: 1 Ai(2)-Inspirit B3: 0 Ai(3)-Torbran Burn B3: 0 Ai(4)-Wilhelt Zombies B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(1)-Wyleth Voltron B3",
+        "draw": false,
+        "duration_ms": 39073,
+        "raw": "Game Result: Game 3 ended in 39073 ms. Ai(1)-Wyleth Voltron B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wyleth Voltron B3 has won because all opponents have lost",
+          "detail": "Ai(1)-Wyleth Voltron B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wilhelt Zombies B3 has lost because life total reached 0",
+          "detail": "Ai(4)-Wilhelt Zombies B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wyleth Voltron B3: 2 Ai(2)-Inspirit B3: 0 Ai(3)-Torbran Burn B3: 0 Ai(4)-Wilhelt Zombies B3: 1"
+        }
+      ]
+    },
+    {
+      "players": [],
+      "turns": [],
+      "result": {
+        "winner": "Ai(4)-Wilhelt Zombies B3",
+        "draw": false,
+        "duration_ms": 79414,
+        "raw": "Game Result: Game 4 ended in 79414 ms. Ai(4)-Wilhelt Zombies B3 has won!"
+      },
+      "events_pregame": [
+        {
+          "seq": 1,
+          "action": "game_outcome",
+          "raw": "Turn 26",
+          "detail": "Turn 26"
+        },
+        {
+          "seq": 2,
+          "action": "game_outcome",
+          "raw": "Ai(1)-Wyleth Voltron B3 has lost because life total reached 0",
+          "detail": "Ai(1)-Wyleth Voltron B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 3,
+          "action": "game_outcome",
+          "raw": "Ai(2)-Inspirit B3 has lost because life total reached 0",
+          "detail": "Ai(2)-Inspirit B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 4,
+          "action": "game_outcome",
+          "raw": "Ai(3)-Torbran Burn B3 has lost because life total reached 0",
+          "detail": "Ai(3)-Torbran Burn B3 has lost because life total reached 0"
+        },
+        {
+          "seq": 5,
+          "action": "game_outcome",
+          "raw": "Ai(4)-Wilhelt Zombies B3 has won because all opponents have lost",
+          "detail": "Ai(4)-Wilhelt Zombies B3 has won because all opponents have lost"
+        },
+        {
+          "seq": 6,
+          "action": "match_result",
+          "raw": "Ai(1)-Wyleth Voltron B3: 2 Ai(2)-Inspirit B3: 0 Ai(3)-Torbran Burn B3: 0 Ai(4)-Wilhelt Zombies B3: 2"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "games": 16,
+    "draws": 0,
+    "wins": {
+      "Wilhelt Zombies B3": 7,
+      "Inspirit B3": 1,
+      "Wyleth Voltron B3": 7,
+      "Torbran Burn B3": 1
+    },
+    "win_rates": {
+      "Wilhelt Zombies B3": 0.438,
+      "Inspirit B3": 0.062,
+      "Wyleth Voltron B3": 0.438,
+      "Torbran Burn B3": 0.062
+    }
+  }
+}

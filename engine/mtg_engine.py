@@ -50,6 +50,31 @@ ROOT = Path(__file__).resolve().parent.parent
 KB = ROOT / "rules" / "kb"
 
 
+def _claim_result(out: str, run_id: str | None, t0: float) -> Path | None:
+    """The result file belonging to THIS run, or None.
+
+    Claiming by "newest sim_*.json written since I started" is only correct
+    while exactly one process writes to this directory. Add a second worker, a
+    duplicate job, or someone running run_sim.py by hand on the box, and the
+    window hands this job another run's file — and the job is then marked done
+    carrying someone else's win rates, undetectably.
+
+    run_sim.py stamps the job id into the result filename, so match on that.
+    Freshness is still required on top of identity: recover_orphans() requeues
+    a job under its original id, so a previous attempt's file can be sitting
+    right there. No id (a hand-run sim) falls back to the old window, which is
+    as good as it can be when there is nothing to match on.
+    """
+    d = Path(out)
+    if run_id:
+        safe = re.sub(r"[^A-Za-z0-9-]", "", run_id)[:64]
+        cands = list(d.glob(f"sim_*_{safe}.json")) + list(d.glob(f"sim_*_{safe}_rotated.json"))
+    else:
+        cands = list(d.glob("sim_*.json"))
+    fresh = sorted(p for p in cands if p.stat().st_mtime >= t0)
+    return fresh[-1] if fresh else None
+
+
 class Engine:
     def __init__(self, kb_dir: Path | str = KB):
         self.kb = Path(kb_dir)
@@ -182,13 +207,10 @@ class Engine:
             out_txt = e.stdout if isinstance(e.stdout, str) else ""
             err_txt = (e.stderr if isinstance(e.stderr, str) else "") + \
                 f"\nsimulation killed after {int(timeout)} s (MTG_SIM_TIMEOUT_SECONDS)"
-        # Only accept a result file written by THIS run. The old newest-by-name
-        # glob could hand a failed run the previous run's file, marking the job
-        # done with someone else's numbers.
-        latest = sorted(p for p in Path(out).glob("sim_*.json") if p.stat().st_mtime >= t0)
+        claimed = _claim_result(out, run_id, t0)
         return {"stdout": (out_txt + "\n" + err_txt)[-2000:], "returncode": rc,
-                "result_file": str(latest[-1]) if latest else None,
-                "result": json.loads(latest[-1].read_text()) if latest and rc == 0 else None}
+                "result_file": str(claimed) if claimed else None,
+                "result": json.loads(claimed.read_text()) if claimed and rc == 0 else None}
 
     # ---------- helpers ----------
 

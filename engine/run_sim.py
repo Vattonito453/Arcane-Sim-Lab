@@ -15,6 +15,7 @@ import glob
 import json
 import os
 import platform
+import re
 import shutil
 import subprocess
 import sys
@@ -269,12 +270,12 @@ def run(args: argparse.Namespace) -> None:
                                "decks": args.decks, "format": args.format,
                                "rotations": rotations},
                       "games": all_games, "summary": _summarize_by_deck(all_games)}
-            json_path = out_dir / f"sim_{stamp}_rotated.json"
+            json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
         else:
             result = _run_shim_once(args, jar, shim_jar, out_dir, deck_names, args.games)
             result["meta"]["decks"] = args.decks
             result["meta"]["format"] = args.format
-            json_path = out_dir / f"sim_{stamp}.json"
+            json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
         json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         s = result["summary"]
         print(f"\n{s['games']} game(s) parsed | draws: {s['draws']}")
@@ -300,7 +301,7 @@ def run(args: argparse.Namespace) -> None:
                            "format": args.format, "rotations": rotations},
                   "games": all_games, "summary": _summarize_by_deck(all_games)}
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        json_path = out_dir / f"sim_{stamp}_rotated.json"
+        json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
         json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         s = result["summary"]
         print(f"\n{s['games']} game(s) total across {rotations} seat rotations | draws: {s['draws']}")
@@ -349,7 +350,7 @@ def run(args: argparse.Namespace) -> None:
     result["meta"]["decks"] = args.decks
     result["meta"]["format"] = args.format
     result["meta"]["humanized"] = False
-    json_path = out_dir / f"sim_{stamp}.json"
+    json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
     json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
 
     s = result["summary"]
@@ -387,6 +388,27 @@ def _run_once(args, jar, out_dir, deck_order, games, rotate_index: int | None = 
         raw_path = out_dir / f"forge_raw_{stamp}.log"
     raw_path.write_text("".join(lines), encoding="utf-8")
     return parse_forge_log("".join(lines), source=" ".join(cmd))
+
+
+def safe_run_id(run_id: str) -> str:
+    """Filename-safe form of a job id. The API's ids are already
+    [A-Za-z0-9_-]; a hand-run --run-id is not guaranteed to be."""
+    return re.sub(r"[^A-Za-z0-9-]", "", run_id)[:64]
+
+
+def result_path(out_dir: Path, stamp: str, run_id: str | None, rotated: bool) -> Path:
+    """Name the result file so its owning job is readable from the name.
+
+    The engine used to claim a result as "the newest sim_*.json written since I
+    started", which credits whichever file lands first — a second worker's, a
+    manual run's, a duplicate job's — to this job, and marks it done with
+    someone else's numbers. The raw logs have carried the run id all along;
+    now the result does too, in its own underscore slot between the timestamp
+    and the _rotated suffix. Files written without an id still match the old
+    shape, so historical results keep parsing.
+    """
+    tag = f"_{safe_run_id(run_id)}" if run_id else ""
+    return out_dir / f"sim_{stamp}{tag}{'_rotated' if rotated else ''}.json"
 
 
 def _summarize_by_deck(games: list) -> dict:

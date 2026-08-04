@@ -100,6 +100,12 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     # Honesty label: plan-agent results are NOT stock-Forge numbers and must
     # never be compared against stock baselines unlabeled (SIM_CALIBRATION).
     result["meta"]["humanized"] = bool(meta_rec.get("humanized"))
+    # Per-seat pilot ("plan" | "stock"), positionally aligned with meta.players.
+    # humanized is a single bool for the whole pod; this is what distinguishes a
+    # genuinely humanized run from a mixed one, and a mixed pod is a different
+    # experiment. Absent on logs written before the shim emitted it.
+    if meta_rec.get("agents"):
+        result["meta"]["agents"] = meta_rec["agents"]
 
     # Attach ground-truth zone movements per game (order matches game_order
     # because every shim game produces turn entries).

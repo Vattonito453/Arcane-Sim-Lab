@@ -1,0 +1,36 @@
+# Line-ending policy. Added when a Windows workstation joined the project.
+#
+# Git for Windows defaults to core.autocrlf=true, which rewrites LF to CRLF on
+# checkout. That is harmless for most source but breaks three things here, so
+# they are pinned explicitly rather than left to a global setting that varies
+# per machine.
+#
+# Deliberately NOT using `* text=auto`: every file in this repo is already
+# stored LF, and a blanket rule would renormalize all 562 of them.
+
+# ── must stay LF ─────────────────────────────────────────────────────────
+# A shell script with CRLF fails under Git Bash and in the Linux worker
+# container with "\r: command not found" or "bad interpreter" — and the
+# container entrypoint failing is the silent-Forge failure mode all over again.
+*.sh            text eol=lf
+Dockerfile*     text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+
+# ── byte-stable data: never convert ──────────────────────────────────────
+# The results/study corpus and the Forge decklists are compared, hashed and
+# parsed byte-wise. CRLF would inflate them and break byte-exact checks.
+*.jsonl         -text
+*.json          -text
+*.dck           -text
+
+# ── binary ───────────────────────────────────────────────────────────────
+# The pip/mascot WebPs are reproduced byte-for-byte by
+# Design System/tools/export_pips.py; any conversion would break that check.
+*.webp          binary
+*.png           binary
+*.jpg           binary
+*.jar           binary
+*.docx          binary
+*.zip           binary
+*.db            binary

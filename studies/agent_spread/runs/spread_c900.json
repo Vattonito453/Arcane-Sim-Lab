@@ -1,0 +1,515 @@
+{
+  "label": "v1/v2/v3 pods, clock 900, fixed shim",
+  "pods": [
+    {
+      "decks": [
+        "Atraxa Counters B3",
+        "Drana Vampires",
+        "Kilo Helm Final",
+        "Krenko Goblins"
+      ],
+      "arms": {
+        "stock": {
+          "what_if_clock": {
+            "120": {
+              "would_be_cut": 12,
+              "rate": 0.1875,
+              "of_natural": 64
+            },
+            "300": {
+              "would_be_cut": 3,
+              "rate": 0.046875,
+              "of_natural": 64
+            },
+            "600": {
+              "would_be_cut": 2,
+              "rate": 0.03125,
+              "of_natural": 64
+            }
+          },
+          "arm": "stock",
+          "decks": [
+            "Atraxa Counters B3",
+            "Drana Vampires",
+            "Kilo Helm Final",
+            "Krenko Goblins"
+          ],
+          "files": [
+            "shim_raw_spread_v3_tutor_shim_stock_g64_c900_rot0.jsonl",
+            "shim_raw_spread_v3_tutor_shim_stock_g64_c900_rot1.jsonl",
+            "shim_raw_spread_v3_tutor_shim_stock_g64_c900_rot2.jsonl",
+            "shim_raw_spread_v3_tutor_shim_stock_g64_c900_rot3.jsonl"
+          ],
+          "n_games": 64,
+          "n_timed_out": 0,
+          "timeout_rate": 0.0,
+          "n_other_draws": 0,
+          "n_clean": 64,
+          "per_deck": [
+            {
+              "deck": "Drana Vampires",
+              "wins": 26,
+              "rate": 0.40625,
+              "lo": 0.29456724435258885,
+              "hi": 0.528550134954503
+            },
+            {
+              "deck": "Atraxa Counters B3",
+              "wins": 24,
+              "rate": 0.375,
+              "lo": 0.2666580388810532,
+              "hi": 0.4974984668617358
+            },
+            {
+              "deck": "Kilo Helm Final",
+              "wins": 11,
+              "rate": 0.171875,
+              "lo": 0.0987764126731623,
+              "hi": 0.2821344149016591
+            },
+            {
+              "deck": "Krenko Goblins",
+              "wins": 3,
+              "rate": 0.046875,
+              "lo": 0.016068725432185196,
+              "hi": 0.12899860788542522
+            }
+          ],
+          "spread_sd": 0.14781943694081642,
+          "spread_range": 0.359375,
+          "null_spread": {
+            "mean": 0.04998028423948474,
+            "p50": 0.048159484398195125,
+            "p95": 0.08769509500251425
+          },
+          "median_turns": 43.0,
+          "median_secs_natural": 42.491,
+          "median_turns_per_sec": 1.0106921378032885
+        },
+        "agent": {
+          "what_if_clock": {
+            "120": {
+              "would_be_cut": 8,
+              "rate": 0.125,
+              "of_natural": 64
+            },
+            "300": {
+              "would_be_cut": 1,
+              "rate": 0.015625,
+              "of_natural": 64
+            },
+            "600": {
+              "would_be_cut": 1,
+              "rate": 0.015625,
+              "of_natural": 64
+            }
+          },
+          "arm": "agent",
+          "decks": [
+            "Atraxa Counters B3",
+            "Drana Vampires",
+            "Kilo Helm Final",
+            "Krenko Goblins"
+          ],
+          "files": [
+            "shim_raw_spread_v3_tutor_agent_v3_g64_c900_rot0.jsonl",
+            "shim_raw_spread_v3_tutor_agent_v3_g64_c900_rot1.jsonl",
+            "shim_raw_spread_v3_tutor_agent_v3_g64_c900_rot2.jsonl",
+            "shim_raw_spread_v3_tutor_agent_v3_g64_c900_rot3.jsonl"
+          ],
+          "n_games": 64,
+          "n_timed_out": 0,
+          "timeout_rate": 0.0,
+          "n_other_draws": 0,
+          "n_clean": 64,
+          "per_deck": [
+            {
+              "deck": "Drana Vampires",
+              "wins": 24,
+              "rate": 0.375,
+              "lo": 0.2666580388810532,
+              "hi": 0.4974984668617358
+            },
+            {
+              "deck": "Atraxa Counters B3",
+              "wins": 23,
+              "rate": 0.359375,
+              "lo": 0.2528823053221461,
+              "hi": 0.48179376363849163
+            },
+            {
+              "deck": "Kilo Helm Final",
+              "wins": 10,
+              "rate": 0.15625,
+              "lo": 0.08714748876961673,
+              "hi": 0.26428290202305327
+            },
+            {
+              "deck": "Krenko Goblins",
+              "wins": 7,
+              "rate": 0.109375,
+              "lo": 0.054000447526830544,
+              "hi": 0.20898863291938535
+            }
+          ],
+          "spread_sd": 0.11848242881330548,
+          "spread_range": 0.265625,
+          "null_spread": {
+            "mean": 0.04998028423948474,
+            "p50": 0.048159484398195125,
+            "p95": 0.08769509500251425
+          },
+          "median_turns": 44.5,
+          "median_secs_natural": 45.2755,
+          "median_turns_per_sec": 1.0670431070441326
+        }
+      },
+      "compression_test": {
+        "point": -0.029337008127510944,
+        "lo": -0.09600835343994774,
+        "hi": 0.038934332796078885,
+        "frac_negative": 0.7887
+      }
+    },
+    {
+      "decks": [
+        "Atraxa Counters B3",
+        "Kilo Helm Final",
+        "Meren Graveyard B3",
+        "Ur-Dragon B3"
+      ],
+      "arms": {
+        "stock": {
+          "what_if_clock": {
+            "120": {
+              "would_be_cut": 6,
+              "rate": 0.09375,
+              "of_natural": 64
+            },
+            "300": {
+              "would_be_cut": 4,
+              "rate": 0.0625,
+              "of_natural": 64
+            },
+            "600": {
+              "would_be_cut": 1,
+              "rate": 0.015625,
+              "of_natural": 64
+            }
+          },
+          "arm": "stock",
+          "decks": [
+            "Atraxa Counters B3",
+            "Kilo Helm Final",
+            "Meren Graveyard B3",
+            "Ur-Dragon B3"
+          ],
+          "files": [
+            "shim_raw_spread_v3_combo_shim_stock_g64_c900_rot0.jsonl",
+            "shim_raw_spread_v3_combo_shim_stock_g64_c900_rot1.jsonl",
+            "shim_raw_spread_v3_combo_shim_stock_g64_c900_rot2.jsonl",
+            "shim_raw_spread_v3_combo_shim_stock_g64_c900_rot3.jsonl"
+          ],
+          "n_games": 64,
+          "n_timed_out": 0,
+          "timeout_rate": 0.0,
+          "n_other_draws": 0,
+          "n_clean": 64,
+          "per_deck": [
+            {
+              "deck": "Ur-Dragon B3",
+              "wins": 31,
+              "rate": 0.484375,
+              "lo": 0.36633348565783896,
+              "hi": 0.6041860775600096
+            },
+            {
+              "deck": "Meren Graveyard B3",
+              "wins": 13,
+              "rate": 0.203125,
+              "lo": 0.12273302562695812,
+              "hi": 0.3171386755121659
+            },
+            {
+              "deck": "Atraxa Counters B3",
+              "wins": 12,
+              "rate": 0.1875,
+              "lo": 0.11064534880922097,
+              "hi": 0.29974591554775176
+            },
+            {
+              "deck": "Kilo Helm Final",
+              "wins": 8,
+              "rate": 0.125,
+              "lo": 0.064721653926208,
+              "hi": 0.22774786330215924
+            }
+          ],
+          "spread_sd": 0.1384378527083543,
+          "spread_range": 0.359375,
+          "null_spread": {
+            "mean": 0.04998028423948474,
+            "p50": 0.048159484398195125,
+            "p95": 0.08769509500251425
+          },
+          "median_turns": 49.0,
+          "median_secs_natural": 47.1265,
+          "median_turns_per_sec": 1.0680301939042876
+        },
+        "agent": {
+          "what_if_clock": {
+            "120": {
+              "would_be_cut": 7,
+              "rate": 0.109375,
+              "of_natural": 64
+            },
+            "300": {
+              "would_be_cut": 2,
+              "rate": 0.03125,
+              "of_natural": 64
+            },
+            "600": {
+              "would_be_cut": 1,
+              "rate": 0.015625,
+              "of_natural": 64
+            }
+          },
+          "arm": "agent",
+          "decks": [
+            "Atraxa Counters B3",
+            "Kilo Helm Final",
+            "Meren Graveyard B3",
+            "Ur-Dragon B3"
+          ],
+          "files": [
+            "shim_raw_spread_v3_combo_agent_v3_g64_c900_rot0.jsonl",
+            "shim_raw_spread_v3_combo_agent_v3_g64_c900_rot1.jsonl",
+            "shim_raw_spread_v3_combo_agent_v3_g64_c900_rot2.jsonl",
+            "shim_raw_spread_v3_combo_agent_v3_g64_c900_rot3.jsonl"
+          ],
+          "n_games": 64,
+          "n_timed_out": 0,
+          "timeout_rate": 0.0,
+          "n_other_draws": 0,
+          "n_clean": 64,
+          "per_deck": [
+            {
+              "deck": "Ur-Dragon B3",
+              "wins": 37,
+              "rate": 0.578125,
+              "lo": 0.4560981205252726,
+              "hi": 0.6913040633854843
+            },
+            {
+              "deck": "Meren Graveyard B3",
+              "wins": 21,
+              "rate": 0.328125,
+              "lo": 0.2257039576708776,
+              "hi": 0.45001123772545737
+            },
+            {
+              "deck": "Atraxa Counters B3",
+              "wins": 3,
+              "rate": 0.046875,
+              "lo": 0.016068725432185196,
+              "hi": 0.12899860788542522
+            },
+            {
+              "deck": "Kilo Helm Final",
+              "wins": 3,
+              "rate": 0.046875,
+              "lo": 0.016068725432185196,
+              "hi": 0.12899860788542522
+            }
+          ],
+          "spread_sd": 0.22152260748059102,
+          "spread_range": 0.53125,
+          "null_spread": {
+            "mean": 0.04998028423948474,
+            "p50": 0.048159484398195125,
+            "p95": 0.08769509500251425
+          },
+          "median_turns": 48.0,
+          "median_secs_natural": 54.144,
+          "median_turns_per_sec": 0.9503684784210531
+        }
+      },
+      "compression_test": {
+        "point": 0.08308475477223673,
+        "lo": -0.0002925804962664591,
+        "hi": 0.16033520354557623,
+        "frac_negative": 0.0252
+      }
+    },
+    {
+      "decks": [
+        "Drana Vampires",
+        "Kilo Helm Final",
+        "Wilhelt Zombies B3",
+        "Wyleth Voltron B3"
+      ],
+      "arms": {
+        "stock": {
+          "what_if_clock": {
+            "120": {
+              "would_be_cut": 11,
+              "rate": 0.171875,
+              "of_natural": 64
+            },
+            "300": {
+              "would_be_cut": 2,
+              "rate": 0.03125,
+              "of_natural": 64
+            },
+            "600": {
+              "would_be_cut": 1,
+              "rate": 0.015625,
+              "of_natural": 64
+            }
+          },
+          "arm": "stock",
+          "decks": [
+            "Drana Vampires",
+            "Kilo Helm Final",
+            "Wilhelt Zombies B3",
+            "Wyleth Voltron B3"
+          ],
+          "files": [
+            "shim_raw_spread_v1v2_shim_stock_g64_c900_rot0.jsonl",
+            "shim_raw_spread_v1v2_shim_stock_g64_c900_rot1.jsonl",
+            "shim_raw_spread_v1v2_shim_stock_g64_c900_rot2.jsonl",
+            "shim_raw_spread_v1v2_shim_stock_g64_c900_rot3.jsonl"
+          ],
+          "n_games": 64,
+          "n_timed_out": 0,
+          "timeout_rate": 0.0,
+          "n_other_draws": 1,
+          "n_clean": 63,
+          "per_deck": [
+            {
+              "deck": "Drana Vampires",
+              "wins": 19,
+              "rate": 0.30158730158730157,
+              "lo": 0.20237537048735993,
+              "hi": 0.4236060542541184
+            },
+            {
+              "deck": "Kilo Helm Final",
+              "wins": 18,
+              "rate": 0.2857142857142857,
+              "lo": 0.18903043457341695,
+              "hi": 0.4070295041473797
+            },
+            {
+              "deck": "Wilhelt Zombies B3",
+              "wins": 13,
+              "rate": 0.20634920634920634,
+              "lo": 0.1247520251562291,
+              "hi": 0.32170048346115887
+            },
+            {
+              "deck": "Wyleth Voltron B3",
+              "wins": 13,
+              "rate": 0.20634920634920634,
+              "lo": 0.1247520251562291,
+              "hi": 0.32170048346115887
+            }
+          ],
+          "spread_sd": 0.044010065501624666,
+          "spread_range": 0.09523809523809523,
+          "null_spread": {
+            "mean": 0.050293545526974646,
+            "p50": 0.04811252243246881,
+            "p95": 0.0879306341514299
+          },
+          "median_turns": 44.5,
+          "median_secs_natural": 46.903999999999996,
+          "median_turns_per_sec": 0.9406784468969119
+        },
+        "agent": {
+          "what_if_clock": {
+            "120": {
+              "would_be_cut": 10,
+              "rate": 0.15625,
+              "of_natural": 64
+            },
+            "300": {
+              "would_be_cut": 3,
+              "rate": 0.046875,
+              "of_natural": 64
+            },
+            "600": {
+              "would_be_cut": 1,
+              "rate": 0.015625,
+              "of_natural": 64
+            }
+          },
+          "arm": "agent",
+          "decks": [
+            "Drana Vampires",
+            "Kilo Helm Final",
+            "Wilhelt Zombies B3",
+            "Wyleth Voltron B3"
+          ],
+          "files": [
+            "shim_raw_spread_v1v2_agent_v3_g64_c900_rot0.jsonl",
+            "shim_raw_spread_v1v2_agent_v3_g64_c900_rot1.jsonl",
+            "shim_raw_spread_v1v2_agent_v3_g64_c900_rot2.jsonl",
+            "shim_raw_spread_v1v2_agent_v3_g64_c900_rot3.jsonl"
+          ],
+          "n_games": 64,
+          "n_timed_out": 0,
+          "timeout_rate": 0.0,
+          "n_other_draws": 1,
+          "n_clean": 63,
+          "per_deck": [
+            {
+              "deck": "Drana Vampires",
+              "wins": 25,
+              "rate": 0.3968253968253968,
+              "lo": 0.28531728147309304,
+              "hi": 0.5201930593924757
+            },
+            {
+              "deck": "Wyleth Voltron B3",
+              "wins": 16,
+              "rate": 0.25396825396825395,
+              "lo": 0.16280274583098153,
+              "hi": 0.37341422084845166
+            },
+            {
+              "deck": "Kilo Helm Final",
+              "wins": 15,
+              "rate": 0.23809523809523808,
+              "lo": 0.14993653261946965,
+              "hi": 0.35635894803928175
+            },
+            {
+              "deck": "Wilhelt Zombies B3",
+              "wins": 7,
+              "rate": 0.1111111111111111,
+              "lo": 0.05487478965589834,
+              "hi": 0.21204880283739927
+            }
+          ],
+          "spread_sd": 0.10124881604899265,
+          "spread_range": 0.2857142857142857,
+          "null_spread": {
+            "mean": 0.050293545526974646,
+            "p50": 0.04811252243246881,
+            "p95": 0.0879306341514299
+          },
+          "median_turns": 49.0,
+          "median_secs_natural": 57.381,
+          "median_turns_per_sec": 0.8528566558361106
+        }
+      },
+      "compression_test": {
+        "point": 0.05723875054736798,
+        "lo": -0.030095360268858548,
+        "hi": 0.11791136642647655,
+        "frac_negative": 0.1151
+      }
+    }
+  ]
+}

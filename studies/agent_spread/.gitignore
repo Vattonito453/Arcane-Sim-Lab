@@ -1,0 +1,11 @@
+# Raw sim output: ~103 MB for one 384-game run, and it regenerates by re-running
+# run_pods.py. Only the derived summaries are committed.
+runs/shim_raw_*.jsonl
+runs/sim_*.json
+runs/plans_*.json
+runs/forge_profiles/
+runs/runner.log
+
+# The pinned shim jar is GPL-3.0 Forge-derived code. CLAUDE.md: never vendor
+# Forge or the shim into this repo. run_pods.py copies it in at run time.
+runs/pinned/

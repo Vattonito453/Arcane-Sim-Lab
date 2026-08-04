@@ -17,7 +17,12 @@ web/*.tsbuildinfo
 # The job queue. Recreated on first enqueue; needs POSIX locks (see deploy_plan.md).
 engine/jobs.db
 engine/jobs.db-*
-# Scryfall cache. Rebuild with: python3 engine/cards.py warm <result>.json
+# Scryfall / Spellbook caches. These rules keep FUTURE cache churn out of git;
+# a point-in-time snapshot of both is tracked (force-added 2026-08-04) so a new
+# machine starts warm instead of re-fetching thousands of cards. Rebuild from
+# scratch with: python3 engine/cards.py warm <result>.json
+# NOTE: card_cache.json contains WotC card text. It joins rules/ on the
+# strip-before-this-repo-goes-public list (CLAUDE.md, legal posture).
 engine/card_cache.json
 card_cache.json
 # Commander Spellbook combo cache. Rebuilt per deck on demand (combos.py).
@@ -25,11 +30,27 @@ engine/combo_cache.json
 combo_cache.json
 
 # ── simulation output (large, regenerable) ───────────────────────────────
-# ~108 MB of raw Forge logs and adapted results. Regenerate by running a sim.
+# ~140 MB of raw Forge logs and adapted results (measured 2026-08-04).
+# These rules keep NEW sim output out of git. The pre-2026-08-04 archive is
+# tracked deliberately (force-added): it is the historical results corpus, it
+# is the evidence base for the timeout-pollution audit in SIM_AUDIT_2026-08-03.md,
+# and it costs only ~9.7 MB packed. Result files are immutable once written, so
+# tracked ones never show as modified. Do NOT force-add later runs without a
+# reason; that is what task 05 (object storage) is for.
 # A trimmed 2-game fixture IS committed at engine/tests/fixtures/sim_sample.json
 # so tests and board.py/cards.py verification work on a fresh clone.
 engine/sim_results/
 !engine/tests/fixtures/
+
+# ── study output ─────────────────────────────────────────────────────────
+# The precon-correlation corpus IS committed (~342 MB raw, ~25 MB packed): it is
+# the exit asset per MARKET_SCAN.md, and re-running it costs 6-8 h of compute.
+# These two are excluded: per-worker Forge profiles are regenerable staging, and
+# the pinned shim jar is a GPL binary this repo must never vendor (CLAUDE.md
+# legal posture). The study pins that jar by sha256 in PILOT_RESULTS.md, which
+# is the correct way to record provenance.
+studies/**/forge_profiles/
+studies/**/pinned/*.jar
 
 # ── archives / snapshots ─────────────────────────────────────────────────
 *.zip
@@ -40,6 +61,8 @@ engine/sim_results/
 /MtG Rules Engine/
 
 # ── OS / editor noise ────────────────────────────────────────────────────
+# Word lock files (~$Foo.docx) appear whenever a .docx is open.
+~$*.docx
 .DS_Store
 **/.DS_Store
 Thumbs.db

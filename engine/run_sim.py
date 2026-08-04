@@ -18,6 +18,8 @@ import platform
 import shutil
 import subprocess
 import sys
+import tempfile
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -69,18 +71,77 @@ def find_forge_jar(explicit: str | None) -> str:
     sys.exit("Forge jar not found. Run setup_forge.sh, or pass --forge-jar / set FORGE_JAR.")
 
 
+def platform_profile_base() -> Path:
+    """Where Forge itself keeps its profile on this OS."""
+    if os.environ.get("FORGE_USER_DIR"):
+        return Path(os.environ["FORGE_USER_DIR"])
+    if platform.system() == "Darwin":
+        return Path.home() / "Library" / "Application Support" / "Forge"
+    if platform.system() == "Windows":
+        return Path(os.environ.get("APPDATA", Path.home())) / "Forge"
+    return Path.home() / ".forge"
+
+
+# ── Forge profile isolation ──────────────────────────────────────────────
+# Staged decks used to land in ONE folder shared by every process on the box,
+# keyed by bare filename. Two concurrent sims then clobber each other: worker
+# B stages its own "kilo_helm.dck" over worker A's copy between A's rotations,
+# and A finishes reporting results under a deck name it never actually played.
+# Nothing downstream can detect that, which is what makes it dangerous.
+#
+# The shim (the product default) takes ABSOLUTE .dck paths, so it does not care
+# where the staging folder lives — give each invocation its own and the whole
+# class of collision disappears. Stock Forge's `sim -d` resolves deck NAMES out
+# of Forge's real profile, so that path has to keep using the shared folder;
+# _init_profile refuses to isolate it rather than silently staging somewhere
+# Forge will never look. studies/precon_correlation/run_study.py pins
+# FORGE_USER_DIR per worker and is honored as-is.
+_PROFILE_BASE: Path | None = None
+_PROFILE_IS_PRIVATE = False
+
+
+def sweep_stale_profiles(root: Path, max_age_h: float = 24.0) -> int:
+    """Delete private profiles a killed run never cleaned up."""
+    if not root.is_dir():
+        return 0
+    cutoff = time.time() - max_age_h * 3600
+    removed = 0
+    for p in root.iterdir():
+        try:
+            if p.is_dir() and p.stat().st_mtime < cutoff:
+                shutil.rmtree(p, ignore_errors=True)
+                removed += 1
+        except OSError:
+            pass  # another worker swept it first, or it is busy; not our problem
+    return removed
+
+
+def _init_profile(agent: str, run_id: str | None) -> None:
+    """Pick this invocation's staging root. Call once, before stage_decks."""
+    global _PROFILE_BASE, _PROFILE_IS_PRIVATE
+    if os.environ.get("FORGE_USER_DIR") or agent != "shim":
+        # Caller pinned it, or stock Forge needs its own profile to resolve -d.
+        _PROFILE_BASE, _PROFILE_IS_PRIVATE = platform_profile_base(), False
+        return
+    root = platform_profile_base() / "simlab-runs"
+    root.mkdir(parents=True, exist_ok=True)
+    sweep_stale_profiles(root)
+    # mkdtemp, not run_id alone: a retried job reuses its id, and two live runs
+    # must never share a folder even then.
+    _PROFILE_BASE = Path(tempfile.mkdtemp(prefix=f"{run_id or os.getpid()}-", dir=root))
+    _PROFILE_IS_PRIVATE = True
+
+
+def _cleanup_profile() -> None:
+    if _PROFILE_IS_PRIVATE and _PROFILE_BASE:
+        shutil.rmtree(_PROFILE_BASE, ignore_errors=True)
+
+
 def forge_profile_deck_dir(fmt: str) -> Path:
     """Forge's own deck folder. In plain -d mode Forge ONLY loads .dck files
     from here (the -D flag is honored in tournament mode only — verified in
     SimulateMatch.java, Forge 2.0.13)."""
-    if os.environ.get("FORGE_USER_DIR"):
-        base = Path(os.environ["FORGE_USER_DIR"])
-    elif platform.system() == "Darwin":
-        base = Path.home() / "Library" / "Application Support" / "Forge"
-    elif platform.system() == "Windows":
-        base = Path(os.environ.get("APPDATA", Path.home())) / "Forge"
-    else:
-        base = Path.home() / ".forge"
+    base = _PROFILE_BASE or platform_profile_base()
     sub = "commander" if fmt.lower() == "commander" else "constructed"
     return base / "decks" / sub
 
@@ -93,11 +154,13 @@ def stage_decks(decks: list[str], deck_dir: str | None, fmt: str) -> None:
         if not d.endswith(".dck"):
             continue  # a deck *name* already known to Forge's deck store
         src = Path(os.path.expanduser(deck_dir or ".")) / d if not os.path.isabs(d) else Path(d)
-        if src.is_file():
-            shutil.copy2(src, target / Path(d).name)
-            print(f"staged {src.name} -> {target}")
-        elif not (target / Path(d).name).is_file():
+        if not src.is_file():
+            # Never fall through to a copy some earlier run staged. That used to
+            # be a silent success that simmed a stale decklist under the right
+            # name -- e.g. a deck edited or deleted after the job was queued.
             sys.exit(f"deck file not found: {src}")
+        shutil.copy2(src, target / Path(d).name)
+        print(f"staged {src.name} -> {target}")
 
 
 def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
@@ -148,13 +211,14 @@ def run(args: argparse.Namespace) -> None:
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    stage_decks(args.decks, args.deck_dir, args.format)
-    deck_names = [Path(d).name for d in args.decks]
-
     # Agent resolution. "auto" (the default) means HUMANIZED — that is the
     # product: plan agents whenever the shim jar is available, with a loud,
     # labeled fallback to stock Forge when it is not (a machine without the
     # shim should still sim, but never silently pretend to be humanized).
+    #
+    # Resolved BEFORE staging because it decides where staging is allowed to
+    # go: the shim reads absolute .dck paths and can use a private folder,
+    # stock Forge cannot (see _init_profile).
     if args.agent == "auto":
         if find_shim_jar(args.shim_jar, required=False):
             args.agent = "shim"
@@ -168,6 +232,14 @@ def run(args: argparse.Namespace) -> None:
             args.humanize = False
     elif args.humanize:
         args.agent = "shim"  # plan agents only exist behind the shim
+
+    _init_profile(args.agent, args.run_id)
+    if not _PROFILE_IS_PRIVATE and args.agent != "shim":
+        print("NOTE: stock Forge resolves decks from its shared profile, so this "
+              "run stages into a folder other sims also write. Do not run stock "
+              "sims concurrently on one machine.", file=sys.stderr)
+    stage_decks(args.decks, args.deck_dir, args.format)
+    deck_names = [Path(d).name for d in args.decks]
 
     if args.agent == "shim":
         shim_jar = find_shim_jar(args.shim_jar)
@@ -378,7 +450,12 @@ def main() -> None:
     p.add_argument("--run-id", default=None,
                    help="Job id. Names the raw log forge_raw_<id>.log so the API "
                         "can read the game in progress (GET /sim-live).")
-    run(p.parse_args())
+    try:
+        run(p.parse_args())
+    finally:
+        # Covers the sys.exit() paths too: SystemExit unwinds through finally,
+        # so a bad decklist does not leave a private profile behind.
+        _cleanup_profile()
 
 
 if __name__ == "__main__":

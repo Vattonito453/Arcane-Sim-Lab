@@ -252,21 +252,41 @@ def run(args: argparse.Namespace) -> None:
             from deck_plan import build_plans
             staged = forge_profile_deck_dir(args.format)
             plans = build_plans([staged / Path(d).name for d in deck_names])
-            args.plans_file = out_dir / f"plans_{stamp}.json"
+            # The id, not just the timestamp: the stamp has one-second
+            # resolution, so concurrent workers collided on this filename and
+            # one silently overwrote the other's plans. The loser's shim then
+            # read a plans file describing a DIFFERENT pod -- the three shared
+            # control decks matched, its own deck did not, and that deck ran
+            # stock AI in a run still labeled humanized. That is what corrupted
+            # half the agent arm of the precon pilot.
+            tag = f"_{safe_run_id(args.run_id)}" if args.run_id else f"_pid{os.getpid()}"
+            args.plans_file = out_dir / f"plans_{stamp}{tag}.json"
             args.plans_file.write_text(json.dumps(plans, indent=2), encoding="utf-8")
             print(f"plans   : {args.plans_file} "
                   f"({', '.join(plans['decks'])})")
+            if len(plans["decks"]) < len(deck_names):
+                print(f"WARNING: built {len(plans['decks'])} plans for "
+                      f"{len(deck_names)} decks — duplicate deck names collapse "
+                      f"in the plan map. The shim will refuse the run.",
+                      file=sys.stderr)
         if args.rotate:
             rotations = len(deck_names)
             per = max(1, args.games // rotations)
             all_games = []
+            sub_humanized: list[bool] = []
             for i in range(rotations):
                 order = deck_names[i:] + deck_names[:i]
                 print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
                 sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per, rotate_index=i)
                 all_games.extend(sub["games"])
+                sub_humanized.append(bool(sub.get("meta", {}).get("humanized")))
             result = {"meta": {"source": "rotated", "agent": "simlab-forge-shim",
-                               "humanized": bool(args.humanize),
+                               # What the run WAS, not what was asked for. This
+                               # used to echo the --humanize flag, so a rotation
+                               # whose seats fell back to stock still reported
+                               # humanized:true.
+                               "humanized": bool(sub_humanized) and all(sub_humanized),
+                               "humanized_by_rotation": sub_humanized,
                                "decks": args.decks, "format": args.format,
                                "rotations": rotations},
                       "games": all_games, "summary": _summarize_by_deck(all_games)}

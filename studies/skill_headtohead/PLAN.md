@@ -1,7 +1,8 @@
 # Engine strength head-to-head — plan and pre-registration
 
-**Status: RUN COMPLETE 2026-08-06, 768 games. The primary outcome is null on
-every comparison.** Results: [`RESULTS.md`](RESULTS.md).
+**Status: BOTH RUNS COMPLETE 2026-08-06, 1536 games. The primary outcome is null
+in both mirror and heterogeneous pods; combined A - B = -0.08 pp, 95% CI
+[-3.99, +3.84].** Results: [`RESULTS.md`](RESULTS.md).
 
 **Question.** Does the Sim Lab engine play Magic *better* than stock Forge AI?
 

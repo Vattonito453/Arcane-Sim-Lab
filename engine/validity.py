@@ -73,6 +73,7 @@ _RANK = {CLEAN: 0, SUSPECT: 1, POLLUTED: 2}
 _SEVERITY = {
     "clock_cut_wins": POLLUTED,
     "not_rotated": POLLUTED,
+    "incomplete_run": POLLUTED,
     "suspected_clock_cut_wins": SUSPECT,
     "mixed_pilot": SUSPECT,
     "unknown_pilot": SUSPECT,
@@ -141,6 +142,24 @@ def assess(result: dict) -> dict:
         reasons.append(
             "Not seat-rotated. Forge's seat bias is large (seat 1 wins ~11%, "
             "seat 4 ~36%), so these win rates measure seating as much as decks.")
+    elif meta.get("incomplete"):
+        # A rotation that did not finish leaves the seats unevenly covered,
+        # which is the same defect rotation exists to remove, in a smaller
+        # dose. The games themselves are real and worth keeping; what they
+        # cannot do is rank decks against each other.
+        done = meta.get("rotations_completed")
+        total = meta.get("rotations")
+        played = meta.get("games_played")
+        expected = meta.get("games_expected")
+        detail = (f"{done} of {total} seat rotations finished"
+                  if done is not None and total else "it did not finish")
+        if played and expected:
+            detail += f", {played} of {expected} games played"
+        flags.append("incomplete_run")
+        reasons.append(
+            f"The run was cut short ({detail}), so the decks did not each sit "
+            f"in every seat the same number of times. The games that ran are "
+            f"real; the comparison between decks is not.")
 
     by_rotation = meta.get("humanized_by_rotation")
     if isinstance(by_rotation, list) and by_rotation and not all(by_rotation):

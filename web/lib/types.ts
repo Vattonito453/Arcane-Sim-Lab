@@ -127,6 +127,33 @@ export interface RunGame {
   game: SimGame;
 }
 
+/** GET /sim-status .progress — how far along, and whether it is still moving.
+ *
+ *  A four-deck gauntlet is tens of minutes of a silent JVM, so an elapsed
+ *  timer alone cannot distinguish "working" from "died". Every field here
+ *  exists to answer that. */
+export interface JobProgress {
+  /** Games that will actually be played: rounded up to whole seat rotations,
+   *  so it is usually MORE than the number requested. */
+  expected_games: number;
+  rotations: number;
+  /** [low, high] seconds a run this size typically takes. */
+  typical_seconds: [number, number];
+  /** The hang ceiling. Many times any real run; not an estimate. */
+  ceiling_seconds: number;
+  /** Finished games across every rotation. Running jobs only. */
+  games_done?: number;
+  elapsed?: number;
+  seconds_per_game?: number;
+  eta_seconds?: number;
+  /** Since the run last wrote anything. The real liveness signal. */
+  seconds_since_activity?: number;
+  /** Nothing written for far longer than one game's clock. */
+  stalled?: boolean;
+  /** Slower than typical, which on its own is not a problem. */
+  over_typical?: boolean;
+}
+
 export interface JobStatus {
   state: "idle" | "queued" | "running" | "done" | "error";
   id?: string;
@@ -139,6 +166,10 @@ export interface JobStatus {
   result_file?: string;
   /** Queued jobs ahead of this one. Present only while state is "queued". */
   queued_ahead?: number;
+  progress?: JobProgress;
+  /** The run was cut short but its finished games were kept. */
+  incomplete?: boolean;
+  warning?: string;
 }
 
 /** GET /sim-live — the game currently being played, parsed from the partial

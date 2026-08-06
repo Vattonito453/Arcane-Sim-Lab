@@ -236,6 +236,26 @@ cached on disk. A warm cache makes zero network calls. Never loop single lookups
   a shared store.
 - Result filenames are validated against path traversal. Keep that.
 
+### Sim timing: three numbers, and they are not interchangeable
+
+- **Per-game clock** (`--clock`, 900 s, measured): the wall a single game gets
+  before Forge draws it. Passed explicitly from the engine so it cannot drift
+  from the maths below.
+- **Outer ceiling** (`sim_timeout_seconds`): played games x clock + rotations x
+  150 s + 300 s. A hang detector, nothing else. It must exceed worst-case play
+  or it kills legitimate work, which is what a flat 2 h used to do (audit A14).
+  4.2 h for 16 games, 16.2 h for 64. `reap_stale()` derives from it, so raising
+  one without the other can no longer reap a live job.
+- **Typical duration** (`estimate_sim_seconds`): what to TELL a user, roughly
+  10-25 min for a 4-deck 16-game gauntlet. Never used to kill anything.
+
+Keep these separate. Quoting the ceiling to a user reads as "this may take 16
+hours"; using the estimate as a timeout kills healthy runs.
+
+**A rotated run plays more games than were requested**, rounded up so every
+deck sits in every seat the same number of times (10 requested -> 12 played).
+Any surface that shows a game count shows the played number and says why.
+
 ### Containerized Forge needs a display
 
 The worker image installs xvfb and starts a virtual display before the worker
@@ -253,6 +273,11 @@ lost to block buffering. See deploy/HOSTING.md.
 ```bash
 # Engine
 python3 engine/tests/test_adapter.py                          # must print ALL ASSERTIONS PASSED
+python3 engine/tests/test_board_zones.py                      # shim zone stream -> board
+python3 engine/tests/test_summary_and_validity.py             # timeout accounting + pollution gate
+python3 engine/tests/test_run_accounting.py                   # run sizing, ceilings, salvage
+python3 engine/tests/test_staging.py
+python3 engine/tests/test_result_attribution.py
 python3 engine/tests/smoke_test.py --sim                      # needs the API up; 35 checks
                                                               # --sim runs real Forge (~40 s)
 python3 engine/board.py engine/tests/fixtures/sim_sample.json --no-fetch

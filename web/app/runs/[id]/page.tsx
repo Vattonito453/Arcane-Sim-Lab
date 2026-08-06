@@ -219,10 +219,26 @@ export default function RunPage() {
   const started = status?.started;
   const live = started ? Math.max(0, now / 1000 - started) : (status?.elapsed ?? 0);
   const elapsed = state === "done" || state === "error" ? (status?.elapsed ?? live) : live;
-  // Seat-aware: a four-deck game costs ~20x a two-deck one, so a flat
-  // per-game figure quoted 12 minutes for runs that finish in 30 seconds.
-  const estimate = estimateSeconds(games ?? 16, decks.length || 4);
-  const progress = Math.min(95, Math.max(2, (live / estimate) * 100));
+  // The engine now says how many games this will actually play (rounded up to
+  // whole seat rotations, so usually more than requested), how long that size
+  // typically takes, and how many games are finished across ALL rotations.
+  // Prefer all of that over guessing from the browser.
+  const prog = status?.progress;
+  const plannedGames = prog?.expected_games ?? games ?? 16;
+  // Seat-aware fallback for an engine that predates /sim-status.progress: a
+  // four-deck game costs ~20x a two-deck one.
+  const estimate = prog ? prog.typical_seconds[1] : estimateSeconds(games ?? 16, decks.length || 4);
+  const typicalLow = prog?.typical_seconds[0] ?? estimate;
+  const gamesDone = prog?.games_done ?? 0;
+  // Fill by games finished, not by wall clock. A clock fill is a countdown
+  // dressed as progress: it advanced at the same rate whether Forge was
+  // playing or had died ten minutes ago (audit A28).
+  const progress = prog && plannedGames > 0
+    ? Math.min(99, Math.max(2, (gamesDone / plannedGames) * 100))
+    : Math.min(95, Math.max(2, (live / estimate) * 100));
+  const stalled = prog?.stalled ?? false;
+  const overTypical = (prog?.over_typical ?? false) && !stalled;
+  const sinceActivity = prog?.seconds_since_activity;
   const short = id.length > 12 ? id.slice(0, 12) : id;
   // A truncated job id is an address, not a title. Name the run by what it is —
   // the matchup — and keep the id in the details disclosure at the foot.
@@ -288,7 +304,7 @@ export default function RunPage() {
             <p className="lede">
               {state === "queued" ? (
                 <>
-                  Queued: <b>{games != null ? plural(games, "game") : "–"}</b> across{" "}
+                  Queued: <b>{plural(plannedGames, "game")}</b> across{" "}
                   <b>{plural(decks.length, "deck")}</b>
                   {(status?.queued_ahead ?? 0) > 0
                     ? `, behind ${plural(status?.queued_ahead ?? 0, "other run")}`
@@ -296,7 +312,10 @@ export default function RunPage() {
                 </>
               ) : (
                 <>
-                  Simulating <b>{games != null ? plural(games, "game") : "–"}</b> across{" "}
+                  {/* The games that will actually be PLAYED. This said
+                      "6 games" while everything below it said 8, which is the
+                      surfaces-disagree half of audit A27. */}
+                  Simulating <b>{plural(plannedGames, "game")}</b> across{" "}
                   <b>{plural(decks.length, "deck")}</b>
                   {started ? <>, started {timeAgo(started)}</> : null}.
                 </>
@@ -309,10 +328,77 @@ export default function RunPage() {
                 <div className="fill" style={{ width: `${progress}%` }} />
               </div>
               <p className="note">
-                {state === "queued"
-                  ? `Not started yet. This pod usually takes about ${fmtDuration(estimate)}.`
-                  : `Usually about ${fmtDuration(estimate)} for this pod. Rough: pod size drives the time far more than game count.`}
+                {state === "queued" ? (
+                  <>
+                    Not started yet. A pod this size usually takes{" "}
+                    <b>
+                      {fmtDuration(typicalLow)} to {fmtDuration(estimate)}
+                    </b>
+                    .
+                  </>
+                ) : (
+                  <>
+                    <b>
+                      {gamesDone} of {plannedGames}
+                    </b>{" "}
+                    games played
+                    {prog && prog.rotations > 1 && (
+                      <>
+                        {" "}
+                        across {prog.rotations} seat rotations
+                        {games != null && plannedGames > games && (
+                          <>
+                            {" "}
+                            ({plannedGames} rather than the {games} requested, so
+                            every deck sits in every seat the same number of
+                            times)
+                          </>
+                        )}
+                      </>
+                    )}
+                    . Usually {fmtDuration(typicalLow)} to {fmtDuration(estimate)}{" "}
+                    for this pod
+                    {prog?.eta_seconds != null && gamesDone > 0 && (
+                      <>
+                        ; at this run&apos;s pace, about{" "}
+                        <b>{fmtDuration(prog.eta_seconds)}</b> left
+                      </>
+                    )}
+                    .
+                  </>
+                )}
               </p>
+              {/* The question a waiting user is actually asking is "has this
+                  died?", and elapsed time cannot answer it. Liveness comes
+                  from whether the run is still WRITING: slower than usual is
+                  normal, silent is not. */}
+              {state === "running" && overTypical && (
+                <p className="note">
+                  <b>This run is taking longer than usual, and that is normal.</b>{" "}
+                  Games with big boards can run the full clock, and every seat
+                  rotation starts a fresh engine.
+                  {sinceActivity != null && (
+                    <>
+                      {" "}
+                      It is still working: the last game activity was{" "}
+                      {fmtDuration(sinceActivity)} ago.
+                    </>
+                  )}{" "}
+                  Leave it running. Starting the same gauntlet again would make
+                  both copies slower.
+                </p>
+              )}
+              {state === "running" && stalled && (
+                <p className="note">
+                  <b>Nothing has been written for {sinceActivity != null ? fmtDuration(sinceActivity) : "a while"}.</b>{" "}
+                  A single game can legitimately run{" "}
+                  {prog ? fmtDuration(prog.ceiling_seconds / plannedGames) : "a long time"}{" "}
+                  before the clock draws it, so this may still recover. If it
+                  does not, the run stops on its own at{" "}
+                  {prog ? fmtDuration(prog.ceiling_seconds) : "its time ceiling"}{" "}
+                  and keeps whatever games finished.
+                </p>
+              )}
             </section>
             <div className="figs">
               <div className="fig">
@@ -320,8 +406,15 @@ export default function RunPage() {
                 <div className="l">{state === "queued" ? "not started" : "elapsed"}</div>
               </div>
               <div className="fig">
-                <div className="n">{games ?? "–"}</div>
-                <div className="l">games requested</div>
+                {/* Games to be PLAYED, which is the number that will appear on
+                    the result. The requested figure used to sit here alone and
+                    disagreed with every other surface (audit A27). */}
+                <div className="n">
+                  {state === "queued" ? plannedGames : `${gamesDone}/${plannedGames}`}
+                </div>
+                <div className="l">
+                  {state === "queued" ? "games to play" : "games played"}
+                </div>
               </div>
               <div className="fig">
                 <div className="n">{decks.length}</div>
@@ -342,12 +435,17 @@ export default function RunPage() {
 
             {/* Forge spends ~25 s loading its card database before it plays a
                 card, and the log has no turns to parse until then. Say so
-                rather than showing an empty space. */}
+                rather than showing an empty space. Mid-run the same gap means
+                something different: each seat rotation starts a fresh engine,
+                so "loading its card database" next to "4 of 8 games played"
+                reads as a restart when it is just the next rotation booting. */}
             {state === "running" && !liveGame && (
               <p className="note">
-                {liveData
-                  ? "Forge is loading its card database. The table appears as soon as the first turn is played."
-                  : "Waiting for the first turn…"}
+                {gamesDone > 0
+                  ? "Starting the next seat rotation. Each one launches a fresh engine, so there is a short gap before the table reappears."
+                  : liveData
+                    ? "Forge is loading its card database. The table appears as soon as the first turn is played."
+                    : "Waiting for the first turn…"}
               </p>
             )}
 
@@ -390,6 +488,15 @@ export default function RunPage() {
               ) : (
                 <>Done. The run finished.</>
               )}{" "}
+              {/* A run that was cut short still lands here as "done". Saying
+                  so on the way out beats letting the reader discover it from
+                  a game count that does not match what they asked for. */}
+              {status.incomplete && (
+                <>
+                  <b>It did not finish the full gauntlet.</b>{" "}
+                  {status.warning ?? ""}{" "}
+                </>
+              )}
               {resultHref
                 ? stillWatching
                   ? "The playback below finishes first; the full report is one click away."

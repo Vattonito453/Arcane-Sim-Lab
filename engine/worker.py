@@ -34,12 +34,36 @@ def process_one(job: dict) -> None:
             out=str(jobqueue.DATA_DIR / "sim_results"),
             run_id=job["id"],   # names the raw log so GET /sim-live can follow it
         )
-        summary = (res.get("result") or {}).get("summary") or {}
-        if res.get("returncode") == 0 and res.get("result") and summary.get("games", 0) > 0:
-            jobqueue.finish(job["id"], result={
-                "summary": summary,
-                "result_file": res.get("result_file"),
-            })
+        result = res.get("result") or {}
+        summary = result.get("summary") or {}
+        meta = result.get("meta") or {}
+        if result and summary.get("games", 0) > 0:
+            # Played vs expected, checked here rather than assumed (audit A5).
+            # "rc==0 and games>0" accepted one surviving game out of sixteen as
+            # a finished job, so a rotation that OOM'd produced a run that
+            # looked complete and was quietly a quarter of the requested size.
+            expected = meta.get("games_expected") or meta.get("games_requested")
+            played = summary.get("games", 0)
+            short = bool(expected) and played < expected
+            # NOT `payload`: that name already holds the job's request in
+            # this scope, and shadowing it here is how a later edit reads the
+            # wrong decks.
+            done = {"summary": summary, "result_file": res.get("result_file")}
+            if short or meta.get("incomplete"):
+                done_rot = meta.get("rotations_completed")
+                total_rot = meta.get("rotations")
+                done["incomplete"] = True
+                done["warning"] = (
+                    f"played {played} of {expected} games"
+                    + (f" ({done_rot} of {total_rot} seat rotations completed)"
+                       if done_rot is not None and total_rot else "")
+                    + (". The run was cut short, so these numbers are a partial "
+                       "sample and the seat rotation did not finish balancing."
+                       if not res.get("killed") else
+                       ". The run hit its time ceiling and was stopped; the "
+                       "games that finished were recovered."))
+                print(f"worker: job {job['id']} incomplete: {done['warning']}")
+            jobqueue.finish(job["id"], result=done)
         elif res.get("returncode") == 0 and res.get("result"):
             # Forge exited 0 but played nothing — a silent failure (bad deck,
             # missing display, dead shim). "Done, 0 games" looked like nothing

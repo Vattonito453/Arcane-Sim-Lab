@@ -120,6 +120,14 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     # experiment. Absent on logs written before the shim emitted it.
     if meta_rec.get("agents"):
         result["meta"]["agents"] = meta_rec["agents"]
+    # Enough to reconstruct any seat's RNG stream in any game:
+    #   seed = seedBases[seat] + playerId + seedGameStride * gameIndex
+    # The raw JSONL is not kept (sim_results is gitignored and the logs are
+    # swept), so a run whose randomness is only recorded there is a run whose
+    # randomness is not recorded at all. Shim >= 0.4.0 (audit A2).
+    for k in ("seedBases", "seedGameStride"):
+        if meta_rec.get(k) is not None:
+            result["meta"][k] = meta_rec[k]
 
     # One parsed game per source game, guaranteed by the placeholder above.
     # Assert it rather than trust it: a silent mismatch here shifts every

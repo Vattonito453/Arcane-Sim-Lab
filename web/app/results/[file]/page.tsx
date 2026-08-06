@@ -44,7 +44,10 @@ interface GameRow {
 }
 
 function toRow(g: RunGameSummary): GameRow {
-  const key = g.result.winner ?? g.result.raw.match(RE_WON_RAW)?.[1]?.trim() ?? null;
+  // `raw` is optional-chained: every adapter path sets it today, but a result
+  // with neither a winner nor a raw line should render as "–" rather than take
+  // the whole page down with it.
+  const key = g.result.winner ?? g.result.raw?.match(RE_WON_RAW)?.[1]?.trim() ?? null;
   const winnerName = key ? stripAi(key) : null;
   const endedTurn = g.ended_turn ?? g.turns;
   // Without the event log there is no honest way to name the killing swing, so
@@ -200,6 +203,12 @@ export default function ResultsPage() {
   const top = rows[0];
   const second = rows.find((r) => !topNames.has(r.name));
   const draws = data.summary.draws;
+  // Clock-cut games. They are draws too, so this qualifies the draw count
+  // rather than adding to it: a pod that mostly times out reads as four decks
+  // all "below an even share" at once, which is a property of the clock and
+  // not of any deck.
+  const timeouts = data.summary.timeouts ?? 0;
+  const validity = data.validity;
   const gameWord = rotated ? "seat-rotated games" : "games";
 
   const filtered = gameRows.filter((g) => {
@@ -258,13 +267,37 @@ export default function ResultsPage() {
           {tieText}.{" "}
           {draws > 0 ? (
             <>
-              {draws} {draws === 1 ? "game" : "games"} ended drawn; the median game ran{" "}
-              <b>{medTurns} turns</b>.
+              {draws} {draws === 1 ? "game" : "games"} ended drawn
+              {timeouts > 0 &&
+                (timeouts >= draws ? (
+                  <>
+                    , {draws === 1 ? "and it hit" : "all of them hitting"} the
+                    per-game clock rather than finishing
+                  </>
+                ) : (
+                  <>
+                    , <b>{timeouts}</b> of those because{" "}
+                    {timeouts === 1 ? "it hit" : "they hit"} the per-game clock
+                    rather than finishing
+                  </>
+                ))}
+              ; the median game ran <b>{medTurns} turns</b>.
             </>
           ) : (
             <>No draws; the median game ran <b>{medTurns} turns</b>.</>
           )}
         </p>
+
+        {validity && validity.quality !== "clean" && (
+          <p className="note">
+            <b>
+              {validity.quality === "polluted"
+                ? "These numbers are not trustworthy."
+                : "Read these numbers with care."}
+            </b>{" "}
+            {validity.reasons.join(" ")}
+          </p>
+        )}
 
         <div className="figs">
           <div className="fig">

@@ -27,14 +27,34 @@ export interface ResultIndexEntry {
   decks?: string[];
   games?: number;
   summary?: SimSummary;
+  /** Seat-rotated, so win rates are comparable across decks. */
+  rotated?: boolean;
+  /** True when every seat ran a plan agent, false for stock Forge. */
+  humanized?: boolean;
+  agent?: string;
+  validity?: Validity;
   error?: string;
 }
 
 export interface SimSummary {
   games: number;
   draws: number;
+  /** Games the per-game clock cut off. Counted inside `draws` as well, since a
+   *  clock-cut game has no real winner. Absent on results written before
+   *  2026-08-03. */
+  timeouts?: number;
   wins: Record<string, number>;
   win_rates: Record<string, number>; // 0..1, keys may carry "Ai(n)-" prefix
+}
+
+/** engine/validity.py — whether a run's numbers can be trusted, and why not. */
+export type ValidityQuality = "clean" | "suspect" | "polluted";
+
+export interface Validity {
+  quality: ValidityQuality;
+  flags: string[];
+  usable_for_ranking: boolean;
+  reasons: string[];
 }
 
 export interface SimEvent {
@@ -76,6 +96,8 @@ export interface SimResult {
   meta: { decks?: string[]; format?: string; [k: string]: unknown };
   games: SimGame[];
   summary: SimSummary;
+  /** Attached by the API at read time, not stored in the file. */
+  validity?: Validity;
 }
 
 /** GET /results/{file}/summary — a run without its event logs. */
@@ -93,6 +115,7 @@ export interface RunSummary {
   summary: SimSummary;
   games: RunGameSummary[];
   file: string;
+  validity?: Validity;
 }
 
 /** GET /results/{file}/game/{n} — one game's full event log. */

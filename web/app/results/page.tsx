@@ -159,6 +159,29 @@ function ResultsIndexInner() {
                           <Link className="q" href={`/results/${enc}`}>
                             {title}
                           </Link>
+                          {/* Provenance, where a reader decides which run to
+                              open. Before this, a seat-biased or clock-polluted
+                              run was indistinguishable from a good one in every
+                              listing. Shape carries the state, per the design
+                              system: filled circle for unusable, diamond for
+                              read-with-care. The reasons live on the run page;
+                              a row is not the place for a paragraph. */}
+                          {r.validity && r.validity.quality !== "clean" && (
+                            <>
+                              {" "}
+                              <span
+                                className={`st ${
+                                  r.validity.quality === "polluted" ? "bad" : "warn"
+                                }`}
+                                title={r.validity.reasons.join(" ")}
+                              >
+                                <i />
+                                {r.validity.quality === "polluted"
+                                  ? "not comparable"
+                                  : "read with care"}
+                              </span>
+                            </>
+                          )}
                         </td>
                         <td className="r mono c-meta">
                           {(() => {

@@ -166,6 +166,12 @@ def summarize(games: list[dict]) -> dict:
         r = g.get("result") or {}
         if r.get("timedOut"):
             timeouts += 1
+            # A game the clock cut off is a draw, whatever winner the record
+            # carries. This used to fall through to the elif and CREDIT that
+            # winner, so re-parsing a polluted file re-minted the fake win it
+            # was being re-parsed to remove (audit A16).
+            draws += 1
+            continue
         if r.get("draw"):
             draws += 1
         elif r.get("winner"):

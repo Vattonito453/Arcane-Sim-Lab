@@ -401,16 +401,37 @@ def _rate_ok(bucket: str, limit: int, window: float) -> tuple[bool, int]:
 
 
 def _list_results() -> list[dict]:
-    """Index of adapted sim result files, newest first."""
+    """Index of adapted sim result files, newest first.
+
+    Carries the provenance every list surface needs to tell runs apart (audit
+    A26): whether the run was seat-rotated, which agent piloted it, and the
+    validity verdict from validity.py (A25). Without these the index was a list
+    of interchangeable-looking files, so no front end COULD flag a seat-biased
+    or clock-polluted run even if it wanted to — the 7/31-8/2 rotation-off
+    window was indistinguishable from a good run in every listing.
+    """
+    import validity
     out = []
     for f in sorted(RESULTS_DIR.glob("sim_*.json"), reverse=True):
         entry = {"file": f.name, "bytes": f.stat().st_size,
                  "modified": int(f.stat().st_mtime)}
         try:
             d = json.loads(f.read_text(encoding="utf-8"))
-            entry["decks"] = d.get("meta", {}).get("decks", [])
+            meta = d.get("meta", {})
+            entry["decks"] = meta.get("decks", [])
             entry["games"] = len(d.get("games", []))
             entry["summary"] = d.get("summary")
+            # NOT meta.source verbatim: on a non-rotated run that field holds
+            # the full java command line, absolute home paths and all, which
+            # has no business in an API response. The only thing a list surface
+            # needs from it is whether the run was rotated.
+            entry["rotated"] = meta.get("source") == "rotated"
+            entry["humanized"] = meta.get("humanized")
+            entry["agent"] = meta.get("agent")
+            v = validity.assess(d)
+            entry["validity"] = {"quality": v["quality"], "flags": v["flags"],
+                                 "usable_for_ranking": v["usable_for_ranking"],
+                                 "reasons": v["reasons"]}
         except Exception as e:  # noqa: BLE001 — surface bad files in the index
             entry["error"] = f"unreadable: {e}"
         out.append(entry)
@@ -433,6 +454,11 @@ def _read_result(name: str, snapshots: bool = False) -> dict:
     if snapshots and "board_snapshots" not in data.get("meta", {}):
         import board
         data = board.annotate(data, fetch=False)  # cache-only: never blocks a request
+    # Attached in memory, never written back: the verdict is derived from the
+    # current rules in validity.py, so baking it into the file would freeze a
+    # judgement that is supposed to be recomputed when those rules improve.
+    import validity
+    data["validity"] = validity.assess(data)
     return data
 
 
@@ -455,7 +481,7 @@ def _read_result_summary(name: str) -> dict:
             "events": sum(len(t.get("events", [])) for t in turns),
         })
     return {"meta": data.get("meta", {}), "summary": data.get("summary"),
-            "games": games, "file": name}
+            "games": games, "file": name, "validity": data.get("validity")}
 
 
 def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None) -> dict:

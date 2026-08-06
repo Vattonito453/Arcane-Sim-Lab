@@ -296,6 +296,10 @@ def run(args: argparse.Namespace) -> None:
             result["meta"]["decks"] = args.decks
             result["meta"]["format"] = args.format
             json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
+        # The per-game wall the run actually used. Without it, a later
+        # validity check has to GUESS which clock a file ran under
+        # (validity.py _HISTORICAL_CLOCKS) and can only say "suspect".
+        result.setdefault("meta", {})["clock"] = args.clock
         json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         s = result["summary"]
         print(f"\n{s['games']} game(s) parsed | draws: {s['draws']}")
@@ -322,6 +326,10 @@ def run(args: argparse.Namespace) -> None:
                   "games": all_games, "summary": _summarize_by_deck(all_games)}
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
+        # The per-game wall the run actually used. Without it, a later
+        # validity check has to GUESS which clock a file ran under
+        # (validity.py _HISTORICAL_CLOCKS) and can only say "suspect".
+        result.setdefault("meta", {})["clock"] = args.clock
         json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         s = result["summary"]
         print(f"\n{s['games']} game(s) total across {rotations} seat rotations | draws: {s['draws']}")
@@ -371,6 +379,7 @@ def run(args: argparse.Namespace) -> None:
     result["meta"]["format"] = args.format
     result["meta"]["humanized"] = False
     json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
+    result.setdefault("meta", {})["clock"] = args.clock
     json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
 
     s = result["summary"]
@@ -432,25 +441,41 @@ def result_path(out_dir: Path, stamp: str, run_id: str | None, rotated: bool) ->
 
 
 def _summarize_by_deck(games: list) -> dict:
-    """Aggregate wins by DECK (strip the Ai(n)- seat prefix)."""
+    """Aggregate wins by DECK (strip the Ai(n)- seat prefix).
+
+    This is the summarizer the DEFAULT path uses: every rotated run rebuilds
+    its merged summary here from scratch, so anything this function forgets is
+    absent from production results no matter what the per-rotation summaries
+    said. `timeouts` was exactly that (audit A16) — shipped 2026-08-03 into
+    forge_log_adapter.summarize(), discarded here, and therefore invisible on
+    every rotated run, which is all of them.
+    """
     import re as _re
     seat = _re.compile(r"^Ai\(\d+\)-")   # \d+ — a 10-seat pod is still Ai(10)-
     wins: dict = {}
     draws = 0
-    # Every deck in the pod gets a key, winless or not: these keys are the pod
-    # roster for everything downstream, including the even-seats baseline.
+    timeouts = 0
     for g in games:
         for p in g.get("players") or []:
             wins.setdefault(seat.sub("", p), 0)
     for g in games:
         r = g.get("result") or {}
+        if r.get("timedOut"):
+            timeouts += 1
+            # A clock-cut game is a draw, whatever Forge's outcome object says.
+            # 83% of 4-pod games were once recorded as wins this way, credited
+            # disproportionately to late seats. Counting it here rather than
+            # trusting `winner` is what stops a re-parse of a polluted file
+            # from re-minting the fake win.
+            draws += 1
+            continue
         if r.get("draw"):
             draws += 1
         elif r.get("winner"):
             name = seat.sub("", r["winner"])
             wins[name] = wins.get(name, 0) + 1
     total = len(games)
-    return {"games": total, "draws": draws, "wins": wins,
+    return {"games": total, "draws": draws, "timeouts": timeouts, "wins": wins,
             "win_rates": {p: round(w / total, 3) for p, w in wins.items()} if total else {}}
 
 

@@ -31,6 +31,7 @@ import archetype as archetype_mod  # noqa: E402
 import deck_telemetry  # noqa: E402
 import llm  # noqa: E402
 import os  # noqa: E402
+import validity  # noqa: E402
 from deck_plan import read_dck  # noqa: E402
 
 EVIDENCE = {"sim-evidence", "theory"}   # "consensus" arrives with EDHREC data
@@ -205,7 +206,16 @@ def _load_result(result_file: str) -> tuple[dict, str]:
 
 
 def cached_report(result_file: str, deck_file: str) -> dict | None:
-    """The stored report, or None. Never generates, never calls the model."""
+    """The stored report, or None. Never generates, never calls the model.
+
+    A report is cached forever under (deck_hash, gauntlet_id), which is only
+    safe while the advice would come out the same. It would not: reports
+    written before 2026-08-06 were generated from runs whose win rates
+    included clock-forced fake wins, with no stamp saying so, and advice built
+    on a 40% win rate that was really 12% is wrong in a way the reader cannot
+    see. A cache entry without the current validity stamp is discarded rather
+    than served (audit A25).
+    """
     deck_path = _resolve_deck(deck_file)
     if deck_path is None:
         return None
@@ -214,6 +224,8 @@ def cached_report(result_file: str, deck_file: str) -> dict | None:
     if not f.is_file():
         return None
     data = json.loads(f.read_text(encoding="utf-8"))
+    if (data.get("meta") or {}).get("validity_version") != validity.VALIDITY_VERSION:
+        return None
     data["cached"] = True
     return data
 
@@ -225,10 +237,17 @@ def report(result_file: str, deck_file: str, *, refresh: bool = False) -> dict:
         if hit is not None:
             return hit
     result, gauntlet_id = _load_result(result_file)
-    if result.get("meta", {}).get("source") != "rotated":
+    # The old gate checked meta.source alone, which a polluted rotated file
+    # passes: it is rotated, and its win rates are still built on clock-forced
+    # fake wins. Coaching a deck off those numbers produces confident advice
+    # about a result that never happened.
+    verdict = validity.assess(result)
+    if verdict["quality"] == validity.POLLUTED:
         return {"ok": False,
-                "reason": "run is not seat-rotated; single-seat numbers are "
-                          "not comparable, so the coach only reads rotated runs"}
+                "reason": "this run's results are not trustworthy, so coaching "
+                          "them would be advice about a game that did not "
+                          "happen. " + " ".join(verdict["reasons"]),
+                "validity": verdict}
     deck_path = _resolve_deck(deck_file)
     if deck_path is None:
         return {"ok": False, "reason": f"deck not found: {deck_file}"}
@@ -254,8 +273,12 @@ def report(result_file: str, deck_file: str, *, refresh: bool = False) -> dict:
         "games": context["games"],
         "deck": context["deck"],
         "cached": False,
+        # Carried into the report so a suspect run's advice says so on the page
+        # instead of reading as confidently as a clean one.
+        "validity": verdict,
         "meta": {"model": llm.default_model(), "deck_hash": dh,
                  "gauntlet_id": gauntlet_id,
+                 "validity_version": validity.VALIDITY_VERSION,
                  "generated": datetime.now(timezone.utc).isoformat()},
     }
     cache_dir = _coaching_dir()

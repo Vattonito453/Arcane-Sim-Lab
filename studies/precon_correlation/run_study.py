@@ -161,9 +161,19 @@ def main():
     ap.add_argument("--clock", type=int, default=900, help="per-game timeout seconds")
     ap.add_argument("--heap", default="3g",
                     help="JVM heap per worker; heap x workers must fit in RAM")
-    ap.add_argument("--workers", type=int, default=4,
+    ap.add_argument("--workers", type=int, default=1,
                     help="concurrent sims. Each gets its own FORGE_USER_DIR so "
-                         "deck staging cannot race (STUDY_PLAN.md 3b)")
+                         "deck staging cannot race (STUDY_PLAN.md 3b). Defaults "
+                         "to 1 because --clock is WALL clock: see "
+                         "--i-accept-clock-contamination")
+    ap.add_argument("--i-accept-clock-contamination", action="store_true",
+                    help="required to run --workers > 1. --clock is wall-clock, "
+                         "so contending workers slow every game and decide which "
+                         "ones get force-drawn. Censoring is already the pilot's "
+                         "dominant confound (7.8%% stock vs 19.9%% agent), and it "
+                         "is not comparable across cells run at different "
+                         "concurrency. Use only for throughput work whose win "
+                         "rates you will not compare.")
     ap.add_argument("--arms", nargs="+", default=list(ARMS), choices=list(ARMS))
     ap.add_argument("--out", default=None, help="output dir (default studies/.../runs)")
     ap.add_argument("--shim-jar", default=None,
@@ -216,6 +226,15 @@ def main():
     todo = [(p, a) for p, a in cells
             if (p["name"], a, args.games, args.clock) not in done]
     workers = max(1, args.workers)
+    if workers > 1 and not args.i_accept_clock_contamination:
+        sys.exit(
+            f"--workers {workers} refused. --clock is wall-clock, so N workers "
+            f"contending for CPU lengthen every game and change WHICH games hit "
+            f"the clock. Timeout censoring is the pilot's dominant confound, and "
+            f"cells run at different concurrency are not comparable to each "
+            f"other. Run serial (the default), or pass "
+            f"--i-accept-clock-contamination if these win rates will not be "
+            f"compared. Every row records the concurrency it ran at either way.")
     est_h = len(todo) * args.games * 95 / 3600.0
     print(f"cohort {len(cohort)} decks x {len(args.arms)} arms = {len(cells)} cells")
     print(f"already done {len(cells) - len(todo)}, to run {len(todo)}")
@@ -286,6 +305,11 @@ def main():
                 "human_win_rate": p["human_win_rate"], "human_games": p["human_games"],
                 "tier": p["tier"], "set": p["set"],
                 "games_requested": args.games, "clock": args.clock,
+                # The clock is wall-clock, so concurrency is part of the
+                # experimental condition, not a scheduling detail. Recorded on
+                # every row so a later analysis can segment or exclude cells
+                # rather than silently pooling them.
+                "workers": workers,
                 "shim_sha256_16": shim_sha,
                 "controls": CONTROLS, "elapsed_s": round(elapsed, 1),
                 **summ,

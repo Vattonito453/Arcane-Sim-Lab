@@ -649,8 +649,12 @@ def _summarize_by_deck(games: list) -> dict:
     for g in games:
         for p in g.get("players") or []:
             wins.setdefault(seat.sub("", p), 0)
+    quarantined = 0
     for g in games:
         r = g.get("result") or {}
+        if r.get("error") or r.get("missingResult"):
+            quarantined += 1     # a crash or a lost record is not a game
+            continue
         if r.get("timedOut"):
             timeouts += 1
             # A clock-cut game is a draw, whatever Forge's outcome object says.
@@ -666,8 +670,13 @@ def _summarize_by_deck(games: list) -> dict:
             name = seat.sub("", r["winner"])
             wins[name] = wins.get(name, 0) + 1
     total = len(games)
-    return {"games": total, "draws": draws, "timeouts": timeouts, "wins": wins,
-            "win_rates": {p: round(w / total, 3) for p, w in wins.items()} if total else {}}
+    scored = total - quarantined
+    out = {"games": total, "draws": draws, "timeouts": timeouts, "wins": wins,
+           "win_rates": {p: round(w / scored, 3) for p, w in wins.items()} if scored else {}}
+    if quarantined:
+        out["quarantined"] = quarantined
+        out["games_scored"] = scored
+    return out
 
 
 def main() -> None:

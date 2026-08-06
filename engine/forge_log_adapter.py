@@ -162,8 +162,16 @@ def summarize(games: list[dict]) -> dict:
     for g in games:
         for p in g.get("players") or []:
             wins.setdefault(p, 0)
+    quarantined = 0
     for g in games:
         r = g.get("result") or {}
+        if r.get("error") or r.get("missingResult"):
+            # Not a win, not a draw, not a game: a crash or a lost record
+            # (audit A4/A6). Counting these as draws is what let crashes
+            # silently inflate the draw rate. They stay in `games` so the
+            # sample size is honest, and are reported separately.
+            quarantined += 1
+            continue
         if r.get("timedOut"):
             timeouts += 1
             # A game the clock cut off is a draw, whatever winner the record
@@ -177,13 +185,21 @@ def summarize(games: list[dict]) -> dict:
         elif r.get("winner"):
             wins[r["winner"]] = wins.get(r["winner"], 0) + 1
     total = len(games)
-    return {
+    # Win rates divide by the games that PRODUCED a result. A crashed game is
+    # not a game anyone lost, so leaving it in the denominator would push every
+    # deck below an even share at once.
+    scored = total - quarantined
+    out = {
         "games": total,
         "draws": draws,
         "timeouts": timeouts,
         "wins": wins,
-        "win_rates": {p: round(w / total, 3) for p, w in wins.items()} if total else {},
+        "win_rates": {p: round(w / scored, 3) for p, w in wins.items()} if scored else {},
     }
+    if quarantined:
+        out["quarantined"] = quarantined
+        out["games_scored"] = scored
+    return out
 
 
 def main() -> None:

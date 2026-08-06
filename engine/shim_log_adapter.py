@@ -98,6 +98,16 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             else:
                 lines.append(f"Game Result: Game {g + 1} ended in {ms} ms. "
                              f"{res['winner']} has won!")
+        else:
+            # A game with entries but no result record — a truncated JSONL
+            # line, an OOM-kill mid-flush, a crash. parse_forge_log splits on
+            # "Game Result" lines, so without one here that game's entries
+            # merge into the NEXT game's and every zones/agent_events/timedOut
+            # attachment after the gap lands on the wrong game (audit A6).
+            # Emitting a placeholder keeps one parsed game per source game, so
+            # the positional attachment below stays true by construction. The
+            # placeholder is flagged below and never counted as a result.
+            lines.append(f"Game Result: Game {g + 1} ended in a Draw! Took 0 ms.")
 
     result = parse_forge_log("\n".join(lines), source=source)
     result["meta"]["agent"] = f"simlab-forge-shim/{meta_rec.get('shim', '?')}"
@@ -111,28 +121,61 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     if meta_rec.get("agents"):
         result["meta"]["agents"] = meta_rec["agents"]
 
+    # One parsed game per source game, guaranteed by the placeholder above.
+    # Assert it rather than trust it: a silent mismatch here shifts every
+    # attachment after the gap onto the wrong game, which is invisible in the
+    # output and was reproducible from a single truncated line (audit A6).
+    if len(result["games"]) != len(game_order):
+        raise ValueError(
+            f"shim log misalignment: {len(game_order)} game(s) in the JSONL but "
+            f"{len(result['games'])} parsed. Refusing to attach zones and agent "
+            f"telemetry positionally, because the mapping would be wrong.")
+
     # Attach ground-truth zone movements per game (order matches game_order
-    # because every shim game produces turn entries).
+    # because every shim game produces exactly one parsed game).
+    missing_results = 0
+    errored = 0
     for i, g in enumerate(game_order):
-        if i < len(result["games"]):
-            result["games"][i]["zones"] = zones.get(g, [])
-            # Agent self-telemetry: authoritative for agent behavior — the
-            # GameLog writes some combat lines before the agent's adjustments.
-            result["games"][i]["agent_events"] = agent_events.get(g, [])
-            # The reconstructed text line above only carries draw/winner —
-            # timedOut has no stock-Forge equivalent to rebuild it from, so
-            # stamp it on directly from the raw shim record. Recompute the
-            # summary after: it was built from the text-only result dict,
-            # before this key existed, so its "timeouts" count would
-            # otherwise silently stay 0 no matter how many games hit the
-            # clock (see forge_log_adapter.summarize).
-            res = results.get(g)
-            if res is not None:
-                result["games"][i]["result"]["timedOut"] = bool(res.get("timedOut"))
+        game = result["games"][i]
+        game["zones"] = zones.get(g, [])
+        # Agent self-telemetry: authoritative for agent behavior — the
+        # GameLog writes some combat lines before the agent's adjustments.
+        game["agent_events"] = agent_events.get(g, [])
+        res = results.get(g)
+        if res is None:
+            # The placeholder case. Mark it so nothing reads the stand-in draw
+            # as a real one.
+            missing_results += 1
+            game["result"]["missingResult"] = True
+            game["result"]["draw"] = False
+            game["result"]["winner"] = None
+            continue
+        # The reconstructed text line above only carries draw/winner —
+        # timedOut has no stock-Forge equivalent to rebuild it from, so
+        # stamp it on directly from the raw shim record. Recompute the
+        # summary after: it was built from the text-only result dict,
+        # before this key existed, so its "timeouts" count would
+        # otherwise silently stay 0 no matter how many games hit the
+        # clock (see forge_log_adapter.summarize).
+        game["result"]["timedOut"] = bool(res.get("timedOut"))
+        if res.get("error"):
+            # A crashed game (shim >= 0.4.0, audit A4). It is neither a win nor
+            # a draw: it is an absence of a result, and counting it as a draw
+            # is what silently inflated draw rates.
+            errored += 1
+            game["result"]["error"] = True
+            game["result"]["errorClass"] = res.get("errorClass")
+            game["result"]["draw"] = False
+            game["result"]["winner"] = None
+
     total_zones = sum(len(z) for z in zones.values())
     entries_bf = sum(1 for zz in zones.values() for z in zz if z.get("to") == "Battlefield")
     result["meta"]["zone_records"] = total_zones
     result["meta"]["battlefield_entries"] = entries_bf
+    if missing_results:
+        result["meta"]["games_missing_result"] = missing_results
+    if errored:
+        result["meta"]["games_errored"] = errored
     result["summary"] = summarize(result["games"])
     return result
 

@@ -106,6 +106,12 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     # experiment. Absent on logs written before the shim emitted it.
     if meta_rec.get("agents"):
         result["meta"]["agents"] = meta_rec["agents"]
+    # Per-seat AI profile, aligned the same way. Arm identity is the PAIR
+    # (controller, profile): SimLabHuman is Default with the counterspell
+    # chances maxed, and it is designed to be gated by the plan controller's
+    # threat veto, so "plan" alone does not identify what a seat was running.
+    if meta_rec.get("profiles"):
+        result["meta"]["profiles"] = meta_rec["profiles"]
 
     # Attach ground-truth zone movements per game (order matches game_order
     # because every shim game produces turn entries).
@@ -125,6 +131,13 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             res = results.get(g)
             if res is not None:
                 result["games"][i]["result"]["timedOut"] = bool(res.get("timedOut"))
+                # Per-seat life and survival at termination. The only thing a
+                # timed-out game carries: it has no winner, so excluding it
+                # drops the whole game, and timed-out games are the long ones,
+                # a biased slice rather than a random one. Survival is a
+                # separate outcome and must never be folded into a win rate.
+                if res.get("seats"):
+                    result["games"][i]["result"]["seats"] = res["seats"]
     total_zones = sum(len(z) for z in zones.values())
     entries_bf = sum(1 for zz in zones.values() for z in zz if z.get("to") == "Battlefield")
     result["meta"]["zone_records"] = total_zones

@@ -45,14 +45,21 @@ def load(results_path):
 
 
 def flatten(rows):
-    """One record per game, with the arm that won and per-arm seat state."""
+    """One record per game, with the arm that won and per-arm seat state.
+
+    Handles both designs. Mirror rows key on `precon` (one deck fills the pod);
+    heterogeneous rows key on `group` and carry `seat_decks`, because there four
+    different decks are in play and "which deck won" is a per-seat fact.
+    """
     games = []
     for r in rows:
+        label = r.get("precon") or f"group{r.get('group')}"
         for g in r["games"]:
             games.append({
-                "precon": r["precon"],
+                "precon": label,
                 "rotation": r["rotation"],
                 "seat_arms": r["seat_arms"],
+                "seat_decks": r.get("seat_decks"),
                 "timed_out": g["timed_out"],
                 "winner_arm": g["winner_arm"],
                 "turns": g["turns"],
@@ -296,6 +303,48 @@ def main():
     if not balanced:
         print("  WARNING: rotation is UNBALANCED, so seat bias is not cancelled "
               "and no arm comparison above is trustworthy.")
+
+    # Heterogeneous pods only. A mirror cancels deck strength for free; here it
+    # is cancelled by the Graeco-Latin rotation, so that has to be verified from
+    # the recorded rows rather than trusted from the runner.
+    if not any(g.get("seat_decks") for g in games):
+        return
+    print("\n--- heterogeneous pods: arm win share by the deck it piloted ---")
+    piloted, won = defaultdict(int), defaultdict(int)
+    all_piloted = defaultdict(int)
+    for g in games:
+        sd = g.get("seat_decks") or {}
+        for seat, arm in g["seat_arms"].items():
+            deck = sd.get(seat)
+            if not deck:
+                continue
+            all_piloted[(deck, arm)] += 1
+            if g["winner_arm"]:
+                piloted[(deck, arm)] += 1
+                if g["winner_arm"] == arm:
+                    won[(deck, arm)] += 1
+    decks = sorted({d for d, _ in all_piloted})
+    print(f"  {'deck':<24} " + " ".join(f"{a:>7}" for a in ARM_ORDER))
+    for deck in decks:
+        row = []
+        for a in ARM_ORDER:
+            n = piloted[(deck, a)]
+            row.append(f"{100 * won[(deck, a)] / n:>6.1f}%" if n else "      -")
+        print(f"  {deck:<24} " + " ".join(row))
+    # Every (deck, arm) pair must be played an equal number of times, or deck
+    # strength leaks into the arm comparison and the pooled result is confounded.
+    per_deck = defaultdict(set)
+    for (deck, arm), c in all_piloted.items():
+        per_deck[deck].add(c)
+    deck_balanced = all(len(v) == 1 for v in per_deck.values())
+    print(f"  every (deck, arm) pair played an equal number of games: "
+          f"{deck_balanced}")
+    if not deck_balanced:
+        print("  WARNING: deck/arm assignment is UNBALANCED, so deck strength "
+              "is NOT cancelled and the pooled arm comparison is confounded.")
+        for deck in decks:
+            print(f"    {deck}: "
+                  + ", ".join(f"{a}={all_piloted[(deck, a)]}" for a in ARM_ORDER))
 
 
 if __name__ == "__main__":

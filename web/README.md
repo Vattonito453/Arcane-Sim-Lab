@@ -146,29 +146,48 @@ Run `python3 engine/cards.py warm engine/sim_results/<file>.json` once to
 populate the cache — about 260 distinct names per run, four batched requests.
 A warm cache makes zero network calls.
 
-`engine/board.py` does the reconstruction and reports its own error rate.
-Exits are explicit in the log, so they act as an oracle: any card Forge says left
-the battlefield must have been on our board at that moment. Measured on the
-16-game rotated gauntlet:
+`engine/board.py` does the reconstruction and reports its own error rate, and
+which of two paths it used. It prints `basis` first: check that before quoting
+any accuracy figure, because the two paths are not close.
+
+**`basis: zone_stream` — a read.** Runs through the shim carry a `zones` array
+per game: `GameEventCardChangeZone` in both directions, keyed by Forge's own
+card id, including `None → Battlefield` (a token being created). Since shim
+0.3.0 each record also carries the card's core types, net P/T and token flag as
+of the move, so nothing needs Scryfall and tokens finally type correctly.
+Measured on a 3-game humanized run:
+
+| | |
+|---|---|
+| Exit match rate | **100%** |
+| Entries with unknown type | **0%** |
+| Scryfall lookups needed | none |
+
+Tokens come through as real objects with real stats: `Zombie Token 2/2`, and
+`3/3` for the ones an anthem had grown. Shim logs written before 0.3.0 lack the
+type fields and fall back to Scryfall typing (37.6% assumed on one such file) —
+re-adapt the raw JSONL to pick the fields up.
+
+**`basis: inferred` — a guess, and the old ceiling still applies.** Stock-Forge
+runs and every result file written before the shim have stdout only, where exits
+are explicit and entries are not. Measured on the 16-game rotated gauntlet:
 
 | | cold cache | with type data |
 |---|---|---|
 | Exit match rate | 86.5% | 86.5% |
 | Entries with unknown type | 46.6% | 27.1% |
 
-**The known ceiling.** 71 exits (13.5%) don't match, and 68 of those are tokens.
-For 71% of them the exit is the object's *first and only* mention anywhere in the
-log — a Zombie token created and sacrificed to Wilhelt's own ability leaves no
-trace but its death. That information does not exist in the log; it is not a
-parsing bug, and neither Scryfall nor better regexes can recover it. Those cards
-are shown dashed with a tooltip explaining why, and cards of unknown type are
-grouped under "Unidentified" rather than silently mixed in.
+71 exits (13.5%) don't match, and 68 of those are tokens. For 71% of them the
+exit is the object's *first and only* mention anywhere in the log — a Zombie
+token created and sacrificed to Wilhelt's own ability leaves no trace but its
+death. That information does not exist in the log; it is not a parsing bug, and
+neither Scryfall nor better regexes can recover it. Those cards are shown dashed
+with a tooltip explaining why, and cards of unknown type are grouped under
+"Unidentified" rather than silently mixed in.
 
-The only route to exact board state is Forge's programmatic entry point
-(`forge.view.SimulateMatch.simulateOffthreadGame`, noted in
-`training/forge_integration.md`), which can dump real per-turn state. That is a
-separate Java shim calling Forge's API — worth doing, and worth a GPL review
-first, since the current posture depends on Forge staying an unmodified process.
+The honest UI consequence: a run's replay is only as trustworthy as its basis,
+so the note under the top-down table has to say which one produced it rather
+than treating every run alike.
 
 ## Backend routes this app added
 

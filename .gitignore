@@ -51,6 +51,10 @@ engine/sim_results/
 # is the correct way to record provenance.
 studies/**/forge_profiles/
 studies/**/pinned/*.jar
+# skill_headtohead names its per-worker staging runs/workers/ rather than
+# forge_profiles/. Same category: regenerable, and it holds copies of Forge's
+# bundled .dck files, which this repo must not vendor.
+studies/**/workers/
 
 # ── archives / snapshots ─────────────────────────────────────────────────
 *.zip

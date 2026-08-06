@@ -1,4 +1,12 @@
-# Engine strength head-to-head — results, 2026-08-06
+# Engine strength head-to-head — results
+
+Two runs, 1536 games. **Both null.** Jump to
+[the heterogeneous-pod follow-up](#heterogeneous-pods--results-2026-08-06) and
+[the combined estimate](#combined-across-both-designs) for the bottom line.
+
+---
+
+# Part 1 — mirror pods, 2026-08-06
 
 8 precons x 768 games in 4-player **mirror** pods, one seat per arm, seat-rotated
 as a balanced Latin square, `--clock 1260`, pinned shim
@@ -164,4 +172,142 @@ Stated in `PLAN.md` §3 before the run and worth repeating:
    in strength. That is a weaker claim than the moat argument but it is true and
    defensible.
 4. **The next experiment is heterogeneous pods**, which is the limitation above
-   and the configuration the product actually runs.
+   and the configuration the product actually runs. **Done: Part 2.**
+
+---
+
+# Heterogeneous pods — results, 2026-08-06
+
+The limitation Part 1 could not address: a mirror is a symmetric matchup, and an
+agent could plausibly be better at piloting *diverse* pods. Same 2x2 arms, but
+pods of four **different** decks, 2 groups of 4, 768 games, same pinned shim
+`c50a9cc2c51d4634`, `--clock 1260`. 96/96 cells, 0 failures, 0 arm mismatches,
+7.5 h wall at 1.70 games/min. Reproduce with:
+
+```
+python3 studies/skill_headtohead/analyze_h2h.py --results studies/skill_headtohead/runs_hetero/results.jsonl
+```
+
+The mirror cancelled deck strength for free. Here it is cancelled by a
+**Graeco-Latin square of order 4** over GF(4) (`run_hetero.py`), balancing deck,
+arm and seat simultaneously. Both balance checks pass on the recorded rows:
+every arm sat in every seat an equal number of games, and **every (deck, arm)
+pair was played an equal number of games**. Without the second one the pooled
+comparison would be confounded by deck strength, and deck strength here is
+enormous: win shares range from Grand Larceny at 8.8-20.0% to Doom Prevails at
+34.1-47.6%.
+
+## Null again, with the sign flipped
+
+**A − B = −2.43 pp**, 95% CI **[−7.89, +3.05]**, P(Δ>0) = 0.185.
+
+| arm | | wins | share |
+|---|---|---|---|
+| A | plan + SimLabHuman (ships today) | 160 | 24.32% |
+| B | stock + Default (stock Forge) | 176 | 26.75% |
+| C | stock + SimLabHuman | 171 | 25.99% |
+| D | plan + Default | 151 | 22.95% |
+
+The mirror gave +2.52 pp and this gives −2.43 pp. The two designs **bracket
+zero**, which is what no effect looks like.
+
+## Combined across both designs
+
+Fixed-effect, inverse-variance weighted. **Post-hoc: not pre-registered**, and
+reported here because two null runs of opposite sign are more informative pooled
+than separately.
+
+| design | A − B | SE | decided games |
+|---|---|---|---|
+| mirror | +2.52 pp | 2.90 pp | 596 |
+| heterogeneous | −2.43 pp | 2.76 pp | 658 |
+| **combined** | **−0.08 pp** | **2.00 pp** | **1254** |
+
+**95% CI [−3.99, +3.84] pp over 1536 games.** Pooling is defensible: the two
+designs differ by 4.95 pp against a 4.00 pp SE, i.e. 1.24 SE, so there is no
+significant heterogeneity to pool across.
+
+**This is now a well-powered null.** Our engine plays Magic within about ±4 pp of
+stock Forge, in both symmetric and diverse pods. Not better. Also not worse.
+
+## Secondaries agree with Part 1
+
+- **A − D = +1.37 pp** [−3.82, +6.60]. The SimLabHuman profile again contributes
+  nothing measurable inside the engine that ships (+0.34 pp in the mirror). Two
+  independent runs now say those four counterspell config lines are dead weight.
+- **B − C = +0.76 pp** [−4.89, +6.33]. The ungated floodgate is again
+  indistinguishable from stock Default.
+- **Interaction = +2.13 pp** (mirror: −2.35 pp). Sign flips between designs, so
+  there is no interaction to speak of.
+
+## No archetype dependence
+
+A − B by the deck each arm piloted (~90 decided games per cell, SE of a
+difference ≈ 6.6 pp, so read the spread not the cells):
+
+| deck | A − B | | deck | A − B |
+|---|---|---|---|---|
+| Blight Curse | +6.2 | | Grand Larceny | −3.4 |
+| Tricky Terrain | −1.7 | | Explorers of the Deep | −4.0 |
+| Planeswalker Party | −2.4 | | Deadly Disguise | −4.6 |
+| Doom Prevails | −2.9 | | Mutant Menace | −8.0 |
+
+A beats B on 1 of 8 decks. Spread 14.2 pp against a per-cell difference SE of
+6.6 pp, and the arm *ordering* is not consistent across decks (C is best on Doom
+Prevails, B on Explorers, D on Grand Larceny). This is what noise looks like, and
+it closes the archetype-uniformity hypothesis the correlation pilot raised: there
+is no arm effect to be uniform or non-uniform about.
+
+## The one signal that appears in both runs
+
+Survival at the clock, ordered **A > D > B > C in both designs**:
+
+| arm | mirror alive | hetero alive |
+|---|---|---|
+| A | 95.2% | 89.1% |
+| D | 94.6% | 85.5% |
+| B | 94.0% | 84.5% |
+| C | 89.9% | 82.7% |
+
+The two plan-controller arms are the top two, and the ungated floodgate is last,
+in both. Every individual gap is within noise (A − B is +1.2 pp and +4.6 pp), so
+this is a hint and not a finding. But it is the only ordering that reproduced,
+and it is consistent with the plan controller playing more defensively without
+converting that into wins. If anything is worth chasing, it is this.
+
+## Two instrument findings
+
+**Tricky Terrain's stall was a mirror pathology, not a deck property.** As a
+4-way mirror it censored 94/96 games. As one copy in a pod of four it is
+unremarkable: group 1 (which contains it) censored 14.6% against group 0's 14.1%,
+and its own win share is a normal 17.1-21.2%. Four copies of a lands-and-counters
+deck cannot resolve; one copy plays fine.
+
+**Diverse pods resolve much better than mirrors.** Censoring 14.3% vs 21.9%, and
+natural games average 383 s vs 517 s. The worst-case bound still does not survive
+(±12 pp at 14.3% censoring against a 2.4 pp effect), but with the CI spanning
+zero in both designs censoring is not what limits either conclusion.
+
+**Forge's documented seat bias does not reproduce.** `run_sim.py:308` records
+"seat 1 wins ~11%, seat 4 ~36%", a 25 pp spread. Measured here with decks and
+arms balanced across seats: **26.4 / 24.8 / 24.2 / 24.6%**, a 2.2 pp spread over
+658 decided games. The mirror run showed 6.4 pp. Rotation remains cheap
+insurance and should stay, but that documented figure is either wrong or specific
+to a configuration neither of these runs used, and it should be re-measured
+before anyone relies on it again.
+
+## What follows
+
+Part 1's conclusions stand and strengthen. Specifically:
+
+1. **`MARKET_SCAN.md` §8 needs rewriting.** Three independent tests now: the
+   humanized agent does not predict human outcomes better, does not play better
+   in mirrors, and does not play better in diverse pods.
+2. **Delete the SimLabHuman profile**, or justify it on something other than
+   strength. A − D is +0.34 pp and +1.37 pp across two designs.
+3. **The engine is not worse.** Humanization buys behavioural realism at no
+   measured cost in strength. That is a real and defensible claim, and it is the
+   one the product should make.
+4. **The remaining open question is the exploit check** (`PLAN.md` §5): all of
+   this is measured against stock Forge's `PlayerControllerAi`, and only the
+   Playgroup ground truth can say whether that generalizes.

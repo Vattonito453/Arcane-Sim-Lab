@@ -4,6 +4,25 @@
 should not start until two instrument defects are fixed.** Results, gate
 outcomes and the recommendation: [`PILOT_RESULTS.md`](PILOT_RESULTS.md).
 
+> **DEPRIORITIZED 2026-08-05, not abandoned.** The primary question moved to
+> relative playing *strength*, for the reasons recorded in
+> [`../skill_headtohead/PLAN.md`](../skill_headtohead/PLAN.md) §1. In short:
+> proximity to human win rates cannot measure strength (it is not on the same
+> scale and is not monotone in skill), and §3's arms here are both self-play,
+> so this design structurally cannot rank the two pilots against each other.
+>
+> **This pre-registration is not edited and its null result stands as
+> reported.** §5 requires that a change be recorded rather than applied
+> retroactively, and that record lives in the new plan.
+>
+> The strength question has since been answered null over 1536 games
+> ([`../skill_headtohead/RESULTS.md`](../skill_headtohead/RESULTS.md)), which
+> makes the two instrument fixes below (contemporary controls, clock 1260)
+> lower priority than they were. **The one part of this study that is now the
+> most valuable is §5's exploit check**: the head-to-head measures everything
+> against stock Forge's `PlayerControllerAi` alone, and this ground truth is
+> the only external reference that can say whether that generalizes.
+
 **Question.** Does the humanized Sim Lab agent predict *human* Commander win
 rates better than stock Forge AI does?
 

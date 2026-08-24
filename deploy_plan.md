@@ -57,10 +57,14 @@ Vercel: Next.js UI  ──HTTPS──►  one VPS (Hetzner CPX31 / Fly 2×shared
   (Hetzner volume, Fly volume), never NFS or a bind mount from a host FS that
   doesn't support locking.
 
-**Capacity.** A 4-vCPU box runs ~3 concurrent Forge games and roughly 2,000
-games/day. At 16 games per gauntlet that is ~125 gauntlets/day. With
-`MTG_SIM_PER_HOUR=6` a single user can consume 96 games/hour, so about 20 active
-users saturate one box. Watch queue depth, not CPU.
+**Capacity.** This estimate assumed a 4-vCPU box (Hetzner CPX31 / Fly
+2×shared-cpu-4GB). **The box actually deployed (`simlab`, GCP `e2-standard-2`)
+has 2 vCPU**, confirmed 2026-08-02 via `gcloud compute instances describe` —
+see `engine/SIM_PERFORMANCE.md`. Re-derive concurrency and games/day from the
+2-vCPU figure before relying on the numbers below; they have not been
+re-measured against the real box. With `MTG_SIM_PER_HOUR=6` a single user can
+still consume 96 games/hour, so the user-saturation math likely needs
+revisiting downward too. Watch queue depth, not CPU.
 
 ## Phase 2 — durable, multi-host (when Phase 1 saturates)
 

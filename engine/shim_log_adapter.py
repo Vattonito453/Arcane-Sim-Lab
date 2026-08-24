@@ -120,6 +120,12 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     # experiment. Absent on logs written before the shim emitted it.
     if meta_rec.get("agents"):
         result["meta"]["agents"] = meta_rec["agents"]
+    # Per-seat AI profile, aligned the same way. Arm identity is the PAIR
+    # (controller, profile): SimLabHuman is Default with the counterspell
+    # chances maxed, and it is designed to be gated by the plan controller's
+    # threat veto, so "plan" alone does not identify what a seat was running.
+    if meta_rec.get("profiles"):
+        result["meta"]["profiles"] = meta_rec["profiles"]
     # Enough to reconstruct any seat's RNG stream in any game:
     #   seed = seedBases[seat] + playerId + seedGameStride * gameIndex
     # The raw JSONL is not kept (sim_results is gitignored and the logs are
@@ -166,6 +172,13 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
         # otherwise silently stay 0 no matter how many games hit the
         # clock (see forge_log_adapter.summarize).
         game["result"]["timedOut"] = bool(res.get("timedOut"))
+        # Per-seat life and survival at termination. The only thing a
+        # timed-out game carries: it has no winner, so excluding it
+        # drops the whole game, and timed-out games are the long ones,
+        # a biased slice rather than a random one. Survival is a
+        # separate outcome and must never be folded into a win rate.
+        if res.get("seats"):
+            game["result"]["seats"] = res["seats"]
         if res.get("error"):
             # A crashed game (shim >= 0.4.0, audit A4). It is neither a win nor
             # a draw: it is an absence of a result, and counting it as a draw

@@ -423,6 +423,43 @@ plausible scale, and do not let it delay #1 or #2.
 > the heuristics." The pilot chose between this section's two claims and
 > vindicated that one. See §9 for the corrected position.
 
+> **SECOND CORRECTION, 2026-08-06.** The correction above left one escape
+> hatch open: "a re-run on a fixed instrument could change it." It has now been
+> run, on a different and better question, and the answer is the same.
+>
+> `studies/skill_headtohead/RESULTS.md` asked whether the agent plays Magic
+> *better* than stock Forge, which is the claim this section actually needs and
+> is not the same as predicting human win rates. Head-to-head, both pilots in
+> the same game, 1536 games across two designs:
+>
+> | design | agent minus stock | 95% CI |
+> |---|---|---|
+> | mirror pods | +2.52 pp | [−3.12, +8.05] |
+> | heterogeneous pods | −2.43 pp | [−7.89, +3.05] |
+> | **combined** | **−0.08 pp** | **[−3.99, +3.84]** |
+>
+> The two designs bracket zero. This is a well-powered null, not an
+> underpowered one: it rules out any effect larger than about ±4 pp, and the
+> weak-control and asymmetric-censoring caveats that softened the first
+> correction do not apply, because a head-to-head design eliminates both by
+> construction.
+>
+> **Three independent tests now.** The agent does not predict human outcomes
+> better, does not play better in mirrors, and does not play better in diverse
+> pods. The wedge framing in this section should be retired rather than
+> re-argued.
+>
+> **What still survives, and it is not nothing:** behavioural resemblance is
+> measured from agent telemetry and is untouched by any of this. What the new
+> evidence adds is that resemblance costs *nothing* in playing strength. "More
+> human-like at no loss of strength" is true, defensible, and considerably
+> narrower than "the agent is the wedge."
+>
+> **One measured deduction:** the SimLabHuman AI profile contributes nothing.
+> Agent-with-profile minus agent-without is +0.34 pp and +1.37 pp across the
+> two designs. It is four lines of counterspell config that the shim installs
+> on every planned run.
+
 Added after reviewing the measured agent-vs-stock numbers in
 `engine/SIM_CALIBRATION.md` and `training/ai_vs_human_analysis.md`. This
 section supersedes the emphasis in §5, which under-weighted the pilot.

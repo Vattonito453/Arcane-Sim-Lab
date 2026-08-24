@@ -347,9 +347,21 @@ def run(args: argparse.Namespace) -> None:
         return
 
     if args.rotate:
-        # Forge's AI has a strong seat bias (measured: seat 1 wins ~11%, seat 4
-        # ~36%). Rotate deck order across sub-runs so every deck sits in every
-        # seat, then merge results (players are identified by deck name).
+        # Rotate deck order across sub-runs so every deck sits in every seat,
+        # then merge results (players are identified by deck name).
+        #
+        # This comment used to justify rotation with "seat 1 wins ~11%, seat 4
+        # ~36%", a 25 pp spread. That figure does NOT reproduce. Measured over
+        # 1254 decided games with decks and arms balanced across seats
+        # (studies/skill_headtohead/RESULTS.md): 26.4/24.8/24.2/24.6% in
+        # heterogeneous pods, a 2.2 pp spread, and 6.4 pp in mirror pods. Both
+        # are an order of magnitude below the old claim.
+        #
+        # Rotation stays regardless: it is nearly free, and balance is what
+        # makes a seat effect a non-issue instead of an assumption. But do not
+        # cite 11%/36% as evidence for anything. Whatever produced it was a
+        # different configuration or too small a sample, and it needs
+        # re-measuring before it is relied on again.
         rotations = len(deck_names)
         split = plan_games(args.games, rotations)
         all_games = []

@@ -146,6 +146,30 @@ def test_a_complete_run_is_not_flagged():
     print("  a complete run stays unflagged: OK")
 
 
+def test_rotated_merge_keeps_shim_provenance():
+    # The merge used to rebuild meta from scratch, dropping the versioned
+    # agent string, the per-seat pilots, and the RNG seeds — a rotated file
+    # could not say which shim made it or reproduce a game's randomness.
+    subs = [{"agent": "simlab-forge-shim/0.4.0", "agents": ["plan", "stock"],
+             "seedBases": [11, 22], "seedGameStride": 1000},
+            {"agent": "simlab-forge-shim/0.4.0", "agents": ["stock", "plan"],
+             "seedBases": [33, 44], "seedGameStride": 1000}]
+    m = run_sim._merged_shim_meta(subs, [["A", "B"], ["B", "A"]])
+    assert m["agent"] == "simlab-forge-shim/0.4.0"
+    assert m["rotations_detail"][1]["seats"] == ["B", "A"]
+    assert m["rotations_detail"][1]["seedBases"] == [33, 44]
+    # Mixed shim versions: no single agent claim, detail still says which.
+    mixed = run_sim._merged_shim_meta(
+        [{"agent": "simlab-forge-shim/0.3.0"}, {"agent": "simlab-forge-shim/0.4.0"}],
+        [["A", "B"], ["B", "A"]])
+    assert "agent" not in mixed
+    assert mixed["rotations_detail"][0]["agent"] == "simlab-forge-shim/0.3.0"
+    # A salvaged rotation with an empty meta adds nothing but its seats.
+    empty = run_sim._merged_shim_meta([{}], [["A", "B"]])
+    assert "rotations_detail" not in empty and "agent" not in empty
+    print("  rotated merge keeps shim version, pilots, and seeds: OK")
+
+
 # ---------------------------------------------------------------- A17
 
 def test_finish_only_completes_a_running_job(tmp: Path):
@@ -176,7 +200,8 @@ def main() -> None:
              test_an_explicit_override_still_wins,
              test_the_estimate_is_far_below_the_ceiling,
              test_rotation_meta_records_the_hole,
-             test_a_complete_run_is_not_flagged)
+             test_a_complete_run_is_not_flagged,
+             test_rotated_merge_keeps_shim_provenance)
     needs_tmp = (test_salvage_rebuilds_a_result_from_finished_rotations,
                  test_a_salvaged_run_cannot_be_used_for_ranking,
                  test_salvage_returns_none_when_there_is_nothing_to_recover,

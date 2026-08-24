@@ -296,8 +296,11 @@ def run(args: argparse.Namespace) -> None:
             all_games = []
             sub_humanized: list[bool] = []
             played_per_rotation: list[int] = []
+            sub_metas: list[dict] = []
+            orders: list[list[str]] = []
             for i, per in enumerate(split):
                 order = deck_names[i:] + deck_names[:i]
+                orders.append(order)
                 print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
                 try:
                     sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per,
@@ -313,10 +316,12 @@ def run(args: argparse.Namespace) -> None:
                     all_games.extend(salvaged)
                     played_per_rotation.append(len(salvaged))
                     sub_humanized.append(bool(e.partial.get("meta", {}).get("humanized")))
+                    sub_metas.append(e.partial.get("meta") or {})
                     continue
                 all_games.extend(sub["games"])
                 played_per_rotation.append(len(sub["games"]))
                 sub_humanized.append(bool(sub.get("meta", {}).get("humanized")))
+                sub_metas.append(sub.get("meta") or {})
             result = {"meta": {"source": "rotated", "agent": "simlab-forge-shim",
                                # What the run WAS, not what was asked for. This
                                # used to echo the --humanize flag, so a rotation
@@ -326,7 +331,8 @@ def run(args: argparse.Namespace) -> None:
                                "humanized_by_rotation": sub_humanized,
                                "decks": args.decks, "format": args.format,
                                "rotations": rotations,
-                               **_rotation_meta(args.games, split, played_per_rotation)},
+                               **_rotation_meta(args.games, split, played_per_rotation),
+                               **_merged_shim_meta(sub_metas, orders)},
                       "games": all_games, "summary": _summarize_by_deck(all_games)}
             json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
         else:
@@ -641,6 +647,30 @@ def _rotation_meta(requested: int, split: list[int], played: list[int]) -> dict:
         "rotations_completed": sum(1 for n in played if n > 0),
         "incomplete": total < expected,
     }
+
+
+def _merged_shim_meta(sub_metas: list[dict], orders: list[list[str]]) -> dict:
+    """Provenance the rotated merge used to drop (audit follow-up to A2).
+
+    Each rotation is its own shim invocation with its own seat order, seed
+    bases and per-seat pilots, so these can only be carried per rotation. The
+    top-level agent gets the versioned string back when every rotation agrees;
+    a mixed run keeps the bare fallback and the detail says why.
+    """
+    agents = {m.get("agent") for m in sub_metas if m.get("agent")}
+    out: dict = {}
+    if len(agents) == 1:
+        out["agent"] = agents.pop()
+    detail = []
+    for order, m in zip(orders, sub_metas):
+        d: dict = {"seats": order}
+        for k in ("agent", "agents", "profiles", "seedBases", "seedGameStride"):
+            if m.get(k) is not None:
+                d[k] = m[k]
+        detail.append(d)
+    if any(len(d) > 1 for d in detail):
+        out["rotations_detail"] = detail
+    return out
 
 
 def _summarize_by_deck(games: list) -> dict:

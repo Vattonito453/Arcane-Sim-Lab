@@ -23,18 +23,46 @@ Tier 1 — product value, no infra dependencies
                                no opponent/adjudication/outcome — see its legal
                                line); Part B: AI goldfish telemetry after 07 Stage 0
   10-counter-events-replay.md  parse counter triggers (+1/+1, charge, energy,
-                               experience) from the Forge log into replay events
-                               and badges — proof the triggers fired
+                               experience, poison) from the Forge log into replay
+                               events and badges — proof the triggers fired; the
+                               shim's GameLog is the same free text (measured),
+                               so this parser covers both paths
   11-card-art-coverage.md      audit + fix missing card art: stale cache entries,
                                the _offline latch, name-normalization parity
   12-deck-picker-gallery.md    rebuild /new as an art-forward deck gallery
                                (commander art tiles, hover decklist, selected-decks
                                rail) in the design system; needs commander in /decks
+  13-deck-link-import.md       import a deck from a Moxfield/Archidekt URL, not
+                               just pasted text
+  14-commander-damage-tracking.md  live per-opponent commander-damage totals in
+                               the replay, not just the post-hoc win reason
+  16-post-run-analysis-rollup.md   surface the win-method distribution and link
+                               Overview/Telemetry/Coaching together; most of
+                               "analysis after a sim" already shipped — read
+                               the file before scoping more here
+  17-deck-history-page.md      a deck's own page: every run it's appeared in,
+                               rolled-up win rate/win-method/combo stats, and a
+                               capped set of cross-run highlights; depends on
+                               12, do after 16
+  18-decklist-hover-preview.md  bring back the hover/focus decklist popover on
+                               gallery tiles, this time with keyboard and touch
+                               parity and no actions inside it; small, self-contained
+  19-hidden-zones-replay.md    show each player's hand, graveyard, exile and a
+                               library count in the replay; on shim runs the
+                               zones stream already records all of it (measured),
+                               so this is board.py + UI work, no shim change
+  20-plan-driven-tutor-targeting.md  tutors advance the deck's plan, not just
+                               combos: measure stock-AI target quality first,
+                               then rank legal search options by plan weight;
+                               knowledge as data, shim stays thin
 
 Tier 2 — needed for multi-host scale (do when Tier 1 saturates one box)
   04-postgres-queue.md         unlocks workers on separate machines
   05-object-storage.md         moves 2.6 MB result files off the app host
   09-multi-format.md           Pauper/Standard/etc; mostly plumbing + per-format calibration
+  15-sim-performance.md        research spike: measure where sim wall-clock time
+                               actually goes before proposing a fix; may hand off
+                               into 04/05/07 rather than standing alone
 
 Tier 3 — needed for open signup
   06-accounts-and-quotas.md    replaces shared API keys with per-user identity

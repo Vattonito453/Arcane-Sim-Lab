@@ -41,6 +41,20 @@ SHIM_SEARCH_GLOBS = [
 ]
 
 
+class SimRotationError(RuntimeError):
+    """One rotation failed. Carries whatever games it finished first.
+
+    Raised instead of warning, because the merged result has to be able to say
+    a rotation is missing (audit A5). The partial games are still good games
+    and are kept; what must not happen is a short run presenting itself as a
+    complete one.
+    """
+
+    def __init__(self, message: str, partial: dict | None = None) -> None:
+        super().__init__(message)
+        self.partial = partial or {}
+
+
 def find_shim_jar(explicit: str | None, required: bool = True) -> str | None:
     candidates = []
     if explicit:
@@ -201,10 +215,17 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
         if s.startswith("shim:"):
             print(f"  {s}", flush=True)
     proc.wait(timeout=60)
+    parsed = parse_shim_jsonl(jsonl_path.read_text(encoding="utf-8"),
+                              source=" ".join(cmd))
     if proc.returncode != 0:
-        print(f"WARNING: shim exited {proc.returncode}", file=sys.stderr)
-    return parse_shim_jsonl(jsonl_path.read_text(encoding="utf-8"),
-                            source=" ".join(cmd))
+        # A warning on stderr was the whole response to this, so a rotation
+        # that OOM'd halfway still merged its partial games into a result
+        # claiming a full rotation (audit A5). Salvage whatever games the
+        # rotation did finish, then fail so the caller records the hole.
+        raise SimRotationError(
+            f"shim exited {proc.returncode} after {len(parsed.get('games') or [])} "
+            f"game(s)", partial=parsed)
+    return parsed
 
 
 def run(args: argparse.Namespace) -> None:
@@ -271,15 +292,36 @@ def run(args: argparse.Namespace) -> None:
                       file=sys.stderr)
         if args.rotate:
             rotations = len(deck_names)
-            per = max(1, args.games // rotations)
+            split = plan_games(args.games, rotations)
             all_games = []
             sub_humanized: list[bool] = []
-            for i in range(rotations):
+            played_per_rotation: list[int] = []
+            sub_metas: list[dict] = []
+            orders: list[list[str]] = []
+            for i, per in enumerate(split):
                 order = deck_names[i:] + deck_names[:i]
+                orders.append(order)
                 print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
-                sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per, rotate_index=i)
+                try:
+                    sub = _run_shim_once(args, jar, shim_jar, out_dir, order, per,
+                                         rotate_index=i)
+                except SimRotationError as e:
+                    # One rotation dying used to be a stderr line and nothing
+                    # else: the merged file still claimed rotations:4 and full
+                    # bias cancellation. Keep the games it finished, and record
+                    # the hole (audit A5).
+                    print(f"ERROR: rotation {i+1}/{rotations} failed: {e}",
+                          file=sys.stderr)
+                    salvaged = e.partial.get("games") or []
+                    all_games.extend(salvaged)
+                    played_per_rotation.append(len(salvaged))
+                    sub_humanized.append(bool(e.partial.get("meta", {}).get("humanized")))
+                    sub_metas.append(e.partial.get("meta") or {})
+                    continue
                 all_games.extend(sub["games"])
+                played_per_rotation.append(len(sub["games"]))
                 sub_humanized.append(bool(sub.get("meta", {}).get("humanized")))
+                sub_metas.append(sub.get("meta") or {})
             result = {"meta": {"source": "rotated", "agent": "simlab-forge-shim",
                                # What the run WAS, not what was asked for. This
                                # used to echo the --humanize flag, so a rotation
@@ -288,7 +330,9 @@ def run(args: argparse.Namespace) -> None:
                                "humanized": bool(sub_humanized) and all(sub_humanized),
                                "humanized_by_rotation": sub_humanized,
                                "decks": args.decks, "format": args.format,
-                               "rotations": rotations},
+                               "rotations": rotations,
+                               **_rotation_meta(args.games, split, played_per_rotation),
+                               **_merged_shim_meta(sub_metas, orders)},
                       "games": all_games, "summary": _summarize_by_deck(all_games)}
             json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
         else:
@@ -296,6 +340,10 @@ def run(args: argparse.Namespace) -> None:
             result["meta"]["decks"] = args.decks
             result["meta"]["format"] = args.format
             json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
+        # The per-game wall the run actually used. Without it, a later
+        # validity check has to GUESS which clock a file ran under
+        # (validity.py _HISTORICAL_CLOCKS) and can only say "suspect".
+        result.setdefault("meta", {})["clock"] = args.clock
         json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         s = result["summary"]
         print(f"\n{s['games']} game(s) parsed | draws: {s['draws']}")
@@ -321,19 +369,33 @@ def run(args: argparse.Namespace) -> None:
         # different configuration or too small a sample, and it needs
         # re-measuring before it is relied on again.
         rotations = len(deck_names)
-        per = max(1, args.games // rotations)
+        split = plan_games(args.games, rotations)
         all_games = []
-        for i in range(rotations):
+        played_per_rotation: list[int] = []
+        for i, per in enumerate(split):
             order = deck_names[i:] + deck_names[:i]
             print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
-            sub = _run_once(args, jar, out_dir, order, per, rotate_index=i)
+            try:
+                sub = _run_once(args, jar, out_dir, order, per, rotate_index=i)
+            except SimRotationError as e:
+                print(f"ERROR: rotation {i+1}/{rotations} failed: {e}", file=sys.stderr)
+                salvaged = e.partial.get("games") or []
+                all_games.extend(salvaged)
+                played_per_rotation.append(len(salvaged))
+                continue
             all_games.extend(sub["games"])
+            played_per_rotation.append(len(sub["games"]))
         result = {"meta": {"source": "rotated", "humanized": False,
                            "decks": args.decks,
-                           "format": args.format, "rotations": rotations},
+                           "format": args.format, "rotations": rotations,
+                           **_rotation_meta(args.games, split, played_per_rotation)},
                   "games": all_games, "summary": _summarize_by_deck(all_games)}
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
+        # The per-game wall the run actually used. Without it, a later
+        # validity check has to GUESS which clock a file ran under
+        # (validity.py _HISTORICAL_CLOCKS) and can only say "suspect".
+        result.setdefault("meta", {})["clock"] = args.clock
         json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         s = result["summary"]
         print(f"\n{s['games']} game(s) total across {rotations} seat rotations | draws: {s['draws']}")
@@ -383,6 +445,7 @@ def run(args: argparse.Namespace) -> None:
     result["meta"]["format"] = args.format
     result["meta"]["humanized"] = False
     json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
+    result.setdefault("meta", {})["clock"] = args.clock
     json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
 
     s = result["summary"]
@@ -419,7 +482,104 @@ def _run_once(args, jar, out_dir, deck_order, games, rotate_index: int | None = 
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
         raw_path = out_dir / f"forge_raw_{stamp}.log"
     raw_path.write_text("".join(lines), encoding="utf-8")
-    return parse_forge_log("".join(lines), source=" ".join(cmd))
+    parsed = parse_forge_log("".join(lines), source=" ".join(cmd))
+    if proc.returncode != 0:
+        # This path never checked the return code at all, so a rotation Forge
+        # aborted contributed however many games it managed and the merged
+        # result still claimed a clean sweep (audit A5).
+        raise SimRotationError(
+            f"Forge exited {proc.returncode} after "
+            f"{len(parsed.get('games') or [])} game(s)", partial=parsed)
+    return parsed
+
+
+def salvage(out_dir: Path, run_id: str, decks: list[str] | None = None,
+            fmt: str = "Commander", clock: int | None = None,
+            games_expected: int | None = None) -> Path | None:
+    """Rebuild a result from a killed run's rotation logs. Returns the path.
+
+    The outer kill (Engine.simulate) used to discard everything: run_sim only
+    writes the merged result after the LAST rotation, so a run killed in
+    rotation 4 threw away three completed rotations that were sitting finished
+    on disk (audit A14). Those raw logs are the same files the adapters read at
+    the end of a normal run, so recovering them is a re-parse, not a repair.
+
+    The result is marked `incomplete` and `salvaged_from_kill`, which keeps it
+    out of anything that ranks decks (validity.py) while still giving the user
+    the games their run actually played.
+    """
+    rid = safe_run_id(run_id)
+    games: list = []
+    per_rotation: list[int] = []
+    humanized: list[bool] = []
+    agent = None
+
+    shim_logs = sorted(out_dir.glob(f"shim_raw_{rid}_rot*.jsonl")) or \
+        sorted(out_dir.glob(f"shim_raw_{rid}.jsonl"))
+    stock_logs = sorted(out_dir.glob(f"forge_raw_{rid}_rot*.log")) or \
+        sorted(out_dir.glob(f"forge_raw_{rid}.log"))
+
+    if shim_logs:
+        from shim_log_adapter import parse_shim_jsonl
+        agent = "simlab-forge-shim"
+        for p in shim_logs:
+            try:
+                sub = parse_shim_jsonl(p.read_text(encoding="utf-8", errors="replace"),
+                                       source=p.name)
+            except Exception:  # noqa: BLE001 — a torn log loses one rotation, not all
+                per_rotation.append(0)
+                continue
+            # Only games that actually finished: the rotation in flight when
+            # the kill landed has a trailing game with no result.
+            done = [g for g in (sub.get("games") or []) if g.get("result")]
+            games.extend(done)
+            per_rotation.append(len(done))
+            humanized.append(bool(sub.get("meta", {}).get("humanized")))
+    elif stock_logs:
+        agent = "forge"
+        for p in stock_logs:
+            try:
+                sub = parse_forge_log(p.read_text(encoding="utf-8", errors="replace"),
+                                      source=p.name)
+            except Exception:  # noqa: BLE001
+                per_rotation.append(0)
+                continue
+            done = [g for g in (sub.get("games") or []) if g.get("result")]
+            games.extend(done)
+            per_rotation.append(len(done))
+
+    if not games:
+        return None
+
+    # Rotations the run was SUPPOSED to do, not the number of log files that
+    # happen to exist. Counting the survivors would report "2 of 2 rotations
+    # finished" for a run that lost half of them, which is the opposite of
+    # what a salvaged result needs to say.
+    rotations_expected = len(decks) if decks else len(per_rotation)
+    meta = {
+        "source": "rotated" if rotations_expected > 1 else "salvaged",
+        "agent": agent,
+        "decks": decks or [],
+        "format": fmt,
+        "rotations": rotations_expected,
+        "rotations_completed": sum(1 for n in per_rotation if n > 0),
+        "games_played": len(games),
+        "games_per_rotation_played": per_rotation,
+        "incomplete": True,
+        "salvaged_from_kill": True,
+    }
+    if games_expected:
+        meta["games_expected"] = games_expected
+    if clock is not None:
+        meta["clock"] = clock
+    if humanized:
+        meta["humanized"] = all(humanized)
+        meta["humanized_by_rotation"] = humanized
+    result = {"meta": meta, "games": games, "summary": _summarize_by_deck(games)}
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    path = result_path(out_dir, stamp, run_id, rotated=len(per_rotation) > 1)
+    path.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return path
 
 
 def safe_run_id(run_id: str) -> str:
@@ -443,27 +603,122 @@ def result_path(out_dir: Path, stamp: str, run_id: str | None, rotated: bool) ->
     return out_dir / f"sim_{stamp}{tag}{'_rotated' if rotated else ''}.json"
 
 
+def plan_games(requested: int, rotations: int, cap: int | None = None) -> list[int]:
+    """Games per rotation, balanced (audit A27).
+
+    Seat rotation only cancels Forge's seat bias if every deck sits in every
+    seat the SAME number of times, so the split has to be even. The old
+    `per = max(1, games // rotations)` was neither even nor honest about the
+    total: 1 requested became 4 played, 6 became 4, 10 (the worker default)
+    became 8, and 63 became 60, with the run page showing the request and the
+    result file showing something else.
+
+    Rounding UP to a whole rotation is the choice here, over distributing the
+    remainder. Distributing it (6 over 4 seats = 2,2,1,1) leaves two decks with
+    an extra game in an early seat, which is a smaller version of exactly the
+    bias rotation exists to remove. Playing a few more games costs minutes;
+    reintroducing the bias costs the result. The caller reports both numbers.
+    """
+    rotations = max(1, rotations)
+    if requested <= 0:
+        return [1] * rotations
+    whole = -(-requested // rotations)              # ceil
+    if cap is not None and whole * rotations > cap:
+        whole = max(1, cap // rotations)            # back off to fit the cap
+    return [whole] * rotations
+
+
+def _rotation_meta(requested: int, split: list[int], played: list[int]) -> dict:
+    """Per-rotation accounting for the merged result (audit A5, A27).
+
+    Without this a run that lost a rotation to an OOM still reported
+    `rotations: 4` and full seat-bias cancellation, with nothing anywhere able
+    to notice. `incomplete` is the flag every consumer keys on; the per-rotation
+    lists are what make it diagnosable.
+    """
+    expected = sum(split)
+    total = sum(played)
+    return {
+        "games_requested": requested,
+        "games_expected": expected,
+        "games_played": total,
+        "games_per_rotation_expected": split,
+        "games_per_rotation_played": played,
+        "rotations_completed": sum(1 for n in played if n > 0),
+        "incomplete": total < expected,
+    }
+
+
+def _merged_shim_meta(sub_metas: list[dict], orders: list[list[str]]) -> dict:
+    """Provenance the rotated merge used to drop (audit follow-up to A2).
+
+    Each rotation is its own shim invocation with its own seat order, seed
+    bases and per-seat pilots, so these can only be carried per rotation. The
+    top-level agent gets the versioned string back when every rotation agrees;
+    a mixed run keeps the bare fallback and the detail says why.
+    """
+    agents = {m.get("agent") for m in sub_metas if m.get("agent")}
+    out: dict = {}
+    if len(agents) == 1:
+        out["agent"] = agents.pop()
+    detail = []
+    for order, m in zip(orders, sub_metas):
+        d: dict = {"seats": order}
+        for k in ("agent", "agents", "profiles", "seedBases", "seedGameStride"):
+            if m.get(k) is not None:
+                d[k] = m[k]
+        detail.append(d)
+    if any(len(d) > 1 for d in detail):
+        out["rotations_detail"] = detail
+    return out
+
+
 def _summarize_by_deck(games: list) -> dict:
-    """Aggregate wins by DECK (strip the Ai(n)- seat prefix)."""
+    """Aggregate wins by DECK (strip the Ai(n)- seat prefix).
+
+    This is the summarizer the DEFAULT path uses: every rotated run rebuilds
+    its merged summary here from scratch, so anything this function forgets is
+    absent from production results no matter what the per-rotation summaries
+    said. `timeouts` was exactly that (audit A16) — shipped 2026-08-03 into
+    forge_log_adapter.summarize(), discarded here, and therefore invisible on
+    every rotated run, which is all of them.
+    """
     import re as _re
     seat = _re.compile(r"^Ai\(\d+\)-")   # \d+ — a 10-seat pod is still Ai(10)-
     wins: dict = {}
     draws = 0
-    # Every deck in the pod gets a key, winless or not: these keys are the pod
-    # roster for everything downstream, including the even-seats baseline.
+    timeouts = 0
     for g in games:
         for p in g.get("players") or []:
             wins.setdefault(seat.sub("", p), 0)
+    quarantined = 0
     for g in games:
         r = g.get("result") or {}
+        if r.get("error") or r.get("missingResult"):
+            quarantined += 1     # a crash or a lost record is not a game
+            continue
+        if r.get("timedOut"):
+            timeouts += 1
+            # A clock-cut game is a draw, whatever Forge's outcome object says.
+            # 83% of 4-pod games were once recorded as wins this way, credited
+            # disproportionately to late seats. Counting it here rather than
+            # trusting `winner` is what stops a re-parse of a polluted file
+            # from re-minting the fake win.
+            draws += 1
+            continue
         if r.get("draw"):
             draws += 1
         elif r.get("winner"):
             name = seat.sub("", r["winner"])
             wins[name] = wins.get(name, 0) + 1
     total = len(games)
-    return {"games": total, "draws": draws, "wins": wins,
-            "win_rates": {p: round(w / total, 3) for p, w in wins.items()} if total else {}}
+    scored = total - quarantined
+    out = {"games": total, "draws": draws, "timeouts": timeouts, "wins": wins,
+           "win_rates": {p: round(w / scored, 3) for p, w in wins.items()} if scored else {}}
+    if quarantined:
+        out["quarantined"] = quarantined
+        out["games_scored"] = scored
+    return out
 
 
 def main() -> None:

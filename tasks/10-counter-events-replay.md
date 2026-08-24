@@ -38,9 +38,21 @@ the spec is honest about it:
 - Energy and experience counters go to a *player*, not a card. The fixture
   has none — before claiming coverage, run a sim with an energy deck and an
   experience commander (e.g. Satya / Meren) and measure what Forge prints.
-- The sanctioned long-term fix is task 07's typed `GameLog`, which reports
-  counter changes structurally. This task is the stdout-scraping version and
-  should keep its parser small and replaceable.
+  Poison is explicitly in scope too (playtester ask, 2026-08-06).
+- **The shim does not currently help.** Measured 2026-08-06 on
+  `shim_raw_study_blight-curse_agent_v3_g32_c900_rot0.jsonl`: the typed
+  GameLog entries carry counter activity only as the same free-text
+  resolution lines stdout has (`… puts a -1/-1 counter on …`,
+  `enters with three loyalty counters` under `EFFECT_REPLACED`), so the
+  earlier claim here that task 07's typed GameLog reports counters
+  structurally was wrong. The parser built by this task therefore covers
+  BOTH paths — feed shim runs through it too.
+- The sanctioned structural fix is a new shim record type (like the `zone`
+  records) serialized from Forge's counter events on the event bus — a
+  data-out-only addition that stays a thin adapter per the GPL boundary.
+  That lives in the shim repo (task 07 territory); when it lands, this
+  task's parser becomes the fallback for stdout and pre-upgrade shim logs.
+  Either way keep the parser small and replaceable.
 
 ## What to build
 

@@ -166,7 +166,10 @@ class Engine:
                  run_id: str | None = None, rotate: bool = True) -> dict:
         import subprocess
         cmd = [sys.executable, str(Path(__file__).parent / "run_sim.py"),
-               "--decks", *decks, "--games", str(games), "--format", fmt, "--out", out]
+               "--decks", *decks, "--games", str(games), "--format", fmt, "--out", out,
+               # Passed explicitly so the clock the timeout maths assumes and
+               # the clock the sim runs under cannot drift apart.
+               "--clock", str(SIM_CLOCK_SECONDS)]
         if run_id:
             cmd += ["--run-id", run_id]
         if deck_dir:
@@ -192,25 +195,72 @@ class Engine:
             cmd += ["--humanize"]
         elif os.environ.get("MTG_SIM_AGENT") in ("forge", "shim"):
             cmd += ["--agent", os.environ["MTG_SIM_AGENT"]]
-        # A hung JVM must not wedge the worker forever: cap the subprocess. On
-        # timeout run_sim dies and Forge follows on its next stdout write
-        # (EPIPE); the job then finishes as an error instead of running
-        # indefinitely. Ceiling is deliberately generous — big humanized
-        # gauntlets are tens of minutes (SIM_CALIBRATION.md).
-        timeout = float(os.environ.get("MTG_SIM_TIMEOUT_SECONDS", 2 * 3600))
+        # A hung JVM must not wedge the worker forever, but the ceiling has to
+        # be derived from the work, not guessed. A flat 2 h could not fit the
+        # runs the API itself accepts: 16 games at a 900 s clock is 14,400 s
+        # worst case, and SIM_MAX_GAMES at the MEASURED median pace is over
+        # 10,000 s, so the largest allowed request could not finish (A14).
+        rotations = len(decks) if (rotate and os.environ.get("MTG_SIM_ROTATE") != "0") else 1
+        timeout = sim_timeout_seconds(games, rotations)
         t0 = time.time()
+        killed = False
+        # start_new_session: the JVM is a GRANDCHILD (engine -> run_sim -> java),
+        # so killing the direct child left a 4 GB JVM running to completion,
+        # starving the next job on a 2-vCPU box. The comment this replaces
+        # assumed Forge would die on EPIPE at its next stdout write; Java's
+        # PrintStream swallows IOExceptions, so it does not (A15). A session of
+        # our own means one signal reaches the whole tree.
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                text=True, start_new_session=True)
         try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-            rc, out_txt, err_txt = proc.returncode, proc.stdout or "", proc.stderr or ""
-        except subprocess.TimeoutExpired as e:
+            out_txt, err_txt = proc.communicate(timeout=timeout)
+            rc = proc.returncode
+        except subprocess.TimeoutExpired:
+            killed = True
+            _kill_process_group(proc)
+            try:
+                out_txt, err_txt = proc.communicate(timeout=30)
+            except subprocess.TimeoutExpired:
+                out_txt, err_txt = "", ""
             rc = -1
-            out_txt = e.stdout if isinstance(e.stdout, str) else ""
-            err_txt = (e.stderr if isinstance(e.stderr, str) else "") + \
-                f"\nsimulation killed after {int(timeout)} s (MTG_SIM_TIMEOUT_SECONDS)"
+            err_txt = (err_txt or "") + (
+                f"\nsimulation killed after {int(timeout)} s. This is the "
+                f"ceiling for {games} game(s) across {rotations} rotation(s); "
+                f"override with MTG_SIM_TIMEOUT_SECONDS.")
+        out_txt, err_txt = out_txt or "", err_txt or ""
+
         claimed = _claim_result(out, run_id, t0)
+        if claimed is None and killed and run_id:
+            # Completed rotations were written to disk before the kill and used
+            # to be thrown away wholesale. Re-parse them into a result marked
+            # incomplete, so the user keeps the games that did run (A14).
+            try:
+                import run_sim
+                recovered = run_sim.salvage(
+                    Path(out), run_id, decks=decks, fmt=fmt,
+                    clock=SIM_CLOCK_SECONDS,
+                    games_expected=sum(run_sim.plan_games(games, rotations)))
+            except Exception as e:  # noqa: BLE001 — salvage must never mask the kill
+                recovered = None
+                err_txt += f"\nsalvage failed: {e}"
+            if recovered is not None:
+                claimed = recovered
+                err_txt += (f"\nrecovered {len(json.loads(recovered.read_text())['games'])} "
+                            f"completed game(s) from the rotations that finished; "
+                            f"the result is marked incomplete.")
+        payload = None
+        if claimed:
+            try:
+                payload = json.loads(claimed.read_text())
+            except Exception:  # noqa: BLE001
+                payload = None
         return {"stdout": (out_txt + "\n" + err_txt)[-2000:], "returncode": rc,
                 "result_file": str(claimed) if claimed else None,
-                "result": json.loads(claimed.read_text()) if claimed and rc == 0 else None}
+                "killed": killed, "timeout": timeout,
+                # A salvaged result is still a result: hand it back even though
+                # rc is nonzero, so the worker can store it as a partial run
+                # rather than reporting a total loss.
+                "result": payload if (rc == 0 or killed) else None}
 
     # ---------- helpers ----------
 
@@ -351,10 +401,160 @@ def _job_status(job_id: str | None) -> dict:
     if job.get("result"):
         out["result"] = job["result"].get("summary")
         out["result_file"] = job["result"].get("result_file")
+        if job["result"].get("incomplete"):
+            out["incomplete"] = True
+            out["warning"] = job["result"].get("warning")
+    out["progress"] = _job_progress(job)
     return out
 
 
+def _job_progress(job: dict) -> dict:
+    """How far along, how long this size usually takes, and is it still moving.
+
+    A four-deck gauntlet is tens of minutes of a silent JVM. With only an
+    elapsed timer on screen there is no way to tell "still working" from
+    "died twenty minutes ago", so people conclude it failed and queue it
+    again, which on a 2-vCPU box makes the original slower. Everything here
+    exists to answer that one question honestly, including admitting when we
+    cannot tell.
+    """
+    decks = job.get("decks") or []
+    requested = job.get("games") or 0
+    rotations = max(1, len(decks)) if os.environ.get("MTG_SIM_ROTATE") != "0" else 1
+    expected_games = max(requested, rotations)
+    if rotations > 1 and expected_games % rotations:
+        expected_games += rotations - (expected_games % rotations)
+    low, high = estimate_sim_seconds(requested, rotations)
+    prog: dict = {
+        "expected_games": expected_games,
+        "rotations": rotations,
+        "typical_seconds": [low, high],
+        "ceiling_seconds": int(sim_timeout_seconds(requested, rotations)),
+    }
+    if job["state"] != "running":
+        return prog
+
+    # Games finished so far, counted across EVERY rotation log rather than the
+    # current one. The live view resets to "game 1" at each rotation boundary,
+    # which on its own reads like the run restarting (audit A28).
+    done, last_activity = _count_live_progress(job["id"])
+    prog["games_done"] = done
+    elapsed = job.get("elapsed") or 0
+    prog["elapsed"] = int(elapsed)
+    if last_activity is not None:
+        prog["seconds_since_activity"] = int(max(0, time.time() - last_activity))
+    if done:
+        # Pace from THIS run, which beats any stored average: a slow pod is
+        # slow for reasons (stax, big boards) that a global constant cannot know.
+        per_game = elapsed / done
+        prog["seconds_per_game"] = int(per_game)
+        prog["eta_seconds"] = int(max(0, (expected_games - done) * per_game))
+    # "Slower than usual" is not "broken", and the difference is the whole
+    # point: a sim is only suspect when nothing has been WRITTEN for a long
+    # time, not when it has simply been running a while.
+    stalled_after = max(SIM_CLOCK_SECONDS * 1.5, 600)
+    prog["stalled"] = bool(last_activity is not None
+                           and prog.get("seconds_since_activity", 0) > stalled_after)
+    prog["over_typical"] = bool(elapsed > high)
+    return prog
+
+
+def _count_live_progress(job_id: str) -> tuple[int, float | None]:
+    """(finished games across all rotations, mtime of the newest log)."""
+    if not _JOB_ID_RE.match(job_id or ""):
+        return 0, None
+    done = 0
+    newest: float | None = None
+    patterns = (f"shim_raw_{job_id}*.jsonl", f"forge_raw_{job_id}*.log")
+    for pat in patterns:
+        for p in RESULTS_DIR.glob(pat):
+            try:
+                st = p.stat()
+            except OSError:
+                continue
+            newest = st.st_mtime if newest is None else max(newest, st.st_mtime)
+            try:
+                text = p.read_text(encoding="utf-8", errors="replace")
+            except OSError:
+                continue
+            if p.suffix == ".jsonl":
+                # One {"rec":"result"} per finished game; counted by substring
+                # so a half-written trailing line cannot inflate it.
+                done += text.count('"rec": "result"') + text.count('"rec":"result"')
+            else:
+                done += text.count("Game Result:")
+    return done, newest
+
+
 RESULTS_DIR = Path(os.environ.get("MTG_DATA_DIR", str(Path(__file__).parent))) / "sim_results"
+
+# Per-game wall clock the sim runs under (run_sim --clock). Any single game may
+# legitimately take this long, so the outer ceiling has to be a multiple of it.
+SIM_CLOCK_SECONDS = int(os.environ.get("MTG_SIM_CLOCK_SECONDS", "900"))
+# One JVM start per rotation. Measured 25-35 s warm, ~93 s on the first launch
+# of a cold container (engine/SIM_PERFORMANCE.md Finding 2); 150 s is a ceiling,
+# not an estimate, because this figure only guards against a hang.
+JVM_LAUNCH_CEILING_SECONDS = 150
+# Typical, not worst case: what a real game costs when it finishes on its own.
+# Used ONLY to tell a user how long to expect, never to kill anything.
+TYPICAL_GAME_SECONDS = 120
+TYPICAL_JVM_LAUNCH_SECONDS = 35
+
+
+def sim_timeout_seconds(games: int, rotations: int) -> float:
+    """Outer kill ceiling for one run_sim invocation (audit A14).
+
+    Every game may take the full clock before Forge draws it, so a run of N
+    games cannot be given less than N * clock without killing legitimate work.
+    That is the whole bug: one flat 7200 s covered ALL rotations, and the
+    largest request the API accepts could not finish inside it, losing every
+    completed game when the kill landed.
+
+    An explicit MTG_SIM_TIMEOUT_SECONDS still wins, for an operator who knows
+    their box, but it is no longer the default.
+    """
+    override = os.environ.get("MTG_SIM_TIMEOUT_SECONDS")
+    if override:
+        return float(override)
+    rotations = max(1, rotations)
+    played = max(games, rotations)          # run_sim rounds up to whole rotations
+    return played * SIM_CLOCK_SECONDS + rotations * JVM_LAUNCH_CEILING_SECONDS + 300
+
+
+def estimate_sim_seconds(games: int, rotations: int) -> tuple[int, int]:
+    """(low, high) seconds a run of this size TYPICALLY takes.
+
+    For telling a user what to expect, so a long run does not read as a failed
+    one. Deliberately separate from sim_timeout_seconds: that one is a ceiling
+    against hangs and is many times larger than any real run.
+    """
+    rotations = max(1, rotations)
+    played = max(games, rotations)
+    launches = rotations * TYPICAL_JVM_LAUNCH_SECONDS
+    return (int(played * TYPICAL_GAME_SECONDS * 0.6 + launches),
+            int(played * TYPICAL_GAME_SECONDS * 1.6 + launches))
+
+
+def _kill_process_group(proc) -> None:
+    """SIGTERM then SIGKILL the whole session, so the JVM goes too (A15)."""
+    import signal
+    try:
+        pgid = os.getpgid(proc.pid)
+    except (ProcessLookupError, PermissionError, AttributeError, OSError):
+        proc.kill()
+        return
+    for sig, grace in ((signal.SIGTERM, 10), (signal.SIGKILL, 0)):
+        try:
+            os.killpg(pgid, sig)
+        except (ProcessLookupError, PermissionError, OSError):
+            return
+        if not grace:
+            return
+        try:
+            proc.wait(timeout=grace)
+            return
+        except Exception:  # noqa: BLE001 — still alive, escalate
+            continue
 
 # ---------- deployment configuration (all env-driven; safe local defaults) ----------
 
@@ -401,16 +601,37 @@ def _rate_ok(bucket: str, limit: int, window: float) -> tuple[bool, int]:
 
 
 def _list_results() -> list[dict]:
-    """Index of adapted sim result files, newest first."""
+    """Index of adapted sim result files, newest first.
+
+    Carries the provenance every list surface needs to tell runs apart (audit
+    A26): whether the run was seat-rotated, which agent piloted it, and the
+    validity verdict from validity.py (A25). Without these the index was a list
+    of interchangeable-looking files, so no front end COULD flag a seat-biased
+    or clock-polluted run even if it wanted to — the 7/31-8/2 rotation-off
+    window was indistinguishable from a good run in every listing.
+    """
+    import validity
     out = []
     for f in sorted(RESULTS_DIR.glob("sim_*.json"), reverse=True):
         entry = {"file": f.name, "bytes": f.stat().st_size,
                  "modified": int(f.stat().st_mtime)}
         try:
             d = json.loads(f.read_text(encoding="utf-8"))
-            entry["decks"] = d.get("meta", {}).get("decks", [])
+            meta = d.get("meta", {})
+            entry["decks"] = meta.get("decks", [])
             entry["games"] = len(d.get("games", []))
             entry["summary"] = d.get("summary")
+            # NOT meta.source verbatim: on a non-rotated run that field holds
+            # the full java command line, absolute home paths and all, which
+            # has no business in an API response. The only thing a list surface
+            # needs from it is whether the run was rotated.
+            entry["rotated"] = meta.get("source") == "rotated"
+            entry["humanized"] = meta.get("humanized")
+            entry["agent"] = meta.get("agent")
+            v = validity.assess(d)
+            entry["validity"] = {"quality": v["quality"], "flags": v["flags"],
+                                 "usable_for_ranking": v["usable_for_ranking"],
+                                 "reasons": v["reasons"]}
         except Exception as e:  # noqa: BLE001 — surface bad files in the index
             entry["error"] = f"unreadable: {e}"
         out.append(entry)
@@ -433,6 +654,11 @@ def _read_result(name: str, snapshots: bool = False) -> dict:
     if snapshots and "board_snapshots" not in data.get("meta", {}):
         import board
         data = board.annotate(data, fetch=False)  # cache-only: never blocks a request
+    # Attached in memory, never written back: the verdict is derived from the
+    # current rules in validity.py, so baking it into the file would freeze a
+    # judgement that is supposed to be recomputed when those rules improve.
+    import validity
+    data["validity"] = validity.assess(data)
     return data
 
 
@@ -455,7 +681,7 @@ def _read_result_summary(name: str) -> dict:
             "events": sum(len(t.get("events", [])) for t in turns),
         })
     return {"meta": data.get("meta", {}), "summary": data.get("summary"),
-            "games": games, "file": name}
+            "games": games, "file": name, "validity": data.get("validity")}
 
 
 def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None) -> dict:
@@ -1011,7 +1237,20 @@ def serve(port: int = 8484) -> None:
                         # Mixed bundled/imported: pass absolute paths instead.
                         job["decks"] = [str(resolved[d]) for d in decks]
                     job_id = jobqueue.enqueue(job)
-                    return self._send({"ok": True, "job_id": job_id, "state": "queued"})
+                    # Set the expectation at the point of asking, not after
+                    # twenty silent minutes. Also states the played count,
+                    # which is rounded up to whole seat rotations and has
+                    # never matched the requested number (audit A27).
+                    rots = max(1, len(decks)) if os.environ.get("MTG_SIM_ROTATE") != "0" else 1
+                    played = max(games, rots)
+                    if rots > 1 and played % rots:
+                        played += rots - (played % rots)
+                    low, high = estimate_sim_seconds(games, rots)
+                    return self._send({"ok": True, "job_id": job_id, "state": "queued",
+                                       "games_requested": games,
+                                       "games_to_play": played,
+                                       "rotations": rots,
+                                       "typical_seconds": [low, high]})
 
                 if route == "decks":
                     ok, retry = _rate_ok(f"imp:{self.client_key}", 30, 3600.0)

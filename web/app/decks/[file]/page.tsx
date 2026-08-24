@@ -41,7 +41,7 @@ function CardRow({
       className="card-row"
       tabIndex={0}
       role="button"
-      aria-label={`${name} — read at full size`}
+      aria-label={`${name}: read at full size`}
       {...bind(name, { tap: true })}
     >
       {face ? (

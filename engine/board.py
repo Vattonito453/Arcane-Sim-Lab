@@ -1,7 +1,20 @@
 #!/usr/bin/env python3
 """Reconstruct battlefield state from a Forge event log, and emit snapshots.
 
-## Why this is inference rather than a read
+## Two paths, and only one of them guesses
+
+A game that carries the shim's `zones` stream is reconstructed by READING it:
+`GameEventCardChangeZone` fires in both directions, keyed by Forge's own card
+id, and includes `None -> Battlefield` (a token being created), which stdout
+never shows at any verbosity. The shim also stamps each record with the card's
+core types, net P/T and token flag as of the move, so the battlefield needs no
+Scryfall lookup and tokens type correctly for the first time. Prefer `build()`,
+which picks this path when it exists.
+
+Everything below describes the OTHER path: stdout-only logs, from stock Forge
+runs and from every result file written before the shim carried types.
+
+## Why the stdout path is inference rather than a read
 
 Forge's text log records cards LEAVING the battlefield but never ENTERING it.
 Verified on a real 16-game log: 134 "Battlefield -> Graveyard", 15 "-> Exile",
@@ -107,7 +120,7 @@ class Board:
         return None
 
     def add(self, player: str, name: str, inst: str | None, kind: str,
-            assumed: bool = False) -> None:
+            assumed: bool = False, pt: str | None = None) -> None:
         name = _clean(name)
         if not name or player not in self.zones:
             return
@@ -119,7 +132,7 @@ class Board:
             if any(key in z for z in self.zones.values()):
                 return  # already tracked
         self.zones[player][key] = {"name": name, "id": inst, "kind": kind,
-                                   "assumed": assumed}
+                                   "assumed": assumed, "pt": pt}
         self.entries += 1
         if assumed:
             self.assumed_entries += 1
@@ -163,7 +176,8 @@ class Board:
         return {
             p: [
                 {"name": c["name"], "id": c["id"], "kind": c["kind"],
-                 **({"assumed": True} if c["assumed"] else {})}
+                 **({"assumed": True} if c["assumed"] else {}),
+                 **({"pt": c["pt"]} if c.get("pt") else {})}
                 for c in z.values()
             ]
             for p, z in self.zones.items()
@@ -176,6 +190,73 @@ def _kind_for(name: str, fetch: bool) -> tuple[str, bool]:
         return "token", False
     kind = cards.card_kind(name, fetch=fetch)
     return (kind, True) if kind == "unknown" else (kind, False)
+
+
+# Forge's core types -> the coarse groups the board rows use. Ordered: the
+# first hit wins, so an artifact creature files under creature exactly like
+# cards.card_kind() files it from a Scryfall type line.
+_TYPE_ORDER = ("Land", "Creature", "Planeswalker", "Battle",
+               "Artifact", "Enchantment", "Instant", "Sorcery")
+_TYPE_KIND = {"Land": "land", "Creature": "creature",
+              "Planeswalker": "planeswalker", "Battle": "battle",
+              "Artifact": "artifact", "Enchantment": "artifact",
+              "Instant": "spell", "Sorcery": "spell"}
+
+
+def _kind_from_zone(rec: dict, fetch: bool) -> tuple[str, bool]:
+    """(kind, assumed) from a shim zone record's own type data.
+
+    The shim reads the type off Forge's card at the moment it moves, so this
+    answers for tokens — which are not Scryfall cards and which name-based
+    typing can never resolve — and needs no cache. Records from before the
+    shim emitted types fall back to the Scryfall path.
+    """
+    if rec.get("token"):
+        return "token", False
+    types = rec.get("types") or ""
+    if types:
+        present = set(types.split(","))
+        for t in _TYPE_ORDER:
+            if t in present:
+                return _TYPE_KIND[t], False
+    return _kind_for(rec.get("card") or "", fetch)
+
+
+def reconstruct_from_zones(game: dict, fetch: bool = False) -> tuple[Board, list[dict]]:
+    """Fold a shim `zones` stream into board state. This is a read, not inference.
+
+    Forge's stdout log records only exits, which is why the text path below has
+    to guess entries. The shim taps GameEventCardChangeZone instead and reports
+    BOTH directions, keyed by Forge's own card id — including `None ->
+    Battlefield`, which is a token being created and is invisible in stdout at
+    any verbosity. Every membership change here is an observation.
+    """
+    board = Board(game.get("players", []))
+    snapshots: list[dict] = []
+    seen_turn = None
+
+    for rec in game.get("zones", []):
+        turn = rec.get("turn", 0)
+        if seen_turn is not None and turn != seen_turn:
+            snapshots.append({"turn": seen_turn, "board": board.snapshot()})
+        seen_turn = turn
+
+        name = rec.get("card")
+        inst = rec.get("cardId")
+        inst = None if inst in (None, -1) else str(inst)
+        if not name:
+            continue
+
+        if rec.get("to") == "Battlefield":
+            kind, assumed = _kind_from_zone(rec, fetch)
+            board.add(rec.get("toPlayer") or "", name, inst, kind, assumed,
+                      pt=rec.get("pt") or None)
+        elif rec.get("from") == "Battlefield":
+            board.remove(name, inst, turn, f"zone {name} -> {rec.get('to')}")
+
+    if seen_turn is not None:
+        snapshots.append({"turn": seen_turn, "board": board.snapshot()})
+    return board, snapshots
 
 
 def reconstruct(game: dict, fetch: bool = False) -> tuple[Board, list[dict]]:
@@ -267,20 +348,37 @@ def reconstruct(game: dict, fetch: bool = False) -> tuple[Board, list[dict]]:
     return board, snapshots
 
 
+def has_zone_stream(game: dict) -> bool:
+    """True when this game carries the shim's zone records (a read, not inference)."""
+    return bool(game.get("zones"))
+
+
+def build(game: dict, fetch: bool = False) -> tuple[Board, list[dict]]:
+    """Best available reconstruction for one game: zone stream if present."""
+    if has_zone_stream(game):
+        return reconstruct_from_zones(game, fetch=fetch)
+    return reconstruct(game, fetch=fetch)
+
+
 def validate(result: dict, fetch: bool = False) -> dict:
     """Accuracy report across every game in a result file."""
     total_exits = orphans = entries = assumed = 0
+    zone_games = 0
     per_game = []
     for i, g in enumerate(result.get("games", []), 1):
-        board, snaps = reconstruct(g, fetch=fetch)
-        exits = sum(
-            1
-            for t in g.get("turns", [])
-            for e in t.get("events", [])
-            if e.get("action") == "zone_change"
-            and (m := _EXIT.match(e.get("raw", "")))
-            and m.group(4).lower() == "battlefield"
-        )
+        board, snaps = build(g, fetch=fetch)
+        if has_zone_stream(g):
+            zone_games += 1
+            exits = sum(1 for z in g["zones"] if z.get("from") == "Battlefield")
+        else:
+            exits = sum(
+                1
+                for t in g.get("turns", [])
+                for e in t.get("events", [])
+                if e.get("action") == "zone_change"
+                and (m := _EXIT.match(e.get("raw", "")))
+                and m.group(4).lower() == "battlefield"
+            )
         total_exits += exits
         orphans += len(board.orphan_exits)
         entries += board.entries
@@ -288,11 +386,16 @@ def validate(result: dict, fetch: bool = False) -> dict:
         per_game.append({
             "game": i, "exits": exits, "orphans": len(board.orphan_exits),
             "entries": board.entries, "assumed": board.assumed_entries,
+            "basis": "zone_stream" if has_zone_stream(g) else "inferred",
             "final_sizes": {p: len(v) for p, v in board.snapshot().items()},
         })
     matched = total_exits - orphans
+    n = len(per_game)
     return {
-        "games": len(per_game),
+        "games": n,
+        "basis": ("zone_stream" if zone_games == n and n
+                  else "inferred" if not zone_games
+                  else f"mixed ({zone_games}/{n} zone_stream)"),
         "exits_total": total_exits,
         "exits_matched": matched,
         "exit_match_rate": round(matched / total_exits, 4) if total_exits else None,
@@ -307,8 +410,10 @@ def validate(result: dict, fetch: bool = False) -> dict:
 def annotate(result: dict, fetch: bool = False) -> dict:
     """Add a board_snapshot event to the end of each turn, in place."""
     added = 0
+    bases = set()
     for g in result.get("games", []):
-        _, snaps = reconstruct(g, fetch=fetch)
+        _, snaps = build(g, fetch=fetch)
+        bases.add("zone_stream" if has_zone_stream(g) else "inferred")
         by_turn = {s["turn"]: s["board"] for s in snaps}
         for t in g.get("turns", []):
             board = by_turn.get(t.get("turn"))
@@ -322,10 +427,15 @@ def annotate(result: dict, fetch: bool = False) -> dict:
                 "board": board,
             })
             added += 1
+    basis = ("shim zone stream: both directions observed, incl. token creation"
+             if bases == {"zone_stream"} else
+             "inferred entries (Forge logs no battlefield entries) + explicit exits"
+             if bases == {"inferred"} else
+             "mixed: shim zone stream where present, inference otherwise")
     result.setdefault("meta", {})["board_snapshots"] = {
         "generator": "board.py",
         "turns_annotated": added,
-        "basis": "inferred entries (Forge logs no battlefield entries) + explicit exits",
+        "basis": basis,
     }
     return result
 

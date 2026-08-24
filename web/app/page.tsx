@@ -158,9 +158,18 @@ export default function Home() {
     const finished = sorted.filter((r) => !r.error);
     const totalGames = finished.reduce((a, r) => a + (r.games ?? r.summary?.games ?? 0), 0);
 
+    // The leaderboard ranks decks against each other, so it may only be built
+    // from runs whose win rates are comparable: seat-rotated, and free of
+    // games the clock cut off and recorded as wins. Runs that fail that test
+    // still exist and are still listed below; they just do not get to move a
+    // ranking. Older runs predating the checks count as unusable rather than
+    // being given the benefit of the doubt.
+    const rankable = finished.filter((r) => r.validity?.usable_for_ranking);
+    const excluded = finished.length - rankable.length;
+
     // Per-deck aggregate across every finished run it appeared in.
     const agg = new Map<string, DeckAgg>();
-    for (const r of finished) {
+    for (const r of rankable) {
       if (!r.summary) continue;
       const games = r.summary.games;
       const seats = new Set(Object.keys(r.summary.win_rates).map(stripAi));
@@ -196,7 +205,7 @@ export default function Home() {
         };
       });
 
-    return { runs: finished.length, totalGames, top, recent };
+    return { runs: finished.length, totalGames, top, recent, excluded };
   }, [results]);
 
   return (
@@ -287,11 +296,29 @@ export default function Home() {
             </div>
             {!view || view.top.length === 0 ? (
               <p className="note">
-                No finished runs yet.{" "}
-                <Link className="bl" href="/new">
-                  Run a gauntlet
-                </Link>{" "}
-                and the leaderboard builds itself.
+                {view && view.excluded > 0 ? (
+                  <>
+                    Nothing here can be ranked yet.{" "}
+                    <b>
+                      {view.excluded} of {view.runs}{" "}
+                      {view.runs === 1 ? "run" : "runs"}
+                    </b>{" "}
+                    are not seat-comparable, so ranking decks on them would
+                    compare seating and clock cutoffs rather than decks.{" "}
+                    <Link className="bl" href="/results">
+                      See why
+                    </Link>
+                    .
+                  </>
+                ) : (
+                  <>
+                    No finished runs yet.{" "}
+                    <Link className="bl" href="/new">
+                      Run a gauntlet
+                    </Link>{" "}
+                    and the leaderboard builds itself.
+                  </>
+                )}
               </p>
             ) : (
               <>
@@ -338,6 +365,18 @@ export default function Home() {
                 <p className="note">
                   Pooled across every pod and seat, so read a deck against its own pod&apos;s
                   baseline in the run report, not against this list.
+                  {view.excluded > 0 && (
+                    <>
+                      {" "}
+                      Built from{" "}
+                      <b>
+                        {view.runs - view.excluded} of {view.runs}{" "}
+                        {view.runs === 1 ? "run" : "runs"}
+                      </b>
+                      : the rest are not seat-comparable and would measure
+                      seating or clock cutoffs rather than decks.
+                    </>
+                  )}
                 </p>
               </>
             )}

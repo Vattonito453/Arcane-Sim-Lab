@@ -50,11 +50,23 @@ def claim() -> dict | None:
     return {"id": row[0], "payload": json.loads(row[1])}
 
 
-def finish(job_id: str, result: dict | None = None, error: str | None = None) -> None:
+def finish(job_id: str, result: dict | None = None, error: str | None = None) -> bool:
+    """Complete a RUNNING job. Returns False when it was already finished.
+
+    The state guard matters because two things can complete the same job: the
+    worker, and reap_stale() deciding the worker was lost. Without it the
+    sequence went error -> done: a poll declared a live job dead ("the worker
+    was lost, start again"), the user queued a duplicate, and then the original
+    worker finished and quietly resurrected the job it had been told was gone
+    (audit A17).
+    """
     with _conn() as c:
-        c.execute("UPDATE jobs SET state=?, result=?, error=?, finished=? WHERE id=?",
-                  ("done" if error is None else "error",
-                   json.dumps(result) if result else None, error, time.time(), job_id))
+        return c.execute(
+            "UPDATE jobs SET state=?, result=?, error=?, finished=? "
+            "WHERE id=? AND state='running'",
+            ("done" if error is None else "error",
+             json.dumps(result) if result else None, error, time.time(),
+             job_id)).rowcount > 0
 
 
 def recover_orphans() -> int:
@@ -82,12 +94,27 @@ def reap_stale(max_seconds: float | None = None) -> int:
     Backstop for a worker that died and never came back (recover_orphans only
     runs when a worker starts). Called from get(), so the same /sim-status
     poll a viewer's run page makes is what eventually turns a zombie into an
-    honest error. The ceiling must exceed the worst legitimate sim — those are
-    tens of minutes (SIM_CALIBRATION.md), and Engine.simulate kills the
-    subprocess after MTG_SIM_TIMEOUT_SECONDS (2 h default) anyway.
+    honest error.
+
+    The ceiling MUST outlast the sim's own kill, or this reaps live work: the
+    subprocess ceiling now scales with games x clock x rotations (audit A14),
+    so a flat 3 h here would fail a legitimate 64-game gauntlet mid-run and
+    tell the user to start again. Derived from the largest sim the API accepts
+    unless an operator pins it.
     """
     if max_seconds is None:
-        max_seconds = float(os.environ.get("MTG_JOB_TIMEOUT_SECONDS", 3 * 3600))
+        override = os.environ.get("MTG_JOB_TIMEOUT_SECONDS")
+        if override:
+            max_seconds = float(override)
+        else:
+            try:
+                from mtg_engine import SIM_MAX_GAMES, sim_timeout_seconds
+                # +30 min so the sim's own kill, its salvage pass and the
+                # worker's write always land first. Whoever finishes first
+                # wins; finish() and this both guard on state='running'.
+                max_seconds = sim_timeout_seconds(SIM_MAX_GAMES, 4) + 1800
+            except Exception:  # noqa: BLE001 — queue must work without the engine
+                max_seconds = 3 * 3600
     now = time.time()
     with _conn() as c:
         return c.execute(

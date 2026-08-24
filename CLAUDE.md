@@ -63,34 +63,51 @@ decide what happened in a game — Scryfall data is for *display and typing* onl
 the sim and make replays show a different game than the one that produced the
 numbers.
 
-### Forge's log has a known, measured ceiling
+### Board state: read it from the shim, infer it only from stdout
 
-Forge logs cards **leaving** the battlefield, never **entering** (measured: 134
-`Battlefield→Graveyard`, 15 `→Exile`, 0 entries in a 16-game run). So board state
-is *inference*, not a read. `board.py` reports its own error rate — currently
-**86.5% of exits match**, and 68 of the 71 misses are tokens created and
-sacrificed without ever acting, for which the exit is the object's only mention.
-On the 2-game fixture the same figure is **83.3%**. Entries recorded as assumed
-(no type data to go on) depend on how warm the Scryfall cache is — **8.4%** with
-the cache warm, more on a cold one — so treat exit_match_rate, not assumed_share,
-as the regression signal.
+Two paths, and only one of them guesses. **Check which one a result file is on
+before quoting any accuracy number** — `board.py` prints `basis` first.
+
+**Shim path (`meta.agent = simlab-forge-shim/*`, games carry `zones`): a read.**
+`GameEventCardChangeZone` fires in both directions keyed by Forge's own card id,
+including `None → Battlefield`, which is a token being created. Since shim
+0.3.0 each record also carries the card's core `types`, net `pt` and `token`
+flag as of the move. Measured on a 3-game humanized run: **exit_match_rate 1.0,
+assumed_share 0.0**, tokens typed correctly with live P/T (`Zombie Token 2/2`,
+and `3/3` where an anthem had grown it), zero Scryfall lookups. Re-adapt old
+shim JSONL to pick up the new fields; logs written before 0.3.0 keep working
+and fall back to Scryfall typing (measured 37.6% assumed on one such file).
+
+**Stdout path (stock Forge runs, and every result file from before the shim):
+inference.** Forge logs cards leaving the battlefield, never entering
+(measured: 134 `Battlefield→Graveyard`, 15 `→Exile`, 0 entries in a 16-game
+run). `board.py` reports its own error rate — **86.5% of exits match**, and 68
+of the 71 misses are tokens created and sacrificed without ever acting, for
+which the exit is the object's only mention. On the 2-game fixture the same
+figure is **83.3%**. Entries recorded as assumed depend on how warm the
+Scryfall cache is (**8.4%** warm, more cold), so treat exit_match_rate, not
+assumed_share, as the regression signal.
 
 Consequences you must respect:
-- The **event log is authoritative**; the board is an aid. Never present
-  reconstructed board state as ground truth. The replay's top-down table says so
-  in a note under it — keep that note if you rework the view.
+- On the stdout path the **event log is authoritative** and the board is an
+  aid: never present it as ground truth, and keep the note under the replay's
+  top-down table if you rework the view. On the shim path the board IS a read,
+  but the honesty note still has to distinguish the two rather than quietly
+  upgrading every replay.
 - Cards of unknown type go in an "Unidentified" group. Don't guess them onto the
   battlefield and don't silently drop them.
 - If you change reconstruction, re-run `python3 engine/board.py <result>.json`
-  and confirm `exit_match_rate` did not regress.
+  on BOTH a stdout fixture and a shim result, and confirm neither
+  `exit_match_rate` regressed.
 - **Forge batches attackers onto one line** — `assigned A (100), B (72) and C (326)
   to attack X` — and card names contain commas, so a reference list must be split
   on each `(instance id)`, never on commas. `board.py` `_refs()` and `replay.ts`
   `attackerNames()` implement the same rule; change them together.
-- There is no verbosity flag that fixes this. Don't patch Forge for it either —
-  the sanctioned fix is the GPL shim driving `Match` programmatically, whose
-  typed `GameLog` (incl. `ZONE_CHANGE`, `MULLIGAN`) can replace stdout scraping
-  (see legal, below, and `training/forge_integration.md`).
+- There is no verbosity flag that fixes the stdout path, and patching Forge is
+  off the table. The sanctioned fix is the GPL shim driving `Match`
+  programmatically, which is now the default agent — so the way to raise board
+  accuracy on a given run is to run it through the shim, not to improve the
+  inference (see legal, below, and `training/forge_integration.md`).
 
 ### Sim results must be presented honestly
 
@@ -219,6 +236,26 @@ cached on disk. A warm cache makes zero network calls. Never loop single lookups
   a shared store.
 - Result filenames are validated against path traversal. Keep that.
 
+### Sim timing: three numbers, and they are not interchangeable
+
+- **Per-game clock** (`--clock`, 900 s, measured): the wall a single game gets
+  before Forge draws it. Passed explicitly from the engine so it cannot drift
+  from the maths below.
+- **Outer ceiling** (`sim_timeout_seconds`): played games x clock + rotations x
+  150 s + 300 s. A hang detector, nothing else. It must exceed worst-case play
+  or it kills legitimate work, which is what a flat 2 h used to do (audit A14).
+  4.2 h for 16 games, 16.2 h for 64. `reap_stale()` derives from it, so raising
+  one without the other can no longer reap a live job.
+- **Typical duration** (`estimate_sim_seconds`): what to TELL a user, roughly
+  10-25 min for a 4-deck 16-game gauntlet. Never used to kill anything.
+
+Keep these separate. Quoting the ceiling to a user reads as "this may take 16
+hours"; using the estimate as a timeout kills healthy runs.
+
+**A rotated run plays more games than were requested**, rounded up so every
+deck sits in every seat the same number of times (10 requested -> 12 played).
+Any surface that shows a game count shows the played number and says why.
+
 ### Containerized Forge needs a display
 
 The worker image installs xvfb and starts a virtual display before the worker
@@ -236,6 +273,11 @@ lost to block buffering. See deploy/HOSTING.md.
 ```bash
 # Engine
 python3 engine/tests/test_adapter.py                          # must print ALL ASSERTIONS PASSED
+python3 engine/tests/test_board_zones.py                      # shim zone stream -> board
+python3 engine/tests/test_summary_and_validity.py             # timeout accounting + pollution gate
+python3 engine/tests/test_run_accounting.py                   # run sizing, ceilings, salvage
+python3 engine/tests/test_staging.py
+python3 engine/tests/test_result_attribution.py
 python3 engine/tests/smoke_test.py --sim                      # needs the API up; 35 checks
                                                               # --sim runs real Forge (~40 s)
 python3 engine/board.py engine/tests/fixtures/sim_sample.json --no-fetch
@@ -310,7 +352,8 @@ regenerates by running a sim.
   and update the doc in the same commit. Don't let docs drift.
 - If a measurement contradicts a claim in these docs, **trust the measurement**
   and fix the doc — several numbers here came from exactly that.
-- State uncertainty plainly. "Board membership is inferred at 86.5% exit match"
+- State uncertainty plainly, and name the path it applies to. "Board membership
+  is inferred at 86.5% exit match on stdout runs, and read exactly on shim runs"
   is useful; "board state is accurate" is not.
 - Don't spend money, create hosting accounts, or generate production secrets.
   Those are Vincent's, and `deploy_plan.md` Phase 0 covers them.

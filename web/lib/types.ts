@@ -27,14 +27,34 @@ export interface ResultIndexEntry {
   decks?: string[];
   games?: number;
   summary?: SimSummary;
+  /** Seat-rotated, so win rates are comparable across decks. */
+  rotated?: boolean;
+  /** True when every seat ran a plan agent, false for stock Forge. */
+  humanized?: boolean;
+  agent?: string;
+  validity?: Validity;
   error?: string;
 }
 
 export interface SimSummary {
   games: number;
   draws: number;
+  /** Games the per-game clock cut off. Counted inside `draws` as well, since a
+   *  clock-cut game has no real winner. Absent on results written before
+   *  2026-08-03. */
+  timeouts?: number;
   wins: Record<string, number>;
   win_rates: Record<string, number>; // 0..1, keys may carry "Ai(n)-" prefix
+}
+
+/** engine/validity.py — whether a run's numbers can be trusted, and why not. */
+export type ValidityQuality = "clean" | "suspect" | "polluted";
+
+export interface Validity {
+  quality: ValidityQuality;
+  flags: string[];
+  usable_for_ranking: boolean;
+  reasons: string[];
 }
 
 export interface SimEvent {
@@ -76,6 +96,8 @@ export interface SimResult {
   meta: { decks?: string[]; format?: string; [k: string]: unknown };
   games: SimGame[];
   summary: SimSummary;
+  /** Attached by the API at read time, not stored in the file. */
+  validity?: Validity;
 }
 
 /** GET /results/{file}/summary — a run without its event logs. */
@@ -93,6 +115,7 @@ export interface RunSummary {
   summary: SimSummary;
   games: RunGameSummary[];
   file: string;
+  validity?: Validity;
 }
 
 /** GET /results/{file}/game/{n} — one game's full event log. */
@@ -102,6 +125,33 @@ export interface RunGame {
   n: number;
   games_total: number;
   game: SimGame;
+}
+
+/** GET /sim-status .progress — how far along, and whether it is still moving.
+ *
+ *  A four-deck gauntlet is tens of minutes of a silent JVM, so an elapsed
+ *  timer alone cannot distinguish "working" from "died". Every field here
+ *  exists to answer that. */
+export interface JobProgress {
+  /** Games that will actually be played: rounded up to whole seat rotations,
+   *  so it is usually MORE than the number requested. */
+  expected_games: number;
+  rotations: number;
+  /** [low, high] seconds a run this size typically takes. */
+  typical_seconds: [number, number];
+  /** The hang ceiling. Many times any real run; not an estimate. */
+  ceiling_seconds: number;
+  /** Finished games across every rotation. Running jobs only. */
+  games_done?: number;
+  elapsed?: number;
+  seconds_per_game?: number;
+  eta_seconds?: number;
+  /** Since the run last wrote anything. The real liveness signal. */
+  seconds_since_activity?: number;
+  /** Nothing written for far longer than one game's clock. */
+  stalled?: boolean;
+  /** Slower than typical, which on its own is not a problem. */
+  over_typical?: boolean;
 }
 
 export interface JobStatus {
@@ -116,6 +166,10 @@ export interface JobStatus {
   result_file?: string;
   /** Queued jobs ahead of this one. Present only while state is "queued". */
   queued_ahead?: number;
+  progress?: JobProgress;
+  /** The run was cut short but its finished games were kept. */
+  incomplete?: boolean;
+  warning?: string;
 }
 
 /** GET /sim-live — the game currently being played, parsed from the partial

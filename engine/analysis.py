@@ -38,7 +38,9 @@ import combos  # noqa: E402
 
 # Bump when the payload shape or the maths change: the API caches reports on
 # disk beside the results, and a stale cache would silently serve the old shape.
-ANALYSIS_VERSION = 3
+# Bumped to 4 on 2026-08-06: reports now carry a validity verdict, so a v3
+# cache entry has no way to say its numbers came from a polluted run.
+ANALYSIS_VERSION = 4
 
 _AI = re.compile(r"^Ai\(\d+\)-")
 # "X has kept a hand of 7 cards" / "X has mulliganed down to 6 cards" — take the
@@ -373,9 +375,14 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
     for g in games_out:
         methods[g["method"]] = methods.get(g["method"], 0) + 1
 
+    import validity
     return {
         "version": ANALYSIS_VERSION,
         "file": result.get("file"),
+        # Win methods and combo conversion are only as good as the games they
+        # were read from, and a clock-forced fake win is attributed a method
+        # like any other. Ship the verdict with the numbers (audit A25).
+        "validity": validity.assess(result),
         "games": games_out,
         "decks": per_deck,
         "summary": {"games": total, "methods": methods},

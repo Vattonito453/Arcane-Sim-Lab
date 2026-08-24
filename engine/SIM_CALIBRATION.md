@@ -3,6 +3,24 @@
 Findings from ~500 simulated 4-player Commander games (July 2026). Any product
 built on this engine MUST apply these corrections before showing users a number.
 
+## Reading the win rates in this document
+
+**Every win rate below is tagged PRE-FIX or POST-FIX. Never mix them.**
+
+- **PRE-FIX** = measured at the old `--clock 120` default, before shim commit
+  77e4ddb forced a draw on timeout. At that clock a clock-expired game was still
+  credited to a winner, so an unknown share of these wins were awarded by the
+  stopwatch rather than won. Measured on the v1/v2/v3 pods, **15.1% (stock) and
+  13.0% (agent) of games run past 120 s on a quiet 12-core Mac**, and far more on
+  slower hardware. Treat PRE-FIX win rates as unusable, not merely noisy.
+- **POST-FIX** = `--clock 900`, shim 7d15e42b16301276 or later, timeout games
+  excluded from the denominator rather than credited.
+
+**Behavioural metrics are unaffected by all of this.** Mulligan rate, split
+rate, block rate, counter vetoes and the Stage 4/5 counters come from agent
+telemetry, not from game outcomes, and neither the clock nor the timeout bug
+touches them. They need no pre/post tag.
+
 ## Bias 1: Seat position (FIXED — always use --rotate)
 
 Fixed deck order gives seat 1 an 11% win rate and seat 4 a 36% win rate
@@ -30,6 +48,14 @@ Seat-fair measurement across 320+ deck-games:
 
 The AI converts battlefield creatures into wins and cannot execute multi-turn
 engine plans, hold protection for wipe turns, or sequence setup->payoff kills.
+
+**These baselines are PRE-FIX as well as stock-AI-only.** They were measured at
+the 120 s clock, so an unknown share of the games behind them were decided by
+the stopwatch. They still describe the right *shape* (creature decks convert,
+engine decks do not) because the effect is large and the Inspirit case study
+below is corroborated by telemetry rather than by win rate alone. But the
+specific 38% / 12% figures are due a POST-FIX re-measurement before they are
+shown to a user as a threshold.
 
 **Controlled proof (the Inspirit case study):** four progressively fixed Inspirit
 builds plus the EDHREC 10,818-deck consensus list all scored 6-25% seat-fair,
@@ -77,9 +103,14 @@ Notes:
 - keep-7 rate from log text (93.8% both) is misleading for the agent: the
   free Commander mulligan redraws to 7, so a mulled hand still logs "kept a
   hand of 7". Use agent `mull_take`/`mull_keep` events for the true rate.
-- Win-rate spread compressed under the agent (38/25/25/12 vs stock
+- ~~Win-rate spread compressed under the agent (38/25/25/12 vs stock
   38/38/12/12 on 8-game samples — n too small for conclusions, direction
-  plausible: interaction punishes runaway starts).
+  plausible: interaction punishes runaway starts).~~ **RETRACTED 2026-08-04.**
+  PRE-FIX, and n=8 could not have supported it even without the timeout bug:
+  four *identical* decks over 8 games produce a spread SD of 14.1 pp on average,
+  which is larger than the entire claimed effect (stock 13.0 pp vs agent
+  9.2 pp). Re-measured POST-FIX the direction reverses. See "Win-rate spread
+  re-measured" below.
 - Familiarity level is full-decklist (every seat knows every plan's threat
   signature). Blind/archetype-aware dials are not implemented yet.
 
@@ -115,9 +146,11 @@ Notes:
   from public combat declarations, table threat reads battlefield + life,
   the open-mana check counts untapped lands on the battlefield. No hand or
   library reads anywhere in the controller.
-- Wins this sample: Drana 50%, Wyleth 25%, Kilo 25%, Wilhelt 0% (n=8 — for
-  behavior measurement, not win-rate conclusions). Archetype baselines above
-  remain STOCK-AI baselines until re-measured under the agent at scale.
+- Wins this sample: Drana 50%, Wyleth 25%, Kilo 25%, Wilhelt 0%. **PRE-FIX,
+  n=8: do not read this line at all.** It sits inside the noise band for four
+  identical decks. The behavioural rows in the table above are unaffected.
+  Archetype baselines above remain STOCK-AI baselines until re-measured under
+  the agent at scale.
 
 ## Sim Lab agent v3 (Stage 5 combo pursuit, measured 2026-08-01)
 
@@ -154,9 +187,13 @@ behavior vs training-data human reference:
 | pursues own win condition    | never | gated: 1 `combo_cast` in the run's single sighted moment; 88 searches, none mis-steered | every human winner |
 
 Stage 4 behaviors intact this run: 11 kingmaker re-aims, 6 counter vetoes /
-2 fires, 5 optional-trigger misses, 32 splits. Wins 38/38/12/12
+2 fires, 5 optional-trigger misses, 32 splits. ~~Wins 38/38/12/12
 (UrD/Meren/Kilo/Atraxa) vs the pre-agent run's 67/17/17/0 — n=8, direction
-only.
+only.~~ **PRE-FIX and RETRACTED 2026-08-04**: this pod re-measured POST-FIX at
+n=64 gives UrD 58 / Meren 33 / Atraxa 5 / Kilo 5 under the agent and
+UrD 48 / Meren 20 / Atraxa 19 / Kilo 12 under stock, which is spread
+*expansion*, the opposite of what this line was cited for. The behavioural
+counters in this paragraph stand.
 
 Honesty notes:
 - This pod cannot showcase pursuit: Atraxa's five known lines are all
@@ -191,6 +228,99 @@ games, with plans generated by `deck_plan.py` from the real decklists:
   mulligan rate 9/40. 8 games, 0 draws, no stalls or illegal actions.
 
 Pursuit remains **rare by design** — 3 pursuit actions in 8 games — because
-the line-of-sight gate only opens when a line is nearly complete. Wins this
-run were Kilo 50 / Drana 38 / Atraxa 12 / Krenko 0 (n=8, direction only);
-pursuit did not rescue Krenko, and nothing here says it should.
+the line-of-sight gate only opens when a line is nearly complete. ~~Wins this
+run were Kilo 50 / Drana 38 / Atraxa 12 / Krenko 0 (n=8, direction only)~~
+**PRE-FIX, retracted 2026-08-04**; POST-FIX at n=64 this pod gives
+Drana 38 / Atraxa 36 / Kilo 16 / Krenko 11 under the agent, so Kilo was not
+the strongest seat and Krenko was not at zero. Pursuit did not rescue Krenko,
+and nothing here says it should.
+
+## Win-rate spread re-measured (POST-FIX, 2026-08-04)
+
+The claim under test: "the agent compressed the win-rate spread," cited in this
+doc's v1 section and in `MARKET_SCAN.md` §8 as evidence that humanization
+changed *outcomes* and not just behaviour.
+
+**It does not survive. The measured direction is expansion, not compression.**
+
+Method: the three pods this doc quotes, re-run at `--clock 900` with the pinned
+post-fix shim (7d15e42b16301276), 64 seat-rotated games per arm per pod, 384
+games total. Both arms run through the shim (`--agent shim` vs `--humanize`) so
+the harness is held constant and only the decision policy varies; the original
+A/B used Forge's CLI for its stock arm, which changed pilot and harness at once.
+Timeout games are excluded from the denominator. Tools:
+`studies/agent_spread/run_pods.py` and `spread_analysis.py`.
+
+| pod | stock spread SD | agent spread SD | delta |
+|---|---|---|---|
+| krenko / atraxa / kilo / drana | 14.8% | 11.8% | **-2.9 pp** |
+| atraxa / urdragon / meren / kilo | 13.8% | 22.2% | **+8.3 pp** |
+| kilo / drana / wilhelt / wyleth | 4.4% | 10.1% | **+5.7 pp** |
+| **pooled** | | | **+3.7 pp** (95% CI -0.9 to +7.5) |
+
+Compression would require a negative delta. Two of three pods expand, the pooled
+estimate expands, and P(agent spread < stock spread) = 0.064. The one pod that
+does compress has a CI spanning zero on its own.
+
+Corroborating, on different decks: five precon pods (test precon vs three fixed
+C14 controls, post-fix shim, clock 600) give deltas of +13.2, +4.7, -1.5, -16.4
+and -2.4 pp, mean ≈ 0, four of five CIs spanning zero.
+
+### Why the original claim was never measurable
+
+Independent of the timeout bug: **at n=8 with four decks, the spread SD of four
+identical decks averages 14.1 pp** (95th pct 23.4 pp). Scoring this doc's own
+PRE-FIX tuples against that null:
+
+| figure | spread SD | vs. chance at n=8 |
+|---|---|---|
+| v1 stock 38/38/12/12 | 13.0 pp | below the chance mean |
+| v1 agent 38/25/25/12 | 9.2 pp | below the chance mean |
+| v2 agent 50/25/25/0 | 17.7 pp | inside the chance band |
+| v3 stock 67/17/17/0 | 25.1 pp | marginally above |
+| v3 agent 38/38/12/12 | 13.0 pp | below the chance mean |
+| v3 re-verify 50/38/12/0 | 19.9 pp | inside the chance band |
+
+The headline comparison (13.0 vs 9.2) is two numbers that are both *below* what
+four identical decks produce. The annotation "n=8, direction only" was too
+generous: at this sample size there is no direction to read. **Rule going
+forward: quote the null spread next to any spread claim.** `spread_analysis.py
+--null-only --decks D --games G` prints it.
+
+### Timeout rate per arm
+
+At `--clock 900` on a quiet box (6 concurrent sims, 12 cores): **0 timeouts in
+all six cells, both arms.** There is no timeout asymmetry to correct for on
+these pods once the clock is right and the machine is not oversubscribed.
+
+The agent is mildly more expensive per game turn: median 0.960 turns/sec vs
+stock's 1.019 (**1.06x**), median game 52.7 s vs 45.7 s. That gap is small
+enough to be irrelevant at a 900 s clock.
+
+**It is not irrelevant under load, and the clock is wall-clock.** Same decks,
+same 600 s clock, differing only in how many sims shared the box:
+
+| concurrent sims | timeouts (Planeswalker Party, stock) | median game |
+|---|---|---|
+| 4 | 0 / 27 | 89 s |
+| 10 | 8 / 17 | 306 s |
+
+At 10 workers the agent arm's timeout rate exceeded stock's in all five precon
+pods (47 vs 16%, 26 vs 9%, 29 vs 12%, 53 vs 47%, 65 vs 33%), because a modest
+per-turn cost difference becomes decisive once absolute game times inflate ~5x
+and everything crowds the clock. **Consequence: never compare arms across runs
+made at different concurrency, and keep sim concurrency well under core count.**
+An oversubscribed box does not just run slower, it silently changes which games
+count.
+
+### What this does and does not overturn
+
+- **Overturned:** every PRE-FIX win-rate line in this document, and the
+  spread-compression claim specifically.
+- **Untouched:** all behavioural metrics (splits, blocks, mulligans, counter
+  vetoes, tutor casts, kingmaker re-aims, trigger misses). These are agent
+  telemetry, not outcomes.
+- **Still open:** whether the agent predicts *human* win rates better than stock
+  does. That is the predictive-validity question, it is a different claim from
+  both resemblance and spread, and `studies/precon_correlation/` exists to
+  answer it.

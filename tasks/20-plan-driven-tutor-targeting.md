@@ -154,6 +154,57 @@ line-of-sight keeps absolute priority (closer beats opener); unranked or
 tied → defer to stock AI. Never touches combat, politics, or anything but
 the agent's own search choices. Emit `tutor_steer` with `mode=plan|combo`.
 
+**Stage 2 result (shim 0.5.0, landed 2026-08-25).** Implemented as specified,
+with four rules the spec did not anticipate. Each came out of a
+pre-implementation audit that read Forge's own bytecode, and two were blockers
+in the first draft:
+
+1. **Own-library gate.** Being the decider is not owning the library: Forge
+   keeps them in separate locals, so Bribery and Acquire put an *opponent's*
+   creature onto my battlefield, and an Intuition aimed at me makes me choose
+   out of the *caster's* library into the *caster's* hand. Ranking those by my
+   deck plan is meaningless, and it fires trivially, because a plan values none
+   of the opponent's cards, so the stock pick scores 0 and anything of mine
+   beats it. Every option must now come from the searching seat's own library.
+   This gate sits ahead of combo pursuit too, which had the same hole since
+   0.3.0.
+2. **A decline is an answer.** Forge reads a null pick as "cancel the search"
+   and asks `confirmAction` about stopping, so overriding it both takes a card
+   and suppresses the cancel. That is a second intervention with its own risk
+   profile, and Stage 1 measured nothing about it (those rows logged `picked=-`
+   and acted on nothing), so the plan path defers. Combo pursuit keeps its
+   older, narrower override, which is gated on one named missing piece.
+3. **Multi-card searches swap, never grow.** Adding a card because the search
+   had room would change how MANY cards a search takes, which is outside "the
+   agent's own search choices" — and on a pile effect (Gifts Ungiven and
+   Intuition are both live in the test pod) forcing your single best card into
+   a pile the opponent splits is the classic way to lose with it. The plan path
+   replaces the weakest pick, and only when strictly better than that card.
+4. **No destination allow-list.** A draft restricted steering to Hand and
+   Battlefield on the theory that other zones might be a cost. Measured against
+   the 2.0.13 card pool that excludes 23% of library searches, including every
+   top-of-library tutor (Vampiric, Mystical, Enlightened) and the graveyard
+   tutors a reanimator deck is built on. The acceptance run produced the
+   clinching case: a Beseech the Mirror search with `dest=Exile`, where exile
+   is exactly where you want your best card, because you cast it from there.
+   Which zones are good is a property of the deck, so if it ever needs saying
+   it belongs in the plan JSON, not in Java. The own-library gate is what
+   actually keeps the dangerous searches out.
+
+Keep weights still never steer (`mode=targets` only), per Stage 0. Telemetry:
+`search_seen` gains `sid`, `dest`, `comboPick` and `src`; `tutor_steer` becomes
+`sid mode value stockValue steer over`. Pair the two on `sid` — a turn can
+resolve several searches, so (game, turn, player) is not unique, and the
+Stage 1 data already contains turns where it collides.
+
+Acceptance evidence is in `studies/tutor_targeting/runs_stage2/` and checked by
+`analyze_stage2.py`, which reports UNPROVEN rather than passing a check the run
+never exercised. That distinction earned its keep immediately: the first probe
+"failed" combo priority three times, and all three were searches where the
+sighted line's missing piece was not among the options at all (a Finale of
+Devastation offers creatures; the piece was an artifact). `comboPick` exists to
+tell those apart from combo actually losing to the plan.
+
 **Stage 3 — honesty plumbing (this repo).** Bump the shim/agent version and
 surface it (depends on the rotated-merge fix that currently drops the
 version from `meta.agent`). Steered runs must not pool with earlier agent
@@ -169,12 +220,22 @@ the before/after in SIM_CALIBRATION.md if any documented number moves.
       so Stage 2 stayed blocked. Re-measured after Stage 1 the same day:
       agreement 29.3%, plan picks beat stock on eyeball (line pieces over
       big-toughness vanilla), Stage 2 unblocked.
-- [ ] Plan JSON schema change is additive; an old shim ignores it cleanly.
-- [ ] With Stage 2 on: a Finale-of-Devastation-style search in a test pod
+- [x] Plan JSON schema change is additive; an old shim ignores it cleanly.
+      `MiniJson` only reads keys the build asks for, and shim 0.4.1 ran the
+      whole Stage 0 measurement against plans already carrying extra keys.
+      The mirror direction is proven by the inert arm below.
+- [x] With Stage 2 on: a Finale-of-Devastation-style search in a test pod
       picks the plan's top-ranked legal creature (verify via `tutor_steer`
       events), and combo line-of-sight still outranks it when both apply.
-- [ ] Agent version bumped; analysis/UI label steered runs distinctly;
-      no pooling with pre-steer results anywhere.
+      Both proven on the same probe: `src=Finale of Devastation` took Quirion
+      Ranger (target value 8) over stock's Phyrexian Dreadnought (0), and on a
+      Vampiric Tutor where the sighted line's missing piece WAS on offer, combo
+      took Thassa's Oracle while the plan wanted Devoted Druid.
+- [x] Agent version bumped; analysis/UI label steered runs distinctly;
+      no pooling with pre-steer results anywhere. Shim 0.5.0 flows into
+      `meta.agent` through the rotated merge, and `compare_arms.py` now labels
+      arms by agent VERSION, not just `humanized` — which was a live pooling
+      footgun, since 0.4.2 and 0.5.0 agent runs are both humanized.
 - [ ] `python3 engine/tests/test_adapter.py` and the staging/accounting
       tests pass; `cd web && npm run verify` clean if any UI text changes.
 
@@ -184,6 +245,25 @@ the before/after in SIM_CALIBRATION.md if any documented number moves.
 python3 engine/deck_plan.py engine/decks/<tutor-heavy>.dck   # inspect weights/context
 python3 engine/tests/test_adapter.py
 # after a Stage-0 run: grep search_seen events, compute agree rate
-# after Stage 2: same run, confirm tutor_steer mode=plan events and that
-# combat/politics telemetry is byte-identical on a fixed seed
+# after Stage 2: acceptance checks over the raw JSONL, both arms
+python3 studies/tutor_targeting/analyze_stage2.py <run>/shim_raw_*.jsonl
+python3 studies/tutor_targeting/analyze_stage2.py <run>/probeB_inert.jsonl --inert
 ```
+
+**On the retired "byte-identical on a fixed seed" check.** That criterion was
+unachievable and asked for the wrong thing. There is no `--seed` flag; seats
+are seeded `seedBase + playerId + 104729 * gameIndex`, and Forge's own
+`MyRandom` is never seeded from it. More fundamentally, a steer changes the
+game state, so every later decision legitimately diverges — an A/B on one seed
+can only ever show that *something* changed, never that the change was
+confined. What replaces it, and what `analyze_stage2.py` actually enforces:
+
+- **Structural inertness.** Strip `search` from the plans and the mechanism is
+  dark by construction (`targetsMode` false), while combo pursuit keeps
+  working. Measured: 0 plan steers, 32/32 searches `mode=weights`, 3 combo
+  steers still firing. No kill switch needed, and it doubles as the off arm.
+- **Steer legality**, per steer, rather than global diffing: every plan steer
+  in `mode=targets`, value ≥ 2, strictly better than stock, and equal to its
+  own search's `planPick`.
+- **Combo priority** on the contested subset only, with the size of that subset
+  reported so an empty one reads as UNPROVEN rather than as a pass.

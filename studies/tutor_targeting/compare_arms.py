@@ -44,7 +44,13 @@ def main() -> int:
     arms: dict[str, list[tuple[str, dict]]] = defaultdict(list)
     for p in args.results:
         r = json.loads(Path(p).read_text(encoding="utf-8"))
-        label = "agent" if r.get("meta", {}).get("humanized") else "stock"
+        meta = r.get("meta", {})
+        # The agent VERSION is part of the arm identity, not decoration. Two
+        # humanized runs on different shim builds are different agents, and
+        # labelling on `humanized` alone silently pools them — exactly the
+        # pooling the agent-change rule exists to prevent.
+        label = ("agent" if meta.get("humanized") else "stock") \
+            + " " + str(meta.get("agent") or "unknown-agent")
         arms[label].append((p, r))
 
     for label in sorted(arms):

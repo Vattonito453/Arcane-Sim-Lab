@@ -67,6 +67,51 @@ Reading, stated plainly:
   the binding constraint on win round is conversion (human_ceiling
   priority 2, win-speed calibration), not target selection.
 
+## Stage 2: the mechanism acts (2026-08-25, shim 0.5.0)
+
+`runs_stage2/` is the acceptance run: same pod, 8 seat-rotated humanized
+games, plus two 2-game probes (`probeA.jsonl` steering on,
+`probeB_inert.jsonl` with `search` stripped from the plans).
+`analyze_stage2.py` checks steer legality, combo priority, declines, and
+inertness, and reports UNPROVEN rather than passing a check the run never
+exercised.
+
+**The mechanism is correct.** 90 searches, 38 steers (23 plan, 15 combo),
+38/38 legal, 9 genuinely contested searches where combo could have lost
+priority and lost none, 0 steers over a stock decline, 0 unparsed or
+unpairable events. Inert arm: 0 plan steers, all 32 searches `mode=weights`,
+and combo pursuit still firing 3 steers, so the addition is dark by
+construction rather than by a flag.
+
+**The outcome moved the wrong way, and the cause is legible.**
+
+| arm | win rounds | mean | methods | combo_hold |
+|---|---|---|---|---|
+| stock 0.4.2 | 8-14 | 11.5 | combat 7, spell 1 | n/a |
+| agent 0.4.2 (Stage 1) | 6-17 | 11.8 | combat 8 | 4 |
+| agent 0.5.0 (Stage 2) | 8-23 | 14.2 | combat 6, **spell 2** | **47** |
+
+Non-combat wins went up (2 of 8, the most of any arm), which is the
+human-like direction. But mean win round rose by 2.4 rounds, away from the
+human target of 5-6. Every one of the 47 holds is the same event: the greed
+dial seeing an opponent with two or more untapped lands and waiting on the
+last piece.
+
+The causal story fits the numbers rather than excusing them. Stage 2 made
+assembly work, so the agent now reaches "one piece from winning" far more
+often than it did at 4 holds per 8 games; each arrival meets a greed check
+that waits about half the time and re-rolls every turn. Better fetching
+exposed a conversion bottleneck that was previously too rare to see. That is
+the same wall the human ceiling study named as priority 2 (win-speed
+calibration), reached from a different direction.
+
+Caveats, stated rather than buried: n=8 per arm, so 11.8 vs 14.2 is a signal
+and not a verdict. `greed` is plan data (personality), not shim mechanism, so
+the next experiment is a greed sweep on our side of the boundary, with no
+Java change. Magda's Portal to Phyrexia never arrived in this arm, consistent
+with the ranking preferring value-8 line pieces over a value-6 bomb, which
+Stage 1 already flagged as its honest residue.
+
 ## Reproduce
 
 ```bash

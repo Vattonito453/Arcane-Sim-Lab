@@ -38,8 +38,17 @@ logs, 900 s clock, 4 games seat-rotated per pod, one JVM at a time.
    can win by attacking: Godo, Magda, Winota. Magda "agreeing" with the human
    result in two pods is partially coincidence: the deck is both the strongest
    in those pods AND the most combat-capable, so Forge gets the right answer
-   through the wrong mechanism (it never fetched Portal to Phyrexia in any of
-   the 8 Magda-pod games).
+   through the wrong mechanism. ~~It never fetched Portal to Phyrexia in any
+   of the 8 Magda-pod games.~~ **Corrected 2026-08-25: false.** The zone
+   records in this study's own runs show stock Forge fetching Portal from the
+   library in both Magda pods (5 arrivals in the pilot, 3 in sZA0KqXCGrY,
+   rounds 4-13), and a fresh 8-game stock rerun reproduced it
+   (`studies/tutor_targeting/runs_stock/`). The defensible form of the claim:
+   Forge fetches Portal but still wins every game by combat; the human
+   converts Portal into the win, Forge treats it as a value permanent. The
+   gap is line CONVERSION, not target selection. (God-Pharaoh's Gift, the
+   expected proactive fetch, is absent from the drifted simmed list, so that
+   half of the original claim was unfalsifiable in sim.)
 
 3. **Interaction is the invisible half of the gap.** Human games are decided
    by stack fights the sims barely feature (Subtlety, Force of Will, Mental
@@ -64,9 +73,12 @@ logs, 900 s clock, 4 games seat-rotated per pod, one JVM at a time.
 The shim tuning priority list this pilot batch supports, in order:
 
 1. **Win-line pursuit** (Stage 5 combo pursuit work): the entire agreement
-   failure is Forge never attempting the deck's actual win line. Magda fetch
-   targets are the cleanest single test case (expected: God-Pharaoh's Gift
-   proactive, Portal reactive; observed: neither, ever).
+   failure is Forge never CONVERTING the deck's actual win line. Original
+   text claimed Magda fetch targets as the cleanest test case ("expected:
+   God-Pharaoh's Gift proactive, Portal reactive; observed: neither, ever");
+   corrected 2026-08-25: stock Forge does fetch Portal (see finding 2), GPG
+   is not in the simmed list, and the clean test case is what happens AFTER
+   the fetch: Portal resolves and the game still ends by combat rounds later.
 2. **Win-speed calibration**: humans convert assembled engines within 1-2
    rounds; Forge sits on them (Godo winning R13-14 with a deck whose human
    line is R4-5).

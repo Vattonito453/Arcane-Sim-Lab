@@ -68,7 +68,12 @@ context hints below; then re-run this measurement and require the eyeballed
 plan picks to beat stock before Stage 2 merges. One encouraging side
 observation: under agent v3 the stock targeting layer DID fetch Portal in
 several games, so the target policy only has to protect and generalize a
-choice stock sometimes finds, not invent it from nothing.
+choice stock sometimes finds, not invent it from nothing. (Corrected
+2026-08-25: pure stock AI fetches Portal too, in the human_ceiling study's
+own zone records and in a fresh stock rerun; the study's "never fetched"
+claim was false and is corrected in `studies/human_ceiling/RESULTS.md`.
+The binding gap is converting the fetched card into the win, not finding
+it; see the outcome comparison in `studies/tutor_targeting/README.md`.)
 
 **Stage 1 — plan data (this repo).** Give the plan a general target policy,
 all data, no logic in Java:

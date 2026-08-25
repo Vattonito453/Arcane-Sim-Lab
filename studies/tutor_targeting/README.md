@@ -34,6 +34,39 @@ disagreement proposes a mana rock. Side effect of warm plans: 0 timeouts
 to pursue. Verdict: the Stage 2 gate is met. Full reading in
 `tasks/20-plan-driven-tutor-targeting.md`.
 
+## Outcome comparison: does any of this move game results yet? (2026-08-25)
+
+`compare_arms.py` scores arms on the human-ceiling behavioral metrics (win
+round, win method, win-line behavior), because three prior studies showed
+raw win rate is a weak discriminator. Arms: `runs_stage1/` (agent v3 +
+Stage 1 plans) vs `runs_stock/` (pure stock AI), both shim 0.4.2, same pod,
+8 seat-rotated games each, clock 900, serial.
+
+| | agent + Stage 1 plans | stock | human target |
+|---|---|---|---|
+| win rounds | 6-17, mean 11.8 | 8-14, mean 11.5 | 5 and ~6 |
+| methods | combat 8/8 | combat 7/8, spell 1 (Knuckles the Echidna) | Portal toolbox |
+| winners | magda 3, selvala 2, rog 2, tymna 1 | magda 5, selvala 3 | magda |
+| timeouts | 0 | 0 | n/a |
+| Portal to Phyrexia fetched | 2 arrivals from library (1 game) | 8 arrivals from library (5 games), rounds 4-13 | the win line |
+
+Reading, stated plainly:
+
+- **Outcome level: parity.** At n=8 per arm the agent is not faster and not
+  more human in method. Expected: Stage 2 has not shipped, so nothing acts
+  on the target ranking yet. Decision-level improvement (the ranked picks,
+  21 tutor steers, a round-5 library Portal fetch matching the human
+  timing) is real but does not convert.
+- **This comparison falsified a study claim.** Stock Forge DOES fetch
+  Portal, early and repeatedly; the human_ceiling "never fetched" claim
+  contradicted its own zone records and is corrected there. What stock
+  (and the agent) never do is CONVERT the fetched card into the win: every
+  Portal game still ended in combat rounds later.
+- **Implication for task 20:** Stage 2 remains justified by the
+  decision-level measurement, but temper outcome expectations on this pod;
+  the binding constraint on win round is conversion (human_ceiling
+  priority 2, win-speed calibration), not target selection.
+
 ## Reproduce
 
 ```bash

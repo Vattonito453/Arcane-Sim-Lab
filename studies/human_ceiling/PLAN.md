@@ -153,7 +153,7 @@ in table rounds. An early read of this pilot quoted "turn 37 vs turn 5" as an
 |---|---|---|
 | Winner | Magda both | Magda 3, Selvala 1, Rog-Ishai 0, TymnaThras 0 |
 | Winning round | 5, ~6 | 10, 11, 12, 12 |
-| Win method | Magda toolbox (Portal to Phyrexia, Liquimetal Torque) | combat damage every game; Portal never fetched |
+| Win method | Magda toolbox (Portal to Phyrexia, Liquimetal Torque) | combat damage every game; Portal fetched but never converted (corrected 2026-08-25: zone records show 5 library-to-battlefield Portal arrivals in this run) |
 | Magda deploy | round 1 (Sol Ring + Mox Opal) | not yet extracted per-game |
 
 Two pilot observations worth carrying into §2 when it locks:

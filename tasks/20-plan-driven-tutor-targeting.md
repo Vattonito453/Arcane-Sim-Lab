@@ -27,8 +27,11 @@ Java, per the boundary (CLAUDE.md "Legal posture").
 - Un-steered searches resolve under stock Forge AI targeting. Nothing
   fizzles; the aim is just plan-blind.
 - Measured on the VM run of 2026-08-07 (16 games, pre-0.3.0 shim): 16
-  `search_seen`, 2 sighted, 1 steer. Post-0.3.0 numbers not yet measured
-  at scale.
+  `search_seen`, 2 sighted, 1 steer. Post-0.3.0, measured locally
+  2026-08-25 (8 games, Magda pod, shim 0.4.1): 176 `search_seen` in 8
+  games. Search events cluster heavily (a mass search resolves card by
+  card; one turn produced ~25 events), so they are not independent
+  samples.
 
 ## Stages
 
@@ -39,6 +42,33 @@ report the disagreement rate and eyeball 10 disagreements: is the plan pick
 actually better? This number is the justification (or refutation) for
 Stage 1, and later the proof of improvement. Do this AFTER the VM is on
 shim ≥0.3.0, or run locally.
+
+**Stage 0 result (measured 2026-08-25, shim 0.4.1 branch
+`stage0-search-seen-measurement`, run and analyzer in
+`studies/tutor_targeting/`).** 8 seat-rotated humanized games on the Magda
+pilot pod from `studies/human_ceiling` (magda / rog_ishai / tymna_thrasios
+/ selvala_archetype, clock 900, serial, 2 timeouts). 176 searches resolved;
+121 (68.8%) offered at least one plan-weighted option; stock agreed with
+the plan-weight ranking in 6 of those 121 (5.0%), disagreement 95.0%.
+
+The eyeball check inverts the naive conclusion: the plan pick is
+essentially never better. Current plan weights are keep-quality weights
+(Sol Ring, Relic of Legends, Arcane Signet, mana dorks, counterspells), so
+the ranking wants a mana rock in round 8 or later, at the exact moment
+stock targeting is choosing a payoff. Worst case observed four times:
+stock picked Portal to Phyrexia, the human-verified correct Magda fetch
+(see `studies/human_ceiling/RESULTS.md`), and the plan ranking would have
+overridden it with Relic of Legends. Shipping Stage 2 on today's plan data
+would make play strictly worse.
+
+So Stage 0 neither confirms the >=80% stop condition nor green-lights the
+mechanism: it moves the blocker to Stage 1. Tutor-target weights need to be
+their own scale (payoffs and win-line cards, not keep enablers) plus the
+context hints below; then re-run this measurement and require the eyeballed
+plan picks to beat stock before Stage 2 merges. One encouraging side
+observation: under agent v3 the stock targeting layer DID fetch Portal in
+several games, so the target policy only has to protect and generalize a
+choice stock sometimes finds, not invent it from nothing.
 
 **Stage 1 — plan data (this repo).** Give the plan a general target policy,
 all data, no logic in Java:
@@ -64,9 +94,12 @@ the before/after in SIM_CALIBRATION.md if any documented number moves.
 
 ## Acceptance criteria
 
-- [ ] Stage 0 disagreement rate measured and written into this file before
+- [x] Stage 0 disagreement rate measured and written into this file before
       Stage 2 merges; if stock AI already agrees ≥80% of the time, stop and
-      say so instead of shipping the mechanism.
+      say so instead of shipping the mechanism. Measured 2026-08-25:
+      agreement 5.0%, but the eyeballed plan picks are worse than stock's,
+      so Stage 2 stays blocked until Stage 1 lands and this measurement is
+      re-run with plan picks beating stock.
 - [ ] Plan JSON schema change is additive; an old shim ignores it cleanly.
 - [ ] With Stage 2 on: a Finale-of-Devastation-style search in a test pod
       picks the plan's top-ranked legal creature (verify via `tutor_steer`

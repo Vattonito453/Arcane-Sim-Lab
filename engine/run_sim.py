@@ -37,6 +37,7 @@ FORGE_SEARCH_GLOBS = [
 # Forge programmatically and emits typed logs + zone ground truth.
 SHIM_SEARCH_GLOBS = [
     "~/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar",
+    "~/simlab-forge-shim/simlab-forge-shim.jar",
     "/opt/simlab-forge-shim/simlab-forge-shim.jar",
 ]
 

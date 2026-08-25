@@ -1,0 +1,85 @@
+{
+  "video_id": "n7WpsqsZtdQ",
+  "url": "https://www.youtube.com/watch?v=n7WpsqsZtdQ",
+  "channel": "ThatMillGuy",
+  "title": "Broken AND Bad - Portal To Phyrexia! | Magda | Selvala | Tymna/Thras | Rog/Ishai",
+  "upload_date": "20260625",
+  "players": {
+    "note": "confirmed from on-screen overlays via video frame sampling 2026-08-24",
+    "magda": "Shaf (ThatMillGuy)",
+    "selvala": "Willie",
+    "rog_ishai": "Carm",
+    "tymna_thrasios": "Ian"
+  },
+  "extraction": {
+    "method": "manual LLM read of cleaned auto-captions (data/transcripts/n7WpsqsZtdQ.txt), plus targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills) for overlays, card popups, and life totals",
+    "extracted_on": "2026-08-24",
+    "caveats": [
+      "Auto-captions only; no screen overlay data. Card names are garbled and repaired by matching against the published decklists; each repair is flagged.",
+      "Speaker attribution is inferred from deck-specific card names; seat order is best-effort.",
+      "Life totals and full hand contents are not recoverable from audio."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "00:55-08:09",
+      "seat_order_best_effort": ["rog_ishai", "magda", "selvala", "tymna_thrasios"],
+      "seat_order_confidence": "medium; Magda-after-RogIshai is certain, Selvala vs TymnaThras order inferred",
+      "winner_deck": "magda",
+      "win_turn_estimate": 5,
+      "win_method": "Magda treasure activations into Portal to Phyrexia (turn 3), then a topdecked Dwarf rebuilt the treasure engine for a winning activation; exact final line cut by the editor",
+      "key_line": [
+        {"turn": 1, "seat": "rog_ishai", "play": "Volcanic Island, Lotus Petal, crack Petal for Enlightened Tutor putting Mystic Remora on top", "note": "player self-reports the keep as a mistake: 'we definitely should not have kept this seven'"},
+        {"turn": 1, "seat": "magda", "play": "Mountain, Sol Ring, Peter Parker's Camera, Mox Opal, cast Magda turn 1", "note": "table calls it 'one turn short' of a turn-1 win"},
+        {"turn": 1, "seat": "selvala", "play": "Verdant Catacombs fetching a Forest", "divergence": "Verdant Catacombs is not in the substituted archetype list; the real (unpublished) Selvala list differs"},
+        {"turn": 1, "seat": "tymna_thrasios", "play": "fetch Underground Sea, Mox Diamond discarding Starting Town, Fellwar Stone", "repair": "'starting gun' -> Starting Town"},
+        {"turn": 2, "seat": "rog_ishai", "play": "cast Mystic Remora, deliberately no land drop"},
+        {"turn": 2, "seat": "magda", "play": "Mountain, Dwarven Bloodboiler, tap dwarves for 2 treasures, cast a changeling/type-setter as a Dwarf", "repair": "'bloodline pretender' heard; deck has Metallic Mimic / Adaptive Automaton / Universal Automaton; card identity uncertain"},
+        {"turn": 2, "seat": "rog_ishai", "play": "Subtlety (pitching Clever Impersonator) puts the Dwarf creature on the bottom", "note": "interaction chosen after table discussion; caster says Magda 'wins next turn anyway' if it sticks"},
+        {"turn": 2, "seat": "selvala", "play": "Windswept Heath for Forest, cast Allosaurus Shepherd"},
+        {"turn": 2, "seat": "tymna_thrasios", "play": "Emergence Zone, cast Tymna"},
+        {"turn": 3, "seat": "magda", "play": "Urza's Saga (counter), Saga mana into Vexing Bauble, then Lifecraft Engine as a Dwarf, crew, treasure chain, copy effect for 2 more treasures, activate Magda sacrificing 5 treasures: fetch Portal to Phyrexia; each opponent sacrifices a creature (Allosaurus Shepherd, Tymna)", "repair": "'vaccine bubble' -> Vexing Bauble; 'Lifecrafter's engine' -> Lifecraft Engine"},
+        {"turn": 4, "seat": "selvala", "play": "Wooded Foothills for Forest, recast Selvala"},
+        {"turn": 4, "seat": "tymna_thrasios", "play": "Cabal Ritual, recast Tymna", "repair": "'convert ritual' -> Cabal Ritual"},
+        {"turn": 5, "seat": "magda", "play": "Portal upkeep trigger reanimates Allosaurus Shepherd from an opponent's yard; topdecks a Dwarf; rebuilds treasures and wins", "note": "final activations cut; player narrates 'unless I top deck a dwarf, I can't win' the turn before"}
+      ],
+      "creator_self_review": "Editor overlay at 07:06: fetching Portal to Phyrexia on the turn-3 Magda activation was 'objectively incorrect'; the correct proactive fetch is God-Pharaoh's Gift, or hold treasures to activate reactively. This is exactly the toolbox-vs-win decision the study wants to learn.",
+      "extraction_confidence": "high for winner/turn/method, medium for individual plays"
+    },
+    {
+      "game": 2,
+      "timestamps": "08:09-17:30",
+      "seat_order_best_effort": ["tymna_thrasios", "rog_ishai", "magda", "selvala"],
+      "seat_order_confidence": "medium",
+      "winner_deck": "magda",
+      "win_turn_estimate": 6,
+      "win_method": "Magda treasure engine plus Liquimetal Torque making Magda an artifact for the lethal activation loop; table concedes ('with Torque it's game')",
+      "key_line": [
+        {"turn": 1, "seat": "tymna_thrasios", "play": "Misty Rainforest"},
+        {"turn": 1, "seat": "rog_ishai", "play": "Lion's Eye Diamond, cast Rograkh for 0", "repair": "'Building card, lion's eye diamond' partially garbled; LED certain, preceding card unclear"},
+        {"turn": 1, "seat": "magda", "play": "Mountain, Springleaf Drum"},
+        {"turn": 1, "seat": "selvala", "play": "Windswept Heath for Forest"},
+        {"turn": 2, "seat": "tymna_thrasios", "play": "fetch Underground Sea, Lotus Petal, crack for Tymna the Weaver", "repair": "'another weemer' -> Tymna the Weaver"},
+        {"turn": 2, "seat": "magda", "play": "Arena of Glory, cast Magda (not exerted), tap creatures for treasure, Dwarven Armorer", "divergence": "Arena of Glory is not in the published Moxfield list (list drift: the list was updated 2026-08-11, after the video)"},
+        {"turn": 2, "seat": "selvala", "play": "Forest, Nature's Rhythm X=0 fetching Dryad Arbor", "repair": "'Najeela's rhythm' -> Nature's Rhythm", "divergence": "Dryad Arbor is not in the substituted archetype list"},
+        {"turn": 3, "seat": "tymna_thrasios", "play": "Mana Confluence, Thrasios; later Chrome Mox (imprint garbled), 'tap four, play bird'", "repair": "imprint and 'bird' unidentified"},
+        {"turn": 3, "seat": "magda", "play": "Survivors' Encampment, treasure chain, Twinshot Sniper ETB deals 2 to Esper Sentinel", "repair": "'Legion Extruder' -> Twinshot Sniper (only 2-damage ETB artifact creature in list); 'Elesh Norn' -> Esper Sentinel"},
+        {"turn": 4, "seat": "selvala", "play": "Selvala out; Thrasios activations begin across the table"},
+        {"turn": 4, "seat": "magda", "play": "end-step treasure, untap, exert Arena of Glory for double red, Plundering Barbarian, activate Magda fetching Portal to Phyrexia again"},
+        {"turn": 5, "seat": "selvala", "play": "Utopia Sprawl, Ancient Tomb, Finale of Devastation X=2 (responding to nothing; fetches a 2-drop)", "note": "table discusses Collector Ouphe as the correct anti-Magda fetch"},
+        {"turn": 5, "seat": "tymna_thrasios", "play": "City of Brass, Necropotence resolves, pays 20 life, sculpts hand at end step (long spoken list of exiled cards)"},
+        {"turn": 5, "seat": "rog_ishai", "play": "LED cracked for blue, Underworld Breach attempt, pitches to force through; line fizzles or is abandoned", "confidence": "low; heavily garbled"},
+        {"turn": 6, "seat": "magda", "play": "Strip Mine, Portal trigger takes Hexing Squelcher, Liquimetal Torque, combat treasures, activate Magda; with Torque making Magda an artifact the table concedes", "repair": "'Liquimetal Coating' -> Liquimetal Torque (list has Torque)"}
+      ],
+      "extraction_confidence": "medium; more crosstalk and edits than game 1"
+    }
+  ],
+  "headline_features": {
+    "human_win_turns": [5, 6],
+    "winner": "magda both games",
+    "first_commander_turn": {"magda": 1, "note": "turn-1 Magda via Sol Ring + Mox Opal in game 1"},
+    "interaction_events_spoken": ["Subtlety on the turn-2 Dwarf (game 1)", "table declines to counter Vexing Bauble (game 1)", "Twinshot Sniper on Esper Sentinel (game 2)"],
+    "known_list_divergences": ["Selvala real list is unpublished (archetype substitute used)", "Magda list drifted after video: Arena of Glory seen in game 2 is absent from the 2026-08-11 list"]
+  }
+}

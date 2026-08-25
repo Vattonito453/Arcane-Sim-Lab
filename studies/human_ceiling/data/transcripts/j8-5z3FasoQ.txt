@@ -1,0 +1,1360 @@
+[00:01] foreign
+[00:03] [Music]
+[00:24] welcome everyone to another episode of
+[00:27] the Mind sculptors podcast I am your
+[00:29] host Callahan and today we have a great
+[00:32] show lined up for you today with the
+[00:35] director of eminence events Mike beanie
+[00:38] who is going to be letting us know about
+[00:41] his latest project cedh University but
+[00:45] before we dive into that I want to take
+[00:48] a moment and thank a new supporter of
+[00:50] the show Dragon shield Dragon shield
+[00:53] sleeves are what I use on all my cards
+[00:55] because they are perfect mix of
+[00:58] durability and Shuffle ability they also
+[01:01] now offer dual matte sleeves that have a
+[01:04] fully opaque black interior so you don't
+[01:07] have to worry about your deck getting
+[01:09] flagged by a judge for being able to see
+[01:13] through the back of your cards at the
+[01:15] next tournament you're at so if you want
+[01:17] to protect your cards while also
+[01:18] supporting the channel check out the
+[01:20] link in the description and Get Your
+[01:21] Dragon shield sleeves today
+[01:24] we are also supported by our wonderful
+[01:26] patrons over on patreon your continued
+[01:29] support is what enables us to continue
+[01:32] to bring you this content every week if
+[01:36] you aren't a patron already you can join
+[01:38] the sculpty family at patreon.com
+[01:40] forward slash the Mind sculptors where
+[01:43] you can listen to the full uncut
+[01:45] conversation I have with Mike today also
+[01:50] I'm pleased to let you all know that I
+[01:52] am a featured content creator at
+[01:55] okotoberfest here in November if you
+[01:58] aren't familiar with the event it is a
+[02:01] charity cedh tournament raising money
+[02:03] for Saint Jude Children's Hospital it's
+[02:06] going to be November 18th through the
+[02:08] 20th in Philadelphia you can visit
+[02:12] monarch.cards to get more information on
+[02:15] the event it's time to check in on our
+[02:17] Apple podcast ratings and this week we
+[02:21] have one new rating it is a five star
+[02:23] rating but by user cool Puck that says
+[02:26] the Mind sculptors demand that the rules
+[02:29] committee ban thoss's Oracle while I'm
+[02:32] not sure that all the Mind sculptors
+[02:35] would say that I certainly agree that
+[02:39] the card should be banned but more
+[02:42] importantly thank you for raiding the
+[02:44] show
+[02:45] remember that if you leave us a
+[02:46] five-star review on Apple podcasts I
+[02:50] will read it here on the show
+[02:53] with that said let's jump into my
+[02:55] conversation with Mike
+[02:58] [Music]
+[03:04] so initially when I started the Mind
+[03:07] sculptors I had this idea of eventually
+[03:10] doing a series of videos called cedh
+[03:13] University where it's like a good intro
+[03:16] spot for people to get into the format
+[03:20] and learn the wheels learn the ropes
+[03:23] and it just kind of never materialized
+[03:25] fast forward to a few months ago
+[03:29] you you and I had been having a
+[03:31] conversation uh about something that you
+[03:34] would wanted to be working on and then
+[03:37] you send me a Discord invitation to uh a
+[03:42] place a Discord that you were working on
+[03:45] and I forget what your initial name for
+[03:47] it was
+[03:48] um it was like so it was the EDH Academy
+[03:51] that's right that exists under the name
+[03:55] of another individual who
+[03:57] funny story and I'll keep it short uh I
+[04:00] ended up being on a gameplay video and
+[04:03] podcast with
+[04:04] um I was actually on the video with EDH
+[04:07] Academy like that person
+[04:09] and they put the two and two together
+[04:11] made video so I had to sit there and
+[04:13] have a conversation with him and I was
+[04:14] like bro I'll change it don't worry
+[04:16] about it like I'm not trying to get into
+[04:17] a IP issue right that's your thing man
+[04:21] don't worry about it I got it and then
+[04:23] yeah it was yeah and uh as as so you you
+[04:27] send me the invite and I didn't even
+[04:28] know that part of it and I was just like
+[04:31] hey
+[04:33] I have like one thing I know I'm good at
+[04:37] and I've really talked myself up this
+[04:39] episode which I do normally do your harm
+[04:43] um one thing I know I'm good at is like
+[04:46] branding things and coming up with like
+[04:48] names and fun ways to like sell things
+[04:50] and so as soon as I saw this I was just
+[04:54] like hey I know you've got this name
+[04:55] that's all cool uh here is branding that
+[04:59] I've already built run with it uh it is
+[05:02] yours uh and I fully support what you're
+[05:05] doing and if you need help just let me
+[05:07] know and I'll try to help in the
+[05:10] capacities that I can help and you have
+[05:12] built something that I think is really
+[05:14] really really cool with uh cedh
+[05:18] University in so when it really comes
+[05:21] down to it we had my idea of what it
+[05:26] could be and then you were like hey
+[05:29] here's this whole thing that you and
+[05:31] it's nice that we kind of came up with
+[05:33] those ideas independently it makes me
+[05:34] feel good that that was not a bad idea
+[05:37] yeah yeah
+[05:40] um but so explain cedh University a
+[05:44] little bit uh what it is what uh purpose
+[05:47] it serves and how people can get
+[05:50] involved with it
+[05:51] yeah so we'll we'll do the the elevator
+[05:54] speech first just to keep it short and
+[05:56] sweet for
+[05:57] people listen to it so
+[05:59] cdhu is a
+[06:02] um
+[06:05] purpose-built focused and targeted CDH
+[06:10] learning
+[06:12] area
+[06:13] that's what it is
+[06:15] um
+[06:17] it was designed much like you were just
+[06:20] saying about how like trying to get your
+[06:22] first steps
+[06:24] into cedh and having those conversations
+[06:27] right we every
+[06:29] decision that we've made and it is an
+[06:31] Eminence product so I will T I will talk
+[06:33] about Eminence a little bit here and
+[06:34] there just right as it comes in but
+[06:36] one of the things we do over there is we
+[06:39] look at
+[06:40] where is there a problem and how can we
+[06:42] solve it or close the gap this was a
+[06:44] close the gap problem of somebody's in
+[06:48] casual but it's really really good
+[06:49] friends with Callahan and wants to play
+[06:52] CDH
+[06:53] but all they've got is goat tribal and
+[06:55] they don't know how to get there right
+[06:57] so and if you go on Twitter and just say
+[07:00] hey I want to learn how to play CDH
+[07:03] well of course you being the wonderful
+[07:04] person you are you're gonna be like hey
+[07:06] this is awesome come over here check
+[07:08] this thing out but there's a thousand of
+[07:09] you right right so then it gets messy
+[07:12] and then the you you know there's
+[07:14] another version of you out there that
+[07:16] you know has you know my opinions better
+[07:19] so I'm gonna defend it to the Tilt and
+[07:21] then we start getting into the discourse
+[07:22] and then we
+[07:23] so cdhu is a place where we get rid of
+[07:26] all of that right it says very clearly
+[07:29] in the opening document which we're in
+[07:31] the process of rewriting a little bit
+[07:32] that you know we check all the egos at
+[07:34] the door there is this is not clout
+[07:35] driven this is not ego driven this is
+[07:38] not anything like that the purpose of
+[07:40] this is
+[07:41] so-and-so wants to learn how to play CDH
+[07:44] here are 60 of the best players that we
+[07:46] could get to be your mentor to guide you
+[07:49] to to answer your questions Maybe not
+[07:52] immediately but we have a channel we
+[07:54] have a forum post for different
+[07:55] commanders we have different channels
+[07:57] laid out for different play styles
+[07:59] and you can go in there and just ask a
+[08:01] question and you will get an answer from
+[08:03] somebody that's been doing this for
+[08:04] years and it won't be buried in media
+[08:08] discourse social media anything it's
+[08:10] direct focused learning and it's just
+[08:13] there to help you close the gap it's
+[08:14] never going to be a 10 000 person
+[08:15] Discord right now it's got a little too
+[08:17] many people in there right the point is
+[08:21] focused learning
+[08:22] and I think we're doing that we have our
+[08:25] seminar series we have a lot of things
+[08:26] that are like happening the
+[08:28] conversations in there are constantly
+[08:29] live we're constantly getting questions
+[08:31] and and asks for new channels because
+[08:33] people are trying to learn new things
+[08:36] um and we have people that can do that
+[08:38] we have a mentor that just pops up right
+[08:39] and and they'll be quiet for 90 of the
+[08:42] time
+[08:42] but then you know pontus is in there
+[08:45] today and they're they're brewing tevish
+[08:48] ishai a man humility list
+[08:51] and contest was like Hey I have
+[08:54] experience with that I'll lead that
+[08:55] discussion don't worry about it I got it
+[08:56] and they take a they just drive and
+[08:58] that's it right so it's kind of become
+[09:00] like to self-sustaining learning
+[09:01] platform and it's really awesome to see
+[09:03] so that's
+[09:05] the elevator and then the long wind
+[09:08] [Music]
+[09:09] we are the Mind sculptors we're famous
+[09:12] for our three hours so
+[09:17] um perfect we we were famous for that we
+[09:20] know we no longer do that but
+[09:22] um that was two hours so yeah it's we we
+[09:25] cut them up a little bit uh but so so
+[09:29] give me some of the background on how
+[09:32] this materialized
+[09:36] sure
+[09:37] um it actually started with Ken
+[09:40] um so that's all good things do that's
+[09:43] all good things too Ken is just the best
+[09:45] of the best of us um
+[09:48] so
+[09:49] there was
+[09:51] actually if I really boil this down it's
+[09:53] it there's a two-parter to this one is
+[09:55] Ken
+[09:56] and then the other is my teacher's box
+[09:59] um and the teacher's box is what started
+[10:01] my conversations with a bunch of other
+[10:02] people hopefully we'll be talking too
+[10:03] soon so
+[10:05] Ken put up a video I believe or was
+[10:09] talking about the entryway into cedh and
+[10:12] how it's just a rocky road
+[10:16] um
+[10:17] not that it's challenging but to the
+[10:19] point that you and I have made several
+[10:20] times over at this point and we'll
+[10:21] continue to make
+[10:23] it's it's cloudy right right it's very
+[10:26] there's
+[10:27] a lot of thousand directions well yes
+[10:30] but there's a thousand directions that
+[10:32] are driven by that ego
+[10:33] and it and I will I will take a stand
+[10:37] and I will die on the hill of everybody
+[10:39] means well
+[10:41] but it's hard to do that in 120
+[10:43] characters so sometimes it comes off
+[10:45] like you're just an angry elf and that's
+[10:46] just the way it is
+[10:48] so we had talked about that being a case
+[10:50] and
+[10:52] uh you know I jokingly said somebody
+[10:55] just needs to make a place for everybody
+[10:56] to come in here just learn about how to
+[10:58] do this just one-on-one just be done
+[11:00] with it and the Tweet got a bunch of
+[11:02] likes as all ideas get sometimes right
+[11:07] uh and Ken latched on to the idea and
+[11:10] was like yeah that's great somebody
+[11:12] ought to do it I was like and then I
+[11:14] sent the fine I'll do it myself gif
+[11:17] um and that's that's kind of how it
+[11:19] started I was like okay
+[11:21] I made the joke
+[11:23] but now people really like it so let's
+[11:24] do this thing
+[11:26] and then the teacher's box was like a
+[11:30] probably an early iteration of this
+[11:31] which is I printed out the primers and
+[11:36] full proxies of six CDH Decks that I
+[11:40] thought were
+[11:42] ones that you could learn to Pilot well
+[11:45] if you had someone at the table or in
+[11:48] the Pod to coach you right
+[11:50] so we're looking at winota we're looking
+[11:52] at goto we're looking at uh uh uh
+[11:55] Malcolm Tana right
+[11:57] um I put croc in there because I pilot
+[12:00] Croc and I know Croc and as the deck is
+[12:04] extremely convoluted it is not extremely
+[12:07] beginner friendly but if you have
+[12:09] somebody that plays Storm or no storm
+[12:11] and understands the ideas
+[12:15] yeah you can work you can walk yeah you
+[12:18] can walk your way through it so it's in
+[12:20] there right
+[12:22] um there's uh Jessica and Jessica ishai
+[12:25] that's in there and I take this box with
+[12:28] me to my LGs
+[12:30] and I sit down the binders out and on
+[12:33] the binder it says in very big bolted
+[12:34] letters uh do you want to learn how to
+[12:36] play CDH
+[12:37] and then in the primer if they sit down
+[12:39] I present them with all the dipstrand
+[12:41] options we have aggro list storm lists
+[12:43] Stacks whatever you want
+[12:45] pick a thing
+[12:46] here's a primer let's walk through it
+[12:48] we'll spend like 10-15 minutes walking
+[12:49] through it so on and so forth we'll play
+[12:51] a game we'll review some hands we'll do
+[12:52] our own like live greedy keeps you know
+[12:54] shout out to Dan and Braden for that one
+[12:58] um we'll do that right and then we play
+[13:00] a game I think I've brought probably
+[13:01] close to 20 people into CDH just because
+[13:03] I gave them the opportunity to
+[13:06] understand what it is rather than them
+[13:08] just listening to what the stereotypes
+[13:10] say it is right oh it's turn one format
+[13:13] oh they're just gonna they're just gonna
+[13:15] grind you into the floor ah they're
+[13:16] Never Gonna Let You resolve anything ah
+[13:18] they're gonna
+[13:19] like it's none of that it's just EDH
+[13:21] people this is all it is right
+[13:24] so it like it was a combination of those
+[13:26] two things that kind of birthed what is
+[13:29] now cdhu and uh yeah
+[13:33] it's interesting because that is one of
+[13:37] the like
+[13:39] that's such a clever way of like
+[13:42] going hey I want to have a tool with me
+[13:46] to teach people and I just always have
+[13:50] it you know what I mean like that's a
+[13:51] that's a really cool idea do you still
+[13:53] maintain that I do awesome
+[13:56] um so I actually printed out cephis
+[13:59] because I wanted to have something that
+[14:00] was Celestia and I wanted to have
+[14:02] something that was enchantment Focus
+[14:03] because if you look at goto goto is goto
+[14:05] count to 11. all right count to 13. all
+[14:08] right count to 15. hey you just do that
+[14:10] for a while right winota is kind of
+[14:13] driven by chance much like carcass right
+[14:16] what are you gonna rip off to top six
+[14:17] and and hope right the idea is the same
+[14:21] beats and stacks and that's fine
+[14:24] but I didn't have anything that was like
+[14:25] Hey you really love enchantment decks
+[14:27] well I didn't have a thing for that
+[14:29] so I printed out sethus that's the thing
+[14:32] that's been in there
+[14:34] um and I keep the primers you know
+[14:36] updated moving around
+[14:38] um so yeah I I actually had it with me
+[14:41] last Friday and we played some CDH games
+[14:43] except I took team or twiddlestorm out
+[14:45] for a run that was fun oh that's neat
+[14:48] um
+[14:49] that's uh what is that that's
+[14:52] the it's my own little
+[14:57] no it's uh it's kaido and Jessica
+[15:02] oh you've told me about this deck before
+[15:04] I have you have it's some psycho
+[15:07] whenever I brew something you can you
+[15:09] can guarantee that it is one Never Gonna
+[15:12] See the Light of anything that is ever
+[15:14] you know this is a good deck and two I
+[15:16] will beat you with it those those are
+[15:19] like the two things you can count on
+[15:20] you'll be very confused
+[15:22] meanwhile I just build the most
+[15:24] pedestrian like
+[15:35] and I was like yeah but what if you got
+[15:37] to play Red
+[15:39] then they were like what we did we did
+[15:41] uh we did a episode where we like
+[15:44] explored Kodama and krom and I was just
+[15:48] like I was angry orchard yeah I I like I
+[15:51] found it really hard to brew because I
+[15:53] was just like it's just Kodama sakashima
+[15:56] with bread okay that's all it is but it
+[15:59] becomes like your your options become so
+[16:01] much they're they're more fun
+[16:04] oh yeah I grew on the side of
+[16:06] entertainment versus like yes you can
+[16:09] have two Kodamas and a land gets you the
+[16:11] thing I get it it was like it was one of
+[16:15] those things from a like because from
+[16:16] the really bruge Choice aspect of that
+[16:18] deck you're always trying to find like a
+[16:21] unique uh like all of us want to have
+[16:23] like our unique approach to like a
+[16:27] certain deck or a certain build and then
+[16:30] you you sit kudama down in the command
+[16:33] Zone really next to anything and the
+[16:35] deck just kind of devolves into the same
+[16:38] thing uh which I think is interesting
+[16:41] because Kodama is just like no you're
+[16:43] doing this uh because anytime you try to
+[16:46] do something different you always end up
+[16:48] falling back on it's like well
+[16:51] this is cool but it's not as good as
+[16:53] this thing that's like doing that but
+[16:56] like just strictly better uh so so so
+[16:59] what what I will say is it it was that
+[17:03] list for a while it was landfall for a
+[17:05] while and I want to get back on the cdhu
+[17:06] and keep talking about what we're doing
+[17:07] but
+[17:09] what we did I actually had a I had a
+[17:12] conversation with a good buddy of mine
+[17:13] surreal we sat down with the list
+[17:15] because I was like I need to brew this
+[17:17] and I need this to be functional
+[17:19] and faster because it just gets stuck so
+[17:22] what it actually evolved into was
+[17:23] actually a layered list that it was like
+[17:27] teamer awesome things
+[17:29] like it became like you could sneak out
+[17:32] Kennen and then make mana and do all
+[17:35] kinds of kitten things you could Neo
+[17:37] form a crom into a consecrated Sphinx
+[17:39] and just do Sphinx things you can put a
+[17:42] kitten in there and then you just like
+[17:44] it became so much more than a landfall
+[17:46] deck right but it required that extra
+[17:49] like input from another human being yeah
+[17:52] so yeah well that's what's cool about it
+[17:55] was great and again that's what's really
+[17:57] neat about the cedhu uh sort of thing is
+[18:01] you get those especially when you're
+[18:03] doing brewing things is you get those
+[18:06] opportunities to have unique
+[18:08] perspectives and uh perspectives that
+[18:11] you normally wouldn't have because again
+[18:12] when it's like we're doing an episode
+[18:14] for Brewer's choice we have like a week
+[18:16] to come up with a brew and so the deck
+[18:19] gets pretty much like it's like a first
+[18:21] pass of a deck
+[18:23] um and so it's really cool when you have
+[18:25] this uh
+[18:28] this entirely like wide
+[18:32] encapsulating platform where you're able
+[18:35] to really be like okay well here's like
+[18:37] a bunch of stuff that people have ideas
+[18:40] for and okay here's something that
+[18:42] somebody wants to talk about
+[18:44] um and so
+[18:46] when it really comes down to break down
+[18:48] the Discord and like how it functions
+[18:52] and all of that stuff
+[18:53] yeah sure so
+[18:56] I'll pull it up so that I don't miss
+[18:57] speak until to my own project
+[19:01] um it is very big I will say that just
+[19:04] up front
+[19:06] um
+[19:07] and that's kind of by Design
+[19:09] so
+[19:11] when we look at
+[19:13] all of the different spaces you come in
+[19:16] kind of walk through the door we have
+[19:18] our kind of announcement hey welcome to
+[19:21] the to the show
+[19:22] space
+[19:25] um
+[19:26] there's a bunch of it walks you through
+[19:28] the process it walks you through step
+[19:30] one two three four it walks you through
+[19:32] kind of where things are it gives you
+[19:34] some suggestions right you know it keeps
+[19:37] certain houses collapsed because if you
+[19:39] don't the Discord is it can be unruly
+[19:41] but that's also
+[19:43] part of what makes it amazing is there's
+[19:45] a place for everyone but you have to be
+[19:47] able to navigate it much like walking
+[19:49] around your high school for the first
+[19:50] time right right you're just finding
+[19:52] your way around you're trying to find
+[19:53] your locker you're trying to find
+[19:54] homeroom you're trying to find that
+[19:56] place so
+[19:58] um you know it walks you through all
+[19:59] those things you know step one
+[20:01] we have uh what's called right now the
+[20:03] where to start channel it's the where to
+[20:05] start Channel and in general are kind of
+[20:07] tuned you know one of the same
+[20:10] uh where to start is when you come in
+[20:13] and you are just fresh to it airplane
+[20:15] Commander but I have no idea where I'm
+[20:17] going or what I'm doing all I know is I
+[20:18] want to try because I saw somebody at a
+[20:20] table do this thing this one time right
+[20:23] and in that space a mentor will connect
+[20:25] with you and say okay this is what we
+[20:27] have this is what we're looking at what
+[20:28] do you like to play right it's all
+[20:30] driven by kind of more open-ended
+[20:32] questions
+[20:33] for you again targeted and focused
+[20:36] interaction to get you where you want to
+[20:38] be
+[20:39] so what do you like to play I'm a storm
+[20:41] player I play it in modern this is my
+[20:43] favorite deck awesome like is there a
+[20:45] certain card that you just love right oh
+[20:47] yeah I love doomsday like okay
+[20:49] um have you seen any decks and or
+[20:52] anything kind of speaking to you uh you
+[20:55] know crocsakashim is pretty wild like
+[20:57] I'd like to give that a go okay cool
+[20:59] awesome so we start funneling down some
+[21:02] of the ideas right step two is getting
+[21:05] into the play style of choosing a deck
+[21:07] step two is kind of can go quickly
+[21:11] sometimes it's just handled in that
+[21:13] initial conversation where we go yup
+[21:14] this is kind of the space that you're
+[21:15] looking for this is right where you want
+[21:17] to be go and you jump right into the
+[21:20] houses sometimes you need a little bit
+[21:22] more Direction sometimes you need a
+[21:23] little bit more help and kind of
+[21:24] movement in that space
+[21:26] so choosing a play style and choosing a
+[21:28] deck is okay you want to be a storm
+[21:31] player or you want to be a Stacks player
+[21:32] or you want to be whatever you you want
+[21:34] to do let's establish that because
+[21:37] you've been in the this world long
+[21:39] enough that somebody can walk in and say
+[21:41] yeah I want to play Stacks okay well
+[21:42] there's 87 Stacks lists that you can
+[21:44] pick from
+[21:45] so let's let's try to get a little
+[21:48] focused on it and
+[21:50] and see what's out there then once we
+[21:52] have that idea kind of laid out then we
+[21:54] can help you pick a deck and then from
+[21:57] that point you go into the houses and
+[21:59] the houses are driven by color at this
+[22:00] point so we have a mono color two color
+[22:02] three color Four Color five color and a
+[22:04] partner X house
+[22:07] um and in each house there's a form and
+[22:09] within each form there is a post for
+[22:13] subset of commanders so a great example
+[22:16] of this and the most easy one and
+[22:19] probably the busiest one is the house of
+[22:20] mono color we have a study in white
+[22:22] study in blue black red and green
+[22:25] in the red we have a rionia post we have
+[22:28] a Magda Prost we have a Zada storm and a
+[22:30] polystax post uh in white we have a
+[22:33] heliad Active Space we have in Black we
+[22:37] have Keurig that's another space that's
+[22:39] active so you go into those houses and
+[22:42] you just start talking right start
+[22:44] asking questions about the list
+[22:46] deliberately right then and there again
+[22:48] we have over 60 mentors in the space and
+[22:51] they will get to you will they get to
+[22:54] you immediately we have lives we have
+[22:56] things going on right so we're not going
+[22:57] to be able to live in here 24 7 but
+[22:59] right the person that answers the
+[23:01] question is not going to be some Rando
+[23:02] on the internet right housing here
+[23:05] pokies in here right uh uh um cicadas in
+[23:10] here Sage is in here you're in there
+[23:12] right except it is in there
+[23:14] um Ryan from you know playing with power
+[23:16] Ryan's in here Kobe does in here
+[23:20] pongo's in here like it's like you have
+[23:22] people in here that play these lists
+[23:24] develop them know them you're not
+[23:27] getting random information you're
+[23:28] getting good from the source info right
+[23:31] and that's that's kind of the point
+[23:33] right like you want to talk to Sinestro
+[23:34] about tassica there's a space for that I
+[23:37] might talk to you a lot about it but
+[23:39] there's a space for that right
+[23:41] um
+[23:42] and that's that's what it is um and then
+[23:44] it's designed much like school
+[23:48] um right now there's a lot of people in
+[23:49] there but the idea is when you come in
+[23:51] here it's a revolving door come in get
+[23:54] the information you need
+[23:56] feel good feel comfortable feel great
+[23:59] about where you're at and then when
+[24:00] you're ready
+[24:01] take the step and and move on and that's
+[24:05] okay we encourage that we encourage you
+[24:07] to come in and get comfortable and
+[24:08] understand for us you leaving the
+[24:12] Discord with the knowledge that you are
+[24:14] comfortable entering the CDH space and
+[24:16] getting games live on stream or live
+[24:18] with wherever that means we've done our
+[24:19] job well
+[24:21] so if you're lurking or doing whatever
+[24:23] you're doing that's on you but our
+[24:25] intent is to have you come in learn be
+[24:27] the best that you could be from us and
+[24:30] then send you on your way
+[24:32] it's such a cool so
+[24:34] one of the things that I think is really
+[24:38] neat about this and
+[24:40] uh it's something that I I personally
+[24:43] really like about it is uh especially
+[24:47] with something like I think a great
+[24:49] example of this is not only does it
+[24:52] provide that space for learning decks
+[24:56] but it also provides because because
+[24:58] like universities for example aren't uh
+[25:01] only places where people go to learn
+[25:03] right it's also where people go to
+[25:05] experiment and where people go to I mean
+[25:08] they are learning but they're also
+[25:10] getting paid to learn right you know
+[25:12] like people who go and uh you know run
+[25:15] tests and all that stuff on professors
+[25:17] or whatnot and the thing I think is
+[25:20] really cool about it is it is one of the
+[25:23] first places that I've seen where I've
+[25:25] outside of my personal groups where I
+[25:28] can hop in there and be like okay I'm
+[25:30] working on Art and chrome and
+[25:33] here's where I'm at here's some thoughts
+[25:35] uh you know what do you think and it's a
+[25:40] it I've seen people talking about uh all
+[25:43] sorts of different stuff I have right
+[25:45] here like the azorious study has been uh
+[25:50] going on uh today where people have been
+[25:52] talking about Sten which I think is
+[25:55] really cool and like that is one of the
+[25:59] things that I do like about it because
+[26:01] it's not just come in and learn how to
+[26:04] play but it's also come in and let's
+[26:08] study and try to figure out how do we
+[26:11] build these things and how do we like
+[26:12] like because what I'm getting at is it
+[26:16] also serves a really valuable resource
+[26:19] for established players as well yeah
+[26:22] yeah and there's some of the the the
+[26:26] some of the the busier conversations do
+[26:28] take place between the mentors that are
+[26:30] in there and like if you want to talk
+[26:31] about having your brain explode like put
+[26:35] can Pogo and cobblepot in the same room
+[26:37] uh and let them talk about Croc for a
+[26:39] while and your brain will just melt
+[26:41] right but that happens here and it just
+[26:43] happens organically
+[26:45] um you know we're not trying to rope
+[26:47] them into doing a live cast or anything
+[26:49] like that they're literally just in here
+[26:50] and somebody said something
+[26:52] and because again we check the egos at
+[26:54] the door this is not ego this is not
+[26:55] clout right because we do all of that it
+[26:58] is literally just three dudes trying to
+[27:00] brew a list and they're like hey this is
+[27:02] a really good idea and that's kind of a
+[27:03] that's a good idea but what if we did
+[27:05] this instead because the intent is this
+[27:07] oh well that's really cool too because
+[27:09] of this thing and you get this really
+[27:12] organic is a great word for this space
+[27:15] because if you get in here your first
+[27:17] look is going to be man there's a lot of
+[27:19] things in here but it doesn't look that
+[27:20] busy it's not supposed to be that busy
+[27:22] it's supposed to be intermittently busy
+[27:24] and you're supposed to have a space to
+[27:25] go when you have a thought
+[27:28] you're not going to have a thought
+[27:29] around everything all the time sometimes
+[27:31] it's just going to be quiet space and
+[27:33] that's okay like but sometimes you get
+[27:35] to chat like the heliad chat heliad has
+[27:38] been popping off since day one they
+[27:40] talking there every single day
+[27:44] they're passionate man yeah Ken started
+[27:48] the the doll Sim chat that's been live
+[27:50] since he posted it up there like they've
+[27:53] been just in there just moving and
+[27:55] grooving and yes that chat will go quiet
+[27:57] and that's okay we actually we so we
+[28:00] have a Review Committee that meets at
+[28:02] the end of every month and we look at
+[28:04] all the channels and we look at all the
+[28:05] things we go clean up the Discord we
+[28:08] will go archive a bunch of different
+[28:09] posts and a bunch of different channels
+[28:11] just to say hey
+[28:15] yeah and you guys are doing well you
+[28:17] guys are doing great let's archive this
+[28:19] and if it comes back up we'll pull it
+[28:21] back into the space when it's ready
+[28:22] right but that's just to keep it clean
+[28:25] it's just to keep it clean and keep it
+[28:26] moving because we don't want it to be
+[28:28] buried or sit here with a bunch of empty
+[28:30] things we do want it to be active but
+[28:32] like I don't want people to to get in
+[28:35] here and be like oh there hasn't been a
+[28:36] post here in a minute like I go through
+[28:38] and I clear everything out in the
+[28:39] mornings and then by the end of the day
+[28:41] I've got meetings or comments in
+[28:45] tons of different spaces that guy I'm
+[28:48] staring at deck ideas combos ideas the
+[28:50] optimization Workshop threat assessment
+[28:52] Keurig Magda uh ill cord dial Sim like
+[28:57] I just cleaned this out this morning
+[28:58] right and all those conversations are
+[29:00] gone so it's a good place to get in and
+[29:04] learn
+[29:04] and to your point the mentors get in
+[29:07] there and they work together and they
+[29:08] learn from each other right oh I this
+[29:11] person really knows this thing and I
+[29:12] really know that thing well let's try to
+[29:13] put these things together
+[29:15] and it just it it's it's fascinating to
+[29:18] see it come
+[29:19] it's such a cool uh thing that we have
+[29:23] in this community and something that I
+[29:25] really like that I've been seeing from
+[29:28] CDH in the
+[29:30] really last few months is this
+[29:35] desire from the community from Community
+[29:37] leaders
+[29:39] to
+[29:42] find solutions to the problems you know
+[29:45] what I mean like I I think something
+[29:48] that like is important that I really
+[29:51] appreciate about this is
+[29:54] it is an answer to a problem that has
+[29:58] we've been asking this question like
+[30:01] this is one of the things that sometimes
+[30:03] I'll get frustrated with on Twitter and
+[30:05] with Twitter discourse right is like if
+[30:08] what was it like at the beginning of the
+[30:10] year the the Twitter discourse was all
+[30:12] about like it was right after marchesa
+[30:15] and it was how to run a a tournament and
+[30:19] you know uh all the stuff was about
+[30:22] Clark and shortcuts and blah blah blah
+[30:24] and I was getting so annoyed with it
+[30:26] because I'm like guys I've been around
+[30:28] CDH long enough this conversation has
+[30:32] been had
+[30:33] like 40 times like the the solution has
+[30:38] been found and we're just Reinventing
+[30:40] the wheel here's a post about what what
+[30:44] it was and I'm also gonna tell you what
+[30:46] it was and then people are just like no
+[30:48] no no and then they all end up on the
+[30:49] like same conclusion and so like there
+[30:52] was a period of time where I was feeling
+[30:54] like man there is just a lot of
+[30:58] discourse and no attempt to try and find
+[31:01] solutions to the discourse and I one of
+[31:06] the things I really appreciate about you
+[31:07] Mike is that you all have been a you
+[31:12] know uh here is a hole that I see needs
+[31:16] filled let's fill that hole uh and I
+[31:20] think that's something great about you
+[31:23] um and I and I don't mean this to just
+[31:26] like talk you up but I do mean this
+[31:27] genuinely
+[31:29] um is like from a colleague to another
+[31:31] like it is one of my favorite things
+[31:33] about you uh is the fact that you see a
+[31:38] need in your your first instinct isn't
+[31:41] you know like oh man that sucks your
+[31:43] first instinct is all right let's fix it
+[31:45] and that's that's so cool to me yeah
+[31:49] yeah I I appreciate that I I so we work
+[31:52] really hard
+[31:53] as a team I I am a like
+[31:57] this is gonna be it's gonna be a very
+[31:59] weird statement and I hope you people
+[32:00] don't chew me up and me out for it
+[32:01] but
+[32:02] um I I tend to think of myself more as a
+[32:05] of a guide
+[32:07] of people with that are smarter than
+[32:10] myself
+[32:12] um a lot of folks
+[32:16] come at a question and they come in too
+[32:19] hot they don't know how to teach they
+[32:22] have an idea but they don't know how to
+[32:23] put it out there right they have a thing
+[32:25] and it's
+[32:27] there isn't any place and much like cdhu
+[32:31] it's hard to find somebody that'll just
+[32:33] take a step back and sit there with you
+[32:34] and go hey
+[32:36] tell me about what you're thinking right
+[32:38] tell me about what's going on right
+[32:39] there's a problem here what is the
+[32:41] problem okay
+[32:43] we're having a hard time getting people
+[32:46] into CDH we we've officially moved past
+[32:48] Pub stomping congratulations everybody
+[32:50] we did it we're no longer the pub
+[32:52] Stompers because now we're the people
+[32:54] that beats up on the pub Stompers when
+[32:56] the pub stomper arrives right right you
+[32:58] want a pub stomp we'll show you how to
+[32:59] do this correctly and then we can we can
+[33:01] play this game the right way right we're
+[33:03] no longer those people congratulations
+[33:04] we did it now the next hurdle for us
+[33:08] the next question was okay how do we
+[33:10] bring people in now because now we have
+[33:13] all these stereotypes that we're no
+[33:14] longer Pub Stompers but now we have all
+[33:16] these stereotypes that are sitting out
+[33:17] here how do we resolve that right and
+[33:19] you see it consistently on Twitter again
+[33:21] right we'll talk about the Bird app a
+[33:23] ton but you see it a lot where people
+[33:25] you know Canon CDH guide
+[33:28] when he factually stated
+[33:32] through
+[33:34] watched video and factual data
+[33:37] that CDH was a turn six to turn seven
+[33:40] format that blew people's minds because
+[33:42] it no longer became a debate
+[33:45] it was wow that's that that's literally
+[33:48] that's true that's that is what it is
+[33:50] that might have shifted a little bit
+[33:52] that video is probably a year old at
+[33:54] this point but
+[33:56] that's the thing and when you say that
+[33:58] to somebody one of my favorite things to
+[34:01] do with newer folks is okay again what's
+[34:05] the problem there's stereotypes and
+[34:07] we're having a hard time breaking those
+[34:08] things up
+[34:09] pick the most wild outlandish stereotype
+[34:13] you can about CDH and the minute you
+[34:16] hear it from someone else give them the
+[34:18] fact and back it up with actual
+[34:20] information not ego driven
+[34:22] not because somebody cool said it one
+[34:25] time right leave names out of it
+[34:27] just give the fact when people hear from
+[34:31] me who's a quote unquote No One
+[34:34] at the LGs that
+[34:36] CDH is a turn six to turn seven format
+[34:40] and Casual sits everywhere between turn
+[34:42] eight to twelve more or less right their
+[34:45] brains melt
+[34:47] they have no idea how to deal with that
+[34:50] because yeah they're they're previous
+[34:53] data is just like
+[34:55] well this is what it is it has to be
+[34:58] that no no no no it doesn't and when you
+[35:00] start answering those questions
+[35:02] you start thinking about the problems
+[35:04] more outside of wherever you exist in
+[35:08] them and just of how can we solve that
+[35:10] on a larger scale and make it so that
+[35:12] everybody we remove the discourse from
+[35:14] it
+[35:15] that's that tends to be where I live
+[35:18] is this is the problem we have right now
+[35:22] we need to fix that thing
+[35:24] we need to bring more people into cedh
+[35:26] or at least to break this stereotype of
+[35:29] what CDH is we look at the seminar
+[35:32] series if we look at what cdhu does we
+[35:35] boil it all the way down
+[35:38] what it really does is breaks the
+[35:41] stereotypes of what people assume to be
+[35:44] CDH and it makes it very easy for people
+[35:46] to decide
+[35:47] oh that's definitely something I want to
+[35:49] do or you know what maybe that's not
+[35:52] exactly for me but I'm glad I understand
+[35:54] the reality of it now versus what I just
+[35:57] assumed right um and and that's been
+[36:00] it's been a fun puzzle to solve because
+[36:02] you run you start seeing these cool
+[36:04] truths pop out you start seeing like you
+[36:06] we've had a couple people come in
+[36:09] [Music]
+[36:10] um from a mentor perspective
+[36:12] right you see him on Twitter all the
+[36:13] time I'll show you I'll teach you I'd
+[36:15] love to teach somebody I'd love to do
+[36:16] this I'd love to do that I'd love to be
+[36:17] involved
+[36:19] and you get them in there and you start
+[36:20] getting them involved and all of a
+[36:21] sudden they realize like oh wait no I
+[36:22] don't want to do that at all and that's
+[36:24] okay you're right there's nothing wrong
+[36:26] with that but the fact you presented
+[36:27] them
+[36:28] with that information
+[36:31] like that's a win
+[36:33] anything like it like that's something
+[36:35] that I think uh for for our patrons uh
+[36:39] who are who are who get to watch uh at
+[36:43] least me
+[36:44] um you are seeing that I am sorting
+[36:46] cards on my desk right now because my
+[36:48] desk space is uh a nightmare and it's
+[36:53] overwhelming me as we record uh so I am
+[36:57] very actively paying attention to this
+[36:59] conversation but I'm also like
+[37:01] organizing stacks of cards because I'm
+[37:04] just like you know buried in cards right
+[37:07] now we have the neurodivergent skill set
+[37:09] we're okay yeah we got this but uh so
+[37:13] one of the one of the things that
+[37:16] I think is really neat and it's funny
+[37:20] because you say that with you know
+[37:22] sometimes people get in there and then
+[37:23] they realize that they didn't really
+[37:25] want to be like teach people how to do
+[37:27] stuff and
+[37:31] it's interesting because I don't want to
+[37:34] I I'm not gonna open this up to a larger
+[37:36] discussion because I feel like it could
+[37:38] very quickly
+[37:41] um devolve into a larger discussion but
+[37:43] it does kind of uh
+[37:46] open up a interesting like discussion
+[37:50] point of
+[37:51] there are a lot of people who like
+[37:53] you've said who on Twitter are like yeah
+[37:55] I'd love to do that blah blah blah and
+[37:57] love want to get people into it and then
+[38:00] you get them into a setting where they
+[38:03] can do that and they realize oh I didn't
+[38:05] actually want to do that and one of the
+[38:08] questions I guess I would ask is do you
+[38:12] think some of that is
+[38:16] a byproduct of the format of Twitter
+[38:21] being very like
+[38:24] clout and connection driven
+[38:28] um where being willing to help somebody
+[38:33] even if it's not something you actually
+[38:34] want to do will buy you points that you
+[38:38] otherwise wouldn't get if that makes
+[38:40] sense and I know that sounds like super
+[38:42] cynical and I hate being cynical I I
+[38:45] always try to be like positive about
+[38:47] these sorts of things yeah but like what
+[38:50] like I I just as we're like having this
+[38:52] discussion like what's your thoughts on
+[38:54] like that perspective of it
+[38:56] yeah so I I think it's a really
+[38:59] interesting
+[39:01] spot because a lot of the people that
+[39:03] are
+[39:04] I guess for this sake of conversation we
+[39:06] could call them Cloud driven or ego
+[39:07] driven they they're they have extremely
+[39:09] valid points right and at some point
+[39:11] their points were extremely validated by
+[39:14] somebody else that had extremely valid
+[39:16] points and they built that thing up and
+[39:19] it got to a point now where there's two
+[39:22] sides to it one is yes there are some
+[39:25] Cloud Chasers out there and that exists
+[39:27] I think sometimes it's more of a meme
+[39:29] than anything at this point but there
+[39:31] are things out there that exist like
+[39:32] that
+[39:33] um and then there's other people out
+[39:35] there that gain the clout at a certain
+[39:37] point in time
+[39:39] and now regret it but now they can't
+[39:42] unring the Bell right and that you're
+[39:44] here now that's it you have the 10 000
+[39:47] followers or whatever it is like you're
+[39:49] here now so now when you speak
+[39:51] that carries weight and you have to deal
+[39:53] with that and I like the fact that cdhu
+[39:55] kind of gives you a safe haven from that
+[39:57] right but it's a double-edged sword in
+[40:00] there as well right you can have your 10
+[40:03] 000 followers you can have all the cloud
+[40:05] you want in the open world as soon as
+[40:06] you step through the doors of the
+[40:08] University
+[40:09] right that all goes away right you're
+[40:12] having direct one-on-one conversations
+[40:14] and can be directly challenged by
+[40:16] another one-on-one person this isn't
+[40:18] Twitter where your 10 000 followers are
+[40:20] going to back you up
+[40:22] that that doesn't exist here it's you
+[40:24] versus two other people and there's two
+[40:26] other people might poke a hole in your
+[40:28] logic and sometimes that happens and
+[40:31] what you see is some folks are more
+[40:34] prepared for their logic to be poked
+[40:38] than than others right right and and
+[40:41] sometimes on Twitter it's very easy for
+[40:43] you and 120 characters to say Yep this
+[40:46] is the definitively correct answer that
+[40:49] is it right or I'll make a long thread
+[40:51] and I'll explain it to you but no one's
+[40:52] gonna read it to a certain extent right
+[40:56] and that's fine then all your people can
+[40:59] give you your likes and can give you
+[41:00] your comments and all those other things
+[41:01] and some of those points again are very
+[41:04] valid it's not to take away from them
+[41:07] when you give someone the opportunity to
+[41:09] do it on an individual level where all
+[41:11] of the cloud is removed and they have
+[41:13] that one-on-one time you find that some
+[41:16] people just don't like having their
+[41:17] logic poked and it kind of enables you
+[41:19] to look at yourself and go man
+[41:22] okay I do have the answers
+[41:24] but I don't like when people play with
+[41:26] them too much and maybe I'm just better
+[41:28] brewing with me and my buddies and and
+[41:30] again that's okay right
+[41:33] a big thing that I see online is people
+[41:38] telling other people what is and isn't
+[41:40] okay it's okay to like your list it's
+[41:42] okay to love Lavinia more than you love
+[41:43] anything else in the world that's okay
+[41:45] right like it's okay to brew your decks
+[41:48] it's okay to sit there and say that this
+[41:50] is the definitively correct pile it's
+[41:53] okay to say you built the best yuriko
+[41:55] deck in existence that's okay
+[41:57] but if you're not willing to listen to
+[41:59] the answers and have the ability to
+[42:01] shrug them off
+[42:03] maybe just be proud in your circles be
+[42:06] proud with your friends be proud with
+[42:08] your group but understand that sometimes
+[42:09] people are going to say hey no I don't
+[42:11] like that
+[42:12] that's just adulting that's where we're
+[42:14] at
+[42:15] so yeah I I tend to agree with that
+[42:19] um
+[42:20] it's funny the like definitive version
+[42:23] thing because like one of the favorite
+[42:27] uh one of the very like first things
+[42:30] they said I don't know if you've read my
+[42:32] uh Jessica Stone blade primer
+[42:35] um I did it was beautiful the one of the
+[42:37] very first things I said in there in the
+[42:39] preface and I appreciate that a big
+[42:42] shout out to uh Ken uh from stock dth
+[42:45] for making that primer uh template
+[42:50] outline thing that he made dinner
+[42:53] training resources it's the best if that
+[42:55] didn't exist I wouldn't be able to write
+[42:57] a primer just because of how my brain is
+[43:01] um
+[43:02] so but one of the things that I said in
+[43:05] that is this is my build of Art and
+[43:08] chrome this doesn't mean it's definitive
+[43:11] there are or is that this is the right
+[43:14] way to play the commanders this is how I
+[43:16] play the deck and you're gonna get a
+[43:18] spoiler here okay so I feel like this is
+[43:21] where we're headed so finish your
+[43:22] thought but I feel like we're going to
+[43:23] get a spoiler here oh and it's it's
+[43:26] literally just you know my ultimate
+[43:29] opinion on these things has been like
+[43:33] there was a period of time when I was
+[43:36] uh doing the only focus I really had in
+[43:40] CDH for like two years or really a year
+[43:44] I guess was like Lavinia
+[43:47] from about 2019 to 2020 and then I kind
+[43:50] of started like
+[43:51] being like okay I'm gonna go back to
+[43:52] playing like good decks again uh
+[43:55] and so but like I I was just so
+[43:59] dedicated to it I played it against so
+[44:01] many things I've done well with it all
+[44:03] these different things
+[44:04] and anytime somebody would challenge the
+[44:08] uh like logic of it I I like took it as
+[44:11] this like personal like attack like this
+[44:15] is this is an attack on me and it's
+[44:18] interesting because I feel like
+[44:21] once I started thinking of it as
+[44:25] there's no wrong or right way of playing
+[44:27] these things there is this is my deck
+[44:30] this is my logic to the decisions that
+[44:32] I've made they might not be correct
+[44:35] these are my decisions and the
+[44:38] willingness to take criticism of your
+[44:42] your thoughts and
+[44:46] be able to
+[44:48] it's not just taking the criticism but
+[44:51] it's taking the criticism and
+[44:53] acknowledging them
+[44:54] while not taking it as a like personal
+[44:57] Vendetta I I I think it was funny like a
+[45:00] couple weeks ago or I guess it's almost
+[45:03] a month ago Jesus Christ I need to I was
+[45:07] a little spotty there for a couple
+[45:09] months with my upload uh but uh we had
+[45:12] choir boy on and uh we were talking
+[45:16] about Rogue decks and one of the things
+[45:19] he said or very early on that really
+[45:21] resonated with me was uh I I would say
+[45:25] kind of frequently on the show uh that I
+[45:28] thought captains to say sucked and uh
+[45:31] you know I was just like I think the
+[45:33] next bad and he he's told me that since
+[45:37] then that just like uh I thought you
+[45:40] just really didn't like me and he said
+[45:41] it on the show and I was like oh no I
+[45:45] was like I don't have any it has nothing
+[45:48] to do with you
+[45:50] um it's just like this is my opinion on
+[45:51] the deck uh
+[45:53] and so it's interesting like
+[45:59] what I'm getting at is what I like about
+[46:01] cvhu
+[46:03] is that it's helping people kind of
+[46:06] divorce that identity with a deck thing
+[46:11] uh because of the environment that
+[46:15] you've created there
+[46:16] uh I I think that's ultimately healthy
+[46:19] for the format and for really just the
+[46:22] community as a whole
+[46:25] um and just for people as a whole I want
+[46:27] people to enjoy living in their lives
+[46:31] and uh there are a handful of people
+[46:34] that are a little wrapped up and
+[46:38] their deck and I was just like all right
+[46:41] it's fine it's not the end of the world
+[46:43] it's just a deck
+[46:45] yeah it's it's gonna be okay it's it's
+[46:47] gonna be okay it's just the magic act
+[46:50] um yeah but but that's one thing that I
+[46:52] that I really appreciate that that this
+[46:54] does is you guys have really worked to
+[46:56] divorce that like identity of
+[47:00] the deck being part of you whereas it is
+[47:03] a deck that you play
+[47:05] yeah and I think I think a way that
+[47:07] we've done that
+[47:09] is we've shown that you're not the only
+[47:11] one playing that thing
+[47:13] right you are not the only one that's
+[47:16] playing you know you're not the
+[47:18] only one playing Zada you're not the
+[47:20] only one so
+[47:22] to take the hit personally is silly
+[47:24] because there's several of you
+[47:26] just in this space that are doing what
+[47:29] you're you're doing right it's not an
+[47:32] identity thing you're just working
+[47:33] together to make a great thing
+[47:35] all at once and then for anybody that's
+[47:37] always like this is the definitively
+[47:39] correct choice this is the objective
+[47:41] like by math this is the one this is the
+[47:45] card period I think the big thing that
+[47:48] anyone can fall back on
+[47:51] whenever somebody says that to you is
+[47:53] don't forget the pilot right right hey
+[47:57] so many people are so hell-bent on you
+[48:00] know I have the lowest amount of value
+[48:01] out you know average Mana value I have
+[48:03] you know all of my cards do this all of
+[48:06] my cards do that you know everything
+[48:07] layers well yeah
+[48:10] too relevant to a certain extent because
+[48:12] you have to be able to actually do those
+[48:14] things
+[48:15] under pressure in the table in the Pod
+[48:18] during wherever you're at
+[48:20] like don't forget the pilot yes there
+[48:22] are better decks than others and that's
+[48:24] fine but to say that one is
+[48:27] objectively better than some other deck
+[48:30] is just silly at a certain point because
+[48:34] Charles will come in and Waffle Stomp
+[48:36] anybody with a mono white deck and
+[48:38] somebody will just go Al's not legit
+[48:41] okay
+[48:43] go ahead give it a shot and see see
+[48:46] where we're at it's like
+[48:48] you have to be open to those things
+[48:50] don't get wrapped up in in you know your
+[48:53] your identity is your deck no no it's
+[48:55] not
+[48:56] a deck you love and it's the deck you
+[48:59] play and it's the deck you built and you
+[49:00] take a lot of pride in it but it's okay
+[49:02] to shift things to make it the best
+[49:04] version of itself I I do liken the game
+[49:08] to Survivor a bit uh but unlike Survivor
+[49:11] we are playing for a million dollars uh
+[49:14] but Mike it it's been really great
+[49:18] having you on uh so when it comes to how
+[49:22] people want to support this Venture from
+[49:27] you uh in things that they're doing how
+[49:29] can people support you and get involved
+[49:33] yeah so there's a couple different ways
+[49:35] and I mentioned earlier that this is a
+[49:37] this is kind of like the Outreach branch
+[49:39] of eminence right so uh Eminence gaming
+[49:42] is is we're here we're making a lot of
+[49:45] noise right now
+[49:46] um we yell loud and often
+[49:49] um but this is kind of our our Outreach
+[49:51] branch
+[49:52] with Eminence we do have all kinds of
+[49:55] things that are going on
+[49:57] um that you can help support
+[49:59] all the things that go through cdhu and
+[50:03] kind of further our message
+[50:05] um we use it to kind of support our
+[50:08] staff and support our growth so um CD
+[50:12] agu will always be free the information
+[50:15] that's at cdhu will never be pay walled
+[50:18] right
+[50:19] um we do have this edhu seminar series
+[50:21] and that's probably the first thing
+[50:23] where you can go yeah we can support
+[50:25] Mike we can support eminence
+[50:29] cdhu to do this thing and that's largely
+[50:31] driven through a patreon
+[50:34] um again the videos that we record for
+[50:37] these live screenings they'll be loaded
+[50:39] up on YouTube and they will be free
+[50:41] what you get with the patreon is the
+[50:44] ability to kind of live participate in
+[50:46] the chat with the seminar Series so the
+[50:49] seminar series we have
+[50:51] um two per month scheduled all the way
+[50:52] out until next April and we're already
+[50:54] starting to fill up next year as well
+[50:57] um for the remainder of next year
+[50:59] um and you can sit down we have one
+[51:01] Saturday coming up with The Surreal and
+[51:05] Nate and it's more or less about this
+[51:07] conversation yeah what was it like to
+[51:09] get started
+[51:11] um
+[51:11] and with the patreon if you donate I
+[51:16] think it's at our our 12 tier that money
+[51:19] goes directly into the pockets of the
+[51:21] media and judge staff for Eminence the
+[51:24] Eminence Founders this will be the first
+[51:26] time I say this in public
+[51:28] um the Eminence Founders do not see any
+[51:30] money from any of the Eminence anything
+[51:32] we do not pocket anything we do not make
+[51:34] money off of anything we aren't money
+[51:36] hungry or greedy
+[51:37] um we will not write any checks to
+[51:39] anything until maybe the end of next
+[51:42] year everything goes to our staff
+[51:44] everything goes into our events and goes
+[51:46] back into the community so
+[51:49] um the patreon the 12 tier we have a two
+[51:52] six dollar tiers and then a 12 tier the
+[51:54] twelve dollar one that gets you the
+[51:55] supporter roll in cedhu and lets you get
+[51:59] into the live discussion with all of the
+[52:02] people that are presenting
+[52:05] um so that's a way that you can
+[52:07] participate we also have an apparel line
+[52:08] that we're we're working out right now
+[52:10] where we do have cdhu hoodies shirts Etc
+[52:12] awesome I love it yeah so we just yeah
+[52:15] we um I actually got them and I'm
+[52:18] planning on doing a product shoe because
+[52:20] I'm a photographer as well because Lord
+[52:22] only knows
+[52:24] I have how many hats can you possibly
+[52:26] wear I wear a lot and it's because of
+[52:29] the neurodivergence I I understand
+[52:32] um yeah so
+[52:34] um the bonfire Shop is open all those
+[52:36] links are also in there and and Cal give
+[52:38] you I'll give you those if you want to
+[52:40] post that wherever yeah absolutely those
+[52:43] are those are probably the main two main
+[52:46] ways to to support us
+[52:48] um and like I said all that stuff goes
+[52:50] to the media team and our judge staff
+[52:52] right we pay our staff we pay our people
+[52:54] to come to Silicon Dynasty we paid our
+[52:57] people at punt City we pay our people to
+[53:00] participate in the online events right
+[53:02] we have judges coming to help with
+[53:04] certain online events that are coming up
+[53:06] soon those are paid folks
+[53:08] um we do that to make sure that we're
+[53:10] giving out the best quality that we can
+[53:12] and to support that through cdhu we
+[53:15] would appreciate it but again there is
+[53:17] no obligation cdhu is an open free space
+[53:20] for you to come hang out and learning
+[53:23] um so if you'll know obvious in there
+[53:26] [Music]
+[53:33] well that about wraps things up for us
+[53:36] here this week thank you all for tuning
+[53:38] in and thank you Mike bainey for what
+[53:42] you're doing for the community and
+[53:44] organizing the cedh university if you
+[53:48] liked this episode or any of our other
+[53:50] episodes please make sure to rate the
+[53:52] show on whatever podcast platform you
+[53:54] are on and if you are listening on
+[53:56] YouTube go ahead and hit that subscribe
+[53:59] button and tell me down in the comments
+[54:00] what your favorite part of today's show
+[54:03] was also a reminder that we are
+[54:06] supported by Dragon shield and so if you
+[54:08] want to support the show head on over to
+[54:11] the link in our description where you
+[54:14] will be directly supporting the Mind
+[54:17] sculptors podcast and also buying some
+[54:21] Dragon shield sleeves which are pretty
+[54:22] good if you ask me I also want to thank
+[54:25] our top tier patrons Justin Adam Hamden
+[54:29] David Snavely dining cheese Jason Bialik
+[54:32] Josh Stein line Matt Boehner and Senior
+[54:36] coupon if you two would like to support
+[54:38] the show you can head on over to
+[54:41] patreon.com forward slash the Mind
+[54:43] sculptors or just check out the link in
+[54:46] the description thank you again for
+[54:48] joining us and from all of us here at
+[54:49] myansculptors I'm Callahan and we'll see
+[54:52] you next time
+[54:53] [Music]
+[55:09] foreign
+[55:12] [Music]
+[55:42] foreign
+[55:57] [Music]

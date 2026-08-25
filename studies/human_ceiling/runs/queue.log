@@ -1,0 +1,296 @@
+=== 16:01:18 starting pod 5A6o18Bra0Y ===
+staged rog_ishai.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander
+staged malcolm_kediss.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander
+staged cabbage_merchant.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander
+staged godo.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander
+
+--- rotation 1/4: seats = ['rog_ishai.dck', 'malcolm_kediss.dck', 'cabbage_merchant.dck', 'godo.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/rog_ishai.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/malcolm_kediss.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/cabbage_merchant.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/godo.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_5A6o18Bra0Y_rot0.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-rog_ishai -> STOCK AI (no plan for "rog_ishai")
+  shim: Ai(2)-malcolm_kediss -> STOCK AI (no plan for "malcolm_kediss")
+  shim: Ai(3)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: Ai(4)-godo -> STOCK AI (no plan for "godo")
+  shim: game 1 done in 294311 ms — Ai(4)-godo wins
+
+--- rotation 2/4: seats = ['malcolm_kediss.dck', 'cabbage_merchant.dck', 'godo.dck', 'rog_ishai.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/malcolm_kediss.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/cabbage_merchant.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/godo.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/rog_ishai.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_5A6o18Bra0Y_rot1.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-malcolm_kediss -> STOCK AI (no plan for "malcolm_kediss")
+  shim: Ai(2)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: Ai(3)-godo -> STOCK AI (no plan for "godo")
+  shim: Ai(4)-rog_ishai -> STOCK AI (no plan for "rog_ishai")
+  shim: game 1 done in 41212 ms — Ai(3)-godo wins
+
+--- rotation 3/4: seats = ['cabbage_merchant.dck', 'godo.dck', 'rog_ishai.dck', 'malcolm_kediss.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/cabbage_merchant.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/godo.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/rog_ishai.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/malcolm_kediss.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_5A6o18Bra0Y_rot2.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: Ai(2)-godo -> STOCK AI (no plan for "godo")
+  shim: Ai(3)-rog_ishai -> STOCK AI (no plan for "rog_ishai")
+  shim: Ai(4)-malcolm_kediss -> STOCK AI (no plan for "malcolm_kediss")
+  shim: game 1 done in 28035 ms — Ai(3)-rog_ishai wins
+
+--- rotation 4/4: seats = ['godo.dck', 'rog_ishai.dck', 'malcolm_kediss.dck', 'cabbage_merchant.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/godo.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/rog_ishai.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/malcolm_kediss.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_5A6o18Bra0Y-drwjjpmv/decks/commander/cabbage_merchant.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_5A6o18Bra0Y_rot3.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-godo -> STOCK AI (no plan for "godo")
+  shim: Ai(2)-rog_ishai -> STOCK AI (no plan for "rog_ishai")
+  shim: Ai(3)-malcolm_kediss -> STOCK AI (no plan for "malcolm_kediss")
+  shim: Ai(4)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: game 1 done in 131480 ms — Ai(4)-cabbage_merchant wins
+
+4 game(s) parsed | draws: 0
+  godo: 2 wins (50%)
+  cabbage_merchant: 1 wins (25%)
+  rog_ishai: 1 wins (25%)
+  malcolm_kediss: 0 wins (0%)
+json    : /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/sim_20260824_160118_hc5A6o18Bra0Y_rotated.json
+=== 16:09:50 finished pod 5A6o18Bra0Y (exit 0) ===
+=== 16:09:50 starting pod Bq-nFi0f1jA ===
+staged cabbage_merchant.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander
+staged yidris.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander
+staged rog_thrasios.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander
+staged kinnan.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander
+
+--- rotation 1/4: seats = ['cabbage_merchant.dck', 'yidris.dck', 'rog_thrasios.dck', 'kinnan.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/cabbage_merchant.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/yidris.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/rog_thrasios.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/kinnan.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_Bq-nFi0f1jA_rot0.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: Ai(2)-yidris -> STOCK AI (no plan for "yidris")
+  shim: Ai(3)-rog_thrasios -> STOCK AI (no plan for "rog_thrasios")
+  shim: Ai(4)-kinnan -> STOCK AI (no plan for "kinnan")
+  shim: game 1 done in 72958 ms — Ai(4)-kinnan wins
+
+--- rotation 2/4: seats = ['yidris.dck', 'rog_thrasios.dck', 'kinnan.dck', 'cabbage_merchant.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/yidris.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/rog_thrasios.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/kinnan.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/cabbage_merchant.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_Bq-nFi0f1jA_rot1.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-yidris -> STOCK AI (no plan for "yidris")
+  shim: Ai(2)-rog_thrasios -> STOCK AI (no plan for "rog_thrasios")
+  shim: Ai(3)-kinnan -> STOCK AI (no plan for "kinnan")
+  shim: Ai(4)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: game 1 done in 900369 ms — draw
+
+--- rotation 3/4: seats = ['rog_thrasios.dck', 'kinnan.dck', 'cabbage_merchant.dck', 'yidris.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/rog_thrasios.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/kinnan.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/cabbage_merchant.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/yidris.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_Bq-nFi0f1jA_rot2.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-rog_thrasios -> STOCK AI (no plan for "rog_thrasios")
+  shim: Ai(2)-kinnan -> STOCK AI (no plan for "kinnan")
+  shim: Ai(3)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: Ai(4)-yidris -> STOCK AI (no plan for "yidris")
+  shim: game 1 done in 80232 ms — Ai(3)-cabbage_merchant wins
+
+--- rotation 4/4: seats = ['kinnan.dck', 'cabbage_merchant.dck', 'yidris.dck', 'rog_thrasios.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/kinnan.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/cabbage_merchant.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/yidris.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/rog_thrasios.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_Bq-nFi0f1jA_rot3.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-kinnan -> STOCK AI (no plan for "kinnan")
+  shim: Ai(2)-cabbage_merchant -> STOCK AI (no plan for "cabbage_merchant")
+  shim: Ai(3)-yidris -> STOCK AI (no plan for "yidris")
+  shim: Ai(4)-rog_thrasios -> STOCK AI (no plan for "rog_thrasios")
+  shim: game 1 done in 537721 ms — Ai(2)-cabbage_merchant wins
+
+4 game(s) parsed | draws: 1
+  cabbage_merchant: 2 wins (50%)
+  kinnan: 1 wins (25%)
+  yidris: 0 wins (0%)
+  rog_thrasios: 0 wins (0%)
+json    : /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/sim_20260824_160950_hcBq-nFi0f1jA_rotated.json
+=== 16:36:39 finished pod Bq-nFi0f1jA (exit 0) ===
+=== 16:36:39 starting pod 2iA_Jt0d6sM ===
+staged derevi.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander
+staged nadu.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander
+staged rograkh_silas.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander
+staged godo_archetype.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander
+
+--- rotation 1/4: seats = ['derevi.dck', 'nadu.dck', 'rograkh_silas.dck', 'godo_archetype.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/derevi.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/nadu.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/rograkh_silas.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/godo_archetype.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-derevi -> STOCK AI (no plan for "derevi")
+  shim: Ai(2)-nadu -> STOCK AI (no plan for "nadu")
+  shim: Ai(3)-rograkh_silas -> STOCK AI (no plan for "rograkh_silas")
+  shim: Ai(4)-godo_archetype -> STOCK AI (no plan for "godo_archetype")
+  shim: game 1 done in 59463 ms — Ai(4)-godo_archetype wins
+
+--- rotation 2/4: seats = ['nadu.dck', 'rograkh_silas.dck', 'godo_archetype.dck', 'derevi.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/nadu.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/rograkh_silas.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/godo_archetype.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/derevi.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_2iA_Jt0d6sM_rot1.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-nadu -> STOCK AI (no plan for "nadu")
+  shim: Ai(2)-rograkh_silas -> STOCK AI (no plan for "rograkh_silas")
+  shim: Ai(3)-godo_archetype -> STOCK AI (no plan for "godo_archetype")
+  shim: Ai(4)-derevi -> STOCK AI (no plan for "derevi")
+  shim: game 1 done in 82306 ms — Ai(3)-godo_archetype wins
+
+--- rotation 3/4: seats = ['rograkh_silas.dck', 'godo_archetype.dck', 'derevi.dck', 'nadu.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/rograkh_silas.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/godo_archetype.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/derevi.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/nadu.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_2iA_Jt0d6sM_rot2.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-rograkh_silas -> STOCK AI (no plan for "rograkh_silas")
+  shim: Ai(2)-godo_archetype -> STOCK AI (no plan for "godo_archetype")
+  shim: Ai(3)-derevi -> STOCK AI (no plan for "derevi")
+  shim: Ai(4)-nadu -> STOCK AI (no plan for "nadu")
+  shim: game 1 done in 67223 ms — Ai(2)-godo_archetype wins
+
+--- rotation 4/4: seats = ['godo_archetype.dck', 'derevi.dck', 'nadu.dck', 'rograkh_silas.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/godo_archetype.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/derevi.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/nadu.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_2iA_Jt0d6sM-_sfdrw2o/decks/commander/rograkh_silas.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_2iA_Jt0d6sM_rot3.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-godo_archetype -> STOCK AI (no plan for "godo_archetype")
+  shim: Ai(2)-derevi -> STOCK AI (no plan for "derevi")
+  shim: Ai(3)-nadu -> STOCK AI (no plan for "nadu")
+  shim: Ai(4)-rograkh_silas -> STOCK AI (no plan for "rograkh_silas")
+  shim: game 1 done in 22902 ms — Ai(4)-rograkh_silas wins
+
+4 game(s) parsed | draws: 0
+  godo_archetype: 3 wins (75%)
+  rograkh_silas: 1 wins (25%)
+  derevi: 0 wins (0%)
+  nadu: 0 wins (0%)
+json    : /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/sim_20260824_163639_hc2iAJt0d6sM_rotated.json
+=== 16:40:47 finished pod 2iA_Jt0d6sM (exit 0) ===
+=== 16:40:47 starting pod OuY6mdiXbHU ===
+staged winota_ian.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander
+staged winota_lua.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander
+staged winota_rachel.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander
+staged winota_mike.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander
+
+--- rotation 1/4: seats = ['winota_ian.dck', 'winota_lua.dck', 'winota_rachel.dck', 'winota_mike.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_ian.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_lua.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_rachel.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_mike.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_OuY6mdiXbHU_rot0.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-winota_ian -> STOCK AI (no plan for "winota_ian")
+  shim: Ai(2)-winota_lua -> STOCK AI (no plan for "winota_lua")
+  shim: Ai(3)-winota_rachel -> STOCK AI (no plan for "winota_rachel")
+  shim: Ai(4)-winota_mike -> STOCK AI (no plan for "winota_mike")
+  shim: game 1 done in 260098 ms — Ai(4)-winota_mike wins
+
+--- rotation 2/4: seats = ['winota_lua.dck', 'winota_rachel.dck', 'winota_mike.dck', 'winota_ian.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_lua.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_rachel.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_mike.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_ian.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_OuY6mdiXbHU_rot1.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-winota_lua -> STOCK AI (no plan for "winota_lua")
+  shim: Ai(2)-winota_rachel -> STOCK AI (no plan for "winota_rachel")
+  shim: Ai(3)-winota_mike -> STOCK AI (no plan for "winota_mike")
+  shim: Ai(4)-winota_ian -> STOCK AI (no plan for "winota_ian")
+  shim: game 1 done in 304223 ms — Ai(4)-winota_ian wins
+
+--- rotation 3/4: seats = ['winota_rachel.dck', 'winota_mike.dck', 'winota_ian.dck', 'winota_lua.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_rachel.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_mike.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_ian.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_lua.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_OuY6mdiXbHU_rot2.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-winota_rachel -> STOCK AI (no plan for "winota_rachel")
+  shim: Ai(2)-winota_mike -> STOCK AI (no plan for "winota_mike")
+  shim: Ai(3)-winota_ian -> STOCK AI (no plan for "winota_ian")
+  shim: Ai(4)-winota_lua -> STOCK AI (no plan for "winota_lua")
+  shim: game 1 done in 35747 ms — Ai(4)-winota_lua wins
+
+--- rotation 4/4: seats = ['winota_mike.dck', 'winota_ian.dck', 'winota_lua.dck', 'winota_rachel.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_mike.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_ian.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_lua.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_OuY6mdiXbHU-duyucfax/decks/commander/winota_rachel.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_OuY6mdiXbHU_rot3.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-winota_mike -> STOCK AI (no plan for "winota_mike")
+  shim: Ai(2)-winota_ian -> STOCK AI (no plan for "winota_ian")
+  shim: Ai(3)-winota_lua -> STOCK AI (no plan for "winota_lua")
+  shim: Ai(4)-winota_rachel -> STOCK AI (no plan for "winota_rachel")
+  shim: game 1 done in 872648 ms — Ai(4)-winota_rachel wins
+
+4 game(s) parsed | draws: 0
+  winota_mike: 1 wins (25%)
+  winota_ian: 1 wins (25%)
+  winota_lua: 1 wins (25%)
+  winota_rachel: 1 wins (25%)
+json    : /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/sim_20260824_164048_hcOuY6mdiXbHU_rotated.json
+=== 17:05:37 finished pod OuY6mdiXbHU (exit 0) ===
+QUEUE COMPLETE 17:05:37
+=== 17:05:56 starting pod CxKMqO36DdM ===
+staged dallas_bluefarm.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander
+staged alan_tnt.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander
+staged sterling_bluefarm.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander
+staged joseph_ral.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander
+
+--- rotation 1/4: seats = ['dallas_bluefarm.dck', 'alan_tnt.dck', 'sterling_bluefarm.dck', 'joseph_ral.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/dallas_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/alan_tnt.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/sterling_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/joseph_ral.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_CxKMqO36DdM_rot0.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-dallas_bluefarm -> STOCK AI (no plan for "dallas_bluefarm")
+  shim: Ai(2)-alan_tnt -> STOCK AI (no plan for "alan_tnt")
+  shim: Ai(3)-sterling_bluefarm -> STOCK AI (no plan for "sterling_bluefarm")
+  shim: Ai(4)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: game 1 done in 189539 ms — Ai(1)-dallas_bluefarm wins
+
+--- rotation 2/4: seats = ['alan_tnt.dck', 'sterling_bluefarm.dck', 'joseph_ral.dck', 'dallas_bluefarm.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/alan_tnt.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/sterling_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/joseph_ral.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/dallas_bluefarm.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_CxKMqO36DdM_rot1.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-alan_tnt -> STOCK AI (no plan for "alan_tnt")
+  shim: Ai(2)-sterling_bluefarm -> STOCK AI (no plan for "sterling_bluefarm")
+  shim: Ai(3)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: Ai(4)-dallas_bluefarm -> STOCK AI (no plan for "dallas_bluefarm")
+  shim: game 1 done in 211273 ms — Ai(2)-sterling_bluefarm wins
+
+--- rotation 3/4: seats = ['sterling_bluefarm.dck', 'joseph_ral.dck', 'dallas_bluefarm.dck', 'alan_tnt.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/sterling_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/joseph_ral.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/dallas_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/alan_tnt.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_CxKMqO36DdM_rot2.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-sterling_bluefarm -> STOCK AI (no plan for "sterling_bluefarm")
+  shim: Ai(2)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: Ai(3)-dallas_bluefarm -> STOCK AI (no plan for "dallas_bluefarm")
+  shim: Ai(4)-alan_tnt -> STOCK AI (no plan for "alan_tnt")
+  shim: game 1 done in 176479 ms — Ai(4)-alan_tnt wins
+
+--- rotation 4/4: seats = ['joseph_ral.dck', 'dallas_bluefarm.dck', 'alan_tnt.dck', 'sterling_bluefarm.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/joseph_ral.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/dallas_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/alan_tnt.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_CxKMqO36DdM-yt8s3jvw/decks/commander/sterling_bluefarm.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_CxKMqO36DdM_rot3.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: Ai(2)-dallas_bluefarm -> STOCK AI (no plan for "dallas_bluefarm")
+  shim: Ai(3)-alan_tnt -> STOCK AI (no plan for "alan_tnt")
+  shim: Ai(4)-sterling_bluefarm -> STOCK AI (no plan for "sterling_bluefarm")
+  shim: game 1 done in 159484 ms — Ai(3)-alan_tnt wins
+
+4 game(s) parsed | draws: 0
+  alan_tnt: 2 wins (50%)
+  sterling_bluefarm: 1 wins (25%)
+  dallas_bluefarm: 1 wins (25%)
+  joseph_ral: 0 wins (0%)
+json    : /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/sim_20260824_170556_hcCxKMqO36DdM_rotated.json
+=== 17:18:30 finished pod CxKMqO36DdM (exit 0) ===
+=== 17:18:30 starting pod sZA0KqXCGrY ===
+staged joseph_ral.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander
+staged tyler_bluefarm.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander
+staged ashton_bluefarm.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander
+staged natalie_magda.dck -> /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander
+
+--- rotation 1/4: seats = ['joseph_ral.dck', 'tyler_bluefarm.dck', 'ashton_bluefarm.dck', 'natalie_magda.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/joseph_ral.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/tyler_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/ashton_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/natalie_magda.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_sZA0KqXCGrY_rot0.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: Ai(2)-tyler_bluefarm -> STOCK AI (no plan for "tyler_bluefarm")
+  shim: Ai(3)-ashton_bluefarm -> STOCK AI (no plan for "ashton_bluefarm")
+  shim: Ai(4)-natalie_magda -> STOCK AI (no plan for "natalie_magda")
+  shim: game 1 done in 82963 ms — Ai(4)-natalie_magda wins
+
+--- rotation 2/4: seats = ['tyler_bluefarm.dck', 'ashton_bluefarm.dck', 'natalie_magda.dck', 'joseph_ral.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/tyler_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/ashton_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/natalie_magda.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/joseph_ral.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_sZA0KqXCGrY_rot1.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-tyler_bluefarm -> STOCK AI (no plan for "tyler_bluefarm")
+  shim: Ai(2)-ashton_bluefarm -> STOCK AI (no plan for "ashton_bluefarm")
+  shim: Ai(3)-natalie_magda -> STOCK AI (no plan for "natalie_magda")
+  shim: Ai(4)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: game 1 done in 61319 ms — Ai(3)-natalie_magda wins
+
+--- rotation 3/4: seats = ['ashton_bluefarm.dck', 'natalie_magda.dck', 'joseph_ral.dck', 'tyler_bluefarm.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/ashton_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/natalie_magda.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/joseph_ral.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/tyler_bluefarm.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_sZA0KqXCGrY_rot2.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-ashton_bluefarm -> STOCK AI (no plan for "ashton_bluefarm")
+  shim: Ai(2)-natalie_magda -> STOCK AI (no plan for "natalie_magda")
+  shim: Ai(3)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: Ai(4)-tyler_bluefarm -> STOCK AI (no plan for "tyler_bluefarm")
+  shim: game 1 done in 22357 ms — Ai(1)-ashton_bluefarm wins
+
+--- rotation 4/4: seats = ['natalie_magda.dck', 'joseph_ral.dck', 'tyler_bluefarm.dck', 'ashton_bluefarm.dck'] ---
+$ java -Xmx4g -cp /Users/vincentattonito/Desktop/Personal/simlab-forge-shim/simlab-forge-shim.jar:/Users/vincentattonito/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/natalie_magda.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/joseph_ral.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/tyler_bluefarm.dck /Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_sZA0KqXCGrY-bxgmag7c/decks/commander/ashton_bluefarm.dck --games 1 --timeout 900 --out /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/shim_raw_hc_sZA0KqXCGrY_rot3.jsonl
+  shim: FModel initialized
+  shim: Ai(1)-natalie_magda -> STOCK AI (no plan for "natalie_magda")
+  shim: Ai(2)-joseph_ral -> STOCK AI (no plan for "joseph_ral")
+  shim: Ai(3)-tyler_bluefarm -> STOCK AI (no plan for "tyler_bluefarm")
+  shim: Ai(4)-ashton_bluefarm -> STOCK AI (no plan for "ashton_bluefarm")
+  shim: game 1 done in 39676 ms — Ai(1)-natalie_magda wins
+
+4 game(s) parsed | draws: 0
+  natalie_magda: 3 wins (75%)
+  ashton_bluefarm: 1 wins (25%)
+  joseph_ral: 0 wins (0%)
+  tyler_bluefarm: 0 wins (0%)
+json    : /Users/vincentattonito/Desktop/Personal/MtG Rules Engine/studies/human_ceiling/runs/sim_20260824_171831_hcsZA0KqXCGrY_rotated.json
+=== 17:22:14 finished pod sZA0KqXCGrY (exit 0) ===
+QUEUE2 COMPLETE 17:22:14

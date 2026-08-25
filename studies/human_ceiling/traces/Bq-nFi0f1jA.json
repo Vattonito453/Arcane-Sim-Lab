@@ -1,0 +1,159 @@
+{
+  "video_id": "Bq-nFi0f1jA",
+  "url": "https://www.youtube.com/watch?v=Bq-nFi0f1jA",
+  "channel": "Playing With Power MTG",
+  "title": "The Cabbage Merchant vs Yidris vs Kinnan vs Rog/Thras | CEDH Gameplay",
+  "upload_date": "20260522",
+  "players": {
+    "note": "confirmed from on-screen overlays via video frame sampling 2026-08-24; intro captions say 'Brian' but every overlay reads RYAN",
+    "kinnan": "Alex",
+    "yidris": "Shauna",
+    "rog_thrasios": "Ryan",
+    "cabbage_merchant": "Zeb"
+  },
+  "extraction": {
+    "method": "manual LLM read of cleaned auto-captions (data/transcripts/Bq-nFi0f1jA.txt), plus targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills) at 01:50, 07:10-07:28, 13:20-13:48, 20:50-21:03 for overlays, card popups, turn counter, and life totals",
+    "extracted_on": "2026-08-24",
+    "caveats": [
+      "Auto-captions only; card names are garbled and repaired against the four decklists in decks/Bq-nFi0f1jA/; each repair is flagged.",
+      "The provided kinnan.txt is NOT the deck Alex played: the video Kinnan is a big-creature toolbox build (Ghalta, Great Oak Guardian, Thorn Mammoth, Elvish Piper, Jin-Gitaxias, Derevi, Thassa's Oracle, Void Winnower, Gigantoplasm, Nykthos, Strip Mine, Relic of Legends, Barkchannel Pathway, Worldly Tutor - none of which appear in kinnan.txt). Kinnan-seat card names are flagged as divergences and could not be decklist-verified.",
+      "The published Rog/Thras list also drifts from the video (Malevolent Rumble, Six, Hedron Crab, Croaking Counterpart, Hedge Maze, Prismatic Vista, Windswept Heath, Aftermath Analyst, snow-covered Island seen on camera but absent from rog_thrasios.txt).",
+      "PWP edits heavily (21 min for 3 duels); some turns are cut, so intra-round ordering in games 1 and 3 is best-effort.",
+      "The 'TURN NN' overlay counts table rounds from the seat-1 player's untap; frame-confirmed at each win moment."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "01:45-07:29",
+      "seat_order_best_effort": ["kinnan", "yidris", "rog_thrasios", "cabbage_merchant"],
+      "seat_order_confidence": "high; intro names Alex as starting player and every play matches deck-specific cards",
+      "winner_deck": "kinnan",
+      "win_turn_estimate": 4,
+      "win_method": "Seedborn Muse (Finale of Devastation X=5 on turn 3) plus a Biomancer's Familiar copy let Alex activate Kinnan every turn cycle; on Ryan's turn 4 a Derevi, Empyrial Tactician hit plus Great Oak Guardian flicker/untap loop made infinite mana, Kinnan activations put Thrasios then Thassa's Oracle onto the battlefield, Thrasios drew the deck to 6 cards, Oracle ETB won. Frame-confirmed TURN 04 overlay at the win.",
+      "key_line": [
+        {"turn": 1, "seat": "kinnan", "play": "Barkchannel Pathway, Fyndhorn Elves", "divergence": "Barkchannel Pathway not in kinnan.txt; confirmed by on-screen card popup"},
+        {"turn": 1, "seat": "yidris", "play": "City of Traitors, Arcane Signet, Mana Vault, Mox Opal", "repair": "'City of Traders' -> City of Traitors"},
+        {"turn": 1, "seat": "rog_thrasios", "play": "Taiga, Mox Diamond discarding Deserted Temple, Biomancer's Familiar, cast Rograkh", "repair": "'Roger Dodger' -> Rograkh, Son of Rohgahh"},
+        {"turn": 1, "seat": "cabbage_merchant", "play": "Forest, Birds of Paradise"},
+        {"turn": 2, "seat": "kinnan", "play": "Ancient Tomb (to 38), Relic of Legends, tap Relic + Fyndhorn Elves to cast Kinnan turn 2", "divergence": "Relic of Legends not in kinnan.txt"},
+        {"turn": 2, "seat": "yidris", "play": "float 2 from City of Traitors, Misty Rainforest triggers its sacrifice, Lion's Eye Diamond, crack LED discarding hand (Flusterstorm, Deflecting Swat lost), fetch Underground Sea, cast Yidris turn 2", "repair": "'Plusterstorm' -> Flusterstorm"},
+        {"turn": 2, "seat": "rog_thrasios", "play": "cast Thrasios (second commander)"},
+        {"turn": 2, "seat": "cabbage_merchant", "play": "Shifting Woodland untapped (controls a Forest), cast The Cabbage Merchant turn 2"},
+        {"turn": 3, "seat": "kinnan", "play": "Rejuvenating Springs, Finale of Devastation X=5 fetching Seedborn Muse"},
+        {"turn": 3, "seat": "yidris", "play": "Yidris attacks Ryan as a 5/4, no blocks; second main Lotus Petal with cascade trigger (whiff, shuffle)", "note": "pre-combat the table discusses Alex's deck holding flash blockers; 'Void Winnower' named as a card in it"},
+        {"turn": 3, "seat": "kinnan", "play": "end-step Kinnan activation (to 34) hits Birds of Paradise; later another (to 32) hits Elvish Mystic"},
+        {"turn": 3, "seat": "rog_thrasios", "play": "Malevolent Rumble (Ancient Tomb to hand, 0/1 Eldrazi Spawn), Ancient Tomb as land", "divergence": "Malevolent Rumble not in rog_thrasios.txt but cast by this seat in all three games"},
+        {"turn": 3, "seat": "cabbage_merchant", "play": "end of Ryan's turn: taps two Foods for mana, Worldly Tutor putting Peregrin Took on top", "repair": "'Peregrine Took' -> Peregrin Took", "note": "Thorn Mammoth banter here is a joke; the actual Mammoth belongs to Alex (see turn 3 kinnan end step)"},
+        {"turn": 3, "seat": "cabbage_merchant", "play": "Arcane Signet, Academy Manufactor", "repair": "'Academy Manufacturer' -> Academy Manufactor"},
+        {"turn": 3, "seat": "kinnan", "play": "end of Zeb's turn: Kinnan activation puts Thorn Mammoth onto the battlefield; its ETB fight kills Yidris", "divergence": "Thorn Mammoth not in kinnan.txt; ownership inferred from every later fight trigger firing on Alex's own creature ETBs"},
+        {"turn": 4, "seat": "kinnan", "play": "Strip Mine, Gigantoplasm entering as a copy of Biomancer's Familiar (activation costs -2), Thorn Mammoth fights Ryan's Biomancer's Familiar; Kinnan activations chain: Ghalta, Stampede Tyrant (ETB puts Great Oak Guardian from hand), Enduring Vitality, Elvish Piper, Jin-Gitaxias, Progress Tyrant; Mammoth fights Thrasios, Birds of Paradise, Academy Manufactor", "repair": "'Greater Guardian' -> Great Oak Guardian (confirmed by card popup frame at 07:12)", "divergence": "Strip Mine, Gigantoplasm, Ghalta, Great Oak Guardian, Elvish Piper, Jin-Gitaxias not in kinnan.txt"},
+        {"turn": 4, "seat": "rog_thrasios", "play": "in response to the Mammoth fight, activates Thrasios (Biomancer discount, Ancient Tomb to 31... life shown 38 on the turn-4 frame), bottoms a card, reveals Hedron Crab", "confidence": "medium; interleaved crosstalk"},
+        {"turn": 4, "seat": "yidris", "play": "recast Yidris", "repair": "'Maelstrom Wanderer' -> Yidris, Maelstrom Wielder (overlay-confirmed commander name)"},
+        {"turn": 4, "seat": "kinnan", "play": "end-step activations: Elvish Spirit Guide (Mammoth fights Rograkh), Faerie Mastermind, Nykthos, Shrine to Nyx", "divergence": "Nykthos not in kinnan.txt"},
+        {"turn": 4, "seat": "rog_thrasios", "play": "Ancient Tomb (to 31), Growing Rites of Itlimoc", "repair": "'Growing Rights of Itlimoc' -> Growing Rites of Itlimoc"},
+        {"turn": 4, "seat": "kinnan", "play": "WIN, at instant speed on Ryan's turn via Seedborn Muse untaps: Kinnan hits Derevi, Empyrial Tactician; Derevi triggers + repeatedly flickering/untapping Great Oak Guardian make infinite mana ('soul bond' in captions is garble; exact flicker engine unclear); Kinnan activations until Thrasios, then until Thassa's Oracle; with Oracle ETB on the stack Thrasios draws the deck to 6 cards left; Oracle wins", "divergence": "Derevi and Thassa's Oracle not in kinnan.txt", "confidence": "high for the win, medium for the infinite-mana mechanism"}
+      ],
+      "life_totals_observed": {"note": "turn 4 frame at 07:11", "kinnan": 28, "yidris": 39, "cabbage_merchant": 40, "rog_thrasios": 38},
+      "extraction_confidence": "high for winner/turn/method, medium for individual plays"
+    },
+    {
+      "game": 2,
+      "timestamps": "07:29-13:49",
+      "seat_order_best_effort": ["yidris", "rog_thrasios", "cabbage_merchant", "kinnan"],
+      "seat_order_confidence": "high; Wheel of Fate suspension pins Shauna to seat 1 and every later turn matches",
+      "winner_deck": "cabbage_merchant",
+      "win_turn_estimate": 4,
+      "win_method": "Transmutation Font tutored Clock of Omens, then a second Font search fetched Academy Manufactor; Font+Clock+Manufactor makes each Clue activation net extra Food/Treasure, giving infinite treasures, foods, and clues; infinite mana plus clue draws into Karn, the Great Creator (frame-confirmed popup), Allosaurus Shepherd protection, and Walking Ballista X=10,000 pinging Alex, then Shauna, then Ryan. Frame-confirmed TURN 04 overlay.",
+      "key_line": [
+        {"turn": 0, "seat": "cabbage_merchant", "play": "opens with Gemstone Caverns, exiling Peregrin Took; a second player (Ryan or Alex, both lists run Caverns and a Forest) also opens Caverns exiling a Forest", "confidence": "medium on the second player's identity"},
+        {"turn": 1, "seat": "yidris", "play": "Mox Diamond discarding Shifting Woodland, Arcane Signet"},
+        {"turn": 1, "seat": "rog_thrasios", "play": "Otawara, Soaring City; cast Rograkh", "repair": "'Auto Aura, Soaring City' -> Otawara, Soaring City", "note": "captions also say 'Thrasios, Triton Hero' this turn; likely garble since only one land was named"},
+        {"turn": 1, "seat": "cabbage_merchant", "play": "Windswept Heath fetching a basic Forest (to 39), Sol Ring, The Cabbage Merchant TURN 1 (Caverns mana)"},
+        {"turn": 1, "seat": "kinnan", "play": "Tropical Island, Sol Ring"},
+        {"turn": 2, "seat": "yidris", "play": "suspend Wheel of Fate ('go where no cEDH player has ever gone before')"},
+        {"turn": 2, "seat": "rog_thrasios", "play": "Malevolent Rumble revealing Mox Diamond, Fierce Guardianship, Tropical Island, Gilded Drake; Mox Diamond to hand, 0/1 Eldrazi Spawn; cast Mox Diamond discarding Shifting Woodland; Gaea's Cradle", "divergence": "Malevolent Rumble not in rog_thrasios.txt"},
+        {"turn": 2, "seat": "cabbage_merchant", "play": "The Shire untapped (controls a legendary creature), Transmutation Font; reads the Font aloud"},
+        {"turn": 2, "seat": "kinnan", "play": "Yavimaya Coast, Rhystic Study", "repair": "'Yavimaya' -> Yavimaya Coast (probable; Yavimaya, Cradle of Growth is only in the Cabbage list)", "confidence": "medium"},
+        {"turn": 3, "seat": "yidris", "play": "Wheel of Fate loses a time counter; Demonic Tutor paying for Rhystic"},
+        {"turn": 3, "seat": "rog_thrasios", "play": "end-step Thrasios activation drawing Mockingbird; then on his turn Talon Gates of Madara, ETB phases out The Cabbage Merchant; Green Sun's Zenith X=5 (pays Rhystic) fetching Seedborn Muse", "repair": "'Talongates' -> Talon Gates of Madara"},
+        {"turn": 3, "seat": "cabbage_merchant", "play": "end-of-turn Font clue; Cabbage phases back in; Mox Amber, Kenrith's Transformation targeting Ryan's Seedborn Muse (pays Rhystic) - 'they have been elked'; then Compost", "note": "the game's marquee interaction; Ryan responds with Thrasios activations (Chrome Mox and Expedition Map to hand)"},
+        {"turn": 3, "seat": "kinnan", "play": "end of Zeb's turn: Worldly Tutor fetching Phyrexian Metamorph to top", "divergence": "Worldly Tutor not in kinnan.txt (real Kinnan list differs)"},
+        {"turn": 3, "seat": "kinnan", "play": "Strip Mine as land, cast Kinnan (lose 2), Phyrexian Metamorph copying the elked Seedborn Muse's printed card: 'Seedborn Muse again'", "divergence": "Strip Mine not in kinnan.txt"},
+        {"turn": 4, "seat": "yidris", "play": "time counter ticks; cast Rhystic Study"},
+        {"turn": 4, "seat": "rog_thrasios", "play": "Croaking Counterpart targeting Phyrexian Metamorph (a frog Seedborn for Ryan); Alex flashes in Faerie Mastermind in response and draws; Chrome Mox imprinting Mockingbird; Scalding Tarn; Thrasios reveals Flusterstorm to hand", "divergence": "Croaking Counterpart not in rog_thrasios.txt", "repair": "'Chromax' -> Chrome Mox; 'fairy mastermind' -> Faerie Mastermind"},
+        {"turn": 4, "seat": "kinnan", "play": "end of Ryan's turn: Strip Mine destroys Ryan's Gaea's Cradle ('Ryan, I'm going to hit your Cradle')"},
+        {"turn": 4, "seat": "cabbage_merchant", "play": "WIN: Font sacrifices Food+Blood+Clue to fetch Clock of Omens; Clock untaps Font off tapped Foods for more tokens; second Font search (sac 3 token types) fetches Academy Manufactor; now every Clue-make also makes Food+Treasure = infinite untapped Treasures/Foods and Clues; infinite mana + Clue draws through the deck; cast Karn, the Great Creator, Allosaurus Shepherd, Walking Ballista X=10,000; Ballista pings Alex to 0, then Shauna, then Ryan", "note": "Ryan's response is garbled ('crack skull in turn', Volcanic Island, Thrasios, 'Ewit' = Eternal Witness) and did not stop the Ballista", "confidence": "high"}
+      ],
+      "life_totals_observed": {"note": "turn 4 frame at 13:22; a near-damageless game", "kinnan": 40, "yidris": 39, "cabbage_merchant": 40, "rog_thrasios": 40},
+      "extraction_confidence": "high; the combo turn is narrated step by step by the player"
+    },
+    {
+      "game": 3,
+      "timestamps": "13:49-21:02",
+      "seat_order_best_effort": ["rog_thrasios", "cabbage_merchant", "kinnan", "yidris"],
+      "seat_order_confidence": "high",
+      "winner_deck": "rog_thrasios",
+      "win_turn_estimate": 4,
+      "win_method": "Oboro Breezecaller + Talon Gates of Madara + Gaea's Cradle loop: Oboro returns Talon Gates to hand and untaps Cradle, replaying Talon Gates makes Springheart Nantuko Insects, mills everyone 3 with Hedron Crab, and phases out opposing creatures, netting 'buckets of mana'; huge Finale of Devastation fetches Six from the graveyard (frame-confirmed popup; Six was milled by Malevolent Rumble on turn 3), team gets +X/+X and haste, attacks the table. Frame-confirmed TURN 04 overlay.",
+      "key_line": [
+        {"turn": 1, "seat": "rog_thrasios", "play": "Otawara, Soaring City; Rograkh for 0; Mox Amber (online via legendary Rograkh); Lotus Petal, crack for green: Thrasios TURN 1"},
+        {"turn": 1, "seat": "cabbage_merchant", "play": "Windswept Heath fetching basic Forest (to 39), Elvish Mystic", "note": "later laments not deploying Cabbage Merchant turn 1"},
+        {"turn": 1, "seat": "kinnan", "play": "Barkchannel Pathway, Birds of Paradise; talks through Birds vs 'fish' (Mystic Remora) and calls Birds the correct line", "divergence": "Barkchannel Pathway not in kinnan.txt"},
+        {"turn": 1, "seat": "yidris", "play": "Tropical Island, Mox Diamond discarding Bloodstained Mire, Lotus Petal, Arcane Signet"},
+        {"turn": 2, "seat": "rog_thrasios", "play": "Springheart Nantuko; Hedge Maze tapped, surveil Tropical Island to graveyard; a 1/1 Insect noted", "repair": "'Spring Heart Nurturer' -> Springheart Nantuko", "divergence": "Hedge Maze not in rog_thrasios.txt"},
+        {"turn": 2, "seat": "cabbage_merchant", "play": "Sol Ring, The Cabbage Merchant, Gaea's Cradle"},
+        {"turn": 2, "seat": "kinnan", "play": "unidentified land ('Treasure Vault of the Archon' - unrepaired garble), cast Mystic Remora ('a fish')", "confidence": "low on the land"},
+        {"turn": 2, "seat": "yidris", "play": "Polluted Delta cracked; likely cast Yidris (caption garbled: 'Cast your just pass turn'); inferred from the 5/4 attack on turn 3", "confidence": "medium"},
+        {"turn": 3, "seat": "rog_thrasios", "play": "Malevolent Rumble: reveal includes Six, Candelabra of Tawnos, Rhystic Study, Flooded Strand; Rhystic Study to hand, rest to graveyard (this is how Six reached the graveyard for the winning Finale), 0/1 Eldrazi Spawn; Gaea's Cradle as land; cast Rhystic Study; Chord of Calling X=2 fetching Oboro Breezecaller; Oboro activation untapping Gaea's Cradle", "repair": "'Rustic Study' -> Rhystic Study; 'Aboro' -> Oboro Breezecaller", "divergence": "Malevolent Rumble and Six not in rog_thrasios.txt", "note": "mulligan chatter here: he mulligans aggressively for Malevolent Rumble; exact count garbled ('I'm mulligan to two with a Malevolent Rumble')"},
+        {"turn": 3, "seat": "cabbage_merchant", "play": "INTERACTION: in response to the Oboro line, taps four and flashes in his own Talon Gates of Madara, ETB phasing out Oboro Breezecaller", "note": "table post-mortem at 17:02: the Talon Gates should have targeted Thrasios instead of Oboro - 'we f'd up pretty bad'"},
+        {"turn": 3, "seat": "rog_thrasios", "play": "responds through it: repeated Oboro activations (return Otawara/Emergence Zone to hand) untap Gaea's Cradle for 7-8 each time; Thrasios activations put Emergence Zone and Prismatic Vista onto the battlefield and dig up Nature's Rhythm; Nature's Rhythm fetches Seedborn Muse", "divergence": "Prismatic Vista not in rog_thrasios.txt", "confidence": "medium; heavy crosstalk and possible editor cuts around here"},
+        {"turn": 3, "seat": "cabbage_merchant", "play": "Shifting Woodland untapped, Stridehangar Automaton, taps Woodland to pay Rhystic", "repair": "'Striders Automaton' -> Stridehangar Automaton", "note": "from here Zeb collects a Food AND a Thopter per opponent spell"},
+        {"turn": 3, "seat": "rog_thrasios", "play": "cracks Prismatic Vista for a snow-covered Island; Nantuko trigger; Thrasios activations: 'Gut Shot' reveal (unrepaired; not in list), Mistrise Village(?) and Windswept Heath onto the battlefield tapped", "repair": "'Misty Rainforest Village' -> Mistrise Village (uncertain)", "divergence": "Windswept Heath not in rog_thrasios.txt", "confidence": "low"},
+        {"turn": 3, "seat": "kinnan", "play": "pays Remora upkeep; Arcane Signet, cast Kinnan, Tarnished Citadel as land", "repair": "'Tainted Citadel' -> Tarnished Citadel"},
+        {"turn": 3, "seat": "rog_thrasios", "play": "end step: crack Windswept Heath for Taiga, Nantuko trigger, Thrasios chain: Dryad Arbor onto battlefield, Sol Ring / Clever Impersonator / Aftermath Analyst to hand; table: 'It's Jover'", "divergence": "Aftermath Analyst not in rog_thrasios.txt"},
+        {"turn": 3, "seat": "yidris", "play": "Yidris attacks Alex for 5 (to 35); Manamorphose, Sol Ring; cascade reveals Inevitable Betrayal which she suspends; a 'Path to Exile' caption is table banter, not a real Yidris card; end step Thrasios reveals for Ryan include Wild Growth, Veil of Summer, Mental Misstep", "confidence": "medium"},
+        {"turn": 4, "seat": "rog_thrasios", "play": "WIN: Oboro phases back in; Minamo, School at Water's Edge as land; Thrasios finds Expedition Map; Map fetches Talon Gates of Madara to hand; cast Hedron Crab; put Talon Gates onto the battlefield via its own ability, phase-out trigger targeting The Cabbage Merchant; then the loop: Oboro (pay 2) returns Talon Gates to hand + untaps Gaea's Cradle, replay it for Insects + Crab mills 3 + phase-outs + mana; 'buckets of mana' into Finale of Devastation (pays for Mystic Remora), fetching Six from the graveyard to skip the shuffle; everything +X/+X with haste, attacks everyone", "repair": "'Manamo, School of Waters Edge' -> Minamo, School at Water's Edge; 'fetch six from my graveyard' -> the card Six (confirmed by the win-moment card popup)", "divergence": "Hedron Crab and Six not in rog_thrasios.txt", "confidence": "high for the win, medium for exact loop bookkeeping"}
+      ],
+      "life_totals_observed": {"note": "turn 4 frame at 20:52", "kinnan": 35, "yidris": 39, "cabbage_merchant": 39, "rog_thrasios": 38},
+      "extraction_confidence": "medium-high; win turn and method are clear, the turn-3 stack battle is partly reconstructed"
+    }
+  ],
+  "mulligans": [
+    {"game": 3, "seat": "rog_thrasios", "note": "Ryan states he mulligans aggressively for Malevolent Rumble ('that's all I mulligan to'); exact count garbled in captions, possibly to six. No other mulligans spoken in any game."}
+  ],
+  "commander_deploy_turns": {
+    "game_1": {"kinnan": 2, "yidris": 2, "rograkh": 1, "thrasios": 2, "cabbage_merchant": 2},
+    "game_2": {"cabbage_merchant": 1, "rograkh": 1, "kinnan": 3, "yidris": null, "thrasios": null, "note": "Yidris never spoken as cast in game 2; Thrasios turn-1 mention is likely caption garble"},
+    "game_3": {"rograkh": 1, "thrasios": 1, "cabbage_merchant": 2, "yidris": 2, "kinnan": 3, "note": "Yidris deploy turn inferred (garbled caption + turn-3 attack)"}
+  },
+  "headline_features": {
+    "human_win_turns": [4, 4, 4],
+    "winners": ["kinnan", "cabbage_merchant", "rog_thrasios"],
+    "win_methods_short": ["Thassa's Oracle via infinite-mana Kinnan activations", "Walking Ballista X=10,000 via Transmutation Font/Clock of Omens/Academy Manufactor", "lethal pumped-and-hasted swing via Finale of Devastation off a Gaea's Cradle untap loop"],
+    "first_commander_turn": {"rograkh": 1, "thrasios": 1, "cabbage_merchant": 1, "note": "turn-1 Cabbage Merchant in game 2 via Gemstone Caverns + Sol Ring; turn-1 Thrasios in game 3 via Rograkh-enabled Mox Amber"},
+    "interaction_events_spoken": [
+      "Thorn Mammoth fight triggers as serial removal, game 1 (kills Yidris, Biomancer's Familiar, Thrasios, Birds of Paradise, Rograkh, Academy Manufactor)",
+      "Kenrith's Transformation elks Ryan's Seedborn Muse, game 2",
+      "Talon Gates of Madara phases out The Cabbage Merchant, game 2 (Ryan) and game 3 turn 4 (Ryan again)",
+      "Strip Mine destroys Gaea's Cradle, game 2 (Alex on Ryan)",
+      "Talon Gates flashed in to phase out Oboro Breezecaller, game 3 (Zeb on Ryan) - table post-mortem says Thrasios was the correct target",
+      "Rhystic Study / Mystic Remora taxes paid repeatedly in games 2 and 3",
+      "notably: zero counterspells resolved on camera in all three games"
+    ],
+    "known_list_divergences": [
+      "kinnan.txt is a different build from the deck played: video deck is a big-creature toolbox (Ghalta, Stampede Tyrant; Great Oak Guardian; Thorn Mammoth; Elvish Piper; Jin-Gitaxias; Derevi; Thassa's Oracle; Void Winnower; Gigantoplasm; Nykthos; Relic of Legends; Strip Mine; Barkchannel Pathway; Worldly Tutor all seen/spoken but absent from the list)",
+      "rog_thrasios.txt drift: Malevolent Rumble, Six, Hedron Crab, Croaking Counterpart, Hedge Maze, Prismatic Vista, Windswept Heath, Aftermath Analyst, snow-covered Island seen on camera but not listed",
+      "yidris.txt and cabbage_merchant.txt matched every legible play"
+    ],
+    "creator_award": "MVP overlay segment (21:04): The Cabbage Merchant named most valuable card of the night; 'Zeb was able to accumulate tons of value simply because his opponents were playing the game'"
+  },
+  "open_questions": [
+    "Game 1: the exact infinite-mana engine (what flickers Great Oak Guardian; 'soul bond' caption) is not recoverable from audio",
+    "Game 2: which second player exiled a Forest to Gemstone Caverns (Ryan or Alex)",
+    "Game 3: Alex's turn-2 land ('Treasure Vault of the Archon') and a Thrasios 'Gut Shot' reveal are unrepaired",
+    "Game 3: whether Ryan's Chord/Oboro/Cradle chain sat entirely inside his turn 3 or spilled across a cut turn (a stray Shauna 'draw' at 16:58 is unplaced); win round 4 is overlay-confirmed regardless",
+    "Game 2 turn 1: whether Thrasios was actually cast alongside Rograkh (mana does not add up; treated as garble)"
+  ],
+  "extraction_confidence": "high for winners, win rounds (all overlay-confirmed), and win methods; medium for play-by-play detail in games 1 and 3"
+}

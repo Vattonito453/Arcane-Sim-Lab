@@ -1,0 +1,114 @@
+{
+  "video_id": "sZA0KqXCGrY",
+  "url": "https://www.youtube.com/watch?v=sZA0KqXCGrY",
+  "channel": "MTG Basics",
+  "title": "Mid-Season Showdown! Tournament cEDH Gameplay: Ral v Bluefarm v Bluefarm v Magda",
+  "upload_date": "20260304",
+  "event": {
+    "name": "Mid-Season Showdown, Topdeck Championship Series 2026",
+    "round": "Round 1, Pod 11",
+    "field_note": "Invitational-adjacent event: top ~60 players from the 2026 Championship Series; commentators (Eric, Max P) stress everyone at the table is a top-cut-caliber pilot",
+    "round_clock_at_game_start": "69:24 remaining (from stream overlay)"
+  },
+  "players": {
+    "note": "Seat labels confirmed from stream overlay via frame sampling 2026-08-24: Joseph-Ral top-left (Player 1), Tyler-Blue Farm top-right (Player 2), Ashton-Blue Farm bottom-right (Player 3), Natalie-Magda bottom-left (Player 4). Overlay uses first names only.",
+    "ral": "Joseph (topdeck 'Bun'; captions garble as 'Pigeon'/'Pigeon Eyes'; post-game interview subject)",
+    "bluefarm_seat2": "Tyler Lindblad",
+    "bluefarm_seat3": "Ashton (topdeck joke name 'RIP John Hauser SR (JHJ)'; attribution medium-high; commentator says 'I forget the name all of a sudden of the guy Ashton')",
+    "magda": "Natalie [PerkyGreenFairy]"
+  },
+  "decks": {
+    "ral": "Ral, Monsoon Mage // Ral, Leyline Prodigy (storm)",
+    "bluefarm_seat2": "Tymna the Weaver / Kraum, Ludevic's Opus (Blue Farm, turbo lean: Necropotence, Ad Nauseam, Thassa's Oracle, Storm-Kiln Artist)",
+    "bluefarm_seat3": "Tymna the Weaver / Kraum, Ludevic's Opus (Blue Farm, control lean: no Thassa's Oracle, no Necropotence; Subtlety, Opposition Agent, High Fae Trickster)",
+    "magda": "Magda, Brazen Outlaw (dwarves/treasures, Clock of Omens / Portal to Phyrexia toolbox)"
+  },
+  "extraction": {
+    "method": "manual LLM read of timestamped auto-captions (data/transcripts/sZA0KqXCGrY.txt) covering commentary, player audio during the storm turn, and a post-game winner interview; card names repaired against the four published decklists; targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills at 14:50, 17:55, 22:35, 24:30) for the stream overlay, seat order, life totals, and board checks; Ral, Monsoon Mage // Ral, Leyline Prodigy oracle text verified via one Scryfall lookup to decode the loyalty math",
+    "extracted_on": "2026-08-24",
+    "gameplay_window": "14:44-29:06 of the VOD; live play runs ~14:53 to ~24:35 ('that's GG's'); 24:35-29:06 is on-air post-mortem; 33:00-42:00 is a winner interview with Joseph that confirms his mulligan and line and is used as a primary source",
+    "caveats": [
+      "Auto-captions only; player audio exists for the winning storm turn, which makes that turn unusually well documented for this corpus, but crosstalk still garbles several card names.",
+      "Life totals read from a phone counter that faces the players, so the top row is upside down on stream; digits flipped mentally (a displayed '6' for Player 1 is a real 9).",
+      "Speaker attribution during the storm turn is inferred; Joseph is the only sustained speaker.",
+      "The game is one turn cycle plus one turn, so most of the pod's decision content is in mulligans and the single response window, not in board development."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "14:53-24:35",
+      "seat_order": ["ral", "bluefarm_seat2", "bluefarm_seat3", "magda"],
+      "seat_order_confidence": "high; confirmed by stream overlay quadrant labels and Player 1-4 life counter frame at 14:50 and 22:35",
+      "winner_player": "Joseph",
+      "winner_deck": "ral",
+      "win_turn_estimate": 2,
+      "win_turn_basis": "winner's own turns elapsed; commentators and Joseph both state the other three players never got a turn 2, so the table played 5 player-turns total (relevant when comparing against Forge, which counts player-turns)",
+      "win_method": "Turn-2 storm kill from seat 1: Treasonous Ogre mana plus Windfall refuel, Mental Misstep protecting the Windfall from Swan Song, Grapeshot at storm 11 clearing blockers-to-interaction, Ral flipping to Ral, Leyline Prodigy entering with 8 loyalty and ultimating (-8, exile top 8 castable free) directly into Underworld Breach + Pyretic Ritual + Quiet Speculation (binning Past in Flames); table concedes with the Underworld Breach + Brain Freeze loop demonstrated ('Breach and freeze' per commentary)",
+      "win_confirmed_by": "commentator call at 24:35, on-air post-mortem, and Joseph's own winner interview at 33:00+",
+      "mulligans": [
+        {"seat": "ral", "detail": "mulligan to 4, kept: unnamed rainbow land, Mana Vault, Treasonous Ogre, Windfall (self-reported in interview). En route he saw and correctly shipped a six of Mountain, Gemstone Caverns, Springleaf Drum + three dig spells as 'really slow in that pod' with bad colors.", "confidence": "high (first-person)"},
+        {"seat": "bluefarm_seat2", "detail": "mulliganed at least once; Joseph reports one shipped hand was 'two lands... two pieces of interaction and do nothing', not keepable in Blue Farm going second; final hand small ('his hand's just too low'), contained Swan Song and a drawn Gemstone Caverns. Exact final hand size not stated.", "confidence": "medium"},
+        {"seat": "bluefarm_seat3", "detail": "kept (count unstated, likely 7): Gemstone Caverns (played on turn 0), Vampiric Tutor, Swan Song, additional interaction. Commentators call it a good keep; the debate is entirely about how he sequenced it.", "confidence": "medium-high"},
+        {"seat": "magda", "detail": "kept 'a relatively quick hand' (judge-fed info): fast development, dwarves/dorks, 'small amount of interaction'. Both commentators and Joseph flag this keep as the pod's second critical error: against seat-1 Ral the Magda mulligan 'really needed to be for something to slow the game down' (Damping Sphere, Magus of the Moon, a lightning bolt for Ral).", "confidence": "medium-high"}
+      ],
+      "commander_deploys": {
+        "ral": {"turn": 2, "note": "Ral, Monsoon Mage cast during the turn-2 storm sequence (exact cast moment not narrated; he is on the battlefield taking coin-flip triggers on Gitaxian Probe and Grapeshot and is flipped at ~22:12)", "confidence": "medium"},
+        "bluefarm_seat2": {"turn": null, "note": "never cast; game ended before his turn 2"},
+        "bluefarm_seat3": {"turn": null, "note": "never cast; per Joseph's interview Ashton drew a commander off the Windfall ('you can draw things like your commander he drew later off of the wheel'); which partner is unstated", "confidence": "low"},
+        "magda": {"turn": null, "note": "Magda cast NOT observed; Natalie got exactly one turn and the commentary never mentions Magda in play ('Magda's got nothing to say', 21:21, garbled as 'Magnus'). A sleeved card sits by her command-zone area in the 17:55 frame but is not readable.", "confidence": "medium that Magda never hit the battlefield"}
+      },
+      "key_line": [
+        {"turn": 0, "seat": "bluefarm_seat3", "play": "Gemstone Caverns exiled from opening hand (turn 0)", "note": "commentators immediately flag that he could have Vampiric Tutored off it 'turn zero' and did not; this becomes the game's headline miscalculation"},
+        {"turn": 1, "seat": "ral", "play": "rainbow land, Mana Vault, Treasonous Ogre; Ogre mana into a dig spell (Witch's Mark per commentary, draw-then-discard), discarding a dead card; digs find a fetch land for blue plus Mental Misstep", "repair": "'frenetic searcher' (the discarded card) unidentified; Witch's Mark is in the list and matches the commentator's read", "note": "line reconstructed from Joseph's interview at 33:43-34:20; commentators at 14:55: 'the Mana Vaults have played to set up the wheel on the next turn'"},
+        {"turn": 1, "seat": "bluefarm_seat2", "play": "plays Gemstone Caverns as his turn-1 land 'as a meme' instead of City of Brass/City of Traitors, leaving himself colorless with a Swan Song stranded in hand", "note": "self-inflicted; confirmed twice (commentary 17:42 'he has no color' and Joseph's interview 37:19)"},
+        {"turn": 1, "seat": "bluefarm_seat3", "play": "land development only; holds Vampiric Tutor and Swan Song", "confidence": "medium"},
+        {"turn": 1, "seat": "magda", "play": "develops dorks: at least one Automaton artifact creature on board by end of turn (silver-frame artifact creature visible in the 17:55 frame; name unreadable)", "repair": "later Grapeshot target 'the Sanctum Automaton' -> Universal Automaton or Adaptive Automaton (both in list); two Grapeshot instances were aimed at it, which fits 2-toughness Adaptive Automaton slightly better", "confidence": "medium"},
+        {"turn": 2, "seat": "ral", "play": "fetches for blue, casts Windfall", "note": "the wheel the whole table knew was coming"},
+        {"turn": 2, "seat": "bluefarm_seat3", "play": "responds to Windfall: cracks a fetch, Vampiric Tutor (tutored card per Joseph's interview: 'mystic study'), and casts Swan Song targeting Windfall", "repair": "'mystic study' -> Rhystic Study (phonetic match; Mystic Remora also in list and also discussed, so identity is genuinely ambiguous between the two draw engines)", "note": "Joseph, commentators, and the post-mortem all mark tutoring for a draw engine instead of free interaction (Force of Will, Force of Negation, Mindbreak Trap) as the game-losing decision: 'assuming he's getting a turn two... a major major costly factor'"},
+        {"turn": 2, "seat": "ral", "play": "Mental Misstep counters the Swan Song ('Here's what I'm going to step on the Swan Song'); Windfall resolves; storm turn begins", "note": "this is exactly the backup Joseph dug for on turn 1"},
+        {"turn": 2, "seat": "ral", "play": "storm sequence with player audio: Gitaxian Probe targeting an opponent (Ral flip trigger + a second trigger he calls 'storm trigger', likely Storm-Kiln Artist treasure), loses at least one Ral flip ('I lose life'); life frames show Joseph at 9 by 22:35 and 6 by 24:30 (Ogre + Probe + lost flips)", "repair": "'storm trigger' on a Probe is not a real storm trigger; Storm-Kiln Artist (in list) is the best candidate source", "confidence": "medium"},
+        {"turn": 2, "seat": "ral", "play": "Grapeshot as the 11th storm spell (he has cast nine, opponents two): 10 copies; original plus one copy kill Natalie's Automaton, nine copies at Ashton's face", "repair": "'Sanctum Automaton' -> Universal/Adaptive Automaton; face target inferred as Ashton from the life frame (40 -1 fetch -2 vamp -9 = 28, matching the counter exactly) and his quip 'I don't play Necro[potence]' (true only of Ashton's list)", "confidence": "medium-high"},
+        {"turn": 2, "seat": "ral", "play": "wins a flip, Ral transforms: Ral, Leyline Prodigy enters with 2 base + 6 (instants/sorceries cast this turn) = exactly 8 loyalty; immediately ultimates: -8 exiles his top eight (Pyretic Ritual, Abandon Attachments, Gamble, Quiet Speculation, land(s), and evidently Underworld Breach) castable free this turn; Ral hits 0 loyalty, dies, and Joseph deliberately puts him in the graveyard rather than the command zone", "repair": "'Abandon Hope' -> Abandon Attachments; 'Quirion Speculation' -> Quiet Speculation; loyalty math verified against the printed card", "note": "commentator: 'almost like Joe was clairvoyant... I'll put all of them in the graveyard because I'm just going to go get the Breach now'"},
+        {"turn": 2, "seat": "ral", "play": "Underworld Breach (storm 12, cast free off the ultimate), Pyretic Ritual free (storm 13, add RRR), Quiet Speculation targeting himself putting up to three flashback spells in his graveyard including Past in Flames", "repair": "'notably passive flames' -> Past in Flames; published list holds only two flashback cards (Past in Flames, Lava Dart), so 'three flashback spells' implies either two targets or list drift", "confidence": "high for the cards named, medium for completeness"},
+        {"turn": 2, "seat": "ral", "play": "next cast begins ('Abandon Attachments triggers?') and the table concedes: 'Well, kids, that's GG's' (24:33); commentary names the demonstrated kill 'Breach and freeze' = Underworld Breach + Brain Freeze", "note": "win by concession with the deterministic loop shown, not played to completion on camera"}
+      ],
+      "interaction_events": [
+        {"event": "Swan Song (Ashton, seat 3) targeting Windfall, countered by Mental Misstep (Joseph)", "turn": 2, "outcome": "Windfall resolves; the pod's only cast piece of interaction is dead on arrival"},
+        {"event": "Vampiric Tutor (Ashton) in response to Windfall, fetching a draw engine (Rhystic Study or Mystic Remora) instead of interaction", "turn": 2, "outcome": "universally scored as the losing decision by commentators and the winner"},
+        {"event": "Grapeshot copies used as removal: Natalie's Automaton dies, 9 to Ashton's face", "turn": 2, "outcome": "board and life pressure mid-combo"},
+        {"event": "non-events flagged on air: Ashton declining the turn-0 Vampiric Tutor; Tyler stranding Swan Song by playing Gemstone Caverns over a colored land; Natalie keeping zero cheap interaction for a seat-1 Ral ('just keep a Lightning Bolt. Bolt Ral.')", "turn": null, "outcome": "the commentary treats this game as a case study in mulligan/sequencing errors against turbo storm"}
+      ],
+      "magda_observations": {
+        "activations": [],
+        "fetch_targets": [],
+        "note": "Zero Magda activations and zero fetches: Natalie took exactly one turn (dork development) before the game ended, and Magda herself was likely never cast. Her only board presence, an Automaton dork, died to Grapeshot copies. For the pilot-study comparison this game contributes a seat-4 Magda data point where the archetype's engine never turned on; the actionable content is her keep (fast hand, no interaction) being labeled an error against seat-1 turbo."
+      },
+      "life_totals_sampled": {
+        "at_22:35": {"ral": 9, "bluefarm_seat2": 40, "bluefarm_seat3": 28, "magda": 40},
+        "at_24:30": {"ral": 6, "bluefarm_seat2": 40, "bluefarm_seat3": 28, "magda": 40},
+        "note": "read from the center phone counter in cropped frames; top row displays upside down and was flipped"
+      },
+      "extraction_confidence": "high for winner, win turn, win method, seat order, and life totals (player audio + interview + frames all agree); medium for individual storm-turn plays and the exact Grapeshot distribution; low for a handful of garbled card identities flagged in repairs"
+    }
+  ],
+  "headline_features": {
+    "human_win_turns": [2],
+    "table_player_turns_total": 5,
+    "winner": "Ral, Monsoon Mage (Joseph, seat 1) via concession to Underworld Breach + Brain Freeze",
+    "first_commander_turn": {"ral": 2, "magda": null, "note": "no other commander was ever cast"},
+    "mull_to_four_wins": "the winner mulliganed to 4 and won on his second turn; commentators note the deck is 'built to mulligan that low'",
+    "interaction_events_spoken": ["Mental Misstep counters Swan Song on the Windfall", "Vampiric Tutor response window used for a draw engine instead of interaction", "Grapeshot copies kill a Magda dork and burn seat 3 for 9"],
+    "study_relevance": "This is a human-ceiling floor case for speed: seat-1 turbo storm ends the game at winner-turn 2 / table-turn 5. It also documents the human skill layer the sim AI lacks: pod-aware mulligans (the two players who kept greedy/engine hands are named as the reason the win went through), holding interaction for the named threat, and sequencing a tutor before vs during the threat turn."
+  },
+  "open_questions": [
+    "Which Automaton did Grapeshot kill: Universal Automaton or Adaptive Automaton? Frame shows a silver artifact creature, name unreadable; 2 damage allocated fits Adaptive (2/2) slightly better.",
+    "What exactly did Ashton Vampiric Tutor for: 'mystic study' reads as Rhystic Study phonetically, but Mystic Remora is the card everyone says he wanted; both are in his list.",
+    "Was Magda, Brazen Outlaw cast on Natalie's single turn? No spoken or legible-frame evidence either way; treated as not cast.",
+    "Was the 'storm trigger' Joseph announced on Gitaxian Probe a Storm-Kiln Artist treasure trigger? Best fit, unverified.",
+    "Tyler's exact mulligan count and final hand size.",
+    "Identity of the card Joseph discarded to the turn-1 dig spell (captions: 'bad frenetic searcher').",
+    "Quiet Speculation's full target set: 'up to three flashback spells' vs only two flashback cards in the published list (Past in Flames, Lava Dart); possible list drift.",
+    "Ashton's real/full name; the caption 'Vesper said that they had a piece or two pieces of interaction' about Natalie's hand references an unidentified source, possibly the floor judge Sean's info feed."
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "video_id": "5A6o18Bra0Y",
+  "url": "https://www.youtube.com/watch?v=5A6o18Bra0Y",
+  "channel": "Playing With Power MTG",
+  "title": "Rog/Ishai vs Malcolm/Kediss vs Cabbage Merchant vs Godo | CEDH Gameplay",
+  "upload_date": "20260612",
+  "players": {
+    "note": "confirmed from on-screen overlays via video frame sampling 2026-08-24 (name, deck, and life-total plates in all four corners)",
+    "rog_ishai": "Mike (top-left overlay: MIKE, ROGRAKH // ISHAI)",
+    "cabbage_merchant": "Zeb (top-right overlay: THE CABBAGE MERCHANT, ZEB)",
+    "godo": "Ryan (bottom-left overlay: RYAN, GODO, BANDIT WARLORD)",
+    "malcolm_kediss": "Shauna (bottom-right overlay: MALCOLM // KEDISS, SHAUNA)"
+  },
+  "extraction": {
+    "method": "manual LLM read of timestamped auto-captions (data/transcripts/5A6o18Bra0Y.txt), plus targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills) for overlays, card popups, life totals, and garbled-name verification",
+    "extracted_on": "2026-08-24",
+    "frame_verified": [
+      "seat/player/deck attribution and starting life 40 (frame at 01:48, TURN 01 overlay)",
+      "Zeb's garbled turn-1 land is Boseiju, Who Endures (card popup frame at 02:16)",
+      "'First of all counters the Swords' is Force of Will: frame at 05:20 shows the stack Reality Scramble -> Swords to Plowshares -> The Cabbage Merchant trigger -> Force of Will (TURN 03 overlay, lives 38/38/38/35)",
+      "Kenrith's Transformation popup and lives 38/38/38/34 at 09:14 (TURN 04 overlay)",
+      "'Sunset's Sarsaparilla' is the Secret Lair 'Sunset Sarsaparilla Machine' printing of Nuka-Cola Vending Machine; card popup at 20:28 shows its text: {1},{T}: Create a Food token. Whenever you sacrifice a Food, create a tapped Treasure token. Overlay TURN 05, lives 37/36/38/27"
+    ],
+    "caveats": [
+      "Auto-captions only; card names garbled and repaired against the four decklists in decks/5A6o18Bra0Y/; every repair is flagged, unrepairable garbles are flagged as uncertain.",
+      "Speaker attribution inferred from deck-specific card names plus the frame-verified seat order; a few table-talk lines are ambiguous.",
+      "The Cabbage Merchant is an Avatar: The Last Airbender crossover commander; its exact rules text is not spoken, but its observed behavior (Food creation triggers that Academy Manufactor converts into one Food + one Clue + one Treasure) is recorded as behavior, not oracle text."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "01:42-20:37",
+      "seat_order": ["rog_ishai", "cabbage_merchant", "malcolm_kediss", "godo"],
+      "seat_order_confidence": "high; turn-passing sequence in captions is fully consistent and matches the overlay turn counter at three sampled points",
+      "winner_deck": "cabbage_merchant",
+      "win_turn_estimate": 6,
+      "win_turn_notes": "Winner's own turns elapsed = 6: table rounds 1-5 plus a Seedtime extra turn on which the kill executes. The broadcast overlay still reads TURN 05 at the KO because the extra turn does not increment the table round.",
+      "win_method": "Deterministic mill-out loop: Grinding Station (tap, sacrifice an artifact: mill 3; untaps whenever an artifact enters) + Nuka-Cola Vending Machine (whenever you sacrifice a Food, create a tapped Treasure) + Academy Manufactor (every token event becomes Food + Clue + Treasure). Zeb mills all three opponents' libraries out three cards at a time, then taps Geier Reach Sanitarium so every player draws; the three empty-library opponents lose to the draw. Set up through a Seedtime extra turn and Shifting Woodland (delirium) copying Kuldotha Forgemaster from his own graveyard to fetch the Vending Machine.",
+      "mulligans": [
+        {"seat": "rog_ishai", "detail": "kept 5; table banter after the explosive turn 1: 'That was a good mull of five'"}
+      ],
+      "commander_deploys": {
+        "rog_ishai": {"Rograkh, Son of Rohgahh": 1, "Ishai, Ojutai Dragonspeaker": null, "note": "Ishai never cast"},
+        "cabbage_merchant": {"The Cabbage Merchant": 2, "note": "died to a Niv-Mizzet ping in round 5, recast the same round paying the Rhystic Study tax"},
+        "malcolm_kediss": {"Malcolm, Keen-Eyed Navigator": 2, "Kediss, Emberclaw Familiar": 3, "note": "Kediss returned to the command zone on turn 3 when Shauna's own Reality Scramble flipped it into Niv-Mizzet, Parun"},
+        "godo": {"Godo, Bandit Warlord": null, "note": "Godo never cast; Ryan explicitly passes turn 4 doing 'a whole bunch of nothing cuz the board state'"}
+      },
+      "key_line": [
+        {"turn": 1, "seat": "rog_ishai", "play": "Tundra, exile Simian Spirit Guide for R, cast Tataru Taru (ETB targets Shauna to draw), makes a tapped Treasure when opponents draw; cast Rograkh for 0, Paradise Mantle, Mox Diamond pitching City of Brass, equip Mantle to Rograkh", "repair": "'Tatara u taru' -> Tataru Taru", "note": "explosive turn 1 off a mulligan to 5; Simian Spirit Guide popup frame-verified"},
+        {"turn": 1, "seat": "cabbage_merchant", "play": "Boseiju, Who Endures as the land drop ('unfortunately'), Green Sun's Zenith X=0 fetching Dryad Arbor", "repair": "'The Sagu Huntmaster is my land' -> Boseiju, Who Endures (frame-verified card popup at 02:16); 'Green's Sun's Zenith' -> Green Sun's Zenith"},
+        {"turn": 1, "seat": "malcolm_kediss", "play": "land, draws an extra card at upkeep from Mike's Tataru Taru target ('Thank you, Mike'), pass"},
+        {"turn": 1, "seat": "godo", "play": "Mountain, Peter Parker's Camera, pass"},
+        {"turn": 2, "seat": "rog_ishai", "play": "cast Mystic Remora"},
+        {"turn": 2, "seat": "cabbage_merchant", "play": "Urza's Saga, tap three, cast The Cabbage Merchant (commander)"},
+        {"turn": 2, "seat": "malcolm_kediss", "play": "Ancient Tomb (lose 2), cast Malcolm", "repair": "'Into Tomb of the Ruined Land' -> Ancient Tomb; medium confidence, the lose-2 line supports it"},
+        {"turn": 2, "seat": "godo", "play": "Sandstone Needle, cast Manifold Key; declines to pay for Mystic Remora, Mike draws"},
+        {"turn": 3, "seat": "rog_ishai", "play": "pays Remora cumulative upkeep, draws, passes"},
+        {"turn": 3, "seat": "cabbage_merchant", "play": "Urza's Saga chapter II; Shifting Woodland enters untapped (Dryad Arbor is a Forest); cast Academy Manufactor; shows hand to negotiate letting it stick (Llanowar Elves, Karn, the Great Creator, Bristlebud Farmer, plus a land captioned 'Snow-Covered Island'); casts Llanowar Elves", "repair": "'Academy Mana factor' -> Academy Manufactor; 'Bristle Blight Farmer' -> Bristlebud Farmer", "unrepaired": "'Snow-Covered Island' in a mono-green deck; list has plain Forests. Likely misheard; unresolved", "note": "table agrees to let Academy Manufactor resolve on a promise of no Karn for two turns"},
+        {"turn": 3, "seat": "malcolm_kediss", "play": "Volcanic Island, lose 2, cast Kediss and Sol Ring; combat: Malcolm hits Zeb (eats a Food, Kediss deals 2 to the other opponents), makes three Treasures; post-combat Reality Scramble targeting her own Kediss", "note": "the deck's Polymorph gimmick: Niv-Mizzet, Parun is the only creature in the 99"},
+        {"turn": 3, "seat": "rog_ishai", "play": "responds to Reality Scramble: Mystical Tutor for Swords to Plowshares on top, draws it off a Clue-chain fish trigger, casts Swords targeting Kediss", "note": "attempt to fizzle the Polymorph line"},
+        {"turn": 3, "seat": "malcolm_kediss", "play": "Force of Will pitching Snapback (pay 1 life) counters the Swords; Reality Scramble resolves: Kediss to command zone, reveal until a creature: Niv-Mizzet, Parun enters turn 3", "repair": "'First of all, counters the Swords' -> Force of Will (frame-verified on the stack at 05:20); 'Misja' -> Niv-Mizzet", "note": "caption also garbles Niv-Mizzet as 'Nevinyrral's Disk' / 'Nevinyrral's trigger' throughout"},
+        {"turn": 3, "seat": "godo", "play": "Mishra's Workshop, cast Veilstone Amulet and Lion's Eye Diamond, 'regrettably pass'"},
+        {"turn": 4, "seat": "rog_ishai", "play": "pays fish upkeep, Starting Town, Lotus Petal, pass"},
+        {"turn": 4, "seat": "cabbage_merchant", "play": "Urza's Saga chapter III fetches Sol Ring; The Shire enters untapped (controls a legendary); casts Bristlebud Farmer and Vivien, Champion of the Wilds (paying Remora); Vivien exiles Fellwar Stone off the top; casts Grinding Station; first self-mill sacrificing a Treasure hits Seedborn Muse, Crop Rotation(?), Wear Down; casts Kenrith's Transformation on Niv-Mizzet (now a 3/3 Elk with no abilities)", "repair": "'fellow war stone' -> Fellwar Stone; 'Quarter calling' -> Crop Rotation (low confidence); 'Kenrith CTB' -> Kenrith's Transformation (frame-verified popup)", "note": "player laments 'I cannot believe I wasn't able to get there', suggesting a near-win; Jaheira, Friend of the Forest is referenced in play from this turn on but its cast was never captured in captions"},
+        {"turn": 4, "seat": "malcolm_kediss", "play": "combat: Malcolm eats another of Zeb's Foods (Zeb to 36); casts Proteus Staff, activates it targeting her own Elk'd Niv-Mizzet: Niv to bottom, whole library revealed (no other creatures), Niv returns fresh without the Transformation, and she stacks her entire library in chosen order; then casts Gamble", "note": "self-Polymorph to reset Kenrith's Transformation plus a full deck stack; Gamble tutors Curiosity"},
+        {"turn": 4, "seat": "cabbage_merchant", "play": "responds to Gamble: Cabbage Merchant + Academy Manufactor triggers give three artifact tokens, each batch putting three Grinding Station untap triggers on the stack; sacrifices tapped Treasures to mill Shauna's stacked deck 3 at a time, six batches total, wiping her sculpted top: Steal Enchantment, Mana Drain, Chain of Vapor(?), Swan Song, Stern Scolding(?), [garbled], Counterspell, Stubborn Denial, Mystical Tutor, Trickbind, Pongify(?), Artificial Evolution, Ophidian Eye, Fierce Guardianship, Deflecting Swat, Arcane Denial(?), [garbled], Pact of Negation, Submerge, Misdirection", "repair": "'Steel Enchantment' -> Steal Enchantment; 'Chain Lightning' -> Chain of Vapor (medium; Chain Lightning not in the list); 'Strict Scrutiny' -> Stern Scolding (medium); 'Miscast tutor' -> Mystical Tutor; 'Qualify' -> Pongify (medium); 'affinity and I' -> Ophidian Eye (the second Niv draw-combo piece; table notes 'that doesn't get rid of Curiosity, but we got Ophidian Eye'); 'Adarkar' -> Arcane Denial (low)", "unrepaired": "'Stone to Deadly' and 'myr retriever' could not be matched to the Malcolm/Kediss list", "note": "the single biggest interaction of the game: 18+ cards of her stacked library milled while Gamble is on the stack"},
+        {"turn": 4, "seat": "malcolm_kediss", "play": "Gamble resolves: tutors Curiosity with 3 cards in hand; random discard (die roll, 'six, the third card') discards the Curiosity itself", "note": "'Always punished'; Curiosity + Niv-Mizzet win attempt dies to Gamble's own discard"},
+        {"turn": 4, "seat": "godo", "play": "Dwarven Ruins tapped, 'a whole bunch of nothing cuz the board state', pass"},
+        {"turn": 5, "seat": "rog_ishai", "play": "at Ryan's end step casts Valley Floodcaller; untaps letting Mystic Remora die; fetchland into Rhystic Study; on Zeb's upkeep casts Smothering Tithe", "repair": "'Belly full of color' -> Valley Floodcaller (confirmed by later 'flood collar' / 'Valley Flood Watcher' trigger references); 'crack wooded strand' -> Wooded Foothills or Flooded Strand, ambiguous (both in list)"},
+        {"turn": 5, "seat": "cabbage_merchant", "play": "in his own upkeep casts Nature's Claim on Smothering Tithe (paying Rhystic tax off Llanowar Elves): Mike counters with Force of Negation pitching Bribery; Niv pings kill The Cabbage Merchant; draw step pays Tithe with Jaheira-tapped Clues; main: casts Karn, the Great Creator: Mike counters with a second Force of Negation pitching Disrupting Shoal; recasts The Cabbage Merchant paying for Rhystic; land drop (garbled); casts Seedtime, which resolves for an extra turn because Mike cast blue spells this turn", "repair": "'seed time' -> Seedtime", "unrepaired": "land drop captioned 'Dis Faust' unmatched (candidate: Fomori Vault, low confidence)", "note": "the cold-open of the video: 'I played bait spell after bait spell' the previous cycle to enable Seedtime; both Forces of Negation ended up enabling the extra turn"},
+        {"turn": 5, "seat": "rog_ishai", "play": "responds to Seedtime: Gifts Ungiven cracking all treasures, target opponent Shauna; reveals Swan Song, Fierce Guardianship, Underworld Breach, Silence (one caption token 'counter mission' unresolved, possibly Commandeer); gets Fierce Guardianship, casts it targeting Seedtime; also Enlightened Tutor putting Lion's Eye Diamond on top", "repair": "'gift ungiven' -> Gifts Ungiven; 'undergrowth breach' -> Underworld Breach"},
+        {"turn": 5, "seat": "cabbage_merchant", "play": "in response: Cabbage/Manufactor triggers let him self-mill 12 with Grinding Station (Tooth and Nail, Mox Amber, Nature's Rhythm; Clock of Omens, Gaea's Cradle, Gilded Goose; Sarinth Steelseeker, Eldritch Evolution, Tree of Tales; Time of Need, Allosaurus Shepherd, Birds of Paradise), then pays 4 to make Shifting Woodland a copy of Allosaurus Shepherd (delirium): green spells uncounterable, Seedtime is safe; activates Shepherd's 5/5-Elf ability to dodge the Niv ping; combat: 5/5 Bristlebud Farmer hits Shauna for 5, attack trigger sacs a Food to mill self 3 (Emergence Zone, Liberator, Urza's Battlethopter, Beast Within) taking Liberator to hand; Vivien +1 gives Jaheira vigilance and reach", "repair": "'golden goose' -> Gilded Goose; 'Siren's steel seeker' -> Sarinth Steelseeker; 'Liberator, Rizzet's Battle Thopter' -> Liberator, Urza's Battlethopter", "note": "self-mill is deliberate: it loads Allosaurus Shepherd and later Kuldotha Forgemaster into the graveyard as Shifting Woodland copy targets; 'Fierce attempts to counter uncounterable' fizzles"},
+        {"turn": 6, "seat": "cabbage_merchant", "play": "SEEDTIME EXTRA TURN: pays Tithe off Sol Ring; plays Geier Reach Sanitarium; casts Nature's Rhythm for 3 (+1 Rhystic) putting Kuldotha Forgemaster onto the battlefield; Mike tries Silence + Infernal Plunge (sacrificing Tataru Taru) to lock the turn, Silence resolves but everything that follows is activated abilities; Grinding Station sacs the Forgemaster (milling Shauna: City of Traitors, Bolt Bend, [garbled]); Shifting Woodland copies Kuldotha Forgemaster from the graveyard; taps it sacrificing three Clues to fetch Nuka-Cola Vending Machine; presents the loop: Grinding Station untap triggers + sacrificed Foods making tapped Treasures which Academy Manufactor turns into Food+Clue+Treasure; mills all three opponents out three at a time, then taps Geier Reach Sanitarium so all players draw. KO.", "repair": "'Gaea's/Gyre Reach Sanitarium' -> Geier Reach Sanitarium; 'Sunset's Sarsaparilla' -> Nuka-Cola Vending Machine (frame-verified: the Secret Lair 'Sunset Sarsaparilla Machine' printing)", "unrepaired": "'mystery impulse' (third milled card) and 'Mother of Runes tapped' (a response during the Silence exchange) could not be matched", "note": "Silence resolving but not mattering is the instructive beat: the entire kill is activations, no further casts needed"}
+      ],
+      "interaction_events": [
+        {"round": 3, "actor": "rog_ishai", "event": "Mystical Tutor -> Swords to Plowshares targeting Kediss to fizzle Reality Scramble; countered by Shauna's Force of Will pitching Snapback"},
+        {"round": 4, "actor": "cabbage_merchant", "event": "Kenrith's Transformation turns Niv-Mizzet, Parun into a vanilla 3/3 Elk"},
+        {"round": 4, "actor": "malcolm_kediss", "event": "Proteus Staff on her own transformed Niv: resets the Elk, rebuys Niv, stacks her entire library"},
+        {"round": 4, "actor": "cabbage_merchant", "event": "responds to Gamble with ~18 cards of targeted Grinding Station mill, destroying the stacked library while it is still ordered"},
+        {"round": 4, "actor": "malcolm_kediss", "event": "Gamble's random discard bins the tutored Curiosity (die roll on 3 cards)"},
+        {"round": 5, "actor": "rog_ishai", "event": "Force of Negation (pitch Bribery) counters Nature's Claim on Smothering Tithe"},
+        {"round": 5, "actor": "rog_ishai", "event": "Force of Negation (pitch Disrupting Shoal) counters Karn, the Great Creator"},
+        {"round": 5, "actor": "malcolm_kediss", "event": "Niv-Mizzet pings kill The Cabbage Merchant (recast same round) and pressure Jaheira and the Woodland-Shepherd"},
+        {"round": 5, "actor": "rog_ishai", "event": "instant-speed Gifts Ungiven into Fierce Guardianship targeting Seedtime; blanked because Shifting Woodland had become Allosaurus Shepherd (green spells uncounterable)"},
+        {"round": 6, "actor": "rog_ishai", "event": "Silence + Infernal Plunge on the extra turn; Silence resolves but the mill kill is all activated abilities"}
+      ],
+      "life_totals_sampled": {
+        "01:48": {"mike": 40, "zeb": 40, "ryan": 40, "shauna": 40},
+        "05:20": {"mike": 38, "zeb": 38, "ryan": 38, "shauna": 35},
+        "09:14": {"mike": 38, "zeb": 38, "ryan": 38, "shauna": 34},
+        "20:28": {"mike": 37, "zeb": 36, "ryan": 38, "shauna": 27}
+      },
+      "creator_mvc_overlay": "Editor's 'most valuable card' at 20:39: Academy Manufactor; 'getting three tokens every time someone cast a non-creature spell' is what let Zeb leverage his advantage and close out the game",
+      "extraction_confidence": "high for winner, win turn, and win method (frame-verified KO and overlays); high for seat order; medium for individual plays; low for the specific cards in a few mill batches"
+    }
+  ],
+  "headline_features": {
+    "human_win_turns": [6],
+    "winner": "cabbage_merchant (Zeb)",
+    "win_method_class": "mill-out combo loop (no combat kill, no life-total kill); winner at 36 life, all opponents above 27 at the KO",
+    "first_commander_turns": {"rog_ishai_rograkh": 1, "cabbage_merchant": 2, "malcolm_kediss_malcolm": 2, "malcolm_kediss_kediss": 3, "godo": null},
+    "extra_turns": ["Seedtime (round 5), enabled by the opponent's own blue counterspells cast that turn; the kill executes on the extra turn"],
+    "notable_lines": [
+      "Reality Scramble self-Polymorph puts Niv-Mizzet, Parun into play on turn 3 through a Swords attempt and a Force of Will fight",
+      "Grinding Station mill used as targeted interaction: destroying a Proteus-Staff-stacked library in response to Gamble",
+      "Shifting Woodland as a graveyard toolbox: copies Allosaurus Shepherd for uncounterability, then Kuldotha Forgemaster to fetch the final combo piece",
+      "Silence resolves against the winning turn and does nothing because the kill is entirely activated abilities",
+      "Godo player never casts his commander all game"
+    ],
+    "repair_counts": {"repaired_and_flagged": 24, "unrepaired_or_uncertain": 9},
+    "sim_relevance": "This is exactly the kind of politics-and-stack-heavy engine win the calibration doc says Forge undersells: the win required a negotiated Academy Manufactor resolution (round 3 table talk), bait spells to enable Seedtime, and response-window mill timing"
+  },
+  "open_questions": [
+    "When Jaheira, Friend of the Forest entered play: referenced as in play from round 4 ('The Shire enters untapped cuz I have a legendary Jaheira') and tapped for mana thereafter, but its cast never appears in captions.",
+    "Nature's Rhythm is listed among the round-5 self-milled cards yet is cast from hand on the extra turn; either that mill batch is misheard, a recursion effect (Noxious Revival is in the list) was cut, or the cast card was misidentified.",
+    "The exact rules text of The Cabbage Merchant (TLA crossover commander): its Food-creation trigger cadence is inferred from behavior only.",
+    "Three milled Malcolm/Kediss cards remain unidentified: 'Stone to Deadly', 'myr retriever', 'mystery impulse'.",
+    "The 'Snow-Covered Island' in Zeb's revealed hand (round 3) contradicts the mono-green list; likely 'Snow-Covered Forest' misheard, but the published list runs plain Forests.",
+    "Whether the round-5 land drop captioned 'Dis Faust' is Fomori Vault or something else.",
+    "Whether 'counter mission' in the Gifts Ungiven reveal is Commandeer or caption noise, and which two Gifts piles went to graveyard vs hand (only Fierce Guardianship's arrival in hand is certain)."
+  ]
+}

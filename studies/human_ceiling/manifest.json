@@ -1,0 +1,345 @@
+{
+ "captured": "2026-08-24",
+ "note": "The source list had 18 entries but only 13 distinct URLs, of which 12 resolve. Five URLs appeared twice under different matchup labels and one ID (PlaytoWinMTG) is not a real video. Titles below are what the video actually is, verified via oEmbed + yt-dlp; the sender's labels were wrong for several entries. 2026-08-24 second pass: PWP decklists ARE published (TCGplayer affiliate links); MTG Basics tournament videos have full lists via edhtop16/topdeck event pages; j8-5z3FasoQ confirmed to be a podcast episode, not gameplay.",
+ "unusable_entries": [
+  {
+   "claimed": "Play to Win: Ob Nixilis vs. Sisay vs. Tymna/Kraum vs. Vivi",
+   "url": "https://www.youtube.com/watch?v=PlaytoWinMTG",
+   "problem": "not a valid video id"
+  },
+  {
+   "claimed": "Play to Win: cEDH Patron Gameplay Match #1",
+   "url": "https://www.youtube.com/watch?v=PlaytoWinMTG",
+   "problem": "not a valid video id"
+  },
+  {
+   "claimed": "Fishbowl Tournament (Vivi vs. Nick Fury vs. Blue Farm vs. Kinnan)",
+   "problem": "URL duplicates CxKMqO36DdM, which is the TopDeck finals video"
+  },
+  {
+   "claimed": "Loot vs. Storm vs. Magda vs. Tasigur",
+   "problem": "URL duplicates sZA0KqXCGrY"
+  },
+  {
+   "claimed": "Zhulodok vs. Rog/Thras vs. Selvala vs. Plagon",
+   "problem": "URL duplicates Bq-nFi0f1jA"
+  },
+  {
+   "claimed": "Malcolm/Vial vs. Kenrith vs. Selvala vs. Blue Farm",
+   "problem": "URL duplicates n7WpsqsZtdQ"
+  },
+  {
+   "claimed": "Eternal Masters semis (Nissa vs. Ysh'tola vs. Cabbage Merchant vs. Kinnan)",
+   "problem": "URL duplicates 5A6o18Bra0Y"
+  }
+ ],
+ "videos": [
+  {
+   "id": "n7WpsqsZtdQ",
+   "channel": "ThatMillGuy",
+   "upload_date": "20260625",
+   "duration_s": 1051,
+   "title": "Broken AND Bad - Portal To Phyrexia! | Magda | Selvala | Tymna/Thras | Rog/Ishai",
+   "kind": "gameplay",
+   "games": 2,
+   "transcript_words": 4782,
+   "decklists": {
+    "magda": {
+     "source": "https://moxfield.com/decks/8Y4qOAcLN0O_HHYhOboV3Q",
+     "fidelity": "approximate",
+     "note": "description says 'Pretty Much'; list updated 2026-08-11, after the video; Arena of Glory seen on camera is absent"
+    },
+    "rog_ishai": {
+     "source": "https://moxfield.com/decks/j6HI5AOe80mJFRLwNtm8FQ",
+     "fidelity": "published"
+    },
+    "tymna_thrasios": {
+     "source": "https://moxfield.com/decks/wlIuxo9ZIEOsg80QgZWVIg",
+     "fidelity": "published"
+    },
+    "selvala": {
+     "source": "https://moxfield.com/decks/MAQLHack_0SqFMRiVoKY4w",
+     "fidelity": "archetype-substitute",
+     "note": "description says TBD; a maintained Selvala Storm primer list substituted"
+    }
+   },
+   "status": "COMPLETE: sim done (4 rotated games), trace extracted"
+  },
+  {
+   "id": "B421mac67IE",
+   "channel": "MTG Basics",
+   "upload_date": "20260723",
+   "duration_s": 5202,
+   "title": "Excalibur Pittsburgh Tournament cEDH: Yisan v Sisay v Kinnan v MalcolmVial",
+   "kind": "gameplay",
+   "transcript_words": 15295,
+   "decklists": {
+    "matt_sisay": {
+     "source": "topdeck.gg (Matt Swaney, 2nd place)",
+     "fidelity": "published"
+    },
+    "dexter_kinnan": {
+     "source": "topdeck.gg (Dexter Idzikowski, 10th)",
+     "fidelity": "published"
+    },
+    "lily_malcolm_vial": {
+     "source": "topdeck.gg (Lily Drake, 11th)",
+     "fidelity": "published"
+    },
+    "isaac_yisan": {
+     "source": "topdeck.gg (Isaac Cooper, 16th)",
+     "fidelity": "published",
+     "note": "Craig Howard (14th) also played Yisan; transcript names Isaac explicitly"
+    }
+   },
+   "status": "COMPLETE: sim done (4 rotated games), trace extracted"
+  },
+  {
+   "id": "CxKMqO36DdM",
+   "channel": "MTG Basics",
+   "upload_date": "20260313",
+   "duration_s": 7194,
+   "title": "FINALS! tournament cedh gameplay: BlueFarm v BlueFarm v TnT v Ral",
+   "kind": "gameplay",
+   "transcript_words": 24948,
+   "decklists": {
+    "dallas_bluefarm": {
+     "source": "topdeck.gg -> moxfield PyLgbs5o7kOXDUkTcwF9MA",
+     "fidelity": "approximate-drifted",
+     "note": "Gleaming Splendor not in Forge 2.0.13; substituted Island (recorded) DRIFT (frame-verified): Jeska's Will and Harnfel, Horn of Bounty seen on stream but absent from the list; both were central to the winning line."
+    },
+    "alan_tnt": {
+     "source": "topdeck.gg -> moxfield 5fjpcB056E60wIqH8VK13Q",
+     "fidelity": "published"
+    },
+    "sterling_bluefarm": {
+     "source": "topdeck.gg -> moxfield hRf3kg0NZUG3h9Ia_eW40A",
+     "fidelity": "published"
+    },
+    "joseph_ral": {
+     "source": "moxfield D9E7YZlcFUe8Jbihd-LLGA, corrected to the topdeck-REGISTERED list (6-card delta swapped back; Moxfield had post-event edits)",
+     "fidelity": "published",
+     "note": "10 sticker-sheet entries from the registered list excluded; Forge has no sticker support"
+    }
+   },
+   "status": "COMPLETE: sim done, trace extracted"
+  },
+  {
+   "id": "sZA0KqXCGrY",
+   "channel": "MTG Basics",
+   "upload_date": "20260304",
+   "duration_s": 2547,
+   "title": "Mid-Season Showdown! Tournament cEDH Gameplay: Ral v Bluefarm v Bluefarm v Magda",
+   "kind": "gameplay",
+   "transcript_words": 9775,
+   "decklists": {
+    "joseph_ral": {
+     "source": "same corrected registered list as finals",
+     "fidelity": "published"
+    },
+    "tyler_bluefarm": {
+     "source": "topdeck.gg OnpUT2WC1HVDXLTixcg19VdbBAz1",
+     "fidelity": "published"
+    },
+    "ashton_bluefarm": {
+     "source": "topdeck.gg LYVKNk8mRqYPcZEAevwz2uyczXH3",
+     "fidelity": "published",
+     "note": "player identity inferred: topdeck joke name 'RIP John Hauser SR (JHJ)' matched to commentators' 'Ashton' by unique pod composition (Round 1 Pod 11); medium-high confidence"
+    },
+    "natalie_magda": {
+     "source": "topdeck.gg oQYF7Qdfq0atPPZx4P7S0if41Uc2 -> moxfield rRHUXj7Ms0GR6AZiYaDQbQ",
+     "fidelity": "published",
+     "note": "same 3 post-Forge-2.0.13 dwarves as the pilot Magda; same mapped substitutes"
+    }
+   },
+   "status": "COMPLETE: sim done (4 rotated games), trace extracted"
+  },
+  {
+   "id": "2iA_Jt0d6sM",
+   "channel": "Playing With Power MTG",
+   "upload_date": "20240829",
+   "duration_s": 565,
+   "title": "Derevi vs Nadu vs Rograkh/Silas vs Godo",
+   "kind": "gameplay-short",
+   "transcript_words": 2301,
+   "decklists": {
+    "derevi": {
+     "source": "https://tcgplayer.pxf.io/CEDH-385-Derevi",
+     "fidelity": "published"
+    },
+    "nadu": {
+     "source": "https://tcgplayer.pxf.io/CEDH384-Nadu",
+     "fidelity": "published"
+    },
+    "rograkh_silas": {
+     "source": "https://tcgplayer.pxf.io/CEDH384-Rograkh-Silas",
+     "fidelity": "published"
+    },
+    "godo": {
+     "source": "DEAD LINK (TCGplayer deck 497519 deleted)",
+     "fidelity": "archetype-substitute",
+     "note": "filled with the same channel's June 2026 Godo build (godo_archetype.txt); video is Aug 2024"
+    }
+   },
+   "concern": "9.4 minutes; heavily edited, thin turn-by-turn audio",
+   "status": "COMPLETE: sim done (4 rotated games), trace extracted"
+  },
+  {
+   "id": "5A6o18Bra0Y",
+   "channel": "Playing With Power MTG",
+   "upload_date": "20260612",
+   "duration_s": 1259,
+   "title": "Rog/Ishai vs Malcolm/Kediss vs Cabbage Merchant vs Godo",
+   "kind": "gameplay",
+   "transcript_words": 5291,
+   "decklists": {
+    "rog_ishai": {
+     "source": "https://partner.tcgplayer.com/CEDH-425-Rog-Ishai",
+     "fidelity": "published"
+    },
+    "malcolm_kediss": {
+     "source": "https://partner.tcgplayer.com/CEDH-425-Malcolm-Kediss",
+     "fidelity": "published"
+    },
+    "cabbage_merchant": {
+     "source": "https://partner.tcgplayer.com/CEDH-425-Cabbage-Merchant",
+     "fidelity": "published"
+    },
+    "godo": {
+     "source": "https://partner.tcgplayer.com/CEDH-425-Godo",
+     "fidelity": "published"
+    }
+   },
+   "status": "COMPLETE: sim done (4 rotated games), trace extracted"
+  },
+  {
+   "id": "Bq-nFi0f1jA",
+   "channel": "Playing With Power MTG",
+   "upload_date": "20260522",
+   "duration_s": 1282,
+   "title": "The Cabbage Merchant vs Yidris vs Kinnan vs Rog/Thras",
+   "kind": "gameplay",
+   "transcript_words": 4971,
+   "decklists": {
+    "cabbage_merchant": {
+     "source": "https://partner.tcgplayer.com/CEDH-423-The-Cabbage-Merchant",
+     "fidelity": "published"
+    },
+    "yidris": {
+     "source": "https://partner.tcgplayer.com/CEDH-422-Yidris",
+     "fidelity": "published"
+    },
+    "rog_thrasios": {
+     "source": "https://partner.tcgplayer.com/CEDH-422-Rograkh-Thrasios",
+     "fidelity": "approximate-drifted",
+     "note": "on-camera cards absent from list: Malevolent Rumble, Six, Hedron Crab (and more; see trace divergences)"
+    },
+    "kinnan": {
+     "source": "https://partner.tcgplayer.com/CEDH-421-Kinnan",
+     "fidelity": "WRONG-DECK",
+     "note": "published link (CEDH-421, an earlier episode) is a different Kinnan build; the filmed deck is a big-creature toolbox (Ghalta, Elvish Piper, Thassa's Oracle...). Sim comparison for this seat is archetype-level at best; trace flags every Kinnan play."
+    }
+   },
+   "status": "COMPLETE: sim done (4 rotated games), trace extracted"
+  },
+  {
+   "id": "OuY6mdiXbHU",
+   "channel": "Playing With Power MTG",
+   "upload_date": "20220916",
+   "duration_s": 978,
+   "title": "Winota vs Winota vs Winota vs Winota | CEDH Gameplay #179",
+   "kind": "gameplay",
+   "transcript_words": 3897,
+   "decklists": {
+    "winota_ian": {
+     "source": "https://tcgplayer.pxf.io/S19E06-Winota-Ian",
+     "fidelity": "approximate-drifted"
+    },
+    "winota_lua": {
+     "source": "https://tcgplayer.pxf.io/S19E06-Winota-Lua",
+     "fidelity": "approximate-drifted"
+    },
+    "winota_rachel": {
+     "source": "https://tcgplayer.pxf.io/S19E06-Winota-Rachel",
+     "fidelity": "approximate-drifted"
+    },
+    "winota_mike": {
+     "source": "https://tcgplayer.pxf.io/S19E06-Winota-Mike",
+     "fidelity": "approximate-drifted"
+    },
+    "_drift_note": "5 on-camera cards absent from the published lists (incl. Goldnight Commander, part of Lua's actual game-2 win combo): lists are drifted/reconstructed, so the sim CANNOT reproduce the human win line for this pod. Trace records the divergences."
+   },
+   "concern": "2022 game; pre-dates current cEDH meta and several banlist changes. Mirror pod is interesting for seat effects but weak for deck comparison.",
+   "status": "COMPLETE: sim done (4 rotated games), trace extracted"
+  },
+  {
+   "id": "j8-5z3FasoQ",
+   "channel": "The Mind Sculptors",
+   "upload_date": "20221017",
+   "duration_s": 3380,
+   "title": "CEDH University",
+   "kind": "podcast-not-gameplay",
+   "transcript_words": 10758,
+   "decklists": {
+    "all": {
+     "fidelity": "n/a"
+    }
+   },
+   "concern": "2022, and the label 'Myra vs Kinnan vs Malcolm/Bruse vs Thrasios/Rograkh' is unverified; needs a transcript read to see if it is gameplay at all",
+   "status": "EXCLUDED: interview episode about CEDH University, no gameplay"
+  },
+  {
+   "id": "Ga7tE0rfHnw",
+   "channel": "BoshNRoll",
+   "upload_date": "20230803",
+   "duration_s": 2745,
+   "title": "Semi-Finals at The Cookout cEDH Tournament (Tymna/Kraum Blue Farm report)",
+   "kind": "gameplay-report",
+   "transcript_words": 9460,
+   "decklists": {
+    "blue_farm": {
+     "source": "https://www.moxfield.com/decks/VM2GxJy5QUumYyQdna6zKQ",
+     "fidelity": "published",
+     "note": "the creator's own deck only; 2023 game"
+    }
+   },
+   "status": "EXCLUDED for sims: only 1 of 4 lists published (creator's own Blue Farm)"
+  },
+  {
+   "id": "KFWCEPRijYM",
+   "channel": "TopDeck",
+   "upload_date": "20230413",
+   "duration_s": 5628,
+   "title": "Punt City 2: Game 1 (Eminence Gaming)",
+   "kind": "gameplay",
+   "transcript_words": 14240,
+   "decklists": {
+    "all": {
+     "fidelity": "missing",
+     "note": "2023 event; topdeck.gg event page may hold all lists"
+    }
+   },
+   "status": "EXCLUDED for sims: players and commanders named in description but no decklists published"
+  },
+  {
+   "id": "tbEbIYK-5KI",
+   "channel": "ComedIan MTG",
+   "upload_date": "20260421",
+   "duration_s": 3017,
+   "title": "Which Decks Thrived In The Tournament With The Highest Draw Rate Ever?! | cEDH Top 16 Breakdown",
+   "kind": "analysis-not-gameplay",
+   "transcript_words": 13259,
+   "decklists": {
+    "events": {
+     "source": [
+      "https://topdeck.gg/event/the-quest-part-1",
+      "https://topdeck.gg/event/d-grid-on-the-stack"
+     ],
+     "note": "links to full tournament decklists; valuable as a decklist SOURCE, not as game traces"
+    }
+   },
+   "concern": "This is meta analysis, not turn-by-turn play. Use for decklists and meta context only.",
+   "status": "EXCLUDED: analysis video, no gameplay"
+  }
+ ]
+}

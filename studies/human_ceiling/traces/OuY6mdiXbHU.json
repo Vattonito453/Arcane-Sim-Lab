@@ -1,0 +1,154 @@
+{
+  "video_id": "OuY6mdiXbHU",
+  "url": "https://www.youtube.com/watch?v=OuY6mdiXbHU",
+  "channel": "Playing With Power MTG",
+  "title": "Winota vs Winota vs Winota vs Winota | CEDH Gameplay #179",
+  "upload_date": "20220916",
+  "era_note": "2022 game under the pre-2024 Commander banlist and meta: Dockside Extortionist, Mana Crypt, and Jeweled Lotus (all central to these games) were legal then and are banned as of Sept 2024. Treat win speeds as 2022-meta data.",
+  "players": {
+    "note": "all four seats play Winota, Joiner of Forces; names spoken by the announcer every turn and confirmed against on-screen overlays via frame sampling 2026-08-24 (Mike top-left, Lua top-right, Ian bottom-left, Rachel bottom-right; overlay shows per-player life and a round counter)",
+    "winota_mike": "Mike (Sad Robot Alters)",
+    "winota_lua": "Lua Stardust",
+    "winota_rachel": "Rachel Weeks",
+    "winota_ian": "Ian (Comedian MTG)"
+  },
+  "decklists": {
+    "winota_ian.txt": "Ian",
+    "winota_lua.txt": "Lua",
+    "winota_rachel.txt": "Rachel",
+    "winota_mike.txt": "Mike",
+    "list_fidelity_warning": "Five cards seen or named in the video are absent from the corresponding provided list (see known_list_divergences); the provided lists appear to be later or reconstructed versions, not the exact 2022 lists."
+  },
+  "extraction": {
+    "method": "manual LLM read of the transcript (data/transcripts/OuY6mdiXbHU.txt) plus targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills) for seat overlays, life totals, round counter, and both game endings",
+    "extracted_on": "2026-08-24",
+    "caveats": [
+      "This transcript is scripted announcer narration of an edited recap, not raw table audio: card names are clean (zero garbled-name repairs needed) but off-camera details and any un-narrated plays are invisible.",
+      "The channel shows each opening hand and lists 'London Mulligans' separately; interpreted as the cards bottomed under the London rule, so cards kept = 7 minus bottomed. This interpretation is corroborated by Mike's game 2 (4 bottomed = kept 3, and he takes almost no game actions all game) but is itself an inference.",
+      "Overlay round counter counts table rounds, not player-turns; win_turn_estimate below is the winner's own elapsed/active turn, with the round counter noted separately."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "03:58-08:09",
+      "seat_order": ["winota_mike", "winota_lua", "winota_rachel", "winota_ian"],
+      "seat_order_confidence": "high; stated by announcer ('Mike had the best Winota alter, and gets to start us off') and every turn is name-attributed",
+      "winner_player": "Lua",
+      "winner_deck": "winota_lua.txt",
+      "win_turn_estimate": 4,
+      "winner_turns_elapsed_at_win": 3,
+      "win_method": "concession: after three Winota turns Lua sits at 86 life (Rick, Steadfast Leader lifelink plus Blade Historian double strike gained her 56 in one combat) with an overwhelming board; the table concedes during round 4 before her fourth turn; no combo was executed",
+      "life_totals_at_end": {"note": "overlay TURN 04, frame-verified", "Mike": 17, "Lua": 86, "Ian": 43, "Rachel": 20},
+      "mulligans": {
+        "Mike": {"kept": 5, "bottomed": ["Deflecting Swat", "Kiki-Jiki, Mirror Breaker"], "kept_hand": ["Chrome Mox", "Cavern of Souls", "Thorn of Amethyst", "Aven Mindcensor", "Professional Face-Breaker"]},
+        "Lua": {"kept": 7, "kept_hand": ["Jeweled Lotus", "Loyal Apprentice", "Simian Spirit Guide", "Rick, Steadfast Leader", "Torch Courier", "Selfless Savior", "Plains"]},
+        "Rachel": {"kept": 7, "kept_hand": ["Simian Spirit Guide", "Dockside Extortionist", "Remorseful Cleric", "Alseid of Life's Bounty", "Mana Vault", "Chrome Mox", "Plains"]},
+        "Ian": {"kept": 7, "kept_hand": ["Dockside Extortionist", "Serra Ascendant", "Grand Abolisher", "Mana Vault", "Rule of Law", "Magus of the Moon", "Sokenzan, Crucible of Defiance"], "divergence": "Rule of Law is not in winota_ian.txt"}
+      },
+      "winota_deploy_turn": {"Rachel": 1, "Lua": 2, "Mike": 3, "Ian": null},
+      "key_line": [
+        {"turn": 1, "seat": "Mike", "play": "Cavern of Souls naming Human, Mana Crypt (drawn for turn), Professional Face-Breaker"},
+        {"turn": 1, "seat": "Lua", "play": "Plains, Jeweled Lotus, Selfless Savior"},
+        {"turn": 1, "seat": "Rachel", "play": "Plains, Chrome Mox imprinting Remorseful Cleric, Sol Ring, Mana Vault, Simian Spirit Guide exiled for red, Dockside Extortionist (2 treasures), then Winota, Joiner of Forces on turn 1", "note": "fastest commander deploy of either game"},
+        {"turn": 1, "seat": "Ian", "play": "reveals drawn Gemstone Caverns (dead now), Flooded Strand fetching Plains, Serra Ascendant"},
+        {"turn": 2, "seat": "Mike", "play": "wins Mana Crypt roll, attacks Ian with Face-Breaker, makes a treasure"},
+        {"turn": 2, "seat": "Lua", "play": "Command Tower, cracks Jeweled Lotus for Winota, Torch Courier, attacks Mike with Selfless Savior and Torch Courier; Winota triggers twice, hitting Rionya, Fire Dancer and Esper Sentinel (both attacking Rachel)"},
+        {"turn": 2, "seat": "Rachel", "play": "blocks Rionya with Winota and Esper Sentinel with Dockside (loses commander and Dockside as blockers); on her own turn: Mana Vault damage, Alseid of Life's Bounty, attacks Mike with Dockside; Winota trigger fails to find"},
+        {"turn": 2, "seat": "Ian", "play": "Needleverge Pathway, pass; Mike flashes in Aven Mindcensor at end of turn"},
+        {"turn": 3, "seat": "Mike", "play": "wins Crypt roll, Mana Confluence, casts Winota, attacks Lua with Face-Breaker and Rachel with Mindcensor; Winota hits Glowrider attacking Rachel; two treasures"},
+        {"turn": 3, "seat": "Lua", "play": "Plains, Simian Spirit Guide for red, Rick, Steadfast Leader choosing lifelink and vigilance; Rionya copies Torch Courier; attacks Mike with Selfless Savior, both Torch Couriers, and Winota; Winota triggers three times hitting Angrath's Marauders (attacking Ian), Blade Historian (Rachel), Ethersworn Canonist (Rachel); Lua gains 56 life", "note": "the decisive turn; overlay shows Lua at 94 life during round 3"},
+        {"turn": 3, "seat": "Ian", "play": "flashes Archivist of Oghma before blocks and chump-blocks Angrath's Marauders with it (interaction event)"},
+        {"turn": 3, "seat": "Rachel", "play": "Goblin Cratermaker, attacks Mike with Dockside and Alseid; Winota hits Glowrider and Seasoned Pyromancer (discarding City of Traitors, drawing 2), both attacking Mike"},
+        {"turn": 3, "seat": "Ian", "play": "Blinkmoth Nexus, attacks Lua with Serra Ascendant 'to send a message' (gains 6), second main Drannith Magistrate", "note": "Drannith lands after all three opposing Winotas are already deployed"},
+        {"turn": 4, "seat": "Mike", "play": "loses Crypt roll (3 damage), Face-Breaker activation exiles his own Archivist of Oghma off the top, Gemstone Caverns as land, Combat Celebrant, attacks Lua with Aven Mindcensor"},
+        {"turn": 4, "seat": "table", "play": "everyone concedes to Lua before her fourth turn, 'despite her wanting to kill them fair and square'"}
+      ],
+      "interaction_events": [
+        "Mike flashes Aven Mindcensor end of Ian's turn 2 (search stax)",
+        "Rachel chump-blocks with Winota and Dockside on Lua's turn-2 attack",
+        "Ian flashes Archivist of Oghma and chump-blocks Angrath's Marauders (turn 3)",
+        "Ian's Drannith Magistrate (turn 3) as stax, too late to stop commander deploys",
+        "zero counterspells or removal spells cast the entire game"
+      ],
+      "extraction_confidence": "high for winner, turn, method, seats, and life totals (frame-verified); high for individual plays (scripted narration)"
+    },
+    {
+      "game": 2,
+      "timestamps": "08:12-15:31",
+      "seat_order": ["winota_lua", "winota_rachel", "winota_ian", "winota_mike"],
+      "seat_order_confidence": "high; announcer states 'Lua gets to start us off' and every turn is name-attributed",
+      "winner_player": "Lua",
+      "winner_deck": "winota_lua.txt",
+      "win_turn_estimate": 5,
+      "winner_turns_elapsed_at_win": 5,
+      "win_method": "Kiki-Jiki, Mirror Breaker (fetched with Moggcatcher) copying Zealous Conscripts for infinite hasted copies, with Goldnight Commander making the team arbitrarily large; Ian killed in combat on Lua's turn 5 (frame-verified at 0 life, round 5), Rachel and Mike concede to the unanswered Kiki-Conscripts loop after one more table round",
+      "life_totals_at_win_moment": {"note": "overlay TURN 05 as Ian dies, frame-verified", "Mike": 23, "Lua": 13, "Ian": 0, "Rachel": 36},
+      "mulligans": {
+        "Mike": {"kept": 3, "bottomed": ["Gemstone Caverns", "Deafening Silence", "Thorn of Amethyst", "Aven Mindcensor"], "kept_hand": ["Sokenzan, Crucible of Defiance", "Wooded Foothills", "Mother of Runes"], "note": "mull to 3; consistent with Mike taking almost no game actions all game"},
+        "Lua": {"kept": 4, "bottomed": ["Recruiter of the Guard", "Kiki-Jiki, Mirror Breaker", "Plains"], "kept_hand": ["Dockside Extortionist", "Jeweled Lotus", "Arid Mesa", "Sol Ring"], "note": "won the game off a mull to 4; the bottomed Kiki-Jiki was later fetched from the library with Moggcatcher"},
+        "Rachel": {"kept": 5, "bottomed": ["Red Elemental Blast", "Mana Crypt"], "kept_hand": ["Drannith Magistrate", "Gold Myr", "Sol Ring", "Inkmoth Nexus", "Enlightened Tutor"], "divergence": "Red Elemental Blast is not in winota_rachel.txt"},
+        "Ian": {"kept": 5, "bottomed": ["Deafening Silence", "Aven Mindcensor"], "kept_hand": ["Needleverge Pathway", "Archivist of Oghma", "Flooded Strand", "Serra Ascendant", "Drannith Magistrate"]}
+      },
+      "winota_deploy_turn": {"Lua": 2, "Ian": 2, "Rachel": 3, "Mike": null},
+      "key_line": [
+        {"turn": 1, "seat": "Lua", "play": "Arid Mesa cracked for Sacred Foundry untapped (3 life total), Jeweled Lotus, Sol Ring"},
+        {"turn": 1, "seat": "Rachel", "play": "Blinkmoth Nexus, Sol Ring, Gold Myr"},
+        {"turn": 1, "seat": "Ian", "play": "Sokenzan, Crucible of Defiance, Mana Vault"},
+        {"turn": 1, "seat": "Mike", "play": "Wooded Foothills for Plateau, Mother of Runes"},
+        {"turn": 2, "seat": "Lua", "play": "Dockside Extortionist for 3 treasures, cracks Jeweled Lotus for Winota"},
+        {"turn": 2, "seat": "Rachel", "play": "upkeep Enlightened Tutor for Lotus Petal to top, Inkmoth Nexus, Lotus Petal"},
+        {"turn": 2, "seat": "Ian", "play": "Dockside Extortionist; the table urges Lua to crack her treasures in response, she refuses, Ian makes 6 treasures; treasures into Winota and Goblin Rabblemaster, attacks Rachel with a hasty Goblin token; Winota hits Professional Face-Breaker attacking Mike (2 treasures); second main Serra Ascendant", "note": "Lua declining to shrink Ian's Dockside count is a named table-politics decision point"},
+        {"turn": 2, "seat": "Mike", "play": "Sokenzan, Deafening Silence"},
+        {"turn": 3, "seat": "Lua", "play": "Moggcatcher, attacks Rachel with Dockside; Winota hits Mother of Runes attacking Mike"},
+        {"turn": 3, "seat": "Rachel", "play": "casts Winota, animates Blinkmoth Nexus and attacks Lua with it; Winota hits Magus of the Moon attacking Mike"},
+        {"turn": 3, "seat": "Ian", "play": "attacks all three opponents (Rabblemaster +3/+0, Dockside, two Goblins at Mike; Face-Breaker at Rachel; Serra Ascendant at Lua); Winota triggers four times: three whiffs, one hit (Ranger-Captain of Eos attacking Lua, fetching Signal Pest); Mike's Mother of Runes blocks a Goblin with pro-red; Lua blocks Ranger-Captain with Winota; Ian gains 6, makes 3 treasures; second main Signal Pest and Moggcatcher"},
+        {"turn": 3, "seat": "Mike", "play": "draws Blade Historian (revealed), no actions, passes"},
+        {"turn": 4, "seat": "Lua", "play": "Plains, Moggcatcher fetches Goblin Cratermaker to the battlefield, sacrifices Cratermaker to kill Ian's Moggcatcher; attacks Mike with Dockside; Winota hits Goldnight Commander attacking Mike", "divergence": "neither Goblin Cratermaker nor Goldnight Commander is in winota_lua.txt"},
+        {"turn": 4, "seat": "Rachel", "play": "Mana Confluence, Eidolon of Rhetoric"},
+        {"turn": 4, "seat": "Ian", "play": "mass attack (two Goblins, Serra Ascendant, Signal Pest at Lua; Dockside and Rabblemaster at Mike); Winota triggers five times: two whiffs, hits Mother of Runes, Loyal Apprentice, Combat Celebrant, all attacking Lua; Mike's Mother of Runes pro-red block again; 2 treasures; second main Recruiter of the Guard fetching Solitude to hand"},
+        {"turn": 4, "seat": "Mike", "play": "draws, no actions, passes"},
+        {"turn": 5, "seat": "Lua", "play": "Moggcatcher fetches Kiki-Jiki, Mirror Breaker; Kiki targets Dockside; Ian evokes Solitude targeting the Dockside; Lua's Mother of Runes gives Dockside pro-white and Solitude fizzles; Dockside copy makes 7 treasures; attacks, Winota hits Blade Historian and Zealous Conscripts; Conscripts untaps Kiki, Kiki loops Zealous Conscripts copies with Goldnight Commander triggers making her creatures infinitely large; final Conscripts copy steals Ian's Face-Breaker so he cannot block the pro-white Dockside; Ian dies in combat", "note": "the Solitude vs Mother of Runes exchange is the game's decisive interaction"},
+        {"turn": 5, "seat": "Rachel", "play": "animates Inkmoth and Blinkmoth, attacks Mike with Gold Myr and Lua with both; Winota hits Adeline, Resplendent Cathar and Rionya, Fire Dancer (both attacking Lua), one whiff; Lua blocks with Remorseful Cleric and Goblin Matron; second main Ragavan, Nimble Pilferer", "divergence": "Adeline, Resplendent Cathar is not in winota_rachel.txt"},
+        {"turn": 5, "seat": "Mike", "play": "finally draws a castable spell: Signal Pest, passes"},
+        {"turn": 5, "seat": "table", "play": "Rachel and Mike accept they have no answer to the Kiki-Zealous combo and concede; Lua wins"}
+      ],
+      "interaction_events": [
+        "table asks Lua to crack treasures in response to Ian's Dockside; she refuses (Ian nets 6 treasures)",
+        "Mike's Deafening Silence (turn 2) and Rachel's Eidolon of Rhetoric (turn 4) as stax pieces",
+        "Lua's Moggcatcher-fetched Goblin Cratermaker kills Ian's Moggcatcher (turn 4)",
+        "Ian evokes Solitude on Lua's Dockside mid-combo; Lua's Mother of Runes pro-white fizzles it (turn 5, decisive)",
+        "Mike's Mother of Runes pro-red saves it as a blocker in three separate combats",
+        "Rachel chump-blocks the infinite team with Eidolon and Magus of the Moon"
+      ],
+      "extraction_confidence": "high for winner, turn, method, seats, and win-moment life totals (frame-verified); high for individual plays (scripted narration)"
+    }
+  ],
+  "headline_features": {
+    "human_win_rounds": [4, 5],
+    "winner_turns_elapsed": [3, 5],
+    "winner": "Lua (winota_lua.txt) both games; game 1 by concession to board and life pressure with no combo, game 2 by Kiki-Jiki + Zealous Conscripts combat kill",
+    "first_commander_turn": {"game1": {"Rachel": 1, "Lua": 2, "Mike": 3}, "game2": {"Lua": 2, "Ian": 2, "Rachel": 3}, "note": "turn-1 Winota by Rachel in game 1 via SSG + Chrome Mox + Sol Ring + Mana Vault + Dockside treasures"},
+    "mull_aggression": "game 2 was won off a keep of 4; Mike kept 3 in game 2 and was a non-participant, corroborating the mulligan interpretation",
+    "interaction_density": "very low by cEDH standards: zero counterspells resolved across both games; interaction was flash blockers, protection activations, one evoked Solitude (fizzled), and stax bodies",
+    "mirror_dynamics": "all four decks race the same plan; the winner both games was the player whose Winota triggers connected earliest and most often, plus the incidental lifegain (Rick + Blade Historian) that put game 1 out of reach",
+    "known_list_divergences": [
+      "Rule of Law in Ian's game 1 hand: absent from winota_ian.txt",
+      "Goblin Cratermaker fetched by Lua's Moggcatcher (game 2): absent from winota_lua.txt",
+      "Goldnight Commander hit by Lua's Winota (game 2): absent from all four provided lists",
+      "Red Elemental Blast bottomed by Rachel (game 2): absent from winota_rachel.txt",
+      "Adeline, Resplendent Cathar hit by Rachel's Winota (game 2): absent from winota_rachel.txt (Adeline was printed 2021, so this is list drift, not an era impossibility)"
+    ]
+  },
+  "extraction_confidence": {
+    "overall": "high",
+    "basis": "transcript is scripted announcer narration of an edited recap rather than raw auto-captions, so card names and seat attribution are clean; overlays (player names, life totals, round counter) and both game endings were frame-verified",
+    "repairs_flagged": 0,
+    "plays_with_seat_unknown": 0
+  },
+  "open_questions": [
+    "Are the four provided decklists the players' actual September 2022 lists? Five in-video cards are missing from them, so they read as later or reconstructed versions; win-condition and mana-base cores match, but exact-card replay fidelity is not guaranteed.",
+    "Game 1 win is a concession to inevitability, not a demonstrated kill; whether Lua had guaranteed lethal on her turn 4 is unverifiable, so the round-4 figure is a concession round, not a combo round.",
+    "The recap is edited; any plays the editor cut (for example incidental treasure cracks or land drops) are invisible, though the narration style suggests near-complete coverage."
+  ]
+}

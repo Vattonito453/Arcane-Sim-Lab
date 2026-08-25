@@ -1,0 +1,114 @@
+{
+  "video_id": "2iA_Jt0d6sM",
+  "url": "https://www.youtube.com/watch?v=2iA_Jt0d6sM",
+  "channel": "Playing With Power MTG",
+  "title": "Derevi vs Nadu vs Rograkh/Silas vs Godo | CEDH Gameplay",
+  "upload_date": "20240829",
+  "players": {
+    "note": "confirmed from on-screen overlays via video frame sampling 2026-08-24 (Turn 01 frame shows all four nameplates and 40/39/40/40 life)",
+    "godo": "Ryan",
+    "rograkh_silas": "Sasha",
+    "derevi": "Andy",
+    "nadu": "Brian"
+  },
+  "deck_fidelity": {
+    "derevi": "published",
+    "nadu": "published",
+    "rograkh_silas": "published",
+    "godo": "archetype-substitute: the video's TCGplayer decklist link is dead (deck deleted); godo_archetype.txt is the same channel's June 2026 Godo build, ~22 months newer than this August 2024 video, so name repairs against it are weaker. In practice all 11 Godo-seat plays spoken in the transcript (Urza's Saga, Mountain, Mox Opal, Great Furnace, Grim Monolith, Manifold Key, Crystal Vein, Goblin Engineer, Defense Grid, Seething Song, Thunderclap) appear in the archetype list."
+  },
+  "extraction": {
+    "method": "manual LLM read of auto-captions (data/transcripts/2iA_Jt0d6sM.txt), plus targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills) for overlays, seat layout, turn counter, life totals, and the game-review card",
+    "extracted_on": "2026-08-24",
+    "caveats": [
+      "9.4-minute heavily edited short-form video, but the edit is a continuous narrated recap: one game, every turn narrated in order, so the line is unusually recoverable for its length.",
+      "Auto-captions only; card names garbled and repaired against the decklists; notable repairs flagged per play.",
+      "Mulligans and opening-hand decisions are fully edited out; nothing recoverable.",
+      "Life totals are read from sampled overlay frames at three checkpoints, not tracked continuously.",
+      "The overlay turn counter counts rounds (all four seats), not player-turns; win_turn_estimate below is the winner's own elapsed turns, which here coincides with round 5."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "02:00-08:35",
+      "seat_order": ["rograkh_silas", "derevi", "nadu", "godo"],
+      "seat_order_confidence": "high; narrated turn cycle Sasha -> Andy -> Brian -> Ryan is consistent all game and matches the overlay frames",
+      "winner_deck": "derevi",
+      "win_turn_estimate": 5,
+      "win_turn_note": "Andy's own 5th turn; the on-screen counter reads TURN 05 in sampled frames during both the Chord of Calling and the winning Snap loop",
+      "win_method": "Chord of Calling X=3 finds Nadu, Winged Wisdom (a card in Derevi's 99, not Brian's commander); Nomads en-Kor triggers Nadu repeatedly for lands and gas; Eldritch Evolution (sac Thrasios) finds Emiel the Blessed; Emiel-flickers-Derevi with Gaea's Cradle untaps makes infinite mana and, via Nadu, puts all lands onto the battlefield and the rest of the library in hand; Blind Obedience plus an Eternal Witness / Snap recast loop extorts the table to death",
+      "life_total_checkpoints": [
+        {"when": "Turn 01, Sasha turn 1 (Gemstone Caverns surveil on screen)", "ryan": 40, "sasha": 39, "brian": 40, "andy": 40},
+        {"when": "Turn 05, Andy's Chord of Calling on the stack", "ryan": 37, "sasha": 26, "brian": 38, "andy": 29},
+        {"when": "Turn 05, winning Snap loop on screen", "ryan": 36, "sasha": 19, "brian": 36, "andy": 29}
+      ],
+      "mulligans": "not recoverable; edited out",
+      "key_line": [
+        {"turn": 1, "seat": "rograkh_silas", "play": "Wooded Foothills, crack for Raucous Theater (tapped), surveil Gemstone Caverns to graveyard", "repair": "'rockus theater' -> Raucous Theater"},
+        {"turn": 1, "seat": "derevi", "play": "Tropical Island, Mana Crypt"},
+        {"turn": 1, "seat": "nadu", "play": "City of Brass", "divergence": "City of Brass is not in the published nadu.txt (list drift or list error); he taps it for Chain of Vapor on turn 5, so it is not a mishear"},
+        {"turn": 1, "seat": "godo", "play": "Urza's Saga (chapter I)", "repair": "'ö of saga' -> Urza's Saga"},
+        {"turn": 2, "seat": "rograkh_silas", "play": "cast Rograkh; Culling the Weak sacrificing Rograkh for BBBB; Arcane Signet; Orcish Bowmasters (ETB pings Ryan for 1, amass Orcs 1)", "repair": "'calling the week' -> Culling the Weak"},
+        {"turn": 2, "seat": "derevi", "play": "end of Sasha's turn: Worldly Tutor putting Captain Sisay on top. Own turn: loses Mana Crypt flip (3 damage), Bountiful Promenade, cast Captain Sisay"},
+        {"turn": 2, "seat": "nadu", "play": "Hedge Maze (tapped), surveil a Forest to graveyard", "divergence": "Hedge Maze is not in the published nadu.txt"},
+        {"turn": 2, "seat": "godo", "play": "Saga chapter II, Mountain, Mox Opal"},
+        {"turn": 3, "seat": "rograkh_silas", "play": "City of Traitors, Grim Tutor (3 life), attack Ryan with Bowmasters + Orc Army", "repair": "'city of Traders' -> City of Traitors"},
+        {"turn": 3, "seat": "derevi", "play": "loses Crypt flip (3), activates Captain Sisay fetching Gaea's Cradle to hand, plays Cradle, casts Derevi (untaps Bountiful Promenade on ETB), casts Nomads en-Kor", "repair": "'gu's cradle' -> Gaea's Cradle; 'Nomads un core' -> Nomads en-Kor"},
+        {"turn": 3, "seat": "nadu", "play": "Windswept Heath (uncracked)"},
+        {"turn": 3, "seat": "godo", "play": "Saga chapter III: floats mana, sacrifices Saga fetching Manifold Key; Great Furnace; Grim Monolith. Commentary notes zero interaction used so far this game"},
+        {"turn": 4, "seat": "rograkh_silas", "play": "casts Wheel of Fortune; after the stack resolves (see interaction), plays Phyrexian Tower (sacrificing City of Traitors to its own trigger), sacs Orc Army to Tower for BB, Talisman of Dominance", "repair": "'forian tower' / 'fexin Tower' -> Phyrexian Tower"},
+        {"turn": 4, "seat": "nadu", "play": "on Sasha's Wheel: Pongify destroys Orcish Bowmasters; Sasha gets the 3/3 Ape token", "repair": "'creates a 338' -> creates a 3/3 (Ape token; confirmed by 'sacrificing her ape' on turn 5)"},
+        {"turn": 4, "seat": "godo", "play": "on the same stack: Seething Song for RRRRR, Thunderclap killing Captain Sisay; then Wheel resolves, everyone discards and draws 7", "note": "Thunderclap is genuinely in the Godo archetype list; no repair needed"},
+        {"turn": 4, "seat": "derevi", "play": "wins Crypt flip; Rejuvenating Springs, Mox Amber, Thrasios Triton Hero, Rhystic Study, Pollywog Prodigy; attacks Sasha with Derevi and Brian with Nomads en-Kor", "repair": "'thro's Triton hero' -> Thrasios, Triton Hero"},
+        {"turn": 4, "seat": "rograkh_silas", "play": "in response to attacks: Chain of Vapor targeting Derevi (Rhystic triggers, Andy draws); Derevi bounces; Andy sacrifices a land to copy the Chain targeting his own Mox Amber, bounces it, stops the chain; Andy recasts Mox Amber second main"},
+        {"turn": 4, "seat": "nadu", "play": "end of Andy's turn cracks Windswept Heath for Breeding Pool (tapped); own turn: Rejuvenating Springs, Birds of Paradise paying the Rhystic tax"},
+        {"turn": 4, "seat": "godo", "play": "Crystal Vein; Goblin Engineer paying Rhystic, ETB fetches Defense Grid to graveyard"},
+        {"turn": 5, "seat": "rograkh_silas", "play": "Polluted Delta for Underground Sea; Phyrexian Tower sacs the Ape for BB; Demonic Tutor (Rhystic: Andy draws); Necropotence (Rhystic: Andy draws); activates Necropotence 9 times paying 9 life; end step takes the necro cards, discards to hand size", "repair": "'necrotons' -> Necropotence"},
+        {"turn": 5, "seat": "derevi", "play": "loses Crypt flip (3); Hallowed Fountain untapped (2 life); recasts Derevi (Pollywog + Derevi trigger: untaps Gaea's Cradle, Pollywog gets a counter); Chord of Calling X=3; Sasha responds Flusterstorm off Talisman targeting Chord (Rhystic + Pollywog: Andy draws 2), Andy pays for Flusterstorm; Chord resolves fetching Nadu, Winged Wisdom onto the battlefield", "repair": "'cord of calling' -> Chord of Calling", "note": "Nadu here is a card in the Derevi 99; Brian's commander Nadu never left the command zone"},
+        {"turn": 5, "seat": "derevi", "play": "ten Nomads en-Kor activations, each triggering Nadu: reveals Spellseeker (hand), Phyrexian Metamorph (hand), Path to Exile (hand), Wooded Foothills (battlefield), Kinnan Bonder Prodigy (hand), Mana Confluence (battlefield), Eldritch Evolution (hand), Ranger-Captain of Eos (hand), Birthing Pod (hand), Savannah (battlefield); cracks the Foothills for Breeding Pool untapped (2 life)", "repair": "'fian metamorph' -> Phyrexian Metamorph; 'kinon bonder Prodigy' -> Kinnan, Bonder Prodigy; 'elder shovel ution' -> Eldritch Evolution; 'ranger Captain AOS' -> Ranger-Captain of Eos; 'birthing pot' -> Birthing Pod", "divergence": "'path to Exile' spoken clearly, but derevi.txt has Swords to Plowshares and no Path to Exile; either list drift or the narrator misspoke; the card was never cast so it does not affect the line"},
+        {"turn": 5, "seat": "derevi", "play": "casts Kutzil, Malamet Exemplar; Brian responds Chain of Vapor (off City of Brass, paying Rhystic) targeting Derevi; Andy counters with Pact of Negation; Kutzil resolves (Pollywog counter)", "repair": "'cutel malamat Exemplar' -> Kutzil, Malamet Exemplar; 'packed of negation' -> Pact of Negation"},
+        {"turn": 5, "seat": "derevi", "play": "attacks Sasha with Pollywog, Thrasios, Nomads; Kutzil trigger plus three Derevi triggers untap Gaea's Cradle, Mana Crypt, Bountiful Promenade; draws off Kutzil. Second main: two more Nomads/Nadu activations reveal Arid Mesa (battlefield) and Delney Streetwise Lookout (hand)", "repair": "'delony StreetWise Lookout' -> Delney, Streetwise Lookout"},
+        {"turn": 5, "seat": "derevi", "play": "Eldritch Evolution sacrificing Thrasios, fetching Emiel the Blessed; Emiel flickers Derevi (untap Cradle); presents loop: Cradle for 6, Emiel-flicker Derevi, each new Derevi instance triggers Nadu; infinite green, all lands onto the battlefield and rest of library to hand via Nadu; flickers untapping lands for infinite white", "repair": "'AAL the blast' / 'a meal' -> Emiel the Blessed; 'Al Evolution' -> Eldritch Evolution"},
+        {"turn": 5, "seat": "derevi", "play": "casts Blind Obedience; Finale of Devastation X=3 returning Eternal Witness from graveyard to the battlefield; Snap on Witness (extort: each opponent loses 1, Andy gains 3, untap two lands); presents the loop of recasting Witness returning Snap, Snap bouncing Witness, extorting every cast, until the table is dead. Andy wins", "note": "Eternal Witness was presumably wheeled or discarded to the graveyard earlier; Finale explicitly fetches it 'from his graveyard'"}
+      ],
+      "interaction_events": [
+        {"turn": 4, "by": "nadu", "spell": "Pongify", "target": "Orcish Bowmasters (rograkh_silas)", "outcome": "resolves; Bowmasters dies, Sasha gets a 3/3 Ape"},
+        {"turn": 4, "by": "godo", "spell": "Thunderclap (enabled by Seething Song)", "target": "Captain Sisay (derevi)", "outcome": "resolves; Sisay dies before the Wheel"},
+        {"turn": 4, "by": "rograkh_silas", "spell": "Chain of Vapor", "target": "Derevi", "outcome": "resolves; Derevi bounced mid-combat; Andy copies it (sac land) to rescue-bounce his own Mox Amber"},
+        {"turn": 5, "by": "rograkh_silas", "spell": "Flusterstorm", "target": "Chord of Calling", "outcome": "paid for; Chord resolves"},
+        {"turn": 5, "by": "nadu", "spell": "Chain of Vapor", "target": "Derevi", "outcome": "countered by Pact of Negation"}
+      ],
+      "commander_deploys": {
+        "rograkh": {"turn": 2, "note": "cast and immediately sacrificed to Culling the Weak"},
+        "silas_renn": null,
+        "derevi": {"turn": 3, "note": "bounced by Chain of Vapor turn 4, recast turn 5"},
+        "nadu": null,
+        "godo": null,
+        "note": "null = never left the command zone on screen; the winner's key engine piece, Nadu, entered as a card in Andy's 99 via Chord of Calling"
+      },
+      "creator_self_review": "Post-game (08:39-09:10): MVP overlay = Nadu, 'not even close'; commentary credits Andy's Derevi experience with sequencing correctly through interaction, and notes the table 'didn't see it coming and couldn't do much to stop it once it hit the battlefield'",
+      "extraction_confidence": "high for winner/turn/method/seat order (frame-verified); high for the turn-5 combo line (narrated card by card); medium for exact costs/floats within turns"
+    }
+  ],
+  "headline_features": {
+    "human_win_turns": [5],
+    "winner": "derevi",
+    "win_round_players_turns": 5,
+    "first_commander_turn": {"rograkh": 2, "derevi": 3, "nadu": null, "godo": null},
+    "interaction_count_spoken": 5,
+    "interaction_density_note": "commentary explicitly flags 'zero interaction has been used this game' as late as round 3; all five interaction events land in rounds 4-5",
+    "notable": [
+      "Winner's combo commander-adjacent piece (Nadu) was a 99 card, not the Nadu player's commander; Brian's Nadu never deployed",
+      "Two of four commanders (Nadu, Godo) never left the command zone",
+      "Wheel of Fortune round 4 reset all hands one round before the winning turn"
+    ]
+  },
+  "open_questions": [
+    "Mulligans and keeps: fully edited out, unrecoverable",
+    "Sasha's Grim Tutor and Demonic Tutor targets never named",
+    "Whether Brian's City of Brass / Hedge Maze are list drift in the published Nadu list or a different build revision",
+    "'Path to Exile' vs Swords to Plowshares in the Derevi list (never cast, so immaterial to the line)",
+    "Exact life-loss bookkeeping between the three sampled overlay checkpoints"
+  ]
+}

@@ -1,0 +1,1676 @@
+[00:00] Hello and welcome everybody. Welcome
+[00:02] back to Comedian MTG. My name is Ian.
+[00:05] Today we have an old-fashioned top 16
+[00:07] breakdown. We're going to break down
+[00:09] Land Go presents the Boil 2026. This was
+[00:12] a really fascinating tournament because
+[00:14] we had one of the stranger top cuts
+[00:16] historically speaking where because of
+[00:18] the amount of draws present and things
+[00:20] like that
+[00:21] as you can see actually here behind my
+[00:23] head
+[00:24] you can see the draw rate was actually
+[00:25] up to almost 37% for for the tournament
+[00:28] overall. We had a historic amount of
+[00:29] that at a tournament. Now in other
+[00:31] larger tournaments since then this does
+[00:33] change a little bit, right? But we
+[00:35] definitely had some really interesting
+[00:36] stuff there with folks with only 15
+[00:37] points after seven rounds of Swiss
+[00:39] making top cut. So it was definitely
+[00:41] some really interesting stuff here from
+[00:42] this tournament. But all of that can't
+[00:44] overshadow the fact that as you can see
+[00:46] by the description of this video this
+[00:47] was one of the most fun tournaments I
+[00:50] have ever attended. And even though my
+[00:52] tournament run did not go so well
+[00:53] because I got locked into a bunch of
+[00:55] draws playing Tibalt. I had an amazing
+[00:57] time. I mean setting tournament in New
+[01:00] Orleans was absolutely fantastic and it
+[01:03] was an amazing amazing city to have a
+[01:05] super cool CEDH event in and can't
+[01:07] stress enough one of one of the players
+[01:09] I was talking to over the weekend
+[01:10] described it as CEDH summer camp and it
+[01:12] really did feel like that. So major
+[01:14] shout out to the folks over at Land Go
+[01:15] for picking a great location for CEDH
+[01:17] tournament. It was a super well
+[01:18] organized well run event and I'm super
+[01:20] excited to talk about all of the things
+[01:22] featured here but specifically the top
+[01:24] 16 decks from this week's tournament. So
+[01:27] we're going to break down Land Go
+[01:28] qualifier. We're going to talk about the
+[01:29] decks that were involved and those that
+[01:31] made top cut. If you like videos like
+[01:32] this make sure to hit that like button
+[01:33] and that subscribe button as they help
+[01:35] out the channel a whole ton. I have some
+[01:36] really interesting Patreon things that
+[01:38] I'm starting to get to. I believe I'm
+[01:40] going to be converting our highest tier
+[01:42] over to a tier where I'm going to start
+[01:43] doing some videos that are going to be
+[01:45] Patreon exclusive
+[01:47] moving forward. So that's going to be
+[01:48] pretty cool. So a lot of that stuff is
+[01:49] going to be over at
+[01:49] patreon.com/comedianmtg.
+[01:51] If you're interested in supporting the
+[01:52] channel go check all that stuff out
+[01:53] there. Without any further ado let's
+[01:55] jump in.
+[02:01] We're going to start here with Rocco's
+[02:03] Benevolent Kitchen by Noob Noob 119.
+[02:06] This is a Rocco Cabaretti Cater list and
+[02:09] it's been very interesting watching the
+[02:11] sort of historic ebb and flow of Rocco.
+[02:14] Rocco is a very powerful CEDH deck and
+[02:17] having a toolbox tutor in the command
+[02:19] zone has been a proven CEDH success,
+[02:22] right? We've seen this with Magda, we've
+[02:23] seen it with Sissay, we've seen it with
+[02:25] Rocco and and other decks like Arcum
+[02:27] Dagsson as well.
+[02:28] So clearly the creature toolbox strategy
+[02:30] is still a very powerful one in CEDH and
+[02:33] it's one that we can definitely get used
+[02:35] to here, right? It's It's a powerful
+[02:36] strategy and being able to tutor things
+[02:38] when you have that level of
+[02:39] inconsistency from having a 100 card
+[02:42] singleton and then contrasting that with
+[02:44] the consistency of yeah, well my command
+[02:46] zone tutors everything that I need, it
+[02:47] starts to balance things out a lot more.
+[02:49] Diving into this deck, let's talk about
+[02:51] the win conditions you can always find
+[02:53] in a deck like Rocco. Well, so first of
+[02:55] all, the thing that you need to know the
+[02:56] most is that Rocco in the modern era has
+[02:59] become a bit of a Rector deck. And what
+[03:01] do I mean by that strategy? Well, Rocco
+[03:03] being able to tutor up both Academy and
+[03:06] Arena Rector uh is pretty definitive for
+[03:08] the strategy, although notably I will
+[03:10] have to pivot here and say that uh this
+[03:12] is just an Academy Rector version of
+[03:14] this deck list, which I don't think I've
+[03:16] ever actually seen the Vivien lines
+[03:20] present without Arena Rector, which is
+[03:22] pretty interesting. So normally Arena
+[03:23] Rector allows you to go tutor up Vivien
+[03:25] uh Vivien on the Hunt specifically,
+[03:27] which acts as a as a Birthing Pod effect
+[03:28] with Rocco, but here we actually just
+[03:30] have Academy Rector. Now, Academy Rector
+[03:33] in this deck can go tutor up a number of
+[03:34] enchantments, but very specifically it
+[03:36] can go grab Food Chain. Um so
+[03:38] historically speaking with the Arena
+[03:39] Rector deck, which as I mentioned is not
+[03:41] present here, uh you normally go grab
+[03:43] Vivien and you start going up the
+[03:45] classic Birthing Pod line. So with
+[03:47] either Vivien on the Hunt or uh Birthing
+[03:49] Pod, which you can see both present here
+[03:51] in the deck, uh you're able to turn your
+[03:53] any three drop, which Rocco just happens
+[03:55] to be, into a Felidar Guardian. And at
+[03:57] that point, you can flicker the pod
+[03:59] effect, whether it be Vivien or the pod.
+[04:01] You [snorts] sacrifice the Guardian,
+[04:02] which brings you a Karmic Guide. The
+[04:04] Karmic Guide brings back the Guardian,
+[04:05] which once again flickers the pod
+[04:07] effect. You're then able to go back in
+[04:08] again by sacking the Guardian to get
+[04:10] Kiki. Kiki will make a copy of Karmic,
+[04:12] which brings back the Felidar, and then
+[04:13] Felidar Kiki makes infinite hasty
+[04:15] creatures. Now, there are other lines in
+[04:18] this deck that don't just operate on
+[04:19] that sort of tree speed access. Uh as I
+[04:21] mentioned, the Academy Rector can go get
+[04:22] Food Chain, and we have Squee in the
+[04:24] deck. So, if you have Squee Food Chain,
+[04:25] you can make unlimited creature mana.
+[04:27] And then obviously with a creature like
+[04:29] Rocco in the command zone, you are able
+[04:30] to uh tutor out whatever you need. Very
+[04:32] specifically, Purphoros is one of the
+[04:34] main payoffs in the deck as the ability
+[04:36] to just uh hey, some how my stuff ETB
+[04:39] deals damage to my opponents. And then,
+[04:41] you know, infinite ETBs turns into
+[04:42] infinite damage. Very cool to see
+[04:44] Gandalf the White here. One of my very
+[04:46] close friends here in Philadelphia has
+[04:47] been a Rocco pilot for for quite some
+[04:49] time, and he's been preaching the
+[04:51] Gandalf tech for a while, and it's
+[04:52] really cool to just have uh not only
+[04:54] have an instant speed Rocco cuz it gives
+[04:56] your legendary creatures and artifacts
+[04:57] flash, but an instant speed Rocco that
+[05:00] also has double enter the battlefield
+[05:01] abilities. So, some really cool stuff
+[05:03] there. It's also combos with Jolly
+[05:05] Balloon Man, Village Bell-Ringer, and
+[05:06] then obviously the Village Bell-Ringer
+[05:07] works with the Kiki-Jiki as well. As
+[05:09] long as you have Jolly Balloon Man and
+[05:11] Village Bell-Ringer and any creature
+[05:12] that can tap for a single mana, you can
+[05:14] make infinite hasty copies of
+[05:15] Bell-Ringer. Also generate infinite mana
+[05:17] that way if they can make more than one
+[05:18] mana. So, number of different payoffs in
+[05:20] that department as well. Yeah,
+[05:21] definitely very interesting to see the
+[05:23] bit of a side step on the more common
+[05:26] Rocco strategies. For example, there's
+[05:27] no Phyrexian Dreadnought here, which
+[05:29] traditionally acts as a one mana
+[05:30] sacrifice for your double Rector
+[05:32] package, which once again is not present
+[05:34] in this version of the deck list. I'm
+[05:36] curious to hear from the pilot if this
+[05:38] was a choice just because they're
+[05:39] finding the card quality to be much
+[05:41] lower with the Arena Rector package, or
+[05:43] if maybe this is a more recent choice
+[05:44] after some some modifications, cuz this
+[05:46] is an actively being worked on deck list
+[05:48] for sure. And we are about uh a little
+[05:50] less than a month out from the the
+[05:51] conclusion of this tournament. So,
+[05:53] I'm curious to hear if this is a newer
+[05:55] cooking decision or if this is something
+[05:56] that's been going on for a while, but
+[05:58] definitely very interesting to see an
+[05:59] adaptation on this on this deck list.
+[06:01] Want to thank partners of the channel
+[06:02] Tales of Adventure Magic, toamagic.com,
+[06:05] to get your cEDH or any form of Magic
+[06:08] singles. They have, quite frankly, a
+[06:11] ridiculous selection in the best way
+[06:13] possible. They have an amazing selection
+[06:15] of reserve list, high-quality foils, so
+[06:17] many things like that. Toamagic has
+[06:19] literally some of the best inventory.
+[06:20] It's the reason why Eternal Lives Here
+[06:22] is their saying cuz you will be able to
+[06:24] find cards from all throughout Magic's
+[06:25] history. I've even, you know, traded in
+[06:27] cards to Toa to to get some expensive
+[06:29] reserve list staples that I wouldn't
+[06:30] have been able to just buy out of pocket
+[06:32] in general because they've got an
+[06:34] amazing selection and they have, yeah,
+[06:37] just anything you could possibly need
+[06:38] for your cEDH needs. So, if you go on
+[06:41] toamagic.com, use code comedian to get
+[06:42] 5% off your order. They have amazingly
+[06:44] quick online shipping and if you need to
+[06:46] have them show up at an event, if
+[06:48] they're going to have a booth at that
+[06:49] event, you can order online and pick up
+[06:51] at their booth. So,
+[06:52] usually there's a schedule of events
+[06:54] they'll be at on their website as well.
+[06:55] So, check out toamagic.com, use code
+[06:57] comedian to get a percentage off your
+[06:58] order today.
+[06:59] We have Scar GG here team AP9 with
+[07:02] What's the Storm Count, Jake, with a
+[07:05] classic Rograkh Thrasios list. And what
+[07:07] you're going to notice in these Rog
+[07:08] Thras lists that seem to be present at
+[07:11] this tournament from the successful Rog
+[07:13] Thras lists that hasn't been as popular
+[07:15] of a choice lately is the fact that
+[07:16] these Rog Thras lists are doing the
+[07:18] traditional cradle package, right?
+[07:20] You're trying to dump a bunch of
+[07:21] creatures on the battlefield, use things
+[07:23] like cost reducers and and other notions
+[07:25] like that to be able to storm out with
+[07:26] Thrasios, having the Cloud of Faeries
+[07:28] copy, all of the classic stuff, and
+[07:29] then, you know, traditionally winning
+[07:31] with things like Abor Breeze Caller
+[07:32] combos or Eternal Witness combos. But,
+[07:35] I've noticed that a lot of these
+[07:37] Thrasios Rograkh lists are kind of back
+[07:39] on Underworld Breach, which was starting
+[07:41] to be a less popular decision from a lot
+[07:43] of these lists over the past, you know,
+[07:45] I want to say like eight months. A lot
+[07:46] of them were moving more towards like
+[07:47] these Simic builds, which the last time
+[07:49] I played Rog Rak Thras so I was
+[07:50] definitely on that more classic Simic
+[07:52] build. But now we are seeing here that
+[07:54] the these builds are going back to the
+[07:56] hybridization of including the
+[07:58] Underworld Breach package. And I was
+[07:59] talking to the uh person who ended up
+[08:01] winning this tournament, who who we'll
+[08:02] talk about a little bit later, but they
+[08:03] had mentioned essentially that uh the
+[08:05] power of shifting woodlands really felt
+[08:06] like it was fueling that component of
+[08:08] this strategy and that it sort of gave
+[08:10] the deck a a higher elevation that it
+[08:12] was missing in other capacities. So,
+[08:14] very fascinating to hear this uh this
+[08:16] sort of new wave of returning to the old
+[08:18] form with with Rog Rak Thras and not
+[08:20] just having it be a turbo cradle deck,
+[08:22] but a turbo cradle deck that can still
+[08:23] feel very comfortable hosting these
+[08:25] Underworld Breach lines that are present
+[08:27] in the deck, which which does make
+[08:28] sense, right? If people are very
+[08:29] aggressive towards your board state, you
+[08:31] do want some sort of way to to pivot out
+[08:33] of the strategy that they can hyperfocus
+[08:35] on, right? Also very interestingly like
+[08:37] these lists are on line side diamond,
+[08:39] right? Which there was some testing with
+[08:40] with Rog Rak Thras at some point where
+[08:42] they were doing just Lotus Petal for
+[08:43] your Breach lines and things like that.
+[08:45] Or or, you know, just expecting that if
+[08:46] you have a Breach going, um the whole
+[08:48] point of Rog Rak Thras is that you have
+[08:50] a lot of mana, so you don't really need
+[08:51] an LED. But it's interesting to see the
+[08:53] the full classic Breach package in here.
+[08:55] Once again, in tandem with these more um
+[08:57] classic Rog Rak Thras lists. And what I
+[08:59] will also mention is I've noticed these
+[09:00] decks are up on interaction, too. Feels
+[09:02] like, you know, being on things like
+[09:03] misdirection and and like both flares on
+[09:06] top of some of the, you know, one mana
+[09:07] counter spells is not always something
+[09:09] that that I'm used to seeing in in Rog
+[09:11] Rak Thras. So, definitely feels like
+[09:12] folks who are working on this strategy
+[09:13] are are updating it to ironically return
+[09:16] to an older format, but return to an
+[09:18] older format that did have success. So,
+[09:20] you know, maybe it's a a time period
+[09:21] where the classic Simic build is not
+[09:24] performing as well, and we are seeing
+[09:25] the more traditional Temur build uh
+[09:27] performing better. Also notably like no
+[09:29] Hex Drinker, even though they are on,
+[09:31] you know, classic Breach lines and
+[09:32] things like that. So, very interesting
+[09:33] stuff here, and we'll definitely compare
+[09:34] it to our other Rog Rak Thras lists as
+[09:36] we move through the day. So, we have
+[09:38] Graham here with Rog Rakishai Mystic
+[09:40] Remora Generator. Now, it does say
+[09:43] Flying Elephant here, which is funny
+[09:44] enough because this is actually
+[09:46] a fully proxied deck that Flying
+[09:48] Elephant and their company actually was
+[09:50] was selling at the venue at the time and
+[09:54] they the person who ended up top cutting
+[09:56] this tournament literally just like
+[09:58] bought a fully proxied deck the day
+[09:59] before the event and ended up top 16ing
+[10:01] with it, which is like such a cool story
+[10:04] for this player to just go like, "Oh,
+[10:06] hey, yeah, this is a this is a deck I'm
+[10:07] I'm just going to buy a full full
+[10:09] sleeved list of it and just see what
+[10:11] happens." And and yeah, they ended up
+[10:12] making a top 16 of a almost 300 person
+[10:15] tournament, which is such a cool story.
+[10:17] So, definitely congrats to Graham on on
+[10:19] making a crazy run with this deck. I
+[10:21] don't know if this is the first time I
+[10:23] featured Roggy actually on the channel,
+[10:25] but this is a deck that everyone should
+[10:26] be familiar with at this point. Roggy
+[10:29] is essentially a counter meta deck that,
+[10:32] you know, it does take a great amount of
+[10:34] skill, but, you know, very very notably
+[10:36] like being able to, as I mentioned, pick
+[10:37] up this deck and and start to cook with
+[10:38] it right away definitely is a is a very
+[10:40] big sign from for a lot of these pilot.
+[10:42] You know, it's a deck that I I sort of
+[10:43] was historically a little bit lower on,
+[10:45] but now, you know, I'm I've definitely
+[10:47] seen enough people be successful with it
+[10:48] that I'm willing to take a second look
+[10:50] at this deck list cuz we just had
+[10:51] another 200 person event that was also
+[10:53] won by this deck. So, clearly Roggy is
+[10:56] doing something right.
+[10:57] >> [laughter]
+[10:58] >> The entire concept of this deck is as as
+[11:00] someone who loves to brew and innovate,
+[11:02] the entire concept of this deck is kind
+[11:03] of like the opposite of everything I
+[11:04] like about cEDH, but that's okay. It is
+[11:07] essentially a deck that is meant to
+[11:09] hyper exacerbate the most broken
+[11:11] enchantments in our format, right? That
+[11:12] being Rhystic Study, Mystic Remora, and
+[11:14] Smothering Tithe, right? This deck is
+[11:16] playing things like Copy Enchantment,
+[11:18] Mirrormade, it's playing Flash
+[11:20] Photography, it's even on Idyllic Tutor
+[11:23] to be able to go and tutor out these
+[11:24] enchantments. They're on Dizzy Spell to
+[11:27] go pay four mana for your Mystic
+[11:29] Remoras. This deck is literally a deck
+[11:31] that is designed to hyper tutor your
+[11:33] card advantage engines and just play
+[11:36] them and then make copies of them and
+[11:37] sit there with Rog in the command zone.
+[11:39] Effectively like the the Jesskai core is
+[11:42] Ishai's technically playable in the deck
+[11:44] and I've I've definitely seen Rog Ishai
+[11:46] pilots play and use Ishai to effect, but
+[11:49] it would be a very common mistake to
+[11:51] think Ishai is like a central part of
+[11:53] the game plan for this deck list. It is
+[11:55] much more Jesskai card draw and Rog is
+[11:57] one of the quickest way to get your card
+[12:00] advantage engine set up because Rog is
+[12:01] inherently broken, right? You have your
+[12:03] super early mana that allows you to like
+[12:06] if everybody is going to turbo into a
+[12:07] Ristic Mystic meta game which I think is
+[12:09] you can see by the the 37% draw rate at
+[12:12] this tournament was a very good thing to
+[12:14] attack the meta with at the time, right?
+[12:16] And so these acceleration pieces put
+[12:18] those engines on the battlefield the
+[12:20] fastest of any deck and therefore it is
+[12:22] able to once again steer heavily into
+[12:25] you know, like a self-fulfilling
+[12:26] prophecy of like how these games are
+[12:28] going to go. Apart from that, yeah, you
+[12:30] can see 32 instance here. There's a lot
+[12:32] of really interesting classic ones that
+[12:34] we can be used to, right? A lot of the
+[12:35] commandeers and misdirections, force of
+[12:37] will, mind break trap, all all that
+[12:38] classic stuff there. You've got gifts
+[12:40] and intuition to set up your underworld
+[12:41] breach lines as that is your primary way
+[12:43] of winning the game. You have all your
+[12:45] spells that are free because you have
+[12:46] Rog Rack Down on turn one to give you
+[12:48] Swan and Guardianship and Fluster of
+[12:50] Duplication, all of the above. One of
+[12:52] the sort of premier cards from this
+[12:53] archetype is Firestorm. It is a wild
+[12:56] card that feels like it's a card that
+[12:58] just shouldn't work, but it does. And it
+[13:00] actually ends up performing pretty well.
+[13:02] I'm going to pull up the errata text in
+[13:03] this one, but it's actually pretty
+[13:04] simple at the end of the day. It's one
+[13:05] red for spell says and as an additional
+[13:07] cost discard X cards and then it deals X
+[13:10] damage to app to X targets. So
+[13:13] hypothetically speaking, if you're
+[13:14] playing a deck that is supposed to hyper
+[13:16] exaggerate your card draw, right? You're
+[13:18] going to have 10, 12, 13, 14, 15 cards
+[13:21] in your hand at some point playing this
+[13:22] archetype and if that's the case then
+[13:25] yeah, you don't mind pitching five or
+[13:26] six spells away so that you can go wipe
+[13:29] someone's board effectively or wipe
+[13:31] multiple people's boards and keep
+[13:32] yourself in a dominant position over the
+[13:34] course of this game. And you know, it's
+[13:35] nice to see people paying respect to
+[13:37] removal being good in the format, right?
+[13:38] What you also might notice here is that
+[13:40] this deck is white and yet it doesn't
+[13:42] use the Abolisher style effects because
+[13:45] guess what? Your hand's going to be
+[13:46] chock-full of interaction if everything
+[13:48] in this strategy is going well
+[13:49] appropriately anyway. So, why would you
+[13:51] need to essentially play an Abolisher
+[13:53] effect when you're just going to have 16
+[13:55] counter spells in hand hypothetically is
+[13:57] is the conceit of a deck like this,
+[13:59] right? So,
+[14:00] um in the creature base you're going to
+[14:01] notice some some definitely funky
+[14:02] creatures here, right? Hullbreaker
+[14:03] Horror, another way to, you know,
+[14:05] obviously generating infinite mana.
+[14:06] There's no outlet with Ishai and Rograkh
+[14:08] in the command zone, but once again,
+[14:09] this is a deck that is essentially based
+[14:11] around the conceit that you will have a
+[14:13] bunch of cards in hand. So, essentially
+[14:15] the idea that Hullbreaker can find an
+[14:16] outlet is pretty appropriate there. This
+[14:18] is also an Emrakul, the Promised End.
+[14:19] For those who've been watching this
+[14:20] channel for a long time, you know I love
+[14:21] this card. Uh and very specifically, if
+[14:24] you're trying to win the mid-range
+[14:25] games, that's literally what this card
+[14:27] is designed to do, right? So, uh it gets
+[14:29] reduced for the amount of card types in
+[14:30] your graveyard and when you cast that
+[14:31] spell, you get to take a person's turn,
+[14:33] then they get an extra turn uh after
+[14:35] that additional turn that you are
+[14:37] taking, right? And very often, if you
+[14:40] know what you're doing with a deck like
+[14:41] this, you can very easily take the
+[14:42] person's turn who you think is most
+[14:44] likely to win the game. Then with your
+[14:46] own deck, you can almost protect their
+[14:47] win conditions as they're going through
+[14:49] and usually if you're smart about it,
+[14:52] you can assemble a win on another
+[14:55] person's turn that will allow you to win
+[14:58] through their game actions, right? For
+[15:00] example, um say it's a blue farm player,
+[15:03] you assemble an Underworld Breach combo
+[15:05] on their turn and you mill out everybody
+[15:07] who is not you, the actual Rog Ishai
+[15:09] player, right? So, things like that
+[15:10] would be kind of how you use Emrakul in
+[15:11] general. There's a lot of ways to do it
+[15:13] if you're if you're clever about it, but
+[15:14] it's definitely a complicated card. Um
+[15:16] Apple of Eden Ishai relic is there for
+[15:17] for a very similar purpose. You're
+[15:19] either once again stealing someone
+[15:20] else's hand if we're going to a hyper
+[15:22] mid-range space or, you know, sometimes
+[15:23] it's just a a one-person like I'm going
+[15:26] to take your interaction for the turn
+[15:28] and make it so that you cannot join the
+[15:30] counter spell fight over my win
+[15:31] conditions, right? So, very
+[15:33] breach-focused deck, very much the the
+[15:34] primary way that that list wins. I think
+[15:37] just like brain-freezing everybody and
+[15:38] then making them draw the fairy
+[15:39] mastermind when they have no cards in
+[15:41] hand is is the way that you win. It's
+[15:43] either that or like Emergent Apple of
+[15:45] Even Looping and I think that's really
+[15:47] like the main ways these archetypes win.
+[15:48] So, it's it's kind of snug that I guess
+[15:50] also like, you know, Ishai firestorm
+[15:52] manual damage is also actually a real
+[15:54] win condition.
+[15:56] You can just, you know, create a bunch
+[15:57] of targets and then firestorm your
+[15:58] opponent for a lot of damage at some
+[16:00] point as well. So, you know, that's
+[16:01] [laughter]
+[16:02] always an option with a deck like this,
+[16:04] but
+[16:04] yeah, congrats to your pilot and once
+[16:06] again, just such an impressive story to
+[16:07] to have picked up a proxy deck the day
+[16:09] before the tournament and then top 16
+[16:10] this giant event with it, which is
+[16:11] pretty cool. We have Edith Allgood with
+[16:14] Mr. Rogers Slaverhood,
+[16:15] >> [laughter]
+[16:16] >> which is that's Slaverhood? Oh, I
+[16:19] thought Slaverhood. Okay, I don't know.
+[16:20] Maybe I'm missing something on that one.
+[16:22] But, this is Rograkh
+[16:23] for those who aren't familiar with
+[16:24] Rograkh. Rograkh like Rog Ishai is an
+[16:28] attempt to maximize Rograkh in the
+[16:30] command zone, but instead of maximizing
+[16:32] Rograkh in a mid-range sense, this
+[16:34] attempts to maximize Rograkh in a turbo
+[16:36] sense. This is and and you know, now
+[16:38] thinking about it as we're sort of
+[16:39] piling through, this is definitely one
+[16:40] of the best Rograkh
+[16:42] sort of showings in a while. We have
+[16:43] Rograkh Thrasios showing up in numbers,
+[16:45] we have Rograkh Ishai showing up in
+[16:46] numbers and Rograkh Ishai also showing
+[16:48] up in numbers here in this tournament.
+[16:49] So, a 24 land Rograkh Ishai list, which
+[16:51] is, you know, pretty high for Rograkh
+[16:52] Ishai. It's kind of fun to see. This is
+[16:54] a classic you know, Underworld Breach Ad
+[16:56] Nauseam Necropotence variation of these
+[16:58] deck lists. Kind of nice to see them not
+[17:00] on Necro Dominance. I think that card is
+[17:01] is pretty awful, but at the same time
+[17:03] like sometimes these archetypes just
+[17:05] need as many of those effects as they,
+[17:06] you know, want to get. This version's on
+[17:08] some more engines like One Ring and
+[17:09] Steel Enchantment to to have more of a
+[17:11] of a nuanced game into the mid-range.
+[17:13] So, definitely cool to see uh some some
+[17:15] differences between this and the
+[17:16] standard Rograkh Ishai like Opposition
+[17:18] Agent not always the most common choice
+[17:19] with this archetype as well, right? So,
+[17:21] some some cool and unique uh stuff in
+[17:23] this Rog list variant. And then, apart
+[17:24] from that, you know, the deck tries to
+[17:26] just uh put people on the ground as fast
+[17:28] as possible. Pretty explosive at doing
+[17:29] so cuz Rog Rak is uh as we're going to
+[17:31] mention a couple times here today, a
+[17:33] pretty busted commander.
+[17:34] >> [laughter]
+[17:35] >> For having no relevant text, uh being
+[17:36] zero mana turns out is still good
+[17:38] enough.
+[17:39] Want to thank partners of the channel,
+[17:41] Heavy Play. Heavy Play is an amazing
+[17:44] brand for keeping your cards safe. They
+[17:46] have amazing deck boxes, amazing dice
+[17:48] trays, and playmats. They have a brand
+[17:50] new playmat series that I'm super
+[17:51] excited to talk about. The Jim Pavlovic
+[17:53] series has once again featured in all
+[17:55] five colors. If you haven't used or seen
+[17:57] their magnetic series out in the wild,
+[17:59] it's such a game-changer if you do any
+[18:01] sort of CEDH play or any sort of
+[18:04] tournament play at all.
+[18:05] Their magnetic products all clip
+[18:07] together. They make being in spaces I
+[18:08] was just at a tournament last weekend
+[18:09] where space was really tight, and just
+[18:11] being able to magnetically lock all of
+[18:13] my things in place. I have a Heavy Play
+[18:14] box for my cards. I have the dice tray,
+[18:16] and I even have a smaller Heavy Play box
+[18:18] where I keep all of my tokens. And
+[18:19] genuinely having that whole setup with
+[18:20] the Heavy Play mat has made my life
+[18:22] infinitely easier
+[18:23] >> [laughter]
+[18:24] >> as a tournament player. It's a product
+[18:26] that, once again, I don't get asked to
+[18:27] go use Heavy Play out in public, but I
+[18:29] use it anyways because their products
+[18:31] are awesome. And I wanted to work with
+[18:33] them far before I realized that they
+[18:34] could work with us here on the channel.
+[18:35] So, check out heavyplay.com, and if you
+[18:37] use code comedian get 10% off your
+[18:39] order. We have Gaming Ghost here by his
+[18:40] name is Seemorghwado by holding
+[18:42] priority. As you can see, it says almost
+[18:44] NBC. This is a Kinnan variant, um and
+[18:47] referring to NBC as in the No Bad Cards
+[18:49] variant. This version is adjacent to
+[18:51] that. As you can see, there's still a
+[18:53] little bit of love to some of the
+[18:54] heavier flips in Kinnan, right? Con
+[18:56] Sphinx, Nezahal, Hullbreaker Unagi. So,
+[18:59] this deck definitely does have a top end
+[19:00] in that capacity, but it does have the
+[19:02] things that we talked about in that Rog
+[19:03] list archetype where we're talking about
+[19:05] copy enchantment and Mirrormade and
+[19:07] Rhystic Study maxing as much as
+[19:08] possible, flash photography, all that
+[19:10] kind of stuff. So, a lot of different
+[19:12] ways to copy Restics, copy smothering
+[19:13] tithes, copy advantage engines out the
+[19:15] wazoo,
+[19:16] and and have a a very, you know, long
+[19:19] and impressive game plan in that
+[19:20] capacity as well, right? This version's
+[19:22] on cabbage merchant, but no Seaboard
+[19:24] Muse, which I know a bunch of lists have
+[19:25] been sort of moving to, and that's sort
+[19:27] of a debate between, you know, Kinnan's
+[19:29] moving forward and all that kind of
+[19:30] stuff. Kinnan's strings, dramatic
+[19:32] reversal, ways to untap in that sort of
+[19:34] mid-game sloggy version of the deck
+[19:36] list, and yeah, finding a window to
+[19:38] push wins on a pretty consistent basis.
+[19:40] And yeah, definitely definitely the more
+[19:42] mid-range grindy version of the deck
+[19:44] list, but with its own variations and
+[19:45] other lists playing dizzy spell just to
+[19:47] get their mystical because that's, you
+[19:49] know, partially
+[19:51] a significant portion of the game plan
+[19:52] of these decks. So,
+[19:54] congrats to our pilot. We have Dark
+[19:56] Confidant 5675 with Dragon Storm. This
+[19:59] is a Rowan Scion of War deck, and
+[20:02] definitely one of the more unique
+[20:03] commanders to be up here in top cut.
+[20:04] Obviously, Rowan has been doing better
+[20:06] over the past like 8 months that I want
+[20:07] to say it has sort of ever historically.
+[20:10] Um, but it's cool to see this list show
+[20:11] up and and have folks perform with it on
+[20:13] a pretty consistent basis and and making
+[20:15] top 16 of a 200-plus person tournament's
+[20:17] pretty huge. And also, I don't think
+[20:19] I've ever seen the Dragon Storm version
+[20:21] of this deck list too as well. Usually,
+[20:22] it's more of a sort of traditional just
+[20:25] Rakdos Storm variant, but here we have
+[20:27] like actual factual Dragon Storm. And
+[20:29] what I will say about Dragon Storm is a
+[20:30] lot of people when you're facing off
+[20:31] against Rowan can wait until they can
+[20:33] hit certain choke points, right? Hit the
+[20:35] thing that tutors multiple times, hit
+[20:36] the things that like peer into the abyss
+[20:38] and stuff like that. But, if your
+[20:40] opponents aren't aware a Dragon Storm is
+[20:41] coming and you've built up enough storm
+[20:43] count, there's genuinely a reality where
+[20:45] you just hit that Dragon Storm and
+[20:46] there's enough storm to assemble a win
+[20:48] from your opponents. So, it doesn't
+[20:50] really matter what happens. Not sure
+[20:51] exactly what the configuration is for
+[20:54] this variant. So, they have a Twin Flame
+[20:55] Tyrant, they have a Lathelis,
+[20:57] a Scourge of Valkas. So, like there is
+[20:59] just a if you get like Terror Scourge,
+[21:01] you blow all the damage from the ETBs on
+[21:02] those, and then Lathelis sees all the
+[21:04] other dragons come in and all that kind
+[21:05] of stuff. So, like very easy to manually
+[21:08] see how much damage can be created with
+[21:09] this uh type of loop here. Also,
+[21:11] notably, like, you can always go grab
+[21:12] Hoarding Broodlord if you need uh even
+[21:14] more damage to be sort of thrown on top
+[21:16] of this very, very dramatic Dragon
+[21:18] Storm. I have such a soft spot for
+[21:19] Dragon Storm, so it's very cool to see
+[21:21] it here in this deck list. Yeah, for
+[21:23] those who who watched my Flubs video
+[21:25] last year, you know that uh Flubs Dragon
+[21:26] Storm has a very special place in my
+[21:27] heart. So, uh very cool to see that uh
+[21:30] shown off here at the top of the scene
+[21:32] of a of a major event, which is pretty
+[21:33] cool. A lot of interesting stuff in the
+[21:36] sorcery base. I think sorcery is really
+[21:37] defining Rowan as an archetype. A lot of
+[21:39] things that say like, "Hey, if this gets
+[21:41] reduced by three or four, um these these
+[21:43] cards become pretty, pretty darn broken,
+[21:45] right?" Like, uh Increasing Ambition
+[21:47] being multiple Demonic Tutors on on one
+[21:49] card or Final Parting mean a a Demonic
+[21:51] Tutor and an Entomb for a black black,
+[21:53] right? Rowan really breaks parity on a
+[21:54] lot of these cards, and it's a sneakier
+[21:56] deck than people think it is. I I think
+[21:58] like the the thing I will never do is
+[22:00] underestimate a Rowan deck. I think this
+[22:02] list is always something that can put up
+[22:04] numbers and uh and and treating them as
+[22:07] if they are not active players in the
+[22:08] game is a is a way to to not understand
+[22:10] how this deck works. The the the real
+[22:13] crux of the deck is the fact that her
+[22:15] activated ability can only be activated
+[22:17] at sorcery speed. So, the way to really
+[22:20] stop a Rowan pilot going off is if
+[22:21] they're about to go on tap with three or
+[22:23] four mana and and a Unsummoning sick
+[22:25] Rowan, you just can't let that happen.
+[22:27] So, on their upkeep or their draw step
+[22:29] or whatever, you got to have to take
+[22:30] that Rowan out or or you better have a
+[22:31] very good political deal as to exactly
+[22:33] what they're doing on their turn because
+[22:34] this deck can get really out of hand if
+[22:36] they're allowed to just go. So,
+[22:37] >> [snorts]
+[22:37] >> Rowan very, very good at uh essentially,
+[22:39] yeah, it's a classic make 'em have it
+[22:41] deck, right? And if your opponents don't
+[22:42] have it, they're going to put you in the
+[22:43] ground with a Dragon Storm. So, congrats
+[22:45] to our pilot and and very cool stuff
+[22:47] with this Dragon Storm Rowan list. Uh we
+[22:49] have Monkey Joy MTG here with Roger
+[22:51] Dodger Roxie. This is our second Roxie
+[22:53] list, and we're going to compare it to
+[22:55] our uh one we saw first here in this
+[22:58] tournament. So, very notably, you know,
+[23:00] some of those cards that I mentioned, um
+[23:02] like that uh that are traditionally not
+[23:04] seen in in Rograkh
+[23:06] specifically like The One Ring, Steel
+[23:08] Enchantment, Opposition Agent, we can
+[23:10] see we're not present in in both of
+[23:11] these lists and our second list that
+[23:14] we're mentioning here is in on some of
+[23:16] the the very classic blue interaction,
+[23:19] right? Which makes sense because if you
+[23:20] think about Myrel's Trap and Force of
+[23:21] Negation, they're very defensive pieces
+[23:23] of interaction unless you're trying to
+[23:24] win an instant speed over the top of
+[23:26] another player, right? So,
+[23:28] you know, makes sense that certain more
+[23:30] proactive Rograkh lists would be less
+[23:31] inclined to help their opponents out
+[23:33] defensively and more inclined to just
+[23:35] win the game, which makes sense from
+[23:36] that perspective. You can see this
+[23:38] version is on Necro Dominance, is on
+[23:40] Misdirection, which I mentioned before
+[23:42] back when I was playing a lot of Kefnet.
+[23:44] Misdirection over Force of Negation was
+[23:46] something I was featuring pretty often
+[23:47] because yeah, it's it's it's more likely
+[23:49] to be a free spell that if you're trying
+[23:51] to win on turn two or turn three, can
+[23:53] protect your own win conditions more
+[23:54] than try to stop your opponents from
+[23:56] winning, right? Things like Mox Opal in
+[23:58] similar light and Yawgmoth's Will as
+[24:00] well as as a little bit more recursion
+[24:02] in the graveyard for the late game. This
+[24:03] version's also on Time Twister, which
+[24:05] makes sense. I know there's always this
+[24:06] like ever ever classic debate with with
+[24:08] Rograkh as to whether Time Twister, you
+[24:11] know, sort of hinders itself being a
+[24:13] Yawgmoth's Will deck and Underworld
+[24:14] Breach deck too much or if just having
+[24:16] that extra Wheel effect because Rograkh
+[24:18] is so good with Wheels ends up being
+[24:20] worth it at the end of the day. And and
+[24:21] to be honest, I don't think there's ever
+[24:22] really a clear answer and I think it's
+[24:23] it's very meta-dependent at the end of
+[24:25] the day. But, yeah, I think we see
+[24:27] definitely a little bit more of a
+[24:28] traditional list here with the Rograkh
+[24:30] Dodger list. But, either way, congrats
+[24:31] to congrats to our pilot for the top
+[24:33] cut. Yep, we have Prox Script here with
+[24:35] Cromby Mommy in the club. What a what a
+[24:37] deck list name. This is a Timna Crom
+[24:40] Blue Farm list, our first Timna Crom
+[24:42] list that we were talking about here in
+[24:43] today's tournament. So, we'll we'll
+[24:45] treat him as if they're a new kid on the
+[24:46] block. But, Timna Crom's one of the most
+[24:47] consistent and very often referred to as
+[24:49] the best deck in the format. You know,
+[24:51] nowadays, I think the meta's diverse
+[24:52] enough where I think there's some
+[24:53] ambiguity there. But, that That said,
+[24:56] very high card quality deck at the end
+[24:57] of the day. Timna and Krark in the
+[24:59] command zone give you
+[25:01] very powerful colors as well as some
+[25:03] very inherently powerful card draw
+[25:05] in the command zone plus all of arguably
+[25:07] some of the best colors in the format
+[25:09] minus green, right? We've seen a lot of
+[25:11] these sort of more lean bodies starting
+[25:13] to be played in Timna Krark. This is
+[25:14] sort of an acceptance the fact that
+[25:16] like, you know, you don't have something
+[25:17] like Rograkh in the command zone
+[25:19] or Rograkh specifically, but you want
+[25:21] cheap bodies to not only
+[25:23] turn on your sacrifice effects with
+[25:25] things like Diabolic or Culling the
+[25:27] Weak, but also recognizing that, you
+[25:28] know, for Memnite it's a grinding
+[25:29] station piece. It's a Mox Opal piece,
+[25:31] right? There's actually a number of
+[25:33] decent things that it turns on to allow
+[25:35] them to have a more proactive game plan,
+[25:37] right? Now, while Timna Krark is often
+[25:38] referred to as a mid-range deck, it's a
+[25:40] mid-range deck that can really put its
+[25:42] foot on the gas if it wants to, right?
+[25:43] It is an Ad Nauseam deck. It is a
+[25:45] Necropotence, Underworld Breach,
+[25:47] Thassa's Oracle. It's playing most of
+[25:49] the best win conditions in the format.
+[25:51] It's playing a lot of high card quality
+[25:52] and it's trying to grind out value in
+[25:54] that way. Um this version's on
+[25:56] Abolisher, Voice of Victory, Squelcher,
+[25:59] Ranger Captain, traditional silence, um
+[26:01] and I believe not on Orim's Chant, but
+[26:04] but on basically every other version of
+[26:06] a silence available to them. So, all
+[26:07] right, so I pilot on the top cut here.
+[26:09] Wow, actually I've never seen that few
+[26:11] amount of lands. I shouldn't say never.
+[26:14] That's definitely one of the least
+[26:15] amount of lands I've ever seen in Timna
+[26:16] Krark list, which definitely indicates,
+[26:18] you know, just how fast this specific
+[26:20] variant is is really trying to push the
+[26:21] game.
+[26:22] Um but yeah, at the end of the day uh if
+[26:24] it's if if it's working, it's working.
+[26:27] >> [laughter]
+[26:27] >> Congrats to our pilot on top cut. Also
+[26:29] want to highlight Just Jam D Grid. Just
+[26:32] Jam D Grid is a really sweet uh cEDH
+[26:35] tournament that is going to be coming up
+[26:37] at the end of May 30th through 31st, at
+[26:40] the end of the month, in the Gamers
+[26:41] Guild Arizona. Uh it's these folks have
+[26:44] run a number of very high-scale cEDH
+[26:47] events in the past. As you can see, hey,
+[26:49] it looks at me right there.
+[26:50] I'll be a featured guest at the event
+[26:52] and I'm super excited to show up there.
+[26:54] Uh a number of the folks, as I
+[26:55] mentioned, have run some great events.
+[26:57] Uh you may remember things like the
+[26:58] Triple G CEDH event or Cradle to the
+[27:00] Guild, which ended up being a pretty uh
+[27:02] huge premiere event last year, and this
+[27:04] could go up to $20,000 in the prize
+[27:07] pool. So, this is an event that is uh
+[27:09] definitively not messing around. So,
+[27:11] yeah, definitely uh show up, put your
+[27:12] best foot forward, and win for some real
+[27:14] prizes on the line. As I mentioned, the
+[27:16] end of May, 30th through 31st. Uh come
+[27:18] hang out with me on my birthday weekend,
+[27:19] and we'll play some CEDH.
+[27:21] >> [laughter]
+[27:21] >> We have Rhystic Study three with Rhystic
+[27:24] Study Emblem. So, as we compare this to
+[27:27] our previous list, they actually aren't
+[27:28] on that many differences here. Where the
+[27:30] Emblem variant is on VIVIAN as another
+[27:32] win condition, another outlet, right? If
+[27:34] you are, you know, casting spells with
+[27:36] Hullbreaker Horror over and over again,
+[27:37] for example, you can ping your opponents
+[27:38] to death with a VIVIAN instead of having
+[27:39] to Emrakul loop them, which I know some
+[27:41] folks have used as the default option.
+[27:43] On another advantage engine with
+[27:44] Wandering Archaic on Curse of Opulence,
+[27:45] which is actually a pretty popular beast
+[27:47] in Rograkh and Silas nowadays, and
+[27:48] definitely a quirky little
+[27:50] advantage engine where you attack your
+[27:52] opponents and get gold tokens um and
+[27:55] encourage your opponents to do the same,
+[27:56] which is pretty interesting. Um but
+[27:58] yeah, some some very minor differences
+[28:00] here between these archetypes, you know,
+[28:01] one less way to get your Mystic Remora,
+[28:03] one less clone, no Emrakul, no Infernal
+[28:05] Plunge, which I I don't really love the
+[28:07] Infernal Plunge in Rograkh and Silas, so
+[28:08] it's kind of nice to not see that in the
+[28:09] deck list. On another piece of
+[28:10] interaction, a different clone, right?
+[28:12] Just a few minor differences here
+[28:13] between these two deck lists. But yeah,
+[28:15] once again, congrats to our pilot for
+[28:16] the top cut. Very cool list here. We
+[28:18] have Alucard Williams with the Truth Is
+[28:20] I Am Iron Man. As it says, this is Iron
+[28:23] Man, Titan of Innovation, which is
+[28:25] really cool cuz I know um you know,
+[28:26] there's been a number of folks uh who
+[28:28] have been messing around with Iron Man
+[28:30] in the format, and Teenage Mutant Ninja
+[28:32] Turtles did give this deck a number of
+[28:33] different upgrades, which, you know, uh
+[28:35] flashback five years and and say that
+[28:37] sentence out loud about a CEDH deck, and
+[28:39] I think it would give some people an
+[28:41] aneurysm, but uh yeah, it's it's got
+[28:43] some really cool upgrades nowadays, and
+[28:45] it's it's been a deck list that uh I
+[28:47] believed in for quite some time. So,
+[28:48] it's really really cool to see Iron Man
+[28:50] kick it out here in this CEDH
+[28:52] tournament. I've gone on record a couple
+[28:54] times before saying I think Iron Man is
+[28:56] the best Mishra's Workshop deck in the
+[28:57] format because Iron Man itself is an
+[29:00] artifact creature, right? So, it can you
+[29:02] know, the three generic from Iron Man's
+[29:04] cost can be paid with a Mishra's
+[29:05] Workshop.
+[29:06] That and
+[29:08] you know, a number of the artifacts in
+[29:09] the deck list as it's currently on 31
+[29:12] not including artifact creatures, which
+[29:14] is makes it up to 33. So, you can say
+[29:17] the list is artifact heavy to say the
+[29:18] least, right?
+[29:20] On 27 lands here, Mishra's Workshop just
+[29:22] able to tap for three, you know, generic
+[29:23] mana in in for or colorless mana
+[29:25] specifically for for artifacts, right?
+[29:27] So, that's pretty huge. Featuring the
+[29:28] new does machines once again the new
+[29:30] Turtles card here allows you to
+[29:32] mill two, draw two, discard two, which
+[29:34] allows you to really churn through your
+[29:36] deck and then can also be flickered with
+[29:37] kittens stuff like that. Virtue of
+[29:39] Knowledge is one that I hadn't seen
+[29:40] previously, but it's pretty cool here.
+[29:42] It allows you to copy a activated
+[29:45] ability. So, hypothetically speaking,
+[29:46] you can copy your own Iron Man
+[29:47] activation. Should probably read Iron
+[29:49] Man because a lot of folks probably
+[29:50] aren't familiar with him in a CEDH
+[29:51] context, but yeah, when it attacks, you
+[29:54] make a treasure token. Then you can
+[29:55] sacrifice a non-creature artifact. If
+[29:57] you do, you search your library for an
+[29:59] artifact with mana value one plus the
+[30:01] sacrificed artifact mana value, right?
+[30:03] So, it's like a Birthing Pod effect for
+[30:05] artifacts and also creates a treasure.
+[30:08] So, at the end of the day, if you don't
+[30:10] have any other artifacts on the
+[30:11] battlefield, you can always just go look
+[30:12] for a one drop because you get the
+[30:14] treasure from Iron Man that allows you
+[30:16] to go up. But essentially, you are going
+[30:17] to assemble some disruptive pieces,
+[30:19] right? Also just notably a decent amount
+[30:22] of interaction for this deck. 25
+[30:23] instances is nothing to scoff at, right?
+[30:25] But
+[30:25] you know, there's pieces like vexing
+[30:27] bobble and you know, torpor orb and
+[30:29] stuff like that. Not this not like a
+[30:30] full dedicated stacks list, but it has
+[30:32] enough disruptive pieces like curse
+[30:33] totem and damping sphere and things of
+[30:34] that nature
+[30:36] that do, you know, stop your opponents
+[30:37] from going too too crazy, right?
+[30:38] Grafdigger's Cage, stuff like that.
+[30:40] While also, you know, as I mentioned,
+[30:41] providing a combo outlet as well. Things
+[30:44] like KCI loops with esoteric duplicator
+[30:47] and Ugin's Nexus I think is like one of
+[30:48] the more clean lines. Essentially, you
+[30:50] get a duplicator which then allows you
+[30:51] to uh
+[30:53] essentially sack the Ugin's Nexus to
+[30:55] Ironworks and and loop infinite turns
+[30:57] that way. Um there's also the Goblin
+[30:59] Welder lines as I mentioned, a new a new
+[31:01] upgrade from uh from the turtle set. If
+[31:04] you have Goblin Welder and the brand new
+[31:06] Sewer Surveillance Camera,
+[31:08] >> [laughter]
+[31:08] >> which is a a wild card and and
+[31:10] definitely one of the, you know, for for
+[31:11] a common, a very crazy amount of
+[31:13] potential for combos with this card. But
+[31:15] it is a flash artifact that says, "When
+[31:17] it enters or leaves, you may tap or
+[31:19] untap target creature." Then you can
+[31:21] also pay three and a blue to sack it to
+[31:22] draw two cards. Now, if you have uh any
+[31:25] artifact and Sewer Surveillance Camera
+[31:27] with Goblin Welder, you're able to tap
+[31:29] and sacrifice it over and over again,
+[31:30] right? So, if it's like a Mox Opal, you
+[31:32] can make infinite mana. Um if you have
+[31:33] like a Prize Statue and a Sewer
+[31:35] Surveillance Camera, you can then make
+[31:36] infinite treasures because you make
+[31:37] infinite treasures that allows you to
+[31:39] swap the treasures with the camera over
+[31:40] and over again, and that allows you to
+[31:42] draw two uh as you're going through
+[31:43] that. So, this is, you know, the answer
+[31:45] is if you have the Goblin Welder and the
+[31:47] Sewer Surveillance Camera, there's more
+[31:48] than likely some sort of infinite you
+[31:50] can generate at that point. Uh it does a
+[31:52] lot of really, really crazy stuff. So,
+[31:54] very cool to see what is just like a
+[31:56] very unique cEDH artifacts list here in
+[31:59] the format and just doing some some
+[32:01] wildly cool stuff. Um there's also
+[32:03] Chrome Dome, which I have to shout out
+[32:04] as like an actually really interesting
+[32:06] combo piece for for a lot of these
+[32:08] decks. Now, there is no um Metal Worker
+[32:11] in this version, which I know Metal
+[32:13] Worker Chrome Dome is a combo if you
+[32:14] have three artifacts in hand. So, I'm
+[32:16] not sure exactly what Chrome Dome is. Uh
+[32:18] I actually don't really know what you
+[32:19] would do with Chrome Dome in this
+[32:20] specific version of the deck list, but I
+[32:21] would definitely be curious to hear what
+[32:23] the specific lines featured are cuz
+[32:25] normally you you have lines with like
+[32:27] Chromatic Orrery or you have lines with
+[32:28] Metal Worker or stuff like that. So, I
+[32:30] don't know if this is just a
+[32:31] a value Chrome Dome or if there's like
+[32:33] specific pieces that this does. But um
+[32:35] some pretty cool stuff. Also, I have to
+[32:37] shout out Treasure Nabber. Treasure
+[32:38] Nabber Treasure Nabber is awesome. You
+[32:39] can take your opponent's artifacts as
+[32:40] they tap them, then play your Iron Man,
+[32:42] go to combat, sacrifice their artifacts
+[32:44] to trigger your own, which is like just
+[32:46] just nasty. Nasty in a lot of different
+[32:47] ways. So, very very cool stuff out of
+[32:49] this cEDH Iron Man list. Congratulations
+[32:52] to the pilot for top 16.
+[32:53] Quest for a Cause is coming up this cEDH
+[32:56] 10K charity tournament. As I mentioned
+[32:58] before, uh I'll be in the commentary
+[33:00] booth for, which is super super
+[33:02] exciting. I've got a couple commentary
+[33:03] gigs coming up and genuinely I am
+[33:05] ecstatic about this. Quest for a Cause
+[33:08] is not only a 10K cEDH tournament, but
+[33:11] it is all for charity. It is a awesome
+[33:14] tournament and it's for a great cause.
+[33:16] There's already so many amazing creators
+[33:18] who are lined up to attend this event
+[33:20] and genuinely I'm so honored to be uh
+[33:22] casting for this event. As many people
+[33:23] have uh probably heard me say over the
+[33:25] years, this is something I've been
+[33:26] really really wanting to to to get into
+[33:28] as a as a long-time lover of cEDH and as
+[33:30] someone who's been so passionate about
+[33:32] um the commentary through multiple
+[33:34] different mediums, but specifically
+[33:35] obviously cEDH, which is something I've
+[33:36] devoted to uh a significant amount of my
+[33:38] life to. So, it's really really cool.
+[33:41] I'm very excited to be able to show you
+[33:42] all uh the amazing stuff that's going to
+[33:44] be happening at this tournament. It is
+[33:45] going to be May 16th in Portland, Oregon
+[33:48] at the Hyatt Regency Portland Convention
+[33:50] Center. If you all haven't grabbed your
+[33:51] tickets, now is the time. This event is
+[33:53] going to be amazing and even if you
+[33:55] don't get the chance to be able to come
+[33:56] out, see if you can donate because uh
+[33:58] yeah, it's all going to a really great
+[34:00] cause and it's going to be a really
+[34:01] really awesome community event. People
+[34:03] are showing up in numbers for it and
+[34:05] it's going to be really really cool. So,
+[34:07] check out the Quest. Can't wait to see
+[34:08] you all there. We have Alan GG here with
+[34:10] Heart on My Sleeve. Uh
+[34:13] we're going to read the first part.
+[34:14] Heart on My Sleeve {dot} {dot} {dot}
+[34:16] This is Timnath Tapsio. A very unique
+[34:19] Timnath Tapsio list that I think we
+[34:20] definitely have to talk about a lot of
+[34:22] the innovations here. Now, here's one of
+[34:24] the innovations I don't want to
+[34:25] encourage people to start playing in
+[34:26] this format because I know this card has
+[34:28] gotten a lot of conversation lately,
+[34:29] which is Hardwood Storyteller. If your
+[34:32] deck is a creature combo deck or or can
+[34:35] go and execute full combos to creature
+[34:36] combos and not feed into a Hardwood
+[34:39] Storyteller, it turns out that card is
+[34:41] pretty good.
+[34:42] Uh also very notably, it sort of jams
+[34:44] things up into like a turbo midrange
+[34:46] sense where if you play this and anybody
+[34:48] pushes at any point ever with any sort
+[34:50] of non-creature spells, then all of a
+[34:52] sudden every other person has like a
+[34:54] stacked hand and you you just want to be
+[34:56] the deck that breaks parity on it or
+[34:58] it's a card that aggressively forces
+[34:59] draws. Which you know, the less of those
+[35:01] cards that I think exist
+[35:04] probably are good. But the idea with
+[35:05] Hardwood is that it says let me just
+[35:07] actually read the text on it. It's a
+[35:08] 2/3. It says whenever a player plays a
+[35:10] non-creature spell, each of that
+[35:12] player's opponents may draw a card.
+[35:14] Effectively, you know, if a blue farm
+[35:16] player or a Ral player or some other
+[35:17] player is is popping off with their
+[35:19] deck,
+[35:20] all of the other opponents are
+[35:21] effectively have their own Rhystic Study
+[35:23] that they can't pay for, right? So it's
+[35:25] just feeding them cards, feeding them
+[35:26] cards, feeding them cards, right? And
+[35:27] there's a lot of ways where
+[35:29] that that can definitely go wrong, for
+[35:31] sure, for the person trying to win the
+[35:33] game. Also very notably, like there's a
+[35:35] lot of creature combo based stuff in
+[35:36] this deck, right? This is a Razaketh
+[35:37] version of this list, which I think is
+[35:39] so cool. It's on the Hazels Brewmasters
+[35:41] Devoted Druid combos, right? With with
+[35:43] Hazels, you can have a Devoted in the
+[35:45] graveyard make infinite green mana by
+[35:47] making a food version of Devoted Druid.
+[35:49] There's also a Hermit Druid in this
+[35:51] decklist and I don't know if they're
+[35:52] doing Dread Return stuff. It seems like
+[35:54] they're not doing Dread Return stuff. So
+[35:56] I guess it's like Hermit Druid sort of
+[35:58] like their Demonic Consultation in this
+[36:00] deck where it just or you know, mills
+[36:01] the entire library. Huh, so interesting
+[36:03] stuff there for that.
+[36:05] It's really cool to start seeing an
+[36:06] Opponent Oculus in a lot more of these
+[36:07] like cradle based Thrasios lists. This
+[36:09] this card is very good for those
+[36:11] specific archetypes. I tried to Inkinin
+[36:13] a little bit last weekend and it didn't
+[36:16] end up making my final decklist because
+[36:17] in testing I was like, "Oh, this card
+[36:18] does not come up nearly as much as I
+[36:20] wanted to." But in specifically the
+[36:21] Thra- the cradle Thrasios list, this
+[36:23] card does really you in a decent amount
+[36:25] of work. Um, and occasionally, like, you
+[36:28] know, at
+[36:29] worst case scenario, it's just putting
+[36:30] bodies on the field for Cradle, right?
+[36:32] Best case scenario, it flips into
+[36:33] something like a Voice of Victory, and
+[36:35] at some point your opponents don't
+[36:36] realize you have an Abolisher effect on
+[36:37] the battlefield, and then you can go,
+[36:38] "Cool, two mana, flip it. It's a special
+[36:40] action. Your guys are silenced during my
+[36:42] turn. GG's, right?" So, Oculus does some
+[36:44] some pretty cool stuff in that area. As
+[36:46] I mentioned, you know, it's this has a a
+[36:48] Razaketh laring in this deck list, which
+[36:50] is
+[36:50] a pretty interesting take on TNT. It has
+[36:52] the Devoted Druid combos, classic like
+[36:55] Basalt Oracle combos. So, yeah, needless
+[36:57] to say, very, very interesting and
+[36:59] unique Tim Na Thraxis list. I've been
+[37:01] told that Alan's been doing pretty well
+[37:02] with this list
+[37:04] over the past few months, and yeah,
+[37:05] definitely can see that this is a this
+[37:07] list is a passion project, and and it's
+[37:08] been fine-tuned a great deal. We did get
+[37:10] to play one game during the the team
+[37:13] event in the previous day, which was
+[37:14] pretty interesting. Oh, also, I just
+[37:16] realized that they're on
+[37:17] Brain Freeze, Noetic Betrayal, and I
+[37:19] guess Brain Freeze with the whatever
+[37:21] they're doing with the Hermit Druid
+[37:22] stuff, too, with the deck list, which is
+[37:23] pretty interesting. And it seems like
+[37:25] Uh, oh, I guess is that really is is the
+[37:27] Hermit Druid Sevines Reck for Oracle? Is
+[37:29] that the main idea with this?
+[37:30] Interesting. Okay. So, no like Dread
+[37:32] Return like you'd see in like classic
+[37:34] Hermit Druid stuff, but there is still
+[37:35] Sevines Reck, so that that does make
+[37:36] sense. Yeah, some some pretty unique
+[37:38] tech here with some Hermit Druid stuff.
+[37:39] And and I guess very notably, too,
+[37:41] right? Like, if you do set up Hermit
+[37:42] Druid with an the ability to activate
+[37:44] and then play an Oracle, right? It is a
+[37:45] fully creature-based two-card win
+[37:47] condition, which is nothing to scoff at,
+[37:49] right? So, definitely some unique stuff
+[37:51] here for this this list, and congrats to
+[37:52] our pilot on on cooking pretty hard with
+[37:54] this Tim Na Thraxis list. I love I love
+[37:55] to see the the unique nature of it, for
+[37:57] sure. We have Rust ITG here with Clock
+[38:00] Blocked. It's so cool to see Rust do
+[38:03] well with this deck, and they absolutely
+[38:05] crushed it during Swiss. Rust is someone
+[38:07] I've known for for quite some time. We
+[38:09] did coaching like way back in the day,
+[38:10] and then I've met them through a number
+[38:11] of tournaments in in Texas and other
+[38:13] locations. So, it's really cool to see
+[38:15] them cook with Magda. They're definitely
+[38:16] a Magda pilot that deserves a lot of
+[38:17] respect, not only from, you know, other
+[38:19] opponents, but I I the Magda community,
+[38:21] um, as well. So, it's very cool to see
+[38:23] them. I think they ended the Swiss with
+[38:25] like four wins and three draws or
+[38:26] something like that, which is like,
+[38:27] obviously, a super impressive record.
+[38:29] Uh, fortunately, did not get out of top
+[38:31] 16, but still put up a great numbers in
+[38:33] this tournament. Yeah, for those who
+[38:34] aren't familiar with Magda, you're using
+[38:35] a curve of dwarves to generate treasures
+[38:38] with Magda. You want to get two Magda's
+[38:40] activated abilities, either A as a way
+[38:42] to use a sort of, uh, removal-based
+[38:44] toolbox engine and/or stack-space
+[38:46] toolbox engine, right? You can either
+[38:47] cheat in things like Portal to Phyrexia,
+[38:50] but just to say, speaking some of the
+[38:50] other lists have played things like
+[38:51] God-Pharaoh's Statue, but as you can
+[38:53] see, it's actually not featured in this
+[38:54] deck list. But, the main win condition
+[38:56] when when you're tutoring is if you do
+[38:57] have an artifact dwarf, uh, you can go
+[38:59] grab something like Clock of Omens.
+[39:01] Clock of Omens and Magda and any
+[39:03] artifact dwarf is then able to generate
+[39:04] infinite tapped treasures, which at that
+[39:07] point you have infinite tutors through
+[39:08] your library, so you could do something
+[39:09] like grabbing Roaming Throne to get
+[39:11] extra treasures. You could find ways to
+[39:13] have them come in untapped. There's a
+[39:14] number of different ways to to win as as
+[39:16] soon as you get the infinite tutors
+[39:18] through your library for all artifacts
+[39:19] and dwarves. Um, and and you're able to
+[39:22] loop in a number of different ways, many
+[39:23] times with uncounterable ways to just
+[39:25] deal infinite damage to your opponents
+[39:26] at instant speed, which is obviously a
+[39:27] pretty good payoff. Um, Rust is a very
+[39:29] patient player with this deck, very
+[39:30] often like, you know, playing a lot of
+[39:31] these heavy interaction packages for
+[39:33] Mono Red's purpose, right? So, very cool
+[39:35] to to see them do, as I mentioned, so
+[39:37] well in this tournament. And, uh, yeah,
+[39:40] definitely a list that has some some
+[39:41] very fun cards in it, right? Things
+[39:42] like, you know, Go-Go Mysterious Mime to
+[39:44] double Magda and Knuckles to to just
+[39:46] generate a lot of raw treasure, right?
+[39:48] So, very cool stuff here for Magda and,
+[39:50] uh, congrats to, uh, Rust on on making
+[39:53] top cut with this Magda list. Before we
+[39:54] get into the top four, I'll remind you
+[39:55] we do coaching here on ComedianMTG. So,
+[39:57] if you're interested in taking your cEDH
+[39:59] game up to the next level, feel free to
+[40:01] reach out to me at comedianmtg@gmail.com
+[40:03] or in any of the places in the
+[40:05] description down below this video. I
+[40:07] have more top cuts with different and
+[40:08] unique archetypes and decks than any
+[40:10] other player, and if you're interested
+[40:11] in taking your game up, whether it be
+[40:13] through brewing and innovating in the
+[40:14] cEDH base, or if you just would like to
+[40:17] take your game and get those tournament
+[40:18] tips, feel free to reach out to me at
+[40:20] Community FTG or any places in the link
+[40:21] tree down below. For our top four here,
+[40:24] we have Ace of Web here with just Girl
+[40:27] Farm. This is a blue farm list and we're
+[40:31] going to break it down. So, comparing
+[40:32] this to our last blue farm list, where
+[40:34] our other list had things like Mnemonic
+[40:36] Betrayal, Berg Heat, Hexing Squeltcher,
+[40:38] an extra land just cuz we're on
+[40:39] Facebreaker, what's often considered the
+[40:41] classic red package for farm list, we
+[40:44] are seeing in this version is up on one
+[40:46] land, although one of those is not Spire
+[40:48] of Industry. This version's up on a
+[40:49] Defense Grid instead of a Hexing
+[40:50] Squeltcher, and it is on Redirect
+[40:53] Lightning and Wheel of Fortune. So, some
+[40:55] distinctions here that definitely help
+[40:56] make that happen. As you can see also,
+[40:58] Mnemonic Betrayal's out for Praetor's
+[40:59] Grasp. That's often very much a function
+[41:01] of player preference I find. You know,
+[41:03] usually you want some sort of like, if I
+[41:05] lose my Oracle, I have a backup win
+[41:06] condition, right? So, to be able to take
+[41:08] from my opponent's decks. And Praetor's
+[41:09] Grasp for some folks is an easier option
+[41:12] and has more utility probably during the
+[41:13] mid-game, whereas Mnemonic Betrayal is a
+[41:16] really solid end game finisher and
+[41:18] depending on the meta game, will depend
+[41:19] on how folks tend to historically feel
+[41:21] about Mnemonic Betrayal. So, some pretty
+[41:22] minor differences between these deck
+[41:24] lists, but enough where you can see a
+[41:26] certain amount of pilot preference. This
+[41:28] version heavier on the red, I want to go
+[41:30] fast style mentality. And here, yes,
+[41:32] there's some other options here, but
+[41:34] like a little bit more of a mid-range
+[41:35] pivot in certain aspects for this
+[41:37] version. Little confused about the
+[41:39] option to go Defense Grid versus Hexing
+[41:40] Squeltcher and I'd be curious to hear
+[41:42] from the pilot the choice behind that
+[41:44] option. Very notably, Defense Grid
+[41:46] cannot be cloned by a lot of the
+[41:47] Praetor's Grasp clones and things like
+[41:48] that running around. So, that definitely
+[41:50] could be a very viable choice there for
+[41:52] sure. We have in the top four here,
+[41:55] Pizza Party Ad Nauseam. This is a
+[41:58] Michelangelo and Leonardo deck list,
+[42:01] which is super cool by Dame GPT, which
+[42:03] is so cool cuz we had actually talked
+[42:05] about this list the day before the
+[42:07] event, cuz as I mentioned, they were in
+[42:08] the team event with myself and a couple
+[42:11] of players and they were talking about
+[42:12] this deck list and the fact that they
+[42:13] thought it was pretty real as a
+[42:14] five-color list. There's also, um, you
+[42:16] know, a Michelangelo Leonardo list also
+[42:18] won a tournament, uh, 60-person
+[42:20] tournament pretty recently. So, it seems
+[42:21] like these, uh, these partner pairings
+[42:23] are pretty real, right? Now, you may be
+[42:24] asking yourself, "Why play this
+[42:26] particular partner pairing versus a if
+[42:28] you're going to play like the five-color
+[42:29] good stuff space, right? Why not play
+[42:31] Ang or Sisay or Kenrith, right?" And and
+[42:34] the answer is they do have viable
+[42:35] choices, right? One of those options is
+[42:37] the fact that Michelangelo makes Polywog
+[42:39] Prodigy pretty broken in this archetype.
+[42:41] And and and also by extension Esper
+[42:42] Sentinel, right? Just able to start
+[42:44] putting 1/1 counters on your creatures
+[42:46] early as long as you, uh, trigger the
+[42:48] rage trigger and you have some sort of
+[42:50] combat in the turns, right? Esper
+[42:51] Sentinels and Polywogs with extra
+[42:52] counters will start drawing you a pretty
+[42:54] significant amount of cards. And as you
+[42:56] can see, the rest of it does sort of
+[42:58] look like a lot of these farm lists that
+[42:59] we mentioned earlier, right? Very very
+[43:01] similar archetype here. Um, you do have
+[43:03] some some interesting cards here like
+[43:04] Party Dude,
+[43:06] which is, uh, very interesting way to to
+[43:08] get some triggers there. It's kind of
+[43:09] like an anti-Smothering Tide tech, which
+[43:11] is pretty interesting. But, it's doing
+[43:12] like Underworld Breach lines,
+[43:13] Necropotence lines, Ad Nauseam lines,
+[43:15] all that kind of stuff. Has Intuition to
+[43:16] set up your Breach piles. Um, but very
+[43:18] notably, as I mentioned, those those
+[43:20] slight synergies as well. And Leonardo's
+[43:22] not something to sleep on, honestly,
+[43:23] because whenever a token you control
+[43:25] enters, you may put a 1/1 counter on
+[43:26] each creature you control. Plus, it has
+[43:28] the activated ability of Wuberg
+[43:30] creatures you control get menace,
+[43:31] trample, and lifelink until the end of
+[43:33] turn. Now, very notably, it's less about
+[43:35] that five-color activated ability,
+[43:36] although that does give it the the
+[43:38] commander identity of five-color. It's
+[43:40] more of the fact that if you have
+[43:41] engines like Tutors and Tutors and
+[43:43] Lootho and Cabbage Merchant or
+[43:45] Smothering Tide, right? These engines
+[43:47] that are going to sort of passively put
+[43:49] tokens on the battlefield, it gives you
+[43:51] a really solid alternative win condition
+[43:54] for this deck, right? It makes combat
+[43:55] damage an actually viable backup win con
+[43:59] for your deck that's already playing
+[44:00] like all of the best win conditions in
+[44:02] the format, right? So, if things turn
+[44:04] into a hyper-interactive slog fest,
+[44:07] right? Like if things turn into Rhystic
+[44:09] Study Rhystic Study from every player,
+[44:11] then you can just play Leonardo at some
+[44:14] point and go like, "Hey, listen,
+[44:15] everyone's going to do this advantage
+[44:16] engine thing, but even if it only
+[44:18] triggers once per turn, if it triggers
+[44:19] once on everybody's turn, I am getting
+[44:22] one one counters on all of my creatures
+[44:24] every time I do that, right?" So, yeah,
+[44:25] you can pump up your Poliwogs and your
+[44:27] Espers, but also at the end of the day,
+[44:29] like if your board gets plus four plus
+[44:31] four within a turn cycle, it's a pretty
+[44:34] quick way to put a real clock on the
+[44:35] match, right? It's a very good way to
+[44:37] break parity if things get too Rhystic
+[44:40] and Mystic focused, right? It's it's
+[44:42] almost like an anti-meta notion for this
+[44:44] archetype. Now, are there 100 ways to
+[44:46] trigger Leonardo in every sort of grindy
+[44:48] game? No, absolutely not, right? But are
+[44:50] there enough ways to passively trigger
+[44:52] it while also not dipping in card
+[44:54] quality with your deck? Yeah,
+[44:55] absolutely, right? You're going to play
+[44:57] Tishana's Caretaker and Lootho and
+[44:58] Cabbage Merchant and Smothering Tithe in
+[45:00] your five-color good stuff deck in
+[45:02] general, right? So, why not do that
+[45:04] while also anthem-ing your board and and
+[45:06] becoming a lethal threat? So,
+[45:08] as I mentioned, Grass Route Pilot for
+[45:09] for showing off these new turtle
+[45:11] commanders and showing what they can do
+[45:12] in cEDH. Yeah, very very cool showing
+[45:15] here. We have J Stacco here with
+[45:17] Rograkh, Son of Rohgahh, with a Dash of
+[45:18] Silence. Now, Stacco's known for for
+[45:20] playing the more proactive version of
+[45:23] Farm, which hence the the aforementioned
+[45:26] with a Dash of Silence Rograkh, Son of
+[45:28] Rohgahh list name.
+[45:29] We'll compare it to our previous Farm
+[45:31] list. So, compared to our other Farm
+[45:33] list in top four,
+[45:35] they are literally one card different,
+[45:36] where the Just Girl Farm has the Watery
+[45:39] Grave in it, Rograkh, Son of Rohgahh
+[45:41] with a Dash of Silence has Strike It
+[45:42] Rich. That's the difference between
+[45:44] these two top four deck lists, so
+[45:46] clearly they're both doing something
+[45:47] right if they're, you know, essentially
+[45:49] one card apart and both able to make top
+[45:51] four of this 268-person tournament, so
+[45:54] definitely sounds like we have a a
+[45:55] formula for a good Farm list going on
+[45:57] here between these two decks. And
+[45:59] finally, our winner of this cEDH event,
+[46:01] we have Zeeker is here with Pour One Out
+[46:04] for the Homie Dockside with this Rograkh
+[46:06] and Thrasios list. Let's compare this
+[46:08] Rog Thras list with our Rog Thras list
+[46:10] we mentioned a little bit earlier. So,
+[46:11] we have eight differences between these
+[46:13] two deck lists. The AP9 Storm Count
+[46:16] list, which is the list we looked at
+[46:17] earlier today, was on Misdirection as
+[46:20] another piece of free interaction on
+[46:22] Displacer Kitten, Thunder Trap Trainer,
+[46:25] the backup guy's Cradle of Growing
+[46:26] Wraths of Itlimoc, Hidden Strings,
+[46:28] Seaborn Muse, which is a very notable
+[46:29] exclusion from these decks, and Swan
+[46:31] Song, which is also like just kind of
+[46:32] one of classically the most popular
+[46:34] counterspell in the format, which is
+[46:35] very surprising to not see in Zikers
+[46:36] list.
+[46:37] Meanwhile, Zik does have Hexdrinker like
+[46:40] we talked about, has Commandeer over
+[46:41] Misdirection, you know, makes sense.
+[46:43] They're they're both essentially adding
+[46:44] one piece of free interaction over
+[46:46] the common interaction package in these
+[46:48] lists. This version just choosing
+[46:50] Commandeer versus Misdirection. This
+[46:52] version has a Cabbage Merchant as well,
+[46:53] sort of having a grind plan outside of
+[46:55] the traditional Thrasios means on
+[46:57] Vibrant, Vibrant being either a removal
+[46:59] spell or a Cradle Teeter,
+[47:00] the new formidable speaker,
+[47:03] which has been just an overperformer in
+[47:04] a lot of these Cradle decks, and a
+[47:05] little bit surprised to not see it in
+[47:06] this AP9 version of the deck list.
+[47:09] Worldly Tutor and very notably cool kid
+[47:12] on the block, Omnichangeling, a a
+[47:14] creature type changing clone effect,
+[47:16] which is pretty interesting that you can
+[47:18] convoke out. Definitely curious as why
+[47:20] Omnichangeling sort of takes a spot up
+[47:22] in this deck list, but not that I think
+[47:24] it's bad, but more so why it takes place
+[47:26] over like other clones. I'm just curious
+[47:27] if like the the type of effects has
+[47:28] anything to do with it or if it's more
+[47:30] just the fact that it has convoke on it
+[47:32] being the main payoff there. But yeah,
+[47:34] Zikers doing well with as I mentioned
+[47:35] like this this variation of of Rog Thras
+[47:37] that sort of harkens back to an older
+[47:39] time of of yeah, let's you know, be on
+[47:41] the breach lines and on the midrange
+[47:43] plan, right? They're still doing things
+[47:44] like Flash Photography and the copy of
+[47:46] value engines and clever verse mining,
+[47:47] all that kind of stuff that you're
+[47:48] seeing from a lot of these very heavy
+[47:50] midrange lists. And you know, as we
+[47:52] mentioned, this tournament definitely
+[47:54] had uh,
+[47:55] an overrepresentation of that sort of
+[47:57] strategy. Um, not that it's not valid in
+[47:59] the format because it very much is,
+[48:01] right? And and we're going to see a lot
+[48:02] of that moving forward, but we're
+[48:03] definitely seeing that obviously the
+[48:05] boil had like an extreme case of of
+[48:07] heavy heavy mid-range, right? Hence the
+[48:09] people with 15 points with with two wins
+[48:11] and five draws making top cut, right?
+[48:13] Um, it's it's obviously a very extreme
+[48:15] case, but that being said, um, this list
+[48:17] able to pivot through a number of
+[48:18] different means, right? Whether it can
+[48:19] win with the faster cradle hands, can
+[48:21] win with the sort of thrown together
+[48:22] breach plan even though that's not plan
+[48:24] A by many degrees, right? Um, operating
+[48:26] on a number of different axes here and
+[48:28] able to perform very well on the high
+[48:30] level. So, congrats to Zykers on the uh,
+[48:33] tournament win here with Rog Rak in the
+[48:36] boil. I
+[48:38] can't state enough what an awesome time
+[48:40] this tournament was. We were able to go
+[48:42] to uh, a really awesome jazz bar at one
+[48:45] point and and watch some live jazz
+[48:47] performances and then explore Bourbon
+[48:49] Street. From what I hear, we'll
+[48:51] hopefully be returning to New Orleans
+[48:52] next year if all things go well for the
+[48:54] next Lango boil, which I think is really
+[48:56] really awesome. It was a super well-run
+[48:58] tournament and genuinely grateful to
+[49:00] have been able to participate and
+[49:02] you can tell the vibes was amazing when
+[49:03] I just did not have a great tournament
+[49:04] run and I wouldn't trade it for anything
+[49:06] because it was such an amazing weekend,
+[49:08] made great memories, people were
+[49:10] fantastic, everyone in the community
+[49:11] like so many people came up and said hi
+[49:14] over the course of tournament and I I
+[49:16] wish I could remember each and every
+[49:17] person who did because it was genuinely
+[49:19] such a positive vibe for the entire
+[49:21] weekend. It was one of those weekends
+[49:23] that just felt so refreshing as someone
+[49:24] who travels to a bunch of different
+[49:25] tournaments and and as a creator and all
+[49:27] that kind of stuff. So, thank you to
+[49:28] everyone who came up and said hey during
+[49:30] the weekend. I genuinely had so many
+[49:31] amazing interactions with the community
+[49:33] and I'm very excited to see you all at
+[49:35] the next one. Thank you so much Lango
+[49:36] for helping me get out there
+[49:38] and thank you all for watching. I hope
+[49:40] you all enjoy this. Remember, hit that
+[49:42] like button and subscribe button if you
+[49:43] enjoy these videos and without any
+[49:44] further ado, I'll catch you all next
+[49:46] time.
+[49:47] Peace.
+[50:05] >> [music]
+[50:12] >> Come on and help me out, man.

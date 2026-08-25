@@ -230,7 +230,9 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
 
 def run(args: argparse.Namespace) -> None:
     jar = find_forge_jar(args.forge_jar)
-    out_dir = Path(args.out)
+    # Resolved to absolute because the shim JVM runs with cwd at the Forge
+    # install dir (it needs res/), so a relative --out would land there.
+    out_dir = Path(args.out).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Agent resolution. "auto" (the default) means HUMANIZED — that is the

@@ -1,0 +1,1224 @@
+{"rec":"meta","shim":"0.4.0","format":"Commander","games":1,"humanized":false,"agents":["stock","stock","stock","stock"],"profiles":["Default","Default","Default","Default"],"players":["Ai(1)-rog_thrasios","Ai(2)-kinnan","Ai(3)-cabbage_merchant","Ai(4)-yidris"],"seedBases":["7919","15838","23757","31676"],"seedGameStride":104729,"decks":["/Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/rog_thrasios.dck","/Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/kinnan.dck","/Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/cabbage_merchant.dck","/Users/vincentattonito/Library/Application Support/Forge/simlab-runs/hc_Bq-nFi0f1jA-761y7a8s/decks/commander/yidris.dck"]}
+{"rec":"entry","game":0,"seq":0,"type":"MULLIGAN","message":"Ai(1)-rog_thrasios has mulliganed down to 7 cards."}
+{"rec":"entry","game":0,"seq":1,"type":"MULLIGAN","message":"Ai(3)-cabbage_merchant has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":2,"type":"MULLIGAN","message":"Ai(4)-yidris has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":3,"type":"MULLIGAN","message":"Ai(1)-rog_thrasios has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":4,"type":"MULLIGAN","message":"Ai(2)-kinnan has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":5,"type":"TURN","message":"Turn 1 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":6,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":7,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":8,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":9,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":10,"type":"EFFECT_REPLACED","message":"Shifting Woodland enters tapped unless you control a Forest."}
+{"rec":"entry","game":0,"seq":11,"type":"LAND","message":"Ai(3)-cabbage_merchant played Shifting Woodland (233)","card":"Shifting Woodland","cardId":233}
+{"rec":"entry","game":0,"seq":12,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":13,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":14,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":15,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":16,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":17,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":18,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":19,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":20,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":21,"type":"TURN","message":"Turn 2 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":22,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":23,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":24,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":25,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":26,"type":"LAND","message":"Ai(4)-yidris played Marsh Flats (379)","card":"Marsh Flats","cardId":379}
+{"rec":"entry","game":0,"seq":27,"type":"STACK_ADD","message":"Ai(4)-yidris cast Mox Opal","card":"Mox Opal","cardId":374}
+{"rec":"entry","game":0,"seq":28,"type":"STACK_RESOLVE","message":"Mox Opal","card":"Mox Opal","cardId":374}
+{"rec":"entry","game":0,"seq":29,"type":"LIFE","message":"Life: Ai(4)-yidris 40 > 39"}
+{"rec":"entry","game":0,"seq":30,"type":"ZONE_CHANGE","message":"Marsh Flats (379) was put into Graveyard from Battlefield.","card":"Marsh Flats","cardId":379}
+{"rec":"entry","game":0,"seq":31,"type":"STACK_ADD","message":"Ai(4)-yidris activated Marsh Flats","card":"Marsh Flats","cardId":379}
+{"rec":"entry","game":0,"seq":32,"type":"STACK_RESOLVE","message":"Marsh Flats (379) - Ai(4)-yidris searches their library for a Plains or Swamp card, puts it onto the battlefield, then shuffles.","card":"Marsh Flats","cardId":379}
+{"rec":"entry","game":0,"seq":33,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":34,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":35,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":36,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":37,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":38,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":39,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":40,"type":"MANA","message":"Underground Sea (389) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":41,"type":"STACK_ADD","message":"Ai(4)-yidris cast Imperial Seal","card":"Imperial Seal","cardId":306}
+{"rec":"entry","game":0,"seq":42,"type":"LIFE","message":"Life: Ai(4)-yidris 39 > 37"}
+{"rec":"entry","game":0,"seq":43,"type":"STACK_RESOLVE","message":"Imperial Seal (306) - Ai(4)-yidris searches their library for a card, reveals it, puts it , then shuffles. Ai(4)-yidris loses 2 life.","card":"Imperial Seal","cardId":306}
+{"rec":"entry","game":0,"seq":44,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":45,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":46,"type":"TURN","message":"Turn 3 (Ai(1)-rog_thrasios)"}
+{"rec":"entry","game":0,"seq":47,"type":"PHASE","message":"Ai(1)-rog_thrasios' Untap step"}
+{"rec":"entry","game":0,"seq":48,"type":"PHASE","message":"Ai(1)-rog_thrasios' Upkeep step"}
+{"rec":"entry","game":0,"seq":49,"type":"PHASE","message":"Ai(1)-rog_thrasios' Draw step"}
+{"rec":"entry","game":0,"seq":50,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":51,"type":"LAND","message":"Ai(1)-rog_thrasios played Ancient Tomb (31)","card":"Ancient Tomb","cardId":31}
+{"rec":"entry","game":0,"seq":52,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios cast Rograkh, Son of Rohgahh","card":"Rograkh, Son of Rohgahh","cardId":99}
+{"rec":"entry","game":0,"seq":53,"type":"STACK_RESOLVE","message":"Rograkh, Son of Rohgahh - Creature 0 / 1","card":"Rograkh, Son of Rohgahh","cardId":99}
+{"rec":"entry","game":0,"seq":54,"type":"PHASE","message":"Ai(1)-rog_thrasios' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":55,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":56,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":57,"type":"PHASE","message":"Ai(1)-rog_thrasios' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":58,"type":"PHASE","message":"Ai(1)-rog_thrasios' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":59,"type":"PHASE","message":"Ai(1)-rog_thrasios' End of Combat Step"}
+{"rec":"entry","game":0,"seq":60,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":61,"type":"PHASE","message":"Ai(1)-rog_thrasios' End step"}
+{"rec":"entry","game":0,"seq":62,"type":"PHASE","message":"Ai(1)-rog_thrasios' Cleanup step"}
+{"rec":"entry","game":0,"seq":63,"type":"TURN","message":"Turn 4 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":64,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":65,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":66,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":67,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":68,"type":"STACK_ADD","message":"Ai(2)-kinnan cast Mox Diamond","card":"Mox Diamond","cardId":190}
+{"rec":"entry","game":0,"seq":69,"type":"DISCARD","message":"Ai(2)-kinnan discards Ancient Tomb (127).","card":"Ancient Tomb","cardId":127}
+{"rec":"entry","game":0,"seq":70,"type":"EFFECT_REPLACED","message":"If Mox Diamond would enter, you may discard a land card instead. If you do, put Mox Diamond onto the battlefield. If you don't, put it into its owner's graveyard."}
+{"rec":"entry","game":0,"seq":71,"type":"STACK_RESOLVE","message":"Mox Diamond","card":"Mox Diamond","cardId":190}
+{"rec":"entry","game":0,"seq":72,"type":"LAND","message":"Ai(2)-kinnan played Command Tower (157)","card":"Command Tower","cardId":157}
+{"rec":"entry","game":0,"seq":73,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":74,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":75,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":76,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":77,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":78,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":79,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":80,"type":"MANA","message":"Command Tower (157) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":81,"type":"MANA","message":"Mox Diamond (190) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":82,"type":"STACK_ADD","message":"Ai(2)-kinnan cast Kinnan, Bonder Prodigy","card":"Kinnan, Bonder Prodigy","cardId":199}
+{"rec":"entry","game":0,"seq":83,"type":"STACK_RESOLVE","message":"Kinnan, Bonder Prodigy - Creature 2 / 2","card":"Kinnan, Bonder Prodigy","cardId":199}
+{"rec":"entry","game":0,"seq":84,"type":"MANA","message":"Elvish Spirit Guide (188) - Exile Elvish Spirit Guide from your hand: Add {G}."}
+{"rec":"entry","game":0,"seq":85,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":86,"type":"STACK_ADD","message":"Ai(2)-kinnan cast Elvish Mystic","card":"Elvish Mystic","cardId":172}
+{"rec":"entry","game":0,"seq":87,"type":"STACK_RESOLVE","message":"Elvish Mystic - Creature 1 / 1","card":"Elvish Mystic","cardId":172}
+{"rec":"entry","game":0,"seq":88,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":89,"type":"TURN","message":"Turn 5 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":90,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":91,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":92,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":93,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":94,"type":"LAND","message":"Ai(3)-cabbage_merchant played Inventors' Fair (204)","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":95,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":96,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":97,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":98,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":99,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":100,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":101,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":102,"type":"MANA","message":"Shifting Woodland (233) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":103,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Delighted Halfling","card":"Delighted Halfling","cardId":278}
+{"rec":"entry","game":0,"seq":104,"type":"STACK_RESOLVE","message":"Delighted Halfling - Creature 1 / 2","card":"Delighted Halfling","cardId":278}
+{"rec":"entry","game":0,"seq":105,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":106,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":107,"type":"TURN","message":"Turn 6 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":108,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":109,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":110,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":111,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":112,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":113,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":114,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":115,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":116,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":117,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":118,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":119,"type":"MANA","message":"Underground Sea (389) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":120,"type":"STACK_ADD","message":"Ai(4)-yidris cast Mystical Tutor","card":"Mystical Tutor","cardId":344}
+{"rec":"entry","game":0,"seq":121,"type":"STACK_RESOLVE","message":"Mystical Tutor (344) - Ai(4)-yidris searches their library for an instant or sorcery card, reveals it, puts it , then shuffles.","card":"Mystical Tutor","cardId":344}
+{"rec":"entry","game":0,"seq":122,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":123,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":124,"type":"TURN","message":"Turn 7 (Ai(1)-rog_thrasios)"}
+{"rec":"entry","game":0,"seq":125,"type":"PHASE","message":"Ai(1)-rog_thrasios' Untap step"}
+{"rec":"entry","game":0,"seq":126,"type":"PHASE","message":"Ai(1)-rog_thrasios' Upkeep step"}
+{"rec":"entry","game":0,"seq":127,"type":"PHASE","message":"Ai(1)-rog_thrasios' Draw step"}
+{"rec":"entry","game":0,"seq":128,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":129,"type":"LAND","message":"Ai(1)-rog_thrasios played Emergence Zone (82)","card":"Emergence Zone","cardId":82}
+{"rec":"entry","game":0,"seq":130,"type":"PHASE","message":"Ai(1)-rog_thrasios' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":131,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":132,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":133,"type":"PHASE","message":"Ai(1)-rog_thrasios' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":134,"type":"PHASE","message":"Ai(1)-rog_thrasios' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":135,"type":"PHASE","message":"Ai(1)-rog_thrasios' End of Combat Step"}
+{"rec":"entry","game":0,"seq":136,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":137,"type":"PHASE","message":"Ai(1)-rog_thrasios' End step"}
+{"rec":"entry","game":0,"seq":138,"type":"PHASE","message":"Ai(1)-rog_thrasios' Cleanup step"}
+{"rec":"entry","game":0,"seq":139,"type":"TURN","message":"Turn 8 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":140,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":141,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":142,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":143,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":144,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":145,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":146,"type":"COMBAT","message":"Ai(2)-kinnan assigned Kinnan, Bonder Prodigy (199) to attack Ai(3)-cabbage_merchant."}
+{"rec":"entry","game":0,"seq":147,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":148,"type":"COMBAT","message":"Ai(3)-cabbage_merchant didn't block Kinnan, Bonder Prodigy (199)."}
+{"rec":"entry","game":0,"seq":149,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":150,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":151,"type":"DAMAGE","message":"Kinnan, Bonder Prodigy (199) deals 2 combat damage to Ai(3)-cabbage_merchant.","card":"Kinnan, Bonder Prodigy","cardId":199}
+{"rec":"entry","game":0,"seq":152,"type":"LIFE","message":"Life: Ai(3)-cabbage_merchant 40 > 38"}
+{"rec":"entry","game":0,"seq":153,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":154,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":155,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":156,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":157,"type":"TURN","message":"Turn 9 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":158,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":159,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":160,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":161,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":162,"type":"LAND","message":"Ai(3)-cabbage_merchant played Forest (263)","card":"Forest","cardId":263}
+{"rec":"entry","game":0,"seq":163,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":164,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":165,"type":"COMBAT","message":"Ai(3)-cabbage_merchant assigned Delighted Halfling (278) to attack Ai(2)-kinnan."}
+{"rec":"entry","game":0,"seq":166,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":167,"type":"COMBAT","message":"Ai(2)-kinnan didn't block Delighted Halfling (278)."}
+{"rec":"entry","game":0,"seq":168,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":169,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":170,"type":"DAMAGE","message":"Delighted Halfling (278) deals 1 combat damage to Ai(2)-kinnan.","card":"Delighted Halfling","cardId":278}
+{"rec":"entry","game":0,"seq":171,"type":"LIFE","message":"Life: Ai(2)-kinnan 40 > 39"}
+{"rec":"entry","game":0,"seq":172,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":173,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":174,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":175,"type":"MANA","message":"Inventors' Fair (204) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":176,"type":"MANA","message":"Shifting Woodland (233) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":177,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":178,"type":"STACK_RESOLVE","message":"The Cabbage Merchant - Creature 2 / 2","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":179,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":180,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":181,"type":"TURN","message":"Turn 10 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":182,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":183,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":184,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":185,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":186,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":187,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":188,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":189,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":190,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":191,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":192,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":193,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":194,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":195,"type":"TURN","message":"Turn 11 (Ai(1)-rog_thrasios)"}
+{"rec":"entry","game":0,"seq":196,"type":"PHASE","message":"Ai(1)-rog_thrasios' Untap step"}
+{"rec":"entry","game":0,"seq":197,"type":"PHASE","message":"Ai(1)-rog_thrasios' Upkeep step"}
+{"rec":"entry","game":0,"seq":198,"type":"PHASE","message":"Ai(1)-rog_thrasios' Draw step"}
+{"rec":"entry","game":0,"seq":199,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":200,"type":"LAND","message":"Ai(1)-rog_thrasios played City of Brass (35)","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":201,"type":"MANA","message":"City of Brass (35) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":202,"type":"MANA","message":"Elvish Spirit Guide (90) - Exile Elvish Spirit Guide from your hand: Add {G}."}
+{"rec":"entry","game":0,"seq":203,"type":"MANA","message":"Emergence Zone (82) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":204,"type":"DAMAGE","message":"Ancient Tomb (31) deals 2 non-combat damage to Ai(1)-rog_thrasios.","card":"Ancient Tomb","cardId":31}
+{"rec":"entry","game":0,"seq":205,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 40 > 38"}
+{"rec":"entry","game":0,"seq":206,"type":"MANA","message":"Ancient Tomb (31) - {T}: Add {C}{C}. Ancient Tomb deals 2 damage to you. "}
+{"rec":"entry","game":0,"seq":207,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios cast Finale of Devastation","card":"Finale of Devastation","cardId":75}
+{"rec":"entry","game":0,"seq":208,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered City of Brass","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":209,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":210,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Finale of Devastation (75), Activator: Ai(1)-rog_thrasios, SpellAbility: Search your library and/or graveyard for a creature card with mana value X or less and put it onto the battlefield. If you search your library this way, shuffle. If X is 10 or more, creatures you control get +X/+X and gain haste until end of turn.]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":211,"type":"DAMAGE","message":"City of Brass (35) deals 1 non-combat damage to Ai(1)-rog_thrasios.","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":212,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 38 > 37"}
+{"rec":"entry","game":0,"seq":213,"type":"STACK_RESOLVE","message":"Whenever City of Brass becomes tapped, it deals 1 damage to you. [Tapped: City of Brass (35)]","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":214,"type":"STACK_RESOLVE","message":"Finale of Devastation (75) - Ai(1)-rog_thrasios searches their library and/or graveyard for a creature card, puts it onto the battlefield, then shuffles if they searched their library. If X is 10 or more, creatures you control get +X/+X and gain haste until end of turn. (X=3)","card":"Finale of Devastation","cardId":75}
+{"rec":"entry","game":0,"seq":215,"type":"PHASE","message":"Ai(1)-rog_thrasios' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":216,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":217,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":218,"type":"PHASE","message":"Ai(1)-rog_thrasios' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":219,"type":"PHASE","message":"Ai(1)-rog_thrasios' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":220,"type":"PHASE","message":"Ai(1)-rog_thrasios' End of Combat Step"}
+{"rec":"entry","game":0,"seq":221,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":222,"type":"MANA","message":"Underground Sea (389) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":223,"type":"STACK_ADD","message":"Ai(4)-yidris cast Brainstorm","card":"Brainstorm","cardId":397}
+{"rec":"entry","game":0,"seq":224,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":225,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Brainstorm (397), Activator: Ai(4)-yidris, SpellAbility: Draw three cards, then put two cards from your hand on top of your library in any order. ]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":226,"type":"STACK_RESOLVE","message":"Brainstorm (397) - Ai(4)-yidris draws three cards, then puts two cards from their hand on top of their library in any order.","card":"Brainstorm","cardId":397}
+{"rec":"entry","game":0,"seq":227,"type":"PHASE","message":"Ai(1)-rog_thrasios' End step"}
+{"rec":"entry","game":0,"seq":228,"type":"PHASE","message":"Ai(1)-rog_thrasios' Cleanup step"}
+{"rec":"entry","game":0,"seq":229,"type":"TURN","message":"Turn 12 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":230,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":231,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":232,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":233,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":234,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":235,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":236,"type":"COMBAT","message":"Ai(2)-kinnan assigned Kinnan, Bonder Prodigy (199) to attack Ai(3)-cabbage_merchant."}
+{"rec":"entry","game":0,"seq":237,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":238,"type":"COMBAT","message":"Ai(3)-cabbage_merchant didn't block Kinnan, Bonder Prodigy (199)."}
+{"rec":"entry","game":0,"seq":239,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":240,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":241,"type":"DAMAGE","message":"Kinnan, Bonder Prodigy (199) deals 2 combat damage to Ai(3)-cabbage_merchant.","card":"Kinnan, Bonder Prodigy","cardId":199}
+{"rec":"entry","game":0,"seq":242,"type":"LIFE","message":"Life: Ai(3)-cabbage_merchant 38 > 36"}
+{"rec":"entry","game":0,"seq":243,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":244,"type":"ZONE_CHANGE","message":"Food Token (408) was put into Graveyard from Battlefield.","card":"Food Token","cardId":408}
+{"rec":"entry","game":0,"seq":245,"type":"STACK_RESOLVE","message":"Whenever a creature deals combat damage to you, sacrifice a Food token. [Damage Source: Kinnan, Bonder Prodigy (199), Damaged: Ai(3)-cabbage_merchant, Amount: 2]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":246,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":247,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":248,"type":"MANA","message":"Command Tower (157) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":249,"type":"MANA","message":"Mox Diamond (190) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":250,"type":"STACK_ADD","message":"Ai(2)-kinnan cast Mirrormade","card":"Enduring Vitality","cardId":168}
+{"rec":"entry","game":0,"seq":251,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":252,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Mirrormade (168), Activator: Ai(2)-kinnan, SpellAbility: Mirrormade]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":253,"type":"EFFECT_REPLACED","message":"You may have Enduring Vitality enter as a copy of any artifact or enchantment on the battlefield."}
+{"rec":"entry","game":0,"seq":254,"type":"STACK_RESOLVE","message":"Mirrormade","card":"Enduring Vitality","cardId":168}
+{"rec":"entry","game":0,"seq":255,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":256,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":257,"type":"TURN","message":"Turn 13 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":258,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":259,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":260,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":261,"type":"MANA","message":"Shifting Woodland (233) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":262,"type":"MANA","message":"The Cabbage Merchant (300) - Tap two untapped Foods you control: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":263,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Archdruid's Charm","card":"Archdruid's Charm","cardId":286}
+{"rec":"entry","game":0,"seq":264,"type":"ZONE_CHANGE","message":"Enduring Vitality (168) was put into Exile from Battlefield.","card":"Enduring Vitality","cardId":168}
+{"rec":"entry","game":0,"seq":265,"type":"STACK_RESOLVE","message":"Archdruid's Charm (286) -  Exile target artifact or enchantment. (Targeting: Enduring Vitality (168))","card":"Archdruid's Charm","cardId":286}
+{"rec":"entry","game":0,"seq":266,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":267,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":268,"type":"LAND","message":"Ai(3)-cabbage_merchant played Gaea's Cradle (289)","card":"Gaea's Cradle","cardId":289}
+{"rec":"entry","game":0,"seq":269,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":270,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":271,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":272,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":273,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":274,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":275,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":276,"type":"MANA","message":"Inventors' Fair (204) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":277,"type":"MANA","message":"Delighted Halfling (278) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":278,"type":"MANA","message":"Gaea's Cradle (289) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":279,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Stridehangar Automaton","card":"Stridehangar Automaton","cardId":227}
+{"rec":"entry","game":0,"seq":280,"type":"STACK_RESOLVE","message":"Stridehangar Automaton - Creature 1 / 4","card":"Stridehangar Automaton","cardId":227}
+{"rec":"entry","game":0,"seq":281,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Sylvan Tutor","card":"Sylvan Tutor","cardId":221}
+{"rec":"entry","game":0,"seq":282,"type":"STACK_RESOLVE","message":"Sylvan Tutor (221) - Ai(3)-cabbage_merchant searches their library for a creature card, reveals it, puts it , then shuffles.","card":"Sylvan Tutor","cardId":221}
+{"rec":"entry","game":0,"seq":283,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":284,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":285,"type":"TURN","message":"Turn 14 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":286,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":287,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":288,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":289,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":290,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":291,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":292,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":293,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":294,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":295,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":296,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":297,"type":"LAND","message":"Ai(4)-yidris played Ancient Tomb (324)","card":"Ancient Tomb","cardId":324}
+{"rec":"entry","game":0,"seq":298,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":299,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":300,"type":"TURN","message":"Turn 15 (Ai(1)-rog_thrasios)"}
+{"rec":"entry","game":0,"seq":301,"type":"PHASE","message":"Ai(1)-rog_thrasios' Untap step"}
+{"rec":"entry","game":0,"seq":302,"type":"PHASE","message":"Ai(1)-rog_thrasios' Upkeep step"}
+{"rec":"entry","game":0,"seq":303,"type":"PHASE","message":"Ai(1)-rog_thrasios' Draw step"}
+{"rec":"entry","game":0,"seq":304,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":305,"type":"LAND","message":"Ai(1)-rog_thrasios played Misty Rainforest (17)","card":"Misty Rainforest","cardId":17}
+{"rec":"entry","game":0,"seq":306,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 37 > 36"}
+{"rec":"entry","game":0,"seq":307,"type":"ZONE_CHANGE","message":"Misty Rainforest (17) was put into Graveyard from Battlefield.","card":"Misty Rainforest","cardId":17}
+{"rec":"entry","game":0,"seq":308,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios activated Misty Rainforest","card":"Misty Rainforest","cardId":17}
+{"rec":"entry","game":0,"seq":309,"type":"EFFECT_REPLACED","message":"As Breeding Pool enters, you may pay 2 life. If you don't, it enters tapped."}
+{"rec":"entry","game":0,"seq":310,"type":"STACK_RESOLVE","message":"Misty Rainforest (17) - Ai(1)-rog_thrasios searches their library for a Forest or Island card, puts it onto the battlefield, then shuffles.","card":"Misty Rainforest","cardId":17}
+{"rec":"entry","game":0,"seq":311,"type":"PHASE","message":"Ai(1)-rog_thrasios' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":312,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":313,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":314,"type":"PHASE","message":"Ai(1)-rog_thrasios' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":315,"type":"PHASE","message":"Ai(1)-rog_thrasios' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":316,"type":"PHASE","message":"Ai(1)-rog_thrasios' End of Combat Step"}
+{"rec":"entry","game":0,"seq":317,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":318,"type":"MANA","message":"City of Brass (35) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":319,"type":"MANA","message":"Rograkh, Son of Rohgahh (99) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":320,"type":"MANA","message":"Enduring Vitality (83) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":321,"type":"MANA","message":"Emergence Zone (82) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":322,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios cast Song of Creation","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":323,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered City of Brass","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":324,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":325,"type":"MANA","message":"Underground Sea (389) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":326,"type":"DAMAGE","message":"Ancient Tomb (324) deals 2 non-combat damage to Ai(4)-yidris.","card":"Ancient Tomb","cardId":324}
+{"rec":"entry","game":0,"seq":327,"type":"LIFE","message":"Life: Ai(4)-yidris 37 > 35"}
+{"rec":"entry","game":0,"seq":328,"type":"MANA","message":"Ancient Tomb (324) - {T}: Add {C}{C}. Ancient Tomb deals 2 damage to you. "}
+{"rec":"entry","game":0,"seq":329,"type":"STACK_ADD","message":"Ai(4)-yidris cast Brain Freeze targeting [Ai(1)-rog_thrasios]","card":"Brain Freeze","cardId":352}
+{"rec":"entry","game":0,"seq":330,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":331,"type":"STACK_ADD","message":"Ai(4)-yidris triggered Brain Freeze","card":"Brain Freeze","cardId":352}
+{"rec":"entry","game":0,"seq":332,"type":"STACK_RESOLVE","message":"Storm (When you cast this spell, copy it for each other spell that was cast before it this turn. You may choose new targets for the copies.) [Card: Brain Freeze (352), Activator: Ai(4)-yidris, SpellAbility: Target player mills three cards.]","card":"Brain Freeze","cardId":352}
+{"rec":"entry","game":0,"seq":333,"type":"STACK_ADD","message":"Ai(4)-yidris cast Brain Freeze targeting [Ai(1)-rog_thrasios]","card":"Brain Freeze","cardId":414}
+{"rec":"entry","game":0,"seq":334,"type":"ZONE_CHANGE","message":"Ai(1)-rog_thrasios milled Fierce Guardianship (23), Sowing Mycospawn (40) and Eternal Witness (5)."}
+{"rec":"entry","game":0,"seq":335,"type":"STACK_RESOLVE","message":"Brain Freeze (414) - Ai(1)-rog_thrasios mills three cards.","card":"Brain Freeze","cardId":414}
+{"rec":"entry","game":0,"seq":336,"type":"EFFECT_REPLACED","message":"If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead."}
+{"rec":"entry","game":0,"seq":337,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Brain Freeze (352), Activator: Ai(4)-yidris, SpellAbility: Target player mills three cards.]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":338,"type":"ZONE_CHANGE","message":"Ai(1)-rog_thrasios milled Rhystic Study (24), Delighted Halfling (46) and Scalding Tarn (49)."}
+{"rec":"entry","game":0,"seq":339,"type":"STACK_RESOLVE","message":"Brain Freeze (352) - Ai(1)-rog_thrasios mills three cards.","card":"Brain Freeze","cardId":352}
+{"rec":"entry","game":0,"seq":340,"type":"EFFECT_REPLACED","message":"If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead."}
+{"rec":"entry","game":0,"seq":341,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Song of Creation (94), Activator: Ai(1)-rog_thrasios, SpellAbility: Song of Creation]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":342,"type":"DAMAGE","message":"City of Brass (35) deals 1 non-combat damage to Ai(1)-rog_thrasios.","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":343,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 36 > 35"}
+{"rec":"entry","game":0,"seq":344,"type":"STACK_RESOLVE","message":"Whenever City of Brass becomes tapped, it deals 1 damage to you. [Tapped: City of Brass (35)]","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":345,"type":"STACK_RESOLVE","message":"Song of Creation","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":346,"type":"LAND","message":"Ai(1)-rog_thrasios played Wooded Foothills (41)","card":"Wooded Foothills","cardId":41}
+{"rec":"entry","game":0,"seq":347,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 35 > 34"}
+{"rec":"entry","game":0,"seq":348,"type":"ZONE_CHANGE","message":"Wooded Foothills (41) was put into Graveyard from Battlefield.","card":"Wooded Foothills","cardId":41}
+{"rec":"entry","game":0,"seq":349,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios activated Wooded Foothills","card":"Wooded Foothills","cardId":41}
+{"rec":"entry","game":0,"seq":350,"type":"STACK_RESOLVE","message":"Wooded Foothills (41) - Ai(1)-rog_thrasios searches their library for a Mountain or Forest card, puts it onto the battlefield, then shuffles.","card":"Wooded Foothills","cardId":41}
+{"rec":"entry","game":0,"seq":351,"type":"PHASE","message":"Ai(1)-rog_thrasios' End step"}
+{"rec":"entry","game":0,"seq":352,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered Song of Creation","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":353,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Candelabra of Tawnos (88).","card":"Candelabra of Tawnos","cardId":88}
+{"rec":"entry","game":0,"seq":354,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Gilded Drake (29).","card":"Gilded Drake","cardId":29}
+{"rec":"entry","game":0,"seq":355,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards The One Ring (42).","card":"The One Ring","cardId":42}
+{"rec":"entry","game":0,"seq":356,"type":"STACK_RESOLVE","message":"At the beginning of your end step, discard your hand. [Phase: Ai(1)-rog_thrasios]","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":357,"type":"PHASE","message":"Ai(1)-rog_thrasios' Cleanup step"}
+{"rec":"entry","game":0,"seq":358,"type":"TURN","message":"Turn 16 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":359,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":360,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":361,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":362,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":363,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":364,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":365,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":366,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":367,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":368,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":369,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":370,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":371,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":372,"type":"TURN","message":"Turn 17 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":373,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":374,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":375,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Inventors' Fair","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":376,"type":"LIFE","message":"Life: Ai(3)-cabbage_merchant 36 > 37"}
+{"rec":"entry","game":0,"seq":377,"type":"STACK_RESOLVE","message":"At the beginning of your upkeep, if you control three or more artifacts, you gain 1 life. [Phase: Ai(3)-cabbage_merchant]","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":378,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":379,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":380,"type":"LAND","message":"Ai(3)-cabbage_merchant played Misty Rainforest (219)","card":"Misty Rainforest","cardId":219}
+{"rec":"entry","game":0,"seq":381,"type":"LIFE","message":"Life: Ai(3)-cabbage_merchant 37 > 36"}
+{"rec":"entry","game":0,"seq":382,"type":"ZONE_CHANGE","message":"Misty Rainforest (219) was put into Graveyard from Battlefield.","card":"Misty Rainforest","cardId":219}
+{"rec":"entry","game":0,"seq":383,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant activated Misty Rainforest","card":"Misty Rainforest","cardId":219}
+{"rec":"entry","game":0,"seq":384,"type":"STACK_RESOLVE","message":"Misty Rainforest (219) - Ai(3)-cabbage_merchant searches their library for a Forest or Island card, puts it onto the battlefield, then shuffles.","card":"Misty Rainforest","cardId":219}
+{"rec":"entry","game":0,"seq":385,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":386,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":387,"type":"COMBAT","message":"Ai(3)-cabbage_merchant assigned The Cabbage Merchant (300), Thopter Token (418), Thopter Token (422), Delighted Halfling (278) and Stridehangar Automaton (227) to attack Ai(1)-rog_thrasios."}
+{"rec":"entry","game":0,"seq":388,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":389,"type":"COMBAT","message":"Ai(1)-rog_thrasios didn't block The Cabbage Merchant (300).\nAi(1)-rog_thrasios didn't block Thopter Token (418).\nAi(1)-rog_thrasios didn't block Thopter Token (422).\nAi(1)-rog_thrasios didn't block Delighted Halfling (278).\nAi(1)-rog_thrasios didn't block Stridehangar Automaton (227)."}
+{"rec":"entry","game":0,"seq":390,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":391,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":392,"type":"DAMAGE","message":"The Cabbage Merchant (300) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":393,"type":"DAMAGE","message":"Thopter Token (418) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":418}
+{"rec":"entry","game":0,"seq":394,"type":"DAMAGE","message":"Thopter Token (422) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":422}
+{"rec":"entry","game":0,"seq":395,"type":"DAMAGE","message":"Delighted Halfling (278) deals 1 combat damage to Ai(1)-rog_thrasios.","card":"Delighted Halfling","cardId":278}
+{"rec":"entry","game":0,"seq":396,"type":"DAMAGE","message":"Stridehangar Automaton (227) deals 1 combat damage to Ai(1)-rog_thrasios.","card":"Stridehangar Automaton","cardId":227}
+{"rec":"entry","game":0,"seq":397,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 34 > 26"}
+{"rec":"entry","game":0,"seq":398,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":399,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":400,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":401,"type":"MANA","message":"Shifting Woodland (233) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":402,"type":"MANA","message":"Inventors' Fair (204) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":403,"type":"MANA","message":"Gaea's Cradle (289) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":404,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Bristlebud Farmer","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":405,"type":"STACK_RESOLVE","message":"Bristlebud Farmer - Creature 5 / 5","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":406,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Bristlebud Farmer","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":407,"type":"EFFECT_REPLACED","message":"If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead."}
+{"rec":"entry","game":0,"seq":408,"type":"STACK_RESOLVE","message":"When Bristlebud Farmer enters, create two Food tokens. (They're artifacts with \"{2}, Sacrifice this artifact: You gain 3 life.\") [Zone Changer: Bristlebud Farmer (238)]","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":409,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Kuldotha Forgemaster","card":"Kuldotha Forgemaster","cardId":214}
+{"rec":"entry","game":0,"seq":410,"type":"STACK_RESOLVE","message":"Kuldotha Forgemaster - Creature 3 / 5","card":"Kuldotha Forgemaster","cardId":214}
+{"rec":"entry","game":0,"seq":411,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":412,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":413,"type":"TURN","message":"Turn 18 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":414,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":415,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":416,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":417,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":418,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":419,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":420,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":421,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":422,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":423,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":424,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":425,"type":"LAND","message":"Ai(4)-yidris played Otawara, Soaring City (307)","card":"Otawara, Soaring City","cardId":307}
+{"rec":"entry","game":0,"seq":426,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":427,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":428,"type":"TURN","message":"Turn 19 (Ai(1)-rog_thrasios)"}
+{"rec":"entry","game":0,"seq":429,"type":"PHASE","message":"Ai(1)-rog_thrasios' Untap step"}
+{"rec":"entry","game":0,"seq":430,"type":"PHASE","message":"Ai(1)-rog_thrasios' Upkeep step"}
+{"rec":"entry","game":0,"seq":431,"type":"PHASE","message":"Ai(1)-rog_thrasios' Draw step"}
+{"rec":"entry","game":0,"seq":432,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":433,"type":"LAND","message":"Ai(1)-rog_thrasios played Gaea's Cradle (97)","card":"Gaea's Cradle","cardId":97}
+{"rec":"entry","game":0,"seq":434,"type":"PHASE","message":"Ai(1)-rog_thrasios' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":435,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":436,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":437,"type":"PHASE","message":"Ai(1)-rog_thrasios' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":438,"type":"PHASE","message":"Ai(1)-rog_thrasios' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":439,"type":"PHASE","message":"Ai(1)-rog_thrasios' End of Combat Step"}
+{"rec":"entry","game":0,"seq":440,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":441,"type":"MANA","message":"Breeding Pool (28) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":442,"type":"MANA","message":"City of Brass (35) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":443,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios cast Thrasios, Triton Hero","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":444,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered City of Brass","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":445,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered Song of Creation","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":446,"type":"STACK_RESOLVE","message":"Whenever you cast a spell, draw two cards. [Card: Thrasios, Triton Hero (101), Activator: Ai(1)-rog_thrasios, SpellAbility: Thrasios, Triton Hero - Creature 1 / 3]","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":447,"type":"DAMAGE","message":"City of Brass (35) deals 1 non-combat damage to Ai(1)-rog_thrasios.","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":448,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 26 > 25"}
+{"rec":"entry","game":0,"seq":449,"type":"STACK_RESOLVE","message":"Whenever City of Brass becomes tapped, it deals 1 damage to you. [Tapped: City of Brass (35)]","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":450,"type":"STACK_RESOLVE","message":"Thrasios, Triton Hero - Creature 1 / 3","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":451,"type":"LAND","message":"Ai(1)-rog_thrasios played Boseiju, Who Endures (98)","card":"Boseiju, Who Endures","cardId":98}
+{"rec":"entry","game":0,"seq":452,"type":"PHASE","message":"Ai(1)-rog_thrasios' End step"}
+{"rec":"entry","game":0,"seq":453,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered Song of Creation","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":454,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Snap (76).","card":"Snap","cardId":76}
+{"rec":"entry","game":0,"seq":455,"type":"STACK_RESOLVE","message":"At the beginning of your end step, discard your hand. [Phase: Ai(1)-rog_thrasios]","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":456,"type":"PHASE","message":"Ai(1)-rog_thrasios' Cleanup step"}
+{"rec":"entry","game":0,"seq":457,"type":"TURN","message":"Turn 20 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":458,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":459,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":460,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":461,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":462,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":463,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":464,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":465,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":466,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":467,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":468,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":469,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":470,"type":"MANA","message":"Boseiju, Who Endures (98) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":471,"type":"MANA","message":"Volcanic Island (58) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":472,"type":"MANA","message":"Emergence Zone (82) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":473,"type":"MANA","message":"Rograkh, Son of Rohgahh (99) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":474,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios activated Thrasios, Triton Hero","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":475,"type":"STACK_RESOLVE","message":"Ai(1)-rog_thrasios scried 1 card(s) to the top of the library"}
+{"rec":"entry","game":0,"seq":476,"type":"STACK_RESOLVE","message":"Thrasios, Triton Hero (101) - Ai(1)-rog_thrasios scries 1. Ai(1)-rog_thrasios reveals the top card of their library. Ai(1)-rog_thrasios draws a card. ","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":477,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":478,"type":"TURN","message":"Turn 21 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":479,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":480,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":481,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Inventors' Fair","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":482,"type":"MANA","message":"Enduring Vitality (83) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":483,"type":"MANA","message":"Gaea's Cradle (97) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":484,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios activated Thrasios, Triton Hero","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":485,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":486,"type":"MANA","message":"Shifting Woodland (233) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":487,"type":"MANA","message":"Dryad Arbor (235) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":488,"type":"MANA","message":"Delighted Halfling (278) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":489,"type":"ZONE_CHANGE","message":"Inventors' Fair (204) was put into Graveyard from Battlefield.","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":490,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant activated Inventors' Fair","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":491,"type":"STACK_RESOLVE","message":"Inventors' Fair (204) - Ai(3)-cabbage_merchant searches their library for an artifact card, reveals it, puts it into their hand, then shuffles.","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":492,"type":"STACK_RESOLVE","message":"Ai(1)-rog_thrasios scried 1 card(s) to the bottom of the library"}
+{"rec":"entry","game":0,"seq":493,"type":"STACK_RESOLVE","message":"Thrasios, Triton Hero (101) - Ai(1)-rog_thrasios scries 1. Ai(1)-rog_thrasios reveals the top card of their library. Ai(1)-rog_thrasios draws a card. ","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":494,"type":"LIFE","message":"Life: Ai(3)-cabbage_merchant 36 > 37"}
+{"rec":"entry","game":0,"seq":495,"type":"STACK_RESOLVE","message":"At the beginning of your upkeep, if you control three or more artifacts, you gain 1 life. [Phase: Ai(3)-cabbage_merchant]","card":"Inventors' Fair","cardId":204}
+{"rec":"entry","game":0,"seq":496,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":497,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":498,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":499,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":500,"type":"COMBAT","message":"Ai(3)-cabbage_merchant assigned Bristlebud Farmer (238), Kuldotha Forgemaster (214), Thopter Token (418), Thopter Token (422) and Thopter Token (429) to attack Ai(1)-rog_thrasios."}
+{"rec":"entry","game":0,"seq":501,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Bristlebud Farmer","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":502,"type":"ZONE_CHANGE","message":"Food Token (428) was put into Graveyard from Battlefield.","card":"Food Token","cardId":428}
+{"rec":"entry","game":0,"seq":503,"type":"ZONE_CHANGE","message":"Ai(3)-cabbage_merchant milled Clock of Omens (277), Worldly Tutor (293) and Thousand-Year Elixir (268)."}
+{"rec":"entry","game":0,"seq":504,"type":"STACK_RESOLVE","message":"Whenever Bristlebud Farmer attacks, you may sacrifice a Food. If you do, mill three cards. You may put a permanent card from among them into your hand. [Attacker: Bristlebud Farmer (238)]","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":505,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":506,"type":"COMBAT","message":"Ai(1)-rog_thrasios didn't block Bristlebud Farmer (238).\nAi(1)-rog_thrasios didn't block Kuldotha Forgemaster (214).\nAi(1)-rog_thrasios didn't block Thopter Token (418).\nAi(1)-rog_thrasios didn't block Thopter Token (422).\nAi(1)-rog_thrasios didn't block Thopter Token (429)."}
+{"rec":"entry","game":0,"seq":507,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":508,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":509,"type":"DAMAGE","message":"Bristlebud Farmer (238) deals 5 combat damage to Ai(1)-rog_thrasios.","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":510,"type":"DAMAGE","message":"Kuldotha Forgemaster (214) deals 3 combat damage to Ai(1)-rog_thrasios.","card":"Kuldotha Forgemaster","cardId":214}
+{"rec":"entry","game":0,"seq":511,"type":"DAMAGE","message":"Thopter Token (418) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":418}
+{"rec":"entry","game":0,"seq":512,"type":"DAMAGE","message":"Thopter Token (422) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":422}
+{"rec":"entry","game":0,"seq":513,"type":"DAMAGE","message":"Thopter Token (429) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":429}
+{"rec":"entry","game":0,"seq":514,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 25 > 11"}
+{"rec":"entry","game":0,"seq":515,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":516,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":517,"type":"MANA","message":"Gaea's Cradle (289) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":518,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Eternal Witness","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":519,"type":"STACK_RESOLVE","message":"Eternal Witness - Creature 2 / 1","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":520,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Eternal Witness targeting [Thousand-Year Elixir (268)]","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":521,"type":"STACK_RESOLVE","message":"When Eternal Witness enters, you may return target card from your graveyard to your hand. (Targeting: [[Thousand-Year Elixir (268)]]) [Zone Changer: Eternal Witness (209)]","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":522,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Academy Manufactor","card":"Academy Manufactor","cardId":246}
+{"rec":"entry","game":0,"seq":523,"type":"STACK_RESOLVE","message":"Academy Manufactor - Creature 1 / 3","card":"Academy Manufactor","cardId":246}
+{"rec":"entry","game":0,"seq":524,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Thousand-Year Elixir","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":525,"type":"STACK_RESOLVE","message":"Thousand-Year Elixir","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":526,"type":"MANA","message":"The Cabbage Merchant (300) - Tap two untapped Foods you control: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":527,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Allosaurus Shepherd","card":"Allosaurus Shepherd","cardId":220}
+{"rec":"entry","game":0,"seq":528,"type":"STACK_RESOLVE","message":"Allosaurus Shepherd - Creature 1 / 1","card":"Allosaurus Shepherd","cardId":220}
+{"rec":"entry","game":0,"seq":529,"type":"MANA","message":"The Cabbage Merchant (300) - Tap two untapped Foods you control: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":530,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant activated Thousand-Year Elixir targeting [Bristlebud Farmer (238)]","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":531,"type":"STACK_RESOLVE","message":"Thousand-Year Elixir (268) - Untap Bristlebud Farmer (238).","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":532,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":533,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":534,"type":"TURN","message":"Turn 22 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":535,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":536,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":537,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":538,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":539,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":540,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":541,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":542,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":543,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":544,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":545,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":546,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":547,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":548,"type":"TURN","message":"Turn 23 (Ai(1)-rog_thrasios)"}
+{"rec":"entry","game":0,"seq":549,"type":"PHASE","message":"Ai(1)-rog_thrasios' Untap step"}
+{"rec":"entry","game":0,"seq":550,"type":"PHASE","message":"Ai(1)-rog_thrasios' Upkeep step"}
+{"rec":"entry","game":0,"seq":551,"type":"MANA","message":"Boseiju, Who Endures (98) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":552,"type":"MANA","message":"Breeding Pool (28) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":553,"type":"MANA","message":"Volcanic Island (58) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":554,"type":"MANA","message":"Tropical Island (55) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":555,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios activated Thrasios, Triton Hero","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":556,"type":"STACK_RESOLVE","message":"Ai(1)-rog_thrasios scried 1 card(s) to the top of the library"}
+{"rec":"entry","game":0,"seq":557,"type":"STACK_RESOLVE","message":"Thrasios, Triton Hero (101) - Ai(1)-rog_thrasios scries 1. Ai(1)-rog_thrasios reveals the top card of their library. Ai(1)-rog_thrasios draws a card. ","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":558,"type":"MANA","message":"City of Brass (35) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":559,"type":"MANA","message":"Emergence Zone (82) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":560,"type":"MANA","message":"Rograkh, Son of Rohgahh (99) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":561,"type":"MANA","message":"Enduring Vitality (83) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":562,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios activated Thrasios, Triton Hero","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":563,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered City of Brass","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":564,"type":"DAMAGE","message":"City of Brass (35) deals 1 non-combat damage to Ai(1)-rog_thrasios.","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":565,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 11 > 10"}
+{"rec":"entry","game":0,"seq":566,"type":"STACK_RESOLVE","message":"Whenever City of Brass becomes tapped, it deals 1 damage to you. [Tapped: City of Brass (35)]","card":"City of Brass","cardId":35}
+{"rec":"entry","game":0,"seq":567,"type":"STACK_RESOLVE","message":"Ai(1)-rog_thrasios scried 1 card(s) to the top of the library"}
+{"rec":"entry","game":0,"seq":568,"type":"STACK_RESOLVE","message":"Thrasios, Triton Hero (101) - Ai(1)-rog_thrasios scries 1. Ai(1)-rog_thrasios reveals the top card of their library. Ai(1)-rog_thrasios draws a card. ","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":569,"type":"MANA","message":"Gaea's Cradle (97) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":570,"type":"DAMAGE","message":"Ancient Tomb (31) deals 2 non-combat damage to Ai(1)-rog_thrasios.","card":"Ancient Tomb","cardId":31}
+{"rec":"entry","game":0,"seq":571,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 10 > 8"}
+{"rec":"entry","game":0,"seq":572,"type":"MANA","message":"Ancient Tomb (31) - {T}: Add {C}{C}. Ancient Tomb deals 2 damage to you. "}
+{"rec":"entry","game":0,"seq":573,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios activated Thrasios, Triton Hero","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":574,"type":"STACK_RESOLVE","message":"Ai(1)-rog_thrasios scried 1 card(s) to the top of the library"}
+{"rec":"entry","game":0,"seq":575,"type":"STACK_RESOLVE","message":"Thrasios, Triton Hero (101) - Ai(1)-rog_thrasios scries 1. Ai(1)-rog_thrasios reveals the top card of their library. Ai(1)-rog_thrasios draws a card. ","card":"Thrasios, Triton Hero","cardId":101}
+{"rec":"entry","game":0,"seq":576,"type":"PHASE","message":"Ai(1)-rog_thrasios' Draw step"}
+{"rec":"entry","game":0,"seq":577,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":578,"type":"PHASE","message":"Ai(1)-rog_thrasios' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":579,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":580,"type":"PHASE","message":"Ai(1)-rog_thrasios' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":581,"type":"PHASE","message":"Ai(1)-rog_thrasios' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":582,"type":"PHASE","message":"Ai(1)-rog_thrasios' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":583,"type":"PHASE","message":"Ai(1)-rog_thrasios' End of Combat Step"}
+{"rec":"entry","game":0,"seq":584,"type":"PHASE","message":"Ai(1)-rog_thrasios' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":585,"type":"MANA","message":"Thrasios, Triton Hero (101) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":586,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios cast Training Grounds","card":"Training Grounds","cardId":72}
+{"rec":"entry","game":0,"seq":587,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered Song of Creation","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":588,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":589,"type":"EFFECT_REPLACED","message":"If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead."}
+{"rec":"entry","game":0,"seq":590,"type":"EFFECT_REPLACED","message":"If you would create a Clue, Food, or Treasure token, instead create one of each."}
+{"rec":"entry","game":0,"seq":591,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Training Grounds (72), Activator: Ai(1)-rog_thrasios, SpellAbility: Training Grounds]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":592,"type":"STACK_RESOLVE","message":"Whenever you cast a spell, draw two cards. [Card: Training Grounds (72), Activator: Ai(1)-rog_thrasios, SpellAbility: Training Grounds]","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":593,"type":"STACK_RESOLVE","message":"Training Grounds","card":"Training Grounds","cardId":72}
+{"rec":"entry","game":0,"seq":594,"type":"LAND","message":"Ai(1)-rog_thrasios played Minamo, School at Water's Edge (57)","card":"Minamo, School at Water's Edge","cardId":57}
+{"rec":"entry","game":0,"seq":595,"type":"PHASE","message":"Ai(1)-rog_thrasios' End step"}
+{"rec":"entry","game":0,"seq":596,"type":"STACK_ADD","message":"Ai(1)-rog_thrasios triggered Song of Creation","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":597,"type":"MANA","message":"Command Tower (157) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":598,"type":"MANA","message":"Mox Diamond (190) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":599,"type":"STACK_ADD","message":"Ai(2)-kinnan cast Valley Floodcaller","card":"Valley Floodcaller","cardId":116}
+{"rec":"entry","game":0,"seq":600,"type":"STACK_RESOLVE","message":"Valley Floodcaller - Creature 2 / 2","card":"Valley Floodcaller","cardId":116}
+{"rec":"entry","game":0,"seq":601,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Mindbreak Trap (78).","card":"Mindbreak Trap","cardId":78}
+{"rec":"entry","game":0,"seq":602,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Sylvan Scrying (30).","card":"Sylvan Scrying","cardId":30}
+{"rec":"entry","game":0,"seq":603,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Displacer Kitten (38).","card":"Displacer Kitten","cardId":38}
+{"rec":"entry","game":0,"seq":604,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Wheel of Fortune (70).","card":"Wheel of Fortune","cardId":70}
+{"rec":"entry","game":0,"seq":605,"type":"DISCARD","message":"Ai(1)-rog_thrasios discards Green Sun's Zenith (6).","card":"Green Sun's Zenith","cardId":6}
+{"rec":"entry","game":0,"seq":606,"type":"STACK_RESOLVE","message":"At the beginning of your end step, discard your hand. [Phase: Ai(1)-rog_thrasios]","card":"Song of Creation","cardId":94}
+{"rec":"entry","game":0,"seq":607,"type":"PHASE","message":"Ai(1)-rog_thrasios' Cleanup step"}
+{"rec":"entry","game":0,"seq":608,"type":"TURN","message":"Turn 24 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":609,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":610,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":611,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":612,"type":"MANA","message":"Command Tower (157) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":613,"type":"MANA","message":"Mox Diamond (190) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":614,"type":"STACK_ADD","message":"Ai(2)-kinnan cast Basalt Monolith","card":"Basalt Monolith","cardId":197}
+{"rec":"entry","game":0,"seq":615,"type":"STACK_ADD","message":"Ai(2)-kinnan triggered Valley Floodcaller","card":"Valley Floodcaller","cardId":116}
+{"rec":"entry","game":0,"seq":616,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":617,"type":"EFFECT_REPLACED","message":"If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead."}
+{"rec":"entry","game":0,"seq":618,"type":"EFFECT_REPLACED","message":"If you would create a Clue, Food, or Treasure token, instead create one of each."}
+{"rec":"entry","game":0,"seq":619,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Basalt Monolith (197), Activator: Ai(2)-kinnan, SpellAbility: Basalt Monolith]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":620,"type":"STACK_RESOLVE","message":"Whenever you cast a noncreature spell, Birds, Frogs, Otters, and Rats you control get +1/+1 until end of turn. Untap them. [Card: Basalt Monolith (197), Activator: Ai(2)-kinnan, SpellAbility: Basalt Monolith]","card":"Valley Floodcaller","cardId":116}
+{"rec":"entry","game":0,"seq":621,"type":"MANA","message":"Otawara, Soaring City (307) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":622,"type":"MANA","message":"Underground Sea (389) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":623,"type":"DAMAGE","message":"Ancient Tomb (324) deals 2 non-combat damage to Ai(4)-yidris.","card":"Ancient Tomb","cardId":324}
+{"rec":"entry","game":0,"seq":624,"type":"LIFE","message":"Life: Ai(4)-yidris 35 > 33"}
+{"rec":"entry","game":0,"seq":625,"type":"MANA","message":"Ancient Tomb (324) - {T}: Add {C}{C}. Ancient Tomb deals 2 damage to you. "}
+{"rec":"entry","game":0,"seq":626,"type":"STACK_ADD","message":"Ai(4)-yidris cast Fierce Guardianship targeting [Basalt Monolith]","card":"Fierce Guardianship","cardId":317}
+{"rec":"entry","game":0,"seq":627,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":628,"type":"EFFECT_REPLACED","message":"If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead."}
+{"rec":"entry","game":0,"seq":629,"type":"EFFECT_REPLACED","message":"If you would create a Clue, Food, or Treasure token, instead create one of each."}
+{"rec":"entry","game":0,"seq":630,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Fierce Guardianship (317), Activator: Ai(4)-yidris, SpellAbility: Counter target noncreature spell.]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":631,"type":"ZONE_CHANGE","message":"Send countered spell to Graveyard"}
+{"rec":"entry","game":0,"seq":632,"type":"STACK_RESOLVE","message":"Fierce Guardianship (317) - Counter Basalt Monolith (197).","card":"Fierce Guardianship","cardId":317}
+{"rec":"entry","game":0,"seq":633,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":634,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":635,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":636,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":637,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":638,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":639,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":640,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":641,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":642,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":643,"type":"TURN","message":"Turn 25 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":644,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":645,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":646,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":647,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":648,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":649,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":650,"type":"COMBAT","message":"Ai(3)-cabbage_merchant assigned Bristlebud Farmer (238), Kuldotha Forgemaster (214), The Cabbage Merchant (300), Thopter Token (418), Thopter Token (422), Thopter Token (429), Eternal Witness (209), Thopter Token (436), Thopter Token (446), Thopter Token (456), Delighted Halfling (278), Stridehangar Automaton (227), Dryad Arbor (235), Academy Manufactor (246) and Allosaurus Shepherd (220) to attack Ai(1)-rog_thrasios."}
+{"rec":"entry","game":0,"seq":651,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Bristlebud Farmer","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":652,"type":"ZONE_CHANGE","message":"Food Token (458) was put into Graveyard from Battlefield.","card":"Food Token","cardId":458}
+{"rec":"entry","game":0,"seq":653,"type":"ZONE_CHANGE","message":"Ai(3)-cabbage_merchant milled Green Sun's Zenith (208), Tree of Tales (213) and Crop Rotation (251)."}
+{"rec":"entry","game":0,"seq":654,"type":"STACK_RESOLVE","message":"Whenever Bristlebud Farmer attacks, you may sacrifice a Food. If you do, mill three cards. You may put a permanent card from among them into your hand. [Attacker: Bristlebud Farmer (238)]","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":655,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":656,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant activated Thousand-Year Elixir targeting [Bristlebud Farmer (238)]","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":657,"type":"STACK_RESOLVE","message":"Thousand-Year Elixir (268) - Untap Bristlebud Farmer (238).","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":658,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":659,"type":"COMBAT","message":"Ai(1)-rog_thrasios didn't block Bristlebud Farmer (238).\nAi(1)-rog_thrasios didn't block Kuldotha Forgemaster (214).\nAi(1)-rog_thrasios didn't block The Cabbage Merchant (300).\nAi(1)-rog_thrasios didn't block Thopter Token (418).\nAi(1)-rog_thrasios didn't block Thopter Token (422).\nAi(1)-rog_thrasios didn't block Thopter Token (429).\nAi(1)-rog_thrasios didn't block Eternal Witness (209).\nAi(1)-rog_thrasios didn't block Thopter Token (436).\nAi(1)-rog_thrasios didn't block Thopter Token (446).\nAi(1)-rog_thrasios didn't block Thopter Token (456).\nAi(1)-rog_thrasios didn't block Delighted Halfling (278).\nAi(1)-rog_thrasios didn't block Stridehangar Automaton (227).\nAi(1)-rog_thrasios didn't block Dryad Arbor (235).\nAi(1)-rog_thrasios didn't block Academy Manufactor (246).\nAi(1)-rog_thrasios didn't block Allosaurus Shepherd (220)."}
+{"rec":"entry","game":0,"seq":660,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":661,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":662,"type":"DAMAGE","message":"Bristlebud Farmer (238) deals 5 combat damage to Ai(1)-rog_thrasios.","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":663,"type":"DAMAGE","message":"Kuldotha Forgemaster (214) deals 3 combat damage to Ai(1)-rog_thrasios.","card":"Kuldotha Forgemaster","cardId":214}
+{"rec":"entry","game":0,"seq":664,"type":"DAMAGE","message":"The Cabbage Merchant (300) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":665,"type":"DAMAGE","message":"Thopter Token (418) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":418}
+{"rec":"entry","game":0,"seq":666,"type":"DAMAGE","message":"Thopter Token (422) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":422}
+{"rec":"entry","game":0,"seq":667,"type":"DAMAGE","message":"Thopter Token (429) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":429}
+{"rec":"entry","game":0,"seq":668,"type":"DAMAGE","message":"Eternal Witness (209) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":669,"type":"DAMAGE","message":"Thopter Token (436) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":436}
+{"rec":"entry","game":0,"seq":670,"type":"DAMAGE","message":"Thopter Token (446) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":446}
+{"rec":"entry","game":0,"seq":671,"type":"DAMAGE","message":"Thopter Token (456) deals 2 combat damage to Ai(1)-rog_thrasios.","card":"Thopter Token","cardId":456}
+{"rec":"entry","game":0,"seq":672,"type":"DAMAGE","message":"Delighted Halfling (278) deals 1 combat damage to Ai(1)-rog_thrasios.","card":"Delighted Halfling","cardId":278}
+{"rec":"entry","game":0,"seq":673,"type":"DAMAGE","message":"Stridehangar Automaton (227) deals 1 combat damage to Ai(1)-rog_thrasios.","card":"Stridehangar Automaton","cardId":227}
+{"rec":"entry","game":0,"seq":674,"type":"DAMAGE","message":"Dryad Arbor (235) deals 1 combat damage to Ai(1)-rog_thrasios.","card":"Dryad Arbor","cardId":235}
+{"rec":"entry","game":0,"seq":675,"type":"DAMAGE","message":"Academy Manufactor (246) deals 1 combat damage to Ai(1)-rog_thrasios.","card":"Academy Manufactor","cardId":246}
+{"rec":"entry","game":0,"seq":676,"type":"DAMAGE","message":"Allosaurus Shepherd (220) deals 1 combat damage to Ai(1)-rog_thrasios.","card":"Allosaurus Shepherd","cardId":220}
+{"rec":"entry","game":0,"seq":677,"type":"LIFE","message":"Life: Ai(1)-rog_thrasios 8 > -21"}
+{"rec":"entry","game":0,"seq":678,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":679,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":680,"type":"LAND","message":"Ai(3)-cabbage_merchant played Tree of Tales (213)","card":"Tree of Tales","cardId":213}
+{"rec":"entry","game":0,"seq":681,"type":"MANA","message":"Tree of Tales (213) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":682,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Birds of Paradise","card":"Birds of Paradise","cardId":274}
+{"rec":"entry","game":0,"seq":683,"type":"STACK_RESOLVE","message":"Birds of Paradise - Creature 0 / 1","card":"Birds of Paradise","cardId":274}
+{"rec":"entry","game":0,"seq":684,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":685,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":686,"type":"TURN","message":"Turn 26 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":687,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":688,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":689,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":690,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":691,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":692,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":693,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":694,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":695,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":696,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":697,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":698,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":699,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":700,"type":"TURN","message":"Turn 27 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":701,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":702,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":703,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":704,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":705,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":706,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":707,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":708,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":709,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":710,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":711,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":712,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":713,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":714,"type":"TURN","message":"Turn 28 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":715,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":716,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":717,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":718,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":719,"type":"MANA","message":"Tree of Tales (213) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":720,"type":"MANA","message":"Shifting Woodland (233) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":721,"type":"MANA","message":"Dryad Arbor (235) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":722,"type":"MANA","message":"Birds of Paradise (274) - {T}: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":723,"type":"MANA","message":"Delighted Halfling (278) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":724,"type":"MANA","message":"Gaea's Cradle (289) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":725,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Chord of Calling","card":"Chord of Calling","cardId":218}
+{"rec":"entry","game":0,"seq":726,"type":"STACK_RESOLVE","message":"Chord of Calling (218) - Search your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle. (X=5)","card":"Chord of Calling","cardId":218}
+{"rec":"entry","game":0,"seq":727,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant activated Thousand-Year Elixir targeting [Delighted Halfling (278)]","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":728,"type":"STACK_RESOLVE","message":"Thousand-Year Elixir (268) - Untap Delighted Halfling (278).","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":729,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":730,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":731,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":732,"type":"COMBAT","message":"Ai(3)-cabbage_merchant assigned Bristlebud Farmer (238), Kuldotha Forgemaster (214), The Cabbage Merchant (300), Thopter Token (418), Thopter Token (422), Thopter Token (429), Eternal Witness (209), Thopter Token (436), Thopter Token (446) and Thopter Token (456) to attack Ai(2)-kinnan."}
+{"rec":"entry","game":0,"seq":733,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Bristlebud Farmer","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":734,"type":"ZONE_CHANGE","message":"Food Token (448) was put into Graveyard from Battlefield.","card":"Food Token","cardId":448}
+{"rec":"entry","game":0,"seq":735,"type":"ZONE_CHANGE","message":"Ai(3)-cabbage_merchant milled Mox Amber (229), Endurance (225) and Six (228)."}
+{"rec":"entry","game":0,"seq":736,"type":"STACK_RESOLVE","message":"Whenever Bristlebud Farmer attacks, you may sacrifice a Food. If you do, mill three cards. You may put a permanent card from among them into your hand. [Attacker: Bristlebud Farmer (238)]","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":737,"type":"ZONE_CHANGE","message":"Treasure Token (459) was put into Graveyard from Battlefield.","card":"Treasure Token","cardId":459}
+{"rec":"entry","game":0,"seq":738,"type":"MANA","message":"Treasure Token (459) - {T}, Sacrifice this token: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":739,"type":"ZONE_CHANGE","message":"Treasure Token (449) was put into Graveyard from Battlefield.","card":"Treasure Token","cardId":449}
+{"rec":"entry","game":0,"seq":740,"type":"MANA","message":"Treasure Token (449) - {T}, Sacrifice this token: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":741,"type":"MANA","message":"Delighted Halfling (278) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":742,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Endurance","card":"Endurance","cardId":225}
+{"rec":"entry","game":0,"seq":743,"type":"STACK_RESOLVE","message":"Endurance - Creature 3 / 4","card":"Endurance","cardId":225}
+{"rec":"entry","game":0,"seq":744,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Endurance targeting [Ai(4)-yidris]","card":"Endurance","cardId":225}
+{"rec":"entry","game":0,"seq":745,"type":"STACK_RESOLVE","message":"When Endurance enters, up to one target player puts all the cards from their graveyard on the bottom of their library in a random order. (Targeting: [[Ai(4)-yidris]]) [Zone Changer: Endurance (225)]","card":"Endurance","cardId":225}
+{"rec":"entry","game":0,"seq":746,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":747,"type":"COMBAT","message":"Ai(2)-kinnan didn't block Bristlebud Farmer (238).\nAi(2)-kinnan didn't block Kuldotha Forgemaster (214).\nAi(2)-kinnan didn't block The Cabbage Merchant (300).\nAi(2)-kinnan didn't block Thopter Token (418).\nAi(2)-kinnan didn't block Thopter Token (422).\nAi(2)-kinnan didn't block Thopter Token (429).\nAi(2)-kinnan didn't block Eternal Witness (209).\nAi(2)-kinnan didn't block Thopter Token (436).\nAi(2)-kinnan didn't block Thopter Token (446).\nAi(2)-kinnan didn't block Thopter Token (456)."}
+{"rec":"entry","game":0,"seq":748,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":749,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":750,"type":"DAMAGE","message":"Bristlebud Farmer (238) deals 5 combat damage to Ai(2)-kinnan.","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":751,"type":"DAMAGE","message":"Kuldotha Forgemaster (214) deals 3 combat damage to Ai(2)-kinnan.","card":"Kuldotha Forgemaster","cardId":214}
+{"rec":"entry","game":0,"seq":752,"type":"DAMAGE","message":"The Cabbage Merchant (300) deals 2 combat damage to Ai(2)-kinnan.","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":753,"type":"DAMAGE","message":"Thopter Token (418) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":418}
+{"rec":"entry","game":0,"seq":754,"type":"DAMAGE","message":"Thopter Token (422) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":422}
+{"rec":"entry","game":0,"seq":755,"type":"DAMAGE","message":"Thopter Token (429) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":429}
+{"rec":"entry","game":0,"seq":756,"type":"DAMAGE","message":"Eternal Witness (209) deals 2 combat damage to Ai(2)-kinnan.","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":757,"type":"DAMAGE","message":"Thopter Token (436) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":436}
+{"rec":"entry","game":0,"seq":758,"type":"DAMAGE","message":"Thopter Token (446) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":446}
+{"rec":"entry","game":0,"seq":759,"type":"DAMAGE","message":"Thopter Token (456) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":456}
+{"rec":"entry","game":0,"seq":760,"type":"LIFE","message":"Life: Ai(2)-kinnan 39 > 15"}
+{"rec":"entry","game":0,"seq":761,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":762,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":763,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":764,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":765,"type":"TURN","message":"Turn 29 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":766,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":767,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":768,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":769,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":770,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":771,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":772,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":773,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":774,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":775,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":776,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":777,"type":"MANA","message":"Otawara, Soaring City (307) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":778,"type":"STACK_ADD","message":"Ai(4)-yidris cast Mystic Remora","card":"Mystic Remora","cardId":361}
+{"rec":"entry","game":0,"seq":779,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered The Cabbage Merchant","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":780,"type":"EFFECT_REPLACED","message":"If one or more artifact tokens would be created under your control, those tokens plus an additional 1/1 colorless Thopter artifact creature token with flying are created instead."}
+{"rec":"entry","game":0,"seq":781,"type":"EFFECT_REPLACED","message":"If you would create a Clue, Food, or Treasure token, instead create one of each."}
+{"rec":"entry","game":0,"seq":782,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\") [Card: Mystic Remora (361), Activator: Ai(4)-yidris, SpellAbility: Mystic Remora]","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":783,"type":"STACK_RESOLVE","message":"Mystic Remora","card":"Mystic Remora","cardId":361}
+{"rec":"entry","game":0,"seq":784,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":785,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":786,"type":"TURN","message":"Turn 30 (Ai(2)-kinnan)"}
+{"rec":"entry","game":0,"seq":787,"type":"PHASE","message":"Ai(2)-kinnan's Untap step"}
+{"rec":"entry","game":0,"seq":788,"type":"PHASE","message":"Ai(2)-kinnan's Upkeep step"}
+{"rec":"entry","game":0,"seq":789,"type":"PHASE","message":"Ai(2)-kinnan's Draw step"}
+{"rec":"entry","game":0,"seq":790,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":791,"type":"PHASE","message":"Ai(2)-kinnan's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":792,"type":"PHASE","message":"Ai(2)-kinnan's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":793,"type":"PHASE","message":"Ai(2)-kinnan's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":794,"type":"PHASE","message":"Ai(2)-kinnan's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":795,"type":"PHASE","message":"Ai(2)-kinnan's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":796,"type":"PHASE","message":"Ai(2)-kinnan's End of Combat Step"}
+{"rec":"entry","game":0,"seq":797,"type":"PHASE","message":"Ai(2)-kinnan's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":798,"type":"MANA","message":"Command Tower (157) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":799,"type":"STACK_ADD","message":"Ai(2)-kinnan cast Delighted Halfling","card":"Delighted Halfling","cardId":139}
+{"rec":"entry","game":0,"seq":800,"type":"STACK_RESOLVE","message":"Delighted Halfling - Creature 1 / 2","card":"Delighted Halfling","cardId":139}
+{"rec":"entry","game":0,"seq":801,"type":"PHASE","message":"Ai(2)-kinnan's End step"}
+{"rec":"entry","game":0,"seq":802,"type":"PHASE","message":"Ai(2)-kinnan's Cleanup step"}
+{"rec":"entry","game":0,"seq":803,"type":"TURN","message":"Turn 31 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":804,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":805,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":806,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":807,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":808,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":809,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":810,"type":"COMBAT","message":"Ai(3)-cabbage_merchant assigned Bristlebud Farmer (238), Wandering Archaic (299), Kuldotha Forgemaster (214), Endurance (225), The Cabbage Merchant (300), Thopter Token (418), Thopter Token (422), Thopter Token (429), Eternal Witness (209), Thopter Token (436), Thopter Token (446), Thopter Token (456), Thopter Token (466), Delighted Halfling (278), Stridehangar Automaton (227), Dryad Arbor (235), Academy Manufactor (246), Allosaurus Shepherd (220) and Birds of Paradise (274) to attack Ai(2)-kinnan."}
+{"rec":"entry","game":0,"seq":811,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Bristlebud Farmer","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":812,"type":"ZONE_CHANGE","message":"Food Token (468) was put into Graveyard from Battlefield.","card":"Food Token","cardId":468}
+{"rec":"entry","game":0,"seq":813,"type":"ZONE_CHANGE","message":"Ai(3)-cabbage_merchant milled Lotus Petal (226), Llanowar Elves (271) and Fomori Vault (232)."}
+{"rec":"entry","game":0,"seq":814,"type":"STACK_RESOLVE","message":"Whenever Bristlebud Farmer attacks, you may sacrifice a Food. If you do, mill three cards. You may put a permanent card from among them into your hand. [Attacker: Bristlebud Farmer (238)]","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":815,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":816,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant activated Thousand-Year Elixir targeting [Bristlebud Farmer (238)]","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":817,"type":"STACK_RESOLVE","message":"Thousand-Year Elixir (268) - Untap Bristlebud Farmer (238).","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":818,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":819,"type":"COMBAT","message":"Ai(2)-kinnan didn't block Bristlebud Farmer (238).\nAi(2)-kinnan assigned Elvish Mystic (172) to block Wandering Archaic (299).\nAi(2)-kinnan assigned Valley Floodcaller (116) to block Kuldotha Forgemaster (214).\nAi(2)-kinnan assigned Kinnan, Bonder Prodigy (199) to block Endurance (225).\nAi(2)-kinnan assigned Delighted Halfling (139) to block The Cabbage Merchant (300).\nAi(2)-kinnan didn't block Thopter Token (418).\nAi(2)-kinnan didn't block Thopter Token (422).\nAi(2)-kinnan didn't block Thopter Token (429).\nAi(2)-kinnan didn't block Eternal Witness (209).\nAi(2)-kinnan didn't block Thopter Token (436).\nAi(2)-kinnan didn't block Thopter Token (446).\nAi(2)-kinnan didn't block Thopter Token (456).\nAi(2)-kinnan didn't block Thopter Token (466).\nAi(2)-kinnan didn't block Delighted Halfling (278).\nAi(2)-kinnan didn't block Stridehangar Automaton (227).\nAi(2)-kinnan didn't block Dryad Arbor (235).\nAi(2)-kinnan didn't block Academy Manufactor (246).\nAi(2)-kinnan didn't block Allosaurus Shepherd (220).\nAi(2)-kinnan didn't block Birds of Paradise (274)."}
+{"rec":"entry","game":0,"seq":820,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":821,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":822,"type":"DAMAGE","message":"Bristlebud Farmer (238) deals 5 combat damage to Ai(2)-kinnan.","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":823,"type":"DAMAGE","message":"Wandering Archaic (299) deals 4 damage to Elvish Mystic (172).","card":"Wandering Archaic","cardId":299}
+{"rec":"entry","game":0,"seq":824,"type":"DAMAGE","message":"Kuldotha Forgemaster (214) deals 3 damage to Valley Floodcaller (116).","card":"Kuldotha Forgemaster","cardId":214}
+{"rec":"entry","game":0,"seq":825,"type":"DAMAGE","message":"Endurance (225) deals 3 damage to Kinnan, Bonder Prodigy (199).","card":"Endurance","cardId":225}
+{"rec":"entry","game":0,"seq":826,"type":"DAMAGE","message":"The Cabbage Merchant (300) deals 2 damage to Delighted Halfling (139).","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":827,"type":"DAMAGE","message":"Thopter Token (418) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":418}
+{"rec":"entry","game":0,"seq":828,"type":"DAMAGE","message":"Thopter Token (422) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":422}
+{"rec":"entry","game":0,"seq":829,"type":"DAMAGE","message":"Thopter Token (429) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":429}
+{"rec":"entry","game":0,"seq":830,"type":"DAMAGE","message":"Eternal Witness (209) deals 2 combat damage to Ai(2)-kinnan.","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":831,"type":"DAMAGE","message":"Thopter Token (436) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":436}
+{"rec":"entry","game":0,"seq":832,"type":"DAMAGE","message":"Thopter Token (446) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":446}
+{"rec":"entry","game":0,"seq":833,"type":"DAMAGE","message":"Thopter Token (456) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":456}
+{"rec":"entry","game":0,"seq":834,"type":"DAMAGE","message":"Thopter Token (466) deals 2 combat damage to Ai(2)-kinnan.","card":"Thopter Token","cardId":466}
+{"rec":"entry","game":0,"seq":835,"type":"DAMAGE","message":"Delighted Halfling (278) deals 1 combat damage to Ai(2)-kinnan.","card":"Delighted Halfling","cardId":278}
+{"rec":"entry","game":0,"seq":836,"type":"DAMAGE","message":"Stridehangar Automaton (227) deals 1 combat damage to Ai(2)-kinnan.","card":"Stridehangar Automaton","cardId":227}
+{"rec":"entry","game":0,"seq":837,"type":"DAMAGE","message":"Dryad Arbor (235) deals 1 combat damage to Ai(2)-kinnan.","card":"Dryad Arbor","cardId":235}
+{"rec":"entry","game":0,"seq":838,"type":"DAMAGE","message":"Academy Manufactor (246) deals 1 combat damage to Ai(2)-kinnan.","card":"Academy Manufactor","cardId":246}
+{"rec":"entry","game":0,"seq":839,"type":"DAMAGE","message":"Allosaurus Shepherd (220) deals 1 combat damage to Ai(2)-kinnan.","card":"Allosaurus Shepherd","cardId":220}
+{"rec":"entry","game":0,"seq":840,"type":"DAMAGE","message":"Elvish Mystic (172) deals 1 damage to Wandering Archaic (299).","card":"Elvish Mystic","cardId":172}
+{"rec":"entry","game":0,"seq":841,"type":"DAMAGE","message":"Valley Floodcaller (116) deals 2 damage to Kuldotha Forgemaster (214).","card":"Valley Floodcaller","cardId":116}
+{"rec":"entry","game":0,"seq":842,"type":"DAMAGE","message":"Kinnan, Bonder Prodigy (199) deals 2 damage to Endurance (225).","card":"Kinnan, Bonder Prodigy","cardId":199}
+{"rec":"entry","game":0,"seq":843,"type":"DAMAGE","message":"Delighted Halfling (139) deals 1 damage to The Cabbage Merchant (300).","card":"Delighted Halfling","cardId":139}
+{"rec":"entry","game":0,"seq":844,"type":"LIFE","message":"Life: Ai(2)-kinnan 15 > -11"}
+{"rec":"entry","game":0,"seq":845,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End of Combat Step"}
+{"rec":"entry","game":0,"seq":846,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":847,"type":"MANA","message":"Tree of Tales (213) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":848,"type":"MANA","message":"Shifting Woodland (233) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":849,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Compost","card":"Compost","cardId":287}
+{"rec":"entry","game":0,"seq":850,"type":"STACK_ADD","message":"Ai(4)-yidris triggered Mystic Remora","card":"Mystic Remora","cardId":361}
+{"rec":"entry","game":0,"seq":851,"type":"MANA","message":"Gaea's Cradle (289) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":852,"type":"STACK_RESOLVE","message":"Whenever an opponent casts a noncreature spell, you may draw a card unless that player pays {4}. [Card: Compost (287), Activator: Ai(3)-cabbage_merchant, SpellAbility: Compost]","card":"Mystic Remora","cardId":361}
+{"rec":"entry","game":0,"seq":853,"type":"STACK_RESOLVE","message":"Compost","card":"Compost","cardId":287}
+{"rec":"entry","game":0,"seq":854,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant cast Llanowar Elves","card":"Llanowar Elves","cardId":271}
+{"rec":"entry","game":0,"seq":855,"type":"STACK_RESOLVE","message":"Llanowar Elves - Creature 1 / 1","card":"Llanowar Elves","cardId":271}
+{"rec":"entry","game":0,"seq":856,"type":"PHASE","message":"Ai(3)-cabbage_merchant's End step"}
+{"rec":"entry","game":0,"seq":857,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Cleanup step"}
+{"rec":"entry","game":0,"seq":858,"type":"TURN","message":"Turn 32 (Ai(4)-yidris)"}
+{"rec":"entry","game":0,"seq":859,"type":"PHASE","message":"Ai(4)-yidris' Untap step"}
+{"rec":"entry","game":0,"seq":860,"type":"PHASE","message":"Ai(4)-yidris' Upkeep step"}
+{"rec":"entry","game":0,"seq":861,"type":"STACK_ADD","message":"Ai(4)-yidris triggered Mystic Remora","card":"Mystic Remora","cardId":361}
+{"rec":"entry","game":0,"seq":862,"type":"MANA","message":"Otawara, Soaring City (307) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":863,"type":"STACK_RESOLVE","message":"Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.) [Phase: Ai(4)-yidris]","card":"Mystic Remora","cardId":361}
+{"rec":"entry","game":0,"seq":864,"type":"PHASE","message":"Ai(4)-yidris' Draw step"}
+{"rec":"entry","game":0,"seq":865,"type":"PHASE","message":"Ai(4)-yidris' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":866,"type":"PHASE","message":"Ai(4)-yidris' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":867,"type":"PHASE","message":"Ai(4)-yidris' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":868,"type":"PHASE","message":"Ai(4)-yidris' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":869,"type":"PHASE","message":"Ai(4)-yidris' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":870,"type":"PHASE","message":"Ai(4)-yidris' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":871,"type":"PHASE","message":"Ai(4)-yidris' End of Combat Step"}
+{"rec":"entry","game":0,"seq":872,"type":"PHASE","message":"Ai(4)-yidris' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":873,"type":"EFFECT_REPLACED","message":"Gemstone Mine enters with three mining counters on it."}
+{"rec":"entry","game":0,"seq":874,"type":"LAND","message":"Ai(4)-yidris played Gemstone Mine (345)","card":"Gemstone Mine","cardId":345}
+{"rec":"entry","game":0,"seq":875,"type":"MANA","message":"Gemstone Mine (345) - {T}, Remove a mining counter from Gemstone Mine: Add one mana of any color. If there are no mining counters on Gemstone Mine, sacrifice it. "}
+{"rec":"entry","game":0,"seq":876,"type":"MANA","message":"Underground Sea (389) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":877,"type":"DAMAGE","message":"Ancient Tomb (324) deals 2 non-combat damage to Ai(4)-yidris.","card":"Ancient Tomb","cardId":324}
+{"rec":"entry","game":0,"seq":878,"type":"LIFE","message":"Life: Ai(4)-yidris 33 > 31"}
+{"rec":"entry","game":0,"seq":879,"type":"MANA","message":"Ancient Tomb (324) - {T}: Add {C}{C}. Ancient Tomb deals 2 damage to you. "}
+{"rec":"entry","game":0,"seq":880,"type":"STACK_ADD","message":"Ai(4)-yidris cast Elvish Spirit Guide","card":"Elvish Spirit Guide","cardId":388}
+{"rec":"entry","game":0,"seq":881,"type":"STACK_RESOLVE","message":"Elvish Spirit Guide - Creature 2 / 2","card":"Elvish Spirit Guide","cardId":388}
+{"rec":"entry","game":0,"seq":882,"type":"PHASE","message":"Ai(4)-yidris' End step"}
+{"rec":"entry","game":0,"seq":883,"type":"PHASE","message":"Ai(4)-yidris' Cleanup step"}
+{"rec":"entry","game":0,"seq":884,"type":"TURN","message":"Turn 33 (Ai(3)-cabbage_merchant)"}
+{"rec":"entry","game":0,"seq":885,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Untap step"}
+{"rec":"entry","game":0,"seq":886,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Upkeep step"}
+{"rec":"entry","game":0,"seq":887,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Draw step"}
+{"rec":"entry","game":0,"seq":888,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":889,"type":"EFFECT_REPLACED","message":"The Shire enters tapped unless you control a legendary creature."}
+{"rec":"entry","game":0,"seq":890,"type":"LAND","message":"Ai(3)-cabbage_merchant played The Shire (210)","card":"The Shire","cardId":210}
+{"rec":"entry","game":0,"seq":891,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":892,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":893,"type":"COMBAT","message":"Ai(3)-cabbage_merchant assigned Bristlebud Farmer (238), Wandering Archaic (299), Kuldotha Forgemaster (214), Endurance (225), The Cabbage Merchant (300), Thopter Token (418), Thopter Token (422), Thopter Token (429), Eternal Witness (209), Thopter Token (436), Thopter Token (446), Thopter Token (456), Thopter Token (466), Delighted Halfling (278), Stridehangar Automaton (227), Dryad Arbor (235), Academy Manufactor (246), Allosaurus Shepherd (220), Llanowar Elves (271) and Birds of Paradise (274) to attack Ai(4)-yidris."}
+{"rec":"entry","game":0,"seq":894,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant triggered Bristlebud Farmer","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":895,"type":"ZONE_CHANGE","message":"Food Token (438) was put into Graveyard from Battlefield.","card":"Food Token","cardId":438}
+{"rec":"entry","game":0,"seq":896,"type":"ZONE_CHANGE","message":"Ai(3)-cabbage_merchant milled Vivien, Monsters' Advocate (290), Elvish Spirit Guide (270) and Augur of Autumn (252)."}
+{"rec":"entry","game":0,"seq":897,"type":"STACK_RESOLVE","message":"Whenever Bristlebud Farmer attacks, you may sacrifice a Food. If you do, mill three cards. You may put a permanent card from among them into your hand. [Attacker: Bristlebud Farmer (238)]","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":898,"type":"MANA","message":"Forest (263) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":899,"type":"STACK_ADD","message":"Ai(3)-cabbage_merchant activated Thousand-Year Elixir targeting [Bristlebud Farmer (238)]","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":900,"type":"STACK_RESOLVE","message":"Thousand-Year Elixir (268) - Untap Bristlebud Farmer (238).","card":"Thousand-Year Elixir","cardId":268}
+{"rec":"entry","game":0,"seq":901,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":902,"type":"COMBAT","message":"Ai(4)-yidris didn't block Bristlebud Farmer (238).\nAi(4)-yidris assigned Elvish Spirit Guide (388) to block Wandering Archaic (299).\nAi(4)-yidris didn't block Kuldotha Forgemaster (214).\nAi(4)-yidris didn't block Endurance (225).\nAi(4)-yidris didn't block The Cabbage Merchant (300).\nAi(4)-yidris didn't block Thopter Token (418).\nAi(4)-yidris didn't block Thopter Token (422).\nAi(4)-yidris didn't block Thopter Token (429).\nAi(4)-yidris didn't block Eternal Witness (209).\nAi(4)-yidris didn't block Thopter Token (436).\nAi(4)-yidris didn't block Thopter Token (446).\nAi(4)-yidris didn't block Thopter Token (456).\nAi(4)-yidris didn't block Thopter Token (466).\nAi(4)-yidris didn't block Delighted Halfling (278).\nAi(4)-yidris didn't block Stridehangar Automaton (227).\nAi(4)-yidris didn't block Dryad Arbor (235).\nAi(4)-yidris didn't block Academy Manufactor (246).\nAi(4)-yidris didn't block Allosaurus Shepherd (220).\nAi(4)-yidris didn't block Llanowar Elves (271).\nAi(4)-yidris didn't block Birds of Paradise (274)."}
+{"rec":"entry","game":0,"seq":903,"type":"PHASE","message":"Ai(3)-cabbage_merchant's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":904,"type":"PHASE","message":"Ai(3)-cabbage_merchant's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":905,"type":"DAMAGE","message":"Bristlebud Farmer (238) deals 5 combat damage to Ai(4)-yidris.","card":"Bristlebud Farmer","cardId":238}
+{"rec":"entry","game":0,"seq":906,"type":"DAMAGE","message":"Wandering Archaic (299) deals 4 damage to Elvish Spirit Guide (388).","card":"Wandering Archaic","cardId":299}
+{"rec":"entry","game":0,"seq":907,"type":"DAMAGE","message":"Kuldotha Forgemaster (214) deals 3 combat damage to Ai(4)-yidris.","card":"Kuldotha Forgemaster","cardId":214}
+{"rec":"entry","game":0,"seq":908,"type":"DAMAGE","message":"Endurance (225) deals 3 combat damage to Ai(4)-yidris.","card":"Endurance","cardId":225}
+{"rec":"entry","game":0,"seq":909,"type":"DAMAGE","message":"The Cabbage Merchant (300) deals 2 combat damage to Ai(4)-yidris.","card":"The Cabbage Merchant","cardId":300}
+{"rec":"entry","game":0,"seq":910,"type":"DAMAGE","message":"Thopter Token (418) deals 2 combat damage to Ai(4)-yidris.","card":"Thopter Token","cardId":418}
+{"rec":"entry","game":0,"seq":911,"type":"DAMAGE","message":"Thopter Token (422) deals 2 combat damage to Ai(4)-yidris.","card":"Thopter Token","cardId":422}
+{"rec":"entry","game":0,"seq":912,"type":"DAMAGE","message":"Thopter Token (429) deals 2 combat damage to Ai(4)-yidris.","card":"Thopter Token","cardId":429}
+{"rec":"entry","game":0,"seq":913,"type":"DAMAGE","message":"Eternal Witness (209) deals 2 combat damage to Ai(4)-yidris.","card":"Eternal Witness","cardId":209}
+{"rec":"entry","game":0,"seq":914,"type":"DAMAGE","message":"Thopter Token (436) deals 2 combat damage to Ai(4)-yidris.","card":"Thopter Token","cardId":436}
+{"rec":"entry","game":0,"seq":915,"type":"DAMAGE","message":"Thopter Token (446) deals 2 combat damage to Ai(4)-yidris.","card":"Thopter Token","cardId":446}
+{"rec":"entry","game":0,"seq":916,"type":"DAMAGE","message":"Thopter Token (456) deals 2 combat damage to Ai(4)-yidris.","card":"Thopter Token","cardId":456}
+{"rec":"entry","game":0,"seq":917,"type":"DAMAGE","message":"Thopter Token (466) deals 2 combat damage to Ai(4)-yidris.","card":"Thopter Token","cardId":466}
+{"rec":"entry","game":0,"seq":918,"type":"DAMAGE","message":"Delighted Halfling (278) deals 1 combat damage to Ai(4)-yidris.","card":"Delighted Halfling","cardId":278}
+{"rec":"entry","game":0,"seq":919,"type":"DAMAGE","message":"Stridehangar Automaton (227) deals 1 combat damage to Ai(4)-yidris.","card":"Stridehangar Automaton","cardId":227}
+{"rec":"entry","game":0,"seq":920,"type":"DAMAGE","message":"Dryad Arbor (235) deals 1 combat damage to Ai(4)-yidris.","card":"Dryad Arbor","cardId":235}
+{"rec":"entry","game":0,"seq":921,"type":"DAMAGE","message":"Academy Manufactor (246) deals 1 combat damage to Ai(4)-yidris.","card":"Academy Manufactor","cardId":246}
+{"rec":"entry","game":0,"seq":922,"type":"DAMAGE","message":"Allosaurus Shepherd (220) deals 1 combat damage to Ai(4)-yidris.","card":"Allosaurus Shepherd","cardId":220}
+{"rec":"entry","game":0,"seq":923,"type":"DAMAGE","message":"Llanowar Elves (271) deals 1 combat damage to Ai(4)-yidris.","card":"Llanowar Elves","cardId":271}
+{"rec":"entry","game":0,"seq":924,"type":"DAMAGE","message":"Elvish Spirit Guide (388) deals 2 damage to Wandering Archaic (299).","card":"Elvish Spirit Guide","cardId":388}
+{"rec":"entry","game":0,"seq":925,"type":"LIFE","message":"Life: Ai(4)-yidris 31 > -4"}
+{"rec":"entry","game":0,"seq":926,"type":"PLAYER_CONTROL","message":"Ai(1)-rog_thrasios has restored control over themself"}
+{"rec":"entry","game":0,"seq":927,"type":"PLAYER_CONTROL","message":"Ai(2)-kinnan has restored control over themself"}
+{"rec":"entry","game":0,"seq":928,"type":"PLAYER_CONTROL","message":"Ai(3)-cabbage_merchant has restored control over themself"}
+{"rec":"entry","game":0,"seq":929,"type":"PLAYER_CONTROL","message":"Ai(4)-yidris has restored control over themself"}
+{"rec":"entry","game":0,"seq":930,"type":"GAME_OUTCOME","message":"Turn 17"}
+{"rec":"entry","game":0,"seq":931,"type":"GAME_OUTCOME","message":"Ai(1)-rog_thrasios has lost because life total reached 0"}
+{"rec":"entry","game":0,"seq":932,"type":"GAME_OUTCOME","message":"Ai(2)-kinnan has lost because life total reached 0"}
+{"rec":"entry","game":0,"seq":933,"type":"GAME_OUTCOME","message":"Ai(3)-cabbage_merchant has won because all opponents have lost"}
+{"rec":"entry","game":0,"seq":934,"type":"GAME_OUTCOME","message":"Ai(4)-yidris has lost because life total reached 0"}
+{"rec":"entry","game":0,"seq":935,"type":"MATCH_RESULTS","message":"Ai(1)-rog_thrasios: 0 Ai(2)-kinnan: 0 Ai(3)-cabbage_merchant: 1 Ai(4)-yidris: 0 "}
+{"rec":"zone","game":0,"turn":0,"card":"Biomancer's Familiar","cardId":36,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Noxious Revival","cardId":32,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Green Sun's Zenith","cardId":6,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Clever Impersonator","cardId":89,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"0/0","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gaea's Cradle","cardId":97,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Valley Floodcaller","cardId":22,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Seedborn Muse","cardId":11,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Misdirection","cardId":129,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Ancient Tomb","cardId":127,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Fellwar Stone","cardId":124,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Command Tower","cardId":157,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mirage Mirror","cardId":120,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mox Diamond","cardId":190,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Elvish Mystic","cardId":172,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Shifting Woodland","cardId":233,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Kuldotha Forgemaster","cardId":214,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"3/5","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Stridehangar Automaton","cardId":227,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"1/4","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Archdruid's Charm","cardId":286,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Eternal Witness","cardId":209,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gaea's Cradle","cardId":289,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Sylvan Tutor","cardId":221,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Brain Freeze","cardId":352,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Marsh Flats","cardId":379,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Imperial Seal","cardId":306,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mystical Tutor","cardId":344,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mox Opal","cardId":374,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Brainstorm","cardId":397,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Veil of Summer","cardId":385,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Biomancer's Familiar","cardId":36,"from":"Hand","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Noxious Revival","cardId":32,"from":"Hand","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Green Sun's Zenith","cardId":6,"from":"Hand","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Clever Impersonator","cardId":89,"from":"Hand","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"0/0","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gaea's Cradle","cardId":97,"from":"Hand","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Valley Floodcaller","cardId":22,"from":"Hand","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Seedborn Muse","cardId":11,"from":"Hand","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Emergence Zone","cardId":82,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Finale of Devastation","cardId":75,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Elvish Spirit Guide","cardId":90,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Ancient Tomb","cardId":31,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Candelabra of Tawnos","cardId":88,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gilded Drake","cardId":29,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"City of Brass","cardId":35,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":1,"card":"Delighted Halfling","cardId":278,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":1,"card":"Shifting Woodland","cardId":233,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Wheel of Fate","cardId":311,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Marsh Flats","cardId":379,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Mox Opal","cardId":374,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Mox Opal","cardId":374,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Marsh Flats","cardId":379,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Underground Sea","cardId":389,"from":"Library","to":"Battlefield","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Imperial Seal","cardId":306,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Elvish Spirit Guide","cardId":388,"from":"Library","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Imperial Seal","cardId":306,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Misty Rainforest","cardId":17,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Ancient Tomb","cardId":31,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Rograkh, Son of Rohgahh","cardId":99,"from":"Command","to":"Stack","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Rograkh, Son of Rohgahh","cardId":99,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Elvish Spirit Guide","cardId":188,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Mox Diamond","cardId":190,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Ancient Tomb","cardId":127,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Mox Diamond","cardId":190,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-kinnan","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Command Tower","cardId":157,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Kinnan, Bonder Prodigy","cardId":199,"from":"Command","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Kinnan, Bonder Prodigy","cardId":199,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Fellwar Stone","cardId":124,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Elvish Spirit Guide","cardId":188,"from":"Hand","to":"Exile","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Elvish Mystic","cardId":172,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Elvish Mystic","cardId":172,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Inventors' Fair","cardId":204,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Inventors' Fair","cardId":204,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Delighted Halfling","cardId":278,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Delighted Halfling","cardId":278,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Elvish Spirit Guide","cardId":388,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Mystical Tutor","cardId":344,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Ad Nauseam","cardId":329,"from":"Library","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Mystical Tutor","cardId":344,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Song of Creation","cardId":94,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Emergence Zone","cardId":82,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":8,"card":"Chain of Vapor","cardId":152,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Forest","cardId":263,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Forest","cardId":263,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"The Cabbage Merchant","cardId":300,"from":"Command","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"The Cabbage Merchant","cardId":300,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Ad Nauseam","cardId":329,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"The One Ring","cardId":42,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"City of Brass","cardId":35,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Finale of Devastation","cardId":75,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Elvish Spirit Guide","cardId":90,"from":"Hand","to":"Exile","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Food Token","cardId":405,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":11,"card":"Enduring Vitality","cardId":83,"from":"Library","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature,Enchantment","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Finale of Devastation","cardId":75,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Brainstorm","cardId":397,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Food Token","cardId":408,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":11,"card":"Carpet of Flowers","cardId":357,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Otawara, Soaring City","cardId":307,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Ancient Tomb","cardId":324,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Elvish Spirit Guide","cardId":388,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Carpet of Flowers","cardId":357,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Brainstorm","cardId":397,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":12,"card":"Mirrormade","cardId":168,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":12,"card":"Food Token","cardId":408,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":12,"card":"Mirrormade","cardId":168,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":12,"card":"Food Token","cardId":411,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":12,"card":"Enduring Vitality","cardId":168,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-kinnan","types":"Creature,Enchantment","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Archdruid's Charm","cardId":286,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Enduring Vitality","cardId":168,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Creature,Enchantment","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Archdruid's Charm","cardId":286,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Misty Rainforest","cardId":219,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Gaea's Cradle","cardId":289,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Stridehangar Automaton","cardId":227,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature,Artifact","pt":"1/4","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Stridehangar Automaton","cardId":227,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"1/4","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Sylvan Tutor","cardId":221,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Bristlebud Farmer","cardId":238,"from":"Library","to":"Library","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"5/5","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Sylvan Tutor","cardId":221,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Carpet of Flowers","cardId":357,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Ancient Tomb","cardId":324,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Wooded Foothills","cardId":41,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Misty Rainforest","cardId":17,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Misty Rainforest","cardId":17,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Breeding Pool","cardId":28,"from":"Library","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Song of Creation","cardId":94,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Brain Freeze","cardId":352,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Fierce Guardianship","cardId":23,"from":"Library","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Sowing Mycospawn","cardId":40,"from":"Library","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Eternal Witness","cardId":5,"from":"Library","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Food Token","cardId":417,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":15,"card":"Thopter Token","cardId":418,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"2/2","token":true}
+{"rec":"zone","game":0,"turn":15,"card":"Rhystic Study","cardId":24,"from":"Library","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Delighted Halfling","cardId":46,"from":"Library","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Scalding Tarn","cardId":49,"from":"Library","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Brain Freeze","cardId":352,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Food Token","cardId":421,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":15,"card":"Thopter Token","cardId":422,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"2/2","token":true}
+{"rec":"zone","game":0,"turn":15,"card":"Song of Creation","cardId":94,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-rog_thrasios","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Wooded Foothills","cardId":41,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Wooded Foothills","cardId":41,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Volcanic Island","cardId":58,"from":"Library","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Candelabra of Tawnos","cardId":88,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Gilded Drake","cardId":29,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"The One Ring","cardId":42,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":16,"card":"Mindbreak Trap","cardId":177,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Bristlebud Farmer","cardId":238,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"5/5","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Misty Rainforest","cardId":219,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Misty Rainforest","cardId":219,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Dryad Arbor","cardId":235,"from":"Library","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land,Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Bristlebud Farmer","cardId":238,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"5/5","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Bristlebud Farmer","cardId":238,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"5/5","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Food Token","cardId":427,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":17,"card":"Food Token","cardId":428,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":17,"card":"Thopter Token","cardId":429,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"2/2","token":true}
+{"rec":"zone","game":0,"turn":17,"card":"Kuldotha Forgemaster","cardId":214,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature,Artifact","pt":"3/5","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Kuldotha Forgemaster","cardId":214,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"3/5","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Elvish Spirit Guide","cardId":388,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Otawara, Soaring City","cardId":307,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Gaea's Cradle","cardId":97,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Gaea's Cradle","cardId":97,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Thrasios, Triton Hero","cardId":101,"from":"Command","to":"Stack","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Boseiju, Who Endures","cardId":98,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Snap","cardId":76,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Thrasios, Triton Hero","cardId":101,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Boseiju, Who Endures","cardId":98,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Snap","cardId":76,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":20,"card":"Valley Floodcaller","cardId":116,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":20,"card":"Mindbreak Trap","cardId":78,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":20,"card":"Mindbreak Trap","cardId":78,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":20,"card":"Mindbreak Trap","cardId":78,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Inventors' Fair","cardId":204,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Academy Manufactor","cardId":246,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Island","cardId":44,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Tropical Island","cardId":55,"from":"Library","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Allosaurus Shepherd","cardId":220,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Food Token","cardId":428,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":21,"card":"Clock of Omens","cardId":277,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Worldly Tutor","cardId":293,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Thousand-Year Elixir","cardId":268,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Clock of Omens","cardId":277,"from":"Graveyard","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Eternal Witness","cardId":209,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Eternal Witness","cardId":209,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Thousand-Year Elixir","cardId":268,"from":"Graveyard","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Academy Manufactor","cardId":246,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature,Artifact","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Academy Manufactor","cardId":246,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Thousand-Year Elixir","cardId":268,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Thousand-Year Elixir","cardId":268,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Allosaurus Shepherd","cardId":220,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Allosaurus Shepherd","cardId":220,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":22,"card":"Fierce Guardianship","cardId":317,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Training Grounds","cardId":72,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Training Grounds","cardId":72,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Training Grounds","cardId":72,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Sylvan Scrying","cardId":30,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Sylvan Scrying","cardId":30,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Sylvan Scrying","cardId":30,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Displacer Kitten","cardId":38,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Displacer Kitten","cardId":38,"from":"Library","to":"Library","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Displacer Kitten","cardId":38,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Wheel of Fortune","cardId":70,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Training Grounds","cardId":72,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Thopter Token","cardId":436,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"2/2","token":true}
+{"rec":"zone","game":0,"turn":23,"card":"Clue Token","cardId":437,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":23,"card":"Food Token","cardId":438,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":23,"card":"Treasure Token","cardId":439,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":23,"card":"Minamo, School at Water's Edge","cardId":57,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Green Sun's Zenith","cardId":6,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Training Grounds","cardId":72,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-rog_thrasios","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Minamo, School at Water's Edge","cardId":57,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Valley Floodcaller","cardId":116,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Valley Floodcaller","cardId":116,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Mindbreak Trap","cardId":78,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Sylvan Scrying","cardId":30,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Displacer Kitten","cardId":38,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Wheel of Fortune","cardId":70,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Green Sun's Zenith","cardId":6,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-rog_thrasios","toPlayer":"Ai(1)-rog_thrasios","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Basalt Monolith","cardId":197,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Basalt Monolith","cardId":197,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Thopter Token","cardId":446,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"2/2","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Clue Token","cardId":447,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Food Token","cardId":448,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Treasure Token","cardId":449,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Fierce Guardianship","cardId":317,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Thopter Token","cardId":456,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"2/2","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Clue Token","cardId":457,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Food Token","cardId":458,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Treasure Token","cardId":459,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Basalt Monolith","cardId":197,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(2)-kinnan","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Fierce Guardianship","cardId":317,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Birds of Paradise","cardId":274,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Food Token","cardId":458,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":25,"card":"Green Sun's Zenith","cardId":208,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Tree of Tales","cardId":213,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land,Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Crop Rotation","cardId":251,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Tree of Tales","cardId":213,"from":"Graveyard","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land,Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Tree of Tales","cardId":213,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land,Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Birds of Paradise","cardId":274,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Birds of Paradise","cardId":274,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Beseech the Mirror","cardId":396,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":27,"card":"Nyxbloom Ancient","cardId":173,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Creature,Enchantment","pt":"5/5","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Chord of Calling","cardId":218,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Chord of Calling","cardId":218,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Wandering Archaic","cardId":299,"from":"Library","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"4/4","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Chord of Calling","cardId":218,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Food Token","cardId":448,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":28,"card":"Mox Amber","cardId":229,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Endurance","cardId":225,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"3/4","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Six","cardId":228,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Endurance","cardId":225,"from":"Graveyard","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"3/4","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Endurance","cardId":225,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"3/4","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Treasure Token","cardId":459,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":28,"card":"Treasure Token","cardId":449,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":28,"card":"Endurance","cardId":225,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"3/4","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Imperial Seal","cardId":306,"from":"Graveyard","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Brainstorm","cardId":397,"from":"Graveyard","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Fierce Guardianship","cardId":317,"from":"Graveyard","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Brain Freeze","cardId":352,"from":"Graveyard","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Mystical Tutor","cardId":344,"from":"Graveyard","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Marsh Flats","cardId":379,"from":"Graveyard","to":"Library","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Mystic Remora","cardId":361,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Mystic Remora","cardId":361,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Thopter Token","cardId":466,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature,Artifact","pt":"2/2","token":true}
+{"rec":"zone","game":0,"turn":29,"card":"Clue Token","cardId":467,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":29,"card":"Food Token","cardId":468,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":29,"card":"Treasure Token","cardId":469,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":29,"card":"Mystic Remora","cardId":361,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Delighted Halfling","cardId":139,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-kinnan","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Delighted Halfling","cardId":139,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-kinnan","toPlayer":"","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Delighted Halfling","cardId":139,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-kinnan","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Compost","cardId":287,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Food Token","cardId":468,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":31,"card":"Lotus Petal","cardId":226,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Llanowar Elves","cardId":271,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Fomori Vault","cardId":232,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Llanowar Elves","cardId":271,"from":"Graveyard","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Compost","cardId":287,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Compost","cardId":287,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Llanowar Elves","cardId":271,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":31,"card":"Llanowar Elves","cardId":271,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":32,"card":"Gemstone Mine","cardId":345,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":32,"card":"Gemstone Mine","cardId":345,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-yidris","toPlayer":"Ai(4)-yidris","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":32,"card":"Elvish Spirit Guide","cardId":388,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-yidris","toPlayer":"","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":32,"card":"Elvish Spirit Guide","cardId":388,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(4)-yidris","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":33,"card":"The Shire","cardId":210,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":33,"card":"The Shire","cardId":210,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":33,"card":"Food Token","cardId":438,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":33,"card":"Vivien, Monsters' Advocate","cardId":290,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Planeswalker","pt":"","token":false}
+{"rec":"zone","game":0,"turn":33,"card":"Elvish Spirit Guide","cardId":270,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":33,"card":"Augur of Autumn","cardId":252,"from":"Library","to":"Graveyard","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"2/3","token":false}
+{"rec":"zone","game":0,"turn":33,"card":"Elvish Spirit Guide","cardId":270,"from":"Graveyard","to":"Hand","fromPlayer":"Ai(3)-cabbage_merchant","toPlayer":"Ai(3)-cabbage_merchant","types":"Creature","pt":"2/2","token":false}
+{"rec":"result","game":0,"draw":false,"winner":"Ai(3)-cabbage_merchant","turns":33,"timedOut":false,"seats":[{"name":"Ai(1)-rog_thrasios","life":-21,"alive":false},{"name":"Ai(2)-kinnan","life":-11,"alive":false},{"name":"Ai(3)-cabbage_merchant","life":37,"alive":true},{"name":"Ai(4)-yidris","life":-4,"alive":false}],"ms":80232}

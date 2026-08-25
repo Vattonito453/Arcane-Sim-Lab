@@ -1,0 +1,119 @@
+{
+  "video_id": "CxKMqO36DdM",
+  "url": "https://www.youtube.com/watch?v=CxKMqO36DdM",
+  "channel": "MTG Basics",
+  "title": "FINALS! tournament cedh gameplay: BlueFarm v BlueFarm v TnT v Ral",
+  "upload_date": "20260313",
+  "event": "Mid-Season Showdown 2026, Topdeck Championship Series, finals (single game)",
+  "players": {
+    "note": "confirmed from on-screen name placards via video frame sampling 2026-08-24 (DALLAS - BLUEFARM top-left, ALAN - TNT top-right, JOSEPH - RAL bottom-left, STERLING - BLUEFARM bottom-right); commentators call Joseph 'Pigeon' (topdeck name 'Bun')",
+    "bluefarm_dallas": "Dallas Glaze (Tymna the Weaver / Kraum, Ludevic's Opus)",
+    "tnt": "A!an (Alan) (Tymna the Weaver / Thrasios, Triton Hero)",
+    "bluefarm_sterling": "Sterling Sellards (Tymna the Weaver / Kraum, Ludevic's Opus)",
+    "ral": "Joseph 'Bun'/'Pigeon' (Ral, Monsoon Mage)"
+  },
+  "extraction": {
+    "method": "manual LLM read of auto-captions (data/transcripts/CxKMqO36DdM.txt) over the gameplay window 17:48-1:43:25, plus targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills) for seat placards, card popups (Jeska's Will, Harnfel Horn of Bounty, Lion's Eye Diamond, Boseiju, Kraum), and life totals",
+    "extracted_on": "2026-08-24",
+    "caveats": [
+      "Auto-captions only; card names garbled and repaired against the provided decklists; each repair is flagged.",
+      "One 85-minute game with two 40-minute stack wars; individual priority passes inside the wars are attributed at medium confidence.",
+      "The provided Dallas decklist demonstrably diverges from the list he actually played (see known_list_divergences): Jeska's Will and Harnfel, Horn of Bounty are frame-verified on stream but absent from the file.",
+      "The stream shows a countdown game clock (e.g. 162:23 at video 30:00, 90:57 at video 101:00); the game came within ~90 minutes of its clock but did not go to time."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "17:48-1:43:25 (single finals game)",
+      "seat_order": ["bluefarm_dallas", "tnt", "bluefarm_sterling", "ral"],
+      "seat_order_confidence": "high; commentary names Dallas seat 1, Sterling C3, Ral C4/'seat four' (player self-reports it at 50:50), and frame placards match",
+      "winner_player": "Dallas Glaze",
+      "winner_deck": "bluefarm_dallas",
+      "win_turn_estimate": 5,
+      "win_turn_note": "Table round 5 = Dallas's 5th turn (he is seat 1, so table rounds equal his turn count). Round accounting is medium confidence (could be 6 if a quiet round was fully off-audio); the winning turn alone ran ~40 minutes of wall clock (video 62:30-103:20).",
+      "win_method": "Dallas wins the counter-war over his own Voice of Victory turn (his Mindbreak Trap exiles Alan's Force of Will and Chord of Calling plus Sterling's Borne Upon a Wind), then goes off: Badlands land drop, Jeska's Will for 38 red mana off Alan's ~38-card hand, a wheel effect, Harnfel Horn of Bounty filtering, Lion's Eye Diamond into Underworld Breach through heavy Rhystic Study / Mystic Remora taxes (players call it 'the most expensive breach line ever'), recasting Jeska's Will and Deflecting Swat from the graveyard, and shows Brain Freeze at storm ~40; opponents concede (fist bumps at 1:43:21).",
+      "mulligans": [
+        {"seat": "bluefarm_dallas", "kept": 6, "detail": "mulled once, kept Esper Sentinel, Mox Opal, Mindbreak Trap, Chain of Vapor, Tundra, Ancient Tomb; bottomed Cabal Ritual", "repair": "'Mind Break Trap' -> Mindbreak Trap"},
+        {"seat": "tnt", "kept": 7, "detail": "kept Mindbreak Trap, Clever Impersonator, Tainted Pact, Mockingbird, Arcane Signet, Sol Ring, Marsh Flats", "repair": "'soul ring' -> Sol Ring; 'arcan signant' -> Arcane Signet; 'taint pack' -> Tainted Pact"},
+        {"seat": "bluefarm_sterling", "kept": 6, "detail": "mulled once, kept Rite of Flame, Marsh Flats, Beseech the Mirror, Imperial Seal, Misty Rainforest, Gitaxian Probe; bottomed Mnemonic Betrayal", "repair": "'right of flame' -> Rite of Flame; 'besiege the mirror' -> Beseech the Mirror; 'meme betrayal' -> Mnemonic Betrayal; 'git probe' -> Gitaxian Probe"},
+        {"seat": "ral", "kept": 7, "detail": "kept his second seven: two lands, An Offer You Can't Refuse, Ragavan Nimble Pilferer, a dig spell (unidentified), Storm-Kiln Artist, _____ Goblin", "repair": "'Sticker Goblin' -> _____ Goblin; 'SCA / Stormkill Artist' -> Storm-Kiln Artist; dig spell unrepaired"}
+      ],
+      "commander_deploys": [
+        {"seat": "tnt", "commander": "Tymna the Weaver", "turn": 2, "timestamp": "25:28", "confidence": "high"},
+        {"seat": "ral", "commander": "Ral, Monsoon Mage", "turn": 2, "timestamp": "27:44", "note": "'tapping out for R', keeping one treasure open for An Offer You Can't Refuse", "confidence": "high"},
+        {"seat": "bluefarm_dallas", "commander": "Kraum, Ludevic's Opus", "turn": 3, "timestamp": "~28:35 (Kraum card popup frame-verified at video ~30:00)", "note": "'No, I'm playing chromis'; commentators discuss 'the deployment of Crom' at 30:37; Dallas's Kraum later takes forced draws off opponents' second spells and attacks for 4 in the air on turn 5", "confidence": "medium"},
+        {"seat": "bluefarm_dallas", "commander": "Tymna the Weaver", "turn": null, "note": "in play by Dallas's turn-5 combat ('and then Tymna there', 64:18); the deploy itself was off-audio, likely turn 4", "confidence": "low"},
+        {"seat": "tnt", "commander": "Thrasios, Triton Hero", "turn": null, "note": "never cast; commentator armchair-review at 101:14 says casting Thrasios instead of Voice of Victory was the better line", "confidence": "high"},
+        {"seat": "bluefarm_sterling", "commander": null, "turn": null, "note": "no commander deploy observed for Sterling in captions or sampled frames", "confidence": "medium"}
+      ],
+      "key_line": [
+        {"turn": 1, "seat": "bluefarm_dallas", "play": "land, Esper Sentinel", "note": "commentators expect it to 'draw at least one or two cards in the first turn rotation'"},
+        {"turn": 1, "seat": "bluefarm_sterling", "play": "Gitaxian Probe targeting Dallas (Joseph voluntarily showed him the Ragavan instead of being probed); Imperial Seal on his own turn putting Rhystic Study on top", "note": "commentators call probing Dallas instead of Ral 'probably a mistake'", "repair": "'imal / MCL / inseal' -> Imperial Seal"},
+        {"turn": 1, "seat": "ral", "play": "land, Ragavan, Nimble Pilferer", "confidence": "medium; the cast itself is inferred from 'the Ragavan he was gonna cast on turn one' plus its turn-2 attack"},
+        {"turn": 2, "seat": "tnt", "play": "Chrome Mox (imprint claimed to be a 'Borne'; no Borne Upon a Wind is in the TnT list, so the imprint is unidentified), cast Tymna, end-step Faerie Mastermind", "repair": "'ferry / fairy' -> Faerie Mastermind; imprint unrepaired", "note": "commentators: 'Allan's way ahead now'"},
+        {"turn": 2, "seat": "bluefarm_sterling", "play": "cast Rhystic Study (the Imperial Seal target)", "repair": "'wristic / rristic / risk study' -> Rhystic Study"},
+        {"turn": 2, "seat": "ral", "play": "Ragavan attacks Sterling (no blockers) for a treasure; tap out for Ral, Monsoon Mage, holding one treasure for An Offer You Can't Refuse"},
+        {"turn": 3, "seat": "bluefarm_dallas", "play": "cast Kraum, Ludevic's Opus", "confidence": "medium"},
+        {"turn": 3, "seat": "tnt", "play": "attacks three players (2/1/4 split), Tymna lifelink +2, pays 3 life to draw 3 off Tymna, then Mox Amber; Mockingbird (copying Esper Sentinel), Faerie Mastermind and Esper draws trigger around it; discards to hand size", "repair": "'mock samber' -> Mox Amber; 'mocking bird' -> Mockingbird", "note": "recap at 70:23 confirms Mockingbird entered copying an Esper Sentinel"},
+        {"turn": 4, "seat": "tnt", "play": "deploys Clever Impersonator and a second Esper Sentinel, resolves Smothering Tithe (table cannot afford to stop it), then Voice of Victory; the table refuses to let Kinnan, Bonder Prodigy resolve and negotiates an 'F6 shortcut': Voice resolves on condition Alan takes no further game actions, discards, and passes", "repair": "'Kenan / canon / kitten' -> Kinnan, Bonder Prodigy; 'tithe / tie / tote' -> Smothering Tithe", "note": "commentators: 'if that voice of victory is still there when it gets back to Allen's turn, the game is over. We know he has a finale in hand' (Finale of Devastation)"},
+        {"turn": 4, "seat": "bluefarm_sterling", "play": "cast Mystic Remora ('deployment of a fish'); could not otherwise slow Alan down", "repair": "'fish' -> Mystic Remora"},
+        {"turn": 4, "seat": "ral", "play": "hero push: _____ Goblin for mana, Storm-Kiln Artist, Ral triggers building treasures, Gut Shot on Alan's Faerie Mastermind, Pact of Negation countering Alan's Valley Floodcaller, An Offer You Can't Refuse on Alan's Mindbreak Trap (twice, feeding Alan treasures), Hidden Strings untapping his two lands, storm to 12+; transforms Ral (flip resolves under a Silence), the flipped Ral's damage destroys Alan's Smothering Tithe, and he Lightning Bolts Alan's Voice of Victory; the win attempt dies to the Silence and a table deal, he passes having neutered Alan's board", "repair": "'pack of negation' -> Pact of Negation; 'valley flood caller' -> Valley Floodcaller; 'gutshot' -> Gut Shot; 'bolt' -> Lightning Bolt", "note": "cards spoken around the fizzled flip: Frantic Search, Witch's Mark, Mystical Tutor, plus 'interruption' (possibly Untimely Malfunction, unrepaired); Alan makes the explicit deal 'I will make the deal to not win' to let Silence resolve"},
+        {"turn": 5, "seat": "bluefarm_dallas", "play": "THE WINNING TURN. Combat: Kraum 4 flying at Alan, 2 at Sterling, Tymna draws 3. Main: Voice of Victory sparks the war; Alan reveals a 24-card hand and responds with Tainted Pact (exiling important pieces from his own deck; 'This card. That hurts. You can still win. You sure?'), Force of Will, and Chord of Calling for Ranger-Captain of Eos; Sterling attempts Borne Upon a Wind; Dallas answers with Force of Will, Fierce Guardianship, and Mindbreak Trap exiling Alan's Force of Will + Chord of Calling + Sterling's Borne; Alan's Force of Negation (pitching Fierce Guardianship) at the Trap is turned aside by Dallas's Deflecting Swat; the Trap resolves ('Where's my blue mana? GG')", "repair": "'quarter calling / court of calling' -> Chord of Calling; 'born upon a win' -> Borne Upon a Wind; 'my break / MVT / MBT' -> Mindbreak Trap; 'tenac / tainted pot' -> Tainted Pact"},
+        {"turn": 5, "seat": "bluefarm_dallas", "play": "The payoff: Badlands land drop, Jeska's Will (choosing both modes) making 38 red mana off Alan's ~38-40 card hand and exiling his own top three (hit two lands), 'play the wheel' (wheel effect, exact card unidentified), Harnfel, Horn of Bounty activations ('10 for horn' through the taxes), Lion's Eye Diamond, Underworld Breach paying Rhystic Study / Mystic Remora / Esper taxes on everything ('the most expensive breach line ever', storm ~20 at Breach), recasts Jeska's Will from the graveyard paying 8 in taxes; Alan channels Boseiju, Who Endures at the engine and Dallas recasts Deflecting Swat from the graveyard to push it onto a land; Alan's Orcish Bowmasters shoots down Voice of Victory during the draws; Brain Freeze shown at storm ~40 ('Was it exactly 40? I'm cool with calling it 40'); GGs and fist bumps", "repair": "'jill / J will / jet build' -> Jeska's Will (FRAME-VERIFIED popup; not in provided list); 'horn / getting horny' -> Harnfel, Horn of Bounty (FRAME-VERIFIED popup; not in provided list); 'bridge line / breach' -> Underworld Breach; 'D SWAT / swap / swat' -> Deflecting Swat; 'bosu' -> Boseiju, Who Endures (frame-verified popup); 'bow master' -> Orcish Bowmasters; 'the wheel' UNREPAIRED (no wheel effect in the provided Dallas list)"}
+      ],
+      "interaction_events": [
+        {"timestamp": "46:43", "event": "Joseph: Gut Shot on Alan's Faerie Mastermind (removing the flash-draw engine)"},
+        {"timestamp": "52:36", "event": "Joseph: Pact of Negation countering Alan's Valley Floodcaller ('this is a 3v1 fight')"},
+        {"timestamp": "53:30 and 55:04", "event": "Joseph: An Offer You Can't Refuse on Alan's Mindbreak Trap, twice ('You want more treasures, sir?')"},
+        {"timestamp": "57:38-57:43", "event": "Joseph transforms Ral; flipped Ral's damage destroys Alan's Smothering Tithe"},
+        {"timestamp": "59:04", "event": "Joseph: Lightning Bolt on Alan's Voice of Victory"},
+        {"timestamp": "59:36-62:00", "event": "Silence stops the flipped-Ral win attempt; Alan explicitly deals 'I will make the deal to not win' so it resolves. Caster uncertain: commentary says Alan in the moment (60:58) and Dallas in the recap (72:19); Dallas is the strategic beneficiary (he untaps and wins)"},
+        {"timestamp": "67:30", "event": "Alan: Tainted Pact digging for interaction against Dallas, exiling key pieces from his own deck (identity of the painful exile unconfirmed; possibly Thassa's Oracle)"},
+        {"timestamp": "68:04-69:00", "event": "Alan: Chord of Calling for Ranger-Captain of Eos as a stop to Dallas's turn; table pre-negotiates fighting over Dallas's revealed Final Fortune if it resolves"},
+        {"timestamp": "82:30-89:45", "event": "The decisive counter-war: Alan Force of Will + Chord of Calling and Sterling Borne Upon a Wind vs Dallas Force of Will + Fierce Guardianship + Mindbreak Trap; Alan Force of Negation (pitching Fierce Guardianship) at the Trap is Deflecting Swat-ed by Dallas; Alan Pact of Negation sandbag discussed; the Trap resolves and exiles all three threats to Dallas's win"},
+        {"timestamp": "91:52", "event": "Alan: Orcish Bowmasters triggers shoot Dallas's Voice of Victory during the wheel draws (controller attribution medium confidence)"},
+        {"timestamp": "96:40-98:46", "event": "Alan: Boseiju, Who Endures channel at Dallas's Breach engine; Dallas recasts Deflecting Swat from the graveyard via Breach and the channel hits a land instead; commentators later note Boseiju 'just doesn't do anything' with the Swat in the yard"}
+      ],
+      "negotiations_and_concessions": [
+        {"timestamp": "37:40-38:00", "event": "F6 shortcut deal: table lets Alan's Voice of Victory resolve on the binding condition he takes no further game actions, discards, and passes"},
+        {"timestamp": "60:23", "event": "Alan: 'I will make the deal to not win' to let Silence resolve against the flipped Ral"},
+        {"timestamp": "62:52-63:15", "event": "Multiple players declare themselves 'F6 no matter what'; Sterling asks Alan not to recast Tithe if the game continues"},
+        {"timestamp": "95:25 and 99:07", "event": "Dallas offers 'if y'all have nothing, we can call it'; opponents verify the Brain Freeze count ('I'm cool with calling it 40') and concede; fist bumps at 1:43:21. No draw was ever offered"}
+      ],
+      "life_totals_observed": [
+        {"video_time": "~30:00", "totals": {"bluefarm_dallas": 35, "tnt": 36, "ral": 34, "bluefarm_sterling": 29}, "source": "frame"},
+        {"video_time": "~93:30", "totals": {"bluefarm_dallas": 19, "tnt": 31, "ral": 21, "bluefarm_sterling": 19}, "source": "frame"},
+        {"video_time": "~101:00", "totals": {"bluefarm_dallas": 17, "tnt": 31, "ral": 21, "bluefarm_sterling": 19}, "source": "frame"}
+      ],
+      "commentator_review": "Armchair review at 101:14-103:00: (1) Alan casting Voice of Victory and passing 'basically said answer me or die' and fueled everything that followed; casting Thrasios and holding Tithe mana was the better line. (2) Sterling's Borne Upon a Wind on top of the giant stack was 'a little greedy'; the green light for a flash enabler is opponents passing on silence effects, and too many spells sat between him and the Voice.",
+      "extraction_confidence": "high for winner, seats, win method, and the frame-verified cards; medium for the round count (5, possibly 6) and for individual attributions inside the two stack wars"
+    }
+  ],
+  "headline_features": {
+    "human_win_turns": [5],
+    "winner": "Dallas Glaze, Blue Farm (Tymna/Kraum), seat 1",
+    "first_commander_turn": {"tnt_tymna": 2, "ral": 2, "dallas_kraum": 3},
+    "game_length": "one game, ~85 minutes of gameplay for ~5 table rounds; the winning turn alone ran ~40 minutes",
+    "interaction_density": "extreme: two multi-spell counter-wars (Joseph's turn-4 storm push and Dallas's turn-5 win), 10+ distinct interaction events captured, plus continuous Rhystic Study / Mystic Remora / Esper Sentinel tax negotiation on nearly every spell",
+    "notable_dynamics": [
+      "3v1 table alliances formed twice: first against Alan's TnT 'Exodia' board, then briefly against the flipped Ral",
+      "Alan drew into a 38-40 card hand off Smothering Tithe plus four draw engines and still lost; his own hand size powered Dallas's 38-mana Jeska's Will",
+      "Explicit binding shortcuts/deals ('F6 shortcut', 'deal to not win') used as game actions",
+      "Seat 1 time-default rule was live commentary context; the stream game clock fell from 162:23 to ~89:00 remaining"
+    ],
+    "known_list_divergences": [
+      "Dallas (winner): Jeska's Will and Harnfel, Horn of Bounty are frame-verified on stream but absent from decks/CxKMqO36DdM/dallas_bluefarm.txt; the 'wheel' he cast at ~92:40 also matches nothing in the file. The provided list is drifted or a wrong substitute; treat Dallas card-level repairs accordingly.",
+      "Alan claimed his turn-2 Chrome Mox imprinted 'a Borne'; no Borne Upon a Wind exists in the TnT list (commentators note it as a bluff tactic; imprint unidentified)"
+    ]
+  },
+  "open_questions": [
+    "Who cast the Silence that stopped the flipped Ral: commentary says Alan at 60:58 but Dallas at 72:19 (both run Silence; Sterling runs Silence and Orim's Chant too)",
+    "Exact identity of Dallas's 'wheel' at ~92:40 (Wheel of Fortune-style effect; nothing in the provided list matches)",
+    "What Alan's Tainted Pact exiled that 'hurts' but left him able to win (possibly Thassa's Oracle)",
+    "Which player controlled the Orcish Bowmasters that shot Voice of Victory at 91:52 (Alan and Dallas both run it; Alan assumed)",
+    "Turn Dallas deployed Tymna (in play by his turn-5 combat; deploy off-audio)",
+    "Precise Ral, Monsoon Mage transform trigger as played ('sorcerer needs to be number six' is the only spoken rule detail)",
+    "Whether the final kill was pure Brain Freeze mill-out or Brain Freeze into Thassa's Oracle; opponents conceded at the Brain Freeze demonstration before it fully executed"
+  ]
+}

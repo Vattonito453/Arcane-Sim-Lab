@@ -1,0 +1,127 @@
+{
+  "video_id": "B421mac67IE",
+  "url": "https://www.youtube.com/watch?v=B421mac67IE",
+  "channel": "MTG Basics",
+  "title": "Excalibur Pittsburgh Tournament cEDH: Yisan v Sisay v Kinnan v MalcolmVial",
+  "upload_date": "20260723",
+  "event": "Excalibur Pittsburgh 2026 top 16 (stream overlay); casters call it 'Steel City Spectacular 2026' at [48:58]. Casters: Ty Ohio, Eric Beagle.",
+  "players": {
+    "note": "confirmed from on-screen seat overlays via video frame sampling 2026-08-24 (overlay spellings kept; auto-captions render Swaney as 'Sweeney'/'Swainy')",
+    "sisay": "Matthew Swaney [Monolith], seat C1",
+    "kinnan": "Dexter Idzikowski, seat C2",
+    "malcolm_vial": "Lily Drake [Monolith], seat C3",
+    "yisan": "Isaac Cooper (Trinisphere), seat C4"
+  },
+  "extraction": {
+    "method": "manual LLM read of timestamped auto-captions (data/transcripts/B421mac67IE.txt) plus targeted video frame sampling (yt-dlp --download-sections + ffmpeg stills at ~13:00, 30:00, 51:00, 52:40, 57:30, 66:00, 78:00) for seat overlays, life totals, card popups, and the win moment",
+    "extracted_on": "2026-08-24",
+    "caveats": [
+      "One 87-minute game with heavy table talk, deal-making, and commentary cutaways; auto-captions garble card names, repaired against the published decklists with each repair flagged.",
+      "Mid-game commander-control bookkeeping (Volatile Stormdrake exchanges, clones, Sudden Substitution) is the least reliable stretch; entries there carry explicit confidence labels.",
+      "Turn boundaries are frequently inaudible; the round count is an estimate built from 'untap/upkeep/draw' markers and is labeled as such.",
+      "Life totals come from sampled frames only (six snapshots), not a continuous read."
+    ]
+  },
+  "games": [
+    {
+      "game": 1,
+      "timestamps": "11:30-78:17 (mulligans discussed 02:52-10:35; post-game interview 81:20-86:38)",
+      "seat_order": ["sisay", "kinnan", "malcolm_vial", "yisan"],
+      "seat_order_confidence": "high; read directly from the stream's numbered seat overlays in sampled frames",
+      "winner_deck": "sisay",
+      "win_turn_estimate": 10,
+      "win_turn_note": "table rounds = the winner's own turns elapsed. Matt turn markers identified at ~11:31, 12:37, 14:21, 22:15, 47:41, 50:33 and the winning turn at 71:37; roughly 3 mid-game Matt turns (~24-47 min) left no clear caption marker. Estimate 10, plausible range 9-12.",
+      "win_method": "Engine win out of the Sisay 99 after Sisay itself was stolen: Smothering Tithe treasure hoard (17 treasures at one point) plus Matt's own Kinnan, Bonder Prodigy doubling them; repeated 7-mana Kinnan activations ('spins') deploy Enduring Vitality (every creature becomes a mana dork), Derevi, Empyrial Tactician, Ignoble Hierarch and Ragavan, Nimble Pilferer; Emiel the Blessed blinks Derevi for unbounded untaps = infinite mana; then the stated deterministic line: spin until Deadpool, Trading Card, text-box swap Deadpool with the stolen Sisay, activate the reclaimed Sisay ability to fetch Mount Doom, and use Mount Doom's board-wipe ultimate to kill the table. Opponents concede ('GG's', 78:05-78:17). Crucially the whole line is activated abilities, dodging Isaac's Damping Sphere spell tax.",
+      "mulligans": [
+        {"seat": "sisay", "kept": 7, "cards_spoken": ["land", "land", "Crop Rotation", "Smothering Tithe", "Shang-Chi, Master of Kung Fu", "Birds of Paradise"], "repair": "'shangi' -> Shang-Chi, Master of Kung Fu; 'tithe' -> Smothering Tithe (frame-verified popup at 13:00)", "note": "only 6 of the 7 are spoken [03:00-03:09]; casters call it 'a very, very good hand'"},
+        {"seat": "kinnan", "kept": 6, "cards_spoken": ["Mana Confluence", "Tarnished Citadel", "Wan Shi Tong, Librarian", "Chrome Mox", "Mox Opal", "Dramatic Reversal"], "repair": "'one chiong' -> Wan Shi Tong, Librarian; 'mox open' -> Mox Opal"},
+        {"seat": "malcolm_vial", "kept": 4, "cards_spoken": ["Fellwar Stone", "Spire of Industry", "Mox Diamond", "Professional Face-Breaker"], "note": "mulligan to four, no land; casters praise the discipline of not keeping a dead six [09:52-10:35]"},
+        {"seat": "yisan", "kept": 7, "cards_spoken": ["Titania, Protector of Argoth", "Mox Diamond", "Damping Sphere", "Forest", "Formidable Speaker", "Nature's Rhythm", "Ancient Tomb"], "repair": "'a Titania' -> Titania, Protector of Argoth (only Titania in list)", "note": "casters flag the turn-1 Damping Sphere option; Isaac actually holds it until ~49:38"}
+      ],
+      "commander_deploy_turns": {
+        "yisan": {"turn": 1, "detail": "Mox Diamond pitching Forest + Ancient Tomb, Yisan turn 1 [12:18-12:33]", "confidence": "high"},
+        "malcolm": {"turn": 2, "detail": "'Cast Malcolm pass' [13:55]", "confidence": "high"},
+        "vial_smasher": {"turn": null, "detail": "never observed being cast", "confidence": "high that it stayed in the command zone through the recorded audio"},
+        "sisay": {"turn": 4, "detail": "inferred: 'You're somewhat close to just activ[ating]' [22:18] means Sisay is on board by Matt's turn 4; exact cast moment not captured", "confidence": "medium"},
+        "kinnan": {"turn": null, "detail": "Dexter's Kinnan cast moment never captured (casters discuss a possible turn-1 Kinnan at [11:03]); it is confirmed on board by [67:18] ('Dexter presumably has [Sisay] activations or Kinnan spins')", "confidence": "low"}
+      },
+      "key_line": [
+        {"turn": 1, "seat": "sisay", "play": "Starting Town, Birds of Paradise", "note": "interview [81:47]: 'I turn one bird into [turn two] tithe'; 'get that starting town out there' [11:31]"},
+        {"turn": 1, "seat": "yisan", "play": "Mox Diamond pitching Forest, Ancient Tomb, cast Yisan turn 1", "note": "the fastest commander at the table"},
+        {"turn": 2, "seat": "sisay", "play": "Ancient Tomb, Smothering Tithe", "note": "the Tithe goes unpaid nearly all game and finances the win; frame at 13:00 shows the Smothering Tithe popup"},
+        {"turn": 2, "seat": "malcolm_vial", "play": "cast Malcolm, Keen-Eyed Navigator [13:55]"},
+        {"turn": 3, "seat": "sisay", "play": "Verdant Catacombs fetching Scrubland; table discusses his Crop Rotation for Gaea's Cradle [15:24-16:40]", "confidence": "low on whether Crop Rotation was cast here or held; see the turn-9/10 counter event and open_questions"},
+        {"turn": 4, "seat": "malcolm_vial", "play": "attacks Matt with two fliers; Malcolm + Professional Face-Breaker triggers make two treasures [18:22-18:28]", "note": "PFB is on board despite the 4-card keep; Lily chips Matt all game (37 at 13:00 down to 11 at 78:00)"},
+        {"turn": 4, "seat": "yisan", "play": "Yisan verse 1 at end of Lily's turn fetches Birds of Paradise [18:33-19:14]; on his own turn verse 2 fetches Collector Ouphe [20:23-21:44] after the table warns 'find Ouphe or Phyrexian Revoker before he can activate'", "repair": "'collector o'/'oof' -> Collector Ouphe; 'one called provoker' -> Phyrexian Revoker", "note": "includes a floating-green-mana priority dispute [21:07-21:36]; the Ouphe locks Dexter's rocks, Lily's treasures, and Matt's treasures for the next ~45 minutes; 'It's a loadbearing oof' [25:34]"},
+        {"turn": 6, "seat": "kinnan", "play": "Finale of Devastation finds Volatile Stormdrake [27:05]; its ETB exchanges control with Yisan (Dexter pays 3 energy to keep it, 1 remaining [32:04]); Isaac receives the Drake", "repair": "'volatile storm drake' -> Volatile Stormdrake (frame-verified popup at 30:00)", "note": "casters: Dexter's hand holds Basalt Monolith and he 'can win the game right now' if the Ouphe leaves [28:37-28:47]"},
+        {"turn": 7, "seat": "malcolm_vial", "play": "attacks with Malcolm and Professional Face-Breaker, reaches five treasures, cracks all five through PFB's creature ability (legal under Ouphe): reveals Demonic Tutor, Chain of Vapor, more tutors; casts Demonic Tutor [35:11-36:24], later stated to have fetched Mystic Remora ('I DT'd for fish' [58:12])", "repair": "'Shane Vapor' -> Chain of Vapor; 'fish' -> Mystic Remora (cEDH slang, list-verified)", "note": "casters argue the fetch should have been Thassa's Oracle ('Oracle. The only way out.' [40:08]); she casts the Remora at [47:25]"},
+        {"turn": 8, "seat": "kinnan", "play": "casts Basalt Monolith (dead under Ouphe) [41:09]; activates the stolen Yisan ('one spin a turn' [43:28]); Sudden Substitution [43:38] exchanging control of a Mana Vault spell and a commander: inferred to be how Dexter takes Sisay; Yisan verse 3 fetches Trophy Mage from Dexter's own library [44:56]", "repair": "'seven substitution target manol and ean' -> Sudden Substitution targeting Mana Vault and a commander (both list-verified for Dexter)", "confidence": "low on the Sudden Substitution reconstruction; what is certain is Matt still controls Sisay at [37:30] ('I have a si') and casters confirm Dexter 'has stolen both the Yisan and the sis' by [49:14]"},
+        {"turn": 8, "seat": "malcolm_vial", "play": "attacks, PFB flip reveals Glint-Horn Buccaneer, Curiosity, Redirect Lightning (remain in exile) and an Underworld Breach off the top [46:44-47:22, caster recap 50:01]; casts Mystic Remora [47:25]"},
+        {"turn": 9, "seat": "yisan", "play": "finally deploys the Damping Sphere kept in the opener [49:34-49:38]", "note": "commander-less (Yisan stolen), Isaac pivots to pure stax; casters: 'the Ouphe and the sphere were the two pillars that whole game stood on' [80:53]"},
+        {"turn": 9, "seat": "sisay", "play": "casts Teferi, Time Raveler off Birds of Paradise doubled by his own Kinnan, Bonder Prodigy [52:24-53:19]", "note": "Kinnan is in Matt's 99; this is the first clear evidence Matt controls one, and Teferi shuts off instant-speed responses to the coming engine turn. Frame-verified: Teferi popup at 57:30 and Matt's 3-card hand sidebar (Boseiju, Who Endures / Lightning Greaves / Teferi, Time Raveler) at 51:00", "confidence": "high on the cast, medium on the turn number"},
+        {"turn": 10, "seat": "sisay", "play": "threatens the lock-break line: Crop Rotation into Gaea's Cradle into 'activation once finds Deadpool' [55:06-55:46]; Dexter counters the Crop Rotation [58:28] ('Uh, pierce', Fierce Guardianship per the post-game interview [82:55]: 'if Dexter doesn't fierce my crop rot, they're dead three turns earlier'), wrapped in a negotiated no-shenanigans deal with Lily [57:45-58:26, 62:02, 64:35]", "repair": "'pierce'/'fierce' -> Fierce Guardianship (interview-confirmed counter; exact counterspell name from captions is ambiguous)", "note": "the deal (a full unbothered turn, no pushes) is what later stops Dexter from fighting Matt's winning turn; casters post-game: 'the deal handicapped him too bad to be able to stop that' [79:47-79:58]"},
+        {"turn": 10, "seat": "kinnan", "play": "Imposter Mech enters as a copy of Volatile Stormdrake [65:32], exchange takes Collector Ouphe and Dexter lets it die to the energy clause ('this dies. I gain four energy' [66:31]) after asking Lily whether killing the Ouphe violates their deal [64:33-64:45]; attacks for 4 and 7 [66:49-67:00]", "repair": "'imposter mech' -> Imposter Mech (frame-verified popup at 66:00); 'the O'/'Plof' -> Collector Ouphe", "note": "the lock breaks after ~45 minutes; Damping Sphere's spell tax is now the only brake, and it does not tax activated abilities"},
+        {"turn": 10, "seat": "malcolm_vial", "play": "casters reveal her hand: Glint-Horn Buccaneer, Ragavan, Nimble Pilferer, Diabolic Intent, Sol Ring and one unrepaired card [67:56-68:02]; she forces a proactive spell ('I know there's like a zero chance this resolves' [69:36]) and attacks", "repair": "'Diabolic Content' -> Diabolic Intent; 'Soul Ring' -> Sol Ring", "unrepaired": "'Basosaural' has no plausible match in her list"},
+        {"turn": 10, "seat": "kinnan", "play": "Dexter's hand revealed by casters: Drift of Phantasms, Mirage Mirror, Clever Impersonator [69:07-69:16]; he transmutes Drift of Phantasms [69:18]"},
+        {"turn": 10, "seat": "sisay", "play": "WINNING TURN [71:37-78:17]: 'crack four treasures, make eight' (Kinnan doubling), chains Kinnan activations; spins deploy Enduring Vitality, Derevi, Ignoble Hierarch, Ragavan plus one whiff [74:57-75:05]; Enduring Vitality makes 'every creature more spins' [73:22]; taps Shang-Chi for four and the received Stormdrake for three [74:26-74:31]; Emiel the Blessed blinks Derevi repeatedly [77:42-78:01] for infinite mana ('I'll make infinite mana with the Revy' [78:07]); states the kill: 'spin till I get Deadpool. Deadpool swap with [Sisay]. Activate [Sisay] to find Mount Doom... use Mount Doom to kill you' [78:10-78:15]; table concedes 'GG's'", "repair": "'the Revy'/'Derevy' -> Derevi, Empyrial Tactician (frame-verified popup at 78:00); 'Emil' -> Emiel the Blessed; 'Braavan' -> Ragavan, Nimble Pilferer; 'CI' -> Sisay (context: Deadpool, Trading Card text-swap reclaims the stolen commander's ability)", "note": "win counted on Matt's turn; nominal turn number is the estimate above. Casters note Dexter 'forgot about the Enduring Vitality' [79:26]"}
+      ],
+      "interaction_events": [
+        "Yisan verse 2 fetches Collector Ouphe (turn ~4, [21:38]): the defining stax play; treasure/rock lock holds ~45 minutes",
+        "Volatile Stormdrake (off Finale of Devastation) exchange-steals Yisan ([30:46-32:15]); Dexter pays 3 energy to keep it",
+        "Sudden Substitution involving a Mana Vault spell, inferred theft of Sisay ([43:38], low confidence on mechanism; theft itself caster-confirmed by [49:14])",
+        "Damping Sphere deployed by Isaac ([49:38]) after being held from the opening hand since turn 1",
+        "A Silence-type effect resolves ~[50:22] (casters unsure of the card, 'is that Jennifer Walters?'; Matt's list has Silence): unconfirmed",
+        "Teferi, Time Raveler by Matt ([52:36], frame-verified) turning off instant-speed answers",
+        "Dexter counters Matt's Crop Rotation ([58:28]; Fierce Guardianship per interview) under a negotiated no-shenanigans deal with Lily: the deal later prevents Dexter from contesting the win",
+        "Isaac deters the first clone-drake target with 'my one and only piece of interaction' ([63:46], card never revealed)",
+        "Imposter Mech as Stormdrake copy exchange-kills Collector Ouphe ([65:32-66:31]), breaking the lock",
+        "Dexter attempts a response on the final turn ('Activate Kinnan' [77:53]) but the win is activated-ability-based and deal-constrained"
+      ],
+      "frame_observations": {
+        "life_totals": [
+          {"video_time": "13:00", "sisay": 37, "kinnan": 38, "malcolm_vial": 40, "yisan": 38},
+          {"video_time": "30:00", "sisay": 24, "kinnan": 34, "malcolm_vial": 40, "yisan": 34},
+          {"video_time": "51:00", "sisay": 18, "kinnan": 33, "malcolm_vial": 27, "yisan": 28},
+          {"video_time": "66:00", "sisay": 18, "kinnan": 33, "malcolm_vial": 27, "yisan": 28},
+          {"video_time": "78:00 (win)", "sisay": 11, "kinnan": 33, "malcolm_vial": 27, "yisan": 24}
+        ],
+        "card_popups_verified": ["Smothering Tithe (13:00)", "Volatile Stormdrake full text incl. energy-sacrifice clause (30:00)", "Teferi, Time Raveler (57:30 and 51:00 hand sidebar)", "Imposter Mech (66:00)", "Derevi, Empyrial Tactician (78:00)"],
+        "overlay_note": "the 51:00 sidebar is headed 'OPENING HAND - KEPT 3' but shows Matt's then-current 3-card hand (Boseiju, Who Endures / Lightning Greaves / Teferi, Time Raveler); commentary at [03:00] is unambiguous that he kept 7, so the KEPT count on that template is not reliable mid-game"
+      },
+      "creator_self_review": "Post-game interview [81:20-86:38]: Matt credits the win to a year of Kinnan experience ('I'll do a Kinnan game plan. I'll spin.') and names his three live outs as Deadpool or Emiel+Derevi for infinite mana; confirms 'if Dexter doesn't fierce my crop rot, they're dead three turns earlier'; casters judge Dexter's deal-keeping as the losing choice ('the deal handicapped him too bad'). Matt also reveals Mount Doom was scouted on an early Kinnan flip.",
+      "extraction_confidence": "high for winner, win method, final-turn line, mulligans, seats, and life totals; medium for the round count (10, range 9-12); medium for mid-game sequencing; low for the Sudden Substitution mechanism and for exact commander-cast turns of Sisay and both Kinnans"
+    }
+  ],
+  "headline_features": {
+    "human_win_turns": [10],
+    "winner": "sisay (Matthew Swaney), advancing to top 4",
+    "first_commander_turn": {"yisan": 1, "malcolm": 2, "sisay": "~4 (inferred)", "kinnan": "unknown"},
+    "interaction_events_spoken": ["Collector Ouphe off Yisan verse 2 (the 'load-bearing Ouphe')", "Volatile Stormdrake + clones stealing Yisan then Sisay ('he was collecting the field')", "Fierce Guardianship on Crop Rotation under a negotiated deal", "Imposter Mech exchange-kill on Collector Ouphe", "Damping Sphere held 48 minutes before deployment"],
+    "study_relevant": [
+      "Commander theft (Volatile Stormdrake, Imposter Mech, Sudden Substitution) drove the whole midgame: the winner won out of his 99 after losing his commander, a line no goldfish metric captures",
+      "Explicit multi-turn deal-making decided the outcome: Dexter honored a no-shenanigans deal instead of contesting the win, and casters call that the losing decision",
+      "The winning line is all activated abilities specifically because Damping Sphere taxed spells: human piloting routed around a stax piece by changing resource type",
+      "Pace: one game, ~67 minutes of play, ~10 winner turns, held in stasis ~45 minutes by a single 2-drop (Collector Ouphe)",
+      "Smothering Tithe accumulated ~17 treasures across the stall and converted the whole hoard the turn the lock broke"
+    ],
+    "known_list_divergences": "none observed; every repaired card matched a published decklist verbatim"
+  },
+  "repair_and_uncertainty_summary": {
+    "caption_repairs_flagged": 18,
+    "unrepaired_or_unresolved": [
+      "'Basosaural' in Lily's revealed hand [68:00]: no plausible list match",
+      "'fetch an all one spector' [32:24]: unresolved",
+      "'LQR Shangi Circle of Dreams' [13:32]: reads as a hand containing Legolas's Quick Reflexes, Shang-Chi, Circle of Dreams Druid (all in Isaac's list; two also in Matt's); whose hand is unclear",
+      "the Silence-type effect at [50:22] (casters themselves unsure)",
+      "'Per Nissan War' [25:43] and 'my sensei back' [40:42]: unintelligible"
+    ]
+  },
+  "open_questions": [
+    "Exact cast turns for Sisay and for both players' Kinnans (Matt's own Kinnan may have been fetched by a Sisay activation before the theft; never spoken)",
+    "Whether the turn-3 Crop Rotation discussion [15:24] was a cast that resolved (fetching Gaea's Cradle) or a hold; the interview confirms only one Crop Rotation being countered, placed here at [58:28]",
+    "The precise mechanism and timing of the Sisay theft (Sudden Substitution at [43:38] is the best fit: Yisan was already Dexter's, making Sisay the only coherent commander target)",
+    "Exact terms and parties of the mid-game deal: Dexter-Lily is certain [64:35]; whether Matt was party to any assurance is not",
+    "What Isaac's 'one and only piece of interaction' [63:46] was; never revealed",
+    "Whether Lily's Demonic Tutor really fetched Mystic Remora or she downplayed the fetch ('I DT'd for values' [42:13] vs 'I DT'd for fish' [58:12])"
+  ]
+}

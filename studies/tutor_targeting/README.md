@@ -76,41 +76,56 @@ games, plus two 2-game probes (`probeA.jsonl` steering on,
 inertness, and reports UNPROVEN rather than passing a check the run never
 exercised.
 
-**The mechanism is correct.** 90 searches, 38 steers (23 plan, 15 combo),
-38/38 legal, 9 genuinely contested searches where combo could have lost
-priority and lost none, 0 steers over a stock decline, 0 unparsed or
-unpairable events. Inert arm: 0 plan steers, all 32 searches `mode=weights`,
-and combo pursuit still firing 3 steers, so the addition is dark by
-construction rather than by a flag.
+**Every logged decision obeyed the rules.** 99 searches, 46 steers (28 plan,
+18 combo), 46/46 legal, 15 genuinely contested searches where combo could
+have lost priority and lost none, 0 unparsed or unpairable events.
 
-**The outcome moved the wrong way, and the cause is legible.**
+Note what this class of check can and cannot do: it compares fields the shim
+emitted from a single `rankSearch` call, so it catches logging, pairing and
+rule-application bugs (it caught two), but it verifies the shim's self-report,
+not Forge's view of the world. Three things are reported UNPROVEN rather than
+passed, because the run never exercised them: the decline rule (stock declined
+0 of 99 searches), the multi-card swap (Forge routes AI multi-fetches through
+repeated single-card calls, so that override never runs), and the own-library
+gate, which refused 0 searches here — its risk is refuted on this pod, its
+benefit is simply untested.
 
-| arm | win rounds | mean | methods | combo_hold |
-|---|---|---|---|---|
-| stock 0.4.2 | 8-14 | 11.5 | combat 7, spell 1 | n/a |
-| agent 0.4.2 (Stage 1) | 6-17 | 11.8 | combat 8 | 4 |
-| agent 0.5.0 (Stage 2) | 8-23 | 14.2 | combat 6, **spell 2** | **47** |
+The inert arm is the strongest single result: strip `search` from the plans
+and plan steering is dark by construction, while combo pursuit keeps working.
 
-Non-combat wins went up (2 of 8, the most of any arm), which is the
-human-like direction. But mean win round rose by 2.4 rounds, away from the
-human target of 5-6. Every one of the 47 holds is the same event: the greed
-dial seeing an opponent with two or more untapped lands and waiting on the
-last piece.
+**The outcome moved the wrong way.** Rounds are player-turns divided by seat
+count, seats held constant.
 
-The causal story fits the numbers rather than excusing them. Stage 2 made
-assembly work, so the agent now reaches "one piece from winning" far more
-often than it did at 4 holds per 8 games; each arrival meets a greed check
-that waits about half the time and re-rolls every turn. Better fetching
-exposed a conversion bottleneck that was previously too rare to see. That is
-the same wall the human ceiling study named as priority 2 (win-speed
-calibration), reached from a different direction.
+| arm | decided | win rounds | mean | methods | hold decisions (events) |
+|---|---|---|---|---|---|
+| stock 0.4.2 | 8/8 | 8-14 | 11.50 | combat 7, spell 1 | 0 |
+| agent 0.4.2 (Stage 1) | 8/8 | 6-17 | 11.75 | combat 8 | 3 (4) |
+| agent 0.5.0 (Stage 2) | 7/8 | 7-24 | 13.29 | combat 6, other 1 | 14 (57) |
 
-Caveats, stated rather than buried: n=8 per arm, so 11.8 vs 14.2 is a signal
-and not a verdict. `greed` is plan data (personality), not shim mechanism, so
-the next experiment is a greed sweep on our side of the boundary, with no
-Java change. Magda's Portal to Phyrexia never arrived in this arm, consistent
-with the ranking preferring value-8 line pieces over a value-6 bomb, which
-Stage 1 already flagged as its honest residue.
+Mean win round rose 1.5 rounds against the 0.4.2 agent and 1.8 against stock,
+away from the human target of 5-6, and this arm produced the only timeout in
+the three (one game hit the 900 s clock at round 11). Against that, the same
+arm posts the fastest agent game yet (round 7) and its widest spread.
+
+**Read the hold counts carefully — the raw event count lies.** `greed` caches
+its roll for the rest of the turn but logs on every priority window that
+reaches it, so 57 events are 14 distinct decisions, against 4 events / 3
+decisions before. The honest movement is 3 to 14, not 4 to 57. All are the
+same kind (an opponent with two or more untapped lands); the shim's other
+hold reason never fired. Causation is weaker than it looks, though: the
+clusters sit late in already-long games, and a hold at turn 85 cannot explain
+a game reaching turn 85. "Better assembly exposed a conversion bottleneck" is
+the leading hypothesis, not a demonstrated cause.
+
+Caveats: n=8 per arm, and the win-round difference is not significant, so
+this is a signal to chase, not a verdict. `greed` is plan data (personality),
+not shim mechanism, so the next experiment is a greed sweep with no Java
+change. Portal to Phyrexia did reach the battlefield twice in this arm
+(rounds 11 and 15, versus rounds 4-13 across 5 stock games) — earlier drafts
+of this file claimed it never did, on a different run and with the absence
+credited to the new ranking; both halves were wrong. Where stock picks Portal
+and something overrides it, the override has been `mode=combo` every time, a
+mechanism that predates Stage 2.
 
 ## Reproduce
 

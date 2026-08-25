@@ -168,28 +168,37 @@ in the first draft:
    beats it. Every option must now come from the searching seat's own library.
    This gate sits ahead of combo pursuit too, which had the same hole since
    0.3.0.
-2. **A decline is an answer.** Forge reads a null pick as "cancel the search"
-   and asks `confirmAction` about stopping, so overriding it both takes a card
-   and suppresses the cancel. That is a second intervention with its own risk
-   profile, and Stage 1 measured nothing about it (those rows logged `picked=-`
-   and acted on nothing), so the plan path defers. Combo pursuit keeps its
-   older, narrower override, which is gated on one named missing piece.
-3. **Multi-card searches swap, never grow.** Adding a card because the search
-   had room would change how MANY cards a search takes, which is outside "the
-   agent's own search choices" — and on a pile effect (Gifts Ungiven and
-   Intuition are both live in the test pod) forcing your single best card into
-   a pile the opponent splits is the classic way to lose with it. The plan path
-   replaces the weakest pick, and only when strictly better than that card.
+2. **A decline is an answer, on both paths.** Forge reads a null pick as
+   "cancel the search" and asks `confirmAction` about stopping — and for a
+   `ChangeNum > 1` search it runs the single-card method in a LOOP, where a
+   decline is the stop signal, so overriding it appends a card the search
+   never asked for. The plan path defers, and combo steering's older
+   "steer over nothing" behavior was removed with it rather than kept as an
+   exception. Measured cost of removing it: zero. Stock declined on 0 of the
+   142 searches logged across Stage 2.
+3. **The plan path swaps, never grows.** Adding a card because a multi-card
+   search had room would change how MANY cards a search takes, and on a pile
+   effect (Gifts Ungiven and Intuition are both in the test pod) forcing your
+   best card into a pile the opponent splits is the classic way to lose with
+   it. **Unexercised, and narrower than it sounds:** Forge only calls
+   `chooseCardsForZoneChange` when `allowMultiSelect` is true, which is false
+   for every AI seat, so an AI multi-fetch arrives as repeated single-card
+   calls and that override never runs. The rule that actually protects search
+   size on the live path is #2 — a decline must stand, because in that loop a
+   decline is the stop signal. Combo steering used to override it and no
+   longer does.
 4. **No destination allow-list.** A draft restricted steering to Hand and
-   Battlefield on the theory that other zones might be a cost. Measured against
-   the 2.0.13 card pool that excludes 23% of library searches, including every
-   top-of-library tutor (Vampiric, Mystical, Enlightened) and the graveyard
-   tutors a reanimator deck is built on. The acceptance run produced the
-   clinching case: a Beseech the Mirror search with `dest=Exile`, where exile
-   is exactly where you want your best card, because you cast it from there.
-   Which zones are good is a property of the deck, so if it ever needs saying
-   it belongs in the plan JSON, not in Java. The own-library gate is what
-   actually keeps the dangerous searches out.
+   Battlefield on the theory that other zones might be a cost. That would have
+   excluded 15 of the acceptance run's 90 searches (16.7%), including every
+   top-of-library tutor observed (Enlightened, Mystical, Imperial Seal,
+   Worldly, Vampiric — all resolve `dest=Library`) and both Beseech the Mirror
+   searches, which resolve `dest=Exile` and are exactly where you want your
+   best card because you cast it from there. Which zones are good is a
+   property of the deck, so if it ever needs saying it belongs in the plan
+   JSON, not in Java. The own-library gate is what keeps the dangerous
+   searches out. (A graveyard-tutor argument also applies — Entomb and Buried
+   Alive — but no run has produced a `dest=Graveyard` search, so treat that as
+   a card-pool argument, not an observation.)
 
 Keep weights still never steer (`mode=targets` only), per Stage 0. Telemetry:
 `search_seen` gains `sid`, `dest`, `comboPick` and `src`; `tutor_steer` becomes
@@ -204,6 +213,21 @@ never exercised. That distinction earned its keep immediately: the first probe
 sighted line's missing piece was not among the options at all (a Finale of
 Devastation offers creatures; the piece was an artifact). `comboPick` exists to
 tell those apart from combo actually losing to the plan.
+
+Three of the run's checks are UNPROVEN rather than passed, and the reasons are
+worth carrying forward: stock declined 0 of 99 searches, so rule 2 is
+unexercised; no multi-card search occurred, so rule 3 is unexercised (see
+above for why it may never be); and the own-library gate refused 0 searches on
+this pod, so its risk is refuted here but its benefit is untested. The gate now
+logs a `search_skipped` event when it fires, because it returns before
+`search_seen` is emitted and was otherwise unfalsifiable.
+
+One known limitation, not a defect of this stage: `lineOfSight` returns a
+single best line, ranking a fully-owned line ahead of a one-piece-short one.
+When it returns the fully-owned line, `missingOutside` is null and the plan
+path unlocks even if another sighted line was one takeable piece away. That
+state was inert before Stage 2 and now acts. Measuring it needs the runner-up
+lines logged, which is Stage 5 territory.
 
 **Stage 3 — honesty plumbing (this repo).** Bump the shim/agent version and
 surface it (depends on the rotated-merge fix that currently drops the
@@ -227,17 +251,24 @@ the before/after in SIM_CALIBRATION.md if any documented number moves.
 - [x] With Stage 2 on: a Finale-of-Devastation-style search in a test pod
       picks the plan's top-ranked legal creature (verify via `tutor_steer`
       events), and combo line-of-sight still outranks it when both apply.
-      Both proven on the same probe: `src=Finale of Devastation` took Quirion
-      Ranger (target value 8) over stock's Phyrexian Dreadnought (0), and on a
-      Vampiric Tutor where the sighted line's missing piece WAS on offer, combo
-      took Thassa's Oracle while the plan wanted Devoted Druid.
+      Finale-style (creature search, `dest=Battlefield`): `probeA.jsonl`
+      `src=Green Sun's Zenith` steered Hyrax Tower Scout (target value 8) over
+      stock's Slumbering Trudge (0). Combo outranking the plan where both
+      apply, from the acceptance run: on `src=Vampiric Tutor`, combo took
+      Thassa's Oracle while the plan ranking wanted Devoted Druid; on
+      `src=Magda, Brazen Outlaw`, combo took Clock of Omens over the plan's
+      Adaptive Automaton. 15 such contested searches, 0 lost.
+      Note Finale of Devastation itself never resolved a search in any
+      committed run, so the criterion is met by its class, not by that card.
 - [x] Agent version bumped; analysis/UI label steered runs distinctly;
       no pooling with pre-steer results anywhere. Shim 0.5.0 flows into
       `meta.agent` through the rotated merge, and `compare_arms.py` now labels
       arms by agent VERSION, not just `humanized` — which was a live pooling
       footgun, since 0.4.2 and 0.5.0 agent runs are both humanized.
-- [ ] `python3 engine/tests/test_adapter.py` and the staging/accounting
+- [x] `python3 engine/tests/test_adapter.py` and the staging/accounting
       tests pass; `cd web && npm run verify` clean if any UI text changes.
+      All eight engine suites pass and the board fixture holds at
+      exit_match_rate 0.8333. No UI text changed, so no web verify was needed.
 
 ## Verification
 

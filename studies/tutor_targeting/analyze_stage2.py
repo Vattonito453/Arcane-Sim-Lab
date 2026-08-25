@@ -59,6 +59,7 @@ def main(argv: list[str]) -> int:
     unparsed = {"seen": 0, "steer": 0}
     versions: set[str] = set()
     orphans = 0
+    skipped = 0
 
     for path in paths:
         for line in open(path, encoding="utf-8", errors="replace"):
@@ -73,7 +74,9 @@ def main(argv: list[str]) -> int:
                 continue
             ev, detail = rec.get("event"), rec.get("detail", "")
             key_base = (path, rec.get("game"), rec.get("player"))
-            if ev == "search_seen":
+            if ev == "search_skipped":
+                skipped += 1
+            elif ev == "search_seen":
                 m = SEEN.search(detail)
                 if not m:
                     unparsed["seen"] += 1
@@ -101,6 +104,11 @@ def main(argv: list[str]) -> int:
     for _, s, _ in steers:
         by_mode[s["mode"]] += 1
     print(f"steer modes: {dict(by_mode)}")
+    if skipped:
+        print(f"searches refused by the own-library gate: {skipped}")
+    else:
+        print("searches refused by the own-library gate: 0 (the gate's benefit "
+              "is unproven on this pod, not just its risk)")
     dests: dict[str, int] = defaultdict(int)
     for v in seen.values():
         dests[v["dest"]] += 1
@@ -166,11 +174,30 @@ def main(argv: list[str]) -> int:
         unproven.append("combo priority (no search had a sighted line AND a "
                         "different plan pick outranking stock)")
 
-    # 3. declines stand
-    forced = [k for k, s, _ in steers if s["mode"] == "plan" and s["over"] == "nothing"]
-    print(f"[3] plan steers over a stock decline: {len(forced)} (must be 0)")
+    # 3. declines stand — on EITHER path. Combo steering used to override a
+    #    decline, and on a ChangeNum>1 search Forge loops this method and
+    #    reads a decline as "stop taking cards", so an override there appends
+    #    a card. Count both modes, and say so when no search declined at all:
+    #    a check nothing exercised has not passed.
+    declines = sum(1 for v in seen.values() if v["picked"] == "-")
+    forced = [(k, s["mode"]) for k, s, _ in steers if s["over"] == "nothing"]
+    print(f"[3] steers over a stock decline: {len(forced)} (must be 0); "
+          f"searches stock declined: {declines}")
     if forced:
         failures.append("declines stand")
+    elif declines == 0:
+        unproven.append("declines stand (stock never declined a search)")
+
+    # 5. multi-card path. Forge only reaches chooseCardsForZoneChange when
+    #    allowMultiSelect is true, and that is false for every AI seat, so a
+    #    multi-fetch arrives as repeated single-card calls instead. Report
+    #    whether the path ran at all rather than implying it was tested.
+    multi = sum(1 for v in seen.values() if "|" in v["picked"])
+    print(f"[5] multi-card searches seen: {multi}")
+    if multi == 0:
+        unproven.append("multi-card swap rule (no multi-card search occurred; "
+                        "Forge routes AI multi-fetches through repeated "
+                        "single-card calls)")
 
     # 4. inert arm
     if inert:

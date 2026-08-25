@@ -77,7 +77,9 @@ def main() -> int:
                     winners[w] += 1
                     win_rounds.append(rnd)
                 methods[m.get("method", "?")] += 1
-                print(f"  {Path(path).name} g{i}: winner={res.get('winner', '-'):32} "
+                # A draw carries winner: None, so the key EXISTS and a default
+                # never applies.
+                print(f"  {Path(path).name} g{i}: winner={res.get('winner') or '-':32} "
                       f"round={rnd:>2} method={m.get('method')}"
                       f"{' TIMEOUT' if res.get('timedOut') else ''}")
                 for z in g.get("zones") or []:

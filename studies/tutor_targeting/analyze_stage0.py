@@ -30,7 +30,8 @@ import sys
 from collections import defaultdict
 
 FIELDS = re.compile(
-    r"options=(?P<options>\d+) sighted=(?P<sighted>\w+) ranked=(?P<ranked>\d+)"
+    r"options=(?P<options>\d+) sighted=(?P<sighted>\w+)(?: mode=(?P<mode>\w+))?"
+    r" ranked=(?P<ranked>\d+)"
     r" agree=(?P<agree>\w+) pickedW=(?P<pickedw>\d+) planW=(?P<planw>\d+)"
     r" missing=(?P<missing>.*?) picked=(?P<picked>.*?) planPick=(?P<planpick>.*)$"
 )
@@ -73,7 +74,8 @@ def main(paths: list[str]) -> int:
                         f"seat={seat} picked={m.group('picked')} "
                         f"planPick={m.group('planpick')} "
                         f"(w {m.group('pickedw')} vs {m.group('planw')}, "
-                        f"options={m.group('options')})"
+                        f"options={m.group('options')}, "
+                        f"mode={m.group('mode') or 'weights'})"
                     )
     total = {"searches": 0, "ranked": 0, "agree": 0, "disagree": 0, "old": 0}
     print(f"{'seat':40} {'searches':>8} {'ranked>0':>8} {'agree':>6} "

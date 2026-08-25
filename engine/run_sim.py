@@ -293,6 +293,17 @@ def run(args: argparse.Namespace) -> None:
                       f"{len(deck_names)} decks — duplicate deck names collapse "
                       f"in the plan map. The shim will refuse the run.",
                       file=sys.stderr)
+            # Plans are built cache-only (no network from the worker). A cold
+            # card-fact cache silently degrades every plan heuristic — task
+            # 20 Stage 0 ran on plans with 80 of 100 cards unknown and
+            # nothing said so. Warn loudly; warm with deck_plan.py --fetch.
+            for dname, dplan in plans["decks"].items():
+                cov = dplan.get("factsCoverage", 1)
+                if cov < 0.9:
+                    print(f"WARNING: card-fact cache knows only {cov:.0%} of "
+                          f"deck '{dname}'; its plan is degraded. Warm the "
+                          f"cache: python3 engine/deck_plan.py <deck.dck> "
+                          f"--fetch", file=sys.stderr)
         if args.rotate:
             rotations = len(deck_names)
             split = plan_games(args.games, rotations)

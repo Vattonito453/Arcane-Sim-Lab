@@ -80,6 +80,40 @@ all data, no logic in Java:
   order. Derive from the same oracle-text heuristics deck_plan already uses;
   no new inference regime.
 
+**Stage 1 result (landed 2026-08-25).** `deck_plan.py` now emits an additive
+`search` section per deck, deliberately separate from `weights` (which the
+shim also uses for mulligan keeps, cast priority, and the threat index, so
+target values must not contaminate it):
+
+```json
+"search": {
+  "targets":  {"Portal to Phyrexia": 6, "Sol Ring": 5},
+  "context":  {"Sol Ring": {"hint": "ramp", "beforeRound": 5},
+               "Craterhoof-alike": {"hint": "finisher", "minCreatures": 3}}
+}
+```
+
+Semantics (the contract Stage 2 implements; the 0.4.2 measurement already
+follows it): rank the legal options by target value; a card absent from
+`targets` is worth 1 implicitly; a `ramp` card decays to 1 from table round
+`beforeRound` on (rounds, not Forge player-turns); a `finisher` card is
+worth 1 until the searcher controls `minCreatures` creatures. Ties and
+all-floor lists mean the plan has no opinion: defer to stock. Combo
+line-of-sight keeps absolute priority over all of this. Scale: combo piece
+or finisher text 8, tagged payoff 7, cmc>=6 bomb the tags missed 6, cheap
+mana source 5 (ramp-gated), protection 4, removal 3. Nonland tutors are
+promoted to keep-weight 5 unconditionally (the combo-lines gate is gone).
+Tests: `engine/tests/test_deck_plan.py`.
+
+Two provenance fixes that fell out of Stage 1: plans record
+`factsCoverage`, and `run_sim.py --humanize` warns when the card-fact
+cache knows less than 90% of a deck. That matters because **the Stage 0
+run's plans were built from a cold cache** (80 of ~100 Magda-list cards
+unknown, zero combo lines) and nothing said so. The Stage 0 verdict stands
+(keep weights rank fetch options wrongly by construction), but its
+coverage/agreement numbers should be read as cold-cache numbers; the
+Stage 1 re-measurement below runs warm.
+
 **Stage 2 — mechanism (shim repo, thin).** At search-choice time, rank the
 LEGAL options Forge offers by plan weight + context hints; combo
 line-of-sight keeps absolute priority (closer beats opener); unranked or

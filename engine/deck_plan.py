@@ -104,6 +104,10 @@ _PROTECTION = re.compile(r"hexproof|indestructible|protection from|counter targe
                          r"can't be countered|phase(s)? out", re.I)
 _FINISHER = re.compile(r"wins? the game|loses? the game|combat damage to a player|"
                        r"infect|damage can't be prevented", re.I)
+# Search-target heuristics (task 20 Stage 1). Same vocabulary style as the
+# tag markers: cheap oracle-text tests, no new inference regime.
+_MANA_SOURCE = re.compile(r"add \{|add one mana|add two mana", re.I)
+_BOARD_PAYOFF = re.compile(r"creatures? you control get \+|creatures you control gain", re.I)
 
 
 def read_dck(path: str | Path) -> tuple[str, list[str], list[str]]:
@@ -205,14 +209,61 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         weights[c] = max(weights.get(c, 0), 8)
         roles[c] = "commander"
 
-    # A tutor is a path to a missing combo piece — but only when the deck
-    # has known lines does that earn it plan weight (and thus keep/cast
-    # priority in the shim).
-    if lines:
-        for n in tutors:
-            if weights.get(n, 0) < 5:
-                weights[n] = 5
+    # Every nonland tutor earns plan weight (task 20 Stage 1). It used to be
+    # gated on known combo lines, which left tutor-dense decks with no reason
+    # to keep or cast their tutors; a tutor is a path to whatever the search
+    # ranking (below) values, lines or not.
+    for n in tutors:
+        if weights.get(n, 0) < 5:
+            weights[n] = 5
+            if roles.get(n, "filler") == "filler":
                 roles[n] = "tutor"
+
+    # Search-target values (task 20 Stage 1): what a resolved library search
+    # should take, on its OWN scale. Keep weights above answer "is this card
+    # a reason to keep a hand"; target values answer "is this card worth a
+    # search right now". Stage 0 measured why they must not be the same
+    # number: ranking fetch options by keep weights picks mana rocks over
+    # Portal to Phyrexia in round 8 (studies/tutor_targeting).
+    #
+    # Scale: combo piece / finisher text 8, tagged payoff 7, expensive bomb
+    # the tags missed (cmc >= 6) 6, cheap mana source 5 but only before round
+    # `beforeRound`, protection 4, removal 3. Cards not listed are worth 1
+    # implicitly. Context hints are data the shim checks against its own
+    # battlefield at search time: `ramp` decays after beforeRound (table
+    # rounds, not Forge player-turns); `finisher` needs minCreatures of your
+    # own first (the Finale of Devastation case). Commanders live in the
+    # command zone and are omitted.
+    targets: dict[str, int] = {}
+    context: dict[str, dict] = {}
+    for n in names:
+        if n in commanders:
+            continue
+        f = facts.get(cards.key(n)) or facts.get(n) or {}
+        text = f.get("oracle_text") or ""
+        tline = f.get("type_line") or ""
+        cmc = f.get("cmc") or 0
+        if "Land" in tline and "Creature" not in tline:
+            continue
+        if n in combo_pieces or _FINISHER.search(text):
+            val = 8
+        elif roles.get(n) == "payoff":
+            val = 7
+        elif cmc >= 6:
+            val = 6
+        elif _MANA_SOURCE.search(text) and cmc <= 3:
+            val = 5
+            context[n] = {"hint": "ramp", "beforeRound": 5}
+        elif roles.get(n) == "protection":
+            val = 4
+        elif roles.get(n) == "removal":
+            val = 3
+        else:
+            val = 1
+        if val >= 6 and _BOARD_PAYOFF.search(text):
+            context[n] = {"hint": "finisher", "minCreatures": 3}
+        if val > 1:
+            targets[n] = val
 
     keep = sorted((n for n, w in weights.items() if w >= 5),
                   key=lambda n: -weights[n])[:16]
@@ -220,7 +271,15 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
     personality = dict(TAG_PERSONALITY.get(tags[0] if tags else "_default",
                                            TAG_PERSONALITY["_default"]))
 
+    # Provenance: how much of the deck the card-fact cache could actually
+    # see. A cold cache silently degrades every heuristic above (no oracle
+    # text, no cmc, no combo lines) — Stage 0 of task 20 ran that way and
+    # nothing said so. The shim ignores this key; run_sim warns on it.
+    known = sum(1 for n in names if (facts.get(cards.key(n)) or facts.get(n)))
+    coverage = round(known / max(1, len(names)), 3)
+
     plan = {
+        "factsCoverage": coverage,
         "tags": tags,
         "mulligan": {"minLands": 2, "maxLands": 5, "maxMulls": 2, "keepCards": keep},
         "weights": {n: w for n, w in weights.items() if w > 1},
@@ -229,6 +288,8 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         "personality": personality,
         "lines": lines,           # known combo piece-sets, fewest pieces first
         "tutors": tutors,         # nonland tutors — the line-of-sight gate's reach
+        # Additive (task 20 Stage 1): shims before 0.4.2 ignore this key.
+        "search": {"targets": targets, "context": context},
     }
     return deck_name, plan
 

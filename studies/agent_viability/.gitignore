@@ -1,0 +1,6 @@
+# Raw per-game shim JSONL: 94 MB across three arms, and nothing reads it after
+# the per-cell tally is computed. `results.jsonl` carries every number in
+# RESULTS.md (games, decided, plan_wins, per-seat wins, arm verification), and
+# the cells regenerate by re-running run_pilot.py. Same rule as
+# engine/sim_results/ (CLAUDE.md).
+runs_*/cell_*.jsonl

@@ -1,0 +1,18 @@
+﻿arm      nocombo: {'greed': 1.0, 'triggerMiss': 0.0, 'splitAttacks': 0.0, 'politics': 0.0, '_dropLines': True}
+design   1 plan seat vs 3 stock seats, plan seat rotated 0-3
+pods     n7WpsqsZtdQ, 2iA_Jt0d6sM (all decks combo-live and warm)
+cells    8 x 16 games = 128 games, clock 900s, 12 workers
+null     plan seat wins 25% if the agent is no better than stock
+
+  n7WpsqsZtdQ rot0 seat1: plan 4/16 decided (16 played)
+  n7WpsqsZtdQ rot1 seat2: plan 4/15 decided (16 played)
+  n7WpsqsZtdQ rot2 seat3: plan 2/14 decided (16 played)
+  n7WpsqsZtdQ rot3 seat4: plan 0/14 decided (16 played)
+  2iA_Jt0d6sM rot0 seat1: plan 6/15 decided (16 played)
+  2iA_Jt0d6sM rot1 seat2: plan 9/15 decided (16 played)
+  2iA_Jt0d6sM rot2 seat3: plan 3/15 decided (16 played)
+  2iA_Jt0d6sM rot3 seat4: plan 1/13 decided (16 played)
+
+played 128, decided 117, censored 11
+plan-seat win share 29/117 = 24.8% +/- 4.0 pp (1 SE), null 25%
+95% CI approx [17.0%, 32.6%]

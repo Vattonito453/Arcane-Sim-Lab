@@ -83,33 +83,53 @@ the expensive part of the product is the moat rather than the cost.
 
 ## How stock Forge diverges from human play
 
-Blocking is the most obvious divergence, not the only one. Measured on the
-cohort run (66 decks, stock Forge) against the 10,982-game human baseline:
+Blocking was the obvious axis and it is not the only one. Measured by walking
+the typed log of 256 stock games in sequence (`divergence.py`), reconstructing
+whose turn it is and which step each action falls in:
 
-| # | divergence | measured | mechanised in the agent? |
+| # | divergence | measured on 256 stock games |
+|---|---|---|
+| 1 | **Under-blocks** | **17.6%** of attacking creatures blocked (2,048 of 11,657). ~82% get through |
+| 2 | **Single-target attacks** | 98% of attack declarations hit exactly one opponent |
+| 3 | **Wastes instants** | only **19.2%** of instants are cast on an opponent's turn; the rest go on the caster's own turn, throwing away the entire point of instant speed |
+| 4 | **Plays solitaire** | **2.4%** of ALL spells are cast on someone else's turn. 89% of casts happen in a main phase. A human interacts constantly |
+| 5 | **No threat focus** | sim over-disperses **1.52×** (true sd 8.45pp vs human 5.56pp): nothing punishes the leader |
+| 6 | **Never mulligans** | keeps 7 in ~97% of hands (CLAUDE.md; stock seats emit no mulligan telemetry, so not re-measured) |
+| 7 | **Cannot convert a combo** | measured separately in `studies/agent_viability` |
+| 8 | **No politics or deals** | unmeasurable from logs, and probably not modellable |
+
+### Which of these actually distort the ranking?
+
+A behavioural difference only matters for prediction if it changes which deck
+wins. Comparing what the sim rewards against what humans reward:
+
+| feature | corr with **sim** | corr with **human** | disagreement |
 |---|---|---|---|
-| 1 | **Under-blocks.** 14.7% of attacking creatures blocked over 2,128 cEDH decisions, 17.7–21% on precons — ~80% get through | yes | yes, 0.6.0 (`blockiness`, `blockPowerFloor`, `blockMax`, `chumpiness`) |
-| 2 | **No threat focus.** Humans gang up on whoever is winning, compressing everyone toward 25%. Sim true sd 9.8pp vs human 5.6pp: **over-disperses 1.76×** | yes | yes (`kingmakerRatio`, `grudgeWeight`) |
-| 3 | **Single-target attacks.** 98% of attack declarations hit exactly one opponent | yes | yes (`splitAttacks`) |
-| 4 | **Never mulligans.** Stock keeps 7 in ~97% of hands, so it keeps hands a human would ship | from CLAUDE.md; not re-measured here (stock seats emit no mulligan telemetry) | yes (`minLands`, `maxLands`, `maxMulls`) |
-| 5 | **Bad interaction timing.** Holds removal and counters poorly | not measured — no human baseline for interaction timing | partly (`politics`, `counterThreshold`) |
-| 6 | **Cannot convert a combo.** Assembles lines and never finishes them | yes, separately (`studies/agent_viability`) | no — this is the known gap |
-| 7 | **No politics or deals.** Cannot negotiate, threaten, or trade favours | unmeasurable from logs | no, and probably not modellable |
+| creatures | +0.157 | **−0.378** | **0.535** |
+| evasion | +0.172 | −0.187 | 0.359 |
+| aggression | +0.253 | −0.070 | 0.323 |
+| total_power | +0.218 | −0.037 | 0.255 |
+| removal | +0.157 | −0.069 | 0.226 |
+| counters | −0.169 | −0.070 | 0.099 |
+| avg_cmc | +0.151 | +0.205 | 0.054 (agree) |
+| draw | −0.161 | −0.121 | 0.040 (agree) |
 
-The consequence for ranking is the headline: **the sim's top 5 decks and the
-humans' top 5 decks overlap on ZERO decks**, and the sim rewards creature
-count (+0.294) exactly where humans punish it (−0.378).
+**The combat axis is the whole error.** Everything attack-flavoured disagrees
+by 0.25–0.54 correlation units; curve and card draw agree. Divergences 1, 2
+and 5 all push that same way, which is why they are the ones the agent arm
+turns on.
 
-Divergences 1–4 all push the same way: creature decks that attack get to do
-so unopposed, un-ganged-up-on, against opponents who never mulligan into a
-functional hand. That is why the aggro bias is the dominant error and why the
-agent arm turns on all four together — with an ablation to follow if the
-combined arm moves the number.
+The instant-timing and off-turn findings (3 and 4) are large behaviourally but
+show only weak ranking distortion **in this cohort**, because precons carry
+little interaction (density 0.06–0.28). Expect them to matter much more for
+constructed or cEDH decks, where holding up removal is most of the game. That
+is a real limit on how far a precon-trained correction generalises.
 
-**The agent arm is aimed at fidelity, not strength.** `triggerMiss` stays 0
-and `greed` stays 1.0: the goal is a competent human, not a bad player.
-Spreading damage, attacking the leader and holding interaction are not
-"playing worse" — they are ordinary multiplayer skill that stock Forge lacks.
+### Still unmeasured
+
+Removal target choice, crack-back awareness, sequencing quality and mulligan
+quality on stock seats all need either board-state reconstruction or telemetry
+stock Forge does not emit. They are not claimed either way here.
 
 ## Why this is a wedge
 

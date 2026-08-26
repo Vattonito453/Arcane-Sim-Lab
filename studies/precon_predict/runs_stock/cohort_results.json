@@ -3,111 +3,111 @@
   "name": "Planeswalker Party",
   "human": 40.87,
   "human_n": 115,
-  "sim_games": 6,
-  "sim_wins": 1,
-  "sim_rate": 0.16666666666666666
+  "sim_games": 24,
+  "sim_wins": 3,
+  "sim_rate": 0.125
  },
  {
   "name": "Blame Game",
   "human": 36.88,
   "human_n": 40,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 22,
+  "sim_wins": 8,
+  "sim_rate": 0.36363636363636365
  },
  {
   "name": "Eldrazi Unbound",
   "human": 34.27,
   "human_n": 116,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 6,
+  "sim_rate": 0.25
  },
  {
   "name": "Legends' Legacy",
   "human": 33.67,
   "human_n": 49,
-  "sim_games": 6,
-  "sim_wins": 1,
-  "sim_rate": 0.16666666666666666
+  "sim_games": 24,
+  "sim_wins": 6,
+  "sim_rate": 0.25
  },
  {
   "name": "Jeskai Striker",
   "human": 33.62,
   "human_n": 58,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 3,
+  "sim_rate": 0.125
  },
  {
   "name": "Tricky Terrain",
   "human": 32.07,
   "human_n": 214,
-  "sim_games": 2,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 24,
+  "sim_wins": 1,
+  "sim_rate": 0.041666666666666664
  },
  {
   "name": "Lorehold Spirit",
   "human": 31.47,
   "human_n": 224,
-  "sim_games": 2,
-  "sim_wins": 2,
-  "sim_rate": 1.0
+  "sim_games": 26,
+  "sim_wins": 11,
+  "sim_rate": 0.4230769230769231
  },
  {
   "name": "World Shaper",
   "human": 30.65,
   "human_n": 31,
-  "sim_games": 8,
-  "sim_wins": 3,
-  "sim_rate": 0.375
+  "sim_games": 16,
+  "sim_wins": 5,
+  "sim_rate": 0.3125
  },
  {
   "name": "The Fantastic Four",
   "human": 30.31,
   "human_n": 80,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 7,
+  "sim_rate": 0.2916666666666667
  },
  {
   "name": "Miracle Worker",
   "human": 30.05,
   "human_n": 94,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 27,
+  "sim_wins": 8,
+  "sim_rate": 0.2962962962962963
  },
  {
   "name": "Hail, Caesar",
   "human": 29.19,
   "human_n": 227,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 27,
+  "sim_wins": 1,
+  "sim_rate": 0.037037037037037035
  },
  {
   "name": "Dance of the Elements",
   "human": 29.09,
   "human_n": 275,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 28,
+  "sim_wins": 4,
+  "sim_rate": 0.14285714285714285
  },
  {
   "name": "Prismari Artistry",
   "human": 28.99,
   "human_n": 163,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 16,
+  "sim_wins": 3,
+  "sim_rate": 0.1875
  },
  {
   "name": "Goblin Storm",
   "human": 28.57,
   "human_n": 70,
-  "sim_games": 3,
+  "sim_games": 26,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -115,63 +115,63 @@
   "name": "Endless Punishment",
   "human": 28.21,
   "human_n": 273,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 12,
+  "sim_rate": 0.5
  },
  {
   "name": "Temur Roar",
   "human": 27.78,
   "human_n": 63,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 32,
+  "sim_wins": 9,
+  "sim_rate": 0.28125
  },
  {
   "name": "Wakanda Forever",
   "human": 27.3,
   "human_n": 201,
-  "sim_games": 6,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 32,
+  "sim_wins": 6,
+  "sim_rate": 0.1875
  },
  {
   "name": "Scions & Spellcraft",
   "human": 27.0,
   "human_n": 387,
-  "sim_games": 6,
-  "sim_wins": 1,
-  "sim_rate": 0.16666666666666666
+  "sim_games": 24,
+  "sim_wins": 6,
+  "sim_rate": 0.25
  },
  {
   "name": "Revenant Recon",
   "human": 26.94,
   "human_n": 103,
-  "sim_games": 8,
-  "sim_wins": 3,
-  "sim_rate": 0.375
+  "sim_games": 24,
+  "sim_wins": 10,
+  "sim_rate": 0.4166666666666667
  },
  {
   "name": "Veloci-Ramp-Tor",
   "human": 26.4,
   "human_n": 215,
-  "sim_games": 8,
-  "sim_wins": 3,
-  "sim_rate": 0.375
+  "sim_games": 28,
+  "sim_wins": 15,
+  "sim_rate": 0.5357142857142857
  },
  {
   "name": "Quick Draw",
   "human": 26.24,
   "human_n": 101,
-  "sim_games": 6,
-  "sim_wins": 2,
-  "sim_rate": 0.3333333333333333
+  "sim_games": 24,
+  "sim_wins": 6,
+  "sim_rate": 0.25
  },
  {
   "name": "Animated Army",
   "human": 26.11,
   "human_n": 382,
-  "sim_games": 6,
+  "sim_games": 24,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -179,352 +179,352 @@
   "name": "Desert Bloom",
   "human": 25.98,
   "human_n": 102,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "Creative Energy",
   "human": 25.91,
   "human_n": 164,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 4,
+  "sim_rate": 0.16666666666666666
  },
  {
   "name": "Explorers of the Deep",
   "human": 25.25,
   "human_n": 303,
-  "sim_games": 8,
-  "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_games": 24,
+  "sim_wins": 8,
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Squirreled Away",
   "human": 25.16,
   "human_n": 304,
-  "sim_games": 8,
-  "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_games": 16,
+  "sim_wins": 3,
+  "sim_rate": 0.1875
  },
  {
   "name": "Riders of Rohan",
   "human": 24.74,
   "human_n": 245,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 26,
+  "sim_wins": 5,
+  "sim_rate": 0.19230769230769232
  },
  {
   "name": "Cavalry Charge",
   "human": 24.6,
   "human_n": 62,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 26,
+  "sim_wins": 3,
+  "sim_rate": 0.11538461538461539
  },
  {
   "name": "Peace Offering",
   "human": 24.54,
   "human_n": 325,
-  "sim_games": 6,
-  "sim_wins": 2,
-  "sim_rate": 0.3333333333333333
+  "sim_games": 16,
+  "sim_wins": 3,
+  "sim_rate": 0.1875
  },
  {
   "name": "Eldrazi Incursion",
   "human": 24.54,
   "human_n": 272,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "Limit Break",
   "human": 24.38,
   "human_n": 360,
-  "sim_games": 6,
-  "sim_wins": 2,
-  "sim_rate": 0.3333333333333333
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "Exit from Exile",
   "human": 24.32,
   "human_n": 74,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 28,
+  "sim_wins": 11,
+  "sim_rate": 0.39285714285714285
  },
  {
   "name": "Revival Trance",
   "human": 24.3,
   "human_n": 251,
-  "sim_games": 7,
-  "sim_wins": 1,
-  "sim_rate": 0.14285714285714285
+  "sim_games": 24,
+  "sim_wins": 8,
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Mardu Surge",
   "human": 24.0,
   "human_n": 100,
-  "sim_games": 7,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 24,
+  "sim_wins": 4,
+  "sim_rate": 0.16666666666666666
  },
  {
   "name": "Family Matters",
   "human": 23.37,
   "human_n": 261,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "The Hosts of Mordor",
   "human": 23.31,
   "human_n": 185,
-  "sim_games": 8,
-  "sim_wins": 1,
-  "sim_rate": 0.125
+  "sim_games": 30,
+  "sim_wins": 4,
+  "sim_rate": 0.13333333333333333
  },
  {
   "name": "Jump Scare!",
   "human": 23.29,
   "human_n": 205,
-  "sim_games": 7,
-  "sim_wins": 1,
-  "sim_rate": 0.14285714285714285
+  "sim_games": 26,
+  "sim_wins": 4,
+  "sim_rate": 0.15384615384615385
  },
  {
   "name": "Graveyard Overdrive",
   "human": 23.14,
   "human_n": 94,
-  "sim_games": 8,
-  "sim_wins": 2,
+  "sim_games": 24,
+  "sim_wins": 6,
   "sim_rate": 0.25
  },
  {
   "name": "Food and Fellowship",
   "human": 22.93,
   "human_n": 121,
-  "sim_games": 6,
+  "sim_games": 28,
   "sim_wins": 1,
-  "sim_rate": 0.16666666666666666
+  "sim_rate": 0.03571428571428571
  },
  {
   "name": "Sultai Arisen",
   "human": 22.9,
   "human_n": 226,
-  "sim_games": 3,
-  "sim_wins": 2,
-  "sim_rate": 0.6666666666666666
+  "sim_games": 24,
+  "sim_wins": 11,
+  "sim_rate": 0.4583333333333333
  },
  {
   "name": "Science!",
   "human": 22.88,
   "human_n": 106,
-  "sim_games": 2,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 24,
+  "sim_wins": 2,
+  "sim_rate": 0.08333333333333333
  },
  {
   "name": "Sliver Swarm",
   "human": 22.64,
   "human_n": 53,
-  "sim_games": 6,
-  "sim_wins": 2,
-  "sim_rate": 0.3333333333333333
+  "sim_games": 24,
+  "sim_wins": 6,
+  "sim_rate": 0.25
  },
  {
   "name": "Call for Backup",
   "human": 22.41,
   "human_n": 29,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 8,
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Enduring Enchantments",
   "human": 22.34,
   "human_n": 122,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 27,
+  "sim_wins": 7,
+  "sim_rate": 0.25925925925925924
  },
  {
   "name": "Avengers Assemble",
   "human": 21.84,
   "human_n": 206,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 3,
+  "sim_rate": 0.125
  },
  {
   "name": "Quandrix Unlimited",
   "human": 21.54,
   "human_n": 246,
-  "sim_games": 8,
-  "sim_wins": 1,
-  "sim_rate": 0.125
+  "sim_games": 27,
+  "sim_wins": 9,
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Death Toll",
   "human": 21.21,
   "human_n": 99,
-  "sim_games": 8,
-  "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "Doom Prevails",
   "human": 21.06,
   "human_n": 235,
-  "sim_games": 6,
-  "sim_wins": 2,
-  "sim_rate": 0.3333333333333333
+  "sim_games": 28,
+  "sim_wins": 7,
+  "sim_rate": 0.25
  },
  {
   "name": "Turtle Power!",
   "human": 21.05,
   "human_n": 57,
-  "sim_games": 3,
-  "sim_wins": 1,
-  "sim_rate": 0.3333333333333333
+  "sim_games": 32,
+  "sim_wins": 8,
+  "sim_rate": 0.25
  },
  {
   "name": "Counter Intelligence",
   "human": 21.03,
   "human_n": 145,
-  "sim_games": 0,
+  "sim_games": 24,
   "sim_wins": 0,
-  "sim_rate": null
+  "sim_rate": 0.0
  },
  {
   "name": "Silverquill Influence",
   "human": 20.63,
   "human_n": 229,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 28,
+  "sim_wins": 16,
+  "sim_rate": 0.5714285714285714
  },
  {
   "name": "Scrappy Survivors",
   "human": 20.28,
   "human_n": 106,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "Abzan Armor",
   "human": 20.22,
   "human_n": 136,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 12,
+  "sim_rate": 0.5
  },
  {
   "name": "Deep Clue Sea",
   "human": 19.58,
   "human_n": 106,
-  "sim_games": 8,
+  "sim_games": 16,
   "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_rate": 0.125
  },
  {
   "name": "Most Wanted",
   "human": 19.5,
   "human_n": 150,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 16,
+  "sim_wins": 6,
+  "sim_rate": 0.375
  },
  {
   "name": "Counter Blitz",
   "human": 19.1,
   "human_n": 318,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "Blight Curse",
   "human": 18.49,
   "human_n": 192,
-  "sim_games": 2,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 24,
+  "sim_wins": 6,
+  "sim_rate": 0.25
  },
  {
   "name": "Blood Rites",
   "human": 18.27,
   "human_n": 78,
-  "sim_games": 7,
-  "sim_wins": 4,
-  "sim_rate": 0.5714285714285714
+  "sim_games": 24,
+  "sim_wins": 11,
+  "sim_rate": 0.4583333333333333
  },
  {
   "name": "Ahoy Mateys",
   "human": 18.01,
   "human_n": 93,
-  "sim_games": 3,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 26,
+  "sim_wins": 4,
+  "sim_rate": 0.15384615384615385
  },
  {
   "name": "Witherbloom Pestilence",
   "human": 17.96,
   "human_n": 286,
-  "sim_games": 6,
-  "sim_wins": 2,
-  "sim_rate": 0.3333333333333333
+  "sim_games": 24,
+  "sim_wins": 5,
+  "sim_rate": 0.20833333333333334
  },
  {
   "name": "Obscura Operation",
   "human": 16.38,
   "human_n": 29,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 3,
+  "sim_rate": 0.125
  },
  {
   "name": "Mind Flayarrgh",
   "human": 15.2,
   "human_n": 125,
-  "sim_games": 8,
-  "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_games": 24,
+  "sim_wins": 3,
+  "sim_rate": 0.125
  },
  {
   "name": "Mutant Menace",
   "human": 15.12,
   "human_n": 372,
-  "sim_games": 8,
-  "sim_wins": 1,
-  "sim_rate": 0.125
+  "sim_games": 24,
+  "sim_wins": 4,
+  "sim_rate": 0.16666666666666666
  },
  {
   "name": "Elven Council",
   "human": 14.14,
   "human_n": 76,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 1,
+  "sim_rate": 0.041666666666666664
  },
  {
   "name": "Grand Larceny",
   "human": 13.2,
   "human_n": 161,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 2,
+  "sim_rate": 0.08333333333333333
  },
  {
   "name": "Deadly Disguise",
   "human": 11.96,
   "human_n": 92,
-  "sim_games": 0,
-  "sim_wins": 0,
-  "sim_rate": null
+  "sim_games": 24,
+  "sim_wins": 4,
+  "sim_rate": 0.16666666666666666
  }
 ]

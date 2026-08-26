@@ -81,6 +81,36 @@ cannot get this from the list — you have to play the games.** That is what
 makes simulation irreplaceable here rather than a convenience, and it is why
 the expensive part of the product is the moat rather than the cost.
 
+## How stock Forge diverges from human play
+
+Blocking is the most obvious divergence, not the only one. Measured on the
+cohort run (66 decks, stock Forge) against the 10,982-game human baseline:
+
+| # | divergence | measured | mechanised in the agent? |
+|---|---|---|---|
+| 1 | **Under-blocks.** 14.7% of attacking creatures blocked over 2,128 cEDH decisions, 17.7–21% on precons — ~80% get through | yes | yes, 0.6.0 (`blockiness`, `blockPowerFloor`, `blockMax`, `chumpiness`) |
+| 2 | **No threat focus.** Humans gang up on whoever is winning, compressing everyone toward 25%. Sim true sd 9.8pp vs human 5.6pp: **over-disperses 1.76×** | yes | yes (`kingmakerRatio`, `grudgeWeight`) |
+| 3 | **Single-target attacks.** 98% of attack declarations hit exactly one opponent | yes | yes (`splitAttacks`) |
+| 4 | **Never mulligans.** Stock keeps 7 in ~97% of hands, so it keeps hands a human would ship | from CLAUDE.md; not re-measured here (stock seats emit no mulligan telemetry) | yes (`minLands`, `maxLands`, `maxMulls`) |
+| 5 | **Bad interaction timing.** Holds removal and counters poorly | not measured — no human baseline for interaction timing | partly (`politics`, `counterThreshold`) |
+| 6 | **Cannot convert a combo.** Assembles lines and never finishes them | yes, separately (`studies/agent_viability`) | no — this is the known gap |
+| 7 | **No politics or deals.** Cannot negotiate, threaten, or trade favours | unmeasurable from logs | no, and probably not modellable |
+
+The consequence for ranking is the headline: **the sim's top 5 decks and the
+humans' top 5 decks overlap on ZERO decks**, and the sim rewards creature
+count (+0.294) exactly where humans punish it (−0.378).
+
+Divergences 1–4 all push the same way: creature decks that attack get to do
+so unopposed, un-ganged-up-on, against opponents who never mulligan into a
+functional hand. That is why the aggro bias is the dominant error and why the
+agent arm turns on all four together — with an ablation to follow if the
+combined arm moves the number.
+
+**The agent arm is aimed at fidelity, not strength.** `triggerMiss` stays 0
+and `greed` stays 1.0: the goal is a competent human, not a bad player.
+Spreading damage, attacking the leader and holding interaction are not
+"playing worse" — they are ordinary multiplayer skill that stock Forge lacks.
+
 ## Why this is a wedge
 
 The two halves are both ours and neither is easy to copy: **the compute** (a

@@ -1,0 +1,17 @@
+﻿design   1 plan seat vs 3 stock seats, plan seat rotated 0-3
+pods     n7WpsqsZtdQ, 2iA_Jt0d6sM (all decks combo-live and warm)
+cells    8 x 8 games = 64 games, clock 900s, 8 workers
+null     plan seat wins 25% if the agent is no better than stock
+
+  n7WpsqsZtdQ rot0 seat1: plan 2/7 decided (8 played)
+  n7WpsqsZtdQ rot1 seat2: plan 1/7 decided (8 played)
+  n7WpsqsZtdQ rot2 seat3: plan 2/7 decided (8 played)
+  n7WpsqsZtdQ rot3 seat4: plan 1/8 decided (8 played)
+  2iA_Jt0d6sM rot0 seat1: plan 1/8 decided (8 played)
+  2iA_Jt0d6sM rot1 seat2: plan 1/6 decided (8 played)
+  2iA_Jt0d6sM rot2 seat3: plan 0/7 decided (8 played)
+  2iA_Jt0d6sM rot3 seat4: plan 1/7 decided (8 played)
+
+played 64, decided 57, censored 7
+plan-seat win share 9/57 = 15.8% +/- 4.8 pp (1 SE), null 25%
+95% CI approx [6.3%, 25.3%]

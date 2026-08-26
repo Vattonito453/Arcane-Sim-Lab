@@ -19,7 +19,99 @@ The model file is small JSON: feature list, standardiser, ridge weights.
 from __future__ import annotations
 
 import json
+import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+import cards  # noqa: E402
+import deck_plan  # noqa: E402
+
+# ---- deck features -------------------------------------------------
+# The SINGLE implementation. studies/precon_predict/features.py imports
+# it from here, because a second copy would drift and produce
+# train/serve skew that nothing would catch.
+
+EVASION = re.compile(r"\bflying\b|\bmenace\b|\btrample\b|can't be blocked|"
+                     r"\bshadow\b|\bfear\b|\bintimidate\b|\bskulk\b|\bhorsemanship\b", re.I)
+REMOVAL = re.compile(r"destroy target|exile target|deals \d+ damage to target|"
+                     r"target creature gets -|sacrifices? a creature", re.I)
+COUNTER = re.compile(r"counter target", re.I)
+WIPE = re.compile(r"destroy all|exile all|each creature|all creatures get -", re.I)
+DRAW = re.compile(r"draw (a|two|three|\w+) cards?", re.I)
+RAMP = re.compile(r"search your library for a .{0,20}land|add \{|add one mana|"
+                  r"add two mana", re.I)
+RECUR = re.compile(r"from your graveyard", re.I)
+
+
+def deck_features(path) -> dict:
+    name, cmd, main = deck_plan.read_dck(path)
+    names = cmd + main
+    facts = cards.get_many(names, fetch=False)
+    f = {k: 0 for k in ("creatures", "lands", "artifacts", "enchantments",
+                        "spells", "planeswalkers", "evasion", "removal",
+                        "counters", "wipes", "draw", "ramp", "recursion")}
+    cmcs, powers = [], []
+    known = 0
+    for n in names:
+        d = facts.get(cards.key(n)) or facts.get(n) or {}
+        if not d:
+            continue
+        known += 1
+        text = d.get("oracle_text") or ""
+        tl = d.get("type_line") or ""
+        cmc = d.get("cmc") or 0
+        is_land = "Land" in tl
+        if is_land:
+            f["lands"] += 1
+        else:
+            cmcs.append(cmc)
+        if "Creature" in tl:
+            f["creatures"] += 1
+            p = d.get("power")
+            try:
+                powers.append(float(p))
+            except (TypeError, ValueError):
+                pass
+            if EVASION.search(text):
+                f["evasion"] += 1
+        if "Artifact" in tl and not is_land:
+            f["artifacts"] += 1
+        if "Enchantment" in tl:
+            f["enchantments"] += 1
+        if "Planeswalker" in tl:
+            f["planeswalkers"] += 1
+        if "Instant" in tl or "Sorcery" in tl:
+            f["spells"] += 1
+        if REMOVAL.search(text):
+            f["removal"] += 1
+        if COUNTER.search(text):
+            f["counters"] += 1
+        if WIPE.search(text):
+            f["wipes"] += 1
+        if DRAW.search(text):
+            f["draw"] += 1
+        if RAMP.search(text):
+            f["ramp"] += 1
+        if RECUR.search(text):
+            f["recursion"] += 1
+    total = max(1, len(names))
+    out = {
+        "name": name,
+        "coverage": round(known / total, 3),
+        "avg_cmc": round(sum(cmcs) / max(1, len(cmcs)), 3),
+        "avg_power": round(sum(powers) / max(1, len(powers)), 3),
+        "total_power": sum(powers),
+    }
+    for k, v in f.items():
+        out[k] = v
+    # Hypothesis-bearing composites, per-99 so deck size cannot drive them.
+    out["aggression"] = round((sum(powers) + 2 * f["evasion"]) / total, 4)
+    out["interaction"] = round((f["removal"] + f["counters"] + f["wipes"]) / total, 4)
+    out["complexity"] = round(
+        (out["avg_cmc"] / 4.0) + (f["recursion"] + f["draw"]) / total, 4)
+    return out
+
 
 MODEL_DIR = Path(__file__).parent / "models"
 DEFAULT_MODEL = MODEL_DIR / "precon_predict.json"

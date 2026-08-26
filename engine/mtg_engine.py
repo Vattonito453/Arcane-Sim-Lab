@@ -21,6 +21,7 @@ zero-dependency API. Use it three ways:
        GET  /results/{file}       one full sim result (games -> turns -> events)
                                   ?snapshots=1 adds board_snapshot events
        GET  /results/{file}/summary   run without event logs (~KB, not MB)
+       GET  /results/{file}/prediction predicted real-playgroup win rates
        GET  /results/{file}/game/{n}  one game's events
        GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
@@ -684,6 +685,54 @@ def _read_result_summary(name: str) -> dict:
             "games": games, "file": name, "validity": data.get("validity")}
 
 
+def _read_result_prediction(name: str) -> dict:
+    """Predicted REAL-PLAYGROUP win rate per deck in a finished run.
+
+    The sim's own win rate is not the number a player wants. Measured on 66
+    precons against 10,982 real playgroup games, stock Forge spans a wider
+    range than humans do and inflates weak decks most; one measured cause is
+    that it blocks 14.7% of attacking creatures, so ~85% get through and any
+    deck that wins by attacking looks better than it is.
+
+    Returns the corrected number, an interval from the model's out-of-sample
+    error, and a plain-language explanation. Degrades honestly: if no model
+    has been fitted, or a deck file cannot be found, it says so rather than
+    inventing a figure.
+    """
+    data = _read_result(name)
+    summary = data.get("summary") or {}
+    rates = summary.get("win_rates") or {}
+    try:
+        from predict import Predictor, deck_features
+    except Exception as e:  # pragma: no cover - import guard
+        return {"file": name, "available": False, "reason": f"predict unavailable: {e}"}
+    model = Predictor.load()
+    if model is None:
+        return {"file": name, "available": False,
+                "reason": "no fitted model; run studies/precon_predict/analyze.py"}
+    decks = []
+    for deck, rate in sorted(rates.items()):
+        row = {"deck": deck, "sim_win_rate": round(100.0 * rate, 1)}
+        path = _find_deck(deck) or _find_deck(deck + ".dck")
+        if not path:
+            row.update(available=False, reason="deck file not found")
+            decks.append(row)
+            continue
+        try:
+            vals = deck_features(path)
+            vals["sim"] = 100.0 * rate
+            row.update(model.predict(vals), available=True,
+                       explanation=model.explain(vals))
+        except Exception as e:
+            row.update(available=False, reason=str(e))
+        decks.append(row)
+    return {"file": name, "available": True, "decks": decks,
+            "model": {"features": model.features,
+                      "basis": model.m.get("ground_truth"),
+                      "trained_on_decks": model.m.get("n_decks"),
+                      "human_games": model.m.get("human_games")}}
+
+
 def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None) -> dict:
     """Win-condition telemetry for one deck in one result.
 
@@ -1106,6 +1155,9 @@ def serve(port: int = 8484) -> None:
                                 cache=IMMUTABLE)
                         if len(parts) >= 3 and parts[2] == "summary":
                             return self._send(_read_result_summary(parts[1]), cache=IMMUTABLE)
+                        if len(parts) >= 3 and parts[2] == "prediction":
+                            return self._send(_read_result_prediction(parts[1]),
+                                              cache=IMMUTABLE)
                         # /results/{file}/telemetry?deck=sub&watch=a|b|c
                         if len(parts) >= 3 and parts[2] == "telemetry":
                             deck = q.get("deck", [""])[0].strip()

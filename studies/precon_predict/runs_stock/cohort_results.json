@@ -3,9 +3,9 @@
   "name": "Planeswalker Party",
   "human": 40.87,
   "human_n": 115,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 1,
-  "sim_rate": 0.2
+  "sim_rate": 0.16666666666666666
  },
  {
   "name": "Blame Game",
@@ -27,9 +27,9 @@
   "name": "Legends' Legacy",
   "human": 33.67,
   "human_n": 49,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 1,
-  "sim_rate": 0.2
+  "sim_rate": 0.16666666666666666
  },
  {
   "name": "Jeskai Striker",
@@ -107,7 +107,7 @@
   "name": "Goblin Storm",
   "human": 28.57,
   "human_n": 70,
-  "sim_games": 2,
+  "sim_games": 3,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -131,7 +131,7 @@
   "name": "Wakanda Forever",
   "human": 27.3,
   "human_n": 201,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -139,9 +139,9 @@
   "name": "Scions & Spellcraft",
   "human": 27.0,
   "human_n": 387,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 1,
-  "sim_rate": 0.2
+  "sim_rate": 0.16666666666666666
  },
  {
   "name": "Revenant Recon",
@@ -163,15 +163,15 @@
   "name": "Quick Draw",
   "human": 26.24,
   "human_n": 101,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 2,
-  "sim_rate": 0.4
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Animated Army",
   "human": 26.11,
   "human_n": 382,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -227,9 +227,9 @@
   "name": "Peace Offering",
   "human": 24.54,
   "human_n": 325,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 2,
-  "sim_rate": 0.4
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Eldrazi Incursion",
@@ -243,9 +243,9 @@
   "name": "Limit Break",
   "human": 24.38,
   "human_n": 360,
-  "sim_games": 5,
-  "sim_wins": 1,
-  "sim_rate": 0.2
+  "sim_games": 6,
+  "sim_wins": 2,
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Exit from Exile",
@@ -307,17 +307,17 @@
   "name": "Food and Fellowship",
   "human": 22.93,
   "human_n": 121,
-  "sim_games": 5,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 6,
+  "sim_wins": 1,
+  "sim_rate": 0.16666666666666666
  },
  {
   "name": "Sultai Arisen",
   "human": 22.9,
   "human_n": 226,
-  "sim_games": 2,
-  "sim_wins": 1,
-  "sim_rate": 0.5
+  "sim_games": 3,
+  "sim_wins": 2,
+  "sim_rate": 0.6666666666666666
  },
  {
   "name": "Science!",
@@ -331,9 +331,9 @@
   "name": "Sliver Swarm",
   "human": 22.64,
   "human_n": 53,
-  "sim_games": 5,
-  "sim_wins": 1,
-  "sim_rate": 0.2
+  "sim_games": 6,
+  "sim_wins": 2,
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Call for Backup",
@@ -379,17 +379,17 @@
   "name": "Doom Prevails",
   "human": 21.06,
   "human_n": 235,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 2,
-  "sim_rate": 0.4
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Turtle Power!",
   "human": 21.05,
   "human_n": 57,
-  "sim_games": 2,
+  "sim_games": 3,
   "sim_wins": 1,
-  "sim_rate": 0.5
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Counter Intelligence",
@@ -467,7 +467,7 @@
   "name": "Ahoy Mateys",
   "human": 18.01,
   "human_n": 93,
-  "sim_games": 2,
+  "sim_games": 3,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -475,9 +475,9 @@
   "name": "Witherbloom Pestilence",
   "human": 17.96,
   "human_n": 286,
-  "sim_games": 5,
+  "sim_games": 6,
   "sim_wins": 2,
-  "sim_rate": 0.4
+  "sim_rate": 0.3333333333333333
  },
  {
   "name": "Obscura Operation",

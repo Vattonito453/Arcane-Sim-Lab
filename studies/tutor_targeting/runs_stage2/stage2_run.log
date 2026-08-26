@@ -1,0 +1,56 @@
+﻿staged magda.dck -> C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander
+staged rog_ishai.dck -> C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander
+staged tymna_thrasios.dck -> C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander
+staged selvala_archetype.dck -> C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander
+plans   : C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\plans_20260825_175454_pid81260.json (magda, rog_ishai, tymna_thrasios, selvala_archetype)
+
+--- rotation 1/4: seats = ['magda.dck', 'rog_ishai.dck', 'tymna_thrasios.dck', 'selvala_archetype.dck'] ---
+$ java -Xmx4g -cp C:\Users\Vatto\AppData\Local\Temp\claude\C--Users-Vatto-Magic-Rules-Engine\a04e3d06-be86-4427-832d-102b2608b95f\scratchpad\shim-0.5.0-verify.jar;C:\Users\Vatto\forge\forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\magda.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\rog_ishai.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\tymna_thrasios.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\selvala_archetype.dck --games 2 --timeout 900 --out C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\shim_raw_20260825_175454_826189.jsonl --plans C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\plans_20260825_175454_pid81260.json
+  shim: plans loaded for [tymna_thrasios, selvala_archetype, rog_ishai, magda]
+  shim: FModel initialized
+  shim: Ai(1)-magda -> plan agent, profile SimLabHuman
+  shim: Ai(2)-rog_ishai -> plan agent, profile SimLabHuman
+  shim: Ai(3)-tymna_thrasios -> plan agent, profile SimLabHuman
+  shim: Ai(4)-selvala_archetype -> plan agent, profile SimLabHuman
+  shim: game 1 done in 63186 ms — Ai(4)-selvala_archetype wins
+  shim: game 2 done in 34758 ms — Ai(2)-rog_ishai wins
+
+--- rotation 2/4: seats = ['rog_ishai.dck', 'tymna_thrasios.dck', 'selvala_archetype.dck', 'magda.dck'] ---
+$ java -Xmx4g -cp C:\Users\Vatto\AppData\Local\Temp\claude\C--Users-Vatto-Magic-Rules-Engine\a04e3d06-be86-4427-832d-102b2608b95f\scratchpad\shim-0.5.0-verify.jar;C:\Users\Vatto\forge\forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\rog_ishai.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\tymna_thrasios.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\selvala_archetype.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\magda.dck --games 2 --timeout 900 --out C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\shim_raw_20260825_175644_653187.jsonl --plans C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\plans_20260825_175454_pid81260.json
+  shim: plans loaded for [tymna_thrasios, selvala_archetype, rog_ishai, magda]
+  shim: FModel initialized
+  shim: Ai(1)-rog_ishai -> plan agent, profile SimLabHuman
+  shim: Ai(2)-tymna_thrasios -> plan agent, profile SimLabHuman
+  shim: Ai(3)-selvala_archetype -> plan agent, profile SimLabHuman
+  shim: Ai(4)-magda -> plan agent, profile SimLabHuman
+  shim: game 1 done in 106657 ms — Ai(4)-magda wins
+  shim: game 2 done in 309198 ms — Ai(3)-selvala_archetype wins
+
+--- rotation 3/4: seats = ['tymna_thrasios.dck', 'selvala_archetype.dck', 'magda.dck', 'rog_ishai.dck'] ---
+$ java -Xmx4g -cp C:\Users\Vatto\AppData\Local\Temp\claude\C--Users-Vatto-Magic-Rules-Engine\a04e3d06-be86-4427-832d-102b2608b95f\scratchpad\shim-0.5.0-verify.jar;C:\Users\Vatto\forge\forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\tymna_thrasios.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\selvala_archetype.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\magda.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\rog_ishai.dck --games 2 --timeout 900 --out C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\shim_raw_20260825_180351_826851.jsonl --plans C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\plans_20260825_175454_pid81260.json
+  shim: plans loaded for [tymna_thrasios, selvala_archetype, rog_ishai, magda]
+  shim: FModel initialized
+  shim: Ai(1)-tymna_thrasios -> plan agent, profile SimLabHuman
+  shim: Ai(2)-selvala_archetype -> plan agent, profile SimLabHuman
+  shim: Ai(3)-magda -> plan agent, profile SimLabHuman
+  shim: Ai(4)-rog_ishai -> plan agent, profile SimLabHuman
+  shim: game 1 done in 899361 ms — draw
+  shim: game 2 done in 215351 ms — Ai(4)-rog_ishai wins
+
+--- rotation 4/4: seats = ['selvala_archetype.dck', 'magda.dck', 'rog_ishai.dck', 'tymna_thrasios.dck'] ---
+$ java -Xmx4g -cp C:\Users\Vatto\AppData\Local\Temp\claude\C--Users-Vatto-Magic-Rules-Engine\a04e3d06-be86-4427-832d-102b2608b95f\scratchpad\shim-0.5.0-verify.jar;C:\Users\Vatto\forge\forge-gui-desktop-2.0.13-jar-with-dependencies.jar simlab.shim.SimShim --decks C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\selvala_archetype.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\magda.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\rog_ishai.dck C:\Users\Vatto\AppData\Roaming\Forge\simlab-runs\81260-wgt_9mzq\decks\commander\tymna_thrasios.dck --games 2 --timeout 900 --out C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\shim_raw_20260825_182235_357118.jsonl --plans C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\plans_20260825_175454_pid81260.json
+  shim: plans loaded for [tymna_thrasios, selvala_archetype, rog_ishai, magda]
+  shim: FModel initialized
+  shim: Ai(1)-selvala_archetype -> plan agent, profile SimLabHuman
+  shim: Ai(2)-magda -> plan agent, profile SimLabHuman
+  shim: Ai(3)-rog_ishai -> plan agent, profile SimLabHuman
+  shim: Ai(4)-tymna_thrasios -> plan agent, profile SimLabHuman
+  shim: game 1 done in 68946 ms — Ai(2)-magda wins
+  shim: game 2 done in 55091 ms — Ai(3)-rog_ishai wins
+
+8 game(s) parsed | draws: 1
+  rog_ishai: 3 wins (38%)
+  selvala_archetype: 2 wins (25%)
+  magda: 2 wins (25%)
+  tymna_thrasios: 0 wins (0%)
+json    : C:\Users\Vatto\Magic Rules Engine\studies\tutor_targeting\runs_stage2\sim_20260825_175454_rotated.json

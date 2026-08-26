@@ -29,11 +29,17 @@ import re
 import sys
 from collections import defaultdict
 
+# Tolerant across shim versions: 0.4.1 added mode-less measurement fields,
+# 0.4.2 added mode=, 0.5.0 added sid= (leading, so .search skips it), dest=
+# and a trailing src=. A parse miss here is silent and lands in the
+# "pre-0.4.1" bucket, so this regex has to keep up with the emitter.
 FIELDS = re.compile(
     r"options=(?P<options>\d+) sighted=(?P<sighted>\w+)(?: mode=(?P<mode>\w+))?"
     r" ranked=(?P<ranked>\d+)"
     r" agree=(?P<agree>\w+) pickedW=(?P<pickedw>\d+) planW=(?P<planw>\d+)"
-    r" missing=(?P<missing>.*?) picked=(?P<picked>.*?) planPick=(?P<planpick>.*)$"
+    r"(?: dest=(?P<dest>\S*))?(?: comboPick=(?P<combopick>\S*))?"
+    r" missing=(?P<missing>.*?) picked=(?P<picked>.*?) planPick=(?P<planpick>.*?)"
+    r"(?: src=(?P<src>.*))?$"
 )
 
 

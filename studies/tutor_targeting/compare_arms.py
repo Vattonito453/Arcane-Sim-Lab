@@ -44,7 +44,13 @@ def main() -> int:
     arms: dict[str, list[tuple[str, dict]]] = defaultdict(list)
     for p in args.results:
         r = json.loads(Path(p).read_text(encoding="utf-8"))
-        label = "agent" if r.get("meta", {}).get("humanized") else "stock"
+        meta = r.get("meta", {})
+        # The agent VERSION is part of the arm identity, not decoration. Two
+        # humanized runs on different shim builds are different agents, and
+        # labelling on `humanized` alone silently pools them — exactly the
+        # pooling the agent-change rule exists to prevent.
+        label = ("agent" if meta.get("humanized") else "stock") \
+            + " " + str(meta.get("agent") or "unknown-agent")
         arms[label].append((p, r))
 
     for label in sorted(arms):
@@ -71,7 +77,9 @@ def main() -> int:
                     winners[w] += 1
                     win_rounds.append(rnd)
                 methods[m.get("method", "?")] += 1
-                print(f"  {Path(path).name} g{i}: winner={res.get('winner', '-'):32} "
+                # A draw carries winner: None, so the key EXISTS and a default
+                # never applies.
+                print(f"  {Path(path).name} g{i}: winner={res.get('winner') or '-':32} "
                       f"round={rnd:>2} method={m.get('method')}"
                       f"{' TIMEOUT' if res.get('timedOut') else ''}")
                 for z in g.get("zones") or []:

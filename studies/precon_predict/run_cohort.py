@@ -68,7 +68,9 @@ def run_cell(spec):
                "simlab.shim.SimShim", "--decks", *decks,
                "--games", str(games), "--timeout", str(clock), "--out", str(out)]
         if agent:
-            cmd += ["--plans", str(agent), "--seat-pilots",
+            # ABSOLUTE: java runs with cwd=~/forge, so a relative plans path
+            # silently resolves to nothing and every cell produces no games.
+            cmd += ["--plans", str(Path(agent).resolve()), "--seat-pilots",
                     ",".join(["plan:SimLabHuman"] * 4)]
         subprocess.run(cmd, cwd=os.path.expanduser("~/forge"),
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,

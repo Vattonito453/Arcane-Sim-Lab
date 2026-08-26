@@ -1,0 +1,42 @@
+runs_stock: 384 cells, 766 games, 66/66 decks with data, median 48 games/deck
+
+arm runs_stock: 66 decks, median 48 sim games/deck, 3064 deck-games
+
+==============================================================================
+1. BASELINE  -- how good is the raw sim, vs free alternatives?
+==============================================================================
+  raw sim win rate vs human:  r +0.217   rho +0.260
+  raw sim used as-is                 MAE  8.53pp  wMAE  8.74pp  RMSE 10.92  r +0.217  rho +0.260
+  rival: guess the mean              MAE  4.25pp  wMAE  3.67pp  RMSE  5.56  r +0.000  rho +nan
+  rival: decklist stats (LOO)        MAE  4.08pp  wMAE  3.61pp  RMSE  5.22  r +0.353  rho +0.360
+
+==============================================================================
+2. MECHANISM -- is Forge's under-blocking visible in the residual?
+==============================================================================
+  sim - human residual: mean -1.8 pp (sim inflates if positive)
+  PREDICTION: aggression correlates POSITIVELY with the residual
+    aggression   r +0.283  rho +0.284  <-- attack-y
+    evasion      r +0.264  rho +0.289  <-- attack-y
+    creatures    r +0.349  rho +0.326  <-- attack-y
+    avg_power    r +0.040  rho +0.061  <-- attack-y
+    total_power  r +0.232  rho +0.224  <-- attack-y
+    interaction  r +0.139  rho +0.074
+    avg_cmc      r +0.042  rho +0.012
+    complexity   r +0.011  rho -0.005
+
+==============================================================================
+3. CORRECTION -- can we turn the sim into a real prediction? (LOO)
+==============================================================================
+  sim only (calibration)             MAE  4.29pp  wMAE  3.71pp  RMSE  5.58  r +0.086  rho +0.154
+  sim + aggression                   MAE  4.40pp  wMAE  3.81pp  RMSE  5.67  r +0.049  rho +0.073
+  sim + aggression + interaction     MAE  4.44pp  wMAE  3.87pp  RMSE  5.72  r +0.027  rho +0.025
+  sim + creatures + avg_cmc          MAE  4.01pp  wMAE  3.53pp  RMSE  5.13  r +0.399  rho +0.416
+  sim + aggr + inter + cmc + creat   MAE  4.12pp  wMAE  3.63pp  RMSE  5.26  r +0.357  rho +0.374
+
+  BEST: sim + creatures + avg_cmc  (sim, creatures, avg_cmc)
+    vs guessing the mean : MAE 4.25 -> 4.01 pp (+6%)
+    vs raw sim           : MAE 8.53 -> 4.01 pp (+53%)
+
+  fitted model -> model_runs_stock.json
+
+model -> engine/models/precon_predict.json

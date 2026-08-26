@@ -187,3 +187,41 @@ python3 engine/tests/test_adapter.py
 # after Stage 2: same run, confirm tutor_steer mode=plan events and that
 # combat/politics telemetry is byte-identical on a fixed seed
 ```
+
+---
+
+## Backlog from the prediction study (2026-08-26)
+
+Measured on 256 stock games and 332 agent games of the 66-precon cohort.
+None of these block the study; all three are real engine gaps.
+
+1. **Hold creatures back to block.** The agent attacks with everything, so
+   `cannot-block` (751) and `no-untapped-creature` (416) are the top reasons a
+   block never happens -- not the blocking policy, which is now tuned. Human
+   play keeps a blocker home when a threat on the board can kill it. Until
+   this exists, block rate caps around 25.8% (from 17.6%) and
+   `corr(creatures, sim)` stalls near +0.07 instead of going negative like
+   humans (-0.378).
+
+2. **Instant-speed machinery.** Only 22.3% of instants are cast on an
+   opponent's turn and just 2.7% of ALL spells are cast off-turn: the agent
+   plays solitaire in turn order. `politics` and `counterThreshold` only VETO
+   a counterspell; nothing ever HOLDS an instant for the right window. This is
+   new mechanism, not a dial. Expect it to matter far more for constructed and
+   cEDH than for precons, which carry little interaction.
+
+3. **Synergy lines -- DONE, needs a validation arm.** Commander Spellbook
+   returns ZERO variants for all 66 precons (not even `almostIncluded`), so
+   combo pursuit was structurally inert on the decks most players own:
+   0 `combo_cast`, 0 `tutor_cast`, 0 `combo_hold` across 332 games.
+   `deck_plan.synergy_lines()` now derives two-card engines from the deck's
+   own archetype when Spellbook has nothing -- "make tokens then anthem them",
+   "sacrifice then drain" -- which is a combo that fires ONCE, not infinitely.
+   61 of 66 precons now carry a pursuable win condition (355 lines).
+   Spellbook still wins when it has a real combo (magda keeps its 13).
+
+   **Unvalidated:** `studies/agent_viability` measured combo pursuit as
+   slightly NEGATIVE for win rate (dropping it scored +3.2 pp), because the
+   agent assembles and cannot convert. Synergy lines may therefore cost
+   strength while improving fidelity. That needs its own arm before it ships
+   on by default.

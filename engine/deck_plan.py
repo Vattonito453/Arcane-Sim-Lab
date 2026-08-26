@@ -123,6 +123,83 @@ _MANA_SOURCE = re.compile(r"add \{|add one mana|add two mana", re.I)
 _BOARD_PAYOFF = re.compile(r"creatures? you control get \+|creatures you control gain", re.I)
 
 
+# Synergy lines: a deck's win condition when Commander Spellbook has nothing.
+#
+# Spellbook catalogues competitive and infinite combos. Queried for all 66
+# Commander precons it returns ZERO variants -- not even "almost included" --
+# so `lines` is empty and the shim's combo pursuit is structurally inert on
+# the decks most players actually own. But a precon absolutely has a win
+# condition: it is "make tokens, then anthem them", "sacrifice creatures,
+# then drain", "put counters on things, then proliferate". Those are combos
+# that need to fire ONCE, not infinitely.
+#
+# Each entry pairs an ENABLER pattern with a PAYOFF pattern for one archetype.
+# Same oracle-text heuristic style as TAG_MARKERS -- no new inference regime,
+# no network dependency, and Forge still adjudicates every rule.
+SYNERGY_LINES: dict[str, tuple[str, str]] = {
+    "go-wide-tokens": (r"create[s]? .*token", r"creatures you control get \+|"
+                       r"whenever .*creature .*enters|for each creature you control"),
+    "aristocrats-drain": (r"sacrifice a creature|whenever .*you control dies",
+                          r"each opponent loses|drain|whenever .*dies, .*gain"),
+    "counters-proliferate": (r"put .*\+1/\+1 counter|enters with .*counter",
+                             r"proliferate|for each .*counter|remove .*counter"),
+    "tribal-anthem": (r"create[s]? .*token|search your library for a creature",
+                      r"other .*you control get \+|creatures you control get \+"),
+    "lifegain": (r"you gain \d+ life|gain life", r"whenever you gain life"),
+    "spellslinger-burn": (r"instant or sorcery|copy target",
+                          r"whenever you cast a noncreature spell|deals damage to any target"),
+    "mill": (r"mills|puts the top", r"from (a|your|their) graveyard|for each card in"),
+    "reanimator": (r"discard|mills|put .*into your graveyard",
+                   r"return target creature card from your graveyard"),
+    "ramp-big-mana": (r"add .*mana|search your library for a land",
+                      r"x is|costs? \{?\d*\}? less|for each land you control"),
+}
+_MAX_SYNERGY_LINES = 6
+
+
+def synergy_lines(names, facts, tags, weights, commanders):
+    """Two-card engines the deck is actually built around.
+
+    Pairs the highest-weighted enabler with the highest-weighted payoff for
+    the deck's dominant tags. Capped, because 800 enablers x 800 payoffs is a
+    combinatorial explosion and the shim treats every line as something worth
+    chasing. Commanders are allowed as a piece: they are always castable, which
+    is exactly what makes a precon engine reliable.
+    """
+    out = []
+    for tag in tags[:2]:
+        pat = SYNERGY_LINES.get(tag)
+        if not pat:
+            continue
+        en_re, pay_re = re.compile(pat[0], re.I), re.compile(pat[1], re.I)
+        enablers, payoffs = [], []
+        for n in names:
+            f = facts.get(cards.key(n)) or facts.get(n) or {}
+            text = f.get("oracle_text") or ""
+            tline = f.get("type_line") or ""
+            if "Land" in tline and "Creature" not in tline:
+                continue
+            w = weights.get(n, 1)
+            if en_re.search(text):
+                enablers.append((w, n))
+            if pay_re.search(text):
+                payoffs.append((w, n))
+        enablers.sort(reverse=True)
+        payoffs.sort(reverse=True)
+        for _, e in enablers[:3]:
+            for _, p in payoffs[:3]:
+                if e == p:
+                    continue
+                pair = {e, p}
+                if any(pair == set(l["cards"]) for l in out):
+                    continue
+                out.append({"cards": sorted(pair), "produces": [tag],
+                            "source": "synergy"})
+                if len(out) >= _MAX_SYNERGY_LINES:
+                    return out
+    return out
+
+
 def read_dck(path: str | Path) -> tuple[str, list[str], list[str]]:
     """Return (deck name, commander names, main names)."""
     name = Path(path).stem
@@ -191,6 +268,7 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         lines.sort(key=lambda ln: len(ln["cards"]))
     except Exception:
         pass  # no cache and no network — plans work without combos
+
 
     weights: dict[str, int] = {}
     roles: dict[str, str] = {}
@@ -277,6 +355,14 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
             context[n] = {"hint": "finisher", "minCreatures": 3}
         if val > 1:
             targets[n] = val
+
+    # Spellbook knows nothing about precon-level engines: queried for all 66
+    # Commander precons it returns ZERO variants. Fall back to the deck's own
+    # archetype so "assemble your engine" means something on the decks most
+    # players own. Only when Spellbook returned nothing -- a real catalogued
+    # combo is always the better line.
+    if not lines:
+        lines = synergy_lines(names, facts, tags, weights, commanders)
 
     keep = sorted((n for n, w in weights.items() if w >= 5),
                   key=lambda n: -weights[n])[:16]

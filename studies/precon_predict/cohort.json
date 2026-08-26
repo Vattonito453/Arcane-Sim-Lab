@@ -1,0 +1,398 @@
+[
+ {
+  "name": "Planeswalker Party",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Planeswalker Party [CMM] [2023].dck",
+  "human": 40.87,
+  "n": 115
+ },
+ {
+  "name": "Blame Game",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Blame Game [MKC] [2024].dck",
+  "human": 36.88,
+  "n": 40
+ },
+ {
+  "name": "Eldrazi Unbound",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Eldrazi Unbound [CMM] [2023].dck",
+  "human": 34.27,
+  "n": 116
+ },
+ {
+  "name": "Legends' Legacy",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Legends' Legacy [DMC] [2022].dck",
+  "human": 33.67,
+  "n": 49
+ },
+ {
+  "name": "Jeskai Striker",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Jeskai Striker [TDC] [2025].dck",
+  "human": 33.62,
+  "n": 58
+ },
+ {
+  "name": "Tricky Terrain",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Tricky Terrain [M3C] [2024].dck",
+  "human": 32.07,
+  "n": 214
+ },
+ {
+  "name": "Lorehold Spirit",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Lorehold Spirit [SOC] [2026].dck",
+  "human": 31.47,
+  "n": 224
+ },
+ {
+  "name": "World Shaper",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\World Shaper [EOC] [2025].dck",
+  "human": 30.65,
+  "n": 31
+ },
+ {
+  "name": "The Fantastic Four",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\The Fantastic Four [MSC] [2026].dck",
+  "human": 30.31,
+  "n": 80
+ },
+ {
+  "name": "Miracle Worker",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Miracle Worker [DSC] [2024].dck",
+  "human": 30.05,
+  "n": 94
+ },
+ {
+  "name": "Hail, Caesar",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Hail, Caesar [PIP] [2024].dck",
+  "human": 29.19,
+  "n": 227
+ },
+ {
+  "name": "Dance of the Elements",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Dance of the Elements [ECC] [2026].dck",
+  "human": 29.09,
+  "n": 275
+ },
+ {
+  "name": "Prismari Artistry",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Prismari Artistry [SOC] [2026].dck",
+  "human": 28.99,
+  "n": 163
+ },
+ {
+  "name": "Goblin Storm",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Goblin Storm [SLD] [2026].dck",
+  "human": 28.57,
+  "n": 70
+ },
+ {
+  "name": "Endless Punishment",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Endless Punishment [DSC] [2024].dck",
+  "human": 28.21,
+  "n": 273
+ },
+ {
+  "name": "Temur Roar",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Temur Roar [TDC] [2025].dck",
+  "human": 27.78,
+  "n": 63
+ },
+ {
+  "name": "Wakanda Forever",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Wakanda Forever [MSC] [2026].dck",
+  "human": 27.3,
+  "n": 201
+ },
+ {
+  "name": "Scions & Spellcraft",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Scions & Spellcraft [FIC] [2025].dck",
+  "human": 27.0,
+  "n": 387
+ },
+ {
+  "name": "Revenant Recon",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Revenant Recon [MKC] [2024].dck",
+  "human": 26.94,
+  "n": 103
+ },
+ {
+  "name": "Veloci-Ramp-Tor",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Veloci-Ramp-Tor [LCC] [2023].dck",
+  "human": 26.4,
+  "n": 215
+ },
+ {
+  "name": "Quick Draw",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Quick Draw [OTC] [2024].dck",
+  "human": 26.24,
+  "n": 101
+ },
+ {
+  "name": "Animated Army",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Animated Army [BLC] [2024].dck",
+  "human": 26.11,
+  "n": 382
+ },
+ {
+  "name": "Desert Bloom",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Desert Bloom [OTC] [2024].dck",
+  "human": 25.98,
+  "n": 102
+ },
+ {
+  "name": "Creative Energy",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Creative Energy [M3C] [2024].dck",
+  "human": 25.91,
+  "n": 164
+ },
+ {
+  "name": "Explorers of the Deep",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Explorers of the Deep [LCC] [2023].dck",
+  "human": 25.25,
+  "n": 303
+ },
+ {
+  "name": "Squirreled Away",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Squirreled Away [BLC] [2024].dck",
+  "human": 25.16,
+  "n": 304
+ },
+ {
+  "name": "Riders of Rohan",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Riders of Rohan [LTC] [2023].dck",
+  "human": 24.74,
+  "n": 245
+ },
+ {
+  "name": "Cavalry Charge",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Cavalry Charge [MOC] [2023].dck",
+  "human": 24.6,
+  "n": 62
+ },
+ {
+  "name": "Peace Offering",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Peace Offering [BLC] [2024].dck",
+  "human": 24.54,
+  "n": 325
+ },
+ {
+  "name": "Eldrazi Incursion",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Eldrazi Incursion [M3C] [2024].dck",
+  "human": 24.54,
+  "n": 272
+ },
+ {
+  "name": "Limit Break",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Limit Break [FIC] [2025].dck",
+  "human": 24.38,
+  "n": 360
+ },
+ {
+  "name": "Exit from Exile",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Exit from Exile [CLB] [2022].dck",
+  "human": 24.32,
+  "n": 74
+ },
+ {
+  "name": "Revival Trance",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Revival Trance [FIC] [2025].dck",
+  "human": 24.3,
+  "n": 251
+ },
+ {
+  "name": "Mardu Surge",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Mardu Surge [TDC] [2025].dck",
+  "human": 24.0,
+  "n": 100
+ },
+ {
+  "name": "Family Matters",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Family Matters [BLC] [2024].dck",
+  "human": 23.37,
+  "n": 261
+ },
+ {
+  "name": "The Hosts of Mordor",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\The Host of Mordor [LTC] [2023].dck",
+  "human": 23.31,
+  "n": 185
+ },
+ {
+  "name": "Jump Scare!",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Jump Scare! [DSC] [2024].dck",
+  "human": 23.29,
+  "n": 205
+ },
+ {
+  "name": "Graveyard Overdrive",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Graveyard Overdrive [M3C] [2024].dck",
+  "human": 23.14,
+  "n": 94
+ },
+ {
+  "name": "Food and Fellowship",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Food and Fellowship [LTC] [2023].dck",
+  "human": 22.93,
+  "n": 121
+ },
+ {
+  "name": "Sultai Arisen",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Sultai Arisen [TDC] [2025].dck",
+  "human": 22.9,
+  "n": 226
+ },
+ {
+  "name": "Science!",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Science! [PIP] [2024].dck",
+  "human": 22.88,
+  "n": 106
+ },
+ {
+  "name": "Sliver Swarm",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Sliver Swarm [CMM] [2023].dck",
+  "human": 22.64,
+  "n": 53
+ },
+ {
+  "name": "Call for Backup",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Call for Backup [MOC] [2023].dck",
+  "human": 22.41,
+  "n": 29
+ },
+ {
+  "name": "Enduring Enchantments",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Enduring Enchantments [CMM] [2023].dck",
+  "human": 22.34,
+  "n": 122
+ },
+ {
+  "name": "Avengers Assemble",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Avengers Assemble [MSC] [2026].dck",
+  "human": 21.84,
+  "n": 206
+ },
+ {
+  "name": "Quandrix Unlimited",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Quandrix Unlimited [SOC] [2026].dck",
+  "human": 21.54,
+  "n": 246
+ },
+ {
+  "name": "Death Toll",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Death Toll [DSC] [2024].dck",
+  "human": 21.21,
+  "n": 99
+ },
+ {
+  "name": "Doom Prevails",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Doom Prevails [MSC] [2026].dck",
+  "human": 21.06,
+  "n": 235
+ },
+ {
+  "name": "Turtle Power!",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Turtle Power! [TMC] [2026].dck",
+  "human": 21.05,
+  "n": 57
+ },
+ {
+  "name": "Counter Intelligence",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Counter Intelligence [EOC] [2025].dck",
+  "human": 21.03,
+  "n": 145
+ },
+ {
+  "name": "Silverquill Influence",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Silverquill Influence [SOC] [2026].dck",
+  "human": 20.63,
+  "n": 229
+ },
+ {
+  "name": "Scrappy Survivors",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Scrappy Survivors [PIP] [2024].dck",
+  "human": 20.28,
+  "n": 106
+ },
+ {
+  "name": "Abzan Armor",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Abzan Armor [TDC] [2025].dck",
+  "human": 20.22,
+  "n": 136
+ },
+ {
+  "name": "Deep Clue Sea",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Deep Clue Sea [MKC] [2024].dck",
+  "human": 19.58,
+  "n": 106
+ },
+ {
+  "name": "Most Wanted",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Most Wanted [OTC] [2024].dck",
+  "human": 19.5,
+  "n": 150
+ },
+ {
+  "name": "Counter Blitz",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Counter Blitz [FIC] [2025].dck",
+  "human": 19.1,
+  "n": 318
+ },
+ {
+  "name": "Blight Curse",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Blight Curse [ECC] [2026].dck",
+  "human": 18.49,
+  "n": 192
+ },
+ {
+  "name": "Blood Rites",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Blood Rites [LCC] [2023].dck",
+  "human": 18.27,
+  "n": 78
+ },
+ {
+  "name": "Ahoy Mateys",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Ahoy Mateys [LCC] [2023].dck",
+  "human": 18.01,
+  "n": 93
+ },
+ {
+  "name": "Witherbloom Pestilence",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Witherbloom Pestilence [SOC] [2026].dck",
+  "human": 17.96,
+  "n": 286
+ },
+ {
+  "name": "Obscura Operation",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Obscura Operation [NCC] [2022].dck",
+  "human": 16.38,
+  "n": 29
+ },
+ {
+  "name": "Mind Flayarrgh",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Mind Flayarrrs [CLB] [2022].dck",
+  "human": 15.2,
+  "n": 125
+ },
+ {
+  "name": "Mutant Menace",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Mutant Menace [PIP] [2024].dck",
+  "human": 15.12,
+  "n": 372
+ },
+ {
+  "name": "Elven Council",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Elven Council [LTC] [2023].dck",
+  "human": 14.14,
+  "n": 76
+ },
+ {
+  "name": "Grand Larceny",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Grand Larceny [OTC] [2024].dck",
+  "human": 13.2,
+  "n": 161
+ },
+ {
+  "name": "Deadly Disguise",
+  "file": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Deadly Disguise [MKC] [2024].dck",
+  "human": 11.96,
+  "n": 92
+ }
+]

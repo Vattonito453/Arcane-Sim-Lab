@@ -1,0 +1,3 @@
+# Raw per-game shim JSONL. Regenerates from run_cohort.py; cohort_results.json
+# and the fitted model carry every number we report.
+runs_*/c_r*.jsonl

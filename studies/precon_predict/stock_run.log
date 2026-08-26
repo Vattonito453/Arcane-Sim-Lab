@@ -1,0 +1,5 @@
+cohort   66 decks, 6 rounds x 16 pods x 4 seat-rotations
+games    768 total, ~48 per deck, clock 1200s, 14 workers
+arm      stock Forge
+resume   0/384 cells already done
+

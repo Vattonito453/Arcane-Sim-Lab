@@ -1,0 +1,492 @@
+{"rec":"meta","shim":"0.8.0","format":"Commander","games":1,"maxTurns":90,"humanized":true,"agents":["plan","plan","plan","plan"],"profiles":["SimLabHuman","SimLabHuman","SimLabHuman","SimLabHuman"],"players":["Ai(1)-nadu","Ai(2)-rograkh_silas","Ai(3)-derevi","Ai(4)-godo_archetype"],"seedBases":["7919","15838","23757","31676"],"seedGameStride":104729,"decks":["C:\\Users\\Vatto\\Magic Rules Engine\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\nadu.dck","C:\\Users\\Vatto\\Magic Rules Engine\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\rograkh_silas.dck","C:\\Users\\Vatto\\Magic Rules Engine\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\derevi.dck","C:\\Users\\Vatto\\Magic Rules Engine\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\godo_archetype.dck"]}
+{"rec":"entry","game":0,"seq":0,"type":"MULLIGAN","message":"Ai(4)-godo_archetype has mulliganed down to 7 cards."}
+{"rec":"entry","game":0,"seq":1,"type":"MULLIGAN","message":"Ai(1)-nadu has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":2,"type":"MULLIGAN","message":"Ai(2)-rograkh_silas has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":3,"type":"MULLIGAN","message":"Ai(3)-derevi has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":4,"type":"MULLIGAN","message":"Ai(4)-godo_archetype has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":5,"type":"TURN","message":"Turn 1 (Ai(1)-nadu)"}
+{"rec":"entry","game":0,"seq":6,"type":"PHASE","message":"Ai(1)-nadu's Untap step"}
+{"rec":"entry","game":0,"seq":7,"type":"PHASE","message":"Ai(1)-nadu's Upkeep step"}
+{"rec":"entry","game":0,"seq":8,"type":"PHASE","message":"Ai(1)-nadu's Draw step"}
+{"rec":"entry","game":0,"seq":9,"type":"PHASE","message":"Ai(1)-nadu's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":10,"type":"EFFECT_REPLACED","message":"Rejuvenating Springs enters tapped unless you have two or more opponents."}
+{"rec":"entry","game":0,"seq":11,"type":"LAND","message":"Ai(1)-nadu played Rejuvenating Springs (53)","card":"Rejuvenating Springs","cardId":53}
+{"rec":"entry","game":0,"seq":12,"type":"PHASE","message":"Ai(1)-nadu's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":13,"type":"PHASE","message":"Ai(1)-nadu's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":14,"type":"PHASE","message":"Ai(1)-nadu's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":15,"type":"PHASE","message":"Ai(1)-nadu's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":16,"type":"PHASE","message":"Ai(1)-nadu's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":17,"type":"PHASE","message":"Ai(1)-nadu's End of Combat Step"}
+{"rec":"entry","game":0,"seq":18,"type":"PHASE","message":"Ai(1)-nadu's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":19,"type":"PHASE","message":"Ai(1)-nadu's End step"}
+{"rec":"entry","game":0,"seq":20,"type":"PHASE","message":"Ai(1)-nadu's Cleanup step"}
+{"rec":"entry","game":0,"seq":21,"type":"TURN","message":"Turn 2 (Ai(2)-rograkh_silas)"}
+{"rec":"entry","game":0,"seq":22,"type":"PHASE","message":"Ai(2)-rograkh_silas' Untap step"}
+{"rec":"entry","game":0,"seq":23,"type":"PHASE","message":"Ai(2)-rograkh_silas' Upkeep step"}
+{"rec":"entry","game":0,"seq":24,"type":"PHASE","message":"Ai(2)-rograkh_silas' Draw step"}
+{"rec":"entry","game":0,"seq":25,"type":"PHASE","message":"Ai(2)-rograkh_silas' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":26,"type":"LAND","message":"Ai(2)-rograkh_silas played Phyrexian Tower (123)","card":"Phyrexian Tower","cardId":123}
+{"rec":"entry","game":0,"seq":27,"type":"STACK_ADD","message":"Ai(2)-rograkh_silas cast Rograkh, Son of Rohgahh","card":"Rograkh, Son of Rohgahh","cardId":200}
+{"rec":"entry","game":0,"seq":28,"type":"STACK_RESOLVE","message":"Rograkh, Son of Rohgahh - Creature 0 / 1","card":"Rograkh, Son of Rohgahh","cardId":200}
+{"rec":"entry","game":0,"seq":29,"type":"ZONE_CHANGE","message":"Rograkh, Son of Rohgahh (200) was put into Graveyard from Battlefield.","card":"Rograkh, Son of Rohgahh","cardId":200}
+{"rec":"entry","game":0,"seq":30,"type":"MANA","message":"Phyrexian Tower (123) - {T}, Sacrifice a creature: Add {B}{B}."}
+{"rec":"entry","game":0,"seq":31,"type":"STACK_ADD","message":"Ai(2)-rograkh_silas cast Vampiric Tutor","card":"Vampiric Tutor","cardId":111}
+{"rec":"entry","game":0,"seq":32,"type":"LIFE","message":"Life: Ai(2)-rograkh_silas 40 > 38"}
+{"rec":"entry","game":0,"seq":33,"type":"STACK_RESOLVE","message":"Vampiric Tutor (111) - Ai(2)-rograkh_silas searches their library for a card, reveals it, puts it , then shuffles. Ai(2)-rograkh_silas loses 2 life.","card":"Vampiric Tutor","cardId":111}
+{"rec":"entry","game":0,"seq":34,"type":"PHASE","message":"Ai(2)-rograkh_silas' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":35,"type":"PHASE","message":"Ai(2)-rograkh_silas' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":36,"type":"PHASE","message":"Ai(2)-rograkh_silas' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":37,"type":"PHASE","message":"Ai(2)-rograkh_silas' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":38,"type":"PHASE","message":"Ai(2)-rograkh_silas' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":39,"type":"PHASE","message":"Ai(2)-rograkh_silas' End of Combat Step"}
+{"rec":"entry","game":0,"seq":40,"type":"PHASE","message":"Ai(2)-rograkh_silas' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":41,"type":"PHASE","message":"Ai(2)-rograkh_silas' End step"}
+{"rec":"entry","game":0,"seq":42,"type":"PHASE","message":"Ai(2)-rograkh_silas' Cleanup step"}
+{"rec":"entry","game":0,"seq":43,"type":"TURN","message":"Turn 3 (Ai(3)-derevi)"}
+{"rec":"entry","game":0,"seq":44,"type":"PHASE","message":"Ai(3)-derevi's Untap step"}
+{"rec":"entry","game":0,"seq":45,"type":"PHASE","message":"Ai(3)-derevi's Upkeep step"}
+{"rec":"entry","game":0,"seq":46,"type":"PHASE","message":"Ai(3)-derevi's Draw step"}
+{"rec":"entry","game":0,"seq":47,"type":"PHASE","message":"Ai(3)-derevi's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":48,"type":"LAND","message":"Ai(3)-derevi played Tropical Island (248)","card":"Tropical Island","cardId":248}
+{"rec":"entry","game":0,"seq":49,"type":"PHASE","message":"Ai(3)-derevi's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":50,"type":"PHASE","message":"Ai(3)-derevi's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":51,"type":"PHASE","message":"Ai(3)-derevi's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":52,"type":"PHASE","message":"Ai(3)-derevi's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":53,"type":"PHASE","message":"Ai(3)-derevi's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":54,"type":"PHASE","message":"Ai(3)-derevi's End of Combat Step"}
+{"rec":"entry","game":0,"seq":55,"type":"PHASE","message":"Ai(3)-derevi's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":56,"type":"PHASE","message":"Ai(3)-derevi's End step"}
+{"rec":"entry","game":0,"seq":57,"type":"PHASE","message":"Ai(3)-derevi's Cleanup step"}
+{"rec":"entry","game":0,"seq":58,"type":"TURN","message":"Turn 4 (Ai(4)-godo_archetype)"}
+{"rec":"entry","game":0,"seq":59,"type":"PHASE","message":"Ai(4)-godo_archetype's Untap step"}
+{"rec":"entry","game":0,"seq":60,"type":"PHASE","message":"Ai(4)-godo_archetype's Upkeep step"}
+{"rec":"entry","game":0,"seq":61,"type":"PHASE","message":"Ai(4)-godo_archetype's Draw step"}
+{"rec":"entry","game":0,"seq":62,"type":"PHASE","message":"Ai(4)-godo_archetype's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":63,"type":"LAND","message":"Ai(4)-godo_archetype played Mountain (383)","card":"Mountain","cardId":383}
+{"rec":"entry","game":0,"seq":64,"type":"PHASE","message":"Ai(4)-godo_archetype's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":65,"type":"PHASE","message":"Ai(4)-godo_archetype's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":66,"type":"PHASE","message":"Ai(4)-godo_archetype's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":67,"type":"PHASE","message":"Ai(4)-godo_archetype's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":68,"type":"PHASE","message":"Ai(4)-godo_archetype's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":69,"type":"PHASE","message":"Ai(4)-godo_archetype's End of Combat Step"}
+{"rec":"entry","game":0,"seq":70,"type":"PHASE","message":"Ai(4)-godo_archetype's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":71,"type":"PHASE","message":"Ai(4)-godo_archetype's End step"}
+{"rec":"entry","game":0,"seq":72,"type":"PHASE","message":"Ai(4)-godo_archetype's Cleanup step"}
+{"rec":"entry","game":0,"seq":73,"type":"TURN","message":"Turn 5 (Ai(1)-nadu)"}
+{"rec":"entry","game":0,"seq":74,"type":"PHASE","message":"Ai(1)-nadu's Untap step"}
+{"rec":"entry","game":0,"seq":75,"type":"PHASE","message":"Ai(1)-nadu's Upkeep step"}
+{"rec":"entry","game":0,"seq":76,"type":"PHASE","message":"Ai(1)-nadu's Draw step"}
+{"rec":"entry","game":0,"seq":77,"type":"PHASE","message":"Ai(1)-nadu's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":78,"type":"LAND","message":"Ai(1)-nadu played Island (36)","card":"Island","cardId":36}
+{"rec":"entry","game":0,"seq":79,"type":"MANA","message":"Rejuvenating Springs (53) - {T}: Add {G} or {U}."}
+{"rec":"entry","game":0,"seq":80,"type":"MANA","message":"Island (36) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":81,"type":"STACK_ADD","message":"Ai(1)-nadu cast Springheart Nantuko","card":"Springheart Nantuko","cardId":28}
+{"rec":"entry","game":0,"seq":82,"type":"STACK_RESOLVE","message":"Springheart Nantuko - Creature 1 / 1","card":"Springheart Nantuko","cardId":28}
+{"rec":"entry","game":0,"seq":83,"type":"STACK_ADD","message":"Ai(1)-nadu cast Mox Amber","card":"Mox Amber","cardId":17}
+{"rec":"entry","game":0,"seq":84,"type":"STACK_RESOLVE","message":"Mox Amber","card":"Mox Amber","cardId":17}
+{"rec":"entry","game":0,"seq":85,"type":"PHASE","message":"Ai(1)-nadu's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":86,"type":"PHASE","message":"Ai(1)-nadu's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":87,"type":"PHASE","message":"Ai(1)-nadu's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":88,"type":"PHASE","message":"Ai(1)-nadu's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":89,"type":"PHASE","message":"Ai(1)-nadu's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":90,"type":"PHASE","message":"Ai(1)-nadu's End of Combat Step"}
+{"rec":"entry","game":0,"seq":91,"type":"PHASE","message":"Ai(1)-nadu's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":92,"type":"PHASE","message":"Ai(1)-nadu's End step"}
+{"rec":"entry","game":0,"seq":93,"type":"PHASE","message":"Ai(1)-nadu's Cleanup step"}
+{"rec":"entry","game":0,"seq":94,"type":"TURN","message":"Turn 6 (Ai(2)-rograkh_silas)"}
+{"rec":"entry","game":0,"seq":95,"type":"PHASE","message":"Ai(2)-rograkh_silas' Untap step"}
+{"rec":"entry","game":0,"seq":96,"type":"PHASE","message":"Ai(2)-rograkh_silas' Upkeep step"}
+{"rec":"entry","game":0,"seq":97,"type":"PHASE","message":"Ai(2)-rograkh_silas' Draw step"}
+{"rec":"entry","game":0,"seq":98,"type":"PHASE","message":"Ai(2)-rograkh_silas' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":99,"type":"EFFECT_REPLACED","message":"As Steam Vents enters, you may pay 2 life. If you don't, it enters tapped."}
+{"rec":"entry","game":0,"seq":100,"type":"LAND","message":"Ai(2)-rograkh_silas played Steam Vents (101)","card":"Steam Vents","cardId":101}
+{"rec":"entry","game":0,"seq":101,"type":"PHASE","message":"Ai(2)-rograkh_silas' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":102,"type":"PHASE","message":"Ai(2)-rograkh_silas' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":103,"type":"PHASE","message":"Ai(2)-rograkh_silas' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":104,"type":"PHASE","message":"Ai(2)-rograkh_silas' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":105,"type":"PHASE","message":"Ai(2)-rograkh_silas' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":106,"type":"PHASE","message":"Ai(2)-rograkh_silas' End of Combat Step"}
+{"rec":"entry","game":0,"seq":107,"type":"PHASE","message":"Ai(2)-rograkh_silas' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":108,"type":"PHASE","message":"Ai(2)-rograkh_silas' End step"}
+{"rec":"entry","game":0,"seq":109,"type":"PHASE","message":"Ai(2)-rograkh_silas' Cleanup step"}
+{"rec":"entry","game":0,"seq":110,"type":"TURN","message":"Turn 7 (Ai(3)-derevi)"}
+{"rec":"entry","game":0,"seq":111,"type":"PHASE","message":"Ai(3)-derevi's Untap step"}
+{"rec":"entry","game":0,"seq":112,"type":"PHASE","message":"Ai(3)-derevi's Upkeep step"}
+{"rec":"entry","game":0,"seq":113,"type":"PHASE","message":"Ai(3)-derevi's Draw step"}
+{"rec":"entry","game":0,"seq":114,"type":"PHASE","message":"Ai(3)-derevi's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":115,"type":"LAND","message":"Ai(3)-derevi played Ancient Tomb (228)","card":"Ancient Tomb","cardId":228}
+{"rec":"entry","game":0,"seq":116,"type":"PHASE","message":"Ai(3)-derevi's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":117,"type":"PHASE","message":"Ai(3)-derevi's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":118,"type":"PHASE","message":"Ai(3)-derevi's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":119,"type":"PHASE","message":"Ai(3)-derevi's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":120,"type":"PHASE","message":"Ai(3)-derevi's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":121,"type":"PHASE","message":"Ai(3)-derevi's End of Combat Step"}
+{"rec":"entry","game":0,"seq":122,"type":"PHASE","message":"Ai(3)-derevi's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":123,"type":"MANA","message":"Tropical Island (248) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":124,"type":"DAMAGE","message":"Ancient Tomb (228) deals 2 non-combat damage to Ai(3)-derevi.","card":"Ancient Tomb","cardId":228}
+{"rec":"entry","game":0,"seq":125,"type":"LIFE","message":"Life: Ai(3)-derevi 40 > 38"}
+{"rec":"entry","game":0,"seq":126,"type":"MANA","message":"Ancient Tomb (228) - {T}: Add {C}{C}. Ancient Tomb deals 2 damage to you. "}
+{"rec":"entry","game":0,"seq":127,"type":"MANA","message":"Gemstone Caverns (241) - {T}: Add {C}. If Gemstone Caverns has a luck counter on it, instead add one mana of any color. "}
+{"rec":"entry","game":0,"seq":128,"type":"STACK_ADD","message":"Ai(3)-derevi cast Birthing Pod","card":"Birthing Pod","cardId":278}
+{"rec":"entry","game":0,"seq":129,"type":"STACK_RESOLVE","message":"Birthing Pod","card":"Birthing Pod","cardId":278}
+{"rec":"entry","game":0,"seq":130,"type":"PHASE","message":"Ai(3)-derevi's End step"}
+{"rec":"entry","game":0,"seq":131,"type":"PHASE","message":"Ai(3)-derevi's Cleanup step"}
+{"rec":"entry","game":0,"seq":132,"type":"TURN","message":"Turn 8 (Ai(4)-godo_archetype)"}
+{"rec":"entry","game":0,"seq":133,"type":"PHASE","message":"Ai(4)-godo_archetype's Untap step"}
+{"rec":"entry","game":0,"seq":134,"type":"PHASE","message":"Ai(4)-godo_archetype's Upkeep step"}
+{"rec":"entry","game":0,"seq":135,"type":"PHASE","message":"Ai(4)-godo_archetype's Draw step"}
+{"rec":"entry","game":0,"seq":136,"type":"PHASE","message":"Ai(4)-godo_archetype's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":137,"type":"LAND","message":"Ai(4)-godo_archetype played Mishra's Workshop (372)","card":"Mishra's Workshop","cardId":372}
+{"rec":"entry","game":0,"seq":138,"type":"PHASE","message":"Ai(4)-godo_archetype's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":139,"type":"PHASE","message":"Ai(4)-godo_archetype's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":140,"type":"PHASE","message":"Ai(4)-godo_archetype's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":141,"type":"PHASE","message":"Ai(4)-godo_archetype's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":142,"type":"PHASE","message":"Ai(4)-godo_archetype's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":143,"type":"PHASE","message":"Ai(4)-godo_archetype's End of Combat Step"}
+{"rec":"entry","game":0,"seq":144,"type":"PHASE","message":"Ai(4)-godo_archetype's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":145,"type":"PHASE","message":"Ai(4)-godo_archetype's End step"}
+{"rec":"entry","game":0,"seq":146,"type":"PHASE","message":"Ai(4)-godo_archetype's Cleanup step"}
+{"rec":"entry","game":0,"seq":147,"type":"TURN","message":"Turn 9 (Ai(1)-nadu)"}
+{"rec":"entry","game":0,"seq":148,"type":"PHASE","message":"Ai(1)-nadu's Untap step"}
+{"rec":"entry","game":0,"seq":149,"type":"PHASE","message":"Ai(1)-nadu's Upkeep step"}
+{"rec":"entry","game":0,"seq":150,"type":"PHASE","message":"Ai(1)-nadu's Draw step"}
+{"rec":"entry","game":0,"seq":151,"type":"PHASE","message":"Ai(1)-nadu's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":152,"type":"LAND","message":"Ai(1)-nadu played Gaea's Cradle (95)","card":"Gaea's Cradle","cardId":95}
+{"rec":"entry","game":0,"seq":153,"type":"STACK_ADD","message":"Ai(1)-nadu triggered Springheart Nantuko","card":"Springheart Nantuko","cardId":28}
+{"rec":"entry","game":0,"seq":154,"type":"STACK_RESOLVE","message":"Landfall — Whenever a land you control enters, you may pay {1}{G} if Springheart Nantuko is attached to a creature you control. If you do, create a token that's a copy of that creature. If you didn't create a token this way, create a 1/1 green Insect creature token. [Zone Changer: Gaea's Cradle (95)]","card":"Springheart Nantuko","cardId":28}
+{"rec":"entry","game":0,"seq":155,"type":"MANA","message":"Rejuvenating Springs (53) - {T}: Add {G} or {U}."}
+{"rec":"entry","game":0,"seq":156,"type":"MANA","message":"Gaea's Cradle (95) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":157,"type":"ZONE_CHANGE","message":"Springheart Nantuko (28) was put into Graveyard from Battlefield.","card":"Springheart Nantuko","cardId":28}
+{"rec":"entry","game":0,"seq":158,"type":"STACK_ADD","message":"Ai(1)-nadu cast Eldritch Evolution","card":"Eldritch Evolution","cardId":49}
+{"rec":"entry","game":0,"seq":159,"type":"STACK_RESOLVE","message":"Eldritch Evolution (49) - Search your library for a creature card with mana value X or less, where X is 2 plus the sacrificed creature's mana value. Put that card onto the battlefield, then shuffle. Exile Eldritch Evolution. Exile Eldritch Evolution (49).","card":"Eldritch Evolution","cardId":49}
+{"rec":"entry","game":0,"seq":160,"type":"PHASE","message":"Ai(1)-nadu's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":161,"type":"PHASE","message":"Ai(1)-nadu's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":162,"type":"PHASE","message":"Ai(1)-nadu's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":163,"type":"PHASE","message":"Ai(1)-nadu's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":164,"type":"PHASE","message":"Ai(1)-nadu's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":165,"type":"PHASE","message":"Ai(1)-nadu's End of Combat Step"}
+{"rec":"entry","game":0,"seq":166,"type":"PHASE","message":"Ai(1)-nadu's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":167,"type":"PHASE","message":"Ai(1)-nadu's End step"}
+{"rec":"entry","game":0,"seq":168,"type":"PHASE","message":"Ai(1)-nadu's Cleanup step"}
+{"rec":"entry","game":0,"seq":169,"type":"TURN","message":"Turn 10 (Ai(2)-rograkh_silas)"}
+{"rec":"entry","game":0,"seq":170,"type":"PHASE","message":"Ai(2)-rograkh_silas' Untap step"}
+{"rec":"entry","game":0,"seq":171,"type":"PHASE","message":"Ai(2)-rograkh_silas' Upkeep step"}
+{"rec":"entry","game":0,"seq":172,"type":"PHASE","message":"Ai(2)-rograkh_silas' Draw step"}
+{"rec":"entry","game":0,"seq":173,"type":"PHASE","message":"Ai(2)-rograkh_silas' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":174,"type":"EFFECT_REPLACED","message":"Raucous Theater enters tapped."}
+{"rec":"entry","game":0,"seq":175,"type":"LAND","message":"Ai(2)-rograkh_silas played Raucous Theater (182)","card":"Raucous Theater","cardId":182}
+{"rec":"entry","game":0,"seq":176,"type":"STACK_ADD","message":"Ai(2)-rograkh_silas triggered Raucous Theater","card":"Raucous Theater","cardId":182}
+{"rec":"entry","game":0,"seq":177,"type":"STACK_RESOLVE","message":"Ai(2)-rograkh_silas surveiled 1 card(s) to the graveyard"}
+{"rec":"entry","game":0,"seq":178,"type":"STACK_RESOLVE","message":"When Raucous Theater enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.) [Zone Changer: Raucous Theater (182)]","card":"Raucous Theater","cardId":182}
+{"rec":"entry","game":0,"seq":179,"type":"PHASE","message":"Ai(2)-rograkh_silas' Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":180,"type":"PHASE","message":"Ai(2)-rograkh_silas' Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":181,"type":"PHASE","message":"Ai(2)-rograkh_silas' Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":182,"type":"PHASE","message":"Ai(2)-rograkh_silas' First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":183,"type":"PHASE","message":"Ai(2)-rograkh_silas' Combat Damage Step"}
+{"rec":"entry","game":0,"seq":184,"type":"PHASE","message":"Ai(2)-rograkh_silas' End of Combat Step"}
+{"rec":"entry","game":0,"seq":185,"type":"PHASE","message":"Ai(2)-rograkh_silas' Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":186,"type":"PHASE","message":"Ai(2)-rograkh_silas' End step"}
+{"rec":"entry","game":0,"seq":187,"type":"PHASE","message":"Ai(2)-rograkh_silas' Cleanup step"}
+{"rec":"entry","game":0,"seq":188,"type":"TURN","message":"Turn 11 (Ai(3)-derevi)"}
+{"rec":"entry","game":0,"seq":189,"type":"PHASE","message":"Ai(3)-derevi's Untap step"}
+{"rec":"entry","game":0,"seq":190,"type":"PHASE","message":"Ai(3)-derevi's Upkeep step"}
+{"rec":"entry","game":0,"seq":191,"type":"PHASE","message":"Ai(3)-derevi's Draw step"}
+{"rec":"entry","game":0,"seq":192,"type":"PHASE","message":"Ai(3)-derevi's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":193,"type":"LAND","message":"Ai(3)-derevi played Minamo, School at Water's Edge (249)","card":"Minamo, School at Water's Edge","cardId":249}
+{"rec":"entry","game":0,"seq":194,"type":"PHASE","message":"Ai(3)-derevi's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":195,"type":"PHASE","message":"Ai(3)-derevi's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":196,"type":"PHASE","message":"Ai(3)-derevi's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":197,"type":"PHASE","message":"Ai(3)-derevi's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":198,"type":"PHASE","message":"Ai(3)-derevi's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":199,"type":"PHASE","message":"Ai(3)-derevi's End of Combat Step"}
+{"rec":"entry","game":0,"seq":200,"type":"PHASE","message":"Ai(3)-derevi's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":201,"type":"PHASE","message":"Ai(3)-derevi's End step"}
+{"rec":"entry","game":0,"seq":202,"type":"PHASE","message":"Ai(3)-derevi's Cleanup step"}
+{"rec":"entry","game":0,"seq":203,"type":"TURN","message":"Turn 12 (Ai(4)-godo_archetype)"}
+{"rec":"entry","game":0,"seq":204,"type":"PHASE","message":"Ai(4)-godo_archetype's Untap step"}
+{"rec":"entry","game":0,"seq":205,"type":"PHASE","message":"Ai(4)-godo_archetype's Upkeep step"}
+{"rec":"entry","game":0,"seq":206,"type":"PHASE","message":"Ai(4)-godo_archetype's Draw step"}
+{"rec":"entry","game":0,"seq":207,"type":"PHASE","message":"Ai(4)-godo_archetype's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":208,"type":"PHASE","message":"Ai(4)-godo_archetype's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":209,"type":"PHASE","message":"Ai(4)-godo_archetype's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":210,"type":"PHASE","message":"Ai(4)-godo_archetype's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":211,"type":"PHASE","message":"Ai(4)-godo_archetype's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":212,"type":"PHASE","message":"Ai(4)-godo_archetype's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":213,"type":"PHASE","message":"Ai(4)-godo_archetype's End of Combat Step"}
+{"rec":"entry","game":0,"seq":214,"type":"PHASE","message":"Ai(4)-godo_archetype's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":215,"type":"PHASE","message":"Ai(4)-godo_archetype's End step"}
+{"rec":"entry","game":0,"seq":216,"type":"PHASE","message":"Ai(4)-godo_archetype's Cleanup step"}
+{"rec":"entry","game":0,"seq":217,"type":"DISCARD","message":"Ai(4)-godo_archetype discards Kuldotha Forgemaster (316).","card":"Kuldotha Forgemaster","cardId":316}
+{"rec":"entry","game":0,"seq":218,"type":"TURN","message":"Turn 13 (Ai(1)-nadu)"}
+{"rec":"entry","game":0,"seq":219,"type":"PHASE","message":"Ai(1)-nadu's Untap step"}
+{"rec":"entry","game":0,"seq":220,"type":"PHASE","message":"Ai(1)-nadu's Upkeep step"}
+{"rec":"entry","game":0,"seq":221,"type":"PHASE","message":"Ai(1)-nadu's Draw step"}
+{"rec":"entry","game":0,"seq":222,"type":"PHASE","message":"Ai(1)-nadu's Main phase, precombat"}
+{"rec":"entry","game":0,"seq":223,"type":"STACK_ADD","message":"Ai(1)-nadu cast Mana Crypt","card":"Mana Crypt","cardId":12}
+{"rec":"entry","game":0,"seq":224,"type":"MANA","message":"Tropical Island (248) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":225,"type":"MANA","message":"Minamo, School at Water's Edge (249) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":226,"type":"DAMAGE","message":"Ancient Tomb (228) deals 2 non-combat damage to Ai(3)-derevi.","card":"Ancient Tomb","cardId":228}
+{"rec":"entry","game":0,"seq":227,"type":"LIFE","message":"Life: Ai(3)-derevi 38 > 36"}
+{"rec":"entry","game":0,"seq":228,"type":"MANA","message":"Ancient Tomb (228) - {T}: Add {C}{C}. Ancient Tomb deals 2 damage to you. "}
+{"rec":"entry","game":0,"seq":229,"type":"STACK_ADD","message":"Ai(3)-derevi cast Fierce Guardianship targeting [Mana Crypt]","card":"Fierce Guardianship","cardId":221}
+{"rec":"entry","game":0,"seq":230,"type":"ZONE_CHANGE","message":"Send countered spell to Graveyard"}
+{"rec":"entry","game":0,"seq":231,"type":"STACK_RESOLVE","message":"Fierce Guardianship (221) - Counter Mana Crypt (12).","card":"Fierce Guardianship","cardId":221}
+{"rec":"entry","game":0,"seq":232,"type":"MANA","message":"Rejuvenating Springs (53) - {T}: Add {G} or {U}."}
+{"rec":"entry","game":0,"seq":233,"type":"MANA","message":"Gaea's Cradle (95) - {T}: Add {G} for each creature you control."}
+{"rec":"entry","game":0,"seq":234,"type":"MANA","message":"Island (36) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":235,"type":"STACK_ADD","message":"Ai(1)-nadu cast Finale of Devastation","card":"Finale of Devastation","cardId":68}
+{"rec":"entry","game":0,"seq":236,"type":"STACK_RESOLVE","message":"Finale of Devastation (68) - Ai(1)-nadu searches their library and/or graveyard for a creature card, puts it onto the battlefield, then shuffles if they searched their library. If X is 10 or more, creatures you control get +X/+X and gain haste until end of turn. (X=2)","card":"Finale of Devastation","cardId":68}
+{"rec":"entry","game":0,"seq":237,"type":"PHASE","message":"Ai(1)-nadu's Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":238,"type":"PHASE","message":"Ai(1)-nadu's Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":239,"type":"COMBAT","message":"Ai(1)-nadu assigned Insect Token (403) to attack Ai(2)-rograkh_silas.\nAi(1)-nadu assigned Aphetto Alchemist (54) to attack Ai(4)-godo_archetype."}
+{"rec":"entry","game":0,"seq":240,"type":"PHASE","message":"Ai(1)-nadu's Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":241,"type":"COMBAT","message":"Ai(2)-rograkh_silas didn't block Insect Token (403)."}
+{"rec":"entry","game":0,"seq":242,"type":"COMBAT","message":"Ai(4)-godo_archetype didn't block Aphetto Alchemist (54)."}
+{"rec":"entry","game":0,"seq":243,"type":"PHASE","message":"Ai(1)-nadu's First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":244,"type":"PHASE","message":"Ai(1)-nadu's Combat Damage Step"}
+{"rec":"entry","game":0,"seq":245,"type":"DAMAGE","message":"Aphetto Alchemist (54) deals 1 combat damage to Ai(4)-godo_archetype.","card":"Aphetto Alchemist","cardId":54}
+{"rec":"entry","game":0,"seq":246,"type":"DAMAGE","message":"Insect Token (403) deals 1 combat damage to Ai(2)-rograkh_silas.","card":"Insect Token","cardId":403}
+{"rec":"entry","game":0,"seq":247,"type":"LIFE","message":"Life: Ai(2)-rograkh_silas 38 > 37"}
+{"rec":"entry","game":0,"seq":248,"type":"LIFE","message":"Life: Ai(4)-godo_archetype 40 > 39"}
+{"rec":"entry","game":0,"seq":249,"type":"PHASE","message":"Ai(1)-nadu's End of Combat Step"}
+{"rec":"entry","game":0,"seq":250,"type":"PHASE","message":"Ai(1)-nadu's Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":251,"type":"PHASE","message":"Ai(1)-nadu's End step"}
+{"rec":"entry","game":0,"seq":252,"type":"PHASE","message":"Ai(1)-nadu's Cleanup step"}
+{"rec":"entry","game":0,"seq":253,"type":"TURN","message":"Turn 14 (Ai(2)-rograkh_silas)"}
+{"rec":"entry","game":0,"seq":254,"type":"PHASE","message":"Ai(2)-rograkh_silas' Untap step"}
+{"rec":"entry","game":0,"seq":255,"type":"PHASE","message":"Ai(2)-rograkh_silas' Upkeep step"}
+{"rec":"entry","game":0,"seq":256,"type":"PHASE","message":"Ai(2)-rograkh_silas' Draw step"}
+{"rec":"entry","game":0,"seq":257,"type":"PHASE","message":"Ai(2)-rograkh_silas' Main phase, precombat"}
+{"rec":"entry","game":0,"seq":258,"type":"STACK_ADD","message":"Ai(2)-rograkh_silas cast Lotus Petal","card":"Lotus Petal","cardId":113}
+{"rec":"entry","game":0,"seq":259,"type":"STACK_RESOLVE","message":"Lotus Petal","card":"Lotus Petal","cardId":113}
+{"rec":"entry","game":0,"seq":260,"type":"MANA","message":"Steam Vents (101) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":261,"type":"ZONE_CHANGE","message":"Lotus Petal (113) was put into Graveyard from Battlefield.","card":"Lotus Petal","cardId":113}
+{"rec":"entry","game":0,"seq":262,"type":"MANA","message":"Lotus Petal (113) - {T}, Sacrifice Lotus Petal: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":263,"type":"STACK_ADD","message":"Ai(2)-rograkh_silas cast Thassa's Oracle","card":"Thassa's Oracle","cardId":170}
+{"rec":"entry","game":0,"seq":264,"type":"STACK_RESOLVE","message":"Thassa's Oracle - Creature 1 / 3","card":"Thassa's Oracle","cardId":170}
+{"rec":"entry","game":0,"seq":265,"type":"STACK_ADD","message":"Ai(2)-rograkh_silas triggered Thassa's Oracle","card":"Thassa's Oracle","cardId":170}
+{"rec":"entry","game":0,"seq":266,"type":"MANA","message":"Raucous Theater (182) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":267,"type":"STACK_ADD","message":"Ai(2)-rograkh_silas cast Demonic Consultation","card":"Demonic Consultation","cardId":132}
+{"rec":"entry","game":0,"seq":268,"type":"STACK_RESOLVE","message":"Demonic Consultation (132) - Ai(2)-rograkh_silas names a card. Ai(2)-rograkh_silas exiles the top six cards of their library. Ai(2)-rograkh_silasexiles cards from their library until they exile a named card card. Put that card into their hand and exile all other cards revealed this way.","card":"Demonic Consultation","cardId":132}
+{"rec":"entry","game":0,"seq":269,"type":"PLAYER_CONTROL","message":"Ai(1)-nadu has restored control over themself"}
+{"rec":"entry","game":0,"seq":270,"type":"PLAYER_CONTROL","message":"Ai(2)-rograkh_silas has restored control over themself"}
+{"rec":"entry","game":0,"seq":271,"type":"PLAYER_CONTROL","message":"Ai(3)-derevi has restored control over themself"}
+{"rec":"entry","game":0,"seq":272,"type":"PLAYER_CONTROL","message":"Ai(4)-godo_archetype has restored control over themself"}
+{"rec":"entry","game":0,"seq":273,"type":"GAME_OUTCOME","message":"Turn 7"}
+{"rec":"entry","game":0,"seq":274,"type":"GAME_OUTCOME","message":"Ai(1)-nadu has lost because an opponent has won by spell 'Thassa's Oracle'"}
+{"rec":"entry","game":0,"seq":275,"type":"GAME_OUTCOME","message":"Ai(2)-rograkh_silas has won due to effect of 'Thassa's Oracle'"}
+{"rec":"entry","game":0,"seq":276,"type":"GAME_OUTCOME","message":"Ai(3)-derevi has lost because an opponent has won by spell 'Thassa's Oracle'"}
+{"rec":"entry","game":0,"seq":277,"type":"GAME_OUTCOME","message":"Ai(4)-godo_archetype has lost because an opponent has won by spell 'Thassa's Oracle'"}
+{"rec":"entry","game":0,"seq":278,"type":"MATCH_RESULTS","message":"Ai(1)-nadu: 0 Ai(2)-rograkh_silas: 1 Ai(3)-derevi: 0 Ai(4)-godo_archetype: 0 "}
+{"rec":"entry","game":0,"seq":279,"type":"STACK_RESOLVE","message":"When Thassa's Oracle enters, look at the top X cards of your library, where X is your devotion to blue. Put up to one of them on top of your library and the rest on the bottom of your library in a random order. If X is greater than or equal to the number of cards in your library, you win the game. [Zone Changer: Thassa's Oracle (170)]","card":"Thassa's Oracle","cardId":170}
+{"rec":"zone","game":0,"turn":0,"card":"Chain of Vapor","cardId":52,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Rejuvenating Springs","cardId":53,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Thassa's Oracle","cardId":75,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Finale of Devastation","cardId":68,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Springheart Nantuko","cardId":28,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Creature,Enchantment","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Island","cardId":36,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gaea's Cradle","cardId":95,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Thassa's Oracle","cardId":170,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Phyrexian Tower","cardId":123,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Steam Vents","cardId":101,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Chain of Vapor","cardId":154,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Force of Will","cardId":178,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Raucous Theater","cardId":182,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Vampiric Tutor","cardId":111,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Fierce Guardianship","cardId":221,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Tropical Island","cardId":248,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gemstone Caverns","cardId":241,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Birthing Pod","cardId":278,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Wooded Foothills","cardId":233,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Dauntless Dismantler","cardId":255,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Creature","pt":"1/4","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mox Diamond","cardId":287,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Peter Parker's Camera","cardId":303,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Rite of Flame","cardId":342,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Talon Gates of Madara","cardId":306,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Moonsilver Key","cardId":318,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gamble","cardId":307,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Sol Ring","cardId":327,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Metalworker","cardId":371,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Creature,Artifact","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Peter Parker's Camera","cardId":303,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Rite of Flame","cardId":342,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Talon Gates of Madara","cardId":306,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Moonsilver Key","cardId":318,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gamble","cardId":307,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Sol Ring","cardId":327,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Metalworker","cardId":371,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Creature,Artifact","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Goblin Engineer","cardId":336,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Wild Magic Surge","cardId":334,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mishra's Workshop","cardId":372,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mountain","cardId":383,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Seething Song","cardId":317,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Magnetic Theft","cardId":385,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Imperial Recruiter","cardId":351,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Gemstone Caverns","cardId":241,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mox Diamond","cardId":287,"from":"Hand","to":"Exile","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":1,"card":"Eldritch Evolution","cardId":49,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":1,"card":"Rejuvenating Springs","cardId":53,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Pyroblast","cardId":121,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Phyrexian Tower","cardId":123,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Rograkh, Son of Rohgahh","cardId":200,"from":"Command","to":"Stack","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Rograkh, Son of Rohgahh","cardId":200,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Vampiric Tutor","cardId":111,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Rograkh, Son of Rohgahh","cardId":200,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Demonic Consultation","cardId":132,"from":"Library","to":"Library","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Vampiric Tutor","cardId":111,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Minamo, School at Water's Edge","cardId":249,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Tropical Island","cardId":248,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Kuldotha Forgemaster","cardId":316,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Creature,Artifact","pt":"3/5","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Mountain","cardId":383,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Mox Amber","cardId":17,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Island","cardId":36,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Springheart Nantuko","cardId":28,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-nadu","toPlayer":"","types":"Creature,Enchantment","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Springheart Nantuko","cardId":28,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-nadu","types":"Creature,Enchantment","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Mox Amber","cardId":17,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-nadu","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Mox Amber","cardId":17,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-nadu","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Demonic Consultation","cardId":132,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Steam Vents","cardId":101,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Ancient Tomb","cardId":228,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Ancient Tomb","cardId":228,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Birthing Pod","cardId":278,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-derevi","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Birthing Pod","cardId":278,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-derevi","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":8,"card":"Chaos Warp","cardId":343,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":8,"card":"Mishra's Workshop","cardId":372,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Rhystic Study","cardId":20,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Gaea's Cradle","cardId":95,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Insect Token","cardId":403,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-nadu","types":"Creature","pt":"1/1","token":true}
+{"rec":"zone","game":0,"turn":9,"card":"Eldritch Evolution","cardId":49,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-nadu","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Springheart Nantuko","cardId":28,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Creature,Enchantment","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Aphetto Alchemist","cardId":54,"from":"Library","to":"Battlefield","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Eldritch Evolution","cardId":49,"from":"Stack","to":"Exile","fromPlayer":"","toPlayer":"Ai(1)-nadu","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Pact of Negation","cardId":165,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Raucous Theater","cardId":182,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Defense Grid","cardId":168,"from":"Library","to":"Graveyard","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Archdruid's Charm","cardId":291,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Minamo, School at Water's Edge","cardId":249,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-derevi","toPlayer":"Ai(3)-derevi","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":12,"card":"Mox Diamond","cardId":367,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":12,"card":"Kuldotha Forgemaster","cardId":316,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(4)-godo_archetype","toPlayer":"Ai(4)-godo_archetype","types":"Creature,Artifact","pt":"3/5","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Mana Crypt","cardId":12,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Mana Crypt","cardId":12,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-nadu","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Fierce Guardianship","cardId":221,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-derevi","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Mana Crypt","cardId":12,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(1)-nadu","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Fierce Guardianship","cardId":221,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(3)-derevi","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Finale of Devastation","cardId":68,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-nadu","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Cephalid Illusionist","cardId":25,"from":"Library","to":"Battlefield","fromPlayer":"Ai(1)-nadu","toPlayer":"Ai(1)-nadu","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Finale of Devastation","cardId":68,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(1)-nadu","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Lotus Petal","cardId":113,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Lotus Petal","cardId":113,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Lotus Petal","cardId":113,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Thassa's Oracle","cardId":170,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Lotus Petal","cardId":113,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Thassa's Oracle","cardId":170,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Demonic Consultation","cardId":132,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Scalding Tarn","cardId":142,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Lion's Eye Diamond","cardId":156,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Watery Grave","cardId":153,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Tainted Pact","cardId":133,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Gemstone Caverns","cardId":140,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Beseech the Mirror","cardId":189,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Ancient Tomb","cardId":122,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Grinding Station","cardId":192,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Flare of Duplication","cardId":157,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Fork","cardId":196,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Ragavan, Nimble Pilferer","cardId":184,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mana Vault","cardId":134,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Underworld Breach","cardId":139,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Borne Upon a Wind","cardId":180,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Paradise Mantle","cardId":194,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Cabal Ritual","cardId":120,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Ad Nauseam","cardId":128,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Demonic Tutor","cardId":197,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Yawgmoth's Will","cardId":188,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Snapback","cardId":149,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Orcish Bowmasters","cardId":179,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mnemonic Betrayal","cardId":191,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Diabolic Intent","cardId":171,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Chrome Mox","cardId":160,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Snap","cardId":172,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mindbreak Trap","cardId":176,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Marsh Flats","cardId":175,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Arcane Signet","cardId":147,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Blood Crypt","cardId":183,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mox Diamond","cardId":187,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Dockside Extortionist","cardId":105,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"1/2","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Dark Ritual","cardId":116,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Arid Mesa","cardId":174,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"City of Brass","cardId":124,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Volcanic Island","cardId":152,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Underground Sea","cardId":186,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Fierce Guardianship","cardId":117,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mox Amber","cardId":114,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Reverberate","cardId":166,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Wheel of Fortune","cardId":162,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Misdirection","cardId":126,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Nashi, Moon Sage's Scion","cardId":137,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"3/2","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Timetwister","cardId":125,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Simian Spirit Guide","cardId":135,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Daze","cardId":136,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Flusterstorm","cardId":173,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Last Chance","cardId":131,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Verdant Catacombs","cardId":159,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Badlands","cardId":164,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Jeska's Will","cardId":150,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mystic Remora","cardId":155,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mental Misstep","cardId":181,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Praetor's Grasp","cardId":127,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Talisman of Dominance","cardId":102,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Windfall","cardId":190,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Brain Freeze","cardId":148,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Imperial Seal","cardId":106,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mana Crypt","cardId":112,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Talisman of Indulgence","cardId":145,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Talisman of Creativity","cardId":195,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Gitaxian Probe","cardId":163,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Deflecting Swat","cardId":151,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Misty Rainforest","cardId":110,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Necropotence","cardId":177,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mystical Tutor","cardId":141,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mox Opal","cardId":169,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Wishclaw Talisman","cardId":193,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Gamble","cardId":103,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Otawara, Soaring City","cardId":108,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Springleaf Drum","cardId":107,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Final Fortune","cardId":143,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Rite of Flame","cardId":167,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Wooded Foothills","cardId":129,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Polluted Delta","cardId":109,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Flooded Strand","cardId":104,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Grim Monolith","cardId":144,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Sol Ring","cardId":161,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Bloodstained Mire","cardId":130,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Infernal Plunge","cardId":146,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Warrior's Oath","cardId":119,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Rhystic Study","cardId":118,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Command Tower","cardId":158,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Culling the Weak","cardId":115,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Grim Tutor","cardId":185,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"City of Traitors","cardId":138,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-rograkh_silas","toPlayer":"Ai(2)-rograkh_silas","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Demonic Consultation","cardId":132,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(2)-rograkh_silas","types":"Instant","pt":"","token":false}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(1)-nadu","event":"mull_keep","detail":"lands=3 planCard=true size=7"}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(2)-rograkh_silas","event":"mull_keep","detail":"lands=3 planCard=true size=7"}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(3)-derevi","event":"mull_keep","detail":"lands=3 planCard=true size=7"}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(4)-godo_archetype","event":"mull_take","detail":"lands=1 planCard=true size=7"}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(4)-godo_archetype","event":"mull_keep","detail":"lands=2 planCard=true size=7"}
+{"rec":"agent","game":0,"turn":2,"player":"Ai(2)-rograkh_silas","event":"tutor_cast","detail":"Vampiric Tutor seeking Demonic Consultation"}
+{"rec":"agent","game":0,"turn":2,"player":"Ai(2)-rograkh_silas","event":"search_seen","detail":"sid=1 options=89 sighted=true mode=targets ranked=36 agree=true pickedW=8 planW=8 dest=Library comboPick=yes missing=Demonic Consultation picked=Nashi, Moon Sage's Scion planPick=Brain Freeze src=Vampiric Tutor"}
+{"rec":"agent","game":0,"turn":2,"player":"Ai(2)-rograkh_silas","event":"tutor_steer","detail":"sid=1 mode=combo value=8 stockValue=8 steer=Demonic Consultation over=Nashi, Moon Sage's Scion"}
+{"rec":"agent","game":0,"turn":5,"player":"Ai(1)-nadu","event":"combo_cast","detail":"Springheart Nantuko (0/2 online)"}
+{"rec":"agent","game":0,"turn":7,"player":"Ai(2)-rograkh_silas","event":"counter_veto","detail":"Birthing Pod threat=4.0"}
+{"rec":"agent","game":0,"turn":9,"player":"Ai(1)-nadu","event":"tutor_cast","detail":"Eldritch Evolution seeking Lotus Cobra"}
+{"rec":"agent","game":0,"turn":9,"player":"Ai(2)-rograkh_silas","event":"counter_veto","detail":"Eldritch Evolution threat=3.0"}
+{"rec":"agent","game":0,"turn":9,"player":"Ai(1)-nadu","event":"search_seen","detail":"sid=1 options=22 sighted=false mode=targets ranked=13 agree=false pickedW=0 planW=8 dest=Battlefield comboPick=- missing=- picked=Endurance planPick=Aphetto Alchemist src=Eldritch Evolution"}
+{"rec":"agent","game":0,"turn":9,"player":"Ai(1)-nadu","event":"tutor_steer","detail":"sid=1 mode=plan value=8 stockValue=0 steer=Aphetto Alchemist over=Endurance"}
+{"rec":"agent","game":0,"turn":13,"player":"Ai(3)-derevi","event":"counter_fire","detail":"Mana Crypt threat=8.0 bar=5.0"}
+{"rec":"agent","game":0,"turn":13,"player":"Ai(2)-rograkh_silas","event":"counter_veto","detail":"Fierce Guardianship threat=3.0"}
+{"rec":"agent","game":0,"turn":13,"player":"Ai(2)-rograkh_silas","event":"counter_veto","detail":"Finale of Devastation threat=4.0"}
+{"rec":"agent","game":0,"turn":13,"player":"Ai(1)-nadu","event":"search_seen","detail":"sid=2 options=14 sighted=true mode=targets ranked=9 agree=false pickedW=5 planW=8 dest=Battlefield comboPick=- missing=Unctus, Grand Metatect picked=Delighted Halfling planPick=Cephalid Illusionist src=Finale of Devastation"}
+{"rec":"agent","game":0,"turn":13,"player":"Ai(1)-nadu","event":"tutor_steer","detail":"sid=2 mode=plan value=8 stockValue=5 steer=Cephalid Illusionist over=Delighted Halfling"}
+{"rec":"agent","game":0,"turn":13,"player":"Ai(1)-nadu","event":"kingmaker_reaim","detail":"moved=2 off=Ai(3)-derevi onto=Ai(4)-godo_archetype"}
+{"rec":"agent","game":0,"turn":13,"player":"Ai(1)-nadu","event":"split","detail":"moved=1 onto=Ai(2)-rograkh_silas"}
+{"rec":"agent","game":0,"turn":14,"player":"Ai(2)-rograkh_silas","event":"combo_cast","detail":"Thassa's Oracle (0/2 online)"}
+{"rec":"agent","game":0,"turn":14,"player":"Ai(2)-rograkh_silas","event":"combo_cast","detail":"Demonic Consultation (1/2 online)"}
+{"rec":"result","game":0,"draw":false,"winner":"Ai(2)-rograkh_silas","turns":14,"timedOut":false,"turnCapped":false,"seats":[{"name":"Ai(1)-nadu","life":40,"alive":false},{"name":"Ai(2)-rograkh_silas","life":37,"alive":true},{"name":"Ai(3)-derevi","life":36,"alive":false},{"name":"Ai(4)-godo_archetype","life":39,"alive":false}],"ms":20306}

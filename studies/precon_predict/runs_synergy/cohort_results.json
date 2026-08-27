@@ -11,8 +11,8 @@
   "name": "Blame Game",
   "human": 36.88,
   "human_n": 40,
-  "sim_games": 8,
-  "sim_wins": 2,
+  "sim_games": 16,
+  "sim_wins": 4,
   "sim_rate": 0.25
  },
  {
@@ -27,8 +27,8 @@
   "name": "Legends' Legacy",
   "human": 33.67,
   "human_n": 49,
-  "sim_games": 8,
-  "sim_wins": 1,
+  "sim_games": 16,
+  "sim_wins": 2,
   "sim_rate": 0.125
  },
  {
@@ -51,9 +51,9 @@
   "name": "Lorehold Spirit",
   "human": 31.47,
   "human_n": 224,
-  "sim_games": 15,
+  "sim_games": 16,
   "sim_wins": 3,
-  "sim_rate": 0.2
+  "sim_rate": 0.1875
  },
  {
   "name": "World Shaper",
@@ -67,9 +67,9 @@
   "name": "The Fantastic Four",
   "human": 30.31,
   "human_n": 80,
-  "sim_games": 15,
+  "sim_games": 16,
   "sim_wins": 4,
-  "sim_rate": 0.26666666666666666
+  "sim_rate": 0.25
  },
  {
   "name": "Miracle Worker",
@@ -99,9 +99,9 @@
   "name": "Prismari Artistry",
   "human": 28.99,
   "human_n": 163,
-  "sim_games": 0,
+  "sim_games": 2,
   "sim_wins": 0,
-  "sim_rate": null
+  "sim_rate": 0.0
  },
  {
   "name": "Goblin Storm",
@@ -251,17 +251,17 @@
   "name": "Exit from Exile",
   "human": 24.32,
   "human_n": 74,
-  "sim_games": 8,
-  "sim_wins": 1,
-  "sim_rate": 0.125
+  "sim_games": 16,
+  "sim_wins": 4,
+  "sim_rate": 0.25
  },
  {
   "name": "Revival Trance",
   "human": 24.3,
   "human_n": 251,
-  "sim_games": 8,
-  "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_games": 16,
+  "sim_wins": 3,
+  "sim_rate": 0.1875
  },
  {
   "name": "Mardu Surge",
@@ -307,7 +307,7 @@
   "name": "Food and Fellowship",
   "human": 22.93,
   "human_n": 121,
-  "sim_games": 8,
+  "sim_games": 16,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -315,9 +315,9 @@
   "name": "Sultai Arisen",
   "human": 22.9,
   "human_n": 226,
-  "sim_games": 8,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 16,
+  "sim_wins": 3,
+  "sim_rate": 0.1875
  },
  {
   "name": "Science!",
@@ -387,9 +387,9 @@
   "name": "Turtle Power!",
   "human": 21.05,
   "human_n": 57,
-  "sim_games": 8,
-  "sim_wins": 0,
-  "sim_rate": 0.0
+  "sim_games": 16,
+  "sim_wins": 1,
+  "sim_rate": 0.0625
  },
  {
   "name": "Counter Intelligence",
@@ -419,25 +419,25 @@
   "name": "Abzan Armor",
   "human": 20.22,
   "human_n": 136,
-  "sim_games": 8,
+  "sim_games": 10,
   "sim_wins": 4,
-  "sim_rate": 0.5
+  "sim_rate": 0.4
  },
  {
   "name": "Deep Clue Sea",
   "human": 19.58,
   "human_n": 106,
-  "sim_games": 8,
-  "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_games": 16,
+  "sim_wins": 3,
+  "sim_rate": 0.1875
  },
  {
   "name": "Most Wanted",
   "human": 19.5,
   "human_n": 150,
-  "sim_games": 0,
+  "sim_games": 2,
   "sim_wins": 0,
-  "sim_rate": null
+  "sim_rate": 0.0
  },
  {
   "name": "Counter Blitz",
@@ -491,7 +491,7 @@
   "name": "Mind Flayarrgh",
   "human": 15.2,
   "human_n": 125,
-  "sim_games": 15,
+  "sim_games": 16,
   "sim_wins": 0,
   "sim_rate": 0.0
  },
@@ -499,9 +499,9 @@
   "name": "Mutant Menace",
   "human": 15.12,
   "human_n": 372,
-  "sim_games": 15,
+  "sim_games": 16,
   "sim_wins": 2,
-  "sim_rate": 0.13333333333333333
+  "sim_rate": 0.125
  },
  {
   "name": "Elven Council",
@@ -515,9 +515,9 @@
   "name": "Grand Larceny",
   "human": 13.2,
   "human_n": 161,
-  "sim_games": 8,
-  "sim_wins": 2,
-  "sim_rate": 0.25
+  "sim_games": 10,
+  "sim_wins": 3,
+  "sim_rate": 0.3
  },
  {
   "name": "Deadly Disguise",

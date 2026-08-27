@@ -3,3 +3,6 @@ games    256 total, ~16 per deck, clock 1200s, 4 workers
 arm      AGENT (all four seats)
 resume   0/128 cells already done
 
+
+decks with data: 66/66; median games/deck: 16
+wrote C:\Users\Vatto\Magic Rules Engine\studies\precon_predict\runs_synergy\cohort_results.json

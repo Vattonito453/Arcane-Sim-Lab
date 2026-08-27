@@ -235,3 +235,58 @@ each deck's own p, so this class of error cannot recur silently.
   fully trustworthy even after restricting to decided games.
 - The ~284-decks-for-significance figure quoted earlier is a 50%-power
   number and understates the requirement by roughly 2x.
+
+---
+
+# Synergy lines + attack hold-back: VALIDATION FAILED, do not ship
+
+`runs_synergy/` (shim 0.7.0, 226 games, 2 rounds) tested the two engine
+changes before pushing them to prod, as asked.
+
+## The machinery works
+
+| event | agent arm (no synergy) | synergy arm |
+|---|---|---|
+| `combo_cast` | 0 | **247** |
+| `combo_hold` | 0 | 45 |
+| `hold_back` | n/a | 74,247 |
+| block rate | 25.8% | 26.2% |
+
+Synergy lines gave 61 of 66 precons a pursuable win condition where Commander
+Spellbook returns nothing, and the agent does now pursue it.
+
+## But prediction got worse, and hold-back is badly over-tuned
+
+Decided games only:
+
+| | STOCK | AGENT | SYNERGY |
+|---|---|---|---|
+| corr(sim, human) | **0.221** | 0.196 | 0.151 |
+| rank corr | **0.255** | 0.225 | 0.142 |
+| LOO model rho | **0.477** | 0.398 | 0.284 |
+| reliability | 0.688 | 0.629 | 0.499 |
+
+**Do not ship either change on this evidence.** Two honest caveats on how
+strong that conclusion is: the synergy arm has only 11 decided games per deck
+against stock's 43, and it lost 34.5% of its games to the wall clock, so it
+is both undersampled and censored. It is not a clean refutation. But it is
+certainly not the validation the changes needed.
+
+**`hold_back` fired 329 times per game.** That is the smoking gun.
+`holdBackPerThreat=1.0` keeps one body per incoming untapped enemy creature,
+capped by `holdBackRatio=0.5`. In a go-wide precon meta the opponents'
+untapped creature count is large every single turn, so the cap binds and the
+agent keeps HALF ITS BOARD home on essentially every combat. No human plays
+that way, and it plausibly explains both the extra stalling (34.5% timeouts,
+median 53 turns) and the loss of signal.
+
+## What to do next
+
+1. Retune hold-back an order of magnitude down -- roughly one blocker per
+   three or four incoming threats (`holdBackPerThreat` ~0.25-0.33) and a
+   `holdBackRatio` nearer 0.25 -- then re-measure. The current setting is not
+   a test of the idea, it is a test of a caricature of the idea.
+2. Re-run with the shim 0.8.0 **turn cap** (`--max-turns 80`, clock demoted to
+   a hang detector) so the arm is not 34% censored on deliberation speed.
+3. Only then decide whether synergy lines earn their place, separately from
+   hold-back -- this arm changed both at once and cannot separate them.

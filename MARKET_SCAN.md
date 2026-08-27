@@ -693,3 +693,64 @@ predictive signal. The weakness is that they present it without error bars.
 - [Forge headless sim mode, Card-Forge wiki](https://github.com/Card-Forge/forge/wiki/AI) · [Running AI vs AI headless](https://slightlymagic.net/forum/viewtopic.php?f=52&t=20283)
 - [Wizards C&Ds Card Conjurer](https://techraptor.net/tabletop/news/wizards-cds-card-conjurer-causing-closure) · [WotC Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy)
 - [Best deck testers, Draftsim](https://draftsim.com/mtg-deck-tester/) · [GTO Wizard pricing, PokerNews](https://www.pokernews.com/news/2026/03/gto-wizard-subscription-plans-new-features-pricing-50908.htm)
+
+---
+
+## 9. Positioning (2026-08-26): two products, two buyers
+
+Sections 7 and 8 both looked for a single "wedge" and both were falsified by
+measurement. The framing was the problem: Sim Lab is **two products with two
+audiences**, and they are judged by different metrics.
+
+### The MODEL is what we sell to an investor or an acquirer
+
+The mapping from simulation output to a real playgroup win rate, fitted
+against playgroup.gg's human games. Measured (`studies/precon_predict/`):
+66 precons, 10,982 human games, leave-one-out MAE 3.946 pp and rank
+correlation 0.477 against 4.249 pp for guessing the mean, permutation
+p < 0.0005, and rank correlation 0.499 when scored against an independently
+refreshed capture.
+
+Its defensibility is the pair that is hard to copy: **proprietary calibration
+data** (human outcomes mapped to exact decklists) and **expensive compute**
+(a 66-deck cohort is hundreds of games). It is also engine-agnostic, so it
+survives being retargeted off Forge onto another rules engine — which is
+exactly what the GPL boundary exists to protect.
+
+Note what is NOT the moat: the simulation itself. Anyone can run Forge. And
+decklist statistics alone cannot do this job — every leave-one-out model over
+14 deck features is worse than guessing the mean. You have to play the games
+AND own the calibration.
+
+### The EXPERIENCE is what we sell to a user
+
+> Put your deck in our sim and get more insight than goldfishing alone. Trust
+> that you can have matches simulated that will look like a game that would
+> really play out if you were sitting at the table with your pod.
+
+The bar is that a knowledgeable viewer watching a replay believes the AI
+played Magic — read the board, made sensible attacks and blocks, spent
+interaction at the right moment.
+
+### Why separating them matters operationally
+
+Agent play quality is judged by **replay credibility**, not by whether it
+improves the model's correlation. Those are different metrics, and they pull
+in opposite directions: tuning the agent toward an "average casual player" to
+help the model actively damages the experience. Measured proof that this is
+not hypothetical — the humanized dials that existed for realism cost about
+6 points of win rate and bought no predictive validity
+(`studies/agent_viability/`).
+
+**The decision: the agent plays to win.** Competitive cEDH play is the
+reference, not casual precon averages. Shipping either product does not
+validate the other, and neither should be asked to.
+
+### The constraint on the experience
+
+It stays analysis and replay. The tripwires in `CLAUDE.md` are an opponent of
+any kind, rules adjudication by the app, or a declared win/loss. "The AI feels
+smart when I watch my deck get piloted" is analysis; "I can take a turn
+against it" is a gameplay client. **The line is interactivity**, not AI
+quality — so pushing the agent toward Arena-grade decision making is safe,
+and exposing a way to play against it is not.

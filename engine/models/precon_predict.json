@@ -1,0 +1,47 @@
+{
+ "features": [
+  "survival",
+  "creatures",
+  "avg_cmc"
+ ],
+ "weights": [
+  1.6203498020183107,
+  -2.32905905491614,
+  0.9680635724850722
+ ],
+ "mu": [
+  30.202706411945545,
+  29.803030303030305,
+  3.5099090909090913
+ ],
+ "sd": [
+  11.496793617111539,
+  5.975251223245755,
+  0.40444502669006205
+ ],
+ "intercept": 24.217878787878792,
+ "loo": {
+  "mae": 3.9456348355604156,
+  "rmse": 5.071701928515023,
+  "pearson": 0.42329463560838937,
+  "spearman": 0.4767193061454338,
+  "permutation_p_rho": 0.0005,
+  "permutation_p_mae": 0.002
+ },
+ "holdout": {
+  "capture": "2026-08-26",
+  "pearson": 0.495,
+  "spearman": 0.499,
+  "mae": 3.582,
+  "baseline_mae": 3.967
+ },
+ "n_decks": 66,
+ "arm": "stock Forge, decided games",
+ "human_games": 10982,
+ "ground_truth": "playgroup.gg commander precons, captured 2026-08-03",
+ "ceiling": {
+  "reliability": 0.463,
+  "max_r": 0.674,
+  "note": "ground truth is ~46% reliable, so no predictor can exceed r=0.674"
+ }
+}

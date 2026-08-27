@@ -1,0 +1,8 @@
+cohort   66 decks, 6 rounds x 16 pods x 4 seat-rotations
+games    768 total, ~48 per deck, clock 1200s, 14 workers
+arm      AGENT (all four seats)
+resume   0/384 cells already done
+
+
+decks with data: 66/66; median games/deck: 48
+wrote C:\Users\Vatto\Magic Rules Engine\studies\precon_predict\runs_agent\cohort_results.json

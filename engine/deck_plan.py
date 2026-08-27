@@ -229,7 +229,8 @@ def read_dck(path: str | Path) -> tuple[str, list[str], list[str]]:
     return name, commanders, main
 
 
-def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
+def build_plan(path: str | Path, fetch: bool = False,
+               synergy: bool = False) -> tuple[str, dict]:
     deck_name, commanders, main = read_dck(path)
     names = commanders + main
     facts = cards.get_many(names, fetch=fetch)
@@ -364,7 +365,11 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
     # archetype so "assemble your engine" means something on the decks most
     # players own. Only when Spellbook returned nothing -- a real catalogued
     # combo is always the better line.
-    if not lines:
+    # OPT-IN until validated. The one arm that ran with synergy lines on
+    # predicted WORSE than stock (rank corr 0.255 -> 0.142), though it was
+    # undersampled and censored so that is not a clean refutation. Either way
+    # it has not earned being on by default.
+    if synergy and not lines:
         lines = synergy_lines(names, facts, tags, weights, commanders)
 
     keep = sorted((n for n, w in weights.items() if w >= 5),
@@ -402,10 +407,11 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
     return deck_name, plan
 
 
-def build_plans(paths: list[str | Path], fetch: bool = False) -> dict:
+def build_plans(paths: list[str | Path], fetch: bool = False,
+                synergy: bool = False) -> dict:
     decks = {}
     for p in paths:
-        name, plan = build_plan(p, fetch=fetch)
+        name, plan = build_plan(p, fetch=fetch, synergy=synergy)
         decks[name] = plan
     return {"decks": decks}
 
@@ -414,10 +420,14 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("decks", nargs="+", help=".dck files")
     ap.add_argument("--out", default=None, help="write plans JSON here (default stdout)")
+    ap.add_argument("--synergy", action="store_true",
+                    help="derive combo lines from the deck's archetype when "
+                         "Spellbook has none (UNVALIDATED: see "
+                         "studies/precon_predict/README.md)")
     ap.add_argument("--fetch", action="store_true",
                     help="allow Scryfall/Spellbook network fetches (cache-only otherwise)")
     args = ap.parse_args()
-    plans = build_plans(args.decks, fetch=args.fetch)
+    plans = build_plans(args.decks, fetch=args.fetch, synergy=args.synergy)
     payload = json.dumps(plans, indent=2)
     if args.out:
         Path(args.out).write_text(payload, encoding="utf-8")

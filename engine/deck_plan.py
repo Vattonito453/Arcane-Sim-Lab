@@ -273,6 +273,7 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
     weights: dict[str, int] = {}
     roles: dict[str, str] = {}
     tutors: list[str] = []
+    mana_creatures: list[str] = []
     for n in names:
         f = facts.get(cards.key(n)) or facts.get(n) or {}
         text = f.get("oracle_text") or ""
@@ -281,6 +282,8 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         if "Land" in tline and "Creature" not in tline:
             roles[n] = "land"
             continue
+        if "Creature" in tline and _MANA_SOURCE.search(text):
+            mana_creatures.append(n)
         tm = _TUTOR_CLAUSE.search(text)
         if tm and not _LAND_CLAUSE.search(tm.group(1)):
             tutors.append(n)
@@ -387,6 +390,12 @@ def build_plan(path: str | Path, fetch: bool = False) -> tuple[str, dict]:
         "personality": personality,
         "lines": lines,           # known combo piece-sets, fewest pieces first
         "tutors": tutors,         # nonland tutors — the line-of-sight gate's reach
+        # Creatures that tap for mana. They belong at home making mana, not
+        # attacking, and they are the first body the agent keeps back when it
+        # holds blockers. (Stock Forge already gets this right 98.3% of the
+        # time -- measured -- so this protects a good behaviour rather than
+        # fixing a bad one.)
+        "manaCreatures": mana_creatures,
         # Additive (task 20 Stage 1): shims before 0.4.2 ignore this key.
         "search": {"targets": targets, "context": context},
     }

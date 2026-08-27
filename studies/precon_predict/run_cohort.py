@@ -117,7 +117,10 @@ def main():
     args = ap.parse_args()
 
     cohort = json.loads((HERE / "cohort.json").read_text(encoding="utf-8"))
-    out_dir = Path(args.out) if args.out else HERE / (
+    # RESOLVE: java runs with cwd=~/forge, so a relative --out silently
+    # resolves there, the shim cannot create the file, and every cell produces
+    # nothing. Same trap as --plans.
+    out_dir = Path(args.out).resolve() if args.out else HERE / (
         "runs_agent" if args.agent_plans else "runs_stock")
     out_dir.mkdir(parents=True, exist_ok=True)
     jars = (shim_jar(args.shim_jar), forge_jar())
@@ -161,6 +164,11 @@ def main():
     (out_dir / "cohort_results.json").write_text(
         json.dumps(recs, indent=1), encoding="utf-8")
     got = [r for r in recs if r["sim_games"]]
+    if not got:
+        print("NO GAMES PRODUCED -- every cell failed. Check that "
+              "--out and --agent-plans are absolute: java runs "
+              "with cwd=~/forge.")
+        return 1
     print(f"\ndecks with data: {len(got)}/{len(recs)}; "
           f"median games/deck: {sorted(r['sim_games'] for r in got)[len(got)//2]}")
     print(f"wrote {out_dir/'cohort_results.json'}")

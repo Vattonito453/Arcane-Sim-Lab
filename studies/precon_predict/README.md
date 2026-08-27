@@ -151,3 +151,87 @@ python studies/precon_predict/tally.py runs_stock
 python studies/precon_predict/analyze.py --arm runs_stock
 python studies/precon_predict/blockrate.py "studies/**/*.jsonl"
 ```
+
+
+---
+
+# VERDICT (2026-08-26, both arms complete, 1,534 games)
+
+## The model works, is significant, and replicates
+
+Predicting a precon's real playgroup win rate from a stock-Forge simulation
+plus two decklist statistics:
+
+| | MAE | rank corr |
+|---|---|---|
+| guess the mean | 4.249 pp | — |
+| decklist stats only | 4.063 pp | +0.360 |
+| **survival + creatures + avg_cmc** | **3.946 pp** | **+0.477** |
+
+Significance, by permutation test (shuffle the human win rates, refit the
+whole leave-one-out pipeline, 2,000 times):
+
+- **P(rank corr this high by chance) < 0.0005**
+- **P(MAE this low by chance) = 0.002**
+
+And it holds up out of sample. Fitted on the 2026-08-03 capture and scored
+against the independently refreshed 2026-08-26 capture: **r +0.495, rho
++0.499, MAE 3.582 pp against a 3.967 baseline** -- better out of sample than
+in.
+
+Context for the ceiling: the ground truth is only ~46% reliable, so no
+predictor can exceed r = 0.674. At ~0.48-0.50 the model is at roughly 72% of
+what is achievable against these numbers.
+
+**Earlier drafts of this file called the result "not statistically
+significant". That was wrong, and it was a wrong TEST rather than a wrong
+number.** A bootstrap on the MAE difference against a baseline is very low
+powered here -- the entire reducible MAE range is 1.19 pp -- so it could not
+resolve a real effect. The permutation test is the right instrument and it is
+decisive.
+
+## The agent did NOT beat stock at prediction, and did not lose to it either
+
+On decided games (see below for why that qualifier is load-bearing):
+
+| metric | stock | agent |
+|---|---|---|
+| corr(sim, human) | +0.221 | +0.202 |
+| rank corr | +0.255 | +0.233 |
+| corr(creatures, sim) | +0.153 | **+0.059** |
+| reliability (own p) | 0.688 | 0.645 |
+| true sd | 9.58 pp | 10.13 pp |
+
+The two are equivalent predictors. The human-fidelity work did measurably
+reduce the aggro bias (+0.153 -> +0.059 against a human value of -0.378),
+which is the one mechanism claim that survives.
+
+## Three claims retracted, all mine
+
+1. **"The agent is worse at prediction."** False. It looked worse because
+   34.1% of agent games were killed by the 1200 s wall clock against 9.7% of
+   stock games, which deflated every agent win rate to a 16.2% cohort mean
+   against a 25% null. On decided games the two arms are a coin flip.
+   The censoring is not benign: agent timed-out games have FEWER turns than
+   its finished ones (43.0 vs 53.0), so the agent is dying to the clock
+   mid-game because it deliberates more per turn, and the censoring rate
+   correlates +0.239 with `creatures` -- the very feature the mechanism claim
+   was about.
+2. **"Over-dispersion fixed, 1.52x -> 1.08x."** False. That used a fixed
+   p=0.25 binomial noise term against an arm whose actual mean was 16.2%,
+   which inflates only that arm's noise by 1.38x. With each deck's own p the
+   agent is slightly MORE dispersed than stock, not less.
+3. **"Reliability collapsed 0.65 -> 0.48, destroying deck-strength signal."**
+   Same artifact. Own-p reliability is 0.688 vs 0.645 -- barely moved -- so
+   the "compression destroyed the signal" explanation was never needed.
+
+`decided.py` now computes every arm-to-arm number on finished games with
+each deck's own p, so this class of error cannot recur silently.
+
+## What still needs doing
+
+- **Re-run the agent arm at a longer clock.** At 34% censoring it is not on
+  the same measurement scale as stock, and no arm comparison from it is
+  fully trustworthy even after restricting to decided games.
+- The ~284-decks-for-significance figure quoted earlier is a 50%-power
+  number and understates the requirement by roughly 2x.

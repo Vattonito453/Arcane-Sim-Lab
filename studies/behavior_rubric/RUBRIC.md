@@ -119,3 +119,20 @@ across 30 block records, because those decks run almost no creatures, and the
 declined blocks that did occur were 0/1 bodies facing bigger attackers. The
 axis has no discriminating power there. cEDH pods stay the right place for the
 interaction axis.
+
+## First result from the observer
+
+See `ARMS_RESULTS.md`. 128 games, 4 arms, mixed pods, paired within game.
+
+The agent blocks materially better than stock on identical boards: it engages
+25.5% of attackers to stock 15.1% (paired +0.075, p = 0.028), lets through
+41.6% of blockable attackers to stock 60.4% (-0.193, p = 0.012), and takes
+6.90 damage per combat to stock 10.84 (-4.67, p = 0.010). Restricting to
+decided games strengthens all three.
+
+Correctness check worth keeping: the observer measures stock at 15.1%, and
+`DeckPlan.java` records 14.7% measured independently over 2,128 decisions
+before the observer existed. Different code path, different run, 0.4pp apart.
+
+None of the three dials tested (blockiness 0.6, hold-back 0.3/0.25, synergy
+lines) improved the edge at n = 32 per arm.

@@ -19,7 +19,7 @@ Metrics, all per pilot:
   safe capture       of available survive-the-block chances, share taken
   block mix          v3 kills+survives, v2 trade, v1 wall, v0 chump
   damage per combat  life actually taken from unblocked attackers
-  commitment         attackers / (attackers + untapped bodies kept home)
+  commitment         attackers / (attackers + untapped bodies that COULD attack)
   retained defense   share of attacks that kept a body home at all, and the
                      share that kept one big enough to survive the biggest
                      untapped creature the table could swing back
@@ -92,9 +92,11 @@ def main(argv: list[str]) -> int:
             else:
                 t["atkRecs"] += 1
                 for k in ("attackers", "attackPower", "defenders", "held",
-                          "heldPower", "heldTough", "backBodies", "backPower",
-                          "backBiggest"):
+                          "heldEligible", "heldPower", "heldTough",
+                          "backBodies", "backPower", "backBiggest"):
                     t[k] += r.get(k, 0)
+                if "heldEligible" not in r:
+                    t["missingElig"] += 1
                 if r.get("held", 0) > 0:
                     t["keptAny"] += 1
                 if r.get("heldTough", 0) > r.get("backBiggest", 0):
@@ -152,10 +154,19 @@ def main(argv: list[str]) -> int:
         t = agg[p]
         if not t["atkRecs"]:
             continue
-        commit = t["attackers"] / (t["attackers"] + t["held"]) \
-            if (t["attackers"] + t["held"]) else 0.0
+        # Eligible bodies only. `held` counts summoning-sick creatures and
+        # creatures with defender, which were never able to attack, so using it
+        # here understates commitment for both pilots.
+        den = t["attackers"] + t["heldEligible"]
+        # Records from shim < 0.9.1 carry no heldEligible. Reading them here
+        # would silently make den == attackers and report commit = 100%, so
+        # say so instead of printing a confident wrong number.
+        if t["missingElig"]:
+            commit_s = f"stale({int(t['missingElig'])})"
+        else:
+            commit_s = f"{t['attackers'] / den:.1%}" if den else "n/a"
         print(f"{p:8} {int(t['atkRecs']):>6} "
-              f"{t['attackers'] / t['atkRecs']:>9.2f} {commit:>7.1%} "
+              f"{t['attackers'] / t['atkRecs']:>9.2f} {commit_s:>7} "
               f"{t['defenders'] / t['atkRecs']:>7.2f} "
               f"{pct(t['keptAny'], t['atkRecs']):>8} "
               f"{pct(t['keptEnough'], t['atkRecs']):>11}")

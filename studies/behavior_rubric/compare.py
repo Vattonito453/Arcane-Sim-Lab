@@ -56,6 +56,15 @@ def game_totals(path: Path):
     if '"rec":"result"' not in text and '"rec": "result"' not in text:
         return None
     per = {"plan": {}, "stock": {}}
+    # A wall-clock kill truncates the game. Censoring is symmetric between
+    # pilots (both sit in every pod) so the paired difference stays usable,
+    # but arms censor at different rates, so arm-vs-arm needs a decided-only
+    # sensitivity pass.
+    for line in text.splitlines():
+        if '"rec":"result"' in line or '"rec": "result"' in line:
+            res = json.loads(line)
+            per["_censored"] = bool(res.get("timedOut") or res.get("turnCapped"))
+            break
     for pilot, r in load(path):
         if pilot not in per:
             continue
@@ -66,15 +75,23 @@ def game_totals(path: Path):
                 t[k] = t.get(k, 0) + r.get(k, 0)
             t["blockRecs"] = t.get("blockRecs", 0) + 1
         else:
-            for k in ("attackers", "held", "defenders"):
+            for k in ("attackers", "held", "heldEligible", "defenders"):
                 t[k] = t.get(k, 0) + r.get(k, 0)
+            # Shim < 0.9.1 emits no heldEligible. Without this flag the
+            # commitment denominator quietly collapses to `attackers` and every
+            # stale game reports 100% commitment.
+            if "heldEligible" not in r:
+                per["_stale"] = True
             t["atkRecs"] = t.get("atkRecs", 0) + 1
             if r.get("heldTough", 0) > r.get("backBiggest", 0):
                 t["keptEnough"] = t.get("keptEnough", 0) + 1
-    for t in per.values():
+    for key in ("plan", "stock"):
+        t = per[key]
         t["declinable"] = t.get("blocked", 0) + t.get("legalMissed", 0)
         t["blocksMade"] = sum(t.get(k, 0) for k in ("v3", "v2", "v1", "v0"))
-        t["committable"] = t.get("attackers", 0) + t.get("held", 0)
+        # Eligible bodies only. `held` includes summoning-sick creatures and
+        # creatures with defender, which could not have attacked at all.
+        t["committable"] = t.get("attackers", 0) + t.get("heldEligible", 0)
         t["dmgPerCombat"] = (t.get("lifeTaken", 0) / t["blockRecs"]
                              if t.get("blockRecs") else None)
     return per
@@ -103,7 +120,28 @@ def perm_p(diffs: list[float]) -> float:
     return (hits + 1) / (PERMS + 1)
 
 
-def arm_diffs(arm_dir: Path):
+def two_sample_p(a: list[float], b: list[float]) -> float:
+    """Two-sided permutation test on a difference of means, labels shuffled.
+
+    Arms are separate games, so arm-vs-base is a two-sample problem, not a
+    paired one. Without this the arm-minus-base deltas are just arithmetic and
+    cannot distinguish a real regression from noise.
+    """
+    na, nb = len(a), len(b)
+    if na == 0 or nb == 0:
+        return float("nan")
+    obs = abs(sum(a) / na - sum(b) / nb)
+    pool = list(a) + list(b)
+    rng = random.Random(SEED)
+    hits = 0
+    for _ in range(PERMS):
+        rng.shuffle(pool)
+        if abs(sum(pool[:na]) / na - sum(pool[na:]) / nb) >= obs - 1e-12:
+            hits += 1
+    return (hits + 1) / (PERMS + 1)
+
+
+def arm_diffs(arm_dir: Path, decided_only: bool = False):
     """Per-game plan-minus-stock differences for each metric in one arm."""
     diffs: dict[str, list[float]] = {}
     finished = dropped = 0
@@ -112,8 +150,13 @@ def arm_diffs(arm_dir: Path):
         if per is None:
             dropped += 1
             continue
+        if decided_only and per.get("_censored"):
+            dropped += 1
+            continue
         finished += 1
         for name, num, den, _ in BLOCK_RATES + ATTACK_RATES:
+            if name == "commit" and per.get("_stale"):
+                continue
             a, b = rate(per["plan"], num, den), rate(per["stock"], num, den)
             if a is not None and b is not None:
                 diffs.setdefault(name, []).append(a - b)
@@ -128,17 +171,19 @@ def main(argv: list[str]) -> int:
         print(__doc__)
         return 2
     root = Path(argv[0])
+    decided_only = "--decided-only" in argv
     arms = sorted(d for d in root.iterdir() if d.is_dir() and d.name != "plans")
     if not arms:
         print("no arm directories found")
         return 2
 
     per_arm = {}
-    print("PAIRED plan minus stock, within game")
+    print("PAIRED plan minus stock, within game"
+          + (" (DECIDED GAMES ONLY)" if decided_only else ""))
     print(f"{'arm':10} {'games':>6} {'dropped':>8} {'metric':>13} "
           f"{'mean diff':>10} {'p':>8}")
     for arm in arms:
-        diffs, fin, drop = arm_diffs(arm)
+        diffs, fin, drop = arm_diffs(arm, decided_only)
         per_arm[arm.name] = diffs
         if not fin:
             print(f"{arm.name:10} {fin:>6} {drop:>8}  (no finished games)")
@@ -159,7 +204,8 @@ def main(argv: list[str]) -> int:
     if "base" in per_arm and len(per_arm) > 1:
         print()
         print("ARM minus BASE, on the paired difference (did the change move it?)")
-        print(f"{'arm':10} {'metric':>13} {'base':>9} {'arm':>9} {'delta':>9}")
+        print(f"{'arm':10} {'metric':>13} {'base':>9} {'arm':>9} "
+              f"{'delta':>9} {'p':>8}")
         for name in [n for n, *_ in BLOCK_RATES + ATTACK_RATES] + ["dmgPerCombat"]:
             b = per_arm["base"].get(name)
             if not b:
@@ -173,7 +219,7 @@ def main(argv: list[str]) -> int:
                     continue
                 am = sum(a) / len(a)
                 print(f"{arm:10} {name:>13} {bm:>+9.3f} {am:>+9.3f} "
-                      f"{am - bm:>+9.3f}")
+                      f"{am - bm:>+9.3f} {two_sample_p(a, b):>8.4f}")
 
     print()
     print("declined = share of blockable attackers let through (lower is more "

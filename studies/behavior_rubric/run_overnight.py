@@ -51,7 +51,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
 sys.path.insert(0, str(REPO / "engine"))
 
-SHIM = REPO.parent / "simlab-forge-shim" / "simlab-forge-shim-0.9.2.jar"
+SHIM = REPO.parent / "simlab-forge-shim" / "simlab-forge-shim-0.9.3.jar"
 FORGE = Path(r"C:\Users\Vatto\forge\forge-gui-desktop-2.0.13-jar-with-dependencies.jar")
 SEED = 20260827  # same shuffle as run_arms; --pods 16 extends the same order
 

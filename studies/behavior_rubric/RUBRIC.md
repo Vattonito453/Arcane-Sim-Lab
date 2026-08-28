@@ -47,7 +47,9 @@ deck's own hypergeometric floor rather than against people.
 **Blocking — normative**
 - `free_block_capture_rate`: of attackers where a blocker both SURVIVES and
   KILLS, the share actually blocked. Strong play takes nearly all; this is
-  free value. Stock Forge blocks only 17.6% of attackers overall.
+  free value. Stock block rate depends on the deck population: 14.7% on cEDH
+  (2,128 decisions), 17.6% on 256 all-stock games (11,657). Quote the one that
+  matches the population under test.
 - `no_gain_block_rate`: blocks where the blocker dies, the attacker lives and
   nothing is gained. Should be ~0.
 - `lethal_prevention_block_rate`: facing lethal unblocked damage, the share of
@@ -130,9 +132,14 @@ The agent blocks materially better than stock on identical boards: it engages
 6.90 damage per combat to stock 10.84 (-4.67, p = 0.010). Restricting to
 decided games strengthens all three.
 
-Correctness check worth keeping: the observer measures stock at 15.1%, and
-`DeckPlan.java` records 14.7% measured independently over 2,128 decisions
-before the observer existed. Different code path, different run, 0.4pp apart.
+The observer puts stock in the same range as the earlier text-log
+measurements, which is reassuring but is **not** a clean replication. Those
+numbers are not one number: 14.7% is cEDH decks over 2,128 decisions, 17.6% is
+256 all-stock games over 11,657, and 20.8% is precons marked in flight. They
+also come from parsing COMBAT log text rather than reading the event bus, and
+the observer runs in MIXED pods, so its stock seats face boards that two plan
+seats helped shape. Compare a precon figure to a precon figure, and do not
+treat any of this as the observer validating itself.
 
 None of the three dials tested (blockiness 0.6, hold-back 0.3/0.25, synergy
 lines) improved the edge at n = 32 per arm.

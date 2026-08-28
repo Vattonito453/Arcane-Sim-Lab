@@ -83,7 +83,15 @@ def main(argv: list[str]) -> int:
     for f in files:
         for pilot, r in load(f):
             t = agg[pilot]
-            if r["kind"] == "block":
+            if r["kind"] == "mull":
+                t["mullSeats"] += 1
+                t["mulls"] += r.get("mulls", 0)
+                if r.get("mulls", 0) == 0:
+                    t["kept7"] += 1
+                t["mullLands"] += r.get("lands", 0)
+                if r.get("lands", 0) < 2 or r.get("lands", 0) > 5:
+                    t["badLands"] += 1
+            elif r["kind"] == "block":
                 t["blockRecs"] += 1
                 for k in ("incoming", "blocked", "v3", "v2", "v1", "v0",
                           "available", "freeTaken", "freeMissed",
@@ -111,6 +119,20 @@ def main(argv: list[str]) -> int:
 
     def pct(num, den):
         return f"{num / den:.1%}" if den else "  n/a"
+
+    print()
+    print("MULLIGANS (per seat-game; records need shim >= 0.9.2)")
+    print(f"{'pilot':8} {'seats':>6} {'kept 7':>7} {'mulls/seat':>11} "
+          f"{'lands kept':>11} {'kept out of 2-5':>16}")
+    for p in order:
+        t = agg[p]
+        if not t["mullSeats"]:
+            continue
+        print(f"{p:8} {int(t['mullSeats']):>6} "
+              f"{pct(t['kept7'], t['mullSeats']):>7} "
+              f"{t['mulls'] / t['mullSeats']:>11.2f} "
+              f"{t['mullLands'] / t['mullSeats']:>11.2f} "
+              f"{pct(t['badLands'], t['mullSeats']):>16}")
 
     print()
     print("BLOCKING")

@@ -498,7 +498,13 @@ SIM_CLOCK_SECONDS = int(os.environ.get("MTG_SIM_CLOCK_SECONDS", "900"))
 JVM_LAUNCH_CEILING_SECONDS = 150
 # Typical, not worst case: what a real game costs when it finishes on its own.
 # Used ONLY to tell a user how long to expect, never to kill anything.
-TYPICAL_GAME_SECONDS = 120
+# 240, not 120 (re-measured 2026-08-28): the plan agent deliberates more than
+# the stock AI these figures were first measured on. Across 186 agent-era
+# games (cEDH all-plan pods median 272 s, precon mixed pods median 312 s, both
+# including a ~35-60 s JVM launch that this constant must exclude) the in-JVM
+# game lands at 220-260 s. The old 120 made every healthy run read as stuck at
+# double its estimate.
+TYPICAL_GAME_SECONDS = 240
 TYPICAL_JVM_LAUNCH_SECONDS = 35
 
 

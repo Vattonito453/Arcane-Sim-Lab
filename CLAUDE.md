@@ -247,7 +247,17 @@ cached on disk. A warm cache makes zero network calls. Never loop single lookups
   4.2 h for 16 games, 16.2 h for 64. `reap_stale()` derives from it, so raising
   one without the other can no longer reap a live job.
 - **Typical duration** (`estimate_sim_seconds`): what to TELL a user, roughly
-  10-25 min for a 4-deck 16-game gauntlet. Never used to kill anything.
+  40-105 min for a 4-deck 16-game gauntlet. Never used to kill anything.
+  Re-measured 2026-08-28: the plan agent deliberates more than the stock AI
+  the old 10-25 min figure came from (in-JVM game median 220-260 s across 186
+  agent-era games, `TYPICAL_GAME_SECONDS = 240`). If that constant changes,
+  re-measure and update this line in the same commit.
+- **Turn cap** (`--max-turns`, default 120 in run_sim, shim >= 0.8.0): the
+  deterministic bound. Measured on 1,198 finished games, p95 is 70-75 turns
+  and the max is 122, so 120 trims almost nothing legitimate while ending
+  turn-cycling stalemates without waiting out the clock. It cannot end a game
+  wedged INSIDE one turn (token-copy boards recheck every static ability per
+  token entering play); only the clock catches those.
 
 Keep these separate. Quoting the ceiling to a user reads as "this may take 16
 hours"; using the estimate as a timeout kills healthy runs.

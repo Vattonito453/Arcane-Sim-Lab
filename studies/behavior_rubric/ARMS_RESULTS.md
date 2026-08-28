@@ -136,8 +136,9 @@ harmful". The study can exclude a large effect, not a small one.
 
 ## What this changes
 
-- Ship the blocking work at **`base` defaults** (hold-back off, blockiness
-  0.24). It is validated and replicated.
+- Ship the blocking work at **`base` defaults**: hold-back off, and the
+  per-archetype blockiness `deck_plan.py` already emits. Validated and
+  replicated.
 - `holdBackRatio` / `holdBackPerThreat` stay **off**. Blockiness stays at the
   per-archetype values `deck_plan.py` emits. Neither retune helped.
 

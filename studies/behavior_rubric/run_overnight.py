@@ -23,8 +23,10 @@ Arms:
          agent-vs-stock claim.
   lean   strip the UNVALIDATED layers, keep the validated ones (mulligans,
          blocking, tutor steering): stock AI profile instead of the
-         counter-eager SimLabHuman, no grudge, no kingmaker re-aim, no
-         voluntary chumps. Tests whether the extra layers COST wins.
+         counter-eager SimLabHuman, threat veto disabled (counterThreshold 0,
+         so the bar is always met), no grudge, no kingmaker re-aim, no
+         voluntary chumps. Tests whether the extra layers COST wins, which
+         "the agent scored highest when it did least" predicts.
   split  splitAttacks 0.7. The split-attacks dimension has been OFF in every
          shipped plan (deck_plan.py sends 0.0), so it has never been tested.
 
@@ -55,8 +57,13 @@ SEED = 20260827  # same shuffle as run_arms; --pods 16 extends the same order
 
 ARMS = {
     "base":  {"overrides": {}, "profile": "SimLabHuman"},
+    # counterThreshold 0 makes the counter bar always met, so the threat
+    # veto never swallows a counter the stock AI proposed. Without it, lean
+    # seats would run stock's proposal rate THROUGH the veto (measured: the
+    # veto swallows ~66% of proposals) and counter far less than stock,
+    # which is not the layer-stripping the arm exists to test.
     "lean":  {"overrides": {"grudgeWeight": 0.0, "kingmakerRatio": 999.0,
-                            "chumpiness": 0.0},
+                            "chumpiness": 0.0, "counterThreshold": 0.0},
               "profile": "Default"},
     "split": {"overrides": {"splitAttacks": 0.7}, "profile": "SimLabHuman"},
 }

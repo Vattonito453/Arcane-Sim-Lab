@@ -155,5 +155,10 @@ def report(groups):
 if __name__ == "__main__":
     h = human_rows()
     s = sim_rows(str(REPO / "studies/human_ceiling/runs/shim_raw_*.jsonl"), "STOCK")
-    a = sim_rows(str(REPO / "studies/behavior_rubric/runs_agent/*.jsonl"), "AGENT")
+    # runs_agent_shipping is the SHIPPING configuration (hold-back off,
+    # per-archetype blockiness). The older runs_agent/ used blockiness 1.0
+    # with hold-back on, a pilot we do not ship, so quoting it in this table
+    # compared humans and stock against a stale arm.
+    a = sim_rows(str(REPO / "studies/behavior_rubric/runs_agent_shipping/*.jsonl"),
+                 "AGENT")
     report([("HUMAN", h), ("STOCK", s), ("AGENT", a)])

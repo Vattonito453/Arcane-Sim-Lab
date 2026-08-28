@@ -56,8 +56,11 @@ deck's own hypergeometric floor rather than against people.
   combats where a block is made. Should be ~1.0.
 
 **Attacking — normative**
-- `attacker_commitment_ratio`: attackers declared / eligible untapped
-  creatures. Stock is near 1.0 (attacks with everything).
+- `attacker_commitment_ratio`: attackers declared / creatures that could
+  legally have attacked. Stock is **71.6%**, not near 1.0 -- "attacks with
+  everything" does not survive measurement against the eligible denominator
+  (`ARMS_RESULTS.md`). Divide by every untapped body instead and you get a
+  biased 62.3%, because only 74.1% of bodies kept home could have attacked.
 - `retained_defense_adequacy`: untapped creatures left after attacking,
   against what opponents can swing back.
 - `per_turn_attack_split_rate`: distinct defenders named per attack. Stock is
@@ -122,24 +125,24 @@ declined blocks that did occur were 0/1 bodies facing bigger attackers. The
 axis has no discriminating power there. cEDH pods stay the right place for the
 interaction axis.
 
-## First result from the observer
+## First results from the observer
 
-See `ARMS_RESULTS.md`. 128 games, 4 arms, mixed pods, paired within game.
+See `ARMS_RESULTS.md`. Two independent runs of 128 games, mixed pods, paired
+within game.
 
-The agent blocks materially better than stock on identical boards: it engages
-25.5% of attackers to stock 15.1% (paired +0.075, p = 0.028), lets through
-41.6% of blockable attackers to stock 60.4% (-0.193, p = 0.012), and takes
-6.90 damage per combat to stock 10.84 (-4.67, p = 0.010). Restricting to
-decided games strengthens all three.
+**Replicated.** The agent captures profitable blocks stock leaves on the
+table: free-block capture 96.3% vs 76.0% (paired +0.227, p = 0.0023, 36 of 38
+games; independently +0.171, p = 0.025), safe-block capture 95.0% vs 74.9%,
+declined blocks 39.1% vs 51.8% (-0.154, p < 0.0001).
 
-The observer puts stock in the same range as the earlier text-log
-measurements, which is reassuring but is **not** a clean replication. Those
-numbers are not one number: 14.7% is cEDH decks over 2,128 decisions, 17.6% is
-256 all-stock games over 11,657, and 20.8% is precons marked in flight. They
-also come from parsing COMBAT log text rather than reading the event bus, and
-the observer runs in MIXED pods, so its stock seats face boards that two plan
-seats helped shape. Compare a precon figure to a precon figure, and do not
-treat any of this as the observer validating itself.
+**Retracted.** "The agent takes 4.67 less damage per combat" was a single-arm
+result from run 1 and does not replicate (run 2: +0.58, p = 0.94). Damage per
+combat is 8.03 vs 8.41, effectively equal.
+
+**Method note that cost a rerun.** Per-arm p-values did not replicate on
+byte-identical block-side code: base went from p = 0.012 to p = 0.187. At
+n = 32 with 24 tests per run, single-arm significance here is noise. Pool the
+arms and check the sign consistency instead.
 
 None of the three dials tested (blockiness 0.6, hold-back 0.3/0.25, synergy
-lines) improved the edge at n = 32 per arm.
+lines) moved anything; every arm-vs-base p > 0.14.

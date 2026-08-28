@@ -41,6 +41,11 @@ BLOCK_RATES = [
     ("engage", "blocked", "incoming", True),
     ("declined", "legalMissed", "declinable", False),
     ("chumpShare", "v0", "blocksMade", None),
+    # Quality, not volume: of the profitable blocks that were actually on
+    # offer, how many were taken. This is the axis that separates "blocks a
+    # lot" from "understands which blocks are free".
+    ("freeCap", "freeTaken", "freeOpp", True),
+    ("safeCap", "safeTaken", "safeOpp", True),
 ]
 ATTACK_RATES = [
     ("commit", "attackers", "committable", None),
@@ -71,7 +76,8 @@ def game_totals(path: Path):
         t = per[pilot]
         if r["kind"] == "block":
             for k in ("incoming", "blocked", "v3", "v2", "v1", "v0",
-                      "legalMissed", "lifeTaken"):
+                      "legalMissed", "lifeTaken", "freeTaken", "freeMissed",
+                      "safeMissed"):
                 t[k] = t.get(k, 0) + r.get(k, 0)
             t["blockRecs"] = t.get("blockRecs", 0) + 1
         else:
@@ -90,6 +96,10 @@ def game_totals(path: Path):
         t = per[key]
         t["declinable"] = t.get("blocked", 0) + t.get("legalMissed", 0)
         t["blocksMade"] = sum(t.get(k, 0) for k in ("v3", "v2", "v1", "v0"))
+        t["freeOpp"] = t.get("freeTaken", 0) + t.get("freeMissed", 0)
+        # A survive-the-block chance taken shows up as v3 or v1.
+        t["safeTaken"] = t.get("v3", 0) + t.get("v1", 0)
+        t["safeOpp"] = t["safeTaken"] + t.get("safeMissed", 0)
         # Eligible bodies only. `held` includes summoning-sick creatures and
         # creatures with defender, which could not have attacked at all.
         t["committable"] = t.get("attackers", 0) + t.get("heldEligible", 0)

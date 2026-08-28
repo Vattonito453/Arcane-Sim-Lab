@@ -1,0 +1,1123 @@
+{"rec":"meta","shim":"0.9.0","format":"Commander","games":1,"maxTurns":90,"humanized":false,"agents":["plan","stock","plan","stock"],"profiles":["SimLabHuman","Default","SimLabHuman","Default"],"players":["Ai(1)-Doom Prevails [MSC] [2026]","Ai(2)-Exit from Exile [CLB] [2022]","Ai(3)-Jeskai Striker [TDC] [2025]","Ai(4)-Graveyard Overdrive [M3C] [2024]"],"seedBases":["7919","15838","23757","31676"],"seedGameStride":104729,"decks":["C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Doom Prevails [MSC] [2026].dck","C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Exit from Exile [CLB] [2022].dck","C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Jeskai Striker [TDC] [2025].dck","C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Graveyard Overdrive [M3C] [2024].dck"]}
+{"rec":"entry","game":0,"seq":0,"type":"MULLIGAN","message":"Ai(3)-Jeskai Striker [TDC] [2025] has mulliganed down to 7 cards."}
+{"rec":"entry","game":0,"seq":1,"type":"MULLIGAN","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] has mulliganed down to 7 cards."}
+{"rec":"entry","game":0,"seq":2,"type":"MULLIGAN","message":"Ai(1)-Doom Prevails [MSC] [2026] has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":3,"type":"MULLIGAN","message":"Ai(2)-Exit from Exile [CLB] [2022] has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":4,"type":"MULLIGAN","message":"Ai(3)-Jeskai Striker [TDC] [2025] has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":5,"type":"MULLIGAN","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] has kept a hand of 7 cards"}
+{"rec":"entry","game":0,"seq":6,"type":"TURN","message":"Turn 1 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":7,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":8,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":9,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":10,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":11,"type":"LAND","message":"Ai(1)-Doom Prevails [MSC] [2026] played Command Tower (61)","card":"Command Tower","cardId":61}
+{"rec":"entry","game":0,"seq":12,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":13,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":14,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":15,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":16,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":17,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":18,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":19,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":20,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":21,"type":"TURN","message":"Turn 2 (Ai(2)-Exit from Exile [CLB] [2022])"}
+{"rec":"entry","game":0,"seq":22,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Untap step"}
+{"rec":"entry","game":0,"seq":23,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":24,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Draw step"}
+{"rec":"entry","game":0,"seq":25,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":26,"type":"LAND","message":"Ai(2)-Exit from Exile [CLB] [2022] played Kessig Wolf Run (123)","card":"Kessig Wolf Run","cardId":123}
+{"rec":"entry","game":0,"seq":27,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":28,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":29,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":30,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":31,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":32,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":33,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":34,"type":"MANA","message":"Kessig Wolf Run (123) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":35,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Sol Ring","card":"Sol Ring","cardId":149}
+{"rec":"entry","game":0,"seq":36,"type":"STACK_RESOLVE","message":"Sol Ring","card":"Sol Ring","cardId":149}
+{"rec":"entry","game":0,"seq":37,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End step"}
+{"rec":"entry","game":0,"seq":38,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":39,"type":"TURN","message":"Turn 3 (Ai(3)-Jeskai Striker [TDC] [2025])"}
+{"rec":"entry","game":0,"seq":40,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Untap step"}
+{"rec":"entry","game":0,"seq":41,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":42,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Draw step"}
+{"rec":"entry","game":0,"seq":43,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":44,"type":"LAND","message":"Ai(3)-Jeskai Striker [TDC] [2025] played Reliquary Tower (266)","card":"Reliquary Tower","cardId":266}
+{"rec":"entry","game":0,"seq":45,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":46,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":47,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":48,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":49,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":50,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":51,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":52,"type":"MANA","message":"Reliquary Tower (266) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":53,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] cast Sol Ring","card":"Sol Ring","cardId":293}
+{"rec":"entry","game":0,"seq":54,"type":"STACK_RESOLVE","message":"Sol Ring","card":"Sol Ring","cardId":293}
+{"rec":"entry","game":0,"seq":55,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End step"}
+{"rec":"entry","game":0,"seq":56,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":57,"type":"TURN","message":"Turn 4 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":58,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":59,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":60,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":61,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":62,"type":"LAND","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] played Forest (333)","card":"Forest","cardId":333}
+{"rec":"entry","game":0,"seq":63,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":64,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":65,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":66,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":67,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":68,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":69,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":70,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":71,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":72,"type":"TURN","message":"Turn 5 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":73,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":74,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":75,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":76,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":77,"type":"LAND","message":"Ai(1)-Doom Prevails [MSC] [2026] played Mountain (50)","card":"Mountain","cardId":50}
+{"rec":"entry","game":0,"seq":78,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":79,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":80,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":81,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":82,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":83,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":84,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":85,"type":"MANA","message":"Command Tower (61) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":86,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":87,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":88,"type":"STACK_RESOLVE","message":"Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":89,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":90,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":91,"type":"TURN","message":"Turn 6 (Ai(2)-Exit from Exile [CLB] [2022])"}
+{"rec":"entry","game":0,"seq":92,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Untap step"}
+{"rec":"entry","game":0,"seq":93,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":94,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Draw step"}
+{"rec":"entry","game":0,"seq":95,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":96,"type":"EFFECT_REPLACED","message":"Castle Embereth enters tapped unless you control a Mountain."}
+{"rec":"entry","game":0,"seq":97,"type":"LAND","message":"Ai(2)-Exit from Exile [CLB] [2022] played Castle Embereth (103)","card":"Castle Embereth","cardId":103}
+{"rec":"entry","game":0,"seq":98,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":99,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":100,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":101,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":102,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":103,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":104,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":105,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End step"}
+{"rec":"entry","game":0,"seq":106,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":107,"type":"TURN","message":"Turn 7 (Ai(3)-Jeskai Striker [TDC] [2025])"}
+{"rec":"entry","game":0,"seq":108,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Untap step"}
+{"rec":"entry","game":0,"seq":109,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":110,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Draw step"}
+{"rec":"entry","game":0,"seq":111,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":112,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":113,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":114,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":115,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":116,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":117,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":118,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":119,"type":"EFFECT_REPLACED","message":"Irrigated Farmland enters tapped."}
+{"rec":"entry","game":0,"seq":120,"type":"LAND","message":"Ai(3)-Jeskai Striker [TDC] [2025] played Irrigated Farmland (234)","card":"Irrigated Farmland","cardId":234}
+{"rec":"entry","game":0,"seq":121,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End step"}
+{"rec":"entry","game":0,"seq":122,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":123,"type":"TURN","message":"Turn 8 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":124,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":125,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":126,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":127,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":128,"type":"EFFECT_REPLACED","message":"Myriad Landscape enters tapped."}
+{"rec":"entry","game":0,"seq":129,"type":"LAND","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] played Myriad Landscape (325)","card":"Myriad Landscape","cardId":325}
+{"rec":"entry","game":0,"seq":130,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":131,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":132,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":133,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":134,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":135,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":136,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":137,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":138,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":139,"type":"TURN","message":"Turn 9 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":140,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":141,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":142,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":143,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":144,"type":"LAND","message":"Ai(1)-Doom Prevails [MSC] [2026] played Swamp (18)","card":"Swamp","cardId":18}
+{"rec":"entry","game":0,"seq":145,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":146,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":147,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":148,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":149,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":150,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":151,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":152,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":153,"type":"MANA","message":"Swamp (18) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":154,"type":"MANA","message":"Command Tower (61) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":155,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Puppet Master, String Puller","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":156,"type":"STACK_RESOLVE","message":"Puppet Master, String Puller - Creature 2 / 4","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":157,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":158,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":159,"type":"TURN","message":"Turn 10 (Ai(2)-Exit from Exile [CLB] [2022])"}
+{"rec":"entry","game":0,"seq":160,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Untap step"}
+{"rec":"entry","game":0,"seq":161,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":162,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Draw step"}
+{"rec":"entry","game":0,"seq":163,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":164,"type":"LAND","message":"Ai(2)-Exit from Exile [CLB] [2022] played Forest (175)","card":"Forest","cardId":175}
+{"rec":"entry","game":0,"seq":165,"type":"MANA","message":"Forest (175) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":166,"type":"MANA","message":"Sol Ring (149) - {T}: Add {C}{C}."}
+{"rec":"entry","game":0,"seq":167,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Fertile Footsteps","card":"Fertile Footsteps","cardId":132}
+{"rec":"entry","game":0,"seq":168,"type":"STACK_RESOLVE","message":"Fertile Footsteps (132) - Ai(2)-Exit from Exile [CLB] [2022] searches their library for a basic land card, puts it onto the battlefield, then shuffles.","card":"Fertile Footsteps","cardId":132}
+{"rec":"entry","game":0,"seq":169,"type":"EFFECT_REPLACED","message":"Adventure"}
+{"rec":"entry","game":0,"seq":170,"type":"MANA","message":"Castle Embereth (103) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":171,"type":"MANA","message":"Forest (178) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":172,"type":"MANA","message":"Kessig Wolf Run (123) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":173,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Jeska's Will","card":"Jeska's Will","cardId":130}
+{"rec":"entry","game":0,"seq":174,"type":"STACK_RESOLVE","message":"Jeska's Will (130) -  Exile the top three cards of your library. You may play them this turn.  ","card":"Jeska's Will","cardId":130}
+{"rec":"entry","game":0,"seq":175,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":176,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":177,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":178,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":179,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":180,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":181,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":182,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End step"}
+{"rec":"entry","game":0,"seq":183,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":184,"type":"TURN","message":"Turn 11 (Ai(3)-Jeskai Striker [TDC] [2025])"}
+{"rec":"entry","game":0,"seq":185,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Untap step"}
+{"rec":"entry","game":0,"seq":186,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":187,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Draw step"}
+{"rec":"entry","game":0,"seq":188,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":189,"type":"EFFECT_REPLACED","message":"Prairie Stream enters tapped unless you control two or more basic lands."}
+{"rec":"entry","game":0,"seq":190,"type":"LAND","message":"Ai(3)-Jeskai Striker [TDC] [2025] played Prairie Stream (294)","card":"Prairie Stream","cardId":294}
+{"rec":"entry","game":0,"seq":191,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":192,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":193,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":194,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":195,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":196,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":197,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":198,"type":"MANA","message":"Irrigated Farmland (234) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":199,"type":"MANA","message":"Reliquary Tower (266) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":200,"type":"MANA","message":"Sol Ring (293) - {T}: Add {C}{C}."}
+{"rec":"entry","game":0,"seq":201,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] cast Frantic Search","card":"Frantic Search","cardId":258}
+{"rec":"entry","game":0,"seq":202,"type":"DISCARD","message":"Ai(3)-Jeskai Striker [TDC] [2025] discards Magma Opus (229).","card":"Magma Opus","cardId":229}
+{"rec":"entry","game":0,"seq":203,"type":"DISCARD","message":"Ai(3)-Jeskai Striker [TDC] [2025] discards Transcendent Dragon (270).","card":"Transcendent Dragon","cardId":270}
+{"rec":"entry","game":0,"seq":204,"type":"STACK_RESOLVE","message":"Frantic Search (258) - Ai(3)-Jeskai Striker [TDC] [2025] draws two cards. Ai(3)-Jeskai Striker [TDC] [2025] discards two cards. Untap up to 3 Lands.","card":"Frantic Search","cardId":258}
+{"rec":"entry","game":0,"seq":205,"type":"MANA","message":"Irrigated Farmland (234) - {T}: Add {W}."}
+{"rec":"entry","game":0,"seq":206,"type":"MANA","message":"Reliquary Tower (266) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":207,"type":"MANA","message":"Prairie Stream (294) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":208,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] cast Mangara, the Diplomat","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":209,"type":"STACK_RESOLVE","message":"Mangara, the Diplomat - Creature 2 / 4","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":210,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End step"}
+{"rec":"entry","game":0,"seq":211,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":212,"type":"TURN","message":"Turn 12 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":213,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":214,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":215,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":216,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":217,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":218,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":219,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":220,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":221,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":222,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":223,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":224,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":225,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":226,"type":"DISCARD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] discards Find // Finality (317).","card":"Find // Finality","cardId":317}
+{"rec":"entry","game":0,"seq":227,"type":"TURN","message":"Turn 13 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":228,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":229,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":230,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":231,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":232,"type":"LAND","message":"Ai(1)-Doom Prevails [MSC] [2026] played Swamp (20)","card":"Swamp","cardId":20}
+{"rec":"entry","game":0,"seq":233,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":234,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":235,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":236,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":237,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":238,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":239,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":240,"type":"MANA","message":"Command Tower (61) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":241,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":242,"type":"MANA","message":"Swamp (18) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":243,"type":"MANA","message":"Swamp (20) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":244,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":245,"type":"STACK_RESOLVE","message":"Doctor Doom, King of Latveria - Creature 3 / 3","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":246,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":247,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":248,"type":"TURN","message":"Turn 14 (Ai(2)-Exit from Exile [CLB] [2022])"}
+{"rec":"entry","game":0,"seq":249,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Untap step"}
+{"rec":"entry","game":0,"seq":250,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":251,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Draw step"}
+{"rec":"entry","game":0,"seq":252,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":253,"type":"LAND","message":"Ai(2)-Exit from Exile [CLB] [2022] played Mountain (192)","card":"Mountain","cardId":192}
+{"rec":"entry","game":0,"seq":254,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":255,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":256,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":257,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":258,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":259,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":260,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":261,"type":"MANA","message":"Forest (175) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":262,"type":"MANA","message":"Sol Ring (149) - {T}: Add {C}{C}."}
+{"rec":"entry","game":0,"seq":263,"type":"MANA","message":"Forest (178) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":264,"type":"MANA","message":"Mountain (192) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":265,"type":"MANA","message":"Kessig Wolf Run (123) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":266,"type":"MANA","message":"Castle Embereth (103) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":267,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Beanstalk Giant","card":"Beanstalk Giant","cardId":132}
+{"rec":"entry","game":0,"seq":268,"type":"STACK_RESOLVE","message":"Beanstalk Giant - Creature * / *","card":"Beanstalk Giant","cardId":132}
+{"rec":"entry","game":0,"seq":269,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End step"}
+{"rec":"entry","game":0,"seq":270,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":271,"type":"TURN","message":"Turn 15 (Ai(3)-Jeskai Striker [TDC] [2025])"}
+{"rec":"entry","game":0,"seq":272,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Untap step"}
+{"rec":"entry","game":0,"seq":273,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":274,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Draw step"}
+{"rec":"entry","game":0,"seq":275,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":276,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":277,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":278,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":279,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":280,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":281,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":282,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":283,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End step"}
+{"rec":"entry","game":0,"seq":284,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":285,"type":"TURN","message":"Turn 16 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":286,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":287,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":288,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":289,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":290,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":291,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":292,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":293,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":294,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":295,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":296,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":297,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":298,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":299,"type":"DISCARD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] discards Altar of the Goyf (349).","card":"Altar of the Goyf","cardId":349}
+{"rec":"entry","game":0,"seq":300,"type":"TURN","message":"Turn 17 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":301,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":302,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":303,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":304,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":305,"type":"EFFECT_REPLACED","message":"As Frostboil Snarl enters, you may reveal an Island or Mountain card from your hand. If you don't, Frostboil Snarl enters tapped."}
+{"rec":"entry","game":0,"seq":306,"type":"LAND","message":"Ai(1)-Doom Prevails [MSC] [2026] played Frostboil Snarl (7)","card":"Frostboil Snarl","cardId":7}
+{"rec":"entry","game":0,"seq":307,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":308,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria targeting [Doctor Doom, King of Latveria (99)]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":309,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Sulfur Falls (23).","card":"Sulfur Falls","cardId":23}
+{"rec":"entry","game":0,"seq":310,"type":"STACK_RESOLVE","message":"At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) (Targeting: [[Doctor Doom, King of Latveria (99)]]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":311,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":312,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":313,"type":"STACK_RESOLVE","message":"Whenever a creature you control connives, put a +1/+1 counter on that creature and a plan counter on this enchantment. [Card: Doctor Doom, King of Latveria (99)]","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":314,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 40 > 38"}
+{"rec":"entry","game":0,"seq":315,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 40 > 38"}
+{"rec":"entry","game":0,"seq":316,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 40 > 38"}
+{"rec":"entry","game":0,"seq":317,"type":"STACK_RESOLVE","message":"Whenever you discard one or more land cards, each opponent loses 2 life. [Player: Ai(1)-Doom Prevails [MSC] [2026], Amount: 1]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":318,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":319,"type":"COMBAT","message":"Ai(1)-Doom Prevails [MSC] [2026] assigned Doctor Doom, King of Latveria (99) to attack Ai(2)-Exit from Exile [CLB] [2022]."}
+{"rec":"entry","game":0,"seq":320,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Puppet Master, String Puller targeting [Beanstalk Giant (132)]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":321,"type":"STACK_RESOLVE","message":"Whenever you attack, goad target creature an opponent controls. It can't block this turn. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.) (Targeting: [[Beanstalk Giant (132)]]) [Number Attackers: [Doctor Doom, King of Latveria (99)]]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":322,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":323,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] didn't block Doctor Doom, King of Latveria (99)."}
+{"rec":"entry","game":0,"seq":324,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":325,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":326,"type":"DAMAGE","message":"Doctor Doom, King of Latveria (99) deals 4 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":327,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 38 > 34"}
+{"rec":"entry","game":0,"seq":328,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":329,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":330,"type":"MANA","message":"Swamp (18) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":331,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":332,"type":"MANA","message":"Swamp (20) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":333,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Baron Strucker, HYDRA Overlord","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":334,"type":"STACK_RESOLVE","message":"Baron Strucker, HYDRA Overlord - Creature 2 / 2","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":335,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":336,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":337,"type":"TURN","message":"Turn 18 (Ai(2)-Exit from Exile [CLB] [2022])"}
+{"rec":"entry","game":0,"seq":338,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Untap step"}
+{"rec":"entry","game":0,"seq":339,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":340,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Draw step"}
+{"rec":"entry","game":0,"seq":341,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":342,"type":"LAND","message":"Ai(2)-Exit from Exile [CLB] [2022] played Mountain (191)","card":"Mountain","cardId":191}
+{"rec":"entry","game":0,"seq":343,"type":"MANA","message":"Mountain (192) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":344,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Battle Display targeting [Sol Ring (293)]","card":"Battle Display","cardId":138}
+{"rec":"entry","game":0,"seq":345,"type":"ZONE_CHANGE","message":"Sol Ring (293) was put into Graveyard from Battlefield.","card":"Sol Ring","cardId":293}
+{"rec":"entry","game":0,"seq":346,"type":"STACK_RESOLVE","message":"Battle Display (138) - Destroy Sol Ring (293).","card":"Battle Display","cardId":138}
+{"rec":"entry","game":0,"seq":347,"type":"EFFECT_REPLACED","message":"Adventure"}
+{"rec":"entry","game":0,"seq":348,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":349,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":350,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] assigned Beanstalk Giant (132) to attack Ai(4)-Graveyard Overdrive [M3C] [2024]."}
+{"rec":"entry","game":0,"seq":351,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":352,"type":"COMBAT","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] didn't block Beanstalk Giant (132)."}
+{"rec":"entry","game":0,"seq":353,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":354,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":355,"type":"DAMAGE","message":"Beanstalk Giant (132) deals 6 combat damage to Ai(4)-Graveyard Overdrive [M3C] [2024].","card":"Beanstalk Giant","cardId":132}
+{"rec":"entry","game":0,"seq":356,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 38 > 32"}
+{"rec":"entry","game":0,"seq":357,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Puppet Master, String Puller","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":358,"type":"STACK_RESOLVE","message":"Whenever one or more goaded creatures deal combat damage to one of your opponents, create a Treasure token. [Damaged: Ai(4)-Graveyard Overdrive [M3C] [2024], Amount: 6]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":359,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":360,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":361,"type":"MANA","message":"Forest (175) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":362,"type":"MANA","message":"Mountain (191) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":363,"type":"MANA","message":"Sol Ring (149) - {T}: Add {C}{C}."}
+{"rec":"entry","game":0,"seq":364,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Faldorn, Dread Wolf Herald","card":"Faldorn, Dread Wolf Herald","cardId":200}
+{"rec":"entry","game":0,"seq":365,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] triggered Mangara, the Diplomat","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":366,"type":"STACK_RESOLVE","message":"Whenever an opponent casts their second spell each turn, draw a card. [Card: Faldorn, Dread Wolf Herald (200), Activator: Ai(2)-Exit from Exile [CLB] [2022], SpellAbility: Faldorn, Dread Wolf Herald - Creature 3 / 3]","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":367,"type":"STACK_RESOLVE","message":"Faldorn, Dread Wolf Herald - Creature 3 / 3","card":"Faldorn, Dread Wolf Herald","cardId":200}
+{"rec":"entry","game":0,"seq":368,"type":"MANA","message":"Castle Embereth (103) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":369,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Dire Fleet Daredevil","card":"Dire Fleet Daredevil","cardId":112}
+{"rec":"entry","game":0,"seq":370,"type":"STACK_RESOLVE","message":"Dire Fleet Daredevil - Creature 2 / 1","card":"Dire Fleet Daredevil","cardId":112}
+{"rec":"entry","game":0,"seq":371,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] triggered Dire Fleet Daredevil targeting [Find // Finality (317)]","card":"Dire Fleet Daredevil","cardId":112}
+{"rec":"entry","game":0,"seq":372,"type":"STACK_RESOLVE","message":"When Dire Fleet Daredevil enters, exile target instant or sorcery card from an opponent's graveyard. You may cast it this turn, and you may spend mana as though it were mana of any type to cast that spell. If that spell would be put into a graveyard this turn, exile it instead. (Targeting: [[Find // Finality (317)]]) [Zone Changer: Dire Fleet Daredevil (112)]","card":"Dire Fleet Daredevil","cardId":112}
+{"rec":"entry","game":0,"seq":373,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End step"}
+{"rec":"entry","game":0,"seq":374,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":375,"type":"TURN","message":"Turn 19 (Ai(3)-Jeskai Striker [TDC] [2025])"}
+{"rec":"entry","game":0,"seq":376,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Untap step"}
+{"rec":"entry","game":0,"seq":377,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":378,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Draw step"}
+{"rec":"entry","game":0,"seq":379,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":380,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":381,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":382,"type":"COMBAT","message":"Ai(3)-Jeskai Striker [TDC] [2025] assigned Mangara, the Diplomat (280) to attack Ai(2)-Exit from Exile [CLB] [2022]."}
+{"rec":"entry","game":0,"seq":383,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":384,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] assigned Faldorn, Dread Wolf Herald (200) to block Mangara, the Diplomat (280)."}
+{"rec":"entry","game":0,"seq":385,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":386,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":387,"type":"DAMAGE","message":"Mangara, the Diplomat (280) deals 2 damage to Faldorn, Dread Wolf Herald (200).","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":388,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 38 > 40"}
+{"rec":"entry","game":0,"seq":389,"type":"DAMAGE","message":"Faldorn, Dread Wolf Herald (200) deals 3 damage to Mangara, the Diplomat (280).","card":"Faldorn, Dread Wolf Herald","cardId":200}
+{"rec":"entry","game":0,"seq":390,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":391,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":392,"type":"MANA","message":"Irrigated Farmland (234) - {T}: Add {W}."}
+{"rec":"entry","game":0,"seq":393,"type":"MANA","message":"Reliquary Tower (266) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":394,"type":"MANA","message":"Prairie Stream (294) - {T}: Add {U}."}
+{"rec":"entry","game":0,"seq":395,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] cast Aligned Heart","card":"Aligned Heart","cardId":268}
+{"rec":"entry","game":0,"seq":396,"type":"STACK_RESOLVE","message":"Aligned Heart","card":"Aligned Heart","cardId":268}
+{"rec":"entry","game":0,"seq":397,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End step"}
+{"rec":"entry","game":0,"seq":398,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":399,"type":"TURN","message":"Turn 20 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":400,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":401,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":402,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":403,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":404,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":405,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":406,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":407,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":408,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":409,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":410,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":411,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":412,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":413,"type":"EFFECT_REPLACED","message":"Madness {1}{B}{B}: If you discard this card, discard it into exile."}
+{"rec":"entry","game":0,"seq":414,"type":"DISCARD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] discards Necrogoyf (336).","card":"Necrogoyf","cardId":336}
+{"rec":"entry","game":0,"seq":415,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] triggered Necrogoyf","card":"Necrogoyf","cardId":336}
+{"rec":"entry","game":0,"seq":416,"type":"STACK_RESOLVE","message":"Play Madness {1}{B}{B}  - Necrogoyf [Exiled: Necrogoyf (336)]","card":"Necrogoyf","cardId":336}
+{"rec":"entry","game":0,"seq":417,"type":"PHASE","message":"RepeatAi(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":418,"type":"TURN","message":"Turn 21 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":419,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":420,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":421,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":422,"type":"MANA","message":"Swamp (18) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":423,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":424,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Terminate targeting [Beanstalk Giant (132)]","card":"Terminate","cardId":59}
+{"rec":"entry","game":0,"seq":425,"type":"ZONE_CHANGE","message":"Beanstalk Giant (132) was put into Graveyard from Battlefield.","card":"Beanstalk Giant","cardId":132}
+{"rec":"entry","game":0,"seq":426,"type":"STACK_RESOLVE","message":"Terminate (59) - Destroy Beanstalk Giant (132). It can't be regenerated.","card":"Terminate","cardId":59}
+{"rec":"entry","game":0,"seq":427,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":428,"type":"EFFECT_REPLACED","message":"As Unclaimed Territory enters, choose a creature type."}
+{"rec":"entry","game":0,"seq":429,"type":"LAND","message":"Ai(1)-Doom Prevails [MSC] [2026] played Unclaimed Territory (41)","card":"Unclaimed Territory","cardId":41}
+{"rec":"entry","game":0,"seq":430,"type":"MANA","message":"Frostboil Snarl (7) - {T}: Add {U} or {R}."}
+{"rec":"entry","game":0,"seq":431,"type":"MANA","message":"Swamp (20) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":432,"type":"MANA","message":"Command Tower (61) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":433,"type":"MANA","message":"Unclaimed Territory (41) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":434,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":435,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] triggered Mangara, the Diplomat","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":436,"type":"STACK_RESOLVE","message":"Whenever an opponent casts their second spell each turn, draw a card. [Card: Living Laser (88), Activator: Ai(1)-Doom Prevails [MSC] [2026], SpellAbility: Living Laser - Creature 4 / 4]","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":437,"type":"STACK_RESOLVE","message":"Living Laser - Creature 4 / 4","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":438,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Baron Strucker, HYDRA Overlord","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":439,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Island (27).","card":"Island","cardId":27}
+{"rec":"entry","game":0,"seq":440,"type":"STACK_RESOLVE","message":"Whenever another Villain you control enters, you may have it connive. Do this only once each turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) [Zone Changer: Living Laser (88)]","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":441,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":442,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":443,"type":"STACK_RESOLVE","message":"Whenever a creature you control connives, put a +1/+1 counter on that creature and a plan counter on this enchantment. [Card: Living Laser (88)]","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":444,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 34 > 32"}
+{"rec":"entry","game":0,"seq":445,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 40 > 38"}
+{"rec":"entry","game":0,"seq":446,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 32 > 30"}
+{"rec":"entry","game":0,"seq":447,"type":"STACK_RESOLVE","message":"Whenever you discard one or more land cards, each opponent loses 2 life. [Player: Ai(1)-Doom Prevails [MSC] [2026], Amount: 1]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":448,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":449,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria targeting [Living Laser (88)]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":450,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Tri-Sentinel, Act of Vengeance (17).","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":451,"type":"STACK_RESOLVE","message":"At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) (Targeting: [[Living Laser (88)]]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":452,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":453,"type":"STACK_RESOLVE","message":"Whenever a creature you control connives, put a +1/+1 counter on that creature and a plan counter on this enchantment. [Card: Living Laser (88)]","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":454,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":455,"type":"COMBAT","message":"Ai(1)-Doom Prevails [MSC] [2026] assigned Living Laser (88), Doctor Doom, King of Latveria (99) and Baron Strucker, HYDRA Overlord (74) to attack Ai(3)-Jeskai Striker [TDC] [2025]."}
+{"rec":"entry","game":0,"seq":456,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Puppet Master, String Puller targeting [Mangara, the Diplomat (280)]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":457,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":458,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] triggered Mangara, the Diplomat","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":459,"type":"STACK_RESOLVE","message":"Whenever an opponent attacks with creatures, if two or more of those creatures are attacking you and/or planeswalkers you control, draw a card. [Number Attackers: [Living Laser (88), Doctor Doom, King of Latveria (99), Baron Strucker, HYDRA Overlord (74)]]","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":460,"type":"STACK_RESOLVE","message":"Whenever Living Laser attacks, for each card you've discarded this turn, create a token that's a copy of Living Laser, except the token isn't legendary. The tokens enter tapped and attacking. Exile the tokens at the beginning of the next end step. [Attacker: Living Laser (88)]","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":461,"type":"STACK_RESOLVE","message":"Whenever you attack, goad target creature an opponent controls. It can't block this turn. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.) (Targeting: [[Mangara, the Diplomat (280)]]) [Number Attackers: [Living Laser (88), Doctor Doom, King of Latveria (99), Baron Strucker, HYDRA Overlord (74)]]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":462,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":463,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] didn't block Living Laser (513).\nAi(2)-Exit from Exile [CLB] [2022] didn't block Living Laser (514)."}
+{"rec":"entry","game":0,"seq":464,"type":"COMBAT","message":"Ai(3)-Jeskai Striker [TDC] [2025] didn't block Living Laser (88).\nAi(3)-Jeskai Striker [TDC] [2025] didn't block Doctor Doom, King of Latveria (99).\nAi(3)-Jeskai Striker [TDC] [2025] didn't block Baron Strucker, HYDRA Overlord (74)."}
+{"rec":"entry","game":0,"seq":465,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":466,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":467,"type":"DAMAGE","message":"Living Laser (88) deals 7 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":468,"type":"DAMAGE","message":"Doctor Doom, King of Latveria (99) deals 4 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":469,"type":"DAMAGE","message":"Baron Strucker, HYDRA Overlord (74) deals 2 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":470,"type":"DAMAGE","message":"Living Laser (513) deals 4 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Living Laser","cardId":513}
+{"rec":"entry","game":0,"seq":471,"type":"DAMAGE","message":"Living Laser (514) deals 4 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Living Laser","cardId":514}
+{"rec":"entry","game":0,"seq":472,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 32 > 24"}
+{"rec":"entry","game":0,"seq":473,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 38 > 25"}
+{"rec":"entry","game":0,"seq":474,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":475,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":476,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":477,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":478,"type":"ZONE_CHANGE","message":"Living Laser (513) was put into Exile from Battlefield.","card":"Living Laser","cardId":513}
+{"rec":"entry","game":0,"seq":479,"type":"ZONE_CHANGE","message":"Living Laser (514) was put into Exile from Battlefield.","card":"Living Laser","cardId":514}
+{"rec":"entry","game":0,"seq":480,"type":"STACK_RESOLVE","message":"Exile Living Laser (513) and Living Laser (514) at the beginning of the next end step. ([Living Laser (513), Living Laser (514)]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":481,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":482,"type":"TURN","message":"Turn 22 (Ai(2)-Exit from Exile [CLB] [2022])"}
+{"rec":"entry","game":0,"seq":483,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Untap step"}
+{"rec":"entry","game":0,"seq":484,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":485,"type":"MANA","message":"Mountain (192) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":486,"type":"MANA","message":"Mountain (191) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":487,"type":"MANA","message":"Sol Ring (149) - {T}: Add {C}{C}."}
+{"rec":"entry","game":0,"seq":488,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] activated Castle Embereth","card":"Castle Embereth","cardId":103}
+{"rec":"entry","game":0,"seq":489,"type":"STACK_RESOLVE","message":"Castle Embereth (103) - Creatures you control get +1/+0 until end of turn.","card":"Castle Embereth","cardId":103}
+{"rec":"entry","game":0,"seq":490,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Draw step"}
+{"rec":"entry","game":0,"seq":491,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":492,"type":"EFFECT_REPLACED","message":"Spinerock Knoll enters tapped."}
+{"rec":"entry","game":0,"seq":493,"type":"LAND","message":"Ai(2)-Exit from Exile [CLB] [2022] played Spinerock Knoll (165)","card":"Spinerock Knoll","cardId":165}
+{"rec":"entry","game":0,"seq":494,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] triggered Spinerock Knoll","card":"Spinerock Knoll","cardId":165}
+{"rec":"entry","game":0,"seq":495,"type":"STACK_RESOLVE","message":"Hideaway 4 (When this permanent enters, look at the top four cards of your library, exile one face down, then put the rest on the bottom of your library.) [Zone Changer: Spinerock Knoll (165)]","card":"Spinerock Knoll","cardId":165}
+{"rec":"entry","game":0,"seq":496,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":497,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":498,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] assigned Faldorn, Dread Wolf Herald (200) to attack Ai(1)-Doom Prevails [MSC] [2026]."}
+{"rec":"entry","game":0,"seq":499,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":500,"type":"COMBAT","message":"Ai(1)-Doom Prevails [MSC] [2026] didn't block Faldorn, Dread Wolf Herald (200)."}
+{"rec":"entry","game":0,"seq":501,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":502,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":503,"type":"DAMAGE","message":"Faldorn, Dread Wolf Herald (200) deals 4 combat damage to Ai(1)-Doom Prevails [MSC] [2026].","card":"Faldorn, Dread Wolf Herald","cardId":200}
+{"rec":"entry","game":0,"seq":504,"type":"LIFE","message":"Life: Ai(1)-Doom Prevails [MSC] [2026] 40 > 36"}
+{"rec":"entry","game":0,"seq":505,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":506,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":507,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End step"}
+{"rec":"entry","game":0,"seq":508,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":509,"type":"TURN","message":"Turn 23 (Ai(3)-Jeskai Striker [TDC] [2025])"}
+{"rec":"entry","game":0,"seq":510,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Untap step"}
+{"rec":"entry","game":0,"seq":511,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":512,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Draw step"}
+{"rec":"entry","game":0,"seq":513,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":514,"type":"LAND","message":"Ai(3)-Jeskai Striker [TDC] [2025] played Evolving Wilds (265)","card":"Evolving Wilds","cardId":265}
+{"rec":"entry","game":0,"seq":515,"type":"ZONE_CHANGE","message":"Evolving Wilds (265) was put into Graveyard from Battlefield.","card":"Evolving Wilds","cardId":265}
+{"rec":"entry","game":0,"seq":516,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] activated Evolving Wilds","card":"Evolving Wilds","cardId":265}
+{"rec":"entry","game":0,"seq":517,"type":"STACK_RESOLVE","message":"Evolving Wilds (265) - Ai(3)-Jeskai Striker [TDC] [2025] searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.","card":"Evolving Wilds","cardId":265}
+{"rec":"entry","game":0,"seq":518,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":519,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":520,"type":"COMBAT","message":"Ai(3)-Jeskai Striker [TDC] [2025] assigned Mangara, the Diplomat (280) to attack Ai(2)-Exit from Exile [CLB] [2022]."}
+{"rec":"entry","game":0,"seq":521,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":522,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] didn't block Mangara, the Diplomat (280)."}
+{"rec":"entry","game":0,"seq":523,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":524,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":525,"type":"DAMAGE","message":"Mangara, the Diplomat (280) deals 2 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":526,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 25 > 27"}
+{"rec":"entry","game":0,"seq":527,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 24 > 22"}
+{"rec":"entry","game":0,"seq":528,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Puppet Master, String Puller","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":529,"type":"STACK_RESOLVE","message":"Whenever one or more goaded creatures deal combat damage to one of your opponents, create a Treasure token. [Damaged: Ai(2)-Exit from Exile [CLB] [2022], Amount: 2]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":530,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":531,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":532,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s End step"}
+{"rec":"entry","game":0,"seq":533,"type":"PHASE","message":"Ai(3)-Jeskai Striker [TDC] [2025]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":534,"type":"TURN","message":"Turn 24 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":535,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":536,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":537,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":538,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":539,"type":"LAND","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] played Twisted Landscape (310)","card":"Twisted Landscape","cardId":310}
+{"rec":"entry","game":0,"seq":540,"type":"ZONE_CHANGE","message":"Twisted Landscape (310) was put into Graveyard from Battlefield.","card":"Twisted Landscape","cardId":310}
+{"rec":"entry","game":0,"seq":541,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] activated Twisted Landscape","card":"Twisted Landscape","cardId":310}
+{"rec":"entry","game":0,"seq":542,"type":"STACK_RESOLVE","message":"Twisted Landscape (310) - Ai(4)-Graveyard Overdrive [M3C] [2024] searches their library for a basic Swamp, Mountain, or Forest card, puts it onto the battlefield tapped, then shuffles.","card":"Twisted Landscape","cardId":310}
+{"rec":"entry","game":0,"seq":543,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":544,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":545,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":546,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":547,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":548,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":549,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":550,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":551,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":552,"type":"TURN","message":"Turn 25 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":553,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":554,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":555,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":556,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":557,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":558,"type":"MANA","message":"Swamp (18) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":559,"type":"MANA","message":"Swamp (20) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":560,"type":"MANA","message":"Frostboil Snarl (7) - {T}: Add {U} or {R}."}
+{"rec":"entry","game":0,"seq":561,"type":"MANA","message":"Command Tower (61) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":562,"type":"MANA","message":"Unclaimed Territory (41) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":563,"type":"ZONE_CHANGE","message":"Treasure Token (518) was put into Graveyard from Battlefield.","card":"Treasure Token","cardId":518}
+{"rec":"entry","game":0,"seq":564,"type":"MANA","message":"Treasure Token (518) - {T}, Sacrifice this token: Add one mana of any color."}
+{"rec":"entry","game":0,"seq":565,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] activated Tri-Sentinel, Act of Vengeance","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":566,"type":"STACK_RESOLVE","message":"Tri-Sentinel, Act of Vengeance (17) - Unearth: Return Tri-Sentinel, Act of Vengeance to the battlefield.","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":567,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Tri-Sentinel, Act of Vengeance targeting [Faldorn, Dread Wolf Herald (200), Mangara, the Diplomat (280)]","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":568,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Baron Strucker, HYDRA Overlord","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":569,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Island (54).","card":"Island","cardId":54}
+{"rec":"entry","game":0,"seq":570,"type":"STACK_RESOLVE","message":"Whenever another Villain you control enters, you may have it connive. Do this only once each turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) [Zone Changer: Tri-Sentinel, Act of Vengeance (17)]","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":571,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":572,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":573,"type":"STACK_RESOLVE","message":"Whenever a creature you control connives, put a +1/+1 counter on that creature and a plan counter on this enchantment. [Card: Tri-Sentinel, Act of Vengeance (17)]","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":574,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 22 > 20"}
+{"rec":"entry","game":0,"seq":575,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 27 > 25"}
+{"rec":"entry","game":0,"seq":576,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 30 > 28"}
+{"rec":"entry","game":0,"seq":577,"type":"STACK_RESOLVE","message":"Whenever you discard one or more land cards, each opponent loses 2 life. [Player: Ai(1)-Doom Prevails [MSC] [2026], Amount: 1]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":578,"type":"DAMAGE","message":"Tri-Sentinel, Act of Vengeance (17) deals 3 damage to Faldorn, Dread Wolf Herald (200).","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":579,"type":"DAMAGE","message":"Tri-Sentinel, Act of Vengeance (17) deals 3 damage to Mangara, the Diplomat (280).","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":580,"type":"STACK_RESOLVE","message":"When Tri-Sentinel enters, for each opponent, Tri-Sentinel deals 3 damage to up to one target creature that player controls. (Targeting: [[Faldorn, Dread Wolf Herald (200), Mangara, the Diplomat (280)]]) [Zone Changer: Tri-Sentinel, Act of Vengeance (17)]","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":581,"type":"ZONE_CHANGE","message":"Faldorn, Dread Wolf Herald (200) was put into Graveyard from Battlefield.","card":"Faldorn, Dread Wolf Herald","cardId":200}
+{"rec":"entry","game":0,"seq":582,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":583,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria targeting [Tri-Sentinel, Act of Vengeance (17)]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":584,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Mountain (51).","card":"Mountain","cardId":51}
+{"rec":"entry","game":0,"seq":585,"type":"STACK_RESOLVE","message":"At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) (Targeting: [[Tri-Sentinel, Act of Vengeance (17)]]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":586,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":587,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":588,"type":"STACK_RESOLVE","message":"Whenever a creature you control connives, put a +1/+1 counter on that creature and a plan counter on this enchantment. [Card: Tri-Sentinel, Act of Vengeance (17)]","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":589,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 20 > 18"}
+{"rec":"entry","game":0,"seq":590,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 25 > 23"}
+{"rec":"entry","game":0,"seq":591,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 28 > 26"}
+{"rec":"entry","game":0,"seq":592,"type":"STACK_RESOLVE","message":"Whenever you discard one or more land cards, each opponent loses 2 life. [Player: Ai(1)-Doom Prevails [MSC] [2026], Amount: 1]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":593,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":594,"type":"COMBAT","message":"Ai(1)-Doom Prevails [MSC] [2026] assigned Tri-Sentinel, Act of Vengeance (17), Living Laser (88), Doctor Doom, King of Latveria (99), Puppet Master, String Puller (14) and Baron Strucker, HYDRA Overlord (74) to attack Ai(3)-Jeskai Striker [TDC] [2025]."}
+{"rec":"entry","game":0,"seq":595,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Puppet Master, String Puller targeting [Mangara, the Diplomat (280)]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":596,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":597,"type":"STACK_ADD","message":"Ai(3)-Jeskai Striker [TDC] [2025] triggered Mangara, the Diplomat","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":598,"type":"STACK_RESOLVE","message":"Whenever an opponent attacks with creatures, if two or more of those creatures are attacking you and/or planeswalkers you control, draw a card. [Number Attackers: [Tri-Sentinel, Act of Vengeance (17), Living Laser (88), Doctor Doom, King of Latveria (99), Puppet Master, String Puller (14), Baron Strucker, HYDRA Overlord (74)]]","card":"Mangara, the Diplomat","cardId":280}
+{"rec":"entry","game":0,"seq":599,"type":"STACK_RESOLVE","message":"Whenever Living Laser attacks, for each card you've discarded this turn, create a token that's a copy of Living Laser, except the token isn't legendary. The tokens enter tapped and attacking. Exile the tokens at the beginning of the next end step. [Attacker: Living Laser (88)]","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":600,"type":"STACK_RESOLVE","message":"Whenever you attack, goad target creature an opponent controls. It can't block this turn. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.) (Targeting: [[Mangara, the Diplomat (280)]]) [Number Attackers: [Tri-Sentinel, Act of Vengeance (17), Living Laser (88), Doctor Doom, King of Latveria (99), Puppet Master, String Puller (14), Baron Strucker, HYDRA Overlord (74)]]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":601,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":602,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] didn't block Living Laser (521).\nAi(2)-Exit from Exile [CLB] [2022] didn't block Living Laser (522)."}
+{"rec":"entry","game":0,"seq":603,"type":"COMBAT","message":"Ai(3)-Jeskai Striker [TDC] [2025] didn't block Tri-Sentinel, Act of Vengeance (17).\nAi(3)-Jeskai Striker [TDC] [2025] didn't block Living Laser (88).\nAi(3)-Jeskai Striker [TDC] [2025] didn't block Doctor Doom, King of Latveria (99).\nAi(3)-Jeskai Striker [TDC] [2025] didn't block Puppet Master, String Puller (14).\nAi(3)-Jeskai Striker [TDC] [2025] didn't block Baron Strucker, HYDRA Overlord (74)."}
+{"rec":"entry","game":0,"seq":604,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":605,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":606,"type":"DAMAGE","message":"Tri-Sentinel, Act of Vengeance (17) deals 9 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":607,"type":"DAMAGE","message":"Living Laser (88) deals 7 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":608,"type":"DAMAGE","message":"Doctor Doom, King of Latveria (99) deals 4 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":609,"type":"DAMAGE","message":"Puppet Master, String Puller (14) deals 2 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":610,"type":"DAMAGE","message":"Baron Strucker, HYDRA Overlord (74) deals 2 combat damage to Ai(3)-Jeskai Striker [TDC] [2025].","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":611,"type":"DAMAGE","message":"Living Laser (521) deals 4 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Living Laser","cardId":521}
+{"rec":"entry","game":0,"seq":612,"type":"DAMAGE","message":"Living Laser (522) deals 4 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Living Laser","cardId":522}
+{"rec":"entry","game":0,"seq":613,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 18 > 10"}
+{"rec":"entry","game":0,"seq":614,"type":"LIFE","message":"Life: Ai(3)-Jeskai Striker [TDC] [2025] 23 > -1"}
+{"rec":"entry","game":0,"seq":615,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":616,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":617,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":618,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Tri-Sentinel, Act of Vengeance","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":619,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":620,"type":"ZONE_CHANGE","message":"Living Laser (521) was put into Exile from Battlefield.","card":"Living Laser","cardId":521}
+{"rec":"entry","game":0,"seq":621,"type":"ZONE_CHANGE","message":"Living Laser (522) was put into Exile from Battlefield.","card":"Living Laser","cardId":522}
+{"rec":"entry","game":0,"seq":622,"type":"STACK_RESOLVE","message":"Exile Living Laser (521) and Living Laser (522) at the beginning of the next end step. ([Living Laser (521), Living Laser (522)]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":623,"type":"ZONE_CHANGE","message":"Tri-Sentinel, Act of Vengeance (17) was put into Exile from Battlefield.","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":624,"type":"STACK_RESOLVE","message":"Exile Tri-Sentinel, Act of Vengeance (17) at the beginning of the next end step. ([Tri-Sentinel, Act of Vengeance (17)]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Tri-Sentinel, Act of Vengeance","cardId":17}
+{"rec":"entry","game":0,"seq":625,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":626,"type":"TURN","message":"Turn 26 (Ai(2)-Exit from Exile [CLB] [2022])"}
+{"rec":"entry","game":0,"seq":627,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Untap step"}
+{"rec":"entry","game":0,"seq":628,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":629,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Draw step"}
+{"rec":"entry","game":0,"seq":630,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":631,"type":"EFFECT_REPLACED","message":"As Game Trail enters, you may reveal a Mountain or Forest card from your hand. If you don't, Game Trail enters tapped."}
+{"rec":"entry","game":0,"seq":632,"type":"LAND","message":"Ai(2)-Exit from Exile [CLB] [2022] played Game Trail (167)","card":"Game Trail","cardId":167}
+{"rec":"entry","game":0,"seq":633,"type":"MANA","message":"Forest (175) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":634,"type":"MANA","message":"Mountain (192) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":635,"type":"MANA","message":"Sol Ring (149) - {T}: Add {C}{C}."}
+{"rec":"entry","game":0,"seq":636,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Bloodbraid Elf","card":"Bloodbraid Elf","cardId":168}
+{"rec":"entry","game":0,"seq":637,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] triggered Bloodbraid Elf","card":"Bloodbraid Elf","cardId":168}
+{"rec":"entry","game":0,"seq":638,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] cast Izzet Chemister","card":"Izzet Chemister","cardId":145}
+{"rec":"entry","game":0,"seq":639,"type":"STACK_RESOLVE","message":"Cascade - Bloodbraid Elf [Card: Bloodbraid Elf (168), Activator: Ai(2)-Exit from Exile [CLB] [2022], SpellAbility: Bloodbraid Elf - Creature 3 / 2]","card":"Bloodbraid Elf","cardId":168}
+{"rec":"entry","game":0,"seq":640,"type":"STACK_RESOLVE","message":"Izzet Chemister - Creature 1 / 3","card":"Izzet Chemister","cardId":145}
+{"rec":"entry","game":0,"seq":641,"type":"STACK_RESOLVE","message":"Bloodbraid Elf - Creature 3 / 2","card":"Bloodbraid Elf","cardId":168}
+{"rec":"entry","game":0,"seq":642,"type":"MANA","message":"Mountain (191) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":643,"type":"MANA","message":"Spinerock Knoll (165) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":644,"type":"MANA","message":"Forest (178) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":645,"type":"STACK_ADD","message":"Ai(2)-Exit from Exile [CLB] [2022] activated Castle Embereth","card":"Castle Embereth","cardId":103}
+{"rec":"entry","game":0,"seq":646,"type":"STACK_RESOLVE","message":"Castle Embereth (103) - Creatures you control get +1/+0 until end of turn.","card":"Castle Embereth","cardId":103}
+{"rec":"entry","game":0,"seq":647,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":648,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":649,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] assigned Bloodbraid Elf (168) to attack Ai(1)-Doom Prevails [MSC] [2026]."}
+{"rec":"entry","game":0,"seq":650,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":651,"type":"COMBAT","message":"Ai(1)-Doom Prevails [MSC] [2026] didn't block Bloodbraid Elf (168)."}
+{"rec":"entry","game":0,"seq":652,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":653,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":654,"type":"DAMAGE","message":"Bloodbraid Elf (168) deals 4 combat damage to Ai(1)-Doom Prevails [MSC] [2026].","card":"Bloodbraid Elf","cardId":168}
+{"rec":"entry","game":0,"seq":655,"type":"LIFE","message":"Life: Ai(1)-Doom Prevails [MSC] [2026] 36 > 32"}
+{"rec":"entry","game":0,"seq":656,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":657,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":658,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s End step"}
+{"rec":"entry","game":0,"seq":659,"type":"PHASE","message":"Ai(2)-Exit from Exile [CLB] [2022]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":660,"type":"TURN","message":"Turn 27 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":661,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":662,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":663,"type":"MANA","message":"Forest (333) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":664,"type":"MANA","message":"Swamp (326) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":665,"type":"ZONE_CHANGE","message":"Myriad Landscape (325) was put into Graveyard from Battlefield.","card":"Myriad Landscape","cardId":325}
+{"rec":"entry","game":0,"seq":666,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] activated Myriad Landscape","card":"Myriad Landscape","cardId":325}
+{"rec":"entry","game":0,"seq":667,"type":"STACK_RESOLVE","message":"Myriad Landscape (325) - Ai(4)-Graveyard Overdrive [M3C] [2024] searches their library for  up to two basic land cards, puts them onto the battlefield tapped, then shuffles.","card":"Myriad Landscape","cardId":325}
+{"rec":"entry","game":0,"seq":668,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":669,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":670,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":671,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":672,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":673,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":674,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":675,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":676,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":677,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":678,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":679,"type":"DISCARD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] discards Izoni, Thousand-Eyed (396).","card":"Izoni, Thousand-Eyed","cardId":396}
+{"rec":"entry","game":0,"seq":680,"type":"TURN","message":"Turn 28 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":681,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":682,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":683,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":684,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":685,"type":"EFFECT_REPLACED","message":"Luxury Suite enters tapped unless you have two or more opponents."}
+{"rec":"entry","game":0,"seq":686,"type":"LAND","message":"Ai(1)-Doom Prevails [MSC] [2026] played Luxury Suite (33)","card":"Luxury Suite","cardId":33}
+{"rec":"entry","game":0,"seq":687,"type":"MANA","message":"Frostboil Snarl (7) - {T}: Add {U} or {R}."}
+{"rec":"entry","game":0,"seq":688,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":689,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Helmut Zemo, Mastermind","card":"Helmut Zemo, Mastermind","cardId":47}
+{"rec":"entry","game":0,"seq":690,"type":"STACK_RESOLVE","message":"Helmut Zemo, Mastermind - Creature 2 / 2","card":"Helmut Zemo, Mastermind","cardId":47}
+{"rec":"entry","game":0,"seq":691,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Baron Strucker, HYDRA Overlord","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":692,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Arcane Signet (52).","card":"Arcane Signet","cardId":52}
+{"rec":"entry","game":0,"seq":693,"type":"STACK_RESOLVE","message":"Whenever another Villain you control enters, you may have it connive. Do this only once each turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) [Zone Changer: Helmut Zemo, Mastermind (47)]","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":694,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":695,"type":"STACK_RESOLVE","message":"Whenever a creature you control connives, put a +1/+1 counter on that creature and a plan counter on this enchantment. [Card: Helmut Zemo, Mastermind (47)]","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":696,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Glorious Purpose","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":697,"type":"ZONE_CHANGE","message":"Glorious Purpose (32) was put into Graveyard from Battlefield.","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":698,"type":"STACK_RESOLVE","message":"When the sixth plan counter is put on this enchantment, sacrifice it. If you do, exile the top four cards of your library. You may cast any number of spells from among them without paying their mana costs. Put the rest into your hand. [Added once: Glorious Purpose (32)]","card":"Glorious Purpose","cardId":32}
+{"rec":"entry","game":0,"seq":699,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":700,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria targeting [Living Laser (88)]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":701,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Path of Ancestry (12).","card":"Path of Ancestry","cardId":12}
+{"rec":"entry","game":0,"seq":702,"type":"STACK_RESOLVE","message":"At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) (Targeting: [[Living Laser (88)]]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":703,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":704,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 10 > 8"}
+{"rec":"entry","game":0,"seq":705,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 26 > 24"}
+{"rec":"entry","game":0,"seq":706,"type":"STACK_RESOLVE","message":"Whenever you discard one or more land cards, each opponent loses 2 life. [Player: Ai(1)-Doom Prevails [MSC] [2026], Amount: 1]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":707,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":708,"type":"COMBAT","message":"Ai(1)-Doom Prevails [MSC] [2026] assigned Living Laser (88), Doctor Doom, King of Latveria (99), Puppet Master, String Puller (14) and Baron Strucker, HYDRA Overlord (74) to attack Ai(2)-Exit from Exile [CLB] [2022]."}
+{"rec":"entry","game":0,"seq":709,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Puppet Master, String Puller targeting [Bloodbraid Elf (168)]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":710,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":711,"type":"STACK_RESOLVE","message":"Whenever Living Laser attacks, for each card you've discarded this turn, create a token that's a copy of Living Laser, except the token isn't legendary. The tokens enter tapped and attacking. Exile the tokens at the beginning of the next end step. [Attacker: Living Laser (88)]","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":712,"type":"STACK_RESOLVE","message":"Whenever you attack, goad target creature an opponent controls. It can't block this turn. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.) (Targeting: [[Bloodbraid Elf (168)]]) [Number Attackers: [Living Laser (88), Doctor Doom, King of Latveria (99), Puppet Master, String Puller (14), Baron Strucker, HYDRA Overlord (74)]]","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":713,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":714,"type":"COMBAT","message":"Ai(2)-Exit from Exile [CLB] [2022] didn't block Living Laser (88).\nAi(2)-Exit from Exile [CLB] [2022] assigned Izzet Chemister (145) to block Doctor Doom, King of Latveria (99).\nAi(2)-Exit from Exile [CLB] [2022] didn't block Puppet Master, String Puller (14).\nAi(2)-Exit from Exile [CLB] [2022] didn't block Baron Strucker, HYDRA Overlord (74).\nAi(2)-Exit from Exile [CLB] [2022] assigned Dire Fleet Daredevil (112) to block Living Laser (525).\nAi(2)-Exit from Exile [CLB] [2022] didn't block Living Laser (526)."}
+{"rec":"entry","game":0,"seq":715,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":716,"type":"DAMAGE","message":"Dire Fleet Daredevil (112) deals 2 damage to Living Laser (525).","card":"Dire Fleet Daredevil","cardId":112}
+{"rec":"entry","game":0,"seq":717,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":718,"type":"DAMAGE","message":"Living Laser (88) deals 7 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":719,"type":"DAMAGE","message":"Doctor Doom, King of Latveria (99) deals 4 damage to Izzet Chemister (145).","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":720,"type":"DAMAGE","message":"Puppet Master, String Puller (14) deals 2 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Puppet Master, String Puller","cardId":14}
+{"rec":"entry","game":0,"seq":721,"type":"DAMAGE","message":"Baron Strucker, HYDRA Overlord (74) deals 2 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":722,"type":"DAMAGE","message":"Living Laser (525) deals 4 damage to Dire Fleet Daredevil (112).","card":"Living Laser","cardId":525}
+{"rec":"entry","game":0,"seq":723,"type":"DAMAGE","message":"Living Laser (526) deals 4 combat damage to Ai(2)-Exit from Exile [CLB] [2022].","card":"Living Laser","cardId":526}
+{"rec":"entry","game":0,"seq":724,"type":"DAMAGE","message":"Izzet Chemister (145) deals 1 damage to Doctor Doom, King of Latveria (99).","card":"Izzet Chemister","cardId":145}
+{"rec":"entry","game":0,"seq":725,"type":"LIFE","message":"Life: Ai(2)-Exit from Exile [CLB] [2022] 8 > -7"}
+{"rec":"entry","game":0,"seq":726,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":727,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":728,"type":"MANA","message":"Swamp (18) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":729,"type":"MANA","message":"Swamp (20) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":730,"type":"MANA","message":"Luxury Suite (33) - {T}: Add {B} or {R}."}
+{"rec":"entry","game":0,"seq":731,"type":"MANA","message":"Command Tower (61) - {T}: Add one mana of any color in your commander's color identity."}
+{"rec":"entry","game":0,"seq":732,"type":"MANA","message":"Unclaimed Territory (41) - {T}: Add {C}."}
+{"rec":"entry","game":0,"seq":733,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Damocles Base, Sword of Kang","card":"Damocles Base, Sword of Kang","cardId":77}
+{"rec":"entry","game":0,"seq":734,"type":"STACK_RESOLVE","message":"Damocles Base, Sword of Kang","card":"Damocles Base, Sword of Kang","cardId":77}
+{"rec":"entry","game":0,"seq":735,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s End step"}
+{"rec":"entry","game":0,"seq":736,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":737,"type":"ZONE_CHANGE","message":"Living Laser (525) was put into Exile from Battlefield.","card":"Living Laser","cardId":525}
+{"rec":"entry","game":0,"seq":738,"type":"ZONE_CHANGE","message":"Living Laser (526) was put into Exile from Battlefield.","card":"Living Laser","cardId":526}
+{"rec":"entry","game":0,"seq":739,"type":"STACK_RESOLVE","message":"Exile Living Laser (525) and Living Laser (526) at the beginning of the next end step. ([Living Laser (525), Living Laser (526)]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":740,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":741,"type":"TURN","message":"Turn 29 (Ai(4)-Graveyard Overdrive [M3C] [2024])"}
+{"rec":"entry","game":0,"seq":742,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Untap step"}
+{"rec":"entry","game":0,"seq":743,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":744,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Draw step"}
+{"rec":"entry","game":0,"seq":745,"type":"MANA","message":"Swamp (326) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":746,"type":"MANA","message":"Forest (333) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":747,"type":"MANA","message":"Mountain (341) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":748,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] cast Riveteers Charm","card":"Riveteers Charm","cardId":391}
+{"rec":"entry","game":0,"seq":749,"type":"STACK_RESOLVE","message":"Riveteers Charm (391) -  Exile the top three cards of your library. Until your next end step, you may play those cards.  ","card":"Riveteers Charm","cardId":391}
+{"rec":"entry","game":0,"seq":750,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":751,"type":"EFFECT_REPLACED","message":"Cinder Glade enters tapped unless you control two or more basic lands."}
+{"rec":"entry","game":0,"seq":752,"type":"LAND","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] played Cinder Glade (309)","card":"Cinder Glade","cardId":309}
+{"rec":"entry","game":0,"seq":753,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":754,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":755,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":756,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":757,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":758,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End of Combat Step"}
+{"rec":"entry","game":0,"seq":759,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Main phase, postcombat"}
+{"rec":"entry","game":0,"seq":760,"type":"MANA","message":"Mountain (379) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":761,"type":"MANA","message":"Cinder Glade (309) - {T}: Add {G}."}
+{"rec":"entry","game":0,"seq":762,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] cast Talisman of Indulgence","card":"Talisman of Indulgence","cardId":347}
+{"rec":"entry","game":0,"seq":763,"type":"STACK_RESOLVE","message":"Talisman of Indulgence","card":"Talisman of Indulgence","cardId":347}
+{"rec":"entry","game":0,"seq":764,"type":"DAMAGE","message":"Talisman of Indulgence (347) deals 1 non-combat damage to Ai(4)-Graveyard Overdrive [M3C] [2024].","card":"Talisman of Indulgence","cardId":347}
+{"rec":"entry","game":0,"seq":765,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 24 > 23"}
+{"rec":"entry","game":0,"seq":766,"type":"MANA","message":"Talisman of Indulgence (347) - {T}: Add {B} or {R}. Talisman of Indulgence deals 1 damage to you. "}
+{"rec":"entry","game":0,"seq":767,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] cast Stitcher's Supplier","card":"Stitcher's Supplier","cardId":384}
+{"rec":"entry","game":0,"seq":768,"type":"STACK_RESOLVE","message":"Stitcher's Supplier - Creature 1 / 1","card":"Stitcher's Supplier","cardId":384}
+{"rec":"entry","game":0,"seq":769,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] triggered Stitcher's Supplier","card":"Stitcher's Supplier","cardId":384}
+{"rec":"entry","game":0,"seq":770,"type":"ZONE_CHANGE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] milled Grist, the Hunger Tide (315), Shadowblood Ridge (337) and Bloodbraid Challenger (392)."}
+{"rec":"entry","game":0,"seq":771,"type":"STACK_RESOLVE","message":"When Stitcher's Supplier enters or dies, mill three cards. [Zone Changer: Stitcher's Supplier (384)]","card":"Stitcher's Supplier","cardId":384}
+{"rec":"entry","game":0,"seq":772,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s End step"}
+{"rec":"entry","game":0,"seq":773,"type":"PHASE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024]'s Cleanup step"}
+{"rec":"entry","game":0,"seq":774,"type":"TURN","message":"Turn 30 (Ai(1)-Doom Prevails [MSC] [2026])"}
+{"rec":"entry","game":0,"seq":775,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Untap step"}
+{"rec":"entry","game":0,"seq":776,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Upkeep step"}
+{"rec":"entry","game":0,"seq":777,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Draw step"}
+{"rec":"entry","game":0,"seq":778,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Main phase, precombat"}
+{"rec":"entry","game":0,"seq":779,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Beginning of Combat Step"}
+{"rec":"entry","game":0,"seq":780,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria targeting [Living Laser (88)]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":781,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Foreboding Ruins (58).","card":"Foreboding Ruins","cardId":58}
+{"rec":"entry","game":0,"seq":782,"type":"STACK_RESOLVE","message":"At the beginning of combat on your turn, target Villain you control gains menace until end of turn. It connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) (Targeting: [[Living Laser (88)]]) [Phase: Ai(1)-Doom Prevails [MSC] [2026]]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":783,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":784,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 23 > 21"}
+{"rec":"entry","game":0,"seq":785,"type":"STACK_RESOLVE","message":"Whenever you discard one or more land cards, each opponent loses 2 life. [Player: Ai(1)-Doom Prevails [MSC] [2026], Amount: 1]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":786,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] activated Damocles Base, Sword of Kang","card":"Damocles Base, Sword of Kang","cardId":77}
+{"rec":"entry","game":0,"seq":787,"type":"STACK_RESOLVE","message":"Damocles Base, Sword of Kang (77) - Damocles Base, Sword of Kang (77) becomes an artifact creature until end of turn.","card":"Damocles Base, Sword of Kang","cardId":77}
+{"rec":"entry","game":0,"seq":788,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Attackers Step"}
+{"rec":"entry","game":0,"seq":789,"type":"COMBAT","message":"Ai(1)-Doom Prevails [MSC] [2026] assigned Living Laser (88), Helmut Zemo, Mastermind (47), Damocles Base, Sword of Kang (77) and Doctor Doom, King of Latveria (99) to attack Ai(4)-Graveyard Overdrive [M3C] [2024]."}
+{"rec":"entry","game":0,"seq":790,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Living Laser","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":791,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Helmut Zemo, Mastermind targeting [Terminate (59)]","card":"Helmut Zemo, Mastermind","cardId":47}
+{"rec":"entry","game":0,"seq":792,"type":"MANA","message":"Swamp (18) - {T}: Add {B}."}
+{"rec":"entry","game":0,"seq":793,"type":"MANA","message":"Mountain (50) - {T}: Add {R}."}
+{"rec":"entry","game":0,"seq":794,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] cast Terminate targeting [Stitcher's Supplier (384)]","card":"Terminate","cardId":59}
+{"rec":"entry","game":0,"seq":795,"type":"STACK_RESOLVE","message":"Whenever Helmut Zemo attacks, you may cast target instant or sorcery card with mana value less than or equal to his power from your graveyard. If that spell would be put into your graveyard, exile it instead. If you cast a spell this way, put a +1/+1 counter on Helmut Zemo. (Targeting: [[Terminate (59)]]) [Attacker: Helmut Zemo, Mastermind (47)]","card":"Helmut Zemo, Mastermind","cardId":47}
+{"rec":"entry","game":0,"seq":796,"type":"ZONE_CHANGE","message":"Stitcher's Supplier (384) was put into Graveyard from Battlefield.","card":"Stitcher's Supplier","cardId":384}
+{"rec":"entry","game":0,"seq":797,"type":"STACK_RESOLVE","message":"Terminate (59) - Destroy Stitcher's Supplier (384). It can't be regenerated.","card":"Terminate","cardId":59}
+{"rec":"entry","game":0,"seq":798,"type":"EFFECT_REPLACED","message":"If that card would be put into your graveyard this turn, exile it instead."}
+{"rec":"entry","game":0,"seq":799,"type":"STACK_ADD","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] triggered Stitcher's Supplier","card":"Stitcher's Supplier","cardId":384}
+{"rec":"entry","game":0,"seq":800,"type":"ZONE_CHANGE","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] milled Riveteers Overlook (345), Archon of Cruelty (399) and Forest (398)."}
+{"rec":"entry","game":0,"seq":801,"type":"STACK_RESOLVE","message":"When Stitcher's Supplier enters or dies, mill three cards. [Zone Changer: Stitcher's Supplier (384)]","card":"Stitcher's Supplier","cardId":384}
+{"rec":"entry","game":0,"seq":802,"type":"STACK_RESOLVE","message":"Whenever Living Laser attacks, for each card you've discarded this turn, create a token that's a copy of Living Laser, except the token isn't legendary. The tokens enter tapped and attacking. Exile the tokens at the beginning of the next end step. [Attacker: Living Laser (88)]","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":803,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Baron Strucker, HYDRA Overlord","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":804,"type":"DISCARD","message":"Ai(1)-Doom Prevails [MSC] [2026] discards Secluded Courtyard (4).","card":"Secluded Courtyard","cardId":4}
+{"rec":"entry","game":0,"seq":805,"type":"STACK_RESOLVE","message":"Whenever another Villain you control enters, you may have it connive. Do this only once each turn. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.) [Zone Changer: Living Laser (530)]","card":"Baron Strucker, HYDRA Overlord","cardId":74}
+{"rec":"entry","game":0,"seq":806,"type":"STACK_ADD","message":"Ai(1)-Doom Prevails [MSC] [2026] triggered Doctor Doom, King of Latveria","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":807,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 21 > 19"}
+{"rec":"entry","game":0,"seq":808,"type":"STACK_RESOLVE","message":"Whenever you discard one or more land cards, each opponent loses 2 life. [Player: Ai(1)-Doom Prevails [MSC] [2026], Amount: 1]","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":809,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Declare Blockers Step"}
+{"rec":"entry","game":0,"seq":810,"type":"COMBAT","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] didn't block Living Laser (88).\nAi(4)-Graveyard Overdrive [M3C] [2024] didn't block Helmut Zemo, Mastermind (47).\nAi(4)-Graveyard Overdrive [M3C] [2024] didn't block Damocles Base, Sword of Kang (77).\nAi(4)-Graveyard Overdrive [M3C] [2024] didn't block Doctor Doom, King of Latveria (99).\nAi(4)-Graveyard Overdrive [M3C] [2024] didn't block Living Laser (530)."}
+{"rec":"entry","game":0,"seq":811,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s First Strike Damage Step"}
+{"rec":"entry","game":0,"seq":812,"type":"PHASE","message":"Ai(1)-Doom Prevails [MSC] [2026]'s Combat Damage Step"}
+{"rec":"entry","game":0,"seq":813,"type":"DAMAGE","message":"Living Laser (88) deals 7 combat damage to Ai(4)-Graveyard Overdrive [M3C] [2024].","card":"Living Laser","cardId":88}
+{"rec":"entry","game":0,"seq":814,"type":"DAMAGE","message":"Helmut Zemo, Mastermind (47) deals 5 combat damage to Ai(4)-Graveyard Overdrive [M3C] [2024].","card":"Helmut Zemo, Mastermind","cardId":47}
+{"rec":"entry","game":0,"seq":815,"type":"DAMAGE","message":"Damocles Base, Sword of Kang (77) deals 5 combat damage to Ai(4)-Graveyard Overdrive [M3C] [2024].","card":"Damocles Base, Sword of Kang","cardId":77}
+{"rec":"entry","game":0,"seq":816,"type":"DAMAGE","message":"Doctor Doom, King of Latveria (99) deals 4 combat damage to Ai(4)-Graveyard Overdrive [M3C] [2024].","card":"Doctor Doom, King of Latveria","cardId":99}
+{"rec":"entry","game":0,"seq":817,"type":"DAMAGE","message":"Living Laser (530) deals 4 combat damage to Ai(4)-Graveyard Overdrive [M3C] [2024].","card":"Living Laser","cardId":530}
+{"rec":"entry","game":0,"seq":818,"type":"LIFE","message":"Life: Ai(4)-Graveyard Overdrive [M3C] [2024] 19 > -6"}
+{"rec":"entry","game":0,"seq":819,"type":"PLAYER_CONTROL","message":"Ai(1)-Doom Prevails [MSC] [2026] has restored control over themself"}
+{"rec":"entry","game":0,"seq":820,"type":"PLAYER_CONTROL","message":"Ai(2)-Exit from Exile [CLB] [2022] has restored control over themself"}
+{"rec":"entry","game":0,"seq":821,"type":"PLAYER_CONTROL","message":"Ai(3)-Jeskai Striker [TDC] [2025] has restored control over themself"}
+{"rec":"entry","game":0,"seq":822,"type":"PLAYER_CONTROL","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] has restored control over themself"}
+{"rec":"entry","game":0,"seq":823,"type":"GAME_OUTCOME","message":"Turn 15"}
+{"rec":"entry","game":0,"seq":824,"type":"GAME_OUTCOME","message":"Ai(1)-Doom Prevails [MSC] [2026] has won because all opponents have lost"}
+{"rec":"entry","game":0,"seq":825,"type":"GAME_OUTCOME","message":"Ai(2)-Exit from Exile [CLB] [2022] has lost because life total reached 0"}
+{"rec":"entry","game":0,"seq":826,"type":"GAME_OUTCOME","message":"Ai(3)-Jeskai Striker [TDC] [2025] has lost because life total reached 0"}
+{"rec":"entry","game":0,"seq":827,"type":"GAME_OUTCOME","message":"Ai(4)-Graveyard Overdrive [M3C] [2024] has lost because life total reached 0"}
+{"rec":"entry","game":0,"seq":828,"type":"MATCH_RESULTS","message":"Ai(1)-Doom Prevails [MSC] [2026]: 1 Ai(2)-Exit from Exile [CLB] [2022]: 0 Ai(3)-Jeskai Striker [TDC] [2025]: 0 Ai(4)-Graveyard Overdrive [M3C] [2024]: 0 "}
+{"rec":"zone","game":0,"turn":0,"card":"Mountain","cardId":50,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Glorious Purpose","cardId":32,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Command Tower","cardId":61,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Swamp","cardId":18,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Living Laser","cardId":88,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Puppet Master, String Puller","cardId":14,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Damocles Base, Sword of Kang","cardId":77,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mountain","cardId":192,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Sol Ring","cardId":149,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mountain","cardId":191,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Kessig Wolf Run","cardId":123,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Forest","cardId":175,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Beanstalk Giant","cardId":132,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"0/0","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Dire Fleet Daredevil","cardId":112,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Perilous Landscape","cardId":248,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Cascade Bluffs","cardId":299,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Shiny Impetus","cardId":203,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Battlefield Forge","cardId":241,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Irrigated Farmland","cardId":234,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mountain","cardId":215,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Path of Ancestry","cardId":254,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Ignoble Hierarch","cardId":318,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Anger","cardId":323,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Altar of the Goyf","cardId":349,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Deadbridge Chant","cardId":374,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Forest","cardId":398,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Sakura-Tribe Elder","cardId":362,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Talisman of Indulgence","cardId":347,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Perilous Landscape","cardId":248,"from":"Hand","to":"Library","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Cascade Bluffs","cardId":299,"from":"Hand","to":"Library","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Shiny Impetus","cardId":203,"from":"Hand","to":"Library","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Battlefield Forge","cardId":241,"from":"Hand","to":"Library","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Irrigated Farmland","cardId":234,"from":"Hand","to":"Library","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mountain","cardId":215,"from":"Hand","to":"Library","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Path of Ancestry","cardId":254,"from":"Hand","to":"Library","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Sol Ring","cardId":293,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Frantic Search","cardId":258,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Irrigated Farmland","cardId":234,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Transforming Flourish","cardId":272,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Boros Signet","cardId":287,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Mangara, the Diplomat","cardId":280,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Reliquary Tower","cardId":266,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Ignoble Hierarch","cardId":318,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Anger","cardId":323,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Altar of the Goyf","cardId":349,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Deadbridge Chant","cardId":374,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Forest","cardId":398,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Sakura-Tribe Elder","cardId":362,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Talisman of Indulgence","cardId":347,"from":"Hand","to":"Library","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Myriad Landscape","cardId":325,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Forest","cardId":333,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Stitcher's Supplier","cardId":384,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Barrowgoyf","cardId":383,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"0/1","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Altar of the Goyf","cardId":349,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"Syphon Mind","cardId":343,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":0,"card":"The Reaver Cleaver","cardId":354,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":1,"card":"Frostboil Snarl","cardId":7,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":1,"card":"Command Tower","cardId":61,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Jeska's Will","cardId":130,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Kessig Wolf Run","cardId":123,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Sol Ring","cardId":149,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":2,"card":"Sol Ring","cardId":149,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Magma Opus","cardId":229,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Reliquary Tower","cardId":266,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Sol Ring","cardId":293,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":3,"card":"Sol Ring","cardId":293,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Eternal Witness","cardId":388,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":4,"card":"Forest","cardId":333,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Syphon Mind","cardId":8,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Mountain","cardId":50,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Glorious Purpose","cardId":32,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":5,"card":"Glorious Purpose","cardId":32,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Castle Embereth","cardId":103,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":6,"card":"Castle Embereth","cardId":103,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Prairie Stream","cardId":294,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":7,"card":"Irrigated Farmland","cardId":234,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":8,"card":"Find // Finality","cardId":317,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":8,"card":"Myriad Landscape","cardId":325,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Baron Strucker, HYDRA Overlord","cardId":74,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Swamp","cardId":18,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Puppet Master, String Puller","cardId":14,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":9,"card":"Puppet Master, String Puller","cardId":14,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Embereth Shieldbreaker","cardId":138,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Forest","cardId":175,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Fertile Footsteps","cardId":132,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Forest","cardId":178,"from":"Library","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Fertile Footsteps","cardId":132,"from":"Stack","to":"Exile","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Fertile Footsteps (132)'s Adventure","cardId":487,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Jeska's Will","cardId":130,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Gruul Turf","cardId":105,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Highland Forest","cardId":120,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Mountain","cardId":190,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Jeska's Will (130)'s Effect","cardId":489,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"","pt":"","token":false}
+{"rec":"zone","game":0,"turn":10,"card":"Jeska's Will","cardId":130,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Electrodominance","cardId":205,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Prairie Stream","cardId":294,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Frantic Search","cardId":258,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Transcendent Dragon","cardId":270,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Creature","pt":"4/3","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Curse of Opulence","cardId":206,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Magma Opus","cardId":229,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Transcendent Dragon","cardId":270,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Creature","pt":"4/3","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Frantic Search","cardId":258,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Mangara, the Diplomat","cardId":280,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":11,"card":"Mangara, the Diplomat","cardId":280,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Creature","pt":"2/4","token":false}
+{"rec":"zone","game":0,"turn":12,"card":"Mortivore","cardId":353,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"0/0","token":false}
+{"rec":"zone","game":0,"turn":12,"card":"Find // Finality","cardId":317,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Swamp","cardId":20,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Swamp","cardId":20,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Doctor Doom, King of Latveria","cardId":99,"from":"Command","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":13,"card":"Doctor Doom, King of Latveria","cardId":99,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Game Trail","cardId":167,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Mountain","cardId":192,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Beanstalk Giant","cardId":132,"from":"Exile","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Creature","pt":"0/0","token":false}
+{"rec":"zone","game":0,"turn":14,"card":"Beanstalk Giant","cardId":132,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"5/5","token":false}
+{"rec":"zone","game":0,"turn":15,"card":"Mana Geyser","cardId":252,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":16,"card":"Necrogoyf","cardId":336,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"0/4","token":false}
+{"rec":"zone","game":0,"turn":16,"card":"Altar of the Goyf","cardId":349,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Sulfur Falls","cardId":23,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Frostboil Snarl","cardId":7,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Unclaimed Territory","cardId":41,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Sulfur Falls","cardId":23,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":17,"player":"Ai(1)-Doom Prevails [MSC] [2026]","attackers":1,"attackPower":4,"defenders":1,"held":1,"heldPower":2,"heldTough":4,"backBodies":2,"backPower":7,"backBiggest":5}
+{"rec":"rubric","kind":"block","game":0,"turn":17,"player":"Ai(2)-Exit from Exile [CLB] [2022]","incoming":1,"incomingPower":4,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":1,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":4,"life":38}
+{"rec":"zone","game":0,"turn":17,"card":"Baron Strucker, HYDRA Overlord","cardId":74,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":17,"card":"Baron Strucker, HYDRA Overlord","cardId":74,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Spinerock Knoll","cardId":165,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Mountain","cardId":191,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Battle Display","cardId":138,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Sol Ring","cardId":293,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Battle Display","cardId":138,"from":"Stack","to":"Exile","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Battle Display (138)'s Adventure","cardId":506,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":18,"player":"Ai(2)-Exit from Exile [CLB] [2022]","attackers":1,"attackPower":6,"defenders":1,"held":0,"heldPower":0,"heldTough":0,"backBodies":3,"backPower":6,"backBiggest":2}
+{"rec":"rubric","kind":"block","game":0,"turn":18,"player":"Ai(4)-Graveyard Overdrive [M3C] [2024]","incoming":1,"incomingPower":6,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":0,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":6,"life":38}
+{"rec":"zone","game":0,"turn":18,"card":"Treasure Token","cardId":509,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":18,"card":"Faldorn, Dread Wolf Herald","cardId":200,"from":"Command","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Expansion // Explosion","cardId":237,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Faldorn, Dread Wolf Herald","cardId":200,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Dire Fleet Daredevil","cardId":112,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Dire Fleet Daredevil","cardId":112,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"2/1","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Find // Finality","cardId":317,"from":"Graveyard","to":"Exile","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Dire Fleet Daredevil (112)'s Effect","cardId":510,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"","pt":"","token":false}
+{"rec":"zone","game":0,"turn":18,"card":"Dire Fleet Daredevil (112)'s Effect","cardId":511,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Aligned Heart","cardId":268,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Enchantment","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":19,"player":"Ai(3)-Jeskai Striker [TDC] [2025]","attackers":1,"attackPower":2,"defenders":1,"held":0,"heldPower":0,"heldTough":0,"backBodies":4,"backPower":9,"backBiggest":3}
+{"rec":"rubric","kind":"block","game":0,"turn":19,"player":"Ai(2)-Exit from Exile [CLB] [2022]","incoming":1,"incomingPower":2,"blocked":1,"v3":0,"v2":0,"v1":1,"v0":0,"available":1,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":0,"life":34}
+{"rec":"zone","game":0,"turn":19,"card":"Aligned Heart","cardId":268,"from":"Hand","to":"Stack","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":19,"card":"Aligned Heart","cardId":268,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":20,"card":"Junji, the Midnight Sky","cardId":394,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"5/5","token":false}
+{"rec":"zone","game":0,"turn":20,"card":"Necrogoyf","cardId":336,"from":"Hand","to":"Exile","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"0/4","token":false}
+{"rec":"zone","game":0,"turn":20,"card":"Necrogoyf","cardId":336,"from":"Exile","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"0/4","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Terminate","cardId":59,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Terminate","cardId":59,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Beanstalk Giant","cardId":132,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"0/0","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Terminate","cardId":59,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Unclaimed Territory","cardId":41,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Living Laser","cardId":88,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Creature","pt":"4/4","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Rite of Replication","cardId":260,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Living Laser","cardId":88,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Island","cardId":27,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Island","cardId":27,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Tri-Sentinel, Act of Vengeance","cardId":17,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature,Artifact","pt":"7/7","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Tri-Sentinel, Act of Vengeance","cardId":17,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature,Artifact","pt":"7/7","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":21,"player":"Ai(1)-Doom Prevails [MSC] [2026]","attackers":3,"attackPower":13,"defenders":1,"held":1,"heldPower":2,"heldTough":4,"backBodies":2,"backPower":5,"backBiggest":3}
+{"rec":"zone","game":0,"turn":21,"card":"Evolving Wilds","cardId":265,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":21,"card":"Living Laser","cardId":513,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":21,"card":"Living Laser","cardId":514,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"rubric","kind":"block","game":0,"turn":21,"player":"Ai(3)-Jeskai Striker [TDC] [2025]","incoming":3,"incomingPower":13,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":0,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":13,"life":38}
+{"rec":"rubric","kind":"block","game":0,"turn":21,"player":"Ai(2)-Exit from Exile [CLB] [2022]","incoming":2,"incomingPower":8,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":2,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":2,"lifeTaken":8,"life":32}
+{"rec":"zone","game":0,"turn":21,"card":"Living Laser","cardId":513,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":21,"card":"Living Laser","cardId":514,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":22,"card":"Sandwurm Convergence","cardId":133,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":22,"card":"Spinerock Knoll","cardId":165,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":22,"card":"Temple of Abandon","cardId":136,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":22,"card":"Forest","cardId":180,"from":"Library","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":22,"card":"Raging Ravine","cardId":198,"from":"Library","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":22,"card":"Mountain","cardId":196,"from":"Library","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":22,"card":"Spinerock Knoll (165)'s Effect","cardId":515,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":22,"player":"Ai(2)-Exit from Exile [CLB] [2022]","attackers":1,"attackPower":4,"defenders":1,"held":1,"heldPower":3,"heldTough":1,"backBodies":1,"backPower":2,"backBiggest":2}
+{"rec":"rubric","kind":"block","game":0,"turn":22,"player":"Ai(1)-Doom Prevails [MSC] [2026]","incoming":1,"incomingPower":4,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":1,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":1,"lifeTaken":4,"life":40}
+{"rec":"zone","game":0,"turn":23,"card":"Voracious Bibliophile","cardId":279,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Evolving Wilds","cardId":265,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Evolving Wilds","cardId":265,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":23,"card":"Mountain","cardId":290,"from":"Library","to":"Battlefield","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":23,"player":"Ai(3)-Jeskai Striker [TDC] [2025]","attackers":1,"attackPower":2,"defenders":1,"held":0,"heldPower":0,"heldTough":0,"backBodies":2,"backPower":4,"backBiggest":2}
+{"rec":"rubric","kind":"block","game":0,"turn":23,"player":"Ai(2)-Exit from Exile [CLB] [2022]","incoming":1,"incomingPower":2,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":1,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":1,"lifeTaken":2,"life":24}
+{"rec":"zone","game":0,"turn":23,"card":"Treasure Token","cardId":518,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":24,"card":"Twisted Landscape","cardId":310,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Twisted Landscape","cardId":310,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Twisted Landscape","cardId":310,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":24,"card":"Swamp","cardId":326,"from":"Library","to":"Battlefield","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Island","cardId":54,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Treasure Token","cardId":518,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Artifact","pt":"","token":true}
+{"rec":"zone","game":0,"turn":25,"card":"Tri-Sentinel, Act of Vengeance","cardId":17,"from":"Graveyard","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature,Artifact","pt":"7/7","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Unearth Effect","cardId":519,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Mountain","cardId":51,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Island","cardId":54,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Faldorn, Dread Wolf Herald","cardId":200,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"3/3","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Helmut Zemo, Mastermind","cardId":47,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Mountain","cardId":51,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":25,"player":"Ai(1)-Doom Prevails [MSC] [2026]","attackers":5,"attackPower":24,"defenders":1,"held":0,"heldPower":0,"heldTough":0,"backBodies":1,"backPower":2,"backBiggest":2}
+{"rec":"zone","game":0,"turn":25,"card":"Adarkar Wastes","cardId":212,"from":"Library","to":"Hand","fromPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","toPlayer":"Ai(3)-Jeskai Striker [TDC] [2025]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":25,"card":"Living Laser","cardId":521,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":25,"card":"Living Laser","cardId":522,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"rubric","kind":"block","game":0,"turn":25,"player":"Ai(3)-Jeskai Striker [TDC] [2025]","incoming":5,"incomingPower":24,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":0,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":24,"life":23}
+{"rec":"rubric","kind":"block","game":0,"turn":25,"player":"Ai(2)-Exit from Exile [CLB] [2022]","incoming":2,"incomingPower":8,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":1,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":2,"lifeTaken":8,"life":18}
+{"rec":"zone","game":0,"turn":25,"card":"Living Laser","cardId":521,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":25,"card":"Living Laser","cardId":522,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":25,"card":"Tri-Sentinel, Act of Vengeance","cardId":17,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature,Artifact","pt":"9/9","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Bloodbraid Elf","cardId":168,"from":"Library","to":"Hand","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"3/2","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Game Trail","cardId":167,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Bloodbraid Elf","cardId":168,"from":"Hand","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Creature","pt":"3/2","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Cinder Glade","cardId":161,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Sweet-Gum Recluse","cardId":102,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"0/3","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Forest","cardId":181,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Forest","cardId":174,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Venture Forth","cardId":199,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Myriad Landscape","cardId":106,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Mosswort Bridge","cardId":148,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Nalfeshnee","cardId":108,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"4/6","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Urabrask the Hidden","cardId":135,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"4/4","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Izzet Chemister","cardId":145,"from":"Library","to":"Exile","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Izzet Chemister","cardId":145,"from":"Exile","to":"Stack","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Forest","cardId":181,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Cinder Glade","cardId":161,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Mosswort Bridge","cardId":148,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Urabrask the Hidden","cardId":135,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"4/4","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Nalfeshnee","cardId":108,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"4/6","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Forest","cardId":174,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Sweet-Gum Recluse","cardId":102,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"0/3","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Myriad Landscape","cardId":106,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Venture Forth","cardId":199,"from":"Exile","to":"Library","fromPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Sorcery","pt":"","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Izzet Chemister","cardId":145,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"1/3","token":false}
+{"rec":"zone","game":0,"turn":26,"card":"Bloodbraid Elf","cardId":168,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(2)-Exit from Exile [CLB] [2022]","types":"Creature","pt":"3/2","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":26,"player":"Ai(2)-Exit from Exile [CLB] [2022]","attackers":1,"attackPower":4,"defenders":1,"held":2,"heldPower":5,"heldTough":4,"backBodies":0,"backPower":0,"backBiggest":0}
+{"rec":"rubric","kind":"block","game":0,"turn":26,"player":"Ai(1)-Doom Prevails [MSC] [2026]","incoming":1,"incomingPower":4,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":0,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":4,"life":36}
+{"rec":"zone","game":0,"turn":27,"card":"Myriad Landscape","cardId":325,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":27,"card":"Mountain","cardId":341,"from":"Library","to":"Battlefield","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":27,"card":"Mountain","cardId":379,"from":"Library","to":"Battlefield","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":27,"card":"Izoni, Thousand-Eyed","cardId":396,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"2/3","token":false}
+{"rec":"zone","game":0,"turn":27,"card":"Izoni, Thousand-Eyed","cardId":396,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"2/3","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Luxury Suite","cardId":33,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Luxury Suite","cardId":33,"from":"Hand","to":"Battlefield","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Helmut Zemo, Mastermind","cardId":47,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Helmut Zemo, Mastermind","cardId":47,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"2/2","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Arcane Signet","cardId":52,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Arcane Signet","cardId":52,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Glorious Purpose","cardId":32,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Enchantment","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Path of Ancestry","cardId":12,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Path of Ancestry","cardId":12,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":28,"player":"Ai(1)-Doom Prevails [MSC] [2026]","attackers":4,"attackPower":15,"defenders":1,"held":1,"heldPower":4,"heldTough":4,"backBodies":2,"backPower":3,"backBiggest":2}
+{"rec":"zone","game":0,"turn":28,"card":"Living Laser","cardId":525,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":28,"card":"Living Laser","cardId":526,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"rubric","kind":"block","game":0,"turn":28,"player":"Ai(2)-Exit from Exile [CLB] [2022]","incoming":6,"incomingPower":23,"blocked":2,"v3":0,"v2":0,"v1":0,"v0":2,"available":0,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":15,"life":8}
+{"rec":"zone","game":0,"turn":28,"card":"Damocles Base, Sword of Kang","cardId":77,"from":"Hand","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Damocles Base, Sword of Kang","cardId":77,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":28,"card":"Living Laser","cardId":525,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":28,"card":"Living Laser","cardId":526,"from":"Battlefield","to":"Exile","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":29,"card":"Riveteers Charm","cardId":391,"from":"Library","to":"Hand","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Riveteers Charm","cardId":391,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Cinder Glade","cardId":309,"from":"Library","to":"Exile","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Dakmor Salvage","cardId":385,"from":"Library","to":"Exile","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Talisman of Indulgence","cardId":347,"from":"Library","to":"Exile","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Riveteers Charm (391)'s Effect","cardId":527,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Riveteers Charm","cardId":391,"from":"Stack","to":"Graveyard","fromPlayer":"","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Cinder Glade","cardId":309,"from":"Exile","to":"Battlefield","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Talisman of Indulgence","cardId":347,"from":"Exile","to":"Stack","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Talisman of Indulgence","cardId":347,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Artifact","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Stitcher's Supplier","cardId":384,"from":"Hand","to":"Stack","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Stitcher's Supplier","cardId":384,"from":"Stack","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Grist, the Hunger Tide","cardId":315,"from":"Library","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Planeswalker","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Shadowblood Ridge","cardId":337,"from":"Library","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":29,"card":"Bloodbraid Challenger","cardId":392,"from":"Library","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"4/3","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Foreboding Ruins","cardId":58,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Secluded Courtyard","cardId":4,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Foreboding Ruins","cardId":58,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"rubric","kind":"attack","game":0,"turn":30,"player":"Ai(1)-Doom Prevails [MSC] [2026]","attackers":4,"attackPower":20,"defenders":1,"held":0,"heldPower":0,"heldTough":0,"backBodies":1,"backPower":1,"backBiggest":1}
+{"rec":"zone","game":0,"turn":30,"card":"Helmut Zemo, Mastermind's Effect","cardId":528,"from":"None","to":"Command","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Terminate","cardId":59,"from":"Graveyard","to":"Stack","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Stitcher's Supplier","cardId":384,"from":"Battlefield","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"1/1","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Terminate","cardId":59,"from":"Stack","to":"Exile","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Instant","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Riveteers Overlook","cardId":345,"from":"Library","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Archon of Cruelty","cardId":399,"from":"Library","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Creature","pt":"6/6","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Forest","cardId":398,"from":"Library","to":"Graveyard","fromPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","toPlayer":"Ai(4)-Graveyard Overdrive [M3C] [2024]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Living Laser","cardId":530,"from":"None","to":"Battlefield","fromPlayer":"","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Creature","pt":"4/4","token":true}
+{"rec":"zone","game":0,"turn":30,"card":"Coastal Peak","cardId":42,"from":"Library","to":"Hand","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"zone","game":0,"turn":30,"card":"Secluded Courtyard","cardId":4,"from":"Hand","to":"Graveyard","fromPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","toPlayer":"Ai(1)-Doom Prevails [MSC] [2026]","types":"Land","pt":"","token":false}
+{"rec":"rubric","kind":"block","game":0,"turn":30,"player":"Ai(4)-Graveyard Overdrive [M3C] [2024]","incoming":5,"incomingPower":25,"blocked":0,"v3":0,"v2":0,"v1":0,"v0":0,"available":0,"freeTaken":0,"freeMissed":0,"safeMissed":0,"legalMissed":0,"lifeTaken":25,"life":19}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(1)-Doom Prevails [MSC] [2026]","event":"mull_keep","detail":"lands=3 planCard=true size=7"}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(3)-Jeskai Striker [TDC] [2025]","event":"mull_take","detail":"lands=6 planCard=true size=7"}
+{"rec":"agent","game":0,"turn":0,"player":"Ai(3)-Jeskai Striker [TDC] [2025]","event":"mull_keep","detail":"lands=2 planCard=false size=7"}
+{"rec":"agent","game":0,"turn":21,"player":"Ai(1)-Doom Prevails [MSC] [2026]","event":"hold_back","detail":"vs=3/3 kept=Puppet Master, String Puller"}
+{"rec":"agent","game":0,"turn":23,"player":"Ai(3)-Jeskai Striker [TDC] [2025]","event":"search_seen","detail":"sid=1 options=14 sighted=false mode=targets ranked=0 agree=na pickedW=0 planW=0 dest=Battlefield comboPick=- missing=- picked=Mountain planPick=- src=Evolving Wilds"}
+{"rec":"result","game":0,"draw":false,"winner":"Ai(1)-Doom Prevails [MSC] [2026]","turns":30,"timedOut":false,"turnCapped":false,"seats":[{"name":"Ai(1)-Doom Prevails [MSC] [2026]","life":32,"alive":true},{"name":"Ai(2)-Exit from Exile [CLB] [2022]","life":-7,"alive":false},{"name":"Ai(3)-Jeskai Striker [TDC] [2025]","life":-1,"alive":false},{"name":"Ai(4)-Graveyard Overdrive [M3C] [2024]","life":-6,"alive":false}],"ms":101858}

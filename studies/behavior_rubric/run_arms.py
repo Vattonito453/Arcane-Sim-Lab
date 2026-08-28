@@ -110,10 +110,13 @@ def finished(out: Path) -> bool:
     """
     if not out.exists() or out.stat().st_size < 1000:
         return False
+    # The shim serialises without spaces ("rec":"result"). Both spellings are
+    # accepted because matching only the pretty-printed one silently made
+    # every finished game look unfinished, so nothing ever cached.
     try:
         with out.open(encoding="utf-8", errors="replace") as fh:
             for line in fh:
-                if '"rec": "result"' in line:
+                if '"rec":"result"' in line or '"rec": "result"' in line:
                     return True
     except OSError:
         return False
@@ -128,9 +131,19 @@ def cell(spec):
     decks = decks[rot:] + decks[:rot]
     # Alternating pilots: the paired within-game comparison.
     seats = ",".join(["plan:SimLabHuman", "stock:Default"] * 2)
+    # 900 s, not 2400. Measured: a normal 63-turn precon game finishes in
+    # 150-400 s, but a token-copy board can wedge Forge inside a SINGLE stack
+    # resolution -- each token entering play forces a full static-ability
+    # recheck across all permanents, so it is quadratic and the turn cap can
+    # never fire because the turn never ends. Stack-sampled one such JVM at
+    # 1220 s of CPU sitting in GameAction.checkStaticAbilities under
+    # TokenEffectBase.makeTokenTable, with no shim frame involved. The wall
+    # clock is the only backstop for that shape, and a long one just burns a
+    # worker slot. Censoring stays honest here because both pilots sit in
+    # every pod, so a killed game drops plan and stock data symmetrically.
     cmd = ["java", "-Xmx3g", "-cp", f"{SHIM}{os.pathsep}{FORGE}",
            "simlab.shim.SimShim", "--decks", *decks,
-           "--games", "1", "--timeout", "2400", "--max-turns", "90",
+           "--games", "1", "--timeout", "900", "--max-turns", "90",
            "--plans", str(plans_path), "--seat-pilots", seats,
            "--out", str(out.resolve())]
     # Keep stderr. Discarding it is how a 50% silent failure rate went

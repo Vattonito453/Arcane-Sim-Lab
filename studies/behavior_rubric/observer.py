@@ -93,13 +93,16 @@ def main(argv: list[str]) -> int:
                 t["atkRecs"] += 1
                 for k in ("attackers", "attackPower", "defenders", "held",
                           "heldEligible", "heldPower", "heldTough",
+                          "heldBestTough",
                           "backBodies", "backPower", "backBiggest"):
                     t[k] += r.get(k, 0)
                 if "heldEligible" not in r:
                     t["missingElig"] += 1
                 if r.get("held", 0) > 0:
                     t["keptAny"] += 1
-                if r.get("heldTough", 0) > r.get("backBiggest", 0):
+                # Biggest single body kept home, not the sum: one creature
+                # blocks one attacker.
+                if r.get("heldBestTough", 0) > r.get("backBiggest", 0):
                     t["keptEnough"] += 1
 
     print(f"files: {len(files)}")
@@ -169,7 +172,7 @@ def main(argv: list[str]) -> int:
               f"{t['attackers'] / t['atkRecs']:>9.2f} {commit_s:>7} "
               f"{t['defenders'] / t['atkRecs']:>7.2f} "
               f"{pct(t['keptAny'], t['atkRecs']):>8} "
-              f"{pct(t['keptEnough'], t['atkRecs']):>11}")
+              f"{(f'stale' if t['missingElig'] else pct(t['keptEnough'], t['atkRecs'])):>11}")
 
     print()
     print("keptAny = attacks that left any untapped body home; keptEnough = "

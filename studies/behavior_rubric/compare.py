@@ -83,7 +83,8 @@ def game_totals(path: Path):
             if "heldEligible" not in r:
                 per["_stale"] = True
             t["atkRecs"] = t.get("atkRecs", 0) + 1
-            if r.get("heldTough", 0) > r.get("backBiggest", 0):
+            # Biggest single body kept home, not the sum.
+            if r.get("heldBestTough", 0) > r.get("backBiggest", 0):
                 t["keptEnough"] = t.get("keptEnough", 0) + 1
     for key in ("plan", "stock"):
         t = per[key]
@@ -155,7 +156,7 @@ def arm_diffs(arm_dir: Path, decided_only: bool = False):
             continue
         finished += 1
         for name, num, den, _ in BLOCK_RATES + ATTACK_RATES:
-            if name == "commit" and per.get("_stale"):
+            if name in ("commit", "keptEnough") and per.get("_stale"):
                 continue
             a, b = rate(per["plan"], num, den), rate(per["stock"], num, den)
             if a is not None and b is not None:

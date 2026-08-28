@@ -27,8 +27,14 @@ REPO = HERE.parent.parent
 sys.path.insert(0, str(REPO / "engine"))
 
 SHIM = REPO.parent / "simlab-forge-shim" / "simlab-forge-shim.jar"
+# Output dir is an argument so a shim-version validation lands in its own
+# directory instead of cache-hitting the previous run's files.
+import argparse
 FORGE = Path(r"C:\Users\Vatto\forge\forge-gui-desktop-2.0.13-jar-with-dependencies.jar")
-OUT_DIR = HERE / "runs_agent_shipping"
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--out-name", default="runs_agent_shipping")
+_ARGS, _ = _ap.parse_known_args()
+OUT_DIR = HERE / _ARGS.out_name
 PLAN_DIR = OUT_DIR / "plans"
 
 

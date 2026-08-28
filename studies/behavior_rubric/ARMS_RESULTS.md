@@ -84,7 +84,7 @@ Arm minus base on the paired difference, two-sample permutation, n = 32 vs 32.
 
 | arm | change | freeCap delta | declined delta |
 |---|---|---|---|
-| `blocky` | blockiness 0.24 -> 0.6 | -0.229 (p = 0.16) | -0.095 (p = 0.29) |
+| `blocky` | blockiness flattened to 0.6 | -0.229 (p = 0.16) | -0.095 (p = 0.29) |
 | `hold` | holdBackPerThreat 0.3, ratio 0.25 | -0.060 (p = 0.98) | -0.020 (p = 0.84) |
 | `synergy` | derived 2-card engines in plan data | -0.038 (p = 0.88) | -0.133 (p = 0.15) |
 
@@ -138,8 +138,19 @@ harmful". The study can exclude a large effect, not a small one.
 
 - Ship the blocking work at **`base` defaults** (hold-back off, blockiness
   0.24). It is validated and replicated.
-- `holdBackRatio` / `holdBackPerThreat` stay **off**. `blockiness` stays
-  **0.24**. Neither retune helped.
+- `holdBackRatio` / `holdBackPerThreat` stay **off**. Blockiness stays at the
+  per-archetype values `deck_plan.py` emits. Neither retune helped.
+
+  **Correction to an earlier draft of this file.** I described the `blocky`
+  arm as "blockiness 0.24 -> 0.6". That was wrong in both halves. 0.24 is only
+  the Java fallback in `DeckPlan.java` for a plan that omits the field;
+  `deck_plan.py` always sends a per-archetype value, so the shipped
+  distribution over the 32 pod decks is 0.4 x1, 0.5 x16, 0.6 x13, 0.75 x2.
+  The arm therefore flattened that spread to a uniform 0.6, which RAISED 17
+  decks (mostly 0.5 -> 0.6), LOWERED 2, and left 13 untouched. So this study
+  never tested a large increase in block rate; it tested removing the
+  per-archetype spread, and found no effect. "Raising blockiness does not
+  help" is NOT supported by this data.
 - Synergy lines need a **dedicated, larger run**, not a bundled arm.
 - **Blocking is no longer the gap.** The agent already captures 96.3% of free
   blocks. The remaining headroom is chump-block policy (both pilots chump over

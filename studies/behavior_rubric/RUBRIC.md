@@ -144,5 +144,9 @@ byte-identical block-side code: base went from p = 0.012 to p = 0.187. At
 n = 32 with 24 tests per run, single-arm significance here is noise. Pool the
 arms and check the sign consistency instead.
 
-None of the three dials tested (blockiness 0.6, hold-back 0.3/0.25, synergy
-lines) moved anything; every arm-vs-base p > 0.14.
+None of the three dials tested moved anything; every arm-vs-base p > 0.14.
+Note what the blockiness arm actually was: `deck_plan.py` sends a
+per-archetype blockiness (0.4-0.75 across the pod decks; 0.24 is only the Java
+fallback when a plan omits it), so the arm FLATTENED that spread to 0.6 rather
+than raising a low value. A genuine test of a much higher block rate has not
+been run.

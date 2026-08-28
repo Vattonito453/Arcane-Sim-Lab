@@ -1,2 +1,4 @@
 runs_agent/*.jsonl
 runs_synergy/*.jsonl
+runs_arms/**/*.jsonl
+runs_arms/**/*.err

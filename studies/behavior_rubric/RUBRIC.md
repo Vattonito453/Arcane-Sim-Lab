@@ -76,14 +76,46 @@ deck's own hypergeometric floor rather than against people.
   reasons. Stock Forge keeps ~97% of opening hands, i.e. **below the floor**.
 - `mull_depth_distribution`.
 
-## What has to be built
+## The neutral observer (built, shim 0.9.0)
 
 Block and attack quality need power/toughness AT THE MOMENT of the decision,
-which the text log does not carry. The agent already emits this for itself
-(`added_block value=0..3`), but stock emits nothing, so the two are not
-comparable today.
+which the text log does not carry. The agent already emitted this for itself
+(`added_block value=0..3`), but stock emits nothing, so the two were not
+comparable: every behavioural number we had came from our own pilot's
+telemetry on one side and from video coding on the other.
 
-The fix is a **neutral rubric observer in the shim** that scores every
-combat for every seat from game state, regardless of which pilot is driving.
-That makes stock and agent measurable on identical terms, and it is
-mechanism, not strategy, so it respects the boundary.
+`RubricObserver` (in the shim) reads the LIVE combat off Forge's event bus and
+scores every seat identically regardless of pilot. It is a pure read and never
+touches a decision. It is mechanism, not strategy, so it respects the GPL
+boundary. Score its output with `studies/behavior_rubric/observer.py`.
+
+Two hooks:
+
+- `GameEventAttackersDeclared` — bodies committed vs untapped bodies kept
+  home, spread across defenders, and what the rest of the table could swing
+  back (`backBiggest`).
+- the first combat damage step — blocks made, each on the same 0-3 scale the
+  controller uses (3 kills and survives, 2 trade, 1 wall, 0 chump), plus the
+  blocks that were available and declined.
+
+Blocks are scored at the damage step rather than on `GameEventBlockersDeclared`
+because Forge posts that event per declaring player: a seat that blocks nothing
+emits nothing, and "declined to block" is exactly the behaviour under
+measurement. The damage step is reached on every combat regardless.
+
+Two traps the implementation encodes:
+
+- The declined-block counters use **greedy assignment, biggest threat first**.
+  A body can only block once, so scoring each unblocked attacker against the
+  whole pool independently over-counts what was left on the table.
+- `legalMissed` counts any legal block declined, and exists as the check that
+  `CombatUtil.canBlock` is actually answering at this phase. Without it a
+  broken predicate would zero the profitability counters in a way
+  indistinguishable from genuinely having no option. Verified non-zero.
+
+**Measure the blocking axis on precons, not cEDH.** The cEDH pods that carry
+human traces barely block at all: one game produced 11 available blockers
+across 30 block records, because those decks run almost no creatures, and the
+declined blocks that did occur were 0/1 bodies facing bigger attackers. The
+axis has no discriminating power there. cEDH pods stay the right place for the
+interaction axis.

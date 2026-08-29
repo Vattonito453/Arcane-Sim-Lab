@@ -204,6 +204,8 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
            "simlab.shim.SimShim", "--decks", *abs_decks,
            "--games", str(games), "--timeout", str(args.clock),
            "--out", str(jsonl_path)]
+    if getattr(args, "max_turns", 0):
+        cmd += ["--max-turns", str(args.max_turns)]
     if getattr(args, "plans_file", None):
         cmd += ["--plans", str(args.plans_file)]
     print("$", " ".join(cmd))
@@ -752,6 +754,12 @@ def main() -> None:
     # (stax/mill/politics-heavy, see deck_plan.py TAG_PERSONALITY) weren't
     # represented and could run longer.
     p.add_argument("--clock", type=int, default=900, help="Per-game timeout seconds (draw when exceeded)")
+    p.add_argument("--max-turns", type=int, default=120,
+                   help="Player-turns before a game is called a draw (shim only; "
+                        "0 disables). The deterministic bound: measured on 1,198 "
+                        "finished games, p95 is 70-75 turns and the max is 122, "
+                        "so 120 trims almost nothing legitimate while ending "
+                        "turn-cycling stalemates without waiting out the clock.")
     p.add_argument("--quiet", action="store_true", help="Result-only logs (no per-action events)")
     p.add_argument("--forge-jar", default=None)
     p.add_argument("--agent", choices=["auto", "forge", "shim"], default="auto",

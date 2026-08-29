@@ -47,15 +47,20 @@ deck's own hypergeometric floor rather than against people.
 **Blocking — normative**
 - `free_block_capture_rate`: of attackers where a blocker both SURVIVES and
   KILLS, the share actually blocked. Strong play takes nearly all; this is
-  free value. Stock Forge blocks only 17.6% of attackers overall.
+  free value. Stock block rate depends on the deck population: 14.7% on cEDH
+  (2,128 decisions), 17.6% on 256 all-stock games (11,657). Quote the one that
+  matches the population under test.
 - `no_gain_block_rate`: blocks where the blocker dies, the attacker lives and
   nothing is gained. Should be ~0.
 - `lethal_prevention_block_rate`: facing lethal unblocked damage, the share of
   combats where a block is made. Should be ~1.0.
 
 **Attacking — normative**
-- `attacker_commitment_ratio`: attackers declared / eligible untapped
-  creatures. Stock is near 1.0 (attacks with everything).
+- `attacker_commitment_ratio`: attackers declared / creatures that could
+  legally have attacked. Stock is **71.6%**, not near 1.0 -- "attacks with
+  everything" does not survive measurement against the eligible denominator
+  (`ARMS_RESULTS.md`). Divide by every untapped body instead and you get a
+  biased 62.3%, because only 74.1% of bodies kept home could have attacked.
 - `retained_defense_adequacy`: untapped creatures left after attacking,
   against what opponents can swing back.
 - `per_turn_attack_split_rate`: distinct defenders named per attack. Stock is
@@ -73,17 +78,79 @@ deck's own hypergeometric floor rather than against people.
 - `mull_rate` against the deck's hypergeometric floor F (share of opening
   sevens outside a 2-5 land window: 0.183 at 38 lands, 0.361 at 28). A
   correct pilot exceeds F, because land count is only one of three ship
-  reasons. Stock Forge keeps ~97% of opening hands, i.e. **below the floor**.
+  reasons. **Correction (2026-08-29, measured neutrally at 1,024 seat-games
+  per pilot):** stock keeps 82.0% of sevens, not the ~97% previously written
+  here — it mulls right AT the land-window floor. Stock does the land
+  arithmetic; what it lacks is the reason test. The agent keeps 74.8%,
+  i.e. floor plus reason-ships. See `OVERNIGHT_RESULTS.md`.
 - `mull_depth_distribution`.
 
-## What has to be built
+## The neutral observer (built, shim 0.9.0)
 
 Block and attack quality need power/toughness AT THE MOMENT of the decision,
-which the text log does not carry. The agent already emits this for itself
-(`added_block value=0..3`), but stock emits nothing, so the two are not
-comparable today.
+which the text log does not carry. The agent already emitted this for itself
+(`added_block value=0..3`), but stock emits nothing, so the two were not
+comparable: every behavioural number we had came from our own pilot's
+telemetry on one side and from video coding on the other.
 
-The fix is a **neutral rubric observer in the shim** that scores every
-combat for every seat from game state, regardless of which pilot is driving.
-That makes stock and agent measurable on identical terms, and it is
-mechanism, not strategy, so it respects the boundary.
+`RubricObserver` (in the shim) reads the LIVE combat off Forge's event bus and
+scores every seat identically regardless of pilot. It is a pure read and never
+touches a decision. It is mechanism, not strategy, so it respects the GPL
+boundary. Score its output with `studies/behavior_rubric/observer.py`.
+
+Two hooks:
+
+- `GameEventAttackersDeclared` — bodies committed vs untapped bodies kept
+  home, spread across defenders, and what the rest of the table could swing
+  back (`backBiggest`).
+- the first combat damage step — blocks made, each on the same 0-3 scale the
+  controller uses (3 kills and survives, 2 trade, 1 wall, 0 chump), plus the
+  blocks that were available and declined.
+
+Blocks are scored at the damage step rather than on `GameEventBlockersDeclared`
+because Forge posts that event per declaring player: a seat that blocks nothing
+emits nothing, and "declined to block" is exactly the behaviour under
+measurement. The damage step is reached on every combat regardless.
+
+Two traps the implementation encodes:
+
+- The declined-block counters use **greedy assignment, biggest threat first**.
+  A body can only block once, so scoring each unblocked attacker against the
+  whole pool independently over-counts what was left on the table.
+- `legalMissed` counts any legal block declined, and exists as the check that
+  `CombatUtil.canBlock` is actually answering at this phase. Without it a
+  broken predicate would zero the profitability counters in a way
+  indistinguishable from genuinely having no option. Verified non-zero.
+
+**Measure the blocking axis on precons, not cEDH.** The cEDH pods that carry
+human traces barely block at all: one game produced 11 available blockers
+across 30 block records, because those decks run almost no creatures, and the
+declined blocks that did occur were 0/1 bodies facing bigger attackers. The
+axis has no discriminating power there. cEDH pods stay the right place for the
+interaction axis.
+
+## First results from the observer
+
+See `ARMS_RESULTS.md`. Two independent runs of 128 games, mixed pods, paired
+within game.
+
+**Replicated.** The agent captures profitable blocks stock leaves on the
+table: free-block capture 96.3% vs 76.0% (paired +0.227, p = 0.0023, 36 of 38
+games; independently +0.171, p = 0.025), safe-block capture 95.0% vs 74.9%,
+declined blocks 39.1% vs 51.8% (-0.154, p < 0.0001).
+
+**Retracted.** "The agent takes 4.67 less damage per combat" was a single-arm
+result from run 1 and does not replicate (run 2: +0.58, p = 0.94). Damage per
+combat is 8.03 vs 8.41, effectively equal.
+
+**Method note that cost a rerun.** Per-arm p-values did not replicate on
+byte-identical block-side code: base went from p = 0.012 to p = 0.187. At
+n = 32 with 24 tests per run, single-arm significance here is noise. Pool the
+arms and check the sign consistency instead.
+
+None of the three dials tested moved anything; every arm-vs-base p > 0.14.
+Note what the blockiness arm actually was: `deck_plan.py` sends a
+per-archetype blockiness (0.4-0.75 across the pod decks; 0.24 is only the Java
+fallback when a plan omits it), so the arm FLATTENED that spread to 0.6 rather
+than raising a low value. A genuine test of a much higher block rate has not
+been run.

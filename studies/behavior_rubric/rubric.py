@@ -159,6 +159,6 @@ if __name__ == "__main__":
     # per-archetype blockiness). The older runs_agent/ used blockiness 1.0
     # with hold-back on, a pilot we do not ship, so quoting it in this table
     # compared humans and stock against a stale arm.
-    a = sim_rows(str(REPO / "studies/behavior_rubric/runs_agent_shipping/*.jsonl"),
+    a = sim_rows(str(REPO / "studies/behavior_rubric/runs_agent_093/*.jsonl"),
                  "AGENT")
     report([("HUMAN", h), ("STOCK", s), ("AGENT", a)])

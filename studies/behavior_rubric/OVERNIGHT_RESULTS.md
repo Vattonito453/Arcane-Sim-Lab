@@ -90,3 +90,17 @@ Two documented claims die here:
 - `lean` documents that a "fast mode" exists: ~7% quicker, 8 pp fewer clock
   kills, same wins, at the cost of unaimed interaction. Not shipped; noted
   for a future latency-sensitive tier.
+
+## The 0.9.3 combo-gate A/B (cEDH, same pods, same plans, shim-only diff)
+
+| | 0.9.1 (veto unconditional) | 0.9.3 (veto needs owned line) |
+|---|---|---|
+| combo casts | 53 | **73** (+38%) |
+| tutor casts | 67 | **84** |
+| combo holds | 31, all speculative | 28, **all on owned lines** |
+| median winning game | 51 turns | **48 turns** |
+| win round (rubric scale) | 12.3 | **11.8** (stock 10.9, human 5.0) |
+| counter fires (isolation check) | 89 | 86 |
+
+n = 28 decided per side, so the sizes are estimates; the direction agrees
+with the mechanism. The agent closed from 1.4 rounds behind stock to 0.9.

@@ -15,9 +15,9 @@ decks (cEDH). Human baselines exist only where videos narrate the action.
 | 2 | Blockers | 76.0% free-block capture | **96.3%** | not measurable (never narrated) | DONE, replicated across 2x128 games |
 | 3 | Split attacks | 1.03 defenders/attack | **1.28** at splitAttacks 0.7, now shipped | partial (key_line) | win effect -2.5 pp ns at n = 512; first config to break single-target |
 | 4 | Instants off-turn | 62% of disruption | 62% | n/a (floor data only) | timing was never broken; both bots are fine here |
-| 5 | Combo pursuit | sits on tutors, burns pieces | steering works; early-burn veto was overfiring | closes round 5 | 0.9.3 gates the veto on line proximity |
+| 5 | Combo pursuit | sits on tutors, burns pieces | 0.9.3 validated: combo casts +38%, tutors +25% | closes round 5 | every remaining hold protects an OWNED line |
 | 6 | Intentional triggers | Forge's trigger AI | never misses; combo triggers protected | n/a | DONE at triggerMiss 0 |
-| 7 | Pursuing win con | win round 10.9 (cEDH) | 12.3 (0.9.3 validation in flight) | **5.0** | head-to-head is PARITY at n = 1,236 decided: 50.9/50.9/48.4% per arm |
+| 7 | Pursuing win con | win round 10.9 (cEDH) | **11.8** (was 12.3 pre-0.9.3) | **5.0** | precon head-to-head is PARITY at n = 1,236 decided: 50.9/50.9/48.4% per arm |
 | 8 | Disrupting enemy win con | no threat model | fires at median threat 8 (92% >= 8), vetoes chaff at median 2 | 7.3 disruption/game (floor) | DONE: interaction is aimed, not sprayed |
 
 ## What each row rests on
@@ -57,8 +57,11 @@ early-burn vetoes on the shipping cEDH rerun were Tainted Pact (21) or
 Jeska's Will (10) — premium value spells held forever for lines whose other
 pieces were still in the library. 0.9.3 fires the veto only when every other
 piece is already owned (hold Tainted Pact when Thassa's Oracle is in hand;
-cast it as an answer otherwise). Validation rerun queued behind the
-overnight.
+cast it as an answer otherwise). **Validated on the same 32-game pod set,
+same plans, only the shim differing**: combo casts 53 -> 73 (+38%), tutor
+casts 67 -> 84, median winning game 51 -> 48 turns, win round 12.3 -> 11.8,
+and all 28 remaining holds protect a fully owned line. The counter layer was
+untouched (fires 89 -> 86), confirming isolation.
 
 **6. Intentional triggers.** `triggerMiss 0.0` shipped: the agent never
 declines an optional trigger stock would take, and triggers on combo-line
@@ -73,8 +76,13 @@ the dial side. Humans close on round 5.0; stock 10.9; the shipping agent 12.3
 about +/-4.9 pp. Two ablation campaigns and seven arms agree: personality
 dials neither win nor lose games. Win-rate gains, if they exist, live in
 strategy CONTENT (lines, tutor targets, conversion), not personality. The
-0.9.3 veto gate removes one measured drag (~1 wasted premium cast per game);
-its cEDH validation is the remaining open measurement.
+0.9.3 veto gate removed a measured drag: on the A/B, win round moved 12.3 ->
+11.8 (stock 10.9), so the agent went from 1.4 rounds behind stock to 0.9 on
+identical pods. n = 28 decided per side, so treat the size as an estimate;
+the direction agrees with the mechanism (combo casts +38%). The remaining
+distance to human round 5.0 is strategy content: cEDH humans mulligan to
+their line, tutor at instant speed and convert in one window, all of which
+is line/target DATA, not dial tuning.
 
 **8. Disrupting the enemy win con.** The SimLabHuman profile makes stock
 propose counters eagerly; the threat veto then filters: fired counters aim at

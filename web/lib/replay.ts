@@ -34,7 +34,7 @@ export interface Card {
 export interface Seat {
   player: string; // full key, "Ai(1)-Kilo Helm Final"
   life: number;
-  eliminated?: { turn: number } | null;
+  eliminated?: { turn: number; round: number } | null;
   poison?: number;
 }
 
@@ -336,7 +336,7 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
         const s = byName.get(op.p);
         if (s) {
           s.life = op.to;
-          if (op.to <= 0 && !s.eliminated) s.eliminated = { turn: step.turn };
+          if (op.to <= 0 && !s.eliminated) s.eliminated = { turn: step.turn, round: step.round };
         }
         break;
       }
@@ -347,7 +347,7 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
       }
       case "out": {
         const s = byName.get(op.p);
-        if (s && !s.eliminated) s.eliminated = { turn: step.turn };
+        if (s && !s.eliminated) s.eliminated = { turn: step.turn, round: step.round };
         break;
       }
       case "land": {

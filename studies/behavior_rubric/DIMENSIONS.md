@@ -1,6 +1,6 @@
 # The eight dimensions: stock vs agent vs human, measured
 
-Status as of 2026-08-28. One row per dimension Vincent named. Every number
+Status as of 2026-08-29. One row per dimension Vincent named. Every number
 below is measured, with its population and source next to it; the overnight run
 (1,536 games) landed 2026-08-29; every cell below is final except the 0.9.3
 cEDH validation noted in row 7. Full overnight data: `OVERNIGHT_RESULTS.md`.
@@ -24,23 +24,26 @@ decks (cEDH). Human baselines exist only where videos narrate the action.
 
 **1. Mulligans.** The agent keeps a hand only with 2-5 lands AND a plan card
 (after the free Commander mulligan the reason requirement relaxes; London
-bottoming sheds excess lands then the worst nonplan cards). Stock keeps ~97%
-of opening sevens. The normative bar is the deck's own hypergeometric floor:
-on the 66-precon cohort (36-44 lands), the share of sevens outside a 2-5 land
-window is 12.8-21.0%, mean **18.5%** — a correct pilot mulls at least that
-often. Neutral per-seat measurement (shim 0.9.2 `mull` records: mulls taken,
-hand size, lands kept) lands with the overnight run for both pilots on
-identical terms.
+bottoming sheds excess lands then the worst nonplan cards). Measured
+neutrally at 1,024 seat-games per pilot (shim 0.9.2 `mull` records): stock
+keeps 82.0% of sevens — NOT the ~97% previously documented — which is right
+AT the cohort's hypergeometric floor (mean 18.5% of sevens fall outside a
+2-5 land window; range 12.8-21.0% across 36-44 lands). Stock does the land
+arithmetic; the agent adds the reason test and keeps 74.8%. Both pilots keep
+an out-of-window hand only 0.6% of the time.
 
 **2. Blockers.** Two independent 128-game mixed-pod runs: the agent captures
 96.3% of kill-and-survive blocks vs stock's 76.0% (paired +0.227, p = 0.0023,
 36 of 38 games; independently +0.171, p = 0.025), lets 39.1% of blockable
 attackers through vs 51.8%. Replicated; shipped. Details: `ARMS_RESULTS.md`.
 
-**3. Split attacks.** Stock is 98% single-target. `deck_plan.py` ships
-`splitAttacks 0.0`, so the split machinery (a third of attackers, weakest
-first, onto the highest-threat other opponent) has never run in a shipped
-config. The overnight `split` arm (0.7) is its first test, judged on wins.
+**3. Split attacks.** Stock is 98% single-target. `deck_plan.py` shipped
+`splitAttacks 0.0` until 2026-08-29, so the split machinery (a third of
+attackers, weakest first, onto the highest-threat other opponent) had never
+run in a shipped config. Tested at 512 games: defenders per attack 1.03 ->
+1.28, win effect -2.5 pp (not significant, CI includes zero), ~12% more game
+time. **Now shipped at 0.7**: the most visible humanity marker in a replay,
+at a bounded cost.
 
 **4. Instant timing.** Off-turn share of disruption on cEDH pods: stock 62%,
 agent 62%. Forge already casts disruption at instant speed on other people's

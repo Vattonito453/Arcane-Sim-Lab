@@ -9,3 +9,4 @@ runs_overnight/**/*.jsonl
 runs_overnight/**/*.err
 runs_agent_shipping/**/*.jsonl
 runs_agent_shipping/**/*.err
+runs_agent_093/

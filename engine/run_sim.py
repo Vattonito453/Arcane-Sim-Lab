@@ -196,7 +196,7 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
     abs_decks = [str(staged / Path(d).name) for d in deck_order]
     if args.run_id:
         suffix = f"_rot{rotate_index}" if rotate_index is not None else ""
-        jsonl_path = out_dir / f"shim_raw_{args.run_id}{suffix}.jsonl"
+        jsonl_path = out_dir / f"shim_raw_{safe_run_id(args.run_id)}{suffix}.jsonl"
     else:
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
         jsonl_path = out_dir / f"shim_raw_{stamp}.jsonl"
@@ -213,13 +213,34 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
     proc = subprocess.Popen(cmd, cwd=Path(jar).parent, stdout=subprocess.DEVNULL,
                             stderr=subprocess.PIPE, text=True, bufsize=1)
     assert proc.stderr is not None
+    # Keep a tail of NON-progress stderr: a shim that dies before writing any
+    # JSONL used to surface as "exited 1 after 0 game(s)" with its Java stack
+    # trace discarded right here, which is the discarding-stderr lesson
+    # studies/behavior_rubric/run_arms.py already records.
+    err_tail: list[str] = []
     for line in proc.stderr:  # shim progress arrives on stderr
         s = line.strip()
         if s.startswith("shim:"):
             print(f"  {s}", flush=True)
-    proc.wait(timeout=60)
-    parsed = parse_shim_jsonl(jsonl_path.read_text(encoding="utf-8"),
-                              source=" ".join(cmd))
+        elif s:
+            err_tail.append(s)
+            if len(err_tail) > 15:
+                err_tail.pop(0)
+    # Everything from here to the returncode check can fail without a
+    # returncode (wait timeout, JSONL never created, torn JSONL). Any such
+    # failure must still be a SimRotationError: it is the only exception the
+    # rotation loop converts into salvage, and an uncaught one aborts run()
+    # with every finished rotation unpublished while Engine.simulate's own
+    # salvage never fires (it is gated on the run_sim process being KILLED).
+    try:
+        proc.wait(timeout=60)
+        parsed = parse_shim_jsonl(jsonl_path.read_text(encoding="utf-8"),
+                                  source=" ".join(cmd))
+    except Exception as e:
+        raise SimRotationError(
+            f"shim produced no readable result ({type(e).__name__}: {e}); "
+            f"stderr tail: {' | '.join(err_tail[-5:]) or '(empty)'}",
+            partial={"games": []}) from e
     if proc.returncode != 0:
         # A warning on stderr was the whole response to this, so a rotation
         # that OOM'd halfway still merged its partial games into a result
@@ -227,7 +248,8 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
         # rotation did finish, then fail so the caller records the hole.
         raise SimRotationError(
             f"shim exited {proc.returncode} after {len(parsed.get('games') or [])} "
-            f"game(s)", partial=parsed)
+            f"game(s); stderr tail: {' | '.join(err_tail[-5:]) or '(empty)'}",
+            partial=parsed)
     return parsed
 
 
@@ -430,7 +452,7 @@ def run(args: argparse.Namespace) -> None:
     # With --run-id the log is addressable while it is still being written, which
     # is what lets GET /sim-live parse the game in progress. Without one, keep the
     # timestamped name so nothing else changes.
-    raw_path = out_dir / (f"forge_raw_{args.run_id}.log" if args.run_id
+    raw_path = out_dir / (f"forge_raw_{safe_run_id(args.run_id)}.log" if args.run_id
                           else f"forge_raw_{stamp}.log")
 
     # Stream Forge's output live: show progress lines on screen, save everything.
@@ -493,7 +515,7 @@ def _run_once(args, jar, out_dir, deck_order, games, rotate_index: int | None = 
     proc.wait(timeout=60)
     if args.run_id:
         suffix = f"_rot{rotate_index}" if rotate_index is not None else ""
-        raw_path = out_dir / f"forge_raw_{args.run_id}{suffix}.log"
+        raw_path = out_dir / f"forge_raw_{safe_run_id(args.run_id)}{suffix}.log"
     else:
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
         raw_path = out_dir / f"forge_raw_{stamp}.log"
@@ -600,8 +622,15 @@ def salvage(out_dir: Path, run_id: str, decks: list[str] | None = None,
 
 def safe_run_id(run_id: str) -> str:
     """Filename-safe form of a job id. The API's ids are already
-    [A-Za-z0-9_-]; a hand-run --run-id is not guaranteed to be."""
-    return re.sub(r"[^A-Za-z0-9-]", "", run_id)[:64]
+    [A-Za-z0-9_-]; a hand-run --run-id is not guaranteed to be.
+
+    Underscore is KEPT: the API's own _JOB_ID_RE allows it, the live-view
+    globs in mtg_engine build paths from the raw job id, and salvage() globs
+    with this function -- stripping underscore made those two disagree, so a
+    killed run whose id contained one was unsalvageable (its raw logs were
+    named with the underscore, the salvage glob looked for a name without).
+    """
+    return re.sub(r"[^A-Za-z0-9_-]", "", run_id)[:64]
 
 
 def result_path(out_dir: Path, stamp: str, run_id: str | None, rotated: bool) -> Path:

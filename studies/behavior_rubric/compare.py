@@ -65,11 +65,26 @@ def game_totals(path: Path):
     # pilots (both sit in every pod) so the paired difference stays usable,
     # but arms censor at different rates, so arm-vs-arm needs a decided-only
     # sensitivity pass.
+    #
+    # The pairing unit is ONE GAME, so a file holding several (a production
+    # rotation JSONL with --games N) would pool them into one pseudo-pair,
+    # deflate n, and read censoring off the first result only. Refuse loudly
+    # instead of computing an invalid test.
+    n_results = 0
     for line in text.splitlines():
-        if '"rec":"result"' in line or '"rec": "result"' in line:
+        if '"rec":"result"' not in line and '"rec": "result"' not in line:
+            continue
+        try:
             res = json.loads(line)
-            per["_censored"] = bool(res.get("timedOut") or res.get("turnCapped"))
-            break
+        except ValueError:
+            continue  # torn trailing line from a killed shim
+        n_results += 1
+        per["_censored"] = bool(res.get("timedOut") or res.get("turnCapped"))
+    if n_results > 1:
+        raise SystemExit(
+            f"{path}: {n_results} games in one file; compare.py pairs per "
+            "game and only supports --games 1 output. Score it with "
+            "observer.py, or split the file by its game field.")
     for pilot, r in load(path):
         if pilot not in per:
             continue

@@ -29,36 +29,42 @@ def scan(root: Path):
     for f in sorted(root.rglob("*.jsonl")):
         if "plans" in f.parts:
             continue
-        pilots, res = {}, None
+        # EVERY result record counts. A production shim JSONL holds N games
+        # per rotation, and keeping only the last line silently discarded
+        # (N-1)/N of them. A torn trailing line (shim killed mid-write) is
+        # skipped rather than crashing the whole tally.
+        pilots, results = {}, []
         for line in f.read_text(encoding="utf-8", errors="replace").splitlines():
-            if '"rec":"meta"' in line or '"rec": "meta"' in line:
-                m = json.loads(line)
-                pilots = dict(zip(m.get("players", []), m.get("agents", [])))
-            elif '"rec":"result"' in line or '"rec": "result"' in line:
-                res = json.loads(line)
-        if not res:
-            continue
-        ms_all.append(res.get("ms", 0))
-        if res.get("timedOut") or res.get("turnCapped"):
-            censored += 1
-            continue
-        for s in res.get("seats", []):
-            p = pilots.get(s["name"], "?")
-            if p in alive:
-                alive[p][1] += 1
-                if s.get("alive"):
-                    alive[p][0] += 1
-        w = res.get("winner")
-        if not w or res.get("draw"):
-            draws += 1
-            continue
-        p = pilots.get(w, "?")
-        if p == "plan":
-            plan_w += 1
-            turns["plan"].append(res.get("turns", 0))
-        elif p == "stock":
-            stock_w += 1
-            turns["stock"].append(res.get("turns", 0))
+            try:
+                if '"rec":"meta"' in line or '"rec": "meta"' in line:
+                    m = json.loads(line)
+                    pilots = dict(zip(m.get("players", []), m.get("agents", [])))
+                elif '"rec":"result"' in line or '"rec": "result"' in line:
+                    results.append(json.loads(line))
+            except ValueError:
+                continue
+        for res in results:
+            ms_all.append(res.get("ms", 0))
+            if res.get("timedOut") or res.get("turnCapped"):
+                censored += 1
+                continue
+            for s in res.get("seats", []):
+                p = pilots.get(s["name"], "?")
+                if p in alive:
+                    alive[p][1] += 1
+                    if s.get("alive"):
+                        alive[p][0] += 1
+            w = res.get("winner")
+            if not w or res.get("draw"):
+                draws += 1
+                continue
+            p = pilots.get(w, "?")
+            if p == "plan":
+                plan_w += 1
+                turns["plan"].append(res.get("turns", 0))
+            elif p == "stock":
+                stock_w += 1
+                turns["stock"].append(res.get("turns", 0))
     return plan_w, stock_w, draws, censored, turns, alive, ms_all
 
 

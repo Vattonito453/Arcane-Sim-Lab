@@ -436,6 +436,7 @@ export function summarizeGame(game: SimGame): GameSummary {
   const winner = game.result.winner;
   const base: GameSummary = {
     endedTurn,
+    endedRound,
     winner,
     winnerName: winner ? stripAi(winner) : null,
     draw: game.result.draw,

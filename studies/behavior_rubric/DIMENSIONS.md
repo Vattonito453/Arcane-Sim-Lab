@@ -17,7 +17,7 @@ decks (cEDH). Human baselines exist only where videos narrate the action.
 | 4 | Instants off-turn | 62% of disruption | 62% | n/a (floor data only) | timing was never broken; both bots are fine here |
 | 5 | Combo pursuit | sits on tutors, burns pieces | 0.9.3 validated: combo casts +38%, tutors +25% | closes round 5 | every remaining hold protects an OWNED line |
 | 6 | Intentional triggers | Forge's trigger AI | never misses; combo triggers protected | n/a | DONE at triggerMiss 0 |
-| 7 | Pursuing win con | win round 10.9 (cEDH) | **11.8** (was 12.3 pre-0.9.3) | **5.0** | precon head-to-head is PARITY at n = 1,236 decided: 50.9/50.9/48.4% per arm |
+| 7 | Pursuing win con | win round 12.7 (cEDH) | **13.1** (was 13.8 pre-0.9.3) | **5.0** | precon head-to-head is PARITY at n = 1,236 decided: 50.9/50.9/48.4% per arm |
 | 8 | Disrupting enemy win con | no threat model | fires at median threat 8 (92% >= 8), vetoes chaff at median 2 | 7.3 disruption/game (floor) | DONE: interaction is aimed, not sprayed |
 
 ## What each row rests on
@@ -70,15 +70,22 @@ halted "you may" loops after a median ~23 iterations — the deck assembled its
 win and stopped; that class of fizzle is structurally gone).
 
 **7. Pursuing the win con.** The open gap, now measured to a standstill on
-the dial side. Humans close on round 5.0; stock 10.9; the shipping agent 12.3
-(cEDH). Head-to-head on precons: **parity at power** — 512 games per arm gave
+the dial side. Humans close on round 5.0; stock 12.7; the shipping agent 13.1
+(cEDH). **Units correction (2026-08-29, caught by Vincent watching a
+replay):** the sim side previously divided Forge's per-player turn counter by
+a constant seat count, which undercounts rounds once a player is eliminated
+(a round is then 3 turns, not 4) — measured bias +1.7 rounds on stock, +1.3
+on the agent. Rounds are now counted per player (a player's Nth turn is round
+N), the same units the human traces narrate. The human-speed gap is WIDER
+than previously reported; the stock-vs-agent ordering is unchanged but the
+gap narrows to 0.4 rounds. Head-to-head on precons: **parity at power** — 512 games per arm gave
 50.9% (base), 50.9% (layers stripped) and 48.4% (split), pooled 619-617, CI
 about +/-4.9 pp. Two ablation campaigns and seven arms agree: personality
 dials neither win nor lose games. Win-rate gains, if they exist, live in
 strategy CONTENT (lines, tutor targets, conversion), not personality. The
-0.9.3 veto gate removed a measured drag: on the A/B, win round moved 12.3 ->
-11.8 (stock 10.9), so the agent went from 1.4 rounds behind stock to 0.9 on
-identical pods. n = 28 decided per side, so treat the size as an estimate;
+0.9.3 veto gate removed a measured drag: on the A/B, win round moved 13.8 ->
+13.1 in true rounds (stock 12.7), so the agent went from 1.1 rounds behind
+stock to 0.4 on identical pods. n = 28 decided per side, so treat the size as an estimate;
 the direction agrees with the mechanism (combo casts +38%). The remaining
 distance to human round 5.0 is strategy content: cEDH humans mulligan to
 their line, tutor at instant speed and convert in one window, all of which

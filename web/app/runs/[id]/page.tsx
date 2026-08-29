@@ -557,8 +557,10 @@ export default function RunPage() {
                   {games ? <> of <span className="mono">{games}</span></> : null}
                 </h2>
                 <span className="meta">
-                  turn <span className="mono">{liveTimeline.steps[playIdx]?.turn ?? 0}</span> of{" "}
-                  <span className="mono">{liveTimeline.totalTurns}</span>
+                  {/* Rounds, not Forge's per-player turn counter: at a table
+                      every player gets a turn 1, so raw turns read 4x high. */}
+                  round <span className="mono">{liveTimeline.steps[playIdx]?.round ?? 0}</span> of{" "}
+                  <span className="mono">{liveTimeline.totalRounds}</span>
                   {atEnd && liveData?.in_progress ? " · waiting for Forge" : ""}
                 </span>
                 <span className="right">
@@ -596,7 +598,7 @@ export default function RunPage() {
                     scrubbable on the replay page once the run finishes. */}
                 {liveTimeline.steps.slice(Math.max(0, playIdx - 7), playIdx + 1).map((s, k) => (
                   <div key={`${s.seq}-${k}`} className="ev">
-                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "–"}</span>
+                    <span className="tt">{s.round > 0 ? `R${s.round}` : "–"}</span>
                     <div>{s.text}</div>
                   </div>
                 ))}

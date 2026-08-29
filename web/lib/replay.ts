@@ -48,6 +48,14 @@ export interface BoardState {
 export interface Step {
   seq: number;
   turn: number; // player-turn number from the log; 0 = pregame
+  // Table round: how many turns the active player has taken, the way people
+  // count at a table (every player gets a turn 1, then a turn 2). Forge's
+  // turn counter increments per PLAYER turn, so raw `turn` reads 4x too high
+  // to a Magic player, and dividing by seat count undercounts once someone
+  // is eliminated (a round is then 3 turns, not 4). Counting per player is
+  // exact through eliminations; an extra turn counts as its own round for
+  // that player, which is rare and visible in the log either way.
+  round: number; // 0 = pregame
   phase: string; // phase label in effect at this step ("Untap step", "Pregame", …)
   active: string; // active player key ("" during pregame)
   text: string; // cleaned human-readable line (Ai(n)- prefixes and collector numbers removed)
@@ -60,12 +68,14 @@ export interface Step {
 export interface Timeline {
   steps: Step[];
   players: string[];
-  turns: { turn: number; start: number }[]; // first step index of each turn
+  turns: { turn: number; round: number; start: number }[]; // first step index of each turn
   totalTurns: number;
+  totalRounds: number;
 }
 
 export interface GameSummary {
-  endedTurn: number;
+  endedTurn: number; // Forge player-turns (internal); display uses endedRound
+  endedRound: number; // table rounds, counted per active player
   winner: string | null; // raw key
   winnerName: string | null; // stripped
   draw: boolean;
@@ -169,6 +179,7 @@ function stepFor(ev: SimEvent, turn: number, active: string, phase: string): Ste
   const step: Step = {
     seq: ev.seq,
     turn,
+    round: 0, // set by buildTimeline once the active player's turn count is known
     phase,
     active,
     text: cleanRaw(raw),
@@ -255,16 +266,20 @@ function stepFor(ev: SimEvent, turn: number, active: string, phase: string): Ste
 /** One Step per event (pregame first), each with a cleaned display text. */
 export function buildTimeline(game: SimGame): Timeline {
   const steps: Step[] = [];
-  const turns: { turn: number; start: number }[] = [];
+  const turns: { turn: number; round: number; start: number }[] = [];
   let phase = "Pregame";
+  const turnsTaken = new Map<string, number>();
 
   for (const ev of game.events_pregame ?? []) {
     steps.push(stepFor(ev, 0, "", phase));
   }
   for (const t of game.turns) {
-    turns.push({ turn: t.turn, start: steps.length });
+    const round = (turnsTaken.get(t.active_player) ?? 0) + 1;
+    turnsTaken.set(t.active_player, round);
+    turns.push({ turn: t.turn, round, start: steps.length });
     for (const ev of t.events) {
       const step = stepFor(ev, t.turn, t.active_player, phase);
+      step.round = round;
       steps.push(step);
       phase = step.phase; // phase events update it; others inherit
     }
@@ -274,6 +289,7 @@ export function buildTimeline(game: SimGame): Timeline {
     players: game.players,
     turns,
     totalTurns: game.turns.length ? game.turns[game.turns.length - 1].turn : 0,
+    totalRounds: turns.length ? Math.max(...turns.map((t) => t.round)) : 0,
   };
 }
 
@@ -408,6 +424,15 @@ export function summarizeGame(game: SimGame): GameSummary {
   for (const t of game.turns) for (const e of t.events) flat.push({ turn: t.turn, e });
 
   const endedTurn = game.turns.length ? game.turns[game.turns.length - 1].turn : 0;
+  // Rounds the way a table counts them: a player's Nth turn is round N, which
+  // stays correct after eliminations (dividing turns by seat count does not).
+  const taken = new Map<string, number>();
+  let endedRound = 0;
+  for (const t of game.turns) {
+    const r = (taken.get(t.active_player) ?? 0) + 1;
+    taken.set(t.active_player, r);
+    if (r > endedRound) endedRound = r;
+  }
   const winner = game.result.winner;
   const base: GameSummary = {
     endedTurn,

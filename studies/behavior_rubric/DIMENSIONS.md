@@ -1,9 +1,9 @@
 # The eight dimensions: stock vs agent vs human, measured
 
 Status as of 2026-08-28. One row per dimension Vincent named. Every number
-below is measured, with its population and source next to it; cells marked
-**overnight** fill from the ~380-games-per-arm run in `runs_overnight/` before
-this document is final.
+below is measured, with its population and source next to it; the overnight run
+(1,536 games) landed 2026-08-29; every cell below is final except the 0.9.3
+cEDH validation noted in row 7. Full overnight data: `OVERNIGHT_RESULTS.md`.
 
 Populations differ by dimension and cannot be merged: blocking and mulligans
 need creature-dense boards (precons), interaction and combo need dense-line
@@ -11,13 +11,13 @@ decks (cEDH). Human baselines exist only where videos narrate the action.
 
 | # | dimension | stock | agent (shipping) | human | verdict |
 |---|---|---|---|---|---|
-| 1 | Mulligans | keeps ~97% of sevens | **overnight** (neutral record, shim 0.9.2) | not measurable (edited out) | floor says mull >= 18.5% on precons; stock is far below it |
+| 1 | Mulligans | keeps 82.0% (at the land floor) | keeps 74.8% (floor + reason test) | not measurable (edited out) | measured at 1,024 seat-games each; "stock keeps ~97%" was wrong |
 | 2 | Blockers | 76.0% free-block capture | **96.3%** | not measurable (never narrated) | DONE, replicated across 2x128 games |
-| 3 | Split attacks | 98% single-target | was switched OFF in every shipped plan | partial (key_line) | **overnight** tests 0.7 for the first time |
+| 3 | Split attacks | 1.03 defenders/attack | **1.28** at splitAttacks 0.7, now shipped | partial (key_line) | win effect -2.5 pp ns at n = 512; first config to break single-target |
 | 4 | Instants off-turn | 62% of disruption | 62% | n/a (floor data only) | timing was never broken; both bots are fine here |
 | 5 | Combo pursuit | sits on tutors, burns pieces | steering works; early-burn veto was overfiring | closes round 5 | 0.9.3 gates the veto on line proximity |
 | 6 | Intentional triggers | Forge's trigger AI | never misses; combo triggers protected | n/a | DONE at triggerMiss 0 |
-| 7 | Pursuing win con | win round 10.9 (cEDH) | 12.3 | **5.0** | the biggest open gap; see below |
+| 7 | Pursuing win con | win round 10.9 (cEDH) | 12.3 (0.9.3 validation in flight) | **5.0** | head-to-head is PARITY at n = 1,236 decided: 50.9/50.9/48.4% per arm |
 | 8 | Disrupting enemy win con | no threat model | fires at median threat 8 (92% >= 8), vetoes chaff at median 2 | 7.3 disruption/game (floor) | DONE: interaction is aimed, not sprayed |
 
 ## What each row rests on
@@ -63,13 +63,15 @@ cards are protected from miss rolls regardless (a per-iteration miss once
 halted "you may" loops after a median ~23 iterations — the deck assembled its
 win and stopped; that class of fizzle is structurally gone).
 
-**7. Pursuing the win con.** The open gap. Humans close on round 5.0; stock
-10.9; the shipping agent 12.3 (n = 28 decided cEDH games). The agent is
-SLOWER than stock: play-quality layers add care, and care costs tempo. The
-0.9.3 veto gate removes one measured drag (~1 wasted premium cast per game).
-The head-to-head win rate on precons is 89-102 across 256 games (46.6%, null
-50%) — the **overnight** run answers whether any of three configurations
-(shipping / stripped-layers / split-attacks) wins more, at n with power.
+**7. Pursuing the win con.** The open gap, now measured to a standstill on
+the dial side. Humans close on round 5.0; stock 10.9; the shipping agent 12.3
+(cEDH). Head-to-head on precons: **parity at power** — 512 games per arm gave
+50.9% (base), 50.9% (layers stripped) and 48.4% (split), pooled 619-617, CI
+about +/-4.9 pp. Two ablation campaigns and seven arms agree: personality
+dials neither win nor lose games. Win-rate gains, if they exist, live in
+strategy CONTENT (lines, tutor targets, conversion), not personality. The
+0.9.3 veto gate removes one measured drag (~1 wasted premium cast per game);
+its cEDH validation is the remaining open measurement.
 
 **8. Disrupting the enemy win con.** The SimLabHuman profile makes stock
 propose counters eagerly; the threat veto then filters: fired counters aim at

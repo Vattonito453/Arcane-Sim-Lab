@@ -1,0 +1,48 @@
+shim: plans loaded for [godo, rog_ishai, cabbage_merchant, malcolm_kediss]
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+shim: FModel initialized
+An unsupported card was requested: "Sink into Stupor // Soporific Springs" from "null". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+An unsupported card was requested: "Sink into Stupor // Soporific Springs" from "[N.A.]". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+shim: Ai(1)-rog_ishai -> plan agent, profile SimLabHuman
+shim: Ai(2)-cabbage_merchant -> plan agent, profile SimLabHuman
+An unsupported card was requested: "Shatterskull Smashing // Shatterskull, the Hammer Pass" from "null". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+An unsupported card was requested: "Shatterskull Smashing // Shatterskull, the Hammer Pass" from "[N.A.]". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+shim: Ai(3)-godo -> plan agent, profile SimLabHuman
+An unsupported card was requested: "Sink into Stupor // Soporific Springs" from "null". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+An unsupported card was requested: "Sink into Stupor // Soporific Springs" from "[N.A.]". 
+
+Forge could not find this card in the Database. Any chance you might have mistyped the card name?
+shim: Ai(4)-malcolm_kediss -> plan agent, profile SimLabHuman
+No AI assigned for API: ChangeText
+Ophidian Eye (362) - [Couldn't add to stack, failed to target] - Ophidian Eye[[]]
+shim: game 1 done in 144937 ms — Ai(3)-godo wins

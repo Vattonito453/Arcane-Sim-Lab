@@ -78,7 +78,11 @@ deck's own hypergeometric floor rather than against people.
 - `mull_rate` against the deck's hypergeometric floor F (share of opening
   sevens outside a 2-5 land window: 0.183 at 38 lands, 0.361 at 28). A
   correct pilot exceeds F, because land count is only one of three ship
-  reasons. Stock Forge keeps ~97% of opening hands, i.e. **below the floor**.
+  reasons. **Correction (2026-08-29, measured neutrally at 1,024 seat-games
+  per pilot):** stock keeps 82.0% of sevens, not the ~97% previously written
+  here — it mulls right AT the land-window floor. Stock does the land
+  arithmetic; what it lacks is the reason test. The agent keeps 74.8%,
+  i.e. floor plus reason-ships. See `OVERNIGHT_RESULTS.md`.
 - `mull_depth_distribution`.
 
 ## The neutral observer (built, shim 0.9.0)

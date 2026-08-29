@@ -74,6 +74,12 @@ def game_totals(path: Path):
         if pilot not in per:
             continue
         t = per[pilot]
+        if r["kind"] == "mull":
+            # Mulligans are per-seat counts, not rates worth pairing here;
+            # falling through to the attack branch would inflate atkRecs and
+            # falsely mark every 0.9.2+ game stale (mull records carry no
+            # heldEligible).
+            continue
         if r["kind"] == "block":
             for k in ("incoming", "blocked", "v3", "v2", "v1", "v0",
                       "legalMissed", "lifeTaken", "freeTaken", "freeMissed",

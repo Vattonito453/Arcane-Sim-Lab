@@ -70,33 +70,39 @@ TAG_MARKERS: dict[str, list[str]] = {
 # predictive validity. They are now set to play-to-win:
 #   greed 1.0        never sit on the piece that wins the game
 #   triggerMiss 0    never decline a beneficial optional trigger
-#   splitAttacks 0   kill one opponent rather than spreading damage
 #   politics 0       do not hold interaction because someone else has mana
+# splitAttacks was originally bundled here as an error dial. It is not one:
+# spreading attacks across opponents is often correct multiplayer play, and
+# stock Forge's 98% single-target habit is the deviation. Measured in
+# isolation (512 mixed precon games, 2026-08-29): win effect -2.5 pp, not
+# significant (the CI comfortably includes zero), while defenders per attack
+# declaration moved 1.03 -> 1.28, the first config to break the single-target
+# habit. Shipped at 0.7 as a style dial with a measured bound, not an error.
 # The cEDH corpus is a picture of STRONG human play, so "human-like" means
 # converting, not erring. Any future proposal to re-introduce error has to
 # earn it with a measured gain, not an argument about realism.
 TAG_PERSONALITY: dict[str, dict] = {
-    "go-wide-tokens": {"aggression": 0.7, "splitAttacks": 0.0, "blockiness": 0.5,
+    "go-wide-tokens": {"aggression": 0.7, "splitAttacks": 0.7, "blockiness": 0.5,
                        "counterThreshold": 6, "dangerLife": 8,
                        "grudgeWeight": 0.25, "kingmakerRatio": 1.6,
                        "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
-    "voltron-commander-damage": {"aggression": 0.8, "splitAttacks": 0.0, "blockiness": 0.4,
+    "voltron-commander-damage": {"aggression": 0.8, "splitAttacks": 0.7, "blockiness": 0.4,
                                  "counterThreshold": 6, "dangerLife": 8,
                                  "grudgeWeight": 0.3, "kingmakerRatio": 1.4,
                                  "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
-    "spellslinger-burn": {"aggression": 0.6, "splitAttacks": 0.0, "blockiness": 0.5,
+    "spellslinger-burn": {"aggression": 0.6, "splitAttacks": 0.7, "blockiness": 0.5,
                           "counterThreshold": 4, "dangerLife": 10,
                           "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
                           "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
-    "stax-control": {"aggression": 0.35, "splitAttacks": 0.0, "blockiness": 0.75,
+    "stax-control": {"aggression": 0.35, "splitAttacks": 0.7, "blockiness": 0.75,
                      "counterThreshold": 4, "dangerLife": 12,
                      "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
                      "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
-    "mill": {"aggression": 0.35, "splitAttacks": 0.0, "blockiness": 0.75,
+    "mill": {"aggression": 0.35, "splitAttacks": 0.7, "blockiness": 0.75,
              "counterThreshold": 4, "dangerLife": 12,
              "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
              "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
-    "_default": {"aggression": 0.55, "splitAttacks": 0.0, "blockiness": 0.6,
+    "_default": {"aggression": 0.55, "splitAttacks": 0.7, "blockiness": 0.6,
                  "counterThreshold": 5, "dangerLife": 8,
                  "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
                  "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},

@@ -1,0 +1,1610 @@
+{
+ "decks": {
+  "cabbage_merchant": {
+   "factsCoverage": 0.979,
+   "tags": [
+    "ramp-big-mana",
+    "go-wide-tokens"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "The Cabbage Merchant",
+     "Academy Manufactor",
+     "Bristlebud Farmer",
+     "Clock of Omens",
+     "Grinding Station",
+     "Krark-Clan Ironworks",
+     "Nuka-Cola Vending Machine",
+     "Peregrin Took",
+     "Sowing Mycospawn",
+     "Stridehangar Automaton",
+     "Transmutation Font",
+     "Vivien, Monsters' Advocate",
+     "Arcane Signet",
+     "Beast Within",
+     "Birds of Paradise",
+     "Birthing Pod"
+    ]
+   },
+   "weights": {
+    "The Cabbage Merchant": 8,
+    "Academy Manufactor": 8,
+    "Allosaurus Shepherd": 4,
+    "Arcane Signet": 5,
+    "Archdruid's Charm": 3,
+    "Autumn's Veil": 4,
+    "Beast Within": 5,
+    "Birds of Paradise": 5,
+    "Birthing Pod": 5,
+    "Bristlebud Farmer": 8,
+    "Chord of Calling": 5,
+    "Chrome Mox": 5,
+    "Clock of Omens": 8,
+    "Crop Rotation": 5,
+    "Delighted Halfling": 5,
+    "Eldritch Evolution": 5,
+    "Enduring Vitality": 5,
+    "Fellwar Stone": 5,
+    "Gilded Goose": 5,
+    "Green Sun's Zenith": 5,
+    "Grinding Station": 8,
+    "Idol of Oblivion": 5,
+    "Jaheira, Friend of the Forest": 5,
+    "Krark-Clan Ironworks": 8,
+    "Kuldotha Forgemaster": 5,
+    "Lotus Petal": 5,
+    "Mana Vault": 5,
+    "Mox Amber": 5,
+    "Mox Diamond": 5,
+    "Natural Order": 5,
+    "Nature's Claim": 3,
+    "Nature's Rhythm": 5,
+    "Nuka-Cola Vending Machine": 8,
+    "Peregrin Took": 8,
+    "Sol Ring": 5,
+    "Sowing Mycospawn": 8,
+    "Stridehangar Automaton": 8,
+    "Sylvan Tutor": 5,
+    "The One Ring": 4,
+    "Time of Need": 5,
+    "Tooth and Nail": 5,
+    "Transmutation Font": 8,
+    "Veil of Summer": 4,
+    "Verdant Command": 5,
+    "Vivien, Monsters' Advocate": 8,
+    "Wear Down": 3,
+    "Worldly Tutor": 5
+   },
+   "threat": [
+    "The Cabbage Merchant",
+    "Academy Manufactor",
+    "Bristlebud Farmer",
+    "Clock of Omens",
+    "Grinding Station",
+    "Krark-Clan Ironworks",
+    "Nuka-Cola Vending Machine",
+    "Peregrin Took",
+    "Sowing Mycospawn",
+    "Stridehangar Automaton",
+    "Transmutation Font",
+    "Vivien, Monsters' Advocate"
+   ],
+   "roles": {
+    "The Cabbage Merchant": "commander",
+    "Academy Manufactor": "combo-piece",
+    "Allosaurus Shepherd": "protection",
+    "Ancient Tomb": "land",
+    "Arcane Signet": "enabler",
+    "Archdruid's Charm": "removal",
+    "Augur of Autumn": "filler",
+    "Autumn's Veil": "protection",
+    "Beast Within": "enabler",
+    "Birds of Paradise": "enabler",
+    "Birthing Pod": "tutor",
+    "Boseiju, Who Endures": "land",
+    "Bristlebud Farmer": "payoff",
+    "Carpet of Flowers": "filler",
+    "Chord of Calling": "tutor",
+    "Chrome Mox": "enabler",
+    "City of Traitors": "land",
+    "Clock of Omens": "combo-piece",
+    "Compost": "filler",
+    "Crop Rotation": "enabler",
+    "Crystal Vein": "land",
+    "Delighted Halfling": "enabler",
+    "Dryad Arbor": "filler",
+    "Eldritch Evolution": "tutor",
+    "Elvish Mystic": "filler",
+    "Elvish Spirit Guide": "filler",
+    "Emergence Zone": "land",
+    "Endurance": "filler",
+    "Enduring Vitality": "enabler",
+    "Eternal Witness": "filler",
+    "Fellwar Stone": "enabler",
+    "Finale of Devastation": "filler",
+    "Fomori Vault": "land",
+    "Force of Vigor": "filler",
+    "Forest": "land",
+    "Gaea's Cradle": "land",
+    "Geier Reach Sanitarium": "land",
+    "Gemstone Caverns": "land",
+    "Gilded Goose": "enabler",
+    "Green Sun's Zenith": "tutor",
+    "Grinding Station": "combo-piece",
+    "Idol of Oblivion": "enabler",
+    "Inventors' Fair": "land",
+    "Jaheira, Friend of the Forest": "enabler",
+    "Karn, the Great Creator": "filler",
+    "Kenrith's Transformation": "filler",
+    "Krark-Clan Ironworks": "combo-piece",
+    "Kuldotha Forgemaster": "tutor",
+    "Liberator, Urza's Battlethopter": "filler",
+    "Llanowar Elves": "filler",
+    "Lotus Petal": "enabler",
+    "Mana Vault": "enabler",
+    "Mirage Mirror": "filler",
+    "Misty Rainforest": "land",
+    "Mox Amber": "enabler",
+    "Mox Diamond": "enabler",
+    "Natural Order": "tutor",
+    "Nature's Claim": "removal",
+    "Nature's Rhythm": "tutor",
+    "Noxious Revival": "filler",
+    "Nuka-Cola Vending Machine": "combo-piece",
+    "Peregrin Took": "combo-piece",
+    "Prismatic Vista": "land",
+    "Sarinth Steelseeker": "filler",
+    "Seedborn Muse": "filler",
+    "Seedtime": "filler",
+    "Shifting Woodland": "land",
+    "Six": "filler",
+    "Sol Ring": "enabler",
+    "Sowing Mycospawn": "payoff",
+    "Stridehangar Automaton": "combo-piece",
+    "Sylvan Library": "filler",
+    "Sylvan Tutor": "tutor",
+    "Talon Gates of Madara": "land",
+    "The Mycosynth Gardens": "land",
+    "The One Ring": "protection",
+    "The Shire": "land",
+    "Thousand-Year Elixir": "filler",
+    "Time of Need": "tutor",
+    "Tooth and Nail": "tutor",
+    "Transmutation Font": "combo-piece",
+    "Treasure Vault": "land",
+    "Tree of Tales": "land",
+    "Turntimber Symbiosis": "filler",
+    "Urza's Saga": "land",
+    "Veil of Summer": "protection",
+    "Verdant Catacombs": "land",
+    "Verdant Command": "enabler",
+    "Vivien, Champion of the Wilds": "filler",
+    "Vivien, Monsters' Advocate": "payoff",
+    "Walking Ballista": "filler",
+    "Wandering Archaic": "filler",
+    "Wear Down": "removal",
+    "Windswept Heath": "land",
+    "Worldly Tutor": "tutor",
+    "Yavimaya, Cradle of Growth": "land"
+   },
+   "personality": {
+    "aggression": 0.55,
+    "splitAttacks": 0.0,
+    "blockiness": 0.6,
+    "counterThreshold": 5,
+    "dangerLife": 8,
+    "grudgeWeight": 0.2,
+    "kingmakerRatio": 1.6,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0
+   },
+   "lines": [
+    {
+     "cards": [
+      "Peregrin Took",
+      "Nuka-Cola Vending Machine"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Near-infinite tapped Treasure tokens"
+     ]
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Krark-Clan Ironworks"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite colorless mana",
+      "Infinite tapped Treasure tokens",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite card draw",
+      "Infinite draw triggers"
+     ]
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Clock of Omens"
+     ],
+     "produces": [
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens"
+     ]
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite mill",
+      "Infinite self-mill",
+      "Infinite tapped Treasure tokens",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens"
+     ]
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Academy Manufactor",
+      "Clock of Omens"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite Blood tokens",
+      "Infinite card draw",
+      "Infinite Clue tokens",
+      "Infinite colored mana",
+      "Infinite draw triggers",
+      "Infinite Food tokens",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite mana artifacts you control can produce",
+      "Infinite rummaging",
+      "Infinite self-discard triggers",
+      "Infinite Treasure tokens",
+      "Infinite untap of artifacts you control"
+     ]
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Stridehangar Automaton"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite tapped Food tokens",
+      "Infinite tapped creature tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ]
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ]
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Peregrin Took"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ]
+    }
+   ],
+   "tutors": [
+    "Birthing Pod",
+    "Chord of Calling",
+    "Eldritch Evolution",
+    "Green Sun's Zenith",
+    "Kuldotha Forgemaster",
+    "Natural Order",
+    "Nature's Rhythm",
+    "Sylvan Tutor",
+    "Time of Need",
+    "Tooth and Nail",
+    "Transmutation Font",
+    "Vivien, Monsters' Advocate",
+    "Worldly Tutor"
+   ],
+   "manaCreatures": [
+    "The Cabbage Merchant",
+    "Birds of Paradise",
+    "Delighted Halfling",
+    "Dryad Arbor",
+    "Elvish Mystic",
+    "Elvish Spirit Guide",
+    "Enduring Vitality",
+    "Gilded Goose",
+    "Jaheira, Friend of the Forest",
+    "Llanowar Elves"
+   ],
+   "search": {
+    "targets": {
+     "Academy Manufactor": 8,
+     "Allosaurus Shepherd": 4,
+     "Arcane Signet": 5,
+     "Archdruid's Charm": 3,
+     "Autumn's Veil": 4,
+     "Birds of Paradise": 5,
+     "Bristlebud Farmer": 7,
+     "Chrome Mox": 5,
+     "Clock of Omens": 8,
+     "Delighted Halfling": 5,
+     "Dryad Arbor": 5,
+     "Elvish Mystic": 5,
+     "Elvish Spirit Guide": 5,
+     "Enduring Vitality": 5,
+     "Fellwar Stone": 5,
+     "Gilded Goose": 5,
+     "Grinding Station": 8,
+     "Jaheira, Friend of the Forest": 5,
+     "Krark-Clan Ironworks": 8,
+     "Llanowar Elves": 5,
+     "Lotus Petal": 5,
+     "Mana Vault": 5,
+     "Mox Amber": 5,
+     "Mox Diamond": 5,
+     "Nature's Claim": 3,
+     "Nuka-Cola Vending Machine": 8,
+     "Peregrin Took": 8,
+     "Sol Ring": 5,
+     "Sowing Mycospawn": 7,
+     "Stridehangar Automaton": 8,
+     "The One Ring": 4,
+     "Tooth and Nail": 6,
+     "Transmutation Font": 8,
+     "Veil of Summer": 4,
+     "Vivien, Monsters' Advocate": 7,
+     "Wear Down": 3
+    },
+    "context": {
+     "Arcane Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Birds of Paradise": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Chrome Mox": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Delighted Halfling": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Dryad Arbor": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Elvish Mystic": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Elvish Spirit Guide": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Enduring Vitality": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Fellwar Stone": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Gilded Goose": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Jaheira, Friend of the Forest": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Llanowar Elves": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Lotus Petal": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mana Vault": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Amber": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Diamond": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     }
+    }
+   }
+  },
+  "godo": {
+   "factsCoverage": 0.978,
+   "tags": [
+    "ramp-big-mana",
+    "voltron-commander-damage"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "Godo, Bandit Warlord",
+     "Basalt Monolith",
+     "Forsaken Monument",
+     "Grim Monolith",
+     "Hammer of Nazahn",
+     "Helm of the Host",
+     "Krark-Clan Ironworks",
+     "Mana Vault",
+     "Metalworker",
+     "Rings of Brighthearth",
+     "Staff of Domination",
+     "Thran Dynamo",
+     "Ugin, Eye of the Storms",
+     "Voltaic Key",
+     "Chrome Mox",
+     "Conqueror's Flail"
+    ]
+   },
+   "weights": {
+    "Godo, Bandit Warlord": 8,
+    "Basalt Monolith": 8,
+    "Chrome Mox": 5,
+    "Conqueror's Flail": 5,
+    "Diviner's Wand": 5,
+    "Forsaken Monument": 8,
+    "Gamble": 5,
+    "Goblin Engineer": 5,
+    "Grim Monolith": 8,
+    "Hammer of Nazahn": 8,
+    "Helm of the Host": 8,
+    "Hexing Squelcher": 4,
+    "Imperial Recruiter": 5,
+    "Krark-Clan Ironworks": 8,
+    "Kuldotha Forgemaster": 5,
+    "Lotus Petal": 5,
+    "Magnetic Theft": 5,
+    "Mana Vault": 8,
+    "Metalworker": 8,
+    "Mox Diamond": 5,
+    "Mox Opal": 5,
+    "Pyroblast": 4,
+    "Reckless Handling": 5,
+    "Red Elemental Blast": 3,
+    "Rings of Brighthearth": 8,
+    "Sol Ring": 5,
+    "Staff of Compleation": 5,
+    "Staff of Domination": 8,
+    "Tezzeret, Cruel Captain": 5,
+    "The One Ring": 4,
+    "Thran Dynamo": 8,
+    "Thunderclap": 3,
+    "Tibalt's Trickery": 4,
+    "Ugin, Eye of the Storms": 8,
+    "Untimely Malfunction": 3,
+    "Voltaic Key": 8,
+    "Wild Magic Surge": 3
+   },
+   "threat": [
+    "Godo, Bandit Warlord",
+    "Basalt Monolith",
+    "Forsaken Monument",
+    "Grim Monolith",
+    "Hammer of Nazahn",
+    "Helm of the Host",
+    "Krark-Clan Ironworks",
+    "Mana Vault",
+    "Metalworker",
+    "Rings of Brighthearth",
+    "Staff of Domination",
+    "Thran Dynamo",
+    "Ugin, Eye of the Storms",
+    "Voltaic Key"
+   ],
+   "roles": {
+    "Godo, Bandit Warlord": "commander",
+    "Zhur-Taa Goblin": "filler",
+    "Abstergo Entertainment": "land",
+    "Ancient Tomb": "land",
+    "Anje's Ravager": "filler",
+    "Basalt Monolith": "combo-piece",
+    "Blasphemous Act": "filler",
+    "Chaos Warp": "filler",
+    "Chrome Mox": "enabler",
+    "City of Traitors": "land",
+    "Command Beacon": "land",
+    "Conqueror's Flail": "enabler",
+    "Crystal Vein": "land",
+    "Cursed Mirror": "filler",
+    "Darksteel Citadel": "land",
+    "Defense Grid": "filler",
+    "Deflecting Swat": "filler",
+    "Desperate Ritual": "filler",
+    "Diviner's Wand": "enabler",
+    "Dwarven Ruins": "land",
+    "Final Fortune": "filler",
+    "Forsaken Monument": "combo-piece",
+    "Gamble": "tutor",
+    "Gemstone Caverns": "land",
+    "Ghostfire Slice": "filler",
+    "Goblin Engineer": "tutor",
+    "Goblin Welder": "filler",
+    "Great Furnace": "land",
+    "Grim Monolith": "combo-piece",
+    "Hammer of Nazahn": "payoff",
+    "Heat Shimmer": "filler",
+    "Helm of the Host": "combo-piece",
+    "Hexing Squelcher": "protection",
+    "Honor-Worn Shaku": "filler",
+    "Imperial Recruiter": "tutor",
+    "Inventors' Fair": "land",
+    "Jeska's Will": "filler",
+    "Krark-Clan Ironworks": "payoff",
+    "Kuldotha Forgemaster": "tutor",
+    "Lightning Bolt": "filler",
+    "Lion's Eye Diamond": "filler",
+    "Lotus Petal": "enabler",
+    "Magnetic Theft": "enabler",
+    "Mana Vault": "combo-piece",
+    "Manifold Key": "filler",
+    "Metalworker": "combo-piece",
+    "Mishra's Workshop": "land",
+    "Molten Duplication": "filler",
+    "Moonsilver Key": "filler",
+    "Mountain": "land",
+    "Mox Diamond": "enabler",
+    "Mox Opal": "enabler",
+    "Party Thrasher": "filler",
+    "Peter Parker's Camera": "filler",
+    "Pyretic Ritual": "filler",
+    "Pyroblast": "protection",
+    "Reckless Handling": "tutor",
+    "Red Elemental Blast": "removal",
+    "Redirect Lightning": "filler",
+    "Return the Favor": "filler",
+    "Rings of Brighthearth": "combo-piece",
+    "Rite of Flame": "filler",
+    "Sandstone Needle": "land",
+    "Seething Song": "filler",
+    "Shatterskull Smashing // Shatterskull, the Hammer Pass": "filler",
+    "Simian Spirit Guide": "filler",
+    "Sol Ring": "enabler",
+    "Staff of Compleation": "enabler",
+    "Staff of Domination": "combo-piece",
+    "Talon Gates of Madara": "land",
+    "Tezzeret, Cruel Captain": "tutor",
+    "The One Ring": "protection",
+    "Thran Dynamo": "combo-piece",
+    "Thunderclap": "removal",
+    "Tibalt's Trickery": "protection",
+    "Treasonous Ogre": "filler",
+    "Treasure Vault": "land",
+    "Trinisphere": "filler",
+    "Twinflame": "filler",
+    "Ugin, Eye of the Storms": "payoff",
+    "Untimely Malfunction": "removal",
+    "Urza's Cave": "land",
+    "Urza's Saga": "land",
+    "Veilstone Amulet": "filler",
+    "Vexing Bauble": "filler",
+    "Voltaic Key": "combo-piece",
+    "Wandering Archaic": "filler",
+    "Wheel of Fortune": "filler",
+    "Wild Magic Surge": "removal",
+    "Wild Slash": "filler"
+   },
+   "personality": {
+    "aggression": 0.55,
+    "splitAttacks": 0.0,
+    "blockiness": 0.6,
+    "counterThreshold": 5,
+    "dangerLife": 8,
+    "grudgeWeight": 0.2,
+    "kingmakerRatio": 1.6,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0
+   },
+   "lines": [
+    {
+     "cards": [
+      "Basalt Monolith",
+      "Forsaken Monument"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ]
+    },
+    {
+     "cards": [
+      "Rings of Brighthearth",
+      "Basalt Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ]
+    },
+    {
+     "cards": [
+      "Godo, Bandit Warlord",
+      "Helm of the Host"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite creature sacrifice triggers",
+      "Put all Equipment cards from your library onto the battlefield"
+     ]
+    },
+    {
+     "cards": [
+      "Staff of Domination",
+      "Metalworker"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite colorless mana",
+      "Infinite draw triggers",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce"
+     ]
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Rings of Brighthearth",
+      "Metalworker"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite untap of artifacts you control",
+      "Infinite mana artifacts you control can produce"
+     ]
+    },
+    {
+     "cards": [
+      "Rings of Brighthearth",
+      "Forsaken Monument",
+      "Grim Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ]
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Forsaken Monument",
+      "Rings of Brighthearth",
+      "Thran Dynamo"
+     ],
+     "produces": [
+      "Infinite untap of artifacts you control",
+      "Infinite colorless mana",
+      "Infinite mana artifacts you control can produce"
+     ]
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Forsaken Monument",
+      "Rings of Brighthearth",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite untap of artifacts you control",
+      "Infinite colorless mana",
+      "Infinite mana artifacts you control can produce"
+     ]
+    }
+   ],
+   "tutors": [
+    "Godo, Bandit Warlord",
+    "Gamble",
+    "Goblin Engineer",
+    "Imperial Recruiter",
+    "Kuldotha Forgemaster",
+    "Reckless Handling",
+    "Tezzeret, Cruel Captain"
+   ],
+   "manaCreatures": [
+    "Metalworker",
+    "Simian Spirit Guide",
+    "Treasonous Ogre"
+   ],
+   "search": {
+    "targets": {
+     "Basalt Monolith": 8,
+     "Blasphemous Act": 6,
+     "Chrome Mox": 5,
+     "Cursed Mirror": 5,
+     "Desperate Ritual": 5,
+     "Final Fortune": 8,
+     "Forsaken Monument": 8,
+     "Grim Monolith": 8,
+     "Hammer of Nazahn": 7,
+     "Helm of the Host": 8,
+     "Hexing Squelcher": 4,
+     "Honor-Worn Shaku": 5,
+     "Jeska's Will": 5,
+     "Krark-Clan Ironworks": 7,
+     "Lotus Petal": 5,
+     "Mana Vault": 8,
+     "Metalworker": 8,
+     "Mox Diamond": 5,
+     "Mox Opal": 5,
+     "Pyretic Ritual": 5,
+     "Pyroblast": 4,
+     "Red Elemental Blast": 3,
+     "Rings of Brighthearth": 8,
+     "Rite of Flame": 5,
+     "Seething Song": 5,
+     "Simian Spirit Guide": 5,
+     "Sol Ring": 5,
+     "Staff of Compleation": 5,
+     "Staff of Domination": 8,
+     "The One Ring": 4,
+     "Thran Dynamo": 8,
+     "Thunderclap": 3,
+     "Tibalt's Trickery": 4,
+     "Ugin, Eye of the Storms": 7,
+     "Untimely Malfunction": 3,
+     "Voltaic Key": 8,
+     "Wild Magic Surge": 3,
+     "Wild Slash": 8
+    },
+    "context": {
+     "Chrome Mox": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Cursed Mirror": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Desperate Ritual": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Forsaken Monument": {
+      "hint": "finisher",
+      "minCreatures": 3
+     },
+     "Honor-Worn Shaku": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Jeska's Will": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Lotus Petal": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Diamond": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Opal": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Pyretic Ritual": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Rite of Flame": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Seething Song": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Simian Spirit Guide": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Staff of Compleation": {
+      "hint": "ramp",
+      "beforeRound": 5
+     }
+    }
+   }
+  },
+  "malcolm_kediss": {
+   "factsCoverage": 0.98,
+   "tags": [
+    "stax-control",
+    "go-wide-tokens"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "Malcolm, Keen-Eyed Navigator",
+     "Kediss, Emberclaw Familiar",
+     "Curiosity",
+     "Flare of Duplication",
+     "Flash Photography",
+     "Force of Will",
+     "Glen Elendra's Answer",
+     "Narset's Reversal",
+     "Niv-Mizzet, Parun",
+     "Ophidian Eye",
+     "Pact of Negation",
+     "An Offer You Can't Refuse",
+     "Arcane Denial",
+     "Counterspell",
+     "Delay",
+     "Dispel"
+    ]
+   },
+   "weights": {
+    "Malcolm, Keen-Eyed Navigator": 8,
+    "Kediss, Emberclaw Familiar": 8,
+    "An Offer You Can't Refuse": 5,
+    "Arcane Denial": 5,
+    "Counterspell": 5,
+    "Curiosity": 8,
+    "Delay": 5,
+    "Dispel": 5,
+    "Disrupting Shoal": 5,
+    "Fierce Guardianship": 5,
+    "Flare of Denial": 5,
+    "Flare of Duplication": 8,
+    "Flash Photography": 8,
+    "Flusterstorm": 5,
+    "Force of Negation": 5,
+    "Force of Will": 8,
+    "Gamble": 5,
+    "Glen Elendra's Answer": 8,
+    "Into the Flood Maw": 5,
+    "Long-Term Plans": 5,
+    "Mana Drain": 5,
+    "Mana Vault": 5,
+    "Mental Misstep": 5,
+    "Mystical Tutor": 5,
+    "Narset's Reversal": 8,
+    "Niv-Mizzet, Parun": 8,
+    "Ophidian Eye": 8,
+    "Pact of Negation": 8,
+    "Polymorph": 3,
+    "Pongify": 5,
+    "Pyroblast": 5,
+    "Rapid Hybridization": 5,
+    "Red Elemental Blast": 5,
+    "Spell Snare": 5,
+    "Step Through": 5,
+    "Stern Scolding": 5,
+    "Strike It Rich": 5,
+    "Strix Serenade": 5,
+    "Stubborn Denial": 5,
+    "Swan Song": 5,
+    "Transmogrify": 3,
+    "Trickbind": 5
+   },
+   "threat": [
+    "Malcolm, Keen-Eyed Navigator",
+    "Kediss, Emberclaw Familiar",
+    "Curiosity",
+    "Flare of Duplication",
+    "Flash Photography",
+    "Force of Will",
+    "Glen Elendra's Answer",
+    "Narset's Reversal",
+    "Niv-Mizzet, Parun",
+    "Ophidian Eye",
+    "Pact of Negation"
+   ],
+   "roles": {
+    "Malcolm, Keen-Eyed Navigator": "commander",
+    "Kediss, Emberclaw Familiar": "commander",
+    "An Offer You Can't Refuse": "enabler",
+    "Ancient Tomb": "land",
+    "Arcane Denial": "enabler",
+    "Arid Mesa": "land",
+    "Artificial Evolution": "filler",
+    "Bloodstained Mire": "land",
+    "Bolt Bend": "filler",
+    "Cephalid Coliseum": "land",
+    "Chain of Vapor": "filler",
+    "Chaos Mutation": "filler",
+    "Chrome Mox": "filler",
+    "City of Brass": "land",
+    "City of Traitors": "land",
+    "Command Tower": "land",
+    "Commandeer": "filler",
+    "Copy Enchantment": "filler",
+    "Counterspell": "enabler",
+    "Crystal Vein": "land",
+    "Curiosity": "combo-piece",
+    "Cursed Totem": "filler",
+    "Cyclonic Rift": "filler",
+    "Deflecting Swat": "filler",
+    "Delay": "enabler",
+    "Dispel": "enabler",
+    "Disrupting Shoal": "enabler",
+    "Divergent Transformations": "filler",
+    "Fierce Guardianship": "enabler",
+    "Fiery Islet": "land",
+    "Flare of Denial": "enabler",
+    "Flare of Duplication": "combo-piece",
+    "Flash Photography": "payoff",
+    "Flooded Strand": "land",
+    "Flusterstorm": "enabler",
+    "Force of Negation": "enabler",
+    "Force of Will": "payoff",
+    "Fountainport": "land",
+    "Gamble": "tutor",
+    "Gemstone Caverns": "land",
+    "Glen Elendra's Answer": "payoff",
+    "Horizon of Progress": "land",
+    "Into the Flood Maw": "enabler",
+    "Long-Term Plans": "tutor",
+    "Lotus Petal": "filler",
+    "Maelstrom of the Spirit Dragon": "land",
+    "Mana Confluence": "land",
+    "Mana Drain": "enabler",
+    "Mana Vault": "enabler",
+    "Mental Misstep": "enabler",
+    "Mindbreak Trap": "filler",
+    "Mirrormade": "filler",
+    "Misdirection": "filler",
+    "Mistrise Village": "land",
+    "Misty Rainforest": "land",
+    "Mox Amber": "filler",
+    "Mox Diamond": "filler",
+    "Mystic Remora": "filler",
+    "Mystical Tutor": "tutor",
+    "Narset's Reversal": "combo-piece",
+    "Niv-Mizzet, Parun": "combo-piece",
+    "Ophidian Eye": "combo-piece",
+    "Otawara, Soaring City": "land",
+    "Pact of Negation": "payoff",
+    "Plaza of Heroes": "land",
+    "Polluted Delta": "land",
+    "Polymorph": "removal",
+    "Pongify": "enabler",
+    "Proteus Staff": "filler",
+    "Pyroblast": "enabler",
+    "Rapid Hybridization": "enabler",
+    "Reality Scramble": "filler",
+    "Red Elemental Blast": "enabler",
+    "Redirect Lightning": "filler",
+    "Rhystic Study": "filler",
+    "Rite of Flame": "filler",
+    "Saprazzan Skerry": "land",
+    "Scalding Tarn": "land",
+    "Sea Gate Restoration": "filler",
+    "Sink into Stupor // Soporific Springs": "filler",
+    "Snapback": "filler",
+    "Sol Ring": "filler",
+    "Spell Snare": "enabler",
+    "Steal Enchantment": "filler",
+    "Steam Vents": "land",
+    "Step Through": "tutor",
+    "Stern Scolding": "enabler",
+    "Strike It Rich": "enabler",
+    "Strix Serenade": "enabler",
+    "Stubborn Denial": "enabler",
+    "Submerge": "filler",
+    "Swan Song": "enabler",
+    "Talon Gates of Madara": "land",
+    "Thundering Falls": "land",
+    "Training Center": "land",
+    "Transmogrify": "removal",
+    "Trickbind": "enabler",
+    "Volatile Fault": "land",
+    "Volcanic Island": "land",
+    "Wooded Foothills": "land"
+   },
+   "personality": {
+    "aggression": 0.35,
+    "splitAttacks": 0.0,
+    "blockiness": 0.75,
+    "counterThreshold": 4,
+    "dangerLife": 12,
+    "grudgeWeight": 0.15,
+    "kingmakerRatio": 1.8,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0
+   },
+   "lines": [
+    {
+     "cards": [
+      "Curiosity",
+      "Niv-Mizzet, Parun"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite card draw",
+      "Near-infinite damage"
+     ]
+    },
+    {
+     "cards": [
+      "Niv-Mizzet, Parun",
+      "Ophidian Eye"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Near-infinite damage"
+     ]
+    },
+    {
+     "cards": [
+      "Narset's Reversal",
+      "Flare of Duplication"
+     ],
+     "produces": [
+      "Infinite magecraft triggers"
+     ]
+    }
+   ],
+   "tutors": [
+    "Gamble",
+    "Long-Term Plans",
+    "Mystical Tutor",
+    "Step Through"
+   ],
+   "manaCreatures": [
+    "Malcolm, Keen-Eyed Navigator"
+   ],
+   "search": {
+    "targets": {
+     "An Offer You Can't Refuse": 5,
+     "Chrome Mox": 5,
+     "Commandeer": 6,
+     "Curiosity": 8,
+     "Divergent Transformations": 6,
+     "Flare of Duplication": 8,
+     "Flash Photography": 7,
+     "Force of Will": 7,
+     "Glen Elendra's Answer": 7,
+     "Lotus Petal": 5,
+     "Mana Vault": 5,
+     "Mox Amber": 5,
+     "Mox Diamond": 5,
+     "Narset's Reversal": 8,
+     "Niv-Mizzet, Parun": 8,
+     "Ophidian Eye": 8,
+     "Pact of Negation": 8,
+     "Polymorph": 3,
+     "Rite of Flame": 5,
+     "Sol Ring": 5,
+     "Strike It Rich": 5,
+     "Transmogrify": 3
+    },
+    "context": {
+     "An Offer You Can't Refuse": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Chrome Mox": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Lotus Petal": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mana Vault": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Amber": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Diamond": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Rite of Flame": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Strike It Rich": {
+      "hint": "ramp",
+      "beforeRound": 5
+     }
+    }
+   }
+  },
+  "rog_ishai": {
+   "factsCoverage": 0.99,
+   "tags": [
+    "ramp-big-mana",
+    "stax-control"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "Rograkh, Son of Rohgahh",
+     "Ishai, Ojutai Dragonspeaker",
+     "Clever Impersonator",
+     "Faerie Mastermind",
+     "Storm-Kiln Artist",
+     "Jeska's Will",
+     "Wheel of Fortune",
+     "Angel's Grace",
+     "Brain Freeze",
+     "Force of Will",
+     "Pact of Negation",
+     "Lion's Eye Diamond",
+     "Lotus Petal",
+     "Copy Enchantment",
+     "Mirrormade",
+     "Smothering Tithe"
+    ]
+   },
+   "weights": {
+    "Rograkh, Son of Rohgahh": 8,
+    "Ishai, Ojutai Dragonspeaker": 8,
+    "Clever Impersonator": 8,
+    "Faerie Mastermind": 8,
+    "Hexing Squelcher": 4,
+    "Ranger-Captain of Eos": 5,
+    "Storm-Kiln Artist": 8,
+    "Gamble": 5,
+    "Idyllic Tutor": 5,
+    "Jeska's Will": 8,
+    "Wheel of Fortune": 8,
+    "Angel's Grace": 8,
+    "Brain Freeze": 8,
+    "Disrupting Shoal": 5,
+    "Dizzy Spell": 5,
+    "Enlightened Tutor": 5,
+    "Fierce Guardianship": 5,
+    "Flusterstorm": 5,
+    "Force of Negation": 5,
+    "Force of Will": 8,
+    "Gifts Ungiven": 5,
+    "Intuition": 5,
+    "Mental Misstep": 5,
+    "Mystical Tutor": 5,
+    "Pact of Negation": 8,
+    "Pyroblast": 5,
+    "Red Elemental Blast": 5,
+    "Swan Song": 5,
+    "Swords to Plowshares": 3,
+    "Arcane Signet": 5,
+    "Chrome Mox": 5,
+    "Lion's Eye Diamond": 8,
+    "Lotus Petal": 8,
+    "Mana Vault": 5,
+    "Mox Amber": 5,
+    "Mox Diamond": 5,
+    "Mox Opal": 5,
+    "Paradise Mantle": 5,
+    "Relic of Legends": 5,
+    "Sol Ring": 5,
+    "Springleaf Drum": 5,
+    "Copy Enchantment": 8,
+    "Curse of Opulence": 5,
+    "Mirrormade": 8,
+    "Smothering Tithe": 8,
+    "Underworld Breach": 8
+   },
+   "threat": [
+    "Rograkh, Son of Rohgahh",
+    "Ishai, Ojutai Dragonspeaker",
+    "Clever Impersonator",
+    "Faerie Mastermind",
+    "Storm-Kiln Artist",
+    "Jeska's Will",
+    "Wheel of Fortune",
+    "Angel's Grace",
+    "Brain Freeze",
+    "Force of Will",
+    "Pact of Negation",
+    "Lion's Eye Diamond",
+    "Lotus Petal",
+    "Copy Enchantment",
+    "Mirrormade",
+    "Smothering Tithe",
+    "Underworld Breach"
+   ],
+   "roles": {
+    "Rograkh, Son of Rohgahh": "commander",
+    "Ishai, Ojutai Dragonspeaker": "commander",
+    "Clever Impersonator": "combo-piece",
+    "Esper Sentinel": "filler",
+    "Faerie Mastermind": "combo-piece",
+    "Hexing Squelcher": "protection",
+    "Mockingbird": "filler",
+    "Ragavan, Nimble Pilferer": "filler",
+    "Ranger-Captain of Eos": "tutor",
+    "Simian Spirit Guide": "filler",
+    "Storm-Kiln Artist": "payoff",
+    "Subtlety": "filler",
+    "Tataru Taru": "filler",
+    "Valley Floodcaller": "filler",
+    "Bribery": "filler",
+    "Flash Photography": "filler",
+    "Gamble": "tutor",
+    "Idyllic Tutor": "tutor",
+    "Infernal Plunge": "filler",
+    "Jeska's Will": "combo-piece",
+    "Rite of Flame": "filler",
+    "Sevinne's Reclamation": "filler",
+    "Wheel of Fortune": "combo-piece",
+    "Angel's Grace": "payoff",
+    "Borne Upon a Wind": "filler",
+    "Brain Freeze": "combo-piece",
+    "Chain of Vapor": "filler",
+    "Commandeer": "filler",
+    "Deflecting Swat": "filler",
+    "Disrupting Shoal": "enabler",
+    "Dizzy Spell": "tutor",
+    "Enlightened Tutor": "tutor",
+    "Fierce Guardianship": "enabler",
+    "Firestorm": "filler",
+    "Flare of Duplication": "filler",
+    "Flusterstorm": "enabler",
+    "Force of Negation": "enabler",
+    "Force of Will": "payoff",
+    "Gifts Ungiven": "tutor",
+    "Into the Flood Maw": "filler",
+    "Intuition": "tutor",
+    "Mental Misstep": "enabler",
+    "Mindbreak Trap": "filler",
+    "Misdirection": "filler",
+    "Mystical Tutor": "tutor",
+    "Pact of Negation": "payoff",
+    "Pyroblast": "enabler",
+    "Red Elemental Blast": "enabler",
+    "Redirect Lightning": "filler",
+    "Silence": "filler",
+    "Sink into Stupor // Soporific Springs": "filler",
+    "Snapback": "filler",
+    "Swan Song": "enabler",
+    "Swords to Plowshares": "removal",
+    "Arcane Signet": "enabler",
+    "Chrome Mox": "enabler",
+    "Lion's Eye Diamond": "combo-piece",
+    "Lotus Petal": "combo-piece",
+    "Mana Vault": "enabler",
+    "Mox Amber": "enabler",
+    "Mox Diamond": "enabler",
+    "Mox Opal": "enabler",
+    "Paradise Mantle": "enabler",
+    "Relic of Legends": "enabler",
+    "Sol Ring": "enabler",
+    "Springleaf Drum": "enabler",
+    "Talisman of Progress": "filler",
+    "Copy Enchantment": "combo-piece",
+    "Curse of Opulence": "enabler",
+    "Mirrormade": "combo-piece",
+    "Mystic Remora": "filler",
+    "Rhystic Study": "filler",
+    "Smothering Tithe": "combo-piece",
+    "Steal Enchantment": "filler",
+    "Underworld Breach": "combo-piece",
+    "Ancient Tomb": "land",
+    "Arid Mesa": "land",
+    "Bloodstained Mire": "land",
+    "City of Brass": "land",
+    "City of Traitors": "land",
+    "Command Tower": "land",
+    "Flooded Strand": "land",
+    "Gemstone Caverns": "land",
+    "Hallowed Fountain": "land",
+    "Mana Confluence": "land",
+    "Marsh Flats": "land",
+    "Misty Rainforest": "land",
+    "Otawara, Soaring City": "land",
+    "Plateau": "land",
+    "Polluted Delta": "land",
+    "Sacred Foundry": "land",
+    "Scalding Tarn": "land",
+    "Sea of Clouds": "land",
+    "Starting Town": "land",
+    "Steam Vents": "land",
+    "Tarnished Citadel": "land",
+    "Tundra": "land",
+    "Volcanic Island": "land",
+    "Windswept Heath": "land",
+    "Wooded Foothills": "land"
+   },
+   "personality": {
+    "aggression": 0.55,
+    "splitAttacks": 0.0,
+    "blockiness": 0.6,
+    "counterThreshold": 5,
+    "dangerLife": 8,
+    "grudgeWeight": 0.2,
+    "kingmakerRatio": 1.6,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0
+   },
+   "lines": [
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ]
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ]
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ]
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ]
+    },
+    {
+     "cards": [
+      "Smothering Tithe",
+      "Underworld Breach",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Infinite self-discard triggers for all players",
+      "Near-infinite colored mana",
+      "Near-infinite Treasure tokens"
+     ]
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Mirrormade"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ]
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Copy Enchantment"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ]
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Clever Impersonator"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ]
+    }
+   ],
+   "tutors": [
+    "Ranger-Captain of Eos",
+    "Gamble",
+    "Idyllic Tutor",
+    "Dizzy Spell",
+    "Enlightened Tutor",
+    "Gifts Ungiven",
+    "Intuition",
+    "Mystical Tutor"
+   ],
+   "manaCreatures": [
+    "Simian Spirit Guide",
+    "Storm-Kiln Artist"
+   ],
+   "search": {
+    "targets": {
+     "Clever Impersonator": 8,
+     "Faerie Mastermind": 8,
+     "Hexing Squelcher": 4,
+     "Ragavan, Nimble Pilferer": 8,
+     "Simian Spirit Guide": 5,
+     "Storm-Kiln Artist": 7,
+     "Infernal Plunge": 5,
+     "Jeska's Will": 8,
+     "Rite of Flame": 5,
+     "Wheel of Fortune": 8,
+     "Angel's Grace": 8,
+     "Brain Freeze": 8,
+     "Commandeer": 6,
+     "Force of Will": 7,
+     "Pact of Negation": 8,
+     "Swords to Plowshares": 3,
+     "Arcane Signet": 5,
+     "Chrome Mox": 5,
+     "Lion's Eye Diamond": 8,
+     "Lotus Petal": 8,
+     "Mana Vault": 5,
+     "Mox Amber": 5,
+     "Mox Diamond": 5,
+     "Mox Opal": 5,
+     "Paradise Mantle": 5,
+     "Relic of Legends": 5,
+     "Sol Ring": 5,
+     "Springleaf Drum": 5,
+     "Talisman of Progress": 5,
+     "Copy Enchantment": 8,
+     "Curse of Opulence": 5,
+     "Mirrormade": 8,
+     "Smothering Tithe": 8,
+     "Underworld Breach": 8
+    },
+    "context": {
+     "Simian Spirit Guide": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Infernal Plunge": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Rite of Flame": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Arcane Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Chrome Mox": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mana Vault": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Amber": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Diamond": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mox Opal": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Paradise Mantle": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Relic of Legends": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Springleaf Drum": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Talisman of Progress": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Curse of Opulence": {
+      "hint": "ramp",
+      "beforeRound": 5
+     }
+    }
+   }
+  }
+ }
+}

@@ -287,6 +287,7 @@ python3 engine/tests/test_board_zones.py                      # shim zone stream
 python3 engine/tests/test_summary_and_validity.py             # timeout accounting + pollution gate
 python3 engine/tests/test_run_accounting.py                   # run sizing, ceilings, salvage
 python3 engine/tests/test_scorecard.py                        # per-deck aggregates, rounds, censoring
+python3 engine/tests/test_readapt.py                          # re-adapt recovers data, refuses on mismatch
 python3 engine/tests/test_staging.py
 python3 engine/tests/test_result_attribution.py
 python3 engine/tests/smoke_test.py --sim                      # needs the API up; 35 checks

@@ -122,6 +122,53 @@ export interface BoardFxRec {
   to?: string | null; // rec === "attach": target name, null = detached
 }
 
+/** Per-deck scorecard from GET /results/{file}/scorecards. Behaviour
+ *  sections are null on runs older than shim 0.9.0: null means NOT RECORDED,
+ *  never zero, and the UI must render the difference. */
+export interface DeckScorecard {
+  deck: string;
+  games: number;
+  wins: number;
+  draws: number;
+  censored: number;
+  winRate: number | null;
+  survivalRate: number | null;
+  medianWinRound: number | null;
+  medianDeathRound: number | null;
+  methods: Record<string, number>;
+  /** Land drops per own turn. The one play-quality figure every archived run
+   *  can answer: land_drop is an adapter action on both engine paths. */
+  landsPerTurn: number | null;
+  ownTurns: number;
+  blocking: {
+    combats: number; faced: number;
+    engage: number | null; declined: number | null;
+    freeOpportunities: number; blocksMade: number;
+    freeCapture: number | null; safeCapture: number | null;
+    chumpShare: number | null;
+    damagePerCombat: number | null;
+  } | null;
+  attacking: {
+    combats: number; attackersPerCombat: number | null;
+    commitment: number | null; defendersPerAttack: number | null;
+    keptEnough: number | null;
+  } | null;
+  mulligans: {
+    seatGames: number; kept7: number | null;
+    mullsPerGame: number | null; landsKept: number | null;
+  } | null;
+}
+
+export interface ScorecardReport {
+  decks: DeckScorecard[];
+  run: {
+    games: number; decided: number; censored: number;
+    baseline: number | null;
+    medianGameRound: number | null;
+    hasBehaviour: boolean;
+  };
+}
+
 export interface SimResult {
   meta: { decks?: string[]; format?: string; [k: string]: unknown };
   games: SimGame[];
@@ -137,6 +184,10 @@ export interface RunGameSummary {
   result: SimGame["result"];
   turns: number;
   ended_turn: number | null;
+  /** Table rounds (a player's Nth turn is round N). ended_turn is Forge's
+   *  per-player counter and reads ~4x high to a Magic player. Optional: a
+   *  summary served before this field existed does not carry it. */
+  ended_round?: number | null;
   events: number;
 }
 

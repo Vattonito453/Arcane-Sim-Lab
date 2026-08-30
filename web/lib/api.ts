@@ -1,9 +1,21 @@
 /** Engine API client. Base URL is runtime-configurable per API_SPEC.md:
  *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
 import type {
-  AnalysisReport, CoachingReport, DeckCards, DeckEntry, ImportResponse,
-  JobStatus, LiveGame, ResultIndexEntry, RuleLookup, RulesAnswer, RunGame,
-  RunSummary, SimResult, TelemetryReport,
+  AnalysisReport,
+  CoachingReport,
+  DeckCards,
+  DeckEntry,
+  ImportResponse,
+  JobStatus,
+  LiveGame,
+  ResultIndexEntry,
+  RuleLookup,
+  RulesAnswer,
+  RunGame,
+  RunSummary,
+  ScorecardReport,
+  SimResult,
+  TelemetryReport,
 } from "./types";
 
 export function apiBase(): string {
@@ -129,6 +141,10 @@ export const api = {
         (watch?.length ? `&watch=${encodeURIComponent(watch.join("|"))}` : ""),
       { cache: "force-cache" },
     ),
+  /** Per-deck scorecards: outcomes, timing, and play quality. A few KB, and
+   *  the only place the shim's neutral per-seat records reach the browser. */
+  runScorecards: (file: string) =>
+    get<ScorecardReport>(`/results/${encodeURIComponent(file)}/scorecards`),
   /** Wincon report: win methods + combo assembly/conversion. Deliberately NOT
    *  force-cached: the payload carries an analysis version and evolves — a
    *  browser that pinned v1 under an immutable header kept serving it after the

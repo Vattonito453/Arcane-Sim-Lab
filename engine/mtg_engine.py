@@ -706,6 +706,9 @@ def _read_result_summary(name: str) -> dict:
             "games": games, "file": name, "validity": data.get("validity")}
 
 
+_AI_SEAT = re.compile(r"^Ai\(\d+\)-")
+
+
 def _read_result_scorecards(name: str) -> dict:
     """Per-deck scorecards: what each deck DID, not just whether it won.
 
@@ -742,18 +745,61 @@ def _read_result_prediction(name: str) -> dict:
     if model is None:
         return {"file": name, "available": False,
                 "reason": "no fitted model; run studies/precon_predict/analyze.py"}
+    # Display name -> deck file. summary.win_rates is keyed by the deck's
+    # DISPLAY name ("Ur-Dragon B3"), while _find_deck wants a filename, so
+    # every lookup used to miss and every row came back "deck file not
+    # found". meta.decks carries the paths this run was actually played
+    # with; deck_name_of reads each file's own Name, which is exactly the
+    # key the summary used.
+    by_name: dict[str, object] = {}
+    try:
+        from analysis import deck_name_of
+        for raw in (data.get("meta") or {}).get("decks") or []:
+            path = _find_deck(Path(raw).name)
+            if path:
+                by_name[deck_name_of(Path(path))] = path
+    except Exception:  # noqa: BLE001
+        by_name = {}
+
+    # survival, the model's strongest feature, is SIM-DERIVED and is not in
+    # deck_features. It must be computed the way training computed it
+    # (studies/precon_predict/richsignal.py): alive seats over EVERY game the
+    # deck played, censored ones included. scorecard.survivalRate uses
+    # decided games only, so wiring that in here would feed the model a
+    # different quantity than it was fitted on.
+    seen: dict[str, list[int]] = {}
+    for g in data.get("games") or []:
+        seats = ((g.get("result") or {}).get("seats")) or []
+        for st in seats:
+            nm = _AI_SEAT.sub("", st.get("name") or "").strip()
+            if not nm:
+                continue
+            row = seen.setdefault(nm, [0, 0])
+            row[0] += 1
+            if st.get("alive"):
+                row[1] += 1
+
     decks = []
     for deck, rate in sorted(rates.items()):
         row = {"deck": deck, "sim_win_rate": round(100.0 * rate, 1)}
-        path = _find_deck(deck) or _find_deck(deck + ".dck")
+        path = by_name.get(deck) or _find_deck(deck) or _find_deck(deck + ".dck")
         if not path:
             row.update(available=False, reason="deck file not found")
+            decks.append(row)
+            continue
+        counts = seen.get(deck)
+        if not counts or not counts[0]:
+            row.update(available=False,
+                       reason="this run records no per-seat survival, which "
+                              "the model needs; re-run to collect it")
             decks.append(row)
             continue
         try:
             vals = deck_features(path)
             vals["sim"] = 100.0 * rate
+            vals["survival"] = 100.0 * counts[1] / counts[0]
             row.update(model.predict(vals), available=True,
+                       survival_pct=round(vals["survival"], 1),
                        explanation=model.explain(vals))
         except Exception as e:
             row.update(available=False, reason=str(e))

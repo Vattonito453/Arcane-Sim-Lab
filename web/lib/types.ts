@@ -328,6 +328,9 @@ export interface AnalysisReport {
   games: AnalysisGame[];
   decks: Record<string, AnalysisDeck>;
   summary: { games: number; methods: Record<string, number> };
+  /** analyse() has returned this since ANALYSIS_VERSION 4; the type omitted
+   *  it, so a polluted run's combo table rendered with no caveat at all. */
+  validity?: Validity;
   note: string;
 }
 

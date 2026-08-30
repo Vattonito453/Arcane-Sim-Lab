@@ -679,6 +679,8 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .scstat .scl { font-size: 10.5px; color: var(--ink-4); line-height: 1.25; }
 .scplay { display: flex; flex-direction: column; gap: 5px; border-top: 1px solid var(--hairline); padding-top: 8px; }
 .scgrp { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--ink-3); }
+.mth { font-size: 13px; color: var(--ink-2); gap: 6px 18px; }
+.mth b { font-family: var(--font-data); color: var(--ink-max); }
 .scgrp .scgl { color: var(--ink-4); min-width: 88px; }
 .scgrp b { color: var(--ink-1); font-family: var(--font-data); font-weight: 500; }
 @media (max-width: 560px) { .scstats { grid-template-columns: repeat(2, 1fr); } }

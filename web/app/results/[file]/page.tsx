@@ -386,8 +386,46 @@ export default function ResultsPage() {
           </section>
         )}
 
+        {an && Object.keys(an.summary?.methods ?? {}).length > 0 && (
+          <section>
+            <div className="sh">
+              <h2>How games ended</h2>
+              <span className="meta">{plural(an.summary.games, "game")}</span>
+            </div>
+            <div className="scgrp mth">
+              {Object.entries(an.summary.methods)
+                .sort((a, b) => b[1] - a[1])
+                .map(([method, n]) => (
+                  <span key={method}>
+                    <b>{n}</b>{" "}
+                    {method === "combat damage / life loss"
+                      ? "by combat damage"
+                      : method === "not recorded"
+                        ? "with no method recorded"
+                        : `by ${method}`}
+                  </span>
+                ))}
+            </div>
+            <p className="note">
+              Read from the loss line Forge wrote at the end of each game. A pod
+              that only ever ends in combat damage is telling you its combo
+              decks never converted.
+            </p>
+          </section>
+        )}
+
         {an && Object.values(an.decks).some((d) => d.combos.length > 0 || d.combo_status === "unknown") && (
           <section>
+            {an.validity && an.validity.quality !== "clean" && (
+              <p className="note">
+                <b>
+                  {an.validity.quality === "polluted"
+                    ? "These combo figures are not trustworthy."
+                    : "Read these combo figures with care."}
+                </b>{" "}
+                {an.validity.reasons.join(" ")}
+              </p>
+            )}
             <div className="sh">
               <h2>Win conditions</h2>
               <span className="meta">
@@ -407,6 +445,7 @@ export default function ResultsPage() {
                     <th className="r">Assembled</th>
                     <th className="r">From draws</th>
                     <th className="r">Converted</th>
+                    <th>Piece most often missing</th>
                     <th>Reading</th>
                   </tr>
                 </thead>
@@ -416,7 +455,7 @@ export default function ResultsPage() {
                       return [
                         <tr key={`${name}-unknown`}>
                           <td>{name}</td>
-                          <td colSpan={5} className="ctanote">
+                          <td colSpan={6} className="ctanote">
                             combos unknown; Spellbook was unreachable when this was analysed
                           </td>
                         </tr>,
@@ -426,7 +465,7 @@ export default function ResultsPage() {
                       return [
                         <tr key={`${name}-none`}>
                           <td>{name}</td>
-                          <td colSpan={5} className="ctanote">
+                          <td colSpan={6} className="ctanote">
                             no known combos in the 99
                             {d.almost_included > 0 && (
                               <> · <span className="mono">{d.almost_included}</span> one card away</>
@@ -447,6 +486,19 @@ export default function ResultsPage() {
                             ? "assembled_not_fired"
                             : "not_assembled");
                       const spellPieces = c.nonpermanent_pieces ?? [];
+                      // Which piece actually held this line up. pieces maps
+                      // card -> the first turn it was available, or null for
+                      // never; the card that was null most often is the one to
+                      // fix, and it is far more actionable than a zero in the
+                      // assembled column.
+                      const nulls = new Map<string, number>();
+                      for (const g of c.games ?? []) {
+                        for (const [card, turn] of Object.entries(g.pieces ?? {})) {
+                          if (turn === null) nulls.set(card, (nulls.get(card) ?? 0) + 1);
+                        }
+                      }
+                      const worst = [...nulls.entries()].sort((a, b) => b[1] - a[1])[0];
+                      const missing = worst ? { card: worst[0], n: worst[1] } : null;
                       return (
                         <tr key={`${name}-${c.id}`}>
                           <td>{name}</td>
@@ -471,6 +523,23 @@ export default function ResultsPage() {
                             {c.expected_drawn_games != null ? `~${c.expected_drawn_games}` : "–"}
                           </td>
                           <td className="r mono">{c.converted_games}</td>
+                          <td
+                            title={
+                              missing
+                                ? `${missing.card} was never available in ${missing.n} of ${c.games_played} games`
+                                : "every piece showed up in every game"
+                            }
+                          >
+                            {missing ? (
+                              <>
+                                <span className="mono">{missing.n}</span> of{" "}
+                                <span className="mono">{c.games_played}</span>:{" "}
+                                {missing.card}
+                              </>
+                            ) : (
+                              "–"
+                            )}
+                          </td>
                           <td>
                             {reading === "fired" ? (
                               <span className="st win">

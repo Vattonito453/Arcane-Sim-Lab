@@ -14,7 +14,8 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
-import type { AnalysisReport, RunGameSummary, RunSummary } from "@/lib/types";
+import type { AnalysisReport, RunGameSummary, RunSummary, ScorecardReport } from "@/lib/types";
+import { DeckScorecards } from "@/components/DeckScorecards";
 import { fmtDay, pct, plural, runDate, runTitle, stripAi } from "@/lib/format";
 
 function fmtClock(ms: number): string {
@@ -39,6 +40,7 @@ interface GameRow {
   winnerName: string | null;
   draw: boolean;
   endedTurn: number;
+  endedRound: number | null;
   durationMs: number;
   decidedBy: string;
 }
@@ -50,20 +52,24 @@ function toRow(g: RunGameSummary): GameRow {
   const key = g.result.winner ?? g.result.raw?.match(RE_WON_RAW)?.[1]?.trim() ?? null;
   const winnerName = key ? stripAi(key) : null;
   const endedTurn = g.ended_turn ?? g.turns;
+  const endedRound = g.ended_round ?? null;
   // Without the event log there is no honest way to name the killing swing, so
   // this column states only what the result line proves: who won, and when.
   const decidedBy = g.result.draw
     ? "Draw"
     : winnerName
-      ? endedTurn
-        ? `${winnerName} won on turn ${endedTurn}`
-        : `${winnerName} won`
+      ? endedRound
+        ? `${winnerName} won on round ${endedRound}`
+        : endedTurn
+          ? `${winnerName} won on turn ${endedTurn}`
+          : `${winnerName} won`
       : "–";
   return {
     n: g.n,
     winnerName,
     draw: g.result.draw,
     endedTurn,
+    endedRound,
     durationMs: g.result.duration_ms,
     decidedBy,
   };
@@ -76,6 +82,7 @@ export default function ResultsPage() {
 
   const [data, setData] = useState<RunSummary | null>(null);
   const [an, setAn] = useState<AnalysisReport | null>(null);
+  const [sc, setSc] = useState<ScorecardReport | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [wait, setWait] = useState<number | null>(null);
   const [q, setQ] = useState("");
@@ -98,6 +105,10 @@ export default function ResultsPage() {
     // first request for an old run computes it server-side, which can take a
     // few seconds, and a failure just means no Win conditions section.
     api.analysis(file).then((r) => live && setAn(r)).catch(() => {});
+    // Per-deck scorecards: a few KB, and the only route the shim's neutral
+    // per-seat records take to the browser. The page works without them (an
+    // old run has no behaviour records), so a failure is silent.
+    api.runScorecards(file).then((r) => live && setSc(r)).catch(() => {});
     return () => {
       live = false;
     };
@@ -200,6 +211,10 @@ export default function ResultsPage() {
   }
 
   const { rows, tops, topNames, gameRows, games, baseline, medTurns, rotated } = view;
+  // Table rounds when the scorecards have loaded; Forge player-turns only as
+  // the fallback for a run whose scorecards could not be computed. The two
+  // are different units and the label says which one is on screen.
+  const medRounds = sc?.run.medianGameRound ?? null;
   const top = rows[0];
   const second = rows.find((r) => !topNames.has(r.name));
   const draws = data.summary.draws;
@@ -281,10 +296,11 @@ export default function ResultsPage() {
                     rather than finishing
                   </>
                 ))}
-              ; the median game ran <b>{medTurns} turns</b>.
+              ; the median game ran <b>{medRounds ?? medTurns} {medRounds ? "rounds" : "turns"}</b>.
             </>
           ) : (
-            <>No draws; the median game ran <b>{medTurns} turns</b>.</>
+            <>No draws; the median game ran{" "}
+              <b>{medRounds ?? medTurns} {medRounds ? "rounds" : "turns"}</b>.</>
           )}
         </p>
 
@@ -305,8 +321,10 @@ export default function ResultsPage() {
             <div className="l">games in this run</div>
           </div>
           <div className="fig">
-            <div className="n">{medTurns}</div>
-            <div className="l">median turns per game</div>
+            <div className="n">{medRounds ?? medTurns}</div>
+            <div className="l">
+              median {medRounds ? "rounds" : "turns"} per game
+            </div>
           </div>
           <div className="fig">
             <div className="n">
@@ -321,39 +339,43 @@ export default function ResultsPage() {
           </div>
         </div>
 
-        <section>
-          <div className="sh">
-            <h2>Win rates</h2>
-            <span className="meta">
-              {plural(games, "game")}, {plural(rows.length, "deck")}
-            </span>
-          </div>
-          <table className="podt">
-            <tbody>
-              {rows.map((r) => (
-                <tr key={r.name}>
-                  <td className="nm">{r.name}</td>
-                  <td>
-                    <div className="rail">
-                      <div className="fill" style={{ width: `${Math.max(r.rate * 100, r.wins > 0 ? 1 : 0)}%` }} />
-                      <div className="base" style={{ left: `${baseline * 100}%` }} />
-                    </div>
-                  </td>
-                  <td className="pct">{pct(r.rate)}</td>
-                  <td className="res">
-                    <span className={`st ${r.wins === 0 ? "bad" : r.rate >= baseline ? "win" : "loss"}`}>
-                      <i />
-                      {r.wins} of {games}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p className="note">
-            The marker sits at {pct(baseline, 1)}, an even share of a {rows.length}-player pod.
-          </p>
-        </section>
+        {sc ? (
+          <DeckScorecards report={sc} />
+        ) : (
+          <section>
+            <div className="sh">
+              <h2>Win rates</h2>
+              <span className="meta">
+                {plural(games, "game")}, {plural(rows.length, "deck")}
+              </span>
+            </div>
+            <table className="podt">
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.name}>
+                    <td className="nm">{r.name}</td>
+                    <td>
+                      <div className="rail">
+                        <div className="fill" style={{ width: `${Math.max(r.rate * 100, r.wins > 0 ? 1 : 0)}%` }} />
+                        <div className="base" style={{ left: `${baseline * 100}%` }} />
+                      </div>
+                    </td>
+                    <td className="pct">{pct(r.rate)}</td>
+                    <td className="res">
+                      <span className={`st ${r.wins === 0 ? "bad" : r.rate >= baseline ? "win" : "loss"}`}>
+                        <i />
+                        {r.wins} of {games}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="note">
+              The marker sits at {pct(baseline, 1)}, an even share of a {rows.length}-player pod.
+            </p>
+          </section>
+        )}
 
         {an && Object.values(an.decks).some((d) => d.combos.length > 0 || d.combo_status === "unknown") && (
           <section>

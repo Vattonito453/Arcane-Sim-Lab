@@ -662,6 +662,26 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
    battlefield, visually distinct from in-play zones by the dashed rule. */
 .zone.hand { border-bottom: 1px dashed var(--hairline); padding-bottom: 4px; }
 .zone.hand .tc { width: 30px; height: 42px; }
+/* ── deck scorecards ─────────────────────────────────────────────────────
+   One card per deck on the results overview. Panels never nest, so these sit
+   directly on the page grid rather than inside another panel. */
+.scgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+/* A row inside the page panel, NOT a second panel: DESIGN_SYSTEM.md
+   "Panels never nest -- rows inside use --row-ground". */
+.sccard { border: 1px solid var(--hairline); border-radius: var(--r-control); padding: 12px 14px; background: var(--row-ground); display: flex; flex-direction: column; gap: 8px; }
+.schead { display: flex; align-items: baseline; gap: 8px; }
+.schead h3 { margin: 0; font-size: 15px; font-weight: 600; flex: 1; }
+.scrate { font-size: 15px; color: var(--ink-1); }
+.scread { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+.scstats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.scstat { min-width: 0; }
+.scstat .scv { font-family: var(--font-data); font-size: 13px; color: var(--ink-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scstat .scl { font-size: 10.5px; color: var(--ink-4); line-height: 1.25; }
+.scplay { display: flex; flex-direction: column; gap: 5px; border-top: 1px solid var(--hairline); padding-top: 8px; }
+.scgrp { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--ink-3); }
+.scgrp .scgl { color: var(--ink-4); min-width: 88px; }
+.scgrp b { color: var(--ink-1); font-family: var(--font-data); font-weight: 500; }
+@media (max-width: 560px) { .scstats { grid-template-columns: repeat(2, 1fr); } }
 .blkbanner { display: flex; flex-direction: column; gap: 1px; font-size: 12px; color: var(--arcane-violet-ink); font-weight: 500; }
 .zone.lands .tc { width: 30px; height: 42px; }
 .zmore { align-self: center; font-family: var(--font-data); font-size: 11px; color: var(--ink-4); }

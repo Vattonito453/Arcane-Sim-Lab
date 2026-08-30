@@ -686,6 +686,7 @@ def _read_result_summary(name: str) -> dict:
     A full run file averages 2.6 MB and reaches 5.7 MB; the summary is a few KB,
     so the results table no longer costs a multi-megabyte download.
     """
+    from scorecard import true_round
     data = _read_result(name)
     games = []
     for i, g in enumerate(data.get("games", []), 1):
@@ -696,6 +697,9 @@ def _read_result_summary(name: str) -> dict:
             "result": g.get("result"),
             "turns": len(turns),
             "ended_turn": turns[-1].get("turn") if turns else None,
+            # Table rounds, the unit a Magic player counts in. ended_turn is
+            # Forge's per-player counter and reads ~4x high to a person.
+            "ended_round": true_round(g),
             "events": sum(len(t.get("events", [])) for t in turns),
         })
     return {"meta": data.get("meta", {}), "summary": data.get("summary"),

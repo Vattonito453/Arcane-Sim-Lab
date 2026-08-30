@@ -1,38 +1,43 @@
-# Task 22: equip what you cast
+# Task 22: equipment — premise retracted, replaced by what measurement found
 
-## The finding (Vincent, 2026-08-29, run sim_20260829_220838_0966af5d0640)
+## Retraction (2026-08-29, same day)
 
-Across all 8 games of a real user pod, Lightning Greaves was cast 9 times and
-Swiftfoot Boots 11 times, and the Equip ability was activated **0 times**.
-The only "equip" strings in the whole run are one trigger's reminder text.
-Boots and Greaves are auto-includes in Commander precisely because attaching
-them to your commander is basic play; a table where they sit unattached reads
-as a bot instantly.
+The original version of this task claimed Greaves/Boots were "cast 20 times,
+equipped 0 times" across Vincent's run. **That was a detection artifact in my
+scan, not a Forge behavior.** Forge logs an equip as
+`activated Lightning Greaves targeting [...]` and `Attach to <creature>`; the
+scan looked for the word "Equip", which never appears in log text. Measured
+correctly on the same run: Greaves cast 3 and activated 6 times, Boots cast 4
+and activated 7, 19 attach resolutions overall. **Stock Forge equips.**
 
-Equip decisions are stock Forge's (its EquipAi exists but demonstrably did
-nothing here), and the plan agent has no equipment layer at all — this
-dimension was missing from the 76-criterion rubric research too.
+A shim mechanism was built against the false premise, validated on 16 games,
+and dropped: it attached nothing (Forge's `canPlay()` embeds the stock AI's
+own attach-willingness, so the gate inherited the reluctance it was meant to
+bypass) except an occasional Skullclamp when stock idled. Not shipped.
 
-## The fix, respecting the boundary
+## What is actually true, measured
 
-Mechanism in the shim, knowledge as data:
+1. **Stock's equip targets are mostly defensible.** Boots went to Saheeli
+   (the commander) twice, Greaves to Kappa Cannoneer; of 15 sampled attaches
+   3-4 were questionable (Greaves on a Shapeshifter Token, Curator's Ward on
+   an Arcane Signet). A target-quality nudge is a MINOR gap, not the crater
+   the original task described.
+2. **The replay never renders attachments.** The board reconstruction shows
+   the equipment card sitting in the artifact row whether or not it is
+   attached, so equipped Boots LOOK unused. This is almost certainly what
+   Vincent observed and it misleads every replay with equipment in it.
 
-- **Mechanism**: at second main on the agent's own turn, if an equipment it
-  controls is unattached (or attached to a strictly worse body) and the equip
-  cost is payable with mana to spare, attach it to the best eligible creature.
-  "Best" = commander first, else highest plan weight, else biggest body.
-  Legality and cost stay Forge's (`canPlay()` + `canPayCost`), same as every
-  other override.
-- **Data**: which equipment matters and what "worth equipping" means comes
-  from plan weights (`deck_plan.py` already scores utility artifacts); an
-  `equipiness` dial is NOT needed — this is play-to-win behavior, not
-  personality.
+## The real task (UI, needs Vincent's go-ahead: UX-facing)
 
-## Acceptance
+Show attach state in the replay board: the `Attach to X (id)` /
+`activated ... targeting [...]` resolutions carry everything needed to fold
+an `attachedTo` field into the board state (web/lib/replay.ts), and the
+tabletop can badge the equipment or nest it under its creature. Until then,
+equipment play is invisible to the person judging the agent.
 
-- On the same pod, Greaves/Boots attach within a turn of resolving in the
-  large majority of games; zero illegal attachments (Forge adjudicates).
-- Neutral observer or log-based count: equip activations per equipment cast,
-  stock vs agent, reported like the blocking axes.
-- No regression in the 8-game pod's runtime worth caring about (the scan is
-  one pass over own battlefield at second main).
+## Lesson recorded
+
+Before filing a behavioral gap against the agent, verify the DETECTOR against
+one positive example. "Zero occurrences" of something the log spells
+differently is the same trap as the em-dash grep and the `"rec": "result"`
+spacing bug, and this is the third time it has cost a build.

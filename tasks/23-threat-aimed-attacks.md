@@ -44,3 +44,24 @@ axis: **attacks-received rank vs threat rank** correlation (a human table's
 top threat is its top target), plus win rate at n with power. The
 attacks-received table above is the baseline: leader-last is the failure
 signature.
+
+## Status (2026-08-29): mechanism shipped, model gap identified
+
+Implemented in simlab-forge-shim PR #10 (0.10.0): the re-aim now fires
+whenever the leader out-threatens whoever stock targeted (any seat, not just
+the weakest), lethal guard kept, `grudgeCap` wired as data (default off).
+
+Validated, 16 games on the same pod vs a 16-game baseline on main:
+- re-aims 14 -> 23 (original run: 0.5/game -> 1.44/game)
+- win spread softened: Ur-Dragon 10/16 -> 8/16, Kilo 0 -> 2, Skrat 3 -> 5
+- **residual, honestly**: Ur-Dragon is STILL least-attacked (34/216 vs
+  40/232). The re-aim faithfully targets what the model calls the leader; the
+  remaining defect is that `threatOf` scores board WIDTH (summed power), so a
+  20-token swarm out-threats three huge dragons and the deck actually winning
+  reads as low-threat.
+
+Next lever is DATA, not mechanism: threat signatures in the deck plans
+(deck_plan.py) should carry the quality/evasion story (commander on board,
+flying fat, voltron pieces), and `grudgeCap` is available to stop feuds from
+propping up threat scores. Tune, then re-measure attacks-received rank vs
+final-standing rank on a powered run.

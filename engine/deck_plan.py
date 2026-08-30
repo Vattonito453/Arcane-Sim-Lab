@@ -380,9 +380,33 @@ def build_plan(path: str | Path, fetch: bool = False,
 
     keep = sorted((n for n, w in weights.items() if w >= 5),
                   key=lambda n: -weights[n])[:16]
-    threat = sorted((n for n, w in weights.items() if w >= 7), key=lambda n: -weights[n])
+    # Threat signature v2. Weight >= 7 alone starved board-centric decks:
+    # measured on Vincent's pod, the dragon deck carried 9 threat cards to the
+    # artifact decks' 19-27, because generic big bodies score 6 (the cmc-bomb
+    # tier) or less. The table's threat index is built FROM these lists, so a
+    # board of huge dragons read as low-threat while a token swarm lit the
+    # index up -- and the deck that actually won the pod (4 of 8, then 10 of
+    # 16) was attacked LEAST. A big body is a threat whatever its keep-weight
+    # says, and the commander always is.
+    def _pow(n: str) -> int:
+        f = facts.get(cards.key(n)) or facts.get(n) or {}
+        if "creature" not in (f.get("type_line") or "").lower():
+            return 0
+        try:
+            return int(f.get("power") or 0)
+        except (TypeError, ValueError):
+            return 0  # '*' powers stay out; the shim reads live P/T anyway
+    threat_set = {n for n, w in weights.items() if w >= 7}
+    threat_set |= {n for n in set(names) if _pow(n) >= 5}
+    threat_set |= set(commanders)
+    threat = sorted(threat_set, key=lambda n: (-weights.get(n, 0), -_pow(n)))
     personality = dict(TAG_PERSONALITY.get(tags[0] if tags else "_default",
                                            TAG_PERSONALITY["_default"]))
+    # Threat model v2: how loudly an opponent's nearly-complete combo line
+    # (all but one piece visible on their board) rings the table alarm.
+    # Shipped explicitly rather than relying on the shim default, so the
+    # value is on the record in every plans file.
+    personality.setdefault("lineProximity", 6)
 
     # Provenance: how much of the deck the card-fact cache could actually
     # see. A cold cache silently degrades every heuristic above (no oracle

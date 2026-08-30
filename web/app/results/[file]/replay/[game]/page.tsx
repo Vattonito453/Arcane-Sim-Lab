@@ -303,14 +303,18 @@ export default function ReplayPage() {
     );
   }
 
-  const T = timeline.totalTurns;
+  // Rounds, not Forge's per-player turn counter: at a table every player
+  // gets a turn 1, so the raw counter reads 4x too high to a Magic player.
+  const R = timeline.totalRounds;
   const frac = n > 1 ? (idx / (n - 1)) * 100 : 0;
-  const tickEvery = Math.max(1, Math.ceil(T / 8));
-  const ticks = timeline.turns.filter((t) => t.turn % tickEvery === 0);
+  const tickEvery = Math.max(1, Math.ceil(R / 8));
+  const ticks = timeline.turns.filter(
+    (t, i) => t.round % tickEvery === 0 && (i === 0 || timeline.turns[i - 1].round !== t.round),
+  );
   const decidingIdx = timeline.turns.length ? timeline.turns[timeline.turns.length - 1].start : 0;
   const lo = Math.max(0, idx - 40);
   const hi = Math.min(n, idx + 41);
-  const phaseLabel = cur.turn > 0 ? `Turn ${cur.turn} · ${cur.phase.replace(/ step$/i, "").toLowerCase()}` : "Pregame";
+  const phaseLabel = cur.round > 0 ? `Round ${cur.round} · ${cur.phase.replace(/ step$/i, "").toLowerCase()}` : "Pregame";
   return (
     <>
       <Chrome tabs={tabs} />
@@ -322,7 +326,7 @@ export default function ReplayPage() {
             <div className="sub">
               {seats.map((s) => s.label).join(" · ")}
               <span className="sep">·</span>
-              <span className="mono">{T}</span> turns
+              <span className="mono">{R}</span> rounds
               <span className="sep">·</span>
               <span className="mono">{fmtClock(summary.durationMs)}</span>
             </div>
@@ -336,10 +340,10 @@ export default function ReplayPage() {
 
         <p className="lede">
           {summary.draw ? (
-            <>This game ended in a <b>draw</b> after {T} turns.</>
+            <>This game ended in a <b>draw</b> after {R} rounds.</>
           ) : (
             <>
-              <b>{summary.winnerName}</b> won on <b>turn {summary.endedTurn}</b> via {summary.decidedBy}.
+              <b>{summary.winnerName}</b> won on <b>round {summary.endedRound}</b> via {summary.decidedBy}.
             </>
           )}{" "}
           <span className="only-fine-pointer">Use space to play; arrows step events. </span>
@@ -436,14 +440,14 @@ export default function ReplayPage() {
                       <Fragment key={t.turn}>
                         <div className="tick" style={{ left }} />
                         <div className="ticklab" style={{ left }}>
-                          T{t.turn}
+                          R{t.round}
                         </div>
                       </Fragment>
                     );
                   })}
                 </div>
                 <div className="clock">
-                  turn {cur.turn > 0 ? cur.turn : "–"} of {T}
+                  round {cur.round > 0 ? cur.round : "–"} of {R}
                 </div>
               </div>
             </div>
@@ -477,7 +481,7 @@ export default function ReplayPage() {
                     className={`ev${isCur ? " cur" : ""}`}
                     ref={isCur ? curRef : undefined}
                   >
-                    <span className="tt">{s.turn > 0 ? `T${s.turn}` : "–"}</span>
+                    <span className="tt">{s.round > 0 ? `R${s.round}` : "–"}</span>
                     <div>
                       <Hi text={s.text} hi={s.hi} />
                     </div>

@@ -146,7 +146,7 @@ export function Tabletop({
                 <span className="pnums">
                   <span className="st out">
                     <i />
-                    Out turn {s.eliminated.turn}
+                    Out round {s.eliminated.round}
                   </span>
                 </span>
               ) : (

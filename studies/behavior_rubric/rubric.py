@@ -89,6 +89,12 @@ def sim_rows(pattern, label):
     for f in sorted(glob.glob(pattern)):
         games = collections.defaultdict(lambda: {"turns": 0, "seats": 4,
                                                  "casts": [], "res": None})
+        # Turns taken per player, for TRUE table rounds. Dividing Forge's
+        # per-player turn counter by a constant seat count undercounts once
+        # someone is eliminated (a round is then 3 turns, not 4): measured
+        # +1.7 rounds on the stock cEDH pods and +1.3 on the agent's. The
+        # human traces narrate real rounds, so the sim side must too.
+        taken = collections.defaultdict(collections.Counter)
         cur_turn_player, cur_turn = None, 0
         for line in open(f, encoding="utf-8", errors="replace"):
             try:
@@ -106,6 +112,7 @@ def sim_rows(pattern, label):
                     m = re.match(r"^Turn (\d+) \((.+)\)\s*$", msg)
                     if m:
                         cur_turn, cur_turn_player = int(m.group(1)), m.group(2).strip()
+                        taken[g][cur_turn_player] += 1
                 elif t == "STACK_ADD":
                     m = re.match(r"^(.+?) cast (.+?)$", msg.strip())
                     if m and DISRUPT.search(m.group(2)):
@@ -116,9 +123,11 @@ def sim_rows(pattern, label):
             if not v["res"] or v["res"].get("timedOut") or not v["res"].get("winner"):
                 continue
             seats = max(1, v["seats"])
+            true_round = max(taken[g].values()) if taken.get(g) else None
             rows.append({
                 "src": label, "file": os.path.basename(f),
-                "win_round": (max(1, v["turns"]) - 1) // seats + 1,
+                "win_round": true_round if true_round
+                             else (max(1, v["turns"]) - 1) // seats + 1,
                 "combat_win": True,   # refined below by analysis where available
                 "interactions": len(v["casts"]),
                 "interaction_known": True,

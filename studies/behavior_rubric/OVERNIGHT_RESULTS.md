@@ -99,8 +99,12 @@ Two documented claims die here:
 | tutor casts | 67 | **84** |
 | combo holds | 31, all speculative | 28, **all on owned lines** |
 | median winning game | 51 turns | **48 turns** |
-| win round (rubric scale) | 12.3 | **11.8** (stock 10.9, human 5.0) |
+| win round (true rounds) | 13.8 | **13.1** (stock 12.7, human 5.0) |
 | counter fires (isolation check) | 89 | 86 |
 
 n = 28 decided per side, so the sizes are estimates; the direction agrees
-with the mechanism. The agent closed from 1.4 rounds behind stock to 0.9.
+with the mechanism. The agent closed from 1.1 true rounds behind stock to
+0.4. (Win rounds here were restated 2026-08-29 in true table rounds, counted
+per player, after Vincent caught the replay showing Forge's per-player turn
+counter; the old figures divided by a constant 4 and undercounted rounds in
+games with eliminations.)

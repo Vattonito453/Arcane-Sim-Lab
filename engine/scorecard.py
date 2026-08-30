@@ -110,12 +110,27 @@ def scorecards(result: dict) -> dict:
         return d
 
     run_censored = 0
+    # The two ways a game can end undecided are NOT the same fact and the UI
+    # was calling both "cut off by the clock". A clock kill means the game was
+    # too slow to finish in its wall budget; the turn cap is a deterministic
+    # bound at 120 turns, so hitting it means the pod could not close, which is
+    # a read on the decks rather than on the hardware. Count them apart.
+    run_timed_out = 0
+    run_turn_capped = 0
     for game in games:
         res = game.get("result") or {}
         players = [bare(p) for p in (game.get("players") or [])]
-        censored = bool(res.get("timedOut") or res.get("turnCapped"))
+        timed_out = bool(res.get("timedOut"))
+        turn_capped = bool(res.get("turnCapped"))
+        censored = timed_out or turn_capped
         if censored:
             run_censored += 1
+        if timed_out:
+            run_timed_out += 1
+        # A game can trip both flags; attribute it to the clock, which is the
+        # one that actually stopped it, so the two never sum above censored.
+        elif turn_capped:
+            run_turn_capped += 1
         for name in players:
             d = slot(name)
             d["games"] += 1
@@ -263,6 +278,8 @@ def scorecards(result: dict) -> dict:
             "games": len(games),
             "decided": decided,
             "censored": run_censored,
+            "timedOut": run_timed_out,
+            "turnCapped": run_turn_capped,
             # An even table: the number every win rate must be read against.
             "baseline": (1 / len(out)) if out else None,
             "medianGameRound": med([true_round(g) for g in games

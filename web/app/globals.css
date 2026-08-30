@@ -673,7 +673,7 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .schead h3 { margin: 0; font-size: 15px; font-weight: 600; flex: 1; }
 .scrate { font-size: 15px; color: var(--ink-1); }
 .scread { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
-.scstats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.scstats { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 6px 10px; }
 .scstat { min-width: 0; }
 .scstat .scv { font-family: var(--font-data); font-size: 13px; color: var(--ink-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .scstat .scl { font-size: 10.5px; color: var(--ink-4); line-height: 1.25; }

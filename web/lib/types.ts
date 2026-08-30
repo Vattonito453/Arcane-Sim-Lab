@@ -136,6 +136,10 @@ export interface DeckScorecard {
   medianWinRound: number | null;
   medianDeathRound: number | null;
   methods: Record<string, number>;
+  /** Land drops per own turn. The one play-quality figure every archived run
+   *  can answer: land_drop is an adapter action on both engine paths. */
+  landsPerTurn: number | null;
+  ownTurns: number;
   blocking: {
     combats: number; faced: number;
     engage: number | null; declined: number | null;

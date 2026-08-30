@@ -140,6 +140,11 @@ function Card({
           hint="Share of decided games this deck was still alive in. Surviving is not winning."
         />
         <Stat
+          label="land drops per turn"
+          value={d.landsPerTurn === null ? "–" : d.landsPerTurn.toFixed(2)}
+          hint={`Land drops made across ${d.ownTurns} of its own turns. 1.00 means it never missed one.`}
+        />
+        <Stat
           label="how it won"
           value={methods.length ? methodLabel(methods[0][0]) : "–"}
           hint={methods.map(([k, n]) => `${methodLabel(k)}: ${n}`).join("\n")}
@@ -162,8 +167,8 @@ function Card({
               )}
               {b.freeCapture !== null && (
                 <span>
-                  took <b>{pct(b.freeCapture)}</b> of {b.freeOpportunities} free
-                  blocks
+                  took <b>{pct(b.freeCapture)}</b> of {b.freeOpportunities} free{" "}
+                  {b.freeOpportunities === 1 ? "block" : "blocks"}
                 </span>
               )}
               {b.safeCapture !== null && (

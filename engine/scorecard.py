@@ -104,6 +104,7 @@ def scorecards(result: dict) -> dict:
                 "atk": defaultdict(float), "atkRecs": 0,
                 "mull": defaultdict(float), "mullSeats": 0,
                 "kept7": 0,
+                "ownTurns": 0, "landDrops": 0,
             }
             decks[name] = d
         return d
@@ -160,6 +161,21 @@ def scorecards(result: dict) -> dict:
             if s.get("alive"):
                 d["survived"] += 1
 
+        # Land drops per own turn. Unlike the behaviour sections this needs no
+        # shim records at all: land_drop is a first-class adapter action on
+        # both the shim and stdout paths, so it is the one play-quality figure
+        # every archived run can answer. It is also the question a Commander
+        # player asks first after a loss ("was I screwed, or is my mana bad").
+        for t in game.get("turns") or []:
+            active = bare(t.get("active_player") or "")
+            if not active or active not in decks:
+                continue
+            decks[active]["ownTurns"] += 1
+            for e in t.get("events") or []:
+                if e.get("action") == "land_drop" and bare(
+                        (e.get("raw") or "").split(" played ")[0]) == active:
+                    decks[active]["landDrops"] += 1
+
         deaths = _death_rounds(game)
         for name, rnd in deaths.items():
             if name in decks:
@@ -203,6 +219,10 @@ def scorecards(result: dict) -> dict:
             "medianWinRound": med(d["winRounds"]),
             "medianDeathRound": med(d["deathRounds"]),
             "methods": dict(d["methods"]),
+            # None rather than 0 when the deck never took a turn, so the UI
+            # can tell "no data" from "never hit a land drop".
+            "landsPerTurn": _rate(d["landDrops"], d["ownTurns"]),
+            "ownTurns": d["ownTurns"],
             "blocking": None if not d["blockRecs"] else {
                 "combats": d["blockRecs"],
                 "faced": int(b["incoming"]),

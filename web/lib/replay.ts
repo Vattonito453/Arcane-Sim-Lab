@@ -19,7 +19,7 @@
  *    phase         "Ai(1)-Kilo Helm Final's Untap step" / "Ai(2)-Drana Vampires' Upkeep step"
  */
 
-import type { SimEvent, SimGame } from "./types";
+import type { BoardFxRec, SimEvent, SimGame } from "./types";
 import { stripAi } from "./format";
 
 /* ── public shapes ─────────────────────────────────────────────────────── */
@@ -42,6 +42,10 @@ export interface BoardState {
   seats: Seat[];
   battlefield: Map<string, Card[]>;
   attacks: { from: string; to: string; cards: string[] } | null;
+  /** Declared blocks, attacker -> blockers, live during the combat that
+   *  declared them (cleared with `attacks`). Parsed from the same batched
+   *  combat lines as attacks, split on "(instance id)" never on commas. */
+  blocks: { attacker: string; blockers: string[] }[];
   stack: string[];
 }
 
@@ -94,6 +98,7 @@ export type Op =
   | { t: "counterpop" }
   | { t: "leave"; name: string }
   | { t: "attack"; from: string; to: string; cards: string[] }
+  | { t: "block"; attacker: string; blockers: string[] }
   | { t: "phase"; combat: boolean }
   | { t: "out"; p: string };
 
@@ -112,6 +117,9 @@ const RE_STACK = /^(.+?) (cast|triggered|activated) (.+)$/;
 // attacker named after the whole concatenated string. Mirrors _ATTACK/_REF in
 // engine/board.py so the two stay in agreement.
 const RE_ATTACK = /^(.+?) assigned (.+?) to attack (.+?)\.?\s*$/;
+// "Ai(2)-X assigned A (12), B (34) to block Kappa Cannoneer (56)" — blockers
+// batch exactly like attackers, so the same id-based splitting applies.
+const RE_BLOCK = /^(.+?) assigned (.+?) to block (.+?)\.?\s*$/;
 // Real form, from sim_results: "A (100), B (72) and C (326)". Splitting on the
 // commas is not an option — card names contain them ("Kilo, Apogee Mind" and
 // "Wilhelt, the Rotcleaver" both appear) — so each name is taken as everything
@@ -230,7 +238,14 @@ function stepFor(ev: SimEvent, turn: number, active: string, phase: string): Ste
       }
       break;
     case "combat":
-      if ((m = raw.match(RE_ATTACK))) {
+      if ((m = raw.match(RE_BLOCK))) {
+        // Must be tried BEFORE RE_ATTACK: both lines start "X assigned",
+        // and only the tail keyword separates them.
+        const attacker = m[3].replace(RE_NUM, "").trim();
+        const blockers = attackerNames(m[2]);
+        step.op = { t: "block", attacker, blockers };
+        step.hi = [attacker, ...blockers];
+      } else if ((m = raw.match(RE_ATTACK))) {
         const cards = attackerNames(m[2]);
         step.op = { t: "attack", from: m[1], to: m[3], cards };
         step.hi = [...cards, stripAi(m[3])];
@@ -325,6 +340,7 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
   const battlefield = new Map<string, Card[]>(timeline.players.map((p) => [p, []]));
   const pending: Pending[] = [];
   let attacks: BoardState["attacks"] = null;
+  let blocks: BoardState["blocks"] = [];
 
   const last = Math.min(i, timeline.steps.length - 1);
   for (let k = 0; k <= last; k++) {
@@ -391,6 +407,12 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
         }
         break;
       }
+      case "block": {
+        const at = blocks.find((b) => b.attacker === op.attacker);
+        if (at) at.blockers.push(...op.blockers);
+        else blocks.push({ attacker: op.attacker, blockers: [...op.blockers] });
+        break;
+      }
       case "attack":
         if (attacks && attacks.from === op.from) {
           attacks.cards.push(...op.cards);
@@ -400,11 +422,98 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
         }
         break;
       case "phase":
-        if (!op.combat) attacks = null;
+        if (!op.combat) {
+          attacks = null;
+          blocks = [];
+        }
         break;
     }
   }
-  return { seats, battlefield, attacks, stack: pending.map((p) => p.name) };
+  return { seats, battlefield, attacks, blocks, stack: pending.map((p) => p.name) };
+}
+
+/* ── board-state stream (shim >= 0.12.0) ───────────────────────────────── */
+
+/** Forge PhaseType enum names in turn order; text-log phase labels map onto
+ *  the same ordinals so a tap stamped "MAIN1" applies once the playhead
+ *  reaches the first main phase of that turn. Phase is the honest
+ *  granularity: the text log and the shim stream share no sequence number. */
+const PHASE_ORD: Record<string, number> = {
+  UNTAP: 0, UPKEEP: 1, DRAW: 2, MAIN1: 3, COMBAT_BEGIN: 4,
+  COMBAT_DECLARE_ATTACKERS: 5, COMBAT_DECLARE_BLOCKERS: 6,
+  COMBAT_FIRST_STRIKE_DAMAGE: 7, COMBAT_DAMAGE: 8, COMBAT_END: 9,
+  MAIN2: 10, END_OF_TURN: 11, CLEANUP: 12,
+};
+const LABEL_ORD: [string, number][] = [
+  ["untap", 0], ["upkeep", 1], ["draw", 2],
+  ["main phase, precombat", 3], ["beginning of combat", 4],
+  ["declare attackers", 5], ["declare blockers", 6],
+  ["first strike", 7], ["combat damage", 8], ["end of combat", 9],
+  ["main phase, postcombat", 10], ["end of turn", 11], ["cleanup", 12],
+];
+function labelOrd(label: string): number {
+  const l = label.toLowerCase();
+  for (const [needle, ord] of LABEL_ORD) if (l.startsWith(needle)) return ord;
+  return 12; // unknown label: apply everything from this turn
+}
+
+export interface BoardFxView {
+  /** name -> how many copies are tapped right now (clamp to on-board count
+   *  when rendering: ids of departed cards are not pruned). */
+  tappedByName: Map<string, number>;
+  /** name -> counter type -> total (summed across copies). */
+  countersByName: Map<string, Map<string, number>>;
+  /** equipment/aura name -> the name it is attached to. */
+  attachTo: Map<string, string>;
+}
+
+/** Fold the board-state stream up to (turn, phase label of the playhead). */
+export function boardFxAt(
+  fx: BoardFxRec[] | undefined, turn: number, phaseLabel: string,
+): BoardFxView {
+  const view: BoardFxView = {
+    tappedByName: new Map(), countersByName: new Map(), attachTo: new Map(),
+  };
+  if (!fx || !fx.length || turn <= 0) return view;
+  const cutoff = labelOrd(phaseLabel);
+  const idTapped = new Map<number, boolean>();
+  const idName = new Map<number, string>();
+  const idCounters = new Map<number, Map<string, number>>();
+  for (const r of fx) {
+    if (r.turn > turn) break; // stream is turn-ordered
+    if (r.turn === turn && (PHASE_ORD[r.phase ?? ""] ?? 0) > cutoff) continue;
+    idName.set(r.cardId, r.card);
+    if (r.rec === "tap") {
+      idTapped.set(r.cardId, !!r.tapped);
+    } else if (r.rec === "counters" && r.type) {
+      let m = idCounters.get(r.cardId);
+      if (!m) {
+        m = new Map();
+        idCounters.set(r.cardId, m);
+      }
+      m.set(r.type, r.n ?? 0);
+    } else if (r.rec === "attach") {
+      if (r.to) view.attachTo.set(r.card, r.to);
+      else view.attachTo.delete(r.card);
+    }
+  }
+  for (const [id, tapped] of idTapped) {
+    if (!tapped) continue;
+    const name = idName.get(id) ?? "";
+    view.tappedByName.set(name, (view.tappedByName.get(name) ?? 0) + 1);
+  }
+  for (const [id, m] of idCounters) {
+    const name = idName.get(id) ?? "";
+    let agg = view.countersByName.get(name);
+    if (!agg) {
+      agg = new Map();
+      view.countersByName.set(name, agg);
+    }
+    for (const [t, n] of m) {
+      if (n > 0) agg.set(t, (agg.get(t) ?? 0) + n);
+    }
+  }
+  return view;
 }
 
 /* ── game summary (results table + ledes) ──────────────────────────────── */

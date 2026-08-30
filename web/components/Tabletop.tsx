@@ -12,7 +12,7 @@
  *  keep the note under it — see <TabletopNote/>. */
 
 import { stripAi } from "@/lib/format";
-import type { BoardState } from "@/lib/replay";
+import type { BoardFxView, BoardState } from "@/lib/replay";
 import { cardFace, kindOf, ptOf, type CardFacts, type Kind } from "@/lib/cards";
 import { ManaPips } from "@/components/ManaPips";
 
@@ -26,21 +26,40 @@ export interface SeatMeta {
 
 /** One permanent on the table. Identical copies collapse into a single tile with
  *  a count, which is what makes a 43-token board readable. */
+/** Counter chip text: +1/+1 counters read as a stat delta, anything else as
+ *  "n Name". Counter type names come from Forge verbatim. */
+function counterChip(type: string, n: number): string {
+  if (type === "P1P1") return `+${n}/+${n}`;
+  if (type === "M1M1") return `-${n}/-${n}`;
+  return `${n} ${type.toLowerCase()}`;
+}
+
 function Tile({
-  name, n, facts, kind, attacking,
+  name, n, facts, kind, attacking, blocking, tappedN, counters, attachedTo,
 }: {
   name: string;
   n: number;
   facts?: CardFacts;
   kind: Kind;
   attacking: boolean;
+  blocking: boolean;
+  tappedN: number;
+  counters?: Map<string, number>;
+  attachedTo?: string;
 }) {
   const face = cardFace(facts);
+  const allTapped = n > 0 && tappedN >= n;
   const tip = [
     name,
     facts?.type_line,
     facts?.mana_cost,
     ptOf(facts) ? `P/T ${ptOf(facts)}` : null,
+    tappedN > 0 ? (allTapped ? "tapped" : `${tappedN} of ${n} tapped`) : null,
+    counters && counters.size
+      ? Array.from(counters, ([t, c]) => counterChip(t, c)).join(", ")
+      : null,
+    attachedTo ? `attached to ${attachedTo}` : null,
+    blocking ? "blocking" : null,
     facts?.oracle_text,
     kind === "unknown" ? "Type unknown: no card data for this name" : null,
   ]
@@ -48,7 +67,9 @@ function Tile({
     .join("\n");
   const cls = `tc${kind === "token" ? " tok" : ""}${kind === "unknown" ? " unk" : ""}${
     attacking ? " atk" : ""
-  }`;
+  }${blocking ? " blk" : ""}${allTapped ? " tapd" : ""}`;
+  const chips: string[] = [];
+  if (counters) for (const [t, c] of counters) chips.push(counterChip(t, c));
   return (
     <span className={cls} title={tip}>
       {face ? (
@@ -59,6 +80,9 @@ function Tile({
         <span className="nm">{name}</span>
       )}
       {n > 1 && <span className="xn">{n}</span>}
+      {!allTapped && tappedN > 0 && <span className="tpn">{tappedN}T</span>}
+      {chips.length > 0 && <span className="cnt">{chips.join(" ")}</span>}
+      {attachedTo && <span className="att">on {attachedTo}</span>}
     </span>
   );
 }
@@ -76,13 +100,19 @@ const BAND_CAP = [18, 14, 24];
 interface TileGroup { name: string; n: number; kind: Kind; }
 
 export function Tabletop({
-  board, seats, activePlayer, facts,
+  board, seats, activePlayer, facts, fx,
 }: {
   board: BoardState;
   seats: SeatMeta[];
   activePlayer: string;
   facts: (name: string) => CardFacts | undefined;
+  /** Board-state stream view (taps, counters, attachments) at the playhead.
+   *  Absent for results older than shim 0.12.0; every marker degrades to
+   *  the previous everything-looks-untapped rendering. */
+  fx?: BoardFxView;
 }) {
+  const blockersInPlay = new Set<string>();
+  for (const b of board.blocks) for (const nm of b.blockers) blockersInPlay.add(nm);
   return (
     <div className={`tbl p${board.seats.length}`}>
       {board.seats.map((s, i) => {
@@ -91,14 +121,22 @@ export function Tabletop({
         const cards = board.battlefield.get(s.player) ?? [];
         const atkRow = board.attacks?.from === s.player ? board.attacks : null;
 
-        // Attackers the combat line proves are on the battlefield but that Forge
-        // never logged entering — nearly always tokens. Shown, because dropping
-        // them would hide real creatures.
+        // Attackers and blockers the combat lines prove are on the battlefield
+        // but that Forge never logged entering — nearly always tokens. Shown,
+        // because dropping them would hide real creatures. (A declared block
+        // is proof of presence exactly the way a declared attack is; without
+        // this, a blocking creature could carry the banner while its tile was
+        // missing from the table.)
         const ghosts: string[] = [];
-        if (atkRow) {
+        {
+          const proved: string[] = [];
+          if (atkRow) proved.push(...atkRow.cards);
+          if (board.attacks && board.attacks.to === s.player) {
+            for (const b of board.blocks) proved.push(...b.blockers);
+          }
           const have = new Map<string, number>();
           for (const c of cards) have.set(c.name, (have.get(c.name) ?? 0) + 1);
-          for (const name of atkRow.cards) {
+          for (const name of proved) {
             const k = have.get(name) ?? 0;
             if (k > 0) have.set(name, k - 1);
             else ghosts.push(name);
@@ -107,6 +145,9 @@ export function Tabletop({
         const defender = atkRow
           ? (seats.find((x) => x.player === atkRow.to)?.label ?? stripAi(atkRow.to))
           : null;
+        // Blocks render on the DEFENDING seat: these are its creatures
+        // stepping in front of the incoming attack.
+        const isDefender = !!board.attacks && board.attacks.to === s.player;
 
         // Collapse duplicates, then split into the three table bands.
         const bands: TileGroup[][] = [[], [], []];
@@ -161,6 +202,15 @@ export function Tabletop({
               {/* First child, so the reverse that `far` applies puts it on the
                   centre edge for both rows of seats. */}
               {atkRow && <span className="atkbanner">attacking {defender} →</span>}
+              {isDefender && board.blocks.length > 0 && (
+                <span className="blkbanner">
+                  {board.blocks.map((b) => (
+                    <span key={b.attacker}>
+                      {b.blockers.join(" + ")} {b.blockers.length === 1 ? "blocks" : "block"} {b.attacker}
+                    </span>
+                  ))}
+                </span>
+              )}
               {bands.map((band, b) => {
                 if (!band.length) return null;
                 const shown = band.slice(0, BAND_CAP[b]);
@@ -176,6 +226,10 @@ export function Tabletop({
                         kind={g.kind}
                         facts={facts(g.name)}
                         attacking={!!atkRow && atkRow.cards.includes(g.name)}
+                        blocking={isDefender && blockersInPlay.has(g.name)}
+                        tappedN={Math.min(g.n, fx?.tappedByName.get(g.name) ?? 0)}
+                        counters={fx?.countersByName.get(g.name)}
+                        attachedTo={fx?.attachTo.get(g.name)}
                       />
                     ))}
                     {extra > 0 && <span className="zmore">+{extra}</span>}

@@ -90,6 +90,21 @@ export interface SimGame {
   turns: SimTurn[];
   events_pregame?: SimEvent[];
   result: { winner: string | null; draw: boolean; duration_ms: number; raw: string };
+  /** Board-state stream from shim >= 0.12.0: per-card tap state, counter
+   *  totals, attachments. Absent on older results; every reader must cope. */
+  boardfx?: BoardFxRec[];
+}
+
+export interface BoardFxRec {
+  rec: "tap" | "counters" | "attach";
+  turn: number;
+  phase?: string; // Forge PhaseType enum name, e.g. "MAIN1"
+  cardId: number;
+  card: string;
+  tapped?: boolean; // rec === "tap"
+  type?: string; // rec === "counters": counter type name, e.g. "P1P1"
+  n?: number; // rec === "counters": new total of that type
+  to?: string | null; // rec === "attach": target name, null = detached
 }
 
 export interface SimResult {

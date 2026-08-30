@@ -75528,5 +75528,812 @@
   "art_crop": "https://cards.scryfall.io/art_crop/front/d/d/dd4a00ff-2206-4e12-a0ab-61ed82c9e6c5.jpg?1783916039",
   "normal": "https://cards.scryfall.io/normal/front/d/d/dd4a00ff-2206-4e12-a0ab-61ed82c9e6c5.jpg?1783916039",
   "scryfall_uri": "https://scryfall.com/card/ltc/1/%C3%A9owyn-shieldmaiden?utm_source=api"
+ },
+ "the unbeatable squirrel girl": {
+  "name": "The Unbeatable Squirrel Girl",
+  "type_line": "Legendary Creature — Squirrel Human Hero",
+  "mana_cost": "{1}{G}{G}{G}",
+  "cmc": 4.0,
+  "power": "4",
+  "toughness": "4",
+  "oracle_text": "Do You Like Squirrels? — Whenever The Unbeatable Squirrel Girl enters or attacks, create a 1/1 green Squirrel creature token.\nI LOVE Squirrels! — {1}{G}{G}{G}: Create X 1/1 green Squirrel creature tokens, where X is the number of Squirrels you control.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/d/8/d8b94ebb-0b3a-4e68-8c0c-3a61ac32f3ef.jpg?1783902911",
+  "normal": "https://cards.scryfall.io/normal/front/d/8/d8b94ebb-0b3a-4e68-8c0c-3a61ac32f3ef.jpg?1783902911",
+  "scryfall_uri": "https://scryfall.com/card/msh/193/the-unbeatable-squirrel-girl?utm_source=api"
+ },
+ "akroma's memorial": {
+  "name": "Akroma's Memorial",
+  "type_line": "Legendary Artifact",
+  "mana_cost": "{7}",
+  "cmc": 7.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Creatures you control have flying, first strike, vigilance, trample, haste, and protection from black and from red.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/9/5/950ee61d-0bc1-4d7b-ba68-157061aa98eb.jpg?1783927758",
+  "normal": "https://cards.scryfall.io/normal/front/9/5/950ee61d-0bc1-4d7b-ba68-157061aa98eb.jpg?1783927758",
+  "scryfall_uri": "https://scryfall.com/card/tsr/262/akromas-memorial?utm_source=api"
+ },
+ "banner of kinship": {
+  "name": "Banner of Kinship",
+  "type_line": "Artifact",
+  "mana_cost": "{5}",
+  "cmc": 5.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "As this artifact enters, choose a creature type. This artifact enters with a fellowship counter on it for each creature you control of the chosen type.\nCreatures you control of the chosen type get +1/+1 for each fellowship counter on this artifact.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/a/1/a14c16c0-4053-46b0-8fa6-be8b4a7a1c8a.jpg?1783909089",
+  "normal": "https://cards.scryfall.io/normal/front/a/1/a14c16c0-4053-46b0-8fa6-be8b4a7a1c8a.jpg?1783909089",
+  "scryfall_uri": "https://scryfall.com/card/fdn/127/banner-of-kinship?utm_source=api"
+ },
+ "chatter of the squirrel": {
+  "name": "Chatter of the Squirrel",
+  "type_line": "Sorcery",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Create a 1/1 green Squirrel creature token.\nFlashback {1}{G} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/f/5f7e1991-9ffa-4a57-b8eb-ebe542a47f09.jpg?1783930150",
+  "normal": "https://cards.scryfall.io/normal/front/5/f/5f7e1991-9ffa-4a57-b8eb-ebe542a47f09.jpg?1783930150",
+  "scryfall_uri": "https://scryfall.com/card/2xm/157/chatter-of-the-squirrel?utm_source=api"
+ },
+ "chomping changeling": {
+  "name": "Chomping Changeling",
+  "type_line": "Creature — Shapeshifter",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "power": "1",
+  "toughness": "2",
+  "oracle_text": "Changeling (This card is every creature type.)\nWhen this creature enters, destroy up to one target artifact or enchantment.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/e/1/e187dcc6-19ad-4cf6-94b4-daf07f5144e5.jpg?1783904431",
+  "normal": "https://cards.scryfall.io/normal/front/e/1/e187dcc6-19ad-4cf6-94b4-daf07f5144e5.jpg?1783904431",
+  "scryfall_uri": "https://scryfall.com/card/ecl/172/chomping-changeling?utm_source=api"
+ },
+ "concordant crossroads": {
+  "name": "Concordant Crossroads",
+  "type_line": "World Enchantment",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "All creatures have haste.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/c/9/c9a26f51-5bff-4f06-abaa-6fbb56a8b5b6.jpg?1783921872",
+  "normal": "https://cards.scryfall.io/normal/front/c/9/c9a26f51-5bff-4f06-abaa-6fbb56a8b5b6.jpg?1783921872",
+  "scryfall_uri": "https://scryfall.com/card/2x2/141/concordant-crossroads?utm_source=api"
+ },
+ "cryptolith rite": {
+  "name": "Cryptolith Rite",
+  "type_line": "Enchantment",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Creatures you control have \"{T}: Add one mana of any color.\"",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/0/a/0a4e707f-b760-434d-ba97-a0fe651f3f6a.jpg?1783908102",
+  "normal": "https://cards.scryfall.io/normal/front/0/a/0a4e707f-b760-434d-ba97-a0fe651f3f6a.jpg?1783908102",
+  "scryfall_uri": "https://scryfall.com/card/inr/189/cryptolith-rite?utm_source=api"
+ },
+ "deranged hermit": {
+  "name": "Deranged Hermit",
+  "type_line": "Creature — Elf",
+  "mana_cost": "{3}{G}{G}",
+  "cmc": 5.0,
+  "power": "1",
+  "toughness": "1",
+  "oracle_text": "Echo {3}{G}{G} (At the beginning of your upkeep, if this came under your control since the beginning of your last upkeep, sacrifice it unless you pay its echo cost.)\nWhen this creature enters, create four 1/1 green Squirrel creature tokens.\nSquirrel creatures get +1/+1.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/c/2/c25df202-0dd4-448d-8cb3-11fd7df0d505.jpg?1783939261",
+  "normal": "https://cards.scryfall.io/normal/front/c/2/c25df202-0dd4-448d-8cb3-11fd7df0d505.jpg?1783939261",
+  "scryfall_uri": "https://scryfall.com/card/vma/202/deranged-hermit?utm_source=api"
+ },
+ "elven chorus": {
+  "name": "Elven Chorus",
+  "type_line": "Enchantment",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "You may look at the top card of your library any time.\nYou may cast creature spells from the top of your library.\nCreatures you control have \"{T}: Add one mana of any color.\"",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+  "normal": "https://cards.scryfall.io/normal/front/6/1/616cfb94-3faf-44fe-bf04-e90643765e48.jpg?1783916271",
+  "scryfall_uri": "https://scryfall.com/card/ltr/160/elven-chorus?utm_source=api"
+ },
+ "emerald medallion": {
+  "name": "Emerald Medallion",
+  "type_line": "Artifact",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Green spells you cast cost {1} less to cast.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/d/5ddf44fe-9e4e-42a6-a6f8-11ada3ce8a94.jpg?1783911210",
+  "normal": "https://cards.scryfall.io/normal/front/5/d/5ddf44fe-9e4e-42a6-a6f8-11ada3ce8a94.jpg?1783911210",
+  "scryfall_uri": "https://scryfall.com/card/mh3/291/emerald-medallion?utm_source=api"
+ },
+ "evendo, waking haven": {
+  "name": "Evendo, Waking Haven",
+  "type_line": "Land — Planet",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "This land enters tapped.\n{T}: Add {G}.\nStation (Tap another creature you control: Put charge counters equal to its power on this Planet. Station only as a sorcery.)\n12+ | {G}, {T}: Add {G} for each creature you control.",
+  "colors": [],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/2/f/2fa09104-acbe-4410-b101-2fe6ac28efde.jpg?1783905915",
+  "normal": "https://cards.scryfall.io/normal/front/2/f/2fa09104-acbe-4410-b101-2fe6ac28efde.jpg?1783905915",
+  "scryfall_uri": "https://scryfall.com/card/eoe/253/evendo-waking-haven?utm_source=api"
+ },
+ "ivy lane denizen": {
+  "name": "Ivy Lane Denizen",
+  "type_line": "Creature — Elf Warrior",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "power": "2",
+  "toughness": "3",
+  "oracle_text": "Whenever another green creature you control enters, put a +1/+1 counter on target creature.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/b/6/b6936a91-db5d-4977-a851-2dc6a4141ceb.jpg?1783912530",
+  "normal": "https://cards.scryfall.io/normal/front/b/6/b6936a91-db5d-4977-a851-2dc6a4141ceb.jpg?1783912530",
+  "scryfall_uri": "https://scryfall.com/card/clu/166/ivy-lane-denizen?utm_source=api"
+ },
+ "masked vandal": {
+  "name": "Masked Vandal",
+  "type_line": "Creature — Shapeshifter",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "power": "1",
+  "toughness": "3",
+  "oracle_text": "Changeling (This card is every creature type.)\nWhen this creature enters, you may exile a creature card from your graveyard. If you do, exile target artifact or enchantment an opponent controls.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/f/0/f0a9c72a-e450-41e3-80e5-06f2f1171245.jpg?1783928209",
+  "normal": "https://cards.scryfall.io/normal/front/f/0/f0a9c72a-e450-41e3-80e5-06f2f1171245.jpg?1783928209",
+  "scryfall_uri": "https://scryfall.com/card/khm/184/masked-vandal?utm_source=api"
+ },
+ "mutable explorer": {
+  "name": "Mutable Explorer",
+  "type_line": "Creature — Shapeshifter",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "power": "1",
+  "toughness": "1",
+  "oracle_text": "Changeling (This card is every creature type.)\nWhen this creature enters, create a tapped Mutavault token. (It's a land with \"{T}: Add {C}\" and \"{1}: This token becomes a 2/2 creature with all creature types until end of turn. It's still a land.\")",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/8/f/8f35d95a-caea-4d5e-b98e-55da1ba7c92d.jpg?1783904425",
+  "normal": "https://cards.scryfall.io/normal/front/8/f/8f35d95a-caea-4d5e-b98e-55da1ba7c92d.jpg?1783904425",
+  "scryfall_uri": "https://scryfall.com/card/ecl/186/mutable-explorer?utm_source=api"
+ },
+ "nut collector": {
+  "name": "Nut Collector",
+  "type_line": "Creature — Human Druid",
+  "mana_cost": "{5}{G}",
+  "cmc": 6.0,
+  "power": "1",
+  "toughness": "1",
+  "oracle_text": "At the beginning of your upkeep, you may create a 1/1 green Squirrel creature token.\nThreshold — All Squirrels get +2/+2 as long as there are seven or more cards in your graveyard.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/3/2/32980fc5-32ef-4f6d-8972-7a9e122c02e2.jpg?1783918438",
+  "normal": "https://cards.scryfall.io/normal/front/3/2/32980fc5-32ef-4f6d-8972-7a9e122c02e2.jpg?1783918438",
+  "scryfall_uri": "https://scryfall.com/card/dmr/171/nut-collector?utm_source=api"
+ },
+ "parallel lives": {
+  "name": "Parallel Lives",
+  "type_line": "Enchantment",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/0/1/01033dae-fec1-41f2-b7f2-cc6a43331790.jpg?1783940912",
+  "normal": "https://cards.scryfall.io/normal/front/0/1/01033dae-fec1-41f2-b7f2-cc6a43331790.jpg?1783940912",
+  "scryfall_uri": "https://scryfall.com/card/isd/199/parallel-lives?utm_source=api"
+ },
+ "scurry oak": {
+  "name": "Scurry Oak",
+  "type_line": "Creature — Treefolk",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "power": "1",
+  "toughness": "2",
+  "oracle_text": "Evolve (Whenever a creature you control enters, if that creature has greater power or toughness than this creature, put a +1/+1 counter on this creature.)\nWhenever one or more +1/+1 counters are put on this creature, you may create a 1/1 green Squirrel creature token.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/0/f/0fb48c2e-ee0f-4fae-9c22-247870c10d5b.jpg?1783926825",
+  "normal": "https://cards.scryfall.io/normal/front/0/f/0fb48c2e-ee0f-4fae-9c22-247870c10d5b.jpg?1783926825",
+  "scryfall_uri": "https://scryfall.com/card/mh2/172/scurry-oak?utm_source=api"
+ },
+ "song of the dryads": {
+  "name": "Song of the Dryads",
+  "type_line": "Enchantment — Aura",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Enchant permanent\nEnchanted permanent is a colorless Forest land.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/1/6/161e66e3-0339-495c-bd06-0a799a254906.jpg?1783915619",
+  "normal": "https://cards.scryfall.io/normal/front/1/6/161e66e3-0339-495c-bd06-0a799a254906.jpg?1783915619",
+  "scryfall_uri": "https://scryfall.com/card/cmm/324/song-of-the-dryads?utm_source=api"
+ },
+ "squirrel mob": {
+  "name": "Squirrel Mob",
+  "type_line": "Creature — Squirrel",
+  "mana_cost": "{1}{G}{G}",
+  "cmc": 3.0,
+  "power": "2",
+  "toughness": "2",
+  "oracle_text": "This creature gets +1/+1 for each other Squirrel on the battlefield.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/f/a/fa6bfc95-ec7e-46dd-88fd-b0e1ba48bfbc.jpg?1783926781",
+  "normal": "https://cards.scryfall.io/normal/front/f/a/fa6bfc95-ec7e-46dd-88fd-b0e1ba48bfbc.jpg?1783926781",
+  "scryfall_uri": "https://scryfall.com/card/mh2/286/squirrel-mob?utm_source=api"
+ },
+ "three tree city": {
+  "name": "Three Tree City",
+  "type_line": "Legendary Land",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "As Three Tree City enters, choose a creature type.\n{T}: Add {C}.\n{2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of the chosen type.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/6/56f88a48-cced-4a9d-8c19-e4f105f0d8a2.jpg?1783910782",
+  "normal": "https://cards.scryfall.io/normal/front/5/6/56f88a48-cced-4a9d-8c19-e4f105f0d8a2.jpg?1783910782",
+  "scryfall_uri": "https://scryfall.com/card/blb/260/three-tree-city?utm_source=api"
+ },
+ "throne of the god-pharaoh": {
+  "name": "Throne of the God-Pharaoh",
+  "type_line": "Legendary Artifact",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "At the beginning of your end step, each opponent loses life equal to the number of tapped creatures you control.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/f/e/fe402b8e-f966-4971-90a5-950d8cff5025.jpg?1783936447",
+  "normal": "https://cards.scryfall.io/normal/front/f/e/fe402b8e-f966-4971-90a5-950d8cff5025.jpg?1783936447",
+  "scryfall_uri": "https://scryfall.com/card/akh/237/throne-of-the-god-pharaoh?utm_source=api"
+ },
+ "valley mightcaller": {
+  "name": "Valley Mightcaller",
+  "type_line": "Creature — Frog Warrior",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "power": "1",
+  "toughness": "1",
+  "oracle_text": "Trample\nWhenever another Frog, Rabbit, Raccoon, or Squirrel you control enters, put a +1/+1 counter on this creature.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/7/2/7256451f-0122-452a-88e8-0fb0f6bea3f3.jpg?1783910800",
+  "normal": "https://cards.scryfall.io/normal/front/7/2/7256451f-0122-452a-88e8-0fb0f6bea3f3.jpg?1783910800",
+  "scryfall_uri": "https://scryfall.com/card/blb/202/valley-mightcaller?utm_source=api"
+ },
+ "wave of vitriol": {
+  "name": "Wave of Vitriol",
+  "type_line": "Sorcery",
+  "mana_cost": "{5}{G}{G}",
+  "cmc": 7.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Each player sacrifices all artifacts, enchantments, and nonbasic lands they control. For each land sacrificed this way, its controller may search their library for a basic land card and put it onto the battlefield tapped. Then each player who searched their library this way shuffles.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/1/7/17328391-a510-42a0-8a00-4f61dd873c13.jpg?1783936237",
+  "normal": "https://cards.scryfall.io/normal/front/1/7/17328391-a510-42a0-8a00-4f61dd873c13.jpg?1783936237",
+  "scryfall_uri": "https://scryfall.com/card/cma/165/wave-of-vitriol?utm_source=api"
+ },
+ "saheeli, radiant creator": {
+  "name": "Saheeli, Radiant Creator",
+  "type_line": "Legendary Creature — Human Artificer",
+  "mana_cost": "{1}{G}{U}{R}",
+  "cmc": 4.0,
+  "power": "4",
+  "toughness": "4",
+  "oracle_text": "Whenever you cast an Artificer or artifact spell, you get {E} (an energy counter).\nAt the beginning of combat on your turn, you may pay {E}{E}{E}. When you do, create a token that's a copy of target permanent you control, except it's a 5/5 artifact creature in addition to its other types and has haste. Sacrifice it at the beginning of the next end step.",
+  "colors": [
+   "G",
+   "R",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "R",
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/f/5fea0781-e933-47ef-9414-92c8652a7778.jpg?1783907753",
+  "normal": "https://cards.scryfall.io/normal/front/5/f/5fea0781-e933-47ef-9414-92c8652a7778.jpg?1783907753",
+  "scryfall_uri": "https://scryfall.com/card/drc/3/saheeli-radiant-creator?utm_source=api"
+ },
+ "adaptive omnitool": {
+  "name": "Adaptive Omnitool",
+  "type_line": "Artifact — Equipment",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Equipped creature gets +1/+1 for each artifact you control.\nWhenever equipped creature attacks, look at the top six cards of your library. You may reveal an artifact card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.\nEquip {3}",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/1/6/1603aab8-731c-407a-bb44-625c36ace43e.jpg?1783907750",
+  "normal": "https://cards.scryfall.io/normal/front/1/6/1603aab8-731c-407a-bb44-625c36ace43e.jpg?1783907750",
+  "scryfall_uri": "https://scryfall.com/card/drc/16/adaptive-omnitool?utm_source=api"
+ },
+ "aetherflux conduit": {
+  "name": "Aetherflux Conduit",
+  "type_line": "Artifact",
+  "mana_cost": "{6}",
+  "cmc": 6.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Whenever you cast a spell, you get an amount of {E} (energy counters) equal to the amount of mana spent to cast that spell.\n{T}, Pay fifty {E}: Draw seven cards. You may cast any number of spells from your hand without paying their mana costs.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/d/d/dd9ac0f2-2d8f-40fc-97fb-d6e05633405d.jpg?1783907749",
+  "normal": "https://cards.scryfall.io/normal/front/d/d/dd9ac0f2-2d8f-40fc-97fb-d6e05633405d.jpg?1783907749",
+  "scryfall_uri": "https://scryfall.com/card/drc/17/aetherflux-conduit?utm_source=api"
+ },
+ "architect of the untamed": {
+  "name": "Architect of the Untamed",
+  "type_line": "Creature — Elf Artificer Druid",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "power": "2",
+  "toughness": "3",
+  "oracle_text": "Landfall — Whenever a land you control enters, you get {E} (an energy counter).\nPay eight {E}: Create a 6/6 colorless Beast artifact creature token.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/7/b/7bc540f5-96a1-44d8-910d-914b9e61b2a5.jpg?1783937184",
+  "normal": "https://cards.scryfall.io/normal/front/7/b/7bc540f5-96a1-44d8-910d-914b9e61b2a5.jpg?1783937184",
+  "scryfall_uri": "https://scryfall.com/card/kld/143/architect-of-the-untamed?utm_source=api"
+ },
+ "conjurer's closet": {
+  "name": "Conjurer's Closet",
+  "type_line": "Artifact",
+  "mana_cost": "{5}",
+  "cmc": 5.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "At the beginning of your end step, you may exile target creature you control, then return that card to the battlefield under your control.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/a/f/af2115e4-009e-4432-99bb-05e844bc18b6.jpg?1783908066",
+  "normal": "https://cards.scryfall.io/normal/front/a/f/af2115e4-009e-4432-99bb-05e844bc18b6.jpg?1783908066",
+  "scryfall_uri": "https://scryfall.com/card/inr/259/conjurers-closet?utm_source=api"
+ },
+ "cultivator's caravan": {
+  "name": "Cultivator's Caravan",
+  "type_line": "Artifact — Vehicle",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "power": "5",
+  "toughness": "5",
+  "oracle_text": "{T}: Add one mana of any color.\nCrew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/2/4/249aa94c-85ab-4606-aa2c-c902bd83ac21.jpg?1783908909",
+  "normal": "https://cards.scryfall.io/normal/front/2/4/249aa94c-85ab-4606-aa2c-c902bd83ac21.jpg?1783908909",
+  "scryfall_uri": "https://scryfall.com/card/fdn/670/cultivators-caravan?utm_source=api"
+ },
+ "curator's ward": {
+  "name": "Curator's Ward",
+  "type_line": "Enchantment — Aura",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Enchant permanent\nEnchanted permanent has hexproof.\nWhen enchanted permanent leaves the battlefield, if it was historic, draw two cards. (Artifacts, legendaries, and Sagas are historic.)",
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/1/0/10cc417f-0ea7-47a8-b7d0-aa8d20168faf.jpg?1783935030",
+  "normal": "https://cards.scryfall.io/normal/front/1/0/10cc417f-0ea7-47a8-b7d0-aa8d20168faf.jpg?1783935030",
+  "scryfall_uri": "https://scryfall.com/card/dom/49/curators-ward?utm_source=api"
+ },
+ "disallow": {
+  "name": "Disallow",
+  "type_line": "Instant",
+  "mana_cost": "{1}{U}{U}",
+  "cmc": 3.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Counter target spell, activated ability, or triggered ability. (Mana abilities can't be targeted.)",
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/2/5/25f05814-a5a5-460f-9d29-0ab03efecf4c.jpg?1783936774",
+  "normal": "https://cards.scryfall.io/normal/front/2/5/25f05814-a5a5-460f-9d29-0ab03efecf4c.jpg?1783936774",
+  "scryfall_uri": "https://scryfall.com/card/aer/31/disallow?utm_source=api"
+ },
+ "druid of purification": {
+  "name": "Druid of Purification",
+  "type_line": "Creature — Human Druid",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "power": "2",
+  "toughness": "3",
+  "oracle_text": "When this creature enters, starting with you, each player may choose an artifact or enchantment you don't control. Destroy each permanent chosen this way.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/0/9/096c2b28-3e29-4c27-998d-51bff0ba96c5.jpg?1783926244",
+  "normal": "https://cards.scryfall.io/normal/front/0/9/096c2b28-3e29-4c27-998d-51bff0ba96c5.jpg?1783926244",
+  "scryfall_uri": "https://scryfall.com/card/afc/39/druid-of-purification?utm_source=api"
+ },
+ "ingenious artillerist": {
+  "name": "Ingenious Artillerist",
+  "type_line": "Creature — Human Artificer",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "power": "3",
+  "toughness": "1",
+  "oracle_text": "Whenever one or more artifacts you control enter, this creature deals that much damage to each opponent.",
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/1/d/1d8dd6c3-3699-4dd1-a019-fdb569eaf722.jpg?1783922736",
+  "normal": "https://cards.scryfall.io/normal/front/1/d/1d8dd6c3-3699-4dd1-a019-fdb569eaf722.jpg?1783922736",
+  "scryfall_uri": "https://scryfall.com/card/clb/182/ingenious-artillerist?utm_source=api"
+ },
+ "machine god's effigy": {
+  "name": "Machine God's Effigy",
+  "type_line": "Artifact",
+  "mana_cost": "{4}",
+  "cmc": 4.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "You may have this artifact enter as a copy of any creature on the battlefield, except it's an artifact and it has \"{T}: Add {U}.\" (It's not a creature.)\n{T}: Add {U}.",
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/6/3/637f69c2-ba24-42d1-9345-8ebdb04b6904.jpg?1783919719",
+  "normal": "https://cards.scryfall.io/normal/front/6/3/637f69c2-ba24-42d1-9345-8ebdb04b6904.jpg?1783919719",
+  "scryfall_uri": "https://scryfall.com/card/brc/16/machine-gods-effigy?utm_source=api"
+ },
+ "nissa, worldsoul speaker": {
+  "name": "Nissa, Worldsoul Speaker",
+  "type_line": "Legendary Creature — Elf Druid",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "power": "3",
+  "toughness": "3",
+  "oracle_text": "Landfall — Whenever a land you control enters, you get {E}{E} (two energy counters).\nYou may pay eight {E} rather than pay the mana cost for permanent spells you cast.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/a/4/a471b306-4941-4e46-a0cb-d92895c16f8a.jpg?1783907750",
+  "normal": "https://cards.scryfall.io/normal/front/a/4/a471b306-4941-4e46-a0cb-d92895c16f8a.jpg?1783907750",
+  "scryfall_uri": "https://scryfall.com/card/drc/13/nissa-worldsoul-speaker?utm_source=api"
+ },
+ "pia nalaar, chief mechanic": {
+  "name": "Pia Nalaar, Chief Mechanic",
+  "type_line": "Legendary Creature — Human Artificer",
+  "mana_cost": "{G}{U}{R}",
+  "cmc": 3.0,
+  "power": "2",
+  "toughness": "4",
+  "oracle_text": "Whenever one or more artifact creatures you control deal combat damage to a player, you get {E}{E} (two energy counters).\nAt the beginning of your end step, you may pay one or more {E}. If you do, create an X/X colorless Vehicle artifact token named Nalaar Aetherjet with flying and crew 2, where X is the amount of {E} paid this way.",
+  "colors": [
+   "G",
+   "R",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "R",
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/f/4/f4b46b1f-0cfe-42cc-aac5-e6912b2f9fd2.jpg?1783907754",
+  "normal": "https://cards.scryfall.io/normal/front/f/4/f4b46b1f-0cfe-42cc-aac5-e6912b2f9fd2.jpg?1783907754",
+  "scryfall_uri": "https://scryfall.com/card/drc/2/pia-nalaar-chief-mechanic?utm_source=api"
+ },
+ "rampaging aetherhood": {
+  "name": "Rampaging Aetherhood",
+  "type_line": "Creature — Snake Hydra",
+  "mana_cost": "{4}{G}",
+  "cmc": 5.0,
+  "power": "4",
+  "toughness": "4",
+  "oracle_text": "Trample, ward {2}\nAt the beginning of your upkeep, you get an amount of {E} (energy counters) equal to this creature's power. Then you may pay one or more {E}. If you do, put that many +1/+1 counters on this creature.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/b/d/bd923b84-067b-4041-a0f8-e2083e0debe9.jpg?1783907749",
+  "normal": "https://cards.scryfall.io/normal/front/b/d/bd923b84-067b-4041-a0f8-e2083e0debe9.jpg?1783907749",
+  "scryfall_uri": "https://scryfall.com/card/drc/15/rampaging-aetherhood?utm_source=api"
+ },
+ "reckless fireweaver": {
+  "name": "Reckless Fireweaver",
+  "type_line": "Creature — Human Artificer",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "power": "1",
+  "toughness": "3",
+  "oracle_text": "Whenever an artifact you control enters, this creature deals 1 damage to each opponent.",
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/6/3/63ffac51-62c4-4170-85b3-a43d7cfae7d7.jpg?1783937190",
+  "normal": "https://cards.scryfall.io/normal/front/6/3/63ffac51-62c4-4170-85b3-a43d7cfae7d7.jpg?1783937190",
+  "scryfall_uri": "https://scryfall.com/card/kld/126/reckless-fireweaver?utm_source=api"
+ },
+ "retrofitter foundry": {
+  "name": "Retrofitter Foundry",
+  "type_line": "Artifact",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "{3}: Untap this artifact.\n{2}, {T}: Create a 1/1 colorless Servo artifact creature token.\n{1}, {T}, Sacrifice a Servo: Create a 1/1 colorless Thopter artifact creature token with flying.\n{T}, Sacrifice a Thopter: Create a 4/4 colorless Construct artifact creature token.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/d/5da578b8-19e6-4068-9336-e7cd33c585f1.jpg?1783934323",
+  "normal": "https://cards.scryfall.io/normal/front/5/d/5da578b8-19e6-4068-9336-e7cd33c585f1.jpg?1783934323",
+  "scryfall_uri": "https://scryfall.com/card/c18/57/retrofitter-foundry?utm_source=api"
+ },
+ "rogue refiner": {
+  "name": "Rogue Refiner",
+  "type_line": "Creature — Human Rogue",
+  "mana_cost": "{1}{G}{U}",
+  "cmc": 3.0,
+  "power": "3",
+  "toughness": "2",
+  "oracle_text": "When this creature enters, draw a card and you get {E}{E} (two energy counters).",
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/6/1/618652b4-7ce9-4994-9d16-68d2cc8644ef.jpg?1783936736",
+  "normal": "https://cards.scryfall.io/normal/front/6/1/618652b4-7ce9-4994-9d16-68d2cc8644ef.jpg?1783936736",
+  "scryfall_uri": "https://scryfall.com/card/aer/135/rogue-refiner?utm_source=api"
+ },
+ "sai, master thopterist": {
+  "name": "Sai, Master Thopterist",
+  "type_line": "Legendary Creature — Human Artificer",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "power": "1",
+  "toughness": "4",
+  "oracle_text": "Whenever you cast an artifact spell, create a 1/1 colorless Thopter artifact creature token with flying.\n{1}{U}, Sacrifice two artifacts: Draw a card.",
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/a/d/ad0b5c09-5075-408e-84c5-1095354ac53e.jpg?1783915691",
+  "normal": "https://cards.scryfall.io/normal/front/a/d/ad0b5c09-5075-408e-84c5-1095354ac53e.jpg?1783915691",
+  "scryfall_uri": "https://scryfall.com/card/cmm/118/sai-master-thopterist?utm_source=api"
+ },
+ "servant of the conduit": {
+  "name": "Servant of the Conduit",
+  "type_line": "Creature — Elf Druid",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "power": "2",
+  "toughness": "2",
+  "oracle_text": "When this creature enters, you get {E}{E} (two energy counters).\n{T}, Pay {E}: Add one mana of any color.",
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/9/c/9ce9cf30-4baa-4f28-84e8-b9b1168a40e0.jpg?1783937173",
+  "normal": "https://cards.scryfall.io/normal/front/9/c/9ce9cf30-4baa-4f28-84e8-b9b1168a40e0.jpg?1783937173",
+  "scryfall_uri": "https://scryfall.com/card/kld/169/servant-of-the-conduit?utm_source=api"
+ },
+ "tanglepool bridge": {
+  "name": "Tanglepool Bridge",
+  "type_line": "Artifact Land",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "This land enters tapped.\nIndestructible\n{T}: Add {G} or {U}.",
+  "colors": [],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/7/57d2b895-8921-4615-a674-fb85eed5ea3f.jpg?1783926793",
+  "normal": "https://cards.scryfall.io/normal/front/5/7/57d2b895-8921-4615-a674-fb85eed5ea3f.jpg?1783926793",
+  "scryfall_uri": "https://scryfall.com/card/mh2/257/tanglepool-bridge?utm_source=api"
+ },
+ "territorial aetherkite": {
+  "name": "Territorial Aetherkite",
+  "type_line": "Creature — Cat Dragon",
+  "mana_cost": "{4}{R}{R}",
+  "cmc": 6.0,
+  "power": "6",
+  "toughness": "5",
+  "oracle_text": "Flying, haste\nWhen this creature enters, you get {E}{E} (two energy counters). Then you may pay one or more {E}. When you do, this creature deals that much damage to each other creature.",
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/c/1/c1e2f2af-dbba-4e4c-9c60-ac4d245e1431.jpg?1783907750",
+  "normal": "https://cards.scryfall.io/normal/front/c/1/c1e2f2af-dbba-4e4c-9c60-ac4d245e1431.jpg?1783907750",
+  "scryfall_uri": "https://scryfall.com/card/drc/12/territorial-aetherkite?utm_source=api"
+ },
+ "thopter spy network": {
+  "name": "Thopter Spy Network",
+  "type_line": "Enchantment",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "At the beginning of your upkeep, if you control an artifact, create a 1/1 colorless Thopter artifact creature token with flying.\nWhenever one or more artifact creatures you control deal combat damage to a player, draw a card.",
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/b/a/babc5799-31f3-452e-a61d-5c11f9f81bf9.jpg?1783917163",
+  "normal": "https://cards.scryfall.io/normal/front/b/a/babc5799-31f3-452e-a61d-5c11f9f81bf9.jpg?1783917163",
+  "scryfall_uri": "https://scryfall.com/card/moc/241/thopter-spy-network?utm_source=api"
+ },
+ "triplicate titan": {
+  "name": "Triplicate Titan",
+  "type_line": "Artifact Creature — Golem",
+  "mana_cost": "{9}",
+  "cmc": 9.0,
+  "power": "9",
+  "toughness": "9",
+  "oracle_text": "Flying, vigilance, trample\nWhen this creature dies, create a 3/3 colorless Golem artifact creature token with flying, a 3/3 colorless Golem artifact creature token with vigilance, and a 3/3 colorless Golem artifact creature token with trample.",
+  "colors": [],
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/6/568dd5a6-86f4-4039-87d7-812120c8ab94.jpg?1783927584",
+  "normal": "https://cards.scryfall.io/normal/front/5/6/568dd5a6-86f4-4039-87d7-812120c8ab94.jpg?1783927584",
+  "scryfall_uri": "https://scryfall.com/card/c21/79/triplicate-titan?utm_source=api"
+ },
+ "whir of invention": {
+  "name": "Whir of Invention",
+  "type_line": "Instant",
+  "mana_cost": "{X}{U}{U}{U}",
+  "cmc": 3.0,
+  "power": null,
+  "toughness": null,
+  "oracle_text": "Improvise (Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)\nSearch your library for an artifact card with mana value X or less, put it onto the battlefield, then shuffle.",
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/0/2/0279fd3c-9252-4958-9d7a-5f33aa25907e.jpg?1783936767",
+  "normal": "https://cards.scryfall.io/normal/front/0/2/0279fd3c-9252-4958-9d7a-5f33aa25907e.jpg?1783936767",
+  "scryfall_uri": "https://scryfall.com/card/aer/49/whir-of-invention?utm_source=api"
  }
 }

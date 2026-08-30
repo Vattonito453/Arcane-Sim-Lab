@@ -54,6 +54,11 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     results: dict[int, dict] = {}
     zones: dict[int, list[dict]] = {}
     agent_events: dict[int, list[dict]] = {}
+    # Board-state streams (shim >= 0.12.0): per-card tap state, counter
+    # totals, and attachments, each stamped with turn + phase so the replay
+    # can place them WITHIN a turn at phase granularity (the text log and the
+    # shim streams share no sequence number; phase is the honest resolution).
+    boardfx: dict[int, list[dict]] = {}
 
     for line in text.splitlines():
         line = line.strip()
@@ -70,6 +75,10 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             entries.setdefault(r["game"], []).append(r)
         elif rec == "result":
             results[r["game"]] = r
+        elif rec in ("tap", "counters", "attach"):
+            boardfx.setdefault(r["game"], []).append(
+                {k: r[k] for k in ("rec", "turn", "phase", "cardId", "card",
+                                   "tapped", "type", "n", "to") if k in r})
         elif rec == "zone":
             # types/pt/token arrive from shim >= 0.3.0 and are what let board.py
             # read the battlefield instead of inferring it. Older logs simply
@@ -152,6 +161,8 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     for i, g in enumerate(game_order):
         game = result["games"][i]
         game["zones"] = zones.get(g, [])
+        # Additive: readers that predate 0.12.0 ignore this key.
+        game["boardfx"] = boardfx.get(g, [])
         # Agent self-telemetry: authoritative for agent behavior — the
         # GameLog writes some combat lines before the agent's adjustments.
         game["agent_events"] = agent_events.get(g, [])

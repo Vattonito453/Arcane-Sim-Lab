@@ -14,7 +14,7 @@ import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { RunGame } from "@/lib/types";
 import { runTitle, scryfallArt, shortName, stripAi } from "@/lib/format";
-import { buildTimeline, commanderGuess, foldTo, summarizeGame, type Step } from "@/lib/replay";
+import { boardFxAt, buildTimeline, commanderGuess, foldTo, summarizeGame, type Step } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
 
@@ -123,6 +123,13 @@ export default function ReplayPage() {
   const backLabel = seats.length ? runTitle(seats.map((s) => s.label)) : file;
 
   const board = useMemo(() => (timeline ? foldTo(timeline, idx) : null), [timeline, idx]);
+  // Taps, counters, attachments at the playhead (shim >= 0.12.0 results;
+  // older results render exactly as before).
+  const cur0 = timeline?.steps[idx];
+  const fx = useMemo(
+    () => boardFxAt(game?.boardfx, cur0?.turn ?? 0, cur0?.phase ?? ""),
+    [game, cur0?.turn, cur0?.phase],
+  );
   const cur: Step | null = timeline && n > 0 ? timeline.steps[clamp(idx, 0, n - 1)] : null;
 
   // Static card facts (type line, P/T, oracle text) for every name this game
@@ -386,6 +393,7 @@ export default function ReplayPage() {
                 seats={seats}
                 activePlayer={cur.active}
                 facts={facts}
+                fx={fx}
               />
               <TabletopNote />
 

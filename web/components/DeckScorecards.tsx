@@ -55,16 +55,27 @@ function readOf(d: DeckScorecard, podMedianRound: number | null): string {
     parts.push(`Still standing at the end of ${pct(d.survivalRate)} of them.`);
   }
 
-  // At most ONE behavioural clause: the standout, not an inventory.
+  // At most ONE behavioural clause: the standout, not an inventory. Every
+  // branch gates on its OWN denominator. Live verification caught the reason:
+  // a deck that faced 42 attackers but had only a couple of free blocks on
+  // offer read as "blocked tightly, took 100% of the blocks that were free"
+  // while its own numbers showed it blocking 10% and chumping 75%. A rate off
+  // a denominator of one is not a habit and must not be described as one.
   const b = d.blocking;
   if (b && b.declined !== null && b.faced >= 8) {
-    if (b.freeCapture !== null && b.freeCapture >= 0.9 && b.declined < 0.45) {
+    if (b.freeCapture !== null && b.freeOpportunities >= 4 && b.freeCapture >= 0.9
+        && b.declined < 0.45) {
       parts.push(
-        `Blocked tightly: took ${pct(b.freeCapture)} of the blocks that were free.`,
+        `Blocked tightly: took ${pct(b.freeCapture)} of the ` +
+        `${b.freeOpportunities} free blocks on offer.`,
       );
     } else if (b.declined >= 0.55) {
       parts.push(
         `Let through ${pct(b.declined)} of the attackers it could have blocked.`,
+      );
+    } else if (b.chumpShare !== null && b.blocksMade >= 4 && b.chumpShare >= 0.6) {
+      parts.push(
+        `When it did block, ${pct(b.chumpShare)} of those blocks were chumps.`,
       );
     }
   }
@@ -151,7 +162,8 @@ function Card({
               )}
               {b.freeCapture !== null && (
                 <span>
-                  took <b>{pct(b.freeCapture)}</b> of its free blocks
+                  took <b>{pct(b.freeCapture)}</b> of {b.freeOpportunities} free
+                  blocks
                 </span>
               )}
               {b.safeCapture !== null && (

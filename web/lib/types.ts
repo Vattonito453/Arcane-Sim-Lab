@@ -139,6 +139,7 @@ export interface DeckScorecard {
   blocking: {
     combats: number; faced: number;
     engage: number | null; declined: number | null;
+    freeOpportunities: number; blocksMade: number;
     freeCapture: number | null; safeCapture: number | null;
     chumpShare: number | null;
     damagePerCombat: number | null;

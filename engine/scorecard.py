@@ -208,6 +208,10 @@ def scorecards(result: dict) -> dict:
                 "faced": int(b["incoming"]),
                 "engage": _rate(b["blocked"], b["incoming"]),
                 "declined": _rate(b["legalMissed"], declinable),
+                # Denominators, so a reader (and the copy) can tell "took all
+                # of them" off 12 chances from "took all of them" off 1.
+                "freeOpportunities": int(free_opp),
+                "blocksMade": int(blocks_made),
                 "freeCapture": _rate(b["freeTaken"], free_opp),
                 # A survive-the-block chance taken shows up as v3 or v1; the
                 # observer counts the ones declined in safeMissed.

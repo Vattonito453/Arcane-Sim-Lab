@@ -205,6 +205,11 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
         # otherwise silently stay 0 no matter how many games hit the
         # clock (see forge_log_adapter.summarize).
         game["result"]["timedOut"] = bool(res.get("timedOut"))
+        # Same reasoning for the TURN cap, which was being dropped: both
+        # scorecard.py and plan_feedback.py gate on turnCapped, so without
+        # this a capped game counted as decided and diluted a win rate with
+        # a game nobody won. Rare (9 of ~4,800 study games) and silent.
+        game["result"]["turnCapped"] = bool(res.get("turnCapped"))
         # Per-seat life and survival at termination. The only thing a
         # timed-out game carries: it has no winner, so excluding it
         # drops the whole game, and timed-out games are the long ones,

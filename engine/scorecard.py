@@ -209,6 +209,10 @@ def scorecards(result: dict) -> dict:
                 "engage": _rate(b["blocked"], b["incoming"]),
                 "declined": _rate(b["legalMissed"], declinable),
                 "freeCapture": _rate(b["freeTaken"], free_opp),
+                # A survive-the-block chance taken shows up as v3 or v1; the
+                # observer counts the ones declined in safeMissed.
+                "safeCapture": _rate(b["v3"] + b["v1"],
+                                     b["v3"] + b["v1"] + b["safeMissed"]),
                 "chumpShare": _rate(b["v0"], blocks_made),
                 "damagePerCombat": _rate(b["lifeTaken"], d["blockRecs"]),
             },

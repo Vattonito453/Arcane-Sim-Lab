@@ -154,6 +154,16 @@ function Card({
                   took <b>{pct(b.freeCapture)}</b> of its free blocks
                 </span>
               )}
+              {b.safeCapture !== null && (
+                <span>
+                  and <b>{pct(b.safeCapture)}</b> of the blocks it would survive
+                </span>
+              )}
+              {b.chumpShare !== null && (
+                <span>
+                  <b>{pct(b.chumpShare)}</b> of its blocks were chumps
+                </span>
+              )}
             </div>
           )}
           {a && (
@@ -167,6 +177,11 @@ function Card({
               {a.defendersPerAttack !== null && (
                 <span>
                   hit <b>{a.defendersPerAttack.toFixed(2)}</b> opponents per attack
+                </span>
+              )}
+              {a.keptEnough !== null && (
+                <span>
+                  left a real blocker home <b>{pct(a.keptEnough)}</b> of the time
                 </span>
               )}
             </div>

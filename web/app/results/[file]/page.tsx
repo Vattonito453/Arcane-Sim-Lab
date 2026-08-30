@@ -108,7 +108,16 @@ export default function ResultsPage() {
     // Per-deck scorecards: a few KB, and the only route the shim's neutral
     // per-seat records take to the browser. The page works without them (an
     // old run has no behaviour records), so a failure is silent.
-    api.runScorecards(file).then((r) => live && setSc(r)).catch(() => {});
+    api.runScorecards(file)
+      .then((r) => {
+        // Shape-check before trusting it. An engine older than this build
+        // has no /scorecards route and falls through to the whole result
+        // file, which is a 200 with a completely different body; reading
+        // .run off that white-screened the page during verification. A
+        // version-skewed deploy must degrade to the old table instead.
+        if (live && r && Array.isArray(r.decks) && r.run) setSc(r);
+      })
+      .catch(() => {});
     return () => {
       live = false;
     };
@@ -214,7 +223,7 @@ export default function ResultsPage() {
   // Table rounds when the scorecards have loaded; Forge player-turns only as
   // the fallback for a run whose scorecards could not be computed. The two
   // are different units and the label says which one is on screen.
-  const medRounds = sc?.run.medianGameRound ?? null;
+  const medRounds = sc?.run?.medianGameRound ?? null;
   const top = rows[0];
   const second = rows.find((r) => !topNames.has(r.name));
   const draws = data.summary.draws;

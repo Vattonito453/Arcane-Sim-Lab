@@ -5,6 +5,10 @@ FROM python:3.12-slim
 WORKDIR /app
 COPY rules/kb/ /app/rules/kb/
 COPY engine/*.py /app/engine/
+# The glob above is top level only, so engine/models/ never shipped: the
+# fitted prediction model lives in a subdirectory, and /results/{file}/prediction
+# answered "no fitted model" in production while working fine locally.
+COPY engine/models/ /app/engine/models/
 COPY engine/decks/*.dck /app/engine/decks/
 
 ENV MTG_DATA_DIR=/data \

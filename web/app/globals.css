@@ -657,6 +657,11 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .tc .tpn { position: absolute; left: 0; bottom: 0; font-family: var(--font-data); font-size: 9px; padding: 0 3px; background: rgba(3, 10, 14, 0.85); color: var(--ink-3); border-top-right-radius: 4px; }
 .tc .cnt { position: absolute; left: 0; top: 0; right: 0; font-family: var(--font-data); font-size: 9px; padding: 0 3px; background: rgba(3, 10, 14, 0.85); color: var(--ink-1); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .tc .att { position: absolute; left: 0; right: 0; bottom: 0; font-size: 8.5px; padding: 0 3px; background: rgba(3, 10, 14, 0.85); color: var(--ink-3); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+/* The hand band: exact contents from the shim zone stream, small tiles with
+   the same tooltip the board tiles carry. Sits between the plate and the
+   battlefield, visually distinct from in-play zones by the dashed rule. */
+.zone.hand { border-bottom: 1px dashed var(--hairline); padding-bottom: 4px; }
+.zone.hand .tc { width: 30px; height: 42px; }
 .blkbanner { display: flex; flex-direction: column; gap: 1px; font-size: 12px; color: var(--arcane-violet-ink); font-weight: 500; }
 .zone.lands .tc { width: 30px; height: 42px; }
 .zmore { align-self: center; font-family: var(--font-data); font-size: 11px; color: var(--ink-4); }

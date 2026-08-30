@@ -84,7 +84,7 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             # read the battlefield instead of inferring it. Older logs simply
             # lack the keys, and the reader falls back to Scryfall typing.
             zones.setdefault(r["game"], []).append(
-                {k: r[k] for k in ("turn", "card", "cardId", "from", "to",
+                {k: r[k] for k in ("turn", "phase", "card", "cardId", "from", "to",
                                    "fromPlayer", "toPlayer",
                                    "types", "pt", "token") if k in r})
         elif rec == "agent":

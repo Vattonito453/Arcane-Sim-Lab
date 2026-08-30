@@ -12,7 +12,7 @@
  *  keep the note under it — see <TabletopNote/>. */
 
 import { stripAi } from "@/lib/format";
-import type { BoardFxView, BoardState } from "@/lib/replay";
+import type { BoardFxView, BoardState, HandCard } from "@/lib/replay";
 import { cardFace, kindOf, ptOf, type CardFacts, type Kind } from "@/lib/cards";
 import { ManaPips } from "@/components/ManaPips";
 
@@ -29,8 +29,10 @@ export interface SeatMeta {
 /** Counter chip text: +1/+1 counters read as a stat delta, anything else as
  *  "n Name". Counter type names come from Forge verbatim. */
 function counterChip(type: string, n: number): string {
-  if (type === "P1P1") return `+${n}/+${n}`;
-  if (type === "M1M1") return `-${n}/-${n}`;
+  // Forge names the types "+1/+1" and "-1/-1" verbatim (measured; the old
+  // "P1P1" guess matched nothing). Vincent: "+10/+10", not "10 +1/+1".
+  if (type === "+1/+1") return `+${n}/+${n}`;
+  if (type === "-1/-1") return `-${n}/-${n}`;
   return `${n} ${type.toLowerCase()}`;
 }
 
@@ -100,7 +102,7 @@ const BAND_CAP = [18, 14, 24];
 interface TileGroup { name: string; n: number; kind: Kind; }
 
 export function Tabletop({
-  board, seats, activePlayer, facts, fx,
+  board, seats, activePlayer, facts, fx, hands,
 }: {
   board: BoardState;
   seats: SeatMeta[];
@@ -110,6 +112,9 @@ export function Tabletop({
    *  Absent for results older than shim 0.12.0; every marker degrades to
    *  the previous everything-looks-untapped rendering. */
   fx?: BoardFxView;
+  /** Every seat's hand at the playhead (exact, from the shim zone stream).
+   *  Undefined on results without a zone stream: the band does not render. */
+  hands?: Map<string, HandCard[]>;
 }) {
   const blockersInPlay = new Set<string>();
   for (const b of board.blocks) for (const nm of b.blockers) blockersInPlay.add(nm);
@@ -166,6 +171,8 @@ export function Tabletop({
 
         // Top-row seats face down the page; bottom-row seats face up.
         const far = board.seats.length <= 2 ? i === 0 : i < 2;
+        const hand = hands?.get(s.player);
+        const handN = hand ? hand.reduce((a, h) => a + h.n, 0) : 0;
 
         return (
           <div
@@ -198,6 +205,23 @@ export function Tabletop({
               )}
             </div>
 
+            {hand && (
+              <div className="zone hand">
+                <span className="zlab">Hand ({handN})</span>
+                {hand.map((h) => (
+                  <Tile
+                    key={h.name}
+                    name={h.name}
+                    n={h.n}
+                    kind={kindOf(h.name, facts(h.name))}
+                    facts={facts(h.name)}
+                    attacking={false}
+                    blocking={false}
+                    tappedN={0}
+                  />
+                ))}
+              </div>
+            )}
             <div className="zones">
               {/* First child, so the reverse that `far` applies puts it on the
                   centre edge for both rows of seats. */}

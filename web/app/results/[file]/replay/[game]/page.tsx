@@ -14,7 +14,7 @@ import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { RunGame } from "@/lib/types";
 import { runTitle, scryfallArt, shortName, stripAi } from "@/lib/format";
-import { boardFxAt, buildTimeline, commanderGuess, foldTo, summarizeGame, type Step } from "@/lib/replay";
+import { boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt, summarizeGame, type Step } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
 
@@ -128,6 +128,10 @@ export default function ReplayPage() {
   const cur0 = timeline?.steps[idx];
   const fx = useMemo(
     () => boardFxAt(game?.boardfx, cur0?.turn ?? 0, cur0?.phase ?? ""),
+    [game, cur0?.turn, cur0?.phase],
+  );
+  const hands = useMemo(
+    () => handsAt(game?.zones, cur0?.turn ?? 0, cur0?.phase ?? ""),
     [game, cur0?.turn, cur0?.phase],
   );
   const cur: Step | null = timeline && n > 0 ? timeline.steps[clamp(idx, 0, n - 1)] : null;
@@ -394,6 +398,7 @@ export default function ReplayPage() {
                 activePlayer={cur.active}
                 facts={facts}
                 fx={fx}
+                hands={hands}
               />
               <TabletopNote />
 

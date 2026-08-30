@@ -93,6 +93,21 @@ export interface SimGame {
   /** Board-state stream from shim >= 0.12.0: per-card tap state, counter
    *  totals, attachments. Absent on older results; every reader must cope. */
   boardfx?: BoardFxRec[];
+  /** Zone-change stream (shim path). Hidden zones included: the shim reads
+   *  the game in-process, so hands are EXACT, unlike the inferred board.
+   *  `phase` from shim >= 0.13.0. */
+  zones?: ZoneRec[];
+}
+
+export interface ZoneRec {
+  turn: number;
+  phase?: string;
+  card: string;
+  cardId: number;
+  from: string;
+  to: string;
+  fromPlayer?: string;
+  toPlayer?: string;
 }
 
 export interface BoardFxRec {

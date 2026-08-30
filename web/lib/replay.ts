@@ -516,6 +516,47 @@ export function boardFxAt(
   return view;
 }
 
+/* ── hands (exact, from the shim zone stream) ──────────────────────────── */
+
+export interface HandCard { name: string; n: number; }
+
+/** Every seat's hand at the playhead, reconstructed from the zone stream.
+ *  This is a READ, not an inference: the shim sees hidden zones in-process.
+ *  Records with a phase (shim >= 0.13.0) place exactly within their turn;
+ *  older records without one apply at the start of their turn, so within the
+ *  CURRENT turn a phaseless draw shows a card slightly early. */
+export function handsAt(
+  zones: import("./types").ZoneRec[] | undefined,
+  turn: number,
+  phaseLabel: string,
+): Map<string, HandCard[]> {
+  const out = new Map<string, HandCard[]>();
+  if (!zones || !zones.length) return out;
+  const cutoff = labelOrd(phaseLabel);
+  const holder = new Map<number, string>(); // cardId -> player whose hand
+  const nameOf = new Map<number, string>();
+  for (const z of zones) {
+    if (z.turn > turn) break; // stream is turn-ordered
+    if (z.turn === turn && z.phase !== undefined
+        && (PHASE_ORD[z.phase] ?? 0) > cutoff) continue;
+    nameOf.set(z.cardId, z.card);
+    if (z.to === "Hand" && z.toPlayer) holder.set(z.cardId, z.toPlayer);
+    else if (z.from === "Hand") holder.delete(z.cardId);
+  }
+  for (const [id, player] of holder) {
+    let hand = out.get(player);
+    if (!hand) {
+      hand = [];
+      out.set(player, hand);
+    }
+    const name = nameOf.get(id) ?? "";
+    const at = hand.find((h) => h.name === name);
+    if (at) at.n += 1;
+    else hand.push({ name, n: 1 });
+  }
+  return out;
+}
+
 /* ── game summary (results table + ledes) ──────────────────────────────── */
 
 type LossKind = "life" | "commander" | "poison" | "other";

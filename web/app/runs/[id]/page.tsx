@@ -6,7 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import type { JobStatus, LiveGame, SimSummary } from "@/lib/types";
 import { deckSlug, estimateSeconds, fmtDuration, pct, plural, runTitle, scryfallArt, shortName, stripAi, timeAgo } from "@/lib/format";
-import { boardFxAt, buildTimeline, commanderGuess, foldTo } from "@/lib/replay";
+import { boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
 import { Chrome, Footer, PageDetails } from "@/components/Chrome";
@@ -174,6 +174,10 @@ export default function RunPage() {
   const liveStep = liveTimeline?.steps[playIdx];
   const liveFx = useMemo(
     () => boardFxAt(liveGame?.boardfx, liveStep?.turn ?? 0, liveStep?.phase ?? ""),
+    [liveGame, liveStep?.turn, liveStep?.phase],
+  );
+  const liveHands = useMemo(
+    () => handsAt(liveGame?.zones, liveStep?.turn ?? 0, liveStep?.phase ?? ""),
     [liveGame, liveStep?.turn, liveStep?.phase],
   );
   const liveBoard = useMemo(
@@ -593,6 +597,7 @@ export default function RunPage() {
                   activePlayer={liveTimeline.steps[playIdx]?.active ?? ""}
                   facts={facts}
                   fx={liveFx}
+                  hands={liveHands}
                 />
                 <TabletopNote />
               </div>

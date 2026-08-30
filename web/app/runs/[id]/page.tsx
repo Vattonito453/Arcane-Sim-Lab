@@ -207,13 +207,20 @@ export default function RunPage() {
     for (const cards of liveBoard.battlefield.values()) {
       for (const c of cards) names.add(c.name);
     }
+    // Hands and combat lines too, so hand tiles and blocker ghosts carry
+    // faces and tooltips instead of "no card data".
+    for (const hand of liveHands.values()) for (const h of hand) names.add(h.name);
+    for (const b of liveBoard.blocks) {
+      names.add(b.attacker);
+      for (const nm of b.blockers) names.add(nm);
+    }
     for (const s of liveSeats) if (s.commander) names.add(s.commander);
     if (!names.size) return;
     void loadCards(Array.from(names)).then((m) => alive && setCardMap({ ...m }));
     return () => {
       alive = false;
     };
-  }, [liveBoard, liveSeats]);
+  }, [liveBoard, liveSeats, liveHands]);
   const facts = useCallback(
     (name: string): CardFacts | undefined => cardMap[name.trim().toLowerCase()],
     [cardMap],

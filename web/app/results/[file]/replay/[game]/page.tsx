@@ -143,15 +143,26 @@ export default function ReplayPage() {
   useEffect(() => {
     if (!timeline || !game) return;
     let live = true;
+    // Every name the view can ever show: fold ops (cards that entered play,
+    // died, attacked, blocked), the zone stream (hands), the board-fx stream,
+    // and commanders. Collecting only the FINAL board missed every card that
+    // died mid-game and never crossed a combat line -- measured by Vincent as
+    // "several cards say there is no data" (Kokusho traded off and its tile
+    // went unknown for the rest of the replay).
     const names = new Set<string>();
-    for (const p of game.players) {
-      for (const c of foldTo(timeline, timeline.steps.length - 1).battlefield.get(p) ?? []) {
-        names.add(c.name);
-      }
-    }
     for (const s of timeline.steps) {
       for (const h of s.hi ?? []) names.add(h);
+      const op = s.op;
+      if (!op) continue;
+      if (op.t === "push" || op.t === "land" || op.t === "leave") names.add(op.name);
+      else if (op.t === "attack") for (const c of op.cards) names.add(c);
+      else if (op.t === "block") {
+        names.add(op.attacker);
+        for (const b of op.blockers) names.add(b);
+      }
     }
+    for (const z of game.zones ?? []) names.add(z.card);
+    for (const r of game.boardfx ?? []) names.add(r.card);
     for (const s of seats) if (s.commander) names.add(s.commander);
     loadCards(Array.from(names)).then((m) => live && setCardMap({ ...m }));
     return () => {

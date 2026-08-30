@@ -29,8 +29,10 @@ export interface SeatMeta {
 /** Counter chip text: +1/+1 counters read as a stat delta, anything else as
  *  "n Name". Counter type names come from Forge verbatim. */
 function counterChip(type: string, n: number): string {
-  if (type === "P1P1") return `+${n}/+${n}`;
-  if (type === "M1M1") return `-${n}/-${n}`;
+  // Forge names the types "+1/+1" and "-1/-1" verbatim (measured; the old
+  // "P1P1" guess matched nothing). Vincent: "+10/+10", not "10 +1/+1".
+  if (type === "+1/+1") return `+${n}/+${n}`;
+  if (type === "-1/-1") return `-${n}/-${n}`;
   return `${n} ${type.toLowerCase()}`;
 }
 
@@ -100,7 +102,7 @@ const BAND_CAP = [18, 14, 24];
 interface TileGroup { name: string; n: number; kind: Kind; }
 
 export function Tabletop({
-  board, seats, activePlayer, facts, fx,
+  board, seats, activePlayer, facts, fx, hands,
 }: {
   board: BoardState;
   seats: SeatMeta[];

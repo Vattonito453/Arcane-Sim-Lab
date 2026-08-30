@@ -411,7 +411,7 @@ export default function ReplayPage() {
                 fx={fx}
                 hands={hands}
               />
-              <TabletopNote />
+              <TabletopNote read={(game?.zones?.length ?? 0) > 0} />
 
 
               <div className="vcr">

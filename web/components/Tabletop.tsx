@@ -268,8 +268,27 @@ export function Tabletop({
   );
 }
 
-/** The honesty note that must accompany the table wherever it is shown. */
-export function TabletopNote() {
+/** The honesty note that must accompany the table wherever it is shown.
+ *
+ *  There are two board paths and they do not deserve the same sentence. On a
+ *  shim run the zone stream records every permanent entering AND leaving play,
+ *  so the table is a read (measured: exit_match_rate 1.0, assumed_share 0.0).
+ *  On a stock Forge run only exits are logged and the table is inferred at
+ *  about 86% exit match. Showing the inference disclaimer on a shim run is not
+ *  safely conservative: it tells the user the data is worse than it is, which
+ *  is the same class of error as overclaiming. Pass read only when the game
+ *  actually carries a zone stream. */
+export function TabletopNote({ read = false }: { read?: boolean }) {
+  if (read) {
+    return (
+      <p className="tblnote">
+        Card faces come from Scryfall. This table is read from the zone stream the
+        simulator emits, which records every permanent entering and leaving play, so
+        it reflects the board exactly. The event log remains the record of what
+        happened.
+      </p>
+    );
+  }
   return (
     <p className="tblnote">
       Card faces come from Scryfall. Which permanents are on the table is

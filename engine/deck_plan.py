@@ -434,6 +434,16 @@ def build_plan(path: str | Path, fetch: bool = False,
         # Additive (task 20 Stage 1): shims before 0.4.2 ignore this key.
         "search": {"targets": targets, "context": context},
     }
+    # Outcome feedback: let observed win methods NUDGE the plan (bounded,
+    # search targets only). The cold-start invariant lives in plan_feedback:
+    # a deck with no history gets exactly the plan built above, and a broken
+    # store must never block a plan from building at all.
+    try:
+        import plan_feedback
+        plan_feedback.note_tags(deck_name, tags)
+        plan = plan_feedback.apply_to_plan(plan, deck_name, tags)
+    except Exception:
+        pass
     return deck_name, plan
 
 

@@ -649,6 +649,15 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .tc.tok { border-style: dashed; }
 .tc.atk { border-color: var(--state-failed); box-shadow: 0 0 0 1px var(--state-failed); }
 .tc.unk { border-style: dotted; }
+/* Tapped: the whole face turns sideways, the way a card does on a table.
+   Scaled to stay inside the tile box; dimmed because a tapped resource is
+   spent. Shape and rotation, not hue: colour never carries meaning alone. */
+.tc.tapd img, .tc.tapd .nm { transform: rotate(90deg) scale(0.72); opacity: 0.75; }
+.tc.blk { border-color: var(--arcane-violet); box-shadow: 0 0 0 1px var(--arcane-violet); }
+.tc .tpn { position: absolute; left: 0; bottom: 0; font-family: var(--font-data); font-size: 9px; padding: 0 3px; background: rgba(3, 10, 14, 0.85); color: var(--ink-3); border-top-right-radius: 4px; }
+.tc .cnt { position: absolute; left: 0; top: 0; right: 0; font-family: var(--font-data); font-size: 9px; padding: 0 3px; background: rgba(3, 10, 14, 0.85); color: var(--ink-1); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.tc .att { position: absolute; left: 0; right: 0; bottom: 0; font-size: 8.5px; padding: 0 3px; background: rgba(3, 10, 14, 0.85); color: var(--ink-3); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.blkbanner { display: flex; flex-direction: column; gap: 1px; font-size: 12px; color: var(--arcane-violet-ink); font-weight: 500; }
 .zone.lands .tc { width: 30px; height: 42px; }
 .zmore { align-self: center; font-family: var(--font-data); font-size: 11px; color: var(--ink-4); }
 .atkbanner { font-size: 12px; color: var(--state-failed-ink); font-weight: 500; }

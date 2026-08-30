@@ -74,18 +74,12 @@ def _save_store(store: dict) -> None:
 def _true_round(game: dict) -> int:
     """Rounds the way a table counts them (a player's Nth turn is round N).
 
-    Dividing Forge's per-player turn counter by seat count undercounts once
-    someone is eliminated; counting per player does not. Same rule as
-    web/lib/replay.ts and rubric.py.
+    One Python copy, in scorecard; web/lib/replay.ts carries the TypeScript
+    mirror. Imported lazily so this module keeps working if scorecard grows a
+    heavier dependency later.
     """
-    taken: dict[str, int] = {}
-    best = 0
-    for t in game.get("turns") or []:
-        p = t.get("active_player") or ""
-        taken[p] = taken.get(p, 0) + 1
-        if taken[p] > best:
-            best = taken[p]
-    return best
+    from scorecard import true_round
+    return true_round(game)
 
 
 def record_run(result: dict) -> dict:

@@ -22,6 +22,7 @@ zero-dependency API. Use it three ways:
                                   ?snapshots=1 adds board_snapshot events
        GET  /results/{file}/summary   run without event logs (~KB, not MB)
        GET  /results/{file}/prediction predicted real-playgroup win rates
+       GET  /results/{file}/scorecards  per-deck: outcomes, timing, behaviour
        GET  /results/{file}/game/{n}  one game's events
        GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
@@ -701,6 +702,17 @@ def _read_result_summary(name: str) -> dict:
             "games": games, "file": name, "validity": data.get("validity")}
 
 
+def _read_result_scorecards(name: str) -> dict:
+    """Per-deck scorecards: what each deck DID, not just whether it won.
+
+    Small by construction (a few KB for a 4-deck run) because it carries
+    aggregates, never event logs. The behaviour sections are absent for runs
+    older than shim 0.9.0, and absent is not zero -- the UI must say so.
+    """
+    from scorecard import scorecards
+    return scorecards(_read_result(name))
+
+
 def _read_result_prediction(name: str) -> dict:
     """Predicted REAL-PLAYGROUP win rate per deck in a finished run.
 
@@ -1173,6 +1185,9 @@ def serve(port: int = 8484) -> None:
                             return self._send(_read_result_summary(parts[1]), cache=IMMUTABLE)
                         if len(parts) >= 3 and parts[2] == "prediction":
                             return self._send(_read_result_prediction(parts[1]),
+                                              cache=IMMUTABLE)
+                        if len(parts) >= 3 and parts[2] == "scorecards":
+                            return self._send(_read_result_scorecards(parts[1]),
                                               cache=IMMUTABLE)
                         # /results/{file}/telemetry?deck=sub&watch=a|b|c
                         if len(parts) >= 3 and parts[2] == "telemetry":

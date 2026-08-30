@@ -59,6 +59,12 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     # can place them WITHIN a turn at phase granularity (the text log and the
     # shim streams share no sequence number; phase is the honest resolution).
     boardfx: dict[int, list[dict]] = {}
+    # Per-seat play-quality records (shim >= 0.9.0): the neutral observer's
+    # block/attack/mulligan scoring. These were DROPPED here until 0.13.0,
+    # so every behavioural metric the studies measured was invisible to the
+    # product -- the web app could show that a deck lost but never that it
+    # blocked badly or kept a hand it should have shipped.
+    rubric: dict[int, list[dict]] = {}
 
     for line in text.splitlines():
         line = line.strip()
@@ -75,6 +81,21 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             entries.setdefault(r["game"], []).append(r)
         elif rec == "result":
             results[r["game"]] = r
+        elif rec == "rubric":
+            rubric.setdefault(r["game"], []).append(
+                {k: r[k] for k in (
+                    "kind", "turn", "player",
+                    # block
+                    "incoming", "incomingPower", "blocked", "v3", "v2", "v1",
+                    "v0", "available", "freeTaken", "freeMissed", "safeMissed",
+                    "legalMissed", "lifeTaken", "life",
+                    # attack
+                    "attackers", "attackPower", "defenders", "held",
+                    "heldEligible", "heldPower", "heldTough", "heldBestTough",
+                    "backBodies", "backPower", "backBiggest",
+                    # mulligan
+                    "mulls", "hand", "lands",
+                ) if k in r})
         elif rec in ("tap", "counters", "attach"):
             boardfx.setdefault(r["game"], []).append(
                 {k: r[k] for k in ("rec", "turn", "phase", "cardId", "card",
@@ -163,6 +184,7 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
         game["zones"] = zones.get(g, [])
         # Additive: readers that predate 0.12.0 ignore this key.
         game["boardfx"] = boardfx.get(g, [])
+        game["rubric"] = rubric.get(g, [])
         # Agent self-telemetry: authoritative for agent behavior — the
         # GameLog writes some combat lines before the agent's adjustments.
         game["agent_events"] = agent_events.get(g, [])

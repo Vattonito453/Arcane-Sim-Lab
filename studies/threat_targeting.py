@@ -1,12 +1,16 @@
 """Is the pod's aggression aimed at the deck that is actually winning?
 
-MEASURED 2026-08-30, and the answer is "not established, on this much data".
-Across the four archived runs that carry behaviour records the within-run
-Spearman between attackers faced and win rate came out -1.00, +0.32, +0.11 and
--0.32: mean -0.22 with a standard error of about 0.29, which is t = -0.8 and
-nowhere near a result. The -1.00 run is real and is the one that prompted this
-script (its leader was attacked least and its bottom deck most), but it is one
-pod, and three more runs do not reproduce it.
+MEASURED 2026-08-30, and the answer is "no evidence either way". Across the
+five archived runs that carry behaviour records the within-run Spearman
+between attackers faced and win rate came out -1.00, +0.32, +0.11, -0.32 and
++0.74. Mean -0.03, which is as close to nothing as the number gets.
+
+The -1.00 run is real and is the one that prompted this script: its winning
+deck faced the fewest attackers and its zero-win deck the most. A fresh
+eight game gauntlet on that SAME four deck pod then scored +0.74, the pod
+attacking the leader. One pod, run twice, produced the strongest result in
+each direction, which is the tell that four decks per run gives rho far too
+few values to be stable.
 
 Recording that here because the anecdote is seductive: a perfectly inverted
 pod looks exactly like a broken threat model, and acting on it would have

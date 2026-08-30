@@ -121,14 +121,22 @@ export function Tabletop({
         const cards = board.battlefield.get(s.player) ?? [];
         const atkRow = board.attacks?.from === s.player ? board.attacks : null;
 
-        // Attackers the combat line proves are on the battlefield but that Forge
-        // never logged entering — nearly always tokens. Shown, because dropping
-        // them would hide real creatures.
+        // Attackers and blockers the combat lines prove are on the battlefield
+        // but that Forge never logged entering — nearly always tokens. Shown,
+        // because dropping them would hide real creatures. (A declared block
+        // is proof of presence exactly the way a declared attack is; without
+        // this, a blocking creature could carry the banner while its tile was
+        // missing from the table.)
         const ghosts: string[] = [];
-        if (atkRow) {
+        {
+          const proved: string[] = [];
+          if (atkRow) proved.push(...atkRow.cards);
+          if (board.attacks && board.attacks.to === s.player) {
+            for (const b of board.blocks) proved.push(...b.blockers);
+          }
           const have = new Map<string, number>();
           for (const c of cards) have.set(c.name, (have.get(c.name) ?? 0) + 1);
-          for (const name of atkRow.cards) {
+          for (const name of proved) {
             const k = have.get(name) ?? 0;
             if (k > 0) have.set(name, k - 1);
             else ghosts.push(name);
@@ -198,7 +206,7 @@ export function Tabletop({
                 <span className="blkbanner">
                   {board.blocks.map((b) => (
                     <span key={b.attacker}>
-                      {b.blockers.join(" + ")} block {b.attacker}
+                      {b.blockers.join(" + ")} {b.blockers.length === 1 ? "blocks" : "block"} {b.attacker}
                     </span>
                   ))}
                 </span>

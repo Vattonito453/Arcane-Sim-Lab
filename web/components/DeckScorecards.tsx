@@ -196,9 +196,17 @@ function Card({
                   hit <b>{a.defendersPerAttack.toFixed(2)}</b> opponents per attack
                 </span>
               )}
+              {/* keptEnough is heldBestTough > backBiggest, and backBiggest is
+                  the biggest power across ALL other seats. In a four player pod
+                  that bar is close to unreachable: one opponent's fatty puts it
+                  out of everyone's range, so the figure runs low for structural
+                  reasons and not because the deck never defends. "Left a real
+                  blocker home 9% of the time" read as a verdict on defense,
+                  which the number does not support. Say what was measured. */}
               {a.keptEnough !== null && (
                 <span>
-                  left a real blocker home <b>{pct(a.keptEnough)}</b> of the time
+                  held a blocker that survives the table&apos;s biggest attacker{" "}
+                  <b>{pct(a.keptEnough)}</b> of the time
                 </span>
               )}
             </div>

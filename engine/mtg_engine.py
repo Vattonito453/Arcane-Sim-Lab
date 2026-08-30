@@ -255,6 +255,16 @@ class Engine:
                 payload = json.loads(claimed.read_text())
             except Exception:  # noqa: BLE001
                 payload = None
+        if payload:
+            # Outcome feedback: fold this run's decided games into the plan
+            # store, so future plans for these decks (and their archetypes)
+            # can lean toward how they are OBSERVED to win. Never blocks a
+            # result: feedback is an upgrade, not a requirement.
+            try:
+                import plan_feedback
+                plan_feedback.record_run(payload)
+            except Exception:  # noqa: BLE001
+                pass
         return {"stdout": (out_txt + "\n" + err_txt)[-2000:], "returncode": rc,
                 "result_file": str(claimed) if claimed else None,
                 "killed": killed, "timeout": timeout,

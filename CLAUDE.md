@@ -1,8 +1,13 @@
 # Sim Lab — agent orientation
 
 A Magic: The Gathering **deck analysis** tool: import a decklist, run a Forge
-simulation gauntlet, replay games event-by-event, and (not yet built) get AI
-coaching. Python engine + Next.js front end.
+simulation gauntlet, replay games event-by-event, read per-deck scorecards and
+win-con telemetry, and get AI coaching. Python engine + Next.js front end.
+
+Coaching and the rules assistant are BUILT and shipped; their generation is
+gated on `MTG_LLM_API_KEY`, which production does not set, so those two
+features are dark until an owner sets it. `deploy/preflight.py` is the
+authority on what is live: run it rather than trusting this paragraph.
 
 Read this before touching anything. The invariants below were established by
 measurement or by legal posture — violating them silently breaks the product.
@@ -13,19 +18,19 @@ measurement or by legal posture — violating them silently breaks the product.
 
 ```
 engine/            Python, stdlib only, no frameworks
-  mtg_engine.py      rules KB + HTTP API (the server). ~630 lines.
+  mtg_engine.py      rules KB + HTTP API (the server). ~1,555 lines.
   jobqueue.py        SQLite job queue: enqueue/claim/finish/get
   worker.py          polls the queue, runs sims
   run_sim.py         invokes Forge (Java) as a subprocess
   forge_log_adapter.py  Forge stdout -> event JSON
   cards.py           Scryfall card-fact cache (type lines, P/T, oracle)
   board.py           battlefield reconstruction + accuracy report
-  deck_telemetry.py  win-con support metrics (no UI yet)
+  deck_telemetry.py  win-con support metrics (live at /results/{file}/telemetry)
   shuffle_check.py   proves Forge shuffles; early-play rate vs the maths
   combos.py          known combos in a deck (Commander Spellbook, disk-cached)
   analysis.py        win methods + combo assembled-vs-converted per run
   convert_decklist.py  decklist text -> validated .dck
-  tests/             test_adapter.py (unit) + smoke_test.py (live API) + fixtures/
+  tests/             16 test_*.py (unit) + smoke_test.py (live API) + fixtures/
 rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)
 web/               Next.js 15 App Router, React 19, TypeScript strict
   app/globals.css    THE ENTIRE DESIGN SYSTEM. Pages add no CSS.
@@ -193,8 +198,17 @@ telemetry, coaching, the training corpus, and — critically — all AI decision
   subprocess/CLI only. No in-process bridges (Py4J, JNI) into our code.
 - Distributing a modified Forge or a shim **binary** (public Docker image,
   installer) requires publishing that component's source under GPL-3.0.
-  Running it server-side imposes nothing (GPL v3, not AGPL). Today the worker
-  image pulls the official Forge release verbatim — zero obligations.
+  Running it server-side imposes nothing (GPL v3, not AGPL).
+  **This changed and the doc used to say otherwise.** The worker image no
+  longer pulls stock Forge only: `deploy/Dockerfile.worker` builds the shim in
+  a `shim-builder` stage (or takes a vendored jar) and bakes
+  `simlab-forge-shim.jar` into the runtime image, and the shim is the default
+  agent. So the image now *contains* a GPL derivative. Running it on our own
+  server still imposes nothing. **Publishing that image** (a public registry,
+  an installer, anything a third party receives) carries the GPL-3.0 source
+  obligation for the shim, which is satisfied only while the
+  `simlab-forge-shim` repo stays public at the commit the image was built
+  from. Do not push this image anywhere public without checking that first.
 - Prefer upstream PRs to Card-Forge over carrying a fork; any fork we do carry
   must be public from day one.
 - GPL non-compliance is the only path where Forge contributors could ever
@@ -281,17 +295,26 @@ lost to block buffering. See deploy/HOSTING.md.
 ## Verification loops — run these, don't assume
 
 ```bash
-# Engine
-python3 engine/tests/test_adapter.py                          # must print ALL ASSERTIONS PASSED
-python3 engine/tests/test_board_zones.py                      # shim zone stream -> board
-python3 engine/tests/test_summary_and_validity.py             # timeout accounting + pollution gate
-python3 engine/tests/test_run_accounting.py                   # run sizing, ceilings, salvage
-python3 engine/tests/test_scorecard.py                        # per-deck aggregates, rounds, censoring
-python3 engine/tests/test_readapt.py                          # re-adapt recovers data, refuses on mismatch
-python3 engine/tests/test_staging.py
-python3 engine/tests/test_result_attribution.py
-python3 engine/tests/smoke_test.py --sim                      # needs the API up; 35 checks
+# Engine — every test, discovered. Do NOT replace this with a hand-written
+# list: the previous list named 8 files while 16 existed, so "running the
+# loop" silently ran half the suite. Each must print ALL ASSERTIONS PASSED.
+for t in engine/tests/test_*.py; do
+  python3 "$t" >/dev/null 2>&1 && echo "pass  $t" || echo "FAIL  $t"
+done
+
+python3 engine/tests/smoke_test.py --sim                      # needs the API up; every
+                                                              # check must pass. Do not quote a
+                                                              # count here: it moved 23 -> 29 ->
+                                                              # 35 -> 37 and every doc that
+                                                              # pinned one now reads as a failure.
                                                               # --sim runs real Forge (~40 s)
+
+# Is the DEPLOYMENT actually serving what we think? Tests and a clean deploy
+# both passed while the prediction model was missing from the image, because
+# the endpoint answered 200 with {"available": false}. This is the only check
+# that would have caught it. Exits non-zero when a surface meant to be live
+# is dark, and prints the reason for every surface deliberately off.
+sudo docker exec deploy-api-1 python3 /app/deploy/preflight.py --files
 python3 engine/board.py engine/tests/fixtures/sim_sample.json --no-fetch
                                                               # exit_match_rate must not regress
 python3 engine/mtg_engine.py rule 903.10a                     # KB smoke test

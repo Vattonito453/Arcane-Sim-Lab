@@ -14,7 +14,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { RunSummary, TelemetryReport } from "@/lib/types";
-import { plural, runTitle, stripAi } from "@/lib/format";
+import { deckLabel, plural, runTitle, stripAi } from "@/lib/format";
 
 const ST_CLASS = { healthy: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { healthy: "Healthy", partial: "Partial", cold: "Never fired" } as const;
@@ -63,6 +63,11 @@ function TelemetryInner() {
 
   const decks = (summary?.meta?.decks as string[] | undefined) ?? [];
   const deck = deckParam || decks[0] || "";
+  // meta.decks are container paths. The engine sends exact names in
+  // summary.deck_labels; deckLabel is the fallback for an older engine so a
+  // deck picker can never render "/data/decks/skrat s revenge 239c6293".
+  const deckLabels = (summary as { deck_labels?: string[] } | undefined)?.deck_labels ?? [];
+  const labelFor = (d: string) => deckLabels[decks.indexOf(d)] ?? deckLabel(d);
 
   useEffect(() => {
     if (!deck) return;
@@ -102,7 +107,7 @@ function TelemetryInner() {
   ];
 
   const title = summary
-    ? runTitle(((summary.meta?.decks as string[]) ?? []).map((d) => d.replace(/\.dck$/, "")))
+    ? runTitle(((summary.meta?.decks as string[]) ?? []).map(labelFor))
     : file.replace(/\.json$/, "");
 
   if (err) {
@@ -230,7 +235,7 @@ function TelemetryInner() {
                 >
                   {decks.map((d) => (
                     <option key={d} value={d}>
-                      {d.replace(/\.dck$/, "")}
+                      {labelFor(d)}
                     </option>
                   ))}
                 </select>

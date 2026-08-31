@@ -14,7 +14,7 @@ dependencies beyond Python 3.10+, Java 17+, and (optionally) Docker.
 | `engine/` | The working backend. `mtg_engine.py` = HTTP API + browser dashboard + rules lookups. `run_sim.py` + `forge_log_adapter.py` = run headless Forge simulations, convert logs to structured JSON. `jobqueue.py` + `worker.py` = SQLite job queue so sims run in the background. `convert_decklist.py` = Moxfield/Arena export → Forge `.dck`. `decks/` = ready-to-sim Commander decks incl. a bracket-3 gauntlet (Atraxa / Meren / Ur-Dragon). `setup_forge.sh` = one-command Forge install. |
 | `deploy/` | Docker kit for hosting: API container, Forge worker container, compose file. See `deploy/README.md`. |
 | `training/` | Real-game dataset: three 4-player Commander games extracted turn-by-turn from YouTube (timestamped transcripts + structured `game_log.json` files + rules-validation reports). Use for testing the engine's rulings, grounding AI features in real play, or ML training. |
-| `frontend_handoff/` | Front-end build spec: `API_SPEC.md` (endpoint contract + product brief + RAG pattern), `samples/` (real captured API responses), `reference_dashboard.html` (working minimal UI), `rules_kb/` (corpus copy for client-side RAG). |
+| `frontend_handoff/` | Front-end build spec: `API_SPEC.md` (endpoint contract + product brief + RAG pattern), `samples/` (real captured API responses), `reference_dashboard.html` (working minimal UI). |
 | `MTG Engine.command` | macOS double-click launcher: starts the engine and opens the dashboard. |
 
 ## Quick start on a new machine (macOS/Linux)

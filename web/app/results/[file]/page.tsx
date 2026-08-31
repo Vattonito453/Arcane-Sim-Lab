@@ -14,8 +14,15 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
-import type { AnalysisReport, RunGameSummary, RunSummary, ScorecardReport } from "@/lib/types";
+import type {
+  AnalysisReport,
+  PredictionReport,
+  RunGameSummary,
+  RunSummary,
+  ScorecardReport,
+} from "@/lib/types";
 import { DeckScorecards } from "@/components/DeckScorecards";
+import { PredictionPanel } from "@/components/PredictionPanel";
 import { fmtDay, pct, plural, runDate, runTitle, stripAi } from "@/lib/format";
 
 function fmtClock(ms: number): string {
@@ -83,6 +90,7 @@ export default function ResultsPage() {
   const [data, setData] = useState<RunSummary | null>(null);
   const [an, setAn] = useState<AnalysisReport | null>(null);
   const [sc, setSc] = useState<ScorecardReport | null>(null);
+  const [pred, setPred] = useState<PredictionReport | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [wait, setWait] = useState<number | null>(null);
   const [q, setQ] = useState("");
@@ -116,6 +124,15 @@ export default function ResultsPage() {
         // .run off that white-screened the page during verification. A
         // version-skewed deploy must degrade to the old table instead.
         if (live && r && Array.isArray(r.decks) && r.run) setSc(r);
+      })
+      .catch(() => {});
+
+    // Corrected win rates. Same contract as scorecards: optional, silent on
+    // failure, and shape-checked, because an engine without the fitted model
+    // answers {available:false} rather than erroring.
+    api.runPrediction(file)
+      .then((r) => {
+        if (live && r && typeof r.available === "boolean") setPred(r);
       })
       .catch(() => {});
     return () => {
@@ -385,6 +402,10 @@ export default function ResultsPage() {
             </p>
           </section>
         )}
+
+        {/* Measured first, modelled second: the corrected rates only read
+            correctly once the reader has seen the raw ones they correct. */}
+        <PredictionPanel report={pred} />
 
         {an && Object.keys(an.summary?.methods ?? {}).length > 0 && (
           <section>

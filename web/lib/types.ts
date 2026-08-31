@@ -173,6 +173,46 @@ export interface ScorecardReport {
   };
 }
 
+/** Display names parallel to meta.decks, sent by the summary endpoint.
+ *  Optional: an engine older than this still answers without it. */
+export type DeckLabels = string[];
+
+/** One deck's corrected win rate. Every figure is a percentage 0-100, not a
+ *  fraction, which is what the engine sends. */
+export interface PredictionDeck {
+  deck: string;
+  sim_win_rate: number;
+  expected_win_rate: number;
+  low: number;
+  high: number;
+  typical_error_pp: number;
+  survival_pct: number | null;
+  contributions: Record<string, number>;
+  basis: {
+    trained_on_decks: number;
+    human_games: number;
+    arm: string;
+    loo_spearman: number;
+  };
+  available: boolean;
+  /** Plain-language sentences the engine already writes. Render these rather
+   *  than re-deriving the explanation in TSX, so the page and any coaching
+   *  text can never disagree about what the model said. */
+  explanation: string[];
+  reason?: string;
+}
+
+/** The endpoint answers {available:false, reason} when no fitted model is in
+ *  the image, which is exactly how it failed silently in production for
+ *  weeks. Callers MUST branch on available before touching decks. */
+export interface PredictionReport {
+  file: string;
+  available: boolean;
+  reason?: string;
+  decks?: PredictionDeck[];
+  model?: Record<string, unknown>;
+}
+
 export interface SimResult {
   meta: { decks?: string[]; format?: string; [k: string]: unknown };
   games: SimGame[];

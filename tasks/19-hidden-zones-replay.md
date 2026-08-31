@@ -1,5 +1,10 @@
 # 19 — Hand, graveyard and library in the replay
 
+> **STATUS 2026-08-31: hands SHIPPED, the rest untouched.** The hand panel
+> landed in `1bac7e7` and reads from the shim zone stream. Graveyard, exile
+> and library count are not built, and the `engine/board.py` side is
+> untouched.
+
 Playtester feedback (2026-08-06): "Hard to confirm effective play if we can't
 see what the AI is holding in hand or has in graveyard." The replay shows the
 battlefield and the event log, but a viewer judging whether the AI piloted the

@@ -311,6 +311,44 @@ def _find_deck(filename: str) -> Path | None:
     return None
 
 
+_IMPORT_HASH = re.compile(r"_[0-9a-f]{8}$")
+
+
+def _deck_labels(raw_decks: list) -> list:
+    """Display names for meta.decks, parallel to it.
+
+    meta.decks holds the paths the run was played with, which are CONTAINER
+    paths ("/data/decks/skrat_s_revenge_239c6293.dck"). The telemetry and
+    coaching pages rendered those straight into a deck picker and a heading, so
+    a user read "/data/decks/skrat s revenge 239c6293" where the deck's name
+    belongs. Resolving here rather than in the browser keeps it exact:
+    deck_name_of reads the .dck's own Name=, which is the same string the
+    summary's win_rates are keyed by.
+
+    Falls back to a prettified stem (minus the 8 hex import suffix) when the
+    file is gone, which is normal for an archived run whose deck was deleted.
+    """
+    out = []
+    try:
+        from analysis import deck_name_of
+    except Exception:  # noqa: BLE001 - never break a summary over a label
+        deck_name_of = None
+    for raw in raw_decks or []:
+        stem = Path(str(raw)).name
+        label = None
+        if deck_name_of is not None:
+            found = _find_deck(stem)
+            if found:
+                try:
+                    label = deck_name_of(found)
+                except Exception:  # noqa: BLE001
+                    label = None
+        if not label:
+            label = _IMPORT_HASH.sub("", Path(stem).stem).replace("_", " ").title()
+        out.append(label)
+    return out
+
+
 def _list_decks() -> list[dict]:
     import combos
     decks: dict[str, dict] = {}
@@ -702,7 +740,11 @@ def _read_result_summary(name: str) -> dict:
             "ended_round": true_round(g),
             "events": sum(len(t.get("events", [])) for t in turns),
         })
-    return {"meta": data.get("meta", {}), "summary": data.get("summary"),
+    meta = data.get("meta", {})
+    return {"meta": meta, "summary": data.get("summary"),
+            # Parallel to meta.decks. Every page with a deck picker needs a
+            # name, and the raw value is a container path.
+            "deck_labels": _deck_labels(meta.get("decks") or []),
             "games": games, "file": name, "validity": data.get("validity")}
 
 
@@ -1177,7 +1219,20 @@ def serve(port: int = 8484) -> None:
                 if not parts:
                     return self._send_html(DASHBOARD_HTML)
                 if parts[0] == "health":
-                    return self._send(engine.stats())
+                    # Whether generation is possible at all. llm.configured()
+                    # existed but nothing exposed it, so the coaching page
+                    # rendered an enabled primary that quoted a price and then
+                    # failed on click, with no way for the browser to know the
+                    # key was unset. Reports the flag, never the key.
+                    st = dict(engine.stats())
+                    try:
+                        import llm
+                        st["llm"] = llm.configured()
+                        st["llm_model"] = llm.default_model() if llm.configured() else None
+                    except Exception:  # noqa: BLE001 - health must never 500
+                        st["llm"] = False
+                        st["llm_model"] = None
+                    return self._send(st)
                 if parts[0] == "decks":
                     if len(parts) > 1:
                         # _find_deck refuses traversal; imported shadows bundled.
@@ -1312,12 +1367,28 @@ def serve(port: int = 8484) -> None:
                             {"error": "pass {\"result_file\": ..., \"deck\": ...}"}, 400)
                     if _find_deck(deck) is None:
                         return self._send({"error": f"unknown deck: {deck}"}, 400)
+                    # Refuse BEFORE spending quota. _rate_ok consumes a token
+                    # on the way through, and coach.report() declines
+                    # immediately when no key is configured, so on a
+                    # deployment without MTG_LLM_API_KEY every click burned one
+                    # of the 20 hourly tokens to buy a guaranteed decline. A
+                    # user could exhaust their quota without a single call
+                    # being made.
+                    import coach
+                    import llm
+                    if not llm.configured():
+                        return self._send({
+                            "ok": False,
+                            "reason": "no LLM configured",
+                            "detail": "This deployment has no model key, so "
+                                      "coaching cannot be generated. Set "
+                                      "MTG_LLM_API_KEY and redeploy.",
+                        })
                     ok, retry = _rate_ok(f"coach:{self.client_key}",
                                          COACH_PER_HOUR, 3600.0)
                     if not ok:
                         return self._deny(
                             429, f"coaching quota is {COACH_PER_HOUR}/hour", retry)
-                    import coach
                     try:
                         return self._send(coach.report(result_file, deck))
                     except (FileNotFoundError, ValueError):

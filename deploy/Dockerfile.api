@@ -10,6 +10,10 @@ COPY engine/*.py /app/engine/
 # answered "no fitted model" in production while working fine locally.
 COPY engine/models/ /app/engine/models/
 COPY engine/decks/*.dck /app/engine/decks/
+# The deployment self-check, shipped so it can be run against a live container
+# with one command and no file copying. It is the only check that catches a
+# feature which is built, merged, deployed, and answering 200 while dark.
+COPY deploy/preflight.py /app/deploy/preflight.py
 
 ENV MTG_DATA_DIR=/data \
     MTG_EMBEDDED_WORKER=0

@@ -34,7 +34,9 @@ Scryfall cache, and 30+ real simulation results in `engine/sim_results/`.
 python3 engine/tests/smoke_test.py --sim
 ```
 
-35 checks, ~40 s. Without `--sim` it is 29 checks and a few seconds. It exercises
+~40 s, and it prints its own check count. Without `--sim` it is a few seconds.
+The count grows as checks are added, so trust the script's summary line rather
+than any number written down here. It exercises
 the rules KB, deck listing, the results index, run summaries, single-game
 payloads, `/cards`, the wincon analysis endpoint, path-traversal probes on both
 results and analysis, and the three ways `POST /simulate` should refuse a bad

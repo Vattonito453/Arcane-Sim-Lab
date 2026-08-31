@@ -44,9 +44,8 @@ Tier 1 — product value, no infra dependencies
                                rolled-up win rate/win-method/combo stats, and a
                                capped set of cross-run highlights; depends on
                                12, do after 16
-  18-decklist-hover-preview.md  bring back the hover/focus decklist popover on
-                               gallery tiles, this time with keyboard and touch
-                               parity and no actions inside it; small, self-contained
+  18-decklist-hover-preview.md  DOES NOT EXIST. Listed here for a while with no
+                               file behind it; write the spec before citing it.
   19-hidden-zones-replay.md    show each player's hand, graveyard, exile and a
                                library count in the replay; on shim runs the
                                zones stream already records all of it (measured),
@@ -55,6 +54,16 @@ Tier 1 — product value, no infra dependencies
                                combos: measure stock-AI target quality first,
                                then rank legal search options by plan weight;
                                knowledge as data, shim stays thin
+  21-interaction-timing.md     spend answers when a plan is being executed, not
+                               in turn order; carries a 2026-08-30 addendum
+                               measuring what the counter veto actually declines
+  22-equipment-policy.md       RETRACTED premise: the "0 of 20 equips" figure was
+                               a detection artifact, Forge logs "activated X
+                               targeting" and never "Equip". Read before reviving
+  23-threat-aimed-attacks.md   threat signature v2 shipped; the re-measure came
+                               back noise (studies/threat_targeting.py)
+  24-defensive-retention-metric.md  keptEnough needs a denominator a player can
+                               meet; today it is a table-wide maximum
 
 Tier 2 — needed for multi-host scale (do when Tier 1 saturates one box)
   04-postgres-queue.md         unlocks workers on separate machines

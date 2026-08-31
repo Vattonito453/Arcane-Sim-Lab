@@ -1,5 +1,12 @@
 # 07 — Human-like sim agent (deck-plan-driven, GPL shim)
 
+> **STATUS 2026-08-31: Stages 0-4 SHIPPED; two items genuinely open.**
+> The checklist below is entirely unchecked and should not be read as the
+> state of the work. Mulligan, attack-split and block behaviour are recorded
+> and measured (`engine/SIM_CALIBRATION.md`), and the neutral rubric observer
+> reports them per seat. Still open: the Stage 3 familiarity dial, which
+> exists nowhere in the tree, and the hidden-zone code review.
+
 **Priority: CRITICAL.** Sim credibility is the product. If simulated games read
 as "swing at face and lucky Lightning Bolts," nobody trusts the win rates or
 the coaching built on them. The goal: games that *feel like Magic* — mulligans

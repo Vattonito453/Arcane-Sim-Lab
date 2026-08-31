@@ -1,5 +1,13 @@
 # Task 23: attack the table's threat, not your grudge partner
 
+> **STATUS 2026-08-31: the next lever landed, and the re-measure came back
+> NOISE.** Threat signature v2 shipped (`engine/deck_plan.py`: a creature with
+> power >= 5 is a threat regardless of keep-weight). The re-measure this spec
+> asks for was run: `studies/threat_targeting.py` scored five runs at -1.00,
+> +0.32, +0.11, -0.32 and +0.74, mean -0.03, and the SAME four deck pod
+> produced both the -1.00 and the +0.74. Do not retune against that spread.
+> Read the study's docstring before touching kingmakerRatio.
+
 ## The finding (Vincent, 2026-08-29, run sim_20260829_220838_0966af5d0640)
 
 Across 8 games, attack declarations received: Living Energy 49, Skrat 34,

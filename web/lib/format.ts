@@ -147,3 +147,21 @@ export function deckSlug(file: string): string {
     .trim()
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
+
+/** A deck's display name from whatever meta.decks holds.
+ *
+ *  meta.decks carries CONTAINER paths ("/data/decks/skrat_s_revenge_239c6293.dck"),
+ *  and pages were rendering them with only the extension stripped, so a deck
+ *  picker read "/data/decks/skrat s revenge 239c6293". The engine now sends
+ *  exact names in summary.deck_labels; this is the fallback for an older
+ *  engine, and it must never show a path. */
+export function deckLabel(raw: string): string {
+  const base = raw.split(/[\\/]/).pop() ?? raw;
+  return base
+    .replace(/\.dck$/i, "")
+    .replace(/_[0-9a-f]{8}$/i, "")
+    .replace(/_/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}

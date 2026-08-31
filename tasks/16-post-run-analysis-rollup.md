@@ -1,5 +1,8 @@
 # 16 — Tie post-run deck analysis together
 
+> **STATUS 2026-08-31: Gap 1 SHIPPED, Gap 2 open.** The win-method
+> distribution renders on the results page. Only the lede wayfinding remains.
+
 **Read this before scoping work here — most of "expose analysis after a
 sim" already shipped.** `web/app/results/[file]/page.tsx` already renders win
 rate vs. the even-seats baseline and combo assembly/conversion; the Telemetry

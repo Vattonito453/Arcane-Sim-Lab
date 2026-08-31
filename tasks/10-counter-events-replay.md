@@ -1,5 +1,12 @@
 # 10 — Counter events in the replay
 
+> **STATUS 2026-08-31: SHIPPED on the shim path.** This spec says "the shim
+> does not currently help", which is backwards now. Counters land via shim
+> 0.12.0 and render through `web/lib/replay.ts` and `web/components/Tabletop.tsx`
+> (aggregated, so ten +1/+1 counters read as `+10/+10`). What remains unbuilt
+> is only the STDOUT fallback: `engine/forge_log_adapter.py` and
+> `engine/board.py` still have no counter handling, so pre-shim runs show none.
+
 The replay shows spells, combat, and zone exits, but says nothing when a
 permanent or player gains counters — +1/+1, charge, loyalty, energy,
 experience, poison. Decks built on those triggers (proliferate, All Will Be

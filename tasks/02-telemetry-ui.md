@@ -1,5 +1,16 @@
 # 02 — Telemetry in the UI
 
+> **STATUS 2026-08-31: SHIPPED. Do not start this task.**
+> `deck_telemetry.compute()` exists (the module is 263 lines, not the 59 this
+> spec describes), the `/results/{file}/telemetry` endpoint is live, and the
+> page renders win-con support rows, engine metrics and a damage-by-source
+> table. The text below is kept for its constraints, which still bind, and for
+> its acceptance criteria, which the shipped page should be re-read against.
+> Two real gaps remain and are NOT this task: the watched-cards rows populate
+> only from a hand-typed `?watch=` URL with no UI control, and the engine
+> metrics are hardcoded to one archetype (charge counters, proliferate) so they
+> render for every deck regardless of what it does.
+
 **Why:** `engine/deck_telemetry.py` measures whether a deck's plan actually fired
 and nothing in the product shows it. `engine/SIM_CALIBRATION.md` step 3 says a win
 rate without function telemetry is unreadable — a deck whose machinery runs but

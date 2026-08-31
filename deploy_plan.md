@@ -98,11 +98,14 @@ Do these in this order; each is independently useful.
 
 None of this is deployment; it's what makes the beta worth using.
 
-- **Coaching synthesis** (`frontend_architecture.md` §6) — the flagship feature and
-  still unbuilt. One LLM call per deck-hash × gauntlet, cached.
-- **Telemetry rendering** — `deck_telemetry.py` output has no UI yet.
-- **Rules assistant** — retrieval already exists (`/search`); needs the generation
-  step and a semantic cache.
+- **Coaching synthesis** (`frontend_architecture.md` §6) — **BUILT and shipped**
+  (`engine/coach.py`, `POST /coaching`, `/results/{file}/coaching`). One LLM call
+  per deck-hash × gauntlet, cached. It is DARK in production only because
+  `MTG_LLM_API_KEY` is unset; setting it in `deploy/.env` turns it on.
+- **Telemetry rendering** — **BUILT and shipped** at `/results/{file}/telemetry`
+  since 2026-08-01, including win-con support rows and a damage-by-source table.
+- **Rules assistant** — **BUILT and shipped**. Retrieval is live and unkeyed; only
+  the generated answer is gated on the same `MTG_LLM_API_KEY`.
 - **Board snapshots via Forge's API** — the current reconstruction matches 86.5%
   of battlefield exits; the residual is tokens Forge never logs entering (see
   `web/README.md`). Exact state needs `simulateOffthreadGame`. Review GPL

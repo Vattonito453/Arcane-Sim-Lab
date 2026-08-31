@@ -13,6 +13,7 @@ import type {
   RulesAnswer,
   RunGame,
   RunSummary,
+  PredictionReport,
   ScorecardReport,
   SimResult,
   TelemetryReport,
@@ -113,7 +114,17 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 }
 
 export const api = {
-  health: () => get<{ rules: number; keywords: number; glossary_terms: number }>("/health"),
+  /** KB stats, plus whether generation is switched on at all. `llm` is a
+   *  boolean flag only; the key itself is never sent to the browser. Optional
+   *  so an older engine still typechecks. */
+  health: () =>
+    get<{
+      rules: number;
+      keywords: number;
+      glossary_terms: number;
+      llm?: boolean;
+      llm_model?: string | null;
+    }>("/health"),
   decks: () => get<DeckEntry[]>("/decks"),
   /** One deck's card names, counts expanded — the playtest sandbox's load. */
   deck: (file: string) => get<DeckCards>(`/decks/${encodeURIComponent(file)}`),
@@ -145,6 +156,15 @@ export const api = {
    *  the only place the shim's neutral per-seat records reach the browser. */
   runScorecards: (file: string) =>
     get<ScorecardReport>(`/results/${encodeURIComponent(file)}/scorecards`),
+  /** Predicted real-playgroup win rates, corrected off the raw sim.
+   *
+   *  This endpoint has existed and worked for a while and had NO web consumer
+   *  at all, so the correction the whole calibration argument rests on was
+   *  invisible to users. It answers {available:false, reason} when the fitted
+   *  model is not present, so every caller must handle that rather than
+   *  assume decks[]. */
+  runPrediction: (file: string) =>
+    get<PredictionReport>(`/results/${encodeURIComponent(file)}/prediction`),
   /** Wincon report: win methods + combo assembly/conversion. Deliberately NOT
    *  force-cached: the payload carries an analysis version and evolves — a
    *  browser that pinned v1 under an immutable header kept serving it after the

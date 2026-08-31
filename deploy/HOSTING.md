@@ -24,7 +24,8 @@ NEXT_PUBLIC_API_BASE=/engine
 
 and every API call goes through the app's own origin. One public hostname, no CORS
 configuration, and no https-page-calling-http mixed content. Verified: the full
-smoke test passes through the proxy (`--base http://localhost:3000/engine`, 23/23).
+smoke test passes through the proxy (`--base http://localhost:3000/engine`);
+it prints its own total, and every check must pass.
 
 Two settings are **not** optional once anything is reachable from outside:
 
@@ -54,7 +55,7 @@ Three containers — `web` (Next.js, the public face), `api` (the engine), and
 `worker` (Java 17 + Forge, runs the sims) — sharing one data volume. The web
 container proxies `/engine/*` to the api over the compose network, so the only
 thing exposed to the internet is the web port. Verified end to end in
-containers before this was written: **35/35 smoke checks pass against the
+containers before this was written: **every smoke check passes against the
 containerized stack**, including a real 2-game Forge simulation executed by the
 worker container in 15 s, and the front end renders 29 decks through the
 proxy.
@@ -202,7 +203,7 @@ From the VM (or anywhere, using the external IP):
 python3 engine/tests/smoke_test.py --sim --base http://localhost/engine --key "$YOUR_KEY"
 ```
 
-35 checks including a real containerized Forge run. Then confirm the write
+every check, including a real containerized Forge run. Then confirm the write
 guard from outside: an unkeyed `POST /engine/simulate` must return 401.
 
 The address to hand out is `http://EXTERNAL_IP/` (find it with

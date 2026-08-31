@@ -12,7 +12,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { CoachingReport, RunSummary } from "@/lib/types";
-import { pct, runTitle, stripAi } from "@/lib/format";
+import { deckLabel, pct, runTitle, stripAi } from "@/lib/format";
 
 const ST_CLASS = { running: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { running: "Running", partial: "Partial", cold: "Never fired" } as const;
@@ -30,6 +30,8 @@ function CoachingInner() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [wait, setWait] = useState<number | null>(null);
+  // null while unknown, so a slow /health never flashes a false blocker.
+  const [llmReady, setLlmReady] = useState<boolean | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -37,6 +39,14 @@ function CoachingInner() {
       if (!live) return;
       setErr(e instanceof Error ? e.message : String(e));
     });
+    // Can this deployment generate at all? Silent on failure: an engine that
+    // does not report the flag leaves llmReady null, and null renders no
+    // blocker, so an older engine degrades to today's behaviour.
+    api.health()
+      .then((h) => {
+        if (live && typeof h?.llm === "boolean") setLlmReady(h.llm);
+      })
+      .catch(() => {});
     return () => {
       live = false;
     };
@@ -44,6 +54,11 @@ function CoachingInner() {
 
   const decks = (summary?.meta?.decks as string[] | undefined) ?? [];
   const deck = deckParam || decks[0] || "";
+  // meta.decks are container paths. The engine sends exact names in
+  // summary.deck_labels; deckLabel is the fallback for an older engine so a
+  // deck picker can never render "/data/decks/skrat s revenge 239c6293".
+  const deckLabels = (summary as { deck_labels?: string[] } | undefined)?.deck_labels ?? [];
+  const labelFor = (d: string) => deckLabels[decks.indexOf(d)] ?? deckLabel(d);
 
   // The free, cache-only read on load and deck change.
   useEffect(() => {
@@ -96,9 +111,9 @@ function CoachingInner() {
   ];
 
   const title = summary
-    ? runTitle(((summary.meta?.decks as string[]) ?? []).map((d) => d.replace(/\.dck$/, "")))
+    ? runTitle(((summary.meta?.decks as string[]) ?? []).map(labelFor))
     : file.replace(/\.json$/, "");
-  const deckName = deck.replace(/\.dck$/, "").replace(/_/g, " ");
+  const deckName = labelFor(deck);
 
   const selector = (
     <select
@@ -111,7 +126,7 @@ function CoachingInner() {
     >
       {decks.map((d) => (
         <option key={d} value={d}>
-          {d.replace(/\.dck$/, "")}
+          {labelFor(d)}
         </option>
       ))}
     </select>
@@ -271,6 +286,20 @@ function CoachingInner() {
               </button>
               <span className="meta">{selector}</span>
             </div>
+            {/* The design system forbids disabling the primary and requires the
+                blocker stated beside it. Without a model key this button quoted
+                a price and a duration and then failed on click, which is the
+                worst of both: it looks ready and is not. /health reports the
+                flag (never the key), so the page can say so up front. */}
+            {llmReady === false && (
+              <p className="note">
+                Generation is not switched on for this deployment: the engine has no
+                model key, so the button above will fail. Set{" "}
+                <span className="mono">MTG_LLM_API_KEY</span> in{" "}
+                <span className="mono">deploy/.env</span> and redeploy to enable it.
+                Everything else on this page and the telemetry tab works without it.
+              </p>
+            )}
           </>
         ) : rep && !rep.ok ? (
           <p className="note">

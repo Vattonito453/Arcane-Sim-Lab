@@ -70,6 +70,27 @@ def test_censored_games_excluded_from_win_rate_but_counted():
     assert sc["run"]["decided"] == 1
 
 
+def test_clock_and_turn_cap_are_counted_apart():
+    """Both end a game undecided, but they mean different things: the clock
+    means too slow, the turn cap means the pod could not close. The UI called
+    both "cut off by the clock"."""
+    decided = _game(["A", "B"], {"winner": "Ai(1)-A", "draw": False, "seats": []})
+    slow = _game(["A", "B"], {"winner": None, "draw": True, "timedOut": True,
+                              "seats": []})
+    stall = _game(["A", "B"], {"winner": None, "draw": True, "turnCapped": True,
+                               "seats": []})
+    both = _game(["A", "B"], {"winner": None, "draw": True, "timedOut": True,
+                              "turnCapped": True, "seats": []})
+    run = scorecards({"games": [decided, slow, stall, both]})["run"]
+    assert run["censored"] == 3, run["censored"]
+    assert run["decided"] == 1, run["decided"]
+    # A game tripping both is attributed to the clock, so the two parts never
+    # sum above censored and the UI cannot print more kills than there were.
+    assert run["timedOut"] == 2, run["timedOut"]
+    assert run["turnCapped"] == 1, run["turnCapped"]
+    assert run["timedOut"] + run["turnCapped"] == run["censored"]
+
+
 def test_absent_behaviour_is_none_not_zero():
     """A pre-0.9.0 run has no rubric records. Sections must be None so the UI
     can say "not recorded" instead of drawing a zero."""

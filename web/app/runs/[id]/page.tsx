@@ -606,7 +606,7 @@ export default function RunPage() {
                   fx={liveFx}
                   hands={liveHands}
                 />
-                <TabletopNote />
+                <TabletopNote read={(liveGame?.zones?.length ?? 0) > 0} />
               </div>
               <p className="note">
                 Played back at a watchable pace, not live. The simulation keeps running.

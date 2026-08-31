@@ -196,9 +196,17 @@ function Card({
                   hit <b>{a.defendersPerAttack.toFixed(2)}</b> opponents per attack
                 </span>
               )}
+              {/* keptEnough is heldBestTough > backBiggest, and backBiggest is
+                  the biggest power across ALL other seats. In a four player pod
+                  that bar is close to unreachable: one opponent's fatty puts it
+                  out of everyone's range, so the figure runs low for structural
+                  reasons and not because the deck never defends. "Left a real
+                  blocker home 9% of the time" read as a verdict on defense,
+                  which the number does not support. Say what was measured. */}
               {a.keptEnough !== null && (
                 <span>
-                  left a real blocker home <b>{pct(a.keptEnough)}</b> of the time
+                  held a blocker that survives the table&apos;s biggest attacker{" "}
+                  <b>{pct(a.keptEnough)}</b> of the time
                 </span>
               )}
             </div>
@@ -233,7 +241,18 @@ export function DeckScorecards({ report }: { report: ScorecardReport }) {
         <h2>What each deck did</h2>
         <span className="meta">
           {run.decided} decided {one(run.decided, "game", "games")}
-          {run.censored > 0 && <>, {run.censored} cut off by the clock</>}
+          {/* "cut off by the clock" was covering both causes. A turn capped
+              game was not slow, it was unfinishable: 120 turns and nobody
+              closed. That is a read on the decks, so it gets its own words. */}
+          {(run.timedOut ?? 0) > 0 && <>, {run.timedOut} cut off by the clock</>}
+          {(run.turnCapped ?? 0) > 0 && (
+            <>, {run.turnCapped} still going at the turn cap</>
+          )}
+          {/* An engine older than this split sends neither count. Fall back to
+              the combined figure rather than dropping the caveat entirely,
+              which is how a version skew turns into a quiet overclaim. */}
+          {run.timedOut === undefined && run.turnCapped === undefined
+            && run.censored > 0 && <>, {run.censored} undecided</>}
         </span>
       </div>
       <div className="scgrid">

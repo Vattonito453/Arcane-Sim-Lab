@@ -92,3 +92,42 @@ rather than on open mana alone.
   interaction layer must not become another handicap)
 - `corr(interaction, sim)` moves toward the human value: interaction-dense
   decks are currently under-rewarded by the sim relative to humans
+
+---
+
+## Addendum, measured 2026-08-30: what the veto is actually declining
+
+`counter_fire` / `counter_veto` events across every archived shim log, split by
+run so plan versions do not blur together.
+
+**All runs pooled: fire 90, veto 193.** Median threat of a spell countered 8.0,
+of one let resolve 3.0, so the model separates cleanly on the whole. It fires
+on commanders and payoffs (Atraxa, Kilo, The Astonishing Ant-Man, Deranged
+Hermit, Triumph of the Hordes, Guardian Project) and lets ramp and removal
+resolve (Farseek, Arcane Signet, Kodama's Reach, Cultivate, Sol Ring, Path to
+Exile, Swords to Plowshares). That is the right shape.
+
+**But the pooled figure is not current behaviour.** The same list also showed
+Craterhoof Behemoth, Chatterstorm and Deepglow Skate being let resolve, which
+reads as a broken threat model. Restricting to runs carrying threat signature
+v2 plans (0966af5d0640, 65f2f33345ee, f8d3537d66b1, 65b1c47e9535, 1ea944e1a9a4)
+gives **fire 19, veto 21** and none of those three cards appear. The 2:1 veto
+ratio and the scary card names are both artifacts of pre-v2 plans, where a big
+creature was only a threat if its keep-weight said so. `_pow(n) >= 5` already
+fixed that class. Do not re-file it as a bug.
+
+**The lead that survives, at n = 21 vetoes.** What still gets let through on v2
+plans skews noncreature and X-spell: Finale of Devastation, Saw in Half, Whir
+of Invention, Branching Evolution, Skullclamp, Coretapper. That is structural
+rather than coincidental: `threat_set` in `engine/deck_plan.py` is
+`weights >= 7` OR `creature power >= 5` OR commander, so a noncreature payoff
+has exactly one way in, and an X-spell has none (its printed cost is low and it
+is not a creature on the stack). Anything missing from the index falls back to
+`Math.min(4, cmc)` in `threatOfSpell`, which is capped BELOW the default
+`counterThreshold` of 5, so an unindexed card can essentially never be
+countered.
+
+Twenty one vetoes across five runs is a lead, not a result. Before acting on
+it, gather more v2 runs and check whether the noncreature skew holds; if it
+does, the fix is a third `threat_set` rule for noncreature payoffs and X
+finishers, which is deck plan DATA and stays on our side of the boundary.

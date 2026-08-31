@@ -163,6 +163,10 @@ export interface ScorecardReport {
   decks: DeckScorecard[];
   run: {
     games: number; decided: number; censored: number;
+    /** censored split by cause: too slow (clock) vs could not close (turn
+     *  cap). A game tripping both is attributed to the clock, so these two
+     *  sum to censored and never above it. */
+    timedOut?: number; turnCapped?: number;
     baseline: number | null;
     medianGameRound: number | null;
     hasBehaviour: boolean;

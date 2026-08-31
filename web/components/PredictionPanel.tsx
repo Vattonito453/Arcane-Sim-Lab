@@ -95,13 +95,18 @@ export function PredictionPanel({ report }: { report: PredictionReport | null })
         </tbody>
       </table>
 
+      {/* Do NOT explain the correction using one deck's direction. The first
+          version said a correction "means the simulated table is harsher than
+          a real one", which is only true when the correction is positive; on
+          the first run this shipped against, the top deck corrected DOWN 30.6
+          points, so the sentence asserted the opposite of what the number
+          said. Corrections run both ways and the copy has to survive both. */}
       <p className="note">
         Out-of-sample rank correlation {basis.loo_spearman.toFixed(2)} on leave-one-out
         testing, fitted against {basis.arm}. The model orders decks better than it pins
         any single number, so read the ranking first and the point estimate second. A
-        correction of {pp(decks[0].expected_win_rate - decks[0].sim_win_rate)} points
-        does not mean the simulation was wrong; it means the simulated table is harsher
-        than a real one.
+        correction is not a claim that the simulation miscounted: it maps a simulated
+        table onto a human one, and it runs in both directions.
       </p>
     </section>
   );

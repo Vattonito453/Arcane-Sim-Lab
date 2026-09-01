@@ -11,6 +11,11 @@ not a re-simulation: the same function that produced the result the first
 time runs again over the same bytes. What changes is only which fields the
 adapter keeps.
 
+The same applies to combat lines. Until the adapters split Forge's multi-line
+combat entries, every attack declaration after the first defender and every
+block after the first attacker was dropped from the event log, so a re-parse
+also recovers events (counted as "events" in the gain report).
+
 SAFETY. This rewrites a user's result file, so it refuses unless the re-parse
 reproduces the run exactly: same game count, same players per game, same
 winner, same draw flag, same turn count. If any of those differ, the raw logs
@@ -58,6 +63,12 @@ def _is_id(candidate: str) -> bool:
 # Keys the newer adapter adds to each game. Absent from an older result, which
 # is exactly what re-adapting recovers.
 ENRICHING_KEYS = ("rubric", "boardfx", "zones")
+# Plus the event count itself: the adapter used to drop every combat line after
+# the first in a multi-line Forge entry (a second defender's attack, a
+# defender's second and later blocks), so a re-parse of the same bytes now
+# yields MORE events for the same games. The fingerprint below is untouched by
+# that (players, winner, draw, turn count), so the safety check still holds.
+GAIN_KEYS = ENRICHING_KEYS + ("events",)
 
 
 def run_id_of(path: Path) -> str | None:
@@ -85,10 +96,12 @@ def _fingerprint(game: dict) -> tuple:
 
 
 def _counts(games: list[dict]) -> dict[str, int]:
-    out = {k: 0 for k in ENRICHING_KEYS}
+    out = {k: 0 for k in GAIN_KEYS}
     for g in games:
         for k in ENRICHING_KEYS:
             out[k] += len(g.get(k) or [])
+        out["events"] += len(g.get("events_pregame") or [])
+        out["events"] += sum(len(t.get("events") or []) for t in g.get("turns") or [])
     return out
 
 
@@ -140,7 +153,7 @@ def readapt(path: Path, write: bool = False) -> dict:
     before, after = _counts(old_games), _counts(games)
     report["before"] = before
     report["after"] = after
-    report["gained"] = {k: after[k] - before[k] for k in ENRICHING_KEYS}
+    report["gained"] = {k: after[k] - before[k] for k in GAIN_KEYS}
     report["ok"] = True
     if not any(v > 0 for v in report["gained"].values()):
         report["reason"] = "nothing to gain; already adapted with this engine"
@@ -197,7 +210,7 @@ def main(argv: list[str]) -> int:
             gained_any += 1
             g = r["gained"]
             print(f"{'REWROTE' if r['written'] else 'would gain'}  {r['file']}: "
-                  + ", ".join(f"+{g[k]} {k}" for k in ENRICHING_KEYS if g[k] > 0))
+                  + ", ".join(f"+{g[k]} {k}" for k in GAIN_KEYS if g[k] > 0))
         elif r["ok"]:
             print(f"up to date  {r['file']}")
         else:

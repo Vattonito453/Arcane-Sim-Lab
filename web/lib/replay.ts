@@ -12,6 +12,11 @@
  *    zone_change   "Kilo, Apogee Mind (100) was put into Graveyard from Battlefield."
  *                  "Send countered spell to Graveyard"
  *    combat        "Ai(1)-… assigned Kilo, Apogee Mind (100) to attack Ai(4)-…"
+ *                  one line per DEFENDER: a player attacking two opponents produces
+ *                  two combat events in the same declare-attackers step (the
+ *                  adapter used to drop the second; see forge_log_adapter.py)
+ *                  "Ai(4)-… assigned Thopter Token (638) to block Dragonlord Ojutai (24)"
+ *                  "Ai(3)-… didn't block Sunscorch Regent (75)"
  *    damage        "Zombie Token (477) deals 2 combat damage to Ai(4)-Drana Vampires."
  *                  "Ai(2)-… receives 1 poison counter from Ai(1)-…"
  *    game_outcome  "Ai(1)-… has lost because life total reached 0"
@@ -38,14 +43,34 @@ export interface Seat {
   poison?: number;
 }
 
+/** One declared attack: everything `from` sent at one defender. Forge logs one
+ *  line per defender, so a player attacking two opponents at once has two
+ *  lanes in the same combat. `to` is a player key, or the name of a
+ *  planeswalker or battle when the attack was assigned to a permanent. */
+export interface Lane {
+  from: string;
+  to: string;
+  cards: string[];
+}
+/** One declared block: `by` (the defending player) put `blockers` in front of
+ *  `attacker`. The blocking player is kept from the line itself, never inferred
+ *  from a lane: the fold used to hold a single lane and assume every blocker
+ *  belonged to that one defender, which drew Living Energy's Thopter in Skrat's
+ *  zone when the Ojutai it blocked had been sent at Living Energy. */
+export interface Block {
+  by: string;
+  attacker: string;
+  blockers: string[];
+}
 export interface BoardState {
   seats: Seat[];
   battlefield: Map<string, Card[]>;
-  attacks: { from: string; to: string; cards: string[] } | null;
-  /** Declared blocks, attacker -> blockers, live during the combat that
-   *  declared them (cleared with `attacks`). Parsed from the same batched
-   *  combat lines as attacks, split on "(instance id)" never on commas. */
-  blocks: { attacker: string; blockers: string[] }[];
+  /** Declared attacks, live during the combat that declared them and cleared
+   *  by the first non-combat phase. Empty outside combat. */
+  attacks: Lane[];
+  /** Declared blocks, same lifetime as `attacks`. Parsed from the same batched
+   *  combat lines, split on "(instance id)" never on commas. */
+  blocks: Block[];
   stack: string[];
 }
 
@@ -98,14 +123,14 @@ export type Op =
   | { t: "counterpop" }
   | { t: "leave"; name: string }
   | { t: "attack"; from: string; to: string; cards: string[] }
-  | { t: "block"; attacker: string; blockers: string[] }
+  | { t: "block"; by: string; attacker: string; blockers: string[] }
   | { t: "phase"; combat: boolean }
   | { t: "out"; p: string };
 
 /* ── raw-string parsers ────────────────────────────────────────────────── */
 
 const RE_AI = /Ai\(\d+\)-/g;
-const RE_NUM = /\s\(\d+\)/g;
+const RE_NUM = /\s\((\d+)\)/g;
 const RE_LIFE = /^Life: (.+?) (-?\d+) > (-?\d+)\s*$/;
 const RE_POISON = /^(.+?) receives (\d+) poison counters? from /;
 const RE_LAND = /^(.+?) played (.+?) \(\d+\)\s*$/;
@@ -133,14 +158,82 @@ export function attackerNames(list: string): string[] {
     .filter(Boolean);
   return out.length ? out : [list.replace(RE_NUM, "").trim()];
 }
+// "Ai(3)-X didn't block Kappa Cannoneer (56)." (Forge's apostrophe varies).
+const RE_NOBLOCK = /^(.+?) didn'?t block (.+?)\.?\s*$/;
+// A lone "Name (id)" reference, as the tail of a combat or damage line.
+const RE_ONE_REF = /^(.+?)\s\((\d+)\)\.?\s*$/;
+// The departing object of a zone_change, with its id.
+const RE_ONE_REF_LEAVE = /^(.+?) \((\d+)\) was put into /;
 const RE_LEAVE = /^(.+?) \(\d+\) was put into \w+ from Battlefield\.?\s*$/;
 const RE_DMG = /^(.+?) deals (\d+) (?:[\w-]+ )*damage(?:\s*\([^)]*\))? to (.+?)\.?\s*$/;
 const RE_LOST = /^(.+?) has lost /;
 const RE_WON = /^(.+?) has won /;
 
-/** Strip Ai(n)- prefixes and collector numbers for display. */
-export function cleanRaw(raw: string): string {
-  return raw.replace(RE_AI, "").replace(RE_NUM, "");
+/** Strip Ai(n)- prefixes and Forge instance ids for display. Ids in `keep`
+ *  stay: they belong to names that mean two different objects in this game. */
+export function cleanRaw(raw: string, keep?: Set<number>): string {
+  const noAi = raw.replace(RE_AI, "");
+  if (!keep || keep.size === 0) return noAi.replace(RE_NUM, "");
+  return noAi.replace(RE_NUM, (m, id) => (keep.has(Number(id)) ? m : ""));
+}
+
+/** Instance ids of every combatant whose NAME is shared by two or more
+ *  distinct objects in this game, so the log can keep telling them apart.
+ *
+ *  Stripping every id made "Lightning Runner deals 5 damage" and "Lightning
+ *  Runner deals 2 combat damage" read as one creature doing the impossible;
+ *  they were a 5/5 token copy and the 2/2 original, and Forge's own ids say
+ *  so. Likewise two Thopter Tokens, one sacrificed and one blocking, collapsed
+ *  into a blocker that seemed to die before damage. Only names that attack,
+ *  block, deal or take damage, or leave the battlefield are considered, so a
+ *  deck's four Islands stay plain "Island". */
+export function ambiguousIds(game: SimGame): Set<number> {
+  const ids = new Map<string, Set<number>>();
+  const add = (name: string, id: number) => {
+    const n = name.trim();
+    if (!n) return;
+    let s = ids.get(n);
+    if (!s) {
+      s = new Set();
+      ids.set(n, s);
+    }
+    s.add(id);
+  };
+  const addList = (seg: string) => {
+    for (const m of seg.matchAll(RE_REF)) add(m[1].replace(RE_JOIN, ""), Number(m[2]));
+  };
+  const addOne = (seg: string) => {
+    const m = seg.match(RE_ONE_REF);
+    if (m) add(m[1], Number(m[2]));
+  };
+  const scan = (ev: SimEvent) => {
+    // Ai(2)- would otherwise read as a reference to an object named "Ai".
+    const raw = ev.raw.replace(RE_AI, "");
+    let m: RegExpMatchArray | null;
+    if (ev.action === "combat") {
+      if ((m = raw.match(RE_BLOCK))) {
+        addList(m[2]);
+        addOne(m[3]);
+      } else if ((m = raw.match(RE_ATTACK))) {
+        addList(m[2]);
+        addOne(m[3]); // a planeswalker or battle defender carries an id
+      } else if ((m = raw.match(RE_NOBLOCK))) {
+        addOne(m[2]);
+      }
+    } else if (ev.action === "damage") {
+      if ((m = raw.match(RE_DMG))) {
+        addOne(m[1]);
+        addOne(m[3]);
+      }
+    } else if (ev.action === "zone_change") {
+      if ((m = raw.match(RE_ONE_REF_LEAVE))) add(m[1], Number(m[2]));
+    }
+  };
+  for (const ev of game.events_pregame ?? []) scan(ev);
+  for (const t of game.turns) for (const ev of t.events) scan(ev);
+  const out = new Set<number>();
+  for (const s of ids.values()) if (s.size > 1) for (const id of s) out.add(id);
+  return out;
 }
 
 function escapeRe(s: string): string {
@@ -182,15 +275,20 @@ function parseDamage(raw: string): { source: string; amount: number; target: str
 
 /* ── timeline ──────────────────────────────────────────────────────────── */
 
-function stepFor(ev: SimEvent, turn: number, active: string, phase: string): Step {
+function stepFor(
+  ev: SimEvent, turn: number, active: string, phase: string, keep?: Set<number>,
+): Step {
   const raw = ev.raw;
+  // `more` is the rest of a multi-line Forge entry (modal spell text) that the
+  // adapter keeps on the event it belongs to rather than as an event of its own.
+  const more = ev.more?.length ? " " + ev.more.map((l) => cleanRaw(l, keep)).join(" ") : "";
   const step: Step = {
     seq: ev.seq,
     turn,
     round: 0, // set by buildTimeline once the active player's turn count is known
     phase,
     active,
-    text: cleanRaw(raw),
+    text: cleanRaw(raw, keep) + more,
     kind: ev.action,
   };
   let m: RegExpMatchArray | null;
@@ -243,7 +341,7 @@ function stepFor(ev: SimEvent, turn: number, active: string, phase: string): Ste
         // and only the tail keyword separates them.
         const attacker = m[3].replace(RE_NUM, "").trim();
         const blockers = attackerNames(m[2]);
-        step.op = { t: "block", attacker, blockers };
+        step.op = { t: "block", by: m[1], attacker, blockers };
         step.hi = [attacker, ...blockers];
       } else if ((m = raw.match(RE_ATTACK))) {
         const cards = attackerNames(m[2]);
@@ -284,16 +382,17 @@ export function buildTimeline(game: SimGame): Timeline {
   const turns: { turn: number; round: number; start: number }[] = [];
   let phase = "Pregame";
   const turnsTaken = new Map<string, number>();
+  const keep = ambiguousIds(game);
 
   for (const ev of game.events_pregame ?? []) {
-    steps.push(stepFor(ev, 0, "", phase));
+    steps.push(stepFor(ev, 0, "", phase, keep));
   }
   for (const t of game.turns) {
     const round = (turnsTaken.get(t.active_player) ?? 0) + 1;
     turnsTaken.set(t.active_player, round);
     turns.push({ turn: t.turn, round, start: steps.length });
     for (const ev of t.events) {
-      const step = stepFor(ev, t.turn, t.active_player, phase);
+      const step = stepFor(ev, t.turn, t.active_player, phase, keep);
       step.round = round;
       steps.push(step);
       phase = step.phase; // phase events update it; others inherit
@@ -339,8 +438,8 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
   const byName = new Map(seats.map((s) => [s.player, s]));
   const battlefield = new Map<string, Card[]>(timeline.players.map((p) => [p, []]));
   const pending: Pending[] = [];
-  let attacks: BoardState["attacks"] = null;
-  let blocks: BoardState["blocks"] = [];
+  let attacks: Lane[] = [];
+  let blocks: Block[] = [];
 
   const last = Math.min(i, timeline.steps.length - 1);
   for (let k = 0; k <= last; k++) {
@@ -408,22 +507,23 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
         break;
       }
       case "block": {
-        const at = blocks.find((b) => b.attacker === op.attacker);
+        const at = blocks.find((b) => b.by === op.by && b.attacker === op.attacker);
         if (at) at.blockers.push(...op.blockers);
-        else blocks.push({ attacker: op.attacker, blockers: [...op.blockers] });
+        else blocks.push({ by: op.by, attacker: op.attacker, blockers: [...op.blockers] });
         break;
       }
-      case "attack":
-        if (attacks && attacks.from === op.from) {
-          attacks.cards.push(...op.cards);
-          attacks.to = op.to;
-        } else {
-          attacks = { from: op.from, to: op.to, cards: [...op.cards] };
-        }
+      case "attack": {
+        // One lane per defender. This used to merge every declaration into a
+        // single lane and overwrite `to` with the latest defender, so a split
+        // attack was drawn as one army at one player.
+        const lane = attacks.find((l) => l.from === op.from && l.to === op.to);
+        if (lane) lane.cards.push(...op.cards);
+        else attacks.push({ from: op.from, to: op.to, cards: [...op.cards] });
         break;
+      }
       case "phase":
         if (!op.combat) {
-          attacks = null;
+          attacks = [];
           blocks = [];
         }
         break;

@@ -77,6 +77,11 @@ export interface SimEvent {
     | string;
   raw: string;
   object?: string;
+  /** Further lines of a multi-line Forge entry (modal spell text such as
+   *  "• Destroy all artifacts."), kept on the event they belong to. Combat
+   *  declarations are the exception: Forge joins one line per defender into a
+   *  single entry, and the adapter emits each of those as its own event. */
+  more?: string[];
 }
 
 export interface SimTurn {

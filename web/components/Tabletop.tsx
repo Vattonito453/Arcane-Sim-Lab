@@ -116,15 +116,19 @@ export function Tabletop({
    *  Undefined on results without a zone stream: the band does not render. */
   hands?: Map<string, HandCard[]>;
 }) {
-  const blockersInPlay = new Set<string>();
-  for (const b of board.blocks) for (const nm of b.blockers) blockersInPlay.add(nm);
   return (
     <div className={`tbl p${board.seats.length}`}>
       {board.seats.map((s, i) => {
         const meta = seats[i];
         const active = !!activePlayer && s.player === activePlayer;
         const cards = board.battlefield.get(s.player) ?? [];
-        const atkRow = board.attacks?.from === s.player ? board.attacks : null;
+        // This seat's declared attacks, one lane per defender, and the blocks
+        // THIS seat declared. Blocks belong to the player who made them, which
+        // the combat line names; they are never inferred from who was attacked.
+        const lanes = board.attacks.filter((l) => l.from === s.player);
+        const myBlocks = board.blocks.filter((b) => b.by === s.player);
+        const attackingNames = new Set(lanes.flatMap((l) => l.cards));
+        const blockingNames = new Set(myBlocks.flatMap((b) => b.blockers));
 
         // Attackers and blockers the combat lines prove are on the battlefield
         // but that Forge never logged entering — nearly always tokens. Shown,
@@ -134,11 +138,7 @@ export function Tabletop({
         // missing from the table.)
         const ghosts: string[] = [];
         {
-          const proved: string[] = [];
-          if (atkRow) proved.push(...atkRow.cards);
-          if (board.attacks && board.attacks.to === s.player) {
-            for (const b of board.blocks) proved.push(...b.blockers);
-          }
+          const proved = [...lanes.flatMap((l) => l.cards), ...myBlocks.flatMap((b) => b.blockers)];
           const have = new Map<string, number>();
           for (const c of cards) have.set(c.name, (have.get(c.name) ?? 0) + 1);
           for (const name of proved) {
@@ -147,12 +147,8 @@ export function Tabletop({
             else ghosts.push(name);
           }
         }
-        const defender = atkRow
-          ? (seats.find((x) => x.player === atkRow.to)?.label ?? stripAi(atkRow.to))
-          : null;
-        // Blocks render on the DEFENDING seat: these are its creatures
-        // stepping in front of the incoming attack.
-        const isDefender = !!board.attacks && board.attacks.to === s.player;
+        // A lane's defender is a seat, or a planeswalker / battle by name.
+        const laneLabel = (to: string) => seats.find((x) => x.player === to)?.label ?? stripAi(to);
 
         // Collapse duplicates, then split into the three table bands.
         const bands: TileGroup[][] = [[], [], []];
@@ -225,11 +221,19 @@ export function Tabletop({
             <div className="zones">
               {/* First child, so the reverse that `far` applies puts it on the
                   centre edge for both rows of seats. */}
-              {atkRow && <span className="atkbanner">attacking {defender} →</span>}
-              {isDefender && board.blocks.length > 0 && (
+              {lanes.map((l) => (
+                <span key={l.to} className="atkbanner">
+                  {/* A split attack names who went where; a single lane reads
+                      as before, the red tile borders already say who. */}
+                  {lanes.length > 1
+                    ? `${l.cards.join(" + ")} attacking ${laneLabel(l.to)} →`
+                    : `attacking ${laneLabel(l.to)} →`}
+                </span>
+              ))}
+              {myBlocks.length > 0 && (
                 <span className="blkbanner">
-                  {board.blocks.map((b) => (
-                    <span key={b.attacker}>
+                  {myBlocks.map((b, k) => (
+                    <span key={`${b.attacker}-${k}`}>
                       {b.blockers.join(" + ")} {b.blockers.length === 1 ? "blocks" : "block"} {b.attacker}
                     </span>
                   ))}
@@ -249,8 +253,8 @@ export function Tabletop({
                         n={g.n}
                         kind={g.kind}
                         facts={facts(g.name)}
-                        attacking={!!atkRow && atkRow.cards.includes(g.name)}
-                        blocking={isDefender && blockersInPlay.has(g.name)}
+                        attacking={attackingNames.has(g.name)}
+                        blocking={blockingNames.has(g.name)}
                         tappedN={Math.min(g.n, fx?.tappedByName.get(g.name) ?? 0)}
                         counters={fx?.countersByName.get(g.name)}
                         attachedTo={fx?.attachTo.get(g.name)}

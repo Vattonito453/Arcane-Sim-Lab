@@ -4,6 +4,12 @@ training/ai_vs_human_analysis.md, computed from any adapted sim result.
 
   1. keep-7 rate (stock AI ~97%; humans mull ~15-25% of hands)
   2. attack-split rate (stock: 0% — 244/244 single-defender; humans split constantly)
+     That 244/244 was measured while the adapter dropped every attack line after
+     the first defender (multi-line Forge entries; see forge_log_adapter.py), so
+     it could only ever read 0. Re-measured on the raw text of 187 stock logs
+     after the fix: 6,654 declarations, 27 at two or more defenders of any kind
+     (nearly all a planeswalker plus its controller), 1 split across two
+     players. The conclusion stands; the certainty it was stated with did not.
   3. block rate (stock: ~14%; human games feature routine blocks)
   4. commander deploy turn, median PLAYER-turn (humans: ~turn 4-5 for synergy decks)
 

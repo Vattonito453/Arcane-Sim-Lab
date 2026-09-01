@@ -122,7 +122,12 @@ export default function ReplayPage() {
   // Back-link reads as the matchup; the filename stays in the footer.
   const backLabel = seats.length ? runTitle(seats.map((s) => s.label)) : file;
 
-  const board = useMemo(() => (timeline ? foldTo(timeline, idx) : null), [timeline, idx]);
+  // On a shim run the battlefield is read from the zone stream at the playhead;
+  // on a stock run it is folded from the text. Same call either way.
+  const board = useMemo(
+    () => (timeline ? foldTo(timeline, idx, game?.zones) : null),
+    [timeline, idx, game?.zones],
+  );
   // Taps, counters, attachments at the playhead (shim >= 0.12.0 results;
   // older results render exactly as before).
   const cur0 = timeline?.steps[idx];

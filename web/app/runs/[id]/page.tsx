@@ -180,9 +180,10 @@ export default function RunPage() {
     () => handsAt(liveGame?.zones, liveStep?.turn ?? 0, liveStep?.phase ?? ""),
     [liveGame, liveStep?.turn, liveStep?.phase],
   );
+  // Shim runs stream zones too, so the live table is a read, like a replay's.
   const liveBoard = useMemo(
-    () => (liveTimeline ? foldTo(liveTimeline, playIdx) : null),
-    [liveTimeline, playIdx],
+    () => (liveTimeline ? foldTo(liveTimeline, playIdx, liveGame?.zones) : null),
+    [liveTimeline, playIdx, liveGame?.zones],
   );
   const liveSeats = useMemo(() => {
     if (!liveGame) return [];

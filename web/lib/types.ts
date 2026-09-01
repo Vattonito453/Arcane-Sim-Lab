@@ -113,6 +113,12 @@ export interface ZoneRec {
   to: string;
   fromPlayer?: string;
   toPlayer?: string;
+  /** Shim >= 0.3.0: Forge's core types as of the move ("Creature,Artifact"),
+   *  net P/T ("5/5") and whether the object is a token. What lets the table
+   *  type a token copy without Scryfall. */
+  types?: string;
+  pt?: string;
+  token?: boolean;
 }
 
 export interface BoardFxRec {

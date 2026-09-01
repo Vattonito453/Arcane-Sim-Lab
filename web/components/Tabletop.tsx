@@ -7,12 +7,13 @@
  *  they do on a real table. Card faces are hotlinked from Scryfall, never
  *  rehosted (frontend_architecture.md §5).
  *
- *  Board membership is INFERRED: Forge logs cards leaving the battlefield but
- *  never entering. Callers must keep the event feed visible alongside this and
- *  keep the note under it — see <TabletopNote/>. */
+ *  Two board paths. On a shim run the battlefield is READ from the zone stream
+ *  (foldTo with zones); on a stock run it is INFERRED, because Forge logs cards
+ *  leaving the battlefield but never entering. Callers must keep the event feed
+ *  visible alongside this and keep the note under it — see <TabletopNote/>. */
 
 import { stripAi } from "@/lib/format";
-import type { BoardFxView, BoardState, HandCard } from "@/lib/replay";
+import type { BoardFxView, BoardState, Card, HandCard } from "@/lib/replay";
 import { cardFace, kindOf, ptOf, type CardFacts, type Kind } from "@/lib/cards";
 import { ManaPips } from "@/components/ManaPips";
 
@@ -36,13 +37,28 @@ function counterChip(type: string, n: number): string {
   return `${n} ${type.toLowerCase()}`;
 }
 
+/** Forge's own core types from the zone stream, when the read path has them.
+ *  Null hands the decision back to Scryfall typing (stock runs, ghosts). */
+function zoneKind(types?: string): Kind | null {
+  if (!types) return null;
+  const t = types.split(",");
+  if (t.includes("Land")) return "land";
+  if (t.includes("Creature")) return "creature";
+  if (t.includes("Planeswalker")) return "planeswalker";
+  if (t.includes("Battle")) return "battle";
+  if (t.includes("Artifact") || t.includes("Enchantment")) return "artifact";
+  return null;
+}
+
 function Tile({
-  name, n, facts, kind, attacking, blocking, tappedN, counters, attachedTo,
+  name, n, facts, kind, attacking, blocking, tappedN, counters, attachedTo, pt,
 }: {
   name: string;
   n: number;
   facts?: CardFacts;
   kind: Kind;
+  /** Live P/T from the zone stream (a 5/5 token copy), else Scryfall's. */
+  pt?: string;
   attacking: boolean;
   blocking: boolean;
   tappedN: number;
@@ -55,7 +71,7 @@ function Tile({
     name,
     facts?.type_line,
     facts?.mana_cost,
-    ptOf(facts) ? `P/T ${ptOf(facts)}` : null,
+    (pt ?? ptOf(facts)) ? `P/T ${pt ?? ptOf(facts)}` : null,
     tappedN > 0 ? (allTapped ? "tapped" : `${tappedN} of ${n} tapped`) : null,
     counters && counters.size
       ? Array.from(counters, ([t, c]) => counterChip(t, c)).join(", ")
@@ -99,7 +115,7 @@ const BAND: Record<Kind, 0 | 1 | 2> = {
 const BAND_LABEL = ["", "Artifacts, enchantments and unidentified", "Lands"];
 const BAND_CAP = [18, 14, 24];
 
-interface TileGroup { name: string; n: number; kind: Kind; }
+interface TileGroup { name: string; n: number; kind: Kind; pt?: string; }
 
 export function Tabletop({
   board, seats, activePlayer, facts, fx, hands,
@@ -150,18 +166,22 @@ export function Tabletop({
         // A lane's defender is a seat, or a planeswalker / battle by name.
         const laneLabel = (to: string) => seats.find((x) => x.player === to)?.label ?? stripAi(to);
 
-        // Collapse duplicates, then split into the three table bands.
+        // Collapse duplicates, then split into the three table bands. A token
+        // copy of a real card (zone stream: token=true) keeps its own tile, so
+        // Saheeli's 5/5 Lightning Runner does not merge into the 2/2 original.
         const bands: TileGroup[][] = [[], [], []];
         const seen = new Map<string, TileGroup>();
-        for (const c of [...cards, ...ghosts.map((name) => ({ name }))]) {
-          const kind = kindOf(c.name, facts(c.name));
-          const at = seen.get(c.name);
+        const all: Card[] = [...cards, ...ghosts.map((name) => ({ name }))];
+        for (const c of all) {
+          const kind: Kind = c.token ? "token" : (zoneKind(c.types) ?? kindOf(c.name, facts(c.name)));
+          const key = `${kind}:${c.name}`;
+          const at = seen.get(key);
           if (at) {
             at.n += 1;
             continue;
           }
-          const g: TileGroup = { name: c.name, n: 1, kind };
-          seen.set(c.name, g);
+          const g: TileGroup = { name: c.name, n: 1, kind, pt: c.pt };
+          seen.set(key, g);
           bands[BAND[kind]].push(g);
         }
 
@@ -248,10 +268,11 @@ export function Tabletop({
                     {BAND_LABEL[b] && <span className="zlab">{BAND_LABEL[b]}</span>}
                     {shown.map((g) => (
                       <Tile
-                        key={g.name}
+                        key={`${g.kind}:${g.name}`}
                         name={g.name}
                         n={g.n}
                         kind={g.kind}
+                        pt={g.pt}
                         facts={facts(g.name)}
                         attacking={attackingNames.has(g.name)}
                         blocking={blockingNames.has(g.name)}
@@ -288,8 +309,9 @@ export function TabletopNote({ read = false }: { read?: boolean }) {
       <p className="tblnote">
         Card faces come from Scryfall. This table is read from the zone stream the
         simulator emits, which records every permanent entering and leaving play, so
-        it reflects the board exactly. The event log remains the record of what
-        happened.
+        it reflects the board exactly at phase granularity: within the current phase a
+        permanent can appear a few events before the line that created it. The event
+        log remains the record of what happened.
       </p>
     );
   }

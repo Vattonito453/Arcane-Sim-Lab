@@ -24,7 +24,7 @@
  *    phase         "Ai(1)-Kilo Helm Final's Untap step" / "Ai(2)-Drana Vampires' Upkeep step"
  */
 
-import type { BoardFxRec, SimEvent, SimGame } from "./types";
+import type { BoardFxRec, SimEvent, SimGame, ZoneRec } from "./types";
 import { stripAi } from "./format";
 
 /* ── public shapes ─────────────────────────────────────────────────────── */
@@ -34,6 +34,11 @@ export interface Card {
   tapped?: boolean;
   kinds?: string; // "land" | "creature" | "permanent" (best-effort)
   pt?: string; // "3/3" when the resolve raw carried power/toughness
+  /** Zone-stream reads only: Forge's core types ("Creature,Artifact") and
+   *  token flag as of the move. A token copy of Lightning Runner is a token
+   *  here even though its name is a real card's. */
+  types?: string;
+  token?: boolean;
 }
 
 export interface Seat {
@@ -427,8 +432,14 @@ function resolveShape(raw: string, name: string): { board: boolean; kinds?: stri
 }
 
 /** Fold steps 0..i (inclusive) into a board state. Best-effort by design:
- *  the event feed stays the authoritative record. */
-export function foldTo(timeline: Timeline, i: number): BoardState {
+ *  the event feed stays the authoritative record.
+ *
+ *  With `zones` (a shim run) the battlefield is not folded from the text at
+ *  all: it is read from the zone stream at the playhead's turn and phase, the
+ *  same source board.py measured at exit_match_rate 1.0. The text fold used to
+ *  drive the table on every run while the note under it said "read from the
+ *  zone stream"; tokens then existed only once they attacked or blocked. */
+export function foldTo(timeline: Timeline, i: number, zones?: ZoneRec[]): BoardState {
   const seats: Seat[] = timeline.players.map((p) => ({
     player: p,
     life: 40, // Commander
@@ -529,6 +540,11 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
         break;
     }
   }
+  if (zones && zones.length) {
+    const at = timeline.steps[last];
+    const read = battlefieldAt(zones, at?.turn ?? 0, at?.phase ?? "", timeline.players);
+    return { seats, battlefield: read, attacks, blocks, stack: pending.map((p) => p.name) };
+  }
   return { seats, battlefield, attacks, blocks, stack: pending.map((p) => p.name) };
 }
 
@@ -616,6 +632,48 @@ export function boardFxAt(
   return view;
 }
 
+/* ── battlefield (exact, from the shim zone stream) ────────────────────── */
+
+/** Every seat's battlefield at the playhead, read from the zone stream: every
+ *  permanent that entered and has not left, tokens included and typed by Forge
+ *  itself. Phase granularity, like handsAt(): within the playhead's phase a
+ *  permanent shows from the phase's first event, which can be a few events
+ *  before the line that created it (the text log and the zone stream share no
+ *  sequence number). Zone records without a phase apply from their turn's
+ *  start. */
+export function battlefieldAt(
+  zones: ZoneRec[] | undefined,
+  turn: number,
+  phaseLabel: string,
+  players: string[],
+): Map<string, Card[]> {
+  const out = new Map<string, Card[]>(players.map((p) => [p, []]));
+  if (!zones || !zones.length) return out;
+  const cutoff = labelOrd(phaseLabel);
+  const on = new Map<number, Card & { player: string }>(); // cardId -> permanent
+  for (const z of zones) {
+    if (z.turn > turn) break; // stream is turn-ordered
+    if (z.turn === turn && z.phase !== undefined
+        && (PHASE_ORD[z.phase] ?? 0) > cutoff) continue;
+    if (z.to === "Battlefield") {
+      on.set(z.cardId, {
+        name: z.card, player: z.toPlayer ?? "", types: z.types, pt: z.pt, token: z.token,
+      });
+    } else if (z.from === "Battlefield") {
+      on.delete(z.cardId);
+    }
+  }
+  for (const c of on.values()) {
+    let list = out.get(c.player);
+    if (!list) {
+      list = [];
+      out.set(c.player, list);
+    }
+    list.push({ name: c.name, types: c.types, pt: c.pt, token: c.token });
+  }
+  return out;
+}
+
 /* ── hands (exact, from the shim zone stream) ──────────────────────────── */
 
 export interface HandCard { name: string; n: number; }
@@ -626,7 +684,7 @@ export interface HandCard { name: string; n: number; }
  *  older records without one apply at the start of their turn, so within the
  *  CURRENT turn a phaseless draw shows a card slightly early. */
 export function handsAt(
-  zones: import("./types").ZoneRec[] | undefined,
+  zones: ZoneRec[] | undefined,
   turn: number,
   phaseLabel: string,
 ): Map<string, HandCard[]> {

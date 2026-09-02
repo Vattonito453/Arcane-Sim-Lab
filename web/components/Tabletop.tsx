@@ -14,7 +14,7 @@
 
 import { stripAi } from "@/lib/format";
 import type { BoardFxView, BoardState, Card, HandCard } from "@/lib/replay";
-import { cardFace, kindOf, ptOf, type CardFacts, type Kind } from "@/lib/cards";
+import { cardFace, kindFromTypes, kindOf, ptOf, type CardFacts, type Kind } from "@/lib/cards";
 import { ManaPips } from "@/components/ManaPips";
 
 export interface SeatMeta {
@@ -35,19 +35,6 @@ function counterChip(type: string, n: number): string {
   if (type === "+1/+1") return `+${n}/+${n}`;
   if (type === "-1/-1") return `-${n}/-${n}`;
   return `${n} ${type.toLowerCase()}`;
-}
-
-/** Forge's own core types from the zone stream, when the read path has them.
- *  Null hands the decision back to Scryfall typing (stock runs, ghosts). */
-function zoneKind(types?: string): Kind | null {
-  if (!types) return null;
-  const t = types.split(",");
-  if (t.includes("Land")) return "land";
-  if (t.includes("Creature")) return "creature";
-  if (t.includes("Planeswalker")) return "planeswalker";
-  if (t.includes("Battle")) return "battle";
-  if (t.includes("Artifact") || t.includes("Enchantment")) return "artifact";
-  return null;
 }
 
 function Tile({
@@ -143,8 +130,10 @@ export function Tabletop({
         // the combat line names; they are never inferred from who was attacked.
         const lanes = board.attacks.filter((l) => l.from === s.player);
         const myBlocks = board.blocks.filter((b) => b.by === s.player);
-        const attackingNames = new Set(lanes.flatMap((l) => l.cards));
-        const blockingNames = new Set(myBlocks.flatMap((b) => b.blockers));
+        const attackers = lanes.flatMap((l) => l.cards);
+        const blockers = myBlocks.flatMap((b) => b.blockers);
+        const attackingNames = new Set(attackers);
+        const blockingNames = new Set(blockers);
 
         // Attackers and blockers the combat lines prove are on the battlefield
         // but that Forge never logged entering — nearly always tokens. Shown,
@@ -154,7 +143,7 @@ export function Tabletop({
         // missing from the table.)
         const ghosts: string[] = [];
         {
-          const proved = [...lanes.flatMap((l) => l.cards), ...myBlocks.flatMap((b) => b.blockers)];
+          const proved = [...attackers, ...blockers];
           const have = new Map<string, number>();
           for (const c of cards) have.set(c.name, (have.get(c.name) ?? 0) + 1);
           for (const name of proved) {
@@ -173,7 +162,10 @@ export function Tabletop({
         const seen = new Map<string, TileGroup>();
         const all: Card[] = [...cards, ...ghosts.map((name) => ({ name }))];
         for (const c of all) {
-          const kind: Kind = c.token ? "token" : (zoneKind(c.types) ?? kindOf(c.name, facts(c.name)));
+          // Forge's own types when the zone stream carries them; Scryfall
+          // typing otherwise (stock runs, ghosts).
+          const zk = c.types ? kindFromTypes(c.types) : "unknown";
+          const kind: Kind = c.token ? "token" : zk !== "unknown" ? zk : kindOf(c.name, facts(c.name));
           const key = `${kind}:${c.name}`;
           const at = seen.get(key);
           if (at) {

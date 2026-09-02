@@ -130,10 +130,11 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
             # type is known here, so each COMBAT line gets its own caption.
             # Other multi-line entries (modal spell text) keep one caption;
             # parse_forge_log attaches the rest to that same event.
-            parts = [ln for ln in str(e.get("message", "")).splitlines() if ln.strip()] or [""]
-            lines.append(f"{caption}: {parts[0]}")
-            for extra in parts[1:]:
-                lines.append(f"{caption}: {extra}" if e.get("type") == "COMBAT" else extra)
+            msg = str(e.get("message", ""))
+            parts = [ln for ln in msg.splitlines() if ln.strip()] or [msg]
+            recaption = e.get("type") == "COMBAT"
+            for i, ln in enumerate(parts):
+                lines.append(f"{caption}: {ln}" if i == 0 or recaption else ln)
         res = results.get(g)
         if res:
             ms = res.get("ms", 0)

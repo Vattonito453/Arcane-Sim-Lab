@@ -43,9 +43,11 @@ export type Kind =
   | "land" | "creature" | "artifact" | "planeswalker" | "battle"
   | "token" | "spell" | "unknown";
 
-export function kindOf(name: string, facts?: CardFacts): Kind {
-  if (isToken(name)) return "token";
-  const tl = facts?.type_line ?? "";
+/** Kind from a type string: a Scryfall type line ("Legendary Artifact Creature
+ *  — Golem") or Forge's own core types as the shim zone stream reports them
+ *  ("Creature,Artifact"). One precedence ladder serves both, since no core
+ *  type is a substring of another. Mirrors engine/board.py's zone typing. */
+export function kindFromTypes(tl: string): Kind {
   if (!tl) return "unknown";
   if (tl.includes("Land")) return "land";
   if (tl.includes("Creature")) return "creature";
@@ -54,6 +56,11 @@ export function kindOf(name: string, facts?: CardFacts): Kind {
   if (tl.includes("Artifact") || tl.includes("Enchantment")) return "artifact";
   if (tl.includes("Instant") || tl.includes("Sorcery")) return "spell";
   return "unknown";
+}
+
+export function kindOf(name: string, facts?: CardFacts): Kind {
+  if (isToken(name)) return "token";
+  return kindFromTypes(facts?.type_line ?? "");
 }
 
 /** Display order for grouped board rows — mirrors a physical table layout. */

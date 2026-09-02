@@ -123,7 +123,10 @@ Consequences you must respect:
   `shim_log_adapter` captions every line of a COMBAT entry. Attacks are one
   lane PER DEFENDER in `replay.ts` and blocks carry the blocking player; never
   collapse them into one lane again. `readapt.py --write --all` recovers the
-  events in existing results (counted as `events` in its gain report).
+  events in existing shim-run results (counted as `events` in its gain report;
+  it re-parses `shim_raw_*.jsonl` only, so a stock-path result needs a manual
+  re-adapt from its `forge_raw_*.log`) and keeps each file's mtime, which the
+  results index shows as the run's date.
 - There is no verbosity flag that fixes the stdout path, and patching Forge is
   off the table. The sanctioned fix is the GPL shim driving `Match`
   programmatically, which is now the default agent — so the way to raise board

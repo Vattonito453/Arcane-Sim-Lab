@@ -63,12 +63,6 @@ def _is_id(candidate: str) -> bool:
 # Keys the newer adapter adds to each game. Absent from an older result, which
 # is exactly what re-adapting recovers.
 ENRICHING_KEYS = ("rubric", "boardfx", "zones")
-# Plus the event count itself: the adapter used to drop every combat line after
-# the first in a multi-line Forge entry (a second defender's attack, a
-# defender's second and later blocks), so a re-parse of the same bytes now
-# yields MORE events for the same games. The fingerprint below is untouched by
-# that (players, winner, draw, turn count), so the safety check still holds.
-GAIN_KEYS = ENRICHING_KEYS + ("events",)
 
 
 def run_id_of(path: Path) -> str | None:
@@ -96,12 +90,17 @@ def _fingerprint(game: dict) -> tuple:
 
 
 def _counts(games: list[dict]) -> dict[str, int]:
-    out = {k: 0 for k in GAIN_KEYS}
+    """Record totals per enriching key, plus the event count: the adapter used
+    to drop every combat line after the first in a multi-line Forge entry, so
+    a re-parse of the same bytes yields MORE events for the same games. The
+    fingerprint (players, winner, draw, turn count) is untouched by that."""
+    out = {k: 0 for k in ENRICHING_KEYS}
+    out["events"] = 0
     for g in games:
         for k in ENRICHING_KEYS:
             out[k] += len(g.get(k) or [])
-        out["events"] += len(g.get("events_pregame") or [])
-        out["events"] += sum(len(t.get("events") or []) for t in g.get("turns") or [])
+        out["events"] += len(g.get("events_pregame") or []) + sum(
+            len(t.get("events") or []) for t in g.get("turns") or [])
     return out
 
 
@@ -153,7 +152,7 @@ def readapt(path: Path, write: bool = False) -> dict:
     before, after = _counts(old_games), _counts(games)
     report["before"] = before
     report["after"] = after
-    report["gained"] = {k: after[k] - before[k] for k in GAIN_KEYS}
+    report["gained"] = {k: after[k] - before[k] for k in after}
     report["ok"] = True
     if not any(v > 0 for v in report["gained"].values()):
         report["reason"] = "nothing to gain; already adapted with this engine"
@@ -172,11 +171,16 @@ def readapt(path: Path, write: bool = False) -> dict:
     meta["readapted"] = True
     merged["meta"] = meta
 
+    st = path.stat()
     backup = path.with_suffix(path.suffix + ".bak")
     shutil.copy2(path, backup)
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(json.dumps(merged), encoding="utf-8")
     os.replace(tmp, path)
+    # The results index sorts runs by mtime and the results page shows it as
+    # the run's date. A re-adapt is not a new run: keep the file's own time,
+    # or every re-adapted run would jump to the top of the list dated today.
+    os.utime(path, ns=(st.st_atime_ns, st.st_mtime_ns))
     report["written"] = True
     report["backup"] = backup.name
     return report
@@ -210,7 +214,7 @@ def main(argv: list[str]) -> int:
             gained_any += 1
             g = r["gained"]
             print(f"{'REWROTE' if r['written'] else 'would gain'}  {r['file']}: "
-                  + ", ".join(f"+{g[k]} {k}" for k in GAIN_KEYS if g[k] > 0))
+                  + ", ".join(f"+{v} {k}" for k, v in g.items() if v > 0))
         elif r["ok"]:
             print(f"up to date  {r['file']}")
         else:

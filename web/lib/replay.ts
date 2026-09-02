@@ -163,13 +163,10 @@ export function attackerNames(list: string): string[] {
     .filter(Boolean);
   return out.length ? out : [list.replace(RE_NUM, "").trim()];
 }
-// "Ai(3)-X didn't block Kappa Cannoneer (56)." (Forge's apostrophe varies).
-const RE_NOBLOCK = /^(.+?) didn'?t block (.+?)\.?\s*$/;
-// A lone "Name (id)" reference, as the tail of a combat or damage line.
-const RE_ONE_REF = /^(.+?)\s\((\d+)\)\.?\s*$/;
-// The departing object of a zone_change, with its id.
-const RE_ONE_REF_LEAVE = /^(.+?) \((\d+)\) was put into /;
-const RE_LEAVE = /^(.+?) \(\d+\) was put into \w+ from Battlefield\.?\s*$/;
+// "Ai(3)-X didn't block Kappa Cannoneer (56)." Mirrors _NOBLOCK in engine/board.py.
+const RE_NOBLOCK = /^(.+?) (?:didn't|doesn't) block (.+?)\.?\s*$/;
+// "Name (id) was put into Graveyard from Battlefield." Mirrors _EXIT in board.py.
+const RE_LEAVE = /^(.+?) \((\d+)\) was put into \w+ from Battlefield\.?\s*$/;
 const RE_DMG = /^(.+?) deals (\d+) (?:[\w-]+ )*damage(?:\s*\([^)]*\))? to (.+?)\.?\s*$/;
 const RE_LOST = /^(.+?) has lost /;
 const RE_WON = /^(.+?) has won /;
@@ -204,12 +201,10 @@ export function ambiguousIds(game: SimGame): Set<number> {
     }
     s.add(id);
   };
-  const addList = (seg: string) => {
+  // The same id-based splitting as attackerNames(): a segment is one or more
+  // "Name (id)" references and is never cut on commas.
+  const addRefs = (seg: string) => {
     for (const m of seg.matchAll(RE_REF)) add(m[1].replace(RE_JOIN, ""), Number(m[2]));
-  };
-  const addOne = (seg: string) => {
-    const m = seg.match(RE_ONE_REF);
-    if (m) add(m[1], Number(m[2]));
   };
   const scan = (ev: SimEvent) => {
     // Ai(2)- would otherwise read as a reference to an object named "Ai".
@@ -217,21 +212,21 @@ export function ambiguousIds(game: SimGame): Set<number> {
     let m: RegExpMatchArray | null;
     if (ev.action === "combat") {
       if ((m = raw.match(RE_BLOCK))) {
-        addList(m[2]);
-        addOne(m[3]);
+        addRefs(m[2]);
+        addRefs(m[3]);
       } else if ((m = raw.match(RE_ATTACK))) {
-        addList(m[2]);
-        addOne(m[3]); // a planeswalker or battle defender carries an id
+        addRefs(m[2]);
+        addRefs(m[3]); // a planeswalker or battle defender carries an id
       } else if ((m = raw.match(RE_NOBLOCK))) {
-        addOne(m[2]);
+        addRefs(m[2]);
       }
     } else if (ev.action === "damage") {
       if ((m = raw.match(RE_DMG))) {
-        addOne(m[1]);
-        addOne(m[3]);
+        addRefs(m[1]);
+        addRefs(m[3]);
       }
     } else if (ev.action === "zone_change") {
-      if ((m = raw.match(RE_ONE_REF_LEAVE))) add(m[1], Number(m[2]));
+      if ((m = raw.match(RE_LEAVE))) add(m[1], Number(m[2]));
     }
   };
   for (const ev of game.events_pregame ?? []) scan(ev);
@@ -350,8 +345,12 @@ function stepFor(
         step.hi = [attacker, ...blockers];
       } else if ((m = raw.match(RE_ATTACK))) {
         const cards = attackerNames(m[2]);
-        step.op = { t: "attack", from: m[1], to: m[3], cards };
-        step.hi = [...cards, stripAi(m[3])];
+        // A planeswalker or battle defender carries an id ("Elspeth, Sun's
+        // Champion (52)"); a player key does not. Drop it so the lane label
+        // and the bold range read as a name.
+        const to = m[3].replace(RE_NUM, "").trim();
+        step.op = { t: "attack", from: m[1], to, cards };
+        step.hi = [...cards, stripAi(to)];
       }
       break;
     case "phase": {
@@ -573,6 +572,24 @@ function labelOrd(label: string): number {
   return 12; // unknown label: apply everything from this turn
 }
 
+/** The records of a turn-ordered stream that apply at the playhead. Phase is
+ *  the honest granularity (the text log and the shim streams share no sequence
+ *  number): every record of the playhead's phase applies, and a record without
+ *  a phase applies from its turn's start. One definition for the table, the
+ *  hands and the tap/counter overlay, so the three can never disagree. */
+function atPlayhead<T extends { turn: number; phase?: string }>(
+  recs: T[], turn: number, phaseLabel: string,
+): T[] {
+  const cutoff = labelOrd(phaseLabel);
+  const out: T[] = [];
+  for (const r of recs) {
+    if (r.turn > turn) break; // stream is turn-ordered
+    if (r.turn === turn && (PHASE_ORD[r.phase ?? ""] ?? 0) > cutoff) continue;
+    out.push(r);
+  }
+  return out;
+}
+
 export interface BoardFxView {
   /** name -> how many copies are tapped right now (clamp to on-board count
    *  when rendering: ids of departed cards are not pruned). */
@@ -591,13 +608,10 @@ export function boardFxAt(
     tappedByName: new Map(), countersByName: new Map(), attachTo: new Map(),
   };
   if (!fx || !fx.length || turn <= 0) return view;
-  const cutoff = labelOrd(phaseLabel);
   const idTapped = new Map<number, boolean>();
   const idName = new Map<number, string>();
   const idCounters = new Map<number, Map<string, number>>();
-  for (const r of fx) {
-    if (r.turn > turn) break; // stream is turn-ordered
-    if (r.turn === turn && (PHASE_ORD[r.phase ?? ""] ?? 0) > cutoff) continue;
+  for (const r of atPlayhead(fx, turn, phaseLabel)) {
     idName.set(r.cardId, r.card);
     if (r.rec === "tap") {
       idTapped.set(r.cardId, !!r.tapped);
@@ -649,27 +663,24 @@ export function battlefieldAt(
 ): Map<string, Card[]> {
   const out = new Map<string, Card[]>(players.map((p) => [p, []]));
   if (!zones || !zones.length) return out;
-  const cutoff = labelOrd(phaseLabel);
-  const on = new Map<number, Card & { player: string }>(); // cardId -> permanent
-  for (const z of zones) {
-    if (z.turn > turn) break; // stream is turn-ordered
-    if (z.turn === turn && z.phase !== undefined
-        && (PHASE_ORD[z.phase] ?? 0) > cutoff) continue;
+  const on = new Map<number, { player: string; card: Card }>(); // cardId -> permanent
+  for (const z of atPlayhead(zones, turn, phaseLabel)) {
     if (z.to === "Battlefield") {
       on.set(z.cardId, {
-        name: z.card, player: z.toPlayer ?? "", types: z.types, pt: z.pt, token: z.token,
+        player: z.toPlayer ?? "",
+        card: { name: String(z.card ?? ""), types: z.types, pt: z.pt, token: z.token },
       });
     } else if (z.from === "Battlefield") {
       on.delete(z.cardId);
     }
   }
-  for (const c of on.values()) {
-    let list = out.get(c.player);
+  for (const { player, card } of on.values()) {
+    let list = out.get(player);
     if (!list) {
       list = [];
-      out.set(c.player, list);
+      out.set(player, list);
     }
-    list.push({ name: c.name, types: c.types, pt: c.pt, token: c.token });
+    list.push(card);
   }
   return out;
 }
@@ -690,13 +701,9 @@ export function handsAt(
 ): Map<string, HandCard[]> {
   const out = new Map<string, HandCard[]>();
   if (!zones || !zones.length) return out;
-  const cutoff = labelOrd(phaseLabel);
   const holder = new Map<number, string>(); // cardId -> player whose hand
   const nameOf = new Map<number, string>();
-  for (const z of zones) {
-    if (z.turn > turn) break; // stream is turn-ordered
-    if (z.turn === turn && z.phase !== undefined
-        && (PHASE_ORD[z.phase] ?? 0) > cutoff) continue;
+  for (const z of atPlayhead(zones, turn, phaseLabel)) {
     nameOf.set(z.cardId, z.card);
     if (z.to === "Hand" && z.toPlayer) holder.set(z.cardId, z.toPlayer);
     else if (z.from === "Hand") holder.delete(z.cardId);

@@ -128,9 +128,16 @@ folded final life totals match the last explicit total in the raws for every
 player in every game, and winner/eliminated states agree with the outcome
 events — 22,316 events, 80/80 checks.
 
-The board state is best-effort by design: Forge logs don't carry card types, so
-a resolved permanent is inferred from its resolve line. The **event log is the
-authoritative display**; the board is an aid.
+The board state has two paths. On a shim run (`game.zones` present) the table is
+READ from the zone stream at the playhead's turn and phase: every permanent that
+entered and has not left, tokens included and typed by Forge itself
+(`foldTo(timeline, i, zones)` → `battlefieldAt`). On a stock run it is inferred:
+Forge's text logs don't carry card types, so a resolved permanent is guessed from
+its resolve line and tokens exist only once they attack or block. Either way the
+**event log is the authoritative display**; the board is an aid. Combat is
+folded per DEFENDER: one lane per attack declaration line, blocks kept on the
+player who declared them (see `engine/forge_log_adapter.py` on why those lines
+used to go missing).
 
 ## Card data and board reconstruction
 

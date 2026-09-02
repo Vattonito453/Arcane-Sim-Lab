@@ -108,6 +108,25 @@ Consequences you must respect:
   to attack X` — and card names contain commas, so a reference list must be split
   on each `(instance id)`, never on commas. `board.py` `_refs()` and `replay.ts`
   `attackerNames()` implement the same rule; change them together.
+- **Forge joins multi-defender combat into ONE multi-line log entry.**
+  `GameLogFormatter` appends `\n` between defenders in an attack declaration and
+  between attackers in a defender's block declaration, so the printed (or
+  shim-serialised) entry is one captioned line plus caption-less continuation
+  lines. Until 2026-09-01 both adapters skipped every caption-less line as
+  chatter, which dropped the second defender's attack and every block after the
+  first attacker: 27 attack, 932 block and 7,340 didn't-block lines across 187
+  stock logs, and 193 of 580 combat entries in one 16-game shim run. The replay
+  then showed blocks with no attack and combat damage from an undeclared
+  creature (the "illegal blocker for another deck" report). `forge_log_adapter`
+  now emits each combat continuation line as its own event and keeps other
+  continuation text (modal spell modes) on the event under `more`;
+  `shim_log_adapter` captions every line of a COMBAT entry. Attacks are one
+  lane PER DEFENDER in `replay.ts` and blocks carry the blocking player; never
+  collapse them into one lane again. `readapt.py --write --all` recovers the
+  events in existing shim-run results (counted as `events` in its gain report;
+  it re-parses `shim_raw_*.jsonl` only, so a stock-path result needs a manual
+  re-adapt from its `forge_raw_*.log`) and keeps each file's mtime, which the
+  results index shows as the run's date.
 - There is no verbosity flag that fixes the stdout path, and patching Forge is
   off the table. The sanctioned fix is the GPL shim driving `Match`
   programmatically, which is now the default agent — so the way to raise board
@@ -338,9 +357,11 @@ grep -rn "—" web/app web/components web/lib --include='*.tsx' --include='*.ts'
   | grep -vE ':\s*(//|\*|/\*|\{/\*)'
 ```
 
-**Test fixture:** `engine/tests/fixtures/sim_sample.json` — 2 real games, 2,874
-events, 310 KB, with its summary recomputed for those 2 games. Committed so
-verification works on a fresh clone.
+**Test fixture:** `engine/tests/fixtures/sim_sample.json` — 2 real games, 2,975
+events, 315 KB, with its summary recomputed for those 2 games. Committed so
+verification works on a fresh clone. Re-adapted 2026-09-01 from its raw log
+(`forge_raw_20260724_093703_397702.log`) so it carries the continuation lines
+of Forge's multi-line combat entries; the old file had 2,874 events.
 
 `engine/sim_results/` is gitignored: 108 MB total, of which **77 MB is 31 adapted
 result files** (mean 2.6 MB, max 5.7 MB) and **31 MB is `forge_raw_*.log`** — raw

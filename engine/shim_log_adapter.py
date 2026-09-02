@@ -118,8 +118,23 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     for g in game_order:
         for e in entries.get(g, []):
             caption = TYPE_TO_CAPTION.get(e.get("type", ""))
-            if caption:
-                lines.append(f"{caption}: {e.get('message', '')}")
+            if not caption:
+                continue
+            # Forge's formatter joins a multi-defender attack declaration, and
+            # a defender's whole block declaration, into one entry with
+            # embedded newlines. Rebuilt as a single captioned line, every
+            # line after the first came out caption-less and parse_forge_log
+            # skipped it as chatter: the second defender's attack and every
+            # block after the first attacker vanished (measured: 193 of 580
+            # combat entries in one 16-game run carried a dropped line). The
+            # type is known here, so each COMBAT line gets its own caption.
+            # Other multi-line entries (modal spell text) keep one caption;
+            # parse_forge_log attaches the rest to that same event.
+            msg = str(e.get("message", ""))
+            parts = [ln for ln in msg.splitlines() if ln.strip()] or [msg]
+            recaption = e.get("type") == "COMBAT"
+            for i, ln in enumerate(parts):
+                lines.append(f"{caption}: {ln}" if i == 0 or recaption else ln)
         res = results.get(g)
         if res:
             ms = res.get("ms", 0)

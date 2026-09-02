@@ -182,6 +182,19 @@ results are all seat-rotated files whose post-processing masked the first two.
    only `Content-Type`, so any `POST /simulate` carrying a Bearer key was blocked
    before it was sent. `Authorization` and `X-Api-Key` are now allowed, and
    `do_OPTIONS` honours `MTG_ALLOW_ORIGIN` instead of hardcoding `*`.
+5. **Half of every split combat was missing from the log.** Forge writes a
+   multi-defender attack declaration, and a defender's whole block declaration,
+   as ONE log entry with embedded newlines; rebuilt as text, every line after the
+   first has no `Combat:` caption and both adapters skipped it as chatter. A
+   playtester saw Living Energy's Thopter "block on Skrat's behalf" an Ojutai
+   that never attacked: the Ojutai attack line was the dropped second line.
+   Re-adapting that 16-game run recovered 370 combat lines; combat damage from a
+   creature the log never showed attacking or blocking fell from 102 lines to 7,
+   all seven of which are ETB trigger damage or Myriad tokens that enter
+   attacking. The replay now keeps one attack lane per defender, draws blocks on
+   the player who declared them, and keeps Forge's instance id on names that
+   denote two different objects in a game (a 5/5 token copy of Lightning Runner
+   and the 2/2 original, two Thopter Tokens).
 
 Still open, unchanged, and documented in `tasks/`: `_list_results()` parses all 33
 result files to build the index; `runSummary`/`runGame` use `force-cache`, which

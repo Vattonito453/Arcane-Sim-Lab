@@ -51,6 +51,32 @@ _TURN_RE = re.compile(r"[Tt]urn\s+(\d+)\s*\((.+)\)\s*$")
 _RESULT_RE = re.compile(r"Game Result: Game (\d+) ended in (?:a Draw|(\d+) ms\.\s*(.+?) has won)", re.I)
 _DRAW_RE = re.compile(r"Game Result: Game (\d+) ended in a Draw", re.I)
 
+# Forge joins a multi-defender attack declaration, and a defender's whole block
+# declaration, into ONE GameLog entry with embedded newlines
+# (GameLogFormatter.visit(GameEventAttackersDeclared/BlockersDeclared) appends
+# "\n" between defenders and between attackers). Printed, that is one captioned
+# line followed by caption-less continuation lines:
+#   Combat: Ai(1)-X assigned Regent (75) to attack Ai(3)-Y.
+#   Ai(1)-X assigned Ojutai (24) to attack Ai(4)-Z.
+# This parser used to skip every caption-less line as sim chatter, so the second
+# defender's attack, and every block after the first attacker in a defender's
+# declaration, vanished. Measured: 187 stock logs dropped 27 attack, 932 block
+# and 7,340 didn't-block lines; on one 16-game shim run 193 of 580 combat
+# entries carried a dropped line and 269 of 831 creature damage lines came from
+# a creature the log never showed attacking or blocking. The replay then showed
+# blocks with no attack ("a blocker for another deck") and damage from nowhere.
+# The rule, applied in the loop below: a caption-less line after a combat event
+# is the next line of that same entry and becomes its own combat event; after
+# any other event it is kept on that event under `more`.
+#
+# A Java stack trace lands in the same stdout when a game crashes. Never data.
+# Matched after strip(): a frame reads "at forge.game.Foo.bar(Foo.java:12)" or
+# "at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)".
+_TRACE = re.compile(
+    r"^(?:at\s+\S+\(|Caused by:|\.\.\.\s\d+\smore|Exception in thread|"
+    r"[\w.$]+(?:Exception|Error)(?::|\s|$))"
+)
+
 
 def parse_forge_log(text: str, source: str = "forge-sim") -> dict:
     """Parse one sim invocation's stdout (may contain several games)."""
@@ -58,15 +84,23 @@ def parse_forge_log(text: str, source: str = "forge-sim") -> dict:
     cur: dict | None = None
     cur_turn: dict | None = None
     seq = 0
+    # The last event appended, so a caption-less continuation line can be
+    # attached to it (see the multi-line entry note above).
+    prev: dict | None = None
 
     def new_game() -> dict:
         return {"players": [], "turns": [], "result": None, "events_pregame": []}
 
+    def target() -> list:
+        """Where the current game's next event goes."""
+        return cur_turn["events"] if cur_turn is not None else cur["events_pregame"]
+
     def close_game() -> None:
-        nonlocal cur, cur_turn
+        nonlocal cur, cur_turn, prev
         if cur is not None and (cur["turns"] or cur["events_pregame"] or cur["result"]):
             games.append(cur)
         cur, cur_turn = None, None
+        prev = None
 
     for line in text.splitlines():
         line = line.strip()
@@ -89,7 +123,29 @@ def parse_forge_log(text: str, source: str = "forge-sim") -> dict:
 
         m = _CAPTION_RE.match(line)
         if not m:
-            continue  # sim chatter (deck loading, timers) — intentionally skipped
+            # Caption-less. Between games it is sim chatter (deck loading,
+            # timers) and is skipped. Inside a game it is the rest of a
+            # multi-line Forge entry, or a crash dump.
+            if cur is None or prev is None or _TRACE.match(line):
+                continue
+            if prev["action"] == "combat":
+                # The next line of the same combat entry: one declaration per
+                # event, exactly as Forge's own UI renders it (one line per
+                # defender, one per attacker). No grammar check, deliberately:
+                # the shim path captions every line of a COMBAT entry without
+                # one, and the two paths must agree. Measured on 187 stock
+                # logs, every caption-less line after a Combat line was one.
+                seq += 1
+                prev = {"seq": seq, "action": "combat", "raw": line}
+                target().append(prev)
+            else:
+                # Modal spell text ("• Destroy target artifact.") and anything
+                # else Forge wraps onto a further line. Kept on the event it
+                # belongs to, never promoted to an event of its own: a bare
+                # "• ..." line that became its own stack_resolve would pop a
+                # pending spell off the replay's stack fold.
+                prev.setdefault("more", []).append(line)
+            continue
         caption, msg = m.group(1), m.group(2)
         action = CAPTION_TO_ACTION[caption]
 
@@ -110,6 +166,7 @@ def parse_forge_log(text: str, source: str = "forge-sim") -> dict:
             cur["turns"].append(cur_turn)
             if cur_turn["active_player"] and cur_turn["active_player"] not in cur["players"]:
                 cur["players"].append(cur_turn["active_player"])
+            prev = None   # a Turn line is not an event to continue
             continue
 
         if action == "life_change":
@@ -127,8 +184,8 @@ def parse_forge_log(text: str, source: str = "forge-sim") -> dict:
         elif action == "game_outcome":
             event["detail"] = msg
 
-        target = cur_turn["events"] if cur_turn is not None else cur["events_pregame"]
-        target.append(event)
+        target().append(event)
+        prev = event
 
     close_game()
 

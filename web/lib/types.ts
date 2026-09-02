@@ -77,6 +77,11 @@ export interface SimEvent {
     | string;
   raw: string;
   object?: string;
+  /** Further lines of a multi-line Forge entry (modal spell text such as
+   *  "• Destroy all artifacts."), kept on the event they belong to. Combat
+   *  declarations are the exception: Forge joins one line per defender into a
+   *  single entry, and the adapter emits each of those as its own event. */
+  more?: string[];
 }
 
 export interface SimTurn {
@@ -108,6 +113,12 @@ export interface ZoneRec {
   to: string;
   fromPlayer?: string;
   toPlayer?: string;
+  /** Shim >= 0.3.0: Forge's core types as of the move ("Creature,Artifact"),
+   *  net P/T ("5/5") and whether the object is a token. What lets the table
+   *  type a token copy without Scryfall. */
+  types?: string;
+  pt?: string;
+  token?: boolean;
 }
 
 export interface BoardFxRec {

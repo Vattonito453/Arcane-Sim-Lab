@@ -12,6 +12,11 @@
  *    zone_change   "Kilo, Apogee Mind (100) was put into Graveyard from Battlefield."
  *                  "Send countered spell to Graveyard"
  *    combat        "Ai(1)-… assigned Kilo, Apogee Mind (100) to attack Ai(4)-…"
+ *                  one line per DEFENDER: a player attacking two opponents produces
+ *                  two combat events in the same declare-attackers step (the
+ *                  adapter used to drop the second; see forge_log_adapter.py)
+ *                  "Ai(4)-… assigned Thopter Token (638) to block Dragonlord Ojutai (24)"
+ *                  "Ai(3)-… didn't block Sunscorch Regent (75)"
  *    damage        "Zombie Token (477) deals 2 combat damage to Ai(4)-Drana Vampires."
  *                  "Ai(2)-… receives 1 poison counter from Ai(1)-…"
  *    game_outcome  "Ai(1)-… has lost because life total reached 0"
@@ -19,7 +24,7 @@
  *    phase         "Ai(1)-Kilo Helm Final's Untap step" / "Ai(2)-Drana Vampires' Upkeep step"
  */
 
-import type { BoardFxRec, SimEvent, SimGame } from "./types";
+import type { BoardFxRec, SimEvent, SimGame, ZoneRec } from "./types";
 import { stripAi } from "./format";
 
 /* ── public shapes ─────────────────────────────────────────────────────── */
@@ -29,6 +34,11 @@ export interface Card {
   tapped?: boolean;
   kinds?: string; // "land" | "creature" | "permanent" (best-effort)
   pt?: string; // "3/3" when the resolve raw carried power/toughness
+  /** Zone-stream reads only: Forge's core types ("Creature,Artifact") and
+   *  token flag as of the move. A token copy of Lightning Runner is a token
+   *  here even though its name is a real card's. */
+  types?: string;
+  token?: boolean;
 }
 
 export interface Seat {
@@ -38,14 +48,34 @@ export interface Seat {
   poison?: number;
 }
 
+/** One declared attack: everything `from` sent at one defender. Forge logs one
+ *  line per defender, so a player attacking two opponents at once has two
+ *  lanes in the same combat. `to` is a player key, or the name of a
+ *  planeswalker or battle when the attack was assigned to a permanent. */
+export interface Lane {
+  from: string;
+  to: string;
+  cards: string[];
+}
+/** One declared block: `by` (the defending player) put `blockers` in front of
+ *  `attacker`. The blocking player is kept from the line itself, never inferred
+ *  from a lane: the fold used to hold a single lane and assume every blocker
+ *  belonged to that one defender, which drew Living Energy's Thopter in Skrat's
+ *  zone when the Ojutai it blocked had been sent at Living Energy. */
+export interface Block {
+  by: string;
+  attacker: string;
+  blockers: string[];
+}
 export interface BoardState {
   seats: Seat[];
   battlefield: Map<string, Card[]>;
-  attacks: { from: string; to: string; cards: string[] } | null;
-  /** Declared blocks, attacker -> blockers, live during the combat that
-   *  declared them (cleared with `attacks`). Parsed from the same batched
-   *  combat lines as attacks, split on "(instance id)" never on commas. */
-  blocks: { attacker: string; blockers: string[] }[];
+  /** Declared attacks, live during the combat that declared them and cleared
+   *  by the first non-combat phase. Empty outside combat. */
+  attacks: Lane[];
+  /** Declared blocks, same lifetime as `attacks`. Parsed from the same batched
+   *  combat lines, split on "(instance id)" never on commas. */
+  blocks: Block[];
   stack: string[];
 }
 
@@ -98,14 +128,14 @@ export type Op =
   | { t: "counterpop" }
   | { t: "leave"; name: string }
   | { t: "attack"; from: string; to: string; cards: string[] }
-  | { t: "block"; attacker: string; blockers: string[] }
+  | { t: "block"; by: string; attacker: string; blockers: string[] }
   | { t: "phase"; combat: boolean }
   | { t: "out"; p: string };
 
 /* ── raw-string parsers ────────────────────────────────────────────────── */
 
 const RE_AI = /Ai\(\d+\)-/g;
-const RE_NUM = /\s\(\d+\)/g;
+const RE_NUM = /\s\((\d+)\)/g;
 const RE_LIFE = /^Life: (.+?) (-?\d+) > (-?\d+)\s*$/;
 const RE_POISON = /^(.+?) receives (\d+) poison counters? from /;
 const RE_LAND = /^(.+?) played (.+?) \(\d+\)\s*$/;
@@ -133,14 +163,77 @@ export function attackerNames(list: string): string[] {
     .filter(Boolean);
   return out.length ? out : [list.replace(RE_NUM, "").trim()];
 }
-const RE_LEAVE = /^(.+?) \(\d+\) was put into \w+ from Battlefield\.?\s*$/;
+// "Ai(3)-X didn't block Kappa Cannoneer (56)." Mirrors _NOBLOCK in engine/board.py.
+const RE_NOBLOCK = /^(.+?) (?:didn't|doesn't) block (.+?)\.?\s*$/;
+// "Name (id) was put into Graveyard from Battlefield." Mirrors _EXIT in board.py.
+const RE_LEAVE = /^(.+?) \((\d+)\) was put into \w+ from Battlefield\.?\s*$/;
 const RE_DMG = /^(.+?) deals (\d+) (?:[\w-]+ )*damage(?:\s*\([^)]*\))? to (.+?)\.?\s*$/;
 const RE_LOST = /^(.+?) has lost /;
 const RE_WON = /^(.+?) has won /;
 
-/** Strip Ai(n)- prefixes and collector numbers for display. */
-export function cleanRaw(raw: string): string {
-  return raw.replace(RE_AI, "").replace(RE_NUM, "");
+/** Strip Ai(n)- prefixes and Forge instance ids for display. Ids in `keep`
+ *  stay: they belong to names that mean two different objects in this game. */
+export function cleanRaw(raw: string, keep?: Set<number>): string {
+  const noAi = raw.replace(RE_AI, "");
+  if (!keep || keep.size === 0) return noAi.replace(RE_NUM, "");
+  return noAi.replace(RE_NUM, (m, id) => (keep.has(Number(id)) ? m : ""));
+}
+
+/** Instance ids of every combatant whose NAME is shared by two or more
+ *  distinct objects in this game, so the log can keep telling them apart.
+ *
+ *  Stripping every id made "Lightning Runner deals 5 damage" and "Lightning
+ *  Runner deals 2 combat damage" read as one creature doing the impossible;
+ *  they were a 5/5 token copy and the 2/2 original, and Forge's own ids say
+ *  so. Likewise two Thopter Tokens, one sacrificed and one blocking, collapsed
+ *  into a blocker that seemed to die before damage. Only names that attack,
+ *  block, deal or take damage, or leave the battlefield are considered, so a
+ *  deck's four Islands stay plain "Island". */
+export function ambiguousIds(game: SimGame): Set<number> {
+  const ids = new Map<string, Set<number>>();
+  const add = (name: string, id: number) => {
+    const n = name.trim();
+    if (!n) return;
+    let s = ids.get(n);
+    if (!s) {
+      s = new Set();
+      ids.set(n, s);
+    }
+    s.add(id);
+  };
+  // The same id-based splitting as attackerNames(): a segment is one or more
+  // "Name (id)" references and is never cut on commas.
+  const addRefs = (seg: string) => {
+    for (const m of seg.matchAll(RE_REF)) add(m[1].replace(RE_JOIN, ""), Number(m[2]));
+  };
+  const scan = (ev: SimEvent) => {
+    // Ai(2)- would otherwise read as a reference to an object named "Ai".
+    const raw = ev.raw.replace(RE_AI, "");
+    let m: RegExpMatchArray | null;
+    if (ev.action === "combat") {
+      if ((m = raw.match(RE_BLOCK))) {
+        addRefs(m[2]);
+        addRefs(m[3]);
+      } else if ((m = raw.match(RE_ATTACK))) {
+        addRefs(m[2]);
+        addRefs(m[3]); // a planeswalker or battle defender carries an id
+      } else if ((m = raw.match(RE_NOBLOCK))) {
+        addRefs(m[2]);
+      }
+    } else if (ev.action === "damage") {
+      if ((m = raw.match(RE_DMG))) {
+        addRefs(m[1]);
+        addRefs(m[3]);
+      }
+    } else if (ev.action === "zone_change") {
+      if ((m = raw.match(RE_LEAVE))) add(m[1], Number(m[2]));
+    }
+  };
+  for (const ev of game.events_pregame ?? []) scan(ev);
+  for (const t of game.turns) for (const ev of t.events) scan(ev);
+  const out = new Set<number>();
+  for (const s of ids.values()) if (s.size > 1) for (const id of s) out.add(id);
+  return out;
 }
 
 function escapeRe(s: string): string {
@@ -182,15 +275,20 @@ function parseDamage(raw: string): { source: string; amount: number; target: str
 
 /* ── timeline ──────────────────────────────────────────────────────────── */
 
-function stepFor(ev: SimEvent, turn: number, active: string, phase: string): Step {
+function stepFor(
+  ev: SimEvent, turn: number, active: string, phase: string, keep?: Set<number>,
+): Step {
   const raw = ev.raw;
+  // `more` is the rest of a multi-line Forge entry (modal spell text) that the
+  // adapter keeps on the event it belongs to rather than as an event of its own.
+  const more = ev.more?.length ? " " + ev.more.map((l) => cleanRaw(l, keep)).join(" ") : "";
   const step: Step = {
     seq: ev.seq,
     turn,
     round: 0, // set by buildTimeline once the active player's turn count is known
     phase,
     active,
-    text: cleanRaw(raw),
+    text: cleanRaw(raw, keep) + more,
     kind: ev.action,
   };
   let m: RegExpMatchArray | null;
@@ -243,12 +341,16 @@ function stepFor(ev: SimEvent, turn: number, active: string, phase: string): Ste
         // and only the tail keyword separates them.
         const attacker = m[3].replace(RE_NUM, "").trim();
         const blockers = attackerNames(m[2]);
-        step.op = { t: "block", attacker, blockers };
+        step.op = { t: "block", by: m[1], attacker, blockers };
         step.hi = [attacker, ...blockers];
       } else if ((m = raw.match(RE_ATTACK))) {
         const cards = attackerNames(m[2]);
-        step.op = { t: "attack", from: m[1], to: m[3], cards };
-        step.hi = [...cards, stripAi(m[3])];
+        // A planeswalker or battle defender carries an id ("Elspeth, Sun's
+        // Champion (52)"); a player key does not. Drop it so the lane label
+        // and the bold range read as a name.
+        const to = m[3].replace(RE_NUM, "").trim();
+        step.op = { t: "attack", from: m[1], to, cards };
+        step.hi = [...cards, stripAi(to)];
       }
       break;
     case "phase": {
@@ -284,16 +386,17 @@ export function buildTimeline(game: SimGame): Timeline {
   const turns: { turn: number; round: number; start: number }[] = [];
   let phase = "Pregame";
   const turnsTaken = new Map<string, number>();
+  const keep = ambiguousIds(game);
 
   for (const ev of game.events_pregame ?? []) {
-    steps.push(stepFor(ev, 0, "", phase));
+    steps.push(stepFor(ev, 0, "", phase, keep));
   }
   for (const t of game.turns) {
     const round = (turnsTaken.get(t.active_player) ?? 0) + 1;
     turnsTaken.set(t.active_player, round);
     turns.push({ turn: t.turn, round, start: steps.length });
     for (const ev of t.events) {
-      const step = stepFor(ev, t.turn, t.active_player, phase);
+      const step = stepFor(ev, t.turn, t.active_player, phase, keep);
       step.round = round;
       steps.push(step);
       phase = step.phase; // phase events update it; others inherit
@@ -328,8 +431,14 @@ function resolveShape(raw: string, name: string): { board: boolean; kinds?: stri
 }
 
 /** Fold steps 0..i (inclusive) into a board state. Best-effort by design:
- *  the event feed stays the authoritative record. */
-export function foldTo(timeline: Timeline, i: number): BoardState {
+ *  the event feed stays the authoritative record.
+ *
+ *  With `zones` (a shim run) the battlefield is not folded from the text at
+ *  all: it is read from the zone stream at the playhead's turn and phase, the
+ *  same source board.py measured at exit_match_rate 1.0. The text fold used to
+ *  drive the table on every run while the note under it said "read from the
+ *  zone stream"; tokens then existed only once they attacked or blocked. */
+export function foldTo(timeline: Timeline, i: number, zones?: ZoneRec[]): BoardState {
   const seats: Seat[] = timeline.players.map((p) => ({
     player: p,
     life: 40, // Commander
@@ -339,8 +448,8 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
   const byName = new Map(seats.map((s) => [s.player, s]));
   const battlefield = new Map<string, Card[]>(timeline.players.map((p) => [p, []]));
   const pending: Pending[] = [];
-  let attacks: BoardState["attacks"] = null;
-  let blocks: BoardState["blocks"] = [];
+  let attacks: Lane[] = [];
+  let blocks: Block[] = [];
 
   const last = Math.min(i, timeline.steps.length - 1);
   for (let k = 0; k <= last; k++) {
@@ -408,26 +517,32 @@ export function foldTo(timeline: Timeline, i: number): BoardState {
         break;
       }
       case "block": {
-        const at = blocks.find((b) => b.attacker === op.attacker);
+        const at = blocks.find((b) => b.by === op.by && b.attacker === op.attacker);
         if (at) at.blockers.push(...op.blockers);
-        else blocks.push({ attacker: op.attacker, blockers: [...op.blockers] });
+        else blocks.push({ by: op.by, attacker: op.attacker, blockers: [...op.blockers] });
         break;
       }
-      case "attack":
-        if (attacks && attacks.from === op.from) {
-          attacks.cards.push(...op.cards);
-          attacks.to = op.to;
-        } else {
-          attacks = { from: op.from, to: op.to, cards: [...op.cards] };
-        }
+      case "attack": {
+        // One lane per defender. This used to merge every declaration into a
+        // single lane and overwrite `to` with the latest defender, so a split
+        // attack was drawn as one army at one player.
+        const lane = attacks.find((l) => l.from === op.from && l.to === op.to);
+        if (lane) lane.cards.push(...op.cards);
+        else attacks.push({ from: op.from, to: op.to, cards: [...op.cards] });
         break;
+      }
       case "phase":
         if (!op.combat) {
-          attacks = null;
+          attacks = [];
           blocks = [];
         }
         break;
     }
+  }
+  if (zones && zones.length) {
+    const at = timeline.steps[last];
+    const read = battlefieldAt(zones, at?.turn ?? 0, at?.phase ?? "", timeline.players);
+    return { seats, battlefield: read, attacks, blocks, stack: pending.map((p) => p.name) };
   }
   return { seats, battlefield, attacks, blocks, stack: pending.map((p) => p.name) };
 }
@@ -457,6 +572,24 @@ function labelOrd(label: string): number {
   return 12; // unknown label: apply everything from this turn
 }
 
+/** The records of a turn-ordered stream that apply at the playhead. Phase is
+ *  the honest granularity (the text log and the shim streams share no sequence
+ *  number): every record of the playhead's phase applies, and a record without
+ *  a phase applies from its turn's start. One definition for the table, the
+ *  hands and the tap/counter overlay, so the three can never disagree. */
+function atPlayhead<T extends { turn: number; phase?: string }>(
+  recs: T[], turn: number, phaseLabel: string,
+): T[] {
+  const cutoff = labelOrd(phaseLabel);
+  const out: T[] = [];
+  for (const r of recs) {
+    if (r.turn > turn) break; // stream is turn-ordered
+    if (r.turn === turn && (PHASE_ORD[r.phase ?? ""] ?? 0) > cutoff) continue;
+    out.push(r);
+  }
+  return out;
+}
+
 export interface BoardFxView {
   /** name -> how many copies are tapped right now (clamp to on-board count
    *  when rendering: ids of departed cards are not pruned). */
@@ -475,13 +608,10 @@ export function boardFxAt(
     tappedByName: new Map(), countersByName: new Map(), attachTo: new Map(),
   };
   if (!fx || !fx.length || turn <= 0) return view;
-  const cutoff = labelOrd(phaseLabel);
   const idTapped = new Map<number, boolean>();
   const idName = new Map<number, string>();
   const idCounters = new Map<number, Map<string, number>>();
-  for (const r of fx) {
-    if (r.turn > turn) break; // stream is turn-ordered
-    if (r.turn === turn && (PHASE_ORD[r.phase ?? ""] ?? 0) > cutoff) continue;
+  for (const r of atPlayhead(fx, turn, phaseLabel)) {
     idName.set(r.cardId, r.card);
     if (r.rec === "tap") {
       idTapped.set(r.cardId, !!r.tapped);
@@ -516,6 +646,45 @@ export function boardFxAt(
   return view;
 }
 
+/* ── battlefield (exact, from the shim zone stream) ────────────────────── */
+
+/** Every seat's battlefield at the playhead, read from the zone stream: every
+ *  permanent that entered and has not left, tokens included and typed by Forge
+ *  itself. Phase granularity, like handsAt(): within the playhead's phase a
+ *  permanent shows from the phase's first event, which can be a few events
+ *  before the line that created it (the text log and the zone stream share no
+ *  sequence number). Zone records without a phase apply from their turn's
+ *  start. */
+export function battlefieldAt(
+  zones: ZoneRec[] | undefined,
+  turn: number,
+  phaseLabel: string,
+  players: string[],
+): Map<string, Card[]> {
+  const out = new Map<string, Card[]>(players.map((p) => [p, []]));
+  if (!zones || !zones.length) return out;
+  const on = new Map<number, { player: string; card: Card }>(); // cardId -> permanent
+  for (const z of atPlayhead(zones, turn, phaseLabel)) {
+    if (z.to === "Battlefield") {
+      on.set(z.cardId, {
+        player: z.toPlayer ?? "",
+        card: { name: String(z.card ?? ""), types: z.types, pt: z.pt, token: z.token },
+      });
+    } else if (z.from === "Battlefield") {
+      on.delete(z.cardId);
+    }
+  }
+  for (const { player, card } of on.values()) {
+    let list = out.get(player);
+    if (!list) {
+      list = [];
+      out.set(player, list);
+    }
+    list.push(card);
+  }
+  return out;
+}
+
 /* ── hands (exact, from the shim zone stream) ──────────────────────────── */
 
 export interface HandCard { name: string; n: number; }
@@ -526,19 +695,15 @@ export interface HandCard { name: string; n: number; }
  *  older records without one apply at the start of their turn, so within the
  *  CURRENT turn a phaseless draw shows a card slightly early. */
 export function handsAt(
-  zones: import("./types").ZoneRec[] | undefined,
+  zones: ZoneRec[] | undefined,
   turn: number,
   phaseLabel: string,
 ): Map<string, HandCard[]> {
   const out = new Map<string, HandCard[]>();
   if (!zones || !zones.length) return out;
-  const cutoff = labelOrd(phaseLabel);
   const holder = new Map<number, string>(); // cardId -> player whose hand
   const nameOf = new Map<number, string>();
-  for (const z of zones) {
-    if (z.turn > turn) break; // stream is turn-ordered
-    if (z.turn === turn && z.phase !== undefined
-        && (PHASE_ORD[z.phase] ?? 0) > cutoff) continue;
+  for (const z of atPlayhead(zones, turn, phaseLabel)) {
     nameOf.set(z.cardId, z.card);
     if (z.to === "Hand" && z.toPlayer) holder.set(z.cardId, z.toPlayer);
     else if (z.from === "Hand") holder.delete(z.cardId);

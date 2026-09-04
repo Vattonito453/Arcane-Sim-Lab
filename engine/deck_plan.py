@@ -81,43 +81,31 @@ TAG_MARKERS: dict[str, list[str]] = {
 # The cEDH corpus is a picture of STRONG human play, so "human-like" means
 # converting, not erring. Any future proposal to re-introduce error has to
 # earn it with a measured gain, not an argument about realism.
-# openThreatShare (shim 0.14.0): an attacker aimed at a player who has an
-# untapped creature that can block it is re-aimed at the highest-threat OTHER
-# opponent with no such blocker, if that opponent's threat is at least this
-# share of the current target's. Measured need: sim_20260902_145933 game 1
-# turn 17, a 2/2 and a 1/1 sent into an untapped 4/4 while the punisher deck
-# sat open two threat points back. 0 disables.
 TAG_PERSONALITY: dict[str, dict] = {
     "go-wide-tokens": {"aggression": 0.7, "splitAttacks": 0.7, "blockiness": 0.5,
                        "counterThreshold": 6, "dangerLife": 8,
                        "grudgeWeight": 0.25, "kingmakerRatio": 1.6,
-                       "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
-                       "openThreatShare": 0.6},
+                       "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
     "voltron-commander-damage": {"aggression": 0.8, "splitAttacks": 0.7, "blockiness": 0.4,
                                  "counterThreshold": 6, "dangerLife": 8,
                                  "grudgeWeight": 0.3, "kingmakerRatio": 1.4,
-                                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
-                       "openThreatShare": 0.6},
+                                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
     "spellslinger-burn": {"aggression": 0.6, "splitAttacks": 0.7, "blockiness": 0.5,
                           "counterThreshold": 4, "dangerLife": 10,
                           "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
-                          "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
-                       "openThreatShare": 0.6},
+                          "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
     "stax-control": {"aggression": 0.35, "splitAttacks": 0.7, "blockiness": 0.75,
                      "counterThreshold": 4, "dangerLife": 12,
                      "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
-                     "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
-                       "openThreatShare": 0.6},
+                     "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
     "mill": {"aggression": 0.35, "splitAttacks": 0.7, "blockiness": 0.75,
              "counterThreshold": 4, "dangerLife": 12,
              "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
-             "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
-                       "openThreatShare": 0.6},
+             "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
     "_default": {"aggression": 0.55, "splitAttacks": 0.7, "blockiness": 0.6,
                  "counterThreshold": 5, "dangerLife": 8,
                  "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
-                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
-                       "openThreatShare": 0.6},
+                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
 }
 
 _REMOVAL = re.compile(r"destroy target|exile target|deals \d+ damage to target creature",
@@ -143,14 +131,28 @@ _BOARD_PAYOFF = re.compile(r"creatures? you control get \+|creatures you control
 # carry no power and rarely a keep weight, so the threat list never named
 # them, and the shim's threat read scored a Nekusar board of Iron Maiden plus
 # Spiteful Visions below a lone 4/4 (sim_20260902_145933 game 1 turn 17; the
-# whole pod then fed the 4/4 instead of the open punisher). Permanents only:
-# the same phrases on a sorcery are burn, not an engine.
+# whole pod then fed the 4/4 instead of the open punisher). One sentence must
+# carry BOTH a recurring trigger on the table's own actions (each player's
+# upkeep, a player drawing, the owner drawing or casting) AND damage or life
+# loss to that player or every opponent. A first cut matched either half
+# alone and swept in 95 of 4,347 cached cards, including Consecrated Sphinx,
+# Smothering Tithe and every aristocrat payoff; a threat name scores 8 in
+# the shim's index and that index also gates its counterspells, so breadth
+# here is not free. Permanents only: the same phrases on a sorcery are burn.
 _PUNISHER = re.compile(
-    r"deals? (?:\d+|x) damage to (?:each opponent|each player|that player)"
-    r"|whenever (?:a|an) (?:player|opponent) draws a card"
-    r"|each opponent loses \d+ life",
+    r"(?:at the beginning of each (?:opponent's|player's)"
+    r"|whenever (?:a|an) (?:player|opponent) (?:draws|casts|attacks)"
+    r"|whenever you (?:draw|cast))"
+    r"[^.]*?"
+    r"(?:deals? (?:\d+|x) damage to (?:that player|each opponent|each player)"
+    r"|(?:that player|each opponent|they) loses? (?:\d+|x) life)",
     re.I,
 )
+
+
+def _fact(facts: dict, n: str) -> dict:
+    """One card's facts under either key style callers use."""
+    return facts.get(cards.key(n)) or facts.get(n) or {}
 
 
 # Synergy lines: a deck's win condition when Commander Spellbook has nothing.
@@ -204,7 +206,7 @@ def synergy_lines(names, facts, tags, weights, commanders):
         en_re, pay_re = re.compile(pat[0], re.I), re.compile(pat[1], re.I)
         enablers, payoffs = [], []
         for n in names:
-            f = facts.get(cards.key(n)) or facts.get(n) or {}
+            f = _fact(facts, n)
             text = f.get("oracle_text") or ""
             tline = f.get("type_line") or ""
             if "Land" in tline and "Creature" not in tline:
@@ -268,7 +270,7 @@ def build_plan(path: str | Path, fetch: bool = False,
     # Tag scoring: how many cards support each tag.
     tag_hits: dict[str, list[str]] = {t: [] for t in TAG_MARKERS}
     for n in names:
-        f = facts.get(cards.key(n)) or facts.get(n) or {}
+        f = _fact(facts, n)
         text = (f.get("oracle_text") or "").lower()
         tline = (f.get("type_line") or "").lower()
         if "land" in tline and "creature" not in tline:
@@ -306,7 +308,7 @@ def build_plan(path: str | Path, fetch: bool = False,
     tutors: list[str] = []
     mana_creatures: list[str] = []
     for n in names:
-        f = facts.get(cards.key(n)) or facts.get(n) or {}
+        f = _fact(facts, n)
         text = f.get("oracle_text") or ""
         tline = f.get("type_line") or ""
         cmc = f.get("cmc") or 0
@@ -364,7 +366,7 @@ def build_plan(path: str | Path, fetch: bool = False,
     for n in names:
         if n in commanders:
             continue
-        f = facts.get(cards.key(n)) or facts.get(n) or {}
+        f = _fact(facts, n)
         text = f.get("oracle_text") or ""
         tline = f.get("type_line") or ""
         cmc = f.get("cmc") or 0
@@ -413,7 +415,7 @@ def build_plan(path: str | Path, fetch: bool = False,
     # 16) was attacked LEAST. A big body is a threat whatever its keep-weight
     # says, and the commander always is.
     def _pow(n: str) -> int:
-        f = facts.get(cards.key(n)) or facts.get(n) or {}
+        f = _fact(facts, n)
         if "creature" not in (f.get("type_line") or "").lower():
             return 0
         try:
@@ -421,9 +423,8 @@ def build_plan(path: str | Path, fetch: bool = False,
         except (TypeError, ValueError):
             return 0  # '*' powers stay out; the shim reads live P/T anyway
     def _punisher(n: str) -> bool:
-        f = facts.get(cards.key(n)) or facts.get(n) or {}
-        tl = (f.get("type_line") or "").lower()
-        if not any(t in tl for t in ("artifact", "enchantment", "creature", "planeswalker")):
+        f = _fact(facts, n)
+        if not any(t in (f.get("type_line") or "") for t in cards.PERMANENT_TYPES):
             return False
         return bool(_PUNISHER.search(f.get("oracle_text") or ""))
     threat_set = {n for n, w in weights.items() if w >= 7}
@@ -438,6 +439,15 @@ def build_plan(path: str | Path, fetch: bool = False,
     # Shipped explicitly rather than relying on the shim default, so the
     # value is on the record in every plans file.
     personality.setdefault("lineProximity", 6)
+    # openThreatShare (shim 0.14.0): an attacker aimed at a player who has an
+    # untapped creature that can block it is re-aimed at the highest-threat
+    # OTHER opponent with no such blocker, if that opponent's threat is at
+    # least this share of the current target's. Measured need:
+    # sim_20260902_145933 game 1 turn 17, a 2/2 and a 1/1 sent into an
+    # untapped 4/4 while the punisher deck sat open two threat points back.
+    # One value for every archetype, so shipped here rather than per profile.
+    # 0 disables.
+    personality.setdefault("openThreatShare", 0.6)
 
     # Provenance: how much of the deck the card-fact cache could actually
     # see. A cold cache silently degrades every heuristic above (no oracle

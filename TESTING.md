@@ -199,8 +199,8 @@ results are all seat-rotated files whose post-processing masked the first two.
    full name ("Bloodline Keeper // Lord of Lineage") while Forge names the
    object by the face it shows ("Bloodline Keeper"), so every lookup missed,
    the tile rendered name-only, `board.py` typed the card as unknown, and the
-   miss was never recorded, so each page load re-asked Scryfall (72 such cards
-   in one cache). `cards.py` now stores every face under its own name, with
+   miss was never recorded, so each page load re-asked Scryfall (42 such cards
+   in the committed cache). `cards.py` now stores every face under its own name, with
    the back face's own art, type and P/T, and aliases the front face of
    already-cached entries on load.
 

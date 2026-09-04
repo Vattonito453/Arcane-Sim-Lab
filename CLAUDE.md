@@ -30,7 +30,7 @@ engine/            Python, stdlib only, no frameworks
   combos.py          known combos in a deck (Commander Spellbook, disk-cached)
   analysis.py        win methods + combo assembled-vs-converted per run
   convert_decklist.py  decklist text -> validated .dck
-  tests/             16 test_*.py (unit) + smoke_test.py (live API) + fixtures/
+  tests/             17 test_*.py (unit) + smoke_test.py (live API) + fixtures/
 rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)
 web/               Next.js 15 App Router, React 19, TypeScript strict
   app/globals.css    THE ENTIRE DESIGN SYSTEM. Pages add no CSS.
@@ -260,7 +260,8 @@ cached on disk. A warm cache makes zero network calls. Never loop single lookups
 A fetched card is stored under EVERY name Forge might log for it: the full
 Scryfall name and each face ("Bloodline Keeper", "Lord of Lineage"). Keying by
 the full name alone made every double-faced card a permanent cache miss that
-re-hit Scryfall on each page load (measured 2026-09-03: 72 cards).
+re-hit Scryfall on each page load (measured 2026-09-03: 42 cards in the
+committed cache).
 
 ### API safety
 

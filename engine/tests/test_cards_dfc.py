@@ -5,7 +5,7 @@ A playtester saw Bloodline Keeper in Drana Vampires' hand with no art and no
 card data. The cache held the card, keyed "bloodline keeper // lord of
 lineage" (Scryfall's full name); Forge names the object "Bloodline Keeper",
 so every lookup missed, the miss was never recorded, and each page load
-re-asked Scryfall for it. 72 cards in the local cache were affected.
+re-asked Scryfall for it. 42 cards in the committed cache were affected.
 
 Run: python3 engine/tests/test_cards_dfc.py   (no network)
 """
@@ -39,6 +39,39 @@ TRANSFORM = {
          "colors": ["B"],
          "image_uris": {"normal": "https://c.scryfall.io/normal/back/l.jpg",
                         "art_crop": "https://c.scryfall.io/art_crop/back/l.jpg"}},
+    ],
+}
+MDFC = {
+    "name": "Valakut Awakening // Valakut Stoneforge",
+    "layout": "modal_dfc",
+    "type_line": "Instant // Land",
+    "cmc": 3.0,
+    "color_identity": ["R"],
+    "card_faces": [
+        {"name": "Valakut Awakening", "mana_cost": "{2}{R}", "type_line": "Instant",
+         "oracle_text": "Put any number of cards from your hand on the bottom of your library.",
+         "colors": ["R"], "image_uris": {"normal": "n1", "art_crop": "a1"}},
+        {"name": "Valakut Stoneforge", "mana_cost": "", "type_line": "Land",
+         "oracle_text": "{T}: Add {R}.", "colors": [],
+         "image_uris": {"normal": "n2", "art_crop": "a2"}},
+    ],
+}
+REAL_WHEEL = {"name": "Wheel of Fortune", "layout": "normal", "type_line": "Sorcery",
+              "mana_cost": "{2}{R}", "cmc": 3.0, "oracle_text": "Each player discards their hand, then draws seven cards.",
+              "colors": ["R"], "color_identity": ["R"],
+              "image_uris": {"normal": "wheel", "art_crop": "wheel"}}
+LORESPINNER = {
+    "name": "Naktamun Lorespinner // Wheel of Fortune",
+    "layout": "transform",
+    "type_line": "Creature — Human // Sorcery",
+    "cmc": 2.0,
+    "color_identity": ["R"],
+    "card_faces": [
+        {"name": "Naktamun Lorespinner", "mana_cost": "{1}{R}", "type_line": "Creature — Human",
+         "power": "1", "toughness": "3", "oracle_text": "", "colors": ["R"],
+         "image_uris": {"normal": "l1", "art_crop": "l1"}},
+        {"name": "Wheel of Fortune", "mana_cost": "", "type_line": "Sorcery",
+         "oracle_text": "", "colors": ["R"], "image_uris": {"normal": "l2", "art_crop": "l2"}},
     ],
 }
 SPLIT = {
@@ -86,13 +119,24 @@ def test_store_writes_every_face() -> None:
         # Forge decorations are stripped before the lookup, as for any card.
         assert cards.get("Bloodline Keeper (312)", fetch=False) is not None
 
-        # Split halves share the one image but keep their own text.
+        # Split halves share the one image but keep their own text and cost.
         wear = cards.get("Wear", fetch=False)
         tear = cards.get("Tear", fetch=False)
         assert wear and tear, (wear, tear)
         assert wear["normal"] == tear["normal"] == SPLIT["image_uris"]["normal"]
         assert "artifact" in wear["oracle_text"] and "enchantment" in tear["oracle_text"]
         assert wear["type_line"] == "Instant"
+        assert wear["cmc"] == 2 and tear["cmc"] == 1, (wear["cmc"], tear["cmc"])
+        assert wear["colors"] == ["R"] and tear["colors"] == ["W"]
+        # A colorless back face stays colorless (an empty list is an answer).
+        assert cards._slim(MDFC, MDFC["card_faces"][1])["colors"] == []
+        assert cards._slim(MDFC, MDFC["card_faces"][1])["type_line"] == "Land"
+        # A back face whose name is also a real card never displaces it.
+        cards._store(cards._load(), REAL_WHEEL)
+        cards._store(cards._load(), LORESPINNER)
+        wheel = cards.get("Wheel of Fortune", fetch=False)
+        assert wheel and "face_of" not in wheel and wheel["cmc"] == 3, wheel
+        assert cards.get("Naktamun Lorespinner", fetch=False)["face_of"]
 
         # What the board logic asks: a permanent, a creature.
         assert cards.is_permanent("Bloodline Keeper") is True
@@ -111,6 +155,16 @@ def test_existing_cache_gets_front_aliases_on_load() -> None:
             "oracle_text": "Flying", "colors": ["B"], "color_identity": ["B"],
             "art_crop": "a", "normal": "n", "scryfall_uri": "u",
         },
+        # The old full entry's type line is the JOINED one; the alias must
+        # take the front half or an instant reads as a land.
+        "valakut awakening // valakut stoneforge": {
+            "name": "Valakut Awakening // Valakut Stoneforge",
+            "type_line": "Instant // Land", "mana_cost": "{2}{R}", "cmc": 3.0,
+            "power": None, "toughness": None, "oracle_text": "Put any number...",
+            "colors": ["R"], "color_identity": ["R"], "art_crop": None, "normal": None,
+            "scryfall_uri": None,
+        },
+        "garbage": "not a dict, from a hand-edited file",
         "sol ring": {"name": "Sol Ring", "type_line": "Artifact", "mana_cost": "{1}",
                      "cmc": 1.0, "power": None, "toughness": None, "oracle_text": "",
                      "colors": [], "color_identity": [], "art_crop": None,
@@ -127,7 +181,14 @@ def test_existing_cache_gets_front_aliases_on_load() -> None:
         # Nothing else changed shape; not_found stays not_found.
         assert cards.get("Sol Ring", fetch=False)["name"] == "Sol Ring"
         assert cards.get("Nonesuch", fetch=False) is None
-        assert len(cache) == 4, sorted(cache)
+        va = cards.get("Valakut Awakening", fetch=False)
+        assert va and va["type_line"] == "Instant", va
+        assert cards.is_permanent("Valakut Awakening") is False
+        assert cards.card_kind("Valakut Awakening") == "spell"
+        assert len(cache) == 7, sorted(cache)
+        assert cards.get("garbage", fetch=False) is None
+        st = cards.stats()
+        assert st["cached"] == 4 and st["face_entries"] == 2 and st["not_found"] == 1, st
         # Aliasing is idempotent.
         assert cards._alias_faces(cache) == 0
     print("  load: an old full-name-only cache gains front-face aliases")

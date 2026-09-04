@@ -167,14 +167,20 @@ deck plan, both prompted by a playtester reading replays of
   two threat points back, had no creature at all. Lethal swings are never
   re-aimed. Event: `open_reaim`.
 - **Finisher discipline.** A one-shot spell the plan marks `finisher` with
-  `minCreatures` is held until that many own creatures exist (stock cast
-  Triumph of the Hordes onto one or two creatures four times in the run).
+  `minCreatures` is held until that many own creatures exist (Forge's own
+  casting logic, which the agent delegates to, cast Triumph of the Hordes
+  onto one or two creatures four times in the run). During the caster's own
+  combat with attackers declared, the gate stands aside: a pump on unblocked
+  attackers is what a finisher is for.
   The best other castable spell is cast instead, else the window is passed;
   a board whose power already covers an opponent's life always casts.
   Event: `finisher_hold`.
 - `deck_plan.py` now lists punisher permanents (Iron Maiden, Spiteful
   Visions, Underworld Dreams...) as threats. Nekusar's plan had four threat
-  cards and neither of the two that were killing the table.
+  cards and neither of the two that were killing the table. A threat name
+  scores 8 in the shim's table index, and the same index gates its
+  counterspells, so a punisher permanent on the stack now clears the
+  counter bar where it scored min(4, cmc) before. Intended, and a change.
 
 `meta.agent` carries the shim version. Numbers from 0.13.0 and 0.14.0 runs
 are different agents; compare them only when the agent version is the thing

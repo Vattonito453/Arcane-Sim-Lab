@@ -56,7 +56,42 @@ def _load() -> dict[str, dict]:
             _cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
         except Exception:
             _cache = {}
+        _alias_faces(_cache)
     return _cache
+
+
+def _alias_faces(cache: dict[str, dict]) -> int:
+    """Give every cached double-faced card an entry under its FRONT face name.
+
+    The cache used to be keyed only by Scryfall's full name, "Bloodline Keeper
+    // Lord of Lineage", while Forge names the object by the face it shows:
+    "Bloodline Keeper". Every lookup by face name therefore missed, the UI drew
+    a name-only tile ("no card data"), board.py typed the card as unknown, and
+    the miss was never recorded as not_found, so each page load re-asked
+    Scryfall for the same card (42 such cards in the committed cache). The
+    stored entry already holds front-face stats (_slim reads the front face),
+    but its type line is the joined "Instant // Land", which a substring test
+    reads as a land: the alias takes the front half. Back faces are NOT
+    aliased here: their art, type and P/T differ, and a lookup for one fetches
+    the card once and _store() fills it in.
+    """
+    added = 0
+    for k, c in list(cache.items()):
+        if not isinstance(c, dict):
+            continue
+        name = c.get("name") or ""
+        if " // " not in name or c.get("not_found"):
+            continue
+        front = name.split(" // ")[0].strip()
+        fk = key(front)
+        if fk and fk not in cache:
+            alias = dict(c)
+            alias["name"] = front
+            alias["type_line"] = (c.get("type_line") or "").split(" // ")[0].strip()
+            alias["face_of"] = name
+            cache[fk] = alias
+            added += 1
+    return added
 
 
 def save() -> None:
@@ -93,25 +128,96 @@ def is_token(name: str) -> bool:
 
 # ---------- fetching ----------
 
-def _slim(c: dict) -> dict:
-    """Keep only the fields we actually use (display + board logic)."""
+def _cmc_of(mana_cost: str) -> float:
+    """Mana value of one face's cost. Scryfall gives cmc per CARD, so a split
+    half needs its own: "{1}{R}" -> 2, hybrid "{2/W}" -> 2, "{X}" -> 0."""
+    total = 0.0
+    for sym in re.findall(r"\{([^}]*)\}", mana_cost or ""):
+        parts = sym.split("/")
+        nums = [int(p) for p in parts if p.isdigit()]
+        if nums:
+            total += max(nums)
+        elif any(p.upper() in ("X", "Y", "Z") for p in parts):
+            continue
+        else:
+            total += 1
+    return total
+
+
+def _slim(c: dict, face: dict | None = None) -> dict:
+    """Keep only the fields we actually use (display + board logic).
+
+    With `face`, the entry describes that one face of a double-faced card: its
+    own name, type line, cost, stats, text and art (a split half shares the
+    card's single image). Without it, the historical full-name entry: the
+    card's name and joined type line with front-face stats.
+    """
     faces = c.get("card_faces") or []
-    front = faces[0] if faces else c
+    front = face or (faces[0] if faces else c)
+    named = face or c
     img = (front.get("image_uris") or c.get("image_uris") or {})
+    if face is not None:
+        mana = face.get("mana_cost") or ""
+        cmc = _cmc_of(mana) if mana else c.get("cmc")
+        colors = face["colors"] if "colors" in face else (c.get("colors") or [])
+    else:
+        mana = front.get("mana_cost") or c.get("mana_cost") or ""
+        cmc = c.get("cmc")
+        colors = front.get("colors") or c.get("colors") or []
     return {
-        "name": c.get("name"),
-        "type_line": c.get("type_line") or front.get("type_line") or "",
-        "mana_cost": front.get("mana_cost") or c.get("mana_cost") or "",
-        "cmc": c.get("cmc"),
+        "name": named.get("name"),
+        "type_line": named.get("type_line") or c.get("type_line") or front.get("type_line") or "",
+        "mana_cost": mana,
+        "cmc": cmc,
         "power": front.get("power"),
         "toughness": front.get("toughness"),
         "oracle_text": front.get("oracle_text") or c.get("oracle_text") or "",
-        "colors": front.get("colors") or c.get("colors") or [],
+        "colors": colors,
         "color_identity": c.get("color_identity") or [],
         "art_crop": img.get("art_crop"),
         "normal": img.get("normal"),
         "scryfall_uri": c.get("scryfall_uri"),
     }
+
+
+def _face_slims(c: dict) -> dict[str, dict]:
+    """{cache key: slim} for one Scryfall card: the full name plus each face.
+
+    Forge logs a double-faced card by the face it currently shows, so both
+    "Bloodline Keeper" and "Lord of Lineage" must resolve. A transform or modal
+    face carries its own image_uris, type line, P/T and text; a split or
+    adventure face shares the card's single image but keeps its own type line
+    and text. `face_of` names the full card so a reader can tell an alias from
+    a card of its own.
+    """
+    out = {key(c.get("name") or ""): _slim(c)}
+    for face in c.get("card_faces") or []:
+        fk = key((face.get("name") or "").strip())
+        if not fk or fk in out:
+            continue
+        slim = _slim(c, face)
+        slim["face_of"] = c.get("name")
+        out[fk] = slim
+    return out
+
+
+def _store(cache: dict[str, dict], c: dict) -> int:
+    """Cache one fetched card under every name Forge might use for it.
+
+    A face never displaces a card of its own: "Naktamun Lorespinner // Wheel
+    of Fortune" must not overwrite the real Wheel of Fortune (both are in the
+    committed cache). A not_found record at a face name IS replaced. Returns
+    the number of entries written."""
+    n = 0
+    full = key(c.get("name") or "")
+    for k, slim in _face_slims(c).items():
+        have = cache.get(k)
+        if (k != full and isinstance(have, dict) and not have.get("not_found")
+                and not have.get("face_of")):
+            continue
+        cache[k] = slim
+        n += 1
+    return n
 
 
 def _post(path: str, payload: dict) -> dict | None:
@@ -156,9 +262,8 @@ def fetch_missing(names: list[str]) -> int:
         if data is None:
             break
         for c in data.get("data", []):
-            slim = _slim(c)
-            cache[key(slim["name"])] = slim
-            added += 1
+            _store(cache, c)
+            added += 1          # cards, not entries: callers report it as such
         # Record misses so we don't re-request them every run.
         for miss in data.get("not_found", []):
             nm = miss.get("name")
@@ -181,8 +286,8 @@ def get(name: str, fetch: bool = True) -> dict | None:
         fetch_missing([name])
         cache = _load()
     c = cache.get(k)
-    if c is None or c.get("not_found"):
-        return None
+    if not isinstance(c, dict) or c.get("not_found"):
+        return None          # a hand-edited or damaged value is a miss, not a crash
     return c
 
 
@@ -194,7 +299,7 @@ def get_many(names: list[str], fetch: bool = True) -> dict[str, dict]:
     out = {}
     for n in names:
         c = cache.get(key(n))
-        if c and not c.get("not_found"):
+        if isinstance(c, dict) and not c.get("not_found"):
             out[normalize_name(n)] = c
     return out
 
@@ -311,9 +416,13 @@ def names_in_result(result: dict) -> list[str]:
 
 def stats() -> dict:
     cache = _load()
+    entries = [c for c in cache.values() if isinstance(c, dict)]
     return {
-        "cached": len(cache),
-        "not_found": sum(1 for c in cache.values() if c.get("not_found")),
+        # Cards, as before this cache learned faces: face entries are listed
+        # separately so the number does not jump when a cache is migrated.
+        "cached": sum(1 for c in entries if not c.get("face_of")),
+        "face_entries": sum(1 for c in entries if c.get("face_of")),
+        "not_found": sum(1 for c in entries if c.get("not_found")),
         "path": str(CACHE_PATH),
         "offline": _offline,
     }

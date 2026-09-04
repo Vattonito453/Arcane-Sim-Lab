@@ -31,6 +31,32 @@ FACTS = {
     "Plain Bear": {"oracle_text": "", "type_line": "Creature — Bear", "cmc": 2},
     "Some Mountain": {"oracle_text": "{T}: Add {R}.", "type_line": "Basic Land — Mountain",
                       "cmc": 0},
+    # A punisher engine: no power, no keep weight, hurts the table every turn.
+    "Pain Box": {"oracle_text": "At the beginning of each opponent's upkeep, this artifact "
+                                "deals 2 damage to that player.",
+                 "type_line": "Artifact", "cmc": 3},
+    # The same words on a sorcery are burn, not an engine.
+    "Blast": {"oracle_text": "Blast deals 3 damage to each opponent.",
+              "type_line": "Sorcery", "cmc": 4},
+}
+
+# A second toy deck for the punisher rule alone: these texts trip archetype
+# tag markers (card draw, life loss) and would re-tag the main fixture.
+FACTS2 = {
+    "Commander Cat": FACTS["Commander Cat"],
+    "Some Mountain": FACTS["Some Mountain"],
+    # A punisher engine: no power, no keep weight, hurts the table every turn.
+    "Pain Box": FACTS["Pain Box"],
+    # The same words on a sorcery are burn, not an engine.
+    "Blast": FACTS["Blast"],
+    # Triggers on the table's actions without hurting anyone: a value engine,
+    # not a punisher (the first regex cut listed Consecrated Sphinx).
+    "Card Sphinx": {"oracle_text": "Whenever an opponent draws a card, you may draw two cards.",
+                    "type_line": "Creature — Sphinx", "cmc": 6},
+    # Hurts the table but on the OWNER's board events: an aristocrat payoff.
+    "Blood Cutthroat": {"oracle_text": "Whenever this creature or another creature you control "
+                                       "dies, each opponent loses 1 life.",
+                        "type_line": "Creature — Vampire", "cmc": 2},
 }
 
 
@@ -38,10 +64,10 @@ def fake_get_many(names, fetch=False):
     return {cards.key(n): f for n, f in FACTS.items()}
 
 
-def write_dck(tmp: Path) -> Path:
-    p = tmp / "toy.dck"
-    lines = ["[metadata]", "Name=toy", "[Commander]", "1 Commander Cat", "[Main]"]
-    for n in FACTS:
+def write_dck(tmp: Path, facts: dict = FACTS, name: str = "toy") -> Path:
+    p = tmp / f"{name}.dck"
+    lines = ["[metadata]", f"Name={name}", "[Commander]", "1 Commander Cat", "[Main]"]
+    for n in facts:
         if n != "Commander Cat":
             lines.append(f"1 {n}")
     p.write_text("\n".join(lines), encoding="utf-8")
@@ -85,6 +111,24 @@ def main() -> None:
 
     assert plan["factsCoverage"] == 1.0
     print("  factsCoverage recorded: OK")
+
+    # Threat list: punisher PERMANENTS count (shim 0.14.0 reads the list into
+    # its table threat index, at 8, and that index also gates counterspells);
+    # the same text on a sorcery does not, nor do value engines or aristocrats.
+    assert "Pain Box" in plan["threat"], plan["threat"]
+    assert "Blast" not in plan["threat"], plan["threat"]
+    assert "Commander Cat" in plan["threat"], "the commander is always a threat"
+    deck_plan.cards.get_many = lambda names, fetch=False: {cards.key(n): f for n, f in FACTS2.items()}
+    with tempfile.TemporaryDirectory() as td:
+        _, plan2 = deck_plan.build_plan(write_dck(Path(td), FACTS2, "toy2"))
+    assert "Pain Box" in plan2["threat"], plan2["threat"]
+    assert "Card Sphinx" not in plan2["threat"], plan2["threat"]
+    assert "Blood Cutthroat" not in plan2["threat"], plan2["threat"]
+    deck_plan.cards.get_many = fake_get_many
+    print("  punisher permanents are threats; sorceries, value engines, aristocrats are not: OK")
+
+    assert plan["personality"]["openThreatShare"] == 0.6, plan["personality"]
+    print("  openThreatShare dial shipped in the plan: OK")
 
     # Degraded facts: coverage drops and heuristics stay quiet, not wrong.
     deck_plan.cards.get_many = lambda names, fetch=False: {}

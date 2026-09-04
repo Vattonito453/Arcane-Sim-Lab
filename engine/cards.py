@@ -56,7 +56,37 @@ def _load() -> dict[str, dict]:
             _cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
         except Exception:
             _cache = {}
+        _alias_faces(_cache)
     return _cache
+
+
+def _alias_faces(cache: dict[str, dict]) -> int:
+    """Give every cached double-faced card an entry under its FRONT face name.
+
+    The cache used to be keyed only by Scryfall's full name, "Bloodline Keeper
+    // Lord of Lineage", while Forge names the object by the face it shows:
+    "Bloodline Keeper". Every lookup by face name therefore missed, the UI drew
+    a name-only tile ("no card data"), board.py typed the card as unknown, and
+    the miss was never recorded as not_found, so each page load re-asked
+    Scryfall for the same card (72 such cards in one cache). The stored entry
+    already holds front-face data (_slim reads the front face), so the alias is
+    a copy. Back faces are NOT aliased here: their art, type and P/T differ,
+    and a lookup for one fetches the card once and _store() fills it in.
+    """
+    added = 0
+    for k, c in list(cache.items()):
+        name = (c or {}).get("name") or ""
+        if " // " not in name or c.get("not_found") or c.get("face_of"):
+            continue
+        front = name.split(" // ")[0].strip()
+        fk = key(front)
+        if fk and fk not in cache:
+            alias = dict(c)
+            alias["name"] = front
+            alias["face_of"] = name
+            cache[fk] = alias
+            added += 1
+    return added
 
 
 def save() -> None:
@@ -114,6 +144,51 @@ def _slim(c: dict) -> dict:
     }
 
 
+def _face_slims(c: dict) -> dict[str, dict]:
+    """{cache key: slim} for one Scryfall card: the full name plus each face.
+
+    Forge logs a double-faced card by the face it currently shows, so both
+    "Bloodline Keeper" and "Lord of Lineage" must resolve. A transform or modal
+    face carries its own image_uris, type line, P/T and text; a split or
+    adventure face shares the card's single image but keeps its own type line
+    and text. `face_of` names the full card so a reader can tell an alias from
+    a card of its own.
+    """
+    full = _slim(c)
+    out = {key(c.get("name") or ""): full}
+    for face in c.get("card_faces") or []:
+        fname = (face.get("name") or "").strip()
+        fk = key(fname)
+        if not fk or fk in out:
+            continue
+        slim = dict(full)
+        img = face.get("image_uris") or {}
+        if img:
+            slim["art_crop"] = img.get("art_crop")
+            slim["normal"] = img.get("normal")
+        slim.update({
+            "name": fname,
+            "type_line": face.get("type_line") or full["type_line"],
+            "mana_cost": face.get("mana_cost") or "",
+            "power": face.get("power"),
+            "toughness": face.get("toughness"),
+            "oracle_text": face.get("oracle_text") or "",
+            "colors": face.get("colors") or full["colors"],
+            "face_of": c.get("name"),
+        })
+        out[fk] = slim
+    return out
+
+
+def _store(cache: dict[str, dict], c: dict) -> int:
+    """Cache one fetched card under every name Forge might use for it."""
+    n = 0
+    for k, slim in _face_slims(c).items():
+        cache[k] = slim
+        n += 1
+    return n
+
+
 def _post(path: str, payload: dict) -> dict | None:
     global _offline
     req = urllib.request.Request(
@@ -156,9 +231,7 @@ def fetch_missing(names: list[str]) -> int:
         if data is None:
             break
         for c in data.get("data", []):
-            slim = _slim(c)
-            cache[key(slim["name"])] = slim
-            added += 1
+            added += _store(cache, c)
         # Record misses so we don't re-request them every run.
         for miss in data.get("not_found", []):
             nm = miss.get("name")

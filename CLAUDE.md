@@ -257,6 +257,10 @@ telemetry, coaching, the training corpus, and — critically — all AI decision
 `engine/cards.py` already does this correctly — keep it that way: batched
 `POST /cards/collection` (≤75 names), a real User-Agent, ~8 req/s, everything
 cached on disk. A warm cache makes zero network calls. Never loop single lookups.
+A fetched card is stored under EVERY name Forge might log for it: the full
+Scryfall name and each face ("Bloodline Keeper", "Lord of Lineage"). Keying by
+the full name alone made every double-faced card a permanent cache miss that
+re-hit Scryfall on each page load (measured 2026-09-03: 72 cards).
 
 ### API safety
 

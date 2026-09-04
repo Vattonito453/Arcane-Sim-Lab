@@ -31,6 +31,13 @@ FACTS = {
     "Plain Bear": {"oracle_text": "", "type_line": "Creature — Bear", "cmc": 2},
     "Some Mountain": {"oracle_text": "{T}: Add {R}.", "type_line": "Basic Land — Mountain",
                       "cmc": 0},
+    # A punisher engine: no power, no keep weight, hurts the table every turn.
+    "Pain Box": {"oracle_text": "At the beginning of each opponent's upkeep, this artifact "
+                                "deals 2 damage to that player.",
+                 "type_line": "Artifact", "cmc": 3},
+    # The same words on a sorcery are burn, not an engine.
+    "Blast": {"oracle_text": "Blast deals 3 damage to each opponent.",
+              "type_line": "Sorcery", "cmc": 4},
 }
 
 
@@ -85,6 +92,16 @@ def main() -> None:
 
     assert plan["factsCoverage"] == 1.0
     print("  factsCoverage recorded: OK")
+
+    # Threat list: punisher PERMANENTS count (shim 0.14.0 reads the list into
+    # its table threat index); the same text on a sorcery does not.
+    assert "Pain Box" in plan["threat"], plan["threat"]
+    assert "Blast" not in plan["threat"], plan["threat"]
+    assert "Commander Cat" in plan["threat"], "the commander is always a threat"
+    print("  punisher permanents are threats, punisher sorceries are not: OK")
+
+    assert plan["personality"]["openThreatShare"] == 0.6, plan["personality"]
+    print("  openThreatShare dial shipped in the plan: OK")
 
     # Degraded facts: coverage drops and heuristics stay quiet, not wrong.
     deck_plan.cards.get_many = lambda names, fetch=False: {}

@@ -81,31 +81,43 @@ TAG_MARKERS: dict[str, list[str]] = {
 # The cEDH corpus is a picture of STRONG human play, so "human-like" means
 # converting, not erring. Any future proposal to re-introduce error has to
 # earn it with a measured gain, not an argument about realism.
+# openThreatShare (shim 0.14.0): an attacker aimed at a player who has an
+# untapped creature that can block it is re-aimed at the highest-threat OTHER
+# opponent with no such blocker, if that opponent's threat is at least this
+# share of the current target's. Measured need: sim_20260902_145933 game 1
+# turn 17, a 2/2 and a 1/1 sent into an untapped 4/4 while the punisher deck
+# sat open two threat points back. 0 disables.
 TAG_PERSONALITY: dict[str, dict] = {
     "go-wide-tokens": {"aggression": 0.7, "splitAttacks": 0.7, "blockiness": 0.5,
                        "counterThreshold": 6, "dangerLife": 8,
                        "grudgeWeight": 0.25, "kingmakerRatio": 1.6,
-                       "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
+                       "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
+                       "openThreatShare": 0.6},
     "voltron-commander-damage": {"aggression": 0.8, "splitAttacks": 0.7, "blockiness": 0.4,
                                  "counterThreshold": 6, "dangerLife": 8,
                                  "grudgeWeight": 0.3, "kingmakerRatio": 1.4,
-                                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
+                                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
+                       "openThreatShare": 0.6},
     "spellslinger-burn": {"aggression": 0.6, "splitAttacks": 0.7, "blockiness": 0.5,
                           "counterThreshold": 4, "dangerLife": 10,
                           "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
-                          "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
+                          "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
+                       "openThreatShare": 0.6},
     "stax-control": {"aggression": 0.35, "splitAttacks": 0.7, "blockiness": 0.75,
                      "counterThreshold": 4, "dangerLife": 12,
                      "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
-                     "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
+                     "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
+                       "openThreatShare": 0.6},
     "mill": {"aggression": 0.35, "splitAttacks": 0.7, "blockiness": 0.75,
              "counterThreshold": 4, "dangerLife": 12,
              "grudgeWeight": 0.15, "kingmakerRatio": 1.8,
-             "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
+             "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
+                       "openThreatShare": 0.6},
     "_default": {"aggression": 0.55, "splitAttacks": 0.7, "blockiness": 0.6,
                  "counterThreshold": 5, "dangerLife": 8,
                  "grudgeWeight": 0.2, "kingmakerRatio": 1.6,
-                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0},
+                 "politics": 0.0, "triggerMiss": 0.0, "greed": 1.0,
+                       "openThreatShare": 0.6},
 }
 
 _REMOVAL = re.compile(r"destroy target|exile target|deals \d+ damage to target creature",
@@ -127,6 +139,18 @@ _FINISHER = re.compile(r"wins? the game|loses? the game|combat damage to a playe
 # tag markers: cheap oracle-text tests, no new inference regime.
 _MANA_SOURCE = re.compile(r"add \{|add one mana|add two mana", re.I)
 _BOARD_PAYOFF = re.compile(r"creatures? you control get \+|creatures you control gain", re.I)
+# Punisher engines: permanents that hurt the table on their own clock. They
+# carry no power and rarely a keep weight, so the threat list never named
+# them, and the shim's threat read scored a Nekusar board of Iron Maiden plus
+# Spiteful Visions below a lone 4/4 (sim_20260902_145933 game 1 turn 17; the
+# whole pod then fed the 4/4 instead of the open punisher). Permanents only:
+# the same phrases on a sorcery are burn, not an engine.
+_PUNISHER = re.compile(
+    r"deals? (?:\d+|x) damage to (?:each opponent|each player|that player)"
+    r"|whenever (?:a|an) (?:player|opponent) draws a card"
+    r"|each opponent loses \d+ life",
+    re.I,
+)
 
 
 # Synergy lines: a deck's win condition when Commander Spellbook has nothing.
@@ -396,8 +420,15 @@ def build_plan(path: str | Path, fetch: bool = False,
             return int(f.get("power") or 0)
         except (TypeError, ValueError):
             return 0  # '*' powers stay out; the shim reads live P/T anyway
+    def _punisher(n: str) -> bool:
+        f = facts.get(cards.key(n)) or facts.get(n) or {}
+        tl = (f.get("type_line") or "").lower()
+        if not any(t in tl for t in ("artifact", "enchantment", "creature", "planeswalker")):
+            return False
+        return bool(_PUNISHER.search(f.get("oracle_text") or ""))
     threat_set = {n for n, w in weights.items() if w >= 7}
     threat_set |= {n for n in set(names) if _pow(n) >= 5}
+    threat_set |= {n for n in set(names) if _punisher(n)}
     threat_set |= set(commanders)
     threat = sorted(threat_set, key=lambda n: (-weights.get(n, 0), -_pow(n)))
     personality = dict(TAG_PERSONALITY.get(tags[0] if tags else "_default",

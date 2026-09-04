@@ -195,6 +195,14 @@ results are all seat-rotated files whose post-processing masked the first two.
    the player who declared them, and keeps Forge's instance id on names that
    denote two different objects in a game (a 5/5 token copy of Lightning Runner
    and the 2/2 original, two Thopter Tokens).
+6. **Double-faced cards had no card data.** The Scryfall cache was keyed by the
+   full name ("Bloodline Keeper // Lord of Lineage") while Forge names the
+   object by the face it shows ("Bloodline Keeper"), so every lookup missed,
+   the tile rendered name-only, `board.py` typed the card as unknown, and the
+   miss was never recorded, so each page load re-asked Scryfall (72 such cards
+   in one cache). `cards.py` now stores every face under its own name, with
+   the back face's own art, type and P/T, and aliases the front face of
+   already-cached entries on load.
 
 Still open, unchanged, and documented in `tasks/`: `_list_results()` parses all 33
 result files to build the index; `runSummary`/`runGame` use `force-cache`, which

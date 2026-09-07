@@ -1,0 +1,142 @@
+execution samples: 4307
+
+-- threads --
+   71.1% shim-game-0
+   27.4% Game AI Eval
+    1.3% main
+    0.0% ?
+    0.0% pool-1-thread-15
+    0.0% pool-1-thread-8
+
+-- SELF time by bucket (top frame) --
+   38.0% JDK
+   26.4% guava
+   23.3% forge.game (rules engine, other)
+   10.7% forge (other)
+    0.9% forge.game static/replacement/trigger
+    0.3% forge.ai (stock AI)
+    0.2% other: org
+    0.1% forge.game.combat
+    0.1% shim (our Java)
+    0.0% other: com
+
+-- INCLUSIVE by bucket (any frame in stack) --
+   99.8% JDK
+   97.7% forge.game (rules engine, other)
+   86.9% forge.ai (stock AI)
+   74.8% forge (other)
+   74.2% forge.game static/replacement/trigger
+   72.3% shim (our Java)
+   38.9% guava
+    4.3% forge.game.combat
+    0.4% other: org
+    0.0% AWT/Swing
+    0.0% other: com
+    0.0% other: io
+
+-- specific inclusive markers --
+   26.5% stock AI combat (AiAttackController/AiBlockController)
+    0.0% shim humanize* / holdBack / preferOpen / kingmaker passes
+    2.9% CombatUtil.canBlock anywhere in stack
+    3.3% ComputerUtilMana anywhere in stack
+    0.0% forge.ai.simulation (lookahead)
+   56.9% forge.game.staticability (layer engine)
+
+-- top AI/shim entry points (deepest ai/shim frame) --
+   71.0% simlab.shim.SimShim$$Lambda$416+0x0000000401205a50.842821532.run
+   27.2% forge.ai.AiController$$Lambda$543+0x00000004012a30c0.1617614554.call
+    1.3% simlab.shim.SimShim.main
+
+-- samples with NO forge.ai/shim frame at all (pure rules engine / logging), by thread --
+    0.2% Game AI Eval
+    0.1% shim-game-0
+    0.0% ?
+    0.0% pool-1-thread-15
+
+-- AI routine owning the work (shallowest ai/shim frame), by thread --
+   51.7% [shim-game-0] forge.ai.ComputerUtilAbility.getSpellAbilities
+   11.1% [shim-game-0] simlab.shim.SimShim.lambda$runOneGame$1
+    5.7% [Game AI Eval] forge.ai.ComputerUtilCombat.predictDamageTo
+    2.7% [Game AI Eval] forge.ai.ComputerUtilCombat.isCombatDamagePrevented
+    2.3% [Game AI Eval] forge.ai.CreatureEvaluator.evaluateCreature
+    2.3% [Game AI Eval] forge.ai.AiBlockController.getPossibleBlockers
+    1.3% [shim-game-0] forge.ai.ComputerUtilCombat.predictDamageTo
+    1.2% [main] simlab.shim.SimShim.main
+    1.2% [Game AI Eval] forge.ai.AiController.canPlayAndPayFor
+    1.1% [Game AI Eval] forge.ai.ComputerUtilAbility.getOriginalAndAltCostAbilities
+    0.8% [Game AI Eval] forge.ai.ComputerUtilMana.getAvailableManaEstimate
+    0.8% [Game AI Eval] forge.ai.ComputerUtil.canRegenerate
+    0.7% [Game AI Eval] forge.ai.ComputerUtilCombat.predictPowerBonusOfAttacker
+    0.7% [Game AI Eval] forge.ai.ComputerUtilCombat.predictToughnessBonusOfAttacker
+    0.7% [Game AI Eval] forge.ai.ComputerUtilCombat.canAttackNextTurn
+    0.6% [shim-game-0] forge.ai.ComputerUtilCombat.isCombatDamagePrevented
+    0.6% [Game AI Eval] forge.ai.AiBlockController.assignBlockers
+    0.5% [Game AI Eval] forge.ai.ComputerUtilCombat.predictToughnessBonusOfBlocker
+
+-- top INCLUSIVE methods (excluding pure plumbing) --
+   71.0% forge.game.Match.startGame
+   71.0% simlab.shim.SimShim$$Lambda$416+0x0000000401205a50.842821532.run
+   71.0% simlab.shim.SimShim.lambda$runOneGame$1
+   70.9% forge.game.GameAction.startGame
+   70.8% forge.game.phase.PhaseHandler.mainGameLoop
+   70.8% forge.game.phase.PhaseHandler.mainLoopStep
+   70.8% forge.game.phase.PhaseHandler.startFirstTurn
+   52.3% simlab.shim.PlanPlayerController.chooseSpellAbilityToPlay
+   52.3% forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay
+   52.3% forge.ai.AiController.chooseSpellAbilityToPlay
+   52.1% forge.ai.AiController.getSpellAbilityToPlay
+   51.8% forge.game.card.Card.getAllPossibleAbilities
+   51.7% forge.ai.ComputerUtilAbility.getSpellAbilities
+   44.9% forge.game.GameActionUtil.getAlternativeCosts
+   43.0% forge.game.GameAction.checkStaticAbilities
+   40.4% forge.game.card.CardState.getStaticAbilities
+   40.4% forge.game.card.Card.getStaticAbilities
+   36.9% forge.util.collect.FCollection.addAll
+   34.6% forge.game.card.Card.updateStaticAbilities
+   27.2% forge.ai.AiController$$Lambda$543+0x00000004012a30c0.1617614554.call
+   27.2% forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9
+   27.2% forge.util.collect.FCollection.<init>
+   26.1% forge.ai.AiController.canPlayAndPayFor
+   25.4% forge.game.staticability.StaticAbility.applyContinuousAbilityBefore
+   25.2% forge.game.staticability.StaticAbilityContinuous.applyContinuousAbility
+   24.9% forge.ai.AiController.canPlayAndPayForFace
+   24.8% forge.game.Game.forEachCardInGame
+   24.3% forge.util.Visitor.visitAll
+   24.0% forge.ai.AiController.canPlaySa
+   23.4% forge.ai.SpellAbilityAi.canPlayWithSubs
+   22.4% forge.ai.ComputerUtil.predictNextCombatsRemainingLife
+   21.5% forge.ai.SpellAbilityAi.canPlay
+   21.4% forge.ai.AiBlockController.assignBlockersForCombat
+   21.4% forge.ai.SpellAbilityAi.canPlayWithoutRestrict
+   21.2% forge.game.card.CardCollection.<init>
+   21.1% forge.ai.AiBlockController.assignBlockers
+   20.6% forge.game.card.CardLists.filter
+   17.7% forge.game.card.CardLists.getValidCards
+   17.6% forge.game.GameObject.isValid
+   17.5% forge.game.card.Card.isValid
+
+-- top SELF methods --
+   15.1% forge.game.card.CardProperty.cardHasProperty
+   10.4% java.util.TreeMap.getFirstEntry
+    8.1% com.google.common.collect.Iterators$ConcatenatedIterator.hasNext
+    5.2% forge.util.collect.FCollection.add
+    4.6% com.google.common.collect.AbstractMapBasedMultimap.valueIterator
+    4.0% forge.util.collect.FCollection.addAll
+    3.9% java.util.HashMap.putVal
+    3.8% com.google.common.collect.StandardTable.cellIterator
+    2.7% java.lang.String.split
+    2.7% com.google.common.collect.FluentIterable$3$1.get
+    2.7% java.util.stream.AbstractPipeline.evaluate
+    2.3% java.util.HashMap.resize
+    1.7% java.util.stream.StreamOpFlag.fromCharacteristics
+    1.6% com.google.common.collect.ImmutableList.listIterator
+    1.3% java.util.HashMap.getNode
+    1.3% com.google.common.collect.TransformedIterator.<init>
+    1.0% forge.game.ability.AbilityUtils.xCount
+    1.0% forge.game.card.CardState.getStaticAbilities
+    1.0% java.util.Spliterators$IteratorSpliterator.tryAdvance
+    1.0% java.lang.String.startsWith
+
+-- GC -- collections: 463
+  total pause 0.90 s, max pause 122 ms
+  heapUsed peak 0.74 GiB

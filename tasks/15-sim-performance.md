@@ -1,7 +1,7 @@
 # 15 — Explore ways to increase sim performance
 
-**Stage 1 is done — see [`engine/SIM_PERFORMANCE.md`](../engine/SIM_PERFORMANCE.md)
-for the measured findings (2026-08-02, against the production VM directly).**
+**Stage 1 and 1b are done — see [`engine/SIM_PERFORMANCE.md`](../engine/SIM_PERFORMANCE.md)
+for the measured findings (2026-08-02 against the production VM; 2026-09-07 in-game CPU profile, `studies/sim_profile/`).**
 Two headline results: (1) seat rotation was silently off in every production
 result for ~2 days, just self-corrected by a redeploy — a correctness issue,
 not just a performance one; (2) per-JVM-launch overhead is ~25–35 s on a

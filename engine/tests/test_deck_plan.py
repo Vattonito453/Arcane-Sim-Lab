@@ -129,6 +129,9 @@ def main() -> None:
 
     assert plan["personality"]["openThreatShare"] == 0.6, plan["personality"]
     print("  openThreatShare dial shipped in the plan: OK")
+    assert plan["personality"]["holdInstants"] == 1.0, plan["personality"]
+    assert plan["personality"]["holdInstantUntilRound"] == 10, plan["personality"]
+    print("  holdInstants / holdInstantUntilRound dials shipped in the plan: OK")
 
     # Degraded facts: coverage drops and heuristics stay quiet, not wrong.
     deck_plan.cards.get_many = lambda names, fetch=False: {}

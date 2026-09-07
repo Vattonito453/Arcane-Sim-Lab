@@ -1,0 +1,152 @@
+execution samples: 5625
+
+-- threads --
+   59.0% shim-game-0
+   39.1% Game AI Eval
+    1.4% main
+    0.1% pool-1-thread-4
+    0.1% pool-1-thread-9
+    0.0% pool-1-thread-18
+
+-- SELF time by bucket (top frame) --
+   39.4% JDK
+   32.2% guava
+   14.0% forge.game (rules engine, other)
+   11.7% forge (other)
+    1.7% forge.game static/replacement/trigger
+    0.5% other: org
+    0.3% forge.ai (stock AI)
+    0.1% forge.game.combat
+    0.0% AWT/Swing
+
+-- INCLUSIVE by bucket (any frame in stack) --
+   99.6% JDK
+   97.2% forge.game (rules engine, other)
+   86.5% forge.ai (stock AI)
+   79.9% forge.game static/replacement/trigger
+   76.7% forge (other)
+   58.8% shim (our Java)
+   41.8% guava
+    2.0% forge.game.combat
+    0.5% other: org
+    0.0% AWT/Swing
+    0.0% forge.ai.simulation
+
+-- specific inclusive markers --
+   49.0% stock AI combat (AiAttackController/AiBlockController)
+    0.0% shim humanize* / holdBack / preferOpen / kingmaker passes
+    1.2% CombatUtil.canBlock anywhere in stack
+   39.1% ComputerUtilMana anywhere in stack
+    0.0% forge.ai.simulation (lookahead)
+   36.0% forge.game.staticability (layer engine)
+
+-- top AI/shim entry points (deepest ai/shim frame) --
+   57.1% simlab.shim.SimShim$$Lambda$396+0x00000003011eaf68.418964192.run
+   34.1% forge.ai.AiController$$Lambda$525+0x000000030129a450.59445760.call
+    1.4% simlab.shim.SimShim.main
+    1.4% forge.ai.ability.PumpAllAi$$Lambda$729+0x0000000301304250.1425535127.test
+    0.8% forge.ai.PlayerControllerAi.declareAttackers
+    0.5% forge.ai.AiController.canPlayAndPayForFace
+    0.5% forge.ai.AiController.canPlayAndPayFor
+    0.5% forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9
+    0.4% forge.ai.SpellAbilityAi.canPlay
+    0.4% forge.ai.AiController.canPlaySa
+    0.3% simlab.shim.SimShim.lambda$runOneGame$1
+    0.3% forge.ai.SpellAbilityAi.canPlayWithSubs
+    0.2% forge.ai.SpellAbilityAi.canPlayWithoutRestrict
+    0.2% forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay
+    0.1% forge.ai.ability.PumpAllAi.checkApiLogic
+
+-- samples with NO forge.ai/shim frame at all (pure rules engine / logging), by thread --
+    0.3% Game AI Eval
+    0.2% shim-game-0
+    0.1% pool-1-thread-4
+    0.1% pool-1-thread-9
+
+-- AI routine owning the work (shallowest ai/shim frame), by thread --
+   26.8% [shim-game-0] forge.ai.ComputerUtilAbility.getSpellAbilities
+   11.1% [shim-game-0] simlab.shim.SimShim.lambda$runOneGame$1
+    6.7% [Game AI Eval] forge.ai.ComputerUtilMana.groupSourcesByManaColor
+    6.5% [Game AI Eval] forge.ai.ComputerUtilMana.getAvailableManaSources
+    6.2% [Game AI Eval] forge.ai.ComputerUtilMana.lambda$getAvailableManaSources$14
+    3.9% [shim-game-0] forge.ai.ComputerUtilMana.getAvailableManaSources
+    3.8% [shim-game-0] forge.ai.ComputerUtilMana.groupSourcesByManaColor
+    3.3% [shim-game-0] forge.ai.ComputerUtilMana.lambda$getAvailableManaSources$14
+    2.6% [Game AI Eval] forge.ai.ComputerUtilMana.scoreManaProducingCard
+    2.5% [Game AI Eval] forge.ai.ComputerUtilCombat.predictDamageTo
+    2.5% [Game AI Eval] forge.ai.AiController.canPlayAndPayFor
+    2.0% [shim-game-0] forge.ai.ComputerUtilMana.scoreManaProducingCard
+    1.4% [main] simlab.shim.SimShim.main
+    1.1% [shim-game-0] forge.ai.ComputerUtilCombat.predictDamageTo
+    1.1% [Game AI Eval] forge.ai.CreatureEvaluator.evaluateCreature
+    1.1% [Game AI Eval] forge.ai.ComputerUtilCombat.isCombatDamagePrevented
+    0.9% [shim-game-0] forge.ai.ComputerUtilCombat.combatTriggerWillTrigger
+    0.8% [Game AI Eval] forge.ai.AiBlockController.getPossibleBlockers
+
+-- top INCLUSIVE methods (excluding pure plumbing) --
+   57.9% forge.game.phase.PhaseHandler.mainLoopStep
+   57.8% forge.game.GameAction.startGame
+   57.8% forge.game.Match.startGame
+   57.8% forge.game.phase.PhaseHandler.mainGameLoop
+   57.7% forge.game.phase.PhaseHandler.startFirstTurn
+   57.4% simlab.shim.SimShim.lambda$runOneGame$1
+   57.1% simlab.shim.SimShim$$Lambda$396+0x00000003011eaf68.418964192.run
+   44.1% forge.game.Game.forEachCardInGame
+   43.7% forge.util.Visitor.visitAll
+   40.9% forge.ai.ComputerUtil.predictNextCombatsRemainingLife
+   40.6% forge.ai.AiBlockController.assignBlockers
+   39.8% forge.ai.AiBlockController.assignBlockersForCombat
+   39.4% forge.game.card.CardState.getReplacementEffects
+   39.3% forge.game.card.Card.getReplacementEffects
+   38.7% forge.game.replacement.ReplacementHandler.getReplacementList
+   38.2% forge.ai.ComputerUtilMana.payManaCost
+   37.6% forge.game.replacement.ReplacementHandler$$Lambda$490+0x000000030128a2f0.1219680149.visit
+   37.3% forge.ai.ComputerUtilMana.canPayManaCost
+   37.2% forge.game.replacement.ReplacementHandler.lambda$getReplacementList$0
+   36.7% forge.ai.ComputerUtilCost.canPayCost
+   35.4% forge.ai.ComputerUtilMana.getSourcesForShards
+   34.6% forge.ai.AiController.lambda$chooseSpellAbilityToPlayFromList$9
+   34.3% forge.ai.AiController.canPlayAndPayFor
+   34.1% forge.ai.AiController$$Lambda$525+0x000000030129a450.59445760.call
+   32.4% forge.ai.AiController.canPlayAndPayForFace
+   32.3% forge.ai.AiAttackController.declareAttackers
+   32.2% forge.util.collect.FCollection.addAll
+   31.8% forge.ai.AiController.canPlaySa
+   31.1% forge.ai.SpellAbilityAi.canPlayWithSubs
+   30.9% forge.game.card.CardState.getStaticAbilities
+   30.9% forge.game.card.Card.getStaticAbilities
+   30.8% forge.ai.ComputerUtilMana.groupSourcesByManaColor
+   30.4% forge.game.replacement.ReplacementHandler.cantHappenCheck
+   28.6% forge.ai.PlayerControllerAi.chooseSpellAbilityToPlay
+   28.6% forge.ai.AiController.chooseSpellAbilityToPlay
+   28.4% forge.ai.AiController.getSpellAbilityToPlay
+   26.9% forge.game.card.Card.updateStaticAbilities
+   26.8% forge.game.card.Card.getAllPossibleAbilities
+   26.8% forge.ai.ComputerUtilAbility.getSpellAbilities
+   25.4% forge.ai.AiAttackController.notNeededAsBlockers
+
+-- top SELF methods --
+   11.0% com.google.common.collect.Iterators$ConcatenatedIterator.hasNext
+    9.7% forge.util.collect.FCollection.addAll
+    6.2% java.util.TreeMap.getFirstEntry
+    5.3% com.google.common.collect.AbstractMapBasedMultimap.valueIterator
+    4.7% java.lang.String.split
+    4.7% forge.game.card.CardProperty.cardHasProperty
+    4.1% java.util.HashMap.getNode
+    3.3% com.google.common.collect.AbstractTable$CellSet.iterator
+    3.2% com.google.common.collect.FluentIterable$3$1.get
+    2.8% java.util.stream.AbstractPipeline.evaluate
+    2.4% java.util.stream.StreamOpFlag.fromCharacteristics
+    2.1% java.util.HashMap.resize
+    1.9% com.google.common.collect.StandardTable.cellIterator
+    1.8% java.util.LinkedHashMap.afterNodeInsertion
+    1.6% com.google.common.collect.ImmutableList.listIterator
+    1.6% java.util.TreeMap.getEntryUsingComparator
+    1.4% forge.game.card.CardState.getReplacementEffects
+    1.3% java.util.HashMap.putVal
+    1.2% com.google.common.collect.AbstractMapBasedMultimap$Itr.next
+    1.1% java.util.ArrayList.iterator
+
+-- GC -- collections: 932
+  total pause 1.45 s, max pause 107 ms
+  heapUsed peak 0.77 GiB

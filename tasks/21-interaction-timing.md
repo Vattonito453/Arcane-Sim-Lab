@@ -1,6 +1,12 @@
 # 21 — Interaction timing: spend answers when a plan is being executed
 
-**Status: specced, not built.** Backlogged from the prediction study
+**Status: Half 1 built (shim 0.15.0, 2026-09-07); Half 2 open.** Half 1
+is `instantDiscipline` in the shim's `PlanPlayerController`, dials
+`holdInstants` / `holdInstantUntilRound` in the plan personality (shipped by
+`deck_plan.py`), documented in `engine/SIM_CALIBRATION.md`. The acceptance
+numbers below are still owed: measure a 0.15.0 run with
+`studies/precon_predict/divergence.py` and `studies/agent_viability` before
+the dial is considered validated. Backlogged from the prediction study
 (2026-08-26) alongside attack hold-back, which IS built (shim 0.7.0).
 
 ## The measured problem

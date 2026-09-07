@@ -448,6 +448,16 @@ def build_plan(path: str | Path, fetch: bool = False,
     # One value for every archetype, so shipped here rather than per profile.
     # 0 disables.
     personality.setdefault("openThreatShare", 0.6)
+    # holdInstants / holdInstantUntilRound (shim 0.15.0, task 21 Half 1): on
+    # its own turn with an empty stack, the agent keeps an instant-speed
+    # answer aimed at an opponent's permanent and casts its best other spell
+    # instead, so the answer is still in hand when an opponent's turn gives
+    # it a reason. Measured need (studies/precon_predict, 256 stock + 332
+    # agent games): 78% of instants were cast on the caster's own turn and
+    # only 2.7% of all spells off-turn. P(hold) per card per turn; the hold
+    # stops applying after the cutoff round. 0 disables either.
+    personality.setdefault("holdInstants", 1.0)
+    personality.setdefault("holdInstantUntilRound", 10)
 
     # Provenance: how much of the deck the card-fact cache could actually
     # see. A cold cache silently degrades every heuristic above (no oracle

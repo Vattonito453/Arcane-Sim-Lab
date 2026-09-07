@@ -152,6 +152,57 @@ Notes:
   Archetype baselines above remain STOCK-AI baselines until re-measured under
   the agent at scale.
 
+## Sim Lab agent 0.15.0 (instant-speed discipline, 2026-09-07)
+
+Task 21 Half 1. The measured problem (`studies/precon_predict/divergence.py`,
+256 stock and 332 agent games): the agent plays solitaire in turn order.
+Instants cast on an opponent's turn were 19.2% (stock) and 22.3% (agent), all
+spells cast off-turn 2.4% and 2.7%, and 89% of casts landed in a main phase.
+Stock Forge casts an instant-speed answer in its own main phase as soon as a
+target clears its threshold, like a sorcery, and nothing held it for a window.
+
+- **The hold.** When Forge's pick is an instant-speed spell (an instant, or
+  flash for this caster) whose effect answers a permanent (destroy, damage,
+  debuff, sacrifice, exile or bounce; mass versions count, face burn does
+  not) and it targets an opponent's permanent, on the agent's own turn, the
+  agent keeps it and casts its heaviest other spell that Forge's own AI would
+  play now, else passes the window. Event: `instant_hold <card> phase=...
+  round=N instead=<card>|pass`, one per card per phase.
+- **What still casts, and says why.** Every answer the stock pick does cast
+  is one `instant_window <card> phase=... turnOf=<player>|ownTurn why=<reason>`
+  event: `offTurn`; `inResponse` (an opponent's object on top of the stack;
+  the agent's own upkeep trigger is not a window); `savesAttacker` (own
+  declare-blockers step, the target blocker's power covers one of the agent's
+  attackers); `ownLine` (the card is in the deck's lines or tutors);
+  `pastCutoff` (`holdInstantUntilRound`, 10); `danger` / `lethalOnBoard`
+  (own life at or below `dangerLife`, or an opponent's board power covers
+  it); `handSize` (over the hand maximum in main 2 or the end step, so it
+  would be discarded anyway); `roll` (`holdInstants`, 1.0, rolled once per
+  card per turn). So the off-turn share and every own-turn exception are
+  countable from agent events without re-parsing the game log.
+- **What it does not do.** Half 2 (recognise the moment: an opponent casting
+  a card in their own lines, a threat-index card, a payoff board) is not
+  built; the stock AI still decides when to fire off-turn. Counterspells are
+  untouched (the Stage 3/4 veto governs them).
+
+Local validation (the four bundled decks Atraxa, Drana, Nekusar, Kambal on
+one Mac; `divergence.py` on the raw logs): with the shipped gate, 4 games,
+instants cast on an opponent's turn 42% (8 of 19) against 20% (2 of 10) for
+0.14.0 on the same pod, all spells off-turn 4.4% against 3.9%; the run
+before it, differing only in the hand-size guard still firing in the draw
+step, measured 59% (19 of 32) and 8.3%. Every own-turn answer cast in the
+final run had a reason (`lethalOnBoard` 3, `inResponse` 2, `pastCutoff` 2).
+Games took 23-33 s each, none crashed, no held answer was discarded. Two
+earlier drafts of the gate leaked and were measured out: an
+own-declare-blockers exception sent 5 of 12 answers at the caster's own
+blockers, and the hand-size guard fired in the draw step. Directional only
+at this size.
+
+`meta.agent` carries the shim version. Numbers from 0.14.0 and 0.15.0 runs
+are different agents. Acceptance for keeping the dial on is task 21's: the
+off-turn share rises from 2.7% and the win rate against stock in
+`studies/agent_viability` does not drop, both from a VM run.
+
 ## Sim Lab agent 0.14.0 (attack targeting and finisher discipline, 2026-09-03)
 
 Two behaviour changes in the shim, both mechanism-only with the dials in the

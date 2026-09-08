@@ -205,6 +205,11 @@ cast on an opponent's turn 41.1% for the agent against 20.0% for stock, all
 spells off-turn 5.7% against 2.8%, and the plan seat's win share against
 three stock seats 29.6% (115 decided, CI 21.2 to 37.9) against 15.8% for the
 previous default arm. Details in `tasks/21-interaction-timing.md`.
+Replicated on the production VM the same night (job 3819349fbfe4, the first
+result with `meta.agent simlab-forge-shim/0.15.0`, 16 games, 0 timeouts):
+51.2% of instants on an opponent's turn and 8.6% of all spells off-turn. The
+deployed worker runs shim commit 220160b (0.15.0); every result file from
+2026-09-07 23:22 UTC onward is on this agent.
 
 ## Sim Lab agent 0.14.0 (attack targeting and finisher discipline, 2026-09-03)
 

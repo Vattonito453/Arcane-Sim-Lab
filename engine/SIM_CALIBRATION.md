@@ -199,9 +199,12 @@ blockers, and the hand-size guard fired in the draw step. Directional only
 at this size.
 
 `meta.agent` carries the shim version. Numbers from 0.14.0 and 0.15.0 runs
-are different agents. Acceptance for keeping the dial on is task 21's: the
-off-turn share rises from 2.7% and the win rate against stock in
-`studies/agent_viability` does not drop, both from a VM run.
+are different agents. Acceptance for keeping the dial on is task 21's, and
+it was measured 2026-09-07 (16 games per arm, same pod, same jar): instants
+cast on an opponent's turn 41.1% for the agent against 20.0% for stock, all
+spells off-turn 5.7% against 2.8%, and the plan seat's win share against
+three stock seats 29.6% (115 decided, CI 21.2 to 37.9) against 15.8% for the
+previous default arm. Details in `tasks/21-interaction-timing.md`.
 
 ## Sim Lab agent 0.14.0 (attack targeting and finisher discipline, 2026-09-03)
 

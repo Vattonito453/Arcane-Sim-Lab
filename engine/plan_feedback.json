@@ -6,6 +6,125 @@
    "methods": {},
    "win_rounds": [],
    "tags": []
+  },
+  "magda": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana",
+    "go-wide-tokens"
+   ]
+  },
+  "rog_ishai": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana",
+    "stax-control"
+   ]
+  },
+  "selvala_archetype": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana",
+    "tribal-anthem"
+   ]
+  },
+  "tymna_thrasios": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana",
+    "go-wide-tokens"
+   ]
+  },
+  "derevi": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana",
+    "stax-control"
+   ]
+  },
+  "godo_archetype": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana",
+    "voltron-commander-damage"
+   ]
+  },
+  "nadu": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "stax-control",
+    "ramp-big-mana"
+   ]
+  },
+  "rograkh_silas": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana",
+    "stax-control"
+   ]
+  },
+  "Atraxa Counters B3": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Drana Vampires": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "lifegain",
+    "counters-proliferate"
+   ]
+  },
+  "Nekusar Punisher B3": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "ramp-big-mana"
+   ]
+  },
+  "Kambal Taxes B3": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "lifegain",
+    "aristocrats-drain"
+   ]
   }
  }
 }

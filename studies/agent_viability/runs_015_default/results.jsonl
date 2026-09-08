@@ -1,0 +1,8 @@
+{"pod": "n7WpsqsZtdQ", "rotation": 0, "games": 16, "decided": 14, "plan_seat": 1, "plan_wins": 2, "wins_by_seat": {"2": 10, "3": 2, "1": 2}, "arm_ok": true, "agents": ["plan", "stock", "stock", "stock"]}
+{"pod": "n7WpsqsZtdQ", "rotation": 1, "games": 16, "decided": 14, "plan_seat": 2, "plan_wins": 7, "wins_by_seat": {"2": 7, "1": 6, "4": 1}, "arm_ok": true, "agents": ["stock", "plan", "stock", "stock"]}
+{"pod": "n7WpsqsZtdQ", "rotation": 2, "games": 16, "decided": 13, "plan_seat": 3, "plan_wins": 3, "wins_by_seat": {"3": 3, "1": 4, "2": 6}, "arm_ok": true, "agents": ["stock", "stock", "plan", "stock"]}
+{"pod": "n7WpsqsZtdQ", "rotation": 3, "games": 16, "decided": 16, "plan_seat": 4, "plan_wins": 5, "wins_by_seat": {"4": 5, "1": 7, "2": 2, "3": 2}, "arm_ok": true, "agents": ["stock", "stock", "stock", "plan"]}
+{"pod": "2iA_Jt0d6sM", "rotation": 0, "games": 16, "decided": 14, "plan_seat": 1, "plan_wins": 5, "wins_by_seat": {"2": 6, "1": 5, "3": 3}, "arm_ok": true, "agents": ["plan", "stock", "stock", "stock"]}
+{"pod": "2iA_Jt0d6sM", "rotation": 1, "games": 16, "decided": 16, "plan_seat": 2, "plan_wins": 6, "wins_by_seat": {"3": 6, "1": 3, "2": 6, "4": 1}, "arm_ok": true, "agents": ["stock", "plan", "stock", "stock"]}
+{"pod": "2iA_Jt0d6sM", "rotation": 2, "games": 16, "decided": 14, "plan_seat": 3, "plan_wins": 1, "wins_by_seat": {"1": 8, "2": 5, "3": 1}, "arm_ok": true, "agents": ["stock", "stock", "plan", "stock"]}
+{"pod": "2iA_Jt0d6sM", "rotation": 3, "games": 16, "decided": 14, "plan_seat": 4, "plan_wins": 5, "wins_by_seat": {"2": 4, "4": 5, "3": 2, "1": 3}, "arm_ok": true, "agents": ["stock", "stock", "stock", "plan"]}

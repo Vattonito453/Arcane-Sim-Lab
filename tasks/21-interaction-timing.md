@@ -130,6 +130,20 @@ and 0.15.0 together, since no 0.14.0-only control was run. Output in
 The first three criteria are met. The fourth, `corr(interaction, sim)`, needs
 a cohort rerun on 0.15.0 and is still open.
 
+**Replicated on production, 2026-09-07/08.** The stack was redeployed from
+`main` at 245f2d0 the evening of 2026-09-07 (worker entrypoint logged shim
+commit 220160b, jar version string 0.15.0, preflight OK), and queue job
+`3819349fbfe4` was the first result with `meta.agent simlab-forge-shim/0.15.0`:
+the same four decks, 16 seat-rotated games, 0 timeouts, 0 turn caps, 54 min
+wall on the 2-vCPU VM. `divergence.py` on its raw logs: instants cast on an
+opponent's turn **51.2% (64/125)**, all spells off-turn **8.6% (67/781)**;
+the 0.14.0 validation job on the same VM (7d52ad3217bf, 4 games, a different
+pod) measured 21.1% and 3.9%. 286 holds over 125 card-turns, 91 windows
+(offTurn 47, pastCutoff 28, inResponse 10, savesAttacker 2, lethalOnBoard 2,
+danger 2). The round-10 cutoff released 28 of the 44 own-turn casts here and
+20 of 37 on the Windows run, so `holdInstantUntilRound` is the first dial to
+revisit; anything else is Half 2.
+
 ---
 
 ## Addendum, measured 2026-08-30: what the veto is actually declining

@@ -1,0 +1,18 @@
+arm      default: ships-today dials
+design   1 plan seat vs 3 stock seats, plan seat rotated 0-3
+pods     n7WpsqsZtdQ, 2iA_Jt0d6sM (all decks combo-live and warm)
+cells    8 x 16 games = 128 games, clock 900s, 8 workers
+null     plan seat wins 25% if the agent is no better than stock
+
+  n7WpsqsZtdQ rot0 seat1: plan 2/14 decided (16 played)
+  n7WpsqsZtdQ rot1 seat2: plan 7/14 decided (16 played)
+  n7WpsqsZtdQ rot2 seat3: plan 3/13 decided (16 played)
+  n7WpsqsZtdQ rot3 seat4: plan 5/16 decided (16 played)
+  2iA_Jt0d6sM rot0 seat1: plan 5/14 decided (16 played)
+  2iA_Jt0d6sM rot1 seat2: plan 6/16 decided (16 played)
+  2iA_Jt0d6sM rot2 seat3: plan 1/14 decided (16 played)
+  2iA_Jt0d6sM rot3 seat4: plan 5/14 decided (16 played)
+
+played 128, decided 115, censored 13
+plan-seat win share 34/115 = 29.6% +/- 4.3 pp (1 SE), null 25%
+95% CI approx [21.2%, 37.9%]

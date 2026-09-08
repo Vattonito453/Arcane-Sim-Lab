@@ -106,3 +106,14 @@ python studies/agent_viability/run_pilot.py --arm default  --games-per-cell 16 -
 python studies/agent_viability/run_pilot.py --arm winmax   --games-per-cell 16 --workers 12
 python studies/agent_viability/run_pilot.py --arm nocombo  --games-per-cell 16 --workers 12
 ```
+
+## Rerun 2026-09-07: default arm on shim 0.15.0
+
+Same design (1 plan seat vs 3 stock, rotated, both cEDH pods), 16 games per
+cell, run for task 21's acceptance. 128 played, 115 decided, 13 censored.
+Plan-seat win share **29.6%** (34/115), 1 SE 4.3 pp, 95% CI [21.2, 37.9],
+null 25%. The 2026-08-25 default arm above scored 15.8%. The shipped dials
+changed twice in between (0.14.0 attack targeting and finisher discipline,
+0.15.0 instant hold), so this is the agent as it ships, not an isolation of
+the hold. Every cell verified `arm_ok`. Output: `runs_015_default/`,
+log `default_015_run.log`.

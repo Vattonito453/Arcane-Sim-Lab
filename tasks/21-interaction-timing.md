@@ -1,13 +1,12 @@
 # 21 — Interaction timing: spend answers when a plan is being executed
 
-**Status: Half 1 built (shim 0.15.0, 2026-09-07); Half 2 open.** Half 1
+**Status: Half 1 built (shim 0.15.0, 2026-09-07) and its acceptance
+measured 2026-09-07 (see "Acceptance, measured" below); Half 2 open.** Half 1
 is `instantDiscipline` in the shim's `PlanPlayerController`, dials
 `holdInstants` / `holdInstantUntilRound` in the plan personality (shipped by
-`deck_plan.py`), documented in `engine/SIM_CALIBRATION.md`. The acceptance
-numbers below are still owed: measure a 0.15.0 run with
-`studies/precon_predict/divergence.py` and `studies/agent_viability` before
-the dial is considered validated. Backlogged from the prediction study
-(2026-08-26) alongside attack hold-back, which IS built (shim 0.7.0).
+`deck_plan.py`), documented in `engine/SIM_CALIBRATION.md`. Backlogged from
+the prediction study (2026-08-26) alongside attack hold-back, which IS built
+(shim 0.7.0).
 
 ## The measured problem
 
@@ -98,6 +97,38 @@ rather than on open mana alone.
   interaction layer must not become another handicap)
 - `corr(interaction, sim)` moves toward the human value: interaction-dense
   decks are currently under-rewarded by the sim relative to humans
+
+### Acceptance, measured 2026-09-07 (shim 0.15.0, 32-core Windows box)
+
+Three arms, all on the same 0.15.0 jar so the only difference between the
+first two is whether the seats run the plan agent.
+
+| | stock control | humanized 0.15.0 | cohort baseline |
+|---|---|---|---|
+| instants cast on an opponent's turn | 20.0% (19/95) | **41.1%** (46/112) | 22.3% |
+| all spells cast off-turn | 2.8% (20/713) | **5.7%** (48/840) | 2.7% |
+
+Both arms: the four bundled decks (Atraxa, Drana, Nekusar, Kambal), 16 games
+seat-rotated, `engine/run_sim.py` run ids `task21_v015` (stock) and
+`task21_v015h` (humanized), measured with `studies/precon_predict/divergence.py`.
+The stock control reproduces the cohort baseline, so the doubling is the
+hold, not the pod. Two-proportion z: 3.25 (p 0.001) for instants, 2.79
+(p 0.005) for all spells. Where the casts moved: stock fires most own-turn
+instants at its first priority in the draw step (40 of 95); the agent cut
+that to 26 and spent them in opponents' end steps and combat. 246 holds, 76
+windows; every own-turn answer carried a reason (offTurn 39, pastCutoff 20,
+inResponse 9, lethalOnBoard 4, handSize 2, savesAttacker 1, danger 1). No
+draws, no crashes, no held answer discarded.
+
+Win rate against stock, `studies/agent_viability/run_pilot.py --arm default`,
+16 games per cell, 128 played, 115 decided: plan-seat win share **29.6%**
+(34/115, 1 SE 4.3 pp, 95% CI 21.2 to 37.9), null 25%. The previous default
+arm (2026-08-25) scored 15.8% (CI 6.3 to 25.3). No drop; the rise is 0.14.0
+and 0.15.0 together, since no 0.14.0-only control was run. Output in
+`studies/agent_viability/runs_015_default/`.
+
+The first three criteria are met. The fourth, `corr(interaction, sim)`, needs
+a cohort rerun on 0.15.0 and is still open.
 
 ---
 

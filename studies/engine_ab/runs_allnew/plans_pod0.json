@@ -1,0 +1,1011 @@
+{
+ "decks": {
+  "Atraxa Counters B3": {
+   "factsCoverage": 1.0,
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "Atraxa, Praetors' Voice",
+     "Crystalline Crawler",
+     "Contagion Engine",
+     "Inexorable Tide",
+     "Doubling Season",
+     "Cathars' Crusade",
+     "Hardened Scales",
+     "Simic Ascendancy",
+     "Tezzeret's Gambit",
+     "Fuel for the Cause",
+     "Thrummingbird",
+     "Grateful Apparition",
+     "Viral Drake",
+     "Plaguemaw Beast",
+     "Forgotten Ancient",
+     "Kalonian Hydra"
+    ]
+   },
+   "weights": {
+    "Atraxa, Praetors' Voice": 8,
+    "Astral Cornucopia": 5,
+    "Everflowing Chalice": 5,
+    "Crystalline Crawler": 8,
+    "Contagion Clasp": 5,
+    "Contagion Engine": 8,
+    "Inexorable Tide": 8,
+    "Doubling Season": 8,
+    "Cathars' Crusade": 8,
+    "Hardened Scales": 8,
+    "Simic Ascendancy": 8,
+    "Cultivate": 5,
+    "Kodama's Reach": 5,
+    "Swords to Plowshares": 3,
+    "Path to Exile": 3,
+    "Counterspell": 4,
+    "Anguished Unmaking": 3,
+    "Utter End": 3,
+    "Mortify": 3,
+    "Putrefy": 3,
+    "Supreme Verdict": 4,
+    "Tezzeret's Gambit": 8,
+    "Fuel for the Cause": 8,
+    "Steady Progress": 5,
+    "Thrummingbird": 8,
+    "Evolution Sage": 5,
+    "Flux Channeler": 5,
+    "Grateful Apparition": 8,
+    "Viral Drake": 8,
+    "Plaguemaw Beast": 8,
+    "Fertilid": 5,
+    "Forgotten Ancient": 8,
+    "Champion of Lambholt": 5,
+    "Managorger Hydra": 5,
+    "Kalonian Hydra": 8,
+    "Corpsejack Menace": 8,
+    "Winding Constrictor": 8,
+    "Chasm Skulker": 5,
+    "Mikaeus, the Lunarch": 5,
+    "Reclamation Sage": 3,
+    "Acidic Slime": 3,
+    "Juniper Order Ranger": 8,
+    "Elspeth, Sun's Champion": 8,
+    "Vraska the Unseen": 3,
+    "Master Biomancer": 8,
+    "Abzan Falconer": 5,
+    "Tuskguard Captain": 5,
+    "Abzan Battle Priest": 8
+   },
+   "threat": [
+    "Corpsejack Menace",
+    "Plaguemaw Beast",
+    "Atraxa, Praetors' Voice",
+    "Abzan Battle Priest",
+    "Winding Constrictor",
+    "Juniper Order Ranger",
+    "Master Biomancer",
+    "Thrummingbird",
+    "Crystalline Crawler",
+    "Viral Drake",
+    "Grateful Apparition",
+    "Cathars' Crusade",
+    "Simic Ascendancy",
+    "Fuel for the Cause",
+    "Forgotten Ancient",
+    "Elspeth, Sun's Champion",
+    "Tezzeret's Gambit",
+    "Inexorable Tide",
+    "Hardened Scales",
+    "Kalonian Hydra",
+    "Doubling Season",
+    "Contagion Engine"
+   ],
+   "roles": {
+    "Atraxa, Praetors' Voice": "commander",
+    "Sol Ring": "filler",
+    "Arcane Signet": "filler",
+    "Fellwar Stone": "filler",
+    "Astral Cornucopia": "enabler",
+    "Everflowing Chalice": "enabler",
+    "Crystalline Crawler": "combo-piece",
+    "Contagion Clasp": "enabler",
+    "Contagion Engine": "payoff",
+    "Inexorable Tide": "payoff",
+    "Doubling Season": "combo-piece",
+    "Cathars' Crusade": "payoff",
+    "Hardened Scales": "combo-piece",
+    "Simic Ascendancy": "combo-piece",
+    "Phyrexian Arena": "filler",
+    "Cultivate": "enabler",
+    "Kodama's Reach": "enabler",
+    "Farseek": "filler",
+    "Swords to Plowshares": "removal",
+    "Path to Exile": "removal",
+    "Counterspell": "protection",
+    "Anguished Unmaking": "removal",
+    "Utter End": "removal",
+    "Mortify": "removal",
+    "Putrefy": "removal",
+    "Merciless Eviction": "filler",
+    "Supreme Verdict": "protection",
+    "Tezzeret's Gambit": "payoff",
+    "Fuel for the Cause": "payoff",
+    "Steady Progress": "enabler",
+    "Harmonize": "filler",
+    "Painful Truths": "filler",
+    "Deepglow Skate": "filler",
+    "Thrummingbird": "payoff",
+    "Evolution Sage": "enabler",
+    "Flux Channeler": "enabler",
+    "Grateful Apparition": "payoff",
+    "Viral Drake": "payoff",
+    "Plaguemaw Beast": "payoff",
+    "Fertilid": "enabler",
+    "Forgotten Ancient": "payoff",
+    "Champion of Lambholt": "enabler",
+    "Managorger Hydra": "enabler",
+    "Kalonian Hydra": "payoff",
+    "Corpsejack Menace": "combo-piece",
+    "Winding Constrictor": "combo-piece",
+    "Chasm Skulker": "enabler",
+    "Mikaeus, the Lunarch": "enabler",
+    "Solemn Simulacrum": "filler",
+    "Reclamation Sage": "removal",
+    "Eternal Witness": "filler",
+    "Acidic Slime": "removal",
+    "Sakura-Tribe Elder": "filler",
+    "Gilder Bairn": "filler",
+    "Juniper Order Ranger": "payoff",
+    "Elspeth, Sun's Champion": "payoff",
+    "Vraska the Unseen": "removal",
+    "Vorel of the Hull Clade": "filler",
+    "Master Biomancer": "payoff",
+    "Abzan Falconer": "enabler",
+    "Tuskguard Captain": "enabler",
+    "Abzan Battle Priest": "payoff",
+    "Command Tower": "land",
+    "Exotic Orchard": "land",
+    "Evolving Wilds": "land",
+    "Terramorphic Expanse": "land",
+    "Opulent Palace": "land",
+    "Sandsteppe Citadel": "land",
+    "Seaside Citadel": "land",
+    "Arcane Sanctum": "land",
+    "Karn's Bastion": "land",
+    "Temple of Plenty": "land",
+    "Temple of Malady": "land",
+    "Temple of Enlightenment": "land",
+    "Temple of Mystery": "land",
+    "Temple of Deceit": "land",
+    "Temple of Silence": "land",
+    "Llanowar Wastes": "land",
+    "Yavimaya Coast": "land",
+    "Caves of Koilos": "land",
+    "Adarkar Wastes": "land",
+    "Underground River": "land",
+    "Brushland": "land",
+    "Forest": "land",
+    "Plains": "land",
+    "Island": "land",
+    "Swamp": "land"
+   },
+   "personality": {
+    "aggression": 0.55,
+    "splitAttacks": 0.7,
+    "blockiness": 0.6,
+    "counterThreshold": 5,
+    "dangerLife": 8,
+    "grudgeWeight": 0.2,
+    "kingmakerRatio": 1.6,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0,
+    "lineProximity": 6,
+    "openThreatShare": 0.6,
+    "holdInstants": 1.0,
+    "holdInstantUntilRound": 10,
+    "combatSolver": 0.0,
+    "priorityGates": 0.0
+   },
+   "lines": [
+    {
+     "cards": [
+      "Crystalline Crawler",
+      "Simic Ascendancy",
+      "Corpsejack Menace",
+      "Hardened Scales"
+     ],
+     "produces": [
+      "Infinite +1/+1 counters on creatures you control",
+      "Infinite colored mana",
+      "Win the game at the beginning of your next upkeep"
+     ]
+    },
+    {
+     "cards": [
+      "Crystalline Crawler",
+      "Simic Ascendancy",
+      "Hardened Scales",
+      "Doubling Season"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Win the game at the beginning of your next upkeep",
+      "Infinite +1/+1 counters on creatures you control"
+     ]
+    },
+    {
+     "cards": [
+      "Crystalline Crawler",
+      "Simic Ascendancy",
+      "Corpsejack Menace",
+      "Winding Constrictor"
+     ],
+     "produces": [
+      "Infinite +1/+1 counters on creatures you control",
+      "Infinite colored mana",
+      "Win the game at the beginning of your next upkeep"
+     ]
+    },
+    {
+     "cards": [
+      "Crystalline Crawler",
+      "Simic Ascendancy",
+      "Corpsejack Menace",
+      "Doubling Season"
+     ],
+     "produces": [
+      "Infinite +1/+1 counters on creatures you control",
+      "Infinite colored mana",
+      "Win the game at the beginning of your next upkeep"
+     ]
+    },
+    {
+     "cards": [
+      "Crystalline Crawler",
+      "Simic Ascendancy",
+      "Winding Constrictor",
+      "Doubling Season"
+     ],
+     "produces": [
+      "Infinite +1/+1 counters on creatures you control",
+      "Infinite colored mana",
+      "Win the game at the beginning of your next upkeep"
+     ]
+    }
+   ],
+   "tutors": [],
+   "manaCreatures": [
+    "Crystalline Crawler"
+   ],
+   "search": {
+    "targets": {
+     "Sol Ring": 5,
+     "Arcane Signet": 5,
+     "Fellwar Stone": 5,
+     "Astral Cornucopia": 5,
+     "Everflowing Chalice": 5,
+     "Crystalline Crawler": 8,
+     "Contagion Engine": 7,
+     "Inexorable Tide": 7,
+     "Doubling Season": 8,
+     "Cathars' Crusade": 7,
+     "Hardened Scales": 8,
+     "Simic Ascendancy": 8,
+     "Swords to Plowshares": 3,
+     "Path to Exile": 3,
+     "Counterspell": 4,
+     "Anguished Unmaking": 3,
+     "Utter End": 3,
+     "Mortify": 3,
+     "Putrefy": 3,
+     "Merciless Eviction": 6,
+     "Supreme Verdict": 4,
+     "Tezzeret's Gambit": 7,
+     "Fuel for the Cause": 7,
+     "Thrummingbird": 8,
+     "Grateful Apparition": 8,
+     "Viral Drake": 8,
+     "Plaguemaw Beast": 7,
+     "Forgotten Ancient": 7,
+     "Kalonian Hydra": 7,
+     "Corpsejack Menace": 8,
+     "Winding Constrictor": 8,
+     "Reclamation Sage": 3,
+     "Acidic Slime": 3,
+     "Juniper Order Ranger": 7,
+     "Elspeth, Sun's Champion": 7,
+     "Vraska the Unseen": 8,
+     "Master Biomancer": 7,
+     "Abzan Battle Priest": 7
+    },
+    "context": {
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Arcane Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Fellwar Stone": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Astral Cornucopia": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Everflowing Chalice": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Elspeth, Sun's Champion": {
+      "hint": "finisher",
+      "minCreatures": 3
+     }
+    }
+   }
+  },
+  "Drana Vampires": {
+   "factsCoverage": 1.0,
+   "tags": [
+    "lifegain",
+    "counters-proliferate"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "Drana, Liberator of Malakir",
+     "Bloodlord of Vaasgoth",
+     "Necropolis Regent",
+     "Malakir Bloodwitch",
+     "Kalitas, Traitor of Ghet",
+     "Crypt Ghast",
+     "Gray Merchant of Asphodel",
+     "Black Market",
+     "Sengir Vampire",
+     "Corrupt",
+     "Tendrils of Corruption",
+     "Indulgent Aristocrat",
+     "Blood Artist",
+     "Zulaport Cutthroat",
+     "Urge to Feed",
+     "Feast of Blood"
+    ]
+   },
+   "weights": {
+    "Drana, Liberator of Malakir": 8,
+    "Indulgent Aristocrat": 5,
+    "Blood Artist": 5,
+    "Zulaport Cutthroat": 5,
+    "Bloodlord of Vaasgoth": 8,
+    "Necropolis Regent": 8,
+    "Malakir Bloodwitch": 8,
+    "Kalitas, Traitor of Ghet": 8,
+    "Crypt Ghast": 8,
+    "Gray Merchant of Asphodel": 8,
+    "Erebos, God of the Dead": 4,
+    "Murder": 3,
+    "Doom Blade": 3,
+    "Go for the Throat": 3,
+    "Hero's Downfall": 3,
+    "Victim of Night": 3,
+    "Urge to Feed": 5,
+    "Feast of Blood": 5,
+    "Diabolic Tutor": 5,
+    "Black Market": 8,
+    "Sengir Vampire": 8,
+    "Corrupt": 8,
+    "Consume Spirit": 5,
+    "Tendrils of Corruption": 8
+   },
+   "threat": [
+    "Necropolis Regent",
+    "Sengir Vampire",
+    "Malakir Bloodwitch",
+    "Bloodlord of Vaasgoth",
+    "Kalitas, Traitor of Ghet",
+    "Crypt Ghast",
+    "Drana, Liberator of Malakir",
+    "Gray Merchant of Asphodel",
+    "Corrupt",
+    "Tendrils of Corruption",
+    "Black Market",
+    "Erebos, God of the Dead",
+    "Butcher of Malakir"
+   ],
+   "roles": {
+    "Drana, Liberator of Malakir": "commander",
+    "Sol Ring": "filler",
+    "Arcane Signet": "filler",
+    "Mind Stone": "filler",
+    "Charcoal Diamond": "filler",
+    "Solemn Simulacrum": "filler",
+    "Viscera Seer": "filler",
+    "Indulgent Aristocrat": "enabler",
+    "Blood Artist": "enabler",
+    "Zulaport Cutthroat": "enabler",
+    "Gifted Aetherborn": "filler",
+    "Vampire Nighthawk": "filler",
+    "Bloodghast": "filler",
+    "Captivating Vampire": "filler",
+    "Bloodline Keeper": "filler",
+    "Vampire Nocturnus": "filler",
+    "Bloodlord of Vaasgoth": "payoff",
+    "Necropolis Regent": "payoff",
+    "Butcher of Malakir": "filler",
+    "Malakir Bloodwitch": "payoff",
+    "Kalitas, Traitor of Ghet": "payoff",
+    "Anowon, the Ruin Sage": "filler",
+    "Crypt Ghast": "payoff",
+    "Nirkana Revenant": "filler",
+    "Gray Merchant of Asphodel": "payoff",
+    "Erebos, God of the Dead": "protection",
+    "Whip of Erebos": "filler",
+    "Phyrexian Arena": "filler",
+    "Underworld Connections": "filler",
+    "Murder": "removal",
+    "Doom Blade": "removal",
+    "Go for the Throat": "removal",
+    "Hero's Downfall": "removal",
+    "Victim of Night": "removal",
+    "Tragic Slip": "filler",
+    "Urge to Feed": "enabler",
+    "Feast of Blood": "enabler",
+    "Sign in Blood": "filler",
+    "Night's Whisper": "filler",
+    "Read the Bones": "filler",
+    "Ambition's Cost": "filler",
+    "Diabolic Tutor": "tutor",
+    "Languish": "filler",
+    "Mutilate": "filler",
+    "Black Market": "payoff",
+    "Vampire Lacerator": "filler",
+    "Pulse Tracker": "filler",
+    "Blood Seeker": "filler",
+    "Child of Night": "filler",
+    "Barony Vampire": "filler",
+    "Sengir Vampire": "payoff",
+    "Baneful Omen": "filler",
+    "Quag Sickness": "filler",
+    "Corrupt": "payoff",
+    "Consume Spirit": "enabler",
+    "Tendrils of Corruption": "payoff",
+    "Swamp": "land"
+   },
+   "personality": {
+    "aggression": 0.55,
+    "splitAttacks": 0.7,
+    "blockiness": 0.6,
+    "counterThreshold": 5,
+    "dangerLife": 8,
+    "grudgeWeight": 0.2,
+    "kingmakerRatio": 1.6,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0,
+    "lineProximity": 6,
+    "openThreatShare": 0.6,
+    "holdInstants": 1.0,
+    "holdInstantUntilRound": 10,
+    "combatSolver": 0.0,
+    "priorityGates": 0.0
+   },
+   "lines": [],
+   "tutors": [
+    "Diabolic Tutor"
+   ],
+   "manaCreatures": [],
+   "search": {
+    "targets": {
+     "Sol Ring": 5,
+     "Arcane Signet": 5,
+     "Mind Stone": 5,
+     "Charcoal Diamond": 5,
+     "Bloodlord of Vaasgoth": 7,
+     "Necropolis Regent": 8,
+     "Butcher of Malakir": 6,
+     "Malakir Bloodwitch": 7,
+     "Kalitas, Traitor of Ghet": 7,
+     "Crypt Ghast": 7,
+     "Nirkana Revenant": 6,
+     "Gray Merchant of Asphodel": 7,
+     "Erebos, God of the Dead": 4,
+     "Murder": 3,
+     "Doom Blade": 3,
+     "Go for the Throat": 3,
+     "Hero's Downfall": 3,
+     "Victim of Night": 3,
+     "Black Market": 7,
+     "Sengir Vampire": 7,
+     "Baneful Omen": 6,
+     "Corrupt": 7,
+     "Tendrils of Corruption": 7
+    },
+    "context": {
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Arcane Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mind Stone": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Charcoal Diamond": {
+      "hint": "ramp",
+      "beforeRound": 5
+     }
+    }
+   }
+  },
+  "Nekusar Punisher B3": {
+   "factsCoverage": 1.0,
+   "tags": [
+    "ramp-big-mana"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "Nekusar, the Mindrazer",
+     "Teferi's Puzzle Box",
+     "Notion Thief",
+     "Sol Ring",
+     "Arcane Signet",
+     "Fellwar Stone",
+     "Commander's Sphere"
+    ]
+   },
+   "weights": {
+    "Nekusar, the Mindrazer": 8,
+    "Sol Ring": 5,
+    "Arcane Signet": 5,
+    "Fellwar Stone": 5,
+    "Commander's Sphere": 5,
+    "Teferi's Puzzle Box": 8,
+    "Notion Thief": 8,
+    "Counterspell": 4,
+    "Terminate": 3,
+    "Bedevil": 3,
+    "Feed the Swarm": 3,
+    "Crosis's Charm": 3
+   },
+   "threat": [
+    "Notion Thief",
+    "Nekusar, the Mindrazer",
+    "Teferi's Puzzle Box",
+    "Sire of Insanity",
+    "Sheoldred, the Apocalypse",
+    "Fate Unraveler",
+    "Viseling",
+    "Kederekt Parasite",
+    "Phyrexian Tyranny",
+    "Underworld Dreams",
+    "Ebony Owl Netsuke",
+    "Spiteful Visions",
+    "Iron Maiden",
+    "Psychosis Crawler"
+   ],
+   "roles": {
+    "Nekusar, the Mindrazer": "commander",
+    "Sol Ring": "enabler",
+    "Arcane Signet": "enabler",
+    "Dimir Signet": "filler",
+    "Izzet Signet": "filler",
+    "Rakdos Signet": "filler",
+    "Fellwar Stone": "enabler",
+    "Thought Vessel": "filler",
+    "Commander's Sphere": "enabler",
+    "Windfall": "filler",
+    "Whispering Madness": "filler",
+    "Reforge the Soul": "filler",
+    "Wheel of Misfortune": "filler",
+    "Winds of Change": "filler",
+    "Molten Psyche": "filler",
+    "Dark Deal": "filler",
+    "Jace's Archivist": "filler",
+    "Magus of the Wheel": "filler",
+    "Underworld Dreams": "filler",
+    "Fate Unraveler": "filler",
+    "Spiteful Visions": "filler",
+    "Psychosis Crawler": "filler",
+    "Phyrexian Tyranny": "filler",
+    "Ebony Owl Netsuke": "filler",
+    "Viseling": "filler",
+    "Iron Maiden": "filler",
+    "Teferi's Puzzle Box": "combo-piece",
+    "Sheoldred, the Apocalypse": "filler",
+    "Kederekt Parasite": "filler",
+    "Nin, the Pain Artist": "filler",
+    "Notion Thief": "combo-piece",
+    "Consecrated Sphinx": "filler",
+    "Sire of Insanity": "filler",
+    "Bloodchief Ascension": "filler",
+    "Sangromancer": "filler",
+    "Waste Not": "filler",
+    "Kess, Dissident Mage": "filler",
+    "Counterspell": "protection",
+    "Negate": "filler",
+    "Terminate": "removal",
+    "Bedevil": "removal",
+    "Chaos Warp": "filler",
+    "Feed the Swarm": "removal",
+    "Toxic Deluge": "filler",
+    "Blasphemous Act": "filler",
+    "Crosis's Charm": "removal",
+    "Fevered Visions": "filler",
+    "Library of Leng": "filler",
+    "Venser's Journal": "filler",
+    "Brainstorm": "filler",
+    "Ponder": "filler",
+    "Night's Whisper": "filler",
+    "Faithless Looting": "filler",
+    "Frantic Search": "filler",
+    "Command Tower": "land",
+    "Exotic Orchard": "land",
+    "Crumbling Necropolis": "land",
+    "Sulfur Falls": "land",
+    "Drowned Catacomb": "land",
+    "Dragonskull Summit": "land",
+    "Watery Grave": "land",
+    "Steam Vents": "land",
+    "Blood Crypt": "land",
+    "Temple of Deceit": "land",
+    "Temple of Epiphany": "land",
+    "Temple of Malice": "land",
+    "Island": "land",
+    "Swamp": "land",
+    "Mountain": "land"
+   },
+   "personality": {
+    "aggression": 0.55,
+    "splitAttacks": 0.7,
+    "blockiness": 0.6,
+    "counterThreshold": 5,
+    "dangerLife": 8,
+    "grudgeWeight": 0.2,
+    "kingmakerRatio": 1.6,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0,
+    "lineProximity": 6,
+    "openThreatShare": 0.6,
+    "holdInstants": 1.0,
+    "holdInstantUntilRound": 10,
+    "combatSolver": 0.0,
+    "priorityGates": 0.0
+   },
+   "lines": [
+    {
+     "cards": [
+      "Notion Thief",
+      "Teferi's Puzzle Box"
+     ],
+     "produces": [
+      "Opponents put all cards in hand on the bottom of their library on each of their draw steps",
+      "Lock"
+     ]
+    }
+   ],
+   "tutors": [],
+   "manaCreatures": [],
+   "search": {
+    "targets": {
+     "Sol Ring": 5,
+     "Arcane Signet": 5,
+     "Dimir Signet": 5,
+     "Izzet Signet": 5,
+     "Rakdos Signet": 5,
+     "Fellwar Stone": 5,
+     "Thought Vessel": 5,
+     "Commander's Sphere": 5,
+     "Whispering Madness": 8,
+     "Teferi's Puzzle Box": 8,
+     "Notion Thief": 8,
+     "Consecrated Sphinx": 6,
+     "Sire of Insanity": 6,
+     "Waste Not": 5,
+     "Counterspell": 4,
+     "Terminate": 3,
+     "Bedevil": 3,
+     "Feed the Swarm": 3,
+     "Blasphemous Act": 6,
+     "Crosis's Charm": 3
+    },
+    "context": {
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Arcane Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Dimir Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Izzet Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Rakdos Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Fellwar Stone": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Thought Vessel": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Commander's Sphere": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Waste Not": {
+      "hint": "ramp",
+      "beforeRound": 5
+     }
+    }
+   }
+  },
+  "Kambal Taxes B3": {
+   "factsCoverage": 1.0,
+   "tags": [
+    "lifegain",
+    "aristocrats-drain"
+   ],
+   "mulligan": {
+    "minLands": 2,
+    "maxLands": 5,
+    "maxMulls": 2,
+    "keepCards": [
+     "Kambal, Consul of Allocation",
+     "Polluted Bonds",
+     "Vito, Thorn of the Dusk Rose",
+     "Sanguine Bond",
+     "Exquisite Blood",
+     "Crypt Ghast",
+     "Gray Merchant of Asphodel",
+     "Twilight Prophet",
+     "Fumigate",
+     "Debt to the Deathless",
+     "Authority of the Consuls",
+     "Blind Obedience",
+     "Soul Warden",
+     "Karlov of the Ghost Council",
+     "Ayli, Eternal Pilgrim",
+     "Blood Artist"
+    ]
+   },
+   "weights": {
+    "Kambal, Consul of Allocation": 8,
+    "Polluted Bonds": 8,
+    "Authority of the Consuls": 5,
+    "Blind Obedience": 5,
+    "Soul Warden": 5,
+    "Karlov of the Ghost Council": 5,
+    "Ayli, Eternal Pilgrim": 5,
+    "Vito, Thorn of the Dusk Rose": 8,
+    "Sanguine Bond": 8,
+    "Exquisite Blood": 8,
+    "Crypt Ghast": 8,
+    "Gray Merchant of Asphodel": 8,
+    "Blood Artist": 5,
+    "Zulaport Cutthroat": 5,
+    "Bastion of Remembrance": 5,
+    "Erebos, God of the Dead": 4,
+    "Twilight Prophet": 8,
+    "Athreos, God of Passage": 4,
+    "Elas il-Kor, Sadistic Pilgrim": 5,
+    "Swords to Plowshares": 3,
+    "Path to Exile": 3,
+    "Anguished Unmaking": 3,
+    "Utter End": 3,
+    "Mortify": 3,
+    "Vindicate": 3,
+    "Despark": 3,
+    "Fumigate": 8,
+    "Exsanguinate": 5,
+    "Debt to the Deathless": 8,
+    "Torment of Hailfire": 5
+   },
+   "threat": [
+    "Crypt Ghast",
+    "Kambal, Consul of Allocation",
+    "Twilight Prophet",
+    "Gray Merchant of Asphodel",
+    "Vito, Thorn of the Dusk Rose",
+    "Sanguine Bond",
+    "Fumigate",
+    "Polluted Bonds",
+    "Exquisite Blood",
+    "Debt to the Deathless",
+    "Athreos, God of Passage",
+    "Erebos, God of the Dead",
+    "Painful Quandary"
+   ],
+   "roles": {
+    "Kambal, Consul of Allocation": "commander",
+    "Sol Ring": "filler",
+    "Arcane Signet": "filler",
+    "Orzhov Signet": "filler",
+    "Mind Stone": "filler",
+    "Fellwar Stone": "filler",
+    "Commander's Sphere": "filler",
+    "Painful Quandary": "filler",
+    "Polluted Bonds": "payoff",
+    "Authority of the Consuls": "enabler",
+    "Blind Obedience": "enabler",
+    "Suture Priest": "filler",
+    "Soul Warden": "enabler",
+    "Soul's Attendant": "filler",
+    "Windborn Muse": "filler",
+    "Ghostly Prison": "filler",
+    "Norn's Annex": "filler",
+    "Karlov of the Ghost Council": "enabler",
+    "Ayli, Eternal Pilgrim": "enabler",
+    "Vito, Thorn of the Dusk Rose": "combo-piece",
+    "Sanguine Bond": "combo-piece",
+    "Exquisite Blood": "combo-piece",
+    "Crypt Ghast": "payoff",
+    "Gray Merchant of Asphodel": "payoff",
+    "Blood Artist": "enabler",
+    "Zulaport Cutthroat": "enabler",
+    "Bastion of Remembrance": "enabler",
+    "Erebos, God of the Dead": "protection",
+    "Phyrexian Arena": "filler",
+    "Twilight Prophet": "payoff",
+    "Athreos, God of Passage": "protection",
+    "Teysa Karlov": "filler",
+    "Elas il-Kor, Sadistic Pilgrim": "enabler",
+    "Swords to Plowshares": "removal",
+    "Path to Exile": "removal",
+    "Anguished Unmaking": "removal",
+    "Utter End": "removal",
+    "Mortify": "removal",
+    "Vindicate": "removal",
+    "Despark": "removal",
+    "Merciless Eviction": "filler",
+    "Fumigate": "payoff",
+    "Wrath of God": "filler",
+    "Damnation": "filler",
+    "Exsanguinate": "enabler",
+    "Debt to the Deathless": "payoff",
+    "Torment of Hailfire": "enabler",
+    "Night's Whisper": "filler",
+    "Sign in Blood": "filler",
+    "Read the Bones": "filler",
+    "Ambition's Cost": "filler",
+    "Bojuka Bog": "land",
+    "Command Tower": "land",
+    "Exotic Orchard": "land",
+    "Isolated Chapel": "land",
+    "Godless Shrine": "land",
+    "Caves of Koilos": "land",
+    "Temple of Silence": "land",
+    "Orzhov Basilica": "land",
+    "Vault of the Archangel": "land",
+    "Swamp": "land",
+    "Plains": "land"
+   },
+   "personality": {
+    "aggression": 0.55,
+    "splitAttacks": 0.7,
+    "blockiness": 0.6,
+    "counterThreshold": 5,
+    "dangerLife": 8,
+    "grudgeWeight": 0.2,
+    "kingmakerRatio": 1.6,
+    "politics": 0.0,
+    "triggerMiss": 0.0,
+    "greed": 1.0,
+    "lineProximity": 6,
+    "openThreatShare": 0.6,
+    "holdInstants": 1.0,
+    "holdInstantUntilRound": 10,
+    "combatSolver": 0.0,
+    "priorityGates": 0.0
+   },
+   "lines": [
+    {
+     "cards": [
+      "Sanguine Bond",
+      "Exquisite Blood"
+     ],
+     "produces": [
+      "Infinite lifegain triggers",
+      "Infinite lifeloss",
+      "Infinite lifegain"
+     ]
+    },
+    {
+     "cards": [
+      "Vito, Thorn of the Dusk Rose",
+      "Exquisite Blood"
+     ],
+     "produces": [
+      "Infinite lifegain triggers",
+      "Infinite lifeloss",
+      "Infinite lifegain"
+     ]
+    }
+   ],
+   "tutors": [],
+   "manaCreatures": [],
+   "search": {
+    "targets": {
+     "Sol Ring": 5,
+     "Arcane Signet": 5,
+     "Orzhov Signet": 5,
+     "Mind Stone": 5,
+     "Fellwar Stone": 5,
+     "Commander's Sphere": 5,
+     "Polluted Bonds": 7,
+     "Vito, Thorn of the Dusk Rose": 8,
+     "Sanguine Bond": 8,
+     "Exquisite Blood": 8,
+     "Crypt Ghast": 7,
+     "Gray Merchant of Asphodel": 7,
+     "Erebos, God of the Dead": 4,
+     "Twilight Prophet": 7,
+     "Athreos, God of Passage": 4,
+     "Swords to Plowshares": 3,
+     "Path to Exile": 3,
+     "Anguished Unmaking": 3,
+     "Utter End": 3,
+     "Mortify": 3,
+     "Vindicate": 3,
+     "Despark": 3,
+     "Merciless Eviction": 6,
+     "Fumigate": 7,
+     "Debt to the Deathless": 7
+    },
+    "context": {
+     "Sol Ring": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Arcane Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Orzhov Signet": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Mind Stone": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Fellwar Stone": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Commander's Sphere": {
+      "hint": "ramp",
+      "beforeRound": 5
+     },
+     "Vito, Thorn of the Dusk Rose": {
+      "hint": "finisher",
+      "minCreatures": 3
+     }
+    }
+   }
+  }
+ }
+}

@@ -61,12 +61,18 @@ def pods_for_round(cohort, rnd):
 
 
 def run_cell(spec):
-    cohort, rnd, pod_i, inv, order, out, games, clock, jars, heap, agent = spec
+    cohort, rnd, pod_i, inv, order, out, games, clock, jars, heap, agent, max_turns = spec
     if not (out.exists() and out.stat().st_size > 0):
         decks = [cohort[i]["file"] for i in order]
         cmd = ["java", f"-Xmx{heap}", "-cp", f"{jars[0]}{os.pathsep}{jars[1]}",
                "simlab.shim.SimShim", "--decks", *decks,
                "--games", str(games), "--timeout", str(clock), "--out", str(out)]
+        if max_turns:
+            # Deterministic bound (shim >= 0.8.0), the same 120 run_sim.py
+            # passes. Without it the 1200 s clock was the only stop, and the
+            # first agent arm lost 34.1% of its games to it (README, "Three
+            # claims retracted"), which put the arms on different scales.
+            cmd += ["--max-turns", str(max_turns)]
         if agent:
             # ABSOLUTE: java runs with cwd=~/forge, so a relative plans path
             # silently resolves to nothing and every cell produces no games.
@@ -114,6 +120,9 @@ def main():
     ap.add_argument("--agent-plans", default=None,
                     help="plans JSON -> run all four seats as plan agents")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--max-turns", type=int, default=120,
+                    help="turn cap passed to the shim (0 = none; the two "
+                         "2026-08-26 arms ran with none)")
     args = ap.parse_args()
 
     cohort = json.loads((HERE / "cohort.json").read_text(encoding="utf-8"))
@@ -133,13 +142,14 @@ def main():
                 specs.append((cohort, rnd, pod_i, inv, order,
                               out_dir / f"c_r{rnd}_p{pod_i:02d}_i{inv}.jsonl",
                               args.games, args.clock, jars, args.heap,
-                              args.agent_plans))
+                              args.agent_plans, args.max_turns))
     done = sum(1 for s in specs if s[5].exists() and s[5].stat().st_size > 0)
     total = len(specs) * args.games
     print(f"cohort   {len(cohort)} decks, {args.rounds} rounds x "
           f"{len(pods_for_round(cohort,0))} pods x 4 seat-rotations")
     print(f"games    {total} total, ~{args.rounds*4*args.games} per deck, "
-          f"clock {args.clock}s, {args.workers} workers")
+          f"clock {args.clock}s, turn cap {args.max_turns or 'none'}, "
+          f"{args.workers} workers")
     print(f"arm      {'AGENT (all four seats)' if args.agent_plans else 'stock Forge'}")
     print(f"resume   {done}/{len(specs)} cells already done\n", flush=True)
 

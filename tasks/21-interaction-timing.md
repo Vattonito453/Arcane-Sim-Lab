@@ -127,8 +127,40 @@ arm (2026-08-25) scored 15.8% (CI 6.3 to 25.3). No drop; the rise is 0.14.0
 and 0.15.0 together, since no 0.14.0-only control was run. Output in
 `studies/agent_viability/runs_015_default/`.
 
-The first three criteria are met. The fourth, `corr(interaction, sim)`, needs
-a cohort rerun on 0.15.0 and is still open.
+The first three criteria are met.
+
+### Fourth criterion, measured 2026-09-08: FAILED on the precon cohort
+
+`studies/precon_predict/runs_agent_015`, the full 66-deck, 768-game cohort
+design with all seats on the 0.15.0 agent (same overrides as the 2026-08-26
+agent arm; write-up in that study's README, "Agent 0.15.0 arm"). Decided
+games only, via `decided.py runs_stock runs_agent runs_agent_015`:
+
+| | stock | earlier agent | 0.15.0 |
+|---|---|---|---|
+| corr(interaction, sim) | +0.108 | +0.080 | **+0.238** |
+| corr(interaction, human) | -0.047 | -0.053 | -0.047 |
+| corr(sim, human) | +0.221 | +0.202 | +0.113 |
+| corr(creatures, sim) | +0.153 | +0.059 | +0.217 |
+
+The sim's reward for interaction density moved AWAY from the human value
+(bootstrap change vs the earlier agent arm +0.185, 95% CI [-0.044, +0.404],
+P(no increase) 0.053), and the sim became a weaker predictor of human
+results. Per-deck: the win-rate shift from the earlier arm correlates +0.223
+with interaction density; removal-dense precons that humans win 18 to 21%
+with (Blood Rites, Abzan Armor, Silverquill Influence) gained 14 to 19 pp.
+Holding removal makes removal decks win in the sim; human precon tables do
+not reward removal density. The behaviour itself did carry over (34.1% of
+instants off-turn against 19.7% stock and 21.7% earlier agent; 8,128 holds).
+
+Caveats: 0.14.0 and 0.15.0 are bundled in this arm; the premise that
+interaction-dense decks are under-rewarded by the sim was written before
+the human correlation (-0.047) was computed, and on precons it is not true;
+constructed and cEDH decks, where holding removal is most of the game, are
+unmeasured. Keeping the dial on is therefore a product decision: realism and
+agent strength against prediction fidelity on precons. If it stays on, refit
+`engine/models/precon_predict.json` (currently fitted on the stock arm) on
+this arm before trusting the playgroup prediction.
 
 ---
 

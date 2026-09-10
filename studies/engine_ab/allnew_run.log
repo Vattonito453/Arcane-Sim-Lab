@@ -1,0 +1,12 @@
+1 pods x 4 rotations x 4 games = 16 games, 4 at a time, mode allnew
+[1/4] pod0 rot3 ok
+[2/4] pod0 rot1 ok
+[3/4] pod0 rot2 ok
+[4/4] pod0 rot0 ok
+games played 16, decided 16, censored 0
+NEW wins 16, BASE wins 0: NEW share 100.0% +/- 0.0 pp (1 SE), null 50%, 95% CI [100.0%, 100.0%]
+z vs 50%: +4.00
+game seconds: median 109, p90 178
+  pod0: NEW 16/16  (bundled decks)
+  NEW events: see_attack=347, see_block=56, see_damage=1, instant_hold=419, instant_window=51, block_skip=2, counter_fire=2, counter_veto=1
+  BASE events: 

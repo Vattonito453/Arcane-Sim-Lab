@@ -1,0 +1,7 @@
+# Raw cell output is regenerable and large (58 MB per full A/B); the
+# summary is in README.md and *.sides.json says which seat was NEW.
+runs*/*.jsonl
+runs*/*.err
+runs*/*.plans.json
+# The first run, with the re-ask loop present, kept locally for the defect record.
+runs_prefix_reask_bug/

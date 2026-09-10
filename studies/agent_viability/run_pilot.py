@@ -74,6 +74,12 @@ ARMS = {
     # gap is elsewhere.
     "nocombo": {"greed": 1.0, "triggerMiss": 0.0, "splitAttacks": 0.0,
                 "politics": 0.0, "_dropLines": True},
+    # 0.16.0 "new engine" (studies/engine_ab): the SeeCombat branch-and-bound
+    # combat solver and the stack/priority gates, on top of the shipped
+    # dials. Compare against `default` run on the same jar. Needs
+    # --shim-jar pointing at a 0.16.0 build; on an older jar the two dials
+    # are unknown and the arm silently equals default.
+    "engine016": {"combatSolver": 1.0, "priorityGates": 1.0},
 }
 
 

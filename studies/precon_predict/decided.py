@@ -80,29 +80,43 @@ def reliability(rows):
     return true / obs if obs else 0.0, math.sqrt(true)
 
 
-def main():
+def main(arms=None):
+    """Arms on the command line, e.g. `decided.py runs_stock runs_agent
+    runs_agent_015`; default is the two 2026-08-26 arms. A partial arm is
+    fine: tally() reads whatever cells exist and drops decks under min_games."""
+    arms = arms or ["runs_stock", "runs_agent"]
     print("DECIDED GAMES ONLY -- the honest arm comparison\n")
-    print("%-26s %10s %10s" % ("metric", "STOCK", "AGENT"))
-    print("-" * 48)
+    print("%-26s" % "metric" + "".join("%16s" % a for a in arms))
+    print("-" * (26 + 16 * len(arms)))
     o = {}
-    for arm, lab in (("runs_stock", "STOCK"), ("runs_agent", "AGENT")):
+    for arm in arms:
         rows = tally(arm)
         y = [r["human"] for r in rows]
         s = [r["sim"] for r in rows]
         rel, tsd = reliability(rows)
-        o[lab] = dict(rows=rows, y=y, s=s,
+        o[arm] = dict(rows=rows, y=y, s=s,
                       mean=st.mean(s), n=st.median([r["n"] for r in rows]),
                       r=model.pearson(s, y), rho=model.spearman(s, y),
                       cs=model.pearson([r["creatures"] for r in rows], s),
+                      # Task 21's fourth acceptance criterion: does the sim
+                      # reward interaction density the way humans do?
+                      inter_s=model.pearson([r["interaction"] for r in rows], s),
+                      inter_rho=model.spearman([r["interaction"] for r in rows], s),
+                      inter_h=model.pearson([r["interaction"] for r in rows], y),
                       rel=rel, tsd=tsd, decks=len(rows))
     for k, lab in (("decks", "decks"), ("n", "decided games/deck"),
                    ("mean", "mean sim win rate %"), ("r", "corr(sim, human)"),
                    ("rho", "rank corr"), ("cs", "corr(creatures, sim)"),
+                   ("inter_s", "corr(interaction, sim)"),
+                   ("inter_rho", "rank corr(interaction, sim)"),
+                   ("inter_h", "corr(interaction, human)*"),
                    ("rel", "reliability (own p)"), ("tsd", "true sd pp")):
-        print("%-26s %10.3f %10.3f" % (lab, o["STOCK"][k], o["AGENT"][k]))
+        print("%-26s" % lab + "".join("%16.3f" % o[a][k] for a in arms))
     print("\nhuman: mean 24.22%, observed sd 5.56pp, corr(creatures,human) -0.378")
+    print("* over the decks that arm has enough games for, so it can differ "
+          "slightly between arms")
     return o
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])

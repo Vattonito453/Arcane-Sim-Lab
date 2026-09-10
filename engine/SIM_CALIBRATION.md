@@ -204,7 +204,33 @@ it was measured 2026-09-07 (16 games per arm, same pod, same jar): instants
 cast on an opponent's turn 41.1% for the agent against 20.0% for stock, all
 spells off-turn 5.7% against 2.8%, and the plan seat's win share against
 three stock seats 29.6% (115 decided, CI 21.2 to 37.9) against 15.8% for the
-previous default arm. Details in `tasks/21-interaction-timing.md`.
+previous default arm. The fourth criterion, measured 2026-09-08 on the full
+66-precon cohort (`studies/precon_predict/runs_agent_015`), FAILED: the
+sim's correlation with a deck's interaction density rose from +0.08 to +0.24
+against a human value of -0.05, and corr(sim, human) on decided games fell
+from +0.20 to +0.11. Holding removal makes removal-dense precons win in the
+sim; human precon tables do not reward that. The shipped prediction model is
+fitted on the stock arm, so agent-produced win rates carry a bias it does
+not correct. Details in `tasks/21-interaction-timing.md` and the study
+README.
+
+## Engine A/B, shim 0.16.0 (2026-09-09): built, measured, not shipped
+
+An outside architecture note proposed rebuilding Forge's AI around a
+branch-and-bound combat solver (Static Exchange Evaluation, race-clock
+weights, Foundations damage assignment) and an event-driven priority engine
+(end-step, red-zone and response-gated protection rules over a threat
+matrix). The two phases that are decision policy were built inside the shim
+boundary as opt-in dials (`combatSolver`, `priorityGates`); the phases that
+patch Forge internals were not. Measured against the 0.15.0 agent on the
+same jar (`studies/engine_ab`): head-to-head paired within game 53.4% (CI
+43.8 to 63.0, 103 decided; per-deck 20 better, 19 worse); against stock on
+the cEDH pods 22.1% (CI 14.5 to 29.8) against 29.6% for 0.15.0; on the
+bundled pod it blocks 7.3% of attackers against 11.6% for 0.15.0 and 9.1%
+for stock, and its off-turn casting is flat at 42.7%. Both dials ship at 0.
+The run also found and fixed a declare-attackers re-ask loop present in
+every earlier agent version (shim README, 0.16.0), so agent clock-censoring
+rates measured before 0.16.0 are not comparable with later ones.
 
 ## Sim Lab agent 0.14.0 (attack targeting and finisher discipline, 2026-09-03)
 

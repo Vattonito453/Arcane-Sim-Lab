@@ -290,3 +290,94 @@ median 53 turns) and the loss of signal.
    a hang detector) so the arm is not 34% censored on deliberation speed.
 3. Only then decide whether synergy lines earn their place, separately from
    hold-back -- this arm changed both at once and cannot separate them.
+
+---
+
+# Agent 0.15.0 arm (2026-09-08): the hold works, and prediction gets worse
+
+`runs_agent_015/`: the same 66-deck, 6-round, 768-game design as the two
+2026-08-26 arms, all four seats on the plan agent, same personality overrides
+as `runs_agent` (`plans_agent_015.json`), so the only agent differences are
+what shipped since: 0.14.0 attack targeting and finisher discipline, and the
+0.15.0 instant-speed hold (`holdInstants` 1.0, `holdInstantUntilRound` 10).
+Run on the 16-core Windows box, 14 workers, shim jar at commit 220160b.
+Task 21's fourth acceptance criterion is what it was run for.
+
+Two operational notes. `run_cohort.py` now passes `--max-turns 120` (the two
+earlier arms had no cap); it never fired, because the censored games are
+in-turn stalls, not long games. And the clock: a first attempt at 3600 s was
+abandoned after its undecided games came back at 23 to 64 turns with every
+player alive, i.e. the agent spending two to three minutes per turn on token
+boards (Sliver Swarm, Squirreled Away, Animated Army), which a longer clock
+only prolongs. The run was resumed at 1200 s; 20 of 384 cells (5%) kept the
+3600 s clock, so a game they decided between 20 and 60 minutes would have
+been censored in the rest of the arm.
+
+## Behaviour: the hold does what it says
+
+`divergence.py`, all games:
+
+| | stock | earlier agent | 0.15.0 |
+|---|---|---|---|
+| instants cast on an opponent's turn | 19.7% | 21.7% | **34.1%** |
+| all spells cast off-turn | 2.6% | 2.7% | **3.8%** |
+| attackers blocked | 17.7% | 25.8% | 24.4% |
+| games killed by the clock | 9.7% | 34.1% | 30.5% |
+| median game | 48 player-turns | 49 | 48 |
+
+8,128 holds and 1,785 windows. Of the windows, 754 were an opponent's turn and
+682 were `pastCutoff`: with a median game of 12 rounds, the round-10 cutoff
+releases the hold for most of the late game. Censoring is unchanged in kind
+(deliberation speed, not game length) and its per-deck rate no longer tracks
+creatures (+0.058, against +0.239 in the earlier arm).
+
+## Prediction: the criterion fails
+
+`decided.py runs_stock runs_agent runs_agent_015`, decided games only, each
+deck's own p:
+
+| | stock | earlier agent | 0.15.0 |
+|---|---|---|---|
+| decided games per deck | 43 | 30 | 32.5 |
+| corr(sim, human) | +0.221 | +0.202 | **+0.113** |
+| rank corr | +0.255 | +0.233 | +0.140 |
+| corr(creatures, sim) | +0.153 | +0.059 | **+0.217** |
+| corr(interaction, sim) | +0.108 | +0.080 | **+0.238** |
+| corr(interaction, human) | -0.047 | -0.053 | -0.047 |
+| reliability (own p) | 0.688 | 0.645 | 0.657 |
+| LOO model rho (sim + creatures + avg_cmc) | +0.477 | +0.398 | +0.360 |
+
+The criterion was that `corr(interaction, sim)` moves toward the human value.
+It moved the other way, from +0.08 to +0.24 against a human -0.05. Bootstrap
+over decks (4,000 resamples, paired): the change against the earlier agent
+arm is +0.185, 95% CI [-0.044, +0.404], P(no increase) 0.053; against stock
++0.140, CI [-0.048, +0.313]. Directionally firm at 66 decks, one SE short of
+conventional significance, and the same direction on every read after round
+two. `corr(sim, human)` fell by 0.08 to 0.11 with CIs that include zero.
+
+Mechanism, from the per-deck shifts: a deck's change in decided win rate from
+the earlier agent arm correlates +0.223 with its interaction density and
++0.159 with its creature count. Blood Rites (interaction 0.18) went 48% to
+62% while humans win 18% with it; Abzan Armor (0.22) 29% to 45% against a
+human 20%; Silverquill Influence 31% to 50% against 21%. Holding removal for
+an opponent's turn makes removal-dense precons win more in the sim, and
+human precon tables do not reward removal density. The aggro-bias reduction
+the earlier arm bought (creatures +0.153 to +0.059) did not survive either;
+0.14.0's open-target re-aim is the likely cause, but this arm cannot separate
+0.14.0 from 0.15.0.
+
+## What this does and does not say
+
+- The hold is behaviourally right and mechanically sound; three of task 21's
+  four criteria pass (off-turn shares up, no win-rate drop in
+  `studies/agent_viability`).
+- On PRECONS it makes the sim a slightly worse predictor of human results. The
+  README's earlier caution stands: precons carry little interaction (density
+  0.06 to 0.28) and human precon tables punish creatures, not removal, so this
+  cohort is the wrong place to expect the hold to help prediction. Whether it
+  helps on constructed or cEDH decks is unmeasured.
+- Keeping the dial on is a product decision, not a measurement one: realism
+  and a stronger agent on one side, a prediction model fitted on the stock
+  arm that now sees agent-produced win rates with a different bias on the
+  other. If the dial stays on, refit `engine/models/precon_predict.json` on
+  this arm before trusting the playgroup prediction, and re-measure.

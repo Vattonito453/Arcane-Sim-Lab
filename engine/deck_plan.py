@@ -458,6 +458,12 @@ def build_plan(path: str | Path, fetch: bool = False,
     # stops applying after the cutoff round. 0 disables either.
     personality.setdefault("holdInstants", 1.0)
     personality.setdefault("holdInstantUntilRound", 10)
+    # combatSolver / priorityGates (shim 0.16.0): the branch-and-bound combat
+    # solver and the stack/priority gates from the engine A/B
+    # (studies/engine_ab). OFF until that A/B says otherwise; shipped
+    # explicitly so the plans file records the decision.
+    personality.setdefault("combatSolver", 0.0)
+    personality.setdefault("priorityGates", 0.0)
 
     # Provenance: how much of the deck the card-fact cache could actually
     # see. A cold cache silently degrades every heuristic above (no oracle

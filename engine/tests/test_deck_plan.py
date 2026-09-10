@@ -132,6 +132,10 @@ def main() -> None:
     assert plan["personality"]["holdInstants"] == 1.0, plan["personality"]
     assert plan["personality"]["holdInstantUntilRound"] == 10, plan["personality"]
     print("  holdInstants / holdInstantUntilRound dials shipped in the plan: OK")
+    # The 0.16.0 engine A/B dials ship OFF until studies/engine_ab says otherwise.
+    assert plan["personality"]["combatSolver"] == 0.0, plan["personality"]
+    assert plan["personality"]["priorityGates"] == 0.0, plan["personality"]
+    print("  combatSolver / priorityGates shipped off: OK")
 
     # Degraded facts: coverage drops and heuristics stay quiet, not wrong.
     deck_plan.cards.get_many = lambda names, fetch=False: {}

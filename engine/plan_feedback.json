@@ -125,6 +125,674 @@
     "lifegain",
     "aristocrats-drain"
    ]
+  },
+  "Planeswalker Party [CMM] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Blame Game [MKC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "go-wide-tokens"
+   ]
+  },
+  "Eldrazi Unbound [CMM] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "counters-proliferate"
+   ]
+  },
+  "Legends' Legacy [DMC] [2022]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Jeskai Striker [TDC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "spellslinger-burn"
+   ]
+  },
+  "Tricky Terrain [M3C] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "ramp-big-mana"
+   ]
+  },
+  "Lorehold Spirit [SOC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "World Shaper [EOC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "The Fantastic Four [MSC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "spellslinger-burn"
+   ]
+  },
+  "Miracle Worker [DSC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Hail, Caesar [PIP] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Dance of the Elements [ECC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Prismari Artistry [SOC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "spellslinger-burn"
+   ]
+  },
+  "Goblin Storm [SLD] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Endless Punishment [DSC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "lifegain"
+   ]
+  },
+  "Temur Roar [TDC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Wakanda Forever [MSC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "counters-proliferate"
+   ]
+  },
+  "Scions & Spellcraft [FIC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "spellslinger-burn",
+    "go-wide-tokens"
+   ]
+  },
+  "Revenant Recon [MKC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens"
+   ]
+  },
+  "Veloci-Ramp-Tor [LCC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "ramp-big-mana"
+   ]
+  },
+  "Quick Draw [OTC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "spellslinger-burn",
+    "go-wide-tokens"
+   ]
+  },
+  "Animated Army [BLC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "ramp-big-mana"
+   ]
+  },
+  "Desert Bloom [OTC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "reanimator"
+   ]
+  },
+  "Creative Energy [M3C] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "go-wide-tokens"
+   ]
+  },
+  "Explorers of the Deep [LCC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Squirreled Away [BLC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Riders of Rohan [LTC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "go-wide-tokens"
+   ]
+  },
+  "Cavalry Charge [MOC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Peace Offering [BLC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "go-wide-tokens"
+   ]
+  },
+  "Eldrazi Incursion [M3C] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Limit Break [FIC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "voltron-commander-damage",
+    "tribal-anthem"
+   ]
+  },
+  "Exit from Exile [CLB] [2022]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "counters-proliferate"
+   ]
+  },
+  "Revival Trance [FIC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "go-wide-tokens"
+   ]
+  },
+  "Mardu Surge [TDC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Family Matters [BLC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "The Host of Mordor [LTC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "counters-proliferate"
+   ]
+  },
+  "Jump Scare! [DSC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Graveyard Overdrive [M3C] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "go-wide-tokens"
+   ]
+  },
+  "Food and Fellowship [LTC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "lifegain",
+    "go-wide-tokens"
+   ]
+  },
+  "Sultai Arisen [TDC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "mill",
+    "tribal-anthem"
+   ]
+  },
+  "Science! [PIP] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "go-wide-tokens"
+   ]
+  },
+  "Sliver Swarm [CMM] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "ramp-big-mana"
+   ]
+  },
+  "Call for Backup [MOC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Enduring Enchantments [CMM] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "go-wide-tokens"
+   ]
+  },
+  "Avengers Assemble [MSC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Quandrix Unlimited [SOC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "go-wide-tokens"
+   ]
+  },
+  "Death Toll [DSC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "mill",
+    "go-wide-tokens"
+   ]
+  },
+  "Doom Prevails [MSC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "counters-proliferate"
+   ]
+  },
+  "Turtle Power! [TMC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "go-wide-tokens"
+   ]
+  },
+  "Counter Intelligence [EOC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Silverquill Influence [SOC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "voltron-commander-damage",
+    "tribal-anthem"
+   ]
+  },
+  "Scrappy Survivors [PIP] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "voltron-commander-damage",
+    "go-wide-tokens"
+   ]
+  },
+  "Abzan Armor [TDC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "counters-proliferate"
+   ]
+  },
+  "Deep Clue Sea [MKC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Most Wanted [OTC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Counter Blitz [FIC] [2025]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Blight Curse [ECC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "go-wide-tokens"
+   ]
+  },
+  "Blood Rites [LCC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "go-wide-tokens"
+   ]
+  },
+  "Ahoy Mateys [LCC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Witherbloom Pestilence [SOC] [2026]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "lifegain",
+    "tribal-anthem"
+   ]
+  },
+  "Obscura Operation [NCC] [2022]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "counters-proliferate"
+   ]
+  },
+  "Mind Flayarrrs [CLB] [2022]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "mill"
+   ]
+  },
+  "Mutant Menace [PIP] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "counters-proliferate",
+    "tribal-anthem"
+   ]
+  },
+  "Elven Council [LTC] [2023]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "go-wide-tokens",
+    "tribal-anthem"
+   ]
+  },
+  "Grand Larceny [OTC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "ramp-big-mana"
+   ]
+  },
+  "Deadly Disguise [MKC] [2024]": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "tribal-anthem",
+    "counters-proliferate"
+   ]
+  },
+  "toy2": {
+   "games": 0,
+   "wins": 0,
+   "methods": {},
+   "win_rounds": [],
+   "tags": [
+    "aristocrats-drain"
+   ]
   }
  }
 }

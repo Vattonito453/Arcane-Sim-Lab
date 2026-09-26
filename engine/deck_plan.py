@@ -495,10 +495,17 @@ def build_plan(path: str | Path, fetch: bool = False,
     # search targets only). The cold-start invariant lives in plan_feedback:
     # a deck with no history gets exactly the plan built above, and a broken
     # store must never block a plan from building at all.
+    # OFF unless MTG_PLAN_FEEDBACK_APPLY=1 (repair plan WS0 task 5, RC4): the
+    # nudge was never validated, and with it on a plan depends on whatever
+    # the store happened to hold. note_tags still runs; it records the
+    # archetype and never changes the plan. Plans are built in run_sim, so
+    # the flag that matters is the WORKER's; deploy/preflight.py asserts it.
     try:
+        import os
         import plan_feedback
         plan_feedback.note_tags(deck_name, tags)
-        plan = plan_feedback.apply_to_plan(plan, deck_name, tags)
+        if os.environ.get("MTG_PLAN_FEEDBACK_APPLY", "0") == "1":
+            plan = plan_feedback.apply_to_plan(plan, deck_name, tags)
     except Exception:
         pass
     return deck_name, plan

@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
-"""Win-condition analysis for a sim result: what each deck is trying to do, how
-often the pieces actually assembled, and whether the AI ever converted them.
+"""Combo-line and win-method analysis for a sim result: which Commander
+Spellbook combos each deck holds, how often their pieces were on the
+battlefield together, and how each game ended.
 
-Why: Forge's AI cannot pilot most multi-card combos, so a combo deck's win rate
-is a floor, not a verdict (engine/SIM_CALIBRATION.md). The number that separates
-"bad deck" from "bad pilot" is the gap between ASSEMBLED (all pieces of a known
-combo on the battlefield at once) and CONVERTED (that seat then won). A deck
-that assembles turn 7 in 60% of games and converts none is healthy with an
-incapable pilot; a deck that never assembles has a deck problem — and that
-second verdict is trustworthy even from a weak pilot.
+Why: Forge's AI does not run combo loops, so a combo deck's win rate is a
+floor, not a verdict (engine/SIM_CALIBRATION.md). What this CAN say is whether
+the pieces came together at all: a deck whose pieces are together turn 7 in
+60% of games is healthy with an incapable pilot; a deck whose pieces never
+come together, when the draw odds say they should have, has a deck problem.
 
-Method honesty: battlefield membership comes from board.py reconstruction,
-which is inference over a log that never records cards entering the battlefield
-(83-86% exit-match, see CLAUDE.md). Assembly rates inherit that ceiling and the
-API payload says so. "Converted" means won after assembling — correlation, not
-proven causation.
+A Spellbook combo is not a win condition. 68.5% of cached variants cannot win
+on their own (infinite mana, storm, ETB), so nothing here calls a line a win
+condition, and "won after assembling" (the deck won a game in which the pieces
+had been together) is correlation, never a claim that the combo won it. The
+old "fired" reading asserted exactly that and was removed (repair plan WS11).
+
+Method honesty: battlefield membership comes from board.build(). On shim runs
+that carry `zones` it is a READ of Forge's own zone-change events; on stdout
+runs it is inference over a log that never records cards entering the
+battlefield (83-86% exit-match, see CLAUDE.md). The payload's `basis` and
+`note` say which path each report is on.
 
 Combo knowledge comes from combos.py (Commander Spellbook, cached on disk).
 
@@ -40,7 +45,11 @@ import combos  # noqa: E402
 # disk beside the results, and a stale cache would silently serve the old shape.
 # Bumped to 4 on 2026-08-06: reports now carry a validity verdict, so a v3
 # cache entry has no way to say its numbers came from a polluted run.
-ANALYSIS_VERSION = 4
+# Bumped to 5 on 2026-09-26: shim runs read the board from zone records
+# instead of inferring it from stdout, the "fired" reading is gone, and each
+# combo carries `won_after_assembly`. A v4 cache entry holds inferred numbers
+# and the old reading, so it must not be served.
+ANALYSIS_VERSION = 5
 
 _AI = re.compile(r"^Ai\(\d+\)-")
 # "X has kept a hand of 7 cards" / "X has mulliganed down to 6 cards" — take the
@@ -149,6 +158,66 @@ def draw_model(game: dict) -> dict[str, int]:
         steps[first_active] -= 1
     return {p: {"seen": kept[p] + steps[p] + effect[p], "turns": steps[p]}
             for p in players}
+
+
+def turn_boards(game: dict) -> list[dict]:
+    """One {"turn", "board"} per turn of the game, from board.build().
+
+    On a shim run the board is READ from the zone stream; on a stdout run it is
+    inferred, exactly as before. The zone path snapshots only the turns that
+    had a zone record, so a turn in which nothing moved would otherwise vanish
+    and undercount the turns a line sat online. Carry the last board forward
+    over those turns instead. Turn 0 (the pregame: opening hands, mulligans)
+    has no battlefield and is dropped.
+    """
+    _, snaps = board.build(game, fetch=False)
+    if not board.has_zone_stream(game):
+        return snaps
+    by_turn = {s["turn"]: s["board"] for s in snaps}
+    turns = sorted({t.get("turn", 0) for t in game.get("turns") or []}
+                   | set(by_turn))
+    out: list[dict] = []
+    current: dict = {p: [] for p in game.get("players") or []}
+    for turn in turns:
+        if turn in by_turn:
+            current = by_turn[turn]
+        if turn > 0:
+            out.append({"turn": turn, "board": current})
+    return out
+
+
+def board_basis(games: list[dict]) -> str:
+    """"zone_stream", "inferred" or "mixed": which path the boards came from."""
+    zoned = sum(1 for g in games if board.has_zone_stream(g))
+    if games and zoned == len(games):
+        return "zone_stream"
+    return "mixed" if zoned else "inferred"
+
+
+def method_note(games: list[dict]) -> str:
+    """The honesty note for the combo table, worded for the path it is on.
+
+    This string reaches the UI, so it follows the copy rules (no em dash).
+    """
+    basis = board_basis(games)
+    zoned = sum(1 for g in games if board.has_zone_stream(g))
+    spell = ("Instant and sorcery pieces count as present on the turn they "
+             "were cast.")
+    won = ("Won after assembling means the deck won a game in which the "
+           "pieces had been together; it does not mean the combo won it.")
+    if basis == "zone_stream":
+        where = ("Assembly is read from the shim's zone records, which log "
+                 "every card entering and leaving the battlefield.")
+    elif basis == "mixed":
+        where = (f"Assembly is read from zone records in {zoned} of "
+                 f"{len(games)} games and inferred from the event log in the "
+                 "rest, where Forge logs cards leaving the battlefield but "
+                 "never entering (83-86% of exits match).")
+    else:
+        where = ("Assembly is inferred from board reconstruction: Forge's log "
+                 "records cards leaving the battlefield but never entering "
+                 "(83-86% of exits match).")
+    return f"{where} {spell} {won}"
 
 
 def p_all_drawn(seen: int, lib_pieces: int, deck_size: int = 99) -> float:
@@ -273,13 +342,16 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
                 dm = seen.get(key) or {"seen": 7, "turns": 0}
                 d.setdefault("_draw_games", []).append((dm["seen"], dm["turns"]))
 
-        # Assembly: fold the log into per-turn battlefields once per game, then
-        # test each known combo of each seated deck against its owner's board.
+        # Assembly: fold the game into per-turn battlefields once, then test
+        # each known combo of each seated deck against its owner's board. Shim
+        # runs are read from zone records; this used to call the stdout
+        # inference path on every run, so a shim run's combo table could
+        # contradict its own replay board.
         seated = {name: key for key in players
                   if (name := _bare(key)) in per_deck and per_deck[name]["combos"]}
         if not seated:
             continue
-        _, snapshots = board.reconstruct(game, fetch=False)
+        snapshots = turn_boards(game)
         casts = _cast_turns(game)
 
         for name, key in seated.items():
@@ -333,7 +405,12 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
             assembled = [g for g in plays if g["assembled_turn"] is not None]
             combo["games_played"] = len(plays)
             combo["assembled_games"] = len(assembled)
-            combo["converted_games"] = sum(1 for g in assembled if g["won"])
+            # Games the deck won after the pieces had been together at some
+            # point: correlation, not "the combo won". Shown unbadged.
+            combo["won_after_assembly"] = sum(1 for g in assembled if g["won"])
+            # Deprecated alias for clients built before v5. The repair plan's
+            # WS1 replaces it with `executed` and `converted_same_turn`.
+            combo["converted_games"] = combo["won_after_assembly"]
             combo["median_assembled_turn"] = (
                 statistics.median(g["assembled_turn"] for g in assembled)
                 if assembled else None)
@@ -346,13 +423,14 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
                 sum(g["p_all_drawn"] for g in plays), 1)
             combo["nonpermanent_pieces"] = [
                 c for c in combo["cards"] if cards.is_permanent(c) is False]
-            # The verdict the UI shows. "sample_too_small" is the honesty fix:
-            # when raw draw odds predicted ~0 assemblies across the whole run,
-            # a zero is the expected outcome, not a finding about the deck.
-            if combo["converted_games"] > 0:
-                combo["reading"] = "fired"
-            elif combo["assembled_games"] > 0:
-                combo["reading"] = "assembled_not_fired"
+            # A descriptive reading, never a verdict about the pilot. There is
+            # no "fired": the old reading claimed the AI could fire a line
+            # whenever the deck merely won later by any means, which mostly
+            # meant engines followed by a combat win a round or more later.
+            # "sample_too_small": raw draw odds predicted ~0 assemblies across
+            # the whole run, so a zero is the expected outcome, not a finding.
+            if combo["assembled_games"] > 0:
+                combo["reading"] = "assembled"
             elif combo["expected_drawn_games"] < 0.5:
                 combo["reading"] = "sample_too_small"
             else:
@@ -386,10 +464,11 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
         "games": games_out,
         "decks": per_deck,
         "summary": {"games": total, "methods": methods},
-        "note": ("Assembly is inferred from board reconstruction (Forge never "
-                 "logs battlefield entries; 83-86% exit-match). Instant/sorcery "
-                 "pieces count as present on turns they were cast. 'Converted' "
-                 "means won after assembling, not proven causation."),
+        # Which board path the assembly numbers came from, and the note worded
+        # for it. The note used to say "inferred" on every run, including shim
+        # runs whose replay board is a read.
+        "basis": board_basis(result.get("games") or []),
+        "note": method_note(result.get("games") or []),
     }
 
 
@@ -403,7 +482,8 @@ def main() -> int:
         result = json.loads(Path(p).read_text(encoding="utf-8"))
         result.setdefault("file", Path(p).name)
         rep = analyse(result, fetch=fetch)
-        print(f"\n{rep['file']}: {rep['summary']['games']} games")
+        print(f"\n{rep['file']}: {rep['summary']['games']} games"
+              f" (board basis: {rep['basis']})")
         print("  won by:", ", ".join(f"{k} x{v}" for k, v in
                                      sorted(rep["summary"]["methods"].items(),
                                             key=lambda kv: -kv[1])))
@@ -424,7 +504,7 @@ def main() -> int:
                 print(f"    assembled {c['assembled_games']}/{c['games_played']} games"
                       + (f" (median turn {med:.0f})" if med is not None else "")
                       + f" | draw odds predicted ~{c['expected_drawn_games']}"
-                      + f" | converted {c['converted_games']}"
+                      + f" | won after assembling {c['won_after_assembly']}"
                       + f" | reading: {c['reading']}"
                       + (f" | sat online {c['idle_online_turns']} turns without winning"
                          if c["idle_online_turns"] else ""))

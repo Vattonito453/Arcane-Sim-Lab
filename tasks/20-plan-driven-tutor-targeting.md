@@ -320,10 +320,17 @@ None of these block the study; all three are real engine gaps.
    new mechanism, not a dial. Expect it to matter far more for constructed and
    cEDH than for precons, which carry little interaction.
 
-3. **Synergy lines -- DONE, needs a validation arm.** Commander Spellbook
-   returns ZERO variants for all 66 precons (not even `almostIncluded`), so
-   combo pursuit was structurally inert on the decks most players own:
-   0 `combo_cast`, 0 `tutor_cast`, 0 `combo_hold` across 332 games.
+3. **Synergy lines -- DONE, needs a validation arm.** Combo pursuit was
+   structurally inert on the decks most players own: 0 `combo_cast`,
+   0 `tutor_cast`, 0 `combo_hold` across 332 games, because the precon plans
+   carried no Spellbook lines.
+   **Corrected 2026-09-26:** this item said Spellbook returns zero variants for all 66 precons. False.
+   `combos.parse_dck` sent Forge's `|SET|art` suffix with each card name;
+   with clean names 14 of 66 precons have 26 included variants and 65 of 66
+   have 1,650 almost-included ones (`studies/diagnosis_2026-09/SYNTHESIS.md`,
+   "Prior claims refuted or corrected"; the fix is repair plan Appendix B
+   task 10). The fallback below was built on the false premise, and the
+   repair plan (section 8) does not revive it.
    `deck_plan.synergy_lines()` now derives two-card engines from the deck's
    own archetype when Spellbook has nothing -- "make tokens then anthem them",
    "sacrifice then drain" -- which is a combo that fires ONCE, not infinitely.

@@ -1,0 +1,5 @@
+Language 'en-US' loaded successfully.
+(ThreadUtil first call): Running with priority 5
+Read cards: 33319 archived files in 0 ms (25 parts) using thread pool
+Read cards: 821 files in 0 ms (8 parts) using thread pool
+Couldn't map Goblin Token (9444)/1102303057

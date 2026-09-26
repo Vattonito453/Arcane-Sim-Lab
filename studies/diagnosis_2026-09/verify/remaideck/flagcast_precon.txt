@@ -1,0 +1,9 @@
+=== precon_predict/runs_stock: 384 files, 766 games
+  agent=stock flag=All    drawn=  2570 cast=    24 rate=0.009
+  agent=stock flag=Random drawn=  1901 cast=  1290 rate=0.679
+  agent=stock flag=none   drawn= 48245 cast= 34657 rate=0.718
+  agent=stock flag=unk    drawn=   301 cast=   213 rate=0.708
+  stock flagged share of drawn nonland: 2570/53017 = 0.048
+  stock flagged casts by API: {'other': 13, 'Counter': 11} by stack: {'response': 21, 'emptyStack': 3}
+  stock flagged casts detail: [(('Swan Song', 'Counter', 'response'), 11), (('Faithless Looting', 'Draw', 'response'), 4), (('Windfall', 'Discard', 'response'), 2), (('Izzet Signet', '', 'response'), 1), (('Azorius Signet', '', 'response'), 1), (('Boros Signet', '', 'emptyStack'), 1), (('Beast Within', 'Destroy', 'emptyStack'), 1), (('Boros Signet', '', 'response'), 1), (('Bloodthirsty Adversary', '', 'response'), 1), (('Mirror Entity', '', 'emptyStack'), 1)]
+  stock All cards drawn/cast: [('Beast Within', 135, 1), ('Curse of the Swine', 109, 0), ('Azorius Signet', 89, 1), ('Faithless Looting', 89, 4), ('Orzhov Signet', 77, 0), ('Izzet Signet', 74, 1), ('Toxic Deluge', 65, 0), ('Dimir Signet', 55, 0), ('Nyx Weaver', 55, 0), ('Dispatch', 52, 0), ('Boros Signet', 51, 2), ('Mirage Mirror', 49, 0), ('Viscera Seer', 42, 0), ('Psychosis Crawler', 41, 0), ('Rakdos Signet', 39, 0), ('Simic Signet', 38, 0), ('Decree of Pain', 38, 0), ('Windfall', 38, 2), ('Biomass Mutation', 36, 0), ('Rakdos Charm', 32, 0)]

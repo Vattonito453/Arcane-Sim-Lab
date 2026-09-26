@@ -1,0 +1,14 @@
+precon decks referenced: 66
+precon All-flagged distinct per deck: mean 4.86 median 5.0 max 11 min 0
+precon All-flagged with qty per deck: mean 4.86
+most common flagged in precons: [('Sungrass Prairie', 10), ('Beast Within', 10), ('Skycloud Expanse', 10), ('Faithless Looting', 8), ('Mossfire Valley', 8), ('Flooded Grove', 8), ('Rugged Prairie', 8), ('Overflowing Basin', 7), ('Viridescent Bog', 7), ('Darkwater Catacombs', 7), ('Orzhov Signet', 6), ('Twilight Mire', 6), ('Cascade Bluffs', 6), ('Azorius Signet', 6), ('Sunscorched Divide', 6)]
+agent_viability\runs_015_default\plans_2iA_Jt0d6sM.json: plans=4 lines=35 withFlagged=9 pieces=94 flaggedPieces=9 tutors=37 flaggedTutors=2
+agent_viability\runs_015_default\plans_n7WpsqsZtdQ.json: plans=4 lines=38 withFlagged=14 pieces=105 flaggedPieces=14 tutors=30 flaggedTutors=4
+agent_viability\runs_016_engine\plans_2iA_Jt0d6sM.json: plans=4 lines=35 withFlagged=9 pieces=94 flaggedPieces=9 tutors=37 flaggedTutors=2
+agent_viability\runs_016_engine\plans_n7WpsqsZtdQ.json: plans=4 lines=38 withFlagged=14 pieces=105 flaggedPieces=14 tutors=30 flaggedTutors=4
+agent_viability\runs_nocombo\plans_2iA_Jt0d6sM.json: plans=4 lines=0 withFlagged=0 pieces=0 flaggedPieces=0 tutors=37 flaggedTutors=2
+agent_viability\runs_nocombo\plans_n7WpsqsZtdQ.json: plans=4 lines=0 withFlagged=0 pieces=0 flaggedPieces=0 tutors=30 flaggedTutors=4
+agent_viability\runs_pilot\plans_2iA_Jt0d6sM.json: plans=4 lines=35 withFlagged=9 pieces=94 flaggedPieces=9 tutors=37 flaggedTutors=2
+agent_viability\runs_pilot\plans_n7WpsqsZtdQ.json: plans=4 lines=38 withFlagged=14 pieces=105 flaggedPieces=14 tutors=30 flaggedTutors=4
+agent_viability\runs_winmax\plans_2iA_Jt0d6sM.json: plans=4 lines=35 withFlagged=9 pieces=94 flaggedPieces=9 tutors=37 flaggedTutors=2
+agent_viability\runs_winmax\plans_n7WpsqsZtdQ.json: plans=4 lines=38 withFlagged=14 pieces=105 flaggedPieces=14 tutors=30 flaggedTutors=4

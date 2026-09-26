@@ -1,0 +1,16 @@
+== C_hand_tutor_cmdr_owned:av015: games=128 plan own turns=1429 held-tutor turns=318
+   0_owned: affordable by lands 23/31 (74%), by lands+rocks/dorks 30/31 (97%); top held: [('Eldritch Evolution', 7), ('Shared Summons', 4), ("Summoner's Pact", 4), ('Natural Order', 4), ('Gamble', 3), ("Green Sun's Zenith", 3)]
+   1_short: affordable by lands 106/159 (67%), by lands+rocks/dorks 129/159 (81%); top held: [('Chord of Calling', 23), ('Ranger-Captain of Eos', 19), ('Eldritch Evolution', 15), ('Beseech the Mirror', 12), ('Goblin Engineer', 9), ('Shared Summons', 7)]
+   2_short: affordable by lands 93/128 (73%), by lands+rocks/dorks 102/128 (80%); top held: [('Vampiric Tutor', 18), ('Chord of Calling', 17), ('Beseech the Mirror', 17), ('Dizzy Spell', 14), ('Diabolic Intent', 11), ('Demonic Tutor', 10)]
+== C_hand_tutor_cmdr_owned:winmax: games=128 plan own turns=1476 held-tutor turns=432
+   0_owned: affordable by lands 46/74 (62%), by lands+rocks/dorks 54/74 (73%); top held: [('Tooth and Nail', 15), ('Eldritch Evolution', 10), ("Nature's Rhythm", 8), ('Beseech the Mirror', 8), ('Neoform', 7), ('Woodland Bellower', 7)]
+   1_short: affordable by lands 82/183 (45%), by lands+rocks/dorks 117/183 (64%); top held: [('Eldritch Evolution', 26), ('Tezzeret, Cruel Captain', 13), ('Tooth and Nail', 13), ('Ranger-Captain of Eos', 12), ('Kuldotha Forgemaster', 12), ('Tezzeret the Seeker', 12)]
+   2_short: affordable by lands 111/175 (63%), by lands+rocks/dorks 133/175 (76%); top held: [('Beseech the Mirror', 32), ('Diabolic Intent', 28), ('Dizzy Spell', 20), ('Demonic Tutor', 13), ('Chord of Calling', 12), ('Eldritch Evolution', 9)]
+== C_hand_tutor_cmdr_owned:av016: games=128 plan own turns=1511 held-tutor turns=392
+   0_owned: affordable by lands 16/42 (38%), by lands+rocks/dorks 30/42 (71%); top held: [('Tooth and Nail', 14), ('Natural Order', 6), ('Woodland Bellower', 6), ('Idyllic Tutor', 5), ('Fierce Empath', 4), ('Tezzeret, Cruel Captain', 3)]
+   1_short: affordable by lands 114/210 (54%), by lands+rocks/dorks 155/210 (74%); top held: [('Shared Summons', 25), ('Tooth and Nail', 24), ('Natural Order', 17), ('Chord of Calling', 16), ('Eldritch Evolution', 12), ('Kuldotha Forgemaster', 12)]
+   2_short: affordable by lands 98/140 (70%), by lands+rocks/dorks 124/140 (89%); top held: [('Beseech the Mirror', 20), ('Ranger-Captain of Eos', 17), ('Chord of Calling', 15), ('Wargate', 14), ('Mystical Tutor', 14), ('Muddle the Mixture', 11)]
+== C_hand_tutor_cmdr_owned:rubric_ship: games=32 plan own turns=1635 held-tutor turns=461
+   0_owned: affordable by lands 20/29 (69%), by lands+rocks/dorks 20/29 (69%); top held: [('Diabolic Intent', 10), ('Moggcatcher', 4), ('Chord of Calling', 3), ('Gamble', 2), ("Nature's Rhythm", 2), ('Trophy Mage', 2)]
+   1_short: affordable by lands 90/154 (58%), by lands+rocks/dorks 108/154 (70%); top held: [('Beseech the Mirror', 23), ('Diabolic Intent', 18), ('Chord of Calling', 14), ('Gamble', 14), ('Natural Order', 10), ('Ranger-Captain of Eos', 10)]
+   2_short: affordable by lands 161/254 (63%), by lands+rocks/dorks 187/254 (74%); top held: [('Beseech the Mirror', 41), ('Intuition', 31), ('Gifts Ungiven', 28), ('Vampiric Tutor', 23), ('Diabolic Intent', 22), ('Dizzy Spell', 17)]

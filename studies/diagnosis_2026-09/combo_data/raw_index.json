@@ -1,0 +1,405 @@
+{
+ "index": {
+  "3f1ae035d073e8d21d87ab82": [
+   "atraxa_counters"
+  ],
+  "0279355e244421dd20aaea2d": [
+   "drana_vampires"
+  ],
+  "ef823b8c9e5b7309f1032c6c": [
+   "nekusar_punisher"
+  ],
+  "0c0ad849b94bb407dd5ac86e": [
+   "kambal_taxes"
+  ],
+  "52f77a922082b94063763b45": [
+   "2iA_Jt0d6sM__derevi"
+  ],
+  "71d901a12fbc4191042df615": [
+   "2iA_Jt0d6sM__godo_archetype",
+   "5A6o18Bra0Y__godo"
+  ],
+  "4ddf88a1701964640a308866": [
+   "2iA_Jt0d6sM__nadu"
+  ],
+  "8716c9b63cd26fefc9e0d3e9": [
+   "2iA_Jt0d6sM__rograkh_silas"
+  ],
+  "e37e8f0409bad37b20c6aedf": [
+   "5A6o18Bra0Y__cabbage_merchant",
+   "Bq-nFi0f1jA__cabbage_merchant"
+  ],
+  "f8e9d3654ace58eac1508d45": [
+   "5A6o18Bra0Y__malcolm_kediss"
+  ],
+  "3b0d79bea5b722f5667fc7e0": [
+   "5A6o18Bra0Y__rog_ishai"
+  ],
+  "38715dccbfd173cfbfc794d6": [
+   "B421mac67IE__dexter_kinnan"
+  ],
+  "86d3788ecaf6cb439546c920": [
+   "B421mac67IE__isaac_yisan"
+  ],
+  "3bb98140f60d176363e35313": [
+   "B421mac67IE__lily_malcolm_vial"
+  ],
+  "58bfea542a674af8299fe1cb": [
+   "B421mac67IE__matt_sisay"
+  ],
+  "0890850a0ff275a321b5869d": [
+   "Bq-nFi0f1jA__kinnan"
+  ],
+  "ef66d78eb3a7e10ba62426e6": [
+   "Bq-nFi0f1jA__rog_thrasios"
+  ],
+  "bcaa5dccb480069fadae4d4b": [
+   "Bq-nFi0f1jA__yidris"
+  ],
+  "c33ef76eced6f193b38863ac": [
+   "CxKMqO36DdM__alan_tnt"
+  ],
+  "9c6307e35b1a5893fbbd683c": [
+   "CxKMqO36DdM__dallas_bluefarm"
+  ],
+  "1155d2102f6b2240286b57cb": [
+   "CxKMqO36DdM__joseph_ral",
+   "sZA0KqXCGrY__joseph_ral"
+  ],
+  "1ebbef625282cd410032cad6": [
+   "CxKMqO36DdM__sterling_bluefarm"
+  ],
+  "11115e26c714bbe579f568b8": [
+   "OuY6mdiXbHU__winota_ian"
+  ],
+  "b019336b530b142d10ffdace": [
+   "OuY6mdiXbHU__winota_lua"
+  ],
+  "526b217f8ddf872c51206c70": [
+   "OuY6mdiXbHU__winota_mike"
+  ],
+  "ef09faecd06a73dabff8ab55": [
+   "OuY6mdiXbHU__winota_rachel"
+  ],
+  "d46cfebc7c2bde014bb3953b": [
+   "n7WpsqsZtdQ__magda"
+  ],
+  "c182c0c8ac5f49d2d7d7a39a": [
+   "n7WpsqsZtdQ__rog_ishai"
+  ],
+  "3e5f13492ed2dad6ab4fb045": [
+   "n7WpsqsZtdQ__selvala_archetype"
+  ],
+  "fa9aa57511330e0700024c1e": [
+   "n7WpsqsZtdQ__tymna_thrasios"
+  ],
+  "54da3b5734b7ae0406cce3a1": [
+   "sZA0KqXCGrY__ashton_bluefarm"
+  ],
+  "9f778a124933cef6cce12ab8": [
+   "sZA0KqXCGrY__natalie_magda"
+  ],
+  "5f700ec617a3e1e1a889c098": [
+   "sZA0KqXCGrY__tyler_bluefarm"
+  ],
+  "3e150fa3edc90249d96a83b2": [
+   "Planeswalker Party [CMM] [2023]"
+  ],
+  "f454f16c48f7947c8fe428aa": [
+   "Blame Game [MKC] [2024]"
+  ],
+  "f1370932bb723a78076e8dc4": [
+   "Eldrazi Unbound [CMM] [2023]"
+  ],
+  "ecb28cf47859a68586e38f70": [
+   "Legends' Legacy [DMC] [2022]"
+  ],
+  "f351ffebf4b432a510ba4117": [
+   "Jeskai Striker [TDC] [2025]"
+  ],
+  "aa1faabac4bafa07ba132253": [
+   "Tricky Terrain [M3C] [2024]"
+  ],
+  "dd1241f5989ce59892707d4e": [
+   "Lorehold Spirit [SOC] [2026]"
+  ],
+  "e6b9b7c1676cc79a798d2a01": [
+   "World Shaper [EOC] [2025]"
+  ],
+  "67bf87eaa0faac0eb36c9449": [
+   "The Fantastic Four [MSC] [2026]"
+  ],
+  "1b8f4b2eaadcd91f93237a8e": [
+   "Miracle Worker [DSC] [2024]"
+  ],
+  "99695306a184af9cdffb0d09": [
+   "Hail, Caesar [PIP] [2024]"
+  ],
+  "e43251aadd6b9cad67b79bf2": [
+   "Dance of the Elements [ECC] [2026]"
+  ],
+  "6255b1ccc5c4ae2e903f1cb3": [
+   "Prismari Artistry [SOC] [2026]"
+  ],
+  "3eeffe47336c6aaff72541d6": [
+   "Goblin Storm [SLD] [2026]"
+  ],
+  "e79476aa59a11e078b86869e": [
+   "Endless Punishment [DSC] [2024]"
+  ],
+  "a20323d3c85bd47be744eb28": [
+   "Temur Roar [TDC] [2025]"
+  ],
+  "8b2daf264da85f679dc64434": [
+   "Wakanda Forever [MSC] [2026]"
+  ],
+  "58f63b860122205889b53330": [
+   "Scions & Spellcraft [FIC] [2025]"
+  ],
+  "68a1416b2cfb889406ec02e3": [
+   "Revenant Recon [MKC] [2024]"
+  ],
+  "5fd4fc1b7bf081676c523738": [
+   "Veloci-Ramp-Tor [LCC] [2023]"
+  ],
+  "a10372ac63baee6f4b734290": [
+   "Quick Draw [OTC] [2024]"
+  ],
+  "a4dd46827dcf79c669ac025b": [
+   "Animated Army [BLC] [2024]"
+  ],
+  "a687c0d378e8cee1c53250ad": [
+   "Desert Bloom [OTC] [2024]"
+  ],
+  "7af8eae1e9b8a6438b40dcd2": [
+   "Creative Energy [M3C] [2024]"
+  ],
+  "010b018826d61b2c112f3f0d": [
+   "Explorers of the Deep [LCC] [2023]"
+  ],
+  "531ba337ec5b630547c9078e": [
+   "Squirreled Away [BLC] [2024]"
+  ],
+  "c7603f220c7363c585042e13": [
+   "Riders of Rohan [LTC] [2023]"
+  ],
+  "c3e9074229d092886531b330": [
+   "Cavalry Charge [MOC] [2023]"
+  ],
+  "0b1d4a36ac69775a574acec8": [
+   "Peace Offering [BLC] [2024]"
+  ],
+  "8c1300264b63607e630c00aa": [
+   "Eldrazi Incursion [M3C] [2024]"
+  ],
+  "052d5c2aae372137b027619d": [
+   "Limit Break [FIC] [2025]"
+  ],
+  "2bdc36cfece4185ce37ecb97": [
+   "Exit from Exile [CLB] [2022]"
+  ],
+  "8b8add8158ef2b03ec743ec7": [
+   "Revival Trance [FIC] [2025]"
+  ],
+  "a12bcc6aa03232405f1821ce": [
+   "Mardu Surge [TDC] [2025]"
+  ],
+  "1ab37d9886d24e02dc323339": [
+   "Family Matters [BLC] [2024]"
+  ],
+  "320bd5acbd43587ec81e2db0": [
+   "The Host of Mordor [LTC] [2023]"
+  ],
+  "82c96bbcc01ee18e79e8b170": [
+   "Jump Scare! [DSC] [2024]"
+  ],
+  "26cf6206a6f118d2f1e2535f": [
+   "Graveyard Overdrive [M3C] [2024]"
+  ],
+  "9ab35e06741bd6654c62738d": [
+   "Food and Fellowship [LTC] [2023]"
+  ],
+  "22f0e69d2613423b3434c6aa": [
+   "Sultai Arisen [TDC] [2025]"
+  ],
+  "c1e9c8ef2bbdef2aeb3346c2": [
+   "Science! [PIP] [2024]"
+  ],
+  "ae351eb64833fff21efaba61": [
+   "Sliver Swarm [CMM] [2023]"
+  ],
+  "13bbe7867eb55f77beeca8e1": [
+   "Call for Backup [MOC] [2023]"
+  ],
+  "6d0b88ef6a4a9820cdc0885d": [
+   "Enduring Enchantments [CMM] [2023]"
+  ],
+  "2c4e6a7b13caffc61b6956d5": [
+   "Avengers Assemble [MSC] [2026]"
+  ],
+  "935ec64e3378b8a62daf19c7": [
+   "Quandrix Unlimited [SOC] [2026]"
+  ],
+  "ed599fe8a8319ef421ed4c44": [
+   "Death Toll [DSC] [2024]"
+  ],
+  "9b2cc9d295868ced459d6e92": [
+   "Doom Prevails [MSC] [2026]"
+  ],
+  "a7df923d19d7c885273eeb2c": [
+   "Turtle Power! [TMC] [2026]"
+  ],
+  "94a3c933373cb185c9fec2c0": [
+   "Counter Intelligence [EOC] [2025]"
+  ],
+  "a6fbb14d7a5779168b39ee08": [
+   "Silverquill Influence [SOC] [2026]"
+  ],
+  "5efb6a6a0d7b9e3c7071fb6e": [
+   "Scrappy Survivors [PIP] [2024]"
+  ],
+  "ff1ee43972439fd5d0236d4e": [
+   "Abzan Armor [TDC] [2025]"
+  ],
+  "a39b49ba112613d29fa3d2e0": [
+   "Deep Clue Sea [MKC] [2024]"
+  ],
+  "244a06351a6b1394891a184d": [
+   "Most Wanted [OTC] [2024]"
+  ],
+  "bfccfef2eb970dcba69ca7cb": [
+   "Counter Blitz [FIC] [2025]"
+  ],
+  "19213f5b520189e9ae23ee1d": [
+   "Blight Curse [ECC] [2026]"
+  ],
+  "0459cdf42318709754b43d0d": [
+   "Blood Rites [LCC] [2023]"
+  ],
+  "60602ca1f38975570821ec91": [
+   "Ahoy Mateys [LCC] [2023]"
+  ],
+  "a4b874ba90dc9b3f19634503": [
+   "Witherbloom Pestilence [SOC] [2026]"
+  ],
+  "039f36b28ea992c2f8aeb030": [
+   "Obscura Operation [NCC] [2022]"
+  ],
+  "71673f5bd28b75568613de15": [
+   "Mind Flayarrrs [CLB] [2022]"
+  ],
+  "19d6c227fcb68b267b10be9b": [
+   "Mutant Menace [PIP] [2024]"
+  ],
+  "877544b1c29cab6c2c4862b7": [
+   "Elven Council [LTC] [2023]"
+  ],
+  "1478eb69cdad1cf39e2a35f9": [
+   "Grand Larceny [OTC] [2024]"
+  ],
+  "47add28a1434fe395cc4810f": [
+   "Deadly Disguise [MKC] [2024]"
+  ]
+ },
+ "files": {
+  "atraxa_counters": "C:/Users/Vatto/Magic Rules Engine/engine/decks/atraxa_counters.dck",
+  "drana_vampires": "C:/Users/Vatto/Magic Rules Engine/engine/decks/drana_vampires.dck",
+  "nekusar_punisher": "C:/Users/Vatto/Magic Rules Engine/engine/decks/nekusar_punisher.dck",
+  "kambal_taxes": "C:/Users/Vatto/Magic Rules Engine/engine/decks/kambal_taxes.dck",
+  "derevi": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\2iA_Jt0d6sM\\dck\\derevi.dck",
+  "godo_archetype": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\2iA_Jt0d6sM\\dck\\godo_archetype.dck",
+  "nadu": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\2iA_Jt0d6sM\\dck\\nadu.dck",
+  "rograkh_silas": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\2iA_Jt0d6sM\\dck\\rograkh_silas.dck",
+  "cabbage_merchant": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\Bq-nFi0f1jA\\dck\\cabbage_merchant.dck",
+  "godo": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\5A6o18Bra0Y\\dck\\godo.dck",
+  "malcolm_kediss": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\5A6o18Bra0Y\\dck\\malcolm_kediss.dck",
+  "rog_ishai": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\n7WpsqsZtdQ\\dck\\rog_ishai.dck",
+  "dexter_kinnan": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\B421mac67IE\\dck\\dexter_kinnan.dck",
+  "isaac_yisan": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\B421mac67IE\\dck\\isaac_yisan.dck",
+  "lily_malcolm_vial": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\B421mac67IE\\dck\\lily_malcolm_vial.dck",
+  "matt_sisay": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\B421mac67IE\\dck\\matt_sisay.dck",
+  "kinnan": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\Bq-nFi0f1jA\\dck\\kinnan.dck",
+  "rog_thrasios": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\Bq-nFi0f1jA\\dck\\rog_thrasios.dck",
+  "yidris": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\Bq-nFi0f1jA\\dck\\yidris.dck",
+  "alan_tnt": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\CxKMqO36DdM\\dck\\alan_tnt.dck",
+  "dallas_bluefarm": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\CxKMqO36DdM\\dck\\dallas_bluefarm.dck",
+  "joseph_ral": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\sZA0KqXCGrY\\dck\\joseph_ral.dck",
+  "sterling_bluefarm": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\CxKMqO36DdM\\dck\\sterling_bluefarm.dck",
+  "winota_ian": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\OuY6mdiXbHU\\dck\\winota_ian.dck",
+  "winota_lua": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\OuY6mdiXbHU\\dck\\winota_lua.dck",
+  "winota_mike": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\OuY6mdiXbHU\\dck\\winota_mike.dck",
+  "winota_rachel": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\OuY6mdiXbHU\\dck\\winota_rachel.dck",
+  "magda": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\n7WpsqsZtdQ\\dck\\magda.dck",
+  "selvala_archetype": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\n7WpsqsZtdQ\\dck\\selvala_archetype.dck",
+  "tymna_thrasios": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\n7WpsqsZtdQ\\dck\\tymna_thrasios.dck",
+  "ashton_bluefarm": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\sZA0KqXCGrY\\dck\\ashton_bluefarm.dck",
+  "natalie_magda": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\sZA0KqXCGrY\\dck\\natalie_magda.dck",
+  "tyler_bluefarm": "C:/Users/Vatto/Magic Rules Engine/studies/human_ceiling/decks\\sZA0KqXCGrY\\dck\\tyler_bluefarm.dck",
+  "Planeswalker Party [CMM] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Planeswalker Party [CMM] [2023].dck",
+  "Blame Game [MKC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Blame Game [MKC] [2024].dck",
+  "Eldrazi Unbound [CMM] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Eldrazi Unbound [CMM] [2023].dck",
+  "Legends' Legacy [DMC] [2022]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Legends' Legacy [DMC] [2022].dck",
+  "Jeskai Striker [TDC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Jeskai Striker [TDC] [2025].dck",
+  "Tricky Terrain [M3C] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Tricky Terrain [M3C] [2024].dck",
+  "Lorehold Spirit [SOC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Lorehold Spirit [SOC] [2026].dck",
+  "World Shaper [EOC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\World Shaper [EOC] [2025].dck",
+  "The Fantastic Four [MSC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\The Fantastic Four [MSC] [2026].dck",
+  "Miracle Worker [DSC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Miracle Worker [DSC] [2024].dck",
+  "Hail, Caesar [PIP] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Hail, Caesar [PIP] [2024].dck",
+  "Dance of the Elements [ECC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Dance of the Elements [ECC] [2026].dck",
+  "Prismari Artistry [SOC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Prismari Artistry [SOC] [2026].dck",
+  "Goblin Storm [SLD] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Goblin Storm [SLD] [2026].dck",
+  "Endless Punishment [DSC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Endless Punishment [DSC] [2024].dck",
+  "Temur Roar [TDC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Temur Roar [TDC] [2025].dck",
+  "Wakanda Forever [MSC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Wakanda Forever [MSC] [2026].dck",
+  "Scions & Spellcraft [FIC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Scions & Spellcraft [FIC] [2025].dck",
+  "Revenant Recon [MKC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Revenant Recon [MKC] [2024].dck",
+  "Veloci-Ramp-Tor [LCC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Veloci-Ramp-Tor [LCC] [2023].dck",
+  "Quick Draw [OTC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Quick Draw [OTC] [2024].dck",
+  "Animated Army [BLC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Animated Army [BLC] [2024].dck",
+  "Desert Bloom [OTC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Desert Bloom [OTC] [2024].dck",
+  "Creative Energy [M3C] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Creative Energy [M3C] [2024].dck",
+  "Explorers of the Deep [LCC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Explorers of the Deep [LCC] [2023].dck",
+  "Squirreled Away [BLC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Squirreled Away [BLC] [2024].dck",
+  "Riders of Rohan [LTC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Riders of Rohan [LTC] [2023].dck",
+  "Cavalry Charge [MOC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Cavalry Charge [MOC] [2023].dck",
+  "Peace Offering [BLC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Peace Offering [BLC] [2024].dck",
+  "Eldrazi Incursion [M3C] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Eldrazi Incursion [M3C] [2024].dck",
+  "Limit Break [FIC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Limit Break [FIC] [2025].dck",
+  "Exit from Exile [CLB] [2022]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Exit from Exile [CLB] [2022].dck",
+  "Revival Trance [FIC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Revival Trance [FIC] [2025].dck",
+  "Mardu Surge [TDC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Mardu Surge [TDC] [2025].dck",
+  "Family Matters [BLC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Family Matters [BLC] [2024].dck",
+  "The Host of Mordor [LTC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\The Host of Mordor [LTC] [2023].dck",
+  "Jump Scare! [DSC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Jump Scare! [DSC] [2024].dck",
+  "Graveyard Overdrive [M3C] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Graveyard Overdrive [M3C] [2024].dck",
+  "Food and Fellowship [LTC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Food and Fellowship [LTC] [2023].dck",
+  "Sultai Arisen [TDC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Sultai Arisen [TDC] [2025].dck",
+  "Science! [PIP] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Science! [PIP] [2024].dck",
+  "Sliver Swarm [CMM] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Sliver Swarm [CMM] [2023].dck",
+  "Call for Backup [MOC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Call for Backup [MOC] [2023].dck",
+  "Enduring Enchantments [CMM] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Enduring Enchantments [CMM] [2023].dck",
+  "Avengers Assemble [MSC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Avengers Assemble [MSC] [2026].dck",
+  "Quandrix Unlimited [SOC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Quandrix Unlimited [SOC] [2026].dck",
+  "Death Toll [DSC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Death Toll [DSC] [2024].dck",
+  "Doom Prevails [MSC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Doom Prevails [MSC] [2026].dck",
+  "Turtle Power! [TMC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Turtle Power! [TMC] [2026].dck",
+  "Counter Intelligence [EOC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Counter Intelligence [EOC] [2025].dck",
+  "Silverquill Influence [SOC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Silverquill Influence [SOC] [2026].dck",
+  "Scrappy Survivors [PIP] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Scrappy Survivors [PIP] [2024].dck",
+  "Abzan Armor [TDC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Abzan Armor [TDC] [2025].dck",
+  "Deep Clue Sea [MKC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Deep Clue Sea [MKC] [2024].dck",
+  "Most Wanted [OTC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Most Wanted [OTC] [2024].dck",
+  "Counter Blitz [FIC] [2025]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Counter Blitz [FIC] [2025].dck",
+  "Blight Curse [ECC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Blight Curse [ECC] [2026].dck",
+  "Blood Rites [LCC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Blood Rites [LCC] [2023].dck",
+  "Ahoy Mateys [LCC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Ahoy Mateys [LCC] [2023].dck",
+  "Witherbloom Pestilence [SOC] [2026]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Witherbloom Pestilence [SOC] [2026].dck",
+  "Obscura Operation [NCC] [2022]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Obscura Operation [NCC] [2022].dck",
+  "Mind Flayarrrs [CLB] [2022]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Mind Flayarrrs [CLB] [2022].dck",
+  "Mutant Menace [PIP] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Mutant Menace [PIP] [2024].dck",
+  "Elven Council [LTC] [2023]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Elven Council [LTC] [2023].dck",
+  "Grand Larceny [OTC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Grand Larceny [OTC] [2024].dck",
+  "Deadly Disguise [MKC] [2024]": "C:\\Users\\Vatto\\forge\\res\\quest\\commanderprecons\\Deadly Disguise [MKC] [2024].dck"
+ }
+}

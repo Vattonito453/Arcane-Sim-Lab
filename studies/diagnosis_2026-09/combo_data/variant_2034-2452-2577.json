@@ -1,0 +1,203 @@
+{
+ "id": "2034-2452-2577",
+ "of": [
+  {
+   "id": 2457
+  }
+ ],
+ "uses": [
+  {
+   "card": {
+    "id": 2577,
+    "name": "Gravecrawler",
+    "faces": 1,
+    "spoiler": false,
+    "oracleId": "09ff28b1-b6c9-48e6-b12e-2f0e644f709f",
+    "typeLine": "Creature \u2014 Zombie",
+    "imageUriBackPng": null,
+    "imageUriFrontPng": "https://cards.scryfall.io/png/front/6/9/6987d609-ba0f-42bf-9b61-bdfb943c03b5.png?1783907138",
+    "imageUriBackLarge": null,
+    "imageUriBackSmall": null,
+    "imageUriBackNormal": null,
+    "imageUriFrontLarge": "https://cards.scryfall.io/large/front/6/9/6987d609-ba0f-42bf-9b61-bdfb943c03b5.jpg?1783907138",
+    "imageUriFrontSmall": "https://cards.scryfall.io/small/front/6/9/6987d609-ba0f-42bf-9b61-bdfb943c03b5.jpg?1783907138",
+    "layoutRotationFront": null,
+    "imageUriFrontNormal": "https://cards.scryfall.io/normal/front/6/9/6987d609-ba0f-42bf-9b61-bdfb943c03b5.jpg?1783907138",
+    "imageUriBackArtCrop": null,
+    "imageUriFrontArtCrop": "https://cards.scryfall.io/art_crop/front/6/9/6987d609-ba0f-42bf-9b61-bdfb943c03b5.jpg?1783907138"
+   },
+   "quantity": 1,
+   "usedFace": null,
+   "zoneLocations": [
+    "B"
+   ],
+   "exileCardState": "",
+   "mustBeCommander": false,
+   "libraryCardState": "",
+   "graveyardCardState": "",
+   "battlefieldCardState": ""
+  },
+  {
+   "card": {
+    "id": 2452,
+    "name": "Rooftop Storm",
+    "faces": 1,
+    "spoiler": false,
+    "oracleId": "6835bf6d-7197-481b-ac26-276ce363b4ad",
+    "typeLine": "Enchantment",
+    "imageUriBackPng": null,
+    "imageUriFrontPng": "https://cards.scryfall.io/png/front/3/1/31146f03-cb5e-4f33-aad7-ce970b914d90.png?1783908155",
+    "imageUriBackLarge": null,
+    "imageUriBackSmall": null,
+    "imageUriBackNormal": null,
+    "imageUriFrontLarge": "https://cards.scryfall.io/large/front/3/1/31146f03-cb5e-4f33-aad7-ce970b914d90.jpg?1783908155",
+    "imageUriFrontSmall": "https://cards.scryfall.io/small/front/3/1/31146f03-cb5e-4f33-aad7-ce970b914d90.jpg?1783908155",
+    "layoutRotationFront": null,
+    "imageUriFrontNormal": "https://cards.scryfall.io/normal/front/3/1/31146f03-cb5e-4f33-aad7-ce970b914d90.jpg?1783908155",
+    "imageUriBackArtCrop": null,
+    "imageUriFrontArtCrop": "https://cards.scryfall.io/art_crop/front/3/1/31146f03-cb5e-4f33-aad7-ce970b914d90.jpg?1783908155"
+   },
+   "quantity": 1,
+   "usedFace": null,
+   "zoneLocations": [
+    "B"
+   ],
+   "exileCardState": "",
+   "mustBeCommander": false,
+   "libraryCardState": "",
+   "graveyardCardState": "",
+   "battlefieldCardState": ""
+  },
+  {
+   "card": {
+    "id": 2034,
+    "name": "Ashnod's Altar",
+    "faces": 1,
+    "spoiler": false,
+    "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+    "typeLine": "Artifact",
+    "imageUriBackPng": null,
+    "imageUriFrontPng": "https://cards.scryfall.io/png/front/3/c/3c0f7157-a375-499c-92c7-d47d2e95dbad.png?1783915605",
+    "imageUriBackLarge": null,
+    "imageUriBackSmall": null,
+    "imageUriBackNormal": null,
+    "imageUriFrontLarge": "https://cards.scryfall.io/large/front/3/c/3c0f7157-a375-499c-92c7-d47d2e95dbad.jpg?1783915605",
+    "imageUriFrontSmall": "https://cards.scryfall.io/small/front/3/c/3c0f7157-a375-499c-92c7-d47d2e95dbad.jpg?1783915605",
+    "layoutRotationFront": null,
+    "imageUriFrontNormal": "https://cards.scryfall.io/normal/front/3/c/3c0f7157-a375-499c-92c7-d47d2e95dbad.jpg?1783915605",
+    "imageUriBackArtCrop": null,
+    "imageUriFrontArtCrop": "https://cards.scryfall.io/art_crop/front/3/c/3c0f7157-a375-499c-92c7-d47d2e95dbad.jpg?1783915605"
+   },
+   "quantity": 1,
+   "usedFace": null,
+   "zoneLocations": [
+    "B"
+   ],
+   "exileCardState": "",
+   "mustBeCommander": false,
+   "libraryCardState": "",
+   "graveyardCardState": "",
+   "battlefieldCardState": ""
+  }
+ ],
+ "notes": "",
+ "prices": {
+  "tcgplayer": "17.17",
+  "cardmarket": "12.94",
+  "cardkingdom": "19.47"
+ },
+ "status": "OK",
+ "spoiler": false,
+ "identity": "UB",
+ "includes": [
+  {
+   "id": 2457
+  },
+  {
+   "id": 26309
+  }
+ ],
+ "produces": [
+  {
+   "feature": {
+    "id": 7,
+    "name": "Infinite death triggers",
+    "status": "H",
+    "uncountable": true
+   },
+   "quantity": 1
+  },
+  {
+   "feature": {
+    "id": 11,
+    "name": "Infinite colorless mana",
+    "status": "S",
+    "uncountable": true
+   },
+   "quantity": 1
+  },
+  {
+   "feature": {
+    "id": 4,
+    "name": "Infinite creature ETB",
+    "status": "H",
+    "uncountable": true
+   },
+   "quantity": 1
+  },
+  {
+   "feature": {
+    "id": 3,
+    "name": "Infinite creature LTB",
+    "status": "H",
+    "uncountable": true
+   },
+   "quantity": 1
+  },
+  {
+   "feature": {
+    "id": 6,
+    "name": "Infinite creature sacrifice triggers",
+    "status": "H",
+    "uncountable": true
+   },
+   "quantity": 1
+  },
+  {
+   "feature": {
+    "id": 17,
+    "name": "Infinite storm count",
+    "status": "H",
+    "uncountable": true
+   },
+   "quantity": 1
+  }
+ ],
+ "requires": [],
+ "legalities": {
+  "brawl": false,
+  "predh": false,
+  "legacy": true,
+  "modern": false,
+  "pauper": false,
+  "alchemy": false,
+  "pioneer": false,
+  "vintage": true,
+  "standard": false,
+  "commander": true,
+  "premodern": false,
+  "oathbreaker": true,
+  "standardBrawl": false,
+  "pauperCommander": false,
+  "competitiveBrawl": false,
+  "pauperCommanderMain": false
+ },
+ "popularity": 18352,
+ "bracketTag": "E",
+ "description": "Activate Ashnod's Altar by sacrificing Gravecrawler.\nCast Gravecrawler from your graveyard by paying {0}.\nRepeat.",
+ "manaNeeded": "",
+ "variantCount": 13,
+ "manaValueNeeded": 0,
+ "easyPrerequisites": "You control at least one additional Zombie.",
+ "notablePrerequisites": ""
+}

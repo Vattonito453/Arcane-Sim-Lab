@@ -1,0 +1,876 @@
+{
+"illegal": [
+[
+"Summoner's Pact",
+"Staff of Domination",
+18
+],
+[
+"Natural Order",
+"Staff of Domination",
+11
+],
+[
+"Worldly Tutor",
+"Staff of Domination",
+10
+],
+[
+"Enlightened Tutor",
+"Thassa's Oracle",
+10
+],
+[
+"Tezzeret, Cruel Captain",
+"Helm of the Host",
+8
+],
+[
+"Mystical Tutor",
+"Thassa's Oracle",
+8
+],
+[
+"Imperial Recruiter",
+"Helm of the Host",
+7
+],
+[
+"Tezzeret, Cruel Captain",
+"Clock of Omens",
+7
+],
+[
+"Fierce Empath",
+"Staff of Domination",
+7
+],
+[
+"Enlightened Tutor",
+"Emiel the Blessed",
+6
+],
+[
+"Dizzy Spell",
+"Hullbreaker Horror",
+6
+],
+[
+"Mystical Tutor",
+"Hullbreaker Horror",
+6
+],
+[
+"Eldritch Evolution",
+"Staff of Domination",
+6
+],
+[
+"Shared Summons",
+"Staff of Domination",
+6
+],
+[
+"Summoner's Pact",
+"Thassa's Oracle",
+6
+],
+[
+"Summoner's Pact",
+"Demonic Consultation",
+6
+],
+[
+"Ranger-Captain of Eos",
+"Emiel the Blessed",
+5
+],
+[
+"Enlightened Tutor",
+"Hullbreaker Horror",
+5
+],
+[
+"Green Sun's Zenith",
+"Staff of Domination",
+5
+],
+[
+"Spellseeker",
+"Lightning Greaves",
+4
+],
+[
+"Ranger-Captain of Eos",
+"Hullbreaker Horror",
+4
+],
+[
+"Tezzeret, Cruel Captain",
+"Basalt Monolith",
+4
+],
+[
+"Green Sun's Zenith",
+"Mana Vault",
+4
+],
+[
+"Vivien, Monsters' Advocate",
+"Nuka-Cola Vending Machine",
+4
+],
+[
+"Ranger-Captain of Eos",
+"Zealous Conscripts",
+4
+],
+[
+"Chord of Calling",
+"Gaea's Cradle",
+3
+],
+[
+"Mystical Tutor",
+"Lightning Greaves",
+3
+],
+[
+"Trinket Mage",
+"Lightning Greaves",
+3
+],
+[
+"Eldritch Evolution",
+"Lightning Greaves",
+3
+],
+[
+"Mystical Tutor",
+"Cephalid Illusionist",
+3
+],
+[
+"Woodland Bellower",
+"Staff of Domination",
+3
+],
+[
+"Shared Summons",
+"Gaea's Cradle",
+3
+],
+[
+"Worldly Tutor",
+"Gaea's Cradle",
+3
+],
+[
+"Mystical Tutor",
+"Aphetto Alchemist",
+3
+],
+[
+"Trinket Mage",
+"Cephalid Illusionist",
+3
+],
+[
+"Enlightened Tutor",
+"Kiki-Jiki, Mirror Breaker",
+3
+],
+[
+"Goblin Matron",
+"Storm-Kiln Artist",
+3
+],
+[
+"Sand Scout",
+"Sun Titan",
+3
+],
+[
+"Enlightened Tutor",
+"Felidar Guardian",
+2
+],
+[
+"Shared Summons",
+"Mana Vault",
+2
+],
+[
+"Enlightened Tutor",
+"Derevi, Empyrial Tactician",
+2
+],
+[
+"Neoform",
+"Gaea's Cradle",
+2
+],
+[
+"Idyllic Tutor",
+"Sol Ring",
+2
+],
+[
+"Ranger-Captain of Eos",
+"Gaea's Cradle",
+2
+],
+[
+"Spellseeker",
+"Phyrexian Metamorph",
+2
+],
+[
+"Tezzeret, Cruel Captain",
+"Magda, Brazen Outlaw",
+2
+],
+[
+"Nature's Rhythm",
+"Staff of Domination",
+2
+],
+[
+"Mystical Tutor",
+"Swift Reconfiguration",
+2
+],
+[
+"Spellseeker",
+"Emiel the Blessed",
+2
+],
+[
+"Mystical Tutor",
+"Springheart Nantuko",
+2
+],
+[
+"Worldly Tutor",
+"Demonic Consultation",
+2
+],
+[
+"Idyllic Tutor",
+"Hullbreaker Horror",
+2
+],
+[
+"Eldritch Evolution",
+"Nuka-Cola Vending Machine",
+2
+],
+[
+"Mystical Tutor",
+"Devoted Druid",
+2
+],
+[
+"Mystical Tutor",
+"Underworld Breach",
+2
+],
+[
+"Drift of Phantasms",
+"Hullbreaker Horror",
+2
+],
+[
+"Eldritch Evolution",
+"Umbral Mantle",
+2
+],
+[
+"Ranger-Captain of Eos",
+"Bloom Tender",
+1
+],
+[
+"Enlightened Tutor",
+"Gaea's Cradle",
+1
+],
+[
+"Tezzeret, Cruel Captain",
+"Metalworker",
+1
+],
+[
+"Trinket Mage",
+"Lotus Cobra",
+1
+],
+[
+"Spellseeker",
+"Unctus, Grand Metatect",
+1
+],
+[
+"Mystical Tutor",
+"Mana Vault",
+1
+],
+[
+"Ranger-Captain of Eos",
+"Sol Ring",
+1
+],
+[
+"Birthing Pod",
+"Gaea's Cradle",
+1
+],
+[
+"Mystical Tutor",
+"Unctus, Grand Metatect",
+1
+],
+[
+"Trinket Mage",
+"Springheart Nantuko",
+1
+],
+[
+"Tezzeret the Seeker",
+"Lotus Cobra",
+1
+],
+[
+"Spellseeker",
+"Lotus Cobra",
+1
+],
+[
+"Trinket Mage",
+"Unctus, Grand Metatect",
+1
+],
+[
+"Spellseeker",
+"Cephalid Illusionist",
+1
+],
+[
+"Woodland Bellower",
+"Selvala, Heart of the Wilds",
+1
+],
+[
+"Natural Order",
+"Umbral Mantle",
+1
+],
+[
+"Fierce Empath",
+"Quirion Ranger",
+1
+],
+[
+"Imperial Recruiter",
+"Basalt Monolith",
+1
+],
+[
+"Trinket Mage",
+"Aphetto Alchemist",
+1
+],
+[
+"Tezzeret, Cruel Captain",
+"Battered Golem",
+1
+],
+[
+"Enlightened Tutor",
+"Faeburrow Elder",
+1
+],
+[
+"Goblin Engineer",
+"Godo, Bandit Warlord",
+1
+],
+[
+"Transmute Artifact",
+"Springheart Nantuko",
+1
+],
+[
+"Worldly Tutor",
+"Lightning Greaves",
+1
+],
+[
+"Spellseeker",
+"Aphetto Alchemist",
+1
+],
+[
+"Fierce Empath",
+"Selvala, Heart of the Wilds",
+1
+],
+[
+"Mystical Tutor",
+"Mirrormade",
+1
+],
+[
+"Natural Order",
+"Nuka-Cola Vending Machine",
+1
+],
+[
+"Mystical Tutor",
+"Smothering Tithe",
+1
+],
+[
+"Ranger-Captain of Eos",
+"Mana Vault",
+1
+],
+[
+"Green Sun's Zenith",
+"Ioreth of the Healing House",
+1
+],
+[
+"Ranger-Captain of Eos",
+"Ioreth of the Healing House",
+1
+],
+[
+"Drift of Phantasms",
+"Mana Vault",
+1
+],
+[
+"Transmute Artifact",
+"Hullbreaker Horror",
+1
+],
+[
+"Green Sun's Zenith",
+"Hullbreaker Horror",
+1
+],
+[
+"Chord of Calling",
+"Sol Ring",
+1
+],
+[
+"Trophy Mage",
+"Sol Ring",
+1
+],
+[
+"Worldly Tutor",
+"Nuka-Cola Vending Machine",
+1
+],
+[
+"Mystical Tutor",
+"Grinding Station",
+1
+],
+[
+"Fierce Empath",
+"Ashaya, Soul of the Wild",
+1
+],
+[
+"Imperial Recruiter",
+"Zealous Conscripts",
+1
+],
+[
+"Mystical Tutor",
+"Lotus Cobra",
+1
+],
+[
+"Captain Sisay",
+"Phyrexian Metamorph",
+1
+],
+[
+"Sylvan Tutor",
+"Nuka-Cola Vending Machine",
+1
+],
+[
+"Step Through",
+"Narset's Reversal",
+1
+],
+[
+"Time of Need",
+"Nuka-Cola Vending Machine",
+1
+],
+[
+"Dizzy Spell",
+"Basalt Monolith",
+1
+],
+[
+"Woodland Bellower",
+"Kogla, the Titan Ape",
+1
+],
+[
+"Nature's Rhythm",
+"Basalt Monolith",
+1
+],
+[
+"Transmutation Font",
+"Peregrin Took",
+1
+],
+[
+"Chord of Calling",
+"Mana Vault",
+1
+],
+[
+"Eldritch Evolution",
+"Clock of Omens",
+1
+],
+[
+"Enlightened Tutor",
+"Tainted Pact",
+1
+],
+[
+"Summoner's Pact",
+"Swift Reconfiguration",
+1
+],
+[
+"Enlightened Tutor",
+"Zealous Conscripts",
+1
+],
+[
+"Moggcatcher",
+"Zealous Conscripts",
+1
+],
+[
+"Ranger-Captain of Eos",
+"Thassa's Oracle",
+1
+],
+[
+"Goblin Engineer",
+"Magda, Brazen Outlaw",
+1
+],
+[
+"Tezzeret the Seeker",
+"Cephalid Illusionist",
+1
+],
+[
+"Spellseeker",
+"Shuko",
+1
+],
+[
+"Muddle the Mixture",
+"Unctus, Grand Metatect",
+1
+],
+[
+"Dizzy Spell",
+"Brain Freeze",
+1
+],
+[
+"Mystical Tutor",
+"Malcolm, Keen-Eyed Navigator",
+1
+],
+[
+"Trophy Mage",
+"Nyxbloom Ancient",
+1
+],
+[
+"Spellseeker",
+"Oboro Breezecaller",
+1
+],
+[
+"Drift of Phantasms",
+"Sol Ring",
+1
+],
+[
+"Enlightened Tutor",
+"Devoted Druid",
+1
+],
+[
+"Ranger-Captain of Eos",
+"Combat Celebrant",
+1
+],
+[
+"Ranger-Captain of Eos",
+"Underworld Breach",
+1
+],
+[
+"Goblin Matron",
+"Haze of Rage",
+1
+],
+[
+"Dizzy Spell",
+"Smothering Tithe",
+1
+],
+[
+"Woodland Bellower",
+"Umbral Mantle",
+1
+]
+],
+"legal_cond": [
+[
+"Neoform",
+"Phyrexian Metamorph",
+6
+],
+[
+"Neoform",
+"Emiel the Blessed",
+5
+],
+[
+"Wargate",
+"Emiel the Blessed",
+4
+],
+[
+"Eldritch Evolution",
+"Lotus Cobra",
+4
+],
+[
+"Eldritch Evolution",
+"Cephalid Illusionist",
+4
+],
+[
+"Birthing Pod",
+"Phyrexian Metamorph",
+4
+],
+[
+"Tezzeret the Seeker",
+"Unctus, Grand Metatect",
+4
+],
+[
+"Birthing Pod",
+"Emiel the Blessed",
+3
+],
+[
+"Eldritch Evolution",
+"Emiel the Blessed",
+3
+],
+[
+"Eldritch Evolution",
+"Aphetto Alchemist",
+3
+],
+[
+"Eldritch Evolution",
+"Phyrexian Metamorph",
+3
+],
+[
+"Sisay, Weatherlight Captain",
+"Emiel the Blessed",
+3
+],
+[
+"Chord of Calling",
+"Springheart Nantuko",
+2
+],
+[
+"Eldritch Evolution",
+"Unctus, Grand Metatect",
+2
+],
+[
+"Eldritch Evolution",
+"Ashaya, Soul of the Wild",
+2
+],
+[
+"Demonic Counsel",
+"Thassa's Oracle",
+2
+],
+[
+"Eldritch Evolution",
+"Bloom Tender",
+1
+],
+[
+"Neoform",
+"Felidar Guardian",
+1
+],
+[
+"Chord of Calling",
+"Cephalid Illusionist",
+1
+],
+[
+"Chord of Calling",
+"Unctus, Grand Metatect",
+1
+],
+[
+"Transmute Artifact",
+"Unctus, Grand Metatect",
+1
+],
+[
+"Green Sun's Zenith",
+"Springheart Nantuko",
+1
+],
+[
+"Nature's Rhythm",
+"Quirion Ranger",
+1
+],
+[
+"Green Sun's Zenith",
+"Quirion Ranger",
+1
+],
+[
+"Neoform",
+"Derevi, Empyrial Tactician",
+1
+],
+[
+"Chord of Calling",
+"Emiel the Blessed",
+1
+],
+[
+"Chord of Calling",
+"Phyrexian Metamorph",
+1
+],
+[
+"Eldritch Evolution",
+"Springheart Nantuko",
+1
+],
+[
+"Tezzeret the Seeker",
+"Lightning Greaves",
+1
+],
+[
+"Chord of Calling",
+"Quirion Ranger",
+1
+],
+[
+"Sisay, Weatherlight Captain",
+"Marvin, Murderous Mimic",
+1
+],
+[
+"Tezzeret the Seeker",
+"Mana Vault",
+1
+],
+[
+"Demonic Counsel",
+"Demonic Consultation",
+1
+],
+[
+"Chord of Calling",
+"Lotus Cobra",
+1
+],
+[
+"Yisan, the Wanderer Bard",
+"Ashaya, Soul of the Wild",
+1
+],
+[
+"Yisan, the Wanderer Bard",
+"Kogla, the Titan Ape",
+1
+],
+[
+"Birthing Pod",
+"Peregrin Took",
+1
+],
+[
+"Tezzeret the Seeker",
+"Basalt Monolith",
+1
+],
+[
+"Green Sun's Zenith",
+"Ashaya, Soul of the Wild",
+1
+],
+[
+"Chord of Calling",
+"Ioreth of the Healing House",
+1
+],
+[
+"Eldritch Evolution",
+"Devoted Druid",
+1
+],
+[
+"Chord of Calling",
+"Devoted Druid",
+1
+],
+[
+"Nahiri, the Harbinger",
+"Spark Double",
+1
+],
+[
+"Nahiri, the Harbinger",
+"Thrummingbird",
+1
+],
+[
+"Bilbo, Birthday Celebrant",
+"Treebeard, Gracious Host",
+1
+]
+]
+}

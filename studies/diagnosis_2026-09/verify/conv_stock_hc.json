@@ -1,0 +1,3147 @@
+[
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "derevi",
+"agent": "stock",
+"nlines": 10,
+"won": false,
+"winner": "Ai(4)-godo_archetype",
+"method": null,
+"last": 18,
+"win_round": 5,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "nadu",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-godo_archetype",
+"method": null,
+"last": 18,
+"win_round": 5,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "rograkh_silas",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-godo_archetype",
+"method": null,
+"last": 18,
+"win_round": 5,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "godo_archetype",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(4)-godo_archetype",
+"method": "combat",
+"last": 18,
+"win_round": 5,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 12,
+"asm_round": 3,
+"asm_lines": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+]
+]
+],
+"all_lines": [
+"Godo, Bandit Warlord + Helm of the Host"
+],
+"lines_first": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+],
+12,
+3,
+3
+]
+],
+"same_turn_win": false,
+"table_round_asm": 3,
+"table_round_end": 5,
+"lag_rounds": 2,
+"own_round_end": 5
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot1.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "nadu",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(3)-godo_archetype",
+"method": null,
+"last": 55,
+"win_round": 16,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot1.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "rograkh_silas",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(3)-godo_archetype",
+"method": null,
+"last": 55,
+"win_round": 16,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot1.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "godo_archetype",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(3)-godo_archetype",
+"method": "combat",
+"last": 55,
+"win_round": 16,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot1.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "derevi",
+"agent": "stock",
+"nlines": 10,
+"won": false,
+"winner": "Ai(3)-godo_archetype",
+"method": null,
+"last": 55,
+"win_round": 16,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot2.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "rograkh_silas",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(2)-godo_archetype",
+"method": null,
+"last": 50,
+"win_round": 17,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot2.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "godo_archetype",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(2)-godo_archetype",
+"method": "combat",
+"last": 50,
+"win_round": 17,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 42,
+"asm_round": 13,
+"asm_lines": [
+[
+"Basalt Monolith + Forsaken Monument",
+[
+"Infinite colorless mana"
+]
+]
+],
+"all_lines": [
+"Basalt Monolith + Forsaken Monument"
+],
+"lines_first": [
+[
+"Basalt Monolith + Forsaken Monument",
+[
+"Infinite colorless mana"
+],
+42,
+13,
+13
+]
+],
+"same_turn_win": false,
+"table_round_asm": 13,
+"table_round_end": 17,
+"lag_rounds": 4,
+"own_round_end": 17
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot2.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "derevi",
+"agent": "stock",
+"nlines": 10,
+"won": false,
+"winner": "Ai(2)-godo_archetype",
+"method": null,
+"last": 50,
+"win_round": 17,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot2.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "nadu",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(2)-godo_archetype",
+"method": null,
+"last": 50,
+"win_round": 17,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot3.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "godo_archetype",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-rograkh_silas",
+"method": null,
+"last": 31,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot3.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "derevi",
+"agent": "stock",
+"nlines": 10,
+"won": false,
+"winner": "Ai(4)-rograkh_silas",
+"method": null,
+"last": 31,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 16,
+"asm_round": 4,
+"asm_lines": [
+[
+"Derevi, Empyrial Tactician + Emiel the Blessed + Mana Vault",
+[
+"Infinite creature LTB",
+"Infinite creature ETB"
+]
+]
+],
+"all_lines": [
+"Derevi, Empyrial Tactician + Emiel the Blessed + Mana Vault"
+],
+"lines_first": [
+[
+"Derevi, Empyrial Tactician + Emiel the Blessed + Mana Vault",
+[
+"Infinite creature LTB",
+"Infinite creature ETB"
+],
+16,
+4,
+4
+]
+],
+"same_turn_win": false,
+"table_round_asm": 4,
+"table_round_end": 9,
+"lag_rounds": 5,
+"own_round_end": 8
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot3.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "nadu",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-rograkh_silas",
+"method": null,
+"last": 31,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_2iA_Jt0d6sM_rot3.jsonl",
+"g": 0,
+"pod": "2iA_Jt0d6sM",
+"deck": "rograkh_silas",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(4)-rograkh_silas",
+"method": "combat",
+"last": 31,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot0.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-godo",
+"method": null,
+"last": 55,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot0.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "malcolm_kediss",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-godo",
+"method": null,
+"last": 55,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot0.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-godo",
+"method": null,
+"last": 55,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot0.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "godo",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(4)-godo",
+"method": "combat",
+"last": 55,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 50,
+"asm_round": 13,
+"asm_lines": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+]
+]
+],
+"all_lines": [
+"Godo, Bandit Warlord + Helm of the Host"
+],
+"lines_first": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+],
+50,
+13,
+13
+]
+],
+"same_turn_win": false,
+"table_round_asm": 13,
+"table_round_end": 15,
+"lag_rounds": 2,
+"own_round_end": 15
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot1.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "malcolm_kediss",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(3)-godo",
+"method": null,
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot1.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(3)-godo",
+"method": null,
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot1.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "godo",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(3)-godo",
+"method": "combat",
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 22,
+"asm_round": 6,
+"asm_lines": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+]
+]
+],
+"all_lines": [
+"Godo, Bandit Warlord + Helm of the Host"
+],
+"lines_first": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+],
+22,
+6,
+6
+]
+],
+"same_turn_win": false,
+"table_round_asm": 6,
+"table_round_end": 9,
+"lag_rounds": 3,
+"own_round_end": 9
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot1.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(3)-godo",
+"method": null,
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot2.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(3)-rog_ishai",
+"method": null,
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot2.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "godo",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(3)-rog_ishai",
+"method": null,
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 19,
+"asm_round": 5,
+"asm_lines": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+]
+]
+],
+"all_lines": [
+"Godo, Bandit Warlord + Helm of the Host"
+],
+"lines_first": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+],
+19,
+5,
+5
+]
+],
+"same_turn_win": false,
+"table_round_asm": 5,
+"table_round_end": 13,
+"lag_rounds": 8,
+"own_round_end": 7
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot2.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(3)-rog_ishai",
+"method": "combat",
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot2.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "malcolm_kediss",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(3)-rog_ishai",
+"method": null,
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot3.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "godo",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-cabbage_merchant",
+"method": null,
+"last": 49,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 22,
+"asm_round": 6,
+"asm_lines": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+]
+]
+],
+"all_lines": [
+"Godo, Bandit Warlord + Helm of the Host"
+],
+"lines_first": [
+[
+"Godo, Bandit Warlord + Helm of the Host",
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+],
+22,
+6,
+6
+]
+],
+"same_turn_win": false,
+"table_round_asm": 6,
+"table_round_end": 15,
+"lag_rounds": 9,
+"own_round_end": 12
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot3.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-cabbage_merchant",
+"method": null,
+"last": 49,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot3.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "malcolm_kediss",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-cabbage_merchant",
+"method": null,
+"last": 49,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 20,
+"asm_round": 5,
+"asm_lines": [
+[
+"Niv-Mizzet, Parun + Ophidian Eye",
+[
+"Infinite card draw",
+"Infinite draw triggers",
+"Near-infinite damage"
+]
+]
+],
+"all_lines": [
+"Niv-Mizzet, Parun + Ophidian Eye"
+],
+"lines_first": [
+[
+"Niv-Mizzet, Parun + Ophidian Eye",
+[
+"Infinite card draw",
+"Infinite draw triggers",
+"Near-infinite damage"
+],
+20,
+5,
+5
+]
+],
+"same_turn_win": false,
+"table_round_asm": 5,
+"table_round_end": 15,
+"lag_rounds": 10,
+"own_round_end": 8
+},
+{
+"file": "shim_raw_hc_5A6o18Bra0Y_rot3.jsonl",
+"g": 0,
+"pod": "5A6o18Bra0Y",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(4)-cabbage_merchant",
+"method": "combat",
+"last": 49,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot0.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "matt_sisay",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(4)-isaac_yisan",
+"method": null,
+"last": 48,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot0.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "dexter_kinnan",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(4)-isaac_yisan",
+"method": null,
+"last": 48,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot0.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "lily_malcolm_vial",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-isaac_yisan",
+"method": null,
+"last": 48,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot0.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "isaac_yisan",
+"agent": "stock",
+"nlines": 29,
+"won": true,
+"winner": "Ai(4)-isaac_yisan",
+"method": "combat",
+"last": 48,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 43,
+"asm_round": 11,
+"asm_lines": [
+[
+"Priest of Titania + Shang-Chi, Master of Kung Fu + Temur Sabertooth",
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking of some creatures",
+"Infinite green mana",
+"Infinite storm count"
+]
+]
+],
+"all_lines": [
+"Priest of Titania + Shang-Chi, Master of Kung Fu + Temur Sabertooth",
+"Argothian Elder + Ashaya, Soul of the Wild",
+"Circle of Dreams Druid + Shang-Chi, Master of Kung Fu + Temur Sabertooth",
+"Marvin, Murderous Mimic + Pili-Pala + Priest of Titania",
+"Circle of Dreams Druid + Marvin, Murderous Mimic + Pili-Pala",
+"Argothian Elder + Marvin, Murderous Mimic + Pili-Pala",
+"Ashaya, Soul of the Wild + Magus of the Candelabra + Priest of Titania",
+"Ashaya, Soul of the Wild + Circle of Dreams Druid + Magus of the Candelabra",
+"Ashaya, Soul of the Wild + Priest of Titania + Scryb Ranger",
+"Ashaya, Soul of the Wild + Circle of Dreams Druid + Scryb Ranger"
+],
+"lines_first": [
+[
+"Priest of Titania + Shang-Chi, Master of Kung Fu + Temur Sabertooth",
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking of some creatures",
+"Infinite green mana",
+"Infinite storm count"
+],
+43,
+11,
+11
+],
+[
+"Argothian Elder + Ashaya, Soul of the Wild",
+[
+"Infinite mana lands you control can produce",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+],
+45,
+12,
+12
+],
+[
+"Circle of Dreams Druid + Shang-Chi, Master of Kung Fu + Temur Sabertooth",
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking of some creatures",
+"Infinite green mana",
+"Infinite storm count"
+],
+48,
+13,
+13
+],
+[
+"Marvin, Murderous Mimic + Pili-Pala + Priest of Titania",
+[
+"Infinite colored mana"
+],
+48,
+13,
+13
+],
+[
+"Circle of Dreams Druid + Marvin, Murderous Mimic + Pili-Pala",
+[
+"Infinite colored mana"
+],
+48,
+13,
+13
+],
+[
+"Argothian Elder + Marvin, Murderous Mimic + Pili-Pala",
+[
+"Infinite colored mana",
+"Infinite mana lands you control can produce",
+"Infinite untap of lands you control"
+],
+48,
+13,
+13
+],
+[
+"Ashaya, Soul of the Wild + Magus of the Candelabra + Priest of Titania",
+[
+"Infinite mana lands you control can produce",
+"Infinite green mana",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+],
+48,
+13,
+13
+],
+[
+"Ashaya, Soul of the Wild + Circle of Dreams Druid + Magus of the Candelabra",
+[
+"Infinite mana lands you control can produce",
+"Infinite green mana",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+],
+48,
+13,
+13
+],
+[
+"Ashaya, Soul of the Wild + Priest of Titania + Scryb Ranger",
+[
+"Infinite creature ETB",
+"Infinite green mana",
+"Infinite landfall triggers",
+"Infinite creature LTB",
+"Infinite storm count"
+],
+48,
+13,
+13
+],
+[
+"Ashaya, Soul of the Wild + Circle of Dreams Druid + Scryb Ranger",
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite storm count",
+"Infinite green mana",
+"Infinite landfall triggers"
+],
+48,
+13,
+13
+]
+],
+"same_turn_win": false,
+"table_round_asm": 11,
+"table_round_end": 13,
+"lag_rounds": 2,
+"own_round_end": 13
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot1.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "dexter_kinnan",
+"agent": "stock",
+"nlines": 4,
+"won": true,
+"winner": "Ai(1)-dexter_kinnan",
+"method": "combat",
+"last": 64,
+"win_round": 20,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot1.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "lily_malcolm_vial",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(1)-dexter_kinnan",
+"method": null,
+"last": 64,
+"win_round": 20,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 55,
+"asm_round": 15,
+"asm_lines": [
+[
+"Glint-Horn Buccaneer + Malcolm, Keen-Eyed Navigator",
+[
+"Near-infinite damage",
+"Near-infinite self-discard triggers",
+"Near-infinite draw triggers"
+]
+],
+[
+"Curiosity + Glint-Horn Buccaneer",
+[
+"Infinite draw triggers",
+"Infinite rummaging",
+"Infinite self-discard triggers",
+"Near-infinite damage"
+]
+]
+],
+"all_lines": [
+"Glint-Horn Buccaneer + Malcolm, Keen-Eyed Navigator",
+"Curiosity + Glint-Horn Buccaneer"
+],
+"lines_first": [
+[
+"Glint-Horn Buccaneer + Malcolm, Keen-Eyed Navigator",
+[
+"Near-infinite damage",
+"Near-infinite self-discard triggers",
+"Near-infinite draw triggers"
+],
+55,
+15,
+15
+],
+[
+"Curiosity + Glint-Horn Buccaneer",
+[
+"Infinite draw triggers",
+"Infinite rummaging",
+"Infinite self-discard triggers",
+"Near-infinite damage"
+],
+55,
+15,
+15
+]
+],
+"same_turn_win": false,
+"table_round_asm": 15,
+"table_round_end": 20,
+"lag_rounds": 5,
+"own_round_end": 19
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot1.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "isaac_yisan",
+"agent": "stock",
+"nlines": 29,
+"won": false,
+"winner": "Ai(1)-dexter_kinnan",
+"method": null,
+"last": 64,
+"win_round": 20,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot1.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "matt_sisay",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-dexter_kinnan",
+"method": null,
+"last": 64,
+"win_round": 20,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot2.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "lily_malcolm_vial",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(1)-lily_malcolm_vial",
+"method": "combat",
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 29,
+"asm_round": 8,
+"asm_lines": [
+[
+"Glint-Horn Buccaneer + Malcolm, Keen-Eyed Navigator",
+[
+"Near-infinite damage",
+"Near-infinite self-discard triggers",
+"Near-infinite draw triggers"
+]
+],
+[
+"Curiosity + Glint-Horn Buccaneer",
+[
+"Infinite draw triggers",
+"Infinite rummaging",
+"Infinite self-discard triggers",
+"Near-infinite damage"
+]
+]
+],
+"all_lines": [
+"Glint-Horn Buccaneer + Malcolm, Keen-Eyed Navigator",
+"Curiosity + Glint-Horn Buccaneer"
+],
+"lines_first": [
+[
+"Glint-Horn Buccaneer + Malcolm, Keen-Eyed Navigator",
+[
+"Near-infinite damage",
+"Near-infinite self-discard triggers",
+"Near-infinite draw triggers"
+],
+29,
+8,
+8
+],
+[
+"Curiosity + Glint-Horn Buccaneer",
+[
+"Infinite draw triggers",
+"Infinite rummaging",
+"Infinite self-discard triggers",
+"Near-infinite damage"
+],
+29,
+8,
+8
+]
+],
+"same_turn_win": false,
+"table_round_asm": 8,
+"table_round_end": 9,
+"lag_rounds": 1,
+"own_round_end": 9
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot2.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "isaac_yisan",
+"agent": "stock",
+"nlines": 29,
+"won": false,
+"winner": "Ai(1)-lily_malcolm_vial",
+"method": null,
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot2.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "matt_sisay",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-lily_malcolm_vial",
+"method": null,
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot2.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "dexter_kinnan",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(1)-lily_malcolm_vial",
+"method": null,
+"last": 32,
+"win_round": 9,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot3.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "isaac_yisan",
+"agent": "stock",
+"nlines": 29,
+"won": false,
+"winner": null,
+"method": null,
+"last": 41,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null,
+"asm_turn": 39,
+"asm_round": 10,
+"asm_lines": [
+[
+"Ashaya, Soul of the Wild + Circle of Dreams Druid + Magus of the Candelabra",
+[
+"Infinite mana lands you control can produce",
+"Infinite green mana",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+]
+]
+],
+"all_lines": [
+"Ashaya, Soul of the Wild + Circle of Dreams Druid + Magus of the Candelabra"
+],
+"lines_first": [
+[
+"Ashaya, Soul of the Wild + Circle of Dreams Druid + Magus of the Candelabra",
+[
+"Infinite mana lands you control can produce",
+"Infinite green mana",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+],
+39,
+10,
+10
+]
+],
+"same_turn_win": false,
+"table_round_asm": 10,
+"table_round_end": 11,
+"lag_rounds": 1,
+"own_round_end": 10
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot3.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "matt_sisay",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": null,
+"method": null,
+"last": 41,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot3.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "dexter_kinnan",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": null,
+"method": null,
+"last": 41,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null,
+"asm_turn": 29,
+"asm_round": 8,
+"asm_lines": [
+[
+"Basalt Monolith + Kinnan, Bonder Prodigy",
+[
+"Infinite colorless mana"
+]
+]
+],
+"all_lines": [
+"Basalt Monolith + Kinnan, Bonder Prodigy"
+],
+"lines_first": [
+[
+"Basalt Monolith + Kinnan, Bonder Prodigy",
+[
+"Infinite colorless mana"
+],
+29,
+8,
+8
+]
+],
+"same_turn_win": false,
+"table_round_asm": 8,
+"table_round_end": 11,
+"lag_rounds": 3,
+"own_round_end": 11
+},
+{
+"file": "shim_raw_hc_B421mac67IE_rot3.jsonl",
+"g": 0,
+"pod": "B421mac67IE",
+"deck": "lily_malcolm_vial",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": null,
+"method": null,
+"last": 41,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot0.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-kinnan",
+"method": null,
+"last": 48,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot0.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "yidris",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(4)-kinnan",
+"method": null,
+"last": 48,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot0.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "rog_thrasios",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(4)-kinnan",
+"method": null,
+"last": 48,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot0.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "kinnan",
+"agent": "stock",
+"nlines": 6,
+"won": true,
+"winner": "Ai(4)-kinnan",
+"method": "combat",
+"last": 48,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 47,
+"asm_round": 14,
+"asm_lines": [
+[
+"Hullbreaker Horror + Mox Amber",
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite colored mana",
+"Infinite storm count"
+]
+]
+],
+"all_lines": [
+"Hullbreaker Horror + Mox Amber"
+],
+"lines_first": [
+[
+"Hullbreaker Horror + Mox Amber",
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite colored mana",
+"Infinite storm count"
+],
+47,
+14,
+14
+]
+],
+"same_turn_win": false,
+"table_round_asm": 14,
+"table_round_end": 15,
+"lag_rounds": 1,
+"own_round_end": 15
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot1.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "yidris",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": null,
+"method": null,
+"last": 42,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot1.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "rog_thrasios",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": null,
+"method": null,
+"last": 42,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot1.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "kinnan",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": null,
+"method": null,
+"last": 42,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null,
+"asm_turn": 42,
+"asm_round": 11,
+"asm_lines": [
+[
+"Basalt Monolith + Nyxbloom Ancient",
+[
+"Infinite colorless mana"
+]
+]
+],
+"all_lines": [
+"Basalt Monolith + Nyxbloom Ancient"
+],
+"lines_first": [
+[
+"Basalt Monolith + Nyxbloom Ancient",
+[
+"Infinite colorless mana"
+],
+42,
+11,
+11
+]
+],
+"same_turn_win": false,
+"table_round_asm": 11,
+"table_round_end": 11,
+"lag_rounds": 0,
+"own_round_end": 11
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot1.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": null,
+"method": null,
+"last": 42,
+"win_round": null,
+"timedOut": true,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot2.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "rog_thrasios",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(3)-cabbage_merchant",
+"method": null,
+"last": 33,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot2.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "kinnan",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(3)-cabbage_merchant",
+"method": null,
+"last": 33,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot2.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(3)-cabbage_merchant",
+"method": "combat",
+"last": 33,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot2.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "yidris",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(3)-cabbage_merchant",
+"method": null,
+"last": 33,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot3.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "kinnan",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(2)-cabbage_merchant",
+"method": null,
+"last": 47,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 38,
+"asm_round": 10,
+"asm_lines": [
+[
+"Hullbreaker Horror + Mana Vault",
+[
+"Infinite colorless mana",
+"Infinite storm count"
+]
+]
+],
+"all_lines": [
+"Hullbreaker Horror + Mana Vault"
+],
+"lines_first": [
+[
+"Hullbreaker Horror + Mana Vault",
+[
+"Infinite colorless mana",
+"Infinite storm count"
+],
+38,
+10,
+10
+]
+],
+"same_turn_win": false,
+"table_round_asm": 10,
+"table_round_end": 13,
+"lag_rounds": 3,
+"own_round_end": 10
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot3.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "cabbage_merchant",
+"agent": "stock",
+"nlines": 8,
+"won": true,
+"winner": "Ai(2)-cabbage_merchant",
+"method": "combat",
+"last": 47,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot3.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "yidris",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(2)-cabbage_merchant",
+"method": null,
+"last": 47,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_Bq-nFi0f1jA_rot3.jsonl",
+"g": 0,
+"pod": "Bq-nFi0f1jA",
+"deck": "rog_thrasios",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(2)-cabbage_merchant",
+"method": null,
+"last": 47,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot0.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "dallas_bluefarm",
+"agent": "stock",
+"nlines": 6,
+"won": true,
+"winner": "Ai(1)-dallas_bluefarm",
+"method": "combat",
+"last": 51,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 32,
+"asm_round": 8,
+"asm_lines": [
+[
+"Grinding Station + Underworld Breach",
+[
+"Infinite self-mill",
+"Near-infinite storm count",
+"Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+]
+]
+],
+"all_lines": [
+"Grinding Station + Underworld Breach"
+],
+"lines_first": [
+[
+"Grinding Station + Underworld Breach",
+[
+"Infinite self-mill",
+"Near-infinite storm count",
+"Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+],
+32,
+8,
+8
+]
+],
+"same_turn_win": false,
+"table_round_asm": 8,
+"table_round_end": 15,
+"lag_rounds": 7,
+"own_round_end": 15
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot0.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "alan_tnt",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(1)-dallas_bluefarm",
+"method": null,
+"last": 51,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot0.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "sterling_bluefarm",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(1)-dallas_bluefarm",
+"method": null,
+"last": 51,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot0.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-dallas_bluefarm",
+"method": null,
+"last": 51,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot1.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "alan_tnt",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(2)-sterling_bluefarm",
+"method": null,
+"last": 52,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot1.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "sterling_bluefarm",
+"agent": "stock",
+"nlines": 4,
+"won": true,
+"winner": "Ai(2)-sterling_bluefarm",
+"method": "combat",
+"last": 52,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 45,
+"asm_round": 12,
+"asm_lines": [
+[
+"Demonic Consultation + Thassa's Oracle",
+[
+"Exile your library",
+"Win the game"
+]
+]
+],
+"all_lines": [
+"Demonic Consultation + Thassa's Oracle"
+],
+"lines_first": [
+[
+"Demonic Consultation + Thassa's Oracle",
+[
+"Exile your library",
+"Win the game"
+],
+45,
+12,
+12
+]
+],
+"same_turn_win": false,
+"table_round_asm": 12,
+"table_round_end": 15,
+"lag_rounds": 3,
+"own_round_end": 15
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot1.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(2)-sterling_bluefarm",
+"method": null,
+"last": 52,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot1.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "dallas_bluefarm",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(2)-sterling_bluefarm",
+"method": null,
+"last": 52,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "sterling_bluefarm",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(4)-alan_tnt",
+"method": null,
+"last": 43,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 34,
+"asm_round": 9,
+"asm_lines": [
+[
+"Demonic Consultation + Thassa's Oracle",
+[
+"Exile your library",
+"Win the game"
+]
+]
+],
+"all_lines": [
+"Demonic Consultation + Thassa's Oracle"
+],
+"lines_first": [
+[
+"Demonic Consultation + Thassa's Oracle",
+[
+"Exile your library",
+"Win the game"
+],
+34,
+9,
+9
+]
+],
+"same_turn_win": false,
+"table_round_asm": 9,
+"table_round_end": 13,
+"lag_rounds": 4,
+"own_round_end": 10
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(4)-alan_tnt",
+"method": null,
+"last": 43,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "dallas_bluefarm",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(4)-alan_tnt",
+"method": null,
+"last": 43,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "alan_tnt",
+"agent": "stock",
+"nlines": 6,
+"won": true,
+"winner": "Ai(4)-alan_tnt",
+"method": "noncombat",
+"last": 43,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot3.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(3)-alan_tnt",
+"method": null,
+"last": 47,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot3.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "dallas_bluefarm",
+"agent": "stock",
+"nlines": 6,
+"won": false,
+"winner": "Ai(3)-alan_tnt",
+"method": null,
+"last": 47,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot3.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "alan_tnt",
+"agent": "stock",
+"nlines": 6,
+"won": true,
+"winner": "Ai(3)-alan_tnt",
+"method": "noncombat",
+"last": 47,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_CxKMqO36DdM_rot3.jsonl",
+"g": 0,
+"pod": "CxKMqO36DdM",
+"deck": "sterling_bluefarm",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(3)-alan_tnt",
+"method": null,
+"last": 47,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot0.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_ian",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-winota_mike",
+"method": null,
+"last": 45,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot0.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_lua",
+"agent": "stock",
+"nlines": 5,
+"won": false,
+"winner": "Ai(4)-winota_mike",
+"method": null,
+"last": 45,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot0.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_rachel",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-winota_mike",
+"method": null,
+"last": 45,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot0.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_mike",
+"agent": "stock",
+"nlines": 4,
+"won": true,
+"winner": "Ai(4)-winota_mike",
+"method": "combat",
+"last": 45,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 45,
+"asm_round": 13,
+"asm_lines": [
+[
+"Kiki-Jiki, Mirror Breaker + Zealous Conscripts",
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers"
+]
+]
+],
+"all_lines": [
+"Kiki-Jiki, Mirror Breaker + Zealous Conscripts"
+],
+"lines_first": [
+[
+"Kiki-Jiki, Mirror Breaker + Zealous Conscripts",
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers"
+],
+45,
+13,
+13
+]
+],
+"same_turn_win": true,
+"table_round_asm": 13,
+"table_round_end": 13,
+"lag_rounds": 0,
+"own_round_end": 13
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot1.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_lua",
+"agent": "stock",
+"nlines": 5,
+"won": false,
+"winner": "Ai(4)-winota_ian",
+"method": null,
+"last": 36,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot1.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_rachel",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-winota_ian",
+"method": null,
+"last": 36,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot1.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_mike",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(4)-winota_ian",
+"method": null,
+"last": 36,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot1.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_ian",
+"agent": "stock",
+"nlines": 3,
+"won": true,
+"winner": "Ai(4)-winota_ian",
+"method": "combat",
+"last": 36,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 33,
+"asm_round": 9,
+"asm_lines": [
+[
+"Combat Celebrant + Rionya, Fire Dancer",
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+]
+]
+],
+"all_lines": [
+"Combat Celebrant + Rionya, Fire Dancer"
+],
+"lines_first": [
+[
+"Combat Celebrant + Rionya, Fire Dancer",
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+],
+33,
+9,
+9
+]
+],
+"same_turn_win": false,
+"table_round_asm": 9,
+"table_round_end": 10,
+"lag_rounds": 1,
+"own_round_end": 10
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot2.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_rachel",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-winota_lua",
+"method": null,
+"last": 34,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot2.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_mike",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(4)-winota_lua",
+"method": null,
+"last": 34,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot2.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_ian",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-winota_lua",
+"method": null,
+"last": 34,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot2.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_lua",
+"agent": "stock",
+"nlines": 5,
+"won": true,
+"winner": "Ai(4)-winota_lua",
+"method": "combat",
+"last": 34,
+"win_round": 10,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 18,
+"asm_round": 5,
+"asm_lines": [
+[
+"Combat Celebrant + Kiki-Jiki, Mirror Breaker",
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+]
+]
+],
+"all_lines": [
+"Combat Celebrant + Kiki-Jiki, Mirror Breaker"
+],
+"lines_first": [
+[
+"Combat Celebrant + Kiki-Jiki, Mirror Breaker",
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+],
+18,
+5,
+5
+]
+],
+"same_turn_win": false,
+"table_round_asm": 5,
+"table_round_end": 10,
+"lag_rounds": 5,
+"own_round_end": 10
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot3.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_mike",
+"agent": "stock",
+"nlines": 4,
+"won": false,
+"winner": "Ai(4)-winota_rachel",
+"method": null,
+"last": 38,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot3.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_ian",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-winota_rachel",
+"method": null,
+"last": 38,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot3.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_lua",
+"agent": "stock",
+"nlines": 5,
+"won": false,
+"winner": "Ai(4)-winota_rachel",
+"method": null,
+"last": 38,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_OuY6mdiXbHU_rot3.jsonl",
+"g": 0,
+"pod": "OuY6mdiXbHU",
+"deck": "winota_rachel",
+"agent": "stock",
+"nlines": 3,
+"won": true,
+"winner": "Ai(4)-winota_rachel",
+"method": "combat",
+"last": 38,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 25,
+"asm_round": 7,
+"asm_lines": [
+[
+"Combat Celebrant + Rionya, Fire Dancer",
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+]
+]
+],
+"all_lines": [
+"Combat Celebrant + Rionya, Fire Dancer",
+"Kiki-Jiki, Mirror Breaker + Zealous Conscripts",
+"Combat Celebrant + Kiki-Jiki, Mirror Breaker"
+],
+"lines_first": [
+[
+"Combat Celebrant + Rionya, Fire Dancer",
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+],
+25,
+7,
+7
+],
+[
+"Kiki-Jiki, Mirror Breaker + Zealous Conscripts",
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers"
+],
+29,
+8,
+8
+],
+[
+"Combat Celebrant + Kiki-Jiki, Mirror Breaker",
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+],
+29,
+8,
+8
+]
+],
+"same_turn_win": false,
+"table_round_asm": 7,
+"table_round_end": 11,
+"lag_rounds": 4,
+"own_round_end": 11
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot0.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "magda",
+"agent": "stock",
+"nlines": 11,
+"won": true,
+"winner": "Ai(1)-magda",
+"method": "combat",
+"last": 37,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 32,
+"asm_round": 9,
+"asm_lines": [
+[
+"Adaptive Automaton + Clock of Omens + Magda, Brazen Outlaw",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+]
+],
+"all_lines": [
+"Adaptive Automaton + Clock of Omens + Magda, Brazen Outlaw",
+"Clock of Omens + Magda, Brazen Outlaw + Roaming Throne",
+"Battered Golem + Magda, Brazen Outlaw + Maskwood Nexus",
+"Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Maskwood Nexus",
+"Barkform Harvester + Clock of Omens + Magda, Brazen Outlaw",
+"Clock of Omens + Magda, Brazen Outlaw + Metallic Mimic",
+"Clock of Omens + Magda, Brazen Outlaw + Three Tree Mascot",
+"Battered Golem + Magda, Brazen Outlaw + Stalactite Dagger",
+"Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Stalactite Dagger",
+"Clock of Omens + Liquimetal Torque + Magda, Brazen Outlaw",
+"Clock of Omens + Magda, Brazen Outlaw + Universal Automaton"
+],
+"lines_first": [
+[
+"Adaptive Automaton + Clock of Omens + Magda, Brazen Outlaw",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+32,
+9,
+9
+],
+[
+"Clock of Omens + Magda, Brazen Outlaw + Roaming Throne",
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+"Infinite colored mana",
+"Infinite Treasure tokens",
+"Infinite mana artifacts you control can produce",
+"Infinite untap of artifacts you control"
+],
+35,
+10,
+10
+],
+[
+"Battered Golem + Magda, Brazen Outlaw + Maskwood Nexus",
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite colored mana",
+"Infinite Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+35,
+10,
+10
+],
+[
+"Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Maskwood Nexus",
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite colored mana",
+"Infinitely powerful creatures you control until end of turn",
+"Infinite Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+35,
+10,
+10
+],
+[
+"Barkform Harvester + Clock of Omens + Magda, Brazen Outlaw",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+37,
+11,
+11
+],
+[
+"Clock of Omens + Magda, Brazen Outlaw + Metallic Mimic",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+37,
+11,
+11
+],
+[
+"Clock of Omens + Magda, Brazen Outlaw + Three Tree Mascot",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+37,
+11,
+11
+],
+[
+"Battered Golem + Magda, Brazen Outlaw + Stalactite Dagger",
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite Treasure tokens",
+"Infinite colored mana",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+37,
+11,
+11
+],
+[
+"Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Stalactite Dagger",
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite Treasure tokens",
+"Infinite colored mana",
+"Infinitely powerful creatures you control until end of turn",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+37,
+11,
+11
+],
+[
+"Clock of Omens + Liquimetal Torque + Magda, Brazen Outlaw",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+37,
+11,
+11
+],
+[
+"Clock of Omens + Magda, Brazen Outlaw + Universal Automaton",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+37,
+11,
+11
+]
+],
+"same_turn_win": false,
+"table_round_asm": 9,
+"table_round_end": 11,
+"lag_rounds": 2,
+"own_round_end": 11
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot0.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(1)-magda",
+"method": null,
+"last": 37,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot0.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "tymna_thrasios",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(1)-magda",
+"method": null,
+"last": 37,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot0.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "selvala_archetype",
+"agent": "stock",
+"nlines": 14,
+"won": false,
+"winner": "Ai(1)-magda",
+"method": null,
+"last": 37,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot1.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(4)-magda",
+"method": null,
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot1.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "tymna_thrasios",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(4)-magda",
+"method": null,
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot1.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "selvala_archetype",
+"agent": "stock",
+"nlines": 14,
+"won": false,
+"winner": "Ai(4)-magda",
+"method": null,
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot1.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "magda",
+"agent": "stock",
+"nlines": 11,
+"won": true,
+"winner": "Ai(4)-magda",
+"method": "combat",
+"last": 44,
+"win_round": 13,
+"timedOut": false,
+"turnCapped": null,
+"asm_turn": 42,
+"asm_round": 12,
+"asm_lines": [
+[
+"Clock of Omens + Magda, Brazen Outlaw + Roaming Throne",
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+"Infinite colored mana",
+"Infinite Treasure tokens",
+"Infinite mana artifacts you control can produce",
+"Infinite untap of artifacts you control"
+]
+],
+[
+"Barkform Harvester + Clock of Omens + Magda, Brazen Outlaw",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+]
+],
+"all_lines": [
+"Clock of Omens + Magda, Brazen Outlaw + Roaming Throne",
+"Barkform Harvester + Clock of Omens + Magda, Brazen Outlaw"
+],
+"lines_first": [
+[
+"Clock of Omens + Magda, Brazen Outlaw + Roaming Throne",
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+"Infinite colored mana",
+"Infinite Treasure tokens",
+"Infinite mana artifacts you control can produce",
+"Infinite untap of artifacts you control"
+],
+42,
+12,
+12
+],
+[
+"Barkform Harvester + Clock of Omens + Magda, Brazen Outlaw",
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+],
+42,
+12,
+12
+]
+],
+"same_turn_win": false,
+"table_round_asm": 12,
+"table_round_end": 13,
+"lag_rounds": 1,
+"own_round_end": 13
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot2.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "tymna_thrasios",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(3)-magda",
+"method": null,
+"last": 46,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot2.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "selvala_archetype",
+"agent": "stock",
+"nlines": 14,
+"won": false,
+"winner": "Ai(3)-magda",
+"method": null,
+"last": 46,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot2.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "magda",
+"agent": "stock",
+"nlines": 11,
+"won": true,
+"winner": "Ai(3)-magda",
+"method": "combat",
+"last": 46,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot2.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(3)-magda",
+"method": null,
+"last": 46,
+"win_round": 15,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot3.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "selvala_archetype",
+"agent": "stock",
+"nlines": 14,
+"won": true,
+"winner": "Ai(1)-selvala_archetype",
+"method": "combat",
+"last": 48,
+"win_round": 14,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot3.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "magda",
+"agent": "stock",
+"nlines": 11,
+"won": false,
+"winner": "Ai(1)-selvala_archetype",
+"method": null,
+"last": 48,
+"win_round": 14,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot3.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "rog_ishai",
+"agent": "stock",
+"nlines": 8,
+"won": false,
+"winner": "Ai(1)-selvala_archetype",
+"method": null,
+"last": 48,
+"win_round": 14,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot3.jsonl",
+"g": 0,
+"pod": "n7WpsqsZtdQ",
+"deck": "tymna_thrasios",
+"agent": "stock",
+"nlines": 3,
+"won": false,
+"winner": "Ai(1)-selvala_archetype",
+"method": null,
+"last": 48,
+"win_round": 14,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot0.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(4)-natalie_magda",
+"method": null,
+"last": 39,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot0.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "tyler_bluefarm",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(4)-natalie_magda",
+"method": null,
+"last": 39,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot0.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "ashton_bluefarm",
+"agent": "stock",
+"nlines": 5,
+"won": false,
+"winner": "Ai(4)-natalie_magda",
+"method": null,
+"last": 39,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot0.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "natalie_magda",
+"agent": "stock",
+"nlines": 7,
+"won": true,
+"winner": "Ai(4)-natalie_magda",
+"method": "noncombat",
+"last": 39,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot1.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "tyler_bluefarm",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(3)-natalie_magda",
+"method": null,
+"last": 39,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot1.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "ashton_bluefarm",
+"agent": "stock",
+"nlines": 5,
+"won": false,
+"winner": "Ai(3)-natalie_magda",
+"method": null,
+"last": 39,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot1.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "natalie_magda",
+"agent": "stock",
+"nlines": 7,
+"won": true,
+"winner": "Ai(3)-natalie_magda",
+"method": "combat",
+"last": 39,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot1.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(3)-natalie_magda",
+"method": null,
+"last": 39,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot2.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "ashton_bluefarm",
+"agent": "stock",
+"nlines": 5,
+"won": true,
+"winner": "Ai(1)-ashton_bluefarm",
+"method": "combat",
+"last": 40,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot2.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "natalie_magda",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-ashton_bluefarm",
+"method": null,
+"last": 40,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot2.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-ashton_bluefarm",
+"method": null,
+"last": 40,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot2.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "tyler_bluefarm",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-ashton_bluefarm",
+"method": null,
+"last": 40,
+"win_round": 12,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot3.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "natalie_magda",
+"agent": "stock",
+"nlines": 7,
+"won": true,
+"winner": "Ai(1)-natalie_magda",
+"method": "combat",
+"last": 35,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot3.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "joseph_ral",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-natalie_magda",
+"method": null,
+"last": 35,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot3.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "tyler_bluefarm",
+"agent": "stock",
+"nlines": 7,
+"won": false,
+"winner": "Ai(1)-natalie_magda",
+"method": null,
+"last": 35,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+},
+{
+"file": "shim_raw_hc_sZA0KqXCGrY_rot3.jsonl",
+"g": 0,
+"pod": "sZA0KqXCGrY",
+"deck": "ashton_bluefarm",
+"agent": "stock",
+"nlines": 5,
+"won": false,
+"winner": "Ai(1)-natalie_magda",
+"method": null,
+"last": 35,
+"win_round": 11,
+"timedOut": false,
+"turnCapped": null
+}
+]

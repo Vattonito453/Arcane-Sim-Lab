@@ -1,0 +1,1178 @@
+{
+"cedh015": {
+"Misdirection": {
+"stock:n": 41,
+"stock:other": 14,
+"stock:held": 27,
+"plan:n": 10,
+"plan:other": 3,
+"plan:held": 7
+},
+"Utopia Sprawl": {
+"plan:n": 8,
+"plan:held": 6,
+"plan:other": 2,
+"stock:n": 22,
+"stock:held": 11,
+"stock:other": 11
+},
+"Windfall": {
+"stock:n": 8,
+"stock:held": 7,
+"stock:other": 1,
+"plan:n": 2,
+"plan:held": 2
+},
+"Diabolic Intent": {
+"stock:n": 8,
+"stock:held": 6,
+"stock:other": 2,
+"plan:n": 2,
+"plan:held": 1,
+"plan:other": 1
+},
+"Warrior's Oath": {
+"stock:n": 15,
+"stock:held": 13,
+"stock:other": 2,
+"plan:n": 5,
+"plan:other": 1,
+"plan:held": 3,
+"plan:cast": 1
+},
+"Manifold Key": {
+"stock:n": 12,
+"stock:held": 6,
+"stock:other": 6,
+"plan:n": 7,
+"plan:held": 3,
+"plan:cast": 1,
+"plan:other": 3
+},
+"Final Fortune": {
+"stock:n": 16,
+"stock:held": 13,
+"plan:n": 7,
+"plan:held": 5,
+"stock:other": 3,
+"plan:cast": 2
+},
+"Infernal Plunge": {
+"stock:n": 19,
+"stock:held": 14,
+"stock:other": 5,
+"plan:n": 5,
+"plan:held": 4,
+"plan:other": 1
+},
+"Nomads en-Kor": {
+"plan:n": 3,
+"plan:cast": 1,
+"plan:held": 2,
+"stock:n": 17,
+"stock:held": 8,
+"stock:other": 9
+},
+"Sylvan Paradise": {
+"stock:n": 16,
+"stock:held": 12,
+"stock:other": 4,
+"plan:n": 4,
+"plan:other": 1,
+"plan:held": 3
+},
+"Swan Song": {
+"stock:n": 38,
+"stock:held": 17,
+"stock:other": 2,
+"plan:n": 7,
+"plan:held": 3,
+"stock:cast": 19,
+"plan:cast": 2,
+"plan:other": 2
+},
+"Wild Growth": {
+"plan:n": 7,
+"plan:held": 6,
+"stock:n": 27,
+"stock:held": 19,
+"stock:other": 8,
+"plan:other": 1
+},
+"Pact of Negation": {
+"plan:n": 22,
+"plan:cast": 13,
+"stock:n": 53,
+"stock:cast": 23,
+"plan:held": 6,
+"stock:held": 18,
+"stock:other": 12,
+"plan:other": 3
+},
+"Last Chance": {
+"stock:n": 11,
+"stock:held": 8,
+"stock:other": 3,
+"plan:n": 3,
+"plan:other": 2,
+"plan:held": 1
+},
+"Praetor's Grasp": {
+"stock:n": 20,
+"stock:held": 15,
+"stock:other": 5,
+"plan:n": 5,
+"plan:other": 2,
+"plan:held": 3
+},
+"Gitaxian Probe": {
+"stock:n": 12,
+"stock:held": 9,
+"stock:other": 3,
+"plan:n": 3,
+"plan:other": 3
+},
+"Lion's Eye Diamond": {
+"stock:n": 43,
+"stock:other": 12,
+"stock:held": 31,
+"plan:n": 14,
+"plan:cast": 3,
+"plan:held": 9,
+"plan:other": 2
+},
+"Metalworker": {
+"stock:n": 16,
+"stock:other": 6,
+"stock:held": 10,
+"plan:n": 4,
+"plan:other": 2,
+"plan:cast": 1,
+"plan:held": 1
+},
+"Magnetic Theft": {
+"stock:n": 10,
+"stock:held": 7,
+"stock:other": 3,
+"plan:n": 5,
+"plan:held": 4,
+"plan:other": 1
+},
+"Krark-Clan Ironworks": {
+"stock:n": 8,
+"stock:held": 4,
+"stock:other": 4,
+"plan:n": 4,
+"plan:cast": 1,
+"plan:held": 2,
+"plan:other": 1
+},
+"Cephalid Illusionist": {
+"stock:n": 15,
+"stock:held": 10,
+"stock:other": 5,
+"plan:n": 7,
+"plan:cast": 4,
+"plan:held": 1,
+"plan:other": 2
+},
+"Sylvan Safekeeper": {
+"stock:n": 10,
+"stock:held": 5,
+"stock:other": 5,
+"plan:n": 5,
+"plan:other": 3,
+"plan:held": 2
+},
+"Mindbreak Trap": {
+"plan:n": 9,
+"plan:held": 7,
+"stock:n": 57,
+"stock:held": 47,
+"plan:other": 2,
+"stock:other": 10
+},
+"Bloom Tender": {
+"plan:n": 3,
+"plan:cast": 3,
+"stock:n": 19,
+"stock:held": 13,
+"stock:other": 6
+},
+"Culling the Weak": {
+"stock:n": 14,
+"stock:held": 12,
+"stock:other": 2,
+"plan:n": 7,
+"plan:other": 1,
+"plan:held": 6
+},
+"Wild Magic Surge": {
+"stock:n": 12,
+"stock:held": 7,
+"stock:other": 5,
+"plan:n": 1,
+"plan:held": 1
+},
+"Springleaf Drum": {
+"stock:n": 25,
+"stock:other": 7,
+"stock:held": 18,
+"plan:n": 12,
+"plan:held": 9,
+"plan:other": 3
+},
+"Aphetto Alchemist": {
+"stock:n": 14,
+"stock:other": 5,
+"stock:held": 9,
+"plan:n": 6,
+"plan:other": 2,
+"plan:cast": 3,
+"plan:held": 1
+},
+"Vampiric Tutor": {
+"stock:n": 13,
+"stock:held": 10,
+"stock:other": 3,
+"plan:n": 4,
+"plan:cast": 2,
+"plan:other": 1,
+"plan:held": 1
+},
+"Goblin Welder": {
+"stock:n": 10,
+"stock:held": 6,
+"plan:n": 4,
+"plan:other": 2,
+"plan:held": 2,
+"stock:other": 4
+},
+"Ad Nauseam": {
+"stock:n": 22,
+"stock:held": 11,
+"stock:other": 11,
+"plan:n": 4,
+"plan:other": 1,
+"plan:held": 3
+},
+"Demonic Consultation": {
+"stock:n": 11,
+"stock:other": 1,
+"stock:held": 10,
+"plan:n": 21,
+"plan:cast": 14,
+"plan:other": 1,
+"plan:held": 6
+},
+"Disrupting Shoal": {
+"stock:n": 6,
+"stock:other": 2,
+"plan:n": 5,
+"plan:held": 5,
+"stock:held": 4
+},
+"Summoner's Pact": {
+"stock:n": 22,
+"stock:other": 6,
+"stock:held": 16,
+"plan:n": 6,
+"plan:cast": 6
+},
+"Lim-D\u00fbl's Vault": {
+"stock:n": 16,
+"stock:held": 12,
+"stock:other": 4
+},
+"Firestorm": {
+"stock:n": 12,
+"stock:held": 12,
+"plan:n": 2,
+"plan:held": 1,
+"plan:other": 1
+},
+"Copy Enchantment": {
+"stock:n": 7,
+"stock:other": 1,
+"stock:held": 6,
+"plan:n": 4,
+"plan:held": 4
+},
+"Devoted Druid": {
+"stock:n": 11,
+"stock:other": 6,
+"stock:held": 5,
+"plan:n": 4,
+"plan:held": 2,
+"plan:cast": 2
+},
+"Sylvan Library": {
+"stock:n": 9,
+"stock:held": 6,
+"stock:other": 3,
+"plan:n": 1,
+"plan:held": 1
+},
+"Momentous Fall": {
+"stock:n": 10,
+"stock:held": 10,
+"plan:n": 2,
+"plan:held": 2
+},
+"Clock of Omens": {
+"plan:n": 2,
+"plan:cast": 1,
+"plan:held": 1,
+"stock:n": 7,
+"stock:other": 3,
+"stock:held": 4
+},
+"Emerald Charm": {
+"stock:n": 21,
+"stock:held": 13,
+"stock:other": 8,
+"plan:n": 4,
+"plan:held": 3,
+"plan:cast": 1
+},
+"Autumn's Veil": {
+"stock:n": 16,
+"stock:held": 12,
+"stock:other": 4,
+"plan:n": 4,
+"plan:held": 4
+},
+"Quirion Ranger": {
+"stock:n": 5,
+"stock:held": 4,
+"stock:other": 1,
+"plan:n": 5,
+"plan:cast": 4,
+"plan:held": 1
+},
+"Commandeer": {
+"stock:n": 17,
+"stock:held": 13,
+"stock:other": 4,
+"plan:n": 2,
+"plan:other": 1,
+"plan:held": 1
+},
+"Dwarven Armorer": {
+"plan:n": 2,
+"plan:held": 2,
+"stock:n": 10,
+"stock:held": 8,
+"stock:other": 2
+},
+"Phyrexian Soulgorger": {
+"stock:n": 15,
+"stock:held": 12,
+"stock:put": 3,
+"plan:n": 2,
+"plan:held": 2
+},
+"Sheltering Ancient": {
+"stock:n": 12,
+"stock:held": 9,
+"stock:put": 2,
+"plan:n": 2,
+"plan:held": 2,
+"stock:other": 1
+},
+"Rain of Filth": {
+"stock:n": 12,
+"stock:held": 12,
+"plan:n": 3,
+"plan:held": 3
+},
+"Dizzy Spell": {
+"stock:n": 11,
+"stock:held": 9,
+"stock:other": 2,
+"plan:n": 3,
+"plan:cast": 2,
+"plan:held": 1
+},
+"Carpet of Flowers": {
+"stock:n": 8,
+"stock:held": 4,
+"stock:other": 4,
+"plan:n": 4,
+"plan:held": 2,
+"plan:other": 2
+},
+"Beast Within": {
+"stock:n": 9,
+"stock:held": 8,
+"stock:other": 1,
+"plan:n": 5,
+"plan:held": 5
+},
+"Scryb Ranger": {
+"stock:n": 4,
+"stock:held": 4,
+"plan:n": 2,
+"plan:held": 1,
+"plan:cast": 1
+},
+"Necrodominance": {
+"stock:n": 13,
+"stock:other": 8,
+"stock:held": 5,
+"plan:n": 3,
+"plan:held": 3
+}
+},
+"cedh016": {
+"Final Fortune": {
+"stock:n": 29,
+"stock:held": 17,
+"stock:other": 12,
+"plan:n": 8,
+"plan:held": 5,
+"plan:other": 2,
+"plan:cast": 1
+},
+"Wild Magic Surge": {
+"stock:n": 9,
+"stock:held": 6,
+"stock:other": 3,
+"plan:n": 3,
+"plan:held": 2,
+"plan:other": 1
+},
+"Sylvan Safekeeper": {
+"stock:n": 15,
+"stock:other": 12,
+"stock:held": 3
+},
+"Springleaf Drum": {
+"stock:n": 33,
+"stock:other": 7,
+"stock:held": 26,
+"plan:n": 8,
+"plan:other": 3,
+"plan:held": 5
+},
+"Warrior's Oath": {
+"stock:n": 10,
+"stock:held": 9,
+"stock:other": 1,
+"plan:n": 2,
+"plan:other": 1,
+"plan:held": 1
+},
+"Manifold Key": {
+"stock:n": 12,
+"stock:held": 7,
+"stock:other": 5,
+"plan:n": 1,
+"plan:held": 1
+},
+"Ad Nauseam": {
+"stock:n": 27,
+"stock:held": 22,
+"stock:other": 5,
+"plan:n": 7,
+"plan:held": 3,
+"plan:other": 3,
+"plan:cast": 1
+},
+"Magnetic Theft": {
+"stock:n": 14,
+"stock:held": 11,
+"stock:other": 3,
+"plan:n": 6,
+"plan:held": 5,
+"plan:other": 1
+},
+"Windfall": {
+"stock:n": 9,
+"stock:held": 8,
+"stock:other": 1,
+"plan:n": 3,
+"plan:held": 3
+},
+"Swan Song": {
+"stock:n": 51,
+"stock:cast": 33,
+"plan:n": 12,
+"plan:cast": 6,
+"plan:held": 2,
+"stock:held": 17,
+"plan:other": 4,
+"stock:other": 1
+},
+"Sylvan Paradise": {
+"stock:n": 14,
+"stock:held": 10,
+"stock:other": 4,
+"plan:n": 4,
+"plan:held": 2,
+"plan:other": 2
+},
+"Nomads en-Kor": {
+"plan:n": 6,
+"plan:other": 2,
+"plan:held": 4,
+"stock:n": 12,
+"stock:other": 5,
+"stock:held": 7
+},
+"Aphetto Alchemist": {
+"stock:n": 18,
+"stock:held": 14,
+"stock:other": 4,
+"plan:n": 4,
+"plan:cast": 4
+},
+"Pact of Negation": {
+"plan:n": 25,
+"plan:held": 9,
+"stock:n": 48,
+"stock:other": 10,
+"stock:cast": 22,
+"stock:held": 16,
+"plan:cast": 14,
+"plan:other": 2
+},
+"Mindbreak Trap": {
+"stock:n": 52,
+"stock:held": 38,
+"plan:n": 20,
+"plan:held": 17,
+"stock:other": 14,
+"plan:other": 3
+},
+"Utopia Sprawl": {
+"plan:n": 6,
+"plan:held": 5,
+"plan:other": 1,
+"stock:n": 21,
+"stock:held": 13,
+"stock:other": 8
+},
+"Misdirection": {
+"stock:n": 43,
+"stock:held": 31,
+"stock:other": 12,
+"plan:n": 9,
+"plan:held": 7,
+"plan:other": 2
+},
+"Krark-Clan Ironworks": {
+"stock:n": 8,
+"stock:held": 5,
+"stock:other": 3,
+"plan:n": 2,
+"plan:held": 2
+},
+"Goblin Welder": {
+"stock:n": 13,
+"stock:held": 10,
+"stock:other": 3,
+"plan:n": 3,
+"plan:held": 3
+},
+"Cephalid Illusionist": {
+"stock:n": 17,
+"stock:other": 8,
+"stock:held": 9,
+"plan:n": 4,
+"plan:held": 1,
+"plan:cast": 2,
+"plan:other": 1
+},
+"Demonic Consultation": {
+"stock:n": 21,
+"stock:held": 18,
+"stock:other": 3,
+"plan:n": 16,
+"plan:held": 5,
+"plan:cast": 10,
+"plan:other": 1
+},
+"Bloom Tender": {
+"plan:n": 7,
+"plan:cast": 2,
+"plan:held": 5,
+"stock:n": 13,
+"stock:other": 5,
+"stock:held": 8
+},
+"Wild Growth": {
+"plan:n": 9,
+"plan:cast": 1,
+"plan:other": 2,
+"plan:held": 6,
+"stock:n": 22,
+"stock:held": 21,
+"stock:other": 1
+},
+"Lion's Eye Diamond": {
+"stock:n": 43,
+"stock:held": 28,
+"stock:other": 15,
+"plan:n": 15,
+"plan:held": 10,
+"plan:cast": 1,
+"plan:other": 4
+},
+"Diabolic Intent": {
+"stock:n": 7,
+"stock:held": 5,
+"stock:other": 2,
+"plan:n": 4,
+"plan:cast": 3,
+"plan:held": 1
+},
+"Metalworker": {
+"stock:n": 15,
+"stock:held": 9,
+"stock:other": 6,
+"plan:n": 4,
+"plan:other": 2,
+"plan:held": 1,
+"plan:cast": 1
+},
+"Infernal Plunge": {
+"stock:n": 23,
+"stock:held": 21,
+"stock:other": 2,
+"plan:n": 3,
+"plan:held": 3
+},
+"Gitaxian Probe": {
+"stock:n": 16,
+"stock:held": 11,
+"stock:other": 5,
+"plan:n": 1,
+"plan:other": 1
+},
+"Culling the Weak": {
+"stock:n": 30,
+"stock:held": 26,
+"stock:other": 4,
+"plan:n": 7,
+"plan:held": 6,
+"plan:other": 1
+},
+"Vampiric Tutor": {
+"stock:n": 15,
+"stock:held": 11,
+"stock:other": 4,
+"plan:n": 9,
+"plan:cast": 7,
+"plan:held": 1,
+"plan:other": 1
+},
+"Last Chance": {
+"stock:n": 10,
+"stock:held": 9,
+"stock:other": 1,
+"plan:n": 1,
+"plan:other": 1
+},
+"Praetor's Grasp": {
+"stock:n": 18,
+"stock:held": 17,
+"plan:n": 4,
+"plan:held": 4,
+"stock:other": 1
+},
+"Scryb Ranger": {
+"stock:n": 15,
+"stock:held": 13,
+"plan:n": 3,
+"plan:held": 3,
+"stock:put": 2
+},
+"Devoted Druid": {
+"stock:n": 13,
+"stock:other": 5,
+"stock:held": 8,
+"plan:n": 6,
+"plan:held": 3,
+"plan:cast": 2,
+"plan:other": 1
+},
+"Rain of Filth": {
+"stock:n": 8,
+"stock:held": 8,
+"plan:n": 3,
+"plan:held": 3
+},
+"Lim-D\u00fbl's Vault": {
+"stock:n": 9,
+"stock:held": 8,
+"stock:other": 1,
+"plan:n": 1,
+"plan:held": 1
+},
+"Autumn's Veil": {
+"stock:n": 15,
+"stock:held": 13,
+"stock:other": 2,
+"plan:n": 5,
+"plan:held": 4,
+"plan:cast": 1
+},
+"Emerald Charm": {
+"stock:n": 21,
+"stock:held": 16,
+"stock:other": 5,
+"plan:n": 8,
+"plan:cast": 1,
+"plan:held": 6,
+"plan:other": 1
+},
+"Phyrexian Soulgorger": {
+"stock:n": 16,
+"stock:held": 12,
+"stock:put": 2,
+"stock:other": 2,
+"plan:n": 2,
+"plan:held": 2
+},
+"Copy Enchantment": {
+"stock:n": 11,
+"stock:other": 3,
+"stock:held": 8,
+"plan:n": 7,
+"plan:held": 6,
+"plan:other": 1
+},
+"Sheltering Ancient": {
+"stock:n": 12,
+"stock:held": 10,
+"stock:other": 1,
+"stock:put": 1,
+"plan:n": 5,
+"plan:held": 4,
+"plan:cast": 1
+},
+"Firestorm": {
+"stock:n": 12,
+"stock:held": 11,
+"plan:n": 1,
+"plan:held": 1,
+"stock:other": 1
+},
+"Summoner's Pact": {
+"stock:n": 18,
+"stock:held": 15,
+"stock:other": 3,
+"plan:n": 7,
+"plan:cast": 6,
+"plan:other": 1
+},
+"Momentous Fall": {
+"stock:n": 13,
+"stock:held": 12,
+"stock:other": 1,
+"plan:n": 2,
+"plan:held": 1,
+"plan:other": 1
+},
+"Dwarven Armorer": {
+"plan:n": 3,
+"plan:held": 3,
+"stock:n": 8,
+"stock:held": 6,
+"stock:other": 2
+},
+"Clock of Omens": {
+"plan:n": 4,
+"plan:held": 2,
+"plan:cast": 2,
+"stock:n": 8,
+"stock:held": 5,
+"stock:other": 3
+},
+"Carpet of Flowers": {
+"stock:n": 11,
+"stock:other": 5,
+"stock:held": 6,
+"plan:n": 3,
+"plan:other": 3
+},
+"Quirion Ranger": {
+"stock:n": 8,
+"stock:held": 5,
+"stock:other": 1,
+"plan:n": 6,
+"plan:held": 3,
+"plan:cast": 3,
+"stock:put": 2
+},
+"Necrodominance": {
+"stock:n": 12,
+"stock:held": 7,
+"stock:other": 5,
+"plan:n": 4,
+"plan:held": 2,
+"plan:other": 2
+},
+"Commandeer": {
+"stock:n": 14,
+"stock:held": 7,
+"stock:other": 7,
+"plan:n": 3,
+"plan:held": 3
+},
+"Sylvan Library": {
+"stock:n": 8,
+"stock:held": 5,
+"stock:other": 3,
+"plan:n": 3,
+"plan:held": 2,
+"plan:other": 1
+},
+"Disrupting Shoal": {
+"stock:n": 8,
+"stock:other": 2,
+"stock:held": 6,
+"plan:n": 1,
+"plan:held": 1
+},
+"Beast Within": {
+"stock:n": 7,
+"stock:held": 5,
+"stock:other": 2,
+"plan:n": 4,
+"plan:cast": 1,
+"plan:held": 3
+},
+"Dizzy Spell": {
+"stock:n": 9,
+"stock:other": 5,
+"stock:held": 4,
+"plan:n": 3,
+"plan:cast": 3
+}
+},
+"hc": {
+"Pact of Negation": {
+"stock:n": 20,
+"stock:other": 4,
+"stock:cast": 14,
+"stock:held": 2
+},
+"Bloom Tender": {
+"stock:n": 6,
+"stock:other": 2,
+"stock:held": 4
+},
+"Diabolic Intent": {
+"stock:n": 5,
+"stock:other": 3,
+"stock:held": 2
+},
+"Sylvan Safekeeper": {
+"stock:n": 3,
+"stock:other": 3
+},
+"Mindbreak Trap": {
+"stock:n": 21,
+"stock:held": 14,
+"stock:other": 7
+},
+"Gitaxian Probe": {
+"stock:n": 10,
+"stock:held": 6,
+"stock:other": 4
+},
+"Utopia Sprawl": {
+"stock:n": 4,
+"stock:held": 3,
+"stock:other": 1
+},
+"Praetor's Grasp": {
+"stock:n": 8,
+"stock:held": 7,
+"stock:other": 1
+},
+"Final Fortune": {
+"stock:n": 7,
+"stock:other": 4,
+"stock:held": 3
+},
+"Metalworker": {
+"stock:n": 3,
+"stock:other": 1,
+"stock:held": 1,
+"stock:put": 1
+},
+"Culling the Weak": {
+"stock:n": 8,
+"stock:held": 6,
+"stock:other": 2
+},
+"Last Chance": {
+"stock:n": 2,
+"stock:held": 1,
+"stock:other": 1
+},
+"Misdirection": {
+"stock:n": 7,
+"stock:other": 2,
+"stock:held": 5
+},
+"Lion's Eye Diamond": {
+"stock:n": 19,
+"stock:held": 8,
+"stock:other": 11
+},
+"Swan Song": {
+"stock:n": 14,
+"stock:held": 2,
+"stock:cast": 9,
+"stock:other": 3
+},
+"Windfall": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Goblin Welder": {
+"stock:n": 3,
+"stock:other": 2,
+"stock:held": 1
+},
+"Sylvan Paradise": {
+"stock:n": 2,
+"stock:other": 2
+},
+"Magnetic Theft": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Krark-Clan Ironworks": {
+"stock:n": 5,
+"stock:held": 5
+},
+"Ad Nauseam": {
+"stock:n": 9,
+"stock:held": 8,
+"stock:other": 1
+},
+"Wild Growth": {
+"stock:n": 5,
+"stock:held": 4,
+"stock:other": 1
+},
+"Commandeer": {
+"stock:n": 10,
+"stock:other": 3,
+"stock:held": 7
+},
+"Copy Enchantment": {
+"stock:n": 6,
+"stock:held": 4,
+"stock:other": 2
+},
+"Steal Enchantment": {
+"stock:n": 1,
+"stock:other": 1
+},
+"Sylvan Library": {
+"stock:n": 2,
+"stock:held": 1,
+"stock:other": 1
+},
+"Disrupting Shoal": {
+"stock:n": 8,
+"stock:held": 6,
+"stock:other": 2
+},
+"Springleaf Drum": {
+"stock:n": 9,
+"stock:held": 7,
+"stock:other": 2
+},
+"Bolt Bend": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Kenrith's Transformation": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Beast Within": {
+"stock:n": 3,
+"stock:held": 3
+},
+"Manifold Key": {
+"stock:n": 2,
+"stock:held": 1,
+"stock:other": 1
+},
+"Polymorph": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Seedtime": {
+"stock:n": 3,
+"stock:held": 2,
+"stock:other": 1
+},
+"Mirage Mirror": {
+"stock:n": 9,
+"stock:held": 8,
+"stock:other": 1
+},
+"Infernal Plunge": {
+"stock:n": 1,
+"stock:other": 1
+},
+"Trickbind": {
+"stock:n": 1,
+"stock:cast": 1
+},
+"Clock of Omens": {
+"stock:n": 7,
+"stock:held": 7
+},
+"Magus of the Candelabra": {
+"stock:n": 1,
+"stock:put": 1
+},
+"Scryb Ranger": {
+"stock:n": 2,
+"stock:put": 1,
+"stock:held": 1
+},
+"Rug of Smothering": {
+"stock:n": 1,
+"stock:put": 1
+},
+"Pili-Pala": {
+"stock:n": 3,
+"stock:put": 1,
+"stock:held": 2
+},
+"Quirion Ranger": {
+"stock:n": 3,
+"stock:held": 3
+},
+"Sudden Substitution": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Vampiric Tutor": {
+"stock:n": 10,
+"stock:held": 9,
+"stock:other": 1
+},
+"Demonic Consultation": {
+"stock:n": 8,
+"stock:held": 6,
+"stock:other": 2
+},
+"Emrakul, the Promised End": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Hidden Strings": {
+"stock:n": 5,
+"stock:held": 5
+},
+"Simic Signet": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Autumn's Veil": {
+"stock:n": 4,
+"stock:held": 4
+},
+"Candelabra of Tawnos": {
+"stock:n": 2,
+"stock:held": 1,
+"stock:other": 1
+},
+"Tinder Wall": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Oboro Breezecaller": {
+"stock:n": 1,
+"stock:other": 1
+},
+"Manamorphose": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Necrodominance": {
+"stock:n": 1,
+"stock:other": 1
+},
+"Earthcraft": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Carpet of Flowers": {
+"stock:n": 1,
+"stock:other": 1
+},
+"Rain of Filth": {
+"stock:n": 3,
+"stock:other": 2,
+"stock:held": 1
+},
+"Past in Flames": {
+"stock:n": 3,
+"stock:cast": 1,
+"stock:other": 2
+},
+"Devoted Druid": {
+"stock:n": 3,
+"stock:other": 2,
+"stock:held": 1
+},
+"Quiet Speculation": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Scroll Rack": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Sanctum Prelate": {
+"stock:n": 3,
+"stock:held": 3
+},
+"Lim-D\u00fbl's Vault": {
+"stock:n": 1,
+"stock:other": 1
+},
+"Momentous Fall": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Emerald Charm": {
+"stock:n": 2,
+"stock:held": 2
+},
+"Summoner's Pact": {
+"stock:n": 3,
+"stock:other": 1,
+"stock:held": 2
+},
+"Dwarven Armorer": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Firestorm": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Sheltering Ancient": {
+"stock:n": 1,
+"stock:held": 1
+},
+"Phyrexian Soulgorger": {
+"stock:n": 1,
+"stock:held": 1
+}
+}
+}

@@ -1,0 +1,10354 @@
+[
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 1,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    39,
+    1134,
+    "cast Thassa's Oracle"
+   ],
+   [
+    39,
+    1136,
+    "oracle trigger"
+   ],
+   [
+    39,
+    1137,
+    "oracle trigger resolves"
+   ],
+   [
+    40,
+    1155,
+    "oracle trigger"
+   ],
+   [
+    40,
+    1158,
+    "oracle trigger"
+   ],
+   [
+    42,
+    1219,
+    "oracle trigger"
+   ],
+   [
+    42,
+    1232,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 2,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    29,
+    909,
+    "cast Thassa's Oracle"
+   ],
+   [
+    29,
+    911,
+    "oracle trigger"
+   ],
+   [
+    29,
+    912,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 4,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    5,
+    110,
+    "cast Thassa's Oracle"
+   ],
+   [
+    5,
+    112,
+    "oracle trigger"
+   ],
+   [
+    5,
+    113,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 5,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    30,
+    801,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    803,
+    "oracle trigger"
+   ],
+   [
+    30,
+    804,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 6,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    29,
+    772,
+    "cast Tainted Pact"
+   ],
+   [
+    32,
+    924,
+    "cast Thassa's Oracle"
+   ],
+   [
+    32,
+    926,
+    "oracle trigger"
+   ],
+   [
+    32,
+    927,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 9,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    28,
+    745,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    747,
+    "oracle trigger"
+   ],
+   [
+    28,
+    748,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 10,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    35,
+    1211,
+    "cast Thassa's Oracle"
+   ],
+   [
+    35,
+    1213,
+    "oracle trigger"
+   ],
+   [
+    35,
+    1216,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 15,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    25,
+    756,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    782,
+    "oracle trigger"
+   ],
+   [
+    25,
+    783,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    39,
+    1095,
+    "cast Thassa's Oracle"
+   ],
+   [
+    39,
+    1097,
+    "oracle trigger"
+   ],
+   [
+    39,
+    1098,
+    "oracle trigger resolves"
+   ],
+   [
+    42,
+    1162,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 4,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    17,
+    346,
+    "cast Thassa's Oracle"
+   ],
+   [
+    17,
+    349,
+    "oracle trigger"
+   ],
+   [
+    17,
+    350,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 5,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    50,
+    1300,
+    "cast Thassa's Oracle"
+   ],
+   [
+    50,
+    1302,
+    "oracle trigger"
+   ],
+   [
+    50,
+    1303,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 7,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    13,
+    285,
+    "cast Thassa's Oracle"
+   ],
+   [
+    13,
+    287,
+    "oracle trigger"
+   ],
+   [
+    13,
+    288,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 10,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    19,
+    473,
+    "cast Thassa's Oracle"
+   ],
+   [
+    19,
+    475,
+    "oracle trigger"
+   ],
+   [
+    19,
+    476,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 12,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    71,
+    1937,
+    "cast Thassa's Oracle"
+   ],
+   [
+    71,
+    1939,
+    "oracle trigger"
+   ],
+   [
+    71,
+    1942,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 14,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    33,
+    1084,
+    "cast Thassa's Oracle"
+   ],
+   [
+    33,
+    1090,
+    "oracle trigger"
+   ],
+   [
+    33,
+    1091,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    46,
+    1454,
+    "cast Thassa's Oracle"
+   ],
+   [
+    46,
+    1457,
+    "oracle trigger"
+   ],
+   [
+    46,
+    1458,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 6,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    18,
+    447,
+    "cast Thassa's Oracle"
+   ],
+   [
+    18,
+    449,
+    "oracle trigger"
+   ],
+   [
+    18,
+    450,
+    "oracle trigger resolves"
+   ],
+   [
+    26,
+    652,
+    "oracle trigger"
+   ],
+   [
+    30,
+    760,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    10,
+    "tutor_cast",
+    "Mystical Tutor seeking Lightning Greaves"
+   ],
+   [
+    10,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=0 steer=Pact of Negation over=Misdirection"
+   ],
+   [
+    10,
+    "tutor_steer",
+    "sid=2 mode=plan value=5 stockValue=0 steer=Dryad Arbor over=Tropical Island"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 10,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    36,
+    972,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 11,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    55,
+    1533,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 13,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    9,
+    200,
+    "cast Tainted Pact"
+   ],
+   [
+    21,
+    515,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    517,
+    "oracle trigger"
+   ],
+   [
+    21,
+    518,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 1,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    14,
+    359,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    361,
+    "oracle trigger"
+   ],
+   [
+    14,
+    362,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 2,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    46,
+    1691,
+    "cast Thassa's Oracle"
+   ],
+   [
+    46,
+    1693,
+    "oracle trigger"
+   ],
+   [
+    46,
+    1696,
+    "oracle trigger resolves"
+   ],
+   [
+    53,
+    2021,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    43,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=1 steer=Ragavan, Nimble Pilferer over=Simian Spirit Guide"
+   ],
+   [
+    43,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=1 steer=Thassa's Oracle over=Simian Spirit Guide"
+   ],
+   [
+    53,
+    "tutor_cast",
+    "Demonic Tutor seeking Demonic Consultation"
+   ],
+   [
+    53,
+    "tutor_steer",
+    "sid=8 mode=combo value=8 stockValue=1 steer=Demonic Consultation over=Dockside Extortionist"
+   ],
+   [
+    53,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 3,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    14,
+    279,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    281,
+    "oracle trigger"
+   ],
+   [
+    14,
+    283,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    14,
+    295,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    6,
+    "tutor_cast",
+    "Imperial Seal seeking Thassa's Oracle"
+   ],
+   [
+    6,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    10,
+    "tutor_cast",
+    "Grim Tutor seeking Thassa's Oracle"
+   ],
+   [
+    10,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 4,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    16,
+    338,
+    "cast Thassa's Oracle"
+   ],
+   [
+    16,
+    341,
+    "oracle trigger"
+   ],
+   [
+    16,
+    344,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    16,
+    356,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    4,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    16,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    16,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    25,
+    707,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    709,
+    "oracle trigger"
+   ],
+   [
+    25,
+    710,
+    "oracle trigger resolves"
+   ],
+   [
+    29,
+    820,
+    "cast Tainted Pact"
+   ],
+   [
+    41,
+    1328,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    29,
+    "combo_cast",
+    "Tainted Pact (1/2 online)"
+   ],
+   [
+    41,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 10,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    16,
+    389,
+    "cast Thassa's Oracle"
+   ],
+   [
+    16,
+    391,
+    "oracle trigger"
+   ],
+   [
+    16,
+    392,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because an opponent has won by spell 'Thassa's Oracle'",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 10,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    29,
+    721,
+    "cast Thassa's Oracle"
+   ],
+   [
+    29,
+    723,
+    "oracle trigger"
+   ],
+   [
+    29,
+    726,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    29,
+    738,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    13,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=5 steer=Demonic Consultation over=Simian Spirit Guide"
+   ],
+   [
+    29,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    29,
+    "tutor_steer",
+    "sid=6 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Watery Grave"
+   ],
+   [
+    29,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    29,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 11,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    17,
+    369,
+    "cast Thassa's Oracle"
+   ],
+   [
+    17,
+    374,
+    "oracle trigger"
+   ],
+   [
+    17,
+    375,
+    "oracle trigger resolves"
+   ],
+   [
+    21,
+    503,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    13,
+    "tutor_cast",
+    "Gamble seeking Thassa's Oracle"
+   ],
+   [
+    13,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    17,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    21,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 12,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    14,
+    287,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    289,
+    "oracle trigger"
+   ],
+   [
+    14,
+    291,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    14,
+    303,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    14,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 14,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    17,
+    422,
+    "cast Thassa's Oracle"
+   ],
+   [
+    17,
+    426,
+    "oracle trigger"
+   ],
+   [
+    17,
+    429,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 15,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    21,
+    581,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    590,
+    "oracle trigger"
+   ],
+   [
+    21,
+    591,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    14,
+    314,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    328,
+    "oracle trigger"
+   ],
+   [
+    14,
+    329,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 3,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    25,
+    751,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    757,
+    "oracle trigger"
+   ],
+   [
+    25,
+    760,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 5,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    30,
+    723,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    727,
+    "oracle trigger"
+   ],
+   [
+    30,
+    728,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 12,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    12,
+    252,
+    "cast Thassa's Oracle"
+   ],
+   [
+    12,
+    256,
+    "oracle trigger"
+   ],
+   [
+    12,
+    259,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 11,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.15.0",
+  "events": [
+   [
+    25,
+    513,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    517,
+    "oracle trigger"
+   ],
+   [
+    25,
+    518,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    17,
+    409,
+    "cast Thassa's Oracle"
+   ],
+   [
+    17,
+    419,
+    "oracle trigger"
+   ],
+   [
+    17,
+    421,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    17,
+    435,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    5,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=5 steer=Demonic Consultation over=The Cabbage Merchant"
+   ],
+   [
+    13,
+    "tutor_cast",
+    "Worldly Tutor seeking Thassa's Oracle"
+   ],
+   [
+    13,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    17,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    17,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    39,
+    1080,
+    "cast Thassa's Oracle"
+   ],
+   [
+    39,
+    1084,
+    "oracle trigger"
+   ],
+   [
+    39,
+    1086,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    39,
+    1101,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    11,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=5 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    19,
+    "tutor_cast",
+    "Mystical Tutor seeking Thassa's Oracle"
+   ],
+   [
+    19,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=4 steer=Pact of Negation over=Force of Will"
+   ],
+   [
+    23,
+    "tutor_cast",
+    "Enlightened Tutor seeking Thassa's Oracle"
+   ],
+   [
+    23,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=0 steer=Swift Reconfiguration over=Esper Sentinel"
+   ],
+   [
+    31,
+    "tutor_cast",
+    "Summoner's Pact seeking Thassa's Oracle"
+   ],
+   [
+    31,
+    "tutor_steer",
+    "sid=8 mode=plan value=8 stockValue=1 steer=Devoted Druid over=Elvish Spirit Guide"
+   ],
+   [
+    31,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    31,
+    "tutor_steer",
+    "sid=9 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=City of Brass"
+   ],
+   [
+    39,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    39,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 4,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    27,
+    633,
+    "cast Thassa's Oracle"
+   ],
+   [
+    27,
+    639,
+    "oracle trigger"
+   ],
+   [
+    27,
+    642,
+    "oracle trigger resolves"
+   ],
+   [
+    31,
+    732,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    7,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=5 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    27,
+    "tutor_cast",
+    "Demonic Tutor seeking Thassa's Oracle"
+   ],
+   [
+    27,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    27,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    31,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 6,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    14,
+    317,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    319,
+    "oracle trigger"
+   ],
+   [
+    14,
+    322,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    14,
+    335,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    2,
+    "tutor_cast",
+    "Imperial Seal seeking Demonic Consultation"
+   ],
+   [
+    2,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=5 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 7,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    10,
+    205,
+    "cast Tainted Pact"
+   ],
+   [
+    48,
+    1408,
+    "cast Thassa's Oracle"
+   ],
+   [
+    48,
+    1410,
+    "oracle trigger"
+   ],
+   [
+    48,
+    1413,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    48,
+    1426,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    30,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=The Cabbage Merchant"
+   ],
+   [
+    46,
+    "tutor_steer",
+    "sid=6 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    48,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    48,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 8,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    3,
+    58,
+    "cast Thassa's Oracle"
+   ],
+   [
+    3,
+    60,
+    "oracle trigger"
+   ],
+   [
+    3,
+    61,
+    "oracle trigger resolves"
+   ],
+   [
+    7,
+    144,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    3,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    7,
+    "tutor_cast",
+    "Mystical Tutor seeking Demonic Consultation"
+   ],
+   [
+    7,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=4 steer=Demonic Consultation over=Force of Will"
+   ],
+   [
+    7,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 9,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    33,
+    983,
+    "cast Thassa's Oracle"
+   ],
+   [
+    33,
+    987,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    30,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    33,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    33,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Overgrown Tomb"
+   ],
+   [
+    33,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    33,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 11,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    10,
+    207,
+    "cast Thassa's Oracle"
+   ],
+   [
+    10,
+    209,
+    "oracle trigger"
+   ],
+   [
+    10,
+    213,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    10,
+    226,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    6,
+    "tutor_cast",
+    "Vampiric Tutor seeking Demonic Consultation"
+   ],
+   [
+    10,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    10,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_015_default",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 14,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.15.0",
+  "events": [
+   [
+    46,
+    1429,
+    "cast Thassa's Oracle"
+   ],
+   [
+    46,
+    1431,
+    "oracle trigger"
+   ],
+   [
+    46,
+    1432,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    61,
+    1806,
+    "cast Thassa's Oracle"
+   ],
+   [
+    61,
+    1808,
+    "oracle trigger"
+   ],
+   [
+    61,
+    1809,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 1,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    22,
+    527,
+    "cast Thassa's Oracle"
+   ],
+   [
+    22,
+    529,
+    "oracle trigger"
+   ],
+   [
+    22,
+    530,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 4,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    36,
+    996,
+    "cast Thassa's Oracle"
+   ],
+   [
+    36,
+    998,
+    "oracle trigger"
+   ],
+   [
+    36,
+    999,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 5,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    34,
+    1093,
+    "cast Thassa's Oracle"
+   ],
+   [
+    34,
+    1109,
+    "oracle trigger"
+   ],
+   [
+    34,
+    1110,
+    "oracle trigger resolves"
+   ],
+   [
+    38,
+    1205,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    14,
+    382,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    387,
+    "oracle trigger"
+   ],
+   [
+    14,
+    390,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 11,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    25,
+    700,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    705,
+    "oracle trigger"
+   ],
+   [
+    25,
+    706,
+    "oracle trigger resolves"
+   ],
+   [
+    30,
+    821,
+    "oracle trigger"
+   ],
+   [
+    30,
+    835,
+    "oracle trigger"
+   ],
+   [
+    30,
+    840,
+    "oracle trigger"
+   ],
+   [
+    30,
+    841,
+    "oracle trigger resolves"
+   ],
+   [
+    32,
+    920,
+    "oracle trigger"
+   ],
+   [
+    32,
+    924,
+    "oracle trigger"
+   ],
+   [
+    32,
+    925,
+    "oracle trigger resolves"
+   ],
+   [
+    34,
+    983,
+    "oracle trigger"
+   ],
+   [
+    34,
+    993,
+    "oracle trigger"
+   ],
+   [
+    34,
+    994,
+    "oracle trigger resolves"
+   ],
+   [
+    34,
+    1005,
+    "oracle trigger"
+   ],
+   [
+    34,
+    1012,
+    "oracle trigger"
+   ],
+   [
+    34,
+    1013,
+    "oracle trigger resolves"
+   ],
+   [
+    34,
+    1030,
+    "oracle trigger"
+   ],
+   [
+    34,
+    1038,
+    "oracle trigger"
+   ],
+   [
+    34,
+    1039,
+    "oracle trigger resolves"
+   ],
+   [
+    36,
+    1168,
+    "oracle trigger"
+   ],
+   [
+    36,
+    1172,
+    "oracle trigger"
+   ],
+   [
+    36,
+    1183,
+    "oracle trigger"
+   ],
+   [
+    36,
+    1184,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 14,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    10,
+    231,
+    "cast Thassa's Oracle"
+   ],
+   [
+    10,
+    233,
+    "oracle trigger"
+   ],
+   [
+    10,
+    234,
+    "oracle trigger resolves"
+   ],
+   [
+    20,
+    509,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 15,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    19,
+    460,
+    "cast Thassa's Oracle"
+   ],
+   [
+    19,
+    462,
+    "oracle trigger"
+   ],
+   [
+    19,
+    463,
+    "oracle trigger resolves"
+   ],
+   [
+    27,
+    712,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    44,
+    1222,
+    "cast Thassa's Oracle"
+   ],
+   [
+    44,
+    1224,
+    "oracle trigger"
+   ],
+   [
+    44,
+    1225,
+    "oracle trigger resolves"
+   ],
+   [
+    51,
+    1571,
+    "oracle trigger"
+   ],
+   [
+    52,
+    1627,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 3,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    21,
+    476,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    478,
+    "oracle trigger"
+   ],
+   [
+    21,
+    479,
+    "oracle trigger resolves"
+   ],
+   [
+    29,
+    702,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 6,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    27,
+    643,
+    "cast Thassa's Oracle"
+   ],
+   [
+    27,
+    645,
+    "oracle trigger"
+   ],
+   [
+    27,
+    648,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 7,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    33,
+    938,
+    "cast Thassa's Oracle"
+   ],
+   [
+    33,
+    944,
+    "oracle trigger"
+   ],
+   [
+    33,
+    945,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 9,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    42,
+    1412,
+    "cast Thassa's Oracle"
+   ],
+   [
+    42,
+    1414,
+    "oracle trigger"
+   ],
+   [
+    42,
+    1417,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 11,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    23,
+    629,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    631,
+    "oracle trigger"
+   ],
+   [
+    23,
+    634,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 1,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    49,
+    1285,
+    "cast Thassa's Oracle"
+   ],
+   [
+    49,
+    1290,
+    "oracle trigger"
+   ],
+   [
+    49,
+    1291,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    6,
+    "tutor_steer",
+    "sid=1 mode=plan value=5 stockValue=0 steer=Dryad Arbor over=Breeding Pool"
+   ],
+   [
+    10,
+    "tutor_cast",
+    "Mystical Tutor seeking Unctus, Grand Metatect"
+   ],
+   [
+    10,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=0 steer=Pact of Negation over=Misdirection"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Aphetto Alchemist (0/2 online)"
+   ],
+   [
+    22,
+    "tutor_cast",
+    "Worldly Tutor seeking Unctus, Grand Metatect"
+   ],
+   [
+    22,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=0 steer=Unctus, Grand Metatect over=Endurance"
+   ],
+   [
+    67,
+    "tutor_steer",
+    "sid=6 mode=combo value=8 stockValue=0 steer=Springheart Nantuko over=Nadu, Winged Wisdom"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 5,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    74,
+    1914,
+    "cast Thassa's Oracle"
+   ],
+   [
+    74,
+    1916,
+    "oracle trigger"
+   ],
+   [
+    74,
+    1917,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    11,
+    "tutor_steer",
+    "sid=1 mode=plan value=5 stockValue=0 steer=Dryad Arbor over=Tropical Island"
+   ],
+   [
+    58,
+    "combo_cast",
+    "Aphetto Alchemist (1/2 online)"
+   ],
+   [
+    62,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=0 steer=Lotus Cobra over=Endurance"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 11,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    31,
+    688,
+    "cast Thassa's Oracle"
+   ],
+   [
+    31,
+    691,
+    "oracle trigger"
+   ],
+   [
+    31,
+    692,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 12,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    27,
+    712,
+    "cast Thassa's Oracle"
+   ],
+   [
+    27,
+    714,
+    "oracle trigger"
+   ],
+   [
+    27,
+    715,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    3,
+    "combo_cast",
+    "Lotus Cobra (0/2 online)"
+   ],
+   [
+    30,
+    "combo_cast",
+    "Scute Swarm (1/3 online)"
+   ],
+   [
+    36,
+    "combo_cast",
+    "Nadu, Winged Wisdom (2/3 online)"
+   ],
+   [
+    48,
+    "tutor_steer",
+    "sid=6 mode=combo value=8 stockValue=8 steer=Springheart Nantuko over=Unctus, Grand Metatect"
+   ],
+   [
+    50,
+    "tutor_cast",
+    "Eldritch Evolution seeking Cephalid Illusionist"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 7,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    22,
+    501,
+    "cast Thassa's Oracle"
+   ],
+   [
+    22,
+    504,
+    "oracle trigger"
+   ],
+   [
+    22,
+    506,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    22,
+    525,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    10,
+    "tutor_cast",
+    "Wishclaw Talisman seeking Thassa's Oracle"
+   ],
+   [
+    18,
+    "tutor_cast",
+    "Imperial Seal seeking Thassa's Oracle"
+   ],
+   [
+    18,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    22,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    22,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ],
+   [
+    34,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=0 steer=Brain Freeze over=Misdirection"
+   ],
+   [
+    46,
+    "tutor_steer",
+    "sid=8 mode=combo value=8 stockValue=8 steer=Underworld Breach over=Ragavan, Nimble Pilferer"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 10,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    14,
+    334,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    336,
+    "oracle trigger"
+   ],
+   [
+    14,
+    337,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    34,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=1 steer=Grinding Station over=Dockside Extortionist"
+   ],
+   [
+    38,
+    "tutor_cast",
+    "Grim Tutor seeking Underworld Breach"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 10,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    33,
+    895,
+    "cast Thassa's Oracle"
+   ],
+   [
+    33,
+    897,
+    "oracle trigger"
+   ],
+   [
+    33,
+    900,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 13,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    43,
+    1424,
+    "cast Thassa's Oracle"
+   ],
+   [
+    43,
+    1430,
+    "oracle trigger"
+   ],
+   [
+    43,
+    1431,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    35,
+    "combo_cast",
+    "Grinding Station (0/2 online)"
+   ],
+   [
+    35,
+    "tutor_cast",
+    "Diabolic Intent seeking Underworld Breach"
+   ],
+   [
+    35,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Underworld Breach over=Simian Spirit Guide"
+   ],
+   [
+    35,
+    "combo_cast",
+    "Underworld Breach (1/2 online)"
+   ],
+   [
+    39,
+    "tutor_cast",
+    "Wishclaw Talisman seeking Underworld Breach"
+   ],
+   [
+    39,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=0 steer=Brain Freeze over=Ad Nauseam"
+   ],
+   [
+    39,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=0 steer=Brain Freeze over=Ad Nauseam"
+   ],
+   [
+    39,
+    "tutor_steer",
+    "sid=8 mode=plan value=8 stockValue=1 steer=Lotus Petal over=Talisman of Dominance"
+   ],
+   [
+    43,
+    "tutor_cast",
+    "Vampiric Tutor seeking Underworld Breach"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 13,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    49,
+    1701,
+    "cast Thassa's Oracle"
+   ],
+   [
+    49,
+    1704,
+    "oracle trigger"
+   ],
+   [
+    49,
+    1705,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 15,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    11,
+    226,
+    "cast Tainted Pact"
+   ],
+   [
+    27,
+    724,
+    "cast Thassa's Oracle"
+   ],
+   [
+    27,
+    726,
+    "oracle trigger"
+   ],
+   [
+    27,
+    728,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    27,
+    747,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    7,
+    "tutor_cast",
+    "Mystical Tutor seeking Thassa's Oracle"
+   ],
+   [
+    7,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=0 steer=Brain Freeze over=Ad Nauseam"
+   ],
+   [
+    7,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    7,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    15,
+    "tutor_cast",
+    "Diabolic Intent seeking Demonic Consultation"
+   ],
+   [
+    15,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=8 steer=Demonic Consultation over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    27,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    27,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 5,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    18,
+    502,
+    "cast Thassa's Oracle"
+   ],
+   [
+    18,
+    517,
+    "oracle trigger"
+   ],
+   [
+    18,
+    520,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 6,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    29,
+    713,
+    "cast Thassa's Oracle"
+   ],
+   [
+    29,
+    717,
+    "oracle trigger"
+   ],
+   [
+    29,
+    720,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 7,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    52,
+    1237,
+    "cast Thassa's Oracle"
+   ],
+   [
+    52,
+    1239,
+    "oracle trigger"
+   ],
+   [
+    52,
+    1240,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 12,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    39,
+    1193,
+    "cast Thassa's Oracle"
+   ],
+   [
+    39,
+    1195,
+    "oracle trigger"
+   ],
+   [
+    39,
+    1198,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 14,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    23,
+    538,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    540,
+    "oracle trigger"
+   ],
+   [
+    23,
+    541,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    51,
+    1377,
+    "cast Thassa's Oracle"
+   ],
+   [
+    51,
+    1381,
+    "oracle trigger"
+   ],
+   [
+    51,
+    1382,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 6,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    15,
+    345,
+    "cast Thassa's Oracle"
+   ],
+   [
+    15,
+    350,
+    "oracle trigger"
+   ],
+   [
+    15,
+    353,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    32,
+    927,
+    "cast Thassa's Oracle"
+   ],
+   [
+    32,
+    933,
+    "oracle trigger"
+   ],
+   [
+    32,
+    934,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    34,
+    928,
+    "cast Thassa's Oracle"
+   ],
+   [
+    34,
+    934,
+    "oracle trigger"
+   ],
+   [
+    34,
+    939,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 3,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    32,
+    789,
+    "cast Thassa's Oracle"
+   ],
+   [
+    32,
+    791,
+    "oracle trigger"
+   ],
+   [
+    32,
+    794,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 6,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.16.0",
+  "events": [
+   [
+    21,
+    496,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    500,
+    "oracle trigger"
+   ],
+   [
+    21,
+    501,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    26,
+    636,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    638,
+    "oracle trigger"
+   ],
+   [
+    26,
+    641,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    26,
+    "tutor_cast",
+    "Summoner's Pact seeking Demonic Consultation"
+   ],
+   [
+    26,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=1 steer=Devoted Druid over=Elvish Spirit Guide"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 1,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    15,
+    368,
+    "cast Tainted Pact"
+   ],
+   [
+    23,
+    648,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    652,
+    "oracle trigger"
+   ],
+   [
+    23,
+    653,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    15,
+    "combo_cast",
+    "Swift Reconfiguration (0/2 online)"
+   ],
+   [
+    19,
+    "combo_cast",
+    "Devoted Druid (1/2 online)"
+   ],
+   [
+    19,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=1 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    28,
+    649,
+    "cast Tainted Pact"
+   ],
+   [
+    44,
+    1191,
+    "cast Thassa's Oracle"
+   ],
+   [
+    44,
+    1197,
+    "oracle trigger"
+   ],
+   [
+    44,
+    1200,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    44,
+    1215,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    32,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=The Cabbage Merchant"
+   ],
+   [
+    35,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    35,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    44,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    44,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 3,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    48,
+    1346,
+    "cast Tainted Pact"
+   ],
+   [
+    63,
+    1757,
+    "cast Thassa's Oracle"
+   ],
+   [
+    63,
+    1759,
+    "oracle trigger"
+   ],
+   [
+    63,
+    1760,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    25,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=4 steer=Demonic Consultation over=Force of Will"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 4,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    39,
+    1136,
+    "cast Thassa's Oracle"
+   ],
+   [
+    39,
+    1139,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    20,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=1 steer=Devoted Druid over=The Cabbage Merchant"
+   ],
+   [
+    30,
+    "tutor_cast",
+    "Mystical Tutor seeking Swift Reconfiguration"
+   ],
+   [
+    30,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=4 steer=Demonic Consultation over=Force of Will"
+   ],
+   [
+    39,
+    "tutor_cast",
+    "Demonic Tutor seeking Thassa's Oracle"
+   ],
+   [
+    39,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    39,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    39,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 7,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    23,
+    479,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    481,
+    "oracle trigger"
+   ],
+   [
+    23,
+    484,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    23,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    56,
+    "tutor_cast",
+    "Demonic Tutor seeking Demonic Consultation"
+   ],
+   [
+    56,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=1 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    59,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    59,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=0 steer=Devoted Druid over=Starting Town"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 8,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    20,
+    435,
+    "cast Tainted Pact"
+   ],
+   [
+    26,
+    565,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    569,
+    "oracle trigger"
+   ],
+   [
+    26,
+    571,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    26,
+    583,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    6,
+    "tutor_cast",
+    "Worldly Tutor seeking Thassa's Oracle"
+   ],
+   [
+    6,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    18,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    19,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    20,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    20,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    20,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    20,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    20,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    20,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    20,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=4 steer=Demonic Consultation over=Force of Will"
+   ],
+   [
+    26,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    26,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 9,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    7,
+    146,
+    "cast Tainted Pact"
+   ],
+   [
+    34,
+    986,
+    "cast Thassa's Oracle"
+   ],
+   [
+    34,
+    993,
+    "oracle trigger"
+   ],
+   [
+    34,
+    996,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    34,
+    1007,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    19,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=The Cabbage Merchant"
+   ],
+   [
+    23,
+    "tutor_cast",
+    "Enlightened Tutor seeking Thassa's Oracle"
+   ],
+   [
+    23,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=0 steer=Swift Reconfiguration over=Esper Sentinel"
+   ],
+   [
+    27,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    27,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    34,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    34,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 10,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    49,
+    1421,
+    "cast Thassa's Oracle"
+   ],
+   [
+    49,
+    1423,
+    "oracle trigger"
+   ],
+   [
+    49,
+    1426,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    49,
+    1443,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    2,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=0 steer=Swift Reconfiguration over=Esper Sentinel"
+   ],
+   [
+    26,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    46,
+    "tutor_cast",
+    "Wishclaw Talisman seeking Thassa's Oracle"
+   ],
+   [
+    46,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    49,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    49,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 12,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    31,
+    776,
+    "cast Thassa's Oracle"
+   ],
+   [
+    31,
+    780,
+    "oracle trigger"
+   ],
+   [
+    31,
+    783,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    31,
+    788,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    11,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=5 steer=Demonic Consultation over=The Cabbage Merchant"
+   ],
+   [
+    15,
+    "tutor_cast",
+    "Mystical Tutor seeking Thassa's Oracle"
+   ],
+   [
+    15,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=4 steer=Pact of Negation over=Force of Will"
+   ],
+   [
+    15,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    15,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    19,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=1 steer=Devoted Druid over=Elvish Spirit Guide"
+   ],
+   [
+    31,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    31,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 13,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    37,
+    1006,
+    "cast Thassa's Oracle"
+   ],
+   [
+    37,
+    1011,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    37,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=Deathrite Shaman"
+   ],
+   [
+    37,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    37,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Savannah"
+   ],
+   [
+    37,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_016_engine",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 15,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.16.0",
+  "events": [
+   [
+    14,
+    325,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    327,
+    "oracle trigger"
+   ],
+   [
+    14,
+    330,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    14,
+    343,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    6,
+    "tutor_cast",
+    "Imperial Seal seeking Thassa's Oracle"
+   ],
+   [
+    6,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    21,
+    615,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    617,
+    "oracle trigger"
+   ],
+   [
+    21,
+    618,
+    "oracle trigger resolves"
+   ],
+   [
+    33,
+    1013,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 1,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    13,
+    305,
+    "cast Thassa's Oracle"
+   ],
+   [
+    13,
+    311,
+    "oracle trigger"
+   ],
+   [
+    13,
+    312,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 1,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    754,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 3,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    9,
+    209,
+    "cast Thassa's Oracle"
+   ],
+   [
+    9,
+    211,
+    "oracle trigger"
+   ],
+   [
+    9,
+    212,
+    "oracle trigger resolves"
+   ],
+   [
+    33,
+    886,
+    "oracle trigger"
+   ],
+   [
+    36,
+    985,
+    "oracle trigger"
+   ],
+   [
+    39,
+    1093,
+    "oracle trigger resolves"
+   ],
+   [
+    40,
+    1106,
+    "oracle trigger"
+   ],
+   [
+    42,
+    1168,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 3,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    39,
+    1090,
+    "cast Thassa's Oracle"
+   ],
+   [
+    39,
+    1092,
+    "oracle trigger"
+   ],
+   [
+    39,
+    1093,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 6,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    21,
+    462,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    464,
+    "oracle trigger"
+   ],
+   [
+    21,
+    465,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    9,
+    212,
+    "cast Thassa's Oracle"
+   ],
+   [
+    9,
+    214,
+    "oracle trigger"
+   ],
+   [
+    9,
+    215,
+    "oracle trigger resolves"
+   ],
+   [
+    37,
+    874,
+    "cast Tainted Pact"
+   ],
+   [
+    47,
+    1252,
+    "cast Thassa's Oracle"
+   ],
+   [
+    47,
+    1255,
+    "oracle trigger"
+   ],
+   [
+    47,
+    1258,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 1,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    20,
+    515,
+    "cast Thassa's Oracle"
+   ],
+   [
+    20,
+    518,
+    "oracle trigger"
+   ],
+   [
+    20,
+    519,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    26,
+    632,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    634,
+    "oracle trigger"
+   ],
+   [
+    26,
+    635,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 10,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    30,
+    895,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    898,
+    "oracle trigger"
+   ],
+   [
+    30,
+    901,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 13,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    15,
+    327,
+    "cast Thassa's Oracle"
+   ],
+   [
+    15,
+    333,
+    "oracle trigger"
+   ],
+   [
+    15,
+    334,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 15,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    18,
+    460,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 2,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    23,
+    493,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    495,
+    "oracle trigger"
+   ],
+   [
+    23,
+    496,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    3,
+    "tutor_steer",
+    "sid=1 mode=plan value=5 stockValue=0 steer=Dryad Arbor over=Verdant Catacombs"
+   ],
+   [
+    23,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=0 steer=Snap over=Transmute Artifact"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 4,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    29,
+    862,
+    "cast Thassa's Oracle"
+   ],
+   [
+    29,
+    864,
+    "oracle trigger"
+   ],
+   [
+    29,
+    867,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 6,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    22,
+    499,
+    "cast Tainted Pact"
+   ],
+   [
+    42,
+    1191,
+    "cast Thassa's Oracle"
+   ],
+   [
+    42,
+    1194,
+    "oracle trigger"
+   ],
+   [
+    42,
+    1197,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 8,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    10,
+    227,
+    "cast Thassa's Oracle"
+   ],
+   [
+    10,
+    229,
+    "oracle trigger"
+   ],
+   [
+    10,
+    230,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    22,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=1 steer=Jeweled Lotus over=Mox Amber"
+   ],
+   [
+    25,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=0 steer=Pact of Negation over=Muddle the Mixture"
+   ],
+   [
+    36,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=0 steer=Aphetto Alchemist over=Endurance"
+   ],
+   [
+    43,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=0 steer=Eternal Witness over=Endurance"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    14,
+    266,
+    "cast Tainted Pact"
+   ],
+   [
+    68,
+    1740,
+    "cast Thassa's Oracle"
+   ],
+   [
+    68,
+    1742,
+    "oracle trigger"
+   ],
+   [
+    68,
+    1743,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 9,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    45,
+    1121,
+    "cast Thassa's Oracle"
+   ],
+   [
+    45,
+    1124,
+    "oracle trigger"
+   ],
+   [
+    45,
+    1125,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    70,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=0 steer=Cephalid Illusionist over=Endurance"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 10,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    60,
+    1731,
+    "cast Thassa's Oracle"
+   ],
+   [
+    60,
+    1734,
+    "oracle trigger"
+   ],
+   [
+    60,
+    1735,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    15,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=1 steer=Jeweled Lotus over=Unctus, Grand Metatect"
+   ],
+   [
+    42,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=0 steer=Eternal Witness over=Endurance"
+   ],
+   [
+    54,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=0 steer=Cephalid Illusionist over=Endurance"
+   ],
+   [
+    57,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=0 steer=Lotus Cobra over=Endurance"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 13,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    32,
+    824,
+    "cast Thassa's Oracle"
+   ],
+   [
+    32,
+    826,
+    "oracle trigger"
+   ],
+   [
+    32,
+    827,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    12,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=7 steer=Snap over=Force of Will"
+   ],
+   [
+    48,
+    "tutor_steer",
+    "sid=4 mode=plan value=4 stockValue=0 steer=March of Swirling Mist over=Transmute Artifact"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    32,
+    1097,
+    "cast Thassa's Oracle"
+   ],
+   [
+    32,
+    1099,
+    "oracle trigger"
+   ],
+   [
+    32,
+    1100,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 3,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    738,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    740,
+    "oracle trigger"
+   ],
+   [
+    28,
+    741,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 4,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    29,
+    724,
+    "cast Thassa's Oracle"
+   ],
+   [
+    29,
+    726,
+    "oracle trigger"
+   ],
+   [
+    29,
+    727,
+    "oracle trigger resolves"
+   ],
+   [
+    44,
+    1120,
+    "oracle trigger"
+   ],
+   [
+    46,
+    1188,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 6,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    9,
+    205,
+    "cast Thassa's Oracle"
+   ],
+   [
+    9,
+    207,
+    "oracle trigger"
+   ],
+   [
+    9,
+    208,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    43,
+    1175,
+    "cast Thassa's Oracle"
+   ],
+   [
+    43,
+    1180,
+    "oracle trigger"
+   ],
+   [
+    43,
+    1181,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    24,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=0 steer=Brain Freeze over=Ad Nauseam"
+   ],
+   [
+    59,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=Dockside Extortionist"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 12,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    27,
+    648,
+    "cast Thassa's Oracle"
+   ],
+   [
+    27,
+    650,
+    "oracle trigger"
+   ],
+   [
+    27,
+    651,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 15,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    23,
+    665,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    670,
+    "oracle trigger"
+   ],
+   [
+    23,
+    671,
+    "oracle trigger resolves"
+   ],
+   [
+    27,
+    775,
+    "oracle trigger"
+   ],
+   [
+    27,
+    784,
+    "oracle trigger"
+   ],
+   [
+    27,
+    785,
+    "oracle trigger resolves"
+   ],
+   [
+    31,
+    988,
+    "oracle trigger"
+   ],
+   [
+    31,
+    989,
+    "oracle trigger resolves"
+   ],
+   [
+    31,
+    1012,
+    "oracle trigger"
+   ],
+   [
+    31,
+    1013,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 15,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    812,
+    "cast Tainted Pact"
+   ],
+   [
+    35,
+    1207,
+    "cast Thassa's Oracle"
+   ],
+   [
+    35,
+    1212,
+    "oracle trigger"
+   ],
+   [
+    35,
+    1213,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    25,
+    633,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    635,
+    "oracle trigger"
+   ],
+   [
+    25,
+    638,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 5,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    26,
+    618,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    622,
+    "oracle trigger"
+   ],
+   [
+    26,
+    625,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 14,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    13,
+    316,
+    "cast Thassa's Oracle"
+   ],
+   [
+    13,
+    320,
+    "oracle trigger"
+   ],
+   [
+    13,
+    321,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    12,
+    254,
+    "cast Thassa's Oracle"
+   ],
+   [
+    12,
+    256,
+    "oracle trigger"
+   ],
+   [
+    12,
+    257,
+    "oracle trigger resolves"
+   ],
+   [
+    28,
+    707,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 7,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    23,
+    501,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    509,
+    "oracle trigger"
+   ],
+   [
+    23,
+    510,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 11,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    20,
+    460,
+    "cast Thassa's Oracle"
+   ],
+   [
+    20,
+    462,
+    "oracle trigger"
+   ],
+   [
+    20,
+    463,
+    "oracle trigger resolves"
+   ],
+   [
+    25,
+    614,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 12,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    13,
+    335,
+    "cast Thassa's Oracle"
+   ],
+   [
+    13,
+    337,
+    "oracle trigger"
+   ],
+   [
+    13,
+    340,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    37,
+    1030,
+    "cast Thassa's Oracle"
+   ],
+   [
+    37,
+    1034,
+    "oracle trigger"
+   ],
+   [
+    37,
+    1037,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 13,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    26,
+    627,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    47,
+    1405,
+    "cast Thassa's Oracle"
+   ],
+   [
+    47,
+    1410,
+    "oracle trigger"
+   ],
+   [
+    47,
+    1413,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    19,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=The Cabbage Merchant"
+   ],
+   [
+    38,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=1 steer=Pact of Negation over=The Cabbage Merchant"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_nocombo",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 15,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    52,
+    1426,
+    "cast Thassa's Oracle"
+   ],
+   [
+    52,
+    1428,
+    "oracle trigger"
+   ],
+   [
+    52,
+    1429,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    36,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=1 steer=Devoted Druid over=Deathrite Shaman"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 1,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    24,
+    539,
+    "cast Thassa's Oracle"
+   ],
+   [
+    24,
+    541,
+    "oracle trigger"
+   ],
+   [
+    24,
+    542,
+    "oracle trigger resolves"
+   ],
+   [
+    32,
+    829,
+    "oracle trigger"
+   ],
+   [
+    32,
+    833,
+    "oracle trigger"
+   ],
+   [
+    32,
+    836,
+    "oracle trigger resolves"
+   ],
+   [
+    32,
+    843,
+    "oracle trigger"
+   ],
+   [
+    32,
+    847,
+    "oracle trigger"
+   ],
+   [
+    32,
+    851,
+    "oracle trigger resolves"
+   ],
+   [
+    36,
+    984,
+    "oracle trigger"
+   ],
+   [
+    36,
+    988,
+    "oracle trigger"
+   ],
+   [
+    36,
+    991,
+    "oracle trigger resolves"
+   ],
+   [
+    45,
+    1337,
+    "oracle trigger"
+   ],
+   [
+    45,
+    1342,
+    "oracle trigger"
+   ],
+   [
+    45,
+    1343,
+    "oracle trigger resolves"
+   ],
+   [
+    45,
+    1367,
+    "oracle trigger"
+   ],
+   [
+    45,
+    1372,
+    "oracle trigger"
+   ],
+   [
+    45,
+    1373,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 3,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    8,
+    173,
+    "cast Tainted Pact"
+   ],
+   [
+    49,
+    1499,
+    "cast Thassa's Oracle"
+   ],
+   [
+    49,
+    1504,
+    "oracle trigger"
+   ],
+   [
+    49,
+    1505,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 5,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    7,
+    147,
+    "cast Thassa's Oracle"
+   ],
+   [
+    7,
+    149,
+    "oracle trigger"
+   ],
+   [
+    7,
+    150,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 6,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    18,
+    410,
+    "cast Thassa's Oracle"
+   ],
+   [
+    18,
+    412,
+    "oracle trigger"
+   ],
+   [
+    18,
+    413,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    19,
+    431,
+    "cast Thassa's Oracle"
+   ],
+   [
+    19,
+    433,
+    "oracle trigger"
+   ],
+   [
+    19,
+    434,
+    "oracle trigger resolves"
+   ],
+   [
+    31,
+    848,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    730,
+    "cast Tainted Pact"
+   ],
+   [
+    28,
+    746,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    748,
+    "oracle trigger"
+   ],
+   [
+    28,
+    751,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 4,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    19,
+    478,
+    "cast Thassa's Oracle"
+   ],
+   [
+    19,
+    481,
+    "oracle trigger"
+   ],
+   [
+    19,
+    482,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 1,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    33,
+    762,
+    "cast Thassa's Oracle"
+   ],
+   [
+    33,
+    767,
+    "oracle trigger"
+   ],
+   [
+    33,
+    768,
+    "oracle trigger resolves"
+   ],
+   [
+    55,
+    1432,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    9,
+    "combo_cast",
+    "Unctus, Grand Metatect (0/2 online)"
+   ],
+   [
+    13,
+    "tutor_cast",
+    "Eldritch Evolution seeking Aphetto Alchemist"
+   ],
+   [
+    13,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=0 steer=Springheart Nantuko over=Endurance"
+   ],
+   [
+    13,
+    "combo_cast",
+    "Lotus Cobra (1/2 online)"
+   ],
+   [
+    65,
+    "combo_cast",
+    "Cephalid Illusionist (0/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 5,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    18,
+    413,
+    "cast Thassa's Oracle"
+   ],
+   [
+    18,
+    415,
+    "oracle trigger"
+   ],
+   [
+    18,
+    416,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    6,
+    "tutor_steer",
+    "sid=1 mode=plan value=5 stockValue=0 steer=Dryad Arbor over=Tropical Island"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 6,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    25,
+    666,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    669,
+    "oracle trigger"
+   ],
+   [
+    25,
+    670,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    21,
+    "tutor_cast",
+    "Muddle the Mixture seeking Cephalid Illusionist"
+   ],
+   [
+    47,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=0 steer=Cephalid Illusionist over=Endurance"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 7,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    51,
+    1278,
+    "cast Thassa's Oracle"
+   ],
+   [
+    51,
+    1284,
+    "oracle trigger"
+   ],
+   [
+    51,
+    1285,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    23,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=0 steer=Aphetto Alchemist over=Endurance"
+   ],
+   [
+    27,
+    "tutor_cast",
+    "Tezzeret the Seeker seeking Unctus, Grand Metatect"
+   ],
+   [
+    31,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=0 steer=Pact of Negation over=Transmute Artifact"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    25,
+    532,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    534,
+    "oracle trigger"
+   ],
+   [
+    25,
+    535,
+    "oracle trigger resolves"
+   ],
+   [
+    25,
+    540,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    1,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=7 steer=Brain Freeze over=Force of Will"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    22,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    22,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    22,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "combo_hold",
+    "Tainted Pact vs open enemy mana (greed=0.5)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    612,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    614,
+    "oracle trigger"
+   ],
+   [
+    28,
+    615,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 1,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    37,
+    973,
+    "cast Thassa's Oracle"
+   ],
+   [
+    37,
+    975,
+    "oracle trigger"
+   ],
+   [
+    37,
+    976,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 4,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    43,
+    1379,
+    "cast Thassa's Oracle"
+   ],
+   [
+    43,
+    1381,
+    "oracle trigger"
+   ],
+   [
+    43,
+    1382,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    25,
+    703,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    705,
+    "oracle trigger"
+   ],
+   [
+    25,
+    706,
+    "oracle trigger resolves"
+   ],
+   [
+    29,
+    805,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 6,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    3,
+    53,
+    "cast Tainted Pact"
+   ],
+   [
+    23,
+    653,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    657,
+    "oracle trigger"
+   ],
+   [
+    23,
+    660,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    22,
+    582,
+    "cast Tainted Pact"
+   ],
+   [
+    46,
+    1222,
+    "cast Thassa's Oracle"
+   ],
+   [
+    46,
+    1224,
+    "oracle trigger"
+   ],
+   [
+    46,
+    1227,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_pilot",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 7,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    20,
+    401,
+    "cast Thassa's Oracle"
+   ],
+   [
+    20,
+    403,
+    "oracle trigger"
+   ],
+   [
+    20,
+    406,
+    "oracle trigger resolves"
+   ],
+   [
+    28,
+    561,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    4,
+    "tutor_cast",
+    "Worldly Tutor seeking Demonic Consultation"
+   ],
+   [
+    4,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=5 steer=Devoted Druid over=Elvish Spirit Guide"
+   ],
+   [
+    24,
+    "tutor_cast",
+    "Demonic Tutor seeking Demonic Consultation"
+   ],
+   [
+    24,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=1 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    28,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 1,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    47,
+    1417,
+    "cast Thassa's Oracle"
+   ],
+   [
+    47,
+    1419,
+    "oracle trigger"
+   ],
+   [
+    47,
+    1422,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 2,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    26,
+    676,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    678,
+    "oracle trigger"
+   ],
+   [
+    26,
+    679,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 4,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    38,
+    1031,
+    "cast Thassa's Oracle"
+   ],
+   [
+    38,
+    1033,
+    "oracle trigger"
+   ],
+   [
+    38,
+    1034,
+    "oracle trigger resolves"
+   ],
+   [
+    46,
+    1297,
+    "oracle trigger"
+   ],
+   [
+    52,
+    1522,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 6,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    14,
+    316,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    321,
+    "oracle trigger"
+   ],
+   [
+    14,
+    322,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 8,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    43,
+    1247,
+    "cast Thassa's Oracle"
+   ],
+   [
+    43,
+    1252,
+    "oracle trigger"
+   ],
+   [
+    43,
+    1255,
+    "oracle trigger resolves"
+   ],
+   [
+    47,
+    1405,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 9,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    2,
+    47,
+    "cast Thassa's Oracle"
+   ],
+   [
+    2,
+    49,
+    "oracle trigger"
+   ],
+   [
+    2,
+    52,
+    "oracle trigger resolves"
+   ],
+   [
+    46,
+    1255,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 11,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    25,
+    679,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    684,
+    "oracle trigger"
+   ],
+   [
+    25,
+    687,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 12,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    29,
+    809,
+    "cast Thassa's Oracle"
+   ],
+   [
+    29,
+    815,
+    "oracle trigger"
+   ],
+   [
+    29,
+    816,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 14,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    29,
+    690,
+    "cast Thassa's Oracle"
+   ],
+   [
+    29,
+    692,
+    "oracle trigger"
+   ],
+   [
+    29,
+    693,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 15,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    69,
+    2060,
+    "cast Thassa's Oracle"
+   ],
+   [
+    69,
+    2062,
+    "oracle trigger"
+   ],
+   [
+    69,
+    2063,
+    "oracle trigger resolves"
+   ],
+   [
+    70,
+    2142,
+    "oracle trigger"
+   ],
+   [
+    72,
+    2338,
+    "oracle trigger"
+   ],
+   [
+    74,
+    2503,
+    "oracle trigger"
+   ],
+   [
+    76,
+    2652,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    27,
+    774,
+    "cast Thassa's Oracle"
+   ],
+   [
+    27,
+    777,
+    "oracle trigger"
+   ],
+   [
+    27,
+    778,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    23,
+    578,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    580,
+    "oracle trigger"
+   ],
+   [
+    23,
+    581,
+    "oracle trigger resolves"
+   ],
+   [
+    45,
+    1717,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    38,
+    1332,
+    "cast Thassa's Oracle"
+   ],
+   [
+    38,
+    1334,
+    "oracle trigger"
+   ],
+   [
+    38,
+    1335,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 5,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    24,
+    698,
+    "cast Thassa's Oracle"
+   ],
+   [
+    24,
+    700,
+    "oracle trigger"
+   ],
+   [
+    24,
+    701,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    36,
+    965,
+    "cast Thassa's Oracle"
+   ],
+   [
+    36,
+    967,
+    "oracle trigger"
+   ],
+   [
+    36,
+    968,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 10,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    9,
+    218,
+    "cast Thassa's Oracle"
+   ],
+   [
+    9,
+    220,
+    "oracle trigger"
+   ],
+   [
+    9,
+    221,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 1,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    42,
+    1382,
+    "cast Thassa's Oracle"
+   ],
+   [
+    42,
+    1387,
+    "oracle trigger"
+   ],
+   [
+    42,
+    1388,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 8,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    35,
+    913,
+    "cast Tainted Pact"
+   ],
+   [
+    47,
+    1365,
+    "cast Thassa's Oracle"
+   ],
+   [
+    47,
+    1367,
+    "oracle trigger"
+   ],
+   [
+    47,
+    1368,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 9,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    647,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    649,
+    "oracle trigger"
+   ],
+   [
+    28,
+    652,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 10,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    14,
+    346,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    348,
+    "oracle trigger"
+   ],
+   [
+    14,
+    349,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    6,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=1 steer=Jeweled Lotus over=Unctus, Grand Metatect"
+   ],
+   [
+    22,
+    "combo_cast",
+    "Cephalid Illusionist (0/2 online)"
+   ],
+   [
+    26,
+    "tutor_cast",
+    "Tezzeret the Seeker seeking Lightning Greaves"
+   ],
+   [
+    26,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=8 steer=Lightning Greaves over=Unctus, Grand Metatect"
+   ],
+   [
+    30,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=1 steer=Lotus Cobra over=Delighted Halfling"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 11,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    12,
+    247,
+    "cast Tainted Pact"
+   ],
+   [
+    40,
+    1024,
+    "cast Thassa's Oracle"
+   ],
+   [
+    40,
+    1027,
+    "oracle trigger"
+   ],
+   [
+    40,
+    1028,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 11,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    39,
+    999,
+    "cast Thassa's Oracle"
+   ],
+   [
+    39,
+    1002,
+    "oracle trigger"
+   ],
+   [
+    39,
+    1003,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    15,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=5 steer=Jeweled Lotus over=Sol Ring"
+   ],
+   [
+    27,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=0 steer=Pact of Negation over=Muddle the Mixture"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 13,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    10,
+    214,
+    "cast Thassa's Oracle"
+   ],
+   [
+    10,
+    216,
+    "oracle trigger"
+   ],
+   [
+    10,
+    217,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 2,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    57,
+    1397,
+    "cast Thassa's Oracle"
+   ],
+   [
+    57,
+    1399,
+    "oracle trigger"
+   ],
+   [
+    57,
+    1400,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 7,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    10,
+    212,
+    "cast Thassa's Oracle"
+   ],
+   [
+    10,
+    214,
+    "oracle trigger"
+   ],
+   [
+    10,
+    217,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    10,
+    229,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    2,
+    "tutor_cast",
+    "Imperial Seal seeking Demonic Consultation"
+   ],
+   [
+    2,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=5 steer=Demonic Consultation over=Simian Spirit Guide"
+   ],
+   [
+    10,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    10,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 8,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    34,
+    822,
+    "cast Thassa's Oracle"
+   ],
+   [
+    34,
+    826,
+    "oracle trigger"
+   ],
+   [
+    34,
+    827,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 11,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    11,
+    250,
+    "cast Thassa's Oracle"
+   ],
+   [
+    11,
+    252,
+    "oracle trigger"
+   ],
+   [
+    11,
+    253,
+    "oracle trigger resolves"
+   ],
+   [
+    15,
+    348,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    7,
+    "tutor_cast",
+    "Mystical Tutor seeking Demonic Consultation"
+   ],
+   [
+    7,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=0 steer=Demonic Consultation over=Ad Nauseam"
+   ],
+   [
+    15,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 11,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    25,
+    699,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    701,
+    "oracle trigger"
+   ],
+   [
+    25,
+    702,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 13,
+  "player": "Ai(3)-nadu",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    57,
+    1606,
+    "cast Thassa's Oracle"
+   ],
+   [
+    57,
+    1608,
+    "oracle trigger"
+   ],
+   [
+    57,
+    1609,
+    "oracle trigger resolves"
+   ],
+   [
+    59,
+    1668,
+    "oracle trigger"
+   ],
+   [
+    61,
+    1734,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 10,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    18,
+    414,
+    "cast Tainted Pact"
+   ],
+   [
+    26,
+    731,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    735,
+    "oracle trigger"
+   ],
+   [
+    26,
+    738,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 12,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    775,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    779,
+    "oracle trigger"
+   ],
+   [
+    28,
+    780,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    56,
+    1838,
+    "cast Thassa's Oracle"
+   ],
+   [
+    56,
+    1840,
+    "oracle trigger"
+   ],
+   [
+    56,
+    1841,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 11,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    6,
+    120,
+    "cast Tainted Pact"
+   ],
+   [
+    30,
+    826,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    832,
+    "oracle trigger"
+   ],
+   [
+    30,
+    835,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 5,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    28,
+    815,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    819,
+    "oracle trigger"
+   ],
+   [
+    28,
+    820,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 8,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    32,
+    1235,
+    "cast Thassa's Oracle"
+   ],
+   [
+    32,
+    1237,
+    "oracle trigger"
+   ],
+   [
+    32,
+    1238,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 11,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    38,
+    985,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 15,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.5.0",
+  "events": [
+   [
+    26,
+    595,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    597,
+    "oracle trigger"
+   ],
+   [
+    26,
+    598,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    14,
+    368,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    372,
+    "oracle trigger"
+   ],
+   [
+    14,
+    375,
+    "oracle trigger resolves"
+   ],
+   [
+    18,
+    502,
+    "cast Tainted Pact"
+   ],
+   [
+    22,
+    614,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    6,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "tutor_cast",
+    "Demonic Tutor seeking Thassa's Oracle"
+   ],
+   [
+    10,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    22,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 1,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    35,
+    954,
+    "cast Thassa's Oracle"
+   ],
+   [
+    35,
+    956,
+    "oracle trigger"
+   ],
+   [
+    35,
+    960,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    35,
+    963,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    14,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=5 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    32,
+    "tutor_cast",
+    "Worldly Tutor seeking Thassa's Oracle"
+   ],
+   [
+    32,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    32,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    32,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Forbidden Orchard"
+   ],
+   [
+    35,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    35,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 2,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    22,
+    546,
+    "cast Thassa's Oracle"
+   ],
+   [
+    22,
+    548,
+    "oracle trigger"
+   ],
+   [
+    22,
+    549,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    18,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    18,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    22,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 4,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    33,
+    733,
+    "cast Thassa's Oracle"
+   ],
+   [
+    33,
+    741,
+    "oracle trigger"
+   ],
+   [
+    33,
+    742,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    13,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=0 steer=Swift Reconfiguration over=Esper Sentinel"
+   ],
+   [
+    25,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=1 steer=Devoted Druid over=Elvish Spirit Guide"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 6,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    21,
+    456,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    462,
+    "oracle trigger"
+   ],
+   [
+    21,
+    465,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    21,
+    482,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    9,
+    "tutor_cast",
+    "Worldly Tutor seeking Thassa's Oracle"
+   ],
+   [
+    9,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    21,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    21,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ],
+   [
+    21,
+    "tutor_cast",
+    "Summoner's Pact seeking Demonic Consultation"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 13,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    19,
+    466,
+    "cast Thassa's Oracle"
+   ],
+   [
+    19,
+    470,
+    "oracle trigger"
+   ],
+   [
+    19,
+    473,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    19,
+    488,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    15,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=0 steer=Demonic Consultation over=Bloodstained Mire"
+   ],
+   [
+    19,
+    "tutor_cast",
+    "Worldly Tutor seeking Thassa's Oracle"
+   ],
+   [
+    19,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    19,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    19,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "agent_viability/runs_winmax",
+  "file": "cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 14,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    17,
+    466,
+    "cast Thassa's Oracle"
+   ],
+   [
+    17,
+    473,
+    "oracle trigger"
+   ],
+   [
+    17,
+    478,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    31,
+    821,
+    "cast Thassa's Oracle"
+   ],
+   [
+    31,
+    823,
+    "oracle trigger"
+   ],
+   [
+    31,
+    824,
+    "oracle trigger resolves"
+   ],
+   [
+    31,
+    831,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    31,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    31,
+    "tutor_cast",
+    "Gamble seeking Demonic Consultation"
+   ],
+   [
+    31,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=1 steer=Demonic Consultation over=Simian Spirit Guide"
+   ],
+   [
+    31,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ],
+   [
+    34,
+    "tutor_cast",
+    "Demonic Tutor seeking Demonic Consultation"
+   ],
+   [
+    34,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=1 steer=Final Fortune over=Simian Spirit Guide"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "2iA_Jt0d6sM_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(2)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    14,
+    263,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    265,
+    "oracle trigger"
+   ],
+   [
+    14,
+    267,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    14,
+    279,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    2,
+    "tutor_cast",
+    "Vampiric Tutor seeking Demonic Consultation"
+   ],
+   [
+    2,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=8 steer=Demonic Consultation over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    14,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    30,
+    822,
+    "cast Tainted Pact"
+   ],
+   [
+    30,
+    845,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    857,
+    "oracle trigger"
+   ],
+   [
+    30,
+    858,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "B421mac67IE_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(4)-lily_malcolm_vial",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    67,
+    1973,
+    "cast Thassa's Oracle"
+   ],
+   [
+    67,
+    1975,
+    "oracle trigger"
+   ],
+   [
+    67,
+    1976,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    8,
+    "tutor_cast",
+    "Lively Dirge seeking Glint-Horn Buccaneer"
+   ],
+   [
+    16,
+    "tutor_cast",
+    "Diabolic Intent seeking Glint-Horn Buccaneer"
+   ],
+   [
+    65,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    65,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Lightning-Rig Crew"
+   ],
+   [
+    67,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "Bq-nFi0f1jA_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(4)-yidris",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    45,
+    1804,
+    "cast Thassa's Oracle"
+   ],
+   [
+    45,
+    1806,
+    "oracle trigger"
+   ],
+   [
+    45,
+    1808,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    45,
+    1867,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    38,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=7 steer=Brain Freeze over=Force of Will"
+   ],
+   [
+    42,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=Delighted Halfling"
+   ],
+   [
+    45,
+    "tutor_cast",
+    "Wishclaw Talisman seeking Thassa's Oracle"
+   ],
+   [
+    45,
+    "tutor_steer",
+    "sid=8 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=Delighted Halfling"
+   ],
+   [
+    45,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "Bq-nFi0f1jA_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-yidris",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    37,
+    981,
+    "cast Thassa's Oracle"
+   ],
+   [
+    37,
+    983,
+    "oracle trigger"
+   ],
+   [
+    37,
+    985,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    37,
+    1001,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    1,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=5 steer=Brain Freeze over=Simian Spirit Guide"
+   ],
+   [
+    9,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=5 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    13,
+    "tutor_cast",
+    "Imperial Seal seeking Thassa's Oracle"
+   ],
+   [
+    13,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=Simian Spirit Guide"
+   ],
+   [
+    37,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    37,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "Bq-nFi0f1jA_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(2)-yidris",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    43,
+    1269,
+    "cast Thassa's Oracle"
+   ],
+   [
+    43,
+    1271,
+    "oracle trigger"
+   ],
+   [
+    43,
+    1274,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    43,
+    1288,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    11,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=5 steer=Brain Freeze over=Simian Spirit Guide"
+   ],
+   [
+    35,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=Simian Spirit Guide"
+   ],
+   [
+    43,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    43,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Volcanic Island"
+   ],
+   [
+    43,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    43,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "Bq-nFi0f1jA_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    7,
+    118,
+    "cast Thassa's Oracle"
+   ],
+   [
+    7,
+    120,
+    "oracle trigger"
+   ],
+   [
+    7,
+    121,
+    "oracle trigger resolves"
+   ],
+   [
+    11,
+    195,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    3,
+    "tutor_cast",
+    "Demonic Tutor seeking Thassa's Oracle"
+   ],
+   [
+    3,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=5 steer=Thassa's Oracle over=Simian Spirit Guide"
+   ],
+   [
+    7,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    11,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(1)-alan_tnt",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    54,
+    1266,
+    "cast Thassa's Oracle"
+   ],
+   [
+    54,
+    1268,
+    "oracle trigger"
+   ],
+   [
+    54,
+    1269,
+    "oracle trigger resolves"
+   ],
+   [
+    58,
+    1381,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    14,
+    "combo_cast",
+    "Swift Reconfiguration (0/2 online)"
+   ],
+   [
+    54,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=6 steer=Tainted Pact over=Razaketh, the Foulblooded"
+   ],
+   [
+    65,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=6 steer=Devoted Druid over=Razaketh, the Foulblooded"
+   ],
+   [
+    70,
+    "tutor_steer",
+    "sid=8 mode=plan value=8 stockValue=1 steer=Kinnan, Bonder Prodigy over=The Cabbage Merchant"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    25,
+    696,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    698,
+    "oracle trigger"
+   ],
+   [
+    25,
+    699,
+    "oracle trigger resolves"
+   ],
+   [
+    29,
+    774,
+    "cast Demonic Consultation"
+   ],
+   [
+    37,
+    1093,
+    "cast Tainted Pact"
+   ],
+   [
+    37,
+    1120,
+    "cast Tainted Pact"
+   ],
+   [
+    40,
+    1329,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    29,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ],
+   [
+    37,
+    "tutor_cast",
+    "Demonic Counsel seeking Demonic Consultation"
+   ],
+   [
+    37,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=0 steer=Underworld Breach over=Faerie Mastermind"
+   ],
+   [
+    40,
+    "tutor_cast",
+    "Mystical Tutor seeking Demonic Consultation"
+   ],
+   [
+    40,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=0 steer=Demonic Consultation over=Ad Nauseam"
+   ],
+   [
+    40,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(1)-dallas_bluefarm",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    48,
+    1740,
+    "cast Thassa's Oracle"
+   ],
+   [
+    48,
+    1746,
+    "oracle trigger"
+   ],
+   [
+    48,
+    1747,
+    "oracle trigger resolves"
+   ],
+   [
+    50,
+    1790,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    35,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=1 steer=Brain Freeze over=Simian Spirit Guide"
+   ],
+   [
+    48,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=0 steer=Demonic Consultation over=Ranger-Captain of Eos"
+   ],
+   [
+    48,
+    "tutor_cast",
+    "Vampiric Tutor seeking Thassa's Oracle"
+   ],
+   [
+    48,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Ranger-Captain of Eos"
+   ],
+   [
+    48,
+    "tutor_steer",
+    "sid=6 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Ranger-Captain of Eos"
+   ],
+   [
+    50,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    35,
+    815,
+    "cast Thassa's Oracle"
+   ],
+   [
+    35,
+    821,
+    "oracle trigger"
+   ],
+   [
+    35,
+    827,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    35,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    35,
+    "tutor_cast",
+    "Intuition seeking Demonic Consultation"
+   ],
+   [
+    47,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=0 steer=Demonic Consultation over=Ad Nauseam"
+   ],
+   [
+    47,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=0 steer=Lion's Eye Diamond over=Faerie Mastermind"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    30,
+    820,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    824,
+    "oracle trigger"
+   ],
+   [
+    30,
+    829,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    14,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=0 steer=Swift Reconfiguration over=Esper Sentinel"
+   ],
+   [
+    34,
+    "tutor_cast",
+    "Vampiric Tutor seeking Demonic Consultation"
+   ],
+   [
+    34,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Demonic Consultation over=The Cabbage Merchant"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent",
+  "file": "sZA0KqXCGrY_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-tyler_bluefarm",
+  "agent": "plan",
+  "shim": "0.8.0",
+  "events": [
+   [
+    8,
+    164,
+    "cast Tainted Pact"
+   ],
+   [
+    16,
+    364,
+    "cast Thassa's Oracle"
+   ],
+   [
+    16,
+    366,
+    "oracle trigger"
+   ],
+   [
+    16,
+    367,
+    "oracle trigger resolves"
+   ],
+   [
+    39,
+    1284,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    16,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    48,
+    "tutor_cast",
+    "Enlightened Tutor seeking Thassa's Oracle"
+   ],
+   [
+    48,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=0 steer=Lion's Eye Diamond over=Esper Sentinel"
+   ],
+   [
+    51,
+    "tutor_cast",
+    "Wishclaw Talisman seeking Thassa's Oracle"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    44,
+    1182,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    36,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    36,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Arid Mesa"
+   ],
+   [
+    44,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(3)-nadu",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    59,
+    1709,
+    "cast Thassa's Oracle"
+   ],
+   [
+    59,
+    1712,
+    "oracle trigger"
+   ],
+   [
+    59,
+    1713,
+    "oracle trigger resolves"
+   ],
+   [
+    70,
+    2137,
+    "oracle trigger"
+   ],
+   [
+    70,
+    2145,
+    "oracle trigger"
+   ],
+   [
+    70,
+    2146,
+    "oracle trigger resolves"
+   ],
+   [
+    72,
+    2210,
+    "oracle trigger"
+   ],
+   [
+    72,
+    2215,
+    "oracle trigger"
+   ],
+   [
+    72,
+    2216,
+    "oracle trigger resolves"
+   ],
+   [
+    73,
+    2252,
+    "oracle trigger"
+   ],
+   [
+    73,
+    2257,
+    "oracle trigger"
+   ],
+   [
+    73,
+    2258,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    27,
+    "combo_cast",
+    "Shuko (0/2 online)"
+   ],
+   [
+    31,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=1 steer=Jeweled Lotus over=Sol Ring"
+   ],
+   [
+    39,
+    "tutor_cast",
+    "Mystical Tutor seeking Aphetto Alchemist"
+   ],
+   [
+    39,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=7 steer=Pact of Negation over=Force of Will"
+   ],
+   [
+    70,
+    "tutor_steer",
+    "sid=8 mode=combo value=8 stockValue=1 steer=Lotus Cobra over=Delighted Halfling"
+   ],
+   [
+    72,
+    "tutor_steer",
+    "sid=9 mode=plan value=8 stockValue=1 steer=Aphetto Alchemist over=Delighted Halfling"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "2iA_Jt0d6sM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    14,
+    334,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    336,
+    "oracle trigger"
+   ],
+   [
+    14,
+    337,
+    "oracle trigger resolves"
+   ],
+   [
+    18,
+    428,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    18,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "2iA_Jt0d6sM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(2)-nadu",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    21,
+    531,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    533,
+    "oracle trigger"
+   ],
+   [
+    21,
+    534,
+    "oracle trigger resolves"
+   ],
+   [
+    23,
+    590,
+    "oracle trigger"
+   ],
+   [
+    23,
+    591,
+    "oracle trigger"
+   ],
+   [
+    23,
+    595,
+    "oracle trigger"
+   ],
+   [
+    34,
+    966,
+    "oracle trigger"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    9,
+    "tutor_cast",
+    "Muddle the Mixture seeking Lightning Greaves"
+   ],
+   [
+    28,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=0 steer=Jeweled Lotus over=Spellskite"
+   ],
+   [
+    29,
+    "tutor_cast",
+    "Mystical Tutor seeking Lotus Cobra"
+   ],
+   [
+    29,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=7 steer=Snap over=Force of Will"
+   ],
+   [
+    34,
+    "tutor_cast",
+    "Eldritch Evolution seeking Lotus Cobra"
+   ],
+   [
+    34,
+    "tutor_steer",
+    "sid=5 mode=combo value=8 stockValue=1 steer=Lotus Cobra over=Elvish Spirit Guide"
+   ],
+   [
+    37,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=0 steer=Lotus Petal over=Spellskite"
+   ],
+   [
+    46,
+    "tutor_steer",
+    "sid=8 mode=plan value=8 stockValue=1 steer=Aphetto Alchemist over=Elvish Spirit Guide"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    32,
+    798,
+    "cast Thassa's Oracle"
+   ],
+   [
+    32,
+    802,
+    "oracle trigger"
+   ],
+   [
+    32,
+    803,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    8,
+    "tutor_cast",
+    "Gamble seeking Underworld Breach"
+   ],
+   [
+    8,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=8 steer=Underworld Breach over=Nashi, Moon Sage's Scion"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "B421mac67IE_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(3)-lily_malcolm_vial",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    14,
+    367,
+    "cast Tainted Pact"
+   ],
+   [
+    26,
+    878,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    884,
+    "oracle trigger"
+   ],
+   [
+    26,
+    887,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    14,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=8 steer=Curiosity over=Professional Face-Breaker"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "Bq-nFi0f1jA_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(2)-yidris",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    26,
+    727,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    729,
+    "oracle trigger"
+   ],
+   [
+    26,
+    731,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    26,
+    743,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    22,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=1 steer=Brain Freeze over=Elvish Spirit Guide"
+   ],
+   [
+    22,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=1 steer=Underworld Breach over=Elvish Spirit Guide"
+   ],
+   [
+    26,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    26,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=0 steer=Thassa's Oracle over=Bayou"
+   ],
+   [
+    26,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    26,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "Bq-nFi0f1jA_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    8,
+    150,
+    "cast Tainted Pact"
+   ],
+   [
+    11,
+    210,
+    "cast Tainted Pact"
+   ],
+   [
+    30,
+    677,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    683,
+    "oracle trigger"
+   ],
+   [
+    30,
+    684,
+    "oracle trigger resolves"
+   ],
+   [
+    65,
+    1900,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    6,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    6,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    6,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    6,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    6,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    6,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    7,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    8,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    8,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    8,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    8,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    8,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    8,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    10,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    65,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    16,
+    358,
+    "cast Thassa's Oracle"
+   ],
+   [
+    16,
+    360,
+    "oracle trigger"
+   ],
+   [
+    16,
+    362,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    16,
+    364,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    4,
+    "tutor_cast",
+    "Gamble seeking Thassa's Oracle"
+   ],
+   [
+    4,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Professional Face-Breaker"
+   ],
+   [
+    16,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    16,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ],
+   [
+    32,
+    "tutor_cast",
+    "Demonic Counsel seeking Thassa's Oracle"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    23,
+    579,
+    "cast Thassa's Oracle"
+   ],
+   [
+    23,
+    581,
+    "oracle trigger"
+   ],
+   [
+    23,
+    582,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    20,
+    "tutor_cast",
+    "Intuition seeking Demonic Consultation"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(2)-alan_tnt",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    10,
+    188,
+    "cast Thassa's Oracle"
+   ],
+   [
+    10,
+    190,
+    "oracle trigger"
+   ],
+   [
+    10,
+    191,
+    "oracle trigger resolves"
+   ],
+   [
+    14,
+    286,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    10,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    14,
+    "tutor_cast",
+    "Demonic Tutor seeking Tainted Pact"
+   ],
+   [
+    14,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=6 steer=Tainted Pact over=Razaketh, the Foulblooded"
+   ],
+   [
+    18,
+    "tutor_cast",
+    "Enlightened Tutor seeking Tainted Pact"
+   ],
+   [
+    18,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=1 steer=Smothering Tithe over=Enduring Vitality"
+   ],
+   [
+    18,
+    "tutor_cast",
+    "Diabolic Intent seeking Tainted Pact"
+   ],
+   [
+    18,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=6 steer=Clever Impersonator over=Razaketh, the Foulblooded"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "n7WpsqsZtdQ_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    20,
+    507,
+    "cast Thassa's Oracle"
+   ],
+   [
+    20,
+    513,
+    "oracle trigger"
+   ],
+   [
+    20,
+    514,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    4,
+    "tutor_cast",
+    "Mystical Tutor seeking Demonic Consultation"
+   ],
+   [
+    4,
+    "tutor_steer",
+    "sid=1 mode=combo value=8 stockValue=4 steer=Demonic Consultation over=Force of Will"
+   ],
+   [
+    8,
+    "tutor_cast",
+    "Worldly Tutor seeking Demonic Consultation"
+   ],
+   [
+    8,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=5 steer=Devoted Druid over=Elvish Spirit Guide"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "sZA0KqXCGrY_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tyler_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    20,
+    595,
+    "cast Tainted Pact"
+   ],
+   [
+    28,
+    803,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    808,
+    "oracle trigger"
+   ],
+   [
+    28,
+    809,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    24,
+    "tutor_cast",
+    "Diabolic Intent seeking Thassa's Oracle"
+   ],
+   [
+    24,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Professional Face-Breaker"
+   ],
+   [
+    28,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    34,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    34,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=0 steer=Brain Freeze over=Marsh Flats"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_093",
+  "file": "sZA0KqXCGrY_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-tyler_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.3",
+  "events": [
+   [
+    30,
+    781,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    801,
+    "oracle trigger"
+   ],
+   [
+    30,
+    803,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    30,
+    815,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    6,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=0 steer=Brain Freeze over=Ad Nauseam"
+   ],
+   [
+    18,
+    "tutor_cast",
+    "Diabolic Intent seeking Demonic Consultation"
+   ],
+   [
+    18,
+    "tutor_steer",
+    "sid=3 mode=combo value=8 stockValue=8 steer=Demonic Consultation over=Professional Face-Breaker"
+   ],
+   [
+    30,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    30,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "2iA_Jt0d6sM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(3)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    28,
+    671,
+    "cast Thassa's Oracle"
+   ],
+   [
+    28,
+    674,
+    "oracle trigger"
+   ],
+   [
+    28,
+    676,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    28,
+    688,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    16,
+    "tutor_cast",
+    "Diabolic Intent seeking Thassa's Oracle"
+   ],
+   [
+    16,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    28,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    28,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "2iA_Jt0d6sM_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(2)-rograkh_silas",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    81,
+    2179,
+    "cast Thassa's Oracle"
+   ],
+   [
+    83,
+    2245,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    13,
+    "combo_cast",
+    "Grinding Station (0/2 online)"
+   ],
+   [
+    29,
+    "tutor_cast",
+    "Vampiric Tutor seeking Underworld Breach"
+   ],
+   [
+    29,
+    "tutor_steer",
+    "sid=2 mode=combo value=8 stockValue=8 steer=Underworld Breach over=Nashi, Moon Sage's Scion"
+   ],
+   [
+    69,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=1 steer=Jeska's Will over=Simian Spirit Guide"
+   ],
+   [
+    72,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=1 steer=Pact of Negation over=Simian Spirit Guide"
+   ],
+   [
+    78,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=1 steer=Ragavan, Nimble Pilferer over=Simian Spirit Guide"
+   ],
+   [
+    81,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    81,
+    "tutor_cast",
+    "Beseech the Mirror seeking Underworld Breach"
+   ],
+   [
+    81,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=0 steer=Tainted Pact over=Marsh Flats"
+   ],
+   [
+    85,
+    "tutor_cast",
+    "Mystical Tutor seeking Underworld Breach"
+   ],
+   [
+    85,
+    "tutor_steer",
+    "sid=9 mode=plan value=8 stockValue=0 steer=Warrior's Oath over=Ad Nauseam"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "Bq-nFi0f1jA_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(4)-yidris",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    37,
+    988,
+    "cast Thassa's Oracle"
+   ],
+   [
+    37,
+    990,
+    "oracle trigger"
+   ],
+   [
+    37,
+    991,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    9,
+    "tutor_steer",
+    "sid=2 mode=plan value=8 stockValue=5 steer=Brain Freeze over=Simian Spirit Guide"
+   ],
+   [
+    33,
+    "tutor_steer",
+    "sid=5 mode=plan value=8 stockValue=1 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "Bq-nFi0f1jA_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    21,
+    561,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    562,
+    "oracle trigger"
+   ],
+   [
+    21,
+    578,
+    "oracle trigger"
+   ],
+   [
+    21,
+    579,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(4)-alan_tnt",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    18,
+    387,
+    "cast Tainted Pact"
+   ],
+   [
+    58,
+    1686,
+    "cast Thassa's Oracle"
+   ],
+   [
+    58,
+    1690,
+    "oracle trigger"
+   ],
+   [
+    58,
+    1691,
+    "oracle trigger resolves"
+   ],
+   [
+    70,
+    2555,
+    "cast Tainted Pact"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    2,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=6 steer=Clever Impersonator over=Razaketh, the Foulblooded"
+   ],
+   [
+    54,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=6 steer=Faerie Mastermind over=Razaketh, the Foulblooded"
+   ],
+   [
+    65,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=0 steer=Hermit Druid over=Seedborn Muse"
+   ],
+   [
+    65,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=0 steer=Kinnan, Bonder Prodigy over=Seedborn Muse"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(1)-dallas_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    19,
+    417,
+    "cast Thassa's Oracle"
+   ],
+   [
+    19,
+    422,
+    "oracle trigger"
+   ],
+   [
+    19,
+    423,
+    "oracle trigger resolves"
+   ],
+   [
+    51,
+    1427,
+    "cast Thassa's Oracle"
+   ],
+   [
+    51,
+    1441,
+    "oracle trigger"
+   ],
+   [
+    51,
+    1442,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    17,
+    389,
+    "cast Thassa's Oracle"
+   ],
+   [
+    17,
+    394,
+    "oracle trigger"
+   ],
+   [
+    17,
+    396,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    17,
+    413,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    17,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    17,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    11,
+    239,
+    "cast Tainted Pact"
+   ],
+   [
+    61,
+    1566,
+    "cast Thassa's Oracle"
+   ],
+   [
+    61,
+    1568,
+    "oracle trigger"
+   ],
+   [
+    61,
+    1569,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    47,
+    "tutor_steer",
+    "sid=4 mode=plan value=8 stockValue=0 steer=Demonic Consultation over=Ad Nauseam"
+   ],
+   [
+    58,
+    "tutor_steer",
+    "sid=6 mode=combo value=8 stockValue=8 steer=Thassa's Oracle over=Professional Face-Breaker"
+   ],
+   [
+    64,
+    "tutor_cast",
+    "Demonic Counsel seeking Thassa's Oracle"
+   ],
+   [
+    64,
+    "tutor_cast",
+    "Beseech the Mirror seeking Thassa's Oracle"
+   ],
+   [
+    64,
+    "tutor_steer",
+    "sid=8 mode=plan value=8 stockValue=0 steer=Lotus Petal over=Misty Rainforest"
+   ]
+  ]
+ },
+ {
+  "dir": "behavior_rubric/runs_agent_shipping",
+  "file": "sZA0KqXCGrY_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tyler_bluefarm",
+  "agent": "plan",
+  "shim": "0.9.1",
+  "events": [
+   [
+    20,
+    499,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(3)-rograkh_silas",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    11,
+    216,
+    "cast Thassa's Oracle"
+   ],
+   [
+    11,
+    222,
+    "oracle trigger"
+   ],
+   [
+    11,
+    223,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(2)-nadu",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    17,
+    633,
+    "cast Thassa's Oracle"
+   ],
+   [
+    17,
+    635,
+    "oracle trigger"
+   ],
+   [
+    17,
+    638,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_B421mac67IE_rot0.jsonl",
+  "game": 0,
+  "player": "Ai(3)-lily_malcolm_vial",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    21,
+    547,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    549,
+    "oracle trigger"
+   ],
+   [
+    21,
+    550,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_B421mac67IE_rot3.jsonl",
+  "game": 0,
+  "player": "Ai(4)-lily_malcolm_vial",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    30,
+    752,
+    "cast Thassa's Oracle"
+   ],
+   [
+    30,
+    758,
+    "oracle trigger"
+   ],
+   [
+    30,
+    759,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_Bq-nFi0f1jA_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(1)-yidris",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    35,
+    1072,
+    "cast Thassa's Oracle"
+   ],
+   [
+    35,
+    1073,
+    "oracle trigger"
+   ],
+   [
+    35,
+    1087,
+    "oracle trigger"
+   ],
+   [
+    35,
+    1088,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    5,
+    114,
+    "cast Tainted Pact"
+   ],
+   [
+    45,
+    1296,
+    "cast Thassa's Oracle"
+   ],
+   [
+    45,
+    1301,
+    "oracle trigger"
+   ],
+   [
+    45,
+    1302,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    25,
+    1066,
+    "cast Thassa's Oracle"
+   ],
+   [
+    25,
+    1071,
+    "oracle trigger"
+   ],
+   [
+    25,
+    1072,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 0,
+  "player": "Ai(2)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    14,
+    347,
+    "cast Thassa's Oracle"
+   ],
+   [
+    14,
+    351,
+    "oracle trigger"
+   ],
+   [
+    14,
+    352,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "human_ceiling/runs",
+  "file": "shim_raw_hc_pilot_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 0,
+  "player": "Ai(1)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.4.0",
+  "events": [
+   [
+    43,
+    1268,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ },
+ {
+  "dir": "tutor_targeting/runs_stage1",
+  "file": "shim_raw_20260825_105436_519749.jsonl",
+  "game": 0,
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.4.2",
+  "events": [
+   [
+    34,
+    943,
+    "cast Thassa's Oracle"
+   ],
+   [
+    34,
+    947,
+    "oracle trigger"
+   ],
+   [
+    34,
+    950,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won because all opponents have lost",
+  "agentlog": [
+   [
+    26,
+    "combo_cast",
+    "Swift Reconfiguration (0/2 online)"
+   ],
+   [
+    30,
+    "tutor_cast",
+    "Imperial Seal seeking Devoted Druid"
+   ],
+   [
+    30,
+    "tutor_steer",
+    "Devoted Druid over Elvish Spirit Guide"
+   ],
+   [
+    30,
+    "combo_cast",
+    "Devoted Druid (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "tutor_targeting/runs_stage1",
+  "file": "shim_raw_20260825_110128_362068.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.4.2",
+  "events": [
+   [
+    41,
+    1171,
+    "cast Thassa's Oracle"
+   ],
+   [
+    41,
+    1180,
+    "oracle trigger"
+   ],
+   [
+    41,
+    1183,
+    "oracle trigger resolves"
+   ],
+   [
+    45,
+    1337,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    31,
+    "combo_cast",
+    "Swift Reconfiguration (0/2 online)"
+   ],
+   [
+    41,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    45,
+    "tutor_cast",
+    "Beseech the Mirror seeking Demonic Consultation"
+   ],
+   [
+    45,
+    "tutor_steer",
+    "Demonic Consultation over Ancient Tomb"
+   ],
+   [
+    45,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ],
+   [
+    45,
+    "tutor_cast",
+    "Summoner's Pact seeking Demonic Consultation"
+   ]
+  ]
+ },
+ {
+  "dir": "tutor_targeting/runs_stage2",
+  "file": "probeA.jsonl",
+  "game": 0,
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    37,
+    1010,
+    "cast Thassa's Oracle"
+   ],
+   [
+    37,
+    1012,
+    "oracle trigger"
+   ],
+   [
+    37,
+    1014,
+    "cast Demonic Consultation [ORACLE TRIGGER ON STACK]"
+   ],
+   [
+    37,
+    1036,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "won due to effect of 'Thassa's Oracle'",
+  "agentlog": [
+   [
+    37,
+    "combo_cast",
+    "Thassa's Oracle (0/2 online)"
+   ],
+   [
+    37,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "tutor_targeting/runs_stage2",
+  "file": "shim_raw_20260825_180351_826851.jsonl",
+  "game": 1,
+  "player": "Ai(1)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    83,
+    2175,
+    "cast Thassa's Oracle"
+   ],
+   [
+    86,
+    2267,
+    "cast Thassa's Oracle"
+   ],
+   [
+    86,
+    2269,
+    "oracle trigger"
+   ],
+   [
+    86,
+    2270,
+    "oracle trigger resolves"
+   ],
+   [
+    89,
+    2356,
+    "cast Thassa's Oracle"
+   ],
+   [
+    89,
+    2358,
+    "oracle trigger"
+   ],
+   [
+    89,
+    2359,
+    "oracle trigger resolves"
+   ],
+   [
+    91,
+    2405,
+    "cast Thassa's Oracle"
+   ],
+   [
+    91,
+    2407,
+    "oracle trigger"
+   ],
+   [
+    91,
+    2408,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    40,
+    "tutor_cast",
+    "Mystical Tutor seeking Thassa's Oracle"
+   ],
+   [
+    40,
+    "tutor_steer",
+    "sid=3 mode=plan value=8 stockValue=0 steer=Pact of Negation over=Ad Nauseam"
+   ],
+   [
+    83,
+    "tutor_steer",
+    "sid=7 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=Elvish Spirit Guide"
+   ],
+   [
+    86,
+    "tutor_steer",
+    "sid=8 mode=plan value=8 stockValue=1 steer=Devoted Druid over=Elvish Spirit Guide"
+   ],
+   [
+    93,
+    "tutor_steer",
+    "sid=9 mode=plan value=8 stockValue=0 steer=Swift Reconfiguration over=Esper Sentinel"
+   ]
+  ]
+ },
+ {
+  "dir": "tutor_targeting/runs_stage2",
+  "file": "shim_raw_20260825_182235_357118.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    26,
+    604,
+    "cast Thassa's Oracle"
+   ],
+   [
+    26,
+    608,
+    "oracle trigger"
+   ],
+   [
+    26,
+    609,
+    "oracle trigger resolves"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": [
+   [
+    2,
+    "tutor_steer",
+    "sid=1 mode=plan value=8 stockValue=0 steer=Demonic Consultation over=Ad Nauseam"
+   ],
+   [
+    22,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Thassa's Oracle over=The Cabbage Merchant"
+   ],
+   [
+    51,
+    "tutor_steer",
+    "sid=6 mode=plan value=8 stockValue=1 steer=Devoted Druid over=Elvish Spirit Guide"
+   ],
+   [
+    53,
+    "tutor_steer",
+    "sid=7 mode=plan value=8 stockValue=1 steer=Pact of Negation over=The Cabbage Merchant"
+   ]
+  ]
+ },
+ {
+  "dir": "tutor_targeting/runs_stage2",
+  "file": "shim_raw_20260825_182235_357118.jsonl",
+  "game": 1,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "shim": "0.5.0",
+  "events": [
+   [
+    21,
+    517,
+    "cast Thassa's Oracle"
+   ],
+   [
+    21,
+    521,
+    "cast Tainted Pact"
+   ],
+   [
+    21,
+    529,
+    "oracle trigger"
+   ],
+   [
+    21,
+    530,
+    "oracle trigger resolves"
+   ],
+   [
+    25,
+    686,
+    "cast Demonic Consultation"
+   ]
+  ],
+  "outcome": "lost trying to draw cards from empty library",
+  "agentlog": [
+   [
+    1,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    1,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    1,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    1,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    5,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    5,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    5,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    5,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    5,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    5,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    9,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    9,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    13,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    14,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    17,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    21,
+    "combo_hold",
+    "Tainted Pact kept for the line (early burn vetoed)"
+   ],
+   [
+    25,
+    "tutor_cast",
+    "Imperial Seal seeking Demonic Consultation"
+   ],
+   [
+    25,
+    "tutor_steer",
+    "sid=4 mode=combo value=8 stockValue=1 steer=Demonic Consultation over=Elvish Spirit Guide"
+   ],
+   [
+    25,
+    "combo_cast",
+    "Demonic Consultation (1/2 online)"
+   ]
+  ]
+ },
+ {
+  "dir": "tutor_targeting/runs_stock",
+  "file": "shim_raw_20260825_155212_894733.jsonl",
+  "game": 0,
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "shim": "0.4.2",
+  "events": [
+   [
+    40,
+    900,
+    "cast Thassa's Oracle"
+   ]
+  ],
+  "outcome": "lost because life total reached 0",
+  "agentlog": []
+ }
+]

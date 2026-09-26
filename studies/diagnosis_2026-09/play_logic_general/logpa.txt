@@ -1,0 +1,2 @@
+precon_agent015 384 files
+missing card facts: 162 [('Insect Token', 472), ('Morph', 336), ('Plant Token', 326), ('Vibranium Dynamo', 187), ('Zombie Token', 153), ('Heralds of the Shredder', 139), ('Goblin Token', 138), ("Loki's Double", 131)]

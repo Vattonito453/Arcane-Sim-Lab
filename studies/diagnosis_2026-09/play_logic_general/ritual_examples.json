@@ -1,0 +1,1762 @@
+{
+"('cedh015', 'jeska')": [
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+0,
+11,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+3,
+17,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+6,
+12,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+13,
+6,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+15,
+12,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+15,
+26,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+1,
+9,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+9,
+16,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+1,
+18,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+2,
+28,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+3,
+24,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+27,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+6,
+13,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+7,
+48,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+13,
+25,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+13,
+56,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+7,
+30,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+13,
+31,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+0,
+6,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+4,
+5,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+5,
+32,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+12,
+21,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+18,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+0,
+45,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+1,
+17,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+4,
+37,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+5,
+4,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+12,
+6,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+2,
+4,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+6,
+11,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+]
+],
+"('cedh015', 'classic')": [
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+4,
+45,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+6,
+14,
+10,
+"Ai(2)-godo_archetype",
+"Seething Song"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+7,
+18,
+10,
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+10,
+25,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+0,
+45,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+9,
+50,
+10,
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+13,
+4,
+10,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+14,
+10,
+10,
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+15,
+28,
+10,
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+3,
+45,
+10,
+"Ai(2)-godo_archetype",
+"Desperate Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+8,
+35,
+10,
+"Ai(2)-godo_archetype",
+"Desperate Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+12,
+24,
+10,
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+15,
+48,
+10,
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+30,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+53,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+9,
+21,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+13,
+26,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+7,
+29,
+10,
+"Ai(4)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+9,
+12,
+10,
+"Ai(4)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+8,
+21,
+10,
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+12,
+20,
+10,
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+]
+],
+"('cedh016', 'classic')": [
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+0,
+54,
+10,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+3,
+36,
+10,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+8,
+39,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+9,
+30,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+13,
+24,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+3,
+13,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+10,
+21,
+10,
+"Ai(2)-godo_archetype",
+"Desperate Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+13,
+35,
+10,
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+1,
+11,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+5,
+66,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+7,
+18,
+10,
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+10,
+53,
+10,
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+11,
+68,
+10,
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+12,
+26,
+10,
+"Ai(2)-godo_archetype",
+"Seething Song"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+0,
+8,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+41,
+10,
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+45,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+47,
+10,
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+4,
+15,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+5,
+41,
+10,
+"Ai(2)-godo_archetype",
+"Pyretic Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+7,
+40,
+10,
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+9,
+45,
+10,
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+14,
+22,
+10,
+"Ai(2)-godo_archetype",
+"Pyretic Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+1,
+23,
+10,
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+9,
+51,
+10,
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+5,
+26,
+10,
+"Ai(4)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+13,
+16,
+10,
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+44,
+10,
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+4,
+22,
+10,
+"Ai(4)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+13,
+13,
+10,
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+]
+],
+"('cedh016', 'jeska')": [
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+0,
+70,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+1,
+12,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+3,
+4,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+13,
+8,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+5,
+33,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+9,
+9,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+26,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+5,
+69,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+8,
+3,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+11,
+29,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+5,
+7,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+6,
+2,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+6,
+36,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+8,
+5,
+3,
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+8,
+11,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+10,
+18,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+11,
+26,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+14,
+28,
+3,
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+5,
+3,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+5,
+8,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+7,
+49,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+11,
+46,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+12,
+26,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+13,
+10,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+14,
+9,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+0,
+32,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+2,
+10,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+3,
+23,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+5,
+22,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+7,
+4,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+8,
+12,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+10,
+36,
+3,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+13,
+15,
+10,
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+]
+],
+"('cedh_shipping', 'classic')": [
+[
+"2iA_Jt0d6sM_rot0.jsonl",
+0,
+20,
+3,
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"5A6o18Bra0Y_rot3.jsonl",
+0,
+17,
+10,
+"Ai(3)-godo",
+"Desperate Ritual"
+],
+[
+"CxKMqO36DdM_rot1.jsonl",
+0,
+70,
+3,
+"Ai(2)-joseph_ral",
+"Seething Song"
+],
+[
+"CxKMqO36DdM_rot3.jsonl",
+0,
+62,
+10,
+"Ai(3)-dallas_bluefarm",
+"Cabal Ritual"
+],
+[
+"n7WpsqsZtdQ_rot0.jsonl",
+0,
+23,
+10,
+"Ai(4)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"n7WpsqsZtdQ_rot2.jsonl",
+0,
+39,
+10,
+"Ai(2)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"sZA0KqXCGrY_rot2.jsonl",
+0,
+25,
+10,
+"Ai(4)-joseph_ral",
+"Seething Song"
+]
+],
+"('cedh_shipping', 'jeska')": [
+[
+"B421mac67IE_rot1.jsonl",
+0,
+43,
+2,
+"Ai(2)-lily_malcolm_vial",
+"Jeska's Will"
+],
+[
+"B421mac67IE_rot2.jsonl",
+0,
+40,
+10,
+"Ai(1)-lily_malcolm_vial",
+"Jeska's Will"
+],
+[
+"CxKMqO36DdM_rot1.jsonl",
+0,
+44,
+3,
+"Ai(2)-joseph_ral",
+"Jeska's Will"
+],
+[
+"CxKMqO36DdM_rot3.jsonl",
+0,
+63,
+3,
+"Ai(4)-joseph_ral",
+"Jeska's Will"
+],
+[
+"n7WpsqsZtdQ_rot0.jsonl",
+0,
+9,
+3,
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"sZA0KqXCGrY_rot0.jsonl",
+0,
+32,
+3,
+"Ai(4)-tyler_bluefarm",
+"Jeska's Will"
+],
+[
+"sZA0KqXCGrY_rot3.jsonl",
+0,
+22,
+3,
+"Ai(4)-natalie_magda",
+"Jeska's Will"
+]
+],
+"('hc_stock', 'jeska')": [
+[
+"shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+0,
+8,
+10,
+"Ai(4)-godo_archetype",
+"Jeska's Will"
+],
+[
+"shim_raw_hc_2iA_Jt0d6sM_rot3.jsonl",
+0,
+7,
+3,
+"Ai(1)-godo_archetype",
+"Jeska's Will"
+],
+[
+"shim_raw_hc_B421mac67IE_rot0.jsonl",
+0,
+37,
+3,
+"Ai(3)-lily_malcolm_vial",
+"Jeska's Will"
+],
+[
+"shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+0,
+22,
+3,
+"Ai(2)-joseph_ral",
+"Jeska's Will"
+],
+[
+"shim_raw_hc_sZA0KqXCGrY_rot1.jsonl",
+0,
+10,
+3,
+"Ai(3)-natalie_magda",
+"Jeska's Will"
+],
+[
+"shim_raw_hc_sZA0KqXCGrY_rot3.jsonl",
+0,
+7,
+3,
+"Ai(3)-tyler_bluefarm",
+"Jeska's Will"
+]
+],
+"('hc_stock', 'classic')": [
+[
+"shim_raw_hc_2iA_Jt0d6sM_rot1.jsonl",
+0,
+49,
+10,
+"Ai(3)-godo_archetype",
+"Rite of Flame"
+],
+[
+"shim_raw_hc_2iA_Jt0d6sM_rot2.jsonl",
+0,
+30,
+10,
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"shim_raw_hc_5A6o18Bra0Y_rot1.jsonl",
+0,
+26,
+10,
+"Ai(3)-godo",
+"Rite of Flame"
+],
+[
+"shim_raw_hc_5A6o18Bra0Y_rot2.jsonl",
+0,
+23,
+10,
+"Ai(2)-godo",
+"Rite of Flame"
+],
+[
+"shim_raw_hc_sZA0KqXCGrY_rot3.jsonl",
+0,
+18,
+10,
+"Ai(2)-joseph_ral",
+"Seething Song"
+]
+],
+"('precon_stock', 'jeska')": [
+[
+"c_r0_p11_i3.jsonl",
+0,
+38,
+3,
+"Ai(1)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c_r0_p12_i3.jsonl",
+0,
+27,
+3,
+"Ai(4)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r2_p01_i0.jsonl",
+0,
+32,
+3,
+"Ai(4)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c_r2_p01_i3.jsonl",
+0,
+31,
+3,
+"Ai(1)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c_r2_p02_i0.jsonl",
+1,
+9,
+3,
+"Ai(3)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r2_p02_i2.jsonl",
+0,
+43,
+5,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r3_p01_i1.jsonl",
+0,
+9,
+3,
+"Ai(3)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r4_p05_i0.jsonl",
+1,
+16,
+3,
+"Ai(4)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r4_p15_i3.jsonl",
+1,
+17,
+3,
+"Ai(3)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c_r5_p12_i0.jsonl",
+0,
+27,
+3,
+"Ai(4)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+]
+],
+"('precon_stock', 'classic')": [
+[
+"c_r0_p15_i3.jsonl",
+1,
+22,
+10,
+"Ai(3)-Jeskai Striker [TDC] [2025]",
+"Mana Geyser"
+],
+[
+"c_r1_p07_i0.jsonl",
+0,
+15,
+10,
+"Ai(3)-Goblin Storm [SLD] [2026]",
+"Brightstone Ritual"
+],
+[
+"c_r1_p07_i0.jsonl",
+0,
+31,
+10,
+"Ai(3)-Goblin Storm [SLD] [2026]",
+"Battle Hymn"
+],
+[
+"c_r1_p07_i3.jsonl",
+1,
+55,
+10,
+"Ai(4)-Goblin Storm [SLD] [2026]",
+"Seething Song"
+],
+[
+"c_r1_p07_i3.jsonl",
+1,
+61,
+3,
+"Ai(4)-Goblin Storm [SLD] [2026]",
+"Mana Geyser"
+],
+[
+"c_r2_p07_i2.jsonl",
+1,
+25,
+10,
+"Ai(1)-Goblin Storm [SLD] [2026]",
+"Battle Hymn"
+],
+[
+"c_r3_p06_i0.jsonl",
+1,
+25,
+10,
+"Ai(2)-Prismari Artistry [SOC] [2026]",
+"Mana Geyser"
+],
+[
+"c_r5_p12_i0.jsonl",
+0,
+39,
+10,
+"Ai(1)-Goblin Storm [SLD] [2026]",
+"Mana Geyser"
+]
+],
+"('precon_stock', 'persist')": [
+[
+"c_r3_p09_i1.jsonl",
+1,
+52,
+1,
+"Ai(4)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r3_p09_i2.jsonl",
+0,
+39,
+3,
+"Ai(3)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r4_p09_i2.jsonl",
+0,
+45,
+1,
+"Ai(4)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r4_p09_i2.jsonl",
+0,
+57,
+1,
+"Ai(4)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r5_p12_i1.jsonl",
+1,
+40,
+1,
+"Ai(2)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+]
+],
+"('precon_agent015', 'classic')": [
+[
+"c_r0_p08_i2.jsonl",
+0,
+33,
+10,
+"Ai(4)-Goblin Storm [SLD] [2026]",
+"Seething Song"
+],
+[
+"c_r0_p15_i1.jsonl",
+1,
+39,
+3,
+"Ai(1)-Jeskai Striker [TDC] [2025]",
+"Mana Geyser"
+],
+[
+"c_r1_p07_i0.jsonl",
+1,
+43,
+10,
+"Ai(3)-Goblin Storm [SLD] [2026]",
+"Brightstone Ritual"
+],
+[
+"c_r1_p07_i3.jsonl",
+0,
+14,
+10,
+"Ai(4)-Goblin Storm [SLD] [2026]",
+"Brightstone Ritual"
+],
+[
+"c_r1_p07_i3.jsonl",
+0,
+57,
+10,
+"Ai(4)-Goblin Storm [SLD] [2026]",
+"Seething Song"
+],
+[
+"c_r2_p06_i1.jsonl",
+0,
+53,
+10,
+"Ai(1)-Prismari Artistry [SOC] [2026]",
+"Mana Geyser"
+],
+[
+"c_r2_p07_i2.jsonl",
+1,
+36,
+10,
+"Ai(1)-Goblin Storm [SLD] [2026]",
+"Seething Song"
+],
+[
+"c_r2_p08_i2.jsonl",
+0,
+21,
+10,
+"Ai(3)-Jeskai Striker [TDC] [2025]",
+"Mana Geyser"
+],
+[
+"c_r5_p03_i3.jsonl",
+0,
+37,
+10,
+"Ai(2)-Jeskai Striker [TDC] [2025]",
+"Mana Geyser"
+]
+],
+"('precon_agent015', 'jeska')": [
+[
+"c_r1_p01_i1.jsonl",
+0,
+23,
+3,
+"Ai(3)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c_r1_p11_i0.jsonl",
+0,
+58,
+10,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r2_p02_i2.jsonl",
+0,
+10,
+3,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r2_p02_i2.jsonl",
+1,
+16,
+3,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r2_p02_i3.jsonl",
+0,
+33,
+3,
+"Ai(4)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r3_p01_i1.jsonl",
+0,
+15,
+3,
+"Ai(3)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r3_p01_i2.jsonl",
+1,
+10,
+3,
+"Ai(2)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c_r3_p15_i0.jsonl",
+0,
+38,
+3,
+"Ai(1)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c_r5_p12_i0.jsonl",
+1,
+39,
+3,
+"Ai(4)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c_r5_p13_i1.jsonl",
+1,
+26,
+10,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+]
+],
+"('precon_agent015', 'persist')": [
+[
+"c_r1_p02_i2.jsonl",
+1,
+58,
+1,
+"Ai(2)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r2_p06_i1.jsonl",
+0,
+61,
+1,
+"Ai(3)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r2_p06_i2.jsonl",
+1,
+30,
+1,
+"Ai(4)-Prismari Artistry [SOC] [2026]",
+"Rousing Refrain"
+],
+[
+"c_r3_p06_i2.jsonl",
+1,
+65,
+1,
+"Ai(4)-Prismari Artistry [SOC] [2026]",
+"Rousing Refrain"
+],
+[
+"c_r3_p09_i0.jsonl",
+1,
+63,
+1,
+"Ai(1)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r5_p12_i0.jsonl",
+1,
+44,
+3,
+"Ai(3)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c_r5_p12_i1.jsonl",
+1,
+56,
+1,
+"Ai(2)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+]
+],
+"('precon_mixed_base', 'classic')": [
+[
+"c0_p7_r3.jsonl",
+0,
+8,
+10,
+"Ai(4)-Goblin Storm [SLD] [2026]",
+"Brightstone Ritual"
+],
+[
+"c1_p7_r3.jsonl",
+0,
+9,
+10,
+"Ai(4)-Goblin Storm [SLD] [2026]",
+"Battle Hymn"
+],
+[
+"c5_p10_r0.jsonl",
+0,
+39,
+3,
+"Ai(4)-Prismari Artistry [SOC] [2026]",
+"Mana Geyser"
+],
+[
+"c6_p5_r1.jsonl",
+0,
+37,
+10,
+"Ai(3)-Jeskai Striker [TDC] [2025]",
+"Mana Geyser"
+],
+[
+"c6_p7_r0.jsonl",
+0,
+39,
+3,
+"Ai(3)-Goblin Storm [SLD] [2026]",
+"Mana Geyser"
+]
+],
+"('precon_mixed_base', 'persist')": [
+[
+"c2_p2_r0.jsonl",
+0,
+41,
+1,
+"Ai(4)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c5_p10_r0.jsonl",
+0,
+51,
+1,
+"Ai(4)-Prismari Artistry [SOC] [2026]",
+"Rousing Refrain"
+],
+[
+"c5_p2_r2.jsonl",
+0,
+60,
+1,
+"Ai(2)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c7_p10_r3.jsonl",
+0,
+54,
+1,
+"Ai(1)-Prismari Artistry [SOC] [2026]",
+"Rousing Refrain"
+],
+[
+"c7_p2_r1.jsonl",
+0,
+42,
+1,
+"Ai(3)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c7_p2_r1.jsonl",
+0,
+54,
+1,
+"Ai(3)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"c7_p2_r2.jsonl",
+0,
+57,
+1,
+"Ai(2)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+]
+],
+"('precon_mixed_base', 'jeska')": [
+[
+"c2_p5_r2.jsonl",
+0,
+26,
+3,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c2_p5_r3.jsonl",
+0,
+10,
+3,
+"Ai(4)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c4_p5_r1.jsonl",
+0,
+26,
+3,
+"Ai(2)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c5_p5_r2.jsonl",
+0,
+11,
+3,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c5_p5_r3.jsonl",
+0,
+30,
+10,
+"Ai(4)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c5_p9_r3.jsonl",
+0,
+29,
+3,
+"Ai(3)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"c6_p5_r1.jsonl",
+0,
+12,
+3,
+"Ai(2)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"c6_p5_r3.jsonl",
+0,
+15,
+3,
+"Ai(4)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+]
+],
+"('engine_ab', 'jeska')": [
+[
+"pod10_rot0.jsonl",
+1,
+41,
+3,
+"Ai(2)-Deadly Disguise [MKC] [2024]",
+"Jeska's Will"
+],
+[
+"pod6_rot0.jsonl",
+0,
+39,
+3,
+"Ai(3)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"pod6_rot0.jsonl",
+1,
+21,
+3,
+"Ai(3)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+],
+[
+"pod6_rot2.jsonl",
+0,
+21,
+10,
+"Ai(1)-Exit from Exile [CLB] [2022]",
+"Jeska's Will"
+]
+],
+"('engine_ab', 'persist')": [
+[
+"pod3_rot2.jsonl",
+0,
+85,
+1,
+"Ai(2)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+],
+[
+"pod3_rot3.jsonl",
+0,
+62,
+1,
+"Ai(1)-Quick Draw [OTC] [2024]",
+"Rousing Refrain"
+]
+],
+"('engine_ab', 'classic')": [
+[
+"pod8_rot0.jsonl",
+1,
+18,
+3,
+"Ai(3)-Goblin Storm [SLD] [2026]",
+"Battle Hymn"
+]
+]
+}

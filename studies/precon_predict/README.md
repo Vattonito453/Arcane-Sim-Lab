@@ -295,6 +295,22 @@ median 53 turns) and the loss of signal.
 
 # Agent 0.15.0 arm (2026-09-08): the hold works, and prediction gets worse
 
+> **Annotated 2026-09-26.** This arm (task 21's fourth criterion) and the
+> 2026-08-26 agent arm (`runs_agent`) were **measured on pre-0.16.0 arms
+> (attack re-ask loop present)**; the stock arm (`runs_stock`) is unaffected,
+> because the loop is agent-only. The declare-attackers re-ask loop lives in
+> the plan agent's kingmaker re-aim, was present from shim 0.4.0 until 0.16.0
+> fixed it, burned clock, and accounts for part of both agent arms'
+> censoring: the 34.1% (`runs_agent`) and 30.5% (this arm) clock-killed rates
+> below, against 9.7% for stock. Under the owner decisions of 2026-09-26
+> (`tasks/README.md`): precons are for prediction calibration only
+> (decision 17); the refit on this arm suggested at the end of this section is
+> not done; `studies/precon_predict/model_runs_agent.json` (a fit on
+> `runs_agent`) stays uncommitted and unused, and the tracked
+> `model_runs_agent_015.json` (a fit on this arm) is likewise not to be used;
+> the shipped model stays fitted on the stock arm and is labelled "fit on
+> stock Forge games" until a refit on clean arms after G3 (decision 19).
+
 `runs_agent_015/`: the same 66-deck, 6-round, 768-game design as the two
 2026-08-26 arms, all four seats on the plan agent, same personality overrides
 as `runs_agent` (`plans_agent_015.json`), so the only agent differences are

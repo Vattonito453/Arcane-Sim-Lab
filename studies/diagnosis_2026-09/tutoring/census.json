@@ -1,0 +1,2721 @@
+{
+ "2iA_Jt0d6sM/derevi": {
+  "Birthing Pod": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Captain Sisay": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Human Soldier",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Eldritch Evolution": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Neoform": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Shared Summons": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Spellseeker": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Wizard",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Wargate": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Worldly Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "2iA_Jt0d6sM/godo_archetype": {
+  "Godo, Bandit Warlord": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Human Barbarian",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Goblin Engineer": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Goblin Artificer",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Recruiter": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Advisor",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Inventors' Fair": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Legendary Land",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Kuldotha Forgemaster": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact Creature \u2014 Construct",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Reckless Handling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tezzeret, Cruel Captain": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Tezzeret",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  }
+ },
+ "2iA_Jt0d6sM/nadu": {
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Eldritch Evolution": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Muddle the Mixture": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "transmute(activated from hand)",
+   "extra": [
+    "transmute"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Spellseeker": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Wizard",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tezzeret the Seeker": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Tezzeret",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Transmute Artifact": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Trinket Mage": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Wizard",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Worldly Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "2iA_Jt0d6sM/rograkh_silas": {
+  "Beseech the Mirror": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Consultation": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig-named"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Diabolic Intent": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Grim Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Wishclaw Talisman": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [
+    "tutor"
+   ],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "5A6o18Bra0Y/cabbage_merchant": {
+  "Birthing Pod": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Eldritch Evolution": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Inventors' Fair": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Legendary Land",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Kuldotha Forgemaster": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact Creature \u2014 Construct",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Natural Order": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Sylvan Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Time of Need": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tooth and Nail": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Transmutation Font": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Vivien, Monsters' Advocate": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Vivien",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Worldly Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "5A6o18Bra0Y/godo": {
+  "Godo, Bandit Warlord": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Human Barbarian",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Goblin Engineer": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Goblin Artificer",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Recruiter": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Advisor",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Inventors' Fair": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Legendary Land",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Kuldotha Forgemaster": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact Creature \u2014 Construct",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Reckless Handling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tezzeret, Cruel Captain": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Tezzeret",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  }
+ },
+ "5A6o18Bra0Y/malcolm_kediss": {
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Long-Term Plans": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Maelstrom of the Spirit Dragon": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Land",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Step Through": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "5A6o18Bra0Y/rog_ishai": {
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Idyllic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Dizzy Spell": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "transmute(activated from hand)",
+   "extra": [
+    "transmute"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gifts Ungiven": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Intuition": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "B421mac67IE/dexter_kinnan": {
+  "Drift of Phantasms": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "transmute(activated from hand)",
+   "extra": [
+    "transmute"
+   ],
+   "type": "Creature \u2014 Spirit",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Trophy Mage": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Wizard",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Transmute Artifact": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Dizzy Spell": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "transmute(activated from hand)",
+   "extra": [
+    "transmute"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Invasion of Ikoria // Zilortha, Apex of Ikoria": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Battle \u2014 Siege // Legendary Creature \u2014 Dinosaur",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "B421mac67IE/isaac_yisan": {
+  "Yisan, the Wanderer Bard": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Human Rogue Bard",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Formidable Speaker": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Elf Druid",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Woodland Bellower": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Beast",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Natural Order": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Invasion of Ikoria // Zilortha, Apex of Ikoria": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Battle \u2014 Siege // Legendary Creature \u2014 Dinosaur",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "B421mac67IE/lily_malcolm_vial": {
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Diabolic Intent": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Lively Dirge": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Consultation": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig-named"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Intuition": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Wishclaw Talisman": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [
+    "tutor"
+   ],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "B421mac67IE/matt_sisay": {
+  "Sisay, Weatherlight Captain": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Human Soldier",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Eladamri's Call": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "Bq-nFi0f1jA/cabbage_merchant": {
+  "Birthing Pod": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Eldritch Evolution": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Inventors' Fair": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Legendary Land",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Kuldotha Forgemaster": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact Creature \u2014 Construct",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Natural Order": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Sylvan Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Time of Need": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tooth and Nail": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Transmutation Font": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Vivien, Monsters' Advocate": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Vivien",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Worldly Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "Bq-nFi0f1jA/kinnan": {
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Drift of Phantasms": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "transmute(activated from hand)",
+   "extra": [
+    "transmute"
+   ],
+   "type": "Creature \u2014 Spirit",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tezzeret the Seeker": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Tezzeret",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Transmute Artifact": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Trophy Mage": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Wizard",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "Bq-nFi0f1jA/rog_thrasios": {
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Spellseeker": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Wizard",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  }
+ },
+ "Bq-nFi0f1jA/yidris": {
+  "Beseech the Mirror": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Consultation": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig-named"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Profane Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Wishclaw Talisman": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [
+    "tutor"
+   ],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "CxKMqO36DdM/alan_tnt": {
+  "Survival of the Fittest": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Enchantment",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Razaketh, the Foulblooded": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Demon",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Eldritch Evolution": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Diabolic Intent": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Lively Dirge": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "CxKMqO36DdM/dallas_bluefarm": {
+  "Wishclaw Talisman": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [
+    "tutor"
+   ],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Intuition": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Consultation": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig-named"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Diabolic Intent": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Beseech the Mirror": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "CxKMqO36DdM/joseph_ral": {
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Solve the Equation": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "CxKMqO36DdM/sterling_bluefarm": {
+  "Intuition": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Beseech the Mirror": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Counsel": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Consultation": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig-named"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "OuY6mdiXbHU/winota_ian": {
+  "Thalia's Lancers": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Knight",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Recruiter of the Guard": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Moggcatcher": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Creature \u2014 Human Mercenary",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Recruiter": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Advisor",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "OuY6mdiXbHU/winota_lua": {
+  "Thalia's Lancers": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Knight",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Recruiter of the Guard": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Moggcatcher": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Creature \u2014 Human Mercenary",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Recruiter": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Advisor",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Goblin Matron": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Goblin",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "OuY6mdiXbHU/winota_mike": {
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Thalia's Lancers": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Knight",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Recruiter of the Guard": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Moggcatcher": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Creature \u2014 Human Mercenary",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Recruiter": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Advisor",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "OuY6mdiXbHU/winota_rachel": {
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Recruiter of the Guard": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Moggcatcher": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Creature \u2014 Human Mercenary",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Recruiter": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Advisor",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "n7WpsqsZtdQ/magda": {
+  "Magda, Brazen Outlaw": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Dwarf Berserker",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Tezzeret, Cruel Captain": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Tezzeret",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "n7WpsqsZtdQ/rog_ishai": {
+  "Idyllic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Intuition": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Dizzy Spell": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "transmute(activated from hand)",
+   "extra": [
+    "transmute"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gifts Ungiven": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "n7WpsqsZtdQ/selvala_archetype": {
+  "Green Sun's Zenith": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Eldritch Evolution": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Chord of Calling": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tooth and Nail": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Natural Order": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Finale of Devastation": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Shared Summons": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Woodland Bellower": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Beast",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Fierce Empath": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Elf",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Summoner's Pact": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": true,
+   "is_land": false
+  },
+  "Worldly Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Invasion of Ikoria // Zilortha, Apex of Ikoria": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Battle \u2014 Siege // Legendary Creature \u2014 Dinosaur",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Nature's Rhythm": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "n7WpsqsZtdQ/tymna_thrasios": {
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Worldly Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Beseech the Mirror": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Consultation": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig-named"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Summoner's Pact": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": true,
+   "is_land": false
+  },
+  "Wishclaw Talisman": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [
+    "tutor"
+   ],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "sZA0KqXCGrY/ashton_bluefarm": {
+  "Gifts Ungiven": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Intuition": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Teachings": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Beseech the Mirror": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "sZA0KqXCGrY/joseph_ral": {
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Solve the Equation": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "sZA0KqXCGrY/natalie_magda": {
+  "Magda, Brazen Outlaw": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Legendary Creature \u2014 Dwarf Berserker",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Urza's Saga": {
+   "plan_tutor": false,
+   "broad": true,
+   "mode": "land ability",
+   "extra": [],
+   "type": "Enchantment Land \u2014 Urza's Saga",
+   "finisher_regex": false,
+   "is_land": true
+  },
+  "Tezzeret, Cruel Captain": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [],
+   "type": "Legendary Planeswalker \u2014 Tezzeret",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Goblin Engineer": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Goblin Artificer",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ },
+ "sZA0KqXCGrY/tyler_bluefarm": {
+  "Ranger-Captain of Eos": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "trigger",
+   "extra": [],
+   "type": "Creature \u2014 Human Soldier Ranger",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Gamble": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Imperial Seal": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Diabolic Intent": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Beseech the Mirror": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Sorcery",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Demonic Consultation": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig-named"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Enlightened Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Mystical Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Vampiric Tutor": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "spell",
+   "extra": [],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Tainted Pact": {
+   "plan_tutor": false,
+   "broad": false,
+   "mode": "spell",
+   "extra": [
+    "dig"
+   ],
+   "type": "Instant",
+   "finisher_regex": false,
+   "is_land": false
+  },
+  "Wishclaw Talisman": {
+   "plan_tutor": true,
+   "broad": true,
+   "mode": "activated",
+   "extra": [
+    "tutor"
+   ],
+   "type": "Artifact",
+   "finisher_regex": false,
+   "is_land": false
+  }
+ }
+}

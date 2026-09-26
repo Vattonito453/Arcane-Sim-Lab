@@ -1,0 +1,2 @@
+precon_stock 384 files
+missing card facts: 172 [('Plant Token', 398), ('Morph', 360), ('Elemental Token', 346), ("Loki's Double", 214), ('Squid Token', 160), ('Avengers Monitoring Station', 158), ('Bird Token', 156), ('Panther Idol', 144)]

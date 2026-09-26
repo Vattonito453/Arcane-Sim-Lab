@@ -1,0 +1,2384 @@
+{
+"casts": [
+[
+"Nomads en-Kor",
+"plan",
+1
+],
+[
+"Pact of Negation",
+"plan",
+104
+],
+[
+"Swan Song",
+"plan",
+107
+],
+[
+"Bloom Tender",
+"plan",
+14
+],
+[
+"Pact of Negation",
+"stock",
+132
+],
+[
+"Lion's Eye Diamond",
+"plan",
+8
+],
+[
+"Krark-Clan Ironworks",
+"plan",
+3
+],
+[
+"Swan Song",
+"stock",
+148
+],
+[
+"Manifold Key",
+"plan",
+1
+],
+[
+"Metalworker",
+"plan",
+5
+],
+[
+"Cephalid Illusionist",
+"plan",
+11
+],
+[
+"Aphetto Alchemist",
+"plan",
+12
+],
+[
+"Vampiric Tutor",
+"plan",
+40
+],
+[
+"Demonic Consultation",
+"plan",
+51
+],
+[
+"Final Fortune",
+"plan",
+3
+],
+[
+"Warrior's Oath",
+"plan",
+2
+],
+[
+"Clock of Omens",
+"plan",
+19
+],
+[
+"Wild Growth",
+"stock",
+1
+],
+[
+"Summoner's Pact",
+"plan",
+31
+],
+[
+"Quirion Ranger",
+"plan",
+30
+],
+[
+"Scryb Ranger",
+"plan",
+7
+],
+[
+"Emerald Charm",
+"plan",
+2
+],
+[
+"Devoted Druid",
+"plan",
+17
+],
+[
+"Wild Growth",
+"plan",
+5
+],
+[
+"Diabolic Intent",
+"plan",
+12
+],
+[
+"Last Chance",
+"plan",
+1
+],
+[
+"Ad Nauseam",
+"plan",
+1
+],
+[
+"Beast Within",
+"plan",
+20
+],
+[
+"Sheltering Ancient",
+"plan",
+1
+],
+[
+"Autumn's Veil",
+"plan",
+1
+],
+[
+"Nomads en-Kor",
+"stock",
+1
+],
+[
+"Beast Within",
+"stock",
+13
+],
+[
+"Phyrexian Soulgorger",
+"stock",
+2
+],
+[
+"Sheltering Ancient",
+"stock",
+1
+],
+[
+"Long-Term Plans",
+"plan",
+3
+],
+[
+"Magus of the Candelabra",
+"plan",
+3
+],
+[
+"Oboro Breezecaller",
+"plan",
+3
+],
+[
+"Copy Enchantment",
+"plan",
+1
+],
+[
+"Trickbind",
+"plan",
+2
+],
+[
+"Windfall",
+"plan",
+11
+],
+[
+"Timely Ward",
+"stock",
+6
+],
+[
+"Mission Briefing",
+"plan",
+1
+],
+[
+"Devoted Druid",
+"stock",
+3
+],
+[
+"Faithless Looting",
+"plan",
+28
+],
+[
+"Windfall",
+"stock",
+7
+],
+[
+"Bloodthirsty Adversary",
+"stock",
+4
+],
+[
+"Izzet Chemister",
+"plan",
+10
+],
+[
+"Timely Ward",
+"plan",
+9
+],
+[
+"Bloodthirsty Adversary",
+"plan",
+7
+],
+[
+"Izzet Signet",
+"stock",
+6
+],
+[
+"Kami of Ancient Law",
+"stock",
+2
+],
+[
+"Boros Signet",
+"plan",
+8
+],
+[
+"Past in Flames",
+"plan",
+1
+],
+[
+"Nyx Weaver",
+"stock",
+3
+],
+[
+"Azorius Signet",
+"plan",
+12
+],
+[
+"Oblivion Stone",
+"plan",
+7
+],
+[
+"Nantuko Cultivator",
+"stock",
+1
+],
+[
+"Faithless Looting",
+"stock",
+14
+],
+[
+"Hull Breach",
+"plan",
+3
+],
+[
+"Izzet Chemister",
+"stock",
+10
+],
+[
+"Tragic Arrogance",
+"plan",
+10
+],
+[
+"Summary Dismissal",
+"stock",
+3
+],
+[
+"Prismatic Lens",
+"plan",
+2
+],
+[
+"Xenagos, the Reveler",
+"plan",
+9
+],
+[
+"Xenagos, the Reveler",
+"stock",
+8
+],
+[
+"Incandescent Soulstoke",
+"plan",
+4
+],
+[
+"Primordial Mist",
+"stock",
+2
+],
+[
+"Tower Defense",
+"stock",
+1
+],
+[
+"Kheru Spellsnatcher",
+"plan",
+3
+],
+[
+"Perpetual Timepiece",
+"stock",
+5
+],
+[
+"Mirage Mirror",
+"stock",
+7
+],
+[
+"Harsh Mercy",
+"plan",
+1
+],
+[
+"Greater Good",
+"plan",
+2
+],
+[
+"Tragic Arrogance",
+"stock",
+2
+],
+[
+"Azorius Signet",
+"stock",
+6
+],
+[
+"Nyx Weaver",
+"plan",
+4
+],
+[
+"Boros Signet",
+"stock",
+3
+],
+[
+"Selesnya Signet",
+"stock",
+1
+],
+[
+"Izzet Signet",
+"plan",
+12
+],
+[
+"Black Sun's Zenith",
+"stock",
+1
+],
+[
+"Shielded by Faith",
+"plan",
+5
+],
+[
+"Rakdos Signet",
+"stock",
+2
+],
+[
+"Confiscation Coup",
+"plan",
+3
+],
+[
+"Hull Breach",
+"stock",
+1
+],
+[
+"Phyrexian Reclamation",
+"stock",
+1
+],
+[
+"Oreskos Explorer",
+"stock",
+1
+],
+[
+"Titan's Presence",
+"stock",
+3
+],
+[
+"Vault 21: House Gambit",
+"plan",
+1
+],
+[
+"Simic Signet",
+"plan",
+3
+],
+[
+"Mirage Mirror",
+"plan",
+16
+],
+[
+"Summary Dismissal",
+"plan",
+6
+],
+[
+"Selvala, Explorer Returned",
+"plan",
+1
+],
+[
+"Dark Deal",
+"plan",
+4
+],
+[
+"Plaguemaw Beast",
+"plan",
+1
+],
+[
+"Boltbender",
+"plan",
+2
+],
+[
+"Ashling the Pilgrim",
+"plan",
+3
+],
+[
+"Selective Obliteration",
+"plan",
+6
+],
+[
+"Darksteel Mutation",
+"plan",
+7
+],
+[
+"Rakdos Charm",
+"plan",
+16
+],
+[
+"Orzhov Signet",
+"plan",
+7
+],
+[
+"Black Sun's Zenith",
+"plan",
+4
+],
+[
+"Sylvan Offering",
+"plan",
+1
+],
+[
+"Epic Experiment",
+"plan",
+2
+],
+[
+"Perpetual Timepiece",
+"plan",
+4
+],
+[
+"God-Eternal Bontu",
+"plan",
+2
+],
+[
+"Fertile Ground",
+"plan",
+6
+],
+[
+"Single Combat",
+"plan",
+2
+],
+[
+"Viscera Seer",
+"plan",
+7
+],
+[
+"Winds of Change",
+"plan",
+3
+],
+[
+"Dispatch",
+"plan",
+1
+],
+[
+"Flickering Ward",
+"plan",
+2
+],
+[
+"Profane Command",
+"plan",
+5
+],
+[
+"Curse of the Swine",
+"plan",
+8
+],
+[
+"Grell Philosopher",
+"plan",
+2
+],
+[
+"Intellectual Offering",
+"plan",
+5
+],
+[
+"Gruul Signet",
+"plan",
+6
+],
+[
+"Past in Flames",
+"stock",
+1
+],
+[
+"Praetor's Grasp",
+"stock",
+1
+],
+[
+"Marauding Raptor",
+"plan",
+2
+],
+[
+"Fire Covenant",
+"plan",
+2
+],
+[
+"Inkfathom Witch",
+"plan",
+2
+],
+[
+"Rakdos Signet",
+"plan",
+3
+],
+[
+"Tower Defense",
+"plan",
+3
+],
+[
+"Mirror Entity",
+"plan",
+2
+],
+[
+"Dimir Signet",
+"plan",
+2
+],
+[
+"Kiora's Follower",
+"plan",
+4
+],
+[
+"Knollspine Dragon",
+"plan",
+1
+],
+[
+"Gaze of Granite",
+"plan",
+1
+],
+[
+"Titan's Presence",
+"plan",
+1
+],
+[
+"Syr Elenora, the Discerning",
+"plan",
+1
+],
+[
+"Overcharged Amalgam",
+"plan",
+1
+],
+[
+"Jolrael, Mwonvuli Recluse",
+"plan",
+1
+],
+[
+"Obscuring Aether",
+"plan",
+3
+],
+[
+"Cream of the Crop",
+"plan",
+2
+],
+[
+"Slaughter the Strong",
+"plan",
+2
+],
+[
+"Decree of Pain",
+"plan",
+1
+],
+[
+"Esix, Fractal Bloom",
+"plan",
+1
+],
+[
+"Nantuko Cultivator",
+"plan",
+2
+],
+[
+"Oreskos Explorer",
+"plan",
+1
+],
+[
+"Ion Storm",
+"plan",
+1
+],
+[
+"Trading Post",
+"plan",
+8
+],
+[
+"Golgari Signet",
+"plan",
+1
+],
+[
+"Entrancing Melody",
+"plan",
+1
+],
+[
+"Selesnya Signet",
+"plan",
+1
+],
+[
+"Pact of the Serpent",
+"stock",
+1
+],
+[
+"Abundance",
+"stock",
+2
+],
+[
+"Darksteel Mutation",
+"stock",
+2
+],
+[
+"Dimir Signet",
+"stock",
+1
+],
+[
+"Greater Good",
+"stock",
+1
+],
+[
+"Magus of the Candelabra",
+"stock",
+3
+],
+[
+"Fertile Ground",
+"stock",
+3
+],
+[
+"Ashling the Pilgrim",
+"stock",
+1
+],
+[
+"Viscera Seer",
+"stock",
+1
+],
+[
+"Oblivion Stone",
+"stock",
+1
+],
+[
+"Incandescent Soulstoke",
+"stock",
+1
+],
+[
+"Simic Signet",
+"stock",
+1
+],
+[
+"Strionic Resonator",
+"stock",
+1
+],
+[
+"Vault 21: House Gambit",
+"stock",
+1
+],
+[
+"Riot Control",
+"stock",
+1
+],
+[
+"Selective Obliteration",
+"stock",
+3
+],
+[
+"Selvala, Explorer Returned",
+"stock",
+1
+],
+[
+"Marauding Raptor",
+"stock",
+1
+],
+[
+"Shielded by Faith",
+"stock",
+2
+],
+[
+"Gruul Signet",
+"stock",
+1
+],
+[
+"Orzhov Signet",
+"stock",
+1
+],
+[
+"Mirror Entity",
+"stock",
+1
+],
+[
+"Marshal's Anthem",
+"stock",
+1
+],
+[
+"Golgari Signet",
+"stock",
+1
+],
+[
+"Marshal's Anthem",
+"plan",
+5
+],
+[
+"Sylvan Library",
+"plan",
+1
+]
+],
+"acts": [
+[
+"Clock of Omens",
+"plan",
+"copy",
+312
+],
+[
+"Clock of Omens",
+"stock",
+"copy",
+5
+],
+[
+"Clock of Omens",
+"stock",
+"real",
+27
+]
+],
+"acts_by_origin": [
+[
+"Clock of Omens",
+"Sculpting Steel",
+"plan",
+312
+],
+[
+"Clock of Omens",
+"Phyrexian Metamorph",
+"stock",
+3
+],
+[
+"Clock of Omens",
+"Clever Impersonator",
+"stock",
+2
+],
+[
+"Clock of Omens",
+"Clock of Omens",
+"stock",
+27
+]
+],
+"bf": [
+[
+"Dwarven Ruins",
+"stock",
+"real",
+51
+],
+[
+"Sandstone Needle",
+"stock",
+"real",
+51
+],
+[
+"Command Beacon",
+"stock",
+"real",
+192
+],
+[
+"Crystal Vein",
+"stock",
+"real",
+70
+],
+[
+"Bloom Tender",
+"plan",
+"real",
+48
+],
+[
+"Nomads en-Kor",
+"plan",
+"real",
+3
+],
+[
+"City of Traitors",
+"stock",
+"real",
+288
+],
+[
+"Gemstone Caverns",
+"plan",
+"real",
+262
+],
+[
+"Gemstone Caverns",
+"stock",
+"real",
+483
+],
+[
+"Phyrexian Tower",
+"stock",
+"real",
+55
+],
+[
+"Krark-Clan Ironworks",
+"stock",
+"real",
+8
+],
+[
+"Crystal Vein",
+"plan",
+"real",
+41
+],
+[
+"Lion's Eye Diamond",
+"plan",
+"real",
+14
+],
+[
+"Krark-Clan Ironworks",
+"plan",
+"real",
+4
+],
+[
+"Dwarven Ruins",
+"plan",
+"real",
+26
+],
+[
+"Command Beacon",
+"plan",
+"real",
+152
+],
+[
+"Sandstone Needle",
+"plan",
+"real",
+23
+],
+[
+"Manifold Key",
+"plan",
+"real",
+1
+],
+[
+"City of Traitors",
+"plan",
+"real",
+166
+],
+[
+"Metalworker",
+"plan",
+"real",
+7
+],
+[
+"Cephalid Illusionist",
+"plan",
+"real",
+36
+],
+[
+"Aphetto Alchemist",
+"plan",
+"real",
+37
+],
+[
+"Metalworker",
+"stock",
+"real",
+3
+],
+[
+"Phyrexian Tower",
+"plan",
+"real",
+19
+],
+[
+"Aphetto Alchemist",
+"stock",
+"real",
+8
+],
+[
+"Hammerheim",
+"plan",
+"real",
+28
+],
+[
+"Clock of Omens",
+"plan",
+"real",
+62
+],
+[
+"Sheltering Ancient",
+"stock",
+"real",
+21
+],
+[
+"Emergence Zone",
+"stock",
+"real",
+116
+],
+[
+"Clock of Omens",
+"plan",
+"copy",
+7
+],
+[
+"Phyrexian Soulgorger",
+"stock",
+"real",
+25
+],
+[
+"Clock of Omens",
+"stock",
+"copy",
+5
+],
+[
+"Phyrexian Soulgorger",
+"stock",
+"copy",
+2
+],
+[
+"Hammerheim",
+"stock",
+"real",
+50
+],
+[
+"Clock of Omens",
+"stock",
+"real",
+75
+],
+[
+"Wild Growth",
+"stock",
+"real",
+2
+],
+[
+"Quirion Ranger",
+"plan",
+"real",
+48
+],
+[
+"Springleaf Drum",
+"stock",
+"real",
+5
+],
+[
+"Scryb Ranger",
+"plan",
+"real",
+14
+],
+[
+"Emergence Zone",
+"plan",
+"real",
+63
+],
+[
+"Devoted Druid",
+"plan",
+"real",
+24
+],
+[
+"Quirion Ranger",
+"stock",
+"real",
+6
+],
+[
+"Wild Growth",
+"plan",
+"real",
+8
+],
+[
+"Lion's Eye Diamond",
+"stock",
+"real",
+1
+],
+[
+"Manifold Key",
+"stock",
+"real",
+10
+],
+[
+"Bloom Tender",
+"stock",
+"real",
+4
+],
+[
+"Sheltering Ancient",
+"plan",
+"real",
+3
+],
+[
+"Quirion Ranger",
+"stock",
+"copy",
+2
+],
+[
+"Scryb Ranger",
+"stock",
+"real",
+7
+],
+[
+"Nomads en-Kor",
+"stock",
+"real",
+2
+],
+[
+"Utopia Sprawl",
+"stock",
+"real",
+1
+],
+[
+"Phyrexian Soulgorger",
+"plan",
+"real",
+5
+],
+[
+"Dwarven Armorer",
+"stock",
+"real",
+4
+],
+[
+"Saprazzan Skerry",
+"plan",
+"real",
+4
+],
+[
+"Pili-Pala",
+"plan",
+"real",
+2
+],
+[
+"Magus of the Candelabra",
+"plan",
+"real",
+4
+],
+[
+"Oboro Breezecaller",
+"plan",
+"real",
+5
+],
+[
+"Rugged Prairie",
+"plan",
+"real",
+366
+],
+[
+"Wirewood Symbiote",
+"plan",
+"real",
+1
+],
+[
+"Rug of Smothering",
+"plan",
+"real",
+2
+],
+[
+"Sylvan Safekeeper",
+"plan",
+"real",
+1
+],
+[
+"Sanctum Prelate",
+"plan",
+"real",
+5
+],
+[
+"Springleaf Drum",
+"plan",
+"real",
+3
+],
+[
+"Goblin Welder",
+"plan",
+"real",
+1
+],
+[
+"Deadpool, Trading Card",
+"plan",
+"real",
+2
+],
+[
+"Emrakul, the Promised End",
+"plan",
+"real",
+1
+],
+[
+"Dwarven Armorer",
+"plan",
+"real",
+2
+],
+[
+"Mystic Gate",
+"stock",
+"real",
+76
+],
+[
+"Darkwater Catacombs",
+"stock",
+"real",
+190
+],
+[
+"Mystic Gate",
+"plan",
+"real",
+91
+],
+[
+"Disciple of Bolas",
+"plan",
+"real",
+6
+],
+[
+"Darkwater Catacombs",
+"plan",
+"real",
+341
+],
+[
+"Timely Ward",
+"stock",
+"real",
+8
+],
+[
+"Nyx Weaver",
+"stock",
+"real",
+13
+],
+[
+"Blast Zone",
+"plan",
+"real",
+100
+],
+[
+"Overflowing Basin",
+"stock",
+"real",
+209
+],
+[
+"Flooded Grove",
+"plan",
+"real",
+423
+],
+[
+"Flooded Grove",
+"stock",
+"real",
+231
+],
+[
+"Thespian's Stage",
+"stock",
+"real",
+38
+],
+[
+"Thespian's Stage",
+"plan",
+"real",
+67
+],
+[
+"Nesting Grounds",
+"stock",
+"real",
+101
+],
+[
+"Sunscorched Divide",
+"stock",
+"real",
+162
+],
+[
+"Skycloud Expanse",
+"plan",
+"real",
+440
+],
+[
+"Sungrass Prairie",
+"plan",
+"real",
+440
+],
+[
+"Ferrous Lake",
+"plan",
+"real",
+264
+],
+[
+"Viridescent Bog",
+"stock",
+"real",
+182
+],
+[
+"Twilight Mire",
+"plan",
+"real",
+296
+],
+[
+"Painted Bluffs",
+"stock",
+"real",
+48
+],
+[
+"Nesting Grounds",
+"plan",
+"real",
+146
+],
+[
+"Skycloud Expanse",
+"stock",
+"real",
+261
+],
+[
+"Rugged Prairie",
+"stock",
+"real",
+215
+],
+[
+"Shadowblood Ridge",
+"plan",
+"real",
+193
+],
+[
+"Sungrass Prairie",
+"stock",
+"real",
+248
+],
+[
+"Fetid Heath",
+"plan",
+"real",
+270
+],
+[
+"Twilight Mire",
+"stock",
+"real",
+184
+],
+[
+"Fetid Heath",
+"stock",
+"real",
+163
+],
+[
+"Cascade Bluffs",
+"stock",
+"real",
+183
+],
+[
+"Dakmor Salvage",
+"plan",
+"real",
+90
+],
+[
+"Viridescent Bog",
+"plan",
+"real",
+325
+],
+[
+"Shadowblood Ridge",
+"stock",
+"real",
+135
+],
+[
+"Sunscorched Divide",
+"plan",
+"real",
+260
+],
+[
+"Crypt of Agadeem",
+"plan",
+"real",
+42
+],
+[
+"Crypt of Agadeem",
+"stock",
+"real",
+29
+],
+[
+"Overflowing Basin",
+"plan",
+"real",
+345
+],
+[
+"Devoted Druid",
+"stock",
+"real",
+4
+],
+[
+"Painted Bluffs",
+"plan",
+"real",
+68
+],
+[
+"Bloodthirsty Adversary",
+"stock",
+"real",
+4
+],
+[
+"Knollspine Dragon",
+"plan",
+"real",
+13
+],
+[
+"Grell Philosopher",
+"stock",
+"real",
+2
+],
+[
+"Kami of Ancient Law",
+"stock",
+"real",
+6
+],
+[
+"Knollspine Dragon",
+"stock",
+"real",
+7
+],
+[
+"Ferrous Lake",
+"stock",
+"real",
+138
+],
+[
+"Izzet Chemister",
+"plan",
+"real",
+13
+],
+[
+"Cascade Bluffs",
+"plan",
+"real",
+285
+],
+[
+"Mossfire Valley",
+"plan",
+"real",
+321
+],
+[
+"Mossfire Valley",
+"stock",
+"real",
+173
+],
+[
+"Timely Ward",
+"plan",
+"real",
+16
+],
+[
+"Bloodthirsty Adversary",
+"plan",
+"real",
+7
+],
+[
+"Izzet Signet",
+"stock",
+"real",
+8
+],
+[
+"Dakmor Salvage",
+"stock",
+"real",
+47
+],
+[
+"Boros Signet",
+"plan",
+"real",
+9
+],
+[
+"Fertile Ground",
+"plan",
+"real",
+7
+],
+[
+"Azorius Signet",
+"plan",
+"real",
+16
+],
+[
+"Labyrinth of Skophos",
+"stock",
+"real",
+34
+],
+[
+"Oblivion Stone",
+"plan",
+"real",
+7
+],
+[
+"Mirage Mirror",
+"stock",
+"real",
+9
+],
+[
+"Labyrinth of Skophos",
+"plan",
+"real",
+50
+],
+[
+"Kami of Ancient Law",
+"plan",
+"real",
+10
+],
+[
+"Desolate Mire",
+"plan",
+"real",
+221
+],
+[
+"Desolate Mire",
+"stock",
+"real",
+123
+],
+[
+"Nantuko Cultivator",
+"stock",
+"real",
+1
+],
+[
+"Jolrael, Mwonvuli Recluse",
+"stock",
+"real",
+2
+],
+[
+"Disciple of Bolas",
+"stock",
+"real",
+4
+],
+[
+"Trading Post",
+"stock",
+"real",
+1
+],
+[
+"Flooded Grove",
+"stock",
+"copy",
+1
+],
+[
+"Perpetual Timepiece",
+"stock",
+"real",
+12
+],
+[
+"Izzet Chemister",
+"stock",
+"real",
+10
+],
+[
+"Overflowing Basin",
+"plan",
+"copy",
+2
+],
+[
+"Prismatic Lens",
+"plan",
+"real",
+2
+],
+[
+"Xenagos, the Reveler",
+"plan",
+"real",
+10
+],
+[
+"Xenagos, the Reveler",
+"stock",
+"real",
+8
+],
+[
+"Psychosis Crawler",
+"plan",
+"real",
+2
+],
+[
+"Arcane Lighthouse",
+"stock",
+"real",
+44
+],
+[
+"Arcane Lighthouse",
+"plan",
+"real",
+84
+],
+[
+"Dimir Signet",
+"plan",
+"real",
+6
+],
+[
+"HELIOS One",
+"stock",
+"real",
+24
+],
+[
+"Trading Post",
+"plan",
+"real",
+15
+],
+[
+"HELIOS One",
+"plan",
+"real",
+46
+],
+[
+"Alchemist's Refuge",
+"plan",
+"real",
+92
+],
+[
+"Blast Zone",
+"stock",
+"real",
+59
+],
+[
+"Interplanar Beacon",
+"plan",
+"real",
+46
+],
+[
+"Marshal's Anthem",
+"stock",
+"real",
+3
+],
+[
+"Syr Elenora, the Discerning",
+"stock",
+"real",
+8
+],
+[
+"Graven Cairns",
+"plan",
+"real",
+98
+],
+[
+"Graven Cairns",
+"stock",
+"real",
+42
+],
+[
+"Incandescent Soulstoke",
+"plan",
+"real",
+12
+],
+[
+"Interplanar Beacon",
+"stock",
+"real",
+40
+],
+[
+"Sunken Ruins",
+"stock",
+"real",
+26
+],
+[
+"Sunken Ruins",
+"plan",
+"real",
+49
+],
+[
+"Mirror Entity",
+"plan",
+"real",
+4
+],
+[
+"Flickering Ward",
+"plan",
+"real",
+14
+],
+[
+"Psychosis Crawler",
+"stock",
+"real",
+4
+],
+[
+"Shielded by Faith",
+"stock",
+"real",
+6
+],
+[
+"Primordial Mist",
+"stock",
+"real",
+2
+],
+[
+"Alchemist's Refuge",
+"stock",
+"real",
+51
+],
+[
+"Kheru Spellsnatcher",
+"plan",
+"real",
+5
+],
+[
+"Nyx Weaver",
+"plan",
+"real",
+26
+],
+[
+"Darksteel Mutation",
+"stock",
+"real",
+6
+],
+[
+"Boltbender",
+"stock",
+"real",
+4
+],
+[
+"Flickering Ward",
+"stock",
+"real",
+4
+],
+[
+"Incandescent Soulstoke",
+"stock",
+"real",
+9
+],
+[
+"Selvala, Explorer Returned",
+"plan",
+"real",
+7
+],
+[
+"Esix, Fractal Bloom",
+"plan",
+"real",
+3
+],
+[
+"Greater Good",
+"plan",
+"real",
+7
+],
+[
+"Azorius Signet",
+"stock",
+"real",
+8
+],
+[
+"Shielded by Faith",
+"plan",
+"real",
+14
+],
+[
+"Thespian's Stage",
+"stock",
+"copy",
+1
+],
+[
+"Darksteel Mutation",
+"plan",
+"real",
+15
+],
+[
+"Boros Signet",
+"stock",
+"real",
+3
+],
+[
+"Orzhov Signet",
+"stock",
+"real",
+2
+],
+[
+"Selesnya Signet",
+"stock",
+"real",
+1
+],
+[
+"Esix, Fractal Bloom",
+"stock",
+"real",
+1
+],
+[
+"Izzet Signet",
+"plan",
+"real",
+15
+],
+[
+"Wall of Limbs",
+"plan",
+"real",
+2
+],
+[
+"Syr Elenora, the Discerning",
+"plan",
+"real",
+5
+],
+[
+"Dimir Signet",
+"stock",
+"real",
+4
+],
+[
+"Mirage Mirror",
+"plan",
+"real",
+20
+],
+[
+"Perpetual Timepiece",
+"plan",
+"real",
+7
+],
+[
+"Rakdos Signet",
+"stock",
+"real",
+2
+],
+[
+"Gruul Signet",
+"plan",
+"real",
+9
+],
+[
+"Gideon Jura",
+"stock",
+"real",
+6
+],
+[
+"Greater Good",
+"stock",
+"real",
+3
+],
+[
+"Phyrexian Reclamation",
+"stock",
+"real",
+1
+],
+[
+"Gideon Jura",
+"plan",
+"real",
+2
+],
+[
+"Oreskos Explorer",
+"stock",
+"real",
+1
+],
+[
+"Boltbender",
+"plan",
+"real",
+5
+],
+[
+"Vault 21: House Gambit",
+"plan",
+"real",
+1
+],
+[
+"Simic Signet",
+"plan",
+"real",
+3
+],
+[
+"Orzhov Signet",
+"plan",
+"real",
+9
+],
+[
+"Overcharged Amalgam",
+"plan",
+"real",
+3
+],
+[
+"Plaguemaw Beast",
+"plan",
+"real",
+1
+],
+[
+"Ashling the Pilgrim",
+"plan",
+"real",
+5
+],
+[
+"God-Eternal Bontu",
+"plan",
+"real",
+3
+],
+[
+"Viscera Seer",
+"plan",
+"real",
+9
+],
+[
+"Flooded Grove",
+"plan",
+"copy",
+1
+],
+[
+"Grell Philosopher",
+"plan",
+"real",
+2
+],
+[
+"Proteus Staff",
+"stock",
+"real",
+1
+],
+[
+"Rug of Smothering",
+"stock",
+"real",
+1
+],
+[
+"Pili-Pala",
+"stock",
+"real",
+1
+],
+[
+"Magus of the Candelabra",
+"stock",
+"real",
+4
+],
+[
+"Deadpool, Trading Card",
+"stock",
+"real",
+1
+],
+[
+"Sanctum Prelate",
+"stock",
+"real",
+3
+],
+[
+"Marauding Raptor",
+"plan",
+"real",
+2
+],
+[
+"Fire-Lit Thicket",
+"plan",
+"real",
+24
+],
+[
+"Jolrael, Mwonvuli Recluse",
+"plan",
+"real",
+3
+],
+[
+"Marshal's Anthem",
+"plan",
+"real",
+8
+],
+[
+"Nantuko Cultivator",
+"plan",
+"real",
+5
+],
+[
+"Inkfathom Witch",
+"plan",
+"real",
+4
+],
+[
+"Rakdos Signet",
+"plan",
+"real",
+4
+],
+[
+"Kiora's Follower",
+"plan",
+"real",
+4
+],
+[
+"Obscuring Aether",
+"plan",
+"real",
+3
+],
+[
+"Cream of the Crop",
+"plan",
+"real",
+2
+],
+[
+"Thespian's Stage",
+"plan",
+"copy",
+1
+],
+[
+"Oreskos Explorer",
+"plan",
+"real",
+1
+],
+[
+"Ion Storm",
+"plan",
+"real",
+1
+],
+[
+"Golgari Signet",
+"plan",
+"real",
+1
+],
+[
+"Selesnya Signet",
+"plan",
+"real",
+1
+],
+[
+"Ashling the Pilgrim",
+"stock",
+"real",
+2
+],
+[
+"Fire-Lit Thicket",
+"stock",
+"real",
+16
+],
+[
+"Fertile Ground",
+"stock",
+"real",
+4
+],
+[
+"Mirror Entity",
+"stock",
+"real",
+2
+],
+[
+"Abundance",
+"stock",
+"real",
+2
+],
+[
+"Ion Storm",
+"stock",
+"real",
+1
+],
+[
+"Gruul Signet",
+"stock",
+"real",
+4
+],
+[
+"Strionic Resonator",
+"stock",
+"real",
+2
+],
+[
+"Inkfathom Witch",
+"stock",
+"real",
+4
+],
+[
+"Viscera Seer",
+"stock",
+"real",
+1
+],
+[
+"Overcharged Amalgam",
+"stock",
+"real",
+1
+],
+[
+"Oblivion Stone",
+"stock",
+"real",
+1
+],
+[
+"Simic Signet",
+"stock",
+"real",
+1
+],
+[
+"Vault 21: House Gambit",
+"stock",
+"real",
+1
+],
+[
+"Selvala, Explorer Returned",
+"stock",
+"real",
+1
+],
+[
+"Skycloud Expanse",
+"stock",
+"copy",
+1
+],
+[
+"Marauding Raptor",
+"stock",
+"real",
+1
+],
+[
+"Golgari Signet",
+"stock",
+"real",
+1
+],
+[
+"Nesting Grounds",
+"plan",
+"copy",
+1
+],
+[
+"Sylvan Library",
+"plan",
+"real",
+1
+]
+]
+}

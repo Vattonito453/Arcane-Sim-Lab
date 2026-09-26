@@ -1,0 +1,270 @@
+## 2iA_Jt0d6sM derevi lines=10 win=0
+    - Felidar Guardian + Phyrexian Metamorph  =>  Infinite creature LTB ; Infinite creature ETB
+    - Felidar Guardian + Flesh Duplicate  =>  Infinite creature LTB ; Infinite creature ETB
+    - Felidar Guardian + Clever Impersonator  =>  Infinite creature ETB ; Infinite creature LTB
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Gaea's Cradle  =>  Infinite blinking ; Infinite creature ETB ; Infinite creature LTB ; Infinite green mana ; Infinite mana permanents you control can produce
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Bloom Tender  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite blinking ; Infinite mana of colors among permanents you control ; Infinite mana per
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Mana Vault  =>  Infinite creature LTB ; Infinite creature ETB
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Faeburrow Elder  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite blinking ; Infinite mana of colors among permanents you control ; Infinite mana per
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Chromatic Orrery  =>  Infinite blinking ; Infinite creature ETB ; Infinite creature LTB ; Infinite colored mana ; Infinite colorless mana ; Infinite card draw ; I
+    - Emiel the Blessed + Felidar Guardian + Gaea's Cradle  =>  Infinite blinking of permanents ; Infinite creature ETB ; Infinite landfall triggers ; Infinite creature LTB ; Infinite mana permanents you 
+    - Emiel the Blessed + Felidar Guardian + Chromatic Orrery  =>  Infinite blinking of permanents ; Infinite card draw ; Infinite colored mana ; Infinite colorless mana ; Infinite draw triggers ; Infinite c
+## 2iA_Jt0d6sM godo_archetype lines=8 win=1
+    - Basalt Monolith + Forsaken Monument  =>  Infinite colorless mana
+    - Rings of Brighthearth + Basalt Monolith  =>  Infinite colorless mana
+    W Godo, Bandit Warlord + Helm of the Host  =>  Infinite combat phases ; Infinite death triggers ; Infinite creature ETB ; Infinite creature LTB ; Infinite creature sacrifice triggers ; Pu
+    - Staff of Domination + Metalworker  =>  Infinite card draw ; Infinite colorless mana ; Infinite draw triggers ; Infinite lifegain ; Infinite lifegain triggers ; Infinite untap of c
+    - Voltaic Key + Rings of Brighthearth + Metalworker  =>  Infinite colorless mana ; Infinite untap of artifacts you control ; Infinite mana artifacts you control can produce
+    - Rings of Brighthearth + Forsaken Monument + Grim Monolith  =>  Infinite colorless mana
+    - Voltaic Key + Forsaken Monument + Rings of Brighthearth + Thran Dynamo  =>  Infinite untap of artifacts you control ; Infinite colorless mana ; Infinite mana artifacts you control can produce
+    - Voltaic Key + Forsaken Monument + Rings of Brighthearth + Mana Vault  =>  Infinite untap of artifacts you control ; Infinite colorless mana ; Infinite mana artifacts you control can produce
+## 2iA_Jt0d6sM nadu lines=9 win=0
+    - Springheart Nantuko + Lotus Cobra  =>  Infinite landfall triggers ; Infinite tapped land tokens
+    - Springheart Nantuko + Lotus Cobra  =>  Infinite landfall triggers ; Infinite tapped land tokens
+    - Unctus, Grand Metatect + Aphetto Alchemist  =>  Infinite draw triggers ; Infinite looting ; Infinite self-discard triggers
+    - Cephalid Illusionist + Lightning Greaves  =>  Infinite self-mill
+    - Cephalid Illusionist + Shuko  =>  Infinite self-mill
+    - Nadu, Winged Wisdom + Scute Swarm + Lightning Greaves  =>  Near-infinite creature ETB ; Near-infinite creature tokens ; Near-infinite card draw ; Near-infinite landfall triggers
+    - Nadu, Winged Wisdom + Scute Swarm + Shuko  =>  Near-infinite creature ETB ; Near-infinite creature tokens ; Near-infinite card draw ; Near-infinite landfall triggers
+    - Displacer Kitten + Eternal Witness + Lotus Petal + Snap  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite storm count ; Infinite magecraft triggers ; Near-infinite colored mana ; Return all
+    - Displacer Kitten + Eternal Witness + Lotus Petal + Jeweled Lotus  =>  Infinite colored mana ; Infinite storm count
+## 2iA_Jt0d6sM rograkh_silas lines=8 win=4
+    W Demonic Consultation + Thassa's Oracle  =>  Exile your library ; Win the game
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    - Underworld Breach + Grinding Station  =>  Infinite self-mill ; Near-infinite storm count ; Near-infinite mana among colors of legendary creatures and planeswalkers you control
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Wheel of Fortune + Jeska's Will  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Near-infinite magecraft triggers ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+    - Underworld Breach + Grinding Station + Mana Crypt  =>  Infinite self-mill ; Near-infinite colorless mana ; Near-infinite storm count
+## 5A6o18Bra0Y cabbage_merchant lines=8 win=1
+    - Peregrin Took + Nuka-Cola Vending Machine  =>  Infinite card draw ; Infinite draw triggers ; Near-infinite tapped Treasure tokens
+    - Nuka-Cola Vending Machine + Academy Manufactor + Krark-Clan Ironworks  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite colorless mana ; Infinite tapped Treasure tokens ; Infinite tapped Food tokens ;
+    - Nuka-Cola Vending Machine + Academy Manufactor + Clock of Omens  =>  Infinite tapped Food tokens ; Infinite tapped Clue tokens
+    W Nuka-Cola Vending Machine + Academy Manufactor + Grinding Station  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite mill ; Infinite self-mill ; Infinite tapped Treasure tokens ; Infinite tapped Fo
+    - Transmutation Font + Academy Manufactor + Clock of Omens  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite Blood tokens ; In
+    - Transmutation Font + Clock of Omens + Stridehangar Automaton  =>  Infinite creature ETB ; Infinite tapped Food tokens ; Infinite tapped creature tokens ; Infinite tapped Clue tokens ; Infinite tapped Blood 
+    - Transmutation Font + Clock of Omens + Grinding Station  =>  Infinite tapped Food tokens ; Infinite tapped Clue tokens ; Infinite tapped Blood tokens
+    - Transmutation Font + Clock of Omens + Peregrin Took  =>  Infinite card draw ; Infinite draw triggers ; Infinite tapped Food tokens ; Infinite tapped Clue tokens ; Infinite tapped Blood tokens
+## 5A6o18Bra0Y godo lines=8 win=1
+    - Basalt Monolith + Forsaken Monument  =>  Infinite colorless mana
+    - Rings of Brighthearth + Basalt Monolith  =>  Infinite colorless mana
+    W Godo, Bandit Warlord + Helm of the Host  =>  Infinite combat phases ; Infinite death triggers ; Infinite creature ETB ; Infinite creature LTB ; Infinite creature sacrifice triggers ; Pu
+    - Staff of Domination + Metalworker  =>  Infinite card draw ; Infinite colorless mana ; Infinite draw triggers ; Infinite lifegain ; Infinite lifegain triggers ; Infinite untap of c
+    - Voltaic Key + Rings of Brighthearth + Metalworker  =>  Infinite colorless mana ; Infinite untap of artifacts you control ; Infinite mana artifacts you control can produce
+    - Rings of Brighthearth + Forsaken Monument + Grim Monolith  =>  Infinite colorless mana
+    - Voltaic Key + Forsaken Monument + Rings of Brighthearth + Thran Dynamo  =>  Infinite untap of artifacts you control ; Infinite colorless mana ; Infinite mana artifacts you control can produce
+    - Voltaic Key + Forsaken Monument + Rings of Brighthearth + Mana Vault  =>  Infinite untap of artifacts you control ; Infinite colorless mana ; Infinite mana artifacts you control can produce
+## 5A6o18Bra0Y malcolm_kediss lines=3 win=2
+    W Curiosity + Niv-Mizzet, Parun  =>  Infinite draw triggers ; Infinite card draw ; Near-infinite damage
+    W Niv-Mizzet, Parun + Ophidian Eye  =>  Infinite card draw ; Infinite draw triggers ; Near-infinite damage
+    - Narset's Reversal + Flare of Duplication  =>  Infinite magecraft triggers
+## 5A6o18Bra0Y rog_ishai lines=8 win=2
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Wheel of Fortune + Jeska's Will  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Near-infinite magecraft triggers ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+    - Smothering Tithe + Underworld Breach + Wheel of Fortune  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Infinite self-discard triggers for all players ; Near-infinite c
+    - Faerie Mastermind + Smothering Tithe + Mirrormade  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+    - Faerie Mastermind + Smothering Tithe + Copy Enchantment  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+    - Faerie Mastermind + Smothering Tithe + Clever Impersonator  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+## B421mac67IE dexter_kinnan lines=4 win=0
+    - Hullbreaker Horror + Sol Ring  =>  Infinite colorless mana ; Infinite storm count
+    - Hullbreaker Horror + Mana Vault  =>  Infinite colorless mana ; Infinite storm count
+    - Hullbreaker Horror + Mox Amber  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite colored mana ; Infinite storm count
+    - Kinnan, Bonder Prodigy + Basalt Monolith  =>  Infinite colorless mana
+## B421mac67IE isaac_yisan lines=29 win=0
+    - Ashaya, Soul of the Wild + Quirion Ranger  =>  Infinite creature ETB ; Infinite landfall triggers ; Infinite creature LTB ; Infinite storm count
+    - Ashaya, Soul of the Wild + Argothian Elder  =>  Infinite mana lands you control can produce ; Infinite untap of creatures you control ; Infinite mana creatures you control can produce ; In
+    - Ashaya, Soul of the Wild + Sylvan Safekeeper + Badgermole Cub  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite creature sacrifice triggers ; Infinite death triggers ; Infinite landfall triggers
+    - Ashaya, Soul of the Wild + Scryb Ranger + Priest of Titania  =>  Infinite creature ETB ; Infinite green mana ; Infinite landfall triggers ; Infinite creature LTB ; Infinite storm count
+    - Ashaya, Soul of the Wild + Scryb Ranger + Circle of Dreams Druid  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite storm count ; Infinite green mana ; Infinite landfall triggers
+    - Temur Sabertooth + Hyrax Tower Scout + Priest of Titania  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite mana creatures you control can produce ; Infinite storm count ; Infinite untap of c
+    - Ashaya, Soul of the Wild + Scryb Ranger + Selvala, Heart of the Wilds  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite colored mana ; Infinite storm count ; Infinite landfall triggers
+    - Kogla, the Titan Ape + Hyrax Tower Scout + Priest of Titania  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite mana creatures you control can produce ; Infinite storm count ; Infinite untap of c
+    - Temur Sabertooth + Hyrax Tower Scout + Selvala, Heart of the Wilds  =>  Infinite creature LTB ; Infinite mana creatures you control can produce ; Infinite storm count ; Infinite untap of creatures you control ; I
+    - Kogla, the Titan Ape + Hyrax Tower Scout + Selvala, Heart of the Wilds  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite storm count ; Infinite untap of creatures you control ; Infinite mana creatures you
+    - Temur Sabertooth + Hyrax Tower Scout + Circle of Dreams Druid  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite mana creatures you control can produce ; Infinite storm count ; Infinite untap of c
+    - Kogla, the Titan Ape + Hyrax Tower Scout + Circle of Dreams Druid  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite storm count ; Infinite untap of creatures you control ; Infinite mana creatures you
+    - Ashaya, Soul of the Wild + Magus of the Candelabra + Priest of Titania  =>  Infinite mana lands you control can produce ; Infinite green mana ; Infinite untap of nontoken creatures you control ; Infinite mana nontoke
+    - Ashaya, Soul of the Wild + Magus of the Candelabra + Circle of Dreams Druid  =>  Infinite mana lands you control can produce ; Infinite green mana ; Infinite untap of nontoken creatures you control ; Infinite mana nontoke
+    - Ashaya, Soul of the Wild + Magus of the Candelabra + Selvala, Heart of the Wilds  =>  Infinite colored mana ; Infinite mana lands you control can produce ; Infinite untap of nontoken creatures you control ; Infinite mana nonto
+    - Temur Sabertooth + Circle of Dreams Druid + Shang-Chi, Master of Kung Fu  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite blinking of some creatures ; Infinite green mana ; Infinite storm count
+    - Temur Sabertooth + Priest of Titania + Shang-Chi, Master of Kung Fu  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite blinking of some creatures ; Infinite green mana ; Infinite storm count
+    - Temur Sabertooth + Selvala, Heart of the Wilds + Shang-Chi, Master of Kung Fu  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite blinking ; Infinite colored mana ; Infinite storm count
+    - Ashaya, Soul of the Wild + Pili-Pala + Wild Growth  =>  Infinite colored mana
+    - Marvin, Murderous Mimic + Pili-Pala + Priest of Titania  =>  Infinite colored mana
+    - Marvin, Murderous Mimic + Pili-Pala + Selvala, Heart of the Wilds  =>  Infinite colored mana
+    - Marvin, Murderous Mimic + Pili-Pala + Circle of Dreams Druid  =>  Infinite colored mana
+    - Marvin, Murderous Mimic + Pili-Pala + Argothian Elder  =>  Infinite colored mana ; Infinite mana lands you control can produce ; Infinite untap of lands you control
+    - Temur Sabertooth + Circle of Dreams Druid + Wirewood Symbiote + Llanowar Elves  =>  Infinite blinking of some creatures ; Infinite green mana
+    - Temur Sabertooth + Circle of Dreams Druid + Wirewood Symbiote + Elvish Mystic  =>  Infinite blinking of some creatures ; Infinite green mana
+    - Selvala, Heart of the Wilds + Temur Sabertooth + Wirewood Symbiote + Llanowar Elves  =>  Infinite colored mana ; Infinite creature ETB ; Infinite creature LTB ; Infinite storm count ; Infinite blinking
+    - Selvala, Heart of the Wilds + Temur Sabertooth + Wirewood Symbiote + Elvish Mystic  =>  Infinite colored mana ; Infinite creature ETB ; Infinite creature LTB ; Infinite storm count ; Infinite blinking
+    - Selvala, Heart of the Wilds + Temur Sabertooth + Wirewood Symbiote + Fyndhorn Elves  =>  Infinite colored mana ; Infinite creature ETB ; Infinite creature LTB ; Infinite storm count ; Infinite blinking
+    - Temur Sabertooth + Circle of Dreams Druid + Wirewood Symbiote + Allosaurus Shepherd  =>  Infinite blinking of some creatures ; Infinite green mana
+## B421mac67IE lily_malcolm_vial lines=8 win=6
+    W Demonic Consultation + Thassa's Oracle  =>  Exile your library ; Win the game
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    W Malcolm, Keen-Eyed Navigator + Glint-Horn Buccaneer  =>  Near-infinite damage ; Near-infinite self-discard triggers ; Near-infinite draw triggers
+    W Glint-Horn Buccaneer + Curiosity  =>  Infinite draw triggers ; Infinite rummaging ; Infinite self-discard triggers ; Near-infinite damage
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Wheel of Fortune + Jeska's Will  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Near-infinite magecraft triggers ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+## B421mac67IE matt_sisay lines=7 win=0
+    - Marvin, Murderous Mimic + Ioreth of the Healing House  =>  Infinite untap of legendary creatures you control ; Infinite mana legendary creatures you control can produce
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Gaea's Cradle  =>  Infinite blinking ; Infinite creature ETB ; Infinite creature LTB ; Infinite green mana ; Infinite mana permanents you control can produce
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Bloom Tender  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite blinking ; Infinite mana of colors among permanents you control ; Infinite mana per
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Mana Vault  =>  Infinite creature LTB ; Infinite creature ETB
+    - Derevi, Empyrial Tactician + Emiel the Blessed + Selvala, Heart of the Wilds  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite colored mana ; Infinite blinking ; Infinite mana permanents you control can produce
+    - Badgermole Cub + Emiel the Blessed + Gaea's Cradle  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite blinking ; Infinite green mana ; Infinite landfall triggers ; Infinite mana lands y
+    - Selvala, Heart of the Wilds + Emiel the Blessed + Tyvar, Jubilant Brawler  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite colored mana ; Infinite blinking
+## Bq-nFi0f1jA cabbage_merchant lines=8 win=1
+    - Peregrin Took + Nuka-Cola Vending Machine  =>  Infinite card draw ; Infinite draw triggers ; Near-infinite tapped Treasure tokens
+    - Nuka-Cola Vending Machine + Academy Manufactor + Krark-Clan Ironworks  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite colorless mana ; Infinite tapped Treasure tokens ; Infinite tapped Food tokens ;
+    - Nuka-Cola Vending Machine + Academy Manufactor + Clock of Omens  =>  Infinite tapped Food tokens ; Infinite tapped Clue tokens
+    W Nuka-Cola Vending Machine + Academy Manufactor + Grinding Station  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite mill ; Infinite self-mill ; Infinite tapped Treasure tokens ; Infinite tapped Fo
+    - Transmutation Font + Academy Manufactor + Clock of Omens  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite Blood tokens ; In
+    - Transmutation Font + Clock of Omens + Stridehangar Automaton  =>  Infinite creature ETB ; Infinite tapped Food tokens ; Infinite tapped creature tokens ; Infinite tapped Clue tokens ; Infinite tapped Blood 
+    - Transmutation Font + Clock of Omens + Grinding Station  =>  Infinite tapped Food tokens ; Infinite tapped Clue tokens ; Infinite tapped Blood tokens
+    - Transmutation Font + Clock of Omens + Peregrin Took  =>  Infinite card draw ; Infinite draw triggers ; Infinite tapped Food tokens ; Infinite tapped Clue tokens ; Infinite tapped Blood tokens
+## Bq-nFi0f1jA kinnan lines=6 win=0
+    - Hullbreaker Horror + Sol Ring  =>  Infinite colorless mana ; Infinite storm count
+    - Hullbreaker Horror + Mana Vault  =>  Infinite colorless mana ; Infinite storm count
+    - Hullbreaker Horror + Mox Amber  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite colored mana ; Infinite storm count
+    - Kinnan, Bonder Prodigy + Basalt Monolith  =>  Infinite colorless mana
+    - Basalt Monolith + Nyxbloom Ancient  =>  Infinite colorless mana
+    - Grim Monolith + Nyxbloom Ancient  =>  Infinite colorless mana
+## Bq-nFi0f1jA rog_thrasios lines=6 win=2
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+    - Oboro Breezecaller + Talon Gates of Madara + Gaea's Cradle  =>  Infinite mana lands you control can produce ; Infinite green mana ; Infinite landfall triggers ; Phase out any number of creatures any numbe
+    - Displacer Kitten + Eternal Witness + Lotus Petal + Snap  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite storm count ; Infinite magecraft triggers ; Near-infinite colored mana ; Return all
+    - Displacer Kitten + Eternal Witness + Lotus Petal + Snap + Cloud of Faeries  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite colored mana ; Infinite storm count ; Infinite magecraft triggers ; Return all crea
+## Bq-nFi0f1jA yidris lines=6 win=4
+    W Demonic Consultation + Thassa's Oracle  =>  Exile your library ; Win the game
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Wheel of Fortune + Jeska's Will  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Near-infinite magecraft triggers ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+## CxKMqO36DdM alan_tnt lines=6 win=2
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    - Devoted Druid + Swift Reconfiguration  =>  Infinite green mana
+    - Hazel's Brewmaster + Devoted Druid  =>  Infinite green mana
+    W Hermit Druid + Thassa's Oracle  =>  Win the game
+    - Faerie Mastermind + Smothering Tithe + Kinnan, Bonder Prodigy  =>  Infinite card draw for all players ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Near-infinite colored mana ; N
+    - Faerie Mastermind + Smothering Tithe + Clever Impersonator  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+## CxKMqO36DdM dallas_bluefarm lines=6 win=5
+    W Demonic Consultation + Thassa's Oracle  =>  Exile your library ; Win the game
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    - Underworld Breach + Grinding Station  =>  Infinite self-mill ; Near-infinite storm count ; Near-infinite mana among colors of legendary creatures and planeswalkers you control
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    W Memnite + Grinding Station + Underworld Breach + Thassa's Oracle  =>  Infinite self-mill ; Near-infinite creature ETB ; Near-infinite creature LTB ; Near-infinite creature sacrifice triggers ; Win the game
+## CxKMqO36DdM joseph_ral lines=7 win=3
+    - Reiterate + Jeska's Will  =>  Infinite magecraft triggers ; Infinite red mana ; Infinite storm count ; Exile your library with the ability to play the exiled cards until 
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Wheel of Fortune + Jeska's Will  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Near-infinite magecraft triggers ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+    W Storm-Kiln Artist + Seething Song + Reiterate  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite colored mana ; In
+    - Birgi, God of Storytelling // Harnfel, Horn of Bounty + Seething Song + Reiterate  =>  Infinite magecraft triggers ; Infinite storm count
+## CxKMqO36DdM sterling_bluefarm lines=4 win=4
+    W Demonic Consultation + Thassa's Oracle  =>  Exile your library ; Win the game
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+## OuY6mdiXbHU winota_ian lines=3 win=2
+    - Kiki-Jiki, Mirror Breaker + Zealous Conscripts  =>  Infinite creature tokens with haste ; Infinite death triggers ; Infinite creature ETB ; Infinite creature LTB ; Infinite creature sacrifice 
+    W Combat Celebrant + Kiki-Jiki, Mirror Breaker  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB
+    W Rionya, Fire Dancer + Combat Celebrant  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB ; Infinite creature LTB
+## OuY6mdiXbHU winota_lua lines=5 win=3
+    - Kiki-Jiki, Mirror Breaker + Zealous Conscripts  =>  Infinite creature tokens with haste ; Infinite death triggers ; Infinite creature ETB ; Infinite creature LTB ; Infinite creature sacrifice 
+    W Combat Celebrant + Kiki-Jiki, Mirror Breaker  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB
+    W Rionya, Fire Dancer + Combat Celebrant  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB ; Infinite creature LTB
+    - Kiki-Jiki, Mirror Breaker + Village Bell-Ringer  =>  Infinite creature tokens with haste ; Infinite death triggers ; Infinite creature ETB ; Infinite creature LTB ; Infinite mana creatures you 
+    W Combat Celebrant + Mirage Phalanx  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB
+## OuY6mdiXbHU winota_mike lines=4 win=3
+    - Kiki-Jiki, Mirror Breaker + Zealous Conscripts  =>  Infinite creature tokens with haste ; Infinite death triggers ; Infinite creature ETB ; Infinite creature LTB ; Infinite creature sacrifice 
+    W Combat Celebrant + Kiki-Jiki, Mirror Breaker  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB
+    W Rionya, Fire Dancer + Combat Celebrant  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB ; Infinite creature LTB
+    W Combat Celebrant + Mirage Phalanx  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB
+## OuY6mdiXbHU winota_rachel lines=3 win=2
+    - Kiki-Jiki, Mirror Breaker + Zealous Conscripts  =>  Infinite creature tokens with haste ; Infinite death triggers ; Infinite creature ETB ; Infinite creature LTB ; Infinite creature sacrifice 
+    W Combat Celebrant + Kiki-Jiki, Mirror Breaker  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB
+    W Rionya, Fire Dancer + Combat Celebrant  =>  Infinite combat phases ; Infinite creature tokens with haste ; Infinite creature ETB ; Infinite creature LTB
+## n7WpsqsZtdQ magda lines=13 win=2
+    - Magda, Brazen Outlaw + Clock of Omens + Liquimetal Torque  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Universal Automaton  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Metallic Mimic  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Adaptive Automaton  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Roaming Throne  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Put all artifact cards and
+    - Magda, Brazen Outlaw + Clock of Omens + Barkform Harvester  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Three Tree Mascot  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Battered Golem + Maskwood Nexus  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite colored mana ; In
+    - Magda, Brazen Outlaw + Battered Golem + Maskwood Nexus  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite colored mana ; In
+    - Magda, Brazen Outlaw + Battered Golem + Stalactite Dagger  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite Treasure tokens ;
+    - Magda, Brazen Outlaw + Battered Golem + Stalactite Dagger  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite Treasure tokens ;
+    W Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Maskwood Nexus  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite colored mana ; In
+    W Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Stalactite Dagger  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite Treasure tokens ;
+## n7WpsqsZtdQ rog_ishai lines=8 win=2
+    - Hullbreaker Horror + Sol Ring  =>  Infinite colorless mana ; Infinite storm count
+    - Hullbreaker Horror + Mana Vault  =>  Infinite colorless mana ; Infinite storm count
+    - Hullbreaker Horror + Mox Amber  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite colored mana ; Infinite storm count
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Faerie Mastermind + Smothering Tithe + Mirrormade  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+    - Faerie Mastermind + Smothering Tithe + Copy Enchantment  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+    - Faerie Mastermind + Smothering Tithe + Clever Impersonator  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+## n7WpsqsZtdQ selvala_archetype lines=14 win=2
+    - Staff of Domination + Priest of Titania  =>  Infinite card draw ; Infinite draw triggers ; Infinite lifegain ; Infinite lifegain triggers ; Infinite untap of creatures you control ; Inf
+    - Ashaya, Soul of the Wild + Quirion Ranger  =>  Infinite creature ETB ; Infinite landfall triggers ; Infinite creature LTB ; Infinite storm count
+    - Staff of Domination + Selvala, Heart of the Wilds  =>  Infinite card draw ; Infinite colored mana ; Infinite draw triggers ; Infinite lifegain ; Infinite lifegain triggers ; Infinite mana creatur
+    W Umbral Mantle + Priest of Titania  =>  Infinite green mana ; Infinitely large creature until end of turn ; Infinite untap of creatures you control ; Infinite mana creatures you co
+    W Umbral Mantle + Selvala, Heart of the Wilds  =>  Infinite colored mana ; Infinitely large creature until end of turn ; Infinite untap of creatures you control ; Infinite mana creatures you 
+    - Ashaya, Soul of the Wild + Scryb Ranger + Priest of Titania  =>  Infinite creature ETB ; Infinite green mana ; Infinite landfall triggers ; Infinite creature LTB ; Infinite storm count
+    - Temur Sabertooth + Selvala, Heart of the Wilds + Lightning Greaves  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite colored mana ; Infinite storm count ; Infinite blinking
+    - Temur Sabertooth + Hyrax Tower Scout + Priest of Titania  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite mana creatures you control can produce ; Infinite storm count ; Infinite untap of c
+    - Ashaya, Soul of the Wild + Scryb Ranger + Selvala, Heart of the Wilds  =>  Infinite creature LTB ; Infinite creature ETB ; Infinite colored mana ; Infinite storm count ; Infinite landfall triggers
+    - Kogla, the Titan Ape + Hyrax Tower Scout + Priest of Titania  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite mana creatures you control can produce ; Infinite storm count ; Infinite untap of c
+    - Temur Sabertooth + Hyrax Tower Scout + Selvala, Heart of the Wilds  =>  Infinite creature LTB ; Infinite mana creatures you control can produce ; Infinite storm count ; Infinite untap of creatures you control ; I
+    - Kogla, the Titan Ape + Hyrax Tower Scout + Selvala, Heart of the Wilds  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite storm count ; Infinite untap of creatures you control ; Infinite mana creatures you
+    - Temur Sabertooth + Priest of Titania + Shang-Chi, Master of Kung Fu  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite blinking of some creatures ; Infinite green mana ; Infinite storm count
+    - Temur Sabertooth + Selvala, Heart of the Wilds + Shang-Chi, Master of Kung Fu  =>  Infinite creature ETB ; Infinite creature LTB ; Infinite blinking ; Infinite colored mana ; Infinite storm count
+## n7WpsqsZtdQ tymna_thrasios lines=3 win=2
+    W Demonic Consultation + Thassa's Oracle  =>  Exile your library ; Win the game
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    - Devoted Druid + Swift Reconfiguration  =>  Infinite green mana
+## sZA0KqXCGrY ashton_bluefarm lines=5 win=2
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Faerie Mastermind + Smothering Tithe + Mirrormade  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+    - Faerie Mastermind + Smothering Tithe + Copy Enchantment  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+    - Faerie Mastermind + Smothering Tithe + Clever Impersonator  =>  Near-infinite colored mana ; Infinite draw triggers for all players ; Near-infinite Treasure tokens ; Infinite card draw for all players
+## sZA0KqXCGrY joseph_ral lines=7 win=3
+    - Reiterate + Jeska's Will  =>  Infinite magecraft triggers ; Infinite red mana ; Infinite storm count ; Exile your library with the ability to play the exiled cards until 
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Wheel of Fortune + Jeska's Will  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Near-infinite magecraft triggers ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+    W Storm-Kiln Artist + Seething Song + Reiterate  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Infinite colored mana ; In
+    - Birgi, God of Storytelling // Harnfel, Horn of Bounty + Seething Song + Reiterate  =>  Infinite magecraft triggers ; Infinite storm count
+## sZA0KqXCGrY natalie_magda lines=7 win=0
+    - Magda, Brazen Outlaw + Clock of Omens + Universal Automaton  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Metallic Mimic  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Adaptive Automaton  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Roaming Throne  =>  Infinite artifact ETB ; Infinite artifact LTB ; Infinite artifact sacrifice triggers ; Infinite artifact tokens ; Put all artifact cards and
+    - Magda, Brazen Outlaw + Clock of Omens + Barkform Harvester  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Three Tree Mascot  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+    - Magda, Brazen Outlaw + Clock of Omens + Bloodline Pretender  =>  Infinite artifact ETB ; Infinite artifact tokens ; Infinite tapped Treasure tokens ; Put all artifact cards and a subset of creature cards f
+## sZA0KqXCGrY tyler_bluefarm lines=7 win=4
+    W Demonic Consultation + Thassa's Oracle  =>  Exile your library ; Win the game
+    W Tainted Pact + Thassa's Oracle  =>  Win the game
+    W Underworld Breach + Lotus Petal + Brain Freeze  =>  Infinite self-mill ; Near-infinite magecraft triggers ; Near-infinite mill
+    W Underworld Breach + Lion's Eye Diamond + Brain Freeze  =>  Infinite self-mill ; Near-infinite colored mana ; Near-infinite magecraft triggers ; Near-infinite mill ; Near-infinite storm count
+    - Underworld Breach + Wheel of Fortune + Jeska's Will  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Near-infinite magecraft triggers ; Near-infinite storm count
+    - Underworld Breach + Lion's Eye Diamond + Wheel of Fortune  =>  Infinite draw triggers ; Infinite looting ; Infinite looting for opponents ; Near-infinite storm count
+    - Smothering Tithe + Underworld Breach + Wheel of Fortune  =>  Infinite draw triggers for all players ; Infinite looting for all players ; Infinite self-discard triggers for all players ; Near-infinite c

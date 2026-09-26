@@ -7,6 +7,65 @@ its invariants bind every task here.
 **Work one spec at a time and finish it.** Each is sized to be completable and
 verifiable on its own; none requires a later one to be useful.
 
+**Through February 2027 the repair plan sets the order.**
+`25-repair-plan.md` (with the UX review in `26-ux-review.md`) sequences the
+work week by week, and the owner decisions below bind it. Where the tier list
+under "Order" disagrees with the plan or with the freeze, the plan wins.
+
+## Decisions 2026-09-26
+
+Vincent accepted every recommendation in `25-repair-plan.md` §6 on
+2026-09-26. Each row is the decision, the recommendation as accepted, and
+what still has to happen for it, with the date or gate the plan gives.
+
+| # | Decision | Accepted | Follow-through |
+|---|---|---|---|
+| 0 | Reviewed developer-days per week | About 7 (two sessions most weekdays); §4.5 scales everything else | Calendar in §4 stands |
+| 1 | Freeze combat, personality, hold and attack-targeting work until G4 | Yes; stock-value dial settings allowed under the harm-removal exception (§2.3) | Freeze note below |
+| 2 | Readmission scope | Production: every seat (all are plan seats). Studies: the frozen pure-stock control plus a stock+readmit arm with stock dials, after an A/A check. Never without plan data | E3, G2b (Mon 11/23) |
+| 3 | KeyCards scope | A plan-seat staged copy in studies; all seats in production if E4 passes | W17 |
+| 4 | Is the `orderAndPlaySimultaneousSa` override a thin adapter? | Yes, under the written checklist: data-named triggers only, delegate to `super` otherwise, no card names or scoring, lint, at most 600 lines; recorded in the shim README | Checklist signed off Fri 10/16, after the harness spike |
+| 5 | DS amendment A: opaque reading surfaces, backdrop only on ceremony screens, sentence case, no resting glow, home §5-6 removed | Approve from screenshots | Screenshots and approval Wed 10/28 |
+| 6 | DS amendment B: violet retired, monochrome status shapes, `--combat` and `--warn` tokens | Deferred until after G-UX | W9 |
+| 7 | Install Node LTS on the dev box | Yes, on day 1 | Mon 9/28 |
+| 8 | Retire random block skips and the "humanized" claim | Yes; applied through E8 | E8, G2a (Mon 11/9) |
+| 9 | Where the knowledge base lives | Compiler inputs, tools, scenarios and overrides in the main repo's `simkb/`; generated and human data in a private data repo; per-run output on the VM. The data repo and `studies/diagnosis_2026-09/local/` join the strip-before-public list | W9 |
+| 10 | Reviewer schedule and authority | Nightly, proposals only, in its own data-repo worktree, never pushes; every override is a PR Vincent merges, for at least 6 weeks | W9 |
+| 11 | Flag queue owner, and a key for Richard | Vincent triages 30 minutes a week; a flags-only key (`MTG_FLAG_KEYS`) so Richard's key cannot start sims | Fri 10/9 |
+| 12 | Where owner data (win-con tags, band notes) lives before accounts exist | A deck sidecar in `$MTG_DATA_DIR/decks/`, editable with the API key; the UI says "saved for this deck" | W8 |
+| 13 | Archetype baselines (CLAUDE.md "show them" vs SIM_CALIBRATION "re-measure first") | Re-measure under the plan agent after G3 (W18); until then show only the labelled pod average | CLAUDE.md and `engine/SIM_CALIBRATION.md` amended in the same commit as this memo |
+| 14 | Human ground truth | 50 labelled moments (Vincent 20 in W11, Richard 30 over W12 to W14); human traces with `trace_entry.py`, owned by Vincent, first 2 games over the holidays and 10 by W20; Vincent supplies 8 fresh cEDH lists if the holdout falls short | Mon 10/19 |
+| 15 | Flat cost-glyph commission | Deferred; painted pips at 18px or larger meanwhile | W18 |
+| 16 | Executor in production | Off until G3 plus the VM CPU check, then on for plan seats | W16 |
+| 17 | Precons for calibration only; `model_runs_agent.json` stays uncommitted | Yes / yes; refit on clean arms after G3 | Standing rule |
+| 18 | Capacity: two sessions or one | Two sessions through R2; then Vincent chooses, and the §4.5 order and cut list apply | After R2 (Fri 11/13) |
+| 19 | Prediction model on plan-piloted runs | Label it "fit on stock Forge games" from R1; rank check at each pilot-changing release; suppress it if the check fails; refit after G3 | Fri 10/9 |
+
+**Capacity.** About 7 reviewed developer-days a week: two Claude Code
+sessions, Track A (engine, shim, QA analyzers) and Track B (product, web, QA
+plumbing, reviewer), each in its own worktree, both reviewed by Vincent,
+through R2. Holiday weeks count as 2 days, Thanksgiving week as 5.
+
+**Freeze (decision 1; repair plan §2.5, WS0 task 7).**
+- No new combat, personality, hold or attack-targeting features or study
+  arms before G4 (Fri 2027-01-22). The only exceptions are dials turned to
+  their stock values under the harm-removal exception: E8, the random-block
+  retirement (decision 8) and R0's 0.16.0 pin. The 0.16.0 combat solver
+  stays off.
+- Follow-ups to tasks 21, 23 and 24 are **parked** until G4: task 21's
+  Half 2 and any retuning after its fourth criterion, further attack-target
+  or kingmaker retuning under task 23, and task 24's retention-metric rework.
+  G4 lifts the freeze only if the WS9 and WS5 targets are met and a combat
+  detector ranks in the top 3 by rate times severity.
+- Also from day 1: no acceptance on overall win share; no combo or tutor
+  study on precons; no Pilot's notes before the tutor-weight fix; no LLM
+  output changes behaviour without a human merge; "humanized" is no longer a
+  product claim.
+
+**Holdout.** Drawn by lot on 2026-09-26: `Bq-nFi0f1jA` and `CxKMqO36DdM`.
+Untouched until G3; the rule, the seed and the caveats are in
+`studies/holdout/HOLDOUT.md`.
+
 ## Order
 
 Dependencies are the only reason to prefer one order over another. Within a tier,
@@ -54,16 +113,24 @@ Tier 1 — product value, no infra dependencies
                                combos: measure stock-AI target quality first,
                                then rank legal search options by plan weight;
                                knowledge as data, shim stays thin
-  21-interaction-timing.md     spend answers when a plan is being executed, not
+  21-interaction-timing.md     PARKED until G4 (decisions 2026-09-26). Spend
+                               answers when a plan is being executed, not
                                in turn order; carries a 2026-08-30 addendum
                                measuring what the counter veto actually declines
   22-equipment-policy.md       RETRACTED premise: the "0 of 20 equips" figure was
                                a detection artifact, Forge logs "activated X
                                targeting" and never "Equip". Read before reviving
-  23-threat-aimed-attacks.md   threat signature v2 shipped; the re-measure came
-                               back noise (studies/threat_targeting.py)
-  24-defensive-retention-metric.md  keptEnough needs a denominator a player can
-                               meet; today it is a table-wide maximum
+  23-threat-aimed-attacks.md   PARKED until G4. Threat signature v2 shipped; the
+                               re-measure came back noise
+                               (studies/threat_targeting.py)
+  24-defensive-retention-metric.md  PARKED until G4. keptEnough needs a
+                               denominator a player can meet; today it is a
+                               table-wide maximum
+  25-repair-plan.md            THE PLAN through February 2027: prove the combo
+                               executor, fix what users see, then build; its
+                               section 6 decisions are recorded above
+  26-ux-review.md              the expert UX review and redesign direction the
+                               plan's WS11 and WS12 build from
 
 Tier 2 — needed for multi-host scale (do when Tier 1 saturates one box)
   04-postgres-queue.md         unlocks workers on separate machines

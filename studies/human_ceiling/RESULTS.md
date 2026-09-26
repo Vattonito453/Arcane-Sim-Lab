@@ -3,16 +3,21 @@
 **Status: COMPLETE 2026-08-24. 8 pods x 4 rotated sim games (32 games), 8
 video traces (12 human games).**
 
-All rounds are table rounds (the winner's own elapsed turns). Stock Forge =
+A round is a table round, counted as the winner's own turns. The human
+rounds are in that unit. **Corrected 2026-09-26:** the Forge win rounds in the
+per-pod table, and the mean first published in finding 1, were Forge's turn
+number divided by 4, which undercounts rounds once seats are knocked out (a
+round with three players left has three turns). In the winner's own turns
+the stock mean is 12.7, not 10.9; finding 1 is corrected below. Stock Forge =
 `--agent shim` without plans: stock `PlayerControllerAi` decisions, zone-truth
 logs, 900 s clock, 4 games seat-rotated per pod, one JVM at a time.
 
 ## Per-pod comparison
 
-| Video | Human winner (round, method) | Forge wins (of 4) | Forge win rounds | Winner agreement |
+| Video | Human winner (round, method) | Forge wins (of 4) | Forge win rounds (Forge turns / 4) | Winner agreement |
 |---|---|---|---|---|
 | n7WpsqsZtdQ (pilot) | Magda R5 and ~R6, Portal to Phyrexia toolbox | magda 3, selvala 1 | 10, 11, 11, 12 | YES (deck), NO (line: combat, never Portal) |
-| sZA0KqXCGrY | Ral **R2** storm (Grapeshot, Breach loop; mull to 4) | natalie_magda 3, ashton_bluefarm 1; **ral 0** | 9, 9, 10, 10 | **NO.** Forge cannot pilot storm; the deck the human won with never wins in sim |
+| sZA0KqXCGrY | Ral **R2** storm (Grapeshot, Breach loop; mull to 4) | natalie_magda 3, ashton_bluefarm 1; **ral 0** | 9, 9, 10, 10 | **NO.** The deck the human won with never wins in sim. Whether Forge can pilot storm is untested: Ral ran without its commander (**corrected 2026-09-26**; this cell said Forge "cannot pilot storm"; Forge dropped the double-faced commander and 6 other cards) |
 | 2iA_Jt0d6sM | Derevi R5 (Chord into Nadu, Emiel loop) | godo_archetype 3, rograkh_silas 1; derevi 0 | 4, 7, 13, 14 | NO |
 | 5A6o18Bra0Y | Cabbage Merchant R6 (Grinding Station mill loop, Seedtime turn) | godo 2, rog_ishai 1, cabbage 1 | 8, 11, 12, 13 | WEAK (1 of 4) |
 | Bq-nFi0f1jA | 3 duels: Kinnan R4, Cabbage R4, Rog/Thras R4 | cabbage 2, kinnan 1, 1 timeout | 8, 12, 12 | PARTIAL (kinnan seat is the wrong-deck list; see manifest) |
@@ -22,19 +27,27 @@ logs, 900 s clock, 4 games seat-rotated per pod, one JVM at a time.
 
 ## Aggregate findings
 
-1. **Speed gap ~2x and almost non-overlapping.** Human wins across all 12
-   extracted games: rounds 2-10, mean 5.0, with 11 of 12 in rounds 2-6. Stock
-   Forge wins across 30 decided games (of 32; 2 timeouts): rounds 5-16 by
-   table round, mean ~10.9. One Forge
-   game (Godo equipment swing, R4) lands inside the human core range; one
-   human game (the Pittsburgh Ouphe-lock stax grind, ~R10) lands inside
+1. **Speed gap about 2.5x and almost non-overlapping.** Human wins across all
+   12 extracted games: rounds 2-10, mean 5.0, with 11 of 12 in rounds 2-6.
+   Stock Forge wins across 30 decided games (of 32; 2 timeouts): rounds 5-20
+   in the winner's own turns, mean 12.7, median 13, 1 of 30 by round 6.
+   **Corrected 2026-09-26:** this finding said "~2x" and "rounds 5-16 by
+   table round, mean ~10.9"; those were Forge turns divided by 4
+   (`studies/diagnosis_2026-09/SYNTHESIS.md`, "Prior claims refuted or
+   corrected"; re-measured from `runs/shim_raw_hc_*.jsonl`, counting each
+   winner's TURN entries). One Forge game (Godo equipment swing, R5 in the
+   winner's own turns, R4 in the old unit) lands inside the human core range;
+   one human game (the Pittsburgh Ouphe-lock stax grind, ~R10) lands inside
    Forge's — and that game was slow because of a resolved stax lock and table
    deals, mechanisms the sims don't have. For clock math note Forge counts
-   player-turns: a "45-turn" 4-pod game is ~11 rounds.
+   player-turns: a "45-turn" 4-pod game is ~11 rounds only while all four
+   players live; knockouts shorten later rounds, which is why dividing by 4
+   undercounts.
 
 2. **Forge's winner tracks combat-capability, not deck strength.** Every pod
    where the human winner won through a loop/storm/combo line (Ral storm,
-   Derevi-Nadu, Grinding Station mill), Forge handed the pod to whichever deck
+   which is confounded because Ral ran without its commander (see the
+   sZA0KqXCGrY row); Derevi-Nadu; Grinding Station mill), Forge handed the pod to whichever deck
    can win by attacking: Godo, Magda, Winota. Magda "agreeing" with the human
    result in two pods is partially coincidence: the deck is both the strongest
    in those pods AND the most combat-capable, so Forge gets the right answer
@@ -80,8 +93,9 @@ The shim tuning priority list this pilot batch supports, in order:
    is not in the simmed list, and the clean test case is what happens AFTER
    the fetch: Portal resolves and the game still ends by combat rounds later.
 2. **Win-speed calibration**: humans convert assembled engines within 1-2
-   rounds; Forge sits on them (Godo winning R13-14 with a deck whose human
-   line is R4-5).
+   rounds; Forge sits on them (Godo winning R13-14 in the old Forge-turns / 4
+   unit, R16-17 in the winner's own turns, with a deck whose human line is
+   R4-5).
 3. **Keep/mulligan quality facing seat threats** (Natalie's graded keep error
    is a labeled example).
 

@@ -1,0 +1,2 @@
+precon_agent015_phaseless 384 files
+missing card facts: 160 [('Insect Token', 466), ('Morph', 336), ('Plant Token', 292), ('Vibranium Dynamo', 187), ('Zombie Token', 152), ('Heralds of the Shredder', 134), ("Loki's Double", 127), ("Franklin's Finality", 127)]

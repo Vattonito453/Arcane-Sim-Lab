@@ -1,0 +1,69 @@
+
+=== av015
+  plan seat, shim steered (combo)                  n=  65  win-line=38%  non-win=62%
+  plan seat, shim steered (combo) [round5+]        n=  45  win-line=27%  non-win=73%
+  plan seat, shim steered (combo) [rounds1-4]      n=  20  win-line=65%  non-win=35%
+  plan seat, shim steered (plan)                   n= 124  win-line=15%  non-win=71%  finisher-regex=10%  ramp=1%  interaction=3%  other/value=1%
+  plan seat, shim steered (plan) [round5+]         n=  85  win-line=8%  non-win=76%  finisher-regex=11%  interaction=5%
+  plan seat, shim steered (plan) [rounds1-4]       n=  39  win-line=28%  non-win=59%  finisher-regex=8%  ramp=3%  other/value=3%
+  plan seat, stock pick stood                      n= 123  win-line=5%  non-win=35%  finisher-regex=12%  ramp=15%  interaction=11%  land=2%  other/value=21%
+  plan seat, stock pick stood [round5+]            n=  94  win-line=4%  non-win=38%  finisher-regex=6%  ramp=15%  interaction=10%  land=2%  other/value=24%
+  plan seat, stock pick stood [rounds1-4]          n=  29  win-line=7%  non-win=24%  finisher-regex=31%  ramp=14%  interaction=14%  other/value=10%
+  stock seat                                       n=1009  win-line=7%  non-win=19%  finisher-regex=6%  ramp=18%  interaction=14%  land=2%  other/value=35%  unknown-card=0%
+  stock seat [round5+]                             n= 845  win-line=7%  non-win=20%  finisher-regex=5%  ramp=17%  interaction=13%  land=2%  other/value=34%  unknown-card=0%
+  stock seat [rounds1-4]                           n= 164  win-line=2%  non-win=13%  finisher-regex=9%  ramp=20%  interaction=14%  land=2%  other/value=38%
+
+=== avwinmax
+  plan seat, shim steered (combo)                  n=  68  win-line=34%  non-win=66%
+  plan seat, shim steered (combo) [round5+]        n=  51  win-line=27%  non-win=73%
+  plan seat, shim steered (combo) [rounds1-4]      n=  17  win-line=53%  non-win=47%
+  plan seat, shim steered (plan)                   n= 115  win-line=18%  non-win=65%  finisher-regex=14%  interaction=2%  other/value=1%
+  plan seat, shim steered (plan) [round5+]         n=  90  win-line=14%  non-win=68%  finisher-regex=14%  interaction=2%  other/value=1%
+  plan seat, shim steered (plan) [rounds1-4]       n=  25  win-line=32%  non-win=56%  finisher-regex=12%
+  plan seat, stock pick stood                      n= 110  win-line=5%  non-win=32%  finisher-regex=7%  ramp=13%  interaction=22%  other/value=21%  unknown-card=1%
+  plan seat, stock pick stood [round5+]            n=  88  win-line=6%  non-win=34%  finisher-regex=3%  ramp=10%  interaction=23%  other/value=23%  unknown-card=1%
+  plan seat, stock pick stood [rounds1-4]          n=  22  non-win=23%  finisher-regex=23%  ramp=23%  interaction=18%  other/value=14%
+  stock seat                                       n=1010  win-line=3%  non-win=14%  finisher-regex=3%  ramp=17%  interaction=12%  land=2%  other/value=48%  unknown-card=1%
+  stock seat [round5+]                             n= 872  win-line=3%  non-win=15%  finisher-regex=4%  ramp=17%  interaction=13%  land=1%  other/value=46%  unknown-card=1%
+  stock seat [rounds1-4]                           n= 138  win-line=1%  non-win=9%  finisher-regex=1%  ramp=17%  interaction=9%  land=3%  other/value=58%  unknown-card=1%
+
+=== av016
+  plan seat, shim steered (combo)                  n=  63  win-line=38%  non-win=62%
+  plan seat, shim steered (combo) [round5+]        n=  48  win-line=27%  non-win=73%
+  plan seat, shim steered (combo) [rounds1-4]      n=  15  win-line=73%  non-win=27%
+  plan seat, shim steered (plan)                   n= 121  win-line=18%  non-win=68%  finisher-regex=6%  ramp=2%  interaction=2%  other/value=4%
+  plan seat, shim steered (plan) [round5+]         n=  90  win-line=19%  non-win=69%  finisher-regex=3%  interaction=3%  other/value=6%
+  plan seat, shim steered (plan) [rounds1-4]       n=  31  win-line=16%  non-win=65%  finisher-regex=13%  ramp=6%
+  plan seat, stock pick stood                      n= 134  win-line=7%  non-win=28%  finisher-regex=8%  ramp=16%  interaction=23%  land=1%  other/value=16%
+  plan seat, stock pick stood [round5+]            n= 114  win-line=8%  non-win=29%  finisher-regex=7%  ramp=15%  interaction=24%  land=1%  other/value=17%
+  plan seat, stock pick stood [rounds1-4]          n=  20  win-line=5%  non-win=25%  finisher-regex=15%  ramp=20%  interaction=20%  other/value=15%
+  stock seat                                       n= 859  win-line=6%  non-win=18%  finisher-regex=3%  ramp=16%  interaction=16%  land=3%  other/value=37%  unknown-card=0%
+  stock seat [round5+]                             n= 739  win-line=6%  non-win=19%  finisher-regex=3%  ramp=16%  interaction=17%  land=3%  other/value=36%  unknown-card=0%
+  stock seat [rounds1-4]                           n= 120  win-line=2%  non-win=9%  finisher-regex=4%  ramp=18%  interaction=10%  land=9%  other/value=47%
+
+=== rubric_ship
+  plan seat, shim steered (combo)                  n=  58  win-line=24%  non-win=76%
+  plan seat, shim steered (combo) [round5+]        n=  52  win-line=23%  non-win=77%
+  plan seat, shim steered (combo) [rounds1-4]      n=   6  win-line=33%  non-win=67%
+  plan seat, shim steered (plan)                   n= 155  win-line=26%  non-win=41%  finisher-regex=21%  ramp=2%  interaction=6%  other/value=5%
+  plan seat, shim steered (plan) [round5+]         n= 134  win-line=25%  non-win=41%  finisher-regex=22%  interaction=7%  other/value=5%
+  plan seat, shim steered (plan) [rounds1-4]       n=  21  win-line=29%  non-win=43%  finisher-regex=14%  ramp=14%
+  plan seat, stock pick stood                      n= 168  win-line=9%  non-win=15%  finisher-regex=5%  ramp=19%  interaction=18%  land=2%  other/value=31%
+  plan seat, stock pick stood [round5+]            n= 148  win-line=6%  non-win=13%  finisher-regex=3%  ramp=20%  interaction=20%  land=3%  other/value=35%
+  plan seat, stock pick stood [rounds1-4]          n=  20  win-line=30%  non-win=35%  finisher-regex=20%  ramp=15%
+
+=== tt_stock
+  stock seat                                       n= 122  win-line=9%  non-win=16%  finisher-regex=6%  ramp=14%  interaction=10%  land=2%  other/value=43%
+  stock seat [round5+]                             n= 113  win-line=9%  non-win=16%  finisher-regex=6%  ramp=14%  interaction=8%  land=2%  other/value=45%
+  stock seat [rounds1-4]                           n=   9  win-line=11%  non-win=11%  ramp=11%  interaction=33%  land=11%  other/value=22%
+
+=== tt_stage2
+  plan seat, shim steered (combo)                  n=  17  win-line=24%  non-win=76%
+  plan seat, shim steered (combo) [round5+]        n=  15  win-line=27%  non-win=73%
+  plan seat, shim steered (combo) [rounds1-4]      n=   2  non-win=100%
+  plan seat, shim steered (plan)                   n=  23  win-line=35%  non-win=61%  finisher-regex=4%
+  plan seat, shim steered (plan) [round5+]         n=  16  win-line=25%  non-win=69%  finisher-regex=6%
+  plan seat, shim steered (plan) [rounds1-4]       n=   7  win-line=57%  non-win=43%
+  plan seat, stock pick stood                      n=  12  win-line=8%  non-win=42%  finisher-regex=8%  ramp=8%  interaction=8%  other/value=25%
+  plan seat, stock pick stood [round5+]            n=  11  win-line=9%  non-win=45%  finisher-regex=9%  ramp=9%  interaction=9%  other/value=18%
+  plan seat, stock pick stood [rounds1-4]          n=   1  other/value=100%

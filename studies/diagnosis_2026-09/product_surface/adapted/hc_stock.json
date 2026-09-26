@@ -1,0 +1,5845 @@
+{
+ "2iA_Jt0d6sM": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 4
+  },
+  "decks": {
+   "derevi": [
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Gaea's Cradle"
+     ],
+     "produces": [
+      "Infinite blinking",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite green mana",
+      "Infinite mana permanents you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Bloom Tender"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite blinking",
+      "Infinite mana of colors among permanents you control",
+      "Infinite mana permanents you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 2,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "assembled_not_fired",
+     "idle_online_turns": 8,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 40.0,
+     "games": [
+      {
+       "n": 2,
+       "pieces": {
+        "Derevi, Empyrial Tactician": 14,
+        "Emiel the Blessed": 18,
+        "Mana Vault": 50
+       },
+       "assembled_turn": 50,
+       "online_turns": 6,
+       "won": false,
+       "cards_seen": 25,
+       "p_all_drawn": 0.062
+      },
+      {
+       "n": 4,
+       "pieces": {
+        "Derevi, Empyrial Tactician": 30,
+        "Emiel the Blessed": 4,
+        "Mana Vault": 8
+       },
+       "assembled_turn": 30,
+       "online_turns": 2,
+       "won": false,
+       "cards_seen": 15,
+       "p_all_drawn": 0.022
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Faeburrow Elder"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite blinking",
+      "Infinite mana of colors among permanents you control",
+      "Infinite mana permanents you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Felidar Guardian",
+      "Phyrexian Metamorph"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Chromatic Orrery"
+     ],
+     "produces": [
+      "Infinite blinking",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite colored mana",
+      "Infinite colorless mana",
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Infinite mana permanents you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Felidar Guardian",
+      "Flesh Duplicate"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Felidar Guardian",
+      "Clever Impersonator"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB"
+     ],
+     "assembled_games": 1,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "assembled_not_fired",
+     "idle_online_turns": 20,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 31,
+     "games": [
+      {
+       "n": 3,
+       "pieces": {
+        "Felidar Guardian": 24,
+        "Clever Impersonator": 31
+       },
+       "assembled_turn": 31,
+       "online_turns": 20,
+       "won": false,
+       "cards_seen": 23,
+       "p_all_drawn": 0.052
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Emiel the Blessed",
+      "Felidar Guardian",
+      "Gaea's Cradle"
+     ],
+     "produces": [
+      "Infinite blinking of permanents",
+      "Infinite creature ETB",
+      "Infinite landfall triggers",
+      "Infinite creature LTB",
+      "Infinite mana permanents you control can produce",
+      "Infinite blinking",
+      "Infinite mana lands you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Emiel the Blessed",
+      "Felidar Guardian",
+      "Chromatic Orrery"
+     ],
+     "produces": [
+      "Infinite blinking of permanents",
+      "Infinite card draw",
+      "Infinite colored mana",
+      "Infinite colorless mana",
+      "Infinite draw triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite blinking"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "nadu": [
+    {
+     "cards": [
+      "Springheart Nantuko",
+      "Lotus Cobra"
+     ],
+     "produces": [
+      "Infinite landfall triggers",
+      "Infinite tapped land tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Springheart Nantuko",
+      "Lotus Cobra"
+     ],
+     "produces": [
+      "Infinite landfall triggers",
+      "Infinite tapped land tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Displacer Kitten",
+      "Eternal Witness",
+      "Lotus Petal",
+      "Snap"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite storm count",
+      "Infinite magecraft triggers",
+      "Near-infinite colored mana",
+      "Return all creatures you don't control to their owner's hand",
+      "Infinite mana lands you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Unctus, Grand Metatect",
+      "Aphetto Alchemist"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite self-discard triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Cephalid Illusionist",
+      "Lightning Greaves"
+     ],
+     "produces": [
+      "Infinite self-mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Cephalid Illusionist",
+      "Shuko"
+     ],
+     "produces": [
+      "Infinite self-mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Displacer Kitten",
+      "Eternal Witness",
+      "Lotus Petal",
+      "Jeweled Lotus"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nadu, Winged Wisdom",
+      "Scute Swarm",
+      "Lightning Greaves"
+     ],
+     "produces": [
+      "Near-infinite creature ETB",
+      "Near-infinite creature tokens",
+      "Near-infinite card draw",
+      "Near-infinite landfall triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nadu, Winged Wisdom",
+      "Scute Swarm",
+      "Shuko"
+     ],
+     "produces": [
+      "Near-infinite creature ETB",
+      "Near-infinite creature tokens",
+      "Near-infinite card draw",
+      "Near-infinite landfall triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "rograkh_silas": [
+    {
+     "cards": [
+      "Demonic Consultation",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Exile your library",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite storm count",
+      "Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Grinding Station",
+      "Mana Crypt"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colorless mana",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "godo_archetype": [
+    {
+     "cards": [
+      "Basalt Monolith",
+      "Forsaken Monument"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Rings of Brighthearth",
+      "Basalt Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Godo, Bandit Warlord",
+      "Helm of the Host"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite creature sacrifice triggers",
+      "Put all Equipment cards from your library onto the battlefield"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.8,
+     "median_assembled_turn": 16,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Godo, Bandit Warlord": 12,
+        "Helm of the Host": 16
+       },
+       "assembled_turn": 16,
+       "online_turns": 3,
+       "won": true,
+       "cards_seen": 12,
+       "p_all_drawn": 0.121
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Staff of Domination",
+      "Metalworker"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite colorless mana",
+      "Infinite draw triggers",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Forsaken Monument",
+      "Rings of Brighthearth",
+      "Thran Dynamo"
+     ],
+     "produces": [
+      "Infinite untap of artifacts you control",
+      "Infinite colorless mana",
+      "Infinite mana artifacts you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Rings of Brighthearth",
+      "Metalworker"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite untap of artifacts you control",
+      "Infinite mana artifacts you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Rings of Brighthearth",
+      "Forsaken Monument",
+      "Grim Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Forsaken Monument",
+      "Rings of Brighthearth",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite untap of artifacts you control",
+      "Infinite colorless mana",
+      "Infinite mana artifacts you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "godo_archetype",
+    "ended_turn": 18,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": "godo_archetype",
+    "ended_turn": 55,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 3,
+    "winner": "godo_archetype",
+    "ended_turn": 50,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": "rograkh_silas",
+    "ended_turn": 31,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_2iA_Jt0d6sM_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-derevi",
+     "Ai(2)-nadu",
+     "Ai(3)-rograkh_silas",
+     "Ai(4)-godo_archetype"
+    ]
+   ]
+  ]
+ },
+ "5A6o18Bra0Y": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 4
+  },
+  "decks": {
+   "rog_ishai": [
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Smothering Tithe",
+      "Underworld Breach",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Infinite self-discard triggers for all players",
+      "Near-infinite colored mana",
+      "Near-infinite Treasure tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Mirrormade"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Copy Enchantment"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Clever Impersonator"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "malcolm_kediss": [
+    {
+     "cards": [
+      "Curiosity",
+      "Niv-Mizzet, Parun"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite card draw",
+      "Near-infinite damage"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Niv-Mizzet, Parun",
+      "Ophidian Eye"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Near-infinite damage"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Narset's Reversal",
+      "Flare of Duplication"
+     ],
+     "produces": [
+      "Infinite magecraft triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "cabbage_merchant": [
+    {
+     "cards": [
+      "Peregrin Took",
+      "Nuka-Cola Vending Machine"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Near-infinite tapped Treasure tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Krark-Clan Ironworks"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite colorless mana",
+      "Infinite tapped Treasure tokens",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite card draw",
+      "Infinite draw triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Clock of Omens"
+     ],
+     "produces": [
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite mill",
+      "Infinite self-mill",
+      "Infinite tapped Treasure tokens",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Academy Manufactor",
+      "Clock of Omens"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite Blood tokens",
+      "Infinite card draw",
+      "Infinite Clue tokens",
+      "Infinite colored mana",
+      "Infinite draw triggers",
+      "Infinite Food tokens",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite mana artifacts you control can produce",
+      "Infinite rummaging",
+      "Infinite self-discard triggers",
+      "Infinite Treasure tokens",
+      "Infinite untap of artifacts you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Stridehangar Automaton"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite tapped Food tokens",
+      "Infinite tapped creature tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Peregrin Took"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "godo": [
+    {
+     "cards": [
+      "Basalt Monolith",
+      "Forsaken Monument"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Rings of Brighthearth",
+      "Basalt Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Godo, Bandit Warlord",
+      "Helm of the Host"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite creature sacrifice triggers",
+      "Put all Equipment cards from your library onto the battlefield"
+     ],
+     "assembled_games": 2,
+     "converted_games": 2,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.7,
+     "median_assembled_turn": 39.5,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Godo, Bandit Warlord": 50,
+        "Helm of the Host": 53
+       },
+       "assembled_turn": 53,
+       "online_turns": 3,
+       "won": true,
+       "cards_seen": 23,
+       "p_all_drawn": 0.232
+      },
+      {
+       "n": 2,
+       "pieces": {
+        "Godo, Bandit Warlord": 22,
+        "Helm of the Host": 26
+       },
+       "assembled_turn": 26,
+       "online_turns": 7,
+       "won": true,
+       "cards_seen": 16,
+       "p_all_drawn": 0.162
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Staff of Domination",
+      "Metalworker"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite colorless mana",
+      "Infinite draw triggers",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Forsaken Monument",
+      "Rings of Brighthearth",
+      "Thran Dynamo"
+     ],
+     "produces": [
+      "Infinite untap of artifacts you control",
+      "Infinite colorless mana",
+      "Infinite mana artifacts you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Rings of Brighthearth",
+      "Metalworker"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite untap of artifacts you control",
+      "Infinite mana artifacts you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Rings of Brighthearth",
+      "Forsaken Monument",
+      "Grim Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Voltaic Key",
+      "Forsaken Monument",
+      "Rings of Brighthearth",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite untap of artifacts you control",
+      "Infinite colorless mana",
+      "Infinite mana artifacts you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "godo",
+    "ended_turn": 55,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": "godo",
+    "ended_turn": 32,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 3,
+    "winner": "rog_ishai",
+    "ended_turn": 44,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": "cabbage_merchant",
+    "ended_turn": 49,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_5A6o18Bra0Y_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-rog_ishai",
+     "Ai(2)-malcolm_kediss",
+     "Ai(3)-cabbage_merchant",
+     "Ai(4)-godo"
+    ]
+   ]
+  ]
+ },
+ "B421mac67IE": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 3,
+   "draw": 1
+  },
+  "decks": {
+   "matt_sisay": [
+    {
+     "cards": [
+      "Marvin, Murderous Mimic",
+      "Ioreth of the Healing House"
+     ],
+     "produces": [
+      "Infinite untap of legendary creatures you control",
+      "Infinite mana legendary creatures you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Gaea's Cradle"
+     ],
+     "produces": [
+      "Infinite blinking",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite green mana",
+      "Infinite mana permanents you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Bloom Tender"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite blinking",
+      "Infinite mana of colors among permanents you control",
+      "Infinite mana permanents you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Derevi, Empyrial Tactician",
+      "Emiel the Blessed",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite colored mana",
+      "Infinite blinking",
+      "Infinite mana permanents you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Badgermole Cub",
+      "Emiel the Blessed",
+      "Gaea's Cradle"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite blinking",
+      "Infinite green mana",
+      "Infinite landfall triggers",
+      "Infinite mana lands you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Selvala, Heart of the Wilds",
+      "Emiel the Blessed",
+      "Tyvar, Jubilant Brawler"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite colored mana",
+      "Infinite blinking"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "dexter_kinnan": [
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Sol Ring"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Mox Amber"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite colored mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Kinnan, Bonder Prodigy",
+      "Basalt Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 1,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "assembled_not_fired",
+     "idle_online_turns": 13,
+     "expected_drawn_games": 0.8,
+     "median_assembled_turn": 29,
+     "games": [
+      {
+       "n": 4,
+       "pieces": {
+        "Kinnan, Bonder Prodigy": 5,
+        "Basalt Monolith": 29
+       },
+       "assembled_turn": 29,
+       "online_turns": 13,
+       "won": false,
+       "cards_seen": 18,
+       "p_all_drawn": 0.182
+      }
+     ]
+    }
+   ],
+   "lily_malcolm_vial": [
+    {
+     "cards": [
+      "Demonic Consultation",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Exile your library",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Malcolm, Keen-Eyed Navigator",
+      "Glint-Horn Buccaneer"
+     ],
+     "produces": [
+      "Near-infinite damage",
+      "Near-infinite self-discard triggers",
+      "Near-infinite draw triggers"
+     ],
+     "assembled_games": 2,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 10,
+     "expected_drawn_games": 0.8,
+     "median_assembled_turn": 42.0,
+     "games": [
+      {
+       "n": 2,
+       "pieces": {
+        "Malcolm, Keen-Eyed Navigator": 24,
+        "Glint-Horn Buccaneer": 55
+       },
+       "assembled_turn": 55,
+       "online_turns": 10,
+       "won": false,
+       "cards_seen": 26,
+       "p_all_drawn": 0.265
+      },
+      {
+       "n": 3,
+       "pieces": {
+        "Malcolm, Keen-Eyed Navigator": 9,
+        "Glint-Horn Buccaneer": 29
+       },
+       "assembled_turn": 29,
+       "online_turns": 4,
+       "won": true,
+       "cards_seen": 16,
+       "p_all_drawn": 0.163
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Glint-Horn Buccaneer",
+      "Curiosity"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite rummaging",
+      "Infinite self-discard triggers",
+      "Near-infinite damage"
+     ],
+     "assembled_games": 2,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 7,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": 42.0,
+     "games": [
+      {
+       "n": 2,
+       "pieces": {
+        "Glint-Horn Buccaneer": 55,
+        "Curiosity": 28
+       },
+       "assembled_turn": 55,
+       "online_turns": 7,
+       "won": false,
+       "cards_seen": 26,
+       "p_all_drawn": 0.068
+      },
+      {
+       "n": 3,
+       "pieces": {
+        "Glint-Horn Buccaneer": 29,
+        "Curiosity": 13
+       },
+       "assembled_turn": 29,
+       "online_turns": 4,
+       "won": true,
+       "cards_seen": 16,
+       "p_all_drawn": 0.025
+      }
+     ]
+    }
+   ],
+   "isaac_yisan": [
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Quirion Ranger"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite landfall triggers",
+      "Infinite creature LTB",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Sylvan Safekeeper",
+      "Badgermole Cub"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite creature sacrifice triggers",
+      "Infinite death triggers",
+      "Infinite landfall triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Scryb Ranger",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite green mana",
+      "Infinite landfall triggers",
+      "Infinite creature LTB",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Circle of Dreams Druid",
+      "Wirewood Symbiote",
+      "Llanowar Elves"
+     ],
+     "produces": [
+      "Infinite blinking of some creatures",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Argothian Elder"
+     ],
+     "produces": [
+      "Infinite mana lands you control can produce",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce",
+      "Infinite untap of nontoken creatures you control",
+      "Infinite mana nontoken creatures you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 45,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Ashaya, Soul of the Wild": 45,
+        "Argothian Elder": 45
+       },
+       "assembled_turn": 45,
+       "online_turns": 3,
+       "won": true,
+       "cards_seen": 20,
+       "p_all_drawn": 0.039
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Circle of Dreams Druid",
+      "Wirewood Symbiote",
+      "Elvish Mystic"
+     ],
+     "produces": [
+      "Infinite blinking of some creatures",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Scryb Ranger",
+      "Circle of Dreams Druid"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite storm count",
+      "Infinite green mana",
+      "Infinite landfall triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Hyrax Tower Scout",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite blinking of some creatures",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Selvala, Heart of the Wilds",
+      "Temur Sabertooth",
+      "Wirewood Symbiote",
+      "Llanowar Elves"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite storm count",
+      "Infinite blinking"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Scryb Ranger",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite colored mana",
+      "Infinite storm count",
+      "Infinite landfall triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Selvala, Heart of the Wilds",
+      "Temur Sabertooth",
+      "Wirewood Symbiote",
+      "Elvish Mystic"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite storm count",
+      "Infinite blinking"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Selvala, Heart of the Wilds",
+      "Temur Sabertooth",
+      "Wirewood Symbiote",
+      "Fyndhorn Elves"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite storm count",
+      "Infinite blinking"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Kogla, the Titan Ape",
+      "Hyrax Tower Scout",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Circle of Dreams Druid",
+      "Wirewood Symbiote",
+      "Allosaurus Shepherd"
+     ],
+     "produces": [
+      "Infinite blinking of some creatures",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Hyrax Tower Scout",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite blinking",
+      "Infinite colored mana",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Kogla, the Titan Ape",
+      "Hyrax Tower Scout",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce",
+      "Infinite colored mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Hyrax Tower Scout",
+      "Circle of Dreams Druid"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite blinking of some creatures",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Kogla, the Titan Ape",
+      "Hyrax Tower Scout",
+      "Circle of Dreams Druid"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Magus of the Candelabra",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite mana lands you control can produce",
+      "Infinite green mana",
+      "Infinite untap of nontoken creatures you control",
+      "Infinite mana nontoken creatures you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Magus of the Candelabra",
+      "Circle of Dreams Druid"
+     ],
+     "produces": [
+      "Infinite mana lands you control can produce",
+      "Infinite green mana",
+      "Infinite untap of nontoken creatures you control",
+      "Infinite mana nontoken creatures you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 1,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "assembled_not_fired",
+     "idle_online_turns": 3,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": 39,
+     "games": [
+      {
+       "n": 4,
+       "pieces": {
+        "Ashaya, Soul of the Wild": 27,
+        "Magus of the Candelabra": 39,
+        "Circle of Dreams Druid": 39
+       },
+       "assembled_turn": 39,
+       "online_turns": 3,
+       "won": false,
+       "cards_seen": 15,
+       "p_all_drawn": 0.003
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Magus of the Candelabra",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Infinite mana lands you control can produce",
+      "Infinite untap of nontoken creatures you control",
+      "Infinite mana nontoken creatures you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Circle of Dreams Druid",
+      "Shang-Chi, Master of Kung Fu"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite blinking of some creatures",
+      "Infinite green mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Priest of Titania",
+      "Shang-Chi, Master of Kung Fu"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite blinking of some creatures",
+      "Infinite green mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": 48,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Temur Sabertooth": 48,
+        "Priest of Titania": 10,
+        "Shang-Chi, Master of Kung Fu": 6
+       },
+       "assembled_turn": 48,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 20,
+       "p_all_drawn": 0.007
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Selvala, Heart of the Wilds",
+      "Shang-Chi, Master of Kung Fu"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite blinking",
+      "Infinite colored mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Pili-Pala",
+      "Wild Growth"
+     ],
+     "produces": [
+      "Infinite colored mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Marvin, Murderous Mimic",
+      "Pili-Pala",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite colored mana"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": 48,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Marvin, Murderous Mimic": 48,
+        "Pili-Pala": 48,
+        "Priest of Titania": 10
+       },
+       "assembled_turn": 48,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 20,
+       "p_all_drawn": 0.007
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Marvin, Murderous Mimic",
+      "Pili-Pala",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite colored mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Marvin, Murderous Mimic",
+      "Pili-Pala",
+      "Circle of Dreams Druid"
+     ],
+     "produces": [
+      "Infinite colored mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Marvin, Murderous Mimic",
+      "Pili-Pala",
+      "Argothian Elder"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Infinite mana lands you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": 48,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Marvin, Murderous Mimic": 48,
+        "Pili-Pala": 48,
+        "Argothian Elder": 45
+       },
+       "assembled_turn": 48,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 20,
+       "p_all_drawn": 0.007
+      }
+     ]
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "isaac_yisan",
+    "ended_turn": 48,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": "dexter_kinnan",
+    "ended_turn": 64,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 3,
+    "winner": "lily_malcolm_vial",
+    "ended_turn": 32,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": null,
+    "ended_turn": 41,
+    "method": "draw",
+    "detail": "clock or stalemate"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_B421mac67IE_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-matt_sisay",
+     "Ai(2)-dexter_kinnan",
+     "Ai(3)-lily_malcolm_vial",
+     "Ai(4)-isaac_yisan"
+    ]
+   ]
+  ]
+ },
+ "Bq-nFi0f1jA": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 3,
+   "draw": 1
+  },
+  "decks": {
+   "cabbage_merchant": [
+    {
+     "cards": [
+      "Peregrin Took",
+      "Nuka-Cola Vending Machine"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Near-infinite tapped Treasure tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Krark-Clan Ironworks"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite colorless mana",
+      "Infinite tapped Treasure tokens",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite card draw",
+      "Infinite draw triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Clock of Omens"
+     ],
+     "produces": [
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Nuka-Cola Vending Machine",
+      "Academy Manufactor",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite mill",
+      "Infinite self-mill",
+      "Infinite tapped Treasure tokens",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Academy Manufactor",
+      "Clock of Omens"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite Blood tokens",
+      "Infinite card draw",
+      "Infinite Clue tokens",
+      "Infinite colored mana",
+      "Infinite draw triggers",
+      "Infinite Food tokens",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite mana artifacts you control can produce",
+      "Infinite rummaging",
+      "Infinite self-discard triggers",
+      "Infinite Treasure tokens",
+      "Infinite untap of artifacts you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Stridehangar Automaton"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite tapped Food tokens",
+      "Infinite tapped creature tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Transmutation Font",
+      "Clock of Omens",
+      "Peregrin Took"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Infinite tapped Food tokens",
+      "Infinite tapped Clue tokens",
+      "Infinite tapped Blood tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "yidris": [
+    {
+     "cards": [
+      "Demonic Consultation",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Exile your library",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "rog_thrasios": [
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Oboro Breezecaller",
+      "Talon Gates of Madara",
+      "Gaea's Cradle"
+     ],
+     "produces": [
+      "Infinite mana lands you control can produce",
+      "Infinite green mana",
+      "Infinite landfall triggers",
+      "Phase out any number of creatures any number of times"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Displacer Kitten",
+      "Eternal Witness",
+      "Lotus Petal",
+      "Snap"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite storm count",
+      "Infinite magecraft triggers",
+      "Near-infinite colored mana",
+      "Return all creatures you don't control to their owner's hand",
+      "Infinite mana lands you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Displacer Kitten",
+      "Eternal Witness",
+      "Lotus Petal",
+      "Snap",
+      "Cloud of Faeries"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite colored mana",
+      "Infinite storm count",
+      "Infinite magecraft triggers",
+      "Return all creatures you don't control to their owner's hand",
+      "Infinite mana lands you control can produce",
+      "Infinite untap of lands you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "kinnan": [
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Sol Ring"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 1,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "assembled_not_fired",
+     "idle_online_turns": 10,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 38,
+     "games": [
+      {
+       "n": 4,
+       "pieces": {
+        "Hullbreaker Horror": 38,
+        "Mana Vault": 36
+       },
+       "assembled_turn": 38,
+       "online_turns": 10,
+       "won": false,
+       "cards_seen": 17,
+       "p_all_drawn": 0.028
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Mox Amber"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite colored mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 48,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Hullbreaker Horror": 48,
+        "Mox Amber": 1
+       },
+       "assembled_turn": 48,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 20,
+       "p_all_drawn": 0.039
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Kinnan, Bonder Prodigy",
+      "Basalt Monolith"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 1,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "assembled_not_fired",
+     "idle_online_turns": 1,
+     "expected_drawn_games": 0.7,
+     "median_assembled_turn": 42,
+     "games": [
+      {
+       "n": 2,
+       "pieces": {
+        "Kinnan, Bonder Prodigy": 1,
+        "Basalt Monolith": 42
+       },
+       "assembled_turn": 42,
+       "online_turns": 1,
+       "won": false,
+       "cards_seen": 22,
+       "p_all_drawn": 0.222
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Basalt Monolith",
+      "Nyxbloom Ancient"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 1,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "assembled_not_fired",
+     "idle_online_turns": 1,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 42,
+     "games": [
+      {
+       "n": 2,
+       "pieces": {
+        "Basalt Monolith": 42,
+        "Nyxbloom Ancient": 29
+       },
+       "assembled_turn": 42,
+       "online_turns": 1,
+       "won": false,
+       "cards_seen": 22,
+       "p_all_drawn": 0.048
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Grim Monolith",
+      "Nyxbloom Ancient"
+     ],
+     "produces": [
+      "Infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "kinnan",
+    "ended_turn": 48,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": null,
+    "ended_turn": 42,
+    "method": "draw",
+    "detail": "clock or stalemate"
+   },
+   {
+    "n": 3,
+    "winner": "cabbage_merchant",
+    "ended_turn": 33,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": "cabbage_merchant",
+    "ended_turn": 47,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_Bq-nFi0f1jA_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-cabbage_merchant",
+     "Ai(2)-yidris",
+     "Ai(3)-rog_thrasios",
+     "Ai(4)-kinnan"
+    ]
+   ]
+  ]
+ },
+ "CxKMqO36DdM": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 4
+  },
+  "decks": {
+   "dallas_bluefarm": [
+    {
+     "cards": [
+      "Demonic Consultation",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Exile your library",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Grinding Station"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite storm count",
+      "Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Memnite",
+      "Grinding Station",
+      "Underworld Breach",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite creature ETB",
+      "Near-infinite creature LTB",
+      "Near-infinite creature sacrifice triggers",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "alan_tnt": [
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.3,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Devoted Druid",
+      "Swift Reconfiguration"
+     ],
+     "produces": [
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.3,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Hazel's Brewmaster",
+      "Devoted Druid"
+     ],
+     "produces": [
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.3,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Kinnan, Bonder Prodigy"
+     ],
+     "produces": [
+      "Infinite card draw for all players",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Near-infinite colored mana",
+      "Near-infinite colorless mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Hermit Druid",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.3,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Clever Impersonator"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "sterling_bluefarm": [
+    {
+     "cards": [
+      "Demonic Consultation",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Exile your library",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "joseph_ral": [
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Reiterate",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite magecraft triggers",
+      "Infinite red mana",
+      "Infinite storm count",
+      "Exile your library with the ability to play the exiled cards until end of turn"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Storm-Kiln Artist",
+      "Seething Song",
+      "Reiterate"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite colored mana",
+      "Infinite copies of instant and sorcery spells on the stack",
+      "Infinite power for any creature",
+      "Infinite magecraft triggers",
+      "Infinite storm count",
+      "Infinite Treasure tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+      "Seething Song",
+      "Reiterate"
+     ],
+     "produces": [
+      "Infinite magecraft triggers",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "dallas_bluefarm",
+    "ended_turn": 51,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": "sterling_bluefarm",
+    "ended_turn": 52,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 3,
+    "winner": "alan_tnt",
+    "ended_turn": 43,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": "alan_tnt",
+    "ended_turn": 47,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_CxKMqO36DdM_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-dallas_bluefarm",
+     "Ai(2)-alan_tnt",
+     "Ai(3)-sterling_bluefarm",
+     "Ai(4)-joseph_ral"
+    ]
+   ]
+  ]
+ },
+ "OuY6mdiXbHU": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 4
+  },
+  "decks": {
+   "winota_ian": [
+    {
+     "cards": [
+      "Kiki-Jiki, Mirror Breaker",
+      "Zealous Conscripts"
+     ],
+     "produces": [
+      "Infinite creature tokens with haste",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite creature sacrifice triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Combat Celebrant",
+      "Kiki-Jiki, Mirror Breaker"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Rionya, Fire Dancer",
+      "Combat Celebrant"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB",
+      "Infinite creature LTB"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 36,
+     "games": [
+      {
+       "n": 2,
+       "pieces": {
+        "Rionya, Fire Dancer": 33,
+        "Combat Celebrant": 36
+       },
+       "assembled_turn": 36,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 17,
+       "p_all_drawn": 0.028
+      }
+     ]
+    }
+   ],
+   "winota_lua": [
+    {
+     "cards": [
+      "Kiki-Jiki, Mirror Breaker",
+      "Zealous Conscripts"
+     ],
+     "produces": [
+      "Infinite creature tokens with haste",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite creature sacrifice triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Combat Celebrant",
+      "Kiki-Jiki, Mirror Breaker"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 18,
+     "games": [
+      {
+       "n": 3,
+       "pieces": {
+        "Combat Celebrant": 10,
+        "Kiki-Jiki, Mirror Breaker": 18
+       },
+       "assembled_turn": 18,
+       "online_turns": 14,
+       "won": true,
+       "cards_seen": 17,
+       "p_all_drawn": 0.028
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Rionya, Fire Dancer",
+      "Combat Celebrant"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB",
+      "Infinite creature LTB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Kiki-Jiki, Mirror Breaker",
+      "Village Bell-Ringer"
+     ],
+     "produces": [
+      "Infinite creature tokens with haste",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite creature sacrifice triggers",
+      "Infinite untap of creatures you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Combat Celebrant",
+      "Mirage Phalanx"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "winota_rachel": [
+    {
+     "cards": [
+      "Kiki-Jiki, Mirror Breaker",
+      "Zealous Conscripts"
+     ],
+     "produces": [
+      "Infinite creature tokens with haste",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite creature sacrifice triggers"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 33,
+     "games": [
+      {
+       "n": 4,
+       "pieces": {
+        "Kiki-Jiki, Mirror Breaker": 31,
+        "Zealous Conscripts": 25
+       },
+       "assembled_turn": 33,
+       "online_turns": 6,
+       "won": true,
+       "cards_seen": 18,
+       "p_all_drawn": 0.032
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Combat Celebrant",
+      "Kiki-Jiki, Mirror Breaker"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 31,
+     "games": [
+      {
+       "n": 4,
+       "pieces": {
+        "Combat Celebrant": 17,
+        "Kiki-Jiki, Mirror Breaker": 31
+       },
+       "assembled_turn": 31,
+       "online_turns": 8,
+       "won": true,
+       "cards_seen": 18,
+       "p_all_drawn": 0.032
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Rionya, Fire Dancer",
+      "Combat Celebrant"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB",
+      "Infinite creature LTB"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 33,
+     "games": [
+      {
+       "n": 4,
+       "pieces": {
+        "Rionya, Fire Dancer": 33,
+        "Combat Celebrant": 17
+       },
+       "assembled_turn": 33,
+       "online_turns": 6,
+       "won": true,
+       "cards_seen": 18,
+       "p_all_drawn": 0.032
+      }
+     ]
+    }
+   ],
+   "winota_mike": [
+    {
+     "cards": [
+      "Kiki-Jiki, Mirror Breaker",
+      "Zealous Conscripts"
+     ],
+     "produces": [
+      "Infinite creature tokens with haste",
+      "Infinite death triggers",
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite creature sacrifice triggers"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 45,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Kiki-Jiki, Mirror Breaker": 30,
+        "Zealous Conscripts": 45
+       },
+       "assembled_turn": 45,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 20,
+       "p_all_drawn": 0.039
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Combat Celebrant",
+      "Kiki-Jiki, Mirror Breaker"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Rionya, Fire Dancer",
+      "Combat Celebrant"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB",
+      "Infinite creature LTB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Combat Celebrant",
+      "Mirage Phalanx"
+     ],
+     "produces": [
+      "Infinite combat phases",
+      "Infinite creature tokens with haste",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "winota_mike",
+    "ended_turn": 45,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": "winota_ian",
+    "ended_turn": 36,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 3,
+    "winner": "winota_lua",
+    "ended_turn": 34,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": "winota_rachel",
+    "ended_turn": 38,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_OuY6mdiXbHU_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-winota_ian",
+     "Ai(2)-winota_lua",
+     "Ai(3)-winota_rachel",
+     "Ai(4)-winota_mike"
+    ]
+   ]
+  ]
+ },
+ "n7WpsqsZtdQ": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 4
+  },
+  "decks": {
+   "magda": [
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Liquimetal Torque"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Universal Automaton"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Metallic Mimic"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Adaptive Automaton"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Roaming Throne"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+      "Infinite colored mana",
+      "Infinite Treasure tokens",
+      "Infinite mana artifacts you control can produce",
+      "Infinite untap of artifacts you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Barkform Harvester"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Three Tree Mascot"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Battered Golem",
+      "Maskwood Nexus"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite colored mana",
+      "Infinite Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 37,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Magda, Brazen Outlaw": 25,
+        "Battered Golem": 37,
+        "Maskwood Nexus": 36
+       },
+       "assembled_turn": 37,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 18,
+       "p_all_drawn": 0.032
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Battered Golem",
+      "Maskwood Nexus"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite colored mana",
+      "Infinite Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": 37,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Magda, Brazen Outlaw": 25,
+        "Battered Golem": 37,
+        "Maskwood Nexus": 36
+       },
+       "assembled_turn": 37,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 18,
+       "p_all_drawn": 0.032
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Battered Golem",
+      "Dwarven Bloodboiler",
+      "Magda, Brazen Outlaw",
+      "Maskwood Nexus"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite colored mana",
+      "Infinitely powerful creatures you control until end of turn",
+      "Infinite Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 1,
+     "converted_games": 1,
+     "games_played": 4,
+     "reading": "fired",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": 37,
+     "games": [
+      {
+       "n": 1,
+       "pieces": {
+        "Battered Golem": 37,
+        "Dwarven Bloodboiler": 37,
+        "Magda, Brazen Outlaw": 25,
+        "Maskwood Nexus": 36
+       },
+       "assembled_turn": 37,
+       "online_turns": 1,
+       "won": true,
+       "cards_seen": 18,
+       "p_all_drawn": 0.005
+      }
+     ]
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Battered Golem",
+      "Stalactite Dagger"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite Treasure tokens",
+      "Infinite colored mana",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Battered Golem",
+      "Stalactite Dagger"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite Treasure tokens",
+      "Infinite colored mana",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Battered Golem",
+      "Dwarven Bloodboiler",
+      "Magda, Brazen Outlaw",
+      "Stalactite Dagger"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite Treasure tokens",
+      "Infinite colored mana",
+      "Infinitely powerful creatures you control until end of turn",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "rog_ishai": [
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Sol Ring"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Mana Vault"
+     ],
+     "produces": [
+      "Infinite colorless mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Hullbreaker Horror",
+      "Mox Amber"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite colored mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Mirrormade"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Copy Enchantment"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Clever Impersonator"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "tymna_thrasios": [
+    {
+     "cards": [
+      "Demonic Consultation",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Exile your library",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Devoted Druid",
+      "Swift Reconfiguration"
+     ],
+     "produces": [
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.2,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "selvala_archetype": [
+    {
+     "cards": [
+      "Staff of Domination",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite draw triggers",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Quirion Ranger"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite landfall triggers",
+      "Infinite creature LTB",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Staff of Domination",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite card draw",
+      "Infinite colored mana",
+      "Infinite draw triggers",
+      "Infinite lifegain",
+      "Infinite lifegain triggers",
+      "Infinite mana creatures you control can produce",
+      "Infinite untap of creatures you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "not_assembled",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.7,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Umbral Mantle",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite green mana",
+      "Infinitely large creature until end of turn",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Umbral Mantle",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite colored mana",
+      "Infinitely large creature until end of turn",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "not_assembled",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.7,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Scryb Ranger",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite green mana",
+      "Infinite landfall triggers",
+      "Infinite creature LTB",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Selvala, Heart of the Wilds",
+      "Lightning Greaves"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite colored mana",
+      "Infinite storm count",
+      "Infinite blinking"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Hyrax Tower Scout",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite blinking of some creatures",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Ashaya, Soul of the Wild",
+      "Scryb Ranger",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite creature ETB",
+      "Infinite colored mana",
+      "Infinite storm count",
+      "Infinite landfall triggers"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Kogla, the Titan Ape",
+      "Hyrax Tower Scout",
+      "Priest of Titania"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite green mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Hyrax Tower Scout",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite creature LTB",
+      "Infinite mana creatures you control can produce",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite blinking",
+      "Infinite colored mana",
+      "Infinite creature ETB"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Kogla, the Titan Ape",
+      "Hyrax Tower Scout",
+      "Selvala, Heart of the Wilds"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite storm count",
+      "Infinite untap of creatures you control",
+      "Infinite mana creatures you control can produce",
+      "Infinite colored mana"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Priest of Titania",
+      "Shang-Chi, Master of Kung Fu"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite blinking of some creatures",
+      "Infinite green mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Temur Sabertooth",
+      "Selvala, Heart of the Wilds",
+      "Shang-Chi, Master of Kung Fu"
+     ],
+     "produces": [
+      "Infinite creature ETB",
+      "Infinite creature LTB",
+      "Infinite blinking",
+      "Infinite colored mana",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "magda",
+    "ended_turn": 37,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": "magda",
+    "ended_turn": 44,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 3,
+    "winner": "magda",
+    "ended_turn": 46,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": "selvala_archetype",
+    "ended_turn": 48,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_pilot_n7WpsqsZtdQ_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-magda",
+     "Ai(2)-rog_ishai",
+     "Ai(3)-tymna_thrasios",
+     "Ai(4)-selvala_archetype"
+    ]
+   ]
+  ]
+ },
+ "sZA0KqXCGrY": {
+  "n_games": 4,
+  "methods": {
+   "combat damage / life loss": 4
+  },
+  "decks": {
+   "joseph_ral": [
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Reiterate",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite magecraft triggers",
+      "Infinite red mana",
+      "Infinite storm count",
+      "Exile your library with the ability to play the exiled cards until end of turn"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Storm-Kiln Artist",
+      "Seething Song",
+      "Reiterate"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Infinite colored mana",
+      "Infinite copies of instant and sorcery spells on the stack",
+      "Infinite power for any creature",
+      "Infinite magecraft triggers",
+      "Infinite storm count",
+      "Infinite Treasure tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+      "Seething Song",
+      "Reiterate"
+     ],
+     "produces": [
+      "Infinite magecraft triggers",
+      "Infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "tyler_bluefarm": [
+    {
+     "cards": [
+      "Demonic Consultation",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Exile your library",
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Tainted Pact",
+      "Thassa's Oracle"
+     ],
+     "produces": [
+      "Win the game"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Wheel of Fortune",
+      "Jeska's Will"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Near-infinite magecraft triggers",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers",
+      "Infinite looting",
+      "Infinite looting for opponents",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Smothering Tithe",
+      "Underworld Breach",
+      "Wheel of Fortune"
+     ],
+     "produces": [
+      "Infinite draw triggers for all players",
+      "Infinite looting for all players",
+      "Infinite self-discard triggers for all players",
+      "Near-infinite colored mana",
+      "Near-infinite Treasure tokens"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "ashton_bluefarm": [
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lotus Petal",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Underworld Breach",
+      "Lion's Eye Diamond",
+      "Brain Freeze"
+     ],
+     "produces": [
+      "Infinite self-mill",
+      "Near-infinite colored mana",
+      "Near-infinite magecraft triggers",
+      "Near-infinite mill",
+      "Near-infinite storm count"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Mirrormade"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Copy Enchantment"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Faerie Mastermind",
+      "Smothering Tithe",
+      "Clever Impersonator"
+     ],
+     "produces": [
+      "Near-infinite colored mana",
+      "Infinite draw triggers for all players",
+      "Near-infinite Treasure tokens",
+      "Infinite card draw for all players"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.0,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ],
+   "natalie_magda": [
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Universal Automaton"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Metallic Mimic"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Adaptive Automaton"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Roaming Throne"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact LTB",
+      "Infinite artifact sacrifice triggers",
+      "Infinite artifact tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+      "Infinite colored mana",
+      "Infinite Treasure tokens",
+      "Infinite mana artifacts you control can produce",
+      "Infinite untap of artifacts you control"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Barkform Harvester"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Three Tree Mascot"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    },
+    {
+     "cards": [
+      "Magda, Brazen Outlaw",
+      "Clock of Omens",
+      "Bloodline Pretender"
+     ],
+     "produces": [
+      "Infinite artifact ETB",
+      "Infinite artifact tokens",
+      "Infinite tapped Treasure tokens",
+      "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+     ],
+     "assembled_games": 0,
+     "converted_games": 0,
+     "games_played": 4,
+     "reading": "sample_too_small",
+     "idle_online_turns": 0,
+     "expected_drawn_games": 0.1,
+     "median_assembled_turn": null,
+     "games": []
+    }
+   ]
+  },
+  "games": [
+   {
+    "n": 1,
+    "winner": "natalie_magda",
+    "ended_turn": 39,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 2,
+    "winner": "natalie_magda",
+    "ended_turn": 39,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 3,
+    "winner": "ashton_bluefarm",
+    "ended_turn": 40,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   },
+   {
+    "n": 4,
+    "winner": "natalie_magda",
+    "ended_turn": 35,
+    "method": "combat damage / life loss",
+    "detail": "life total reached 0"
+   }
+  ],
+  "agents": [
+   [
+    "shim_raw_hc_sZA0KqXCGrY_rot0.jsonl",
+    [
+     "stock",
+     "stock",
+     "stock",
+     "stock"
+    ],
+    [
+     "Ai(1)-joseph_ral",
+     "Ai(2)-tyler_bluefarm",
+     "Ai(3)-ashton_bluefarm",
+     "Ai(4)-natalie_magda"
+    ]
+   ]
+  ]
+ }
+}

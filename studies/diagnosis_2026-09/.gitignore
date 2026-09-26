@@ -1,0 +1,10 @@
+# Working space for anything that must never be committed from this folder:
+# Forge-derived material (class files, disassembly, card-script extracts),
+# files over 1 MB, playtester data. The full evidence set lives off-repo; see
+# README.md. check_allowlist.py fails if anything under local/ is tracked.
+local/
+
+# Byproducts of re-running the prototypes.
+__pycache__/
+*.pyc
+*.pkl

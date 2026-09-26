@@ -1,0 +1,20 @@
+=== precon_predict/runs_stock: 384 files, 766 games
+  drawn nonland  agent=stock flag=All    drawn=  2570 cast=    30 rate=0.012
+  drawn nonland  agent=stock flag=Random drawn=  1882 cast=  1297 rate=0.689
+  drawn nonland  agent=stock flag=none   drawn= 47952 cast= 34730 rate=0.724
+  drawn nonland  agent=stock flag=unk    drawn=   613 cast=   429 rate=0.700
+  perm w/ non-mana AB agent=stock flag=All    onBF=   231 activated=     0 rate=0.000
+  perm w/ non-mana AB agent=stock flag=Random onBF=   653 activated=   294 rate=0.450
+  perm w/ non-mana AB agent=stock flag=none   onBF= 10365 activated=  4847 rate=0.468
+  RemoveDeck:All cards drawn->cast: [('Beast Within', 135, 1), ('Curse of the Swine', 109, 0), ('Azorius Signet', 89, 3), ('Faithless Looting', 89, 4), ('Orzhov Signet', 77, 0), ('Izzet Signet', 74, 1), ('Toxic Deluge', 65, 0), ('Dimir Signet', 55, 0), ('Nyx Weaver', 55, 1), ('Dispatch', 52, 0), ('Boros Signet', 51, 2), ('Mirage Mirror', 49, 0), ('Viscera Seer', 42, 0), ('Psychosis Crawler', 41, 0), ('Rakdos Signet', 39, 0), ('Simic Signet', 38, 0), ('Decree of Pain', 38, 0), ('Windfall', 38, 2), ('Biomass Mutation', 36, 0), ('Rakdos Charm', 32, 0), ('Mirror Entity', 32, 1), ("Black Sun's Zenith", 31, 0), ("Marshal's Anthem", 31, 0), ('Strionic Resonator', 31, 1), ('Greater Good', 30, 0)]
+  RemoveDeck:All permanents onBF->activated: [('Nesting Grounds', 42, 0), ('Command Beacon', 29, 0), ("Alchemist's Refuge", 28, 0), ('Blast Zone', 24, 0), ("Thespian's Stage", 20, 0), ('Arcane Lighthouse', 17, 0), ('Labyrinth of Skophos', 14, 0), ('HELIOS One', 14, 0), ('Izzet Chemister', 4, 0), ('Nyx Weaver', 4, 0), ('Incandescent Soulstoke', 4, 0), ('Gideon Jura', 4, 0), ('Mirage Mirror', 3, 0), ('Flickering Ward', 3, 0), ('Perpetual Timepiece', 3, 0), ('Ashling the Pilgrim', 2, 0), ('Mirror Entity', 2, 0), ('Greater Good', 2, 0), ('Magus of the Candelabra', 2, 0), ('Strionic Resonator', 2, 0)]
+=== precon_predict/runs_agent: 384 files, 768 games
+  drawn nonland  agent=plan  flag=All    drawn=  2571 cast=    27 rate=0.011
+  drawn nonland  agent=plan  flag=Random drawn=  1805 cast=  1211 rate=0.671
+  drawn nonland  agent=plan  flag=none   drawn= 47378 cast= 34333 rate=0.725
+  drawn nonland  agent=plan  flag=unk    drawn=   592 cast=   429 rate=0.725
+  perm w/ non-mana AB agent=plan  flag=All    onBF=   209 activated=     0 rate=0.000
+  perm w/ non-mana AB agent=plan  flag=Random onBF=   624 activated=   297 rate=0.476
+  perm w/ non-mana AB agent=plan  flag=none   onBF= 10385 activated=  4742 rate=0.457
+  RemoveDeck:All cards drawn->cast: [('Beast Within', 129, 0), ('Faithless Looting', 110, 1), ('Curse of the Swine', 107, 0), ('Azorius Signet', 84, 1), ('Orzhov Signet', 81, 2), ('Izzet Signet', 77, 1), ('Dimir Signet', 59, 1), ('Tragic Arrogance', 59, 0), ('Dispatch', 56, 0), ('Toxic Deluge', 51, 0), ('Viscera Seer', 47, 0), ('Mirage Mirror', 47, 0), ('Biomass Mutation', 45, 0), ('Boros Signet', 43, 1), ('Simic Signet', 42, 0), ("Black Sun's Zenith", 42, 0), ('Decree of Pain', 40, 0), ('Windfall', 37, 1), ('Psychosis Crawler', 34, 0), ('Nyx Weaver', 34, 0), ('Rakdos Charm', 34, 0), ('Rakdos Signet', 31, 0), ("Marshal's Anthem", 31, 0), ('Trading Post', 29, 0), ('Swan Song', 27, 16)]
+  RemoveDeck:All permanents onBF->activated: [('Nesting Grounds', 35, 0), ("Alchemist's Refuge", 27, 0), ('Command Beacon', 22, 0), ('Arcane Lighthouse', 20, 0), ('Blast Zone', 19, 0), ('HELIOS One', 15, 0), ("Thespian's Stage", 15, 0), ('Labyrinth of Skophos', 12, 0), ('Nyx Weaver', 7, 0), ('Incandescent Soulstoke', 6, 0), ('Mirage Mirror', 5, 0), ('Viscera Seer', 3, 0), ('Flickering Ward', 3, 0), ('Selvala, Explorer Returned', 2, 0), ('Devoted Druid', 2, 0), ('Inkfathom Witch', 2, 0), ('Oblivion Stone', 2, 0), ('Trading Post', 2, 0), ('Xenagos, the Reveler', 2, 0), ('Greater Good', 2, 0)]

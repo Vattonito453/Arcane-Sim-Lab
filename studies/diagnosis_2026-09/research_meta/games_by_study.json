@@ -1,0 +1,880 @@
+[
+ {
+  "key": "agent_spread/runs",
+  "files": 1,
+  "raw": 0,
+  "games": 0,
+  "decided": 0,
+  "timeout": 0,
+  "turncap": 0,
+  "pop": {},
+  "shim": {},
+  "ev": {}
+ },
+ {
+  "key": "agent_viability/runs_015_default",
+  "files": 9,
+  "raw": 8,
+  "games": 128,
+  "decided": 115,
+  "timeout": 13,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 8
+  },
+  "shim": {
+   "0.15.0": 8
+  },
+  "ev": {
+   "tutor_cast": 125,
+   "search_seen": 516,
+   "tutor_steer": 218,
+   "combo_cast": 114,
+   "instant_hold": 291,
+   "split": 139,
+   "open_reaim": 65,
+   "counter_veto": 102,
+   "line_completion_seen": 3,
+   "counter_fire": 53,
+   "added_block": 91,
+   "kingmaker_reaim": 73,
+   "combo_hold": 5
+  }
+ },
+ {
+  "key": "agent_viability/runs_016_engine",
+  "files": 9,
+  "raw": 8,
+  "games": 128,
+  "decided": 113,
+  "timeout": 15,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 8
+  },
+  "shim": {
+   "0.16.0": 8
+  },
+  "ev": {
+   "instant_hold": 543,
+   "counter_veto": 149,
+   "counter_fire": 67,
+   "combo_cast": 117,
+   "kingmaker_reaim": 47,
+   "split": 161,
+   "open_reaim": 68,
+   "search_seen": 523,
+   "tutor_steer": 213,
+   "tutor_cast": 130,
+   "finisher_hold": 7,
+   "line_completion_seen": 2,
+   "combo_hold": 36
+  }
+ },
+ {
+  "key": "agent_viability/runs_nocombo",
+  "files": 9,
+  "raw": 8,
+  "games": 128,
+  "decided": 117,
+  "timeout": 11,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 8
+  },
+  "shim": {
+   "0.5.0": 8
+  },
+  "ev": {
+   "search_seen": 516,
+   "tutor_steer": 225,
+   "added_block": 93,
+   "counter_veto": 131,
+   "counter_fire": 65,
+   "kingmaker_reaim": 48
+  }
+ },
+ {
+  "key": "agent_viability/runs_pilot",
+  "files": 9,
+  "raw": 8,
+  "games": 64,
+  "decided": 57,
+  "timeout": 6,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 8
+  },
+  "shim": {
+   "0.5.0": 8
+  },
+  "ev": {
+   "added_block": 28,
+   "search_seen": 215,
+   "split": 71,
+   "tutor_cast": 57,
+   "counter_veto": 64,
+   "counter_fire": 29,
+   "tutor_steer": 102,
+   "combo_cast": 32,
+   "kingmaker_reaim": 26,
+   "combo_hold": 97
+  }
+ },
+ {
+  "key": "agent_viability/runs_winmax",
+  "files": 9,
+  "raw": 8,
+  "games": 128,
+  "decided": 116,
+  "timeout": 12,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 8
+  },
+  "shim": {
+   "0.5.0": 8
+  },
+  "ev": {
+   "search_seen": 452,
+   "combo_cast": 101,
+   "kingmaker_reaim": 75,
+   "added_block": 85,
+   "counter_fire": 49,
+   "tutor_steer": 207,
+   "counter_veto": 134,
+   "tutor_cast": 104,
+   "combo_hold": 19
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_agent",
+  "files": 32,
+  "raw": 30,
+  "games": 30,
+  "decided": 24,
+  "timeout": 6,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 30
+  },
+  "shim": {
+   "0.8.0": 30
+  },
+  "ev": {
+   "search_seen": 451,
+   "tutor_cast": 97,
+   "split": 3788,
+   "tutor_steer": 188,
+   "counter_veto": 172,
+   "kingmaker_reaim": 1566,
+   "added_block": 102,
+   "counter_fire": 81,
+   "combo_cast": 100,
+   "combo_hold": 3
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_agent_093",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 28,
+  "timeout": 4,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 32
+  },
+  "shim": {
+   "0.9.3": 32
+  },
+  "ev": {
+   "tutor_cast": 84,
+   "search_seen": 542,
+   "tutor_steer": 232,
+   "counter_fire": 86,
+   "counter_veto": 180,
+   "combo_cast": 73,
+   "added_block": 107,
+   "kingmaker_reaim": 44,
+   "combo_hold": 28
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_agent_shipping",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 28,
+  "timeout": 2,
+  "turncap": 2,
+  "pop": {
+   "cEDH(human_ceiling)": 32
+  },
+  "shim": {
+   "0.9.1": 32
+  },
+  "ev": {
+   "search_seen": 600,
+   "tutor_steer": 228,
+   "counter_veto": 174,
+   "counter_fire": 89,
+   "tutor_cast": 67,
+   "added_block": 104,
+   "kingmaker_reaim": 55,
+   "combo_cast": 53,
+   "combo_hold": 31
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms/base",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 25,
+  "timeout": 7,
+  "turncap": 0,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.1": 32
+  },
+  "ev": {
+   "added_block": 42,
+   "search_seen": 121,
+   "kingmaker_reaim": 2279,
+   "counter_veto": 15,
+   "counter_fire": 4
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms/blocky",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 30,
+  "timeout": 2,
+  "turncap": 0,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.1": 32
+  },
+  "ev": {
+   "search_seen": 134,
+   "added_block": 36,
+   "counter_veto": 8,
+   "counter_fire": 2,
+   "kingmaker_reaim": 21,
+   "tutor_steer": 1
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms/hold",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 18,
+  "timeout": 13,
+  "turncap": 1,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.1": 32
+  },
+  "ev": {
+   "kingmaker_reaim": 3128,
+   "search_seen": 144,
+   "added_block": 36,
+   "counter_veto": 6,
+   "counter_fire": 3
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms/synergy",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 23,
+  "timeout": 8,
+  "turncap": 0,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.1": 32
+  },
+  "ev": {
+   "search_seen": 103,
+   "added_block": 28,
+   "combo_cast": 22,
+   "kingmaker_reaim": 2600,
+   "counter_veto": 24,
+   "counter_fire": 3,
+   "tutor_steer": 1
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms_v1/base",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 24,
+  "timeout": 8,
+  "turncap": 0,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.0": 32
+  },
+  "ev": {
+   "search_seen": 149,
+   "kingmaker_reaim": 3711,
+   "added_block": 43,
+   "counter_veto": 13,
+   "counter_fire": 3,
+   "tutor_steer": 1
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms_v1/blocky",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 25,
+  "timeout": 6,
+  "turncap": 1,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.0": 32
+  },
+  "ev": {
+   "search_seen": 115,
+   "kingmaker_reaim": 604,
+   "added_block": 31,
+   "counter_veto": 3,
+   "counter_fire": 5
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms_v1/hold",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 20,
+  "timeout": 12,
+  "turncap": 0,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.0": 32
+  },
+  "ev": {
+   "added_block": 34,
+   "search_seen": 175,
+   "kingmaker_reaim": 6537,
+   "counter_fire": 4,
+   "counter_veto": 4
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_arms_v1/synergy",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 26,
+  "timeout": 6,
+  "turncap": 0,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.9.0": 32
+  },
+  "ev": {
+   "search_seen": 148,
+   "combo_cast": 21,
+   "combo_hold": 2,
+   "added_block": 38,
+   "tutor_cast": 2,
+   "tutor_steer": 2,
+   "counter_veto": 16,
+   "counter_fire": 3,
+   "kingmaker_reaim": 3172
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_overnight/base",
+  "files": 512,
+  "raw": 512,
+  "games": 512,
+  "decided": 403,
+  "timeout": 108,
+  "turncap": 0,
+  "pop": {
+   "precon": 512
+  },
+  "shim": {
+   "0.9.3": 512
+  },
+  "ev": {
+   "search_seen": 1656,
+   "added_block": 545,
+   "kingmaker_reaim": 31388,
+   "counter_veto": 69,
+   "counter_fire": 21,
+   "tutor_steer": 4
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_overnight/lean",
+  "files": 512,
+  "raw": 512,
+  "games": 512,
+  "decided": 438,
+  "timeout": 72,
+  "turncap": 1,
+  "pop": {
+   "precon": 512
+  },
+  "shim": {
+   "0.9.3": 512
+  },
+  "ev": {
+   "search_seen": 1763,
+   "added_block": 473,
+   "counter_fire": 54,
+   "tutor_steer": 8
+  }
+ },
+ {
+  "key": "behavior_rubric/runs_overnight/split",
+  "files": 512,
+  "raw": 512,
+  "games": 512,
+  "decided": 395,
+  "timeout": 112,
+  "turncap": 4,
+  "pop": {
+   "precon": 512
+  },
+  "shim": {
+   "0.9.3": 512
+  },
+  "ev": {
+   "search_seen": 1792,
+   "split": 15249,
+   "added_block": 614,
+   "kingmaker_reaim": 31776,
+   "counter_veto": 111,
+   "counter_fire": 30,
+   "tutor_cast": 1,
+   "tutor_steer": 4,
+   "combo_cast": 2
+  }
+ },
+ {
+  "key": "engine_ab/runs",
+  "files": 64,
+  "raw": 64,
+  "games": 128,
+  "decided": 103,
+  "timeout": 24,
+  "turncap": 0,
+  "pop": {
+   "bundled": 4,
+   "precon": 60
+  },
+  "shim": {
+   "0.16.0": 64
+  },
+  "ev": {
+   "search_seen": 861,
+   "instant_hold": 2054,
+   "kingmaker_reaim": 214,
+   "split": 593,
+   "open_reaim": 225,
+   "combo_cast": 1,
+   "counter_veto": 40,
+   "tutor_steer": 6,
+   "added_block": 147,
+   "counter_fire": 14,
+   "finisher_hold": 26,
+   "tutor_cast": 1
+  }
+ },
+ {
+  "key": "engine_ab/runs_allnew",
+  "files": 4,
+  "raw": 4,
+  "games": 16,
+  "decided": 16,
+  "timeout": 0,
+  "turncap": 0,
+  "pop": {
+   "bundled": 4
+  },
+  "shim": {
+   "0.16.0": 4
+  },
+  "ev": {
+   "open_reaim": 23,
+   "instant_hold": 419,
+   "search_seen": 35,
+   "split": 41,
+   "kingmaker_reaim": 28,
+   "combo_cast": 5,
+   "tutor_steer": 4,
+   "counter_fire": 2,
+   "counter_veto": 1
+  }
+ },
+ {
+  "key": "engine_ab/runs_prefix_reask_bug",
+  "files": 64,
+  "raw": 64,
+  "games": 121,
+  "decided": 70,
+  "timeout": 51,
+  "turncap": 0,
+  "pop": {
+   "bundled": 4,
+   "precon": 60
+  },
+  "shim": {
+   "0.16.0": 64
+  },
+  "ev": {
+   "open_reaim": 6013,
+   "search_seen": 796,
+   "split": 6247,
+   "tutor_steer": 4,
+   "counter_veto": 43,
+   "instant_hold": 1507,
+   "kingmaker_reaim": 15517,
+   "finisher_hold": 6,
+   "added_block": 90,
+   "counter_fire": 18
+  }
+ },
+ {
+  "key": "human_ceiling/runs",
+  "files": 32,
+  "raw": 32,
+  "games": 32,
+  "decided": 30,
+  "timeout": 2,
+  "turncap": 0,
+  "pop": {
+   "precon": 32
+  },
+  "shim": {
+   "0.4.0": 32
+  },
+  "ev": {}
+ },
+ {
+  "key": "precon_correlation/pilot_clock600_partial",
+  "files": 35,
+  "raw": 34,
+  "games": 216,
+  "decided": 151,
+  "timeout": 65,
+  "turncap": 0,
+  "pop": {
+   "precon": 34
+  },
+  "shim": {
+   "0.2.0": 34
+  },
+  "ev": {
+   "search_seen": 532,
+   "split": 1861,
+   "kingmaker_reaim": 8908,
+   "added_block": 120
+  }
+ },
+ {
+  "key": "precon_correlation/pilot_pass1_sample",
+  "files": 11,
+  "raw": 11,
+  "games": 76,
+  "decided": 73,
+  "timeout": 8,
+  "turncap": 0,
+  "pop": {
+   "precon": 11
+  },
+  "shim": {
+   "0.2.0": 11
+  },
+  "ev": {
+   "search_seen": 270,
+   "split": 1073,
+   "added_block": 58,
+   "kingmaker_reaim": 1368,
+   "counter_veto": 12,
+   "counter_fire": 2
+  }
+ },
+ {
+  "key": "precon_correlation/runs",
+  "files": 65,
+  "raw": 64,
+  "games": 512,
+  "decided": 441,
+  "timeout": 71,
+  "turncap": 0,
+  "pop": {
+   "precon": 64
+  },
+  "shim": {
+   "0.2.0": 64
+  },
+  "ev": {
+   "search_seen": 1591,
+   "split": 7971,
+   "kingmaker_reaim": 38297,
+   "added_block": 433,
+   "counter_veto": 10,
+   "counter_fire": 1
+  }
+ },
+ {
+  "key": "precon_predict/runs_agent",
+  "files": 384,
+  "raw": 384,
+  "games": 768,
+  "decided": 504,
+  "timeout": 262,
+  "turncap": 0,
+  "pop": {
+   "precon": 384
+  },
+  "shim": {
+   "0.6.0": 384
+  },
+  "ev": {
+   "search_seen": 5092,
+   "split": 59538,
+   "kingmaker_reaim": 107047,
+   "added_block": 2567,
+   "counter_veto": 228,
+   "counter_fire": 97,
+   "tutor_steer": 13
+  }
+ },
+ {
+  "key": "precon_predict/runs_agent_015",
+  "files": 384,
+  "raw": 384,
+  "games": 768,
+  "decided": 533,
+  "timeout": 234,
+  "turncap": 0,
+  "pop": {
+   "precon": 384
+  },
+  "shim": {
+   "0.15.0": 384
+  },
+  "ev": {
+   "search_seen": 5128,
+   "kingmaker_reaim": 93162,
+   "split": 43376,
+   "open_reaim": 12100,
+   "added_block": 2223,
+   "finisher_hold": 53,
+   "instant_hold": 8128,
+   "counter_fire": 84,
+   "counter_veto": 275,
+   "tutor_steer": 13,
+   "combo_cast": 4,
+   "tutor_cast": 1
+  }
+ },
+ {
+  "key": "precon_predict/runs_stock",
+  "files": 384,
+  "raw": 384,
+  "games": 766,
+  "decided": 692,
+  "timeout": 74,
+  "turncap": 0,
+  "pop": {
+   "precon": 384
+  },
+  "shim": {
+   "0.5.0": 384
+  },
+  "ev": {}
+ },
+ {
+  "key": "precon_predict/runs_synergy",
+  "files": 113,
+  "raw": 113,
+  "games": 226,
+  "decided": 147,
+  "timeout": 78,
+  "turncap": 0,
+  "pop": {
+   "precon": 113
+  },
+  "shim": {
+   "0.7.0": 113
+  },
+  "ev": {
+   "search_seen": 1621,
+   "added_block": 667,
+   "split": 25268,
+   "kingmaker_reaim": 27718,
+   "combo_cast": 247,
+   "counter_fire": 35,
+   "counter_veto": 71,
+   "tutor_steer": 9,
+   "combo_hold": 45,
+   "tutor_cast": 7
+  }
+ },
+ {
+  "key": "skill_headtohead/pinned",
+  "files": 1,
+  "raw": 1,
+  "games": 8,
+  "decided": 7,
+  "timeout": 1,
+  "turncap": 0,
+  "pop": {
+   "other:c:/users/vatto/appdata/local/temp/claude/c--users-vatto-magi": 1
+  },
+  "shim": {
+   "0.2.0": 1
+  },
+  "ev": {}
+ },
+ {
+  "key": "skill_headtohead/runs",
+  "files": 1,
+  "raw": 0,
+  "games": 0,
+  "decided": 0,
+  "timeout": 0,
+  "turncap": 0,
+  "pop": {},
+  "shim": {},
+  "ev": {}
+ },
+ {
+  "key": "skill_headtohead/runs_hetero",
+  "files": 1,
+  "raw": 0,
+  "games": 0,
+  "decided": 0,
+  "timeout": 0,
+  "turncap": 0,
+  "pop": {},
+  "shim": {},
+  "ev": {}
+ },
+ {
+  "key": "tutor_targeting/runs",
+  "files": 4,
+  "raw": 4,
+  "games": 8,
+  "decided": 6,
+  "timeout": 2,
+  "turncap": 0,
+  "pop": {
+   "precon": 4
+  },
+  "shim": {
+   "0.4.1": 4
+  },
+  "ev": {
+   "search_seen": 176,
+   "split": 47,
+   "counter_veto": 26,
+   "added_block": 14,
+   "kingmaker_reaim": 5,
+   "counter_fire": 3
+  }
+ },
+ {
+  "key": "tutor_targeting/runs_stage1",
+  "files": 4,
+  "raw": 4,
+  "games": 8,
+  "decided": 8,
+  "timeout": 0,
+  "turncap": 0,
+  "pop": {
+   "precon": 4
+  },
+  "shim": {
+   "0.4.2": 4
+  },
+  "ev": {
+   "combo_cast": 17,
+   "search_seen": 87,
+   "added_block": 22,
+   "tutor_steer": 21,
+   "tutor_cast": 21,
+   "split": 56,
+   "counter_veto": 11,
+   "combo_hold": 4,
+   "counter_fire": 6,
+   "kingmaker_reaim": 4
+  }
+ },
+ {
+  "key": "tutor_targeting/runs_stage2",
+  "files": 6,
+  "raw": 6,
+  "games": 12,
+  "decided": 11,
+  "timeout": 1,
+  "turncap": 0,
+  "pop": {
+   "cEDH(human_ceiling)": 2,
+   "precon": 4
+  },
+  "shim": {
+   "0.5.0": 6
+  },
+  "ev": {
+   "counter_veto": 41,
+   "search_seen": 147,
+   "counter_fire": 16,
+   "tutor_steer": 56,
+   "combo_cast": 29,
+   "split": 63,
+   "added_block": 29,
+   "tutor_cast": 21,
+   "kingmaker_reaim": 16,
+   "combo_hold": 57
+  }
+ },
+ {
+  "key": "tutor_targeting/runs_stock",
+  "files": 4,
+  "raw": 4,
+  "games": 8,
+  "decided": 8,
+  "timeout": 0,
+  "turncap": 0,
+  "pop": {
+   "precon": 4
+  },
+  "shim": {
+   "0.4.2": 4
+  },
+  "ev": {}
+ }
+]

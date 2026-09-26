@@ -1,0 +1,16 @@
+combo rows (group x deck x line): 771
+readings: Counter({'sample_too_small': 481, 'fired': 169, 'assembled_not_fired': 85, 'not_assembled': 36})
+converted (assembled-then-won) game instances: 357
+win methods of converted instances: Counter({'combat damage / life loss': 332, 'spell': 18, 'poison': 4, 'other': 3})
+instances with no execution evidence (>=5 piece stack items in a turn, or spell win): 157 of 357
+instances with no execution evidence (>=3): 107
+instances with zero piece activations after assembly: 126
+instances where win came > 1 own turn after assembly: 195
+'fired' readings: 169; of which NO converted game shows evidence: 73
+
+RemoveDeck:All lines: converted instances 71 methods Counter({'combat damage / life loss': 52, 'spell': 18, 'other': 1})
+  of which zero activations of a piece: 34
+  fired readings on RemoveDeck:All lines: 46
+  assembled games on RemoveDeck:All lines: 149 converted: 71
+
+seat-games counted converted: 195 ; with no evidence on any line: 83

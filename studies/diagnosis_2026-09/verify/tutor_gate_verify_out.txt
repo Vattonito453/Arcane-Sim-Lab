@@ -1,0 +1,77 @@
+== av015: games=128 plan own turns=1429 held-tutor turns=460
+   0_owned        all 65/460 (14%)       rounds1-4 29/254 (11%)
+   1_short        all 255/460 (55%)      rounds1-4 132/254 (52%)
+   2_short        all 140/460 (30%)      rounds1-4 93/254 (37%)
+   shim tutor_cast n=125  rounds1-4 46/125 (37%)  round8+ 52/125 (42%)  hist={1: 10, 2: 14, 3: 6, 4: 16, 5: 10, 6: 7, 7: 10, 8: 12, 9: 11, 10: 7, 11: 7, 12: 15}
+   ALL plan-tutor casts (hand/cmd->stack) n=266 rounds1-4 110/266 (41%) round8+ 101/266 (38%) hist={1: 20, 2: 31, 3: 27, 4: 32, 5: 17, 6: 21, 7: 17, 8: 21, 9: 16, 10: 15, 11: 15, 12: 34}
+   held by own-turn round:
+     r 1 n= 85 0_owned=6 1_short=44 2_short=35
+     r 2 n= 69 0_owned=8 1_short=35 2_short=26
+     r 3 n= 55 0_owned=9 1_short=28 2_short=18
+     r 4 n= 45 0_owned=6 1_short=25 2_short=14
+     r 5 n= 40 0_owned=2 1_short=27 2_short=11
+     r 6 n= 30 0_owned=4 1_short=19 2_short=7
+     r 7 n= 29 0_owned=6 1_short=15 2_short=8
+     r 8 n= 26 0_owned=8 1_short=13 2_short=5
+     r 9 n= 21 0_owned=6 1_short=9 2_short=6
+     r10 n= 15 0_owned=4 1_short=8 2_short=3
+     r11 n= 11 0_owned=2 1_short=7 2_short=2
+     r12 n= 34 0_owned=4 1_short=25 2_short=5
+== winmax: games=128 plan own turns=1476 held-tutor turns=559
+   0_owned        all 91/559 (16%)       rounds1-4 30/271 (11%)
+   1_short        all 280/559 (50%)      rounds1-4 145/271 (54%)
+   2_short        all 188/559 (34%)      rounds1-4 96/271 (35%)
+   shim tutor_cast n=104  rounds1-4 28/104 (27%)  round8+ 43/104 (41%)  hist={1: 5, 2: 7, 3: 10, 4: 6, 5: 7, 6: 17, 7: 9, 8: 7, 9: 6, 11: 2, 12: 28}
+   ALL plan-tutor casts (hand/cmd->stack) n=252 rounds1-4 76/252 (30%) round8+ 102/252 (40%) hist={1: 11, 2: 17, 3: 21, 4: 27, 5: 19, 6: 27, 7: 28, 8: 21, 9: 14, 10: 6, 11: 9, 12: 52}
+   held by own-turn round:
+     r 1 n= 73 0_owned=3 1_short=40 2_short=30
+     r 2 n= 71 0_owned=9 1_short=38 2_short=24
+     r 3 n= 69 0_owned=9 1_short=35 2_short=25
+     r 4 n= 58 0_owned=9 1_short=32 2_short=17
+     r 5 n= 54 0_owned=10 1_short=27 2_short=17
+     r 6 n= 50 0_owned=10 1_short=27 2_short=13
+     r 7 n= 36 0_owned=6 1_short=17 2_short=13
+     r 8 n= 28 0_owned=6 1_short=12 2_short=10
+     r 9 n= 23 0_owned=5 1_short=9 2_short=9
+     r10 n= 20 0_owned=6 1_short=7 2_short=7
+     r11 n= 17 0_owned=6 1_short=6 2_short=5
+     r12 n= 60 0_owned=12 1_short=30 2_short=18
+== av016: games=128 plan own turns=1511 held-tutor turns=527
+   0_owned        all 80/527 (15%)       rounds1-4 39/269 (14%)
+   1_short        all 294/527 (56%)      rounds1-4 139/269 (52%)
+   2_short        all 153/527 (29%)      rounds1-4 91/269 (34%)
+   shim tutor_cast n=130  rounds1-4 36/130 (28%)  round8+ 58/130 (45%)  hist={1: 12, 2: 8, 3: 6, 4: 10, 5: 11, 6: 11, 7: 14, 8: 12, 9: 11, 10: 12, 11: 9, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=261 rounds1-4 75/261 (29%) round8+ 109/261 (42%) hist={1: 18, 2: 19, 3: 17, 4: 21, 5: 25, 6: 24, 7: 28, 8: 20, 9: 23, 10: 16, 11: 14, 12: 36}
+   held by own-turn round:
+     r 1 n= 76 0_owned=7 1_short=43 2_short=26
+     r 2 n= 67 0_owned=8 1_short=34 2_short=25
+     r 3 n= 63 0_owned=12 1_short=30 2_short=21
+     r 4 n= 63 0_owned=12 1_short=32 2_short=19
+     r 5 n= 55 0_owned=12 1_short=27 2_short=16
+     r 6 n= 47 0_owned=11 1_short=26 2_short=10
+     r 7 n= 36 0_owned=8 1_short=20 2_short=8
+     r 8 n= 32 0_owned=6 1_short=16 2_short=10
+     r 9 n= 25 0_owned=2 1_short=16 2_short=7
+     r10 n= 16 1_short=12 2_short=4
+     r11 n= 14 0_owned=1 1_short=11 2_short=2
+     r12 n= 33 0_owned=1 1_short=27 2_short=5
+== rubric_ship: games=32 plan own turns=1635 held-tutor turns=527
+   0_owned        all 34/527 (6%)        rounds1-4 14/235 (6%)
+   1_short        all 205/527 (39%)      rounds1-4 95/235 (40%)
+   2_short        all 264/527 (50%)      rounds1-4 112/235 (48%)
+   3plus_short    all 24/527 (5%)        rounds1-4 14/235 (6%)
+   shim tutor_cast n=67  rounds1-4 23/67 (34%)  round8+ 33/67 (49%)  hist={1: 3, 2: 5, 3: 6, 4: 9, 5: 4, 6: 2, 7: 5, 8: 7, 9: 6, 10: 3, 11: 3, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=215 rounds1-4 61/215 (28%) round8+ 95/215 (44%) hist={1: 9, 2: 17, 3: 17, 4: 18, 5: 26, 6: 17, 7: 16, 8: 14, 9: 19, 10: 9, 11: 8, 12: 45}
+   held by own-turn round:
+     r 1 n= 64 0_owned=1 1_short=28 2_short=31 3plus_short=4
+     r 2 n= 59 0_owned=4 1_short=22 2_short=29 3plus_short=4
+     r 3 n= 59 0_owned=4 1_short=23 2_short=28 3plus_short=4
+     r 4 n= 53 0_owned=5 1_short=22 2_short=24 3plus_short=2
+     r 5 n= 42 0_owned=2 1_short=16 2_short=22 3plus_short=2
+     r 6 n= 35 0_owned=1 1_short=13 2_short=19 3plus_short=2
+     r 7 n= 32 0_owned=2 1_short=10 2_short=18 3plus_short=2
+     r 8 n= 30 0_owned=2 1_short=8 2_short=18 3plus_short=2
+     r 9 n= 27 0_owned=2 1_short=6 2_short=18 3plus_short=1
+     r10 n= 20 0_owned=1 1_short=6 2_short=13
+     r11 n= 17 0_owned=1 1_short=5 2_short=10 3plus_short=1
+     r12 n= 89 0_owned=9 1_short=46 2_short=34

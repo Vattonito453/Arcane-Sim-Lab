@@ -1,0 +1,19 @@
+=== human_ceiling/runs
+  agent=stock dest=Hand    drawn~=  54 cast=  31  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 31}
+  agent=stock dest=Library drawn~=  78 cast=  39  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 39}
+  agent=stock dest=other   drawn~= 103 cast=  59  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 59}
+=== behavior_rubric/runs_agent_shipping
+  agent=plan  dest=Hand    drawn~=  50 cast=  32  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 32}
+  agent=plan  dest=Library drawn~=  71 cast=  51  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 51}
+  agent=plan  dest=other   drawn~= 112 cast=  65  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 65}
+=== agent_viability/runs_016_engine
+  agent=plan  dest=Hand    drawn~=  61 cast=  45  castBeforeMain2(own or opp turn)=0.58  byPhase={'MAIN2': 19, 'MAIN1': 14, 'UPKEEP': 9, 'DRAW': 3}
+  agent=plan  dest=Library drawn~=  82 cast=  61  castBeforeMain2(own or opp turn)=0.51  byPhase={'MAIN2': 29, 'DRAW': 14, 'UPKEEP': 10, 'MAIN1': 7, 'END_OF_TURN': 1}
+  agent=plan  dest=other   drawn~=  97 cast=  69  castBeforeMain2(own or opp turn)=0.74  byPhase={'MAIN1': 42, 'MAIN2': 13, 'UPKEEP': 6, 'DRAW': 3, 'END_OF_TURN': 3, 'COMBAT_DECLARE_ATTACKERS': 2}
+  agent=stock dest=Hand    drawn~= 139 cast=  77  castBeforeMain2(own or opp turn)=0.01  byPhase={'MAIN2': 76, 'MAIN1': 1}
+  agent=stock dest=Library drawn~= 189 cast= 123  castBeforeMain2(own or opp turn)=0.00  byPhase={'MAIN2': 120, 'END_OF_TURN': 3}
+  agent=stock dest=other   drawn~= 330 cast= 190  castBeforeMain2(own or opp turn)=0.75  byPhase={'MAIN1': 102, 'MAIN2': 39, 'DRAW': 20, 'UPKEEP': 19, 'COMBAT_DECLARE_ATTACKERS': 4, 'COMBAT_DAMAGE': 2, 'COMBAT_BEGIN': 2, 'COMBAT_DECLARE_BLOCKERS': 1, 'COMBAT_END': 1}
+=== precon_predict/runs_stock
+  agent=stock dest=Hand    drawn~=  21 cast=  17  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 17}
+  agent=stock dest=Library drawn~= 323 cast= 204  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 204}
+  agent=stock dest=other   drawn~= 770 cast= 647  castBeforeMain2(own or opp turn)=0.00  byPhase={'?': 647}

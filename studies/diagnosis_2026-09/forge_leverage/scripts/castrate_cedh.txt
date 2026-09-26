@@ -1,0 +1,71 @@
+=== human_ceiling/runs: 32 files, 32 games
+  drawn nonland  agent=stock flag=All    drawn=   328 cast=    24 rate=0.073
+  drawn nonland  agent=stock flag=Random drawn=   361 cast=   257 rate=0.712
+  drawn nonland  agent=stock flag=none   drawn=  1799 cast=  1133 rate=0.630
+  drawn nonland  agent=stock flag=unk    drawn=     6 cast=     4 rate=0.667
+  perm w/ non-mana AB agent=stock flag=All    onBF=    21 activated=     0 rate=0.000
+  perm w/ non-mana AB agent=stock flag=Random onBF=    49 activated=    20 rate=0.408
+  perm w/ non-mana AB agent=stock flag=none   onBF=   599 activated=   315 rate=0.526
+  RemoveDeck:All cards drawn->cast: [('Mindbreak Trap', 22, 0), ('Pact of Negation', 20, 13), ("Lion's Eye Diamond", 19, 0), ('Swan Song', 13, 9), ('Mirage Mirror', 11, 0), ('Springleaf Drum', 11, 0), ('Vampiric Tutor', 11, 0), ('Gitaxian Probe', 10, 0), ('Commandeer', 10, 0), ('Final Fortune', 9, 0), ('Ad Nauseam', 9, 0), ('Culling the Weak', 8, 0), ('Disrupting Shoal', 8, 0), ('Demonic Consultation', 8, 0), ("Praetor's Grasp", 7, 0), ('Misdirection', 7, 0), ('Bloom Tender', 6, 0), ('Copy Enchantment', 6, 0), ('Clock of Omens', 6, 0), ('Hidden Strings', 6, 0), ('Diabolic Intent', 5, 0), ('Krark-Clan Ironworks', 5, 0), ('Wild Growth', 5, 0), ('Utopia Sprawl', 4, 0), ('Windfall', 4, 0)]
+  RemoveDeck:All permanents onBF->activated: [('Emergence Zone', 9, 0), ('Command Beacon', 3, 0), ('Magus of the Candelabra', 2, 0), ('Clock of Omens', 2, 0), ('Proteus Staff', 1, 0), ('Metalworker', 1, 0), ('Scryb Ranger', 1, 0), ('Deadpool, Trading Card', 1, 0), ('Dwarven Armorer', 1, 0)]
+=== behavior_rubric/runs_agent_shipping: 32 files, 32 games
+  drawn nonland  agent=plan  flag=All    drawn=   375 cast=    49 rate=0.131
+  drawn nonland  agent=plan  flag=Random drawn=   384 cast=   273 rate=0.711
+  drawn nonland  agent=plan  flag=none   drawn=  1996 cast=  1132 rate=0.567
+  drawn nonland  agent=plan  flag=unk    drawn=     3 cast=     2 rate=0.667
+  perm w/ non-mana AB agent=plan  flag=All    onBF=    35 activated=     2 rate=0.057
+  perm w/ non-mana AB agent=plan  flag=Random onBF=    55 activated=    34 rate=0.618
+  perm w/ non-mana AB agent=plan  flag=none   onBF=   661 activated=   345 rate=0.522
+  RemoveDeck:All cards drawn->cast: [('Pact of Negation', 32, 18), ("Lion's Eye Diamond", 31, 1), ('Mindbreak Trap', 18, 0), ('Swan Song', 16, 9), ('Demonic Consultation', 13, 2), ('Misdirection', 11, 0), ('Springleaf Drum', 11, 0), ('Vampiric Tutor', 11, 7), ('Wild Growth', 10, 0), ('Gitaxian Probe', 10, 0), ('Commandeer', 10, 0), ("Praetor's Grasp", 9, 0), ('Copy Enchantment', 9, 0), ('Final Fortune', 8, 0), ('Sylvan Library', 8, 0), ('Hidden Strings', 8, 0), ('Ad Nauseam', 7, 0), ('Disrupting Shoal', 7, 0), ('Diabolic Intent', 6, 1), ('Clock of Omens', 6, 2), ('Utopia Sprawl', 5, 0), ('Windfall', 5, 0), ('Dizzy Spell', 5, 0), ('Mirage Mirror', 5, 0), ("Autumn's Veil", 5, 0)]
+  RemoveDeck:All permanents onBF->activated: [('Emergence Zone', 8, 0), ('Clock of Omens', 8, 2), ('Command Beacon', 4, 0), ('Devoted Druid', 3, 0), ('Cephalid Illusionist', 2, 0), ('Deadpool, Trading Card', 2, 0), ('Oboro Breezecaller', 2, 0), ('Quirion Ranger', 2, 0), ('Aphetto Alchemist', 1, 0), ('Goblin Welder', 1, 0), ('Scryb Ranger', 1, 0), ('Dwarven Armorer', 1, 0)]
+=== agent_viability/runs_015_default: 9 files, 128 games
+  drawn nonland  agent=plan  flag=All    drawn=   347 cast=    66 rate=0.190
+  drawn nonland  agent=plan  flag=Random drawn=   408 cast=   272 rate=0.667
+  drawn nonland  agent=plan  flag=none   drawn=  1753 cast=  1092 rate=0.623
+  drawn nonland  agent=plan  flag=unk    drawn=     4 cast=     3 rate=0.750
+  drawn nonland  agent=stock flag=All    drawn=   970 cast=    42 rate=0.043
+  drawn nonland  agent=stock flag=Random drawn=  1197 cast=   808 rate=0.675
+  drawn nonland  agent=stock flag=none   drawn=  5148 cast=  3180 rate=0.618
+  drawn nonland  agent=stock flag=unk    drawn=     9 cast=     6 rate=0.667
+  perm w/ non-mana AB agent=plan  flag=All    onBF=    61 activated=     3 rate=0.049
+  perm w/ non-mana AB agent=plan  flag=Random onBF=    67 activated=    28 rate=0.418
+  perm w/ non-mana AB agent=plan  flag=none   onBF=   564 activated=   315 rate=0.559
+  perm w/ non-mana AB agent=stock flag=All    onBF=    77 activated=     3 rate=0.039
+  perm w/ non-mana AB agent=stock flag=Random onBF=   199 activated=    95 rate=0.477
+  perm w/ non-mana AB agent=stock flag=none   onBF=  1635 activated=   829 rate=0.507
+  RemoveDeck:All cards drawn->cast: [('Pact of Negation', 81, 36), ('Mindbreak Trap', 79, 0), ("Lion's Eye Diamond", 64, 3), ('Misdirection', 60, 0), ('Swan Song', 50, 21), ('Springleaf Drum', 42, 0), ('Demonic Consultation', 36, 14), ('Wild Growth', 35, 0), ('Utopia Sprawl', 34, 0), ('Ad Nauseam', 30, 0), ('Final Fortune', 29, 2), ('Infernal Plunge', 29, 0), ("Praetor's Grasp", 29, 0), ("Summoner's Pact", 28, 6), ('Emerald Charm', 27, 1), ('Manifold Key', 25, 1), ('Bloom Tender', 25, 3), ('Nomads en-Kor', 24, 1), ('Culling the Weak', 24, 0), ('Metalworker', 23, 1), ('Cephalid Illusionist', 23, 4), ('Vampiric Tutor', 23, 2), ('Commandeer', 23, 0), ("Autumn's Veil", 22, 0), ("Warrior's Oath", 21, 1)]
+  RemoveDeck:All permanents onBF->activated: [('Clock of Omens', 31, 6), ('Emergence Zone', 28, 0), ('Command Beacon', 23, 0), ('Hammerheim', 16, 0), ('Cephalid Illusionist', 11, 0), ('Aphetto Alchemist', 10, 0), ('Quirion Ranger', 8, 0), ('Metalworker', 4, 0), ('Nomads en-Kor', 2, 0), ('Scryb Ranger', 2, 0), ('Devoted Druid', 2, 0), ('Manifold Key', 1, 0)]
+=== agent_viability/runs_016_engine: 9 files, 128 games
+  drawn nonland  agent=plan  flag=All    drawn=   331 cast=    70 rate=0.211
+  drawn nonland  agent=plan  flag=Random drawn=   385 cast=   268 rate=0.696
+  drawn nonland  agent=plan  flag=none   drawn=  1779 cast=  1118 rate=0.628
+  drawn nonland  agent=plan  flag=unk    drawn=     5 cast=     3 rate=0.600
+  drawn nonland  agent=stock flag=All    drawn=  1017 cast=    55 rate=0.054
+  drawn nonland  agent=stock flag=Random drawn=  1157 cast=   824 rate=0.712
+  drawn nonland  agent=stock flag=none   drawn=  5254 cast=  3351 rate=0.638
+  drawn nonland  agent=stock flag=unk    drawn=    12 cast=    10 rate=0.833
+  perm w/ non-mana AB agent=plan  flag=All    onBF=    46 activated=     0 rate=0.000
+  perm w/ non-mana AB agent=plan  flag=Random onBF=    52 activated=    23 rate=0.442
+  perm w/ non-mana AB agent=plan  flag=none   onBF=   573 activated=   321 rate=0.560
+  perm w/ non-mana AB agent=stock flag=All    onBF=    87 activated=     0 rate=0.000
+  perm w/ non-mana AB agent=stock flag=Random onBF=   213 activated=    97 rate=0.455
+  perm w/ non-mana AB agent=stock flag=none   onBF=  1675 activated=   904 rate=0.540
+  RemoveDeck:All cards drawn->cast: [('Mindbreak Trap', 79, 0), ('Pact of Negation', 75, 36), ('Swan Song', 67, 39), ("Lion's Eye Diamond", 60, 1), ('Misdirection', 57, 0), ('Springleaf Drum', 45, 0), ('Demonic Consultation', 38, 10), ('Final Fortune', 37, 1), ('Culling the Weak', 37, 0), ('Ad Nauseam', 36, 1), ('Wild Growth', 35, 1), ('Emerald Charm', 34, 1), ('Utopia Sprawl', 31, 0), ("Summoner's Pact", 30, 6), ('Infernal Plunge', 26, 0), ('Vampiric Tutor', 26, 7), ("Praetor's Grasp", 25, 0), ('Aphetto Alchemist', 22, 4), ('Cephalid Illusionist', 22, 2), ('Devoted Druid', 21, 2), ("Autumn's Veil", 21, 1), ('Phyrexian Soulgorger', 21, 0), ('Magnetic Theft', 20, 0), ('Bloom Tender', 20, 2), ('Metalworker', 20, 1)]
+  RemoveDeck:All permanents onBF->activated: [('Command Beacon', 33, 0), ('Emergence Zone', 29, 0), ('Clock of Omens', 24, 0), ('Hammerheim', 15, 0), ('Aphetto Alchemist', 9, 0), ('Quirion Ranger', 9, 0), ('Cephalid Illusionist', 4, 0), ('Scryb Ranger', 4, 0), ('Metalworker', 2, 0), ('Manifold Key', 2, 0), ('Devoted Druid', 2, 0)]
+=== agent_viability/runs_winmax: 9 files, 128 games
+  drawn nonland  agent=plan  flag=All    drawn=   377 cast=    45 rate=0.119
+  drawn nonland  agent=plan  flag=Random drawn=   384 cast=   260 rate=0.677
+  drawn nonland  agent=plan  flag=none   drawn=  1704 cast=  1028 rate=0.603
+  drawn nonland  agent=plan  flag=unk    drawn=     3 cast=     2 rate=0.667
+  drawn nonland  agent=stock flag=All    drawn=  1115 cast=    57 rate=0.051
+  drawn nonland  agent=stock flag=Random drawn=  1199 cast=   842 rate=0.702
+  drawn nonland  agent=stock flag=none   drawn=  5366 cast=  3381 rate=0.630
+  drawn nonland  agent=stock flag=unk    drawn=    10 cast=     5 rate=0.500
+  perm w/ non-mana AB agent=plan  flag=All    onBF=    61 activated=     2 rate=0.033
+  perm w/ non-mana AB agent=plan  flag=Random onBF=    76 activated=    30 rate=0.395
+  perm w/ non-mana AB agent=plan  flag=none   onBF=   504 activated=   272 rate=0.540
+  perm w/ non-mana AB agent=stock flag=All    onBF=    87 activated=     1 rate=0.011
+  perm w/ non-mana AB agent=stock flag=Random onBF=   210 activated=    96 rate=0.457
+  perm w/ non-mana AB agent=stock flag=none   onBF=  1789 activated=   920 rate=0.514
+  RemoveDeck:All cards drawn->cast: [('Mindbreak Trap', 94, 0), ('Pact of Negation', 84, 40), ("Lion's Eye Diamond", 78, 0), ('Swan Song', 58, 28), ('Misdirection', 56, 0), ('Springleaf Drum', 50, 0), ('Demonic Consultation', 42, 5), ('Infernal Plunge', 41, 0), ('Ad Nauseam', 40, 0), ('Utopia Sprawl', 37, 0), ("Praetor's Grasp", 36, 0), ('Emerald Charm', 36, 0), ('Final Fortune', 34, 0), ('Culling the Weak', 33, 0), ('Wild Growth', 33, 0), ("Autumn's Veil", 33, 0), ('Vampiric Tutor', 32, 3), ('Sylvan Paradise', 29, 0), ("Summoner's Pact", 28, 4), ('Commandeer', 26, 0), ('Metalworker', 24, 1), ('Phyrexian Soulgorger', 24, 1), ('Nomads en-Kor', 22, 0), ('Cephalid Illusionist', 21, 2), ('Sylvan Safekeeper', 21, 0)]
+  RemoveDeck:All permanents onBF->activated: [('Command Beacon', 33, 0), ('Emergence Zone', 31, 0), ('Clock of Omens', 28, 3), ('Hammerheim', 16, 0), ('Aphetto Alchemist', 12, 0), ('Quirion Ranger', 10, 0), ('Cephalid Illusionist', 7, 0), ('Scryb Ranger', 3, 0), ('Devoted Druid', 3, 0), ('Manifold Key', 2, 0), ('Metalworker', 1, 0), ('Nomads en-Kor', 1, 0), ('Dwarven Armorer', 1, 0)]

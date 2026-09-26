@@ -20,12 +20,12 @@ npm install     # first time only
 npm run dev     # http://localhost:3000
 ```
 
-The API base URL is runtime-configurable (per `frontend_handoff/API_SPEC.md`):
-it reads `localStorage["simlab.apiBase"]`, then `NEXT_PUBLIC_API_BASE`, then
-defaults to `http://127.0.0.1:8484`. Change it from the **Engine** row at the
-bottom of the nav menu — no rebuild needed. It lives there and nowhere else; it
-used to be printed into two different section headers, which put an
-infrastructure address in the middle of the deck picker.
+The API base URL comes from `NEXT_PUBLIC_API_BASE`, defaulting to
+`http://127.0.0.1:8484`. In dev builds only, `localStorage["simlab.apiBase"]`
+overrides it: change it from the **Engine** row at the bottom of the nav menu,
+no rebuild needed. A production build neither shows that row nor reads the
+saved value, so a player who once saved a bad address there is not stranded
+behind a permanent "server isn't answering".
 
 `npm run build` requires network access on first run (Google Fonts are fetched
 and self-hosted at build time by `next/font`).

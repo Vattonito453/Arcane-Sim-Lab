@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { apiBase, setApiBase } from "@/lib/api";
-import { SHOW_OPS } from "@/lib/format";
 
 const DEFAULT_BASE = "http://127.0.0.1:8484";
 
@@ -14,7 +13,7 @@ const DEFAULT_BASE = "http://127.0.0.1:8484";
  *  problem 6). Gated here as well as at the call site, so no future caller can
  *  put it in front of a player by accident. */
 export default function ApiBaseSetting(props: { onChanged?: () => void }) {
-  return SHOW_OPS ? <ApiBaseEditor {...props} /> : null;
+  return process.env.NODE_ENV !== "production" ? <ApiBaseEditor {...props} /> : null;
 }
 
 function ApiBaseEditor({ onChanged }: { onChanged?: () => void }) {

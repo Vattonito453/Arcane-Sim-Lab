@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Mascot } from "@/components/Mascot";
 import ApiBaseSetting from "@/components/ApiBaseSetting";
 import { healthOnce } from "@/lib/api";
-import { SERVER_DOWN, SHOW_OPS } from "@/lib/format";
+import { SERVER_DOWN } from "@/lib/format";
 
 export interface TabDef {
   label: string;
@@ -163,7 +163,7 @@ export function Chrome({
           {/* The engine address is an operator setting: useful on a dev box
               pointing at another engine, meaningless to a player, and it put
               "Engine /engine Change" in the public phone menu. Dev builds only. */}
-          {SHOW_OPS && (
+          {process.env.NODE_ENV !== "production" && (
             <>
               <div className="div" />
               <div className="navsheet-eng">
@@ -234,7 +234,7 @@ export function EngineDown({
   return (
     <>
       <p className={className}>
-        {SHOW_OPS ? (
+        {process.env.NODE_ENV !== "production" ? (
           <>
             The engine at the configured address isn&apos;t answering. Start it with{" "}
             <span className="mono">python3 engine/mtg_engine.py serve 8484</span>, then try

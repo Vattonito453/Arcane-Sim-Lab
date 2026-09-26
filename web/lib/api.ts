@@ -1,5 +1,6 @@
-/** Engine API client. Base URL is runtime-configurable per API_SPEC.md:
- *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
+/** Engine API client. Base URL per API_SPEC.md:
+ *  localStorage "simlab.apiBase" (dev builds only) → NEXT_PUBLIC_API_BASE →
+ *  http://127.0.0.1:8484 */
 import type {
   AnalysisReport,
   CoachingReport,
@@ -19,8 +20,15 @@ import type {
   TelemetryReport,
 } from "./types";
 
+/** The saved override is honoured only in dev builds. The only control that
+ *  writes it (ApiBaseSetting) renders only in dev, so a production build that
+ *  still read it would strand any player who once saved a bad address there
+ *  (it used to sit in the public phone nav): every page would say the server
+ *  isn't answering, forever, with nothing in the UI to clear it. The literal
+ *  NODE_ENV comparison lets the minifier drop the branch from the production
+ *  bundle (see SERVER_DOWN in format.ts). */
 export function apiBase(): string {
-  if (typeof window !== "undefined") {
+  if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
     const saved = window.localStorage.getItem("simlab.apiBase");
     if (saved) return saved.replace(/\/$/, "");
   }

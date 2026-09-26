@@ -12,7 +12,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Chrome, Footer, PageDetails, useLlmLive, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { CoachingReport, RunSummary } from "@/lib/types";
-import { deckLabel, pct, runTitle, SHOW_OPS, stripAi } from "@/lib/format";
+import { deckLabel, pct, runTitle, stripAi } from "@/lib/format";
 
 const ST_CLASS = { running: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { running: "Running", partial: "Partial", cold: "Never fired" } as const;
@@ -278,7 +278,7 @@ function CoachingInner() {
               Coaching isn&apos;t switched on for this server yet. The overview and
               telemetry for this sim work without it.
             </p>
-            {SHOW_OPS && (
+            {process.env.NODE_ENV !== "production" && (
               <p className="note">
                 Dev builds only: the engine reports no model key. Set{" "}
                 <span className="mono">MTG_LLM_API_KEY</span> in{" "}

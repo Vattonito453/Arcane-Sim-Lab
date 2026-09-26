@@ -103,8 +103,10 @@ players to set `MTG_LLM_API_KEY` in `deploy/.env`.
 - An outcome label never repeats its category; a draw says why when the
   data knows ("Draw: hit the 15-minute clock on turn 10").
 - Operator detail (commands, env vars, the engine address setting) renders
-  only behind `SHOW_OPS` (`web/lib/format.ts`, i.e. `NODE_ENV !==
-  "production"`). Players get `SERVER_DOWN` via `<EngineDown />`.
+  only behind a literal `process.env.NODE_ENV !== "production"` at the use
+  site (an imported flag renders nothing but still ships the strings in the
+  bundle). Players get `SERVER_DOWN` via `<EngineDown />`, and a production
+  build never reads a browser-saved engine address.
 - A feature that is switched off (`health().llm === false`) shows no primary
   and no tab, not a live button above a note saying it will fail.
 - The one sanctioned place for an address (result filename, job id) is the

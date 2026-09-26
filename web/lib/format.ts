@@ -136,13 +136,15 @@ export function timesWord(n: number): string {
   return words[n] ?? `${n} times`;
 }
 
-/** Operator detail (the command that starts the engine, env var names, the
+/** What a player sees when the engine does not answer.
+ *
+ *  Operator detail (the command that starts the engine, env var names, the
  *  engine address setting) is for whoever runs the server, never for players
- *  (tasks/26-ux-review.md, problem 6). Next inlines NODE_ENV at build time, so a
- *  production build never renders it; `next dev` always does. */
-export const SHOW_OPS = process.env.NODE_ENV !== "production";
-
-/** What a player sees when the engine does not answer. */
+ *  (tasks/26-ux-review.md, problem 6). Gate it with a literal
+ *  `process.env.NODE_ENV !== "production"` at the use site, not an exported
+ *  flag: Next inlines NODE_ENV at build time, and only a literal comparison lets
+ *  the minifier drop the operator text from the production bundle. An imported
+ *  constant still rendered nothing, but shipped the strings. */
 export const SERVER_DOWN =
   "Sim Lab's server isn't answering. Your decks and sims are safe. Try again in a minute.";
 

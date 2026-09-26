@@ -29,22 +29,29 @@ function pp(x: number): string {
 export function PredictionPanel({ report }: { report: PredictionReport | null }) {
   if (!report) return null;
 
+  // A report can be available while no deck in it is: a run without per-seat
+  // survival gets rows carrying only a reason, and sorting and formatting
+  // their missing numbers threw, which took the whole results page down with
+  // "Application error". Only rows the model actually scored are drawn.
+  const scored = (report.decks ?? []).filter((d) => d.available !== false);
+
   // Absent model: say it, do not draw an empty table. The reason string is
   // written by the engine and names the actual fix.
-  if (!report.available || !report.decks || report.decks.length === 0) {
+  if (!report.available || scored.length === 0) {
     return (
       <section>
         <div className="sh">
           <h2>Against real playgroups</h2>
         </div>
         <p className="note">
-          No corrected win rates for this run. {report.reason ?? "The fitted model is not available."}
+          No corrected win rates for this run.{" "}
+          {report.reason ?? report.decks?.find((d) => d.reason)?.reason ?? "The fitted model is not available."}
         </p>
       </section>
     );
   }
 
-  const decks = [...report.decks].sort(
+  const decks = [...scored].sort(
     (a, b) => b.expected_win_rate - a.expected_win_rate,
   );
   const basis = decks[0].basis;

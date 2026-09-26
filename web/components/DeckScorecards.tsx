@@ -46,10 +46,21 @@ function readOf(d: DeckScorecard, podMedianRound: number | null): string {
   const decided = d.games - d.censored;
 
   if (d.wins > 0) {
-    const top = Object.entries(d.methods).sort((a, b) => b[1] - a[1])[0];
-    // "mostly" when the top method is not every win: the sentence names one
-    // method and must not imply it was the only one.
-    const how = top ? ` ${top[1] < d.wins ? "mostly " : ""}${methodClause(top[0])}` : "";
+    const ranked = Object.entries(d.methods).sort((a, b) => b[1] - a[1]);
+    const top = ranked[0];
+    const tied = top ? ranked.filter(([, n]) => n === top[1]) : [];
+    let how = "";
+    if (tied.length > 1) {
+      // No method leads, so "mostly" would be wrong: give the tied counts.
+      const rest = d.wins - tied.reduce((s, [, n]) => s + n, 0);
+      how = `: ${tied.map(([m, n]) => `${n} ${methodClause(m)}`).join(", ")}${
+        rest > 0 ? `, ${rest} another way` : ""
+      }`;
+    } else if (top) {
+      // "mostly" when the top method is not every win: the sentence names one
+      // method and must not imply it was the only one.
+      how = ` ${top[1] < d.wins ? "mostly " : ""}${methodClause(top[0])}`;
+    }
     const when = d.medianWinRound ? `, closing on round ${d.medianWinRound}` : "";
     parts.push(`Won ${d.wins} of ${decided}${how}${when}.`);
   } else if (decided > 0) {

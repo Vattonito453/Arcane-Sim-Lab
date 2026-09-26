@@ -203,14 +203,24 @@ function buildFamily(variants: AnalysedCombo[], deck: AnalysisDeck, cmdrs: Set<s
     }
   }
 
-  // Which requirement held the family up most often: a core card, or a whole
-  // slot of alternatives with none available.
-  const reqs: { label: string; cards: string[] }[] = core.map((c) => ({ label: c, cards: [c] }));
-  for (const s of slots ?? []) reqs.push({ label: `any of ${s.join(" / ")}`, cards: s });
+  // Which requirement held the family up most often: a core card, a whole
+  // slot of alternatives with none available, or (for a family that is not a
+  // clean product) the varying cards of every variant. Without that last one
+  // a family whose core was always out read "–", as if nothing were missing.
+  type Avail = Map<string, boolean>;
+  const reqs: { label: string; met: (a: Avail) => boolean }[] = core.map((c) => ({
+    label: c,
+    met: (a: Avail) => !!a.get(c),
+  }));
+  for (const s of slots ?? []) reqs.push({ label: `any of ${s.join(" / ")}`, met: (a) => s.some((c) => a.get(c)) });
+  if (!slots && extra > 0) {
+    const rests = variants.map((v) => v.cards.filter((c) => !coreSet.has(c)));
+    reqs.push({ label: "every variant's other pieces", met: (a) => rests.some((r) => r.every((c) => a.get(c))) });
+  }
   let missing: Family["missing"] = null;
   for (const r of reqs) {
     let n = 0;
-    for (const a of avail.values()) if (!r.cards.some((c) => a.get(c))) n++;
+    for (const a of avail.values()) if (!r.met(a)) n++;
     if (n > 0 && (!missing || n > missing.n)) missing = { label: r.label, n };
   }
 
@@ -264,13 +274,17 @@ function buildFamily(variants: AnalysedCombo[], deck: AnalysisDeck, cmdrs: Set<s
 
 /** Variants fold together when Spellbook lists the same results for them and
  *  they share all but one card; the relation is joined transitively, so a
- *  "one of 2" x "one of 6" family lands in one row. */
+ *  "one of 2" x "one of 6" family lands in one row. A join that would leave
+ *  the family with no card in every variant is refused: a chain like A+B,
+ *  B+C, C+D has an empty core, and its row would name no card at all. */
 function familiesOf(deck: AnalysisDeck): Family[] {
   const combos = deck.combos;
   const cmdrs = new Set((deck.commanders ?? []).map(norm));
   const producesKey = (c: AnalysedCombo) =>
     [...new Set(c.produces.map((p) => p.toLowerCase()))].sort().join("\u0001");
   const parent = combos.map((_, i) => i);
+  // Cards in every member of the group, kept on the group's root.
+  const coreOf = combos.map((c) => new Set(c.cards));
   const find = (i: number): number => (parent[i] === i ? i : (parent[i] = find(parent[i])));
   for (let i = 0; i < combos.length; i++) {
     for (let j = i + 1; j < combos.length; j++) {
@@ -279,7 +293,14 @@ function familiesOf(deck: AnalysisDeck): Family[] {
       if (a.cards.length !== b.cards.length || a.cards.length < 2) continue;
       if (producesKey(a) !== producesKey(b)) continue;
       const shared = a.cards.filter((c) => b.cards.includes(c)).length;
-      if (shared === a.cards.length - 1) parent[find(i)] = find(j);
+      if (shared !== a.cards.length - 1) continue;
+      const ri = find(i);
+      const rj = find(j);
+      if (ri === rj) continue;
+      const core = new Set([...coreOf[ri]].filter((c) => coreOf[rj].has(c)));
+      if (core.size === 0) continue;
+      parent[ri] = rj;
+      coreOf[rj] = core;
     }
   }
   const groups = new Map<number, AnalysedCombo[]>();
@@ -300,6 +321,14 @@ function neverCameTogether(f: Family): boolean {
 function fmtExpected(f: Family): string {
   if (f.expected == null) return "–";
   return f.expectedFloor ? `at least ${f.expected.toFixed(1)}` : `~${f.expected.toFixed(1)}`;
+}
+
+/** A family's accessible name: its first variant's cards, plus how many other
+ *  variants it covers. Families never share a variant, so no two rows in a
+ *  deck get the same name. */
+function lineName(f: Family): string {
+  const others = f.variants.length - 1;
+  return `${f.variants[0].cards.join(" + ")}${others > 0 ? ` and ${plural(others, "other variant")}` : ""}`;
 }
 
 /** The line itself: its cards, Spellbook's results as chips, and the Details
@@ -368,11 +397,14 @@ function LineCell({
       )}
       <div className="cl-meta">
         {f.variants.length > 1 && <span>{f.variants.length} variants Commander Spellbook lists separately</span>}
+        {/* Every row has a Details button, so each names its line for a
+            screen reader; aria-controls only while the detail row exists. */}
         <button
           type="button"
           className="cl-toggle"
           aria-expanded={open}
-          aria-controls={controls}
+          aria-controls={open ? controls : undefined}
+          aria-label={`Details: ${lineName(f)}`}
           onClick={onToggle}
         >
           Details
@@ -635,7 +667,7 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
                             type="button"
                             className="cl-toggle"
                             aria-expanded={foldOpen}
-                            aria-controls={foldId}
+                            aria-controls={foldOpen ? foldId : undefined}
                             onClick={() => toggle(openFolds, name, setOpenFolds)}
                           >
                             {foldOpen

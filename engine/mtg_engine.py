@@ -25,6 +25,8 @@ zero-dependency API. Use it three ways:
        GET  /results/{file}/scorecards  per-deck: outcomes, timing, behaviour
        GET  /results/{file}/game/{n}  one game's events
        GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
+       GET  /estimate?decks=4&games=16  typical duration + played game count
+                                  for a sim of that size, before it is queued
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
        GET  /board/{file}         board-reconstruction accuracy report
        GET  /analysis/{file}      wincon report: win methods, combo assembly/conversion
@@ -589,6 +591,32 @@ def estimate_sim_seconds(games: int, rotations: int) -> tuple[int, int]:
     launches = rotations * TYPICAL_JVM_LAUNCH_SECONDS
     return (int(played * TYPICAL_GAME_SECONDS * 0.6 + launches),
             int(played * TYPICAL_GAME_SECONDS * 1.6 + launches))
+
+
+def sim_estimate(decks: int, games: int) -> dict:
+    """What a sim of this size will play, and how long it usually takes.
+
+    GET /estimate serves this so the web never keeps its own timing table
+    again. web/lib/format.ts had one (SECONDS_PER_GAME, measured on stock
+    Forge) that said "about 14 min" for a 4-deck, 8-game job that took
+    55 min 56 s, and the run page then switched to the engine's range one
+    click later (tasks/26-ux-review.md, problem 4).
+
+    Built from _job_progress on a queued stand-in job rather than by redoing
+    its arithmetic, so the played count (rounded up to whole seat rotations)
+    and the typical range are exactly what /sim-status reports once the job
+    is queued: the number quoted before the click cannot drift from the
+    number on the run page. A range for telling a person, never a timeout;
+    the ceiling is left out on purpose (CLAUDE.md, sim timing).
+    """
+    prog = _job_progress({"decks": [""] * decks, "games": games, "state": "queued"})
+    return {
+        "decks": decks,
+        "games_requested": games,
+        "games_to_play": prog["expected_games"],
+        "rotations": prog["rotations"],
+        "typical_seconds": prog["typical_seconds"],
+    }
 
 
 def _kill_process_group(proc) -> None:
@@ -1252,6 +1280,20 @@ def serve(port: int = 8484) -> None:
                         return self._send({"error": str(e)}, 404)
                     except (IndexError, ValueError) as e:
                         return self._send({"error": str(e)}, 400)
+                if parts[0] == "estimate":
+                    # Before a sim is queued: the games it will play and how
+                    # long that usually takes (sim_estimate). Bounded like
+                    # POST /simulate, so it never quotes a size that route
+                    # would refuse.
+                    try:
+                        n_decks = int(q.get("decks", [""])[0])
+                        n_games = int(q.get("games", [""])[0])
+                    except ValueError:
+                        n_decks = n_games = 0
+                    if not 2 <= n_decks <= 4 or not 1 <= n_games <= SIM_MAX_GAMES:
+                        return self._send(
+                            {"error": f"pass ?decks=2..4&games=1..{SIM_MAX_GAMES}"}, 400)
+                    return self._send(sim_estimate(n_decks, n_games))
                 if parts[0] == "rule" and len(parts) > 1:
                     return self._send(engine.rule(parts[1]))
                 if parts[0] == "keyword" and len(parts) > 1:

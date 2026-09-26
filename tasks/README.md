@@ -16,7 +16,7 @@ under "Order" disagrees with the plan or with the freeze, the plan wins.
 
 Vincent accepted every recommendation in `25-repair-plan.md` §6 on
 2026-09-26. Each row is the decision, the recommendation as accepted, and
-what still has to happen for it (dates are the plan's "needed by").
+what still has to happen for it, with the date or gate the plan gives.
 
 | # | Decision | Accepted | Follow-through |
 |---|---|---|---|

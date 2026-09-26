@@ -229,21 +229,23 @@ def _missing_commanders(meta: dict) -> list[dict]:
 def _commander_reason(meta: dict, missing: list[dict]) -> str:
     """Plain words for the UI: no em dash (CLAUDE.md copy rule)."""
     refused = set(meta.get("unsupported_cards") or [])
-    parts, any_refused, any_uncast = [], False, False
+    parts, n_refused, any_uncast = [], 0, False
     for f in missing:
         for c in f["missing"]:
             faces = {c, *(p.strip() for p in c.split(" // "))}
             if faces & refused:
-                any_refused = True
+                n_refused += 1
                 parts.append(f"{f.get('player')} ({c}, which Forge refused to load)")
             else:
                 any_uncast = True
                 parts.append(f"{f.get('player')} ({c})")
     games = max((f.get("games") or 0) for f in missing)
-    text = (f"A commander never appeared in any of the {games} games for: "
-            f"{'; '.join(parts)}.")
-    if any_refused:
+    where = "in the one game played" if games == 1 else f"in any of the {games} games"
+    text = f"A commander never appeared {where} for: {'; '.join(parts)}."
+    if n_refused == 1:
         text += " Forge played that deck without its commander."
+    elif n_refused > 1:
+        text += " Forge played those decks without their commanders."
     if any_uncast:
         text += (" A commander Forge loads but never casts is usually one its AI "
                  "refuses to play.")

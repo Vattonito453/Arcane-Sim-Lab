@@ -253,6 +253,8 @@ export default function RunPage() {
   const progress = prog && plannedGames > 0
     ? Math.min(99, Math.max(2, (gamesDone / plannedGames) * 100))
     : 2;
+  const rotated = (prog?.rotations ?? 1) > 1;
+  const perSeatOrder = rotated && prog ? Math.round(plannedGames / prog.rotations) : plannedGames;
   const stalled = prog?.stalled ?? false;
   const overTypical = (prog?.over_typical ?? false) && !stalled;
   const sinceActivity = prog?.seconds_since_activity;
@@ -408,9 +410,11 @@ export default function RunPage() {
                   A single game can legitimately run{" "}
                   {prog ? fmtDuration(prog.ceiling_seconds / plannedGames) : "a long time"}{" "}
                   before the clock draws it, so this may still recover. If it
-                  does not, the run stops on its own at{" "}
-                  {prog ? fmtDuration(prog.ceiling_seconds) : "its time ceiling"}{" "}
-                  and keeps whatever games finished.
+                  does not, the run stops on its own and keeps whatever games
+                  finished.
+                  {/* No time for that stop: the whole-run ceiling is a hang
+                      detector, hours long, and quoting it to a player reads as
+                      "this may take 16 hours" (CLAUDE.md, sim timing). */}
                 </p>
               )}
             </section>
@@ -569,8 +573,12 @@ export default function RunPage() {
                 <h2>
                   Game <span className="mono">{liveData?.n ?? 1}</span>
                   {/* Of the games PLAYED; the request was rounded up to whole
-                      seat rotations (audit A27). */}
-                  {plannedGames ? <> of <span className="mono">{plannedGames}</span></> : null}
+                      seat rotations (audit A27). /sim-live numbers games within
+                      the seat order in flight and restarts at 1 for the next,
+                      so a rotated 16-game run read "Game 1 of 16" four times.
+                      The denominator is that seat order's share. */}
+                  {plannedGames ? <> of <span className="mono">{perSeatOrder}</span></> : null}
+                  {rotated ? " in this seat order" : null}
                 </h2>
                 <span className="meta">
                   {/* Rounds, not Forge's per-player turn counter: at a table

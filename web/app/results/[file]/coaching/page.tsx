@@ -9,7 +9,7 @@
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { Chrome, Footer, PageDetails, useLlmLive, type TabDef } from "@/components/Chrome";
+import { Chrome, EngineDown, Footer, PageDetails, useLlmLive, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { CoachingReport, RunSummary } from "@/lib/types";
 import { deckLabel, pct, runTitle, stripAi } from "@/lib/format";
@@ -30,6 +30,11 @@ function CoachingInner() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [wait, setWait] = useState<number | null>(null);
+  // The engine did not answer at all. fetch() rejects with a TypeError only
+  // on a network failure ("Failed to fetch" in Chrome, "Load failed" in
+  // Safari); an HTTP error from the engine is a plain Error. The raw browser
+  // text used to render under a bare "coaching" heading.
+  const [down, setDown] = useState(false);
   // Can this deployment generate at all? null while unknown, so a slow
   // /health never flashes a false blocker. Shared with the tab row, which
   // hides this page's tab while generation is off.
@@ -39,7 +44,8 @@ function CoachingInner() {
     let live = true;
     api.runSummary(file).then((r) => live && setSummary(r)).catch((e: unknown) => {
       if (!live) return;
-      setErr(e instanceof Error ? e.message : String(e));
+      if (e instanceof TypeError) setDown(true);
+      else setErr(e instanceof Error ? e.message : String(e));
     });
     return () => {
       live = false;
@@ -66,6 +72,8 @@ function CoachingInner() {
       if (e instanceof RateLimited) {
         setWait(e.retryAfter);
         setErr(e.message);
+      } else if (e instanceof TypeError) {
+        setDown(true);
       } else {
         setErr(e instanceof Error ? e.message : String(e));
       }
@@ -86,6 +94,8 @@ function CoachingInner() {
       if (e instanceof RateLimited) {
         setWait(e.retryAfter);
         setErr(e.message);
+      } else if (e instanceof TypeError) {
+        setDown(true);
       } else {
         setErr(e instanceof Error ? e.message : String(e));
       }
@@ -134,7 +144,7 @@ function CoachingInner() {
       <div className="page">
         <div className="head">
           <div>
-            <h1>{deckName} coaching</h1>
+            <h1>{deckName ? `${deckName} coaching` : "Coaching"}</h1>
             {/* The .dck filename led this line; it is in the details
                 disclosure at the foot with the rest of the addresses. */}
             <div className="sub">
@@ -150,6 +160,8 @@ function CoachingInner() {
             </div>
           </div>
         </div>
+
+        {down && <EngineDown onRetry={() => window.location.reload()} />}
 
         {err && (
           <p className="note">
@@ -278,6 +290,14 @@ function CoachingInner() {
               Coaching isn&apos;t switched on for this server yet. The overview and
               telemetry for this sim work without it.
             </p>
+            {/* No report for this deck, but another deck may have one cached
+                from when generation was on. Without the picker it was
+                reachable only by editing the URL. */}
+            {decks.length > 1 && (
+              <div className="btns">
+                <span className="meta">{selector}</span>
+              </div>
+            )}
             {process.env.NODE_ENV !== "production" && (
               <p className="note">
                 Dev builds only: the engine reports no model key. Set{" "}
@@ -310,7 +330,7 @@ function CoachingInner() {
             without it.
           </p>
         ) : (
-          !err && <p className="note">Checking for a cached report…</p>
+          !err && !down && <p className="note">Checking for a cached report…</p>
         )}
 
         <PageDetails label="Run details">

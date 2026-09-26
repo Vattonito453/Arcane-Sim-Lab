@@ -117,8 +117,10 @@ const BADGE_COMBO = <TallyPip src={PIP_SRC.C} />;
  *  (GET /estimate) for four decks and 16 games. This line used to be a
  *  hardcoded "four decks ≈ 8 min for 16" measured on stock Forge, against a
  *  real 40 to 105 minutes. Renders nothing until the engine answers, and
- *  nothing if it does not: no figure beats a wrong one. */
-function HubEstimate() {
+ *  nothing if it does not: no figure beats a wrong one. `reloadKey` is the
+ *  page's "Try again" counter, so the estimate returns with everything else
+ *  once the engine answers again, not only on a full reload. */
+function HubEstimate({ reloadKey }: { reloadKey: number }) {
   const [est, setEst] = useState<SimEstimate | null>(null);
   useEffect(() => {
     let stop = false;
@@ -129,7 +131,7 @@ function HubEstimate() {
     return () => {
       stop = true;
     };
-  }, []);
+  }, [reloadKey]);
   if (!est) return null;
   return (
     <p className="hub-est">
@@ -291,7 +293,7 @@ export default function Home() {
           </Link>
         </div>
         {/* The primary carries its cost estimate (§6), from the engine. */}
-        <HubEstimate />
+        <HubEstimate reloadKey={reloadKey} />
 
         {/* One glass sheet holds both columns — panels never nest. */}
         <div className="glass-panel datapanel">

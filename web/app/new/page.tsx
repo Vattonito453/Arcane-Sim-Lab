@@ -343,15 +343,18 @@ function NewRunInner() {
                 </>
               )}
             </span>
-            {/* Short labels here ("16 games"): the select sits right beside the
-                button, so the played count is on screen without repeating it. */}
+            {/* Short labels here ("16 games") and a short button ("Run 16"):
+                a phone has no room for the rail's "Run 16 games", but the
+                button still carries the PLAYED count. The close-tab note is
+                on /runs from its first paint, so the bar does not repeat it. */}
             {gamesSelect(true)}
             <button
               className="btn pri"
               aria-disabled={!canRun || starting}
+              aria-label={starting ? undefined : canRun ? `Run ${plural(played, "game")}` : "Run sim"}
               onClick={() => void start()}
             >
-              {starting ? "Starting…" : "Run"}
+              {starting ? "Starting…" : canRun ? `Run ${played}` : "Run"}
             </button>
           </div>
         )}

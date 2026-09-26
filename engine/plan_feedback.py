@@ -174,6 +174,10 @@ def apply_to_plan(plan: dict, deck_name: str, tags: list[str]) -> dict:
     finisher-hinted targets; spell-majority decks tilt toward combo pieces.
     Everything else in the plan is untouched, and the raw observation rides
     along under "observed" for the UI and for coaching.
+
+    OFF BY DEFAULT: deck_plan.build_plan calls this only when
+    MTG_PLAN_FEEDBACK_APPLY=1 (repair plan WS0 task 5). record_run and
+    note_tags keep filling the store either way.
     """
     obs = observed_for(deck_name, tags)
     if not obs:

@@ -180,12 +180,48 @@ Verify after any deploy that touches the agent — one line, no jar archaeology:
 
 ```bash
 sudo docker logs deploy-worker-1 2>&1 | grep 'shim commit'
-git -C /path/to/simlab-forge-shim ls-remote origin main   # should match
+git -C /path/to/simlab-forge-shim ls-remote origin v0.16.0   # the pinned tag; should match
 ```
+
+For an annotated tag, `ls-remote` prints two lines; the commit is the one
+ending `^{}`. For v0.16.0 it is shim commit `62fe295`.
 
 If it prints `vendor-staged`, a jar from `deploy/sync-shim.sh` is being used and
 the clone was skipped — fine locally, wrong on the VM. Delete
 `deploy/vendor/simlab-forge-shim.jar` and rebuild.
+
+### Releases pin a shim tag
+
+Production no longer builds whatever the shim's `main` happens to be. The
+worker's `SIMLAB_SHIM_REF` build arg comes from `docker-compose.yml`, which
+defaults it to the current release tag (**`v0.16.0`**, the repair plan's R0
+pin, which fixes 0.15.0's attack re-ask loop), and `deploy/.env` may override
+it for a test build.
+
+- **Pin a tag, never a bare commit.** `Dockerfile.worker` clones with
+  `git clone -b "$SIMLAB_SHIM_REF"`, which accepts a branch or a tag only. A
+  branch moves under you, so a release pins a tag.
+- **The tag must exist before the build.** The ref is fetched from the GitHub
+  API before the clone, so a missing tag fails the worker build outright; the
+  containers already running keep serving. The tag `v0.16.0` on shim commit
+  `62fe295` is created at the R0 deploy, in the `simlab-forge-shim` repo:
+
+  ```bash
+  git -C /path/to/simlab-forge-shim tag -a v0.16.0 62fe295 -m "Sim Lab release pin (R0)"
+  git -C /path/to/simlab-forge-shim push origin v0.16.0
+  ```
+
+  A tag also names the exact shim source the image was built from. Running
+  the image on our own server imposes no GPL duty; if it is ever
+  distributed, that source must be public at that commit (CLAUDE.md legal
+  posture), and a pushed tag makes the commit easy to point at.
+- **Bumping the pin** is one commit in this repo, after the new tag exists:
+  the `SIMLAB_SHIM_REF` default for the worker and its mirror on the api in
+  `docker-compose.yml`, and `SHIM_FLOOR` in `deploy/preflight.py`.
+- `preflight.py` asserts the pin: it fails while the newest finished result
+  was piloted by an older shim than the pin (read from the result's
+  `meta.agent`, `simlab-forge-shim/X.Y.Z`). It also asserts
+  `MTG_PLAN_FEEDBACK_APPLY` is off. See the post-deploy order below.
 
 `COPYFILE_DISABLE=1` is not optional on macOS. Without it, tar emits AppleDouble
 `._name` sidecars for every file carrying an extended attribute; they extract as
@@ -205,6 +241,25 @@ python3 engine/tests/smoke_test.py --sim --base http://localhost/engine --key "$
 
 every check, including a real containerized Forge run. Then confirm the write
 guard from outside: an unkeyed `POST /engine/simulate` must return 401.
+
+### Post-deploy order: deploy, smoke test, then preflight
+
+After every deploy, in this order:
+
+1. **Deploy** (`redeploy.sh`, or the compose build above).
+2. **`smoke_test.py --sim`** (the command above). Its 2-game sim runs on the
+   worker that was just built, so it becomes the newest finished result.
+3. **Preflight**, inside the api container:
+
+   ```bash
+   sudo docker exec deploy-api-1 python3 /app/deploy/preflight.py --files
+   ```
+
+The order matters. Preflight's shim check reads the newest finished result,
+and a run that finished before the deploy still carries the old shim's
+version, so preflight fails on it until a new sim finishes. That failure
+after a fresh deploy means "run the smoke test first", not a broken deploy;
+the failure message says so.
 
 The address to hand out is `http://EXTERNAL_IP/` (find it with
 `gcloud compute instances describe simlab --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'`).
@@ -234,7 +289,8 @@ gcloud compute ssh simlab --zone=us-central1-a --command='~/simlab/deploy/redepl
 `redeploy.sh` with no argument rebuilds the whole stack (needed when
 engine/worker code changes, not just `web/`). Rollback: on the VM,
 `git -C ~/simlab checkout <commit>` then re-run the compose build; return to
-tracking with `git checkout main`.
+tracking with `git checkout main`. Either way, finish with the post-deploy
+order above: `smoke_test.py --sim`, then preflight.
 
 Two constraints inherited from the engine (see CLAUDE.md): scale **workers**,
 not the api — rate limits are in-process, so two api replicas double every
@@ -265,9 +321,10 @@ Against the public URL, from anywhere:
 python3 engine/tests/smoke_test.py --base https://your-url/engine --key "$SIMLAB_KEY"
 ```
 
-29 checks with `--sim`, 23 without. It covers the rules KB, the deck list, result
-payloads, `/cards`, path-traversal probes, and that `/simulate` rejects an empty
-pod, an unknown deck, and an oversized game count. Then confirm by hand that an
+Every check must pass (the count moves as checks are added, so none is quoted
+here). It covers the rules KB, the deck list, result payloads, `/cards`,
+path-traversal probes, and that `/simulate` rejects an empty pod, an unknown
+deck, and an oversized game count. Then confirm by hand that an
 unauthenticated write is refused:
 
 ```bash

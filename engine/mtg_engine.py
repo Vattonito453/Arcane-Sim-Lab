@@ -261,11 +261,21 @@ class Engine:
             # store, so future plans for these decks (and their archetypes)
             # can lean toward how they are OBSERVED to win. Never blocks a
             # result: feedback is an upgrade, not a requirement.
+            # A failure is LOGGED, never swallowed: this block used to end in
+            # a bare `pass`, so whether record_run ever completed in production
+            # could not be told from any log (repair plan WS0 task 4). The
+            # worker runs python -u, so stderr reaches the container log.
             try:
                 import plan_feedback
                 plan_feedback.record_run(payload)
-            except Exception:  # noqa: BLE001
-                pass
+            except Exception:  # noqa: BLE001 — logged below, never re-raised
+                import traceback
+                print(f"[post-run hook] plan_feedback.record_run FAILED for "
+                      f"{claimed.name if claimed else '?'}; the result is kept, "
+                      f"the plan store was not updated:",
+                      file=sys.stderr, flush=True)
+                traceback.print_exc(file=sys.stderr)
+                sys.stderr.flush()
         return {"stdout": (out_txt + "\n" + err_txt)[-2000:], "returncode": rc,
                 "result_file": str(claimed) if claimed else None,
                 "killed": killed, "timeout": timeout,

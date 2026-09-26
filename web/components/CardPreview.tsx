@@ -230,7 +230,7 @@ function PreviewLayer({
         style={shown.centred ? undefined : { left: shown.x, top: shown.y }}
         role="dialog"
         aria-label={
-          src ? `${shown.name} — card image` : `${shown.name} — no card image available`
+          src ? `${shown.name}, card image` : `${shown.name}: no card image available`
         }
         onClick={shown.centred ? onClose : undefined}
       >
@@ -242,7 +242,7 @@ function PreviewLayer({
           <div className="glass-panel cardpv-text">
             <div className="cardpv-nm">{shown.name}</div>
             <div className="cardpv-tl">
-              {f?.type_line ?? "not in the card cache yet — no image available"}
+              {f?.type_line ?? "Not in the card cache yet, so no image is available."}
             </div>
             {f?.oracle_text && <div className="cardpv-or">{f.oracle_text}</div>}
           </div>

@@ -44,7 +44,7 @@ render the same `DeckGallery`; they differ only in what a tile does.
 | `/playtest` | **Nav.** Deck chooser for the sandbox |
 | `/playtest/[deck]` | Solo goldfish sandbox (no opponent, no rules, no outcome) |
 | `/results` | **Nav.** Run history |
-| `/results/[file]` | Run report — win rates, win conditions, games table |
+| `/results/[file]` | Run report: win rates, combo lines, games table |
 | `/results/[file]/telemetry` | Did the deck's plan actually fire? |
 | `/results/[file]/coaching` | Cached coach report, or the one generate action |
 | `/results/[file]/replay/[game]` | Replay theater, `?t=` deep-links an event |
@@ -106,7 +106,7 @@ lib/
 - Data tables that carry a list (`/results`, the run report's Games table) get
   `class="games stackable"` and tag their cells `c-title` / `c-meta` / `c-act` /
   `c-drop`. Below 720px the same markup renders as stacked rows. Wide *analytic*
-  tables (Win conditions) keep their grid and gain a visible scroll cue instead.
+  tables (Combo lines) keep their grid and gain a visible scroll cue instead.
 - `.only-narrow`, `.only-narrow-inline`, `.only-wide` and `.only-fine-pointer`
   gate copy that is only true at some widths or on some inputs — a keyboard hint
   does not belong on a touch device.

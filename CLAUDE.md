@@ -28,9 +28,10 @@ engine/            Python, stdlib only, no frameworks
   deck_telemetry.py  win-con support metrics (live at /results/{file}/telemetry)
   shuffle_check.py   proves Forge shuffles; early-play rate vs the maths
   combos.py          known combos in a deck (Commander Spellbook, disk-cached)
-  analysis.py        win methods + combo assembled-vs-converted per run
+  analysis.py        win methods + combo assembly per run (a later win is correlation, not conversion)
+  forge_index.py     Forge's own card scripts, read at runtime: DFC layouts, AI:RemoveDeck flags, tutor reach (never committed)
   convert_decklist.py  decklist text -> validated .dck
-  tests/             17 test_*.py (unit) + smoke_test.py (live API) + fixtures/
+  tests/             test_*.py (unit; run them all, never a hand list) + smoke_test.py (live API) + fixtures/
 rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)
 web/               Next.js 15 App Router, React 19, TypeScript strict
   app/globals.css    THE ENTIRE DESIGN SYSTEM. Pages add no CSS.

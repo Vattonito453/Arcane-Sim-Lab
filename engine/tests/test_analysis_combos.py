@@ -175,6 +175,16 @@ def main() -> None:
         tz = analysis.turn_boards(_zone_game(A))
         assert [s["turn"] for s in tz] == list(range(1, 10)), tz
 
+    # A spell win keeps the whole card name, apostrophes included. The old
+    # pattern stopped at the first quote and reported "Thassa".
+    for line, want in [
+        ("Ai(2)-X has lost because an opponent has won by spell 'Thassa's Oracle'", "Thassa's Oracle"),
+        ("Ai(1)-Y has lost because an opponent has won by spell 'Simic Ascendancy'", "Simic Ascendancy"),
+        ("an opponent has won by spell 'Approach of the Second Sun'.", "Approach of the Second Sun"),
+    ]:
+        m = analysis._SPELL.search(line)
+        assert m and m.group(1) == want, (line, m and m.group(1))
+
     print("ALL ASSERTIONS PASSED")
 
 

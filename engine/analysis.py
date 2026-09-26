@@ -61,7 +61,9 @@ _WORDNUM = {"a": 1, "an": 1, "two": 2, "three": 3, "four": 4, "five": 5,
 # "has lost due to accumulation of 21 damage from generals". Match both, or
 # every commander-damage kill classifies as unknown.
 _LOST = re.compile(r"(.+?) has lost (?:because|due to)\s*(?:of\s+)?(.+?)\.?\s*$")
-_SPELL = re.compile(r"won by spell '([^']+)'")
+# Greedy to the last quote: card names carry apostrophes ("Thassa's Oracle"),
+# and a stop-at-the-first-quote pattern reported that win as "Thassa".
+_SPELL = re.compile(r"won by spell '(.+)'\s*\.?\s*$")
 # Actual casts only — board._CAST also matches "triggered"/"activated", which
 # would count ability text as a spell piece being cast.
 _CAST_LINE = re.compile(r"^(.+?)\s+cast\s+(.+?)(?:\s+targeting|\.|$)", re.I)

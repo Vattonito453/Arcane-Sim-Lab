@@ -63,6 +63,9 @@ function TelemetryInner() {
 
   const decks = (summary?.meta?.decks as string[] | undefined) ?? [];
   const deck = deckParam || decks[0] || "";
+  // Telemetry turns are Forge's global counter (every seat's turn counts);
+  // players count table turns, so divide by the pod size.
+  const tableTurn = (forgeTurn: number) => Math.ceil(forgeTurn / Math.max(1, decks.length));
   // meta.decks are container paths. The engine sends exact names in
   // summary.deck_labels; deckLabel is the fallback for an older engine so a
   // deck picker can never render "/data/decks/skrat s revenge 239c6293".
@@ -256,7 +259,7 @@ function TelemetryInner() {
                       </small>
                     </td>
                     <td className="val">
-                      {cmd.median_turn != null ? `T${cmd.median_turn} med` : "never"}
+                      {cmd.median_turn != null ? `turn ${tableTurn(cmd.median_turn)} (median)` : "never"}
                     </td>
                     <td className="stc">
                       <Status s={cmd.status} />
@@ -310,7 +313,7 @@ function TelemetryInner() {
               <h2>What killed it</h2>
               <span className="meta">
                 {rep.deaths.median_turn != null && (
-                  <>median death turn <span className="mono">T{rep.deaths.median_turn}</span></>
+                  <>median knockout turn <span className="mono">{tableTurn(rep.deaths.median_turn)}</span></>
                 )}
               </span>
             </div>

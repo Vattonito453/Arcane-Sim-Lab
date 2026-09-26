@@ -486,12 +486,13 @@ def _job_progress(job: dict) -> dict:
     expected_games = max(requested, rotations)
     if rotations > 1 and expected_games % rotations:
         expected_games += rotations - (expected_games % rotations)
-    low, high = estimate_sim_seconds(requested, rotations)
+    # From the PLAYED count: a 3-deck, 16-game request plays 18.
+    low, high = estimate_sim_seconds(expected_games, rotations)
     prog: dict = {
         "expected_games": expected_games,
         "rotations": rotations,
         "typical_seconds": [low, high],
-        "ceiling_seconds": int(sim_timeout_seconds(requested, rotations)),
+        "ceiling_seconds": int(sim_timeout_seconds(expected_games, rotations)),
     }
     if job["state"] != "running":
         return prog
@@ -1504,7 +1505,7 @@ def serve(port: int = 8484) -> None:
                     played = max(games, rots)
                     if rots > 1 and played % rots:
                         played += rots - (played % rots)
-                    low, high = estimate_sim_seconds(games, rots)
+                    low, high = estimate_sim_seconds(played, rots)
                     return self._send({"ok": True, "job_id": job_id, "state": "queued",
                                        "games_requested": games,
                                        "games_to_play": played,

@@ -37,10 +37,12 @@ Moxfield/Arena text export into a validated `.dck` file.)
 |---|---|---|
 | `POST /simulate` body `{"decks":["a.dck","b.dck",...], "games":20}` | 2–4 decks. Returns `{ok, job_id, state:"queued"}` immediately | — |
 | `GET /sim-status?id={job_id}` | Poll every ~4s. `state`: `running` → `done` or `error`. When done: `result` = `{games, draws, wins:{player:n}, win_rates:{player:0..1}}` | `samples/sim_status_done.json` |
+| `GET /estimate?decks=4&games=16` | Before queueing: `{decks, games_requested, games_to_play, rotations, typical_seconds:[low,high]}`. `games_to_play` is rounded up to whole seat rotations; the range is the one `/sim-status` reports once queued. The only source of a duration estimate; never keep one client-side | — |
 
 Player keys look like `"Ai(2)-Inspirit Omega"` — strip the `Ai(n)-` prefix for display.
-A 20-game sim takes 5–30 minutes: design for it (progress state, notify on completion,
-history of past runs). 409/error states must be surfaced clearly.
+A 4-deck, 16-game sim usually takes 40 to 105 minutes (ask `GET /estimate`): design for
+it (progress state, notify on completion, history of past runs). 409/error states must be
+surfaced clearly.
 
 Full per-game event logs exist as JSON files (see `samples/sim_result_game_excerpt.json`
 for the schema: games → turns → events with `action`/`raw`). To serve them, add a

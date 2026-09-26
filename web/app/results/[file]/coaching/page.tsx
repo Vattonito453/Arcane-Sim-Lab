@@ -9,10 +9,10 @@
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
+import { Chrome, Footer, PageDetails, useLlmLive, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { CoachingReport, RunSummary } from "@/lib/types";
-import { deckLabel, pct, runTitle, stripAi } from "@/lib/format";
+import { deckLabel, pct, runTitle, SHOW_OPS, stripAi } from "@/lib/format";
 
 const ST_CLASS = { running: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { running: "Running", partial: "Partial", cold: "Never fired" } as const;
@@ -30,8 +30,10 @@ function CoachingInner() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [wait, setWait] = useState<number | null>(null);
-  // null while unknown, so a slow /health never flashes a false blocker.
-  const [llmReady, setLlmReady] = useState<boolean | null>(null);
+  // Can this deployment generate at all? null while unknown, so a slow
+  // /health never flashes a false blocker. Shared with the tab row, which
+  // hides this page's tab while generation is off.
+  const llmReady = useLlmLive();
 
   useEffect(() => {
     let live = true;
@@ -39,14 +41,6 @@ function CoachingInner() {
       if (!live) return;
       setErr(e instanceof Error ? e.message : String(e));
     });
-    // Can this deployment generate at all? Silent on failure: an engine that
-    // does not report the flag leaves llmReady null, and null renders no
-    // blocker, so an older engine degrades to today's behaviour.
-    api.health()
-      .then((h) => {
-        if (live && typeof h?.llm === "boolean") setLlmReady(h.llm);
-      })
-      .catch(() => {});
     return () => {
       live = false;
     };
@@ -273,6 +267,29 @@ function CoachingInner() {
               the machinery is running.
             </p>
           </>
+        ) : rep && !rep.ok && rep.reason === "not generated" && llmReady === false ? (
+          // Generation is off (production today). This used to render a
+          // glowing primary quoting a price above a note saying the button
+          // would fail and naming an env var. A feature that cannot work
+          // shows no primary; the tab to this page is hidden too, so this is
+          // only reached by a direct link.
+          <>
+            <p className="lede">
+              Coaching isn&apos;t switched on for this server yet. The overview and
+              telemetry for this sim work without it.
+            </p>
+            {SHOW_OPS && (
+              <p className="note">
+                Dev builds only: the engine reports no model key. Set{" "}
+                <span className="mono">MTG_LLM_API_KEY</span> in{" "}
+                <span className="mono">deploy/.env</span> and redeploy to enable it.
+              </p>
+            )}
+          </>
+        ) : rep && !rep.ok && rep.reason === "not generated" && llmReady === null ? (
+          // A moment, until /health answers: never flash a primary that the
+          // next render may withdraw.
+          <p className="note">Checking whether coaching is switched on…</p>
         ) : rep && !rep.ok && rep.reason === "not generated" ? (
           <>
             <p className="lede">
@@ -286,20 +303,6 @@ function CoachingInner() {
               </button>
               <span className="meta">{selector}</span>
             </div>
-            {/* The design system forbids disabling the primary and requires the
-                blocker stated beside it. Without a model key this button quoted
-                a price and a duration and then failed on click, which is the
-                worst of both: it looks ready and is not. /health reports the
-                flag (never the key), so the page can say so up front. */}
-            {llmReady === false && (
-              <p className="note">
-                Generation is not switched on for this deployment: the engine has no
-                model key, so the button above will fail. Set{" "}
-                <span className="mono">MTG_LLM_API_KEY</span> in{" "}
-                <span className="mono">deploy/.env</span> and redeploy to enable it.
-                Everything else on this page and the telemetry tab works without it.
-              </p>
-            )}
           </>
         ) : rep && !rep.ok ? (
           <p className="note">

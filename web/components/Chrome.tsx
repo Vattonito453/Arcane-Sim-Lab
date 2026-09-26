@@ -5,11 +5,36 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Mascot } from "@/components/Mascot";
 import ApiBaseSetting from "@/components/ApiBaseSetting";
+import { healthOnce } from "@/lib/api";
+import { SERVER_DOWN, SHOW_OPS } from "@/lib/format";
 
 export interface TabDef {
   label: string;
   href: string;
   on?: boolean;
+}
+
+/** Routes whose whole purpose is model generation. They are dark while the
+ *  engine's /health says `llm` is false, which is production today, and a tab
+ *  that leads to a page that cannot work is a dead end (tasks/26-ux-review.md,
+ *  problem 6). Matched here rather than flagged on each page's TabDef so every
+ *  tab row that links a coaching page is covered, including ones added later. */
+const NEEDS_LLM = /\/coaching(?:[?#]|$)/;
+
+/** Whether generation is switched on: null while unknown. */
+export function useLlmLive(enabled = true): boolean | null {
+  const [live, setLive] = useState<boolean | null>(null);
+  useEffect(() => {
+    if (!enabled) return;
+    let alive = true;
+    healthOnce()
+      .then((h) => alive && setLive(h.llm === true))
+      .catch(() => alive && setLive(false));
+    return () => {
+      alive = false;
+    };
+  }, [enabled]);
+  return live;
 }
 
 /** The five places there are to go — every one a noun, every one a place.
@@ -53,6 +78,12 @@ export function Chrome({
   const path = usePathname() ?? "/";
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  // Only a tab row that links a model-backed page asks /health. Until the
+  // answer arrives such tabs stay hidden: production has generation off, so
+  // showing first and removing later would flash a dead tab at every player.
+  const wantsLlm = !!tabs?.some((t) => NEEDS_LLM.test(t.href));
+  const llmLive = useLlmLive(wantsLlm);
+  const shownTabs = tabs?.filter((t) => llmLive === true || !NEEDS_LLM.test(t.href));
 
   // "/" only matches exactly; the others match their whole subtree, so a replay
   // under /results/... still highlights Results. /new is checked before /decks
@@ -129,17 +160,22 @@ export function Chrome({
               {n.label}
             </Link>
           ))}
-          <div className="div" />
-          {/* The engine address is a real setting, not debug output — but it was
-              printed into two different section headers. One instance, here. */}
-          <div className="navsheet-eng">
-            <ApiBaseSetting onChanged={() => window.location.reload()} />
-          </div>
+          {/* The engine address is an operator setting: useful on a dev box
+              pointing at another engine, meaningless to a player, and it put
+              "Engine /engine Change" in the public phone menu. Dev builds only. */}
+          {SHOW_OPS && (
+            <>
+              <div className="div" />
+              <div className="navsheet-eng">
+                <ApiBaseSetting onChanged={() => window.location.reload()} />
+              </div>
+            </>
+          )}
         </nav>
       )}
-      {tabs && tabs.length > 0 && (
+      {shownTabs && shownTabs.length > 0 && (
         <nav className="tabs">
-          {tabs.map((t) => (
+          {shownTabs.map((t) => (
             <Link key={t.label} className={`tab${t.on ? " on" : ""}`} href={t.href}>
               {t.label}
             </Link>
@@ -177,5 +213,44 @@ export function PageDetails({ label = "Details", children }: { label?: string; c
       <summary>{label}</summary>
       <div className="details-body">{children}</div>
     </details>
+  );
+}
+
+/** The engine did not answer. One message for every page.
+ *
+ *  Pages used to print "Start it with python3 engine/mtg_engine.py serve 8484"
+ *  to whoever was looking, on six pages. That is an instruction for the person
+ *  running the server, so it now appears in dev builds only; players get a
+ *  sentence about their own stuff and when to come back. */
+export function EngineDown({
+  className = "lede",
+  onRetry,
+}: {
+  className?: string;
+  /** Renders a "Try again" button. Omit on pages that already retry on a
+   *  timer. */
+  onRetry?: () => void;
+}) {
+  return (
+    <>
+      <p className={className}>
+        {SHOW_OPS ? (
+          <>
+            The engine at the configured address isn&apos;t answering. Start it with{" "}
+            <span className="mono">python3 engine/mtg_engine.py serve 8484</span>, then try
+            again. (Dev builds only; players see: {SERVER_DOWN})
+          </>
+        ) : (
+          SERVER_DOWN
+        )}
+      </p>
+      {onRetry && (
+        <p className="note">
+          <button type="button" className="btn" onClick={onRetry}>
+            Try again
+          </button>
+        </p>
+      )}
+    </>
   );
 }

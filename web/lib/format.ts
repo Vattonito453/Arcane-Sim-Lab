@@ -105,23 +105,46 @@ export function scryfallArt(name: string): string {
   return `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(name)}&format=image&version=art_crop`;
 }
 
-/** Seconds a run should take, from measured Forge behaviour rather than a guess.
+/** A typical-duration range in the words a person uses.
  *
- *  Cost is dominated by pod size, not game count: median seconds per game across
- *  real runs in engine/sim_results is ~2.5 for two decks, ~11 for three and ~52
- *  for four (four-deck games ranged 25–112s, so treat that one as soft). On top
- *  of that every run pays a fixed ~7.5s for JVM start and Forge's card database.
+ *  "40 to 105 minutes", or "1.5 to 4 hours" once the top end passes two hours;
+ *  `short` gives "40–105 min" / "1.5–4 h" for the narrow run bar. The low end
+ *  rounds down and the high end up, so the range never claims more precision
+ *  than the engine's 0.6x to 1.6x spread has.
  *
- *  The previous flat 45 s/game told you a two-deck 16-game run would take 12
- *  minutes when it takes about half a minute.
- */
-const SECONDS_PER_GAME: Record<number, number> = { 2: 2.5, 3: 11, 4: 52 };
-const STARTUP_SECONDS = 7.5;
-
-export function estimateSeconds(games: number, decks: number): number {
-  const per = SECONDS_PER_GAME[decks] ?? SECONDS_PER_GAME[4];
-  return STARTUP_SECONDS + games * per;
+ *  The numbers always come from the engine (GET /estimate, or /sim-status
+ *  progress.typical_seconds). The web used to keep its own per-game table,
+ *  measured on stock Forge, and quoted "about 14 min" for a 4-deck, 8-game job
+ *  that took 55 min 56 s (tasks/26-ux-review.md, problem 4). Never again: there
+ *  is one estimate, and it lives in engine/mtg_engine.py estimate_sim_seconds. */
+export function fmtRange(lowSeconds: number, highSeconds: number, short = false): string {
+  if (!Number.isFinite(lowSeconds) || !Number.isFinite(highSeconds)) return "–";
+  const lowMin = Math.max(1, Math.floor(lowSeconds / 60));
+  const highMin = Math.max(lowMin + 1, Math.ceil(highSeconds / 60));
+  if (highMin <= 120) return short ? `${lowMin}–${highMin} min` : `${lowMin} to ${highMin} minutes`;
+  // Half-hour steps: "1.5 to 4 hours" reads; "81 to 211 minutes" does not.
+  const lowH = Math.max(0.5, Math.floor(lowSeconds / 1800) / 2);
+  const highH = Math.max(lowH + 0.5, Math.ceil(highSeconds / 1800) / 2);
+  return short ? `${lowH}–${highH} h` : `${lowH} to ${highH} hours`;
 }
+
+/** "once", "twice", "four times": how often each deck takes the first seat. */
+export function timesWord(n: number): string {
+  const words: Record<number, string> = {
+    1: "once", 2: "twice", 3: "three times", 4: "four times", 8: "eight times",
+  };
+  return words[n] ?? `${n} times`;
+}
+
+/** Operator detail (the command that starts the engine, env var names, the
+ *  engine address setting) is for whoever runs the server, never for players
+ *  (tasks/26-ux-review.md, problem 6). Next inlines NODE_ENV at build time, so a
+ *  production build never renders it; `next dev` always does. */
+export const SHOW_OPS = process.env.NODE_ENV !== "production";
+
+/** What a player sees when the engine does not answer. */
+export const SERVER_DOWN =
+  "Sim Lab's server isn't answering. Your decks and sims are safe. Try again in a minute.";
 
 /** Readable deck name from whatever the job payload carries.
  *

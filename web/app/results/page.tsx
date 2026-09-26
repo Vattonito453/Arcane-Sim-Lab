@@ -15,9 +15,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import type { ResultIndexEntry, SimSummary } from "@/lib/types";
 import { deckSlug, fmtDate, pct, runTitle, stripAi, timeAgo } from "@/lib/format";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 
-const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 const PAGE = 25;
 
 function topWin(s: SimSummary): [string, number] | null {
@@ -81,10 +80,7 @@ function ResultsIndexInner() {
         <h1>Results</h1>
 
         {err ? (
-          <p className="lede">
-            The engine isn&apos;t answering, so past runs can&apos;t be listed. Start it with{" "}
-            <span className="mono">{ENGINE_CMD}</span> and reload.
-          </p>
+          <EngineDown onRetry={() => window.location.reload()} />
         ) : !rows ? (
           <p className="lede">Loading past runs…</p>
         ) : rows.length === 0 ? (

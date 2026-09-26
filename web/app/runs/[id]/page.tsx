@@ -5,13 +5,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import type { JobStatus, LiveGame, SimSummary } from "@/lib/types";
-import { deckSlug, estimateSeconds, fmtDuration, pct, plural, runTitle, scryfallArt, shortName, stripAi, timeAgo } from "@/lib/format";
+import { deckSlug, fmtDuration, fmtRange, pct, plural, runTitle, scryfallArt, shortName, stripAi, timeAgo } from "@/lib/format";
 import { boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
-import { Chrome, Footer, PageDetails } from "@/components/Chrome";
+import { Chrome, EngineDown, Footer, PageDetails } from "@/components/Chrome";
 
-const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 const POLL_MS = 4000;
 const LIVE_POLL_MS = 1500;
 const PLAY_TICK_MS = 50;
@@ -242,17 +241,18 @@ export default function RunPage() {
   // Prefer all of that over guessing from the browser.
   const prog = status?.progress;
   const plannedGames = prog?.expected_games ?? games ?? 16;
-  // Seat-aware fallback for an engine that predates /sim-status.progress: a
-  // four-deck game costs ~20x a two-deck one.
-  const estimate = prog ? prog.typical_seconds[1] : estimateSeconds(games ?? 16, decks.length || 4);
-  const typicalLow = prog?.typical_seconds[0] ?? estimate;
+  // The engine's typical range, the same one /new quoted before the click
+  // (GET /estimate is built from the same function). An engine too old to
+  // send progress gets no range rather than a browser-side guess: the old
+  // client table said "about 14 min" for a job that took 56.
+  const typical = prog?.typical_seconds ?? null;
   const gamesDone = prog?.games_done ?? 0;
   // Fill by games finished, not by wall clock. A clock fill is a countdown
   // dressed as progress: it advanced at the same rate whether Forge was
   // playing or had died ten minutes ago (audit A28).
   const progress = prog && plannedGames > 0
     ? Math.min(99, Math.max(2, (gamesDone / plannedGames) * 100))
-    : Math.min(95, Math.max(2, (live / estimate) * 100));
+    : 2;
   const stalled = prog?.stalled ?? false;
   const overTypical = (prog?.over_typical ?? false) && !stalled;
   const sinceActivity = prog?.seconds_since_activity;
@@ -290,16 +290,9 @@ export default function RunPage() {
             <h1>
               {podTitle}
             </h1>
-            <p className="lede">
-              Can&apos;t reach the engine yet. This page retries every 4 seconds, so you can
-              leave it open.
-            </p>
+            <EngineDown />
             <p className="note">
-              <span className="st bad">
-                <i />
-                Engine unreachable
-              </span>{": "}
-              is <span className="mono">{ENGINE_CMD}</span> running?
+              This page checks again every 4 seconds, so you can leave it open.
             </p>
             <p className="note">
               <Link className="q" href="/results">
@@ -347,11 +340,14 @@ export default function RunPage() {
               <p className="note">
                 {state === "queued" ? (
                   <>
-                    Not started yet. A pod this size usually takes{" "}
-                    <b>
-                      {fmtDuration(typicalLow)} to {fmtDuration(estimate)}
-                    </b>
-                    .
+                    Not started yet.
+                    {typical && (
+                      <>
+                        {" "}A pod this size usually takes{" "}
+                        <b>{fmtRange(typical[0], typical[1])}</b>.
+                      </>
+                    )}{" "}
+                    You can close this tab; it lands in Results when it&apos;s done.
                   </>
                 ) : (
                   <>
@@ -373,15 +369,16 @@ export default function RunPage() {
                         )}
                       </>
                     )}
-                    . Usually {fmtDuration(typicalLow)} to {fmtDuration(estimate)}{" "}
-                    for this pod
+                    .
+                    {typical && <> Usually {fmtRange(typical[0], typical[1])} for this pod</>}
                     {prog?.eta_seconds != null && gamesDone > 0 && (
                       <>
-                        ; at this run&apos;s pace, about{" "}
+                        {typical ? "; at" : " At"} this run&apos;s pace, about{" "}
                         <b>{fmtDuration(prog.eta_seconds)}</b> left
                       </>
                     )}
-                    .
+                    {(typical || (prog?.eta_seconds != null && gamesDone > 0)) && "."}{" "}
+                    You can close this tab; it lands in Results when it&apos;s done.
                   </>
                 )}
               </p>
@@ -518,7 +515,7 @@ export default function RunPage() {
                 ? stillWatching
                   ? "The playback below finishes first; the full report is one click away."
                   : "Taking you to the full report…"
-                : "The result file isn't listed yet. Check past runs on the home page."}
+                : "The report isn't listed yet. It will appear under Results."}
             </p>
             <div className="figs">
               <div className="fig">
@@ -571,7 +568,9 @@ export default function RunPage() {
               <div className="sh">
                 <h2>
                   Game <span className="mono">{liveData?.n ?? 1}</span>
-                  {games ? <> of <span className="mono">{games}</span></> : null}
+                  {/* Of the games PLAYED; the request was rounded up to whole
+                      seat rotations (audit A27). */}
+                  {plannedGames ? <> of <span className="mono">{plannedGames}</span></> : null}
                 </h2>
                 <span className="meta">
                   {/* Rounds, not Forge's per-player turn counter: at a table
@@ -609,8 +608,15 @@ export default function RunPage() {
                 />
                 <TabletopNote read={(liveGame?.zones?.length ?? 0) > 0} />
               </div>
+              {/* This section also stays up after the sim finishes, until the
+                  viewer's playback runs out, and it used to say "keeps
+                  running" over a finished job. Say what is true now. */}
               <p className="note">
-                Played back at a watchable pace, not live. The simulation keeps running.
+                {state === "running"
+                  ? "Played back at a watchable pace, not live. The sim keeps running while you watch."
+                  : state === "done"
+                    ? "Played back at a watchable pace. The sim itself has finished."
+                    : "Played back at a watchable pace, not live."}
               </p>
               <div className="loglist tail">
                 {/* Follows the playhead, not the buffer. The full log is

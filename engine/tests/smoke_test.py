@@ -116,6 +116,25 @@ def main() -> int:
         check("at least one deck resolves a commander name",
               any(d.get("commander") for d in decks))
 
+    print("\nsim sizing (what /new quotes before the click)")
+    st, est = call(base, "/estimate?decks=4&games=16")
+    if check("GET /estimate is 200", st == 200 and isinstance(est, dict), f"status {st}: {est}"):
+        typical = est.get("typical_seconds") or []
+        check("estimate states the games it will play", est.get("games_to_play") == 16, str(est))
+        check("estimate carries a typical range",
+              len(typical) == 2 and all(isinstance(x, int) for x in typical)
+              and 0 < typical[0] < typical[1], str(est))
+        # The hang ceiling is hours; quoting it to a player reads as "this may
+        # take 16 hours" (CLAUDE.md, sim timing). It must stay off this route.
+        check("estimate carries no timeout ceiling", "ceiling_seconds" not in est, str(est))
+    st, est3 = call(base, "/estimate?decks=3&games=16")
+    rots3 = est3.get("rotations") if isinstance(est3, dict) else None
+    check("estimate rounds up to whole seat rotations",
+          st == 200 and isinstance(est3, dict)
+          and est3.get("games_to_play") == (18 if rots3 == 3 else 16), f"status {st}: {est3}")
+    st, _ = call(base, "/estimate?decks=9&games=16")
+    check("estimate refuses a pod /simulate would refuse", st == 400, f"status {st}")
+
     print("\nresults index and payloads")
     st, results = call(base, "/results")
     ok_res = check("GET /results is a list", st == 200 and isinstance(results, list))

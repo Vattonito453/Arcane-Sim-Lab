@@ -12,16 +12,14 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { api } from "@/lib/api";
+import { api, type SimEstimate } from "@/lib/api";
 import type { DeckEntry, ResultIndexEntry } from "@/lib/types";
-import { pct, runTitle, stripAi, timeAgo } from "@/lib/format";
-import { Chrome, Footer } from "@/components/Chrome";
+import { fmtRange, pct, runTitle, stripAi, timeAgo } from "@/lib/format";
+import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 import { Mascot } from "@/components/Mascot";
 import { PIP_SRC } from "@/components/ManaPips";
 import { factsKey } from "@/components/DeckGallery";
 import { loadCards, type CardMap } from "@/lib/cards";
-
-const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 
 interface Health {
   rules: number;
@@ -89,7 +87,9 @@ function TallyCell({
     <div className="tally-cell">
       {badge}
       <span className="tally-text">
-        <b className="mono">{v.toLocaleString("en-US")}</b> {label}
+        {/* A missing figure is an en dash, not a 0: with the engine down
+            this read "0 rules loaded". */}
+        <b className="mono">{value == null ? "–" : v.toLocaleString("en-US")}</b> {label}
       </span>
     </div>
   );
@@ -112,6 +112,34 @@ const BADGE_SUN = <TallyPip src={PIP_SRC.W} />;
 const BADGE_WATER = <TallyPip src={PIP_SRC.U} />;
 const BADGE_FIRE = <TallyPip src={PIP_SRC.R} />;
 const BADGE_COMBO = <TallyPip src={PIP_SRC.C} />;
+
+/** The cost of the default sim, under the primary: the engine's own range
+ *  (GET /estimate) for four decks and 16 games. This line used to be a
+ *  hardcoded "four decks ≈ 8 min for 16" measured on stock Forge, against a
+ *  real 40 to 105 minutes. Renders nothing until the engine answers, and
+ *  nothing if it does not: no figure beats a wrong one. `reloadKey` is the
+ *  page's "Try again" counter, so the estimate returns with everything else
+ *  once the engine answers again, not only on a full reload. */
+function HubEstimate({ reloadKey }: { reloadKey: number }) {
+  const [est, setEst] = useState<SimEstimate | null>(null);
+  useEffect(() => {
+    let stop = false;
+    api
+      .estimate(4, 16)
+      .then((e) => !stop && setEst(e))
+      .catch(() => {});
+    return () => {
+      stop = true;
+    };
+  }, [reloadKey]);
+  if (!est) return null;
+  return (
+    <p className="hub-est">
+      Four decks, {est.games_to_play} games: usually{" "}
+      {fmtRange(est.typical_seconds[0], est.typical_seconds[1])}.
+    </p>
+  );
+}
 
 interface DeckAgg {
   name: string;
@@ -217,21 +245,7 @@ export default function Home() {
         <Mascot />
         <h1 className="wordmark">Arcane Sim Lab</h1>
         {down && (
-          <p className="prompt">
-            The engine at the configured address isn&apos;t answering. Start it with{" "}
-            <span className="mono">{ENGINE_CMD}</span>{" "}
-            <a
-              className="bl"
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setReloadKey((k) => k + 1);
-              }}
-            >
-              and retry
-            </a>
-            .
-          </p>
+          <EngineDown className="prompt" onRetry={() => setReloadKey((k) => k + 1)} />
         )}
       </div>
 
@@ -278,9 +292,8 @@ export default function Home() {
             Explore decks
           </Link>
         </div>
-        {/* The primary carries its cost estimate (§6): pod size, not game
-            count, drives the wait. */}
-        <p className="hub-est">two decks ≈ 5 s a game · four decks ≈ 8 min for 16</p>
+        {/* The primary carries its cost estimate (§6), from the engine. */}
+        <HubEstimate reloadKey={reloadKey} />
 
         {/* One glass sheet holds both columns — panels never nest. */}
         <div className="glass-panel datapanel">

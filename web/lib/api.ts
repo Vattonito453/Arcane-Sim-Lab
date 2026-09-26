@@ -1,5 +1,6 @@
-/** Engine API client. Base URL is runtime-configurable per API_SPEC.md:
- *  localStorage "simlab.apiBase" → NEXT_PUBLIC_API_BASE → http://127.0.0.1:8484 */
+/** Engine API client. Base URL per API_SPEC.md:
+ *  localStorage "simlab.apiBase" (dev builds only) → NEXT_PUBLIC_API_BASE →
+ *  http://127.0.0.1:8484 */
 import type {
   AnalysisReport,
   CoachingReport,
@@ -19,8 +20,15 @@ import type {
   TelemetryReport,
 } from "./types";
 
+/** The saved override is honoured only in dev builds. The only control that
+ *  writes it (ApiBaseSetting) renders only in dev, so a production build that
+ *  still read it would strand any player who once saved a bad address there
+ *  (it used to sit in the public phone nav): every page would say the server
+ *  isn't answering, forever, with nothing in the UI to clear it. The literal
+ *  NODE_ENV comparison lets the minifier drop the branch from the production
+ *  bundle (see SERVER_DOWN in format.ts). */
 export function apiBase(): string {
-  if (typeof window !== "undefined") {
+  if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
     const saved = window.localStorage.getItem("simlab.apiBase");
     if (saved) return saved.replace(/\/$/, "");
   }
@@ -78,7 +86,9 @@ async function fail(r: Response, method: string, path: string): Promise<never> {
     throw new RateLimited(msg || "rate limited", retry || 60);
   }
   if (r.status === 401) {
-    throw new Error(msg || "this action needs an API key. Set one under Engine");
+    // Was "Set one under Engine", but nothing in the interface sets a key: the
+    // key is baked into the build (NEXT_PUBLIC_API_KEY) or saved by hand.
+    throw new Error(msg || "this server needs a key to do that, and this site isn't sending one");
   }
   throw new Error(`${method} ${path} → ${r.status}${msg ? `: ${msg.slice(0, 200)}` : ""}`);
 }
@@ -113,18 +123,51 @@ async function post<T>(path: string, body: unknown): Promise<T> {
   return r.json();
 }
 
+/** GET /health: KB stats, plus whether generation is switched on at all. */
+export interface Health {
+  rules: number;
+  keywords: number;
+  glossary_terms: number;
+  /** A boolean flag only; the key itself is never sent to the browser.
+   *  Optional so an older engine still typechecks. */
+  llm?: boolean;
+  llm_model?: string | null;
+}
+
+/** GET /estimate: what a sim of this size will play and how long it usually
+ *  takes, before it is queued. The same numbers /sim-status reports once the
+ *  job exists, so the button and the run page can never disagree. */
+export interface SimEstimate {
+  decks: number;
+  games_requested: number;
+  /** Rounded up to whole seat rotations: every deck sits in every seat the
+   *  same number of times, so this can be MORE than requested. */
+  games_to_play: number;
+  rotations: number;
+  /** [low, high] seconds a sim this size typically takes. Not a timeout. */
+  typical_seconds: [number, number];
+}
+
+let healthMemo: Promise<Health> | null = null;
+
+/** /health, fetched once per page load and shared. The flags it carries only
+ *  change on a redeploy, and several components ask (the tab row hides
+ *  Coaching while `llm` is false). A failure is not remembered, so the next
+ *  caller tries again. */
+export function healthOnce(): Promise<Health> {
+  if (!healthMemo) {
+    healthMemo = api.health().catch((e: unknown) => {
+      healthMemo = null;
+      throw e;
+    });
+  }
+  return healthMemo;
+}
+
 export const api = {
-  /** KB stats, plus whether generation is switched on at all. `llm` is a
-   *  boolean flag only; the key itself is never sent to the browser. Optional
-   *  so an older engine still typechecks. */
-  health: () =>
-    get<{
-      rules: number;
-      keywords: number;
-      glossary_terms: number;
-      llm?: boolean;
-      llm_model?: string | null;
-    }>("/health"),
+  health: () => get<Health>("/health"),
+  estimate: (decks: number, games: number) =>
+    get<SimEstimate>(`/estimate?decks=${decks}&games=${games}`),
   decks: () => get<DeckEntry[]>("/decks"),
   /** One deck's card names, counts expanded — the playtest sandbox's load. */
   deck: (file: string) => get<DeckCards>(`/decks/${encodeURIComponent(file)}`),

@@ -9,7 +9,7 @@
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
+import { Chrome, EngineDown, Footer, PageDetails, useLlmLive, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { CoachingReport, RunSummary } from "@/lib/types";
 import { deckLabel, pct, runTitle, stripAi } from "@/lib/format";
@@ -30,23 +30,23 @@ function CoachingInner() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [wait, setWait] = useState<number | null>(null);
-  // null while unknown, so a slow /health never flashes a false blocker.
-  const [llmReady, setLlmReady] = useState<boolean | null>(null);
+  // The engine did not answer at all. fetch() rejects with a TypeError only
+  // on a network failure ("Failed to fetch" in Chrome, "Load failed" in
+  // Safari); an HTTP error from the engine is a plain Error. The raw browser
+  // text used to render under a bare "coaching" heading.
+  const [down, setDown] = useState(false);
+  // Can this deployment generate at all? null while unknown, so a slow
+  // /health never flashes a false blocker. Shared with the tab row, which
+  // hides this page's tab while generation is off.
+  const llmReady = useLlmLive();
 
   useEffect(() => {
     let live = true;
     api.runSummary(file).then((r) => live && setSummary(r)).catch((e: unknown) => {
       if (!live) return;
-      setErr(e instanceof Error ? e.message : String(e));
+      if (e instanceof TypeError) setDown(true);
+      else setErr(e instanceof Error ? e.message : String(e));
     });
-    // Can this deployment generate at all? Silent on failure: an engine that
-    // does not report the flag leaves llmReady null, and null renders no
-    // blocker, so an older engine degrades to today's behaviour.
-    api.health()
-      .then((h) => {
-        if (live && typeof h?.llm === "boolean") setLlmReady(h.llm);
-      })
-      .catch(() => {});
     return () => {
       live = false;
     };
@@ -72,6 +72,8 @@ function CoachingInner() {
       if (e instanceof RateLimited) {
         setWait(e.retryAfter);
         setErr(e.message);
+      } else if (e instanceof TypeError) {
+        setDown(true);
       } else {
         setErr(e instanceof Error ? e.message : String(e));
       }
@@ -92,6 +94,8 @@ function CoachingInner() {
       if (e instanceof RateLimited) {
         setWait(e.retryAfter);
         setErr(e.message);
+      } else if (e instanceof TypeError) {
+        setDown(true);
       } else {
         setErr(e instanceof Error ? e.message : String(e));
       }
@@ -140,7 +144,7 @@ function CoachingInner() {
       <div className="page">
         <div className="head">
           <div>
-            <h1>{deckName} coaching</h1>
+            <h1>{deckName ? `${deckName} coaching` : "Coaching"}</h1>
             {/* The .dck filename led this line; it is in the details
                 disclosure at the foot with the rest of the addresses. */}
             <div className="sub">
@@ -156,6 +160,8 @@ function CoachingInner() {
             </div>
           </div>
         </div>
+
+        {down && <EngineDown onRetry={() => window.location.reload()} />}
 
         {err && (
           <p className="note">
@@ -273,6 +279,37 @@ function CoachingInner() {
               the machinery is running.
             </p>
           </>
+        ) : rep && !rep.ok && rep.reason === "not generated" && llmReady === false ? (
+          // Generation is off (production today). This used to render a
+          // glowing primary quoting a price above a note saying the button
+          // would fail and naming an env var. A feature that cannot work
+          // shows no primary; the tab to this page is hidden too, so this is
+          // only reached by a direct link.
+          <>
+            <p className="lede">
+              Coaching isn&apos;t switched on for this server yet. The overview and
+              telemetry for this sim work without it.
+            </p>
+            {/* No report for this deck, but another deck may have one cached
+                from when generation was on. Without the picker it was
+                reachable only by editing the URL. */}
+            {decks.length > 1 && (
+              <div className="btns">
+                <span className="meta">{selector}</span>
+              </div>
+            )}
+            {process.env.NODE_ENV !== "production" && (
+              <p className="note">
+                Dev builds only: the engine reports no model key. Set{" "}
+                <span className="mono">MTG_LLM_API_KEY</span> in{" "}
+                <span className="mono">deploy/.env</span> and redeploy to enable it.
+              </p>
+            )}
+          </>
+        ) : rep && !rep.ok && rep.reason === "not generated" && llmReady === null ? (
+          // A moment, until /health answers: never flash a primary that the
+          // next render may withdraw.
+          <p className="note">Checking whether coaching is switched on…</p>
         ) : rep && !rep.ok && rep.reason === "not generated" ? (
           <>
             <p className="lede">
@@ -286,20 +323,6 @@ function CoachingInner() {
               </button>
               <span className="meta">{selector}</span>
             </div>
-            {/* The design system forbids disabling the primary and requires the
-                blocker stated beside it. Without a model key this button quoted
-                a price and a duration and then failed on click, which is the
-                worst of both: it looks ready and is not. /health reports the
-                flag (never the key), so the page can say so up front. */}
-            {llmReady === false && (
-              <p className="note">
-                Generation is not switched on for this deployment: the engine has no
-                model key, so the button above will fail. Set{" "}
-                <span className="mono">MTG_LLM_API_KEY</span> in{" "}
-                <span className="mono">deploy/.env</span> and redeploy to enable it.
-                Everything else on this page and the telemetry tab works without it.
-              </p>
-            )}
           </>
         ) : rep && !rep.ok ? (
           <p className="note">
@@ -307,7 +330,7 @@ function CoachingInner() {
             without it.
           </p>
         ) : (
-          !err && <p className="note">Checking for a cached report…</p>
+          !err && !down && <p className="note">Checking for a cached report…</p>
         )}
 
         <PageDetails label="Run details">

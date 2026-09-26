@@ -10,8 +10,9 @@ Two defects this pins (repair plan WS11 task 2, UX review problem 2):
    onto the battlefield). Shim games must be read from zone records, and the
    note must say which path a report is on.
 2. A line whose deck merely won later, by any means, was read as "fired" and
-   the results page badged it "AI can fire this; results meaningful". The
-   reading is gone; the count survives unbadged as `won_after_assembly`.
+   the results page badged it as a line the AI could fire, with meaningful
+   results. The reading is gone; the count survives unbadged as
+   `won_after_assembly`.
 
 Run: py engine/tests/test_analysis_combos.py   (no network, no JVM)
 """

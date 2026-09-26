@@ -607,6 +607,52 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .combo-more:hover { text-decoration: underline; }
 .combo-oneaway-h { margin-top: 14px; margin-bottom: 4px; }
 
+/* ── combo lines (results) — Commander Spellbook variants folded into families ──
+   The shared .games table is one line per row by design (nowrap, 42px). This
+   one wraps: a row names its cards, its alternatives and Spellbook's results,
+   and forcing that onto one line is what made the old table 1692px wide inside
+   a 1196px scroller at 1440. Figures stay on one line. Rows are not clickable,
+   so they take no hover ground; the Details button is the only control. */
+.cl-table td { white-space: normal; height: auto; padding: 10px 14px; vertical-align: top; line-height: 1.5; }
+.cl-table td.r { white-space: nowrap; }
+.cl-table th { white-space: normal; vertical-align: bottom; }
+.cl-table tbody tr:hover { background: transparent; }
+.cl-table tbody tr:last-child td { border-bottom: 1px solid var(--hairline); }
+.cl-table tbody:last-child tr:last-child td { border-bottom: 0; }
+.cl-table .cl-line { min-width: 280px; }
+.cl-table .cl-miss { min-width: 150px; max-width: 260px; }
+.cl-deck th { text-align: left; padding: 14px 14px 6px; font-size: 13.5px; font-weight: 600;
+  color: var(--ink-1); border-bottom: 1px solid var(--hairline); }
+.cl-table tbody + tbody .cl-deck th { border-top: 1px solid var(--hairline-strong); }
+.cl-deckmeta { margin-left: 10px; font-size: 12px; font-weight: 400; color: var(--ink-4); }
+.cl-cards { color: var(--ink-2); }
+.cl-card { color: var(--ink-1); }
+.cl-role { color: var(--ink-4); }
+/* Spellbook's results, verbatim. Neutral, not violet: a data row carries no
+   accent colour (DESIGN_SYSTEM.md §10), and these are data, not controls. */
+.cl-chips { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 6px; list-style: none; }
+.cl-chip { font: 400 11.5px/1.6 var(--font-data); color: var(--ink-2);
+  border: 1px solid var(--hairline-strong); border-radius: var(--r-pill); padding: 0 8px; }
+.cl-count { margin-top: 5px; font-size: 12px; color: var(--ink-4); }
+.cl-toggle { display: inline-flex; align-items: center; min-height: 28px; padding: 2px 0;
+  background: none; border: 0; font: 500 12.5px var(--font-ui); color: var(--mana-cyan-ink);
+  white-space: nowrap; }
+.cl-toggle::before { content: "\25B8"; margin-right: 6px; }
+.cl-toggle[aria-expanded="true"]::before { content: "\25BE"; }
+.cl-toggle:hover { text-decoration: underline; }
+.cl-foldrow td { padding: 6px 14px 8px; }
+.cl-detail td { background: var(--row-ground); padding: 12px 14px 16px; }
+.cl-detail-body { max-width: 820px; }
+.cl-detail-body > a { display: inline-block; margin-top: 12px; font-size: 12.5px; }
+.cl-dblock + .cl-dblock { margin-top: 12px; }
+.cl-dh { font-size: 12px; color: var(--ink-4); margin-bottom: 3px; }
+.cl-steps { white-space: pre-line; color: var(--ink-2); font-size: 13px; line-height: 1.6; }
+.cl-variants { list-style: none; columns: 2 320px; column-gap: 24px; }
+.cl-variants li { padding: 2px 0; font-size: 12.5px; color: var(--ink-2); break-inside: avoid; }
+.cl-vstat { margin-left: 8px; font-family: var(--font-data); font-size: 11.5px; color: var(--ink-4); }
+.cl-dfacts p { font-size: 12.5px; color: var(--ink-3); }
+.cl-dfacts p + p { margin-top: 4px; }
+
 /* ── replay theater ── */
 .stage { display: grid; grid-template-columns: 1fr 330px; gap: 40px; align-items: start; }
 /* A rail with nothing in it is not a layout — it is 330px of apology. */

@@ -77,8 +77,22 @@ def process_one(job: dict) -> None:
         jobqueue.finish(job["id"], error=str(e))
 
 
+def _start_forge_index() -> None:
+    """Build Forge's card index (forge_index.py) if it is missing, on a daemon
+    thread. The import pre-check and the API read it from the shared volume;
+    the worker is the only container with Forge, so it builds it. Never blocks
+    the queue and never takes the worker down: at worst the index is missing
+    and imports say their checks were skipped."""
+    try:
+        import forge_index
+        forge_index.ensure_index_async(log=print)
+    except Exception as e:  # noqa: BLE001
+        print(f"worker: forge index not started: {type(e).__name__}: {e}")
+
+
 def loop() -> None:
     print(f"worker: polling {jobqueue.DB_PATH}")
+    _start_forge_index()
     # A restart mid-sim (redeploy, crash) leaves the job 'running' forever —
     # nothing else ever touches that state. We are the only worker on this
     # queue, so anything 'running' right now is provably dead: requeue it and

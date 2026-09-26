@@ -1044,7 +1044,7 @@ def _import_deck(payload: dict) -> dict:
     try:
         content, report = convert(text, name, commander)
     except SystemExit as e:  # convert() sys.exit()s on hard failures
-        return {"ok": False, "error": str(e)}
+        return {"ok": False, "error": str(e), "warnings": []}
     # Name-only slugs collide: two callers importing "Zombies" overwrite each
     # other. Suffix with a content hash so distinct lists get distinct files and
     # re-importing the same list is idempotent.
@@ -1056,7 +1056,10 @@ def _import_deck(payload: dict) -> dict:
     if saved:
         IMPORTED_DECKS.mkdir(parents=True, exist_ok=True)
         (IMPORTED_DECKS / slug).write_text(content, encoding="utf-8")
+    # The import pre-check (repair plan WS4 task 3): unknown cards, cards
+    # Forge's AI won't cast, or a note that the Forge index is not built yet.
     return {"ok": True, "file": slug, "saved": saved, "report": report,
+            "warnings": report.get("warnings", []),
             "cards_cached": _warm_card_cache(content),
             "combos": _deck_combos(content)}
 

@@ -145,6 +145,9 @@ def test_http_route():
                 "?decks=four&games=16"):
         st, body = _get(base, "/estimate" + bad)
         assert st == 400 and "error" in body, (bad, st, body)
+    # The route is exactly /estimate: a longer path is not an alias for it.
+    st, body = _get(base, "/estimate/anything?decks=4&games=16")
+    assert st == 404, (st, body)
     print("  GET /estimate answers, and refuses sizes /simulate would refuse: OK")
 
 

@@ -1280,7 +1280,7 @@ def serve(port: int = 8484) -> None:
                         return self._send({"error": str(e)}, 404)
                     except (IndexError, ValueError) as e:
                         return self._send({"error": str(e)}, 400)
-                if parts[0] == "estimate":
+                if parts[0] == "estimate" and len(parts) == 1:
                     # Before a sim is queued: the games it will play and how
                     # long that usually takes (sim_estimate). Bounded like
                     # POST /simulate, so it never quotes a size that route

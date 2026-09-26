@@ -177,6 +177,12 @@ def _slim(c: dict, face: dict | None = None) -> dict:
         "art_crop": img.get("art_crop"),
         "normal": img.get("normal"),
         "scryfall_uri": c.get("scryfall_uri"),
+        # The CARD's layout (transform, modal_dfc, split, adventure...), also on
+        # face entries. convert_decklist falls back to it to turn a pasted
+        # "Front // Back" into the name Forge loads when the Forge index is
+        # missing. Entries cached before this field existed have none; they are
+        # not bulk re-fetched, so the fallback simply skips them.
+        "layout": c.get("layout"),
     }
 
 

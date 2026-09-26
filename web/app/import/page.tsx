@@ -389,25 +389,31 @@ export default function ImportPage() {
                 </div>
               )}
               {/* What the engine's pre-check found before a one-hour sim: cards
-                  Forge can't load or its AI won't cast. Every card is named;
-                  the list is the actionable part. */}
-              {warnings.map((w, i) => (
-                <div className="ck" key={`${w.kind}-${i}`}>
-                  <span className="lbl">
-                    {w.message}
-                    {w.cards.length > 0 && (
-                      <>
-                        {" "}
-                        <small>{w.cards.join(" · ")}</small>
-                      </>
-                    )}
-                  </span>
-                  <span className="res st warn">
-                    <i />
-                    Needs a look
-                  </span>
-                </div>
-              ))}
+                  Forge can't load or its AI won't cast. The engine owns the
+                  card list: convert_decklist._warnings writes every name into
+                  `message`, so the page renders the message alone. The list is
+                  appended only as a fallback for a message that omits a card,
+                  never to repeat names the user has just read. */}
+              {warnings.map((w, i) => {
+                const unnamed = w.cards.filter((c) => !w.message.includes(c));
+                return (
+                  <div className="ck" key={`${w.kind}-${i}`}>
+                    <span className="lbl">
+                      {w.message}
+                      {unnamed.length > 0 && (
+                        <>
+                          {" "}
+                          <small>{unnamed.join(" · ")}</small>
+                        </>
+                      )}
+                    </span>
+                    <span className="res st warn">
+                      <i />
+                      Needs a look
+                    </span>
+                  </div>
+                );
+              })}
 
               {checks.count > 0 && (
                 <p className="note">

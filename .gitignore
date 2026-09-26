@@ -83,3 +83,6 @@ __pycache__/
 
 # shim binary staged by deploy/sync-shim.sh — never committed
 deploy/vendor/*.jar
+
+# Claude Code workflow worktrees (one per parallel agent); never commit
+.claude/worktrees/

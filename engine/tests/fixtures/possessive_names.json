@@ -1,0 +1,871 @@
+{
+ "meta": {
+  "source": "possessive_names_shim.jsonl",
+  "generator": "forge_log_adapter.py",
+  "schema": "training/game_00X game_log schema (events carry raw Forge messages)",
+  "extracted": "fixture",
+  "agent": "simlab-forge-shim/0.15.0",
+  "humanized": false,
+  "agents": [
+   "plan",
+   "stock",
+   "stock",
+   "stock"
+  ],
+  "profiles": [
+   "SimLabHuman",
+   "Default",
+   "Default",
+   "Default"
+  ],
+  "zone_records": 19,
+  "battlefield_entries": 11
+ },
+ "games": [
+  {
+   "players": [
+    "Ai(1)-Skrat's Revenge",
+    "Ai(2)-Yuriko's Ninjas",
+    "Ai(3)-Atraxa, Praetors' Voice",
+    "Ai(4)-Goblins"
+   ],
+   "turns": [
+    {
+     "turn": 1,
+     "active_player": "Ai(1)-Skrat's Revenge",
+     "events": [
+      {
+       "seq": 6,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Untap step"
+      },
+      {
+       "seq": 7,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Upkeep step"
+      },
+      {
+       "seq": 8,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Draw step"
+      },
+      {
+       "seq": 9,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Main phase, precombat"
+      },
+      {
+       "seq": 10,
+       "action": "land_drop",
+       "raw": "Ai(1)-Skrat's Revenge played Mountain (101)"
+      },
+      {
+       "seq": 11,
+       "action": "stack_add",
+       "raw": "Ai(1)-Skrat's Revenge cast Goblin Instigator",
+       "object": "Goblin Instigator"
+      },
+      {
+       "seq": 12,
+       "action": "stack_resolve",
+       "raw": "Goblin Instigator - Creature 1 / 1"
+      },
+      {
+       "seq": 13,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Beginning of Combat Step"
+      },
+      {
+       "seq": 14,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Declare Attackers Step"
+      },
+      {
+       "seq": 15,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Declare Blockers Step"
+      },
+      {
+       "seq": 16,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's First Strike Damage Step"
+      },
+      {
+       "seq": 17,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Combat Damage Step"
+      },
+      {
+       "seq": 18,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's End of Combat Step"
+      },
+      {
+       "seq": 19,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Main phase, postcombat"
+      },
+      {
+       "seq": 20,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's End step"
+      },
+      {
+       "seq": 21,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Cleanup step"
+      }
+     ]
+    },
+    {
+     "turn": 2,
+     "active_player": "Ai(2)-Yuriko's Ninjas",
+     "events": [
+      {
+       "seq": 23,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Untap step"
+      },
+      {
+       "seq": 24,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Upkeep step"
+      },
+      {
+       "seq": 25,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Draw step"
+      },
+      {
+       "seq": 26,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Main phase, precombat"
+      },
+      {
+       "seq": 27,
+       "action": "land_drop",
+       "raw": "Ai(2)-Yuriko's Ninjas played Island (201)"
+      },
+      {
+       "seq": 28,
+       "action": "stack_add",
+       "raw": "Ai(2)-Yuriko's Ninjas cast Ninja of the Deep Hours",
+       "object": "Ninja of the Deep Hours"
+      },
+      {
+       "seq": 29,
+       "action": "stack_resolve",
+       "raw": "Ninja of the Deep Hours - Creature 2 / 2"
+      },
+      {
+       "seq": 30,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Beginning of Combat Step"
+      },
+      {
+       "seq": 31,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Declare Attackers Step"
+      },
+      {
+       "seq": 32,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Declare Blockers Step"
+      },
+      {
+       "seq": 33,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' First Strike Damage Step"
+      },
+      {
+       "seq": 34,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Combat Damage Step"
+      },
+      {
+       "seq": 35,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' End of Combat Step"
+      },
+      {
+       "seq": 36,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Main phase, postcombat"
+      },
+      {
+       "seq": 37,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' End step"
+      },
+      {
+       "seq": 38,
+       "action": "phase",
+       "raw": "Ai(2)-Yuriko's Ninjas' Cleanup step"
+      }
+     ]
+    },
+    {
+     "turn": 3,
+     "active_player": "Ai(3)-Atraxa, Praetors' Voice",
+     "events": [
+      {
+       "seq": 40,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Untap step"
+      },
+      {
+       "seq": 41,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Upkeep step"
+      },
+      {
+       "seq": 42,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Draw step"
+      },
+      {
+       "seq": 43,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Main phase, precombat"
+      },
+      {
+       "seq": 44,
+       "action": "land_drop",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice played Plains (301)"
+      },
+      {
+       "seq": 45,
+       "action": "stack_add",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice cast Thraben Inspector",
+       "object": "Thraben Inspector"
+      },
+      {
+       "seq": 46,
+       "action": "stack_resolve",
+       "raw": "Thraben Inspector - Creature 1 / 2"
+      },
+      {
+       "seq": 47,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Beginning of Combat Step"
+      },
+      {
+       "seq": 48,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Declare Attackers Step"
+      },
+      {
+       "seq": 49,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Declare Blockers Step"
+      },
+      {
+       "seq": 50,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's First Strike Damage Step"
+      },
+      {
+       "seq": 51,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Combat Damage Step"
+      },
+      {
+       "seq": 52,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's End of Combat Step"
+      },
+      {
+       "seq": 53,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Main phase, postcombat"
+      },
+      {
+       "seq": 54,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's End step"
+      },
+      {
+       "seq": 55,
+       "action": "phase",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice's Cleanup step"
+      }
+     ]
+    },
+    {
+     "turn": 4,
+     "active_player": "Ai(4)-Goblins",
+     "events": [
+      {
+       "seq": 57,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Untap step"
+      },
+      {
+       "seq": 58,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Upkeep step"
+      },
+      {
+       "seq": 59,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Draw step"
+      },
+      {
+       "seq": 60,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Main phase, precombat"
+      },
+      {
+       "seq": 61,
+       "action": "land_drop",
+       "raw": "Ai(4)-Goblins played Mountain (401)"
+      },
+      {
+       "seq": 62,
+       "action": "stack_add",
+       "raw": "Ai(4)-Goblins cast Goblin Guide",
+       "object": "Goblin Guide"
+      },
+      {
+       "seq": 63,
+       "action": "stack_resolve",
+       "raw": "Goblin Guide - Creature 2 / 2"
+      },
+      {
+       "seq": 64,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Beginning of Combat Step"
+      },
+      {
+       "seq": 65,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Declare Attackers Step"
+      },
+      {
+       "seq": 66,
+       "action": "combat",
+       "raw": "Ai(4)-Goblins assigned Goblin Guide (410) to attack Ai(2)-Yuriko's Ninjas."
+      },
+      {
+       "seq": 67,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Declare Blockers Step"
+      },
+      {
+       "seq": 68,
+       "action": "combat",
+       "raw": "Ai(2)-Yuriko's Ninjas didn't block Goblin Guide (410)."
+      },
+      {
+       "seq": 69,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' First Strike Damage Step"
+      },
+      {
+       "seq": 70,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Combat Damage Step"
+      },
+      {
+       "seq": 71,
+       "action": "damage",
+       "raw": "Goblin Guide (410) deals 2 combat damage to Ai(2)-Yuriko's Ninjas.",
+       "source": "Goblin Guide (410)",
+       "amount": 2,
+       "target": "Ai(2)-Yuriko's Ninjas"
+      },
+      {
+       "seq": 72,
+       "action": "life_change",
+       "raw": "Life: Ai(2)-Yuriko's Ninjas 40 > 38"
+      },
+      {
+       "seq": 73,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' End of Combat Step"
+      },
+      {
+       "seq": 74,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Main phase, postcombat"
+      },
+      {
+       "seq": 75,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' End step"
+      },
+      {
+       "seq": 76,
+       "action": "phase",
+       "raw": "Ai(4)-Goblins' Cleanup step"
+      }
+     ]
+    },
+    {
+     "turn": 5,
+     "active_player": "Ai(1)-Skrat's Revenge",
+     "events": [
+      {
+       "seq": 78,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Untap step"
+      },
+      {
+       "seq": 79,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Upkeep step"
+      },
+      {
+       "seq": 80,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Draw step"
+      },
+      {
+       "seq": 81,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Main phase, precombat"
+      },
+      {
+       "seq": 82,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Beginning of Combat Step"
+      },
+      {
+       "seq": 83,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Declare Attackers Step"
+      },
+      {
+       "seq": 84,
+       "action": "combat",
+       "raw": "Ai(1)-Skrat's Revenge assigned Goblin Instigator (110) to attack Ai(3)-Atraxa, Praetors' Voice."
+      },
+      {
+       "seq": 85,
+       "action": "combat",
+       "raw": "Ai(1)-Skrat's Revenge assigned Goblin Token (111) to attack Ai(2)-Yuriko's Ninjas."
+      },
+      {
+       "seq": 86,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Declare Blockers Step"
+      },
+      {
+       "seq": 87,
+       "action": "combat",
+       "raw": "Ai(3)-Atraxa, Praetors' Voice assigned Thraben Inspector (310) to block Goblin Instigator (110)."
+      },
+      {
+       "seq": 88,
+       "action": "combat",
+       "raw": "Ai(2)-Yuriko's Ninjas assigned Ninja of the Deep Hours (210) to block Goblin Token (111)."
+      },
+      {
+       "seq": 89,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's First Strike Damage Step"
+      },
+      {
+       "seq": 90,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Combat Damage Step"
+      },
+      {
+       "seq": 91,
+       "action": "damage",
+       "raw": "Goblin Instigator (110) deals 1 combat damage to Thraben Inspector (310).",
+       "source": "Goblin Instigator (110)",
+       "amount": 1,
+       "target": "Thraben Inspector (310)"
+      },
+      {
+       "seq": 92,
+       "action": "damage",
+       "raw": "Thraben Inspector (310) deals 1 combat damage to Goblin Instigator (110).",
+       "source": "Thraben Inspector (310)",
+       "amount": 1,
+       "target": "Goblin Instigator (110)"
+      },
+      {
+       "seq": 93,
+       "action": "damage",
+       "raw": "Ninja of the Deep Hours (210) deals 2 combat damage to Goblin Token (111).",
+       "source": "Ninja of the Deep Hours (210)",
+       "amount": 2,
+       "target": "Goblin Token (111)"
+      },
+      {
+       "seq": 94,
+       "action": "damage",
+       "raw": "Goblin Token (111) deals 1 combat damage to Ninja of the Deep Hours (210).",
+       "source": "Goblin Token (111)",
+       "amount": 1,
+       "target": "Ninja of the Deep Hours (210)"
+      },
+      {
+       "seq": 95,
+       "action": "zone_change",
+       "raw": "Goblin Instigator (110) was put into Graveyard from Battlefield."
+      },
+      {
+       "seq": 96,
+       "action": "zone_change",
+       "raw": "Goblin Token (111) was put into Graveyard from Battlefield."
+      },
+      {
+       "seq": 97,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's End of Combat Step"
+      },
+      {
+       "seq": 98,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Main phase, postcombat"
+      },
+      {
+       "seq": 99,
+       "action": "stack_add",
+       "raw": "Ai(1)-Skrat's Revenge cast Krenko's Command",
+       "object": "Krenko's Command"
+      },
+      {
+       "seq": 100,
+       "action": "stack_resolve",
+       "raw": "Krenko's Command (120) - two Goblin tokens"
+      },
+      {
+       "seq": 101,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's End step"
+      },
+      {
+       "seq": 102,
+       "action": "phase",
+       "raw": "Ai(1)-Skrat's Revenge's Cleanup step"
+      }
+     ]
+    }
+   ],
+   "result": {
+    "winner": null,
+    "draw": true,
+    "raw": "Game Result: Game 1 ended in a Draw! Took 4321 ms.",
+    "timedOut": false,
+    "turnCapped": true,
+    "seats": [
+     {
+      "name": "Ai(1)-Skrat's Revenge",
+      "life": 40,
+      "alive": true
+     },
+     {
+      "name": "Ai(2)-Yuriko's Ninjas",
+      "life": 38,
+      "alive": true
+     },
+     {
+      "name": "Ai(3)-Atraxa, Praetors' Voice",
+      "life": 40,
+      "alive": true
+     },
+     {
+      "name": "Ai(4)-Goblins",
+      "life": 40,
+      "alive": true
+     }
+    ]
+   },
+   "events_pregame": [
+    {
+     "seq": 1,
+     "action": "mulligan",
+     "raw": "Ai(1)-Skrat's Revenge has kept a hand of 7 cards"
+    },
+    {
+     "seq": 2,
+     "action": "mulligan",
+     "raw": "Ai(2)-Yuriko's Ninjas has kept a hand of 7 cards"
+    },
+    {
+     "seq": 3,
+     "action": "mulligan",
+     "raw": "Ai(3)-Atraxa, Praetors' Voice has kept a hand of 7 cards"
+    },
+    {
+     "seq": 4,
+     "action": "mulligan",
+     "raw": "Ai(4)-Goblins has kept a hand of 7 cards"
+    }
+   ],
+   "zones": [
+    {
+     "turn": 1,
+     "phase": "MAIN1",
+     "card": "Mountain",
+     "cardId": 101,
+     "from": "Hand",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(1)-Skrat's Revenge",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Land",
+     "pt": "",
+     "token": false
+    },
+    {
+     "turn": 1,
+     "phase": "MAIN1",
+     "card": "Goblin Instigator",
+     "cardId": 110,
+     "from": "Hand",
+     "to": "Stack",
+     "fromPlayer": "Ai(1)-Skrat's Revenge",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Creature",
+     "pt": "1/1",
+     "token": false
+    },
+    {
+     "turn": 1,
+     "phase": "MAIN1",
+     "card": "Goblin Instigator",
+     "cardId": 110,
+     "from": "Stack",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(1)-Skrat's Revenge",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Creature",
+     "pt": "1/1",
+     "token": false
+    },
+    {
+     "turn": 1,
+     "phase": "MAIN1",
+     "card": "Goblin Token",
+     "cardId": 111,
+     "from": "None",
+     "to": "Battlefield",
+     "fromPlayer": "",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Creature",
+     "pt": "1/1",
+     "token": true
+    },
+    {
+     "turn": 2,
+     "phase": "MAIN1",
+     "card": "Island",
+     "cardId": 201,
+     "from": "Hand",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(2)-Yuriko's Ninjas",
+     "toPlayer": "Ai(2)-Yuriko's Ninjas",
+     "types": "Land",
+     "pt": "",
+     "token": false
+    },
+    {
+     "turn": 2,
+     "phase": "MAIN1",
+     "card": "Ninja of the Deep Hours",
+     "cardId": 210,
+     "from": "Hand",
+     "to": "Stack",
+     "fromPlayer": "Ai(2)-Yuriko's Ninjas",
+     "toPlayer": "Ai(2)-Yuriko's Ninjas",
+     "types": "Creature",
+     "pt": "2/2",
+     "token": false
+    },
+    {
+     "turn": 2,
+     "phase": "MAIN1",
+     "card": "Ninja of the Deep Hours",
+     "cardId": 210,
+     "from": "Stack",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(2)-Yuriko's Ninjas",
+     "toPlayer": "Ai(2)-Yuriko's Ninjas",
+     "types": "Creature",
+     "pt": "2/2",
+     "token": false
+    },
+    {
+     "turn": 3,
+     "phase": "MAIN1",
+     "card": "Plains",
+     "cardId": 301,
+     "from": "Hand",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(3)-Atraxa, Praetors' Voice",
+     "toPlayer": "Ai(3)-Atraxa, Praetors' Voice",
+     "types": "Land",
+     "pt": "",
+     "token": false
+    },
+    {
+     "turn": 3,
+     "phase": "MAIN1",
+     "card": "Thraben Inspector",
+     "cardId": 310,
+     "from": "Hand",
+     "to": "Stack",
+     "fromPlayer": "Ai(3)-Atraxa, Praetors' Voice",
+     "toPlayer": "Ai(3)-Atraxa, Praetors' Voice",
+     "types": "Creature",
+     "pt": "1/2",
+     "token": false
+    },
+    {
+     "turn": 3,
+     "phase": "MAIN1",
+     "card": "Thraben Inspector",
+     "cardId": 310,
+     "from": "Stack",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(3)-Atraxa, Praetors' Voice",
+     "toPlayer": "Ai(3)-Atraxa, Praetors' Voice",
+     "types": "Creature",
+     "pt": "1/2",
+     "token": false
+    },
+    {
+     "turn": 4,
+     "phase": "MAIN1",
+     "card": "Mountain",
+     "cardId": 401,
+     "from": "Hand",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(4)-Goblins",
+     "toPlayer": "Ai(4)-Goblins",
+     "types": "Land",
+     "pt": "",
+     "token": false
+    },
+    {
+     "turn": 4,
+     "phase": "MAIN1",
+     "card": "Goblin Guide",
+     "cardId": 410,
+     "from": "Hand",
+     "to": "Stack",
+     "fromPlayer": "Ai(4)-Goblins",
+     "toPlayer": "Ai(4)-Goblins",
+     "types": "Creature",
+     "pt": "2/2",
+     "token": false
+    },
+    {
+     "turn": 4,
+     "phase": "MAIN1",
+     "card": "Goblin Guide",
+     "cardId": 410,
+     "from": "Stack",
+     "to": "Battlefield",
+     "fromPlayer": "Ai(4)-Goblins",
+     "toPlayer": "Ai(4)-Goblins",
+     "types": "Creature",
+     "pt": "2/2",
+     "token": false
+    },
+    {
+     "turn": 5,
+     "phase": "COMBAT_DAMAGE",
+     "card": "Goblin Instigator",
+     "cardId": 110,
+     "from": "Battlefield",
+     "to": "Graveyard",
+     "fromPlayer": "Ai(1)-Skrat's Revenge",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Creature",
+     "pt": "1/1",
+     "token": false
+    },
+    {
+     "turn": 5,
+     "phase": "COMBAT_DAMAGE",
+     "card": "Goblin Token",
+     "cardId": 111,
+     "from": "Battlefield",
+     "to": "Graveyard",
+     "fromPlayer": "Ai(1)-Skrat's Revenge",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Creature",
+     "pt": "1/1",
+     "token": true
+    },
+    {
+     "turn": 5,
+     "phase": "MAIN2",
+     "card": "Krenko's Command",
+     "cardId": 120,
+     "from": "Hand",
+     "to": "Stack",
+     "fromPlayer": "Ai(1)-Skrat's Revenge",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Sorcery",
+     "pt": "",
+     "token": false
+    },
+    {
+     "turn": 5,
+     "phase": "MAIN2",
+     "card": "Goblin Token",
+     "cardId": 121,
+     "from": "None",
+     "to": "Battlefield",
+     "fromPlayer": "",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Creature",
+     "pt": "1/1",
+     "token": true
+    },
+    {
+     "turn": 5,
+     "phase": "MAIN2",
+     "card": "Goblin Token",
+     "cardId": 122,
+     "from": "None",
+     "to": "Battlefield",
+     "fromPlayer": "",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Creature",
+     "pt": "1/1",
+     "token": true
+    },
+    {
+     "turn": 5,
+     "phase": "MAIN2",
+     "card": "Krenko's Command",
+     "cardId": 120,
+     "from": "Stack",
+     "to": "Graveyard",
+     "fromPlayer": "Ai(1)-Skrat's Revenge",
+     "toPlayer": "Ai(1)-Skrat's Revenge",
+     "types": "Sorcery",
+     "pt": "",
+     "token": false
+    }
+   ],
+   "boardfx": [],
+   "rubric": [],
+   "agent_events": []
+  }
+ ],
+ "summary": {
+  "games": 1,
+  "draws": 1,
+  "timeouts": 0,
+  "wins": {
+   "Ai(1)-Skrat's Revenge": 0,
+   "Ai(2)-Yuriko's Ninjas": 0,
+   "Ai(3)-Atraxa, Praetors' Voice": 0,
+   "Ai(4)-Goblins": 0
+  },
+  "win_rates": {
+   "Ai(1)-Skrat's Revenge": 0.0,
+   "Ai(2)-Yuriko's Ninjas": 0.0,
+   "Ai(3)-Atraxa, Praetors' Voice": 0.0,
+   "Ai(4)-Goblins": 0.0
+  }
+ }
+}

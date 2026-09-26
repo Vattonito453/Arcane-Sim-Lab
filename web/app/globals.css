@@ -633,7 +633,8 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .cl-chips { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-top: 6px; list-style: none; }
 .cl-chip { font: 400 11.5px/1.6 var(--font-data); color: var(--ink-2);
   border: 1px solid var(--hairline-strong); border-radius: var(--r-pill); padding: 0 8px; }
-.cl-count { margin-top: 5px; font-size: 12px; color: var(--ink-4); }
+.cl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0 14px; margin-top: 4px;
+  font-size: 12px; color: var(--ink-4); }
 .cl-toggle { display: inline-flex; align-items: center; min-height: 28px; padding: 2px 0;
   background: none; border: 0; font: 500 12.5px var(--font-ui); color: var(--mana-cyan-ink);
   white-space: nowrap; }
@@ -642,7 +643,12 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .cl-toggle:hover { text-decoration: underline; }
 .cl-foldrow td { padding: 6px 14px 8px; }
 .cl-detail td { background: var(--row-ground); padding: 12px 14px 16px; }
-.cl-detail-body { max-width: 820px; }
+/* Full-width rows (deck header, fold toggle, details) span the whole table,
+   which on a phone is wider than the screen. Their content stays pinned to the
+   visible part of the scroller and sized to it, so a paragraph never runs off
+   the right edge. 82px is the page gutters, the scroller border and the cell
+   padding at the narrow breakpoint; on a desktop the 820px cap wins. */
+.cl-sticky { position: sticky; left: 14px; display: block; max-width: min(820px, calc(100vw - 82px)); }
 .cl-detail-body > a { display: inline-block; margin-top: 12px; font-size: 12.5px; }
 .cl-dblock + .cl-dblock { margin-top: 12px; }
 .cl-dh { font-size: 12px; color: var(--ink-4); margin-bottom: 3px; }

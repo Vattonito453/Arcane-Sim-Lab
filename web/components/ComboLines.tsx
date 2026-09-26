@@ -302,7 +302,23 @@ function fmtExpected(f: Family): string {
   return f.expectedFloor ? `at least ${f.expected.toFixed(1)}` : `~${f.expected.toFixed(1)}`;
 }
 
-function LineCell({ f, cmdrs }: { f: Family; cmdrs: Set<string> }) {
+/** The line itself: its cards, Spellbook's results as chips, and the Details
+ *  control. The control sits in this cell, beside what it expands, rather
+ *  than in a last column: on a phone the table scrolls sideways, and a last
+ *  column's button is off-screen until the reader finds the scroll. */
+function LineCell({
+  f,
+  cmdrs,
+  open,
+  controls,
+  onToggle,
+}: {
+  f: Family;
+  cmdrs: Set<string>;
+  open: boolean;
+  controls: string;
+  onToggle: () => void;
+}) {
   const card = (c: string) => (
     <span className="cl-card">
       {c}
@@ -350,9 +366,18 @@ function LineCell({ f, cmdrs }: { f: Family; cmdrs: Set<string> }) {
           ))}
         </ul>
       )}
-      {f.variants.length > 1 && (
-        <div className="cl-count">{f.variants.length} variants Commander Spellbook lists separately</div>
-      )}
+      <div className="cl-meta">
+        {f.variants.length > 1 && <span>{f.variants.length} variants Commander Spellbook lists separately</span>}
+        <button
+          type="button"
+          className="cl-toggle"
+          aria-expanded={open}
+          aria-controls={controls}
+          onClick={onToggle}
+        >
+          Details
+        </button>
+      </div>
     </>
   );
 }
@@ -362,7 +387,7 @@ function DetailCell({ f }: { f: Family }) {
   const rep = f.variants.find((v) => v.assembled_games > 0) ?? f.variants[0];
   const many = f.variants.length > 1;
   return (
-    <div className="cl-detail-body">
+    <div className="cl-detail-body cl-sticky">
       {many && (
         <div className="cl-dblock">
           <div className="cl-dh">The {f.variants.length} variants</div>
@@ -432,7 +457,7 @@ function DetailCell({ f }: { f: Family }) {
   );
 }
 
-const COLS = 6;
+const COLS = 5;
 
 export function ComboLines({ report }: { report: AnalysisReport | null }) {
   const [openRows, setOpenRows] = useState<Set<string>>(() => new Set());
@@ -487,16 +512,17 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
               <th scope="col" className="r">Expected from draws</th>
               <th scope="col" className="r">Won after assembling</th>
               <th scope="col">Piece most often missing</th>
-              <th scope="col">Details</th>
             </tr>
           </thead>
           {decks.map(([name, d], di) => {
             const cmdrs = new Set((d.commanders ?? []).map(norm));
             const header = (meta: React.ReactNode) => (
               <tr className="cl-deck">
-                <th colSpan={COLS} scope="colgroup">
-                  {name}
-                  {meta && <span className="cl-deckmeta">{meta}</span>}
+                <th colSpan={COLS} scope="rowgroup">
+                  <span className="cl-sticky">
+                    {name}
+                    {meta && <span className="cl-deckmeta">{meta}</span>}
+                  </span>
                 </th>
               </tr>
             );
@@ -506,7 +532,9 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
                   {header(null)}
                   <tr>
                     <td colSpan={COLS} className="ctanote">
-                      Combos unknown: Commander Spellbook was unreachable when this run was analysed.
+                      <span className="cl-sticky">
+                        Combos unknown: Commander Spellbook was unreachable when this run was analysed.
+                      </span>
                     </td>
                   </tr>
                 </tbody>
@@ -518,13 +546,15 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
                   {header(null)}
                   <tr>
                     <td colSpan={COLS} className="ctanote">
-                      Commander Spellbook lists no combos in this deck
-                      {d.almost_included > 0 && (
-                        <>
-                          ; <span className="mono">{d.almost_included}</span> are one card away
-                        </>
-                      )}
-                      .
+                      <span className="cl-sticky">
+                        Commander Spellbook lists no combos in this deck
+                        {d.almost_included > 0 && (
+                          <>
+                            ; <span className="mono">{d.almost_included}</span> are one card away
+                          </>
+                        )}
+                        .
+                      </span>
                     </td>
                   </tr>
                 </tbody>
@@ -554,7 +584,13 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
                 <Fragment key={f.key}>
                   <tr>
                     <td className="cl-line">
-                      <LineCell f={f} cmdrs={cmdrs} />
+                      <LineCell
+                        f={f}
+                        cmdrs={cmdrs}
+                        open={open}
+                        controls={detailId}
+                        onToggle={() => toggle(openRows, rowKey, setOpenRows)}
+                      />
                     </td>
                     <td className="r mono">
                       {f.assembled} of {f.gamesPlayed}
@@ -570,17 +606,6 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
                       ) : (
                         "–"
                       )}
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        className="cl-toggle"
-                        aria-expanded={open}
-                        aria-controls={detailId}
-                        onClick={() => toggle(openRows, rowKey, setOpenRows)}
-                      >
-                        Details
-                      </button>
                     </td>
                   </tr>
                   {open && (
@@ -605,23 +630,25 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
                   {folded.length > 0 && (
                     <tr className="cl-foldrow">
                       <td colSpan={COLS}>
-                        <button
-                          type="button"
-                          className="cl-toggle"
-                          aria-expanded={foldOpen}
-                          aria-controls={foldId}
-                          onClick={() => toggle(openFolds, name, setOpenFolds)}
-                        >
-                          {foldOpen
-                            ? `Hide the ${plural(folded.length, "line")} that never came together`
-                            : `Show ${folded.length}${shown.length > 0 ? " more" : ""} ${
-                                folded.length === 1 ? "line" : "lines"
-                              } that never came together`}
-                        </button>
-                        <span className="ctanote">
-                          {" "}
-                          (each expected under once in {plural(games, "game")} from draw odds)
-                        </span>
+                        <div className="cl-sticky">
+                          <button
+                            type="button"
+                            className="cl-toggle"
+                            aria-expanded={foldOpen}
+                            aria-controls={foldId}
+                            onClick={() => toggle(openFolds, name, setOpenFolds)}
+                          >
+                            {foldOpen
+                              ? `Hide the ${plural(folded.length, "line")} that never came together`
+                              : `Show ${folded.length}${shown.length > 0 ? " more" : ""} ${
+                                  folded.length === 1 ? "line" : "lines"
+                                } that never came together`}
+                          </button>
+                          <span className="ctanote">
+                            {" "}
+                            (each expected under once in {plural(games, "game")} from draw odds)
+                          </span>
+                        </div>
                       </td>
                     </tr>
                   )}

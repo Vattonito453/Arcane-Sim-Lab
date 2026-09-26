@@ -161,9 +161,12 @@ def _fact(facts: dict, n: str) -> dict:
 # say Spellbook returns no variants for any of the 66 Commander precons.
 # Corrected 2026-09-26: false. combos.parse_dck sent Forge's "|SET|art" suffix
 # with each name; with clean names 14 of 66 precons have 26 included variants
-# (and 65 of 66 have almost-included ones). While the suffix bug stands,
-# `lines` is empty on precons and the shim's combo pursuit is inert on the
-# decks most players actually own. But a precon absolutely has a win
+# (and 65 of 66 have almost-included ones). The suffix exists only in Forge's
+# bundled precon files, not in engine/decks or convert_decklist output, so
+# user-imported decks were never affected. Even with clean names 52 of 66
+# precons have no included variants, so `lines` stays empty on most of
+# Forge's bundled precons and the shim's combo pursuit is inert there. But a
+# precon absolutely has a win
 # condition: it is "make tokens, then anthem them", "sacrifice creatures,
 # then drain", "put counters on things, then proliferate". Those are combos
 # that need to fire ONCE, not infinitely.

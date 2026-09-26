@@ -31,6 +31,10 @@ task 1), because Windows can clean Temp at any time.
 
 Counts: 276 `.py`, 202 `.json`, 36 `.txt` and 1 `.md` were copied (515 files,
 19.1 MB), plus this README, `SYNTHESIS.md`, the two scripts and `.gitignore`.
+Later WS0 tasks add their own notes here, for example `prod_check_0926.md`
+(the read-only production check of 2026-09-26, WS0 task 3, committed on
+`repair/week1` in 0583530), so the tracked count grows past these figures.
+Those notes are our own measurements and fall under the same allowlist check.
 
 ### The prototypes are evidence, not tools
 
@@ -48,8 +52,9 @@ figure recorded here (the "port test").
 
 ## What was left out, and why
 
-The repo's legal posture (CLAUDE.md) forbids committing anything Forge-derived,
-and the repair plan (§2.3, §8) forbids committing a playtester's data. So the
+The repo's legal posture (CLAUDE.md) and the repair plan (§2.3) forbid
+committing anything Forge-derived, and the repair plan (§8) forbids committing
+a playtester's data. So the
 copy is an allowlist, not a mirror. From the 1,369 files under the scratchpad's
 `diagnosis/` folder, `copy_evidence.py` left out 860:
 

@@ -10,12 +10,16 @@ Every one of them measured an agent that was **switched off**:
 
 - The 8 Forge precons behind the 1536-game head-to-head had **no combo lines
   in their plans**, and had 29-53% card-fact coverage at the time.
-  **Corrected 2026-09-26:** this said the precons have zero combo lines, as if Spellbook had none.
-  The empty plans were a bug: `combos.parse_dck` sent Forge's `|SET|art`
-  suffix, so Spellbook matched nothing. With clean names 14 of 66 precons
-  have 26 included variants (`studies/diagnosis_2026-09/SYNTHESIS.md`,
-  "Prior claims refuted or corrected"). The agent measured on precons was
-  still switched off, as described here. With no lines,
+  **Corrected 2026-09-26, scoped:** the premise behind this, that Commander
+  Spellbook has nothing for any of the 66 precons, was false.
+  `combos.parse_dck` sent Forge's `|SET|art` suffix with each name, so
+  Spellbook matched nothing, and that hid 26 included variants on 14 of 66
+  precons. But with clean names, 7 of these 8 head-to-head precons still
+  have no included variants (only Blight Curse would gain 2). So their plans
+  were empty mostly on the merits, the agent was switched off regardless,
+  and the conclusion here stands (`studies/diagnosis_2026-09/SYNTHESIS.md`,
+  verification row `combo_data/precon-suffix-parse-bug`, reproduced by
+  `studies/diagnosis_2026-09/verify/precon_suffix/tally.py`). With no lines,
   `lineOfSight()` returns null on its first branch, which disables combo
   pursuit, line-piece cast priority, tutor casting, greed and combo-mode
   tutor steering together. What stays live is blocking, attack splitting,

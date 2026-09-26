@@ -137,7 +137,12 @@ Consequences you must respect:
 
 From `engine/SIM_CALIBRATION.md`:
 - Always seat-rotate; never report a single-seat win rate.
-- Show archetype baselines alongside any win rate — a raw 20% is meaningless.
+- A raw 20% is meaningless without context, but the archetype baselines
+  (38% creature / 12% engine) were measured under stock Forge at the old
+  120 s clock, and every production run is piloted by the plan agent. Until
+  they are re-measured under the plan agent after G3 (repair plan week 18;
+  decision 13 in `tasks/README.md`), show only the labelled pod average (an
+  even share of the pod) beside a win rate, never the archetype baselines.
 - Engine/combo decks sim **below** their real strength (the AI can't pilot
   politics or protection timing). Label these results a floor, not a verdict.
 - Show telemetry next to outcomes. A deck can lose sims and still be healthy.

@@ -37,7 +37,7 @@ faster single-seat run. Any `sim_*.json` without the `_rotated` suffix (or
 without `meta.source == "rotated"`) predates this fix and should not be read
 as a verdict on the deck.
 
-## Bias 2: Archetype (UNFIXABLE at AI level — report against class baselines)
+## Bias 2: Archetype (UNFIXABLE at AI level — class baselines, re-measure pending)
 
 Seat-fair measurement across 320+ deck-games:
 
@@ -57,6 +57,15 @@ below is corroborated by telemetry rather than by win rate alone. But the
 specific 38% / 12% figures are due a POST-FIX re-measurement before they are
 shown to a user as a threshold.
 
+**Decision 13 (2026-09-26): not shown until re-measured.** These baselines
+were measured under stock Forge at the old 120 s clock, and every production
+run is piloted by the plan agent, so neither the pilot nor the clock matches
+what users see. They are re-measured under the plan agent after G3 (week 18
+of `tasks/25-repair-plan.md`). Until then only the labelled pod average (an
+even share of the pod, 25% in a 4-deck pod) is shown beside a win rate, never
+these figures. CLAUDE.md carries the same rule; the decision is recorded in
+`tasks/README.md`.
+
 **Controlled proof (the Inspirit case study):** four progressively fixed Inspirit
 builds plus the EDHREC 10,818-deck consensus list all scored 6-25% seat-fair,
 while full telemetry showed the final build's engine fully operational
@@ -67,8 +76,11 @@ identically to a broken one: the simulator, not the decks, is the ceiling.
 ## How to report simulation results honestly
 
 1. Always seat-rotate.
-2. Compare a deck's win rate to its ARCHETYPE baseline (38% creature / 12% engine),
-   not to 25%. "18% for an engine deck" is above class average.
+2. Until the archetype baselines are re-measured under the plan agent after
+   G3 (decision 13, above), compare a deck's win rate only to the labelled pod
+   average and say the class baselines are pending. Once re-measured, compare
+   to the deck's ARCHETYPE baseline rather than to an even share: "18% for an
+   engine deck" would then read as above class average.
 3. Pair the win rate with FUNCTION telemetry (`deck_telemetry.py`): commander
    cast timing, engine trigger rates, finisher activity, death causes. A deck
    whose machinery runs but loses to the archetype bias is probably fine in

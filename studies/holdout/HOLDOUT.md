@@ -34,7 +34,12 @@ cEDH-dev with `5A6o18Bra0Y` and `OuY6mdiXbHU`.
    - No template, tier, band, override, threshold or target is tuned on these
      two pods, and no AI experiment runs on them. WS8 targets are computed on
      dev decks only.
-   - Nobody reads their per-deck sim results before G3.
+   - Nobody reads their per-deck sim results before G3. This is
+     forward-looking: evidence produced before the draw already covers these
+     pods (the August 2026 stock runs in `studies/human_ceiling/RESULTS.md`,
+     the behavior_rubric shipping runs, and the diagnosis's corpus-wide
+     counts over all 32 decks). None of it may be used to tune anything
+     either.
    - At G-lines (Thu 2026-11-19) their lines are scored blind, once, with the
      classification frozen for G3. That is a static check; no games.
    - Allowed before G3, because it changes what the decks are rather than how

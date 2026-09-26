@@ -15,11 +15,22 @@
 import type { DeckScorecard, ScorecardReport } from "@/lib/types";
 import { pct } from "@/lib/format";
 
-/** Forge's own loss-line wording, shortened for a chip. */
+/** Forge's own loss-line wording, shortened for a chip. Forge writes the same
+ *  "life total reached 0" line for combat damage and for life loss (Kess's
+ *  drain, Sanguine Bond), so until the knockouts analyzer reads the lethal
+ *  event this must not say "combat damage" alone (repair plan WS11 task 3). */
+const LIFE_METHOD = "combat damage / life loss";
+
 function methodLabel(m: string): string {
-  if (m === "combat damage / life loss") return "combat damage";
+  if (m === LIFE_METHOD) return "life reached 0 (combat or life loss)";
   if (m === "not recorded") return "method not recorded";
   return m;
+}
+
+/** The same method, as a clause after "Won 3 of 8". */
+function methodClause(m: string): string {
+  if (m === LIFE_METHOD) return "when life reached 0 (combat or life loss)";
+  return `by ${methodLabel(m)}`;
 }
 
 function one(n: number, s: string, p: string): string {
@@ -35,8 +46,21 @@ function readOf(d: DeckScorecard, podMedianRound: number | null): string {
   const decided = d.games - d.censored;
 
   if (d.wins > 0) {
-    const top = Object.entries(d.methods).sort((a, b) => b[1] - a[1])[0];
-    const how = top ? ` by ${methodLabel(top[0])}` : "";
+    const ranked = Object.entries(d.methods).sort((a, b) => b[1] - a[1]);
+    const top = ranked[0];
+    const tied = top ? ranked.filter(([, n]) => n === top[1]) : [];
+    let how = "";
+    if (tied.length > 1) {
+      // No method leads, so "mostly" would be wrong: give the tied counts.
+      const rest = d.wins - tied.reduce((s, [, n]) => s + n, 0);
+      how = `: ${tied.map(([m, n]) => `${n} ${methodClause(m)}`).join(", ")}${
+        rest > 0 ? `, ${rest} another way` : ""
+      }`;
+    } else if (top) {
+      // "mostly" when the top method is not every win: the sentence names one
+      // method and must not imply it was the only one.
+      how = ` ${top[1] < d.wins ? "mostly " : ""}${methodClause(top[0])}`;
+    }
     const when = d.medianWinRound ? `, closing on round ${d.medianWinRound}` : "";
     parts.push(`Won ${d.wins} of ${decided}${how}${when}.`);
   } else if (decided > 0) {
@@ -144,9 +168,19 @@ function Card({
           value={d.landsPerTurn === null ? "–" : d.landsPerTurn.toFixed(2)}
           hint={`Land drops made across ${d.ownTurns} of its own turns. 1.00 means it never missed one.`}
         />
+        {/* The stat value is one truncating line, so the life-total method
+            splits across value and label rather than losing its qualifier
+            to an ellipsis: "life reached 0" / "how it won (combat or life
+            loss)". */}
         <Stat
-          label="how it won"
-          value={methods.length ? methodLabel(methods[0][0]) : "–"}
+          label={methods[0]?.[0] === LIFE_METHOD ? "how it won (combat or life loss)" : "how it won"}
+          value={
+            methods.length
+              ? methods[0][0] === LIFE_METHOD
+                ? "life reached 0"
+                : methodLabel(methods[0][0])
+              : "–"
+          }
           hint={methods.map(([k, n]) => `${methodLabel(k)}: ${n}`).join("\n")}
         />
       </div>

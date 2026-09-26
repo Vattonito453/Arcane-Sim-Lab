@@ -170,7 +170,15 @@ def main() -> int:
             check("analysis carries per-deck combo status",
                   bool(an.get("decks")) and all("combo_status" in d
                                                 for d in an["decks"].values()))
-            check("analysis states its inference ceiling", "inferred" in (an.get("note") or ""))
+            # Path-aware since ANALYSIS_VERSION 5: a shim run's board is a read
+            # of zone records, a stdout run's is inference, and the note must
+            # say which rather than calling every run inferred.
+            basis, note = an.get("basis"), an.get("note") or ""
+            check("analysis states which board path it read",
+                  (basis == "zone_stream" and "zone records" in note
+                   and "inferred" not in note)
+                  or (basis in ("inferred", "mixed") and "inferred" in note),
+                  f"basis={basis} note={note[:80]}")
             check("analysis is versioned and carries the draw model",
                   isinstance(an.get("version"), int)
                   and any(d.get("draws") for d in an["decks"].values()),

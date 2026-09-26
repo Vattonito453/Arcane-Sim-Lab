@@ -33,6 +33,30 @@ interface ParsedLine {
   name: string;
 }
 
+/** One pre-check warning from POST /decks (repair plan WS4: cards Forge does
+ *  not know, cards Forge's AI won't cast, or checks skipped because the Forge
+ *  index is missing). Declared here until lib/types.ts carries it; the engine
+ *  writes `message` as user-facing copy. */
+interface ImportWarning {
+  kind: string;
+  cards: string[];
+  message: string;
+}
+
+/** The response's warnings, shape-checked: an engine older than the pre-check
+ *  sends none, and a malformed entry must not take the page down. */
+function importWarnings(resp: ImportResponse | null): ImportWarning[] {
+  const raw: unknown = resp ? (resp as unknown as Record<string, unknown>).warnings : undefined;
+  if (!Array.isArray(raw)) return [];
+  return raw.filter(
+    (w): w is ImportWarning =>
+      !!w &&
+      typeof (w as ImportWarning).message === "string" &&
+      (w as ImportWarning).message.trim() !== "" &&
+      Array.isArray((w as ImportWarning).cards),
+  );
+}
+
 const BASICS = new Set(["plains", "island", "swamp", "mountain", "forest", "wastes"]);
 
 function isBasic(name: string): boolean {
@@ -133,6 +157,7 @@ export default function ImportPage() {
   };
 
   const report = resp?.ok ? resp.report : undefined;
+  const warnings = importWarnings(resp);
 
   return (
     <>
@@ -363,6 +388,32 @@ export default function ImportPage() {
                   </span>
                 </div>
               )}
+              {/* What the engine's pre-check found before a one-hour sim: cards
+                  Forge can't load or its AI won't cast. The engine owns the
+                  card list: convert_decklist._warnings writes every name into
+                  `message`, so the page renders the message alone. The list is
+                  appended only as a fallback for a message that omits a card,
+                  never to repeat names the user has just read. */}
+              {warnings.map((w, i) => {
+                const unnamed = w.cards.filter((c) => !w.message.includes(c));
+                return (
+                  <div className="ck" key={`${w.kind}-${i}`}>
+                    <span className="lbl">
+                      {w.message}
+                      {unnamed.length > 0 && (
+                        <>
+                          {" "}
+                          <small>{unnamed.join(" · ")}</small>
+                        </>
+                      )}
+                    </span>
+                    <span className="res st warn">
+                      <i />
+                      Needs a look
+                    </span>
+                  </div>
+                );
+              })}
 
               {checks.count > 0 && (
                 <p className="note">
@@ -474,9 +525,15 @@ export default function ImportPage() {
                           </h2>
                           <span className="meta">via Commander Spellbook</span>
                         </div>
+                        {/* Same claim as the results page, in the same words.
+                            This used to say the AI "assembles combos but
+                            rarely fires them" while the results page badged
+                            the same lines as ones the AI could fire; neither
+                            was measured. */}
                         <p className="sdesc">
-                          Sim win rates for this deck will be a floor, not a verdict. The AI
-                          assembles combos but rarely fires them.
+                          Forge&apos;s AI doesn&apos;t run combo loops, so the sim will show how often
+                          these pieces come together, not whether the combos win. Read this
+                          deck&apos;s win rate as a floor, not a verdict.
                         </p>
                         <div className="combo-list">
                           {shown.map((c) => (

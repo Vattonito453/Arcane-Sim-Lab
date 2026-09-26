@@ -25,7 +25,10 @@ import { DeckScorecards } from "@/components/DeckScorecards";
 import { PredictionPanel } from "@/components/PredictionPanel";
 import { fmtDay, pct, plural, runDate, runTitle, stripAi } from "@/lib/format";
 
-function fmtClock(ms: number): string {
+/** "12:05". A missing duration is an en dash: a draw logged without one
+ *  printed "NaN:NaN" here (tasks/26-ux-review.md, problem 6). */
+function fmtClock(ms: number | null | undefined): string {
+  if (typeof ms !== "number" || !Number.isFinite(ms) || ms < 0) return "–";
   const s = Math.round(ms / 1000);
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }
@@ -41,43 +44,78 @@ function median(xs: number[]): number {
  *  but whose raw still names a winner ("… Ai(2)-Drana Vampires has won!"). */
 const RE_WON_RAW = /([^.]+?) has won/;
 
+/** Game length out of a result raw, for a line the adapter did not time:
+ *  "Game 3 ended in a Draw! Took 17619 ms." carries no duration_ms. */
+const RE_TOOK_MS = /(?:Took|ended in) (\d+) ms/;
+
+/** How a game that nobody won ended, stamped by the adapters on top of
+ *  SimGame["result"]. The shim marks the per-game clock and the turn cap;
+ *  stock-Forge results carry neither, so every field is optional. */
+type ResultMarks = {
+  timedOut?: boolean;
+  turnCapped?: boolean;
+  error?: unknown;
+  missingResult?: boolean;
+};
+
 /** One table row, built entirely from the summary payload. */
 interface GameRow {
   n: number;
   winnerName: string | null;
   draw: boolean;
+  /** Forge's per-player turn counter. Kept for the median only; never shown,
+   *  because it reads about 4x high to a player ("T36" for a turn-9 game). */
   endedTurn: number;
+  /** The table turn: a player's Nth turn is turn N. */
   endedRound: number | null;
   durationMs: number;
   decidedBy: string;
 }
 
-function toRow(g: RunGameSummary): GameRow {
+function toRow(g: RunGameSummary, clockSeconds: number | null): GameRow {
+  const r = g.result as RunGameSummary["result"] & ResultMarks;
+  // A game the clock cut off is a draw whatever winner the record carries:
+  // the engine's summary counts it that way (audit A16), so the table must too.
+  const timedOut = r.timedOut === true;
+  const draw = r.draw || timedOut;
   // `raw` is optional-chained: every adapter path sets it today, but a result
   // with neither a winner nor a raw line should render as "–" rather than take
   // the whole page down with it.
-  const key = g.result.winner ?? g.result.raw?.match(RE_WON_RAW)?.[1]?.trim() ?? null;
+  const key = draw ? null : (r.winner ?? r.raw?.match(RE_WON_RAW)?.[1]?.trim() ?? null);
   const winnerName = key ? stripAi(key) : null;
   const endedTurn = g.ended_turn ?? g.turns;
   const endedRound = g.ended_round ?? null;
+  const durationMs =
+    typeof r.duration_ms === "number" ? r.duration_ms : Number(r.raw?.match(RE_TOOK_MS)?.[1] ?? NaN);
+  const onTurn = endedRound ? ` on turn ${endedRound}` : "";
+  // A draw says why when the data knows ("Draw (draw)" said nothing). Older
+  // stock-Forge files carry no clock mark, but a draw that ran the full clock
+  // was cut by it.
+  const hitClock =
+    timedOut || (clockSeconds != null && Number.isFinite(durationMs) && durationMs >= clockSeconds * 1000);
+  const clockWords = clockSeconds ? `the ${Math.round(clockSeconds / 60)}-minute clock` : "the per-game clock";
   // Without the event log there is no honest way to name the killing swing, so
   // this column states only what the result line proves: who won, and when.
-  const decidedBy = g.result.draw
-    ? "Draw"
+  const decidedBy = draw
+    ? hitClock
+      ? `Draw: hit ${clockWords}${onTurn}`
+      : r.turnCapped
+        ? `Draw: reached the turn limit${onTurn}`
+        : `Draw${onTurn}`
     : winnerName
-      ? endedRound
-        ? `${winnerName} won on round ${endedRound}`
-        : endedTurn
-          ? `${winnerName} won on turn ${endedTurn}`
-          : `${winnerName} won`
-      : "–";
+      ? `${winnerName} won${onTurn}`
+      : r.error
+        ? "No result: this game crashed"
+        : r.missingResult
+          ? "No result: none was recorded"
+          : "–";
   return {
     n: g.n,
     winnerName,
-    draw: g.result.draw,
+    draw,
     endedTurn,
     endedRound,
-    durationMs: g.result.duration_ms,
+    durationMs,
     decidedBy,
   };
 }
@@ -166,7 +204,10 @@ export default function ResultsPage() {
     const maxWins = rows.length ? rows[0].wins : 0;
     const tops = rows.filter((r) => r.wins === maxWins);
     const topNames = new Set(tops.map((t) => t.name));
-    const gameRows: GameRow[] = data.games.map(toRow);
+    // run_sim stamps the per-game clock it ran under (seconds).
+    const clock = data.meta?.clock;
+    const clockSeconds = typeof clock === "number" && clock > 0 ? clock : null;
+    const gameRows: GameRow[] = data.games.map((g) => toRow(g, clockSeconds));
     const medTurns = median(gameRows.map((g) => g.endedTurn));
     const rotated = data.meta?.source === "rotated";
 
@@ -258,7 +299,7 @@ export default function ResultsPage() {
     return (
       (g.winnerName ?? "draw").toLowerCase().includes(needle) ||
       g.decidedBy.toLowerCase().includes(needle) ||
-      `t${g.endedTurn}`.includes(needle)
+      (g.endedRound != null && `turn ${g.endedRound}`.includes(needle))
     );
   });
 
@@ -699,15 +740,20 @@ export default function ResultsPage() {
                         (g.winnerName ?? "–")
                       )}
                     </td>
-                    <td className="mono c-meta">T{g.endedTurn}</td>
+                    {/* The table turn, never Forge's per-player counter ("T36"
+                        for a game that ended on everyone's ninth turn). */}
+                    <td className="mono c-meta">{g.endedRound ? `turn ${g.endedRound}` : "–"}</td>
                     <td className="dur c-meta">{fmtClock(g.durationMs)}</td>
                     <td className="c-meta">
                     {g.decidedBy}
                     {(() => {
                       // The summary can only say who won and when; the analysis
-                      // knows HOW. Only annotate the non-default methods.
+                      // knows HOW. Only annotate the non-default methods. A draw
+                      // already says why above, so it never gets "(draw)", and
+                      // "other" names nothing a player can use.
                       const m = an?.games.find((x) => x.n === g.n);
-                      if (!m || m.method === "combat damage / life loss" || m.method === "not recorded")
+                      if (!m || g.draw || m.method === "draw" || m.method === "other"
+                          || m.method === "combat damage / life loss" || m.method === "not recorded")
                         return null;
                       return (
                         <span className="ctanote">

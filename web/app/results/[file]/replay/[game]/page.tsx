@@ -21,6 +21,7 @@ import { Tabletop, TabletopNote } from "@/components/Tabletop";
 const SPEED_MS: Record<number, number> = { 1: 300, 2: 150, 4: 75 };
 
 function fmtClock(ms: number): string {
+  if (typeof ms !== "number" || !Number.isFinite(ms) || ms < 0) return "–"; // never "NaN:NaN"
   const s = Math.round(ms / 1000);
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }

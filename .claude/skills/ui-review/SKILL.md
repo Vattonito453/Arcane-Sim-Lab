@@ -87,7 +87,33 @@ hit-testing that produces these bugs.
 6. Verify against **real data**, including the ugly cases: missing art,
    unresolved card facts, empty lists, long names.
 
-## 5. Before you say "done"
+## 5. Machine strings never reach a player
+
+**No NaN, undefined, raw ids, braces, env vars or file names in rendered
+text.** All of these shipped: "NaN:NaN" in the games table on a draw logged
+without a duration, "T36" (Forge's per-player turn counter) for a game that
+ended on everyone's ninth turn, "Draw (draw)", "Start it with python3
+engine/mtg_engine.py serve 8484" on six pages, and a coaching note telling
+players to set `MTG_LLM_API_KEY` in `deploy/.env`.
+
+- A formatter that can be handed a missing value returns an en dash `–`,
+  never `NaN`, `undefined` or `null`. Check the ugly case, not just the
+  happy one.
+- Turns are the table turn ("turn 9"), never Forge's counter.
+- An outcome label never repeats its category; a draw says why when the
+  data knows ("Draw: hit the 15-minute clock on turn 10").
+- Operator detail (commands, env vars, the engine address setting) renders
+  only behind `SHOW_OPS` (`web/lib/format.ts`, i.e. `NODE_ENV !==
+  "production"`). Players get `SERVER_DOWN` via `<EngineDown />`.
+- A feature that is switched off (`health().llm === false`) shows no primary
+  and no tab, not a live button above a note saying it will fail.
+- The one sanctioned place for an address (result filename, job id) is the
+  closed `PageDetails` disclosure at the foot of the page it belongs to.
+
+Grep before you say done: `NaN`, `undefined`, `{`/`}` in visible text, `.json`,
+`.dck`, `MTG_`, `python3`.
+
+## 6. Before you say "done"
 
 - [ ] Walked the user's actual path start to finish with a real pointer
 - [ ] Every action has a visible, labeled control (§1)
@@ -95,11 +121,12 @@ hit-testing that produces these bugs.
 - [ ] Overlays portaled, anchored, flipped, clamped, Escape-dismissable (§3)
 - [ ] Boundary cases tested (§4.4)
 - [ ] Keyboard-only run-through of the primary flow
+- [ ] No NaN, undefined, raw ids, braces, env vars or file names in rendered text (§5)
 - [ ] One `.btn.pri` per view; tokens only, no hex; no new CSS file; inline
       styles only for computed values (DESIGN_SYSTEM.md)
 - [ ] Screenshot attached to the report, showing the control the user must find
 
-## 6. Reporting
+## 7. Reporting
 
 Say what you verified and how ("real-pointer hover on the last-row tile while
 scrolled 5000px down; 12/12 stability samples"), not that it "should work".

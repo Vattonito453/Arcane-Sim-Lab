@@ -42,6 +42,134 @@ SHIM_SEARCH_GLOBS = [
 ]
 
 
+# ── Input fidelity (repair plan WS4 task 4) ───────────────────────────────
+# Forge's CardPool prints one line per card it cannot load, on stderr, then
+# plays the deck WITHOUT that card (Forge 2.0.13, read from CardPool.class):
+#   An unsupported card was requested: "<name>" from "<set>".
+# Every double-faced card spelled "Front // Back" hits this, and run_sim used
+# to discard the shim's stderr on success, so both Ral decks were simmed for
+# 30 games with no commander and nothing said so.
+UNSUPPORTED_RE = re.compile(r'An unsupported card was requested: "(.*?)" from "(.*?)"')
+# Non-progress stderr kept per invocation. Deck loading happens first, so the
+# refusal lines always fit; this only bounds a pathological Java log.
+_STDERR_KEEP = 20000
+
+
+def unsupported_cards(lines) -> list[str]:
+    """Distinct card names Forge refused, in the order it reported them."""
+    out: list[str] = []
+    for line in lines:
+        for m in UNSUPPORTED_RE.finditer(line):
+            name = m.group(1).strip()
+            if name and name not in out:
+                out.append(name)
+    return out
+
+
+def _dck_info(path: Path) -> dict:
+    """{"name", "commanders", "cards"} from a .dck: the Name= Forge seats the
+    deck under, its [Commander] entries and every card name it lists."""
+    info = {"name": path.stem, "commanders": [], "cards": set()}
+    try:
+        text = path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return info
+    section = ""
+    for line in text.splitlines():
+        line = line.strip()
+        if line.startswith("["):
+            section = line.strip("[]").lower()
+            continue
+        if section == "metadata" and line.lower().startswith("name="):
+            info["name"] = line.split("=", 1)[1].strip() or info["name"]
+            continue
+        m = re.match(r"^\d+\s+(.+?)\s*$", line)
+        if not m or section not in ("commander", "main"):
+            continue
+        name = m.group(1).split("|", 1)[0].strip()
+        info["cards"].add(name)
+        if section == "commander":
+            info["commanders"].append(name)
+    return info
+
+
+def _faces(name: str) -> set[str]:
+    """Every name a zone record may carry for this card: the full name and
+    each face ("Ral, Monsoon Mage // Ral, Leyline Prodigy" is recorded as
+    "Ral, Monsoon Mage", or "Ral, Leyline Prodigy" once transformed)."""
+    return {name, *(p.strip() for p in name.split(" // "))}
+
+
+def _strip_seat(player: str) -> str:
+    return re.sub(r"^Ai\(\d+\)-", "", player or "")
+
+
+def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str]) -> dict:
+    """What the run actually played, for result meta.
+
+    unsupported_cards   every card Forge refused (empty when clean), and
+    unsupported_by_deck which staged deck lists each one.
+    commander_fidelity  shim path only (games carry zone records): per deck,
+                        how often each commander appears in any zone record.
+                        The shim records a commander when it moves (cast from
+                        the command zone and on), so 0 over a whole run means
+                        Forge refused it or its AI never cast it; validity.py
+                        marks such a run polluted with the reason.
+    """
+    decks = []
+    seen_paths: set[str] = set()
+    for p in deck_paths:
+        if str(p) in seen_paths:
+            continue
+        seen_paths.add(str(p))
+        decks.append((p, _dck_info(p)))
+    by_deck = {p.name: [n for n in unsupported if n in info["cards"]]
+               for p, info in decks}
+    meta: dict = {"unsupported_cards": list(unsupported),
+                  "unsupported_by_deck": {k: v for k, v in by_deck.items() if v}}
+    zoned = [g for g in games if isinstance(g, dict) and "zones" in g]
+    if not zoned:
+        return meta          # stdout path: the log never records entries
+    records = [z for g in zoned for z in (g.get("zones") or [])]
+    owners = {_strip_seat(z.get("fromPlayer") or z.get("toPlayer") or "") for z in records}
+    fidelity = []
+    for p, info in decks:
+        if not info["commanders"]:
+            continue
+        # Attribute by seat when the deck's Name= shows up as an owner, so a
+        # mirror or shared commander cannot vouch for a deck that lost its own.
+        by_owner = info["name"] in owners
+        seen = {}
+        for c in info["commanders"]:
+            faces = _faces(c)
+            seen[c] = sum(1 for z in records if z.get("card") in faces and (
+                not by_owner or _strip_seat(z.get("fromPlayer") or z.get("toPlayer") or "")
+                == info["name"]))
+        fidelity.append({"deck": p.name, "player": info["name"],
+                         "commanders": info["commanders"], "seen": seen,
+                         "missing": [c for c in info["commanders"] if not seen[c]],
+                         "games": len(zoned)})
+    meta["commander_fidelity"] = fidelity
+    return meta
+
+
+def _warn_fidelity(meta: dict) -> None:
+    for f in meta.get("commander_fidelity") or []:
+        if f.get("missing"):
+            print(f"WARNING: {f['player']}'s commander never appeared in any zone record "
+                  f"over {f.get('games')} game(s): {', '.join(f['missing'])}. "
+                  f"This run is not a test of that deck.", file=sys.stderr)
+
+
+def _merge_unsupported(metas: list[dict]) -> list[str]:
+    out: list[str] = []
+    for m in metas:
+        for n in (m or {}).get("unsupported_cards") or []:
+            if n not in out:
+                out.append(n)
+    return out
+
+
 class SimRotationError(RuntimeError):
     """One rotation failed. Carries whatever games it finished first.
 
@@ -197,9 +325,12 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
     if args.run_id:
         suffix = f"_rot{rotate_index}" if rotate_index is not None else ""
         jsonl_path = out_dir / f"shim_raw_{safe_run_id(args.run_id)}{suffix}.jsonl"
+        # Not "forge_raw_*": GET /sim-live globs that prefix for stdout logs.
+        stderr_path = out_dir / f"shim_stderr_{safe_run_id(args.run_id)}{suffix}.log"
     else:
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
         jsonl_path = out_dir / f"shim_raw_{stamp}.jsonl"
+        stderr_path = out_dir / f"shim_stderr_{stamp}.log"
     cmd = ["java", f"-Xmx{args.heap}", "-cp", f"{shim_jar}{os.pathsep}{jar}",
            "simlab.shim.SimShim", "--decks", *abs_decks,
            "--games", str(games), "--timeout", str(args.clock),
@@ -217,7 +348,12 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
     # JSONL used to surface as "exited 1 after 0 game(s)" with its Java stack
     # trace discarded right here, which is the discarding-stderr lesson
     # studies/behavior_rubric/run_arms.py already records.
+    #
+    # All of it is now KEPT, on success too (WS4 task 4): Forge reports the
+    # cards it refused to load only here, and a success used to throw that
+    # away with everything else.
     err_tail: list[str] = []
+    err_all: list[str] = []
     for line in proc.stderr:  # shim progress arrives on stderr
         s = line.strip()
         if s.startswith("shim:"):
@@ -226,6 +362,16 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
             err_tail.append(s)
             if len(err_tail) > 15:
                 err_tail.pop(0)
+            if len(err_all) < _STDERR_KEEP or UNSUPPORTED_RE.search(s):
+                err_all.append(s)
+    refused = unsupported_cards(err_all)
+    try:
+        stderr_path.write_text("\n".join(err_all) + ("\n" if err_all else ""), encoding="utf-8")
+    except OSError as e:
+        print(f"WARNING: could not keep shim stderr at {stderr_path}: {e}", file=sys.stderr)
+    if refused:
+        print(f"WARNING: Forge refused {len(refused)} card(s) and played without them: "
+              f"{', '.join(refused)}", file=sys.stderr)
     # Everything from here to the returncode check can fail without a
     # returncode (wait timeout, JSONL never created, torn JSONL). Any such
     # failure must still be a SimRotationError: it is the only exception the
@@ -240,7 +386,9 @@ def _run_shim_once(args, jar: str, shim_jar: str, out_dir: Path,
         raise SimRotationError(
             f"shim produced no readable result ({type(e).__name__}: {e}); "
             f"stderr tail: {' | '.join(err_tail[-5:]) or '(empty)'}",
-            partial={"games": []}) from e
+            partial={"games": [], "meta": {"unsupported_cards": refused}}) from e
+    parsed.setdefault("meta", {})["unsupported_cards"] = refused
+    parsed["meta"]["stderr_log"] = stderr_path.name
     if proc.returncode != 0:
         # A warning on stderr was the whole response to this, so a rotation
         # that OOM'd halfway still merged its partial games into a result
@@ -373,11 +521,19 @@ def run(args: argparse.Namespace) -> None:
                                **_merged_shim_meta(sub_metas, orders)},
                       "games": all_games, "summary": _summarize_by_deck(all_games)}
             json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
+            refused = _merge_unsupported(sub_metas)
         else:
             result = _run_shim_once(args, jar, shim_jar, out_dir, deck_names, args.games)
             result["meta"]["decks"] = args.decks
             result["meta"]["format"] = args.format
             json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
+            refused = _merge_unsupported([result["meta"]])
+        # What the run really played: refused cards, and whether each seat's
+        # commander ever appears in a zone record (WS4 task 4).
+        staged = forge_profile_deck_dir(args.format)
+        result.setdefault("meta", {}).update(fidelity_meta(
+            result.get("games") or [], [staged / d for d in deck_names], refused))
+        _warn_fidelity(result["meta"])
         # The per-game wall the run actually used. Without it, a later
         # validity check has to GUESS which clock a file ran under
         # (validity.py _HISTORICAL_CLOCKS) and can only say "suspect".
@@ -410,6 +566,7 @@ def run(args: argparse.Namespace) -> None:
         split = plan_games(args.games, rotations)
         all_games = []
         played_per_rotation: list[int] = []
+        stock_metas: list[dict] = []
         for i, per in enumerate(split):
             order = deck_names[i:] + deck_names[:i]
             print(f"\n--- rotation {i+1}/{rotations}: seats = {order} ---")
@@ -420,14 +577,19 @@ def run(args: argparse.Namespace) -> None:
                 salvaged = e.partial.get("games") or []
                 all_games.extend(salvaged)
                 played_per_rotation.append(len(salvaged))
+                stock_metas.append(e.partial.get("meta") or {})
                 continue
             all_games.extend(sub["games"])
             played_per_rotation.append(len(sub["games"]))
+            stock_metas.append(sub.get("meta") or {})
         result = {"meta": {"source": "rotated", "humanized": False,
                            "decks": args.decks,
                            "format": args.format, "rotations": rotations,
                            **_rotation_meta(args.games, split, played_per_rotation)},
                   "games": all_games, "summary": _summarize_by_deck(all_games)}
+        result["meta"].update(fidelity_meta(
+            all_games, [forge_profile_deck_dir(args.format) / d for d in deck_names],
+            _merge_unsupported(stock_metas)))
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
         # The per-game wall the run actually used. Without it, a later
@@ -482,6 +644,10 @@ def run(args: argparse.Namespace) -> None:
     result["meta"]["decks"] = args.decks
     result["meta"]["format"] = args.format
     result["meta"]["humanized"] = False
+    # Stock Forge's stderr is merged into this stream, refusals included.
+    result["meta"].update(fidelity_meta(
+        result.get("games") or [], [forge_profile_deck_dir(args.format) / d for d in deck_names],
+        unsupported_cards(stdout_lines)))
     json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
     result.setdefault("meta", {})["clock"] = args.clock
     json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
@@ -521,6 +687,7 @@ def _run_once(args, jar, out_dir, deck_order, games, rotate_index: int | None = 
         raw_path = out_dir / f"forge_raw_{stamp}.log"
     raw_path.write_text("".join(lines), encoding="utf-8")
     parsed = parse_forge_log("".join(lines), source=" ".join(cmd))
+    parsed.setdefault("meta", {})["unsupported_cards"] = unsupported_cards(lines)
     if proc.returncode != 0:
         # This path never checked the return code at all, so a rotation Forge
         # aborted contributed however many games it managed and the merged
@@ -610,6 +777,19 @@ def salvage(out_dir: Path, run_id: str, decks: list[str] | None = None,
         meta["games_expected"] = games_expected
     if clock is not None:
         meta["clock"] = clock
+    # Refused cards survive a kill too: the shim's kept stderr, or stock
+    # Forge's raw log (its stderr is merged into it).
+    err_logs = (sorted(out_dir.glob(f"shim_stderr_{rid}_rot*.log"))
+                or sorted(out_dir.glob(f"shim_stderr_{rid}.log"))) if shim_logs else stock_logs
+    refused: list[str] = []
+    for p in err_logs:
+        try:
+            for n in unsupported_cards(p.read_text(encoding="utf-8", errors="replace").splitlines()):
+                if n not in refused:
+                    refused.append(n)
+        except OSError:
+            pass
+    meta["unsupported_cards"] = refused
     if humanized:
         meta["humanized"] = all(humanized)
         meta["humanized_by_rotation"] = humanized

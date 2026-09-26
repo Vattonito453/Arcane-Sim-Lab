@@ -41,6 +41,15 @@ wins ~11%, seat 4 ~36%), so these win rates are not comparable to anything.
 
 `unknown_pilot`: written before the shim recorded which agent ran.
 
+`commander_missing` (certain, shim path only): a seat's commander never
+appears in any zone record over the whole run (run_sim writes
+`meta.commander_fidelity`). The shim records a commander when it leaves the
+command zone, so zero means Forge refused to load it (it is then also in
+`meta.unsupported_cards`: both Ral decks lost "Ral, Monsoon Mage // Ral,
+Leyline Prodigy" this way for 30 games) or Forge's AI never cast it (a
+commander scripted AI:RemoveDeck:All, such as Winter, Cynical Opportunist).
+Either way the run did not test the deck as built, so it is polluted.
+
 CLI:
     python3 engine/validity.py <result.json> [more.json ...]
 """
@@ -74,6 +83,7 @@ _SEVERITY = {
     "clock_cut_wins": POLLUTED,
     "not_rotated": POLLUTED,
     "incomplete_run": POLLUTED,
+    "commander_missing": POLLUTED,
     "suspected_clock_cut_wins": SUSPECT,
     "mixed_pilot": SUSPECT,
     "unknown_pilot": SUSPECT,
@@ -82,7 +92,8 @@ _SEVERITY = {
 # Bumped when the RULES here change, so a cached verdict computed by an older
 # version is recomputed rather than trusted. Consumers that cache a derived
 # report (analysis, coaching) stamp this alongside their own version.
-VALIDITY_VERSION = 1
+# 2 (2026-09-26): commander_missing.
+VALIDITY_VERSION = 2
 
 
 def _clock_seconds(meta: dict) -> int | None:
@@ -174,6 +185,11 @@ def assess(result: dict) -> dict:
             "Written before the run recorded which agent piloted it, so it "
             "cannot be compared against either stock or agent baselines.")
 
+    missing = _missing_commanders(meta)
+    if missing:
+        flags.append("commander_missing")
+        reasons.append(_commander_reason(meta, missing))
+
     # Severity is the worst flag present, never the last one evaluated. An
     # earlier version let a "suspect" flag mask a later "polluted" one purely
     # by evaluation order, which understates exactly the runs that matter most.
@@ -198,6 +214,40 @@ def assess(result: dict) -> dict:
         "humanized": meta.get("humanized"),
         "agent": meta.get("agent"),
     }
+
+
+def _missing_commanders(meta: dict) -> list[dict]:
+    """Seats whose commander never appeared, from meta.commander_fidelity.
+    Absent on stdout-path and older runs, which therefore never trip this."""
+    out = []
+    for f in meta.get("commander_fidelity") or []:
+        if isinstance(f, dict) and f.get("missing") and (f.get("games") or 0) > 0:
+            out.append(f)
+    return out
+
+
+def _commander_reason(meta: dict, missing: list[dict]) -> str:
+    """Plain words for the UI: no em dash (CLAUDE.md copy rule)."""
+    refused = set(meta.get("unsupported_cards") or [])
+    parts, any_refused, any_uncast = [], False, False
+    for f in missing:
+        for c in f["missing"]:
+            faces = {c, *(p.strip() for p in c.split(" // "))}
+            if faces & refused:
+                any_refused = True
+                parts.append(f"{f.get('player')} ({c}, which Forge refused to load)")
+            else:
+                any_uncast = True
+                parts.append(f"{f.get('player')} ({c})")
+    games = max((f.get("games") or 0) for f in missing)
+    text = (f"A commander never appeared in any of the {games} games for: "
+            f"{'; '.join(parts)}.")
+    if any_refused:
+        text += " Forge played that deck without its commander."
+    if any_uncast:
+        text += (" A commander Forge loads but never casts is usually one its AI "
+                 "refuses to play.")
+    return text + " These results do not describe the deck as built."
 
 
 def summarize_flags(verdict: dict) -> str:

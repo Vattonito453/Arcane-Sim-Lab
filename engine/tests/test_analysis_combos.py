@@ -114,7 +114,6 @@ def main() -> None:
         note = rep["note"]
         assert "zone records" in note, note
         assert "inferred" not in note, note
-        assert "—" not in note, "UI copy must not carry an em dash"
 
         line = next(c for c in rep["decks"]["Alpha Test"]["combos"]
                     if c["id"] == "1-2")
@@ -156,6 +155,10 @@ def main() -> None:
         # ---- no reading anywhere may be the old verdict -----------------
         allowed = {"assembled", "sample_too_small", "not_assembled"}
         for r in (rep, rep_l, rep_s, rep_m):
+            # The note reaches the UI: copy rules apply, and a Spellbook
+            # line is never called a win condition.
+            assert "—" not in r["note"], "UI copy must not carry an em dash"
+            assert "win condition" not in r["note"].lower(), r["note"]
             for deck in r["decks"].values():
                 for c in deck["combos"]:
                     assert c["reading"] in allowed, c["reading"]

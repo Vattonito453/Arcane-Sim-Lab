@@ -1,0 +1,88 @@
+== A_shim_mirror:av015: games=128 plan own turns=1429 held-tutor turns=460
+   0_owned        all 65/460 (14%)       rounds1-4 29/254 (11%)
+   1_short        all 255/460 (55%)      rounds1-4 132/254 (52%)
+   2_short        all 140/460 (30%)      rounds1-4 93/254 (37%)
+   shim tutor_cast n=125  rounds1-4 46/125 (37%)  round8+ 52/125 (42%)  hist={1: 10, 2: 14, 3: 6, 4: 16, 5: 10, 6: 7, 7: 10, 8: 12, 9: 11, 10: 7, 11: 7, 12: 15}
+   ALL plan-tutor casts (hand/cmd->stack) n=266 rounds1-4 110/266 (41%) round8+ 101/266 (38%) hist={1: 20, 2: 31, 3: 27, 4: 32, 5: 17, 6: 21, 7: 17, 8: 21, 9: 16, 10: 15, 11: 15, 12: 34}
+   held by own-turn round:
+== A_shim_mirror:winmax: games=128 plan own turns=1476 held-tutor turns=559
+   0_owned        all 91/559 (16%)       rounds1-4 30/271 (11%)
+   1_short        all 280/559 (50%)      rounds1-4 145/271 (54%)
+   2_short        all 188/559 (34%)      rounds1-4 96/271 (35%)
+   shim tutor_cast n=104  rounds1-4 28/104 (27%)  round8+ 43/104 (41%)  hist={1: 5, 2: 7, 3: 10, 4: 6, 5: 7, 6: 17, 7: 9, 8: 7, 9: 6, 11: 2, 12: 28}
+   ALL plan-tutor casts (hand/cmd->stack) n=252 rounds1-4 76/252 (30%) round8+ 102/252 (40%) hist={1: 11, 2: 17, 3: 21, 4: 27, 5: 19, 6: 27, 7: 28, 8: 21, 9: 14, 10: 6, 11: 9, 12: 52}
+   held by own-turn round:
+== A_shim_mirror:av016: games=128 plan own turns=1511 held-tutor turns=527
+   0_owned        all 80/527 (15%)       rounds1-4 39/269 (14%)
+   1_short        all 294/527 (56%)      rounds1-4 139/269 (52%)
+   2_short        all 153/527 (29%)      rounds1-4 91/269 (34%)
+   shim tutor_cast n=130  rounds1-4 36/130 (28%)  round8+ 58/130 (45%)  hist={1: 12, 2: 8, 3: 6, 4: 10, 5: 11, 6: 11, 7: 14, 8: 12, 9: 11, 10: 12, 11: 9, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=261 rounds1-4 75/261 (29%) round8+ 109/261 (42%) hist={1: 18, 2: 19, 3: 17, 4: 21, 5: 25, 6: 24, 7: 28, 8: 20, 9: 23, 10: 16, 11: 14, 12: 36}
+   held by own-turn round:
+== A_shim_mirror:rubric_ship: games=32 plan own turns=1635 held-tutor turns=527
+   0_owned        all 34/527 (6%)        rounds1-4 14/235 (6%)
+   1_short        all 205/527 (39%)      rounds1-4 95/235 (40%)
+   2_short        all 264/527 (50%)      rounds1-4 112/235 (48%)
+   3plus_short    all 24/527 (5%)        rounds1-4 14/235 (6%)
+   shim tutor_cast n=67  rounds1-4 23/67 (34%)  round8+ 33/67 (49%)  hist={1: 3, 2: 5, 3: 6, 4: 9, 5: 4, 6: 2, 7: 5, 8: 7, 9: 6, 10: 3, 11: 3, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=215 rounds1-4 61/215 (28%) round8+ 95/215 (44%) hist={1: 9, 2: 17, 3: 17, 4: 18, 5: 26, 6: 17, 7: 16, 8: 14, 9: 19, 10: 9, 11: 8, 12: 45}
+   held by own-turn round:
+== B_their_def:av015: games=128 plan own turns=1429 held-tutor turns=318
+   0_owned        all 17/318 (5%)        rounds1-4 8/180 (4%)
+   1_short        all 136/318 (43%)      rounds1-4 63/180 (35%)
+   2_short        all 164/318 (52%)      rounds1-4 108/180 (60%)
+   3plus_short    all 1/318 (0%)         rounds1-4 1/180 (1%)
+   shim tutor_cast n=125  rounds1-4 46/125 (37%)  round8+ 52/125 (42%)  hist={1: 10, 2: 14, 3: 6, 4: 16, 5: 10, 6: 7, 7: 10, 8: 12, 9: 11, 10: 7, 11: 7, 12: 15}
+   ALL plan-tutor casts (hand/cmd->stack) n=266 rounds1-4 110/266 (41%) round8+ 101/266 (38%) hist={1: 20, 2: 31, 3: 27, 4: 32, 5: 17, 6: 21, 7: 17, 8: 21, 9: 16, 10: 15, 11: 15, 12: 34}
+   held by own-turn round:
+== B_their_def:winmax: games=128 plan own turns=1476 held-tutor turns=432
+   0_owned        all 53/432 (12%)       rounds1-4 10/195 (5%)
+   1_short        all 169/432 (39%)      rounds1-4 71/195 (36%)
+   2_short        all 210/432 (49%)      rounds1-4 114/195 (58%)
+   shim tutor_cast n=104  rounds1-4 28/104 (27%)  round8+ 43/104 (41%)  hist={1: 5, 2: 7, 3: 10, 4: 6, 5: 7, 6: 17, 7: 9, 8: 7, 9: 6, 11: 2, 12: 28}
+   ALL plan-tutor casts (hand/cmd->stack) n=252 rounds1-4 76/252 (30%) round8+ 102/252 (40%) hist={1: 11, 2: 17, 3: 21, 4: 27, 5: 19, 6: 27, 7: 28, 8: 21, 9: 14, 10: 6, 11: 9, 12: 52}
+   held by own-turn round:
+== B_their_def:av016: games=128 plan own turns=1511 held-tutor turns=392
+   0_owned        all 19/392 (5%)        rounds1-4 4/190 (2%)
+   1_short        all 197/392 (50%)      rounds1-4 80/190 (42%)
+   2_short        all 176/392 (45%)      rounds1-4 106/190 (56%)
+   shim tutor_cast n=130  rounds1-4 36/130 (28%)  round8+ 58/130 (45%)  hist={1: 12, 2: 8, 3: 6, 4: 10, 5: 11, 6: 11, 7: 14, 8: 12, 9: 11, 10: 12, 11: 9, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=261 rounds1-4 75/261 (29%) round8+ 109/261 (42%) hist={1: 18, 2: 19, 3: 17, 4: 21, 5: 25, 6: 24, 7: 28, 8: 20, 9: 23, 10: 16, 11: 14, 12: 36}
+   held by own-turn round:
+== B_their_def:rubric_ship: games=32 plan own turns=1635 held-tutor turns=461
+   0_owned        all 26/461 (6%)        rounds1-4 9/185 (5%)
+   1_short        all 134/461 (29%)      rounds1-4 45/185 (24%)
+   2_short        all 277/461 (60%)      rounds1-4 117/185 (63%)
+   3plus_short    all 24/461 (5%)        rounds1-4 14/185 (8%)
+   shim tutor_cast n=67  rounds1-4 23/67 (34%)  round8+ 33/67 (49%)  hist={1: 3, 2: 5, 3: 6, 4: 9, 5: 4, 6: 2, 7: 5, 8: 7, 9: 6, 10: 3, 11: 3, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=215 rounds1-4 61/215 (28%) round8+ 95/215 (44%) hist={1: 9, 2: 17, 3: 17, 4: 18, 5: 26, 6: 17, 7: 16, 8: 14, 9: 19, 10: 9, 11: 8, 12: 45}
+   held by own-turn round:
+== C_hand_tutor_cmdr_owned:av015: games=128 plan own turns=1429 held-tutor turns=318
+   0_owned        all 31/318 (10%)       rounds1-4 16/180 (9%)
+   1_short        all 159/318 (50%)      rounds1-4 83/180 (46%)
+   2_short        all 128/318 (40%)      rounds1-4 81/180 (45%)
+   shim tutor_cast n=125  rounds1-4 46/125 (37%)  round8+ 52/125 (42%)  hist={1: 10, 2: 14, 3: 6, 4: 16, 5: 10, 6: 7, 7: 10, 8: 12, 9: 11, 10: 7, 11: 7, 12: 15}
+   ALL plan-tutor casts (hand/cmd->stack) n=266 rounds1-4 110/266 (41%) round8+ 101/266 (38%) hist={1: 20, 2: 31, 3: 27, 4: 32, 5: 17, 6: 21, 7: 17, 8: 21, 9: 16, 10: 15, 11: 15, 12: 34}
+   held by own-turn round:
+== C_hand_tutor_cmdr_owned:winmax: games=128 plan own turns=1476 held-tutor turns=432
+   0_owned        all 74/432 (17%)       rounds1-4 23/195 (12%)
+   1_short        all 183/432 (42%)      rounds1-4 86/195 (44%)
+   2_short        all 175/432 (41%)      rounds1-4 86/195 (44%)
+   shim tutor_cast n=104  rounds1-4 28/104 (27%)  round8+ 43/104 (41%)  hist={1: 5, 2: 7, 3: 10, 4: 6, 5: 7, 6: 17, 7: 9, 8: 7, 9: 6, 11: 2, 12: 28}
+   ALL plan-tutor casts (hand/cmd->stack) n=252 rounds1-4 76/252 (30%) round8+ 102/252 (40%) hist={1: 11, 2: 17, 3: 21, 4: 27, 5: 19, 6: 27, 7: 28, 8: 21, 9: 14, 10: 6, 11: 9, 12: 52}
+   held by own-turn round:
+== C_hand_tutor_cmdr_owned:av016: games=128 plan own turns=1511 held-tutor turns=392
+   0_owned        all 42/392 (11%)       rounds1-4 19/190 (10%)
+   1_short        all 210/392 (54%)      rounds1-4 92/190 (48%)
+   2_short        all 140/392 (36%)      rounds1-4 79/190 (42%)
+   shim tutor_cast n=130  rounds1-4 36/130 (28%)  round8+ 58/130 (45%)  hist={1: 12, 2: 8, 3: 6, 4: 10, 5: 11, 6: 11, 7: 14, 8: 12, 9: 11, 10: 12, 11: 9, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=261 rounds1-4 75/261 (29%) round8+ 109/261 (42%) hist={1: 18, 2: 19, 3: 17, 4: 21, 5: 25, 6: 24, 7: 28, 8: 20, 9: 23, 10: 16, 11: 14, 12: 36}
+   held by own-turn round:
+== C_hand_tutor_cmdr_owned:rubric_ship: games=32 plan own turns=1635 held-tutor turns=461
+   0_owned        all 29/461 (6%)        rounds1-4 12/185 (6%)
+   1_short        all 154/461 (33%)      rounds1-4 57/185 (31%)
+   2_short        all 254/461 (55%)      rounds1-4 102/185 (55%)
+   3plus_short    all 24/461 (5%)        rounds1-4 14/185 (8%)
+   shim tutor_cast n=67  rounds1-4 23/67 (34%)  round8+ 33/67 (49%)  hist={1: 3, 2: 5, 3: 6, 4: 9, 5: 4, 6: 2, 7: 5, 8: 7, 9: 6, 10: 3, 11: 3, 12: 14}
+   ALL plan-tutor casts (hand/cmd->stack) n=215 rounds1-4 61/215 (28%) round8+ 95/215 (44%) hist={1: 9, 2: 17, 3: 17, 4: 18, 5: 26, 6: 17, 7: 16, 8: 14, 9: 19, 10: 9, 11: 8, 12: 45}
+   held by own-turn round:

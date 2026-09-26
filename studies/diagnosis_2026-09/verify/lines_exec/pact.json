@@ -1,0 +1,2172 @@
+[
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-godo_archetype",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": false
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent\\2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot0.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-yidris",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot1.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-yidris",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot2.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-yidris",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-alan_tnt",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\n7WpsqsZtdQ_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\sZA0KqXCGrY_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tyler_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\sZA0KqXCGrY_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tyler_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\B421mac67IE_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-lily_malcolm_vial",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-yidris",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot2.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-yidris",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-alan_tnt",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-dallas_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-alan_tnt",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-alan_tnt",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent_093\\n7WpsqsZtdQ_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\sZA0KqXCGrY_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tyler_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\sZA0KqXCGrY_rot3.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-tyler_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot1.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-rograkh_silas",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-rograkh_silas",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\B421mac67IE_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-lily_malcolm_vial",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\B421mac67IE_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-lily_malcolm_vial",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot2.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\n7WpsqsZtdQ_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_B421mac67IE_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-lily_malcolm_vial",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_B421mac67IE_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-lily_malcolm_vial",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot0.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-dallas_bluefarm",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-dallas_bluefarm",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot3.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-alan_tnt",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_sZA0KqXCGrY_rot1.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(1)-tyler_bluefarm",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "tutor_targeting\\runs\\shim_raw_20260825_081005_205764.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "tutor_targeting\\runs\\shim_raw_20260825_083551_090443.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "tutor_targeting\\runs_stage1\\shim_raw_20260825_105725_744800.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(2)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "tutor_targeting\\runs_stage1\\shim_raw_20260825_110128_362068.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "tutor_targeting\\runs_stage2\\probeA.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "C:/Users/Vatto/Magic Rules Engine/studies\\tutor_targeting\\runs_stage2\\shim_raw_20260825_182235_357118.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": false
+ },
+ {
+  "file": "tutor_targeting\\runs_stage2\\shim_raw_20260825_182235_357118.jsonl",
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ },
+ {
+  "file": "tutor_targeting\\runs_stock\\shim_raw_20260825_155212_894733.jsonl",
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "resolved": true,
+  "lib_exiled": 0,
+  "to_hand": 0,
+  "names": []
+ }
+]

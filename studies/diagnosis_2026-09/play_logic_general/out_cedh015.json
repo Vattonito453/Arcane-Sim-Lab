@@ -1,0 +1,2220 @@
+{
+"cedh015": {
+"n": {
+"all|games_cedh015": 128,
+"plan|seat_games": 128,
+"stock|seat_games": 384,
+"stock|casts": 4815,
+"stock|player_turns": 4068,
+"stock|unspent_lands_sum": 0,
+"stock|turns_tapcheck": 4068,
+"stock|no_land_no_drop": 2035,
+"plan|casts": 1714,
+"plan|player_turns": 1394,
+"plan|unspent_lands_sum": 0,
+"plan|turns_tapcheck": 1394,
+"stock|ritual_cast": 94,
+"stock|ritual_wasted": 42,
+"plan|no_land_no_drop": 672,
+"stock|removal_targeted": 181,
+"stock|attackers": 3888,
+"stock|attackers_blocked": 529,
+"plan|eliminations": 83,
+"plan|hand_at_death_sum": 0,
+"plan|eliminations_tap": 83,
+"stock|eliminations": 275,
+"stock|hand_at_death_sum": 0,
+"stock|eliminations_tap": 275,
+"stock|commander_casts": 466,
+"plan|removal_targeted": 53,
+"stock|counters_cast": 286,
+"plan|attackers": 1020,
+"plan|attackers_blocked": 150,
+"stock|wraths": 46,
+"stock|wrath_into_empty": 46,
+"plan|counters_cast": 66,
+"plan|counter_on_cmc_le2": 23,
+"stock|counter_on_ramp": 52,
+"stock|counter_on_cmc_le2": 68,
+"plan|commander_casts": 162,
+"plan|cleanup_discard": 15,
+"plan|wraths": 18,
+"plan|wrath_into_empty": 18,
+"plan|cleanup_discard_land": 1,
+"plan|cleanup_discard_plan_piece": 4,
+"plan|cleanup_discard_castable_perm": 3,
+"stock|commander_cast_3plus": 15,
+"stock|cleanup_discard": 86,
+"stock|cleanup_discard_land": 6,
+"stock|cleanup_discard_plan_piece": 25,
+"plan|counter_on_ramp": 15,
+"plan|ritual_cast": 30,
+"stock|cleanup_discard_castable_perm": 14,
+"plan|ritual_wasted": 15,
+"plan|commander_cast_3plus": 6
+},
+"ex": {
+"stock|ritual_wasted": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+0,
+11,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+3,
+17,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+4,
+45,
+"main1",
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+6,
+12,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+6,
+14,
+"main2",
+"Ai(2)-godo_archetype",
+"Seething Song"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+7,
+18,
+"main2",
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+10,
+25,
+"main2",
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+13,
+6,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+13,
+20,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+15,
+12,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+15,
+26,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+0,
+45,
+"main2",
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+1,
+9,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+9,
+16,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+13,
+4,
+"main2",
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+1,
+18,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+2,
+28,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+3,
+24,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+3,
+45,
+"main2",
+"Ai(2)-godo_archetype",
+"Desperate Ritual"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+27,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+6,
+13,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+7,
+48,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+8,
+35,
+"main2",
+"Ai(2)-godo_archetype",
+"Desperate Ritual"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+12,
+24,
+"main2",
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+13,
+25,
+"main1",
+"Ai(4)-rograkh_silas",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+13,
+56,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+14,
+21,
+"main1",
+"Ai(2)-godo_archetype",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+15,
+48,
+"main2",
+"Ai(4)-rograkh_silas",
+"Dark Ritual"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+7,
+29,
+"main2",
+"Ai(4)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+9,
+12,
+"main2",
+"Ai(4)-tymna_thrasios",
+"Cabal Ritual"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+12,
+21,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+15,
+35,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+0,
+45,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+1,
+17,
+"main1",
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+4,
+37,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+5,
+4,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+8,
+21,
+"main2",
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+12,
+6,
+"main1",
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+12,
+20,
+"main2",
+"Ai(4)-tymna_thrasios",
+"Dark Ritual"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+2,
+4,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+3,
+35,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+6,
+11,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+]
+],
+"stock|wrath_into_empty": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+1,
+28,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+2,
+14,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+2,
+27,
+"Ai(4)-rograkh_silas",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+3,
+40,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+4,
+43,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+5,
+26,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+5,
+47,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+6,
+23,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+15,
+24,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+0,
+19,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+2,
+38,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+5,
+13,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+6,
+39,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+7,
+47,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+8,
+24,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+9,
+21,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+10,
+56,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+11,
+18,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+12,
+56,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+14,
+34,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+2,
+20,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+22,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+5,
+29,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+6,
+37,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+9,
+34,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+11,
+17,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+12,
+17,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+13,
+26,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+13,
+39,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+14,
+13,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+15,
+52,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+17,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+44,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+6,
+15,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+9,
+44,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+13,
+29,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+0,
+18,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+2,
+28,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+5,
+13,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+10,
+13,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+9,
+23,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+15,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+0,
+16,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+5,
+22,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+12,
+40,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+14,
+31,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+]
+],
+"stock|counter_on_ramp": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+1,
+54,
+"Ai(3)-nadu",
+"Force of Negation",
+"Mox Diamond"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+3,
+36,
+"Ai(3)-nadu",
+"Force of Negation",
+"Mana Crypt"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+4,
+13,
+"Ai(3)-nadu",
+"Force of Negation",
+"Talisman of Indulgence"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+5,
+7,
+"Ai(3)-nadu",
+"An Offer You Can't Refuse",
+"Grim Monolith"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+6,
+24,
+"Ai(3)-nadu",
+"Fierce Guardianship",
+"Mox Opal"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+6,
+25,
+"Ai(3)-nadu",
+"Pact of Negation",
+"Chromatic Orrery"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+9,
+38,
+"Ai(3)-nadu",
+"Spell Pierce",
+"Chromatic Orrery"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+0,
+17,
+"Ai(3)-nadu",
+"Force of Negation",
+"Talisman of Curiosity"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+2,
+3,
+"Ai(3)-nadu",
+"Force of Negation",
+"Mox Diamond"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+2,
+35,
+"Ai(3)-nadu",
+"Fierce Guardianship",
+"Chrome Mox"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+6,
+20,
+"Ai(1)-derevi",
+"Force of Will",
+"Honor-Worn Shaku"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+9,
+15,
+"Ai(4)-rograkh_silas",
+"Mental Misstep",
+"Sol Ring"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+10,
+39,
+"Ai(3)-nadu",
+"Fierce Guardianship",
+"Mana Crypt"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+10,
+43,
+"Ai(1)-derevi",
+"Strix Serenade",
+"Chrome Mox"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+11,
+47,
+"Ai(1)-derevi",
+"Fierce Guardianship",
+"Sol Ring"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+15,
+8,
+"Ai(1)-derevi",
+"Strix Serenade",
+"Mox Diamond"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+2,
+"Ai(4)-rograkh_silas",
+"Fierce Guardianship",
+"Mox Diamond"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+8,
+"Ai(4)-rograkh_silas",
+"Mental Misstep",
+"Llanowar Elves - Creature 1 / 1"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+5,
+16,
+"Ai(2)-godo_archetype",
+"Tibalt's Trickery",
+"Paradise Mantle"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+6,
+41,
+"Ai(1)-derevi",
+"Pact of Negation",
+"Chrome Mox"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+8,
+15,
+"Ai(4)-rograkh_silas",
+"Force of Will",
+"Cursed Mirror"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+9,
+19,
+"Ai(1)-derevi",
+"Strix Serenade",
+"Mana Crypt"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+10,
+2,
+"Ai(1)-derevi",
+"Strix Serenade",
+"Mox Opal"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+11,
+41,
+"Ai(1)-derevi",
+"Pact of Negation",
+"Chrome Mox"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+12,
+5,
+"Ai(4)-rograkh_silas",
+"Fierce Guardianship",
+"Mox Amber"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+15,
+57,
+"Ai(1)-derevi",
+"Strix Serenade",
+"Grim Monolith"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+0,
+15,
+"Ai(1)-derevi",
+"Fierce Guardianship",
+"Basalt Monolith"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+14,
+"Ai(3)-nadu",
+"Fierce Guardianship",
+"Grim Monolith"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+38,
+"Ai(2)-godo_archetype",
+"Tibalt's Trickery",
+"Noble Hierarch - Creature 0 / 1"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+6,
+4,
+"Ai(3)-nadu",
+"An Offer You Can't Refuse",
+"Mox Opal"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+8,
+29,
+"Ai(1)-derevi",
+"Mental Misstep",
+"Elvish Mystic - Creature 1 / 1"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+13,
+2,
+"Ai(3)-nadu",
+"Fierce Guardianship",
+"Mox Diamond"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+14,
+32,
+"Ai(3)-nadu",
+"An Offer You Can't Refuse",
+"Mox Diamond"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+0,
+4,
+"Ai(2)-rog_ishai",
+"Force of Negation",
+"Liquimetal Torque"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+3,
+12,
+"Ai(4)-tymna_thrasios",
+"Force of Will",
+"Selvala, Heart of the Wilds - Creature 2 / 3"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+4,
+1,
+"Ai(2)-rog_ishai",
+"Force of Negation",
+"Chrome Mox"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+5,
+19,
+"Ai(4)-tymna_thrasios",
+"An Offer You Can't Refuse",
+"Liquimetal Torque"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+6,
+9,
+"Ai(2)-rog_ishai",
+"Force of Negation",
+"Arcane Signet"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+6,
+20,
+"Ai(2)-rog_ishai",
+"Mental Misstep",
+"Birds of Paradise - Creature 0 / 1"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+12,
+23,
+"Ai(4)-tymna_thrasios",
+"Fierce Guardianship",
+"Mox Opal"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+13,
+35,
+"Ai(4)-tymna_thrasios",
+"An Offer You Can't Refuse",
+"Relic of Legends"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+1,
+46,
+"Ai(4)-tymna_thrasios",
+"Mental Misstep",
+"Mana Vault"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+8,
+10,
+"Ai(4)-tymna_thrasios",
+"Fierce Guardianship",
+"Flywheel Racer"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+12,
+34,
+"Ai(4)-tymna_thrasios",
+"Fierce Guardianship",
+"Paradise Mantle"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+12,
+35,
+"Ai(4)-tymna_thrasios",
+"Mental Misstep",
+"Llanowar Elves - Creature 1 / 1"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+15,
+26,
+"Ai(4)-tymna_thrasios",
+"An Offer You Can't Refuse",
+"Mox Opal"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+0,
+4,
+"Ai(2)-rog_ishai",
+"Force of Negation",
+"Mox Amber"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+10,
+4,
+"Ai(2)-rog_ishai",
+"Fierce Guardianship",
+"Fellwar Stone"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+11,
+4,
+"Ai(2)-rog_ishai",
+"An Offer You Can't Refuse",
+"Mox Diamond"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+15,
+19,
+"Ai(4)-tymna_thrasios",
+"Pact of Negation",
+"Firdoch Core"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+5,
+6,
+"Ai(2)-rog_ishai",
+"Force of Will",
+"Selvala, Heart of the Wilds - Creature 2 / 3"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+13,
+31,
+"Ai(2)-rog_ishai",
+"Fierce Guardianship",
+"Fellwar Stone"
+]
+],
+"plan|wrath_into_empty": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+2,
+27,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+3,
+42,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+5,
+40,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+5,
+46,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+13,
+39,
+"Ai(1)-derevi",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+2,
+37,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+11,
+15,
+"Ai(2)-godo_archetype",
+"Blasphemous Act",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+0,
+19,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+0,
+27,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+2,
+10,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+3,
+40,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+40,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+9,
+44,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+13,
+24,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+15,
+12,
+"Ai(3)-nadu",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+2,
+21,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+4,
+15,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot2.jsonl",
+15,
+14,
+"Ai(3)-selvala_archetype",
+"Chord of Calling",
+0,
+0
+]
+],
+"plan|cleanup_discard_plan_piece": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+2,
+53,
+"Ai(1)-derevi",
+"Chromatic Orrery"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+13,
+43,
+"Ai(1)-derevi",
+"Felidar Guardian"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+12,
+74,
+"Ai(2)-godo_archetype",
+"Kuldotha Forgemaster"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+12,
+74,
+"Ai(2)-godo_archetype",
+"Imperial Recruiter"
+]
+],
+"plan|cleanup_discard_castable_perm": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+2,
+53,
+"Ai(1)-derevi",
+"Noble Hierarch",
+1
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+12,
+74,
+"Ai(2)-godo_archetype",
+"Lion's Eye Diamond",
+0
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+12,
+74,
+"Ai(2)-godo_archetype",
+"Manifold Key",
+1
+]
+],
+"stock|cleanup_discard_plan_piece": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+7,
+64,
+"Ai(3)-nadu",
+"Cephalid Illusionist"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+7,
+64,
+"Ai(3)-nadu",
+"Aphetto Alchemist"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+7,
+64,
+"Ai(3)-nadu",
+"Displacer Kitten"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+4,
+56,
+"Ai(1)-derevi",
+"Birthing Pod"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+4,
+56,
+"Ai(1)-derevi",
+"Phyrexian Metamorph"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+14,
+39,
+"Ai(1)-derevi",
+"Flesh Duplicate"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+14,
+39,
+"Ai(1)-derevi",
+"Phyrexian Metamorph"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+14,
+39,
+"Ai(1)-derevi",
+"Bloom Tender"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+60,
+"Ai(2)-godo_archetype",
+"Kuldotha Forgemaster"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+10,
+50,
+"Ai(1)-derevi",
+"Spellseeker"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+10,
+50,
+"Ai(1)-derevi",
+"Chromatic Orrery"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+15,
+58,
+"Ai(1)-derevi",
+"Chromatic Orrery"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+15,
+58,
+"Ai(1)-derevi",
+"Faeburrow Elder"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+0,
+40,
+"Ai(1)-derevi",
+"Phyrexian Metamorph"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+0,
+40,
+"Ai(1)-derevi",
+"Bloom Tender"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+7,
+30,
+"Ai(3)-nadu",
+"Spellseeker"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+13,
+58,
+"Ai(3)-nadu",
+"Cephalid Illusionist"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+15,
+40,
+"Ai(1)-derevi",
+"Birthing Pod"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+15,
+40,
+"Ai(1)-derevi",
+"Flesh Duplicate"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+5,
+48,
+"Ai(2)-rog_ishai",
+"Lion's Eye Diamond"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+13,
+59,
+"Ai(2)-rog_ishai",
+"Hullbreaker Horror"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+4,
+35,
+"Ai(1)-magda",
+"Clock of Omens"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+55,
+"Ai(4)-tymna_thrasios",
+"Devoted Druid"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+55,
+"Ai(4)-tymna_thrasios",
+"Summoner's Pact"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+55,
+"Ai(4)-tymna_thrasios",
+"Vampiric Tutor"
+]
+],
+"plan|counter_on_ramp": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot0.jsonl",
+11,
+42,
+"Ai(1)-derevi",
+"Force of Will",
+"Basalt Monolith"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+35,
+"Ai(3)-nadu",
+"Spell Pierce",
+"Thran Dynamo"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+4,
+51,
+"Ai(3)-nadu",
+"Mental Misstep",
+"Mana Vault"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+5,
+1,
+"Ai(3)-nadu",
+"Force of Negation",
+"Mana Crypt"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+9,
+24,
+"Ai(3)-nadu",
+"An Offer You Can't Refuse",
+"Arcane Signet"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+11,
+60,
+"Ai(3)-nadu",
+"Mental Misstep",
+"Birds of Paradise - Creature 0 / 1"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+12,
+36,
+"Ai(3)-nadu",
+"Spell Pierce",
+"Chromatic Orrery"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+14,
+1,
+"Ai(3)-nadu",
+"Force of Negation",
+"Mana Vault"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+19,
+"Ai(4)-rograkh_silas",
+"Pact of Negation",
+"Delighted Halfling - Creature 1 / 2"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+2,
+18,
+"Ai(2)-rog_ishai",
+"An Offer You Can't Refuse",
+"Sol Ring"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+10,
+12,
+"Ai(2)-rog_ishai",
+"Mental Misstep",
+"Mana Vault"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+13,
+30,
+"Ai(2)-rog_ishai",
+"Force of Negation",
+"Mana Vault"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+3,
+21,
+"Ai(4)-tymna_thrasios",
+"An Offer You Can't Refuse",
+"Mana Vault"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+10,
+14,
+"Ai(4)-tymna_thrasios",
+"Mental Misstep",
+"Sol Ring"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot3.jsonl",
+15,
+24,
+"Ai(4)-tymna_thrasios",
+"An Offer You Can't Refuse",
+"Liquimetal Torque"
+]
+],
+"stock|cleanup_discard_castable_perm": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+4,
+56,
+"Ai(1)-derevi",
+"Mox Diamond",
+2
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+4,
+56,
+"Ai(1)-derevi",
+"Esper Sentinel",
+2
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+4,
+56,
+"Ai(1)-derevi",
+"Fellwar Stone",
+2
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+10,
+61,
+"Ai(3)-nadu",
+"Sylvan Safekeeper",
+5
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+10,
+61,
+"Ai(3)-nadu",
+"Mox Diamond",
+7
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+14,
+39,
+"Ai(1)-derevi",
+"Mox Diamond",
+1
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot2.jsonl",
+10,
+50,
+"Ai(1)-derevi",
+"Birds of Paradise",
+1
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+13,
+58,
+"Ai(3)-nadu",
+"Cephalid Illusionist",
+7
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+2,
+68,
+"Ai(3)-selvala_archetype",
+"Realm Seekers",
+7
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+5,
+48,
+"Ai(2)-rog_ishai",
+"Lion's Eye Diamond",
+1
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+8,
+50,
+"Ai(2)-rog_ishai",
+"Springleaf Drum",
+7
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+8,
+50,
+"Ai(2)-rog_ishai",
+"Tataru Taru",
+6
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+55,
+"Ai(4)-tymna_thrasios",
+"Devoted Druid",
+5
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+55,
+"Ai(4)-tymna_thrasios",
+"Tataru Taru",
+6
+]
+],
+"plan|ritual_wasted": [
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+9,
+50,
+"main2",
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+14,
+10,
+"main2",
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot1.jsonl",
+15,
+28,
+"main2",
+"Ai(2)-godo_archetype",
+"Rite of Flame"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+30,
+"main1",
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+2,
+53,
+"main2",
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+9,
+21,
+"main1",
+"Ai(4)-rograkh_silas",
+"Rite of Flame"
+],
+[
+"cedh015",
+"cell_2iA_Jt0d6sM_rot3.jsonl",
+13,
+26,
+"main2",
+"Ai(4)-rograkh_silas",
+"Cabal Ritual"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+7,
+30,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+8,
+10,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot0.jsonl",
+13,
+31,
+"main1",
+"Ai(1)-magda",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+0,
+6,
+"main1",
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+2,
+16,
+"main1",
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+4,
+5,
+"main1",
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+5,
+32,
+"main1",
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+],
+[
+"cedh015",
+"cell_n7WpsqsZtdQ_rot1.jsonl",
+14,
+18,
+"main1",
+"Ai(2)-rog_ishai",
+"Jeska's Will"
+]
+]
+}
+}
+}

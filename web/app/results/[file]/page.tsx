@@ -21,11 +21,15 @@ import type {
   RunSummary,
   ScorecardReport,
 } from "@/lib/types";
+import { ComboLines } from "@/components/ComboLines";
 import { DeckScorecards } from "@/components/DeckScorecards";
 import { PredictionPanel } from "@/components/PredictionPanel";
 import { fmtDay, pct, plural, runDate, runTitle, stripAi } from "@/lib/format";
 
-function fmtClock(ms: number): string {
+/** "12:05". A missing duration is an en dash: a draw logged without one
+ *  printed "NaN:NaN" here (tasks/26-ux-review.md, problem 6). */
+function fmtClock(ms: number | null | undefined): string {
+  if (typeof ms !== "number" || !Number.isFinite(ms) || ms < 0) return "–";
   const s = Math.round(ms / 1000);
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }
@@ -41,43 +45,78 @@ function median(xs: number[]): number {
  *  but whose raw still names a winner ("… Ai(2)-Drana Vampires has won!"). */
 const RE_WON_RAW = /([^.]+?) has won/;
 
+/** Game length out of a result raw, for a line the adapter did not time:
+ *  "Game 3 ended in a Draw! Took 17619 ms." carries no duration_ms. */
+const RE_TOOK_MS = /(?:Took|ended in) (\d+) ms/;
+
+/** How a game that nobody won ended, stamped by the adapters on top of
+ *  SimGame["result"]. The shim marks the per-game clock and the turn cap;
+ *  stock-Forge results carry neither, so every field is optional. */
+type ResultMarks = {
+  timedOut?: boolean;
+  turnCapped?: boolean;
+  error?: unknown;
+  missingResult?: boolean;
+};
+
 /** One table row, built entirely from the summary payload. */
 interface GameRow {
   n: number;
   winnerName: string | null;
   draw: boolean;
+  /** Forge's per-player turn counter. Kept for the median only; never shown,
+   *  because it reads about 4x high to a player ("T36" for a turn-9 game). */
   endedTurn: number;
+  /** The table turn: a player's Nth turn is turn N. */
   endedRound: number | null;
   durationMs: number;
   decidedBy: string;
 }
 
-function toRow(g: RunGameSummary): GameRow {
+function toRow(g: RunGameSummary, clockSeconds: number | null): GameRow {
+  const r = g.result as RunGameSummary["result"] & ResultMarks;
+  // A game the clock cut off is a draw whatever winner the record carries:
+  // the engine's summary counts it that way (audit A16), so the table must too.
+  const timedOut = r.timedOut === true;
+  const draw = r.draw || timedOut;
   // `raw` is optional-chained: every adapter path sets it today, but a result
   // with neither a winner nor a raw line should render as "–" rather than take
   // the whole page down with it.
-  const key = g.result.winner ?? g.result.raw?.match(RE_WON_RAW)?.[1]?.trim() ?? null;
+  const key = draw ? null : (r.winner ?? r.raw?.match(RE_WON_RAW)?.[1]?.trim() ?? null);
   const winnerName = key ? stripAi(key) : null;
   const endedTurn = g.ended_turn ?? g.turns;
   const endedRound = g.ended_round ?? null;
+  const durationMs =
+    typeof r.duration_ms === "number" ? r.duration_ms : Number(r.raw?.match(RE_TOOK_MS)?.[1] ?? NaN);
+  const onTurn = endedRound ? ` on turn ${endedRound}` : "";
+  // A draw says why when the data knows ("Draw (draw)" said nothing). Older
+  // stock-Forge files carry no clock mark, but a draw that ran the full clock
+  // was cut by it.
+  const hitClock =
+    timedOut || (clockSeconds != null && Number.isFinite(durationMs) && durationMs >= clockSeconds * 1000);
+  const clockWords = clockSeconds ? `the ${Math.round(clockSeconds / 60)}-minute clock` : "the per-game clock";
   // Without the event log there is no honest way to name the killing swing, so
   // this column states only what the result line proves: who won, and when.
-  const decidedBy = g.result.draw
-    ? "Draw"
+  const decidedBy = draw
+    ? hitClock
+      ? `Draw: hit ${clockWords}${onTurn}`
+      : r.turnCapped
+        ? `Draw: reached the turn limit${onTurn}`
+        : `Draw${onTurn}`
     : winnerName
-      ? endedRound
-        ? `${winnerName} won on round ${endedRound}`
-        : endedTurn
-          ? `${winnerName} won on turn ${endedTurn}`
-          : `${winnerName} won`
-      : "–";
+      ? `${winnerName} won${onTurn}`
+      : r.error
+        ? "No result: this game crashed"
+        : r.missingResult
+          ? "No result: none was recorded"
+          : "–";
   return {
     n: g.n,
     winnerName,
-    draw: g.result.draw,
+    draw,
     endedTurn,
     endedRound,
-    durationMs: g.result.duration_ms,
+    durationMs,
     decidedBy,
   };
 }
@@ -109,9 +148,10 @@ export default function ResultsPage() {
           setErr(e instanceof Error ? e.message : String(e));
         }
       });
-    // Wincon analysis loads separately and the page works without it — the
-    // first request for an old run computes it server-side, which can take a
-    // few seconds, and a failure just means no Win conditions section.
+    // The analysis (win methods, combo lines) loads separately and the page
+    // works without it: the first request for an old run computes it
+    // server-side, which can take a few seconds, and a failure just means no
+    // "How games ended" or combo-lines section.
     api.analysis(file).then((r) => live && setAn(r)).catch(() => {});
     // Per-deck scorecards: a few KB, and the only route the shim's neutral
     // per-seat records take to the browser. The page works without them (an
@@ -166,7 +206,10 @@ export default function ResultsPage() {
     const maxWins = rows.length ? rows[0].wins : 0;
     const tops = rows.filter((r) => r.wins === maxWins);
     const topNames = new Set(tops.map((t) => t.name));
-    const gameRows: GameRow[] = data.games.map(toRow);
+    // run_sim stamps the per-game clock it ran under (seconds).
+    const clock = data.meta?.clock;
+    const clockSeconds = typeof clock === "number" && clock > 0 ? clock : null;
+    const gameRows: GameRow[] = data.games.map((g) => toRow(g, clockSeconds));
     const medTurns = median(gameRows.map((g) => g.endedTurn));
     const rotated = data.meta?.source === "rotated";
 
@@ -258,7 +301,7 @@ export default function ResultsPage() {
     return (
       (g.winnerName ?? "draw").toLowerCase().includes(needle) ||
       g.decidedBy.toLowerCase().includes(needle) ||
-      `t${g.endedTurn}`.includes(needle)
+      (g.endedRound != null && `turn ${g.endedRound}`.includes(needle))
     );
   });
 
@@ -419,218 +462,32 @@ export default function ResultsPage() {
                 .map(([method, n]) => (
                   <span key={method}>
                     <b>{n}</b>{" "}
+                    {/* Forge writes one loss line for combat damage and for
+                        life loss alike, so this cannot say "combat" alone
+                        until the knockouts analyzer reads the lethal event
+                        (repair plan WS1, WS11 task 3). */}
                     {method === "combat damage / life loss"
-                      ? "by combat damage"
+                      ? "ended as life reached 0 (combat or life loss)"
                       : method === "not recorded"
                         ? "with no method recorded"
-                        : `by ${method}`}
+                        : method === "draw"
+                          ? "drawn"
+                          : `by ${method}`}
                   </span>
                 ))}
             </div>
             <p className="note">
-              Read from the loss line Forge wrote at the end of each game. A pod
-              that only ever ends in combat damage is telling you its combo
-              decks never converted.
+              Read from the loss line Forge wrote at the end of each game. Forge
+              writes the same line for combat damage and for life loss, so the
+              two are not told apart here.
             </p>
           </section>
         )}
 
-        {an && Object.values(an.decks).some((d) => d.combos.length > 0 || d.combo_status === "unknown") && (
-          <section>
-            {an.validity && an.validity.quality !== "clean" && (
-              <p className="note">
-                <b>
-                  {an.validity.quality === "polluted"
-                    ? "These combo figures are not trustworthy."
-                    : "Read these combo figures with care."}
-                </b>{" "}
-                {an.validity.reasons.join(" ")}
-              </p>
-            )}
-            <div className="sh">
-              <h2>Win conditions</h2>
-              <span className="meta">
-                known combos via Commander Spellbook · assembly inferred from the event log
-              </span>
-            </div>
-            {/* Six independent numeric columns that only mean anything side by
-                side, so this one keeps its grid instead of stacking. What it
-                needed was for the scroll to stop being invisible. */}
-            <p className="note only-narrow">Scroll the table sideways for the full breakdown.</p>
-            <div className="tblwrap">
-              <table className="games">
-                <thead>
-                  <tr>
-                    <th>Deck</th>
-                    <th>Combo</th>
-                    <th className="r">Assembled</th>
-                    <th className="r">From draws</th>
-                    <th className="r">Converted</th>
-                    <th>Piece most often missing</th>
-                    <th>Reading</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(an.decks).flatMap(([name, d]) => {
-                    if (d.combo_status === "unknown") {
-                      return [
-                        <tr key={`${name}-unknown`}>
-                          <td>{name}</td>
-                          <td colSpan={6} className="ctanote">
-                            combos unknown; Spellbook was unreachable when this was analysed
-                          </td>
-                        </tr>,
-                      ];
-                    }
-                    if (d.combos.length === 0) {
-                      return [
-                        <tr key={`${name}-none`}>
-                          <td>{name}</td>
-                          <td colSpan={6} className="ctanote">
-                            no known combos in the 99
-                            {d.almost_included > 0 && (
-                              <> · <span className="mono">{d.almost_included}</span> one card away</>
-                            )}
-                          </td>
-                        </tr>,
-                      ];
-                    }
-                    return d.combos.map((c) => {
-                      // The reading is the product: does this deck's win rate
-                      // mean anything, or is the AI the bottleneck? Server-
-                      // computed since v3; derive it for older payloads.
-                      const reading =
-                        c.reading ??
-                        (c.converted_games > 0
-                          ? "fired"
-                          : c.assembled_games > 0
-                            ? "assembled_not_fired"
-                            : "not_assembled");
-                      const spellPieces = c.nonpermanent_pieces ?? [];
-                      // Which piece actually held this line up. pieces maps
-                      // card -> the first turn it was available, or null for
-                      // never; the card that was null most often is the one to
-                      // fix, and it is far more actionable than a zero in the
-                      // assembled column.
-                      const nulls = new Map<string, number>();
-                      for (const g of c.games ?? []) {
-                        for (const [card, turn] of Object.entries(g.pieces ?? {})) {
-                          if (turn === null) nulls.set(card, (nulls.get(card) ?? 0) + 1);
-                        }
-                      }
-                      const worst = [...nulls.entries()].sort((a, b) => b[1] - a[1])[0];
-                      const missing = worst ? { card: worst[0], n: worst[1] } : null;
-                      return (
-                        <tr key={`${name}-${c.id}`}>
-                          <td>{name}</td>
-                          <td
-                            title={
-                              c.produces.join(", ") +
-                              (spellPieces.length > 0
-                                ? `. ${spellPieces.join(", ")} is a spell piece: counted when cast, not from the battlefield`
-                                : "")
-                            }
-                          >
-                            {c.cards.join(" + ")}
-                          </td>
-                          <td className="r mono">
-                            {c.assembled_games} of {c.games_played}
-                            {c.median_assembled_turn != null && <> (T{c.median_assembled_turn})</>}
-                          </td>
-                          <td
-                            className="r mono"
-                            title="How many of these games raw draw odds alone predicted every library piece would be drawn by game end. Assembled above this means tutors did work; far below means pieces sat in hand or died."
-                          >
-                            {c.expected_drawn_games != null ? `~${c.expected_drawn_games}` : "–"}
-                          </td>
-                          <td className="r mono">{c.converted_games}</td>
-                          <td
-                            title={
-                              missing
-                                ? `${missing.card} was never available in ${missing.n} of ${c.games_played} games`
-                                : "every piece showed up in every game"
-                            }
-                          >
-                            {missing ? (
-                              <>
-                                <span className="mono">{missing.n}</span> of{" "}
-                                <span className="mono">{c.games_played}</span>:{" "}
-                                {missing.card}
-                              </>
-                            ) : (
-                              "–"
-                            )}
-                          </td>
-                          <td>
-                            {reading === "fired" ? (
-                              <span className="st win">
-                                <i />
-                                AI can fire this; results meaningful
-                              </span>
-                            ) : reading === "assembled_not_fired" ? (
-                              <span className="st warn">
-                                <i />
-                                assembled, never fired; win rate is a floor
-                              </span>
-                            ) : reading === "sample_too_small" ? (
-                              <span className="st loss">
-                                <i />
-                                draw odds predicted ~{c.expected_drawn_games ?? 0}; too few
-                                games to measure this
-                              </span>
-                            ) : (
-                              <span className="st warn">
-                                <i />
-                                never assembled despite draw odds ~{c.expected_drawn_games};
-                                pieces sat in hand or died
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-                      );
-                    });
-                  })}
-                </tbody>
-              </table>
-              {/* DESIGN_SYSTEM.md requires an honesty note on inferred data. It
-                  does not require 95 words of method on every visit. The caveat
-                  that changes how you read the column stays inline; the method
-                  moves one click away. */}
-              <p className="note">
-                Assembled is inferred from board reconstruction, not read from the log.
-              </p>
-              <PageDetails label="How these numbers are measured">
-                Assembled counts games where every piece was on the battlefield at once, from board
-                reconstruction, an inference rather than a read. Instant and sorcery pieces count as
-                present on turns they were cast. From draws is the hypergeometric chance of
-                having drawn every piece by each game&apos;s end, given cards seen (opening hand, one
-                per turn cycle, plus logged effect draws; commanders are always available). Converted
-                means that seat then won.
-                {an && (
-                  <>
-                    {" "}Draw velocity:{" "}
-                    {Object.entries(an.decks)
-                      .filter(([, d]) => d.draws?.per_own_turn != null)
-                      .map(([name, d]) => `${name} ${d.draws?.per_own_turn}/turn cycle`)
-                      .join(" · ")}
-                    .
-                  </>
-                )}
-                {Object.values(an.decks).some((d) => d.combos.some((c) => c.idle_online_turns > 0)) && (
-                  <>
-                    {" "}Combos here sat fully online{" "}
-                    <span className="mono">
-                      {Object.values(an.decks).reduce(
-                        (a, d) => a + d.combos.reduce((x, c) => x + c.idle_online_turns, 0), 0)}
-                    </span>{" "}
-                    turns without winning. Forge&apos;s AI does not pilot loops, so treat those decks&apos;
-                    numbers as a floor, not a verdict.
-                  </>
-                )}
-              </PageDetails>
-            </div>
-          </section>
-        )}
+        {/* Combo lines from Commander Spellbook, folded into families. Most
+            cannot win on their own and Forge's AI doesn't run combo loops, so
+            the section shows chances, not results (repair plan WS11 task 2). */}
+        <ComboLines report={an} />
 
         <section>
           <div className="sh">
@@ -699,15 +556,20 @@ export default function ResultsPage() {
                         (g.winnerName ?? "–")
                       )}
                     </td>
-                    <td className="mono c-meta">T{g.endedTurn}</td>
+                    {/* The table turn, never Forge's per-player counter ("T36"
+                        for a game that ended on everyone's ninth turn). */}
+                    <td className="mono c-meta">{g.endedRound ? `turn ${g.endedRound}` : "–"}</td>
                     <td className="dur c-meta">{fmtClock(g.durationMs)}</td>
                     <td className="c-meta">
                     {g.decidedBy}
                     {(() => {
                       // The summary can only say who won and when; the analysis
-                      // knows HOW. Only annotate the non-default methods.
+                      // knows HOW. Only annotate the non-default methods. A draw
+                      // already says why above, so it never gets "(draw)", and
+                      // "other" names nothing a player can use.
                       const m = an?.games.find((x) => x.n === g.n);
-                      if (!m || m.method === "combat damage / life loss" || m.method === "not recorded")
+                      if (!m || g.draw || m.method === "draw" || m.method === "other"
+                          || m.method === "combat damage / life loss" || m.method === "not recorded")
                         return null;
                       return (
                         <span className="ctanote">

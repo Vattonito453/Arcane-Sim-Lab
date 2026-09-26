@@ -7,11 +7,14 @@
  *  via GET /rule/{n}. "Search the rules instead" is the zero-token path.
  *
  *  Layout reuses the replay theater's `.stage` grid: answer column plus a
- *  330px rule panel. One `.btn.pri` on the view — Ask. */
+ *  330px rule panel. One `.btn.pri` on the view: Ask while generation is on,
+ *  otherwise Search. /health reports `llm: false` in production today, and an
+ *  "Ask" primary there could only fail, so the page becomes a rules search
+ *  with Search as its only primary (tasks/26-ux-review.md, problem 6). */
 
 import { useEffect, useMemo, useState } from "react";
-import { Chrome, Footer } from "@/components/Chrome";
-import { api, RateLimited } from "@/lib/api";
+import { Chrome, Footer, useLlmLive } from "@/components/Chrome";
+import { api, healthOnce, RateLimited } from "@/lib/api";
 import type { RuleHit, RuleLookup, RulesAnswer } from "@/lib/types";
 
 const RULE_TOKEN = /\b\d{3}(?:\.\d+[a-z]?)?\b/g;
@@ -91,10 +94,13 @@ export default function RulesPage() {
   const [ruleN, setRuleN] = useState<string | null>(null);
   const [rule, setRule] = useState<RuleLookup | null>(null);
   const [rulesCount, setRulesCount] = useState<number | null>(null);
+  // Ask appears only once /health says generation is on. Unknown counts as
+  // off, so production never flashes an Ask button it then withdraws.
+  const askLive = useLlmLive() === true;
 
   useEffect(() => {
     let live = true;
-    api.health().then((h) => live && setRulesCount(h.rules)).catch(() => {});
+    healthOnce().then((h) => live && setRulesCount(h.rules)).catch(() => {});
     return () => {
       live = false;
     };
@@ -119,10 +125,18 @@ export default function RulesPage() {
     }
   };
 
+  /** An empty box states its blocker instead of disabling the primary. */
+  const EMPTY = "Type a rule number, a keyword or a question first.";
+
   /** Ask = cached read first (free), then the authed, quota'd generate. */
   const ask = async () => {
     const question = q.trim();
-    if (!question || busy) return;
+    if (busy) return;
+    if (!question) {
+      setWait(null);
+      setErr(EMPTY);
+      return;
+    }
     setBusy(true);
     setErr(null);
     setWait(null);
@@ -144,7 +158,12 @@ export default function RulesPage() {
   /** The zero-token path: retrieval only, no generation. */
   const searchOnly = async () => {
     const question = q.trim();
-    if (!question || busy) return;
+    if (busy) return;
+    if (!question) {
+      setWait(null);
+      setErr(EMPTY);
+      return;
+    }
     setBusy(true);
     setErr(null);
     setWait(null);
@@ -170,19 +189,27 @@ export default function RulesPage() {
       <div className="page">
         <div className="head">
           <div>
-            <h1>Rules assistant</h1>
+            <h1>{askLive ? "Rules assistant" : "Rules search"}</h1>
             <div className="sub">
               Comprehensive Rules · <span className="mono">June 2026</span>
             </div>
           </div>
         </div>
 
-        <p className="lede">
-          Grounded in the June 2026 Comprehensive Rules:{" "}
-          <b>{rulesCount != null ? rulesCount.toLocaleString("en-US") : "3,152"} numbered rules</b>,
-          searched locally. Answers cite only retrieved rule text; a question the
-          excerpts don&apos;t reach says so instead of guessing.
-        </p>
+        {askLive ? (
+          <p className="lede">
+            Grounded in the June 2026 Comprehensive Rules:{" "}
+            <b>{rulesCount != null ? rulesCount.toLocaleString("en-US") : "3,152"} numbered rules</b>,
+            searched locally. Answers cite only retrieved rule text; a question the
+            excerpts don&apos;t reach says so instead of guessing.
+          </p>
+        ) : (
+          <p className="lede">
+            Search the June 2026 Comprehensive Rules:{" "}
+            <b>{rulesCount != null ? rulesCount.toLocaleString("en-US") : "3,152"} numbered rules</b>.
+            Results are the rule text itself; open any number to read the full rule.
+          </p>
+        )}
 
         {/* One column until there is a rule to put in the second. The right
             rail used to render an empty 330px panel holding two paragraphs of
@@ -192,26 +219,36 @@ export default function RulesPage() {
           <div>
             <section>
               <div className="sh">
-                <h2>Ask a rules question</h2>
-                              </div>
+                <h2 id="rules-q-label">{askLive ? "Ask a rules question" : "Search the rules"}</h2>
+              </div>
               <input
                 className="txt"
                 value={q}
                 maxLength={500}
-                placeholder="Is 19 commander damage lethal?"
-                aria-label="Rules question"
+                placeholder={askLive ? "Is 19 commander damage lethal?" : "commander damage"}
+                aria-labelledby="rules-q-label"
                 onChange={(e) => setQ(e.target.value)}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") void ask();
+                  if (e.key === "Enter") void (askLive ? ask() : searchOnly());
                 }}
               />
+              {/* One primary. The primary is never disabled for an empty box;
+                  clicking it states the blocker in the note below. */}
               <div className="btns">
-                <button className="btn pri" onClick={() => void ask()} disabled={busy || !q.trim()}>
-                  {busy ? "Working…" : "Ask"}
-                </button>
-                <button className="btn" onClick={() => void searchOnly()} disabled={busy || !q.trim()}>
-                  Search the rules instead
-                </button>
+                {askLive ? (
+                  <>
+                    <button className="btn pri" onClick={() => void ask()} disabled={busy}>
+                      {busy ? "Working…" : "Ask"}
+                    </button>
+                    <button className="btn" onClick={() => void searchOnly()} disabled={busy}>
+                      Search the rules instead
+                    </button>
+                  </>
+                ) : (
+                  <button className="btn pri" onClick={() => void searchOnly()} disabled={busy}>
+                    {busy ? "Searching…" : "Search the rules"}
+                  </button>
+                )}
               </div>
 
               {wait != null && (
@@ -262,7 +299,7 @@ export default function RulesPage() {
                   <h2>Matching rules</h2>
                   <span className="meta">
                     {resp.reason === "search only"
-                      ? "retrieval only; no tokens spent"
+                      ? askLive ? "retrieval only; no tokens spent" : "best matches first"
                       : resp.reason === "no LLM configured"
                         ? "the engine has no model configured, so this is plain search"
                         : resp.reason}

@@ -8,6 +8,17 @@ is `instantDiscipline` in the shim's `PlanPlayerController`, dials
 the prediction study (2026-08-26) alongside attack hold-back, which IS built
 (shim 0.7.0).
 
+> **PARKED until G4, and annotated 2026-09-26.** The owner decisions of
+> 2026-09-26 (`tasks/README.md`) freeze new hold, combat, personality and
+> attack-targeting work until G4 of `tasks/25-repair-plan.md`, so Half 2 and
+> any retuning after the fourth criterion wait. Both measured sections below
+> ("Acceptance, measured 2026-09-07", the commit cc8c446 results, and "Fourth
+> criterion, measured 2026-09-08") were **measured on pre-0.16.0 arms (attack
+> re-ask loop present)**: the declare-attackers re-ask loop in
+> `kingmakerReaim`, present from 0.4.0 until 0.16.0 fixed it, burned clock and
+> accounts for part of every agent arm's censoring. They have not been
+> re-measured on 0.16.0 or later.
+
 ## The measured problem
 
 Walking the typed log of 256 stock games and 332 agent games of the
@@ -100,6 +111,9 @@ rather than on open mana alone.
 
 ### Acceptance, measured 2026-09-07 (shim 0.15.0, 32-core Windows box)
 
+*Annotated 2026-09-26: measured on pre-0.16.0 arms (attack re-ask loop
+present). See the note at the top.*
+
 Three arms, all on the same 0.15.0 jar so the only difference between the
 first two is whether the seats run the plan agent.
 
@@ -130,6 +144,12 @@ and 0.15.0 together, since no 0.14.0-only control was run. Output in
 The first three criteria are met.
 
 ### Fourth criterion, measured 2026-09-08: FAILED on the precon cohort
+
+*Annotated 2026-09-26: measured on pre-0.16.0 arms (attack re-ask loop
+present). See the note at the top. The refit this section suggests is
+superseded by decisions 17 and 19: the prediction model stays fitted on the
+stock arm, labelled as such, until a refit on clean arms after G3, and
+`studies/precon_predict/model_runs_agent.json` stays uncommitted.*
 
 `studies/precon_predict/runs_agent_015`, the full 66-deck, 768-game cohort
 design with all seats on the 0.15.0 agent (same overrides as the 2026-08-26

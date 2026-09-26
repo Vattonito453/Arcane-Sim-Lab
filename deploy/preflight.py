@@ -26,12 +26,24 @@ Run it against the API from inside the api container (no external deps):
     python3 deploy/preflight.py
     python3 deploy/preflight.py --base http://api:8484 --files
 
-Exit codes: 0 all intended-live surfaces are live; 1 something is dark.
+Exit codes: 0 all intended-live surfaces are live and every deployment
+invariant holds; 1 something is dark or an invariant is broken.
+
+DEPLOYMENT INVARIANTS (repair plan WS0 task 6). Two facts no HTTP surface
+shows, checked after the surfaces:
+  - the plan_feedback nudge is OFF (MTG_PLAN_FEEDBACK_APPLY is not "1" in this
+    process's environment, which is the API container's when run as below;
+    compose hands the worker the same .env value);
+  - the newest result was piloted by a shim at least as new as the release
+    pin. A run finished BEFORE the deploy fails this until a new sim finishes,
+    so the post-deploy order is: deploy, smoke_test.py --sim, then preflight.
 
 MAINTAINING THIS. When you add a user-visible feature, add a SURFACE entry in
 the same commit. When you deliberately turn something off, move it to
 intent="off" with a reason rather than deleting the entry, so the fact that it
-exists and is off stays visible.
+exists and is off stays visible. When a release pins a newer shim, raise
+SHIM_FLOOR below in the same commit as the SIMLAB_SHIM_REF default in
+docker-compose.yml.
 """
 
 from __future__ import annotations
@@ -39,6 +51,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -277,7 +290,96 @@ def surfaces(run, deck):
             "reason": "MTG_EMBEDDED_WORKER=0 on purpose: workers are separate "
                       "containers here so a 4 GB JVM cannot take the API down.",
         },
+        {
+            "name": "plan_feedback nudges",
+            "intent": "off",
+            "reason": "MTG_PLAN_FEEDBACK_APPLY is off on purpose: the nudge that "
+                      "moves search targets from observed win methods was never "
+                      "validated (repair plan RC4). The store still fills. "
+                      "Asserted under DEPLOYMENT INVARIANTS, not just noted.",
+        },
     ]
+
+
+# --------------------------------------------------------------------------
+# Deployment invariants: configuration and provenance a green surface list
+# cannot show. Each returns (ok: bool, detail: str).
+# --------------------------------------------------------------------------
+
+NUDGE_FLAG = "MTG_PLAN_FEEDBACK_APPLY"
+
+# The oldest shim a production result may come from. 0.16.0 fixes the attack
+# re-ask loop that 0.15.0 (the playtester run that prompted the repair plan)
+# still had, and its new dials default to 0.15.0 behaviour. Raise this with
+# every release pin (SIMLAB_SHIM_REF in docker-compose.yml). When compose also
+# hands this container a version-tag SIMLAB_SHIM_REF newer than the floor,
+# that tag is the bar instead, so a new pin is never checked against an old one.
+SHIM_FLOOR = (0, 16, 0)
+_SHIM_AGENT = re.compile(r"simlab-forge-shim/(\d+)\.(\d+)\.(\d+)")
+_SHIM_TAG = re.compile(r"^v?(\d+)\.(\d+)\.(\d+)$")
+
+
+def _fmt_version(v):
+    return ".".join(str(x) for x in v)
+
+
+def nudge_flag_off(env=None):
+    """plan_feedback.apply_to_plan runs only when the flag is exactly "1"
+    (engine/deck_plan.py), so anything else is off."""
+    env = os.environ if env is None else env
+    val = env.get(NUDGE_FLAG)
+    if val == "1":
+        return False, ("%s=1 in this container: plan_feedback nudges are ON. "
+                       "They are unvalidated; set %s=0 in deploy/.env and "
+                       "redeploy." % (NUDGE_FLAG, NUDGE_FLAG))
+    return True, "%s=%s (off)" % (NUDGE_FLAG, "unset" if val is None else repr(val))
+
+
+def shim_pin(env=None):
+    """(version tuple, where it came from): the bar a result's shim must meet."""
+    env = os.environ if env is None else env
+    ref = (env.get("SIMLAB_SHIM_REF") or "").strip()
+    m = _SHIM_TAG.match(ref)
+    if m:
+        tag = tuple(int(x) for x in m.groups())
+        if tag > SHIM_FLOOR:
+            return tag, "SIMLAB_SHIM_REF=%s" % ref
+    return SHIM_FLOOR, "preflight SHIM_FLOOR"
+
+
+def result_shim_versions(meta):
+    """Every shim version a result's meta names: the top-level agent and, on a
+    rotated run whose rotations disagreed, each rotation's own agent."""
+    agents = [meta.get("agent")]
+    for d in meta.get("rotations_detail") or []:
+        if isinstance(d, dict):
+            agents.append(d.get("agent"))
+    found = []
+    for a in agents:
+        m = _SHIM_AGENT.search(str(a or ""))
+        if m:
+            found.append(tuple(int(x) for x in m.groups()))
+    return found
+
+
+def shim_at_least_pin(run, meta, pin, pin_source):
+    """The newest result's shim version, against the release pin."""
+    stale = ("A run that finished before this deploy fails this check until a "
+             "new sim finishes: run engine/tests/smoke_test.py --sim, then "
+             "preflight again.")
+    if not isinstance(meta, dict):
+        return False, "could not read meta for %s. %s" % (run, stale)
+    versions = result_shim_versions(meta)
+    if not versions:
+        return False, ("%s names no shim version (meta.agent=%r): a stock-Forge "
+                       "or salvaged run. %s" % (run, meta.get("agent"), stale))
+    oldest = min(versions)
+    if oldest < pin:
+        return False, ("%s was piloted by shim %s, older than the pin %s (%s). "
+                       "%s" % (run, _fmt_version(oldest), _fmt_version(pin),
+                               pin_source, stale))
+    return True, "%s: shim %s >= pin %s (%s)" % (
+        run, _fmt_version(oldest), _fmt_version(pin), pin_source)
 
 
 # --------------------------------------------------------------------------
@@ -373,20 +475,44 @@ def main(argv):
     for s in off:
         print("  off    %-30s %s" % (s["name"], s["reason"]))
 
+    # Deployment invariants. The probe run IS the newest result (pick_run), so
+    # the shim check reads the same file the surfaces above were probed on.
+    pin, pin_source = shim_pin()
+    st, summary = fetch(args.base, "/results/%s/summary" % run)
+    meta = summary.get("meta") if (st == 200 and isinstance(summary, dict)) else None
+    invariants = [
+        ({"name": "plan_feedback nudge off",
+          "note": "plans are built in the worker; compose passes it the same "
+                  "%s as this container" % NUDGE_FLAG},
+         nudge_flag_off()),
+        ({"name": "newest run on pinned shim",
+          "note": "post-deploy order: deploy, smoke_test.py --sim, then preflight"},
+         shim_at_least_pin(run, meta, pin, pin_source)),
+    ]
+    broken = 0
+    print("\nDEPLOYMENT INVARIANTS")
+    for s, (ok, detail) in invariants:
+        if not ok:
+            failures.append((s, detail))
+            broken += 1
+        print("  %-6s %-30s %s" % ("ok" if ok else "FAIL", s["name"], detail))
+
     if args.files:
         failures += [("files", "")] * check_files()
 
     print()
     if failures:
-        print("PREFLIGHT FAILED: %d surface(s) meant to be live are dark."
-              % len(failures))
+        dark = len(failures) - broken
+        print("PREFLIGHT FAILED: %d surface(s) meant to be live are dark; "
+              "%d deployment invariant(s) broken." % (dark, broken))
         for s, detail in failures:
             if isinstance(s, dict):
                 print("  - %s: %s" % (s["name"], detail))
                 if s.get("note"):
                     print("      hint: %s" % s["note"])
         return 1
-    print("PREFLIGHT OK: every surface meant to be live is live.")
+    print("PREFLIGHT OK: every surface meant to be live is live, and every "
+          "deployment invariant holds.")
     return 0
 
 

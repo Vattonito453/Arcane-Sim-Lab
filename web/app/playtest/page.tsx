@@ -16,11 +16,9 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import type { DeckEntry } from "@/lib/types";
 import { plural } from "@/lib/format";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 import { DeckGallery } from "@/components/DeckGallery";
 import { loadCards, type CardMap } from "@/lib/cards";
-
-const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 
 export default function PlaytestIndexPage() {
   const [decks, setDecks] = useState<DeckEntry[] | null>(null);
@@ -51,10 +49,7 @@ export default function PlaytestIndexPage() {
         <h1>Playtest</h1>
 
         {down ? (
-          <p className="lede">
-            The engine at the configured address isn&apos;t answering, so decks can&apos;t be
-            listed. Start it with <span className="mono">{ENGINE_CMD}</span> and reload.
-          </p>
+          <EngineDown onRetry={() => window.location.reload()} />
         ) : (
           <p className="lede">
             Goldfish a deck on your own: draw, mulligan, drag cards between zones, keep counters.

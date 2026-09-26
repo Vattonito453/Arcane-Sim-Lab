@@ -1,0 +1,1121 @@
+{
+"pstock": {
+"Marauding Raptor": {
+"stock:n": 14,
+"stock:held": 12,
+"stock:other": 2
+},
+"Curse of the Swine": {
+"stock:n": 107,
+"stock:other": 9,
+"stock:held": 98
+},
+"Overcharged Amalgam": {
+"stock:n": 8,
+"stock:other": 1,
+"stock:held": 7
+},
+"Psychosis Crawler": {
+"stock:n": 39,
+"stock:other": 7,
+"stock:held": 30,
+"stock:put": 2
+},
+"Psionic Ritual": {
+"stock:n": 7,
+"stock:other": 1,
+"stock:held": 6
+},
+"Dimir Signet": {
+"stock:n": 52,
+"stock:held": 32,
+"stock:other": 20
+},
+"Biomass Mutation": {
+"stock:n": 34,
+"stock:other": 2,
+"stock:held": 32
+},
+"Grell Philosopher": {
+"stock:n": 13,
+"stock:held": 12,
+"stock:other": 1
+},
+"Beast Within": {
+"stock:n": 127,
+"stock:held": 121,
+"stock:other": 4,
+"stock:cast": 1,
+"stock:put": 1
+},
+"Kiora's Follower": {
+"stock:n": 14,
+"stock:held": 11,
+"stock:other": 3
+},
+"Orzhov Signet": {
+"stock:n": 71,
+"stock:other": 29,
+"stock:held": 42
+},
+"Primordial Mist": {
+"stock:n": 8,
+"stock:held": 5,
+"stock:other": 2,
+"stock:put": 1
+},
+"Simic Signet": {
+"stock:n": 35,
+"stock:held": 26,
+"stock:other": 9
+},
+"Viscera Seer": {
+"stock:n": 41,
+"stock:held": 36,
+"stock:other": 5
+},
+"Kheru Spellsnatcher": {
+"stock:n": 8,
+"stock:held": 5,
+"stock:other": 1,
+"stock:put": 2
+},
+"Pact of the Serpent": {
+"stock:n": 8,
+"stock:other": 1,
+"stock:held": 7
+},
+"Jolrael, Mwonvuli Recluse": {
+"stock:n": 19,
+"stock:held": 17,
+"stock:other": 2
+},
+"Golgari Signet": {
+"stock:n": 22,
+"stock:held": 20,
+"stock:other": 2
+},
+"Rakdos Charm": {
+"stock:n": 27,
+"stock:held": 26,
+"stock:other": 1
+},
+"God-Eternal Bontu": {
+"stock:n": 12,
+"stock:held": 12
+},
+"Nyx Weaver": {
+"stock:n": 53,
+"stock:held": 41,
+"stock:other": 12
+},
+"Gaze of Granite": {
+"stock:n": 15,
+"stock:held": 15
+},
+"Azorius Signet": {
+"stock:n": 82,
+"stock:held": 52,
+"stock:other": 29,
+"stock:cast": 1
+},
+"Entrancing Melody": {
+"stock:n": 8,
+"stock:held": 8
+},
+"Esix, Fractal Bloom": {
+"stock:n": 3,
+"stock:held": 3
+},
+"Decree of Pain": {
+"stock:n": 34,
+"stock:other": 4,
+"stock:held": 30
+},
+"Faithless Looting": {
+"stock:n": 83,
+"stock:other": 37,
+"stock:held": 42,
+"stock:cast": 4
+},
+"Knollspine Dragon": {
+"stock:n": 9,
+"stock:held": 6,
+"stock:other": 3
+},
+"Toxic Deluge": {
+"stock:n": 64,
+"stock:held": 63,
+"stock:other": 1
+},
+"Black Sun's Zenith": {
+"stock:n": 30,
+"stock:held": 29,
+"stock:other": 1
+},
+"Mission Briefing": {
+"stock:n": 12,
+"stock:held": 12
+},
+"Gruul Signet": {
+"stock:n": 12,
+"stock:held": 8,
+"stock:put": 3,
+"stock:other": 1
+},
+"Ashling the Pilgrim": {
+"stock:n": 12,
+"stock:held": 11,
+"stock:other": 1
+},
+"Windfall": {
+"stock:n": 33,
+"stock:other": 5,
+"stock:held": 26,
+"stock:cast": 2
+},
+"Harsh Mercy": {
+"stock:n": 14,
+"stock:held": 14
+},
+"Greater Good": {
+"stock:n": 30,
+"stock:held": 24,
+"stock:other": 5,
+"stock:put": 1
+},
+"Epic Experiment": {
+"stock:n": 19,
+"stock:held": 12,
+"stock:other": 7
+},
+"Illusionist's Gambit": {
+"stock:n": 20,
+"stock:held": 19,
+"stock:other": 1
+},
+"Bloodthirsty Adversary": {
+"stock:n": 16,
+"stock:other": 7,
+"stock:held": 8,
+"stock:cast": 1
+},
+"Riot Control": {
+"stock:n": 15,
+"stock:held": 15
+},
+"Intellectual Offering": {
+"stock:n": 13,
+"stock:held": 13
+},
+"Dispatch": {
+"stock:n": 51,
+"stock:held": 48,
+"stock:other": 3
+},
+"Mizzix's Mastery": {
+"stock:n": 14,
+"stock:other": 5,
+"stock:held": 9
+},
+"Izzet Signet": {
+"stock:n": 72,
+"stock:held": 55,
+"stock:cast": 1,
+"stock:other": 16
+},
+"Trading Post": {
+"stock:n": 27,
+"stock:other": 6,
+"stock:held": 21
+},
+"Selvala, Explorer Returned": {
+"stock:n": 17,
+"stock:held": 16,
+"stock:other": 1
+},
+"Gideon Jura": {
+"stock:n": 12,
+"stock:held": 11,
+"stock:other": 1
+},
+"Oreskos Explorer": {
+"stock:n": 16,
+"stock:held": 16
+},
+"Boros Signet": {
+"stock:n": 49,
+"stock:held": 36,
+"stock:other": 11,
+"stock:cast": 2
+},
+"The Chain Veil": {
+"stock:n": 13,
+"stock:held": 12,
+"stock:other": 1
+},
+"Immoral Bargain": {
+"stock:n": 10,
+"stock:held": 9,
+"stock:other": 1
+},
+"Perpetual Timepiece": {
+"stock:n": 22,
+"stock:held": 14,
+"stock:other": 8
+},
+"Oblivion Stone": {
+"stock:n": 25,
+"stock:held": 17,
+"stock:other": 8
+},
+"Magus of the Candelabra": {
+"stock:n": 9,
+"stock:held": 7,
+"stock:other": 2
+},
+"Kami of Ancient Law": {
+"stock:n": 16,
+"stock:held": 11,
+"stock:other": 5
+},
+"Summary Dismissal": {
+"stock:n": 11,
+"stock:held": 11
+},
+"Fire Covenant": {
+"stock:n": 12,
+"stock:held": 10,
+"stock:other": 2
+},
+"Wave of Reckoning": {
+"stock:n": 15,
+"stock:held": 15
+},
+"Devoted Druid": {
+"stock:n": 15,
+"stock:held": 9,
+"stock:other": 6
+},
+"Mirage Mirror": {
+"stock:n": 44,
+"stock:other": 16,
+"stock:held": 28
+},
+"Tragic Arrogance": {
+"stock:n": 27,
+"stock:held": 23,
+"stock:other": 4
+},
+"Phyrexian Reclamation": {
+"stock:n": 13,
+"stock:held": 9,
+"stock:other": 4
+},
+"Rakdos Signet": {
+"stock:n": 37,
+"stock:held": 32,
+"stock:other": 5
+},
+"Goblin Bombardment": {
+"stock:n": 9,
+"stock:held": 8,
+"stock:other": 1
+},
+"Disciple of Bolas": {
+"stock:n": 13,
+"stock:held": 11,
+"stock:other": 2
+},
+"Past in Flames": {
+"stock:n": 7,
+"stock:held": 6,
+"stock:other": 1
+},
+"Call for Aid": {
+"stock:n": 12,
+"stock:held": 12
+},
+"Marshal's Anthem": {
+"stock:n": 28,
+"stock:other": 4,
+"stock:held": 24
+},
+"Titan's Presence": {
+"stock:n": 16,
+"stock:held": 15,
+"stock:other": 1
+},
+"Fertile Ground": {
+"stock:n": 22,
+"stock:put": 1,
+"stock:held": 16,
+"stock:other": 5
+},
+"Swan Song": {
+"stock:n": 13,
+"stock:cast": 11,
+"stock:held": 2
+},
+"Incandescent Soulstoke": {
+"stock:n": 16,
+"stock:other": 5,
+"stock:held": 11
+},
+"Cream of the Crop": {
+"stock:n": 15,
+"stock:other": 6,
+"stock:held": 9
+},
+"Mystic Confluence": {
+"stock:n": 10,
+"stock:held": 8,
+"stock:other": 2
+},
+"Mirror Entity": {
+"stock:n": 28,
+"stock:other": 4,
+"stock:put": 1,
+"stock:held": 22,
+"stock:cast": 1
+},
+"Slaughter the Strong": {
+"stock:n": 11,
+"stock:other": 1,
+"stock:held": 10
+},
+"Profane Command": {
+"stock:n": 21,
+"stock:other": 5,
+"stock:held": 16
+},
+"Boltbender": {
+"stock:n": 18,
+"stock:held": 11,
+"stock:put": 7
+},
+"Wall of Limbs": {
+"stock:n": 13,
+"stock:held": 12,
+"stock:other": 1
+},
+"Selesnya Signet": {
+"stock:n": 17,
+"stock:held": 16,
+"stock:other": 1
+},
+"Obscuring Aether": {
+"stock:n": 18,
+"stock:held": 13,
+"stock:other": 5
+},
+"Nightmare Unmaking": {
+"stock:n": 15,
+"stock:held": 12,
+"stock:other": 3
+},
+"Tower Defense": {
+"stock:n": 13,
+"stock:other": 1,
+"stock:held": 12
+},
+"Wild Growth": {
+"stock:n": 21,
+"stock:other": 4,
+"stock:held": 15,
+"stock:put": 2
+},
+"Inkfathom Witch": {
+"stock:n": 17,
+"stock:held": 9,
+"stock:other": 8
+},
+"Strionic Resonator": {
+"stock:n": 31,
+"stock:held": 18,
+"stock:other": 13
+},
+"Prismatic Lens": {
+"stock:n": 12,
+"stock:held": 11,
+"stock:other": 1
+},
+"Abundance": {
+"stock:n": 18,
+"stock:held": 16,
+"stock:other": 2
+},
+"Vault 21: House Gambit": {
+"stock:n": 9,
+"stock:held": 9
+},
+"Single Combat": {
+"stock:n": 11,
+"stock:held": 10,
+"stock:other": 1
+},
+"Izzet Chemister": {
+"stock:n": 8,
+"stock:held": 8
+},
+"Xenagos, the Reveler": {
+"stock:n": 15,
+"stock:held": 14,
+"stock:other": 1
+},
+"Ion Storm": {
+"stock:n": 7,
+"stock:held": 7
+},
+"Confiscation Coup": {
+"stock:n": 8,
+"stock:held": 6,
+"stock:other": 2
+},
+"Syr Elenora, the Discerning": {
+"stock:n": 11,
+"stock:other": 6,
+"stock:held": 5
+},
+"Hull Breach": {
+"stock:n": 11,
+"stock:held": 11
+},
+"Recurring Insight": {
+"stock:n": 17,
+"stock:held": 16,
+"stock:other": 1
+},
+"Selective Obliteration": {
+"stock:n": 14,
+"stock:held": 14
+},
+"Nantuko Cultivator": {
+"stock:n": 12,
+"stock:held": 11,
+"stock:other": 1
+},
+"Winding Way": {
+"stock:n": 10,
+"stock:held": 10
+},
+"Flickering Ward": {
+"stock:n": 14,
+"stock:held": 13,
+"stock:other": 1
+},
+"Magmatic Insight": {
+"stock:n": 14,
+"stock:held": 12,
+"stock:other": 2
+},
+"Darksteel Mutation": {
+"stock:n": 10,
+"stock:held": 10
+},
+"Shielded by Faith": {
+"stock:n": 11,
+"stock:held": 9,
+"stock:other": 2
+},
+"Suffer the Past": {
+"stock:n": 17,
+"stock:held": 17
+},
+"Sylvan Offering": {
+"stock:n": 9,
+"stock:held": 7,
+"stock:other": 2
+},
+"Memory Plunder": {
+"stock:n": 11,
+"stock:held": 11
+},
+"Timely Ward": {
+"stock:n": 14,
+"stock:held": 10,
+"stock:other": 4
+},
+"Throes of Chaos": {
+"stock:n": 14,
+"stock:held": 14
+}
+},
+"pagent015": {
+"Biomass Mutation": {
+"plan:n": 33,
+"plan:held": 32,
+"plan:other": 1
+},
+"Grell Philosopher": {
+"plan:n": 9,
+"plan:held": 8,
+"plan:cast": 1
+},
+"Beast Within": {
+"plan:n": 113,
+"plan:held": 109,
+"plan:other": 3,
+"plan:cast": 1
+},
+"Memory Plunder": {
+"plan:n": 10,
+"plan:held": 10
+},
+"Psychosis Crawler": {
+"plan:n": 26,
+"plan:held": 20,
+"plan:other": 6
+},
+"Kiora's Follower": {
+"plan:n": 20,
+"plan:held": 11,
+"plan:other": 6,
+"plan:cast": 3
+},
+"Simic Signet": {
+"plan:n": 34,
+"plan:held": 20,
+"plan:other": 12,
+"plan:cast": 1,
+"plan:put": 1
+},
+"Marauding Raptor": {
+"plan:n": 11,
+"plan:held": 10,
+"plan:other": 1
+},
+"Overcharged Amalgam": {
+"plan:n": 7,
+"plan:held": 6,
+"plan:cast": 1
+},
+"Psionic Ritual": {
+"plan:n": 9,
+"plan:held": 6,
+"plan:other": 3
+},
+"Kheru Spellsnatcher": {
+"plan:n": 11,
+"plan:held": 10,
+"plan:put": 1
+},
+"Tragic Arrogance": {
+"plan:n": 48,
+"plan:held": 33,
+"plan:other": 8,
+"plan:cast": 7
+},
+"Orzhov Signet": {
+"plan:n": 74,
+"plan:held": 51,
+"plan:other": 20,
+"plan:cast": 3
+},
+"Viscera Seer": {
+"plan:n": 42,
+"plan:held": 34,
+"plan:other": 6,
+"plan:cast": 2
+},
+"Primordial Mist": {
+"plan:n": 12,
+"plan:held": 11,
+"plan:other": 1
+},
+"Pact of the Serpent": {
+"plan:n": 18,
+"plan:held": 18
+},
+"God-Eternal Bontu": {
+"plan:n": 7,
+"plan:cast": 1,
+"plan:held": 6
+},
+"Curse of the Swine": {
+"plan:n": 72,
+"plan:held": 56,
+"plan:cast": 6,
+"plan:other": 10
+},
+"Jolrael, Mwonvuli Recluse": {
+"plan:n": 23,
+"plan:held": 20,
+"plan:other": 2,
+"plan:cast": 1
+},
+"Selvala, Explorer Returned": {
+"plan:n": 23,
+"plan:held": 21,
+"plan:put": 2
+},
+"Esix, Fractal Bloom": {
+"plan:n": 8,
+"plan:held": 7,
+"plan:cast": 1
+},
+"Gaze of Granite": {
+"plan:n": 6,
+"plan:cast": 1,
+"plan:held": 5
+},
+"Rakdos Charm": {
+"plan:n": 34,
+"plan:held": 23,
+"plan:cast": 11
+},
+"Knollspine Dragon": {
+"plan:n": 14,
+"plan:other": 2,
+"plan:held": 12
+},
+"Decree of Pain": {
+"plan:n": 44,
+"plan:held": 37,
+"plan:other": 6,
+"plan:cast": 1
+},
+"Golgari Signet": {
+"plan:n": 15,
+"plan:held": 14,
+"plan:cast": 1
+},
+"Dimir Signet": {
+"plan:n": 55,
+"plan:held": 37,
+"plan:other": 17,
+"plan:cast": 1
+},
+"Black Sun's Zenith": {
+"plan:n": 36,
+"plan:held": 32,
+"plan:cast": 2,
+"plan:other": 2
+},
+"Toxic Deluge": {
+"plan:n": 56,
+"plan:held": 50,
+"plan:other": 6
+},
+"Mission Briefing": {
+"plan:n": 13,
+"plan:held": 13
+},
+"Faithless Looting": {
+"plan:n": 108,
+"plan:held": 46,
+"plan:other": 57,
+"plan:cast": 5
+},
+"Greater Good": {
+"plan:n": 28,
+"plan:held": 25,
+"plan:other": 2,
+"plan:put": 1
+},
+"Ashling the Pilgrim": {
+"plan:n": 16,
+"plan:held": 15,
+"plan:cast": 1
+},
+"Gruul Signet": {
+"plan:n": 3,
+"plan:held": 3
+},
+"Windfall": {
+"plan:n": 28,
+"plan:held": 23,
+"plan:other": 4,
+"plan:cast": 1
+},
+"Illusionist's Gambit": {
+"plan:n": 19,
+"plan:held": 19
+},
+"Mizzix's Mastery": {
+"plan:n": 21,
+"plan:held": 15,
+"plan:other": 6
+},
+"Dispatch": {
+"plan:n": 59,
+"plan:held": 59
+},
+"Epic Experiment": {
+"plan:n": 13,
+"plan:held": 8,
+"plan:cast": 1,
+"plan:other": 4
+},
+"Trading Post": {
+"plan:n": 33,
+"plan:held": 23,
+"plan:other": 9,
+"plan:cast": 1
+},
+"Bloodthirsty Adversary": {
+"plan:n": 15,
+"plan:cast": 3,
+"plan:held": 10,
+"plan:other": 2
+},
+"Riot Control": {
+"plan:n": 16,
+"plan:held": 16
+},
+"Izzet Signet": {
+"plan:n": 81,
+"plan:other": 18,
+"plan:held": 60,
+"plan:cast": 3
+},
+"The Chain Veil": {
+"plan:n": 17,
+"plan:held": 14,
+"plan:other": 3
+},
+"Gideon Jura": {
+"plan:n": 14,
+"plan:held": 11,
+"plan:other": 3
+},
+"Immoral Bargain": {
+"plan:n": 14,
+"plan:held": 14
+},
+"Oreskos Explorer": {
+"plan:n": 11,
+"plan:held": 9,
+"plan:cast": 1,
+"plan:other": 1
+},
+"Azorius Signet": {
+"plan:n": 74,
+"plan:held": 44,
+"plan:cast": 5,
+"plan:other": 25
+},
+"Boros Signet": {
+"plan:n": 50,
+"plan:held": 32,
+"plan:other": 14,
+"plan:cast": 4
+},
+"Perpetual Timepiece": {
+"plan:n": 19,
+"plan:held": 13,
+"plan:other": 3,
+"plan:cast": 3
+},
+"Mirage Mirror": {
+"plan:n": 41,
+"plan:held": 30,
+"plan:other": 6,
+"plan:cast": 5
+},
+"Summary Dismissal": {
+"plan:n": 17,
+"plan:held": 13,
+"plan:other": 4
+},
+"Devoted Druid": {
+"plan:n": 21,
+"plan:held": 15,
+"plan:other": 6
+},
+"Kami of Ancient Law": {
+"plan:n": 10,
+"plan:other": 4,
+"plan:held": 6
+},
+"Magus of the Candelabra": {
+"plan:n": 19,
+"plan:held": 17,
+"plan:other": 2
+},
+"Fire Covenant": {
+"plan:n": 11,
+"plan:held": 11
+},
+"Wave of Reckoning": {
+"plan:n": 10,
+"plan:held": 10
+},
+"Oblivion Stone": {
+"plan:n": 11,
+"plan:held": 9,
+"plan:other": 1,
+"plan:cast": 1
+},
+"Goblin Bombardment": {
+"plan:n": 6,
+"plan:held": 6
+},
+"Disciple of Bolas": {
+"plan:n": 20,
+"plan:held": 19,
+"plan:other": 1
+},
+"Phyrexian Reclamation": {
+"plan:n": 11,
+"plan:held": 8,
+"plan:other": 3
+},
+"Nyx Weaver": {
+"plan:n": 31,
+"plan:held": 21,
+"plan:other": 8,
+"plan:cast": 2
+},
+"Rakdos Signet": {
+"plan:n": 38,
+"plan:held": 31,
+"plan:cast": 2,
+"plan:other": 5
+},
+"Past in Flames": {
+"plan:n": 9,
+"plan:held": 6,
+"plan:other": 3
+},
+"Marshal's Anthem": {
+"plan:n": 38,
+"plan:held": 28,
+"plan:other": 10
+},
+"Call for Aid": {
+"plan:n": 11,
+"plan:held": 11
+},
+"Swan Song": {
+"plan:n": 23,
+"plan:cast": 16,
+"plan:held": 7
+},
+"Sylvan Offering": {
+"plan:n": 13,
+"plan:held": 10,
+"plan:other": 3
+},
+"Cream of the Crop": {
+"plan:n": 10,
+"plan:held": 9,
+"plan:other": 1
+},
+"Fertile Ground": {
+"plan:n": 16,
+"plan:held": 12,
+"plan:cast": 2,
+"plan:other": 2
+},
+"Incandescent Soulstoke": {
+"plan:n": 11,
+"plan:held": 9,
+"plan:cast": 1,
+"plan:other": 1
+},
+"Mystic Confluence": {
+"plan:n": 9,
+"plan:held": 9
+},
+"Titan's Presence": {
+"plan:n": 11,
+"plan:held": 10,
+"plan:other": 1
+},
+"Timely Ward": {
+"plan:n": 10,
+"plan:held": 4,
+"plan:other": 4,
+"plan:cast": 2
+},
+"Tower Defense": {
+"plan:n": 9,
+"plan:held": 8,
+"plan:cast": 1
+},
+"Boltbender": {
+"plan:n": 15,
+"plan:held": 11,
+"plan:put": 4
+},
+"Selesnya Signet": {
+"plan:n": 18,
+"plan:held": 15,
+"plan:other": 2,
+"plan:cast": 1
+},
+"Wild Growth": {
+"plan:n": 26,
+"plan:held": 21,
+"plan:other": 2,
+"plan:cast": 1,
+"plan:put": 2
+},
+"Slaughter the Strong": {
+"plan:n": 10,
+"plan:other": 1,
+"plan:held": 7,
+"plan:cast": 2
+},
+"Obscuring Aether": {
+"plan:n": 10,
+"plan:other": 2,
+"plan:held": 4,
+"plan:put": 1,
+"plan:cast": 3
+},
+"Profane Command": {
+"plan:n": 12,
+"plan:held": 5,
+"plan:cast": 3,
+"plan:other": 4
+},
+"Inkfathom Witch": {
+"plan:n": 11,
+"plan:cast": 1,
+"plan:other": 6,
+"plan:held": 4
+},
+"Nightmare Unmaking": {
+"plan:n": 21,
+"plan:other": 6,
+"plan:held": 15
+},
+"Mirror Entity": {
+"plan:n": 27,
+"plan:other": 3,
+"plan:held": 22,
+"plan:put": 2
+},
+"Wall of Limbs": {
+"plan:n": 7,
+"plan:other": 1,
+"plan:held": 6
+},
+"Abundance": {
+"plan:n": 17,
+"plan:held": 17
+},
+"Izzet Chemister": {
+"plan:n": 13,
+"plan:held": 11,
+"plan:cast": 2
+},
+"Strionic Resonator": {
+"plan:n": 27,
+"plan:held": 17,
+"plan:other": 10
+},
+"Ion Storm": {
+"plan:n": 5,
+"plan:held": 3,
+"plan:other": 1,
+"plan:cast": 1
+},
+"Confiscation Coup": {
+"plan:n": 14,
+"plan:held": 12,
+"plan:other": 2
+},
+"Recurring Insight": {
+"plan:n": 21,
+"plan:other": 6,
+"plan:held": 15
+},
+"Syr Elenora, the Discerning": {
+"plan:n": 17,
+"plan:held": 13,
+"plan:cast": 1,
+"plan:other": 2,
+"plan:put": 1
+},
+"Hull Breach": {
+"plan:n": 10,
+"plan:held": 10
+},
+"Darksteel Mutation": {
+"plan:n": 19,
+"plan:cast": 4,
+"plan:held": 12,
+"plan:other": 3
+},
+"Shielded by Faith": {
+"plan:n": 17,
+"plan:held": 12,
+"plan:other": 3,
+"plan:cast": 2
+},
+"Flickering Ward": {
+"plan:n": 12,
+"plan:held": 7,
+"plan:other": 4,
+"plan:cast": 1
+},
+"Nantuko Cultivator": {
+"plan:n": 20,
+"plan:held": 15,
+"plan:other": 3,
+"plan:cast": 2
+},
+"Magmatic Insight": {
+"plan:n": 7,
+"plan:held": 6,
+"plan:other": 1
+},
+"Winding Way": {
+"plan:n": 13,
+"plan:held": 10,
+"plan:other": 3
+},
+"Selective Obliteration": {
+"plan:n": 14,
+"plan:held": 12,
+"plan:other": 1,
+"plan:cast": 1
+},
+"Suffer the Past": {
+"plan:n": 15,
+"plan:other": 1,
+"plan:held": 13,
+"plan:cast": 1
+},
+"Intellectual Offering": {
+"plan:n": 8,
+"plan:held": 7,
+"plan:cast": 1
+},
+"Vault 21: House Gambit": {
+"plan:n": 9,
+"plan:held": 8,
+"plan:other": 1
+},
+"Single Combat": {
+"plan:n": 7,
+"plan:held": 6,
+"plan:other": 1
+},
+"Xenagos, the Reveler": {
+"plan:n": 7,
+"plan:held": 7
+},
+"Prismatic Lens": {
+"plan:n": 10,
+"plan:held": 10
+},
+"Throes of Chaos": {
+"plan:n": 7,
+"plan:held": 7
+},
+"Harsh Mercy": {
+"plan:n": 6,
+"plan:held": 6
+},
+"Entrancing Melody": {
+"plan:n": 5,
+"plan:other": 1,
+"plan:held": 3,
+"plan:cast": 1
+}
+}
+}

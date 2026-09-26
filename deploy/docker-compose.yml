@@ -49,6 +49,13 @@ services:
       # Rules-assistant generation; absent = /ask degrades to plain search.
       MTG_LLM_API_KEY: ${MTG_LLM_API_KEY:-}
       MTG_LLM_MODEL: ${MTG_LLM_MODEL:-claude-haiku-4-5}
+      # Mirrors of the WORKER's settings. The API builds no plans and runs no
+      # Forge here (MTG_EMBEDDED_WORKER=0); these exist so deploy/preflight.py,
+      # which runs in this container, can assert them: the plan_feedback nudge
+      # is off, and the newest result comes from at least the pinned shim.
+      # Same .env variables and defaults as the worker below; keep them equal.
+      MTG_PLAN_FEEDBACK_APPLY: ${MTG_PLAN_FEEDBACK_APPLY:-0}
+      SIMLAB_SHIM_REF: ${SIMLAB_SHIM_REF:-v0.16.0}
     healthcheck:
       test: ["CMD", "python3", "-c",
              "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8484/health',timeout=5).status==200 else 1)"]
@@ -62,10 +69,24 @@ services:
     build:
       context: ..
       dockerfile: deploy/Dockerfile.worker
+      args:
+        # The simlab-forge-shim release baked into this image. Releases pin a
+        # TAG: a branch moves under you, and Dockerfile.worker clones with
+        # `git clone -b`, which takes a branch or a tag but never a bare
+        # commit. The tag must already exist in the shim repo, or the build
+        # fails at the ref fetch (and the running stack keeps serving).
+        # Bumping the pin: tag the shim, then change this default, the api's
+        # mirror above and SHIM_FLOOR in deploy/preflight.py in one commit.
+        # See deploy/HOSTING.md "Releases pin a shim tag".
+        SIMLAB_SHIM_REF: ${SIMLAB_SHIM_REF:-v0.16.0}
     volumes:
       - mtg-data:/data
     environment:
       MTG_DATA_DIR: /data
+      # plan_feedback nudges (engine/plan_feedback.py). Read HERE: run_sim
+      # builds the plans in this container. Unvalidated, so off; only the
+      # exact value "1" turns them on, and preflight fails while it is.
+      MTG_PLAN_FEEDBACK_APPLY: ${MTG_PLAN_FEEDBACK_APPLY:-0}
     deploy:
       resources:
         limits:

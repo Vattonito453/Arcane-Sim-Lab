@@ -11,21 +11,29 @@
  *
  *  The engine address and the rules count used to sit in this page's section
  *  header. They are infrastructure, not part of picking decks; the address is a
- *  real setting and lives once, in the nav sheet.
+ *  real setting and lives once, in the nav sheet (dev builds only).
  *
- *  ?deck= preselects (import links here). */
+ *  ?deck= preselects (import links here).
+ *
+ *  Game counts are whole seat rotations only. Every run rotates seats, and the
+ *  engine rounds a request up until each deck sits in every seat equally, so
+ *  "16 games" for three decks used to play 18 while the button said 16. The
+ *  choice here is how often each deck goes first; the count on the button is
+ *  the count that will be played. The duration beside it is the engine's own
+ *  (GET /estimate), the same range the run page shows once it starts. */
 
 import Link from "next/link";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { api } from "@/lib/api";
+import { api, type SimEstimate } from "@/lib/api";
 import type { DeckEntry } from "@/lib/types";
-import { estimateSeconds, fmtDuration, plural } from "@/lib/format";
-import { Chrome, Footer } from "@/components/Chrome";
+import { fmtRange, plural, timesWord } from "@/lib/format";
+import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 import { DeckGallery, factsKey } from "@/components/DeckGallery";
 import { loadCards, type CardMap } from "@/lib/cards";
 
-const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
+/** How many times each deck takes the first seat. Games = this x pod size. */
+const STARTS = [1, 2, 4, 8];
 
 function NewRunInner() {
   const router = useRouter();
@@ -38,7 +46,9 @@ function NewRunInner() {
   const [reloadKey, setReloadKey] = useState(0);
 
   const [selected, setSelected] = useState<string[]>([]);
-  const [games, setGames] = useState(16);
+  // Four starts each: 16 games for a 4-deck pod, the old default.
+  const [starts, setStarts] = useState(4);
+  const [est, setEst] = useState<SimEstimate | null>(null);
   const [starting, setStarting] = useState(false);
   const [startErr, setStartErr] = useState<string | null>(null);
   const appliedPreselect = useRef(false);
@@ -89,17 +99,46 @@ function NewRunInner() {
     });
   };
 
-  const canRun = selected.length >= 2 && selected.length <= 4;
+  const podSize = selected.length;
+  const canRun = podSize >= 2 && podSize <= 4;
+  const requested = podSize * starts;
   const selectedDecks = selected
     .map((f) => decks?.find((d) => d.file === f))
     .filter((d): d is DeckEntry => !!d);
+
+  // The engine's figure for exactly this pod size and count. Nothing is shown
+  // while it loads or if it fails: a missing estimate is better than a
+  // made-up one, which is what the old client-side table was.
+  useEffect(() => {
+    if (!canRun) return;
+    let stop = false;
+    api
+      .estimate(podSize, requested)
+      .then((e) => !stop && setEst(e))
+      .catch(() => {});
+    return () => {
+      stop = true;
+    };
+  }, [canRun, podSize, requested]);
+  const estimate =
+    est && est.decks === podSize && est.games_requested === requested ? est : null;
+  // Every production run rotates seats. Only an engine that has said
+  // otherwise (MTG_SIM_ROTATE=0, a debugging switch) gets seat-order copy.
+  const rotating = est ? est.rotations === est.decks : true;
+  const played = estimate?.games_to_play ?? requested;
+
+  const gamesLabel = (k: number, short: boolean): string => {
+    if (podSize < 2) return short ? `${timesWord(k)} each` : `Each deck starts ${timesWord(k)}`;
+    const count = plural(podSize * k, "game");
+    return short || !rotating ? count : `${count} (each deck starts ${timesWord(k)})`;
+  };
 
   const start = async () => {
     if (!canRun || starting) return;
     setStarting(true);
     setStartErr(null);
     try {
-      const r = await api.simulate(selected, games);
+      const r = await api.simulate(selected, requested);
       if (!r.ok || !r.job_id)
         throw new Error("The engine refused the run. Is another simulation in progress?");
       router.push(`/runs/${encodeURIComponent(r.job_id)}`);
@@ -112,20 +151,22 @@ function NewRunInner() {
   const artOf = (d: DeckEntry): string | null =>
     d.commander ? (facts[factsKey(d.commander)]?.art_crop ?? null) : null;
 
-  const gamesSelect = (
+  const gamesSelect = (short: boolean) => (
     <select
       className="sel"
-      value={games}
+      value={starts}
       aria-label="Games to simulate"
-      onChange={(e) => setGames(Number(e.target.value))}
+      onChange={(e) => setStarts(Number(e.target.value))}
     >
-      <option value={1}>1 game</option>
-      <option value={2}>2 games</option>
-      <option value={8}>8 games</option>
-      <option value={16}>16 games</option>
-      <option value={32}>32 games</option>
+      {STARTS.map((k) => (
+        <option key={k} value={k}>
+          {gamesLabel(k, short)}
+        </option>
+      ))}
     </select>
   );
+
+  const closeTabNote = "You can close this tab; it lands in Results when it's done.";
 
   return (
     <>
@@ -134,10 +175,7 @@ function NewRunInner() {
         <h1>Simulate</h1>
 
         {down ? (
-          <p className="lede">
-            The engine at the configured address isn&apos;t answering. Start it with{" "}
-            <span className="mono">{ENGINE_CMD}</span> and retry. Nothing here is lost.
-          </p>
+          <EngineDown onRetry={reload} />
         ) : !decks ? (
           <p className="lede">Loading decks…</p>
         ) : (
@@ -146,25 +184,7 @@ function NewRunInner() {
           </p>
         )}
 
-        {down ? (
-          <p className="note">
-            <span className="st bad">
-              <i />
-              Engine unreachable
-            </span>{": "}
-            is <span className="mono">{ENGINE_CMD}</span> running?{" "}
-            <a
-              className="q"
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                reload();
-              }}
-            >
-              Retry
-            </a>
-          </p>
-        ) : !decks ? (
+        {down ? null : !decks ? (
           <p className="note">Loading decks…</p>
         ) : decks.length === 0 ? (
           <p className="note">
@@ -198,8 +218,14 @@ function NewRunInner() {
                   <h2>Selected decks</h2>
                   <span className="meta">{selected.length} of 2–4</span>
                 </div>
+                {/* Was "Seat order is the order you pick", which every rotated
+                    run contradicts. */}
                 {selectedDecks.length === 0 && (
-                  <p className="note">Seat order is the order you pick.</p>
+                  <p className="note">
+                    {rotating
+                      ? "Every deck takes every seat, so order doesn't matter."
+                      : "Decks sit in the order you pick."}
+                  </p>
                 )}
                 {selectedDecks.map((d, i) => {
                   const art = artOf(d);
@@ -236,35 +262,44 @@ function NewRunInner() {
                 <div className="rail-cta">
                   <div className="ctarow">
                     <span className="ctanote">Games</span>
-                    {gamesSelect}
+                    {gamesSelect(false)}
                   </div>
                   <div className="ctarow">
                     {/* The primary stays live (DESIGN_SYSTEM.md §6): when the run
-                        can't start, the blocker is stated beside it instead. */}
+                        can't start, the blocker is stated beside it instead. It
+                        carries the PLAYED count, which the engine confirms. */}
                     <button
                       className="btn pri"
                       aria-disabled={!canRun || starting}
-                      aria-describedby={!canRun ? "run-blocker" : undefined}
+                      aria-describedby={canRun ? "run-estimate" : "run-blocker"}
                       onClick={() => void start()}
                     >
-                      {starting ? "Starting run…" : `Run ${plural(games, "game")}`}
+                      {starting
+                        ? "Starting sim…"
+                        : canRun
+                          ? `Run ${plural(played, "game")}`
+                          : "Run sim"}
                     </button>
                   </div>
                   {!canRun && (
                     <p className="ctanote" id="run-blocker">
-                      Pick at least 2 decks; you have {selected.length}.
+                      Pick at least 2 decks; you have {podSize}.
                     </p>
                   )}
                   {canRun && (
-                    // Shown before you commit, because the cost is driven by pod
-                    // size far more than by game count: four decks is ~20x the
-                    // per-game time of two.
-                    <p className="ctanote">
-                      about{" "}
-                      <span className="mono">
-                        {fmtDuration(estimateSeconds(games, selected.length))}
-                      </span>
-                      {games === 1 ? ", so you can watch this one play out" : ""}
+                    // Shown before you commit: this is the only number anyone
+                    // sees before an hour-long job, so it is the engine's.
+                    <p className="ctanote" id="run-estimate">
+                      {estimate && (
+                        <>
+                          Usually{" "}
+                          <span className="mono">
+                            {fmtRange(estimate.typical_seconds[0], estimate.typical_seconds[1])}
+                          </span>
+                          .{" "}
+                        </>
+                      )}
+                      {closeTabNote}
                     </p>
                   )}
                 </div>
@@ -290,26 +325,36 @@ function NewRunInner() {
             <span className="cnt">
               {canRun ? (
                 <>
-                  <b>{selected.length}</b> seated ·{" "}
-                  <span className="mono">
-                    {fmtDuration(estimateSeconds(games, selected.length))}
-                  </span>
+                  <b>{podSize}</b> seated
+                  {estimate && (
+                    <>
+                      {" · usually "}
+                      <span className="mono">
+                        {fmtRange(estimate.typical_seconds[0], estimate.typical_seconds[1], true)}
+                      </span>
+                    </>
+                  )}
                   <small>{selectedDecks.map((d) => d.name).join(" · ")}</small>
                 </>
               ) : (
                 <>
-                  <b>{selected.length}</b> of 2–4 seated
+                  <b>{podSize}</b> of 2–4 seated
                   <small>Pick at least 2 to run</small>
                 </>
               )}
             </span>
-            {gamesSelect}
+            {/* Short labels here ("16 games") and a short button ("Run 16"):
+                a phone has no room for the rail's "Run 16 games", but the
+                button still carries the PLAYED count. The close-tab note is
+                on /runs from its first paint, so the bar does not repeat it. */}
+            {gamesSelect(true)}
             <button
               className="btn pri"
               aria-disabled={!canRun || starting}
+              aria-label={starting ? undefined : canRun ? `Run ${plural(played, "game")}` : "Run sim"}
               onClick={() => void start()}
             >
-              {starting ? "Starting…" : "Run"}
+              {starting ? "Starting…" : canRun ? `Run ${played}` : "Run"}
             </button>
           </div>
         )}

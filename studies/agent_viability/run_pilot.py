@@ -2,7 +2,10 @@
 """Pilot: does the plan agent beat stock Forge on decks where it can operate?
 
 Every prior head-to-head measured the agent on Forge precons, where
-deck_plan finds ZERO combo lines. With no lines, PlanPlayerController's
+deck_plan found no combo lines (scoped 2026-09-26: 7 of those 8 precons have
+no included Spellbook variants even with clean names; combos.parse_dck's |SET
+suffix bug hid 26 variants on 14 of 66 precons, Blight Curse among them). With
+no lines, PlanPlayerController's
 lineOfSight() returns null on its first branch, which switches off combo
 pursuit, line-piece cast priority, tutor casting, greed and combo-mode tutor
 steering together. What is left running is blocking, attack splitting, the

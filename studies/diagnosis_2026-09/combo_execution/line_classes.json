@@ -1,0 +1,6166 @@
+[
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Gaea's Cradle"
+  ],
+  "produces": [
+   "Infinite blinking",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite green mana",
+   "Infinite mana permanents you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least three creatures.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Bloom Tender"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite blinking",
+   "Infinite mana of colors among permanents you control",
+   "Infinite mana permanents you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Bloom Tender"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Mana Vault"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Faeburrow Elder"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite blinking",
+   "Infinite mana of colors among permanents you control",
+   "Infinite mana permanents you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Felidar Guardian",
+   "Phyrexian Metamorph"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": false,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Chromatic Orrery"
+  ],
+  "produces": [
+   "Infinite blinking",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite colored mana",
+   "Infinite colorless mana",
+   "Infinite card draw"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Felidar Guardian",
+   "Flesh Duplicate"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": false,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Felidar Guardian",
+   "Clever Impersonator"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB"
+  ],
+  "win_on_its_own": false,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Emiel the Blessed",
+   "Felidar Guardian",
+   "Gaea's Cradle"
+  ],
+  "produces": [
+   "Infinite blinking of permanents",
+   "Infinite creature ETB",
+   "Infinite landfall triggers",
+   "Infinite creature LTB",
+   "Infinite mana permanents you control can produce",
+   "Infinite blinking"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least two additional creatures.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Emiel the Blessed",
+   "Felidar Guardian",
+   "Chromatic Orrery"
+  ],
+  "produces": [
+   "Infinite blinking of permanents",
+   "Infinite card draw",
+   "Infinite colored mana",
+   "Infinite colorless mana",
+   "Infinite draw triggers",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "derevi",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Basalt Monolith",
+   "Forsaken Monument"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Basalt Monolith"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Godo, Bandit Warlord",
+   "Helm of the Host"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite death triggers",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite creature sacrifice triggers",
+   "Put all Equipment cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": true,
+  "class": "attach/equip prerequisite then trigger loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Helm of the Host attached to Godo.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Metalworker"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite colorless mana",
+   "Infinite draw triggers",
+   "Infinite lifegain",
+   "Infinite lifegain triggers",
+   "Infinite untap of creatures you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Metalworker"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Metalworker does not have summoning sickness. You have at least three artifact cards in hand.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Thran Dynamo"
+  ],
+  "produces": [
+   "Infinite untap of artifacts you control",
+   "Infinite colorless mana",
+   "Infinite mana artifacts you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Rings of Brighthearth",
+   "Metalworker"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite untap of artifacts you control",
+   "Infinite mana artifacts you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Metalworker"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "2 or more artifacts in hand.\nMetalworker does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Forsaken Monument",
+   "Grim Monolith"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Mana Vault"
+  ],
+  "produces": [
+   "Infinite untap of artifacts you control",
+   "Infinite colorless mana",
+   "Infinite mana artifacts you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "godo_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Springheart Nantuko",
+   "Lotus Cobra"
+  ],
+  "produces": [
+   "Infinite landfall triggers",
+   "Infinite tapped land tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "attach/equip prerequisite then trigger loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Springheart Nantuko",
+   "Lotus Cobra"
+  ],
+  "produces": [
+   "Infinite landfall triggers",
+   "Infinite tapped land tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "attach/equip prerequisite then trigger loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": true
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Snap"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite storm count",
+   "Infinite magecraft triggers",
+   "Near-infinite colored mana",
+   "Return all creatures you don't control to their owner's hand"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Snap"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 3,
+  "repeat": true,
+  "prereq": "You control up to two lands that can tap to produce at least {1}{U}.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Unctus, Grand Metatect",
+   "Aphetto Alchemist"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite self-discard triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Aphetto Alchemist"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Aphetto Alchemist does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Cephalid Illusionist",
+   "Lightning Greaves"
+  ],
+  "produces": [
+   "Infinite self-mill"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Cephalid Illusionist"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Cephalid Illusionist",
+   "Shuko"
+  ],
+  "produces": [
+   "Infinite self-mill"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Cephalid Illusionist"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Jeweled Lotus"
+  ],
+  "produces": [
+   "Infinite colored mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nadu, Winged Wisdom",
+   "Scute Swarm",
+   "Lightning Greaves"
+  ],
+  "produces": [
+   "Near-infinite creature ETB",
+   "Near-infinite creature tokens",
+   "Near-infinite card draw",
+   "Near-infinite landfall triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nadu, Winged Wisdom",
+   "Scute Swarm",
+   "Shuko"
+  ],
+  "produces": [
+   "Near-infinite creature ETB",
+   "Near-infinite creature tokens",
+   "Near-infinite card draw",
+   "Near-infinite landfall triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "nadu",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Exile your library",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Demonic Consultation"
+  ],
+  "removedeck_all_pieces": [
+   "Demonic Consultation"
+  ],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Near-infinite magecraft triggers",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Grinding Station"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite storm count",
+   "Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Grinding Station",
+   "Mana Crypt"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colorless mana",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "2iA_Jt0d6sM",
+  "deck": "rograkh_silas",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Peregrin Took",
+   "Nuka-Cola Vending Machine"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite draw triggers",
+   "Near-infinite tapped Treasure tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least three Foods.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Krark-Clan Ironworks"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite colorless mana",
+   "Infinite tapped Treasure tokens",
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Krark-Clan Ironworks"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least one Food.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "produces": [
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Grinding Station"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite mill",
+   "Infinite self-mill",
+   "Infinite tapped Treasure tokens",
+   "Infinite tapped Food tokens"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least one Food.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite Blood tokens",
+   "Infinite card draw"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Stridehangar Automaton"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite tapped Food tokens",
+   "Infinite tapped creature tokens",
+   "Infinite tapped Clue tokens",
+   "Infinite tapped Blood tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Grinding Station"
+  ],
+  "produces": [
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens",
+   "Infinite tapped Blood tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Peregrin Took"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite draw triggers",
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens",
+   "Infinite tapped Blood tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Basalt Monolith",
+   "Forsaken Monument"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Basalt Monolith"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Godo, Bandit Warlord",
+   "Helm of the Host"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite death triggers",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite creature sacrifice triggers",
+   "Put all Equipment cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": true,
+  "class": "attach/equip prerequisite then trigger loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Helm of the Host attached to Godo.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Metalworker"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite colorless mana",
+   "Infinite draw triggers",
+   "Infinite lifegain",
+   "Infinite lifegain triggers",
+   "Infinite untap of creatures you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Metalworker"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Metalworker does not have summoning sickness. You have at least three artifact cards in hand.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Thran Dynamo"
+  ],
+  "produces": [
+   "Infinite untap of artifacts you control",
+   "Infinite colorless mana",
+   "Infinite mana artifacts you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Rings of Brighthearth",
+   "Metalworker"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite untap of artifacts you control",
+   "Infinite mana artifacts you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Metalworker"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "2 or more artifacts in hand.\nMetalworker does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Forsaken Monument",
+   "Grim Monolith"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Mana Vault"
+  ],
+  "produces": [
+   "Infinite untap of artifacts you control",
+   "Infinite colorless mana",
+   "Infinite mana artifacts you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "godo",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Curiosity",
+   "Niv-Mizzet, Parun"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite card draw",
+   "Near-infinite damage"
+  ],
+  "win_on_its_own": true,
+  "class": "attach/equip prerequisite then trigger loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Curiosity attached to Niv-Mizzet.\nYou have a way to draw a card.\nYour library is greater than opponent life total.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "malcolm_kediss",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Niv-Mizzet, Parun",
+   "Ophidian Eye"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite draw triggers",
+   "Near-infinite damage"
+  ],
+  "win_on_its_own": true,
+  "class": "attach/equip prerequisite then trigger loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Ophidian Eye attached to Niv-Mizzet.\nYou have a way to draw a card.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "malcolm_kediss",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Narset's Reversal",
+   "Flare of Duplication"
+  ],
+  "produces": [
+   "Infinite magecraft triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Narset's Reversal",
+   "Flare of Duplication"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 3,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "malcolm_kediss",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Near-infinite magecraft triggers",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Smothering Tithe",
+   "Underworld Breach",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Infinite self-discard triggers for all players",
+   "Near-infinite colored mana",
+   "Near-infinite Treasure tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "At least one opponent is unable to pay for Smothering Tithe's trigger.\nYou have at least three other cards in your graveyard, plus an additional three cards between your graveyard and/or hand.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Mirrormade"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Mirrormade on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Copy Enchantment"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Copy Enchantment"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Copy Enchantment on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Clever Impersonator on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "5A6o18Bra0Y",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Sol Ring"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "dexter_kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mana Vault"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "dexter_kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mox Amber"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite colored mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You control a legendary creature that has a color that matches the mana symbol in the other permanent's mana cost.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "dexter_kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kinnan, Bonder Prodigy",
+   "Basalt Monolith"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "dexter_kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Quirion Ranger"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite landfall triggers",
+   "Infinite creature LTB",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Quirion Ranger"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control a nontoken creature other than Quirion Ranger that does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Sylvan Safekeeper",
+   "Badgermole Cub"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite creature sacrifice triggers",
+   "Infinite death triggers",
+   "Infinite landfall triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Sylvan Safekeeper"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite green mana",
+   "Infinite landfall triggers",
+   "Infinite creature LTB",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Scryb Ranger"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least two Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Wirewood Symbiote",
+   "Llanowar Elves"
+  ],
+  "produces": [
+   "Infinite blinking of some creatures",
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Wirewood Symbiote"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "Circle of Dreams Druid does not have summoning sickness.\nYou control at least five creatures.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Argothian Elder"
+  ],
+  "produces": [
+   "Infinite mana lands you control can produce",
+   "Infinite untap of creatures you control",
+   "Infinite mana creatures you control can produce",
+   "Infinite untap of nontoken creatures you control",
+   "Infinite mana nontoken creatures you control can produce",
+   "Infinite untap of lands you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Argothian Elder does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Wirewood Symbiote",
+   "Elvish Mystic"
+  ],
+  "produces": [
+   "Infinite blinking of some creatures",
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Wirewood Symbiote"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "Circle of Dreams Druid does not have summoning sickness.\nYou control at least five creatures.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Circle of Dreams Druid"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite storm count",
+   "Infinite green mana",
+   "Infinite landfall triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Scryb Ranger"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite blinking of some creatures"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least five Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Temur Sabertooth",
+   "Wirewood Symbiote",
+   "Llanowar Elves"
+  ],
+  "produces": [
+   "Infinite colored mana",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite storm count",
+   "Infinite blinking"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Wirewood Symbiote"
+  ],
+  "activate_steps": 4,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "Selvala and Llanowar Elves do not have summoning sickness.\nYou control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite colored mana",
+   "Infinite storm count",
+   "Infinite landfall triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Scryb Ranger"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Temur Sabertooth",
+   "Wirewood Symbiote",
+   "Elvish Mystic"
+  ],
+  "produces": [
+   "Infinite colored mana",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite storm count",
+   "Infinite blinking"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Wirewood Symbiote"
+  ],
+  "activate_steps": 4,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "Selvala and Elvish Mystic do not have summoning sickness.\nYou control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Temur Sabertooth",
+   "Wirewood Symbiote",
+   "Fyndhorn Elves"
+  ],
+  "produces": [
+   "Infinite colored mana",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite storm count",
+   "Infinite blinking"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Wirewood Symbiote"
+  ],
+  "activate_steps": 4,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "Selvala and Fyndhorn Elves do not have summoning sickness.\nYou control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least five Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Wirewood Symbiote",
+   "Allosaurus Shepherd"
+  ],
+  "produces": [
+   "Infinite blinking of some creatures",
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Wirewood Symbiote"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "Circle of Dreams Druid does not have summoning sickness.\nYou control at least five creatures.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite blinking",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite mana creatures you control can produce",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Circle of Dreams Druid"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite blinking of some creatures"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control at least five creatures.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Circle of Dreams Druid"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite mana creatures you control can produce",
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control at least five creatures.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Magus of the Candelabra",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite mana lands you control can produce",
+   "Infinite green mana",
+   "Infinite untap of nontoken creatures you control",
+   "Infinite mana nontoken creatures you control can produce",
+   "Infinite untap of lands you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Magus of the Candelabra"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "There are at least three Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Magus of the Candelabra",
+   "Circle of Dreams Druid"
+  ],
+  "produces": [
+   "Infinite mana lands you control can produce",
+   "Infinite green mana",
+   "Infinite untap of nontoken creatures you control",
+   "Infinite mana nontoken creatures you control can produce",
+   "Infinite untap of lands you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Magus of the Candelabra"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Magus of the Candelabra",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite colored mana",
+   "Infinite mana lands you control can produce",
+   "Infinite untap of nontoken creatures you control",
+   "Infinite mana nontoken creatures you control can produce",
+   "Infinite untap of lands you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Magus of the Candelabra"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control a creature with power 4 or greater.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite blinking of some creatures",
+   "Infinite green mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control at least five creatures.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Priest of Titania",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite blinking of some creatures",
+   "Infinite green mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least four Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Selvala, Heart of the Wilds",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite blinking",
+   "Infinite colored mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Pili-Pala",
+   "Wild Growth"
+  ],
+  "produces": [
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Pili-Pala",
+   "Wild Growth"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Wild Growth attached to Pili-Pala.\nPili-Pala does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Pili-Pala"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "There are at least two Elves on the battlefield.\nMarvin does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Pili-Pala"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control a creature with power 3 or greater.\nMarvin does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Circle of Dreams Druid"
+  ],
+  "produces": [
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Pili-Pala"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Marvin does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Argothian Elder"
+  ],
+  "produces": [
+   "Infinite colored mana",
+   "Infinite mana lands you control can produce",
+   "Infinite untap of lands you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Pili-Pala"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least two mana-producing lands.\nMarvin does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "isaac_yisan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Exile your library",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Demonic Consultation"
+  ],
+  "removedeck_all_pieces": [
+   "Demonic Consultation"
+  ],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Near-infinite magecraft triggers",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Malcolm, Keen-Eyed Navigator",
+   "Glint-Horn Buccaneer"
+  ],
+  "produces": [
+   "Near-infinite damage",
+   "Near-infinite self-discard triggers",
+   "Near-infinite draw triggers"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Glint-Horn Buccaneer",
+   "Curiosity"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite rummaging",
+   "Infinite self-discard triggers",
+   "Near-infinite damage"
+  ],
+  "win_on_its_own": true,
+  "class": "attach/equip prerequisite then trigger loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Curiosity attached to Glint-Horn Buccaneer.\nYou have a number of cards in hand greater than your maximum hand size.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "lily_malcolm_vial",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Ioreth of the Healing House"
+  ],
+  "produces": [
+   "Infinite untap of legendary creatures you control",
+   "Infinite mana legendary creatures you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "There is at least one other legendary creature on the battlefield.\nMarvin and Ioreth do not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "matt_sisay",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Gaea's Cradle"
+  ],
+  "produces": [
+   "Infinite blinking",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite green mana",
+   "Infinite mana permanents you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least three creatures.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "matt_sisay",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Bloom Tender"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite blinking",
+   "Infinite mana of colors among permanents you control",
+   "Infinite mana permanents you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Bloom Tender"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "matt_sisay",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Mana Vault"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "matt_sisay",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite colored mana",
+   "Infinite blinking",
+   "Infinite mana permanents you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Selvala does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "matt_sisay",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Badgermole Cub",
+   "Emiel the Blessed",
+   "Gaea's Cradle"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite blinking",
+   "Infinite green mana",
+   "Infinite landfall triggers",
+   "Infinite mana lands you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control at least one additional creature.",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "matt_sisay",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Emiel the Blessed",
+   "Tyvar, Jubilant Brawler"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite colored mana",
+   "Infinite blinking"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "B421mac67IE",
+  "deck": "matt_sisay",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Peregrin Took",
+   "Nuka-Cola Vending Machine"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite draw triggers",
+   "Near-infinite tapped Treasure tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least three Foods.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Krark-Clan Ironworks"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite colorless mana",
+   "Infinite tapped Treasure tokens",
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Krark-Clan Ironworks"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least one Food.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "produces": [
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Grinding Station"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite mill",
+   "Infinite self-mill",
+   "Infinite tapped Treasure tokens",
+   "Infinite tapped Food tokens"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least one Food.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite Blood tokens",
+   "Infinite card draw"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Stridehangar Automaton"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite tapped Food tokens",
+   "Infinite tapped creature tokens",
+   "Infinite tapped Clue tokens",
+   "Infinite tapped Blood tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Grinding Station"
+  ],
+  "produces": [
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens",
+   "Infinite tapped Blood tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Peregrin Took"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite draw triggers",
+   "Infinite tapped Food tokens",
+   "Infinite tapped Clue tokens",
+   "Infinite tapped Blood tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "cabbage_merchant",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Sol Ring"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mana Vault"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mox Amber"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite colored mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You control a legendary creature that has a color that matches the mana symbol in the other permanent's mana cost.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kinnan, Bonder Prodigy",
+   "Basalt Monolith"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Basalt Monolith",
+   "Nyxbloom Ancient"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Grim Monolith",
+   "Nyxbloom Ancient"
+  ],
+  "produces": [
+   "Infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "kinnan",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "rog_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "rog_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "rog_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Oboro Breezecaller",
+   "Talon Gates of Madara",
+   "Gaea's Cradle"
+  ],
+  "produces": [
+   "Infinite mana lands you control can produce",
+   "Infinite green mana",
+   "Infinite landfall triggers",
+   "Phase out any number of creatures any number of times"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Oboro Breezecaller"
+  ],
+  "activate_steps": 4,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least five creatures.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "rog_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Snap"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite storm count",
+   "Infinite magecraft triggers",
+   "Near-infinite colored mana",
+   "Return all creatures you don't control to their owner's hand"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Snap"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 3,
+  "repeat": true,
+  "prereq": "You control up to two lands that can tap to produce at least {1}{U}.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "rog_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Snap",
+   "Cloud of Faeries"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite colored mana",
+   "Infinite storm count",
+   "Infinite magecraft triggers",
+   "Return all creatures you don't control to their owner's hand"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Snap"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 3,
+  "repeat": true,
+  "prereq": "You control up to two lands that can tap to produce at least {1}{U}.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "rog_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Exile your library",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Demonic Consultation"
+  ],
+  "removedeck_all_pieces": [
+   "Demonic Consultation"
+  ],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "yidris",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "yidris",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "yidris",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "yidris",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Near-infinite magecraft triggers",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "yidris",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "Bq-nFi0f1jA",
+  "deck": "yidris",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "alan_tnt",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Devoted Druid",
+   "Swift Reconfiguration"
+  ],
+  "produces": [
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Devoted Druid"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Swift Reconfiguration attached to Devoted Druid.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "alan_tnt",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hazel's Brewmaster",
+   "Devoted Druid"
+  ],
+  "produces": [
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Devoted Druid"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You control at least one Food.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "alan_tnt",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Kinnan, Bonder Prodigy"
+  ],
+  "produces": [
+   "Infinite card draw for all players",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Near-infinite colored mana",
+   "Near-infinite colorless mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "You have at least three opponents.\nOpponents are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "alan_tnt",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hermit Druid",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 1,
+  "repeat": false,
+  "prereq": "Hermit Druid does not have summoning sickness.\nYou have no basic lands in library.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "alan_tnt",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Clever Impersonator on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "alan_tnt",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Exile your library",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Demonic Consultation"
+  ],
+  "removedeck_all_pieces": [
+   "Demonic Consultation"
+  ],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "dallas_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "dallas_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "dallas_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "dallas_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Grinding Station"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite storm count",
+   "Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "dallas_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Memnite",
+   "Grinding Station",
+   "Underworld Breach",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite creature ETB",
+   "Near-infinite creature LTB",
+   "Near-infinite creature sacrifice triggers",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 3,
+  "repeat": true,
+  "prereq": "You have four or more cards in your graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "dallas_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Near-infinite magecraft triggers",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Reiterate",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite magecraft triggers",
+   "Infinite red mana",
+   "Infinite storm count",
+   "Exile your library with the ability to play the exiled cards until end of turn"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Reiterate",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "An opponent has six or more cards in their hand.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Storm-Kiln Artist",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite colored mana",
+   "Infinite copies of instant and sorcery spells on the stack"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Seething Song",
+   "Reiterate"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "produces": [
+   "Infinite magecraft triggers",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Seething Song",
+   "Reiterate"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Exile your library",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Demonic Consultation"
+  ],
+  "removedeck_all_pieces": [
+   "Demonic Consultation"
+  ],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "sterling_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "sterling_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "sterling_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "CxKMqO36DdM",
+  "deck": "sterling_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "produces": [
+   "Infinite creature tokens with haste",
+   "Infinite death triggers",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite creature sacrifice triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_ian",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_ian",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB",
+   "Infinite creature LTB"
+  ],
+  "win_on_its_own": true,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_ian",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "produces": [
+   "Infinite creature tokens with haste",
+   "Infinite death triggers",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite creature sacrifice triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_lua",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_lua",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB",
+   "Infinite creature LTB"
+  ],
+  "win_on_its_own": true,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_lua",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Village Bell-Ringer"
+  ],
+  "produces": [
+   "Infinite creature tokens with haste",
+   "Infinite death triggers",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite creature sacrifice triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_lua",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Mirage Phalanx"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": true,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Mirage Phalanx is paired with Combat Celebrant.",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_lua",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "produces": [
+   "Infinite creature tokens with haste",
+   "Infinite death triggers",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite creature sacrifice triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_mike",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_mike",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB",
+   "Infinite creature LTB"
+  ],
+  "win_on_its_own": true,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_mike",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Mirage Phalanx"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": true,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Mirage Phalanx is paired with Combat Celebrant.",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_mike",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "produces": [
+   "Infinite creature tokens with haste",
+   "Infinite death triggers",
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite creature sacrifice triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_rachel",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB"
+  ],
+  "win_on_its_own": true,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_rachel",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "produces": [
+   "Infinite combat phases",
+   "Infinite creature tokens with haste",
+   "Infinite creature ETB",
+   "Infinite creature LTB"
+  ],
+  "win_on_its_own": true,
+  "class": "trigger-only (static/ETB) loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "OuY6mdiXbHU",
+  "deck": "winota_rachel",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Liquimetal Torque"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Universal Automaton"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Metallic Mimic"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Adaptive Automaton"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Roaming Throne"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Barkform Harvester"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Three Tree Mascot"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Battered Golem",
+   "Maskwood Nexus"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite colored mana",
+   "Infinite Treasure tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Battered Golem",
+   "Maskwood Nexus"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite colored mana",
+   "Infinite Treasure tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": true
+ },
+ {
+  "cards": [
+   "Battered Golem",
+   "Dwarven Bloodboiler",
+   "Magda, Brazen Outlaw",
+   "Maskwood Nexus"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite colored mana",
+   "Infinitely powerful creatures you control until end of turn"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Battered Golem",
+   "Stalactite Dagger"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite Treasure tokens",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Battered Golem",
+   "Stalactite Dagger"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite Treasure tokens",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": true
+ },
+ {
+  "cards": [
+   "Battered Golem",
+   "Dwarven Bloodboiler",
+   "Magda, Brazen Outlaw",
+   "Stalactite Dagger"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite Treasure tokens",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Sol Ring"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mana Vault"
+  ],
+  "produces": [
+   "Infinite colorless mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mox Amber"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite colored mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You control a legendary creature that has a color that matches the mana symbol in the other permanent's mana cost.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Mirrormade"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Mirrormade on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Copy Enchantment"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Copy Enchantment"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Copy Enchantment on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Clever Impersonator on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "rog_ishai",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite draw triggers",
+   "Infinite lifegain",
+   "Infinite lifegain triggers",
+   "Infinite untap of creatures you control",
+   "Infinite mana creatures you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Priest of Titania does not have summoning sickness. There are at least five Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Quirion Ranger"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite landfall triggers",
+   "Infinite creature LTB",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Quirion Ranger"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control a nontoken creature other than Quirion Ranger that does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite card draw",
+   "Infinite colored mana",
+   "Infinite draw triggers",
+   "Infinite lifegain",
+   "Infinite lifegain triggers",
+   "Infinite mana creatures you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Selvala does not have summoning sickness. You control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Umbral Mantle",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite green mana",
+   "Infinitely large creature until end of turn",
+   "Infinite untap of creatures you control",
+   "Infinite mana creatures you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Priest of Titania does not have summoning sickness. There are at least three Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Umbral Mantle",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite colored mana",
+   "Infinitely large creature until end of turn",
+   "Infinite untap of creatures you control",
+   "Infinite mana creatures you control can produce"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Selvala does not have summoning sickness.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite green mana",
+   "Infinite landfall triggers",
+   "Infinite creature LTB",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Scryb Ranger"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least two Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Selvala, Heart of the Wilds",
+   "Lightning Greaves"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite colored mana",
+   "Infinite storm count",
+   "Infinite blinking"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 3,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control a creature other than Selvala that has power 7 or greater.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite blinking of some creatures"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least five Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite creature ETB",
+   "Infinite colored mana",
+   "Infinite storm count",
+   "Infinite landfall triggers"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Scryb Ranger"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least five Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite creature LTB",
+   "Infinite mana creatures you control can produce",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite blinking",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite storm count",
+   "Infinite untap of creatures you control",
+   "Infinite mana creatures you control can produce",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Priest of Titania",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite blinking of some creatures",
+   "Infinite green mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "There are at least four Elves on the battlefield.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Selvala, Heart of the Wilds",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "produces": [
+   "Infinite creature ETB",
+   "Infinite creature LTB",
+   "Infinite blinking",
+   "Infinite colored mana",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "You control a creature with power 6 or greater.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "selvala_archetype",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Exile your library",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Demonic Consultation"
+  ],
+  "removedeck_all_pieces": [
+   "Demonic Consultation"
+  ],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "tymna_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "tymna_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Devoted Druid",
+   "Swift Reconfiguration"
+  ],
+  "produces": [
+   "Infinite green mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Devoted Druid"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Swift Reconfiguration attached to Devoted Druid.",
+  "missing_script": [],
+  "pod": "n7WpsqsZtdQ",
+  "deck": "tymna_thrasios",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "ashton_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "ashton_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Mirrormade"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Mirrormade on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "ashton_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Copy Enchantment"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Copy Enchantment"
+  ],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Copy Enchantment on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "ashton_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "produces": [
+   "Near-infinite colored mana",
+   "Infinite draw triggers for all players",
+   "Near-infinite Treasure tokens",
+   "Infinite card draw for all players"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [],
+  "activate_steps": 2,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "Clever Impersonator on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "ashton_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Near-infinite magecraft triggers",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Reiterate",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite magecraft triggers",
+   "Infinite red mana",
+   "Infinite storm count",
+   "Exile your library with the ability to play the exiled cards until end of turn"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Reiterate",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "An opponent has six or more cards in their hand.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Storm-Kiln Artist",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Infinite colored mana",
+   "Infinite copies of instant and sorcery spells on the stack"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Seething Song",
+   "Reiterate"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "produces": [
+   "Infinite magecraft triggers",
+   "Infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Seething Song",
+   "Reiterate"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "joseph_ral",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Universal Automaton"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "natalie_magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Metallic Mimic"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "natalie_magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Adaptive Automaton"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "natalie_magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Roaming Throne"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact LTB",
+   "Infinite artifact sacrifice triggers",
+   "Infinite artifact tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+   "Infinite colored mana"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "natalie_magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Barkform Harvester"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "natalie_magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Three Tree Mascot"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "natalie_magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Bloodline Pretender"
+  ],
+  "produces": [
+   "Infinite artifact ETB",
+   "Infinite artifact tokens",
+   "Infinite tapped Treasure tokens",
+   "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+  ],
+  "win_on_its_own": false,
+  "class": "activated-ability loop",
+  "nonpermanent_pieces": [],
+  "removedeck_all_pieces": [
+   "Clock of Omens"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 0,
+  "repeat": true,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "natalie_magda",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Exile your library",
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Demonic Consultation"
+  ],
+  "removedeck_all_pieces": [
+   "Demonic Consultation"
+  ],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "tyler_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "produces": [
+   "Win the game"
+  ],
+  "win_on_its_own": true,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Tainted Pact"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": false,
+  "prereq": "",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "tyler_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "tyler_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "produces": [
+   "Infinite self-mill",
+   "Near-infinite colored mana",
+   "Near-infinite magecraft triggers",
+   "Near-infinite mill",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": true,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Brain Freeze"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "tyler_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Near-infinite magecraft triggers",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell-completion (instant/sorcery piece, never 'all on battlefield')",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 0,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "tyler_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers",
+   "Infinite looting",
+   "Infinite looting for opponents",
+   "Near-infinite storm count"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [
+   "Lion's Eye Diamond"
+  ],
+  "activate_steps": 1,
+  "cast_steps": 2,
+  "repeat": true,
+  "prereq": "You have at least six other cards in hand and/or graveyard.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "tyler_bluefarm",
+  "duplicate": false
+ },
+ {
+  "cards": [
+   "Smothering Tithe",
+   "Underworld Breach",
+   "Wheel of Fortune"
+  ],
+  "produces": [
+   "Infinite draw triggers for all players",
+   "Infinite looting for all players",
+   "Infinite self-discard triggers for all players",
+   "Near-infinite colored mana",
+   "Near-infinite Treasure tokens"
+  ],
+  "win_on_its_own": false,
+  "class": "spell + activation loop",
+  "nonpermanent_pieces": [
+   "Wheel of Fortune"
+  ],
+  "removedeck_all_pieces": [],
+  "activate_steps": 1,
+  "cast_steps": 1,
+  "repeat": true,
+  "prereq": "At least one opponent is unable to pay for Smothering Tithe's trigger.\nYou have at least three other cards in your graveyard, plus an additional three cards between your graveyard and/or hand.",
+  "missing_script": [],
+  "pod": "sZA0KqXCGrY",
+  "deck": "tyler_bluefarm",
+  "duplicate": false
+ }
+]

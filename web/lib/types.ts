@@ -345,6 +345,10 @@ export interface AnalysedCombo extends KnownCombo {
   games: ComboGame[];
   games_played: number;
   assembled_games: number;
+  /** Games the deck won after the pieces had been together (ANALYSIS_VERSION
+   *  5+). Correlation, never "the combo won": shown unbadged. */
+  won_after_assembly?: number;
+  /** Deprecated alias of won_after_assembly; WS1 replaces it. */
   converted_games: number;
   median_assembled_turn: number | null;
   idle_online_turns: number;
@@ -354,9 +358,16 @@ export interface AnalysedCombo extends KnownCombo {
   /** Instant/sorcery pieces: counted as present on turns they were cast,
    *  since they never sit on the battlefield. */
   nonpermanent_pieces?: string[];
-  /** Server-computed verdict. "sample_too_small" means draw odds predicted
+  /** Server-computed description, never a verdict on the pilot. "fired" and
+   *  "assembled_not_fired" were retired in ANALYSIS_VERSION 5; they can only
+   *  come from a stale payload. "sample_too_small" means draw odds predicted
    *  ~0 assemblies across the run, so a zero is expected, not a finding. */
-  reading?: "fired" | "assembled_not_fired" | "sample_too_small" | "not_assembled";
+  reading?:
+    | "assembled"
+    | "sample_too_small"
+    | "not_assembled"
+    | "fired"
+    | "assembled_not_fired";
 }
 
 export interface AnalysisDeck {
@@ -386,6 +397,10 @@ export interface AnalysisReport {
   /** analyse() has returned this since ANALYSIS_VERSION 4; the type omitted
    *  it, so a polluted run's combo table rendered with no caveat at all. */
   validity?: Validity;
+  /** Which board path the assembly numbers came from (ANALYSIS_VERSION 5+):
+   *  a read of the shim's zone records, stdout inference, or both. */
+  basis?: "zone_stream" | "inferred" | "mixed";
+  /** The honesty note, worded by the engine for that path. */
   note: string;
 }
 

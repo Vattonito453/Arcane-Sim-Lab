@@ -1,0 +1,610 @@
+#0 [2 decks] Derevi, Empyrial Tactician + Emiel the Blessed + Gaea's Cradle
+  PRODUCES: ['Infinite blinking', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite green mana', 'Infinite mana permanents you control can produce']
+  PREREQ: 'You control at least three creatures.'
+  DESC: "Activate Gaea's Cradle by tapping it, adding at least {G}{G}{G}.\nActivate Emiel by paying {3}, blinking Derevi.\nWhen Derevi enters the battlefield, it triggers, untapping Gaea's Cradle.\nRepeat."
+
+#1 [2 decks] Derevi, Empyrial Tactician + Emiel the Blessed + Bloom Tender
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite blinking', 'Infinite mana of colors among permanents you control', 'Infinite mana permanents you control can produce']
+  PREREQ: ''
+  DESC: 'Activate Bloom Tender by tapping it, adding at least {G}{W}{U}.\nActivate Emiel by paying {3}, blinking Derevi.\nWhen Derevi enters the battlefield, it triggers, untapping Bloom Tender\nRepeat.'
+
+#2 [2 decks] Derevi, Empyrial Tactician + Emiel the Blessed + Mana Vault
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB']
+  PREREQ: ''
+  DESC: 'Activate Mana Vault by tapping it, adding {C}{C}{C}.\nActivate Emiel by paying {3}, blinking Derevi.\nWhen Derevi enters the battlefield, it triggers, untapping Mana Vault.\nRepeat.'
+
+#3 [1 decks] Derevi, Empyrial Tactician + Emiel the Blessed + Faeburrow Elder
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite blinking', 'Infinite mana of colors among permanents you control', 'Infinite mana permanents you control can produce']
+  PREREQ: ''
+  DESC: 'Activate Faeburrow Elder by tapping it, adding at least {G}{W}{U}.\nActivate Emiel by paying {3}, blinking Derevi.\nWhen Derevi enters the battlefield, it triggers, untapping Faeburrow Elder.\nRepeat.'
+
+#4 [1 decks] Felidar Guardian + Phyrexian Metamorph
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB']
+  PREREQ: ''
+  DESC: 'Cast Phyrexian Metamorph by paying its mana cost, choosing to have it enter the battlefield as a copy of Felidar Guardian\nWhen Phyrexian Metamorph enters the battlefield, it triggers, blinking Felidar Guardian.\nWhen Felidar Guardian enters the battlefield, it triggers, blinking Phyrexian Metamorph. Choose to have Phyrexian Metamorph enter the battlefield as a copy of Felidar Guardian.\nRepeat from step 2.'
+
+#5 [1 decks] Derevi, Empyrial Tactician + Emiel the Blessed + Chromatic Orrery
+  PRODUCES: ['Infinite blinking', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite colored mana', 'Infinite colorless mana', 'Infinite card draw']
+  PREREQ: ''
+  DESC: 'Activate Chromatic Orrery by tapping it, adding {5}.\nActivate Emiel by paying {3}, blinking Derevi.\nWhen Derevi enters the battlefield, it triggers, untapping Chromatic Orrery.\nRepeat.'
+
+#6 [1 decks] Felidar Guardian + Flesh Duplicate
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB']
+  PREREQ: ''
+  DESC: 'Cast Flesh Duplicate by paying its mana cost, choosing to have it enter the battlefield as a copy of Felidar Guardian\nWhen Flesh Duplicate enters the battlefield, it triggers, blinking Felidar Guardian.\nWhen Felidar Guardian enters the battlefield, it triggers, blinking Flesh Duplicate. Choose to have Flesh Duplicate enter the battlefield as a copy of Felidar Guardian.\nRepeat from step 2.'
+
+#7 [1 decks] Felidar Guardian + Clever Impersonator
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB']
+  PREREQ: ''
+  DESC: 'Cast Clever Impersonator by paying its mana cost, choosing to have it enter the battlefield as a copy of Felidar Guardian\nWhen Clever Impersonator enters the battlefield, it triggers, blinking Felidar Guardian.\nWhen Felidar Guardian enters the battlefield, it triggers, blinking Clever Impersonator. Choose to have Clever Impersonator enter the battlefield as a copy of Felidar Guardian.\nRepeat from step 2.'
+
+#8 [1 decks] Emiel the Blessed + Felidar Guardian + Gaea's Cradle
+  PRODUCES: ['Infinite blinking of permanents', 'Infinite creature ETB', 'Infinite landfall triggers', 'Infinite creature LTB', 'Infinite mana permanents you control can produce', 'Infinite blinking']
+  PREREQ: 'You control at least two additional creatures.'
+  DESC: "Activate Gaea's Cradle by tapping it, adding at least {G}{G}{G}{G}.\nActivate Emiel by paying {3}, blinking Felidar Guardian.\nWhen Felidar Guardian enters the battlefield, it triggers, blinking Gaea's Cradle.\nRepeat."
+
+#9 [1 decks] Emiel the Blessed + Felidar Guardian + Chromatic Orrery
+  PRODUCES: ['Infinite blinking of permanents', 'Infinite card draw', 'Infinite colored mana', 'Infinite colorless mana', 'Infinite draw triggers', 'Infinite creature ETB']
+  PREREQ: ''
+  DESC: "Activate Chromatic Orrery's first ability by tapping it, adding {5}.\nActivate Emiel by paying {3}, blinking Felidar Guardian.\nWhen Felidar Guardian enters the battlefield, it triggers, blinking Chromatic Orrery.\nRepeat.\nOnce you have infinite mana, you may instead use Chromatic Orrery's second ability to draw infinite cards."
+
+#10 [2 decks] Basalt Monolith + Forsaken Monument
+  PRODUCES: ['Infinite colorless mana']
+  PREREQ: ''
+  DESC: "Activate Basalt Monolith's first ability by tapping it, adding {C}{C}{C}{C}.\nActivate Basalt Monolith's last ability by paying {3}, untapping it.\nRepeat."
+
+#11 [2 decks] Rings of Brighthearth + Basalt Monolith
+  PRODUCES: ['Infinite colorless mana']
+  PREREQ: ''
+  DESC: "Activate Basalt Monolith's first ability by tapping it, adding {C}{C}{C}.\nActivate Basalt Monolith's last ability by paying {3}.\nRings of Brighthearth triggers, causing you to pay {2} to copy Basalt Monolith's last ability.\nResolve the copy of Basalt Monolith's last ability, untapping it.\nActivate Basalt Monolith's first ability by tapping it, adding {C}{C}{C}.\nResolve the Basalt Monolith ability from step 2, untapping it.\nRepeat."
+
+#12 [2 decks] Godo, Bandit Warlord + Helm of the Host
+  PRODUCES: ['Infinite combat phases', 'Infinite death triggers', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite creature sacrifice triggers', 'Put all Equipment cards from your library onto the battlefield']
+  PREREQ: 'Helm of the Host attached to Godo.'
+  DESC: 'At the beginning of your combat phase, Helm of the Host triggers, creating a nonlegendary token copy of Godo with haste.\nThe token Godo enters the battlefield, causing you to search your library for an Equipment card and put it onto the battlefield.\nDeclare the token Godo as an attacker.\nThe token Godo triggers, untapping it and all Samurai you control and causing you to get an additional combat phase after this one.\nRepeat each combat phase.'
+
+#13 [2 decks] Staff of Domination + Metalworker
+  PRODUCES: ['Infinite card draw', 'Infinite colorless mana', 'Infinite draw triggers', 'Infinite lifegain', 'Infinite lifegain triggers', 'Infinite untap of creatures you control']
+  PREREQ: 'Metalworker does not have summoning sickness. You have at least three artifact cards in hand.'
+  DESC: "Activate Metalworker by tapping it, adding at least six {C}.\nActivate Staff of Domination's third ability by paying {3} and tapping it, untapping Metalworker.\nActivate Staff of Domination's first ability by paying {1}, untapping it.\nRepeat."
+
+#14 [2 decks] Voltaic Key + Forsaken Monument + Rings of Brighthearth + Thran Dynamo
+  PRODUCES: ['Infinite untap of artifacts you control', 'Infinite colorless mana', 'Infinite mana artifacts you control can produce']
+  PREREQ: ''
+  DESC: "Activate Thran Dynamo by tapping it, adding {C}{C}{C}.\nForsaken Monument triggers, adding {C}.\nActivate Voltaic Key by paying {1} and tapping it, targeting itself.\nRings of Brighthearth triggers, causing you to pay {2} to copy Voltaic Key's ability, targeting Thran Dynamo.\nResolve both Voltaic Key abilities, untapping it and Thran Dynamo.\nRepeat."
+
+#15 [2 decks] Voltaic Key + Rings of Brighthearth + Metalworker
+  PRODUCES: ['Infinite colorless mana', 'Infinite untap of artifacts you control', 'Infinite mana artifacts you control can produce']
+  PREREQ: '2 or more artifacts in hand.\nMetalworker does not have summoning sickness.'
+  DESC: "Activate Metalworker and reveal 2 artifacts to add {C}{C}{C}{C} to your mana pool.\nActivate Voltaic Key to untap Metalworker.\nRings of Brighthearth triggers allowing you to copy Voltaic Key's ability and untap Voltaic key with the copy.\nRepeat."
+
+#16 [2 decks] Rings of Brighthearth + Forsaken Monument + Grim Monolith
+  PRODUCES: ['Infinite colorless mana']
+  PREREQ: ''
+  DESC: "Activate Grim Monolith's first ability by tapping it, adding {C}{C}{C}.\nForsaken Monument triggers, adding {C}.\nActivate Grim Monolith's second ability by paying {4}.\nRings of Brighthearth triggers, causing you to pay {2} to copy Grim Monolith's ability.\nResolve the first Grim Monolith ability, untapping it.\nActivate Grim Monolith's first ability by tapping it, adding {C}{C}{C}.\nForsaken Monument triggers, adding {C}.\nResolve the second Grim Monolith ability from step 3, untapping it.\nRepeat."
+
+#17 [2 decks] Voltaic Key + Forsaken Monument + Rings of Brighthearth + Mana Vault
+  PRODUCES: ['Infinite untap of artifacts you control', 'Infinite colorless mana', 'Infinite mana artifacts you control can produce']
+  PREREQ: ''
+  DESC: "Activate Mana Vault by tapping it, adding {C}{C}{C}.\nForsaken Monument triggers, adding {C}.\nActivate Voltaic Key by paying {1} and tapping it, targeting itself.\nRings of Brighthearth triggers, causing you to pay {2} to copy Voltaic Key's ability, targeting Mana Vault.\nResolve both Voltaic Key abilities, untapping it and Mana Vault.\nRepeat."
+
+#18 [2 decks] Springheart Nantuko + Lotus Cobra
+  PRODUCES: ['Infinite landfall triggers', 'Infinite tapped land tokens']
+  PREREQ: ''
+  DESC: 'Earthbend a land, thus animating it.\nCast Springheart Nantuko for its bestow cost by paying {1}{G}, attaching it to the animated land.\nPlay any land.\nWhen the land enters the battlefield, Springheart Nantuko and Lotus Cobra trigger.\nResolve the Lotus Cobra trigger, adding {G}.\nResolve the Springheart Nantuko trigger, causing you to pay {1}{G} to create a token copy of the land it is attached to.\nWhen the land token enters the battlefield, Lotus Cobra and Springheart Nantuko trigger.\nHolding priority, activate the land token by tapping it, adding at least {1}.\nRepeat from step 5.'
+
+#19 [2 decks] Displacer Kitten + Eternal Witness + Lotus Petal + Snap
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite storm count', 'Infinite magecraft triggers', 'Near-infinite colored mana', "Return all creatures you don't control to their owner's hand"]
+  PREREQ: 'You control up to two lands that can tap to produce at least {1}{U}.'
+  DESC: "Activate up to two lands by tapping them, adding at least {1}{U}.\nCast Snap by paying {1}{U}.\nDisplacer Kitten triggers, blinking Eternal Witness.\nWhen Eternal Witness enters the battlefield, it triggers, returning Lotus Petal from your graveyard to your hand.\nResolve Snap, returning the creature that can be cast using one colored mana from the battlefield to your hand, and untapping two lands you control.\nCast Lotus Petal by paying {0}.\nDisplacer Kitten triggers, blinking Eternal Witness.\nWhen Eternal Witness enters the battlefield, it triggers, returning Snap from your graveyard to your hand.\nActivate Lotus Petal by tapping and sacrificing it, adding one mana of any color.\nCast the creature from your hand by paying its mana cost.\nRepeat.\nYou may instead bounce any creature you don't control to its owner's hand instead of bouncing the generic creature, as long as your opponents control creatures, and net one colored mana per loop."
+
+#20 [1 decks] Unctus, Grand Metatect + Aphetto Alchemist
+  PRODUCES: ['Infinite draw triggers', 'Infinite looting', 'Infinite self-discard triggers']
+  PREREQ: 'Aphetto Alchemist does not have summoning sickness.'
+  DESC: 'Activate Aphetto Alchemist by tapping it, targeting itself.\nAphetto Alchemist triggers, causing you to loot.\nResolve the Aphetto Alchemist trigger, untapping it.\nRepeat.'
+
+#21 [1 decks] Cephalid Illusionist + Lightning Greaves
+  PRODUCES: ['Infinite self-mill']
+  PREREQ: ''
+  DESC: "Activate Lightning Greaves's equip ability by paying {0}, targeting Cephalid Illusionist.\nCephalid Illusionist triggers, causing you to mill three cards.\nResolve the Lightning Greaves ability, attaching it to Cephalid Illusionist.\nRepeat."
+
+#22 [1 decks] Cephalid Illusionist + Shuko
+  PRODUCES: ['Infinite self-mill']
+  PREREQ: ''
+  DESC: "Activate Shuko's equip ability by paying {0}, targeting Cephalid Illusionist.\nCephalid Illusionist triggers, causing you to mill three cards.\nResolve the Shuko ability, attaching it to Cephalid Illusionist.\nRepeat."
+
+#23 [1 decks] Displacer Kitten + Eternal Witness + Lotus Petal + Jeweled Lotus
+  PRODUCES: ['Infinite colored mana', 'Infinite storm count']
+  PREREQ: ''
+  DESC: 'Activate Jeweled Lotus by tapping and sacrificing it, adding three mana of any color that can only be spent to cast your commander.\nCast Lotus Petal by paying {0}.\nDisplacer Kitten triggers, blinking Eternal Witness.\nWhen Eternal Witness enters the battlefield, it triggers, returning Jeweled Lotus from your graveyard to your hand.\nActivate Lotus Petal by tapping and sacrificing it, adding one mana of any color.\nCast Jeweled Lotus by paying {0}.\nDisplacer Kitten triggers, blinking Eternal Witness.\nWhen Eternal Witness enters the battlefield, it triggers, returning Lotus Petal from your graveyard to your hand.\nRepeat.'
+
+#24 [1 decks] Nadu, Winged Wisdom + Scute Swarm + Lightning Greaves
+  PRODUCES: ['Near-infinite creature ETB', 'Near-infinite creature tokens', 'Near-infinite card draw', 'Near-infinite landfall triggers']
+  PREREQ: ''
+  DESC: "Activate Lightning Greaves's equip ability by paying {0}, targeting a creature you control.\nThe creature triggers, causing you to reveal the top card of your library and put it onto the battlefield if it's a land card, or put it into your hand otherwise.\nIf a land was put onto the battlefield, each Scute Swarm you control triggers, creating either that many 1/1 Insect creature tokens or that many token copies of Scute Swarm.\nResolve the equip ability from step 1.\nRepeat as able."
+
+#25 [1 decks] Nadu, Winged Wisdom + Scute Swarm + Shuko
+  PRODUCES: ['Near-infinite creature ETB', 'Near-infinite creature tokens', 'Near-infinite card draw', 'Near-infinite landfall triggers']
+  PREREQ: ''
+  DESC: "Activate Shuko's equip ability by paying {0}, targeting a creature you control.\nThe creature triggers, causing you to reveal the top card of your library and put it onto the battlefield if it's a land card, or put it into your hand otherwise.\nIf a land was put onto the battlefield, each Scute Swarm you control triggers, creating either that many 1/1 Insect creature tokens or that many token copies of Scute Swarm.\nResolve the equip ability from step 1.\nRepeat as able."
+
+#26 [7 decks] Demonic Consultation + Thassa's Oracle
+  PRODUCES: ['Exile your library', 'Win the game']
+  PREREQ: ''
+  DESC: "Cast Demonic Consultation by paying {B}, naming Thassa's Oracle and thus exiling your library due to you not having a card named Thassa's Oracle in your library.\nCast Thassa's Oracle by paying {U}{U}.\nThassa's Oracle enters the battlefield, causing you to win the game."
+
+#27 [8 decks] Tainted Pact + Thassa's Oracle
+  PRODUCES: ['Win the game']
+  PREREQ: ''
+  DESC: "Cast Tainted Pact by paying {1}{B}, exiling your library.\nCast Thassa's Oracle by paying {U}{U}.\nThassa's Oracle enters the battlefield, causing you to win the game."
+
+#28 [12 decks] Underworld Breach + Lotus Petal + Brain Freeze
+  PRODUCES: ['Infinite self-mill', 'Near-infinite magecraft triggers', 'Near-infinite mill']
+  PREREQ: 'You have at least six other cards in your graveyard, plus an additional four cards if Brain Freeze is in your graveyard.'
+  DESC: "Activate Lotus Petal by tapping and sacrificing it, adding {U}.\nCast Lotus Petal from your graveyard for its escape cost by exiling three cards besides Brain Freeze from your graveyard.\nRepeat from step 1 one additional time.\nCast Brain Freeze either from your hand by paying {1}{U}, or from your graveyard for its escape cost by paying {1}{U} and exiling three cards from your graveyard.\nBrain Freeze's storm ability triggers, creating at least two copies of Brain Freeze targeting yourself, and any remaining copies targeting an opponent.\nResolve each Brain Freeze, causing yourself to mill nine cards and, if applicable, an opponent to mill three cards for each Brain Freeze remaining.\nRepeat."
+
+#29 [12 decks] Underworld Breach + Lion's Eye Diamond + Brain Freeze
+  PRODUCES: ['Infinite self-mill', 'Near-infinite colored mana', 'Near-infinite magecraft triggers', 'Near-infinite mill', 'Near-infinite storm count']
+  PREREQ: 'You have at least six other cards in hand and/or graveyard.'
+  DESC: "Activate Lion's Eye Diamond by discarding your hand and sacrificing it, adding {U}{U}{U}.\nCast Lion's Eye Diamond from your graveyard for its escape cost by exiling three cards besides Brain Freeze from your graveyard.\nCast Brain Freeze from your graveyard for its escape cost by paying {1}{U} and exiling three cards from your graveyard.\nBrain Freeze's storm ability triggers, creating at least one copy of Brain Freeze targeting yourself, and any remaining copies targeting an opponent.\nResolve each Brain Freeze, causing yourself to mill six cards and, if applicable, an opponent to mill three cards for each Brain Freeze remaining.\nRepeat."
+
+#30 [7 decks] Underworld Breach + Wheel of Fortune + Jeska's Will
+  PRODUCES: ['Infinite draw triggers for all players', 'Infinite looting for all players', 'Near-infinite magecraft triggers', 'Near-infinite storm count']
+  PREREQ: 'You have at least six additional cards in your graveyard, plus an additional six cards between your hand and/or graveyard.\nAn opponent has at least six cards in hand.'
+  DESC: "Cast Jeska's Will from your graveyard for its escape cost by paying {2}{R} and exiling three other cards from your graveyard, adding at least six {R}.\nCast Wheel of Fortune from your graveyard for its escape cost by paying {2}{R} and exiling three other cards from your graveyard, causing each player to discard their hand and draw seven cards.\nRepeat."
+
+#31 [8 decks] Underworld Breach + Lion's Eye Diamond + Wheel of Fortune
+  PRODUCES: ['Infinite draw triggers', 'Infinite looting', 'Infinite looting for opponents', 'Near-infinite storm count']
+  PREREQ: 'You have at least six other cards in hand and/or graveyard.'
+  DESC: "Activate Lion's Eye Diamond by discarding your hand and sacrificing it, adding {R}{R}{R}.\nCast Wheel of Fortune from your graveyard for its escape cost by paying {2}{R} and exiling 3 cards from your graveyard.\nResolve Wheel of Fortune, causing each player to discard their hand and draw seven cards.\nCast Lion's Eye Diamond from your graveyard for its escape cost by exiling 3 cards from your graveyard.\n Repeat."
+
+#32 [2 decks] Underworld Breach + Grinding Station
+  PRODUCES: ['Infinite self-mill', 'Near-infinite storm count', 'Near-infinite mana among colors of legendary creatures and planeswalkers you control']
+  PREREQ: ''
+  DESC: 'Activate Grinding Station by tapping it and sacrificing the artifact with mana value 0, causing you to mill three cards.\nCast the artifact from your graveyard for its escape cost by paying {0} and exiling three cards from your graveyard.\nWhen the artifact enters the battlefield, Grinding Station triggers, untapping Grinding Station.\nRepeat.'
+
+#33 [1 decks] Underworld Breach + Grinding Station + Mana Crypt
+  PRODUCES: ['Infinite self-mill', 'Near-infinite colorless mana', 'Near-infinite storm count']
+  PREREQ: ''
+  DESC: 'Activate Mana Crypt by tapping it, adding {C}{C}.\nActivate Grinding Station by tapping it and sacrificing Mana Crypt, causing yourself to mill three cards.\nCast Mana Crypt from your graveyard for its escape cost by exiling three cards from your graveyard.\nGrinding Station triggers, untapping itself.\nRepeat.'
+
+#34 [2 decks] Peregrin Took + Nuka-Cola Vending Machine
+  PRODUCES: ['Infinite card draw', 'Infinite draw triggers', 'Near-infinite tapped Treasure tokens']
+  PREREQ: 'You control at least three Foods.'
+  DESC: 'Activate Peregrin Took by sacrificing three Foods.\nNuka-Cola Vending Machine triggers three times, creating three tapped Treasure and three tapped Food tokens.\nResolve the Peregrin Took ability, causing you to draw a card.\nRepeat.'
+
+#35 [2 decks] Nuka-Cola Vending Machine + Academy Manufactor + Krark-Clan Ironworks
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite colorless mana', 'Infinite tapped Treasure tokens', 'Infinite tapped Food tokens', 'Infinite tapped Clue tokens']
+  PREREQ: 'You control at least one Food.'
+  DESC: 'Activate Krark-Clan Ironworks by sacrificing a Food, adding {C}{C}.\nNuka-Cola Vending Machine triggers, creating a tapped Treasure artifact token, a tapped Clue artifact token and a tapped Food artifact token.\nRepeat.'
+
+#36 [2 decks] Nuka-Cola Vending Machine + Academy Manufactor + Clock of Omens
+  PRODUCES: ['Infinite tapped Food tokens', 'Infinite tapped Clue tokens']
+  PREREQ: ''
+  DESC: 'Activate Nuka-Cola Vending Machine by paying {1} and tapping it, creating a Food, Clue and Treasure token.\nActivate the Treasure by tapping and sacrificing it, adding {1}.\nActivate Clock of Omens by tapping the Food and Clue, untapping Nuka-Cola Vending Machine.\nRepeat.'
+
+#37 [2 decks] Nuka-Cola Vending Machine + Academy Manufactor + Grinding Station
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite mill', 'Infinite self-mill', 'Infinite tapped Treasure tokens', 'Infinite tapped Food tokens']
+  PREREQ: 'You control at least one Food.'
+  DESC: 'Activate Grinding Station by tapping it and sacrificing a Food.\nNuka-Cola Vending Machine triggers, creating a tapped Treasure artifact token, a tapped Clue artifact token and a tapped Food artifact token.\nWhen the tokens enter the battlefield, Grinding Station triggers three times, untapping Grinding Station.\nResolve the ability from step 1.\nRepeat.'
+
+#38 [2 decks] Transmutation Font + Academy Manufactor + Clock of Omens
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact LTB', 'Infinite artifact sacrifice triggers', 'Infinite artifact tokens', 'Infinite Blood tokens', 'Infinite card draw']
+  PREREQ: ''
+  DESC: "Activate Transmutation Font's first ability by tapping it, creating a Clue, a Food and a Treasure artifact token.\nActivate Clock of Omens by tapping two of the tokens, untapping Transmutation Font.\nRepeat.\nOnce you have infinite tokens, you may produce Blood tokens using Transmutation Font instead."
+
+#39 [2 decks] Transmutation Font + Clock of Omens + Stridehangar Automaton
+  PRODUCES: ['Infinite creature ETB', 'Infinite tapped Food tokens', 'Infinite tapped creature tokens', 'Infinite tapped Clue tokens', 'Infinite tapped Blood tokens']
+  PREREQ: ''
+  DESC: "Activate Transmutation Font's first ability by tapping it, creating a 1/1 Thopter artifact creature token and your choice of a Clue, Food or Blood artifact token\nActivate Clock of Omens by tapping the two tokens, untapping Transmutation Font.\nRepeat."
+
+#40 [2 decks] Transmutation Font + Clock of Omens + Grinding Station
+  PRODUCES: ['Infinite tapped Food tokens', 'Infinite tapped Clue tokens', 'Infinite tapped Blood tokens']
+  PREREQ: ''
+  DESC: "Activate Transmutation Font's first ability by tapping it, creating your choice of a Clue, Food or Blood artifact token.\nWhen the token enters the battlefield, Grinding Station triggers, untapping Grinding Station,\nActivate Clock of Omens by tapping the token and Grinding Station, untapping Transmutation Font.\nRepeat."
+
+#41 [2 decks] Transmutation Font + Clock of Omens + Peregrin Took
+  PRODUCES: ['Infinite card draw', 'Infinite draw triggers', 'Infinite tapped Food tokens', 'Infinite tapped Clue tokens', 'Infinite tapped Blood tokens']
+  PREREQ: ''
+  DESC: "Activate Transmutation Font's first ability by tapping it, creating a Clue, Food of Blood token and an additional Food token.\nActivate Clock of Omens by tapping the two tokens, untapping Transmutation Font.\nRepeat."
+
+#42 [1 decks] Curiosity + Niv-Mizzet, Parun
+  PRODUCES: ['Infinite draw triggers', 'Infinite card draw', 'Near-infinite damage']
+  PREREQ: 'Curiosity attached to Niv-Mizzet.\nYou have a way to draw a card.\nYour library is greater than opponent life total.'
+  DESC: 'Draw a card.\nNiv-Mizzet trigger, dealing 1 damage to any target opponent.\nCuriosity triggers, allowing you to draw a card.\nRepeat from step 2.'
+
+#43 [1 decks] Niv-Mizzet, Parun + Ophidian Eye
+  PRODUCES: ['Infinite card draw', 'Infinite draw triggers', 'Near-infinite damage']
+  PREREQ: 'Ophidian Eye attached to Niv-Mizzet.\nYou have a way to draw a card.'
+  DESC: 'Draw a card.\nNiv-Mizzet triggers, dealing 1 damage to an opponent.\nOphidian Eye triggers, allowing you to draw a card.\nRepeat from step 2.'
+
+#44 [1 decks] Narset's Reversal + Flare of Duplication
+  PRODUCES: ['Infinite magecraft triggers']
+  PREREQ: ''
+  DESC: "Cast any instant or sorcery by paying its mana cost.\nHolding priority, cast Flare of Duplication by paying its mana cost, targeting the instant or sorcery cast in step 1.\nCast Narset's Reversal by paying {U}{U}, copying Flare of Duplication targeting the spell cast in step 1 and returning the original Flare of Duplication to your hand.\nCast Flare of Duplication by paying its mana cost, copying the copy of Flare of Duplication, targeting the copy of Flare of Duplication.\nResolve the copy of Flare of Duplication, creating a copy of Flare of Duplication targeting the copy of Flare of Duplication.\nRepeat step 5."
+
+#45 [2 decks] Smothering Tithe + Underworld Breach + Wheel of Fortune
+  PRODUCES: ['Infinite draw triggers for all players', 'Infinite looting for all players', 'Infinite self-discard triggers for all players', 'Near-infinite colored mana', 'Near-infinite Treasure tokens']
+  PREREQ: "At least one opponent is unable to pay for Smothering Tithe's trigger.\nYou have at least three other cards in your graveyard, plus an additional three cards between your graveyard and/or hand."
+  DESC: 'Cast Wheel of Fortune from your graveyard for its escape cost by paying {2}{R} and exiling three cards from your graveyard, causing each player to discard their hand and draw seven cards.\nSmothering Tithe triggers for each card drawn by your opponents, creating that many Treasure tokens.\nActivate three of the Treasure tokens by tapping and sacrificing them, adding {2}{R}.\nRepeat.'
+
+#46 [3 decks] Faerie Mastermind + Smothering Tithe + Mirrormade
+  PRODUCES: ['Near-infinite colored mana', 'Infinite draw triggers for all players', 'Near-infinite Treasure tokens', 'Infinite card draw for all players']
+  PREREQ: "Mirrormade on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger."
+  DESC: 'Activate Faerie Mastermind by paying {3}{U}, causing each player to draw a card.\nSmothering Tithe and Mirrormade trigger for each opponent you have, creating at least four Treasure tokens.\nActivate four Treasures by tapping and sacrificing them, adding {3}{U}.\nRepeat.'
+
+#47 [3 decks] Faerie Mastermind + Smothering Tithe + Copy Enchantment
+  PRODUCES: ['Near-infinite colored mana', 'Infinite draw triggers for all players', 'Near-infinite Treasure tokens', 'Infinite card draw for all players']
+  PREREQ: "Copy Enchantment on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger."
+  DESC: 'Activate Faerie Mastermind by paying {3}{U}, causing each player to draw a card.\nSmothering Tithe and Copy Enchantment trigger for each opponent you have, creating at least four Treasure tokens.\nActivate four Treasures by tapping and sacrificing them, adding {3}{U}.\nRepeat.'
+
+#48 [4 decks] Faerie Mastermind + Smothering Tithe + Clever Impersonator
+  PRODUCES: ['Near-infinite colored mana', 'Infinite draw triggers for all players', 'Near-infinite Treasure tokens', 'Infinite card draw for all players']
+  PREREQ: "Clever Impersonator on the battlefield as a copy of Smothering Tithe\nYou have at least two opponents which are unable to pay for Smothering Tithe's trigger."
+  DESC: 'Activate Faerie Mastermind by paying {3}{U}, causing each player to draw a card.\nSmothering Tithe and Clever Impersonator trigger for each opponent you have, creating at least four Treasure tokens.\nActivate four Treasures by tapping and sacrificing them, adding {3}{U}.\nRepeat.'
+
+#49 [3 decks] Hullbreaker Horror + Sol Ring
+  PRODUCES: ['Infinite colorless mana', 'Infinite storm count']
+  PREREQ: ''
+  DESC: 'Activate Sol Ring by tapping it, adding {C} {C}.\nCast the permanent that can be cast using {C} by paying its mana cost.\nHullbreaker Horror triggers, returning Sol Ring from the battlefield to your hand.\nCast Sol Ring by paying {1}. \nHullbreaker Horror triggers, returning the permanent cast in step 2 from the battlefield to your hand.\nRepeat.\nIf the permanent can be cast by paying {0}, this combo nets infinite colorless mana.'
+
+#50 [3 decks] Hullbreaker Horror + Mana Vault
+  PRODUCES: ['Infinite colorless mana', 'Infinite storm count']
+  PREREQ: ''
+  DESC: 'Activate Mana Vault by tapping it, adding {C}{C}{C}.\nCast the permanent that can be cast using {C}{C} from your hand by paying its mana cost.\nHullbreaker Horror triggers, returning Mana Vault from the battlefield to your hand.\nCast Mana Vault by paying {1}.\nHullbreaker Horror triggers, returning the permanent cast in step 2 from the battlefield to your hand.\nRepeat.\nIf the permanent can be cast using {C} or less, this combo nets infinite colorless mana.'
+
+#51 [3 decks] Hullbreaker Horror + Mox Amber
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite colored mana', 'Infinite storm count']
+  PREREQ: "You control a legendary creature that has a color that matches the mana symbol in the other permanent's mana cost."
+  DESC: 'Activate Mox Amber by tapping it, adding {1}.\nCast the permanent by paying at most one colored mana.\nHullbreaker Horror triggers, returning Sol Ring from the battlefield to your hand.\nCast Mox Amber by paying {0}\nHullbreaker Horror triggers, returning the permanent cast in step 2 from the battlefield to your hand.\nRepeat.'
+
+#52 [2 decks] Kinnan, Bonder Prodigy + Basalt Monolith
+  PRODUCES: ['Infinite colorless mana']
+  PREREQ: ''
+  DESC: "Activate Basalt Monolith's first ability by tapping it, adding {4}.\nActivate Basalt Monolith's last ability by paying {3}, untapping it.\nRepeat."
+
+#53 [2 decks] Ashaya, Soul of the Wild + Quirion Ranger
+  PRODUCES: ['Infinite creature ETB', 'Infinite landfall triggers', 'Infinite creature LTB', 'Infinite storm count']
+  PREREQ: 'You control a nontoken creature other than Quirion Ranger that does not have summoning sickness.'
+  DESC: 'Activate any nontoken creature you control except Quirion Ranger by tapping it, adding {G}.\nActivate Quirion Ranger by returning itself from the battlefield to your hand, untapping the creature tapped for mana.\nCast Quirion Ranger by paying {G}.\nRepeat.'
+
+#54 [1 decks] Ashaya, Soul of the Wild + Sylvan Safekeeper + Badgermole Cub
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite creature sacrifice triggers', 'Infinite death triggers', 'Infinite landfall triggers']
+  PREREQ: ''
+  DESC: 'Cast Badgermole Cub by paying its mana cost\nWhen Badgermole Cub enters, its earthbend ability triggers, causing it to earthbend itself as it is a Forest due to Ashaya.\nActivate Sylvan Safekeeper by sacrificing Badgermole Cub\nWhen Badgermole Cub dies, it triggers, returning itself from your graveyard to the battlefield tapped.\nWhen Badgermole Cub enters, its earthbend ability triggers, causing it to earthbend itself as it is a Forest due to Ashaya.\nRepeat from step 3.\nResolve all Sylvan Safekeeper abilities.'
+
+#55 [2 decks] Ashaya, Soul of the Wild + Scryb Ranger + Priest of Titania
+  PRODUCES: ['Infinite creature ETB', 'Infinite green mana', 'Infinite landfall triggers', 'Infinite creature LTB', 'Infinite storm count']
+  PREREQ: 'There are at least two Elves on the battlefield.'
+  DESC: 'Activate Priest of Titania by tapping it, adding at least {G}{G}.\nActivate Scryb Ranger by returning it from the battlefield to your hand, untapping Priest of Titania.\nCast Scryb Ranger by paying {1}{G}.\nRepeat.'
+
+#56 [1 decks] Temur Sabertooth + Circle of Dreams Druid + Wirewood Symbiote + Llanowar Elves
+  PRODUCES: ['Infinite blinking of some creatures', 'Infinite green mana']
+  PREREQ: 'Circle of Dreams Druid does not have summoning sickness.\nYou control at least five creatures.'
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding at least {G}{G}{G}{G}{G}.\nActivate Wirewood Symbiote by returning Llanowar Elves to your hand from the battlefield, untapping Circle of Dreams Druid.\nActivate Temur Sabertooth by paying {1}{G}, returning Wirewood Symbiote from the battlefield to your hand.\nCast Wirewood Symbiote by paying {G}.\nCast Llanowar Elves by paying {G}.\nRepeat.'
+
+#57 [1 decks] Ashaya, Soul of the Wild + Argothian Elder
+  PRODUCES: ['Infinite mana lands you control can produce', 'Infinite untap of creatures you control', 'Infinite mana creatures you control can produce', 'Infinite untap of nontoken creatures you control', 'Infinite mana nontoken creatures you control can produce', 'Infinite untap of lands you control']
+  PREREQ: 'Argothian Elder does not have summoning sickness.'
+  DESC: 'Activate Argothian Elder by tapping it, untapping itself and any other land.\nActivate the land by tapping it, adding one mana of any color that land can produce.\nRepeat.'
+
+#58 [1 decks] Temur Sabertooth + Circle of Dreams Druid + Wirewood Symbiote + Elvish Mystic
+  PRODUCES: ['Infinite blinking of some creatures', 'Infinite green mana']
+  PREREQ: 'Circle of Dreams Druid does not have summoning sickness.\nYou control at least five creatures.'
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding at least {G}{G}{G}{G}{G}.\nActivate Wirewood Symbiote by returning Elvish Mystic to your hand from the battlefield, untapping Circle of Dreams Druid.\nActivate Temur Sabertooth by paying {1}{G}, returning Wirewood Symbiote from the battlefield to your hand.\nCast Wirewood Symbiote by paying {G}.\nCast Elvish Mystic by paying {G}.\nRepeat.'
+
+#59 [1 decks] Ashaya, Soul of the Wild + Scryb Ranger + Circle of Dreams Druid
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite storm count', 'Infinite green mana', 'Infinite landfall triggers']
+  PREREQ: ''
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding at least {G}{G}{G}\nActivate Scryb Ranger by returning it from the battlefield to your hand, untapping Circle of Dreams Druid.\nCast Scryb Ranger by paying {1}{G}.\nRepeat.'
+
+#60 [2 decks] Temur Sabertooth + Hyrax Tower Scout + Priest of Titania
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite mana creatures you control can produce', 'Infinite storm count', 'Infinite untap of creatures you control', 'Infinite blinking of some creatures']
+  PREREQ: 'There are at least five Elves on the battlefield.'
+  DESC: 'Activate Priest of Titania by tapping it, adding at least {G}{G}{G}{G}{G}.\nCast Hyrax Tower Scout by paying {2}{G}.\nWhen Hyrax Tower Scout enters the battlefield, it triggers, untapping Priest of Titania.\nActivate Temur Sabertooth by paying {1}{G}, returning Hyrax Tower Scout from the battlefield to your hand.\nRepeat.'
+
+#61 [1 decks] Selvala, Heart of the Wilds + Temur Sabertooth + Wirewood Symbiote + Llanowar Elves
+  PRODUCES: ['Infinite colored mana', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite storm count', 'Infinite blinking']
+  PREREQ: 'Selvala and Llanowar Elves do not have summoning sickness.\nYou control a creature with power 6 or greater.'
+  DESC: 'Activate Llanowar Elves by tapping it, adding {G}.\nActivate Selvala by paying {G} and tapping it, adding at least {3}{G}{G}{G}.\nActivate Wirewood Symbiote by returning Llanowar Elves to your hand, untapping Selvala.\nActivate Temur Sabertooth by paying {1}{G}, returning Wirewood Symbiote to your hand.\nCast Llanowar Elves by paying {G}.\nCast Wirewood Symbiote by paying {G}.\nRepeat from step 2.'
+
+#62 [2 decks] Ashaya, Soul of the Wild + Scryb Ranger + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite colored mana', 'Infinite storm count', 'Infinite landfall triggers']
+  PREREQ: ''
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding at least {1}{G}{G}.\nActivate Scryb Ranger by returning it from the battlefield to your hand, untapping Selvala.\nCast Scryb Ranger by paying {1}{G}.\nRepeat.'
+
+#63 [1 decks] Selvala, Heart of the Wilds + Temur Sabertooth + Wirewood Symbiote + Elvish Mystic
+  PRODUCES: ['Infinite colored mana', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite storm count', 'Infinite blinking']
+  PREREQ: 'Selvala and Elvish Mystic do not have summoning sickness.\nYou control a creature with power 6 or greater.'
+  DESC: 'Activate Elvish Mystic by tapping it, adding {G}.\nActivate Selvala by paying {G} and tapping it, adding at least {3}{G}{G}{G}.\nActivate Wirewood Symbiote by returning Elvish Mystic to your hand, untapping Selvala.\nActivate Temur Sabertooth by paying {1}{G}, returning Wirewood Symbiote to your hand.\nCast Elvish Mystic by paying {G}.\nCast Wirewood Symbiote by paying {G}.\nRepeat from step 2.'
+
+#64 [1 decks] Selvala, Heart of the Wilds + Temur Sabertooth + Wirewood Symbiote + Fyndhorn Elves
+  PRODUCES: ['Infinite colored mana', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite storm count', 'Infinite blinking']
+  PREREQ: 'Selvala and Fyndhorn Elves do not have summoning sickness.\nYou control a creature with power 6 or greater.'
+  DESC: 'Activate Fyndhorn Elves by tapping it, adding {G}.\nActivate Selvala by paying {G} and tapping it, adding at least {3}{G}{G}{G}.\nActivate Wirewood Symbiote by returning Fyndhorn Elves to your hand, untapping Selvala.\nActivate Temur Sabertooth by paying {1}{G}, returning Wirewood Symbiote to your hand.\nCast Fyndhorn Elves by paying {G}.\nCast Wirewood Symbiote by paying {G}.\nRepeat from step 2.'
+
+#65 [2 decks] Kogla, the Titan Ape + Hyrax Tower Scout + Priest of Titania
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite mana creatures you control can produce', 'Infinite storm count', 'Infinite untap of creatures you control', 'Infinite green mana']
+  PREREQ: 'There are at least five Elves on the battlefield.'
+  DESC: 'Activate Priest of Titania by tapping it, adding at least {G}{G}{G}{G}{G}.\nCast Hyrax Tower Scout by paying {2}{G}.\nWhen Hyrax Tower Scout enters the battlefield, it triggers, untapping Priest of Titania.\nActivate Kogla by paying {1}{G}, returning Hyrax Tower Scout from the battlefield to your hand.\nRepeat.'
+
+#66 [1 decks] Temur Sabertooth + Circle of Dreams Druid + Wirewood Symbiote + Allosaurus Shepherd
+  PRODUCES: ['Infinite blinking of some creatures', 'Infinite green mana']
+  PREREQ: 'Circle of Dreams Druid does not have summoning sickness.\nYou control at least five creatures.'
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding at least {G}{G}{G}{G}{G}.\nActivate Wirewood Symbiote by returning Allosaurus Shepherd to your hand from the battlefield, untapping Circle of Dreams Druid.\nActivate Temur Sabertooth by paying {1}{G}, returning Wirewood Symbiote from the battlefield to your hand.\nCast Wirewood Symbiote by paying {G}.\nCast Allosaurus Shepherd by paying {G}.\nRepeat.'
+
+#67 [2 decks] Temur Sabertooth + Hyrax Tower Scout + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite creature LTB', 'Infinite mana creatures you control can produce', 'Infinite storm count', 'Infinite untap of creatures you control', 'Infinite blinking', 'Infinite colored mana']
+  PREREQ: 'You control a creature with power 6 or greater.'
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding at least {3}{G}{G}{G}\nCast Hyrax Tower Scout by paying {2}{G}.\nWhen Hyrax Tower Scout enters the battlefield, it triggers, untapping Selvala.\nActivate Temur Sabertooth by paying {1}{G}, returning Hyrax Tower Scout from the battlefield to your hand.\nRepeat.'
+
+#68 [2 decks] Kogla, the Titan Ape + Hyrax Tower Scout + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite storm count', 'Infinite untap of creatures you control', 'Infinite mana creatures you control can produce', 'Infinite colored mana']
+  PREREQ: ''
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding at least {4}{G}{G}{G}.\nCast Hyrax Tower Scout by paying {2}{G}.\nWhen Hyrax Tower Scout enters the battlefield, it triggers, untapping Selvala.\nActivate Kogla by paying {1}{G}, returning Hyrax Tower Scout from the battlefield to your hand.\nRepeat.'
+
+#69 [1 decks] Temur Sabertooth + Hyrax Tower Scout + Circle of Dreams Druid
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite mana creatures you control can produce', 'Infinite storm count', 'Infinite untap of creatures you control', 'Infinite blinking of some creatures']
+  PREREQ: 'You control at least five creatures.'
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding at least {G}{G}{G}{G}{G}.\nActivate Temur Sabertooth by paying {1}{G}, returning Hyrax Tower Scout from the battlefield to your hand.\nCast Hyrax Tower Scout by paying {2}{G}.\nWhen Hyrax Tower Scout enters the battlefield, it triggers, untapping Circle of Dreams Druid.\nRepeat.'
+
+#70 [1 decks] Kogla, the Titan Ape + Hyrax Tower Scout + Circle of Dreams Druid
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite storm count', 'Infinite untap of creatures you control', 'Infinite mana creatures you control can produce', 'Infinite green mana']
+  PREREQ: 'You control at least five creatures.'
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding at least {G}{G}{G}{G}{G}.\nCast Hyrax Tower Scout by paying {2}{G}.\nWhen Hyrax Tower Scout enters the battlefield, it triggers, untapping Circle of Dreams Druid.\nActivate Kogla by paying {1}{G}, returning Hyrax Tower Scout from the battlefield to your hand.\nRepeat.'
+
+#71 [1 decks] Ashaya, Soul of the Wild + Magus of the Candelabra + Priest of Titania
+  PRODUCES: ['Infinite mana lands you control can produce', 'Infinite green mana', 'Infinite untap of nontoken creatures you control', 'Infinite mana nontoken creatures you control can produce', 'Infinite untap of lands you control']
+  PREREQ: 'There are at least three Elves on the battlefield.'
+  DESC: 'Activate Priest of Titania by tapping it, adding at least {G}{G}{G}.\nActivate Magus of the Candelabra by paying {2} and tapping it, untapping it and Priest of Titania.\nRepeat.'
+
+#72 [1 decks] Ashaya, Soul of the Wild + Magus of the Candelabra + Circle of Dreams Druid
+  PRODUCES: ['Infinite mana lands you control can produce', 'Infinite green mana', 'Infinite untap of nontoken creatures you control', 'Infinite mana nontoken creatures you control can produce', 'Infinite untap of lands you control']
+  PREREQ: ''
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding at least {G}{G}{G}\nActivate Magus of the Candelabra by paying {2} and tapping it, untapping it and Circle of Dreams Druid.\nRepeat.'
+
+#73 [1 decks] Ashaya, Soul of the Wild + Magus of the Candelabra + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite colored mana', 'Infinite mana lands you control can produce', 'Infinite untap of nontoken creatures you control', 'Infinite mana nontoken creatures you control can produce', 'Infinite untap of lands you control']
+  PREREQ: 'You control a creature with power 4 or greater.'
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding at least {3}{G}.\nActivate Magus of the Candelabra by paying {2} and tapping it, untapping it and Selvala.\nRepeat.'
+
+#74 [1 decks] Temur Sabertooth + Circle of Dreams Druid + Shang-Chi, Master of Kung Fu
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite blinking of some creatures', 'Infinite green mana', 'Infinite storm count']
+  PREREQ: 'You control at least five creatures.'
+  DESC: 'Activate Circle of Dreams Druid by tapping it, adding an amount of {G}.\nActivate Temur Sabertooth by paying {1}{G}, returning Circle of Dreams Druid from the battlefield to your hand.\nCast Circle of Dreams Druid by paying its mana cost.\nRepeat.'
+
+#75 [2 decks] Temur Sabertooth + Priest of Titania + Shang-Chi, Master of Kung Fu
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite blinking of some creatures', 'Infinite green mana', 'Infinite storm count']
+  PREREQ: 'There are at least four Elves on the battlefield.'
+  DESC: 'Activate Priest of Titania by tapping it, adding an amount of {G}.\nActivate Temur Sabertooth by paying {1}{G}, returning Priest of Titania from the battlefield to your hand.\nCast Priest of Titania by paying its mana cost.\nRepeat.'
+
+#76 [2 decks] Temur Sabertooth + Selvala, Heart of the Wilds + Shang-Chi, Master of Kung Fu
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite blinking', 'Infinite colored mana', 'Infinite storm count']
+  PREREQ: 'You control a creature with power 6 or greater.'
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding at least {2}{G}{G}{G}{G}\nActivate Temur Sabertooth by paying {1}{G}, returning Selvala from the battlefield to your hand.\nCast Selvala by paying its mana cost.\nRepeat.'
+
+#77 [1 decks] Ashaya, Soul of the Wild + Pili-Pala + Wild Growth
+  PRODUCES: ['Infinite colored mana']
+  PREREQ: 'Wild Growth attached to Pili-Pala.\nPili-Pala does not have summoning sickness.'
+  DESC: 'Activate Pili-Pala by tapping it, adding {G}{G}.\nActivate Pili-Pala by paying {2} and untapping it, adding one mana of any color.\nRepeat.'
+
+#78 [1 decks] Marvin, Murderous Mimic + Pili-Pala + Priest of Titania
+  PRODUCES: ['Infinite colored mana']
+  PREREQ: 'There are at least two Elves on the battlefield.\nMarvin does not have summoning sickness.'
+  DESC: "Activate Marvin using Priest of Titania's ability by tapping it, adding at least {G}{G}.\nActivate Marvin using Pili-Pala's ability by paying {2} and untapping it, adding one mana of any color.\nRepeat."
+
+#79 [1 decks] Marvin, Murderous Mimic + Pili-Pala + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite colored mana']
+  PREREQ: 'You control a creature with power 3 or greater.\nMarvin does not have summoning sickness.'
+  DESC: "Activate Marvin using Selvala's ability by paying {G} and tapping it, adding at least {2}{G}.\nActivate Marvin using Pili-Pala's ability by paying {2} and untapping it, adding one mana of any color.\nRepeat."
+
+#80 [1 decks] Marvin, Murderous Mimic + Pili-Pala + Circle of Dreams Druid
+  PRODUCES: ['Infinite colored mana']
+  PREREQ: 'Marvin does not have summoning sickness.'
+  DESC: "Activate Marvin using Circle of Dreams Druid's ability by tapping it, adding at least {G}{G}{G}.\nActivate Marvin using Pili-Pala's ability by paying {2} and untapping it, adding one mana of any color.\nRepeat."
+
+#81 [1 decks] Marvin, Murderous Mimic + Pili-Pala + Argothian Elder
+  PRODUCES: ['Infinite colored mana', 'Infinite mana lands you control can produce', 'Infinite untap of lands you control']
+  PREREQ: 'You control at least two mana-producing lands.\nMarvin does not have summoning sickness.'
+  DESC: "Activate Marvin using Argothian Elder's ability by tapping it, untapping two lands.\nActivate two lands by tapping them, adding at least {2}.\nActivate Marvin using Pili-Pala's ability by paying {2} and untapping it, adding one mana of any color.\nRepeat."
+
+#82 [1 decks] Malcolm, Keen-Eyed Navigator + Glint-Horn Buccaneer
+  PRODUCES: ['Near-infinite damage', 'Near-infinite self-discard triggers', 'Near-infinite draw triggers']
+  PREREQ: ''
+  DESC: 'Declare Glint-Horn Buccaneer as an attacker.\nHolding priority, activate Glint-Horn Buccaneer by paying {1}{R} and discarding a card.\nGlint-Horn Buccaneer triggers, dealing 1 damage to each opponent.\nMalcolm triggers, creating a Treasure token for each opponent dealt damage this way.\nResolve the Glint-Horn Buccaneer ability, causing you to draw a card.\nActivate two Treasures by tapping and sacrificing them, adding {1}{R}.\nRepeat from step 2.'
+
+#83 [1 decks] Glint-Horn Buccaneer + Curiosity
+  PRODUCES: ['Infinite draw triggers', 'Infinite rummaging', 'Infinite self-discard triggers', 'Near-infinite damage']
+  PREREQ: 'Curiosity attached to Glint-Horn Buccaneer.\nYou have a number of cards in hand greater than your maximum hand size.'
+  DESC: 'Proceed to your cleanup step, causing you to discard down to your maximum hand size.\nCuriosity triggers for each card discarded this way.\nResolve the first trigger, dealing 1 damage to each opponent.\nCuriosity triggers, causing you to draw a card.\nRepeat from step 3 for each remaining trigger.\nAfter all players pass priority, another cleanup step occurs, causing you to discard down to your maximum hand size.\nRepeat from step 2.'
+
+#84 [1 decks] Marvin, Murderous Mimic + Ioreth of the Healing House
+  PRODUCES: ['Infinite untap of legendary creatures you control', 'Infinite mana legendary creatures you control can produce']
+  PREREQ: 'There is at least one other legendary creature on the battlefield.\nMarvin and Ioreth do not have summoning sickness.'
+  DESC: "Activate Marvin using Ioreth's second ability by tapping it, untapping Ioreth and another legendary creature.\nActivate Ioreth's second ability by tapping it, untapping Marvin and another legendary creature.\nRepeat."
+
+#85 [1 decks] Derevi, Empyrial Tactician + Emiel the Blessed + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite colored mana', 'Infinite blinking', 'Infinite mana permanents you control can produce']
+  PREREQ: 'Selvala does not have summoning sickness.'
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding at least {3}{G}.\nActivate Emiel by paying {3}, blinking Derevi.\nWhen Derevi enters the battlefield, it triggers, untapping Selvala.\nRepeat.'
+
+#86 [1 decks] Badgermole Cub + Emiel the Blessed + Gaea's Cradle
+  PRODUCES: ['Infinite creature ETB', 'Infinite creature LTB', 'Infinite blinking', 'Infinite green mana', 'Infinite landfall triggers', 'Infinite mana lands you control can produce']
+  PREREQ: 'You control at least one additional creature.'
+  DESC: "Cast Badgermole Cub by paying {1}{G}.\nWhen Badgermole Cub enters, it triggers, earthbending Gaea's Cradle.\nActivate Gaea's Cradle by tapping it, adding at least {G}{G}{G}{G}{G}\nBadgermole Cub triggers, adding {G}.\nActivate Emiel the Blessed by paying {3}, blinking Gaea's Cradle.\nActivate Emiel the Blessed by paying {3}, blinking Badgermole Cub.\nRepeat from step 2."
+
+#87 [1 decks] Selvala, Heart of the Wilds + Emiel the Blessed + Tyvar, Jubilant Brawler
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite colored mana', 'Infinite blinking']
+  PREREQ: ''
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding at least {3}{G}\nActivate Emiel the Blessed by paying {3}, blinking Selvala.\nRepeat.'
+
+#88 [1 decks] Basalt Monolith + Nyxbloom Ancient
+  PRODUCES: ['Infinite colorless mana']
+  PREREQ: ''
+  DESC: "Activate Basalt Monolith's first ability by tapping it, adding {9}.\nActivate Basalt Monolith's last ability by paying {3}, untapping it.\nRepeat."
+
+#89 [1 decks] Grim Monolith + Nyxbloom Ancient
+  PRODUCES: ['Infinite colorless mana']
+  PREREQ: ''
+  DESC: "Activate Grim Monolith's first ability by tapping it, adding {9}.\nActivate Grim Monolith's last ability by paying {4}, untapping it.\nRepeat."
+
+#90 [1 decks] Oboro Breezecaller + Talon Gates of Madara + Gaea's Cradle
+  PRODUCES: ['Infinite mana lands you control can produce', 'Infinite green mana', 'Infinite landfall triggers', 'Phase out any number of creatures any number of times']
+  PREREQ: 'You control at least five creatures.'
+  DESC: "Activate Gaea's Cradle by tapping it, adding at least {G}{G}{G}{G}{G}.\nActivate Talon Gates of Madara's first ability by tapping it, adding {C}.\nActivate Oboro Breezecaller by paying {2} and returning Talon Gates of Madara from the battlefield to your hand, untapping Gaea's Cradle.\nActivate Talon Gates of Madara's third ability by paying {4}, putting it from your hand onto the battlefield.\nWhen Talon Gates of Madara enters the battlefield, it triggers, phasing out up to one target creature.\nRepeat any number of times."
+
+#91 [1 decks] Displacer Kitten + Eternal Witness + Lotus Petal + Snap + Cloud of Faeries
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite colored mana', 'Infinite storm count', 'Infinite magecraft triggers', "Return all creatures you don't control to their owner's hand"]
+  PREREQ: 'You control up to two lands that can tap to produce at least {1}{U}.'
+  DESC: "Activate up to two lands by tapping them, adding at least {1}{U}.\nCast Snap by paying {1}{U}.\nDisplacer Kitten triggers, blinking Eternal Witness.\nWhen Eternal Witness enters the battlefield, it triggers, returning Lotus Petal from your graveyard to your hand.\nResolve Snap, returning Cloud of Faeries from the battlefield to your hand, and untapping two lands you control.\nActivate up to two lands by tapping them, adding at least {1}{U}.\nCast Lotus Petal by paying {0}.\nDisplacer Kitten triggers, blinking Eternal Witness.\nWhen Eternal Witness enters the battlefield, it triggers, returning Snap from your graveyard to your hand.\nActivate Lotus Petal by tapping and sacrificing it, adding one mana of any color.\nCast Cloud of Faeries by paying {1}{U}.\nWhen Cloud of Faeries enters the battlefield, it triggers, untapping two lands you control.\nRepeat.\nYou may instead bounce any creature you don't control to its owner's hand instead of bouncing the generic creature, as long as your opponents control creatures."
+
+#92 [2 decks] Devoted Druid + Swift Reconfiguration
+  PRODUCES: ['Infinite green mana']
+  PREREQ: 'Swift Reconfiguration attached to Devoted Druid.'
+  DESC: "Activate Devoted Druid's first ability by tapping it, adding {G}.\nActivate Devoted Druid's second ability by putting a -1/-1 counter on it, untapping itself.\nRepeat."
+
+#93 [1 decks] Hazel's Brewmaster + Devoted Druid
+  PRODUCES: ['Infinite green mana']
+  PREREQ: 'You control at least one Food.'
+  DESC: "Activate a Food using Devoted Druid's first ability by tapping it, adding {G}.\nActivate a Food using Devoted Druid's second ability by putting a -1/-1 counter on it, untapping it.\nRepeat."
+
+#94 [1 decks] Faerie Mastermind + Smothering Tithe + Kinnan, Bonder Prodigy
+  PRODUCES: ['Infinite card draw for all players', 'Infinite draw triggers for all players', 'Near-infinite Treasure tokens', 'Near-infinite colored mana', 'Near-infinite colorless mana']
+  PREREQ: "You have at least three opponents.\nOpponents are unable to pay for Smothering Tithe's trigger."
+  DESC: 'Activate Faerie Mastermind by paying {3}{U}, causing each player to draw a card.\nSmothering Tithe triggers for each opponent you have, creating at least three Treasure tokens.\nActivate two Treasures by tapping and sacrificing them, adding {1}{U}.\nKinnan triggers twice, adding {1}{U}.\nRepeat.'
+
+#95 [1 decks] Hermit Druid + Thassa's Oracle
+  PRODUCES: ['Win the game']
+  PREREQ: 'Hermit Druid does not have summoning sickness.\nYou have no basic lands in library.'
+  DESC: "Activate Hermit Druid by paying {G} and tapping it, reveal cards from the top of your library and then putting them into your graveyard.\nCast Thassa's Oracle by paying {U}{U}.\nThassa's Oracle enters the battlefield, winning you the game."
+
+#96 [1 decks] Memnite + Grinding Station + Underworld Breach + Thassa's Oracle
+  PRODUCES: ['Infinite self-mill', 'Near-infinite creature ETB', 'Near-infinite creature LTB', 'Near-infinite creature sacrifice triggers', 'Win the game']
+  PREREQ: 'You have four or more cards in your graveyard.'
+  DESC: "Cast Underworld Breach.\nActivate Grinding Station by tapping it and sacrificing Memnite, milling yourself for three.\nCast Memnite by exiling three cards from your graveyard that are not Thassa's Oracle.\nGrinding Station triggers, untapping itself.\nRepeat steps 2 to 4 until you have no cards in your library.\nCast Thassa's Oracle.\nThassa's Oracle triggers, winning you the game."
+
+#97 [2 decks] Reiterate + Jeska's Will
+  PRODUCES: ['Infinite magecraft triggers', 'Infinite red mana', 'Infinite storm count', 'Exile your library with the ability to play the exiled cards until end of turn']
+  PREREQ: 'An opponent has six or more cards in their hand.'
+  DESC: "Cast Jeska's Will by paying its mana cost\nHolding priority, cast Reiterate with buyback by paying {4}{R}{R}, creating a copy of Jeska's Will and returning Reiterate to your hand.\nResolve the copy of Jeska's Will, adding at least six {R}.\nRepeat from step 2."
+
+#98 [2 decks] Storm-Kiln Artist + Seething Song + Reiterate
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact LTB', 'Infinite artifact sacrifice triggers', 'Infinite artifact tokens', 'Infinite colored mana', 'Infinite copies of instant and sorcery spells on the stack']
+  PREREQ: ''
+  DESC: 'Cast Seething Song by paying {2}{R}.\nStorm-Kiln Artist triggers, creating a Treasure artifact token.\nHolding priority, activate a Treasure by tapping and sacrificing it, adding {R}.\nCast Reiterate with buyback by paying {4}{R}{R}, targeting Seething Song.\nStorm-Kiln Artist triggers, creating a Treasure artifact token.\nResolve Reiterate, copying Seething Song and returning Reiterate to your hand.\nStorm-Kiln Artist triggers, creating a Treasure artifact token.\nResolve the copy of Seething Song, adding {R}{R}{R}{R}{R}.\nRepeat from step 3.\nOnce you have infinite Treasure tokens, you may use the mana to cast Reiterate infinitely and copy any instant and/or sorcery spells on the stack.'
+
+#99 [2 decks] Birgi, God of Storytelling // Harnfel, Horn of Bounty + Seething Song + Reiterate
+  PRODUCES: ['Infinite magecraft triggers', 'Infinite storm count']
+  PREREQ: ''
+  DESC: 'Cast Seething Song by paying {2}{R}.\nBirgi triggers, adding {R}.\nHolding priority, cast Reiterate with buyback by paying {4}{R}{R}, targeting Seething Song.\nBirgi triggers, adding {R}.\nResolve Reiterate, copying Seething Song and returning Reiterate to your hand.\nResolve the copy of Seething Song, adding {R}{R}{R}{R}{R}.\nRepeat from step 3.'
+
+#100 [4 decks] Kiki-Jiki, Mirror Breaker + Zealous Conscripts
+  PRODUCES: ['Infinite creature tokens with haste', 'Infinite death triggers', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite creature sacrifice triggers']
+  PREREQ: ''
+  DESC: 'Activate Kiki-Jiki by tapping it, creating a token copy of Zealous Conscripts with haste.\nWhen the Zealous Conscripts token enters, it triggers, untapping Kiki-Jiki\nRepeat.'
+
+#101 [4 decks] Combat Celebrant + Kiki-Jiki, Mirror Breaker
+  PRODUCES: ['Infinite combat phases', 'Infinite creature tokens with haste', 'Infinite creature ETB']
+  PREREQ: ''
+  DESC: 'Activate Kiki-Jiki by tapping it, creating a token copy of Combat Celebrant with haste.\nProceed to your combat step.\nDeclare the Combat Celebrant copy as an attacker, choosing to exert it as it attacks.\nThe Combat Celebrant copy triggers, untapping all other creatures you control and causing you to get an additional combat phase after this one.\nRepeat.'
+
+#102 [4 decks] Rionya, Fire Dancer + Combat Celebrant
+  PRODUCES: ['Infinite combat phases', 'Infinite creature tokens with haste', 'Infinite creature ETB', 'Infinite creature LTB']
+  PREREQ: ''
+  DESC: 'At the beginning of your combat phase, Rionya triggers, creating at least one token copy of Combat Celebrant with haste.\nDeclare the Combat Celebrant token as an attacker, choosing to exert it as it attacks.\nThe Combat Celebrant token triggers, untapping all other creatures you control and causing you to get an additional combat phase after this one.\nRepeat each combat phase.'
+
+#103 [1 decks] Kiki-Jiki, Mirror Breaker + Village Bell-Ringer
+  PRODUCES: ['Infinite creature tokens with haste', 'Infinite death triggers', 'Infinite creature ETB', 'Infinite creature LTB', 'Infinite mana creatures you control can produce', 'Infinite creature sacrifice triggers']
+  PREREQ: ''
+  DESC: 'Activate Kiki-Jiki by tapping it, creating a token copy of Village Bell-Ringer with haste.\nWhen the Village Bell-Ringer token enters, it triggers, untapping all creatures you control.\nRepeat.'
+
+#104 [2 decks] Combat Celebrant + Mirage Phalanx
+  PRODUCES: ['Infinite combat phases', 'Infinite creature tokens with haste', 'Infinite creature ETB']
+  PREREQ: 'Mirage Phalanx is paired with Combat Celebrant.'
+  DESC: "At the beginning of combat on your turn, Mirage Phalanx and Combat Celebrant each trigger.\nResolve the Mirage Phalanx trigger, creating a token copy of it with haste and without soulbond.\nThe Mirage Phalanx token enters the battlefield, triggering Mirage Phalanx's soulbond ability.\nResolve the Mirage Phalanx trigger, choosing not to pair it with the Mirage Phalanx token.\nResolve the Combat Celebrant trigger from step 1, creating a token copy of it with haste.\nThe Combat Celebrant token enters the battlefield, triggering Mirage Phalanx's soulbond ability.\nResolve the Mirage Phalanx trigger, choosing not to pair it with the Combat Celebrant token.\nDeclare the Combat Celebrant token as an attacker.\nThe Combat Celebrant token triggers, allowing you to exert it to untap all other creatures you control and get an additional combat phase after this one.\nRepeat."
+
+#105 [1 decks] Magda, Brazen Outlaw + Clock of Omens + Liquimetal Torque
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite tapped Treasure tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield']
+  PREREQ: ''
+  DESC: 'Cause Magda to become an artifact using Liquimetal Torque.\nActivate Clock of Omens by tapping Magda and another artifact, targeting Magda.\nMagda triggers, creating a Treasure token.\nResolve the Clock of Omens ability, untapping Magda.\nRepeat from step 2.'
+
+#106 [2 decks] Magda, Brazen Outlaw + Clock of Omens + Universal Automaton
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite tapped Treasure tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield']
+  PREREQ: ''
+  DESC: 'Activate Clock of Omens by tapping Universal Automaton and another artifact, targeting Universal Automaton.\nMagda triggers, creating a Treasure token.\nResolve the Clock of Omens ability, untapping Universal Automaton.\nRepeat.'
+
+#107 [2 decks] Magda, Brazen Outlaw + Clock of Omens + Metallic Mimic
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite tapped Treasure tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield']
+  PREREQ: ''
+  DESC: 'Activate Clock of Omens by tapping Metallic Mimic and another artifact, targeting Metallic Mimic.\nMagda triggers, creating a Treasure token.\nResolve the Clock of Omens ability, untapping Metallic Mimic.\nRepeat.'
+
+#108 [2 decks] Magda, Brazen Outlaw + Clock of Omens + Adaptive Automaton
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite tapped Treasure tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield']
+  PREREQ: ''
+  DESC: 'Activate Clock of Omens by tapping Adaptive Automaton and another artifact, targeting Adaptive Automaton.\nMagda triggers, creating a Treasure token.\nResolve the Clock of Omens ability, untapping Adaptive Automaton.\nRepeat.'
+
+#109 [2 decks] Magda, Brazen Outlaw + Clock of Omens + Roaming Throne
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact LTB', 'Infinite artifact sacrifice triggers', 'Infinite artifact tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield', 'Infinite colored mana']
+  PREREQ: ''
+  DESC: 'Activate Clock of Omens by tapping Roaming Throne and another artifact, targeting Roaming Throne.\nMagda triggers twice due to Roaming Throne, creating two Treasure tokens.\nResolve the Clock of Omens ability, untapping Roaming Throne.\nRepeat.'
+
+#110 [2 decks] Magda, Brazen Outlaw + Clock of Omens + Barkform Harvester
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite tapped Treasure tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield']
+  PREREQ: ''
+  DESC: 'Activate Clock of Omens by tapping Barkform Harvester and another artifact, targeting Barkform Harvester.\nMagda triggers, creating a Treasure token.\nResolve the Clock of Omens ability, untapping Barkform Harvester.\nRepeat.'
+
+#111 [2 decks] Magda, Brazen Outlaw + Clock of Omens + Three Tree Mascot
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite tapped Treasure tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield']
+  PREREQ: ''
+  DESC: 'Activate Clock of Omens by tapping Three Tree Mascot and another artifact, targeting Three Tree Mascot.\nMagda triggers, creating a Treasure token.\nResolve the Clock of Omens ability, untapping Three Tree Mascot.\nRepeat.'
+
+#112 [2 decks] Magda, Brazen Outlaw + Battered Golem + Maskwood Nexus
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact LTB', 'Infinite artifact sacrifice triggers', 'Infinite artifact tokens', 'Infinite colored mana', 'Infinite Treasure tokens']
+  PREREQ: ''
+  DESC: "Activate the creature with saddle's saddle ability by tapping Battered Golem.\nMagda triggers, creating a Treasure token.\nWhen the Treasure enters the battlefield, Battered Golem triggers, untapping Battered Golem.\nResolve the saddle ability.\nRepeat."
+
+#113 [1 decks] Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Maskwood Nexus
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact LTB', 'Infinite artifact sacrifice triggers', 'Infinite artifact tokens', 'Infinite colored mana', 'Infinitely powerful creatures you control until end of turn']
+  PREREQ: ''
+  DESC: 'Activate Dwarven Bloodboiler by tapping Battered Golem.\nMagda triggers, creating a Treasure artifact token.\nWhen the Treasure enters the battlefield, Battered Golem triggers, untapping Battered Golem.\nResolve the Dwarven Bloodboiler ability, giving target creature +2/+0 until end of turn.\nRepeat.'
+
+#114 [2 decks] Magda, Brazen Outlaw + Battered Golem + Stalactite Dagger
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact LTB', 'Infinite artifact sacrifice triggers', 'Infinite artifact tokens', 'Infinite Treasure tokens', 'Infinite colored mana']
+  PREREQ: ''
+  DESC: "Activate the Vehicle's crew ability by tapping Battered Golem.\nMagda triggers, creating a Treasure token.\nWhen the Treasure enters the battlefield, Battered Golem triggers, untapping Battered Golem.\nResolve the crew ability.\nRepeat."
+
+#115 [1 decks] Battered Golem + Dwarven Bloodboiler + Magda, Brazen Outlaw + Stalactite Dagger
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact LTB', 'Infinite artifact sacrifice triggers', 'Infinite artifact tokens', 'Infinite Treasure tokens', 'Infinite colored mana']
+  PREREQ: ''
+  DESC: 'Activate Dwarven Bloodboiler by tapping Battered Golem.\nMagda triggers, creating a Treasure artifact token.\nWhen the Treasure enters the battlefield, Battered Golem triggers, untapping Battered Golem.\nResolve the Dwarven Bloodboiler ability, giving target creature +2/+0 until end of turn.\nRepeat.'
+
+#116 [1 decks] Staff of Domination + Priest of Titania
+  PRODUCES: ['Infinite card draw', 'Infinite draw triggers', 'Infinite lifegain', 'Infinite lifegain triggers', 'Infinite untap of creatures you control', 'Infinite mana creatures you control can produce']
+  PREREQ: 'Priest of Titania does not have summoning sickness. There are at least five Elves on the battlefield.'
+  DESC: "Activate Priest of Titania by tapping it, adding at least {G}{G}{G}{G}{G}.\nActivate Staff of Domination's third ability by paying {3} and tapping it, untapping Priest of Titania.\nActivate Staff of Domination's first ability by paying {1}, untapping it.\nRepeat."
+
+#117 [1 decks] Staff of Domination + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite card draw', 'Infinite colored mana', 'Infinite draw triggers', 'Infinite lifegain', 'Infinite lifegain triggers', 'Infinite mana creatures you control can produce']
+  PREREQ: 'Selvala does not have summoning sickness. You control a creature with power 6 or greater.'
+  DESC: "Activate Selvala by paying {G} and tapping it, adding at least {5}{G}.\nActivate Staff of Domination's third ability by paying {3} and tapping it, untapping Selvala.\nActivate Staff of Domination's first ability by paying {1}, untapping it.\nRepeat."
+
+#118 [1 decks] Umbral Mantle + Priest of Titania
+  PRODUCES: ['Infinite green mana', 'Infinitely large creature until end of turn', 'Infinite untap of creatures you control', 'Infinite mana creatures you control can produce']
+  PREREQ: 'Priest of Titania does not have summoning sickness. There are at least three Elves on the battlefield.'
+  DESC: 'Activate Priest of Titania by tapping it, adding at least {G}{G}{G}.\nActivate Priest of Titania by paying {3} and untapping it, giving it +2/+2 until end of turn.\nRepeat.'
+
+#119 [1 decks] Umbral Mantle + Selvala, Heart of the Wilds
+  PRODUCES: ['Infinite colored mana', 'Infinitely large creature until end of turn', 'Infinite untap of creatures you control', 'Infinite mana creatures you control can produce']
+  PREREQ: 'Selvala does not have summoning sickness.'
+  DESC: 'Activate Selvala by paying {G} and tapping it, adding an amount of {G} equal to the greatest power among creatures you control.\nActivate Selvala by paying {3} and untapping it, giving it +2/+2 until end of turn.\nRepeat.'
+
+#120 [1 decks] Temur Sabertooth + Selvala, Heart of the Wilds + Lightning Greaves
+  PRODUCES: ['Infinite creature LTB', 'Infinite creature ETB', 'Infinite colored mana', 'Infinite storm count', 'Infinite blinking']
+  PREREQ: 'You control a creature other than Selvala that has power 7 or greater.'
+  DESC: "Activate Lightning Greaves' equip ability by paying {0}, attaching it to Selvala.\nActivate Selvala by paying {G} and tapping it, adding at least {3}{G}{G}{G}{G}.\nActivate Temur Sabertooth by paying {1}{G}, returning Selvala from the battlefield to your hand.\nCast Selvala by paying {1}{G}{G}.\nRepeat."
+
+#121 [1 decks] Magda, Brazen Outlaw + Clock of Omens + Bloodline Pretender
+  PRODUCES: ['Infinite artifact ETB', 'Infinite artifact tokens', 'Infinite tapped Treasure tokens', 'Put all artifact cards and a subset of creature cards from your library onto the battlefield']
+  PREREQ: ''
+  DESC: 'Activate Clock of Omens by tapping Bloodline Pretender and another artifact, targeting Bloodline Pretender.\nMagda triggers, creating a Treasure token.\nResolve the Clock of Omens ability, untapping Bloodline Pretender.\nRepeat.'
+

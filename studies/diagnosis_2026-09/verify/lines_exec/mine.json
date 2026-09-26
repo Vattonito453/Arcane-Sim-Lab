@@ -1,0 +1,2994 @@
+[
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Gaea's Cradle"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Bloom Tender"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Mana Vault"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Faeburrow Elder"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Felidar Guardian",
+   "Phyrexian Metamorph"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Chromatic Orrery"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Felidar Guardian",
+   "Flesh Duplicate"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Felidar Guardian",
+   "Clever Impersonator"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Emiel the Blessed",
+   "Felidar Guardian",
+   "Gaea's Cradle"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Emiel the Blessed",
+   "Felidar Guardian",
+   "Chromatic Orrery"
+  ],
+  "deck": "derevi",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Basalt Monolith",
+   "Forsaken Monument"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Basalt Monolith"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Godo, Bandit Warlord",
+   "Helm of the Host"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Metalworker"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Thran Dynamo"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Rings of Brighthearth",
+   "Metalworker"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Forsaken Monument",
+   "Grim Monolith"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Mana Vault"
+  ],
+  "deck": "godo_archetype",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Springheart Nantuko",
+   "Lotus Cobra"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Snap"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Unctus, Grand Metatect",
+   "Aphetto Alchemist"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Cephalid Illusionist",
+   "Lightning Greaves"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Cephalid Illusionist",
+   "Shuko"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Jeweled Lotus"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Nadu, Winged Wisdom",
+   "Scute Swarm",
+   "Lightning Greaves"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Nadu, Winged Wisdom",
+   "Scute Swarm",
+   "Shuko"
+  ],
+  "deck": "nadu",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Grinding Station"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Grinding Station",
+   "Mana Crypt"
+  ],
+  "deck": "rograkh_silas",
+  "pod": "2iA_Jt0d6sM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Peregrin Took",
+   "Nuka-Cola Vending Machine"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Krark-Clan Ironworks"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Grinding Station"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Stridehangar Automaton"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Grinding Station"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Peregrin Took"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Basalt Monolith",
+   "Forsaken Monument"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Basalt Monolith"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Godo, Bandit Warlord",
+   "Helm of the Host"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Metalworker"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Thran Dynamo"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Rings of Brighthearth",
+   "Metalworker"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Rings of Brighthearth",
+   "Forsaken Monument",
+   "Grim Monolith"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Voltaic Key",
+   "Forsaken Monument",
+   "Rings of Brighthearth",
+   "Mana Vault"
+  ],
+  "deck": "godo",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Curiosity",
+   "Niv-Mizzet, Parun"
+  ],
+  "deck": "malcolm_kediss",
+  "pod": "5A6o18Bra0Y",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Niv-Mizzet, Parun",
+   "Ophidian Eye"
+  ],
+  "deck": "malcolm_kediss",
+  "pod": "5A6o18Bra0Y",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Narset's Reversal",
+   "Flare of Duplication"
+  ],
+  "deck": "malcolm_kediss",
+  "pod": "5A6o18Bra0Y",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Smothering Tithe",
+   "Underworld Breach",
+   "Wheel of Fortune"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Mirrormade"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Copy Enchantment"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "deck": "rog_ishai",
+  "pod": "5A6o18Bra0Y",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Sol Ring"
+  ],
+  "deck": "dexter_kinnan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mana Vault"
+  ],
+  "deck": "dexter_kinnan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mox Amber"
+  ],
+  "deck": "dexter_kinnan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kinnan, Bonder Prodigy",
+   "Basalt Monolith"
+  ],
+  "deck": "dexter_kinnan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Quirion Ranger"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Sylvan Safekeeper",
+   "Badgermole Cub"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Priest of Titania"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Wirewood Symbiote",
+   "Llanowar Elves"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Argothian Elder"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Wirewood Symbiote",
+   "Elvish Mystic"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Circle of Dreams Druid"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Temur Sabertooth",
+   "Wirewood Symbiote",
+   "Llanowar Elves"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Temur Sabertooth",
+   "Wirewood Symbiote",
+   "Elvish Mystic"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Temur Sabertooth",
+   "Wirewood Symbiote",
+   "Fyndhorn Elves"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Wirewood Symbiote",
+   "Allosaurus Shepherd"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Circle of Dreams Druid"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Circle of Dreams Druid"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Magus of the Candelabra",
+   "Priest of Titania"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Magus of the Candelabra",
+   "Circle of Dreams Druid"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Magus of the Candelabra",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Circle of Dreams Druid",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Priest of Titania",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Selvala, Heart of the Wilds",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Pili-Pala",
+   "Wild Growth"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Priest of Titania"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Circle of Dreams Druid"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Pili-Pala",
+   "Argothian Elder"
+  ],
+  "deck": "isaac_yisan",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Malcolm, Keen-Eyed Navigator",
+   "Glint-Horn Buccaneer"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Glint-Horn Buccaneer",
+   "Curiosity"
+  ],
+  "deck": "lily_malcolm_vial",
+  "pod": "B421mac67IE",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Marvin, Murderous Mimic",
+   "Ioreth of the Healing House"
+  ],
+  "deck": "matt_sisay",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Gaea's Cradle"
+  ],
+  "deck": "matt_sisay",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Bloom Tender"
+  ],
+  "deck": "matt_sisay",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Mana Vault"
+  ],
+  "deck": "matt_sisay",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Derevi, Empyrial Tactician",
+   "Emiel the Blessed",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "matt_sisay",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Badgermole Cub",
+   "Emiel the Blessed",
+   "Gaea's Cradle"
+  ],
+  "deck": "matt_sisay",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Selvala, Heart of the Wilds",
+   "Emiel the Blessed",
+   "Tyvar, Jubilant Brawler"
+  ],
+  "deck": "matt_sisay",
+  "pod": "B421mac67IE",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Peregrin Took",
+   "Nuka-Cola Vending Machine"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Krark-Clan Ironworks"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Nuka-Cola Vending Machine",
+   "Academy Manufactor",
+   "Grinding Station"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Academy Manufactor",
+   "Clock of Omens"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Stridehangar Automaton"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Grinding Station"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Transmutation Font",
+   "Clock of Omens",
+   "Peregrin Took"
+  ],
+  "deck": "cabbage_merchant",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Sol Ring"
+  ],
+  "deck": "kinnan",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mana Vault"
+  ],
+  "deck": "kinnan",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mox Amber"
+  ],
+  "deck": "kinnan",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kinnan, Bonder Prodigy",
+   "Basalt Monolith"
+  ],
+  "deck": "kinnan",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Basalt Monolith",
+   "Nyxbloom Ancient"
+  ],
+  "deck": "kinnan",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Grim Monolith",
+   "Nyxbloom Ancient"
+  ],
+  "deck": "kinnan",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "rog_thrasios",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "rog_thrasios",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "rog_thrasios",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Oboro Breezecaller",
+   "Talon Gates of Madara",
+   "Gaea's Cradle"
+  ],
+  "deck": "rog_thrasios",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Snap"
+  ],
+  "deck": "rog_thrasios",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Displacer Kitten",
+   "Eternal Witness",
+   "Lotus Petal",
+   "Snap",
+   "Cloud of Faeries"
+  ],
+  "deck": "rog_thrasios",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "deck": "yidris",
+  "pod": "Bq-nFi0f1jA",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "yidris",
+  "pod": "Bq-nFi0f1jA",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "yidris",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "yidris",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "deck": "yidris",
+  "pod": "Bq-nFi0f1jA",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "yidris",
+  "pod": "Bq-nFi0f1jA",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "alan_tnt",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Devoted Druid",
+   "Swift Reconfiguration"
+  ],
+  "deck": "alan_tnt",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Hazel's Brewmaster",
+   "Devoted Druid"
+  ],
+  "deck": "alan_tnt",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Kinnan, Bonder Prodigy"
+  ],
+  "deck": "alan_tnt",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Hermit Druid",
+   "Thassa's Oracle"
+  ],
+  "deck": "alan_tnt",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "deck": "alan_tnt",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "deck": "dallas_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "dallas_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "dallas_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "dallas_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Grinding Station"
+  ],
+  "deck": "dallas_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Memnite",
+   "Grinding Station",
+   "Underworld Breach",
+   "Thassa's Oracle"
+  ],
+  "deck": "dallas_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "joseph_ral",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "joseph_ral",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "deck": "joseph_ral",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "joseph_ral",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Reiterate",
+   "Jeska's Will"
+  ],
+  "deck": "joseph_ral",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Storm-Kiln Artist",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "deck": "joseph_ral",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "deck": "joseph_ral",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "deck": "sterling_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "sterling_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "sterling_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "sterling_bluefarm",
+  "pod": "CxKMqO36DdM",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "deck": "winota_ian",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "deck": "winota_ian",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "deck": "winota_ian",
+  "pod": "OuY6mdiXbHU",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "deck": "winota_lua",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "deck": "winota_lua",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "deck": "winota_lua",
+  "pod": "OuY6mdiXbHU",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Village Bell-Ringer"
+  ],
+  "deck": "winota_lua",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Mirage Phalanx"
+  ],
+  "deck": "winota_lua",
+  "pod": "OuY6mdiXbHU",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "deck": "winota_mike",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "deck": "winota_mike",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "deck": "winota_mike",
+  "pod": "OuY6mdiXbHU",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Mirage Phalanx"
+  ],
+  "deck": "winota_mike",
+  "pod": "OuY6mdiXbHU",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kiki-Jiki, Mirror Breaker",
+   "Zealous Conscripts"
+  ],
+  "deck": "winota_rachel",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Combat Celebrant",
+   "Kiki-Jiki, Mirror Breaker"
+  ],
+  "deck": "winota_rachel",
+  "pod": "OuY6mdiXbHU",
+  "act": true,
+  "nonmana": true,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Rionya, Fire Dancer",
+   "Combat Celebrant"
+  ],
+  "deck": "winota_rachel",
+  "pod": "OuY6mdiXbHU",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Liquimetal Torque"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Universal Automaton"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Metallic Mimic"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Adaptive Automaton"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Roaming Throne"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Barkform Harvester"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Three Tree Mascot"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Battered Golem",
+   "Maskwood Nexus"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Battered Golem",
+   "Dwarven Bloodboiler",
+   "Magda, Brazen Outlaw",
+   "Maskwood Nexus"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Battered Golem",
+   "Stalactite Dagger"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Battered Golem",
+   "Dwarven Bloodboiler",
+   "Magda, Brazen Outlaw",
+   "Stalactite Dagger"
+  ],
+  "deck": "magda",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Sol Ring"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mana Vault"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Hullbreaker Horror",
+   "Mox Amber"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Mirrormade"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Copy Enchantment"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "deck": "rog_ishai",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Priest of Titania"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Quirion Ranger"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Staff of Domination",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Umbral Mantle",
+   "Priest of Titania"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Umbral Mantle",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Priest of Titania"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Selvala, Heart of the Wilds",
+   "Lightning Greaves"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Ashaya, Soul of the Wild",
+   "Scryb Ranger",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Priest of Titania"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Kogla, the Titan Ape",
+   "Hyrax Tower Scout",
+   "Selvala, Heart of the Wilds"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Priest of Titania",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Temur Sabertooth",
+   "Selvala, Heart of the Wilds",
+   "Shang-Chi, Master of Kung Fu"
+  ],
+  "deck": "selvala_archetype",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "deck": "tymna_thrasios",
+  "pod": "n7WpsqsZtdQ",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "tymna_thrasios",
+  "pod": "n7WpsqsZtdQ",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Devoted Druid",
+   "Swift Reconfiguration"
+  ],
+  "deck": "tymna_thrasios",
+  "pod": "n7WpsqsZtdQ",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "ashton_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "ashton_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Mirrormade"
+  ],
+  "deck": "ashton_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Copy Enchantment"
+  ],
+  "deck": "ashton_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Faerie Mastermind",
+   "Smothering Tithe",
+   "Clever Impersonator"
+  ],
+  "deck": "ashton_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "joseph_ral",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "joseph_ral",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "deck": "joseph_ral",
+  "pod": "sZA0KqXCGrY",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "joseph_ral",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Reiterate",
+   "Jeska's Will"
+  ],
+  "deck": "joseph_ral",
+  "pod": "sZA0KqXCGrY",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Storm-Kiln Artist",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "deck": "joseph_ral",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+   "Seething Song",
+   "Reiterate"
+  ],
+  "deck": "joseph_ral",
+  "pod": "sZA0KqXCGrY",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Universal Automaton"
+  ],
+  "deck": "natalie_magda",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Metallic Mimic"
+  ],
+  "deck": "natalie_magda",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Adaptive Automaton"
+  ],
+  "deck": "natalie_magda",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Roaming Throne"
+  ],
+  "deck": "natalie_magda",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Barkform Harvester"
+  ],
+  "deck": "natalie_magda",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Three Tree Mascot"
+  ],
+  "deck": "natalie_magda",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Magda, Brazen Outlaw",
+   "Clock of Omens",
+   "Bloodline Pretender"
+  ],
+  "deck": "natalie_magda",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": true,
+  "win": false,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Demonic Consultation",
+   "Thassa's Oracle"
+  ],
+  "deck": "tyler_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Tainted Pact",
+   "Thassa's Oracle"
+  ],
+  "deck": "tyler_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": false,
+  "nonmana": false,
+  "win": true,
+  "prereq": false
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lotus Petal",
+   "Brain Freeze"
+  ],
+  "deck": "tyler_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Brain Freeze"
+  ],
+  "deck": "tyler_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": true,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Wheel of Fortune",
+   "Jeska's Will"
+  ],
+  "deck": "tyler_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": false,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Underworld Breach",
+   "Lion's Eye Diamond",
+   "Wheel of Fortune"
+  ],
+  "deck": "tyler_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ },
+ {
+  "cards": [
+   "Smothering Tithe",
+   "Underworld Breach",
+   "Wheel of Fortune"
+  ],
+  "deck": "tyler_bluefarm",
+  "pod": "sZA0KqXCGrY",
+  "act": true,
+  "nonmana": false,
+  "win": false,
+  "prereq": true
+ }
+]

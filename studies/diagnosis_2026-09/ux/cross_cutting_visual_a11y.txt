@@ -1,0 +1,12 @@
+cross_cutting_visual_a11y scratch measurements (2026-09-26, live http://35.192.104.34, tab-7)
+
+- globals.css: 136 font-size decls, 18 distinct sizes 8.5-26px; --size-* tokens used 9x; --sp-* used 13x vs ~290 raw px spacing decls (31 distinct values)
+- results/[file] page: 628 text nodes, 15 computed sizes (incl 10.695/12.09/12.555/13.02 from .mono .93em), 301 in JetBrains Mono; 482 at ink-3/ink-4 vs 97 at ink-1/max
+- contrast on panel rgb(15,20,28): ink-4 5.11, ink-3 9.04, violet-ink 8.38; hairline-strong edge 1.45:1, hairline 1.20:1 (WCAG 1.4.11 needs 3:1)
+- rules: ASK + "Search the rules instead" 0px gap (.btns display:block); query "Can my commander go back to the command zone when it dies?" -> 608.2b,601.2c,123.6c,120.4d,810.8a,729.5,601.2b,800.4a (no 903.9)
+- playtest: .pt-pile tabIndex -1; .cbtns display none until :hover; cbtn 18px desktop; .pt-mini 26px; mobile library pile y=1800 vs hand 849-1252
+- home at 375 during load: "0 decks / 0 games / 0 finished runs" + "No finished runs yet" beside "loading…"
+- estimates: home "four decks ≈ 8 min for 16" (page.tsx:283); format.ts SECONDS_PER_GAME[4]=52 vs engine TYPICAL_GAME_SECONDS=240
+- document.title "Arcane Sim Lab" on every route; 0 <main> landmarks
+- backdrop-hedron-ruins.png 2,652,638 bytes
+- CardPreview img has no key -> stale face (hovered Finale, saw Forest)

@@ -248,7 +248,8 @@ than shrinking, so the row reads as one instrument panel.
 3. `IMPORT DECK` — `.action-btn--blue`, download
 4. `EXPLORE DECKLISTS` — `.action-btn--neutral`, magnifier
 
-The primary carries its cost estimate beneath it ("two decks ≈ 5 s · four ≈ 8 min").
+The primary carries its cost estimate beneath it, from the engine's `GET /estimate`
+("Four decks, 16 games: usually 40 to 105 minutes."). Never a client-side table.
 **Never disable the primary.** Keep it live and state the blocker beside it:
 "Pick at least 2 decks — you have 1."
 

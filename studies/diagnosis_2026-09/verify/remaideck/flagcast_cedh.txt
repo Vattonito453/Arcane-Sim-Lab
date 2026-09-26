@@ -1,0 +1,48 @@
+=== human_ceiling/runs: 32 files, 32 games
+  agent=stock flag=All    drawn=   328 cast=    24 rate=0.073
+  agent=stock flag=Random drawn=   361 cast=   257 rate=0.712
+  agent=stock flag=none   drawn=  1805 cast=  1140 rate=0.632
+  stock flagged share of drawn nonland: 328/2494 = 0.132
+  stock flagged casts by API: {'Counter': 23, 'other': 1} by stack: {'response': 24}
+  stock flagged casts detail: [(('Pact of Negation', 'Counter', 'response'), 13), (('Swan Song', 'Counter', 'response'), 9), (('Trickbind', 'Counter', 'response'), 1), (('Past in Flames', 'PumpAll', 'response'), 1)]
+  stock All cards drawn/cast: [('Mindbreak Trap', 22, 0), ('Pact of Negation', 20, 13), ("Lion's Eye Diamond", 19, 0), ('Swan Song', 13, 9), ('Mirage Mirror', 11, 0), ('Springleaf Drum', 11, 0), ('Vampiric Tutor', 11, 0), ('Gitaxian Probe', 10, 0), ('Commandeer', 10, 0), ('Final Fortune', 9, 0), ('Ad Nauseam', 9, 0), ('Culling the Weak', 8, 0), ('Disrupting Shoal', 8, 0), ('Demonic Consultation', 8, 0), ("Praetor's Grasp", 7, 0), ('Misdirection', 7, 0), ('Bloom Tender', 6, 0), ('Copy Enchantment', 6, 0), ('Clock of Omens', 6, 0), ('Hidden Strings', 6, 0)]
+=== agent_viability/runs_016_engine: 9 files, 128 games
+  agent=plan  flag=All    drawn=   331 cast=    73 rate=0.221
+  agent=plan  flag=Random drawn=   385 cast=   267 rate=0.694
+  agent=plan  flag=none   drawn=  1784 cast=  1127 rate=0.632
+  agent=stock flag=All    drawn=  1017 cast=    55 rate=0.054
+  agent=stock flag=Random drawn=  1157 cast=   823 rate=0.711
+  agent=stock flag=none   drawn=  5266 cast=  3367 rate=0.639
+  stock flagged share of drawn nonland: 1017/7440 = 0.137
+  stock flagged casts by API: {'Counter': 55} by stack: {'response': 55}
+  stock flagged casts detail: [(('Swan Song', 'Counter', 'response'), 33), (('Pact of Negation', 'Counter', 'response'), 22)]
+  stock All cards drawn/cast: [('Mindbreak Trap', 57, 0), ('Swan Song', 54, 33), ('Pact of Negation', 50, 22), ('Misdirection', 46, 0), ("Lion's Eye Diamond", 42, 0), ('Springleaf Drum', 36, 0), ('Culling the Weak', 31, 0), ('Final Fortune', 29, 0), ('Ad Nauseam', 28, 0), ('Wild Growth', 26, 0), ('Utopia Sprawl', 23, 0), ('Emerald Charm', 23, 0), ('Demonic Consultation', 22, 0), ('Infernal Plunge', 22, 0), ("Praetor's Grasp", 20, 0), ("Summoner's Pact", 20, 0), ('Phyrexian Soulgorger', 19, 0), ('Aphetto Alchemist', 18, 0), ('Cephalid Illusionist', 18, 0), ('Sylvan Safekeeper', 16, 0)]
+=== agent_viability/runs_015_default: 9 files, 128 games
+  agent=plan  flag=All    drawn=   347 cast=    68 rate=0.196
+  agent=plan  flag=Random drawn=   408 cast=   272 rate=0.667
+  agent=plan  flag=none   drawn=  1757 cast=  1105 rate=0.629
+  agent=stock flag=All    drawn=   970 cast=    42 rate=0.043
+  agent=stock flag=Random drawn=  1197 cast=   805 rate=0.673
+  agent=stock flag=none   drawn=  5157 cast=  3198 rate=0.620
+  stock flagged share of drawn nonland: 970/7324 = 0.132
+  stock flagged casts by API: {'Counter': 42} by stack: {'response': 42}
+  stock flagged casts detail: [(('Pact of Negation', 'Counter', 'response'), 23), (('Swan Song', 'Counter', 'response'), 19)]
+  stock All cards drawn/cast: [('Mindbreak Trap', 66, 0), ('Pact of Negation', 55, 23), ("Lion's Eye Diamond", 47, 0), ('Misdirection', 44, 0), ('Swan Song', 40, 19), ('Springleaf Drum', 28, 0), ('Wild Growth', 28, 0), ("Praetor's Grasp", 24, 0), ('Ad Nauseam', 24, 0), ('Utopia Sprawl', 24, 0), ('Infernal Plunge', 23, 0), ("Summoner's Pact", 22, 0), ('Emerald Charm', 21, 0), ('Bloom Tender', 20, 0), ('Final Fortune', 19, 0), ('Commandeer', 19, 0), ('Nomads en-Kor', 18, 0), ("Autumn's Veil", 18, 0), ('Metalworker', 17, 0), ('Vampiric Tutor', 17, 0)]
+=== agent_viability/runs_winmax: 9 files, 128 games
+  agent=plan  flag=All    drawn=   377 cast=    46 rate=0.122
+  agent=plan  flag=Random drawn=   384 cast=   260 rate=0.677
+  agent=plan  flag=none   drawn=  1707 cast=  1041 rate=0.610
+  agent=stock flag=All    drawn=  1115 cast=    57 rate=0.051
+  agent=stock flag=Random drawn=  1199 cast=   842 rate=0.702
+  agent=stock flag=none   drawn=  5376 cast=  3405 rate=0.633
+  stock flagged share of drawn nonland: 1115/7690 = 0.145
+  stock flagged casts by API: {'Counter': 55, 'other': 2} by stack: {'response': 57}
+  stock flagged casts detail: [(('Pact of Negation', 'Counter', 'response'), 31), (('Swan Song', 'Counter', 'response'), 24), (('Phyrexian Soulgorger', '', 'response'), 1), (('Sheltering Ancient', '', 'response'), 1)]
+  stock All cards drawn/cast: [('Mindbreak Trap', 79, 0), ("Lion's Eye Diamond", 61, 0), ('Pact of Negation', 56, 31), ('Swan Song', 42, 24), ('Misdirection', 41, 0), ('Springleaf Drum', 35, 0), ('Ad Nauseam', 33, 0), ('Infernal Plunge', 31, 0), ("Autumn's Veil", 29, 0), ('Final Fortune', 27, 0), ('Utopia Sprawl', 27, 0), ('Demonic Consultation', 26, 0), ("Praetor's Grasp", 26, 0), ('Emerald Charm', 26, 0), ('Vampiric Tutor', 25, 0), ('Wild Growth', 25, 0), ("Summoner's Pact", 24, 0), ('Culling the Weak', 23, 0), ('Sylvan Paradise', 23, 0), ('Phyrexian Soulgorger', 21, 1)]
+=== behavior_rubric/runs_agent_shipping: 32 files, 32 games
+  agent=plan  flag=All    drawn=   375 cast=    52 rate=0.139
+  agent=plan  flag=Random drawn=   384 cast=   273 rate=0.711
+  agent=plan  flag=none   drawn=  1999 cast=  1144 rate=0.572
+  stock flagged casts by API: {} by stack: {}
+  stock flagged casts detail: []
+  stock All cards drawn/cast: []

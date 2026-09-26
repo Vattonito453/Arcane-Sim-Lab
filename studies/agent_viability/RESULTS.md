@@ -8,8 +8,18 @@ stock Forge seats on combo-live cEDH pods.**
 Three prior studies concluded the agent is "no better than stock Forge."
 Every one of them measured an agent that was **switched off**:
 
-- The 8 Forge precons behind the 1536-game head-to-head have **zero combo
-  lines**, and had 29-53% card-fact coverage at the time. With no lines,
+- The 8 Forge precons behind the 1536-game head-to-head had **no combo lines
+  in their plans**, and had 29-53% card-fact coverage at the time.
+  **Corrected 2026-09-26, scoped:** the premise behind this, that Commander
+  Spellbook has nothing for any of the 66 precons, was false.
+  `combos.parse_dck` sent Forge's `|SET|art` suffix with each name, so
+  Spellbook matched nothing, and that hid 26 included variants on 14 of 66
+  precons. But with clean names, 7 of these 8 head-to-head precons still
+  have no included variants (only Blight Curse would gain 2). So their plans
+  were empty mostly on the merits, the agent was switched off regardless,
+  and the conclusion here stands (`studies/diagnosis_2026-09/SYNTHESIS.md`,
+  verification row `combo_data/precon-suffix-parse-bug`, reproduced by
+  `studies/diagnosis_2026-09/verify/precon_suffix/tally.py`). With no lines,
   `lineOfSight()` returns null on its first branch, which disables combo
   pursuit, line-piece cast priority, tutor casting, greed and combo-mode
   tutor steering together. What stays live is blocking, attack splitting,
@@ -73,6 +83,12 @@ Two conclusions, at different confidence:
    but it is the only mechanism consistent with every observation we have:
    Portal fetched and never used, lines assembled and never converted,
    14 greed holds in 8 games, storm decks that never win in sim.
+   **Corrected 2026-09-26:** two of those observations do not stand. The
+   Ral storm decks ran without their commander (Forge dropped the
+   double-faced card), so whether Forge can pilot storm is untested. And the
+   plan seat never fetched Portal at all (0 of 72 library fetches; its steer
+   overrode the pick 47 of 47 times), while stock Magda wins by combat with
+   Portal out. See `studies/diagnosis_2026-09/SYNTHESIS.md`.
 
 ## What this does NOT say
 
@@ -108,6 +124,13 @@ python studies/agent_viability/run_pilot.py --arm nocombo  --games-per-cell 16 -
 ```
 
 ## Rerun 2026-09-07: default arm on shim 0.15.0
+
+**Annotated 2026-09-26:** measured on pre-0.16.0 arms (attack re-ask loop
+present). The declare-attackers re-ask loop, in every agent version from
+0.4.0 until 0.16.0 fixed it, burned clock and accounts for part of every
+agent arm's censoring, so this arm and the three above carry it. Not
+re-measured; follow-ups are parked until G4 (`tasks/README.md`, decisions
+2026-09-26).
 
 Same design (1 plan seat vs 3 stock, rotated, both cEDH pods), 16 games per
 cell, run for task 21's acceptance. 128 played, 115 decided, 13 censored.

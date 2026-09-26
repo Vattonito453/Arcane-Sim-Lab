@@ -16,11 +16,9 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import type { DeckEntry } from "@/lib/types";
 import { plural } from "@/lib/format";
-import { Chrome, Footer } from "@/components/Chrome";
+import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 import { DeckGallery } from "@/components/DeckGallery";
 import { loadCards, type CardMap } from "@/lib/cards";
-
-const ENGINE_CMD = "python3 engine/mtg_engine.py serve 8484";
 
 export default function DecksPage() {
   const [decks, setDecks] = useState<DeckEntry[] | null>(null);
@@ -65,11 +63,7 @@ export default function DecksPage() {
         </div>
 
         {down ? (
-          <p className="lede">
-            The engine at the configured address isn&apos;t answering, so the collection
-            can&apos;t be listed. Start it with <span className="mono">{ENGINE_CMD}</span> and
-            reload. Nothing here is lost.
-          </p>
+          <EngineDown onRetry={() => window.location.reload()} />
         ) : !decks ? (
           <p className="lede">Loading the collection…</p>
         ) : decks.length === 0 ? (

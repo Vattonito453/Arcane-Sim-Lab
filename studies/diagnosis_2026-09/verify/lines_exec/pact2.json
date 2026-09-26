@@ -1,0 +1,3750 @@
+[
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 3,
+  "turn": 35,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 6,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Exile",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Demonic Tutor",
+   "Arid Mesa"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 13,
+  "turn": 4,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Grim Tutor"
+  ],
+  "exiled": [
+   "Grim Tutor"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 13,
+  "turn": 12,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "City of Traitors"
+  ],
+  "exiled": [
+   "City of Traitors"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Infernal Plunge"
+  ],
+  "exiled": [
+   "Infernal Plunge"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 6,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Necropotence"
+  ],
+  "exiled": [
+   "Necropotence"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 1,
+  "turn": 24,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 6,
+  "turn": 27,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Command Tower"
+  ],
+  "exiled": [
+   "Command Tower"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 8,
+  "turn": 33,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 13,
+  "turn": 9,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Exile",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 2,
+  "turn": 53,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 61,
+  "to_hand": [],
+  "exiled": [
+   "Mindbreak Trap",
+   "Polluted Delta",
+   "Mox Opal",
+   "Beseech the Mirror",
+   "Bloodstained Mire",
+   "Gemstone Caverns",
+   "Grim Monolith",
+   "Misdirection"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 3,
+  "turn": 14,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 88,
+  "to_hand": [],
+  "exiled": [
+   "Ancient Tomb",
+   "Last Chance",
+   "Praetor's Grasp",
+   "Pact of Negation",
+   "Culling the Weak",
+   "City of Traitors",
+   "Mox Diamond",
+   "Flooded Strand"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 4,
+  "turn": 16,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 84,
+  "to_hand": [],
+  "exiled": [
+   "Scalding Tarn",
+   "Gitaxian Probe",
+   "Brain Freeze",
+   "Pyroblast",
+   "Verdant Catacombs",
+   "Jeska's Will",
+   "Watery Grave",
+   "Ancient Tomb"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 5,
+  "turn": 5,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Borne Upon a Wind"
+  ],
+  "exiled": [
+   "Borne Upon a Wind"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 9,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Dark Ritual"
+  ],
+  "exiled": [
+   "Dark Ritual"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 9,
+  "turn": 41,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 66,
+  "to_hand": [],
+  "exiled": [
+   "Cabal Ritual",
+   "Daze",
+   "Mnemonic Betrayal",
+   "Mox Amber",
+   "Talisman of Creativity",
+   "Dockside Extortionist",
+   "Flare of Duplication",
+   "Yawgmoth's Will"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 10,
+  "turn": 29,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 75,
+  "to_hand": [],
+  "exiled": [
+   "Chrome Mox",
+   "Deflecting Swat",
+   "Defense Grid",
+   "Gitaxian Probe",
+   "Grinding Station",
+   "Simian Spirit Guide",
+   "Watery Grave",
+   "Misty Rainforest"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 11,
+  "turn": 21,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 86,
+  "to_hand": [
+   "Mental Misstep"
+  ],
+  "exiled": [
+   "Lotus Petal",
+   "Simian Spirit Guide",
+   "Flare of Duplication",
+   "Mystical Tutor",
+   "Mindbreak Trap",
+   "Talisman of Creativity",
+   "Praetor's Grasp",
+   "Grim Tutor"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 12,
+  "turn": 14,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 85,
+  "to_hand": [],
+  "exiled": [
+   "Underground Sea",
+   "Bloodstained Mire",
+   "Mox Diamond",
+   "Wheel of Fortune",
+   "Mental Misstep",
+   "Cabal Ritual",
+   "Deflecting Swat",
+   "Chrome Mox"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 8,
+  "turn": 41,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Necrodominance"
+  ],
+  "exiled": [
+   "Necrodominance"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 6,
+  "turn": 24,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mana Vault"
+  ],
+  "exiled": [
+   "Mana Vault"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 7,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Praetor's Grasp"
+  ],
+  "exiled": [
+   "Praetor's Grasp"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 10,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Demonic Consultation"
+  ],
+  "exiled": [
+   "Demonic Consultation"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 11,
+  "turn": 37,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Noxious Revival"
+  ],
+  "exiled": [
+   "Noxious Revival"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 14,
+  "turn": 44,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Dark Ritual"
+  ],
+  "exiled": [
+   "Dark Ritual"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 13,
+  "turn": 2,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Smothering Tithe"
+  ],
+  "exiled": [
+   "Smothering Tithe"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 15,
+  "turn": 14,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Emergence Zone"
+  ],
+  "exiled": [
+   "Emergence Zone"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "turn": 17,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 83,
+  "to_hand": [],
+  "exiled": [
+   "Mox Amber",
+   "Grim Monolith",
+   "Devoted Druid",
+   "Windswept Heath",
+   "Mox Diamond",
+   "Wooded Foothills",
+   "Repeal",
+   "Necrodominance"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 2,
+  "turn": 39,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 71,
+  "to_hand": [],
+  "exiled": [
+   "An Offer You Can't Refuse",
+   "Emerald Charm",
+   "Savannah",
+   "Fierce Guardianship",
+   "Command Tower",
+   "Deathrite Shaman",
+   "Silence",
+   "Yawgmoth's Will"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 4,
+  "turn": 31,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 76,
+  "to_hand": [],
+  "exiled": [
+   "City of Traitors",
+   "An Offer You Can't Refuse",
+   "Command Tower",
+   "Sol Ring",
+   "Elves of Deep Shadow",
+   "Valley Floodcaller",
+   "Mental Misstep",
+   "Mystical Tutor"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 6,
+  "turn": 14,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 87,
+  "to_hand": [],
+  "exiled": [
+   "Carpet of Flowers",
+   "Chrome Mox",
+   "Smothering Tithe",
+   "Sol Ring",
+   "Worldly Tutor",
+   "Necrodominance",
+   "Wooded Foothills",
+   "Cabal Ritual"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 7,
+  "turn": 10,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mox Diamond"
+  ],
+  "exiled": [
+   "Mox Diamond"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 7,
+  "turn": 48,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 60,
+  "to_hand": [],
+  "exiled": [
+   "City of Traitors",
+   "Carpet of Flowers",
+   "Mystic Remora",
+   "Necrodominance",
+   "Underground Sea",
+   "Starting Town",
+   "Flooded Strand",
+   "Swift Reconfiguration"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 8,
+  "turn": 7,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 89,
+  "to_hand": [],
+  "exiled": [
+   "Grand Abolisher",
+   "Devoted Druid",
+   "City of Traitors",
+   "Tropical Island",
+   "Mental Misstep",
+   "Lim-D\u00fbl's Vault",
+   "Borne Upon a Wind",
+   "Savannah"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 9,
+  "turn": 33,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 68,
+  "to_hand": [],
+  "exiled": [
+   "Deathrite Shaman",
+   "Borne Upon a Wind",
+   "Elves of Deep Shadow",
+   "Swift Reconfiguration",
+   "Mox Opal",
+   "Enlightened Tutor",
+   "Delighted Halfling",
+   "Grand Abolisher"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 10,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mana Confluence"
+  ],
+  "exiled": [
+   "Mana Confluence"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 11,
+  "turn": 10,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 88,
+  "to_hand": [],
+  "exiled": [
+   "Windswept Heath",
+   "Delighted Halfling",
+   "Beseech the Mirror",
+   "City of Brass",
+   "Birds of Paradise",
+   "Ad Nauseam",
+   "Command Tower",
+   "Valley Floodcaller"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_015_default\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 12,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Misty Rainforest"
+  ],
+  "exiled": [
+   "Misty Rainforest"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "turn": 54,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Timetwister"
+  ],
+  "exiled": [
+   "Timetwister"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 2,
+  "turn": 1,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Infernal Plunge"
+  ],
+  "exiled": [
+   "Infernal Plunge"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 3,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Gitaxian Probe"
+  ],
+  "exiled": [
+   "Gitaxian Probe"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 7,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 8,
+  "turn": 15,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Wooded Foothills"
+  ],
+  "exiled": [
+   "Wooded Foothills"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 11,
+  "turn": 30,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Volcanic Island"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 3,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Demonic Consultation"
+  ],
+  "exiled": [
+   "Demonic Consultation"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 8,
+  "turn": 2,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Lion's Eye Diamond"
+  ],
+  "exiled": [
+   "Lion's Eye Diamond"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 9,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Brain Freeze"
+  ],
+  "exiled": [
+   "Brain Freeze"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 12,
+  "turn": 56,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Flusterstorm"
+  ],
+  "exiled": [
+   "Flusterstorm"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 1,
+  "turn": 43,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mindbreak Trap"
+  ],
+  "exiled": [
+   "Mindbreak Trap"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 4,
+  "turn": 6,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 9,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Snap"
+  ],
+  "exiled": [
+   "Snap"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 7,
+  "turn": 22,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Exile",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 15,
+  "turn": 11,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Thassa's Oracle"
+  ],
+  "exiled": [
+   "Thassa's Oracle"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 15,
+  "turn": 27,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 77,
+  "to_hand": [],
+  "exiled": [
+   "Talisman of Creativity",
+   "Wishclaw Talisman",
+   "Windfall",
+   "Deflecting Swat",
+   "Gemstone Caverns",
+   "Mox Opal",
+   "Mox Amber",
+   "Snapback"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 1,
+  "turn": 47,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Sol Ring"
+  ],
+  "exiled": [
+   "Sol Ring"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 15,
+  "turn": 30,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Wishclaw Talisman"
+  ],
+  "exiled": [
+   "Wishclaw Talisman"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 10,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mystic Remora"
+  ],
+  "exiled": [
+   "Mystic Remora"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 11,
+  "turn": 57,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Devoted Druid"
+  ],
+  "exiled": [
+   "Devoted Druid"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 15,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Yawgmoth's Will"
+  ],
+  "exiled": [
+   "Yawgmoth's Will"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 9,
+  "turn": 5,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Bloodstained Mire"
+  ],
+  "exiled": [
+   "Bloodstained Mire"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 10,
+  "turn": 6,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Scrubland"
+  ],
+  "exiled": [
+   "Scrubland"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 14,
+  "turn": 16,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Tataru Taru"
+  ],
+  "exiled": [
+   "Tataru Taru"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 1,
+  "turn": 15,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mindbreak Trap"
+  ],
+  "exiled": [
+   "Mindbreak Trap"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 2,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 2,
+  "turn": 44,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 74,
+  "to_hand": [],
+  "exiled": [
+   "Mental Misstep",
+   "Mox Amber",
+   "Lotho, Corrupt Shirriff",
+   "Ad Nauseam",
+   "Summoner's Pact",
+   "Underground Sea",
+   "Mystical Tutor",
+   "Lion's Eye Diamond"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 3,
+  "turn": 48,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mana Vault"
+  ],
+  "exiled": [
+   "Mana Vault"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 4,
+  "turn": 39,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 64,
+  "to_hand": [],
+  "exiled": [
+   "Imperial Seal",
+   "Tataru Taru",
+   "Ancient Tomb",
+   "Culling the Weak",
+   "Fellwar Stone",
+   "Mnemonic Betrayal",
+   "Valley Floodcaller",
+   "Voice of Victory"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 8,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Culling the Weak"
+  ],
+  "exiled": [
+   "Culling the Weak"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 8,
+  "turn": 26,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 82,
+  "to_hand": [],
+  "exiled": [
+   "Dramatic Reversal",
+   "Borne Upon a Wind",
+   "Rhystic Study",
+   "Voice of Victory",
+   "Elves of Deep Shadow",
+   "Tataru Taru",
+   "Bloodstained Mire",
+   "Mindbreak Trap"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 9,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Dark Ritual"
+  ],
+  "exiled": [
+   "Dark Ritual"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 9,
+  "turn": 34,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 31,
+  "to_hand": [
+   "Fierce Guardianship"
+  ],
+  "exiled": [
+   "Pact of Negation",
+   "Mystic Remora",
+   "Ancient Tomb",
+   "Lim-D\u00fbl's Vault",
+   "Gemstone Caverns",
+   "Grand Abolisher",
+   "Borne Upon a Wind",
+   "Polluted Delta"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 10,
+  "turn": 49,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 71,
+  "to_hand": [],
+  "exiled": [
+   "Windswept Heath",
+   "Mindbreak Trap",
+   "Mana Confluence",
+   "Flooded Strand",
+   "Savannah",
+   "Tropical Island",
+   "Beseech the Mirror",
+   "Lim-D\u00fbl's Vault"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 12,
+  "turn": 31,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 55,
+  "to_hand": [
+   "Lotus Petal"
+  ],
+  "exiled": [
+   "Misty Rainforest",
+   "Fellwar Stone",
+   "Grim Monolith",
+   "Veil of Summer",
+   "Underground Sea",
+   "Chrome Mox",
+   "Mana Vault",
+   "Emergence Zone"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 13,
+  "turn": 37,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 71,
+  "to_hand": [],
+  "exiled": [
+   "City of Brass",
+   "Borne Upon a Wind",
+   "Polluted Delta",
+   "Ad Nauseam",
+   "Mystic Remora",
+   "Devoted Druid",
+   "Swift Reconfiguration",
+   "Chrome Mox"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_016_engine\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 15,
+  "turn": 14,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 88,
+  "to_hand": [],
+  "exiled": [
+   "Chain of Vapor",
+   "The Cabbage Merchant",
+   "Emergence Zone",
+   "Savannah",
+   "Birds of Paradise",
+   "Crop Rotation",
+   "Mystic Remora",
+   "Mockingbird"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 9,
+  "turn": 37,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Chrome Mox"
+  ],
+  "exiled": [
+   "Chrome Mox"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 15,
+  "turn": 1,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Flusterstorm"
+  ],
+  "exiled": [
+   "Flusterstorm"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 1,
+  "turn": 13,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Infernal Plunge"
+  ],
+  "exiled": [
+   "Infernal Plunge"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 7,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 6,
+  "turn": 22,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Defense Grid"
+  ],
+  "exiled": [
+   "Defense Grid"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 7,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Ancient Tomb"
+  ],
+  "exiled": [
+   "Ancient Tomb"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 9,
+  "turn": 14,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Ancient Tomb"
+  ],
+  "exiled": [
+   "Ancient Tomb"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 13,
+  "turn": 13,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Springleaf Drum"
+  ],
+  "exiled": [
+   "Springleaf Drum"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "turn": 33,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Ancient Tomb"
+  ],
+  "exiled": [
+   "Ancient Tomb"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 2,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Timetwister"
+  ],
+  "exiled": [
+   "Timetwister"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 4,
+  "turn": 63,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Diabolic Intent"
+  ],
+  "exiled": [
+   "Diabolic Intent"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 15,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mindbreak Trap"
+  ],
+  "exiled": [
+   "Mindbreak Trap"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 6,
+  "turn": 21,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Ad Nauseam"
+  ],
+  "exiled": [
+   "Ad Nauseam"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 7,
+  "turn": 21,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Windswept Heath"
+  ],
+  "exiled": [
+   "Windswept Heath"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 10,
+  "turn": 36,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Starting Town"
+  ],
+  "exiled": [
+   "Starting Town"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 12,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Misty Rainforest",
+   "Voice of Victory"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 13,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Autumn's Veil"
+  ],
+  "exiled": [
+   "Autumn's Veil"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 0,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 9,
+  "turn": 51,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Lion's Eye Diamond"
+  ],
+  "exiled": [
+   "Lion's Eye Diamond"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 11,
+  "turn": 25,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "City of Brass"
+  ],
+  "exiled": [
+   "City of Brass"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 13,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Exile",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 4,
+  "turn": 5,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mox Diamond"
+  ],
+  "exiled": [
+   "Mox Diamond"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 5,
+  "turn": 51,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Flusterstorm"
+  ],
+  "exiled": [
+   "Flusterstorm"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 6,
+  "turn": 5,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Lim-D\u00fbl's Vault"
+  ],
+  "exiled": [
+   "Lim-D\u00fbl's Vault"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 12,
+  "turn": 2,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Gemstone Caverns"
+  ],
+  "exiled": [
+   "Gemstone Caverns"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 12,
+  "turn": 6,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mystic Remora"
+  ],
+  "exiled": [
+   "Mystic Remora"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_nocombo\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 14,
+  "turn": 13,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mnemonic Betrayal"
+  ],
+  "exiled": [
+   "Mnemonic Betrayal"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 3,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mox Amber"
+  ],
+  "exiled": [
+   "Mox Amber"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 4,
+  "turn": 11,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Dark Ritual"
+  ],
+  "exiled": [
+   "Dark Ritual"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Sol Ring"
+  ],
+  "exiled": [
+   "Sol Ring"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 3,
+  "turn": 1,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Grim Tutor"
+  ],
+  "exiled": [
+   "Grim Tutor"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 4,
+  "turn": 31,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mox Diamond"
+  ],
+  "exiled": [
+   "Mox Diamond"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 5,
+  "turn": 38,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mystic Remora"
+  ],
+  "exiled": [
+   "Mystic Remora"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "turn": 25,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 7,
+  "turn": 23,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Talisman of Dominance"
+  ],
+  "exiled": [
+   "Talisman of Dominance"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 3,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Underground Sea"
+  ],
+  "exiled": [
+   "Underground Sea"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 5,
+  "turn": 40,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mox Diamond"
+  ],
+  "exiled": [
+   "Mox Diamond"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 6,
+  "turn": 3,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Overgrown Tomb"
+  ],
+  "exiled": [
+   "Overgrown Tomb"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 2,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mana Vault"
+  ],
+  "exiled": [
+   "Mana Vault"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 6,
+  "turn": 3,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 2,
+  "turn": 22,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Summoner's Pact"
+  ],
+  "exiled": [
+   "Summoner's Pact"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 4,
+  "turn": 26,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Emerald Charm"
+  ],
+  "exiled": [
+   "Emerald Charm"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 1,
+  "turn": 42,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Noxious Revival"
+  ],
+  "exiled": [
+   "Noxious Revival"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 3,
+  "turn": 13,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Summoner's Pact"
+  ],
+  "exiled": [
+   "Summoner's Pact"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 6,
+  "turn": 18,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Demonic Tutor"
+  ],
+  "exiled": [
+   "Demonic Tutor"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_pilot\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 7,
+  "turn": 28,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 82,
+  "to_hand": [],
+  "exiled": [
+   "Carpet of Flowers",
+   "Delighted Halfling",
+   "Imperial Seal",
+   "Wishclaw Talisman",
+   "Summoner's Pact",
+   "Phantasmal Image",
+   "Flooded Strand",
+   "Yawgmoth's Will"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 5,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Scalding Tarn"
+  ],
+  "exiled": [
+   "Scalding Tarn"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 9,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Imperial Seal"
+  ],
+  "exiled": [
+   "Imperial Seal"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 15,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mana Vault"
+  ],
+  "exiled": [
+   "Mana Vault"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 2,
+  "turn": 45,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mindbreak Trap"
+  ],
+  "exiled": [
+   "Mindbreak Trap"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 8,
+  "turn": 24,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Snapback"
+  ],
+  "exiled": [
+   "Snapback"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot1.jsonl",
+  "game": 13,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Bloodstained Mire"
+  ],
+  "exiled": [
+   "Bloodstained Mire"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 4,
+  "turn": 10,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 8,
+  "turn": 35,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Grinding Station"
+  ],
+  "exiled": [
+   "Grinding Station"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot2.jsonl",
+  "game": 11,
+  "turn": 12,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "turn": 35,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mnemonic Betrayal"
+  ],
+  "exiled": [
+   "Mnemonic Betrayal"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 7,
+  "turn": 10,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 85,
+  "to_hand": [],
+  "exiled": [
+   "Verdant Catacombs",
+   "Raucous Theater",
+   "Mox Opal",
+   "Chain of Vapor",
+   "Vampiric Tutor",
+   "Rhystic Study",
+   "Yawgmoth's Will",
+   "Ad Nauseam"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_2iA_Jt0d6sM_rot3.jsonl",
+  "game": 11,
+  "turn": 15,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 85,
+  "to_hand": [],
+  "exiled": [
+   "Wishclaw Talisman",
+   "Orcish Bowmasters",
+   "Mox Diamond",
+   "Grim Tutor",
+   "City of Brass",
+   "Dockside Extortionist",
+   "Infernal Plunge",
+   "Diabolic Intent"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 4,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mnemonic Betrayal"
+  ],
+  "exiled": [
+   "Mnemonic Betrayal"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 7,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Bayou"
+  ],
+  "exiled": [
+   "Bayou"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot0.jsonl",
+  "game": 10,
+  "turn": 18,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Fierce Guardianship"
+  ],
+  "exiled": [
+   "Fierce Guardianship"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 7,
+  "turn": 9,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Repeal"
+  ],
+  "exiled": [
+   "Repeal"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 8,
+  "turn": 17,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 11,
+  "turn": 6,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Vexing Bauble"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot1.jsonl",
+  "game": 12,
+  "turn": 34,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Deathrite Shaman"
+  ],
+  "exiled": [
+   "Deathrite Shaman"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 1,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Emergence Zone"
+  ],
+  "exiled": [
+   "Emergence Zone"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 7,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Wooded Foothills"
+  ],
+  "exiled": [
+   "Wooded Foothills"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot2.jsonl",
+  "game": 14,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Tropical Island"
+  ],
+  "exiled": [
+   "Tropical Island"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "turn": 18,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Chain of Vapor"
+  ],
+  "exiled": [
+   "Chain of Vapor"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 0,
+  "turn": 22,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 82,
+  "to_hand": [],
+  "exiled": [
+   "Necropotence",
+   "Elves of Deep Shadow",
+   "Ad Nauseam",
+   "Voice of Victory",
+   "Delighted Halfling",
+   "Valley Floodcaller",
+   "Emerald Charm",
+   "Imperial Seal"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 1,
+  "turn": 35,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 28,
+  "to_hand": [
+   "Silence"
+  ],
+  "exiled": [
+   "Mental Misstep",
+   "Dark Ritual",
+   "The Cabbage Merchant",
+   "Savannah",
+   "Flooded Strand",
+   "Swift Reconfiguration",
+   "An Offer You Can't Refuse",
+   "Command Tower"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 6,
+  "turn": 21,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 82,
+  "to_hand": [],
+  "exiled": [
+   "The Cabbage Merchant",
+   "Overgrown Tomb",
+   "Mox Diamond",
+   "Windswept Heath",
+   "Ancient Tomb",
+   "Mystical Tutor",
+   "Fierce Guardianship",
+   "Esper Sentinel"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 7,
+  "turn": 26,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Enlightened Tutor"
+  ],
+  "exiled": [
+   "Enlightened Tutor"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 8,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Rain of Filth"
+  ],
+  "exiled": [
+   "Rain of Filth"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 10,
+  "turn": 10,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Orim's Chant"
+  ],
+  "exiled": [
+   "Orim's Chant"
+  ]
+ },
+ {
+  "file": "agent_viability\\runs_winmax\\cell_n7WpsqsZtdQ_rot3.jsonl",
+  "game": 13,
+  "turn": 19,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 82,
+  "to_hand": [],
+  "exiled": [
+   "Deathrite Shaman",
+   "Mockingbird",
+   "Rhystic Study",
+   "Polluted Delta",
+   "Borne Upon a Wind",
+   "Fierce Guardianship",
+   "Mana Confluence",
+   "Force of Will"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "turn": 31,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\2iA_Jt0d6sM_rot2.jsonl",
+  "game": 0,
+  "turn": 14,
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 85,
+  "to_hand": [],
+  "exiled": [
+   "Scalding Tarn",
+   "Lion's Eye Diamond",
+   "Watery Grave",
+   "Tainted Pact",
+   "Gemstone Caverns",
+   "Beseech the Mirror",
+   "Ancient Tomb",
+   "Grinding Station"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "turn": 30,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Thassa's Oracle"
+  ],
+  "exiled": [
+   "Thassa's Oracle"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot0.jsonl",
+  "game": 0,
+  "turn": 45,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 9,
+  "to_hand": [
+   "Lion's Eye Diamond",
+   "Sol Ring"
+  ],
+  "exiled": [
+   "Tainted Pact",
+   "Birds of Paradise",
+   "Final Fortune",
+   "Delighted Halfling",
+   "Mystic Remora",
+   "Jeska's Will",
+   "Pact of Negation",
+   "Profane Tutor"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot1.jsonl",
+  "game": 0,
+  "turn": 37,
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 74,
+  "to_hand": [],
+  "exiled": [
+   "Mental Misstep",
+   "Flooded Strand",
+   "Forbidden Orchard",
+   "Autumn's Veil",
+   "City of Traitors",
+   "Simian Spirit Guide",
+   "Arid Mesa",
+   "Rite of Flame"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot2.jsonl",
+  "game": 0,
+  "turn": 43,
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 68,
+  "to_hand": [],
+  "exiled": [
+   "Snap",
+   "Wheel of Fate",
+   "Taiga",
+   "Fierce Guardianship",
+   "Mental Misstep",
+   "Vampiric Tutor",
+   "Carpet of Flowers",
+   "Simian Spirit Guide"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\Bq-nFi0f1jA_rot3.jsonl",
+  "game": 0,
+  "turn": 11,
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 89,
+  "to_hand": [],
+  "exiled": [
+   "Misty Rainforest",
+   "Autumn's Veil",
+   "Culling Ritual",
+   "Mental Misstep",
+   "Song of Creation",
+   "Shifting Woodland",
+   "Gemstone Mine",
+   "Badlands"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 57,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Fierce Guardianship"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 58,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-alan_tnt",
+  "agent": "plan",
+  "dest": "Exile",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Flash Photography"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 26,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Polluted Delta"
+  ],
+  "exiled": [
+   "Polluted Delta"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 29,
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 42,
+  "to_hand": [
+   "Red Elemental Blast"
+  ],
+  "exiled": [
+   "Necropotence",
+   "Gitaxian Probe",
+   "Starting Town",
+   "Command Tower",
+   "Voice of Victory",
+   "Valley Floodcaller",
+   "Flare of Duplication",
+   "Mox Diamond"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 37,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Deflecting Swat"
+  ],
+  "exiled": [
+   "Deflecting Swat"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 37,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Orim's Chant"
+  ],
+  "exiled": [
+   "Orim's Chant"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 40,
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 17,
+  "to_hand": [],
+  "exiled": [
+   "Cabal Ritual",
+   "Wooded Foothills",
+   "Esper Sentinel",
+   "Marsh Flats",
+   "Faerie Mastermind",
+   "Grand Abolisher",
+   "Orim's Chant",
+   "Fierce Guardianship"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 50,
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 69,
+  "to_hand": [],
+  "exiled": [
+   "Culling the Weak",
+   "Mental Misstep",
+   "Lotho, Corrupt Shirriff",
+   "Verdant Catacombs",
+   "Scrubland",
+   "Smothering Tithe",
+   "City of Brass",
+   "Otawara, Soaring City"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "turn": 25,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Flusterstorm"
+  ],
+  "exiled": [
+   "Flusterstorm"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "turn": 33,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Arid Mesa"
+  ],
+  "exiled": [
+   "Arid Mesa"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\n7WpsqsZtdQ_rot2.jsonl",
+  "game": 0,
+  "turn": 6,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Smothering Tithe"
+  ],
+  "exiled": [
+   "Smothering Tithe"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\sZA0KqXCGrY_rot1.jsonl",
+  "game": 0,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tyler_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Borne Upon a Wind"
+  ],
+  "exiled": [
+   "Borne Upon a Wind"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent\\sZA0KqXCGrY_rot1.jsonl",
+  "game": 0,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tyler_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Culling the Weak"
+  ],
+  "exiled": [
+   "Culling the Weak"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\2iA_Jt0d6sM_rot1.jsonl",
+  "game": 0,
+  "turn": 18,
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 84,
+  "to_hand": [],
+  "exiled": [
+   "Grim Monolith",
+   "Scalding Tarn",
+   "Flare of Duplication",
+   "Chrome Mox",
+   "Nashi, Moon Sage's Scion",
+   "Timetwister",
+   "Ragavan, Nimble Pilferer",
+   "Mnemonic Betrayal"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\B421mac67IE_rot0.jsonl",
+  "game": 0,
+  "turn": 14,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-lily_malcolm_vial",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Gamble"
+  ],
+  "exiled": [
+   "Gamble"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot1.jsonl",
+  "game": 0,
+  "turn": 34,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-yidris",
+  "agent": "plan",
+  "dest": "Exile",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Arcane Signet",
+   "Imperial Seal",
+   "Valley Floodcaller",
+   "Dramatic Reversal",
+   "Verdant Catacombs",
+   "Arcane Signet",
+   "Valley Floodcaller"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot2.jsonl",
+  "game": 0,
+  "turn": 26,
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 65,
+  "to_hand": [],
+  "exiled": [
+   "Profane Tutor",
+   "Gemstone Mine",
+   "Otawara, Soaring City",
+   "Rhystic Study",
+   "Wooded Foothills",
+   "Verdant Catacombs",
+   "Volcanic Island",
+   "Elvish Spirit Guide"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot3.jsonl",
+  "game": 0,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Noxious Revival"
+  ],
+  "exiled": [
+   "Noxious Revival"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot3.jsonl",
+  "game": 0,
+  "turn": 11,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Pyroblast"
+  ],
+  "exiled": [
+   "Pyroblast"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\Bq-nFi0f1jA_rot3.jsonl",
+  "game": 0,
+  "turn": 65,
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-yidris",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Diabolic Intent"
+  ],
+  "exiled": [
+   "Diabolic Intent"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 31,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-alan_tnt",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Boseiju, Who Endures",
+   "Mistrise Village"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 36,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Windswept Heath"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Cavern of Souls"
+  ],
+  "exiled": [
+   "Cavern of Souls"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Snapback"
+  ],
+  "exiled": [
+   "Snapback"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Marsh Flats"
+  ],
+  "exiled": [
+   "Marsh Flats"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "City of Traitors"
+  ],
+  "exiled": [
+   "City of Traitors"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 39,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [
+   "Arcane Signet"
+  ],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 40,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-alan_tnt",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 16,
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 17,
+  "to_hand": [
+   "Arcane Signet"
+  ],
+  "exiled": [
+   "Mindbreak Trap",
+   "Underground Sea",
+   "Plateau",
+   "Underworld Breach",
+   "Dark Ritual",
+   "Flare of Duplication",
+   "Chrome Mox",
+   "City of Traitors"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "turn": 5,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-dallas_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "City of Traitors"
+  ],
+  "exiled": [
+   "City of Traitors"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-alan_tnt",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mana Vault",
+   "Vampiric Tutor"
+  ],
+  "exiled": [
+   "Vampiric Tutor"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "turn": 14,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-alan_tnt",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Mental Misstep"
+  ],
+  "exiled": [
+   "Mental Misstep"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "turn": 22,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Culling the Weak"
+  ],
+  "exiled": [
+   "Culling the Weak"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\n7WpsqsZtdQ_rot0.jsonl",
+  "game": 0,
+  "turn": 16,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\sZA0KqXCGrY_rot0.jsonl",
+  "game": 0,
+  "turn": 20,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tyler_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Lotho, Corrupt Shirriff"
+  ],
+  "exiled": [
+   "Lotho, Corrupt Shirriff"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_093\\sZA0KqXCGrY_rot3.jsonl",
+  "game": 0,
+  "turn": 30,
+  "card": "Demonic Consultation",
+  "player": "Ai(1)-tyler_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 57,
+  "to_hand": [],
+  "exiled": [
+   "Snapback",
+   "Mnemonic Betrayal",
+   "Wheel of Fortune",
+   "Bloodstained Mire",
+   "Force of Will",
+   "Cavern of Souls",
+   "Arid Mesa",
+   "Orcish Bowmasters"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "turn": 8,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Exile",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot1.jsonl",
+  "game": 0,
+  "turn": 28,
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 80,
+  "to_hand": [],
+  "exiled": [
+   "Wooded Foothills",
+   "Rite of Flame",
+   "City of Brass",
+   "Chrome Mox",
+   "Snap",
+   "Flusterstorm",
+   "Wheel of Fortune",
+   "Dark Ritual"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot2.jsonl",
+  "game": 0,
+  "turn": 83,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Blood Crypt"
+  ],
+  "exiled": [
+   "Blood Crypt"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\2iA_Jt0d6sM_rot3.jsonl",
+  "game": 0,
+  "turn": 44,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-rograkh_silas",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\B421mac67IE_rot1.jsonl",
+  "game": 0,
+  "turn": 5,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-lily_malcolm_vial",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Fellwar Stone"
+  ],
+  "exiled": [
+   "Fellwar Stone"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\B421mac67IE_rot3.jsonl",
+  "game": 0,
+  "turn": 30,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-lily_malcolm_vial",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Misty Rainforest"
+  ],
+  "exiled": [
+   "Misty Rainforest"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 17,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Starting Town"
+  ],
+  "exiled": [
+   "Starting Town"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 18,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Sevinne's Reclamation"
+  ],
+  "exiled": [
+   "Sevinne's Reclamation"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 70,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "turn": 17,
+  "card": "Demonic Consultation",
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 75,
+  "to_hand": [],
+  "exiled": [
+   "Enlightened Tutor",
+   "Borne Upon a Wind",
+   "Badlands",
+   "Mnemonic Betrayal",
+   "Mindbreak Trap",
+   "Chain of Vapor",
+   "Wooded Foothills",
+   "Sevinne's Reclamation"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "turn": 11,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-sterling_bluefarm",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Badlands"
+  ],
+  "exiled": [
+   "Badlands"
+  ]
+ },
+ {
+  "file": "behavior_rubric\\runs_agent_shipping\\n7WpsqsZtdQ_rot1.jsonl",
+  "game": 0,
+  "turn": 7,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Praetor's Grasp"
+  ],
+  "exiled": [
+   "Praetor's Grasp"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_B421mac67IE_rot1.jsonl",
+  "game": 0,
+  "turn": 32,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-lily_malcolm_vial",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Misty Rainforest"
+  ],
+  "exiled": [
+   "Misty Rainforest"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_B421mac67IE_rot2.jsonl",
+  "game": 0,
+  "turn": 29,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-lily_malcolm_vial",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Swan Song"
+  ],
+  "exiled": [
+   "Swan Song"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot0.jsonl",
+  "game": 0,
+  "turn": 49,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-dallas_bluefarm",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Praetor's Grasp"
+  ],
+  "exiled": [
+   "Praetor's Grasp"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot1.jsonl",
+  "game": 0,
+  "turn": 5,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-sterling_bluefarm",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Pact of Negation"
+  ],
+  "exiled": [
+   "Pact of Negation"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "turn": 11,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-dallas_bluefarm",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Plateau"
+  ],
+  "exiled": [
+   "Plateau"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "turn": 28,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Windswept Heath"
+  ],
+  "exiled": [
+   "Windswept Heath"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot2.jsonl",
+  "game": 0,
+  "turn": 42,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-alan_tnt",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Boseiju, Who Endures"
+  ],
+  "exiled": [
+   "Boseiju, Who Endures"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_CxKMqO36DdM_rot3.jsonl",
+  "game": 0,
+  "turn": 42,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-alan_tnt",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Devoted Druid",
+   "Agatha's Soul Cauldron",
+   "Chord of Calling",
+   "Heartwood Storyteller"
+  ],
+  "exiled": [
+   "Heartwood Storyteller"
+  ]
+ },
+ {
+  "file": "human_ceiling\\runs\\shim_raw_hc_sZA0KqXCGrY_rot1.jsonl",
+  "game": 0,
+  "turn": 12,
+  "card": "Tainted Pact",
+  "player": "Ai(1)-tyler_bluefarm",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Silence"
+  ],
+  "exiled": [
+   "Silence"
+  ]
+ },
+ {
+  "file": "tutor_targeting\\runs\\shim_raw_20260825_081005_205764.jsonl",
+  "game": 0,
+  "turn": 31,
+  "card": "Tainted Pact",
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Praetor's Grasp"
+  ],
+  "exiled": [
+   "Praetor's Grasp"
+  ]
+ },
+ {
+  "file": "tutor_targeting\\runs\\shim_raw_20260825_083551_090443.jsonl",
+  "game": 1,
+  "turn": 14,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Lotus Petal"
+  ],
+  "exiled": [
+   "Lotus Petal"
+  ]
+ },
+ {
+  "file": "tutor_targeting\\runs_stage1\\shim_raw_20260825_105725_744800.jsonl",
+  "game": 0,
+  "turn": 1,
+  "card": "Tainted Pact",
+  "player": "Ai(2)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Grim Monolith"
+  ],
+  "exiled": [
+   "Grim Monolith"
+  ]
+ },
+ {
+  "file": "tutor_targeting\\runs_stage1\\shim_raw_20260825_110128_362068.jsonl",
+  "game": 0,
+  "turn": 45,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 6,
+  "to_hand": [
+   "Summoner's Pact"
+  ],
+  "exiled": [
+   "Tropical Island",
+   "Culling Ritual",
+   "Tainted Pact",
+   "Demonic Tutor",
+   "Flusterstorm",
+   "Verdant Catacombs"
+  ]
+ },
+ {
+  "file": "tutor_targeting\\runs_stage2\\probeA.jsonl",
+  "game": 0,
+  "turn": 37,
+  "card": "Demonic Consultation",
+  "player": "Ai(3)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 69,
+  "to_hand": [],
+  "exiled": [
+   "Chrome Mox",
+   "The Cabbage Merchant",
+   "Mana Confluence",
+   "Arcane Signet",
+   "Demonic Tutor",
+   "Summoner's Pact",
+   "Orim's Chant",
+   "Fellwar Stone"
+  ]
+ },
+ {
+  "file": "tutor_targeting\\runs_stage2\\shim_raw_20260825_182235_357118.jsonl",
+  "game": 1,
+  "turn": 21,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 0,
+  "to_hand": [],
+  "exiled": []
+ },
+ {
+  "file": "tutor_targeting\\runs_stage2\\shim_raw_20260825_182235_357118.jsonl",
+  "game": 1,
+  "turn": 25,
+  "card": "Demonic Consultation",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "plan",
+  "dest": "Graveyard",
+  "lib_exiled": 75,
+  "to_hand": [],
+  "exiled": [
+   "Noxious Revival",
+   "Flusterstorm",
+   "Orim's Chant",
+   "Chain of Vapor",
+   "Delighted Halfling",
+   "Ancient Tomb",
+   "Emerald Charm",
+   "Ad Nauseam"
+  ]
+ },
+ {
+  "file": "tutor_targeting\\runs_stock\\shim_raw_20260825_155212_894733.jsonl",
+  "game": 1,
+  "turn": 2,
+  "card": "Tainted Pact",
+  "player": "Ai(4)-tymna_thrasios",
+  "agent": "stock",
+  "dest": "Graveyard",
+  "lib_exiled": 1,
+  "to_hand": [
+   "Scrubland"
+  ],
+  "exiled": [
+   "Scrubland"
+  ]
+ }
+]

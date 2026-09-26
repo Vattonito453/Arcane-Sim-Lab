@@ -240,8 +240,55 @@ function escapeRe(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-/** "…'s Untap step" / "…' Upkeep step" → { p, label } */
-function parsePhase(raw: string): { p: string; label: string } | null {
+/** One way a phase line can open with a player's name: `lead` is the text
+ *  before the label ("Skrat's Revenge's "), `p` the player key it stands for. */
+export interface Possessive {
+  lead: string;
+  p: string;
+}
+
+/** Every possessive a phase line can open with, longest first.
+ *
+ *  Forge writes "<name>'s Untap step", or "<name>' Upkeep step" when the name
+ *  ends in s. Deck names carry apostrophes of their own ("Skrat's Revenge",
+ *  "Yuriko's Ninjas"), so cutting at the first "'s " read "Skrat's Revenge's
+ *  Main phase, precombat" as player "Skrat" in "Revenge's main phase": the
+ *  header showed that, combat looked over at declare blockers (attack lanes
+ *  vanished), and the zone read fell back to end-of-turn state. Matching the
+ *  game's own player keys instead cannot cut inside a name. Each key is tried
+ *  with and without its Ai(n)- seat prefix, and longest first, so "Skrat's
+ *  Revenge" wins over a seat named "Skrat" when the prefix is absent. */
+export function phasePossessives(players: readonly string[]): Possessive[] {
+  const out: Possessive[] = [];
+  for (const key of players) {
+    for (const name of new Set([key, stripAi(key)])) {
+      if (!name) continue;
+      out.push({ lead: `${name}'s `, p: key });
+      if (/s$/i.test(name)) out.push({ lead: `${name}' `, p: key });
+    }
+  }
+  return out.sort((a, b) => b.lead.length - a.lead.length);
+}
+
+/** "…'s Untap step" / "…' Upkeep step" → { p, label }.
+ *
+ *  `known` is phasePossessives(game.players), built once per game. The line is
+ *  tried as logged, then without its Ai(n)- prefix, so a full key (which
+ *  tells a mirror match's two seats apart) is preferred when both carry one.
+ *  The lazy regex is a fallback for a line no known player opens, which the
+ *  adapters never produce (players come from the Turn lines that precede
+ *  every phase line); it misreads any name that carries an apostrophe. */
+export function parsePhase(
+  raw: string, known: readonly Possessive[] = [],
+): { p: string; label: string } | null {
+  const noAi = stripAi(raw);
+  for (const line of noAi === raw ? [raw] : [raw, noAi]) {
+    for (const k of known) {
+      if (line.length > k.lead.length && line.startsWith(k.lead)) {
+        return { p: k.p, label: line.slice(k.lead.length) };
+      }
+    }
+  }
   const m = raw.match(/^(.+?)'s (.+)$/) || raw.match(/^(.+?)' (.+)$/);
   return m ? { p: m[1], label: m[2] } : null;
 }
@@ -258,8 +305,13 @@ const COMBAT_PHASES = [
   "first strike damage",
   "combat damage",
 ];
-function isCombatPhase(label: string): boolean {
-  const l = label.toLowerCase();
+/** Whether a phase label (parsePhase().label, possessive already removed) is
+ *  a step in which declared attacks and blocks stay live. A label that still
+ *  carried part of a deck name ("Revenge's declare blockers step") failed this
+ *  test, which is what cleared the attack lanes at declare blockers. "End of
+ *  Combat Step" is deliberately absent: attacks clear there. */
+export function isCombatPhase(label: string): boolean {
+  const l = label.trim().toLowerCase();
   return COMBAT_PHASES.some((c) => l.startsWith(c));
 }
 
@@ -277,6 +329,7 @@ function parseDamage(raw: string): { source: string; amount: number; target: str
 
 function stepFor(
   ev: SimEvent, turn: number, active: string, phase: string, keep?: Set<number>,
+  known: readonly Possessive[] = [],
 ): Step {
   const raw = ev.raw;
   // `more` is the rest of a multi-line Forge entry (modal spell text) that the
@@ -354,7 +407,7 @@ function stepFor(
       }
       break;
     case "phase": {
-      const p = parsePhase(raw);
+      const p = parsePhase(raw, known);
       if (p) {
         step.phase = prettyPhase(p.label);
         step.op = { t: "phase", combat: isCombatPhase(p.label) };
@@ -387,16 +440,21 @@ export function buildTimeline(game: SimGame): Timeline {
   let phase = "Pregame";
   const turnsTaken = new Map<string, number>();
   const keep = ambiguousIds(game);
+  // Phase lines name their player by possessive; see phasePossessives(). Every
+  // turn's active player is added in case `players` ever misses a seat.
+  const known = phasePossessives(
+    Array.from(new Set([...game.players, ...game.turns.map((t) => t.active_player)])).filter(Boolean),
+  );
 
   for (const ev of game.events_pregame ?? []) {
-    steps.push(stepFor(ev, 0, "", phase, keep));
+    steps.push(stepFor(ev, 0, "", phase, keep, known));
   }
   for (const t of game.turns) {
     const round = (turnsTaken.get(t.active_player) ?? 0) + 1;
     turnsTaken.set(t.active_player, round);
     turns.push({ turn: t.turn, round, start: steps.length });
     for (const ev of t.events) {
-      const step = stepFor(ev, t.turn, t.active_player, phase, keep);
+      const step = stepFor(ev, t.turn, t.active_player, phase, keep, known);
       step.round = round;
       steps.push(step);
       phase = step.phase; // phase events update it; others inherit

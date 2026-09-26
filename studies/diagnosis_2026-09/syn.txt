@@ -1,0 +1,378 @@
+{
+ "root_causes": [
+  {
+   "rank": 1,
+   "title": "No combo executor: the shim treats 'assembled' as done, casts only spells from hand, and never makes a loop's activations, target choices or stop decision",
+   "symptoms": [
+    "combos: lines get assembled and then are never fired; the sim wins by combat around round 12-13, while humans win with a loop around round 5",
+    "play_logic: engines sit on the board for 15-20 player-turns; loops stop after 1-30 activations; open-ended loops run to the 900 s clock and are scored as draws",
+    "tutoring: tutored engine pieces produce nothing once found, so tutoring looks useless"
+   ],
+   "mechanism": "A line reaches the shim as a set of card names. The shim pursues it only until every piece is owned, then hands control back to stock Forge (PlanPlayerController.java:1068 'assembled, done here'). Its only action is to cast a spell from hand (castableSpell :1251 `if (!sa.isSpell()) continue;`, comboPriority walks only ZoneType.Hand at :1124). It never activates an ability, never picks a target, never casts from the graveyard, and has no stop condition or payoff step. Stock Forge scores each ability and target on its own, with no idea that the pieces form a loop. Forge does activate these cards, but aimlessly: loops that need the same target choice on every pass never start, and repeat loops stop once one more activation looks locally worthless. Only lines that finish by casting a spell (Consultation into Oracle) convert, because there the shim fires the last piece itself.",
+   "evidence": [
+    "Code: PlanPlayerController.java:1068, :1124, :1251; DeckPlan.java:208-213 reads only 'cards'. No public decision hook for targets is overridden (the shim overrides 9 of about 120 PlayerControllerAi methods).",
+    "Line-completing casts across 6 plan-seat run sets: 167 permanent completions led to 5 same-turn wins (3.0%) and a 25.7% overall win rate (the 4-seat baseline); 49 spell completions led to 25 wins, 24 of them the same turn (verify/conv).",
+    "Only 18 of 235 deck-line pairs (10 of 122 unique piece sets) can be driven by casting spells from hand. 142/235 need a non-mana activated ability, 176 need an outlet, 126 carry a prerequisite (verify/lines_exec).",
+    "Wrong target on every pass: Kiki-Jiki copied Zealous Conscripts 8 times and the copy's trigger untapped Kiki 0/8 (it untapped Rionya, Mirage Phalanx or Bartz instead). After Gaea's Cradle was tapped, an Emiel blink of Derevi untapped Cradle 0/216 times. Bytecode: ControlGainAi picks opponents' permanents; TapOrUntapAi reuses tap-the-opponent logic.",
+    "Aimless loops (seat-turns with 5 or more activations, then same-turn wins): Emiel 1/37, Staff of Domination 2/17, Clock of Omens 4/27, Brain Freeze recast 3+ times 0/62. Where the byproduct is combat, loops do finish: Godo+Helm 59 same-turn wins (28/32 once Helm is actually on Godo), Magda treasure engine 35/70.",
+    "Funnel on the 3 agent_viability arms: plan seats assemble 191/384 (49.7%) against stock 236/1152 (20.5%), yet win share is 21.9% vs 22.6%. Genuine executions are about 25-32 of 191.",
+    "Humans: 10 of 12 video wins were loops executed on the turn the last piece landed; human mean win round 5.0 against stock 12.7 (recomputed in winner-own-turn units).",
+    "Convert-on-assembly upper bound for agent093: mean win round 13.1 -> 8.8 over all lines, or 10.4 counting kill-clause lines only. Assembly speed is the other half of the gap."
+   ],
+   "already_tried": "Stage 5 (54eb2f6, 2026-08-01) designed pursuit up to assembly and then 'hand back to stock'. A18/A19 (02e4451, 08-24) made the tutor gate and exempted loop triggers from the triggerMiss roll. 0.9.3 (37a08a3, 08-29) added the piece-casting veto. Conversion was named the binding gap on 08-24 (human_ceiling RESULTS), 08-26 (agent_viability RESULTS, commit 6171ef4 'conversion becomes the wall'). No conversion task was ever written; 0 of 23 shim commits execute a line. Forge's lookahead was never used in a study. The one scratch experiment in this investigation (setUseSimulation on, 2 games) crashed once (GameCopier 'Couldn't map Goblin Token') and timed out once (585 of 915 s inside simulation, one decision took 361 s).",
+   "leverage": "Thin shim mechanism plus data. Python compiles each executable line into a step script: ordered actions (cast X, activate Y targeting Z, repeat until N or a condition, then the outlet W), zones, prerequisites, stop condition. The shim interprets it with public Forge APIs. Activations: return the named non-mana SpellAbility from chooseSpellAbilityToPlay after canPlay() and ComputerUtilCost.canPayCost(); activation targets can be set in the same override. Stack-trigger targets: chooseTargetsFor is reached only when the ability has a TargetingPlayer param, so the hook is orderAndPlaySimultaneousSa (set targets, then ComputerUtil.playStack). That replaces super rather than calling it first, so it needs a thin-adapter review. Iteration cap: decline the optional loop trigger in confirmTrigger once the cap is reached. Forge public API: GameSimulator.simulateSpellAbility as a bounded, try/catch-wrapped check that a planned line finishes. Not as the pilot (2/2 experimental games failed).",
+   "unknowns": "No thin interpreter has been prototyped, so how much conversion or win rate it buys is unmeasured. Open questions: whether overriding orderAndPlaySimultaneousSa reliably captures loop triggers and still counts as a thin adapter; whether Forge's per-API sub-choosers behave once a SpellAbility is forced; how reliably free-English Spellbook descriptions compile into structured steps; CPU cost per turn. Also, stock opponents leave 61-69% of assembled lines untouched for a round (unverified), so fixing conversion alone may make the sim overrate combo decks.",
+   "confidence": "high",
+   "source_findings": [
+    "lines_structurally_unexecutable",
+    "conversion_no_execution_model",
+    "conversion-never-built",
+    "graveyard-and-activation-loops-undriveable",
+    "activated_ability_engines_undriven",
+    "started_loops_stall_on_target_choice",
+    "funnel_breaks_at_conversion",
+    "runaway_loops_scored_as_draws",
+    "simulation_lookahead_not_viable_as_pilot",
+    "lookahead-never-tried",
+    "unsteered_controller_surface",
+    "threat_recognition_masked"
+   ]
+  },
+  {
+   "rank": 2,
+   "title": "The plan ships Spellbook's whole catalogue as flat card sets: no win-versus-engine split, no named outlet, no order or zone, no executability filter",
+   "symptoms": [
+    "combos: the AI chases engines (infinite mana, ETB, blink) as if they were kills, and 7 of 32 cEDH decks carry no win line at all",
+    "tutoring: about 70% of combo casts and tutor targets go to engine-only pieces; the outlets that would finish the engines are valued at 1 and never fetched",
+    "combos: human win lines are missing their finisher (Derevi needs Nadu plus Blind Obedience; Sisay needs Deadpool; Cabbage needs Walking Ballista)"
+   ],
+   "mechanism": "combos._slim keeps card names, produces and some text, and throws away zoneLocations, template requirements and easyPrerequisites. deck_plan.py:295-301 then turns every 'included' Spellbook variant into a line: sorted by piece count, with no cap, no dedupe and no filter on what it produces. The shim reads only the names (DeckPlan.java:208), so an infinite-mana engine and a real kill look identical. Spellbook expects the player to pair an engine with a payoff. Nothing in the plan does that pairing, and the payoff card in the deck gets search value 1.",
+   "evidence": [
+    "Code: deck_plan.py:295-301; combos.py:90-101; DeckPlan.java:208-213 ('produces' appears only in a comment at :28).",
+    "Shipped plans (runs_agent_shipping/plans): 168 of 238 lines (71%) produce no win under a lenient definition (which counts infinite combat, hasty tokens and opponent mill). Only 17/238 literally say 'Win the game', and 16 of those are Oracle + Consultation/Pact/Hermit Druid. 7/32 decks have no win line: derevi, nadu, dexter_kinnan, isaac_yisan, matt_sisay, kinnan, natalie_magda.",
+    "Of 173 'non-win' lines, 111 are one outlet short and that outlet is already in the deck. Thrasios, Finale of Devastation, Walking Ballista and Grapeshot sit at search value 1, and tutor_steer picked them 0 times in about 2,100 plan searches.",
+    "Effort goes to engines: 276/385 combo_casts, 288/426 tutor_cast targets and 529/866 tutor_steer picks hit pieces that appear only in resource lines (pooled over 4 arms).",
+    "Assembled engine lines win at baseline: 36/143 plan seat-games (25%). Assembled win or combat lines: 29/58 (50%). Nothing assembled: 47/311 (15%). Games ran a median of 15.5-20 player-turns after the first engine line assembled.",
+    "Dead lines kept: Tainted Pact + Oracle is in 8 decks, but Tainted Pact exiled at most 1 card in 168 of 168 resolutions. isaac_yisan ships 29 lines; there are 3 exact duplicates.",
+    "Human acceptance check: of 11 human combo wins, 5 are present as lines. 3 clearly lack an outlet the deck contains. The rest fail on decklist fidelity (Rog/Thras is missing Six; Kinnan is the wrong build) or have no label (Magda g1)."
+   ],
+   "already_tried": "engine/combos.py has one commit ever (0834ece, 2026-07-31); the line source has never been revised. For precons, a 'synergy lines' fallback was built on the false 'zero variants' premise. It made prediction worse (rho 0.255 -> 0.142) and was not shipped. No produces filter has ever existed.",
+   "leverage": "Data only (Python, deck_plan.py/combos.py). Keep the full Spellbook variant. Classify each variant as win, engine or lock, treating infinite combat phases, infinite hasty tokens and infinite power as wins. Compose engine lines with an outlet already in the deck, and give outlets real search value. Emit order, zone and a final-piece flag per piece, plus prerequisites and a stop condition. Drop or mark Tainted Pact + Oracle and RemoveDeck-blocked lines. Cap and dedupe lines. Use the labelled human win lines as the acceptance set. Hazard: under today's shim, adding Thassa's Oracle as a line piece would get it cast early and 'assembled'. Outlet data must ship together with sequencing and the executor (RC1, RC7).",
+   "unknowns": "No simulation measured the win-rate effect of rebuilt lines. The 71% figure depends on the classifier (71% lenient, 93% strict). The outlet list is hand-picked (126/168 or 107/168 matched by type; the investigator's 151 was not reproducible). Whether Spellbook's feature/template graph supports automatic outlet composition is unchecked.",
+   "confidence": "high",
+   "source_findings": [
+    "resource-only-lines",
+    "nonwin-lines-drive-tutors",
+    "engine-lines-without-win",
+    "combo-list-is-not-wincons",
+    "human-win-lines-missed",
+    "prereqs-templates-dropped",
+    "no-cap-dedupe-staleness",
+    "executability_blind_line_choice"
+   ]
+  },
+  {
+   "rank": 3,
+   "title": "Forge's AI hard-excludes every card scripted AI:RemoveDeck:All, which blocks cEDH combo pieces, some tutors and about 12% of cEDH nonland cards, for opponents too",
+   "symptoms": [
+    "play_logic: stock seats hold about 2.3 dead cards per cEDH game; about 3 nonland cards per precon deck are never cast (Signets, Beast Within, Toxic Deluge); one precon commander (Winter, Cynical Opportunist) is never cast",
+    "combos: engines built on flagged activated abilities (printed Clock of Omens, Devoted Druid, Quirion/Scryb Ranger, Aphetto Alchemist) are never activated by any seat; stock never casts Demonic Consultation",
+    "tutoring: stock never casts Vampiric Tutor, Summoner's Pact, Diabolic Intent",
+    "measurement: stock 'opponents' never cast Consultation, LED, Ad Nauseam, Doomsday or Vampiric, so the cEDH gauntlet is weaker than its decklists"
+   ],
+   "mechanism": "AiController.getSpellAbilityToPlay runs saList.removeIf on every spell or ability whose host card's own script carries AI:RemoveDeck:All, and the priority comparator subtracts 10 for them. The removal is unconditional (no profile switch). Only the counterspell pre-pass, ETB counters, PlayBeforeLandDrop and copies of flagged cards escape it. The shim's castableSpell checks only canPlay/canPayCost, so it rescues flagged SPELLS that are in plan lines or tutor lists. It never offers activated abilities, so flagged engines stay dead.",
+   "evidence": [
+    "Bytecode (javap, 2.0.13): AiController.getSpellAbilityToPlay offsets 258-264 removeIf(lambda$getSpellAbilityToPlay$8 = isLandAbility() || ComputerUtilCard.isCardRemAIDeck(host)); saComparator offsets 122-128 give -10. canPlaySa and SpellAbilityPicker never read the flag.",
+    "Stock cEDH seats cast 178/3430 (5.2%) of the flagged nonland cards they drew; 175 of those were counterspells cast through the unfiltered pre-pass. Unflagged: 11110/17604 (63.1%). Control group of RemoveDeck:Random cards, which are not filtered: 2727/3914 (69.7%). Precon stock: 24/2570 (0.9%) vs 71.8%.",
+    "Natural experiment with activations: printed flagged permanents 1/459; copies of the same cards 10/16. Printed Clock of Omens 0 activations in 135 battlefield entries, against 344 activations by Sculpting Steel, Metamorph and Impersonator copies.",
+    "Demonic Consultation: 0 stock casts in 69+ seat-games holding it; 51 plan casts through the shim. Thassa's Oracle cast by stock in 138 seat-games, 0 Oracle wins.",
+    "Scope: 91/238 cEDH lines (25/32 decks) contain a flagged piece. 52 are hard-blocked for both seat types (flagged non-mana activation), 10 only for stock (cast-only piece), 29 have only mana abilities flagged. Flagged cards are 12.1% of cEDH nonland cards (285/2362; rograkh_silas 22.1%). Unflagged: Oracle, Tainted Pact, Breach, Kiki-Jiki, Heliod, Ballista, Dramatic Reversal, Portal.",
+    "Plan seats cast 24.6% of flagged cards they hold, and 5.6% on precons (93 of 133 precon flagged casts were incidental instant_hold substitutions).",
+    "Inherited follow-on errors (unverified): 30% of stock classic rituals wasted, with a flagged card in hand in 51/51 reconstructed cases; stock discards line pieces or tutors at cleanup 0.27 times per seat-game; about 10% of precon turns end with a castable permanent unspent, about half of them flagged-only."
+   ],
+   "already_tried": "Nothing. No repo file, doc, test or study mentions RemoveDeck or isCardRemAIDeck. The shim's spell rescue is incidental to combo_cast/tutor_cast.",
+   "leverage": "Thin shim mechanism plus data. After super.chooseSpellAbilityToPlay, collect the plan seat's flagged SpellAbilities that plan data names, including non-mana activated abilities. Evaluate each with the public getAi().canPlaySa() (unfiltered) and take it when it passes and plan timing data allows. Cards flagged because Forge's per-API logic is weak (Consultation NameCard, Ad Nauseam, Final Fortune, Pacts) need timing preconditions as data or they will fire suicidally. Decide explicitly whether opponent seats also get readmission (realistic opponents versus a stock baseline). Do not edit res/ card scripts. Product: list flagged cards per deck (from cardsfolder.zip or Deck.getUnplayableAICards) and keep them out of 'cold' and cut verdicts.",
+   "unknowns": "Whether readmitted cards are played sensibly: no sim has tested canPlaySa-driven readmission. The win-rate cost of the dead cards (paired A/B needed). Whether flagged mana abilities are usable in payment: LED shows 0 MANA uses. How stock seats activated a Clock 32 times, possibly through the cost-payment path. The ritual-waste link is inferred, not read from ManaAi source.",
+   "confidence": "high",
+   "source_findings": [
+    "remaideck_hard_filter",
+    "ai-blind-cards",
+    "removedeck_all_pieces_never_activated",
+    "wasted-rituals",
+    "cleanup-discards-combo-pieces",
+    "unspent-mana-castable-held",
+    "parity_predetermined_by_forge_rules",
+    "product_unplayable_cards_undisclosed",
+    "product-misreads-ai-blind-cards",
+    "forge_has_no_combo_knowledge"
+   ]
+  },
+  {
+   "rank": 4,
+   "title": "Tutor targets are valued by Spellbook membership and keyword regex, not by what this pilot can convert, and combo steering has absolute priority",
+   "symptoms": [
+    "tutoring: plan Magda discards stock Forge's Portal to Phyrexia pick every time and wins half as often",
+    "tutoring: engines, draw engines and real outlets sit at value 1, so early tutors never fetch an engine (humans do so half the time)",
+    "play_logic: 'loses the game' drawback text scores as a finisher, so plan seats fetch Pact of Negation and lose to their own Pacts and Final Fortunes"
+   ],
+   "mechanism": "deck_plan.py:375-393 gives value 8 to any piece of any Spellbook line, and to any card matching the finisher regex ('loses? the game', 'combat damage to a player'). Big bombs get 6; engines and most outlets get 1. In the shim, a sighted line's missing piece wins outright (PlanPlayerController.java:1792), and a plan pick wins whenever its value is strictly higher (:1803). So any engine piece beats a proven finisher, even when Forge cannot run the line the piece belongs to.",
+   "evidence": [
+    "Magda, 3 with-lines agent_viability arms: stock picked Portal and the shim overrode it 47/47 times (33 combo-mode, 14 plan-mode); 68/68 across 5 arms. The nocombo arm, with no lines, still overrode 12/12 through plan-mode values 8 over 6.",
+    "Plan-piloted Magda 7/48 (15%) vs stock-piloted Magda 47/144 (33%), Fisher p=0.016, lower in all 3 arms. The gap sits in games where Magda's tutor fired: 5/28 vs 43/79 (p=0.0009). Plan Magda fetched Portal from the library 0 times in 72 games.",
+    "Portal on the battlefield predicts stock Magda wins, 61/106 vs 5/86. This is confounded (it mostly means Magda came online), so it is not Portal's causal lift.",
+    "Finisher regex (unverified): 72/363 value-8 targets are in no line (Pact of Negation in 17/32 decks, Final Fortune, Ragavan). Pact of Negation fetched 33 times, 18 never cast. Plan seats lose to their own spell 8/256 games vs stock 1/768.",
+    "Engine tier missing (unverified): early (R1-3) tutors fetched engines 9/18 times for humans, 0/175 for plan seats, 9% for stock. Rhystic Study, Mystic Remora, Esper Sentinel, Necropotence and Seedborn Muse are value 1 in every deck that runs them.",
+    "Correction: about 3 in 4 of the 'non-win' steers go to real routes whose outlet is in the deck but that the Forge pilot cannot execute. Fetch class alone barely moves conversion (win-line piece 17% vs non-win piece 15% win within 2 rounds). So the fix is to value pieces by pilotability, not to demote engines wholesale.",
+    "plan_feedback.py:196-205 raises finisher-hinted targets by 2 whenever a deck's wins are 70%+ in the combat/life bucket. That is essentially every deck, so once it has data the only learning loop pushes tutors further from combo pieces (store empty locally; production unchecked)."
+   ],
+   "already_tried": "tasks/20 Stages 0-2 (shim 0.5.0, 2026-08-24..26) added plan-driven search steering. The Portal override was accepted as 'Both are defensible' (tasks/20:139-141). Stage 2 shipped although mean win round moved the wrong way (11.75 -> 13.29). plan_feedback (08-30) added the combat-majority nudge.",
+   "leverage": "Data (Python) plus a data flag read by an existing shim branch. Value pieces by line executability and measured conversion lift from our own logs. Keep a finisher tier for proven closers (Portal-class cards). Restrict combo-mode steer priority to executable win lines via a per-line flag. Add an engine/opener tier that decays after round 3. Drop self-loss and saboteur text from the finisher regex. Disable plan_feedback's combat nudge until the win-method label is fixed.",
+   "unknowns": "No Magda A/B isolates the override from other plan-seat behaviour. Generality: every Portal override is a Magda deck; of the other 7 decks, 2 gain significantly and none loses significantly. The n7 pod's other decks (rog_ishai, selvala) still lose about 11 pp with lines off, for unexplained reasons (plan-mode steering, mulligan and holds all stay on in nocombo).",
+   "confidence": "medium",
+   "source_findings": [
+    "targets-override-convertible-card",
+    "magda_portal_displaced_by_dead_line",
+    "tutors-chase-nonwinning-pieces",
+    "finisher-regex-false-positives",
+    "self_loss_win_cards",
+    "tutor_opener_targets",
+    "feedback-reinforces-combat",
+    "feedback-loop-pushes-tutors-to-finishers",
+    "win-method-classifier-and-feedback-bias"
+   ]
+  },
+  {
+   "rank": 5,
+   "title": "The shim's own tutor-cast decision has no model of reach, zone or mode, and fires only when a line is exactly one piece short",
+   "symptoms": [
+    "tutoring: most deliberate combo tutors are spent on a false premise; the piece is often unreachable by type, already in the graveyard, or the tutor never searches at all",
+    "tutoring: tutors act as closers, because the only trigger is 'one piece short'",
+    "combos: commander-as-tutor opens line pursuit from turn 0 for Magda and Godo and casts pieces early"
+   ],
+   "mechanism": "lineOfSight treats any plan tutor in hand, or a commander in the command zone (PlanPlayerController.java:1051-1055), as able to fetch any missing piece from any zone (:1063-1070). tutor_cast then casts the first castable plan tutor (:1159-1176) with no check that it can reach the piece. castableSpell hands Forge a raw SpellAbility (:1249-1262), which skips the AI's own target and X choice and casts transmute cards as their spell half. deck_plan.py:113-117 says outright that the tutor list is 'knowingly a little optimistic'.",
+   "evidence": [
+    "Against Forge's own ChangeType restrictions, 316/718 tutor_cast events (44.0%) used a tutor that cannot fetch the sought piece. Forge confirms it: 221 of 222 such casts that resolved a search did not offer the piece.",
+    "285/498 (57%) resolved tutor_cast searches could not deliver the piece; 98 casts sought a piece already in the graveyard or exile.",
+    "Mode and X failures: 26 casts never reached the stack ('failed to target': Dizzy Spell and Muddle the Mixture cast as spells; Intuition and Gifts with no opponent target). All 18 shim casts of X-cost tutors (Chord, GSZ, Wargate) resolved at X=0, against 17/307 X=0 for stock casts of the same cards.",
+    "Commander gate: Magda's command-zone presence opened the gate in 32 of 37 Magda games that were open by turn 4, and was needed for 15/30 Magda combo_casts. Imperial Recruiter and Tezzeret, Cruel Captain were cast 'seeking Helm of the Host' 13 times; neither can fetch it.",
+    "Gate shape, corrected for commanders: among plan-seat turns ending with a tutor in hand, 36-41% are two pieces short (55% in rubric_ship) and 42-54% are one short with the gate open but no tutor cast. Decline reasons are not logged; 237/502 eligible turns had a legal, land-affordable tutor that stayed uncast (unverified; tutor keep-weight 5 ties 17-37 cards, strict inequality at :1167-1168).",
+    "Scope: tutor_cast decides 419/858 (49%) of plan-seat tutor casts in the cEDH arms, and 0-1 casts per 768 precon games."
+   ],
+   "already_tried": "The A18 gate (02e4451, 2026-08-24) is unchanged since. tasks/20 changed what searches pick, not when or whether to cast. Every arm from 0.5.0 to 0.16.0 ran identical tutor-cast logic.",
+   "leverage": "Data plus a thin shim check. deck_plan emits per-tutor reach (types, MV/power/colour caps, destination, mode: spell, ETB, activated, transmute), or the shim tests the piece against the tutor's ChangeZone valid-type through public API. Pieces outside the library count as unreachable. Let Forge's AI finish X and targets, or skip such tutors. Tie commander tutor status to its zone. Log the reason for each decline. Only after reach works, add an opener window as a data dial (for example tutorOpenDistance, or an engine target worth more than the stock pick).",
+   "unknowns": "Why eligible tutors go uncast (weight tie, mana or timing) cannot be told from logs. The win-rate effect of fixing reach is unmeasured. Stock-seat fetch attribution is inferred from zone moves.",
+   "confidence": "high",
+   "source_findings": [
+    "tutor-cast-cannot-reach-piece",
+    "tutor-restrictions-missing",
+    "tutor_cast_ignores_reach_and_commander_gate",
+    "one-short-gate-closer",
+    "tutor-weight-tie",
+    "regex-misses-and-mislisted-tutors"
+   ]
+  },
+  {
+   "rank": 6,
+   "title": "The research system could not see the combo and tutor failures, so two months of work went to combat and timing",
+   "symptoms": [
+    "combos, tutoring and play_logic all persisted because every study was judged on metrics that are blind to them",
+    "measurement: 'parity with stock' was read as 'the agent does nothing', when it was +18 pp on Oracle decks and -7 pp on the rest"
+   ],
+   "mechanism": "Every acceptance gate was pooled win share against stock, correlation with precon humans, behaviour-marker rates or mechanism self-checks. Most games ran on precons, where the combo and tutor code essentially never fired (partly because of a parse bug). No study measured conversion, win round against humans, win method, or whether Forge was willing to play the cards the plan needed. The project correctly concluded on 08-24/08-29 that the gap is conversion and strategy content, then built combat and timing features for the next month.",
+   "evidence": [
+    "0 of about 10 acceptance gates (tasks 07, 20, 21, 23, engine A/B) measure conversion or win round. The rubric's 76 criteria cover blocking, attacking, interaction and mulligans only.",
+    "Pooled parity hides opposite effects: Oracle decks plan 20/96 vs stock 9/288 (+17.7 pp, +4.1 SE); the other six decks 64/288 vs 251/864 (-6.8 pp).",
+    "Population: on-disk study corpus 6,135 games; combo- or tutor-focused runs are 452-708 (7-12%). Precon agent arms logged combo_cast 0-4 and tutor_cast 0-1 per 768 games; the 1,536-game overnight ablation logged 2 combo casts and 1 tutor cast.",
+    "The only lever that moved win speed toward humans was combo pursuit: 15/93 plan wins by round 6 vs 6/308 stock (p about 2e-6), almost all Oracle. The study read it as a 3.2 pp cost and nearly dropped it.",
+    "After 08-29: comboPriority, lineOfSight and tutor_cast untouched; combos.py untouched since 07-31; none of the 1,289 study games run after 08-29 came from a combo or tutor study. Shipped work was 0.10.1 re-aim, 0.14.0 attack targeting, 0.15.0 instant hold and the 0.16.0 combat solver, prompted by the precon backlog, replay callouts and an outside note.",
+    "No study measured Forge-side refusals: RemoveDeck, the MAIN2 tutor gate, KeyCards, and setUseSimulation have 0 mentions in the repo.",
+    "The human decision corpus was never built: 12 cEDH video games with about 12 expert-labelled decisions, plus 6 midrange tallies. The planned self-recorded capture never happened."
+   ],
+   "already_tried": "Nine or more arms (personality dials, hold-back, blockiness, synergy lines, split attacks, 0.15.0 hold, 0.16.0 solver) and the 1,536-game overnight run were all judged on pooled win share or precon correlation. The conversion design was named twice and never tasked.",
+   "leverage": "Product and reporting (Python/harness, no boundary issue). Adopt a combo scorecard for every AI change on combo-live pods: conversion rate by line class, share of wins by round 6 and mean win round against the human 5.0, non-combat combo wins, tutor timing and targets, Forge-refusal rates (flagged cast/activation rate, tutor phase, tutor pick type). Report per deck, stratified by line executability. Build a seeded-board scenario harness. Keep precons for prediction only. Freeze combat work.",
+   "unknowns": "The 12 human games are creator-selected (biased toward fast, exciting games) and several decklists drift, so the true human distribution is unknown. Whether the owner can record 20-30 labelled games is unknown.",
+   "confidence": "high",
+   "source_findings": [
+    "effort-went-to-combat-after-own-conclusion",
+    "metrics-cannot-see-combos",
+    "precon-population-blind-to-combos",
+    "parity_is_two_opposite_effects",
+    "parity-hides-opposite-deck-effects",
+    "parity_masks_opposite_deck_effects",
+    "combo-pursuit-only-lever-that-moved-win-round",
+    "studies-measure-wrong-axes",
+    "rubric_blind_to_the_gap",
+    "human-decision-corpus-never-built",
+    "conversion-rate-measured-worse-than-stock"
+   ]
+  },
+  {
+   "rank": 7,
+   "title": "Forge's own tutor AI waits for main phase 2, grabs the best creature, and the data hooks Forge provides to change that are unused",
+   "symptoms": [
+    "tutoring: stock tutors are cast in main phase 2, where most fetched cards cannot be used that turn; upkeep and in-response tutoring (the human pattern) does not happen",
+    "tutoring: generic tutors fetch Spirit Guides and big creatures instead of the deck's key cards"
+   ],
+   "mechanism": "ChangeZoneAi.hiddenOriginCanPlayAI refuses a library-to-hand tutor before MAIN2 unless it is the only card in hand, and refuses library-to-library tutors (Vampiric, Mystical, Worldly, Enlightened, Imperial Seal) before MAIN2 on any turn. Only an ActivationPhases param or AILogic AnyMainPhase changes this, and only Karn the Great Creator sets AnyMainPhase. With no KeyCards set, the chooser falls back to the best creature. Forge has no profile key or AILogic about combos or tutoring, so personality dials cannot reach any of this.",
+   "evidence": [
+    "Bytecode: ChangeZoneAi.hiddenOriginCanPlayAI offsets 946-1056; 'AnyMainPhase' appears only in ChangeZoneAi and only karn_the_great_creator.txt sets it.",
+    "Two corpora (runs_016_engine, runs_015_default): stock hand tutors 171/172 in MAIN2 (the exception had hand size 1); stock library-top tutors 263/269 in MAIN2, 0/269 before it. Control: library-to-battlefield tutors take the same path but are exempt, and 292/395 were cast before MAIN2.",
+    "Cost: stock hand-tutored cards went unused that turn 51/72. Upkeep library-top casts delivered the card the same turn 10/25 for plan seats, against 1/102 for stock. Off-turn tutor spells: 3-6% in the sim vs 9/29 (31%) for humans.",
+    "Correction: plan seats get past the gate on 50-55% of their tutors, yet their mean cast round barely moves (hand tutors 7.2 vs 7.8, library-top 6.0 vs 6.2). So the gate is a within-turn defect, not the main cause of 'closer' behaviour.",
+    "Default pick (unverified, from bytecode plus logs): 186/195 (95.4%) of stock generic tutor fetches were creatures (Elvish/Simian Spirit Guide, Nashi, Hullbreaker Horror). The chooser reads Deck.getKeyCards() from .dck [metadata] KeyCards= first. 0 decks write it.",
+    "Forge has 0 of 122 AiProps keys and 0 of 344 AILogic values about combos or tutoring; SimLabHuman.ai differs from Default.ai only in two counter chances."
+   ],
+   "already_tried": "None. The 0.15.0 instant hold addressed instant-speed answers, not tutors. KeyCards, AnyMainPhase, ActivationPhases and per-card SVars have never been used.",
+   "leverage": "Forge public API and data, zero Java for the first step: write KeyCards= (finisher pieces first) into staged .dck metadata. That also improves stock opponents, so decide deliberately. Then per-instance SpellAbility.putParam('ActivationPhases', ...) on the plan seat's own tutor SAs; AnyMainPhase alone does not clear the library-to-library branch. Then a shim 'tutor window' at an opponent's end step or own upkeep, driven by plan data.",
+   "unknowns": "Side effects of putParam after card construction in ChangeZoneAi's AILogic branches. KeyCards ordering policy, since the list is static and ordered. Whether the gate causes tutors to sit in hand across turns (not measurable without mana data).",
+   "confidence": "high",
+   "source_findings": [
+    "tutor_main2_rule",
+    "forge-main2-tutor-schedule",
+    "tutor_target_creature_default_keycards_unused",
+    "card_hint_channel_unused",
+    "forge_has_no_combo_knowledge",
+    "tutors-still-closers-and-a-false-stock-claim"
+   ]
+  },
+  {
+   "rank": 8,
+   "title": "The one line that converts (Consultation + Thassa's Oracle) works through an unintended stack check and also decks its own pilot",
+   "symptoms": [
+    "combos: the only human-speed wins in the whole corpus come from this line, and it self-decks about once for every two wins",
+    "play_logic: Thassa's Oracle is cast as a bare creature 53 of 92 times, burning the win condition"
+   ],
+   "mechanism": "comboPriority's guard `if (!getGame().getStackZone().isEmpty()) return stock;` (PlanPlayerController.java:1094) checks the zone that holds spell cards, not MagicStack, where triggers live. So the shim can cast Consultation while Oracle's ETB trigger is pending, which is the correct human line, even though the commit meant 'only on an empty stack'. The line model has no order and no notion of a spent trigger. The shim casts Oracle early as a 'developing permanent' (:1136), passes stock's own Oracle casts through (:1107), and later counts an Oracle already on the battlefield as a live piece. It then fires Consultation into an empty trigger window and exiles its own library.",
+   "evidence": [
+    "Oracle wins: 25, all plan seats, 0 by stock (stock never casts the flagged Consultation). Median round 6.5 across all 8 run sets (5.0 in the 20-win subset) vs 11.5 for all other wins.",
+    "49 plan Consultation casts: 31 in response to the Oracle trigger (25 won, 3 failed because stock Forge named a card still in the library, 2 countered); 15 after the trigger resolved (12 decked); 3 into an opponent's Torpor Orb (2 decked). 14 self-decks in total.",
+    "53 of 92 plan Oracle casts spent the ETB with no win attempt: 13 chosen by the shim's combo_cast, 40 stock picks let through at :1107.",
+    "Example: runs_015_default cell_2iA_Jt0d6sM_rot3 g3, seq 279 Oracle cast, 281 trigger, 283 Consultation, 293 win. Same file g11: Oracle t17, Consultation t21, lost to an empty library.",
+    "MagicStack bytecode: triggered abilities go only onto the Deque; getStackZone() receives spell cards only."
+   ],
+   "already_tried": "Stage 5's 'completes' path (54eb2f6) and the 0.9.3 veto. Nothing has addressed ordering or spent triggers.",
+   "leverage": "Data plus a thin shim rule. A per-piece fire-last flag and zone from Spellbook's zoneLocations; hold Oracle until the exiler is castable in the same window; never count a spent-ETB Oracle as online; check for static suppressors (Torpor Orb); steer Consultation's card name (chooseCardName is not overridden). Warning: switching :1094 to getStack().isEmpty() alone would close the only winning window and turn this line into a guaranteed self-deck.",
+   "unknowns": "Whether the trigger is pending (not yet on the stack) when the shim picks Consultation is inferred from log sequence numbers, not Forge source. The line exists in about 5-8 cEDH decks, so the win-rate ceiling of a fix is narrow.",
+   "confidence": "high",
+   "source_findings": [
+    "oracle_line_works_by_accident_and_self_decks",
+    "oracle-cast-early-self-decks",
+    "oracle_sequencing",
+    "replay-misplays-unflagged"
+   ]
+  },
+  {
+   "rank": 9,
+   "title": "Input fidelity: the sim and the combo lookup silently receive different decks than intended",
+   "symptoms": [
+    "play_logic: 23 of 32 cEDH study decks played with missing cards, often lands; both Ral decks had no commander",
+    "combos: the Ral storm line and every precon combo were never really tested; 'Forge cannot pilot storm' and 'precons have no combos' are artifacts"
+   ],
+   "mechanism": "Forge 2.0.13 refuses any double-faced card written 'Front // Back' and logs it only to stderr, which run_sim discards on success. Split cards written 'A // B' load fine. The study deck builder (make_dck.py:53-56) returns full names for every DFC. convert_decklist passes pasted names through unchanged, and Spellbook line names arrive as 'Front // Back' while the shim matches Card.getName() exactly. Separately, combos.parse_dck keeps Forge's '|SET|art' suffix, so Spellbook recognised no precon card. The empty answer was cached forever and written up as fact.",
+   "evidence": [
+    "16 distinct DFC names refused, covering 48 slots across 23/32 cEDH decks. joseph_ral: 0 command-zone exits in 30 games, exactly 93 distinct cards seen; Ral and Birgi appear in 0 zone records. Natural control: DFCs written by front face only appear in 407 zone records.",
+    "The Birgi + Seething Song + Reiterate plan line could never fire. studies/human_ceiling/RESULTS.md:15 blames Ral's 0 sim wins on 'Forge cannot pilot storm'.",
+    "Precon suffix: 38 of 39 cached precons are empty with identity 'C'. A live re-query with names stripped finds 14/66 precons with 26 included variants and 65/66 with 1,650 almost-included. The suffixed control reproduces the empty answer. The wrong claim is repeated at deck_plan.py:160-163 and :395-397, tasks/20:323-326, run_pilot.py:4-5 and agent_viability/RESULTS.md:10-11.",
+    "Scope: the suffix exists only in Forge's bundled precons, not in user imports. Even fixed, 52/66 precons still have no included lines."
+   ],
+   "already_tried": "None. PLAN.md:69 promised a card-support check at conversion time, but it passes DFCs because their script filenames look like split cards'.",
+   "leverage": "Data/Python only: normalise transform and modal names to the front face (keep ' // ' for split cards) in convert_decklist, the study converters and plan line names; make run_sim fail or warn on 'unsupported card' stderr; strip '|...' in parse_dck and drop the 38 bad cache entries; re-run the Ral pods before quoting the storm conclusion.",
+   "unknowns": "How many production imports carry ' // ' names, and whether Moxfield/Archidekt exports use them (no network check).",
+   "confidence": "high",
+   "source_findings": [
+    "forge-drops-dfc-names",
+    "precon-suffix-parse-bug"
+   ]
+  },
+  {
+   "rank": 10,
+   "title": "The shim's non-combo decision layers use the wrong proxies and add errors of their own (humanization dials, keep-weights reused as threat and cast priority)",
+   "symptoms": [
+    "play_logic: moved attackers suicide, needless chump blocks, free counterspells spent on mana rocks, own combo pieces left unprotected, fast-mana hands shipped"
+   ],
+   "mechanism": "splitAttack and kingmakerReaim move attackers with only a legality check. Voluntary chumps fire at chumpiness 0.15, amplified by the 0.16.0 solver. The threat list is built from opening-hand keep-weights (deck_plan.py:430), so opponents' fast mana scores 8. Role ordering labels free counterspells 'enabler' at value 1. The mulligan counts lands, not mana sources. These are shim-introduced or proxy-driven, and they net out against the small blocking gain. That fits the repeated win-rate parity.",
+   "evidence": [
+    "All unverified by the adversarial pass. Split-moved attackers die for nothing 9.4%, kingmaker moves 7.7%, unmoved 2.8% (precon agent015); cEDH015 moved 9.8% vs 1.0%. Moves are gated only by canAttack (PlanPlayerController.java:536, :748).",
+    "Needless chumps per seat-game on cEDH: plan 0.30-0.63 vs stock 0.08-0.09. Free blocks recovered: only about 0.04-0.08 per seat-game.",
+    "counter_fire targets a mana source 73/209 times (Mana Vault 11, Lotus Petal 10, Sol Ring 7); stock spends 20% of counters on mana sources.",
+    "When a combo piece or commander was countered while the caster held a free counterspell, the sim responded 1/39 times; humans pushed about half their wins through with protection.",
+    "Mulligan: 69/228 shipped hands had 1 land or fewer but 3+ mana sources; 0/384 keeps at 5 cards or fewer.",
+    "Combat decided at most 2/12 human wins, against 80-90% of sim wins; 9 combat/personality arms at parity."
+   ],
+   "already_tried": "Most of the two months: personality dials, hold-back, blockiness, split attacks, 0.10.1 re-aim, 0.14.0 attack targeting, 0.15.0 instant hold, 0.16.0 combat solver. The overnight 'lean' arm stripped re-aims and chumps at no win-rate cost, yet chumpiness 0.15 and splitAttacks 0.7 still ship.",
+   "leverage": "Data first: chumpiness 0 outside dangerLife, splitAttacks 0 or reuse preferOpenTarget's hasUntappedBlockerFor check on every move, a threat list separate from keep-weights, protection role ordering fixed. Thin shim: a protection response when my own line piece is targeted, and a plan-weighted cleanup discard.",
+   "unknowns": "None of these were re-verified. Precision of 'predictable suicide' is estimated at 70-85%. The effect on win rate is likely small given parity; the main value is replay realism and not undoing future combo gains.",
+   "confidence": "medium",
+   "source_findings": [
+    "shim-reaim-suicide-attacks",
+    "shim-voluntary-chumps",
+    "counters-on-mana-rocks",
+    "protection_never_used",
+    "mulligan_counts_lands_not_mana",
+    "engine_and_commander_deploy_speed",
+    "combat_is_low_leverage_here",
+    "died-holding-saver",
+    "missed-land-drops"
+   ]
+  }
+ ],
+ "measurement_problems": [
+  "Acceptance metric: pooled plan-vs-stock win share is structurally blind here. It averaged +17.7 pp on Oracle decks and -6.8 pp on the other six into parity. Every agent A/B must report per-deck deltas stratified by line class (spell-completion, activated loop, flagged), conversion rate per assembled line, share of wins by round 6, mean win round against the human 5.0, and win method.",
+  "Wrong test bench: most study games ran on precons, where combo_cast and tutor_cast fire 0-4 times per 768 games (partly the |SET suffix parse bug). Use precons only for prediction calibration; judge combo and tutor changes on combo-live cEDH pods. The on-disk corpus is 6,135 games, and combo-focused runs are only 7-12% of it (the '7,671 games / 90%' figure could not be reproduced from disk).",
+  "analysis.py 'converted' is correlation, not execution: any win after assembly counts. Of 115 badged rows, 79 (69%) are pure engines whose 153 'conversions' were all combat or life wins, 60% of them a round or more later. Replace with an execution check: a spell win naming a piece, loop activations or extra combats on the winning turn, or a same-turn kill consistent with what the line produces.",
+  "analysis.py:282 uses board.reconstruct (stdout inference) even on shim runs that carry the exact zone stream. On 128 cEDH games that flips 19/86 readings (Magda + Clock + Roaming Throne: 0 assemblies by text vs 15 by zones) and contradicts the replay. Switch to board.build, test coexistence per zone record, not per end of turn, and handle clones by cardId.",
+  "Assembly definitions are wrong in both directions. Battlefield-only checks can never count graveyard lines (Breach/Brain Freeze), so '0 assemblies' was built in. analysis counts an Oracle whose ETB is already spent, plus Consultation in hand, as assembled; 15 of 63 Oracle-line assemblies were self-decks.",
+  "The win-method classifier lumps 'life total reached 0' into combat. Deck-out losses are unclassifiable, because _LOST needs 'because|due to' and Forge writes 'has lost trying to draw cards from empty library'. On the newest product run, 7 of 15 'combat' finals were drains or non-combat. Classify by the lethal event and its source card.",
+  "No Forge-refusal metrics exist: flagged-card cast and activation rate, tutor phase share, tutor pick type, tutor reach/offer rate. Every future arm should be required to move one of them before its win rate is interpreted. Prototypes exist in the scratch folder (castrate.py, tutorphase.py, tutorpick.py, tutorreach scripts).",
+  "The stock baseline is itself crippled on cEDH. Stock opponents never cast Consultation, LED, Ad Nauseam, Vampiric, Doomsday or Isochron Scepter, so 'stock' win rates and the human-vs-sim round gap partly measure Forge refusals, not deck strength.",
+  "Deck fidelity was never checked. 48 DFC slots across 23/32 cEDH decks were silently dropped, including both Ral commanders, so the Ral 'Forge cannot pilot storm' verdict is invalid. Add stderr 'unsupported card' detection to run validation.",
+  "Contaminated or invalid comparisons. Pre-0.16.0 arms carry the kingmakerReaim re-ask loop (57% and 51% of precon agent timeouts; lean's 8 pp censoring advantage vanishes without loop games; unverified). Task 21's fourth criterion and model_runs_agent.json were fit on contaminated arms. Pre-0.4.0 studies had seat 1 on the play in 79% of games. Several attributions bundle about ten shim versions with no same-jar control.",
+  "Unit errors in the ledger: human_ceiling 'rounds' are Forge turns divided by 4. Stock mean win round is 12.7, not 10.9, so the human gap is about 2.5x, not 2x. The casual-corpus 'slow commander deploy' tell mixed global and own-turn counters.",
+  "Runaway loops (Battered Golem 510 triggers in a turn, Felidar 3,018) run to the 900 s clock and are recorded as draws, hiding the moments a combo actually went off (13/45 timeouts, unverified). Report timed-out-while-looping separately.",
+  "The human baseline is tiny and selected: 12 creator-picked games, about 12 labelled decisions, drifted lists (Rog/Thras missing Six, Kinnan the wrong build). No decision-agreement score exists. A seeded-board scenario harness plus 20-30 labelled owner games is needed to judge 'logical play'.",
+  "plan_feedback will contaminate future arms. Once 8 games per deck accumulate, its combat-majority nudge raises finisher targets by 2 over combo pieces. The local store is empty; production state is unknown."
+ ],
+ "product_problems": [
+  "The results page badges engines 'AI can fire this; results meaningful' (analysis.py:336/352-353, page.tsx:568) when the deck merely won later by any means. The import page (page.tsx:478-479) tells the same user 'the AI assembles combos but rarely fires them'.",
+  "The 'Win conditions' table is the unfiltered Spellbook list: 68.5% of cached variants cannot win alone, 53% carry prerequisites the assembly test ignores, and duplicate rows appear. Precon pods show no section at all, and card win conditions like Portal to Phyrexia appear nowhere.",
+  "The combo table (text inference) contradicts the replay board (zone read) for the same game, e.g. Clock of Omens 'never available in 62 of 64 games' while the replay shows Magda tutoring it onto the battlefield.",
+  "The win method is shown as 'by combat damage' for an ambiguous bucket that also holds drains and a genuine Sanguine Bond loop kill (7 of 15 on the newest run). Deck-outs are misattributed.",
+  "No disclosure that the simulator will not cast some of the user's cards: about 12% of cEDH nonland cards and about 3 nonland cards per precon, including one precon commander. Coach and telemetry can then call those cards 'cold' or suggest cutting them.",
+  "DFC names pasted as 'Front // Back' are silently dropped. convert_decklist passes them through and run_sim swallows Forge's stderr, so a user's deck can be simmed without its commander.",
+  "Agent decisions (tutor picks, steers, combo casts, holds: 664 events in the newest product run) are shipped in the replay payload and never rendered. The deck page shows none of the plan (lines, tutor targets, roles), so nobody can tell a bad plan from bad execution.",
+  "The 'Win-condition telemetry' page shows the same three rows for every deck, two of them counted across all seats (identical 'Charge counters 3.06/g, Proliferate 3.75/g' for four different decks). Nothing is driven by the deck's own plan.",
+  "Scorecards cover only blocking, attacking, mulligans and land drops, the parity dimensions. There is no tutor, combo-progress, conversion, deck-out or misplay line, and replay misplays such as a Consultation self-deck go unflagged.",
+  "The pilot (stock vs plan agent and version) is never shown. validity.py:165 labels a deliberate all-stock run 'Mixed pod' and drops it from the leaderboard, which pools runs across pilots and versions (against SIM_CALIBRATION.md:86). 'Humanized' is used as a product claim with no measured human-likeness behind it.",
+  "plan_feedback runs on every production job (mtg_engine.py:265-266) and, once fed, pushes tutor targets toward combat finishers. Production MTG_DATA_DIR/plan_feedback.json was not inspected and needs checking.",
+  "Archetype baselines required beside every win rate appear on no live page, and the only ones in code are pre-fix numbers. predict.py's avg_cmc explanation has its sign inverted (API only)."
+ ],
+ "cheap_experiments": [
+  "Seeded-board conversion harness (the highest-value unknown). Start games with a line already assembled: Kiki-Jiki + Zealous Conscripts; Derevi + Emiel + Gaea's Cradle; Devoted Druid + Swift Reconfiguration; Magda + Clock + Liquimetal Torque; Oracle and Consultation in hand. Count iterations and turns to a kill under (a) stock and (b) a scratch shim prototype that returns the named activated SpellAbility and binds loop targets via orderAndPlaySimultaneousSa. This answers whether a thin interpreter converts at all, and whether trigger targeting really routes through that hook, in a few JVM-minutes per scenario and without a gauntlet.",
+  "Magda targeting A/B on the n7WpsqsZtdQ pod, 16-32 plan-Magda games per arm: (a) current plan, (b) Portal pinned at or above piece value with combo-steer priority off for non-executable lines, (c) search steering off. In the same run, decompose the unexplained -11 pp that rog_ishai and selvala show even with lines off by toggling mulligan, holds and plan-mode steering one at a time.",
+  "RemoveDeck readmit probe. The plan seat readmits flagged plan cards through public canPlaySa, including non-mana activations (Clock of Omens, Devoted Druid, Vampiric Tutor, Consultation), on the two agent_viability pods. Measure flagged cast and activation rate, self-harm casts (Final Fortune, Ad Nauseam, Pacts) and conversion. Add one arm with readmission on every seat to see how far the 'stock baseline' itself moves.",
+  "Zero-Java tutor levers. Write KeyCards= (finisher pieces first) into staged .dck metadata, and putParam ActivationPhases on the plan seat's own tutor SAs. Measure tutor pick type (currently 95% creatures), share cast before MAIN2, fetched card used the same turn, and early engine fetches, on one cEDH pod for plan and stock seats.",
+  "Oracle sequencing mini-fix on tymna_thrasios and rograkh_silas: a fire-last flag, no credit for a spent-ETB Oracle, a Torpor Orb check, and Consultation name steering. Success means self-decks go from 14 to about 0 while Oracle wins stay at or above the current 25; about 32 plan games per deck.",
+  "Input-fidelity reruns plus one production check. With DFC front-face normalisation and the parse_dck suffix strip in place, re-run the two Ral pods (8+8 games) to test the 'Forge cannot pilot storm' verdict, and the 14 precons that gain Spellbook combos. Separately, with no sim, read production plan_feedback.json to see whether the combat-majority tutor nudge has already fired for any deck or tag."
+ ],
+ "refuted": [
+  "'Commander Spellbook returns ZERO variants for all 66 precons' (deck_plan.py:160-163, tasks/20, run_pilot.py, agent_viability RESULTS): false. combos.parse_dck sent Forge's '|SET|art' suffix. With clean names, 14/66 precons have 26 included variants and 65/66 have 1,650 almost-included. The synergy-lines fallback was built on this false premise.",
+  "'Stock Forge never casts tutors' (SIM_CALIBRATION.md v3): false. Stock casts about 67% of tutors drawn (594/892 in runs_015_default). It casts them in main phase 2 (library-top 0/269 before MAIN2).",
+  "'Forge fetches Portal to Phyrexia but never converts it': false in outcome terms. Stock Magda wins 61/106 with Portal on the battlefield vs 5/86 without (confounded by 'Magda came online'). It converts by combat. For the plan seat the binding gap is the fetch: 47/47 Portal picks overridden, and 0/72 library fetches of Portal.",
+  "'Combo pursuit diverts real plays, and that is what costs the six non-Oracle decks 6.8 pp': not supported. The loss sits in one pod (n7: -12.0 pp) and persists with lines removed (nocombo -12.5 pp; ablation effect -2.1 pp, -0.3 SE). The other pod diverted more and showed no loss. Gating pursuit off is therefore not shown to recover that loss, although plan-mode target values survive in nocombo and remain a suspect.",
+  "'The MAIN2 tutor rule is why tutors act as closers': overstated. Plan seats get past the gate on 50-55% of tutors, yet their mean cast round is unchanged. The playtester complaint is about targets and the one-piece-short gate.",
+  "'Held-tutor turns are two pieces short about 60% of the time in rounds 1-4' and 'the shim never opens with a tutor': overstated. The script dropped commanders that start in the command zone; corrected, it is 42-45% two short, and 27-37% of shim tutor_casts happen in rounds 1-4, in line with the number of turns in each round band.",
+  "'Most cEDH loop engines carry AI:RemoveDeck:All': wrong. 39% of lines contain a flagged piece. Oracle, Tainted Pact, Breach, Kiki-Jiki, Heliod, Walking Ballista, Dramatic Reversal and Portal are unflagged. Of the 91 flagged lines, 52 are hard-blocked for both seat types.",
+  "'The Forge AI never activates these lines' pieces / lines are unexecutable': too strong. Forge activates Emiel 825, Clock copies 344 and Kiki 44 times, and escapes 158 cards under Breach. It finishes Godo+Helm (59 same-turn wins) and stock Magda's treasure engine (40-169 treasures in 20/144 games). What it lacks is purpose: targets, stop condition, outlet.",
+  "'0 deck-out losses logged': false. There were 13 empty-library losses; at least 6 are plan Consultation self-decks.",
+  "Helm of the Host on Godo '37%, never equipped 44%': a logging artifact of pre-0.12.0 runs without attach records. The corrected figures are 60% attached and 9% never.",
+  "'Only 8 real combo kills, all Thassa's Oracle' among the 'fired' rows: wrong. 6 Oracle rows are cleanly linked to the kill; about 23 more combat-kill combos (Godo+Helm, Kiki+Conscripts, Celebrant loops, Magda loop) converted on the assembly turn.",
+  "'96% of converted games combat, only 3 by spell' (693/722): wrong definition. Rerun with analysis.py itself: 26 spell wins (5%). The Godo+Helm infinite-combat line's combat kills are legitimate; the misattribution is concentrated in the 369 resource-only units.",
+  "'Portal overrides have been mode=combo every time' (tutor_targeting README) and '86/86 overrides': 14 of 47 were plan-mode (12/12 in nocombo), and the correct count in the 3 arms is 47/47.",
+  "'7 of 11 human combo wins lack a complete line': overstated. 3 of 11 are clear line-builder misses (missing outlets); the rest fail on decklist fidelity (Rog/Thras missing Six, Kinnan the wrong build) or have no label (Magda g1). Magda g2's win line is in the plan.",
+  "'Stock mean win round ~10.9-11' (human_ceiling RESULTS, brief): Forge turns divided by 4. Winner-own-turn mean is 12.7, so the human gap is about 2.5x.",
+  "'Ral never wins in sim because Forge cannot pilot storm': unsupported. Both Ral decks ran without their commander and 6 other cards Forge refused.",
+  "'Enable Forge's lookahead as the pilot': the one experiment failed 2/2 (a GameCopier crash, and a timeout with a 361 s single decision). It is viable at most as a bounded line-verification check.",
+  "'151 of 168 resource lines have an unused outlet in the deck': not reproducible. An independent list gives 126/168 (107 matched by type)."
+ ],
+ "narrative": "The AI plays combo decks badly for a few concrete reasons, and none of them is combat or personality, which is where most of the last two months went. First, the combo system gives the AI a shopping list, not instructions: for each deck it passes along every combo Commander Spellbook knows as a bag of card names, and 71% of the 238 cEDH \"combos\" are engines, like infinite mana or endless triggers, that only win if you also use a finisher the list never names. Second, even when the AI collects every piece, the code treats that as done and hands control back to Forge. The code can only cast spells, never activate abilities or choose targets, so a Kiki-Jiki loop untapped the wrong creature 8 times out of 8, and Derevi untapped Gaea's Cradle 0 times in 216 chances. Of 167 times the AI completed a combo made of permanents, it won that same turn 5 times. Third, Forge's own AI silently refuses to play about one in eight cards in a cEDH deck (cards its authors flagged as \"the AI can't play this\"), including Demonic Consultation, Vampiric Tutor, Lion's Eye Diamond and Clock of Omens. It refuses them for the opponent seats too, so even the opponents are weaker than their decklists. Tutoring fails in its own ways: tutors are aimed at any combo piece rather than the card that actually wins. The AI's Magda gave up Portal to Phyrexia in all 47 searches where stock Forge would have taken it, and won 15% of games instead of 33%. When the AI decides to tutor for a combo, 44% of the time it picks a tutor that cannot legally find the card it wants, and Forge's own tutor logic waits until the second main phase and usually grabs a creature. The one combo that does work, Thassa's Oracle plus Demonic Consultation, wins around round 5 or 6 like humans do, but it works because of a coding accident, and the same code made the AI exile its own library 14 times. Months of \"parity\" results hid all of this for two reasons. Most study games used precon decks where the combo code never ran, partly because of a card-name bug. And every change was scored on overall win share, where a gain of about 18 points on Oracle decks and a loss of about 7 on the rest average out to zero. Some study decks were also missing cards: Forge silently dropped 48 double-faced card slots, including the Ral deck's commander, so the conclusion that \"Forge can't play storm\" was never a fair test. The product then tells users a combo is \"AI can fire this; results meaningful\" whenever the deck won later by any means, which mostly meant engines that won by combat a round or more later. The order of fixes that follows from the evidence: first fix the measurements (combo conversion rate, per-deck results, a test that starts games with a combo already on the board); then rebuild the combo data so each line names its finisher, order and targets; then add a small step-runner in the shim that plays those steps through Forge's own rules checks; then let the shim re-admit the cards Forge refuses and fix what tutors can reach and when they are cast. Combat tuning should stop until those land. What nobody knows yet is how much win rate a working step-runner buys, and the seeded-board test can answer that cheaply before anything big is built."
+}

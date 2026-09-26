@@ -1,0 +1,6208 @@
+{
+"derevi": [
+[
+[
+"Felidar Guardian",
+"Phyrexian Metamorph"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Felidar Guardian",
+"Flesh Duplicate"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Clever Impersonator",
+"Felidar Guardian"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB"
+]
+],
+[
+[
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed",
+"Gaea's Cradle"
+],
+[
+"Infinite blinking",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite green mana",
+"Infinite mana permanents you control can produce"
+]
+],
+[
+[
+"Bloom Tender",
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite blinking",
+"Infinite mana of colors among permanents you control",
+"Infinite mana permanents you control can produce"
+]
+],
+[
+[
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed",
+"Mana Vault"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed",
+"Faeburrow Elder"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite blinking",
+"Infinite mana of colors among permanents you control",
+"Infinite mana permanents you control can produce"
+]
+],
+[
+[
+"Chromatic Orrery",
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed"
+],
+[
+"Infinite blinking",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite colored mana",
+"Infinite colorless mana",
+"Infinite card draw",
+"Infinite draw triggers",
+"Infinite mana permanents you control can produce"
+]
+],
+[
+[
+"Emiel the Blessed",
+"Felidar Guardian",
+"Gaea's Cradle"
+],
+[
+"Infinite blinking of permanents",
+"Infinite creature ETB",
+"Infinite landfall triggers",
+"Infinite creature LTB",
+"Infinite mana permanents you control can produce",
+"Infinite blinking",
+"Infinite mana lands you control can produce"
+]
+],
+[
+[
+"Chromatic Orrery",
+"Emiel the Blessed",
+"Felidar Guardian"
+],
+[
+"Infinite blinking of permanents",
+"Infinite card draw",
+"Infinite colored mana",
+"Infinite colorless mana",
+"Infinite draw triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking"
+]
+]
+],
+"godo_archetype": [
+[
+[
+"Basalt Monolith",
+"Forsaken Monument"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Basalt Monolith",
+"Rings of Brighthearth"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Godo, Bandit Warlord",
+"Helm of the Host"
+],
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+]
+],
+[
+[
+"Metalworker",
+"Staff of Domination"
+],
+[
+"Infinite card draw",
+"Infinite colorless mana",
+"Infinite draw triggers",
+"Infinite lifegain",
+"Infinite lifegain triggers",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce"
+]
+],
+[
+[
+"Metalworker",
+"Rings of Brighthearth",
+"Voltaic Key"
+],
+[
+"Infinite colorless mana",
+"Infinite untap of artifacts you control",
+"Infinite mana artifacts you control can produce"
+]
+],
+[
+[
+"Forsaken Monument",
+"Grim Monolith",
+"Rings of Brighthearth"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Forsaken Monument",
+"Rings of Brighthearth",
+"Thran Dynamo",
+"Voltaic Key"
+],
+[
+"Infinite untap of artifacts you control",
+"Infinite colorless mana",
+"Infinite mana artifacts you control can produce"
+]
+],
+[
+[
+"Forsaken Monument",
+"Mana Vault",
+"Rings of Brighthearth",
+"Voltaic Key"
+],
+[
+"Infinite untap of artifacts you control",
+"Infinite colorless mana",
+"Infinite mana artifacts you control can produce"
+]
+]
+],
+"nadu": [
+[
+[
+"Lotus Cobra",
+"Springheart Nantuko"
+],
+[
+"Infinite landfall triggers",
+"Infinite tapped land tokens"
+]
+],
+[
+[
+"Aphetto Alchemist",
+"Unctus, Grand Metatect"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite self-discard triggers"
+]
+],
+[
+[
+"Cephalid Illusionist",
+"Lightning Greaves"
+],
+[
+"Infinite self-mill"
+]
+],
+[
+[
+"Cephalid Illusionist",
+"Shuko"
+],
+[
+"Infinite self-mill"
+]
+],
+[
+[
+"Lightning Greaves",
+"Nadu, Winged Wisdom",
+"Scute Swarm"
+],
+[
+"Near-infinite creature ETB",
+"Near-infinite creature tokens",
+"Near-infinite card draw",
+"Near-infinite landfall triggers"
+]
+],
+[
+[
+"Nadu, Winged Wisdom",
+"Scute Swarm",
+"Shuko"
+],
+[
+"Near-infinite creature ETB",
+"Near-infinite creature tokens",
+"Near-infinite card draw",
+"Near-infinite landfall triggers"
+]
+],
+[
+[
+"Displacer Kitten",
+"Eternal Witness",
+"Lotus Petal",
+"Snap"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite storm count",
+"Infinite magecraft triggers",
+"Near-infinite colored mana",
+"Return all creatures you don't control to their owner's hand",
+"Infinite mana lands you control can produce",
+"Infinite untap of lands you control"
+]
+],
+[
+[
+"Displacer Kitten",
+"Eternal Witness",
+"Jeweled Lotus",
+"Lotus Petal"
+],
+[
+"Infinite colored mana",
+"Infinite storm count"
+]
+]
+],
+"rograkh_silas": [
+[
+[
+"Demonic Consultation",
+"Thassa's Oracle"
+],
+[
+"Exile your library",
+"Win the game"
+]
+],
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Grinding Station",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite storm count",
+"Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Jeska's Will",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Near-infinite magecraft triggers",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Lion's Eye Diamond",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite looting for opponents",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Grinding Station",
+"Mana Crypt",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colorless mana",
+"Near-infinite storm count"
+]
+]
+],
+"magda": [
+[
+[
+"Clock of Omens",
+"Liquimetal Torque",
+"Magda, Brazen Outlaw"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Universal Automaton"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Metallic Mimic"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Adaptive Automaton",
+"Clock of Omens",
+"Magda, Brazen Outlaw"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Roaming Throne"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+"Infinite colored mana",
+"Infinite Treasure tokens",
+"Infinite mana artifacts you control can produce",
+"Infinite untap of artifacts you control"
+]
+],
+[
+[
+"Barkform Harvester",
+"Clock of Omens",
+"Magda, Brazen Outlaw"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Three Tree Mascot"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Battered Golem",
+"Magda, Brazen Outlaw",
+"Maskwood Nexus"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite colored mana",
+"Infinite Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Battered Golem",
+"Magda, Brazen Outlaw",
+"Stalactite Dagger"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite Treasure tokens",
+"Infinite colored mana",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Battered Golem",
+"Dwarven Bloodboiler",
+"Magda, Brazen Outlaw",
+"Maskwood Nexus"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite colored mana",
+"Infinitely powerful creatures you control until end of turn",
+"Infinite Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Battered Golem",
+"Dwarven Bloodboiler",
+"Magda, Brazen Outlaw",
+"Stalactite Dagger"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite Treasure tokens",
+"Infinite colored mana",
+"Infinitely powerful creatures you control until end of turn",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+]
+],
+"rog_ishai": [
+[
+[
+"Hullbreaker Horror",
+"Sol Ring"
+],
+[
+"Infinite colorless mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Hullbreaker Horror",
+"Mana Vault"
+],
+[
+"Infinite colorless mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Hullbreaker Horror",
+"Mox Amber"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite colored mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Faerie Mastermind",
+"Mirrormade",
+"Smothering Tithe"
+],
+[
+"Near-infinite colored mana",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Infinite card draw for all players"
+]
+],
+[
+[
+"Copy Enchantment",
+"Faerie Mastermind",
+"Smothering Tithe"
+],
+[
+"Near-infinite colored mana",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Infinite card draw for all players"
+]
+],
+[
+[
+"Clever Impersonator",
+"Faerie Mastermind",
+"Smothering Tithe"
+],
+[
+"Near-infinite colored mana",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Infinite card draw for all players"
+]
+],
+[
+[
+"Jeska's Will",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Near-infinite magecraft triggers",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Lion's Eye Diamond",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite looting for opponents",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Smothering Tithe",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Infinite self-discard triggers for all players",
+"Near-infinite colored mana",
+"Near-infinite Treasure tokens"
+]
+]
+],
+"selvala_archetype": [
+[
+[
+"Priest of Titania",
+"Staff of Domination"
+],
+[
+"Infinite card draw",
+"Infinite draw triggers",
+"Infinite lifegain",
+"Infinite lifegain triggers",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce",
+"Infinite green mana"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Quirion Ranger"
+],
+[
+"Infinite creature ETB",
+"Infinite landfall triggers",
+"Infinite creature LTB",
+"Infinite storm count"
+]
+],
+[
+[
+"Selvala, Heart of the Wilds",
+"Staff of Domination"
+],
+[
+"Infinite card draw",
+"Infinite colored mana",
+"Infinite draw triggers",
+"Infinite lifegain",
+"Infinite lifegain triggers",
+"Infinite mana creatures you control can produce",
+"Infinite untap of creatures you control"
+]
+],
+[
+[
+"Priest of Titania",
+"Umbral Mantle"
+],
+[
+"Infinite green mana",
+"Infinitely large creature until end of turn",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce"
+]
+],
+[
+[
+"Selvala, Heart of the Wilds",
+"Umbral Mantle"
+],
+[
+"Infinite colored mana",
+"Infinitely large creature until end of turn",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Priest of Titania",
+"Scryb Ranger"
+],
+[
+"Infinite creature ETB",
+"Infinite green mana",
+"Infinite landfall triggers",
+"Infinite creature LTB",
+"Infinite storm count"
+]
+],
+[
+[
+"Lightning Greaves",
+"Selvala, Heart of the Wilds",
+"Temur Sabertooth"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite colored mana",
+"Infinite storm count",
+"Infinite blinking"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Priest of Titania",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite blinking of some creatures",
+"Infinite green mana"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Scryb Ranger",
+"Selvala, Heart of the Wilds"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite colored mana",
+"Infinite storm count",
+"Infinite landfall triggers"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Kogla, the Titan Ape",
+"Priest of Titania"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite green mana"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Selvala, Heart of the Wilds",
+"Temur Sabertooth"
+],
+[
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite blinking",
+"Infinite colored mana",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Kogla, the Titan Ape",
+"Selvala, Heart of the Wilds"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce",
+"Infinite colored mana"
+]
+],
+[
+[
+"Priest of Titania",
+"Shang-Chi, Master of Kung Fu",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking of some creatures",
+"Infinite green mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Selvala, Heart of the Wilds",
+"Shang-Chi, Master of Kung Fu",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking",
+"Infinite colored mana",
+"Infinite storm count"
+]
+]
+],
+"tymna_thrasios": [
+[
+[
+"Demonic Consultation",
+"Thassa's Oracle"
+],
+[
+"Exile your library",
+"Win the game"
+]
+],
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Devoted Druid",
+"Swift Reconfiguration"
+],
+[
+"Infinite green mana"
+]
+]
+],
+"cabbage_merchant": [
+[
+[
+"Nuka-Cola Vending Machine",
+"Peregrin Took"
+],
+[
+"Infinite card draw",
+"Infinite draw triggers",
+"Near-infinite tapped Treasure tokens"
+]
+],
+[
+[
+"Academy Manufactor",
+"Krark-Clan Ironworks",
+"Nuka-Cola Vending Machine"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite colorless mana",
+"Infinite tapped Treasure tokens",
+"Infinite tapped Food tokens",
+"Infinite tapped Clue tokens",
+"Infinite card draw",
+"Infinite draw triggers"
+]
+],
+[
+[
+"Academy Manufactor",
+"Clock of Omens",
+"Nuka-Cola Vending Machine"
+],
+[
+"Infinite tapped Food tokens",
+"Infinite tapped Clue tokens"
+]
+],
+[
+[
+"Academy Manufactor",
+"Grinding Station",
+"Nuka-Cola Vending Machine"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite mill",
+"Infinite self-mill",
+"Infinite tapped Treasure tokens",
+"Infinite tapped Food tokens",
+"Infinite tapped Clue tokens"
+]
+],
+[
+[
+"Academy Manufactor",
+"Clock of Omens",
+"Transmutation Font"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite Blood tokens",
+"Infinite card draw",
+"Infinite Clue tokens",
+"Infinite colored mana",
+"Infinite draw triggers",
+"Infinite Food tokens",
+"Infinite lifegain",
+"Infinite lifegain triggers",
+"Infinite mana artifacts you control can produce",
+"Infinite rummaging",
+"Infinite self-discard triggers",
+"Infinite Treasure tokens",
+"Infinite untap of artifacts you control"
+]
+],
+[
+[
+"Clock of Omens",
+"Stridehangar Automaton",
+"Transmutation Font"
+],
+[
+"Infinite creature ETB",
+"Infinite tapped Food tokens",
+"Infinite tapped creature tokens",
+"Infinite tapped Clue tokens",
+"Infinite tapped Blood tokens"
+]
+],
+[
+[
+"Clock of Omens",
+"Grinding Station",
+"Transmutation Font"
+],
+[
+"Infinite tapped Food tokens",
+"Infinite tapped Clue tokens",
+"Infinite tapped Blood tokens"
+]
+],
+[
+[
+"Clock of Omens",
+"Peregrin Took",
+"Transmutation Font"
+],
+[
+"Infinite card draw",
+"Infinite draw triggers",
+"Infinite tapped Food tokens",
+"Infinite tapped Clue tokens",
+"Infinite tapped Blood tokens"
+]
+]
+],
+"godo": [
+[
+[
+"Basalt Monolith",
+"Forsaken Monument"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Basalt Monolith",
+"Rings of Brighthearth"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Godo, Bandit Warlord",
+"Helm of the Host"
+],
+[
+"Infinite combat phases",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers",
+"Put all Equipment cards from your library onto the battlefield"
+]
+],
+[
+[
+"Metalworker",
+"Staff of Domination"
+],
+[
+"Infinite card draw",
+"Infinite colorless mana",
+"Infinite draw triggers",
+"Infinite lifegain",
+"Infinite lifegain triggers",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce"
+]
+],
+[
+[
+"Metalworker",
+"Rings of Brighthearth",
+"Voltaic Key"
+],
+[
+"Infinite colorless mana",
+"Infinite untap of artifacts you control",
+"Infinite mana artifacts you control can produce"
+]
+],
+[
+[
+"Forsaken Monument",
+"Grim Monolith",
+"Rings of Brighthearth"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Forsaken Monument",
+"Rings of Brighthearth",
+"Thran Dynamo",
+"Voltaic Key"
+],
+[
+"Infinite untap of artifacts you control",
+"Infinite colorless mana",
+"Infinite mana artifacts you control can produce"
+]
+],
+[
+[
+"Forsaken Monument",
+"Mana Vault",
+"Rings of Brighthearth",
+"Voltaic Key"
+],
+[
+"Infinite untap of artifacts you control",
+"Infinite colorless mana",
+"Infinite mana artifacts you control can produce"
+]
+]
+],
+"malcolm_kediss": [
+[
+[
+"Curiosity",
+"Niv-Mizzet, Parun"
+],
+[
+"Infinite draw triggers",
+"Infinite card draw",
+"Near-infinite damage"
+]
+],
+[
+[
+"Niv-Mizzet, Parun",
+"Ophidian Eye"
+],
+[
+"Infinite card draw",
+"Infinite draw triggers",
+"Near-infinite damage"
+]
+],
+[
+[
+"Flare of Duplication",
+"Narset's Reversal"
+],
+[
+"Infinite magecraft triggers"
+]
+]
+],
+"dexter_kinnan": [
+[
+[
+"Hullbreaker Horror",
+"Sol Ring"
+],
+[
+"Infinite colorless mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Hullbreaker Horror",
+"Mana Vault"
+],
+[
+"Infinite colorless mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Hullbreaker Horror",
+"Mox Amber"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite colored mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Basalt Monolith",
+"Kinnan, Bonder Prodigy"
+],
+[
+"Infinite colorless mana"
+]
+]
+],
+"isaac_yisan": [
+[
+[
+"Ashaya, Soul of the Wild",
+"Quirion Ranger"
+],
+[
+"Infinite creature ETB",
+"Infinite landfall triggers",
+"Infinite creature LTB",
+"Infinite storm count"
+]
+],
+[
+[
+"Argothian Elder",
+"Ashaya, Soul of the Wild"
+],
+[
+"Infinite mana lands you control can produce",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Badgermole Cub",
+"Sylvan Safekeeper"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite creature sacrifice triggers",
+"Infinite death triggers",
+"Infinite landfall triggers"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Priest of Titania",
+"Scryb Ranger"
+],
+[
+"Infinite creature ETB",
+"Infinite green mana",
+"Infinite landfall triggers",
+"Infinite creature LTB",
+"Infinite storm count"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Circle of Dreams Druid",
+"Scryb Ranger"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite storm count",
+"Infinite green mana",
+"Infinite landfall triggers"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Priest of Titania",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite blinking of some creatures",
+"Infinite green mana"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Scryb Ranger",
+"Selvala, Heart of the Wilds"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite colored mana",
+"Infinite storm count",
+"Infinite landfall triggers"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Kogla, the Titan Ape",
+"Priest of Titania"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite green mana"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Selvala, Heart of the Wilds",
+"Temur Sabertooth"
+],
+[
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite blinking",
+"Infinite colored mana",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Hyrax Tower Scout",
+"Kogla, the Titan Ape",
+"Selvala, Heart of the Wilds"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce",
+"Infinite colored mana"
+]
+],
+[
+[
+"Circle of Dreams Druid",
+"Hyrax Tower Scout",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite blinking of some creatures",
+"Infinite green mana"
+]
+],
+[
+[
+"Circle of Dreams Druid",
+"Hyrax Tower Scout",
+"Kogla, the Titan Ape"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite storm count",
+"Infinite untap of creatures you control",
+"Infinite mana creatures you control can produce",
+"Infinite green mana"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Magus of the Candelabra",
+"Priest of Titania"
+],
+[
+"Infinite mana lands you control can produce",
+"Infinite green mana",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Circle of Dreams Druid",
+"Magus of the Candelabra"
+],
+[
+"Infinite mana lands you control can produce",
+"Infinite green mana",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Magus of the Candelabra",
+"Selvala, Heart of the Wilds"
+],
+[
+"Infinite colored mana",
+"Infinite mana lands you control can produce",
+"Infinite untap of nontoken creatures you control",
+"Infinite mana nontoken creatures you control can produce",
+"Infinite untap of lands you control"
+]
+],
+[
+[
+"Circle of Dreams Druid",
+"Shang-Chi, Master of Kung Fu",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking of some creatures",
+"Infinite green mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Priest of Titania",
+"Shang-Chi, Master of Kung Fu",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking of some creatures",
+"Infinite green mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Selvala, Heart of the Wilds",
+"Shang-Chi, Master of Kung Fu",
+"Temur Sabertooth"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking",
+"Infinite colored mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Ashaya, Soul of the Wild",
+"Pili-Pala",
+"Wild Growth"
+],
+[
+"Infinite colored mana"
+]
+],
+[
+[
+"Marvin, Murderous Mimic",
+"Pili-Pala",
+"Priest of Titania"
+],
+[
+"Infinite colored mana"
+]
+],
+[
+[
+"Marvin, Murderous Mimic",
+"Pili-Pala",
+"Selvala, Heart of the Wilds"
+],
+[
+"Infinite colored mana"
+]
+],
+[
+[
+"Circle of Dreams Druid",
+"Marvin, Murderous Mimic",
+"Pili-Pala"
+],
+[
+"Infinite colored mana"
+]
+],
+[
+[
+"Argothian Elder",
+"Marvin, Murderous Mimic",
+"Pili-Pala"
+],
+[
+"Infinite colored mana",
+"Infinite mana lands you control can produce",
+"Infinite untap of lands you control"
+]
+],
+[
+[
+"Circle of Dreams Druid",
+"Llanowar Elves",
+"Temur Sabertooth",
+"Wirewood Symbiote"
+],
+[
+"Infinite blinking of some creatures",
+"Infinite green mana"
+]
+],
+[
+[
+"Circle of Dreams Druid",
+"Elvish Mystic",
+"Temur Sabertooth",
+"Wirewood Symbiote"
+],
+[
+"Infinite blinking of some creatures",
+"Infinite green mana"
+]
+],
+[
+[
+"Llanowar Elves",
+"Selvala, Heart of the Wilds",
+"Temur Sabertooth",
+"Wirewood Symbiote"
+],
+[
+"Infinite colored mana",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite storm count",
+"Infinite blinking"
+]
+],
+[
+[
+"Elvish Mystic",
+"Selvala, Heart of the Wilds",
+"Temur Sabertooth",
+"Wirewood Symbiote"
+],
+[
+"Infinite colored mana",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite storm count",
+"Infinite blinking"
+]
+],
+[
+[
+"Fyndhorn Elves",
+"Selvala, Heart of the Wilds",
+"Temur Sabertooth",
+"Wirewood Symbiote"
+],
+[
+"Infinite colored mana",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite storm count",
+"Infinite blinking"
+]
+],
+[
+[
+"Allosaurus Shepherd",
+"Circle of Dreams Druid",
+"Temur Sabertooth",
+"Wirewood Symbiote"
+],
+[
+"Infinite blinking of some creatures",
+"Infinite green mana"
+]
+]
+],
+"lily_malcolm_vial": [
+[
+[
+"Demonic Consultation",
+"Thassa's Oracle"
+],
+[
+"Exile your library",
+"Win the game"
+]
+],
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Glint-Horn Buccaneer",
+"Malcolm, Keen-Eyed Navigator"
+],
+[
+"Near-infinite damage",
+"Near-infinite self-discard triggers",
+"Near-infinite draw triggers"
+]
+],
+[
+[
+"Curiosity",
+"Glint-Horn Buccaneer"
+],
+[
+"Infinite draw triggers",
+"Infinite rummaging",
+"Infinite self-discard triggers",
+"Near-infinite damage"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Jeska's Will",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Near-infinite magecraft triggers",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Lion's Eye Diamond",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite looting for opponents",
+"Near-infinite storm count"
+]
+]
+],
+"matt_sisay": [
+[
+[
+"Ioreth of the Healing House",
+"Marvin, Murderous Mimic"
+],
+[
+"Infinite untap of legendary creatures you control",
+"Infinite mana legendary creatures you control can produce"
+]
+],
+[
+[
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed",
+"Gaea's Cradle"
+],
+[
+"Infinite blinking",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite green mana",
+"Infinite mana permanents you control can produce"
+]
+],
+[
+[
+"Bloom Tender",
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite blinking",
+"Infinite mana of colors among permanents you control",
+"Infinite mana permanents you control can produce"
+]
+],
+[
+[
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed",
+"Mana Vault"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Derevi, Empyrial Tactician",
+"Emiel the Blessed",
+"Selvala, Heart of the Wilds"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite colored mana",
+"Infinite blinking",
+"Infinite mana permanents you control can produce"
+]
+],
+[
+[
+"Badgermole Cub",
+"Emiel the Blessed",
+"Gaea's Cradle"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite blinking",
+"Infinite green mana",
+"Infinite landfall triggers",
+"Infinite mana lands you control can produce"
+]
+],
+[
+[
+"Emiel the Blessed",
+"Selvala, Heart of the Wilds",
+"Tyvar, Jubilant Brawler"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite colored mana",
+"Infinite blinking"
+]
+]
+],
+"kinnan": [
+[
+[
+"Hullbreaker Horror",
+"Sol Ring"
+],
+[
+"Infinite colorless mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Hullbreaker Horror",
+"Mana Vault"
+],
+[
+"Infinite colorless mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Hullbreaker Horror",
+"Mox Amber"
+],
+[
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite colored mana",
+"Infinite storm count"
+]
+],
+[
+[
+"Basalt Monolith",
+"Kinnan, Bonder Prodigy"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Basalt Monolith",
+"Nyxbloom Ancient"
+],
+[
+"Infinite colorless mana"
+]
+],
+[
+[
+"Grim Monolith",
+"Nyxbloom Ancient"
+],
+[
+"Infinite colorless mana"
+]
+]
+],
+"rog_thrasios": [
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Lion's Eye Diamond",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite looting for opponents",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Gaea's Cradle",
+"Oboro Breezecaller",
+"Talon Gates of Madara"
+],
+[
+"Infinite mana lands you control can produce",
+"Infinite green mana",
+"Infinite landfall triggers",
+"Phase out any number of creatures any number of times"
+]
+],
+[
+[
+"Displacer Kitten",
+"Eternal Witness",
+"Lotus Petal",
+"Snap"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite storm count",
+"Infinite magecraft triggers",
+"Near-infinite colored mana",
+"Return all creatures you don't control to their owner's hand",
+"Infinite mana lands you control can produce",
+"Infinite untap of lands you control"
+]
+],
+[
+[
+"Cloud of Faeries",
+"Displacer Kitten",
+"Eternal Witness",
+"Lotus Petal",
+"Snap"
+],
+[
+"Infinite creature LTB",
+"Infinite creature ETB",
+"Infinite colored mana",
+"Infinite storm count",
+"Infinite magecraft triggers",
+"Return all creatures you don't control to their owner's hand",
+"Infinite mana lands you control can produce",
+"Infinite untap of lands you control"
+]
+]
+],
+"yidris": [
+[
+[
+"Demonic Consultation",
+"Thassa's Oracle"
+],
+[
+"Exile your library",
+"Win the game"
+]
+],
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Jeska's Will",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Near-infinite magecraft triggers",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Lion's Eye Diamond",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite looting for opponents",
+"Near-infinite storm count"
+]
+]
+],
+"alan_tnt": [
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Devoted Druid",
+"Swift Reconfiguration"
+],
+[
+"Infinite green mana"
+]
+],
+[
+[
+"Devoted Druid",
+"Hazel's Brewmaster"
+],
+[
+"Infinite green mana"
+]
+],
+[
+[
+"Hermit Druid",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Faerie Mastermind",
+"Kinnan, Bonder Prodigy",
+"Smothering Tithe"
+],
+[
+"Infinite card draw for all players",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Near-infinite colored mana",
+"Near-infinite colorless mana"
+]
+],
+[
+[
+"Clever Impersonator",
+"Faerie Mastermind",
+"Smothering Tithe"
+],
+[
+"Near-infinite colored mana",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Infinite card draw for all players"
+]
+]
+],
+"dallas_bluefarm": [
+[
+[
+"Demonic Consultation",
+"Thassa's Oracle"
+],
+[
+"Exile your library",
+"Win the game"
+]
+],
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Grinding Station",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite storm count",
+"Near-infinite mana among colors of legendary creatures and planeswalkers you control"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Grinding Station",
+"Memnite",
+"Thassa's Oracle",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite creature ETB",
+"Near-infinite creature LTB",
+"Near-infinite creature sacrifice triggers",
+"Win the game"
+]
+]
+],
+"joseph_ral": [
+[
+[
+"Jeska's Will",
+"Reiterate"
+],
+[
+"Infinite magecraft triggers",
+"Infinite red mana",
+"Infinite storm count",
+"Exile your library with the ability to play the exiled cards until end of turn"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Jeska's Will",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Near-infinite magecraft triggers",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Lion's Eye Diamond",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite looting for opponents",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Reiterate",
+"Seething Song",
+"Storm-Kiln Artist"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Infinite colored mana",
+"Infinite copies of instant and sorcery spells on the stack",
+"Infinite power for any creature",
+"Infinite magecraft triggers",
+"Infinite storm count",
+"Infinite Treasure tokens"
+]
+],
+[
+[
+"Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+"Reiterate",
+"Seething Song"
+],
+[
+"Infinite magecraft triggers",
+"Infinite storm count"
+]
+]
+],
+"sterling_bluefarm": [
+[
+[
+"Demonic Consultation",
+"Thassa's Oracle"
+],
+[
+"Exile your library",
+"Win the game"
+]
+],
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+]
+],
+"winota_ian": [
+[
+[
+"Kiki-Jiki, Mirror Breaker",
+"Zealous Conscripts"
+],
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers"
+]
+],
+[
+[
+"Combat Celebrant",
+"Kiki-Jiki, Mirror Breaker"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Combat Celebrant",
+"Rionya, Fire Dancer"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+]
+]
+],
+"winota_lua": [
+[
+[
+"Kiki-Jiki, Mirror Breaker",
+"Zealous Conscripts"
+],
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers"
+]
+],
+[
+[
+"Combat Celebrant",
+"Kiki-Jiki, Mirror Breaker"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Combat Celebrant",
+"Rionya, Fire Dancer"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+]
+],
+[
+[
+"Kiki-Jiki, Mirror Breaker",
+"Village Bell-Ringer"
+],
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite mana creatures you control can produce",
+"Infinite creature sacrifice triggers",
+"Infinite untap of creatures you control"
+]
+],
+[
+[
+"Combat Celebrant",
+"Mirage Phalanx"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+]
+]
+],
+"winota_mike": [
+[
+[
+"Kiki-Jiki, Mirror Breaker",
+"Zealous Conscripts"
+],
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers"
+]
+],
+[
+[
+"Combat Celebrant",
+"Kiki-Jiki, Mirror Breaker"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Combat Celebrant",
+"Rionya, Fire Dancer"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+]
+],
+[
+[
+"Combat Celebrant",
+"Mirage Phalanx"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+]
+]
+],
+"winota_rachel": [
+[
+[
+"Kiki-Jiki, Mirror Breaker",
+"Zealous Conscripts"
+],
+[
+"Infinite creature tokens with haste",
+"Infinite death triggers",
+"Infinite creature ETB",
+"Infinite creature LTB",
+"Infinite creature sacrifice triggers"
+]
+],
+[
+[
+"Combat Celebrant",
+"Kiki-Jiki, Mirror Breaker"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB"
+]
+],
+[
+[
+"Combat Celebrant",
+"Rionya, Fire Dancer"
+],
+[
+"Infinite combat phases",
+"Infinite creature tokens with haste",
+"Infinite creature ETB",
+"Infinite creature LTB"
+]
+]
+],
+"ashton_bluefarm": [
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Faerie Mastermind",
+"Mirrormade",
+"Smothering Tithe"
+],
+[
+"Near-infinite colored mana",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Infinite card draw for all players"
+]
+],
+[
+[
+"Copy Enchantment",
+"Faerie Mastermind",
+"Smothering Tithe"
+],
+[
+"Near-infinite colored mana",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Infinite card draw for all players"
+]
+],
+[
+[
+"Clever Impersonator",
+"Faerie Mastermind",
+"Smothering Tithe"
+],
+[
+"Near-infinite colored mana",
+"Infinite draw triggers for all players",
+"Near-infinite Treasure tokens",
+"Infinite card draw for all players"
+]
+]
+],
+"natalie_magda": [
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Universal Automaton"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Metallic Mimic"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Adaptive Automaton",
+"Clock of Omens",
+"Magda, Brazen Outlaw"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Roaming Throne"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact LTB",
+"Infinite artifact sacrifice triggers",
+"Infinite artifact tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield",
+"Infinite colored mana",
+"Infinite Treasure tokens",
+"Infinite mana artifacts you control can produce",
+"Infinite untap of artifacts you control"
+]
+],
+[
+[
+"Barkform Harvester",
+"Clock of Omens",
+"Magda, Brazen Outlaw"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Clock of Omens",
+"Magda, Brazen Outlaw",
+"Three Tree Mascot"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+],
+[
+[
+"Bloodline Pretender",
+"Clock of Omens",
+"Magda, Brazen Outlaw"
+],
+[
+"Infinite artifact ETB",
+"Infinite artifact tokens",
+"Infinite tapped Treasure tokens",
+"Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+]
+]
+],
+"tyler_bluefarm": [
+[
+[
+"Demonic Consultation",
+"Thassa's Oracle"
+],
+[
+"Exile your library",
+"Win the game"
+]
+],
+[
+[
+"Tainted Pact",
+"Thassa's Oracle"
+],
+[
+"Win the game"
+]
+],
+[
+[
+"Brain Freeze",
+"Lotus Petal",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite magecraft triggers",
+"Near-infinite mill"
+]
+],
+[
+[
+"Brain Freeze",
+"Lion's Eye Diamond",
+"Underworld Breach"
+],
+[
+"Infinite self-mill",
+"Near-infinite colored mana",
+"Near-infinite magecraft triggers",
+"Near-infinite mill",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Jeska's Will",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Near-infinite magecraft triggers",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Lion's Eye Diamond",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers",
+"Infinite looting",
+"Infinite looting for opponents",
+"Near-infinite storm count"
+]
+],
+[
+[
+"Smothering Tithe",
+"Underworld Breach",
+"Wheel of Fortune"
+],
+[
+"Infinite draw triggers for all players",
+"Infinite looting for all players",
+"Infinite self-discard triggers for all players",
+"Near-infinite colored mana",
+"Near-infinite Treasure tokens"
+]
+]
+],
+"Goblin Storm [SLD] [2026]": [
+[
+[
+"Haze of Rage",
+"Storm-Kiln Artist"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Quest for the Goblin Lord",
+"Storm-Kiln Artist"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Great Train Heist",
+"Storm-Kiln Artist"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Quest for the Goblin Lord",
+"Siege-Gang Lieutenant"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Haze of Rage",
+"Siege-Gang Lieutenant"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Great Train Heist",
+"Siege-Gang Lieutenant"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Sultai Arisen [TDC] [2025]": [
+[
+[
+"Teval, the Balanced Scale",
+"Will of the Sultai"
+],
+[
+"mill"
+]
+],
+[
+[
+"Tasigur, the Golden Fang",
+"Will of the Sultai"
+],
+[
+"mill"
+]
+],
+[
+[
+"Lord of the Forsaken",
+"Will of the Sultai"
+],
+[
+"mill"
+]
+],
+[
+[
+"Lord of the Forsaken",
+"Teval, the Balanced Scale"
+],
+[
+"mill"
+]
+],
+[
+[
+"Lord of the Forsaken",
+"Tasigur, the Golden Fang"
+],
+[
+"mill"
+]
+],
+[
+[
+"Hedron Crab",
+"Will of the Sultai"
+],
+[
+"mill"
+]
+]
+],
+"The Fantastic Four [MSC] [2026]": [
+[
+[
+"Invisible Woman",
+"Quantum Misalignment"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Path of Discovery",
+"Quantum Misalignment"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Invisible Woman",
+"The Fantasticar"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Path of Discovery",
+"The Fantasticar"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Invisible Woman",
+"Namor, Atlantean King"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Namor, Atlantean King",
+"Path of Discovery"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Creative Energy [M3C] [2024]": [
+[
+[
+"Cayth, Famed Mechanist",
+"Tezzeret's Gambit"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Blaster Hulk",
+"Cayth, Famed Mechanist"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Angel of Invention",
+"Tezzeret's Gambit"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Angel of Invention",
+"Cayth, Famed Mechanist"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Angel of Invention",
+"Blaster Hulk"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Aetherstorm Roc",
+"Tezzeret's Gambit"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Miracle Worker [DSC] [2024]": [
+[
+[
+"Fear of Sleep Paralysis",
+"Soaring Lightbringer"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Doomwake Giant",
+"Soaring Lightbringer"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Fear of Sleep Paralysis",
+"Sigil of the Empty Throne"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Doomwake Giant",
+"Sigil of the Empty Throne"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Fear of Sleep Paralysis",
+"Shark Typhoon"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Doomwake Giant",
+"Shark Typhoon"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Blight Curse [ECC] [2026]": [
+[
+[
+"Grave Titan",
+"Village Pillagers"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Grave Titan",
+"Hapatra, Vizier of Poisons"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Elven Council [LTC] [2023]": [
+[
+[
+"Legolas Greenleaf",
+"Song of E\u00e4rendil"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Elvish Archdruid",
+"Song of E\u00e4rendil"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Mirkwood Elk",
+"Song of E\u00e4rendil"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Legolas Greenleaf",
+"Radagast, Wizard of Wilds"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Elvish Archdruid",
+"Radagast, Wizard of Wilds"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Mirkwood Elk",
+"Radagast, Wizard of Wilds"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Tricky Terrain [M3C] [2024]": [
+[
+[
+"Jyoti, Moag Ancient",
+"Terastodon"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Terastodon",
+"Vivien Reid"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jyoti, Moag Ancient",
+"Replication Technique"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Replication Technique",
+"Vivien Reid"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jyoti, Moag Ancient",
+"Rampaging Baloths"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rampaging Baloths",
+"Vivien Reid"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Food and Fellowship [LTC] [2023]": [
+[
+[
+"Treebeard, Gracious Host",
+"Well of Lost Dreams"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Sanguine Bond",
+"Well of Lost Dreams"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Sanguine Bond",
+"Treebeard, Gracious Host"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Trading Post",
+"Well of Lost Dreams"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Trading Post",
+"Treebeard, Gracious Host"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Sanguine Bond",
+"Trading Post"
+],
+[
+"lifegain"
+]
+]
+],
+"Counter Blitz [FIC] [2025]": [
+[
+[
+"Tidus, Yuna's Guardian",
+"Yuna, Grand Summoner"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Sin, Unending Cataclysm",
+"Yuna, Grand Summoner"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Inexorable Tide",
+"Yuna, Grand Summoner"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Tidus, Yuna's Guardian",
+"Wakka, Devoted Guardian"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Sin, Unending Cataclysm",
+"Wakka, Devoted Guardian"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Inexorable Tide",
+"Wakka, Devoted Guardian"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Desert Bloom [OTC] [2024]": [
+[
+[
+"Sun Titan",
+"Yuma, Proud Protector"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Marshal's Anthem",
+"Yuma, Proud Protector"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rumbleweed",
+"Yuma, Proud Protector"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sun Titan",
+"Vengeful Regrowth"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Marshal's Anthem",
+"Vengeful Regrowth"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rumbleweed",
+"Vengeful Regrowth"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Grand Larceny [OTC] [2024]": [
+[
+[
+"Savvy Trader",
+"Thieving Varmint"
+],
+[
+"ramp-big-mana"
+]
+],
+[
+[
+"Sage of the Beyond",
+"Thieving Varmint"
+],
+[
+"ramp-big-mana"
+]
+],
+[
+[
+"Gonti, Canny Acquisitor",
+"Thieving Varmint"
+],
+[
+"ramp-big-mana"
+]
+],
+[
+[
+"Prismatic Lens",
+"Savvy Trader"
+],
+[
+"ramp-big-mana"
+]
+],
+[
+[
+"Prismatic Lens",
+"Sage of the Beyond"
+],
+[
+"ramp-big-mana"
+]
+],
+[
+[
+"Gonti, Canny Acquisitor",
+"Prismatic Lens"
+],
+[
+"ramp-big-mana"
+]
+]
+],
+"Quick Draw [OTC] [2024]": [
+[
+[
+"Shark Typhoon",
+"Talrand, Sky Summoner"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Talrand, Sky Summoner",
+"Third Path Iconoclast"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Shark Typhoon",
+"Storm-Kiln Artist"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Storm-Kiln Artist",
+"Third Path Iconoclast"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Shark Typhoon",
+"Stella Lee, Wild Card"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Stella Lee, Wild Card",
+"Third Path Iconoclast"
+],
+[
+"spellslinger-burn"
+]
+]
+],
+"Mind Flayarrrs [CLB] [2022]": [
+[
+[
+"Sludge Monster",
+"Wharf Infiltrator"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sludge Monster",
+"Uchuulon"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sludge Monster",
+"Zellix, Sanity Flayer"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Extract from Darkness",
+"Sewer Nemesis"
+],
+[
+"mill"
+]
+],
+[
+[
+"Sewer Nemesis",
+"Woe Strider"
+],
+[
+"mill"
+]
+],
+[
+[
+"Psionic Ritual",
+"Sewer Nemesis"
+],
+[
+"mill"
+]
+]
+],
+"Lorehold Spirit [SOC] [2026]": [
+[
+[
+"Balefire Liege",
+"Quintorius, Loremaster"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Lorehold Charm",
+"Quintorius, Loremaster"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Quintorius, Loremaster",
+"Sun Titan"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Balefire Liege",
+"Quintorius, History Chaser"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Lorehold Charm",
+"Quintorius, History Chaser"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Quintorius, History Chaser",
+"Sun Titan"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"The Host of Mordor [LTC] [2023]": [
+[
+[
+"Inferno Titan",
+"Wake the Dragon"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Inferno Titan",
+"Voracious Fell Beast"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Inferno Titan",
+"The Mouth of Sauron"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Everflowing Chalice",
+"The Mouth of Sauron"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Everflowing Chalice",
+"Shelob, Dread Weaver"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Everflowing Chalice",
+"Scourge of the Throne"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Blame Game [MKC] [2024]": [
+[
+[
+"Elspeth, Sun's Champion",
+"Rite of the Raging Storm"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Elspeth, Sun's Champion",
+"Keeper of the Accord"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Elspeth, Sun's Champion",
+"Kazuul, Tyrant of the Cliffs"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Rite of the Raging Storm",
+"Vengeful Ancestor"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rite of the Raging Storm",
+"Sun Titan"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Keeper of the Accord",
+"Vengeful Ancestor"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Most Wanted [OTC] [2024]": [
+[
+[
+"Misfortune Teller",
+"Rain of Riches"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Dead Before Sunrise",
+"Rain of Riches"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Angelic Sell-Sword",
+"Rain of Riches"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Misfortune Teller",
+"Queen Marchesa"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Dead Before Sunrise",
+"Queen Marchesa"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Angelic Sell-Sword",
+"Queen Marchesa"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Enduring Enchantments [CMM] [2023]": [
+[
+[
+"Mirari's Wake",
+"Sigil of the Empty Throne"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Boon of the Spirit Realm",
+"Sigil of the Empty Throne"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Mirari's Wake",
+"Sandwurm Convergence"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Boon of the Spirit Realm",
+"Sandwurm Convergence"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Mirari's Wake",
+"Ondu Spiritdancer"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Boon of the Spirit Realm",
+"Ondu Spiritdancer"
+],
+[
+"tribal-anthem"
+]
+]
+],
+"Turtle Power! [TMC] [2026]": [
+[
+[
+"Steelbane Hydra",
+"Vigor"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Shellshock",
+"Vigor"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Exploding Barrel",
+"Vigor"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Ray Fillet, Wave Warrior",
+"Steelbane Hydra"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Ray Fillet, Wave Warrior",
+"Shellshock"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Exploding Barrel",
+"Ray Fillet, Wave Warrior"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Graveyard Overdrive [M3C] [2024]": [
+[
+[
+"Pyrogoyf",
+"Ziatora, the Incinerator"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Selvala, Heart of the Wilds",
+"Ziatora, the Incinerator"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Archon of Cruelty",
+"Ziatora, the Incinerator"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Pyrogoyf",
+"The Reaver Cleaver"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Selvala, Heart of the Wilds",
+"The Reaver Cleaver"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Archon of Cruelty",
+"The Reaver Cleaver"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Doom Prevails [MSC] [2026]": [
+[
+[
+"Red Ghost, Intangible Genius",
+"Titan of Littjara"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Madame Hydra",
+"Titan of Littjara"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Loki, the Deceiver",
+"Titan of Littjara"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Doom's Time Platform",
+"Spark Double"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Kang Prime",
+"Spark Double"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Doom's Time Platform",
+"Lethal Scheme"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Exit from Exile [CLB] [2022]": [
+[
+[
+"Warstorm Surge",
+"Xenagos, the Reveler"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Return of the Wildspeaker",
+"Xenagos, the Reveler"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"End-Raze Forerunners",
+"Xenagos, the Reveler"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sandwurm Convergence",
+"Warstorm Surge"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Return of the Wildspeaker",
+"Sandwurm Convergence"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"End-Raze Forerunners",
+"Sandwurm Convergence"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Jeskai Striker [TDC] [2025]": [
+[
+[
+"Velomachus Lorehold",
+"Whirlwind of Thought"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Manaform Hellkite",
+"Velomachus Lorehold"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Elsha, Threefold Master",
+"Velomachus Lorehold"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Storm-Kiln Artist",
+"Whirlwind of Thought"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Manaform Hellkite",
+"Storm-Kiln Artist"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Elsha, Threefold Master",
+"Storm-Kiln Artist"
+],
+[
+"spellslinger-burn"
+]
+]
+],
+"Avengers Assemble [MSC] [2026]": [
+[
+[
+"Door of Destinies",
+"Winter Soldier, Reborn Avenger"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Tome of Legends",
+"Winter Soldier, Reborn Avenger"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Door of Destinies",
+"Vision, Synthezoid Avenger"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Tome of Legends",
+"Vision, Synthezoid Avenger"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Door of Destinies",
+"She-Hulk, Wallbreaker"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"She-Hulk, Wallbreaker",
+"Tome of Legends"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Witherbloom Pestilence [SOC] [2026]": [
+[
+[
+"Ribtruss Roaster",
+"Veinwitch Coven"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Ribtruss Roaster",
+"Trudge Garden"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Dina, Soul Steeper",
+"Ribtruss Roaster"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Moldervine Reclamation",
+"Veinwitch Coven"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Moldervine Reclamation",
+"Trudge Garden"
+],
+[
+"lifegain"
+]
+],
+[
+[
+"Dina, Soul Steeper",
+"Moldervine Reclamation"
+],
+[
+"lifegain"
+]
+]
+],
+"Peace Offering [BLC] [2024]": [
+[
+[
+"Hoofprints of the Stag",
+"Twenty-Toed Toad"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Hoofprints of the Stag",
+"Sunscorch Regent"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Hoofprints of the Stag",
+"Simic Ascendancy"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Communal Brewing",
+"Perch Protection"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Communal Brewing",
+"Octomancer"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Communal Brewing",
+"Fisher's Talent"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Revenant Recon [MKC] [2024]": [
+[
+[
+"Grave Titan",
+"Overseer of the Damned"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Amphin Mutineer",
+"Grave Titan"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Blood Rites [LCC] [2023]": [
+[
+[
+"Sorin, Lord of Innistrad",
+"Timothar, Baron of Bats"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Legion Lieutenant",
+"Timothar, Baron of Bats"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Legion Lieutenant",
+"Sorin, Lord of Innistrad"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Elenda, the Dusk Rose",
+"Sorin, Lord of Innistrad"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Elenda, the Dusk Rose",
+"Legion Lieutenant"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Bloodtracker",
+"Patron of the Vein"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Atraxa Counters B3": [
+[
+[
+"Corpsejack Menace",
+"Crystalline Crawler",
+"Hardened Scales",
+"Simic Ascendancy"
+],
+[
+"Infinite +1/+1 counters on creatures you control",
+"Infinite colored mana",
+"Win the game at the beginning of your next upkeep"
+]
+],
+[
+[
+"Crystalline Crawler",
+"Doubling Season",
+"Hardened Scales",
+"Simic Ascendancy"
+],
+[
+"Infinite colored mana",
+"Win the game at the beginning of your next upkeep",
+"Infinite +1/+1 counters on creatures you control"
+]
+],
+[
+[
+"Corpsejack Menace",
+"Crystalline Crawler",
+"Simic Ascendancy",
+"Winding Constrictor"
+],
+[
+"Infinite +1/+1 counters on creatures you control",
+"Infinite colored mana",
+"Win the game at the beginning of your next upkeep"
+]
+],
+[
+[
+"Corpsejack Menace",
+"Crystalline Crawler",
+"Doubling Season",
+"Simic Ascendancy"
+],
+[
+"Infinite +1/+1 counters on creatures you control",
+"Infinite colored mana",
+"Win the game at the beginning of your next upkeep"
+]
+],
+[
+[
+"Crystalline Crawler",
+"Doubling Season",
+"Simic Ascendancy",
+"Winding Constrictor"
+],
+[
+"Infinite +1/+1 counters on creatures you control",
+"Infinite colored mana",
+"Win the game at the beginning of your next upkeep"
+]
+]
+],
+"Nekusar Punisher B3": [
+[
+[
+"Notion Thief",
+"Teferi's Puzzle Box"
+],
+[
+"Opponents put all cards in hand on the bottom of their library on each of their draw steps",
+"Lock"
+]
+]
+],
+"Kambal Taxes B3": [
+[
+[
+"Exquisite Blood",
+"Sanguine Bond"
+],
+[
+"Infinite lifegain triggers",
+"Infinite lifeloss",
+"Infinite lifegain"
+]
+],
+[
+[
+"Exquisite Blood",
+"Vito, Thorn of the Dusk Rose"
+],
+[
+"Infinite lifegain triggers",
+"Infinite lifeloss",
+"Infinite lifegain"
+]
+]
+],
+"Planeswalker Party [CMM] [2023]": [
+[
+[
+"Spark Double",
+"Thrummingbird"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Grateful Apparition",
+"Spark Double"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Chandra, Legacy of Fire",
+"Spark Double"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Semester's End",
+"Thrummingbird"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Grateful Apparition",
+"Semester's End"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Chandra, Legacy of Fire",
+"Semester's End"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Eldrazi Unbound [CMM] [2023]": [
+[
+[
+"Forsaken Monument",
+"Ugin, the Ineffable"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Forsaken Monument",
+"Phyrexian Triniform"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Forsaken Monument",
+"Myriad Construct"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Myriad Construct",
+"Transmogrifying Wand"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Hangarback Walker",
+"Myriad Construct"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Everflowing Chalice",
+"Myriad Construct"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Legends' Legacy [DMC] [2022]": [
+[
+[
+"The Circle of Loyalty",
+"Zeriam, Golden Wind"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jazal Goldmane",
+"Zeriam, Golden Wind"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Day of Destiny",
+"Zeriam, Golden Wind"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"The Circle of Loyalty",
+"The Reaver Cleaver"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jazal Goldmane",
+"The Reaver Cleaver"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Day of Destiny",
+"The Reaver Cleaver"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Hail, Caesar [PIP] [2024]": [
+[
+[
+"Marshal's Anthem",
+"White Glove Gourmand"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Heroic Reinforcements",
+"White Glove Gourmand"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Captain of the Watch",
+"White Glove Gourmand"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Marshal's Anthem",
+"Wasteland Raider"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Heroic Reinforcements",
+"Wasteland Raider"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Captain of the Watch",
+"Wasteland Raider"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Dance of the Elements [ECC] [2026]": [
+[
+[
+"Return of the Wildspeaker",
+"Vernal Sovereign"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jubilation",
+"Vernal Sovereign"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Titan of Industry",
+"Vernal Sovereign"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Return of the Wildspeaker",
+"Titan of Industry"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jubilation",
+"Titan of Industry"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Subterfuge",
+"Vernal Sovereign"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Prismari Artistry [SOC] [2026]": [
+[
+[
+"Storm-Kiln Artist",
+"Surge to Victory"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rootha, Mastering the Moment",
+"Surge to Victory"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rite of Replication",
+"Surge to Victory"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Manaform Hellkite",
+"Surge to Victory"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Stormcatch Mentor",
+"Surge to Victory"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Harmonic Prodigy",
+"Surge to Victory"
+],
+[
+"spellslinger-burn"
+]
+]
+],
+"Temur Roar [TDC] [2025]": [
+[
+[
+"Vengeful Ancestor",
+"Will of the Temur"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Become the Avalanche",
+"Will of the Temur"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Temur Ascendancy",
+"Will of the Temur"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Vengeful Ancestor",
+"Verix Bladewing"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Become the Avalanche",
+"Verix Bladewing"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Temur Ascendancy",
+"Verix Bladewing"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Wakanda Forever [MSC] [2026]": [
+[
+[
+"Shuri, the Black Panther",
+"Vibranium Mining Mech"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Everett K. Ross, Hapless Attach\u00e9",
+"Vibranium Mining Mech"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Shuri, the Black Panther",
+"Trading Post"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Everett K. Ross, Hapless Attach\u00e9",
+"Trading Post"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Shuri, the Black Panther",
+"T'Challa, the Black Panther"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Everett K. Ross, Hapless Attach\u00e9",
+"T'Challa, the Black Panther"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Scions & Spellcraft [FIC] [2025]": [
+[
+[
+"Fandaniel, Telophoroi Ascian",
+"Y'shtola, Night's Blessed"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Fandaniel, Telophoroi Ascian",
+"Thancred Waters"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Fandaniel, Telophoroi Ascian",
+"Summon: Good King Mog XII"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Emet-Selch of the Third Seat",
+"Y'shtola, Night's Blessed"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Emet-Selch of the Third Seat",
+"Thancred Waters"
+],
+[
+"spellslinger-burn"
+]
+],
+[
+[
+"Emet-Selch of the Third Seat",
+"Summon: Good King Mog XII"
+],
+[
+"spellslinger-burn"
+]
+]
+],
+"Veloci-Ramp-Tor [LCC] [2023]": [
+[
+[
+"Return of the Wildspeaker",
+"Thundering Spineback"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Scion of Calamity",
+"Thundering Spineback"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Return of the Wildspeaker",
+"Scion of Calamity"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Regisaur Alpha",
+"Thundering Spineback"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Regisaur Alpha",
+"Return of the Wildspeaker"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Progenitor's Icon",
+"Xenagos, God of Revels"
+],
+[
+"ramp-big-mana"
+]
+]
+],
+"Animated Army [BLC] [2024]": [
+[
+[
+"Domri, Anarch of Bolas",
+"Tendershoot Dryad"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Tendershoot Dryad",
+"Warstorm Surge"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Path of Discovery",
+"Tendershoot Dryad"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Domri, Anarch of Bolas",
+"Rolling Hamsphere"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rolling Hamsphere",
+"Warstorm Surge"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Path of Discovery",
+"Rolling Hamsphere"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Explorers of the Deep [LCC] [2023]": [
+[
+[
+"Singer of Swift Rivers",
+"Zegana, Utopian Speaker"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Sage of Fables",
+"Zegana, Utopian Speaker"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Ripples of Potential",
+"Zegana, Utopian Speaker"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Singer of Swift Rivers",
+"Tributary Instructor"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Sage of Fables",
+"Tributary Instructor"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Ripples of Potential",
+"Tributary Instructor"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Squirreled Away [BLC] [2024]": [
+[
+[
+"Shamanic Revelation",
+"Swarmyard Massacre"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Insatiable Frugivore",
+"Swarmyard Massacre"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Second Harvest",
+"Swarmyard Massacre"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Second Harvest",
+"Shamanic Revelation"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Insatiable Frugivore",
+"Second Harvest"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Scurry of Squirrels",
+"Swarmyard Massacre"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Riders of Rohan [LTC] [2023]": [
+[
+[
+"Marshal's Anthem",
+"\u00c9owyn, Shieldmaiden"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Erkenbrand, Lord of Westfold",
+"\u00c9owyn, Shieldmaiden"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Beregond of the Guard",
+"\u00c9owyn, Shieldmaiden"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Marshal's Anthem",
+"Visions of Glory"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Erkenbrand, Lord of Westfold",
+"Visions of Glory"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Beregond of the Guard",
+"Visions of Glory"
+],
+[
+"tribal-anthem"
+]
+]
+],
+"Cavalry Charge [MOC] [2023]": [
+[
+[
+"Arvad the Cursed",
+"Silverwing Squadron"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Knight Exemplar",
+"Silverwing Squadron"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Corpse Knight",
+"Silverwing Squadron"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Arvad the Cursed",
+"Knight of the Last Breath"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Knight Exemplar",
+"Knight of the Last Breath"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Corpse Knight",
+"Knight of the Last Breath"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Eldrazi Incursion [M3C] [2024]": [
+[
+[
+"Return of the Wildspeaker",
+"Ulamog's Dreadsire"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Forsaken Monument",
+"Ulamog's Dreadsire"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Eldrazi Monument",
+"Ulamog's Dreadsire"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Return of the Wildspeaker",
+"Ugin, the Ineffable"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Forsaken Monument",
+"Ugin, the Ineffable"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Eldrazi Monument",
+"Ugin, the Ineffable"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Limit Break [FIC] [2025]": [
+[
+[
+"Bastion Protector",
+"Cloud, Ex-SOLDIER"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Barret, Avalanche Leader",
+"Bastion Protector"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Bastion Protector",
+"SOLDIER Military Program"
+],
+[
+"tribal-anthem"
+]
+]
+],
+"Revival Trance [FIC] [2025]": [
+[
+[
+"Setzer, Wandering Gambler",
+"Umaro, Raging Yeti"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Pitiless Plunderer",
+"Umaro, Raging Yeti"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Espers to Magicite",
+"Umaro, Raging Yeti"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"General Leo Cristophe",
+"Setzer, Wandering Gambler"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Flayer of the Hatebound",
+"Setzer, Wandering Gambler"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"General Leo Cristophe",
+"Pitiless Plunderer"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Mardu Surge [TDC] [2025]": [
+[
+[
+"Ogre Battledriver",
+"Zurgo Stormrender"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Goldnight Commander",
+"Zurgo Stormrender"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Commander's Insignia",
+"Zurgo Stormrender"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Ogre Battledriver",
+"Within Range"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Goldnight Commander",
+"Within Range"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Commander's Insignia",
+"Within Range"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Family Matters [BLC] [2024]": [
+[
+[
+"Rose Room Treasurer",
+"Zinnia, Valley's Voice"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jazal Goldmane",
+"Zinnia, Valley's Voice"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Elspeth, Sun's Champion",
+"Zinnia, Valley's Voice"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Rose Room Treasurer",
+"Siege-Gang Commander"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Jazal Goldmane",
+"Siege-Gang Commander"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Elspeth, Sun's Champion",
+"Siege-Gang Commander"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Jump Scare! [DSC] [2024]": [
+[
+[
+"Thunderfoot Baloth",
+"Worldspine Wurm"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"They Came From the Pipes",
+"Worldspine Wurm"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Curator Beastie",
+"Worldspine Wurm"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sandwurm Convergence",
+"Thunderfoot Baloth"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sandwurm Convergence",
+"They Came From the Pipes"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Curator Beastie",
+"Sandwurm Convergence"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Science! [PIP] [2024]": [
+[
+[
+"Everflowing Chalice",
+"Sentry Bot"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Everflowing Chalice",
+"Steel Overseer"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Brotherhood Scribe",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Endurance Bobblehead",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sentinel Sarah Lyons",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Brotherhood Scribe",
+"Unexpected Windfall"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Sliver Swarm [CMM] [2023]": [
+[
+[
+"Megantic Sliver",
+"Sliver Gravemother"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Cleaving Sliver",
+"Sliver Gravemother"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Megantic Sliver",
+"Rukarumel, Biologist"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Cleaving Sliver",
+"Rukarumel, Biologist"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Lazotep Sliver",
+"Megantic Sliver"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Cleaving Sliver",
+"Lazotep Sliver"
+],
+[
+"tribal-anthem"
+]
+]
+],
+"Call for Backup [MOC] [2023]": [
+[
+[
+"Mirror-Style Master",
+"Triskelion"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mindless Automaton",
+"Triskelion"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Sunscorch Regent",
+"Triskelion"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mirror-Style Master",
+"Sunscorch Regent"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mindless Automaton",
+"Sunscorch Regent"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Slurrk, All-Ingesting",
+"Triskelion"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Quandrix Unlimited [SOC] [2026]": [
+[
+[
+"Steelbane Hydra",
+"Zimone, Infinite Analyst"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mana Bloom",
+"Zimone, Infinite Analyst"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Zimone's Hypothesis",
+"Zimone, Infinite Analyst"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Steelbane Hydra",
+"Zimone's Hypothesis"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mana Bloom",
+"Zimone's Hypothesis"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Primo, the Unbounded",
+"Zimone, Infinite Analyst"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Counter Intelligence [EOC] [2025]": [
+[
+[
+"Threefold Thunderhulk",
+"Thrummingbird"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Tezzeret's Gambit",
+"Threefold Thunderhulk"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Tekuthal, Inquiry Dominus",
+"Threefold Thunderhulk"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mindless Automaton",
+"Thrummingbird"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mindless Automaton",
+"Tezzeret's Gambit"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Mindless Automaton",
+"Tekuthal, Inquiry Dominus"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Abzan Armor [TDC] [2025]": [
+[
+[
+"Tower Defense",
+"Wingmantle Chaplain"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Behind the Scenes",
+"Wingmantle Chaplain"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Assault Formation",
+"Wingmantle Chaplain"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Shadrix Silverquill",
+"Tower Defense"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Behind the Scenes",
+"Shadrix Silverquill"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Assault Formation",
+"Shadrix Silverquill"
+],
+[
+"tribal-anthem"
+]
+]
+],
+"Deep Clue Sea [MKC] [2024]": [
+[
+[
+"Knowledge Is Power",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Kappa Cannoneer",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Aerial Extortionist",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Knowledge Is Power",
+"Wavesifter"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Kappa Cannoneer",
+"Wavesifter"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Aerial Extortionist",
+"Wavesifter"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Ahoy Mateys [LCC] [2023]": [
+[
+[
+"Merchant Raiders",
+"Skeleton Crew"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Gemcutter Buccaneer",
+"Skeleton Crew"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Coercive Recruiter",
+"Skeleton Crew"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Merchant Raiders",
+"Ramirez DePietro, Pillager"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Gemcutter Buccaneer",
+"Ramirez DePietro, Pillager"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Coercive Recruiter",
+"Ramirez DePietro, Pillager"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Obscura Operation [NCC] [2022]": [
+[
+[
+"Misfortune Teller",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sun Titan",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Aerial Extortionist",
+"Whirler Rogue"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Misfortune Teller",
+"Tivit, Seller of Secrets"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Sun Titan",
+"Tivit, Seller of Secrets"
+],
+[
+"go-wide-tokens"
+]
+],
+[
+[
+"Aerial Extortionist",
+"Tivit, Seller of Secrets"
+],
+[
+"go-wide-tokens"
+]
+]
+],
+"Mutant Menace [PIP] [2024]": [
+[
+[
+"Vexing Radgull",
+"Young Deathclaws"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Recon Craft Theta",
+"Young Deathclaws"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Radstorm",
+"Young Deathclaws"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Vault 87: Forced Evolution",
+"Vexing Radgull"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Recon Craft Theta",
+"Vault 87: Forced Evolution"
+],
+[
+"counters-proliferate"
+]
+],
+[
+[
+"Radstorm",
+"Vault 87: Forced Evolution"
+],
+[
+"counters-proliferate"
+]
+]
+],
+"Deadly Disguise [MKC] [2024]": [
+[
+[
+"Printlifter Ooze",
+"Return of the Wildspeaker"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Master of Pearls",
+"Printlifter Ooze"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Hooded Hydra",
+"Return of the Wildspeaker"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Hooded Hydra",
+"Master of Pearls"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Return of the Wildspeaker",
+"Thelonite Hermit"
+],
+[
+"tribal-anthem"
+]
+],
+[
+[
+"Master of Pearls",
+"Thelonite Hermit"
+],
+[
+"tribal-anthem"
+]
+]
+]
+}

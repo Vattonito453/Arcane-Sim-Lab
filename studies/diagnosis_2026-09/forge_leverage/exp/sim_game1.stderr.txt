@@ -1,0 +1,30 @@
+shim: plans loaded for [Inspirit Omega, Selvala Ramp, Drana Vampires, Wyleth Voltron B3, Ur-Dragon B3, Kambal Taxes B3, Kilo Alpha, Slurrk Oozes B3, Meren Graveyard B3, Inspirit Alpha, Krenko Goblins, Inspirit B3 v3, Inspirit B3, Torbran Burn B3, Inspirit Omega V2, Inspirit B3 v2, N3cro Raggadragga, NanMan Felix Five-Boots, Inspirit EDHREC Average, Dnide Wildsear, Atraxa Counters B3, Kilo Helm Final, Kilo Omega, Nekusar Punisher B3, Kilo Helm B3, Talrand Control, Shelly Siona, Wilhelt Zombies B3]
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+The card A-Alrund's Epiphany was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Baba Lysaga, Night Witch was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Divide by Zero was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Esika's Chariot was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Faceless Haven was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Fires of Invention was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Goldspan Dragon was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Hullbreaker Horror was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Kumano Faces Kakkazan was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Luminarch Aspirant was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Monster Manual was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Omnath, Locus of Creation was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-The Meathook Massacre was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card A-Unholy Heat was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Blinding Radiance was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Goblin Bruiser was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Ogre Painbringer was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Titanic Pelagosaur was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+The card Treetop Recluse was not assigned to any set. Adding it to UNKNOWN set... to fix see res/editions/ folder. 
+Upcoming set Star Trek (TRK) dated in the future. All `upcoming` cards will be added to this set with unknown rarity.
+shim: FModel initialized
+shim: Ai(1)-Kilo Omega -> plan agent, profile SimLabHuman
+shim: Ai(2)-Krenko Goblins -> stock AI, profile Default
+shim: Ai(3)-N3cro Raggadragga -> stock AI, profile Default
+shim: Ai(4)-Atraxa Counters B3 -> stock AI, profile Default
+hidden has neither ManaCost nor Color
+shim: game 0 error: java.lang.RuntimeException: Couldn't map Goblin Token (9444)/1102303057
+shim: game 1 done in 23163 ms — ERRORED (java.lang.RuntimeException: Couldn't map Goblin Token (9444)/1102303057)

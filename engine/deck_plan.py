@@ -157,10 +157,16 @@ def _fact(facts: dict, n: str) -> dict:
 
 # Synergy lines: a deck's win condition when Commander Spellbook has nothing.
 #
-# Spellbook catalogues competitive and infinite combos. Queried for all 66
-# Commander precons it returns ZERO variants -- not even "almost included" --
-# so `lines` is empty and the shim's combo pursuit is structurally inert on
-# the decks most players actually own. But a precon absolutely has a win
+# Spellbook catalogues competitive and infinite combos. This comment used to
+# say Spellbook returns no variants for any of the 66 Commander precons.
+# Corrected 2026-09-26: false. combos.parse_dck sent Forge's "|SET|art" suffix
+# with each name; with clean names 14 of 66 precons have 26 included variants
+# (and 65 of 66 have almost-included ones). The suffix exists only in Forge's
+# bundled precon files, not in engine/decks or convert_decklist output, so
+# user-imported decks were never affected. Even with clean names 52 of 66
+# precons have no included variants, so `lines` stays empty on most of
+# Forge's bundled precons and the shim's combo pursuit is inert there. But a
+# precon absolutely has a win
 # condition: it is "make tokens, then anthem them", "sacrifice creatures,
 # then drain", "put counters on things, then proliferate". Those are combos
 # that need to fire ONCE, not infinitely.
@@ -392,11 +398,14 @@ def build_plan(path: str | Path, fetch: bool = False,
         if val > 1:
             targets[n] = val
 
-    # Spellbook knows nothing about precon-level engines: queried for all 66
-    # Commander precons it returns ZERO variants. Fall back to the deck's own
-    # archetype so "assemble your engine" means something on the decks most
-    # players own. Only when Spellbook returned nothing -- a real catalogued
-    # combo is always the better line.
+    # Fallback when Spellbook returns no lines for a deck. The premise was that
+    # Spellbook returns nothing for any precon; corrected 2026-09-26: false,
+    # that was combos.parse_dck's "|SET|art" suffix bug (clean names: 14 of 66
+    # precons have 26 included variants). Falls back to the deck's own
+    # archetype so "assemble your engine" means something when there is no
+    # catalogued line. Only when Spellbook returned nothing -- a real catalogued
+    # combo is always the better line. The repair plan (section 8) does not
+    # revive this fallback.
     # OPT-IN until validated. The one arm that ran with synergy lines on
     # predicted WORSE than stock (rank corr 0.255 -> 0.142), though it was
     # undersampled and censored so that is not a clean refutation. Either way
@@ -495,10 +504,17 @@ def build_plan(path: str | Path, fetch: bool = False,
     # search targets only). The cold-start invariant lives in plan_feedback:
     # a deck with no history gets exactly the plan built above, and a broken
     # store must never block a plan from building at all.
+    # OFF unless MTG_PLAN_FEEDBACK_APPLY=1 (repair plan WS0 task 5, RC4): the
+    # nudge was never validated, and with it on a plan depends on whatever
+    # the store happened to hold. note_tags still runs; it records the
+    # archetype and never changes the plan. Plans are built in run_sim, so
+    # the flag that matters is the WORKER's; deploy/preflight.py asserts it.
     try:
+        import os
         import plan_feedback
         plan_feedback.note_tags(deck_name, tags)
-        plan = plan_feedback.apply_to_plan(plan, deck_name, tags)
+        if os.environ.get("MTG_PLAN_FEEDBACK_APPLY", "0") == "1":
+            plan = plan_feedback.apply_to_plan(plan, deck_name, tags)
     except Exception:
         pass
     return deck_name, plan

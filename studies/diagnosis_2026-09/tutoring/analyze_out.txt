@@ -1,0 +1,112 @@
+
+==================== tt_stock: games=8 shim=0.4.2
+-- stock seats: tutor cards reaching hand=68  cast=46  never cast=22/68 (32%)
+   never-cast end zones: {'Library': 4, 'Hand': 15, 'Exile': 2, 'Graveyard': 1}
+   tutor SPELL casts=30 rounds1-4=6/30 (20%) median cast round=7.0 median held rounds=1.0
+   off-turn tutor spell casts=2/30 (7%)
+   phases: {'': 30}
+   decider (all casts): {'stock': 46}
+   round hist (12=12+): [2, 2, 0, 2, 1, 4, 5, 4, 2, 2, 4, 2]
+-- stock searches=123 rounds1-4=9/123 (7%) median round=9.0 taken known=122 line-piece=30/122 (25%) win-line-piece=12/122 (10%) taken-later-cast/entered=114/122 (93%)
+
+==================== tt_stage0: games=8 shim=0.4.1
+-- plan seats: tutor cards reaching hand=80  cast=49  never cast=31/80 (39%)
+   never-cast end zones: {'Library': 12, 'Hand': 13, 'Exile': 1, 'Graveyard': 4, 'Battlefield': 1}
+   tutor SPELL casts=34 rounds1-4=13/34 (38%) median cast round=5.5 median held rounds=1.0
+   off-turn tutor spell casts=1/34 (3%)
+   phases: {'': 34}
+   decider (all casts): {'stock': 49}
+   round hist (12=12+): [6, 0, 1, 6, 4, 6, 3, 2, 4, 0, 1, 1]
+-- plan searches=143 rounds1-4=17/143 (12%) median round=8.0 taken known=138 line-piece=0/138 (0%) win-line-piece=0/138 (0%) taken-later-cast/entered=122/138 (88%)
+   search_seen joined=0 sighted=0 comboPick=0 steers={}
+
+==================== tt_stage1: games=8 shim=0.4.2
+-- plan seats: tutor cards reaching hand=65  cast=41  never cast=24/65 (37%)
+   never-cast end zones: {'Library': 17, 'Hand': 4, 'Battlefield': 1, 'Graveyard': 1, 'Exile': 1}
+   tutor SPELL casts=28 rounds1-4=10/28 (36%) median cast round=6.0 median held rounds=1.0
+   off-turn tutor spell casts=0/28 (0%)
+   phases: {'': 28}
+   decider (all casts): {'stock': 20, 'shim': 21}
+   round hist (12=12+): [4, 1, 2, 3, 3, 2, 1, 3, 1, 1, 0, 7]
+-- plan searches=52 rounds1-4=11/52 (21%) median round=10.0 taken known=51 line-piece=20/51 (39%) win-line-piece=8/51 (16%) taken-later-cast/entered=44/51 (86%)
+   search_seen joined=0 sighted=0 comboPick=0 steers={}
+
+==================== tt_stage2: games=8 shim=0.5.0
+-- plan seats: tutor cards reaching hand=71  cast=46  never cast=25/71 (35%)
+   never-cast end zones: {'Graveyard': 2, 'Library': 14, 'Hand': 7, 'Exile': 2}
+   tutor SPELL casts=32 rounds1-4=11/32 (34%) median cast round=5.5 median held rounds=1.0
+   off-turn tutor spell casts=4/32 (12%)
+   phases: {'': 32}
+   decider (all casts): {'shim': 17, 'stock': 29}
+   round hist (12=12+): [5, 3, 1, 2, 5, 3, 2, 0, 3, 4, 2, 2]
+-- plan searches=52 rounds1-4=10/52 (19%) median round=7.0 taken known=52 line-piece=45/52 (87%) win-line-piece=23/52 (44%) taken-later-cast/entered=39/52 (75%)
+   search_seen joined=51 sighted=39 comboPick=17 steers={'plan': 23, 'combo': 17}
+
+==================== av015: games=128 shim=0.15.0
+-- plan seats: tutor cards reaching hand=358  cast=282  never cast=76/358 (21%)
+   never-cast end zones: {'Hand': 15, 'Library': 26, 'Exile': 15, 'Battlefield': 5, 'Graveyard': 15}
+   tutor SPELL casts=186 rounds1-4=67/186 (36%) median cast round=6.0 median held rounds=1.0
+   off-turn tutor spell casts=8/186 (4%)
+   phases: {'MAIN1': 87, 'MAIN2': 41, 'DRAW': 30, 'UPKEEP': 21, 'COMBAT_DECLARE_ATTACKERS': 4, 'END_OF_TURN': 2}
+   decider (all casts): {'shim': 125, 'stock': 157}
+   round hist (12=12+): [16, 15, 15, 21, 15, 12, 15, 17, 13, 18, 11, 18]
+-- stock seats: tutor cards reaching hand=1076  cast=675  never cast=401/1076 (37%)
+   never-cast end zones: {'Hand': 182, 'Library': 89, 'Graveyard': 83, 'Exile': 34, 'Battlefield': 13}
+   tutor SPELL casts=426 rounds1-4=126/426 (30%) median cast round=6.0 median held rounds=1.0
+   off-turn tutor spell casts=15/426 (4%)
+   phases: {'MAIN2': 291, 'MAIN1': 101, 'UPKEEP': 15, 'DRAW': 9, 'COMBAT_DECLARE_ATTACKERS': 5, 'END_OF_TURN': 3}
+   decider (all casts): {'stock': 675}
+   round hist (12=12+): [34, 30, 24, 38, 41, 51, 45, 32, 32, 34, 23, 42]
+-- plan searches=336 rounds1-4=89/336 (26%) median round=7.0 taken known=312 line-piece=220/312 (71%) win-line-piece=92/312 (29%) taken-later-cast/entered=260/312 (83%)
+   search_seen joined=299 sighted=230 comboPick=71 steers={'combo': 65, 'plan': 124}
+-- stock searches=1159 rounds1-4=171/1159 (15%) median round=8.0 taken known=1009 line-piece=261/1009 (26%) win-line-piece=95/1009 (9%) taken-later-cast/entered=801/1009 (79%)
+
+==================== avwinmax: games=128 shim=0.5.0
+-- plan seats: tutor cards reaching hand=365  cast=261  never cast=104/365 (28%)
+   never-cast end zones: {'Hand': 28, 'Library': 47, 'Graveyard': 20, 'Exile': 4, 'Battlefield': 5}
+   tutor SPELL casts=166 rounds1-4=46/166 (28%) median cast round=7.0 median held rounds=1.0
+   off-turn tutor spell casts=7/166 (4%)
+   phases: {'': 166}
+   decider (all casts): {'stock': 157, 'shim': 104}
+   round hist (12=12+): [9, 10, 13, 14, 12, 16, 17, 16, 9, 5, 6, 39]
+-- stock seats: tutor cards reaching hand=1119  cast=695  never cast=424/1119 (38%)
+   never-cast end zones: {'Hand': 188, 'Library': 93, 'Exile': 50, 'Graveyard': 85, 'Battlefield': 8}
+   tutor SPELL casts=421 rounds1-4=105/421 (25%) median cast round=8.0 median held rounds=1.0
+   off-turn tutor spell casts=14/421 (3%)
+   phases: {'': 421}
+   decider (all casts): {'stock': 695}
+   round hist (12=12+): [32, 18, 30, 25, 24, 45, 36, 29, 33, 34, 30, 85]
+-- plan searches=361 rounds1-4=81/361 (22%) median round=7.0 taken known=293 line-piece=204/293 (70%) win-line-piece=87/293 (30%) taken-later-cast/entered=225/293 (77%)
+   search_seen joined=265 sighted=206 comboPick=76 steers={'plan': 115, 'combo': 68}
+-- stock searches=1141 rounds1-4=141/1141 (12%) median round=9.0 taken known=1010 line-piece=172/1010 (17%) win-line-piece=55/1010 (5%) taken-later-cast/entered=771/1010 (76%)
+
+==================== av016: games=128 shim=0.16.0
+-- plan seats: tutor cards reaching hand=350  cast=266  never cast=84/350 (24%)
+   never-cast end zones: {'Exile': 10, 'Library': 36, 'Graveyard': 16, 'Hand': 19, 'Battlefield': 3}
+   tutor SPELL casts=168 rounds1-4=48/168 (29%) median cast round=7.0 median held rounds=1.0
+   off-turn tutor spell casts=7/168 (4%)
+   phases: {'MAIN1': 66, 'MAIN2': 55, 'UPKEEP': 24, 'DRAW': 19, 'COMBAT_DECLARE_ATTACKERS': 2, 'END_OF_TURN': 2}
+   decider (all casts): {'stock': 143, 'shim': 123}
+   round hist (12=12+): [15, 8, 9, 16, 16, 15, 18, 14, 17, 11, 7, 22]
+   tutor_cast events with no matching zone cast: 7 [("Summoner's Pact", 4), ('Muddle the Mixture', 2), ('Worldly Tutor', 1)]
+-- stock seats: tutor cards reaching hand=1042  cast=646  never cast=396/1042 (38%)
+   never-cast end zones: {'Graveyard': 89, 'Hand': 185, 'Library': 78, 'Exile': 35, 'Battlefield': 9}
+   tutor SPELL casts=373 rounds1-4=102/373 (27%) median cast round=7.0 median held rounds=1.0
+   off-turn tutor spell casts=17/373 (5%)
+   phases: {'MAIN2': 230, 'MAIN1': 115, 'UPKEEP': 12, 'COMBAT_DECLARE_ATTACKERS': 4, 'DRAW': 4, 'END_OF_TURN': 3}
+   decider (all casts): {'stock': 646}
+   round hist (12=12+): [25, 21, 24, 32, 36, 35, 35, 31, 19, 25, 27, 63]
+-- plan searches=393 rounds1-4=74/393 (19%) median round=8.0 taken known=318 line-piece=215/318 (68%) win-line-piece=95/318 (30%) taken-later-cast/entered=238/318 (75%)
+   search_seen joined=292 sighted=221 comboPick=72 steers={'plan': 121, 'combo': 63}
+-- stock searches=1047 rounds1-4=140/1047 (13%) median round=8.0 taken known=859 line-piece=201/859 (23%) win-line-piece=75/859 (9%) taken-later-cast/entered=707/859 (82%)
+
+==================== rubric_ship: games=32 shim=0.9.1
+-- plan seats: tutor cards reaching hand=347  cast=228  never cast=119/347 (34%)
+   never-cast end zones: {'Hand': 43, 'Library': 47, 'Graveyard': 21, 'Exile': 7, 'Battlefield': 1}
+   tutor SPELL casts=137 rounds1-4=33/137 (24%) median cast round=8.0 median held rounds=1.0
+   off-turn tutor spell casts=8/137 (6%)
+   phases: {'': 137}
+   decider (all casts): {'shim': 67, 'stock': 161}
+   round hist (12=12+): [4, 7, 9, 13, 11, 12, 11, 8, 10, 9, 8, 35]
+-- plan searches=421 rounds1-4=47/421 (11%) median round=9.0 taken known=381 line-piece=203/381 (53%) win-line-piece=92/381 (24%) taken-later-cast/entered=307/381 (81%)
+   search_seen joined=358 sighted=203 comboPick=66 steers={'plan': 155, 'combo': 58}

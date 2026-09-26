@@ -1,0 +1,298 @@
+718 297
+18 Summoner's Pact -> Staff of Domination
+15 Vampiric Tutor -> Thassa's Oracle
+13 Reckless Handling -> Helm of the Host
+13 Beseech the Mirror -> Thassa's Oracle
+11 Worldly Tutor -> Emiel the Blessed
+11 Natural Order -> Staff of Domination
+10 Worldly Tutor -> Staff of Domination
+10 Enlightened Tutor -> Thassa's Oracle
+8 Tezzeret, Cruel Captain -> Helm of the Host
+8 Imperial Seal -> Thassa's Oracle
+8 Mystical Tutor -> Thassa's Oracle
+7 Imperial Recruiter -> Helm of the Host
+7 Vampiric Tutor -> Underworld Breach
+7 Tezzeret, Cruel Captain -> Clock of Omens
+7 Gifts Ungiven -> Hullbreaker Horror
+7 Fierce Empath -> Staff of Domination
+6 Enlightened Tutor -> Emiel the Blessed
+6 Neoform -> Phyrexian Metamorph
+6 Shared Summons -> Emiel the Blessed
+6 Goblin Engineer -> Helm of the Host
+6 Dizzy Spell -> Hullbreaker Horror
+6 Mystical Tutor -> Hullbreaker Horror
+6 Eldritch Evolution -> Staff of Domination
+6 Shared Summons -> Staff of Domination
+6 Worldly Tutor -> Thassa's Oracle
+6 Summoner's Pact -> Thassa's Oracle
+6 Summoner's Pact -> Demonic Consultation
+6 Vampiric Tutor -> Swift Reconfiguration
+5 Neoform -> Emiel the Blessed
+5 Ranger-Captain of Eos -> Emiel the Blessed
+5 Gamble -> Helm of the Host
+5 Gamble -> Underworld Breach
+5 Enlightened Tutor -> Hullbreaker Horror
+5 Worldly Tutor -> Quirion Ranger
+5 Demonic Tutor -> Thassa's Oracle
+5 Kuldotha Forgemaster -> Helm of the Host
+5 Green Sun's Zenith -> Staff of Domination
+4 Wargate -> Emiel the Blessed
+4 Eldritch Evolution -> Lotus Cobra
+4 Eldritch Evolution -> Cephalid Illusionist
+4 Spellseeker -> Lightning Greaves
+4 Demonic Tutor -> Demonic Consultation
+4 Ranger-Captain of Eos -> Hullbreaker Horror
+4 Dizzy Spell -> Sol Ring
+4 Shared Summons -> Quirion Ranger
+4 Imperial Seal -> Demonic Consultation
+4 Mystical Tutor -> Demonic Consultation
+4 Vampiric Tutor -> Demonic Consultation
+4 Birthing Pod -> Phyrexian Metamorph
+4 Tezzeret, Cruel Captain -> Basalt Monolith
+4 Tezzeret the Seeker -> Unctus, Grand Metatect
+4 Wishclaw Talisman -> Thassa's Oracle
+4 Green Sun's Zenith -> Mana Vault
+4 Vivien, Monsters' Advocate -> Nuka-Cola Vending Machine
+4 Ranger-Captain of Eos -> Zealous Conscripts
+3 Captain Sisay -> Emiel the Blessed
+3 Chord of Calling -> Gaea's Cradle
+3 Enlightened Tutor -> Phyrexian Metamorph
+3 Birthing Pod -> Emiel the Blessed
+3 Eldritch Evolution -> Emiel the Blessed
+3 Worldly Tutor -> Springheart Nantuko
+3 Mystical Tutor -> Lightning Greaves
+3 Trinket Mage -> Lightning Greaves
+3 Eldritch Evolution -> Lightning Greaves
+3 Mystical Tutor -> Cephalid Illusionist
+3 Wishclaw Talisman -> Underworld Breach
+3 Grim Tutor -> Underworld Breach
+3 Woodland Bellower -> Staff of Domination
+3 Shared Summons -> Gaea's Cradle
+3 Worldly Tutor -> Gaea's Cradle
+3 Goblin Engineer -> Basalt Monolith
+3 Reckless Handling -> Forsaken Monument
+3 Muddle the Mixture -> Springheart Nantuko
+3 Mystical Tutor -> Aphetto Alchemist
+3 Worldly Tutor -> Cephalid Illusionist
+3 Muddle the Mixture -> Cephalid Illusionist
+3 Muddle the Mixture -> Aphetto Alchemist
+3 Trinket Mage -> Cephalid Illusionist
+3 Diabolic Intent -> Underworld Breach
+3 Intuition -> Faerie Mastermind
+3 Eldritch Evolution -> Aphetto Alchemist
+3 Eldritch Evolution -> Phyrexian Metamorph
+3 Muddle the Mixture -> Lightning Greaves
+3 Trophy Mage -> Basalt Monolith
+3 Demonic Tutor -> Glint-Horn Buccaneer
+3 Lively Dirge -> Curiosity
+3 Enlightened Tutor -> Kiki-Jiki, Mirror Breaker
+3 Intuition -> Thassa's Oracle
+3 Imperial Seal -> Devoted Druid
+3 Sisay, Weatherlight Captain -> Emiel the Blessed
+3 Goblin Matron -> Storm-Kiln Artist
+3 Sand Scout -> Sun Titan
+2 Worldly Tutor -> Felidar Guardian
+2 Enlightened Tutor -> Felidar Guardian
+2 Shared Summons -> Mana Vault
+2 Shared Summons -> Derevi, Empyrial Tactician
+2 Enlightened Tutor -> Derevi, Empyrial Tactician
+2 Neoform -> Gaea's Cradle
+2 Captain Sisay -> Gaea's Cradle
+2 Chord of Calling -> Springheart Nantuko
+2 Eldritch Evolution -> Unctus, Grand Metatect
+2 Gamble -> Thassa's Oracle
+2 Idyllic Tutor -> Sol Ring
+2 Gamble -> Sol Ring
+2 Eldritch Evolution -> Ashaya, Soul of the Wild
+2 Imperial Seal -> Swift Reconfiguration
+2 Demonic Tutor -> Devoted Druid
+2 Ranger-Captain of Eos -> Gaea's Cradle
+2 Shared Summons -> Phyrexian Metamorph
+2 Spellseeker -> Phyrexian Metamorph
+2 Gamble -> Basalt Monolith
+2 Diabolic Intent -> Demonic Consultation
+2 Tezzeret, Cruel Captain -> Magda, Brazen Outlaw
+2 Enlightened Tutor -> Sol Ring
+2 Intuition -> Hullbreaker Horror
+2 Nature's Rhythm -> Staff of Domination
+2 Summoner's Pact -> Quirion Ranger
+2 Shared Summons -> Priest of Titania
+2 Mystical Tutor -> Swift Reconfiguration
+2 Spellseeker -> Emiel the Blessed
+2 Reckless Handling -> Basalt Monolith
+2 Mystical Tutor -> Springheart Nantuko
+2 Vampiric Tutor -> Devoted Druid
+2 Worldly Tutor -> Demonic Consultation
+2 Idyllic Tutor -> Hullbreaker Horror
+2 Summoner's Pact -> Priest of Titania
+2 Enlightened Tutor -> Swift Reconfiguration
+2 Eldritch Evolution -> Nuka-Cola Vending Machine
+2 Kuldotha Forgemaster -> Nuka-Cola Vending Machine
+2 Long-Term Plans -> Flare of Duplication
+2 Enlightened Tutor -> Marvin, Murderous Mimic
+2 Vampiric Tutor -> Curiosity
+2 Intuition -> Demonic Consultation
+2 Solve the Equation -> Jeska's Will
+2 Intuition -> Underworld Breach
+2 Wishclaw Talisman -> Glint-Horn Buccaneer
+2 Drift of Phantasms -> Basalt Monolith
+2 Gamble -> Jeska's Will
+2 Demonic Counsel -> Thassa's Oracle
+2 Mystical Tutor -> Devoted Druid
+2 Diabolic Intent -> Thassa's Oracle
+2 Mystical Tutor -> Underworld Breach
+2 Drift of Phantasms -> Hullbreaker Horror
+2 Goblin Matron -> Kiki-Jiki, Mirror Breaker
+2 Eldritch Evolution -> Umbral Mantle
+1 Eldritch Evolution -> Bloom Tender
+1 Ranger-Captain of Eos -> Bloom Tender
+1 Neoform -> Felidar Guardian
+1 Enlightened Tutor -> Gaea's Cradle
+1 Imperial Recruiter -> Metalworker
+1 Tezzeret, Cruel Captain -> Metalworker
+1 Trinket Mage -> Lotus Cobra
+1 Chord of Calling -> Cephalid Illusionist
+1 Chord of Calling -> Unctus, Grand Metatect
+1 Spellseeker -> Unctus, Grand Metatect
+1 Worldly Tutor -> Aphetto Alchemist
+1 Grim Tutor -> Thassa's Oracle
+1 Mystical Tutor -> Mana Vault
+1 Ranger-Captain of Eos -> Sol Ring
+1 Birthing Pod -> Gaea's Cradle
+1 Mystical Tutor -> Unctus, Grand Metatect
+1 Worldly Tutor -> Unctus, Grand Metatect
+1 Transmute Artifact -> Unctus, Grand Metatect
+1 Trinket Mage -> Springheart Nantuko
+1 Green Sun's Zenith -> Springheart Nantuko
+1 Tezzeret the Seeker -> Lotus Cobra
+1 Spellseeker -> Lotus Cobra
+1 Trinket Mage -> Unctus, Grand Metatect
+1 Spellseeker -> Cephalid Illusionist
+1 Muddle the Mixture -> Lotus Cobra
+1 Gamble -> Hullbreaker Horror
+1 Woodland Bellower -> Selvala, Heart of the Wilds
+1 Worldly Tutor -> Priest of Titania
+1 Natural Order -> Umbral Mantle
+1 Fierce Empath -> Quirion Ranger
+1 Nature's Rhythm -> Quirion Ranger
+1 Green Sun's Zenith -> Quirion Ranger
+1 Neoform -> Derevi, Empyrial Tactician
+1 Chord of Calling -> Emiel the Blessed
+1 Imperial Recruiter -> Basalt Monolith
+1 Trinket Mage -> Aphetto Alchemist
+1 Diabolic Intent -> Grinding Station
+1 Imperial Seal -> Grinding Station
+1 Tezzeret, Cruel Captain -> Battered Golem
+1 Natural Order -> Ashaya, Soul of the Wild
+1 Enlightened Tutor -> Faeburrow Elder
+1 Worldly Tutor -> Faeburrow Elder
+1 Chord of Calling -> Phyrexian Metamorph
+1 Gamble -> Forsaken Monument
+1 Goblin Engineer -> Godo, Bandit Warlord
+1 Trinket Mage -> Shuko
+1 Eldritch Evolution -> Springheart Nantuko
+1 Transmute Artifact -> Springheart Nantuko
+1 Worldly Tutor -> Lightning Greaves
+1 Tezzeret the Seeker -> Lightning Greaves
+1 Spellseeker -> Aphetto Alchemist
+1 Tezzeret, Cruel Captain -> Universal Automaton
+1 Intuition -> Sol Ring
+1 Chord of Calling -> Quirion Ranger
+1 Fierce Empath -> Selvala, Heart of the Wilds
+1 Tooth and Nail -> Priest of Titania
+1 Worldly Tutor -> Devoted Druid
+1 Gamble -> Demonic Consultation
+1 Kuldotha Forgemaster -> Metalworker
+1 Mystical Tutor -> Mirrormade
+1 Natural Order -> Nuka-Cola Vending Machine
+1 Mystical Tutor -> Smothering Tithe
+1 Vampiric Tutor -> Marvin, Murderous Mimic
+1 Eladamri's Call -> Marvin, Murderous Mimic
+1 Demonic Tutor -> Malcolm, Keen-Eyed Navigator
+1 Formidable Speaker -> Ashaya, Soul of the Wild
+1 Ranger-Captain of Eos -> Mana Vault
+1 Sisay, Weatherlight Captain -> Marvin, Murderous Mimic
+1 Green Sun's Zenith -> Ioreth of the Healing House
+1 Ranger-Captain of Eos -> Ioreth of the Healing House
+1 Vampiric Tutor -> Glint-Horn Buccaneer
+1 Lively Dirge -> Glint-Horn Buccaneer
+1 Diabolic Intent -> Glint-Horn Buccaneer
+1 Drift of Phantasms -> Mana Vault
+1 Transmute Artifact -> Hullbreaker Horror
+1 Green Sun's Zenith -> Hullbreaker Horror
+1 Chord of Calling -> Sol Ring
+1 Trophy Mage -> Sol Ring
+1 Tezzeret the Seeker -> Mana Vault
+1 Worldly Tutor -> Nuka-Cola Vending Machine
+1 Demonic Counsel -> Demonic Consultation
+1 Vampiric Tutor -> Faerie Mastermind
+1 Mystical Tutor -> Grinding Station
+1 Gamble -> Lotus Petal
+1 Lively Dirge -> Swift Reconfiguration
+1 Diabolic Intent -> Hazel's Brewmaster
+1 Beseech the Mirror -> Devoted Druid
+1 Fierce Empath -> Ashaya, Soul of the Wild
+1 Imperial Recruiter -> Zealous Conscripts
+1 Gifts Ungiven -> Mirrormade
+1 Mystical Tutor -> Lotus Cobra
+1 Captain Sisay -> Phyrexian Metamorph
+1 Chord of Calling -> Lotus Cobra
+1 Long-Term Plans -> Curiosity
+1 Sylvan Tutor -> Nuka-Cola Vending Machine
+1 Step Through -> Narset's Reversal
+1 Time of Need -> Nuka-Cola Vending Machine
+1 Dizzy Spell -> Basalt Monolith
+1 Yisan, the Wanderer Bard -> Ashaya, Soul of the Wild
+1 Yisan, the Wanderer Bard -> Kogla, the Titan Ape
+1 Woodland Bellower -> Kogla, the Titan Ape
+1 Intuition -> Malcolm, Keen-Eyed Navigator
+1 Nature's Rhythm -> Basalt Monolith
+1 Birthing Pod -> Peregrin Took
+1 Tezzeret the Seeker -> Basalt Monolith
+1 Transmutation Font -> Peregrin Took
+1 Worldly Tutor -> Peregrin Took
+1 Chord of Calling -> Mana Vault
+1 Eldritch Evolution -> Clock of Omens
+1 Diabolic Intent -> Swift Reconfiguration
+1 Razaketh, the Foulblooded -> Devoted Druid
+1 Demonic Tutor -> Tainted Pact
+1 Enlightened Tutor -> Tainted Pact
+1 Diabolic Intent -> Tainted Pact
+1 Summoner's Pact -> Swift Reconfiguration
+1 Shared Summons -> Ashaya, Soul of the Wild
+1 Thalia's Lancers -> Kiki-Jiki, Mirror Breaker
+1 Enlightened Tutor -> Zealous Conscripts
+1 Imperial Recruiter -> Kiki-Jiki, Mirror Breaker
+1 Moggcatcher -> Zealous Conscripts
+1 Ranger-Captain of Eos -> Thassa's Oracle
+1 Goblin Engineer -> Magda, Brazen Outlaw
+1 Goblin Engineer -> Clock of Omens
+1 Tezzeret the Seeker -> Cephalid Illusionist
+1 Spellseeker -> Shuko
+1 Muddle the Mixture -> Unctus, Grand Metatect
+1 Beseech the Mirror -> Underworld Breach
+1 Dizzy Spell -> Brain Freeze
+1 Green Sun's Zenith -> Ashaya, Soul of the Wild
+1 Mystical Tutor -> Malcolm, Keen-Eyed Navigator
+1 Gamble -> Glint-Horn Buccaneer
+1 Chord of Calling -> Ioreth of the Healing House
+1 Trophy Mage -> Nyxbloom Ancient
+1 Spellseeker -> Oboro Breezecaller
+1 Drift of Phantasms -> Sol Ring
+1 Eldritch Evolution -> Devoted Druid
+1 Enlightened Tutor -> Devoted Druid
+1 Chord of Calling -> Devoted Druid
+1 Beseech the Mirror -> Swift Reconfiguration
+1 Moggcatcher -> Kiki-Jiki, Mirror Breaker
+1 Ranger-Captain of Eos -> Combat Celebrant
+1 Gifts Ungiven -> Faerie Mastermind
+1 Ranger-Captain of Eos -> Underworld Breach
+1 Moon-Blessed Cleric -> Soaring Lightbringer
+1 Goblin Matron -> Haze of Rage
+1 Nahiri, the Harbinger -> Spark Double
+1 Nahiri, the Harbinger -> Thrummingbird
+1 Bilbo, Birthday Celebrant -> Treebeard, Gracious Host
+1 Moon-Blessed Cleric -> Fear of Sleep Paralysis
+1 Dizzy Spell -> Smothering Tithe
+1 Woodland Bellower -> Umbral Mantle
+1 Beseech the Mirror -> Demonic Consultation

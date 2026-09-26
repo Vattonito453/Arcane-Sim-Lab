@@ -90,7 +90,7 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    included, and the baseline marker reads 25% for four decks / 33.3% for three.
    If a 3-deck run ever shows "1 deck" and a 100% baseline again, the summary lost
    its winless seats — see `summarize()` in `engine/forge_log_adapter.py`.
-   Below the rates, **Win conditions**: which known combos each deck contains
+   Below the rates, **Combo lines (from Commander Spellbook)**: which known combos each deck contains
    (Commander Spellbook), how often all pieces were on the battlefield at once,
    and whether that seat then won, next to what raw draw odds alone predicted
    ("From draws ~0.5" against 2 assembled means tutors beat the odds). "Assembled

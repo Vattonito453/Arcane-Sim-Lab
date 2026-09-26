@@ -59,7 +59,14 @@ def _save() -> None:
 
 
 def parse_dck(text: str) -> tuple[list[tuple[str, int]], list[str]]:
-    """(main [(name, qty)], commanders [name]) out of a Forge .dck body."""
+    """(main [(name, qty)], commanders [name]) out of a Forge .dck body.
+
+    Forge's bundled decks (res/quest/commanderprecons) write each card as
+    "Name|SET|art" ("1 Commodore Guff|CMM|1"). Everything from the first "|"
+    is printing data, not the name: sent as-is, Spellbook recognised no card
+    at all, answered identity "C" with no combos, and that empty answer was
+    cached forever and written up as "precons have no combos" (38 poisoned
+    cache entries; diagnosis RC9). No card name contains "|"."""
     main: list[tuple[str, int]] = []
     commanders: list[str] = []
     section = ""
@@ -73,12 +80,59 @@ def parse_dck(text: str) -> tuple[list[tuple[str, int]], list[str]]:
         parts = line.split(None, 1)
         if len(parts) != 2 or not parts[0].isdigit():
             continue
-        qty, name = int(parts[0]), parts[1].strip()
+        qty, name = int(parts[0]), parts[1].split("|", 1)[0].strip()
+        if not name:
+            continue
         if section == "[commander]":
             commanders.append(name)
         elif section == "[main]":
             main.append((name, qty))
     return main, commanders
+
+
+# Forge AlternateModes whose card Scryfall (and so Spellbook) names "Front //
+# Back". Forge and the import write these by the front face, which Spellbook
+# does not recognise (measured 2026-09-26: Birgi + Seething Song + Reiterate is
+# found under "Birgi, God of Storytelling // Harnfel, Horn of Bounty" and not
+# under "Birgi, God of Storytelling"). Split cards are already "A // B";
+# Specialize and Meld halves are single-named cards on Scryfall.
+_JOINED_MODES = {"DoubleFaced", "Modal", "Adventure", "Flip", "Omen", "Prepare"}
+
+
+def spellbook_names(names: list[str]) -> dict[str, str]:
+    """{deck name: the name Spellbook knows it by} for the names that differ.
+
+    Only a FRONT face is widened to its full name, from Forge's card index
+    first and the Scryfall cache's `face_of` second. Never fatal and never a
+    network call: an unknown name is simply sent as it is."""
+    out: dict[str, str] = {}
+    want = [n for n in names if n and " // " not in n]
+    if not want:
+        return out
+    try:
+        import forge_index
+        idx = forge_index.load_index()
+    except Exception:  # noqa: BLE001
+        idx = None
+    if idx is not None:
+        for n in want:
+            e = idx.cards.get(n) or {}
+            faces = e.get("faces") or []
+            if e.get("mode") in _JOINED_MODES and len(faces) >= 2 and faces[0] == n:
+                out[n] = f"{faces[0]} // {faces[1]}"
+    rest = [n for n in want if n not in out]
+    if rest:
+        try:
+            import cards
+            for n in rest:
+                c = cards.get(n, fetch=False) or {}
+                full = c.get("face_of") or ""
+                if " // " in full and full.split(" // ")[0].strip() == n \
+                        and c.get("layout") != "split":
+                    out[n] = full
+        except Exception:  # noqa: BLE001
+            pass
+    return out
 
 
 def _key(main: list[tuple[str, int]], commanders: list[str]) -> str:
@@ -104,7 +158,11 @@ def _slim(variant: dict) -> dict:
 def find_combos(main: list[tuple[str, int]], commanders: list[str],
                 fetch: bool = True) -> dict | None:
     """Combos this list contains. None when unknown (offline and not cached) —
-    callers must treat None as "not analysed", never as "no combos"."""
+    callers must treat None as "not analysed", never as "no combos".
+
+    The cache key is the deck's own names, so the API (which imports) and the
+    worker (which plans, cache-only) always compute the same key. What is SENT
+    widens front faces to the full names Spellbook knows (spellbook_names)."""
     cache = _load()
     key = _key(main, commanders)
     if key in cache:
@@ -112,9 +170,10 @@ def find_combos(main: list[tuple[str, int]], commanders: list[str],
     if not fetch or _offline:
         return None
 
+    sent = spellbook_names([n for n, _ in main] + list(commanders))
     body = json.dumps({
-        "main": [{"card": n, "quantity": q} for n, q in main],
-        "commanders": [{"card": n, "quantity": 1} for n in commanders],
+        "main": [{"card": sent.get(n, n), "quantity": q} for n, q in main],
+        "commanders": [{"card": sent.get(n, n), "quantity": 1} for n in commanders],
     }).encode("utf-8")
     req = urllib.request.Request(API_URL, data=body, method="POST", headers={
         "Content-Type": "application/json",
@@ -135,6 +194,11 @@ def find_combos(main: list[tuple[str, int]], commanders: list[str],
         # One card short of a combo — the "you are one swap away" signal.
         "almost_included": [_slim(v) for v in results.get("almostIncluded") or []],
     }
+    if sent:
+        # Which deck names went out under their full Spellbook name. Line card
+        # names come back in Spellbook's spelling ("Front // Back"); mapping
+        # them to Forge's is deck_plan's job (repair plan WS4 task 6).
+        slim["sent_as"] = sent
     cache[key] = slim
     _save()
     return slim

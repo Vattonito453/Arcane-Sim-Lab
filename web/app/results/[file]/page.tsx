@@ -373,13 +373,20 @@ export default function ResultsPage() {
           )}
         </p>
 
-        {validity && validity.quality !== "clean" && (
+        {/* A clean run can still carry a note: commander_never_cast, a
+            commander that loaded but Forge's AI never cast. It keeps the run
+            clean (owner decision 2026-09-27), so it shows without a verdict. */}
+        {validity && validity.reasons.length > 0 && (
           <p className="note">
-            <b>
-              {validity.quality === "polluted"
-                ? "These numbers are not trustworthy."
-                : "Read these numbers with care."}
-            </b>{" "}
+            {validity.quality !== "clean" && (
+              <>
+                <b>
+                  {validity.quality === "polluted"
+                    ? "These numbers are not trustworthy."
+                    : "Read these numbers with care."}
+                </b>{" "}
+              </>
+            )}
             {validity.reasons.join(" ")}
           </p>
         )}

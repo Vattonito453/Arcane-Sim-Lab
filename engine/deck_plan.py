@@ -210,17 +210,39 @@ V2_FIX = {"tutorReach": True, "commanderTutorZone": True,
 # Unburial Rites, Persist, Dread Return; Animate Dead's "Return enchanted
 # creature card to the battlefield"; Living Death's exile-then-return;
 # Victimize and Stitch Together, whose return sits in a later sentence.
-_GY_ZONE = re.compile(r"\bgraveyards?\b", re.I)
+# Three things are read out first, because each made a card that reanimates
+# nothing look like one (measured on the card cache, review of 2026-09-27):
+# reminder text in parentheses (manifest dread: "...into your graveyard ...
+# if it's a creature card"), a graveyard that is only a destination
+# ("into your graveyard": Genesis Wave, Wakanda Forever!), and an activated
+# ability's cost ("Discard a creature card: Return target land card from
+# your graveyard", Floral Evoker). The graveyard must be a source.
+_GY_SOURCE = re.compile(r"\b(?:from|in)\s+(?:[\w'’]+\s+){0,3}?graveyards?\b"
+                        r"|\blibrary and/or graveyard\b"
+                        r"|\bgraveyards? from (?:your|a|their) library\b", re.I)
 _TO_BATTLEFIELD = re.compile(r"\b(?:to|onto) the battlefield\b", re.I)
 _RETURN_VERB = re.compile(r"\b(?:return|put)s?\b", re.I)
 _CREATURE_CARD = re.compile(r"\b(?:creature|permanent) cards?\b|\benchanted creature card\b",
                             re.I)
-# Keywords that let a card be cast, or put onto the battlefield, from its
-# owner's graveyard. Anchored to the start of a paragraph: that is where the
-# card's OWN keyword sits, so "target instant card in your graveyard gains
-# flashback" (Snapcaster Mage) is not read as Snapcaster having flashback.
+_REMINDER = re.compile(r"\([^()]*\)")
+# "{2}{B}, Sacrifice a creature: <effect>" and "-3: <effect>": the cost ends
+# at the first colon outside quotes.
+_COST = re.compile(r'^[^:"]*:\s+(.*)$', re.S)
+# A capped reanimation ("permanent card with mana value 3 or less": Sevinne's
+# Reclamation, Sun Titan, Angel of Indemnity) cannot return a bigger card.
+_MV_CAP = re.compile(r"\bmana value (\d+) or less\b", re.I)
+_NO_CAP = 99
+# Keywords that let a card be cast, or put onto the battlefield, or used,
+# from its owner's graveyard. Anchored to the start of a paragraph: that is
+# where the card's OWN keyword sits, so "target instant card in your
+# graveyard gains flashback" (Snapcaster Mage) is not read as Snapcaster
+# having flashback. Harmonize, aftermath, encore, scavenge and dredge were
+# added after review (Nature's Rhythm has harmonize). Mayhem is left out on
+# purpose: it works only when the card was DISCARDED this turn, and a search
+# that puts a card into the graveyard is not a discard.
 _GY_KEYWORD = re.compile(r"(?:^|\n)(?:flashback|escape|unearth|retrace|jump-start|embalm|"
-                         r"eternalize|disturb)\b", re.I)
+                         r"eternalize|disturb|harmonize|aftermath|encore|scavenge|dredge)\b",
+                         re.I)
 # A commander that casts instants or sorceries from the graveyard: Kess,
 # Dissident Mage ("you may cast an instant or sorcery spell from your
 # graveyard"), or one that grants them a graveyard keyword (Lier, Disciple of
@@ -232,13 +254,25 @@ _CMDR_GY_SPELLS = re.compile(
     r"ha(?:s|ve) (?:flashback|jump-start|retrace|escape)", re.I)
 
 
+def _reanimation_reach(text: str) -> int | None:
+    """The highest mana value this card can put onto the battlefield from a
+    graveyard (_NO_CAP when uncapped), or None when it reanimates nothing."""
+    reach = None
+    for para in _REMINDER.sub("", text or "").split("\n"):
+        cost = _COST.match(para)
+        if cost:
+            para = cost.group(1)
+        if (_GY_SOURCE.search(para) and _TO_BATTLEFIELD.search(para)
+                and _RETURN_VERB.search(para) and _CREATURE_CARD.search(para)):
+            caps = [int(x) for x in _MV_CAP.findall(para)]
+            here = max(caps) if caps else _NO_CAP
+            reach = here if reach is None else max(reach, here)
+    return reach
+
+
 def _reanimates(text: str) -> bool:
     """Does this card put creature cards from a graveyard onto the battlefield?"""
-    for para in (text or "").split("\n"):
-        if (_GY_ZONE.search(para) and _TO_BATTLEFIELD.search(para)
-                and _RETURN_VERB.search(para) and _CREATURE_CARD.search(para)):
-            return True
-    return False
+    return _reanimation_reach(text) is not None
 
 
 def env_plan_version() -> int:
@@ -326,26 +360,35 @@ def _graveyard_targets(names: list[str], commanders: list[str], facts: dict,
     (b) and (c) are valued at their library-search value with a floor of 3,
     so a cheap cantrip still outranks a card with no graveyard use. Anything
     else is absent (score 0: stock's pick stands), which is the whole point
-    for Sol Ring. Commanders and lands are never listed."""
+    for Sol Ring. Commanders and lands are never listed.
+
+    A card in a graveyard has only its front face's characteristics, so the
+    land and creature tests read the front face: a modal spell whose back is
+    a land ("Sink into Stupor // Soporific Springs") is an instant there,
+    which Kess can cast. When every reanimation effect in the deck is capped
+    ("mana value 3 or less": Sevinne's Reclamation) a creature above the cap
+    is not a reanimation target."""
     def text_of(n: str) -> str:
         return _fact(facts, n).get("oracle_text") or ""
 
     def type_of(n: str) -> str:
         return _fact(facts, n).get("type_line") or ""
 
-    reanimates = any(_reanimates(text_of(n)) for n in names)
+    reaches = [r for r in (_reanimation_reach(text_of(n)) for n in names) if r is not None]
+    reach = max(reaches) if reaches else None
     cmdr_spells = any(_CMDR_GY_SPELLS.search(text_of(c)) for c in commanders)
     out: dict[str, int] = {}
     for n in names:
         if n in commanders or n in out:
             continue
         tline = type_of(n)
-        if not tline or ("Land" in tline and "Creature" not in tline):
+        front = tline.split(" // ", 1)[0]
+        if not tline or ("Land" in front and "Creature" not in front):
             continue
         base = targets.get(n, 1)
         vals: list[int] = []
-        if reanimates and "Creature" in tline:
-            cmc = _fact(facts, n).get("cmc") or 0
+        cmc = _fact(facts, n).get("cmc") or 0
+        if reach is not None and "Creature" in front and cmc <= reach:
             tier = 8 if cmc >= 8 else 7 if cmc >= 6 else 5 if cmc >= 4 else 0
             # A search value of 6+ (win piece, finisher, payoff, bomb) carries
             # over; 5 is the early-ramp value, and a mana dork is not what a

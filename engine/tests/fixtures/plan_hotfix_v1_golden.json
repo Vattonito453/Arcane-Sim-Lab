@@ -279,6 +279,7 @@
         "Entomb": "tutor",
         "Unearth Toy": "filler",
         "Snapcaster Toy": "enabler",
+        "Stupor Toy // Springs Toy": "land",
         "Island": "land",
         "Swamp": "land"
       },
@@ -666,6 +667,141 @@
       "search": {
         "targets": {},
         "context": {}
+      }
+    },
+    "hotfix_fakes": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "tribal-anthem"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Plain Commander",
+          "Manifest Toy"
+        ]
+      },
+      "weights": {
+        "Plain Commander": 8,
+        "Manifest Toy": 8,
+        "Hullbreaker Horror": 4
+      },
+      "threat": [
+        "Manifest Toy",
+        "Plain Commander",
+        "Hullbreaker Horror",
+        "Archon of Cruelty"
+      ],
+      "roles": {
+        "Plain Commander": "commander",
+        "Manifest Toy": "payoff",
+        "Wave Toy": "filler",
+        "Evoker Toy": "filler",
+        "Archon of Cruelty": "filler",
+        "Hullbreaker Horror": "protection",
+        "Swamp": "land"
+      },
+      "personality": {
+        "aggression": 0.55,
+        "splitAttacks": 0.7,
+        "blockiness": 0.6,
+        "counterThreshold": 5,
+        "dangerLife": 8,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [],
+      "tutors": [],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Manifest Toy": 7,
+          "Archon of Cruelty": 6,
+          "Hullbreaker Horror": 6
+        },
+        "context": {}
+      }
+    },
+    "hotfix_capped": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "mill"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Plain Commander",
+          "Harmonize Toy",
+          "Dredge Toy"
+        ]
+      },
+      "weights": {
+        "Plain Commander": 8,
+        "Harmonize Toy": 5,
+        "Dredge Toy": 5
+      },
+      "threat": [
+        "Plain Commander",
+        "Archon of Cruelty"
+      ],
+      "roles": {
+        "Plain Commander": "commander",
+        "Reclaim Toy": "filler",
+        "Archon of Cruelty": "filler",
+        "Thassa's Oracle": "filler",
+        "Harmonize Toy": "tutor",
+        "Dredge Toy": "enabler",
+        "Sol Ring": "filler",
+        "Swamp": "land"
+      },
+      "personality": {
+        "aggression": 0.35,
+        "splitAttacks": 0.7,
+        "blockiness": 0.75,
+        "counterThreshold": 4,
+        "dangerLife": 12,
+        "grudgeWeight": 0.15,
+        "kingmakerRatio": 1.8,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [],
+      "tutors": [
+        "Harmonize Toy"
+      ],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Archon of Cruelty": 6,
+          "Thassa's Oracle": 8,
+          "Sol Ring": 5
+        },
+        "context": {
+          "Sol Ring": {
+            "hint": "ramp",
+            "beforeRound": 5
+          }
+        }
       }
     }
   }

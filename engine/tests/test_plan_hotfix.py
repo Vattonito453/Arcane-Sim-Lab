@@ -210,6 +210,35 @@ FACTS = {
     "Anthem Front // Anthem Back": {"oracle_text": "Creatures you control get +1/+1.",
                                     "type_line": "Enchantment // Enchantment", "cmc": 3,
                                     "layout": "transform"},
+    # --- look like reanimation, reanimate nothing (review 2026-09-27) ---------
+    "Manifest Toy": creature("Whenever this creature enters or attacks, manifest dread. (Look "
+                             "at the top two cards of your library. Put one onto the "
+                             "battlefield face down as a 2/2 creature and the other into your "
+                             "graveyard. Turn it face up any time for its mana cost if it's a "
+                             "creature card.)", 4, "3", "Beast"),
+    "Wave Toy": {"oracle_text": "Reveal the top X cards of your library. You may put any number "
+                                "of permanent cards with mana value X or less from among them "
+                                "onto the battlefield. Then put all cards revealed this way that "
+                                "weren't put onto the battlefield into your graveyard.",
+                 "type_line": "Sorcery", "cmc": 3},
+    "Evoker Toy": creature("{G}, Discard a creature card: Return target land card from your "
+                           "graveyard to the battlefield tapped.", 2, "1", "Elf Druid"),
+    # --- capped reanimation, and the keywords added after review --------------
+    "Reclaim Toy": {"oracle_text": "Return target permanent card with mana value 3 or less "
+                                   "from your graveyard to the battlefield.",
+                    "type_line": "Sorcery", "cmc": 3},
+    "Harmonize Toy": {"oracle_text": "Search your library for a creature card with mana value X "
+                                     "or less, put it onto the battlefield, then shuffle.\n"
+                                     "Harmonize {X}{G}{G}{G}{G} (You may cast this card from "
+                                     "your graveyard for its harmonize cost.)",
+                      "type_line": "Sorcery", "cmc": 2},
+    "Dredge Toy": creature("Flying\nDredge 3 (If you would draw a card, you may mill three "
+                           "cards instead. If you do, return this card from your graveyard to "
+                           "your hand.)", 3, "1", "Imp"),
+    # --- a modal spell with a land back: an instant in the graveyard (Kess) ---
+    "Stupor Toy // Springs Toy": {"oracle_text": "Return target spell or nonland permanent an "
+                                                 "opponent controls to its owner's hand.",
+                                  "type_line": "Instant // Land", "cmc": 3},
 }
 
 DECKS = {
@@ -226,7 +255,8 @@ DECKS = {
                                              "Stitcher's Supplier", "Sol Ring",
                                              "Blasphemous Act", "Faithless Looting",
                                              "Brainstorm", "Entomb", "Unearth Toy",
-                                             "Snapcaster Toy", "Island", "Swamp"]),
+                                             "Snapcaster Toy", "Stupor Toy // Springs Toy",
+                                             "Island", "Swamp"]),
     "hotfix_plain": ("Plain Commander", ["Archon of Cruelty", "Faithless Looting",
                                          "Brainstorm", "Sol Ring", "Swamp"]),
     "hotfix_lier": ("Lier Toy", ["Brainstorm", "Blasphemous Act", "Archon of Cruelty",
@@ -238,6 +268,11 @@ DECKS = {
         "Underworld Breach", "Burning Inquiry", "Mountain"]),
     "hotfix_tokens": ("Plain Commander", [
         *[f"Token Toy {c}" for c in "ABCDE"], "Anthem Front // Anthem Back", "Swamp"]),
+    "hotfix_fakes": ("Plain Commander", ["Manifest Toy", "Wave Toy", "Evoker Toy",
+                                         "Archon of Cruelty", "Hullbreaker Horror", "Swamp"]),
+    "hotfix_capped": ("Plain Commander", ["Reclaim Toy", "Archon of Cruelty",
+                                          "Thassa's Oracle", "Harmonize Toy", "Dredge Toy",
+                                          "Sol Ring", "Swamp"]),
 }
 
 
@@ -615,6 +650,8 @@ def checks(tmp: Path) -> None:
     assert gy["Unearth Toy"] == 3, gy                 # unearth
     assert "Animate Dead" not in gy, gy               # an enchantment Kess cannot cast
     assert "Snapcaster Toy" not in gy, gy             # grants flashback, has none itself
+    # In the graveyard a modal card has only its front face: an instant Kess casts.
+    assert gy["Stupor Toy // Springs Toy"] == 3, gy
     assert "Kess, Dissident Mage" not in gy and "Island" not in gy and "Swamp" not in gy
     assert all(1 <= val <= 9 for val in gy.values()), gy
     assert ["Hullbreaker Horror", "Sol Ring"] in by_cards(k2["threatLines"])
@@ -629,6 +666,40 @@ def checks(tmp: Path) -> None:
     gy_lier = v2["hotfix_lier"]["search"]["graveyardTargets"]
     assert gy_lier == {"Brainstorm": 3, "Blasphemous Act": 6}, gy_lier
     print("  a commander that grants flashback lists the deck's instants and sorceries: OK")
+
+    # Reanimation is read from the effect, with a graveyard as its SOURCE:
+    # not from reminder text, a graveyard that is only a destination, or a cost.
+    reach = deck_plan._reanimation_reach
+    for text, want in (
+            (FACTS["Reanimate"]["oracle_text"], deck_plan._NO_CAP),
+            (FACTS["Unburial Rites"]["oracle_text"], deck_plan._NO_CAP),
+            ("Enchant creature card in a graveyard\nWhen this Aura enters, if it's on the "
+             "battlefield, it loses \"enchant creature card in a graveyard\" and gains \"enchant "
+             "creature put onto the battlefield with this Aura.\" Return enchanted creature card "
+             "to the battlefield under your control and attach this Aura to it.",
+             deck_plan._NO_CAP),                                           # Animate Dead
+            ("Each player exiles all creature cards from their graveyard, then sacrifices all "
+             "creatures they control, then puts all cards they exiled this way onto the "
+             "battlefield.", deck_plan._NO_CAP),                           # Living Death
+            ("Choose two target creature cards in your graveyard. Sacrifice a creature. If you "
+             "do, return the chosen cards to the battlefield tapped.", deck_plan._NO_CAP),
+            ("{2}{B}, Sacrifice a creature: Return target creature card from your graveyard to "
+             "the battlefield.", deck_plan._NO_CAP),                       # cost, then effect
+            ("Search your library and/or graveyard for a creature card with mana value X or "
+             "less and put it onto the battlefield.", deck_plan._NO_CAP),  # X is no cap
+            (FACTS["Reclaim Toy"]["oracle_text"], 3),
+            (FACTS["Manifest Toy"]["oracle_text"], None),
+            (FACTS["Wave Toy"]["oracle_text"], None),
+            (FACTS["Evoker Toy"]["oracle_text"], None),
+            (FACTS["Sol Ring"]["oracle_text"], None)):
+        assert reach(text) == want, (text[:60], reach(text), want)
+    gy_fakes = v2["hotfix_fakes"]["search"]["graveyardTargets"]
+    assert gy_fakes == {}, gy_fakes
+    gy_capped = v2["hotfix_capped"]["search"]["graveyardTargets"]
+    assert gy_capped == {"Thassa's Oracle": 8, "Harmonize Toy": 3, "Dredge Toy": 3}, gy_capped
+    print("  manifest dread, a graveyard destination and a discard cost are not "
+          "reanimation; a mana-value cap keeps bigger creatures out; harmonize and dredge "
+          "count: OK")
 
     # ------------------------------------------------------ name mapping --
     # No index: the front face is a card in the deck, so the Spellbook spelling

@@ -347,6 +347,43 @@ def test_lose_effect_from_another_players_card_falls_back_to_any_line():
     assert k["by"] == A and k["turn"] == 3 and k["dated_by"] == "event", k
 
 
+def test_concession_is_a_knockout():
+    # Forge words it "X has conceded", not "has lost".
+    g = game([(A, []), (B, []), (A, [])], winner=A, players=(A, B),
+             outcome=[won(A), f"{B} has conceded"])
+    (k,) = K.knockouts(g)
+    assert k["player"] == B and k["cause"] == "concession", k
+    assert k["by"] is None and k["dated_by"] == "turn_order", k
+    assert analysis.win_method(g)["method"] == "concession"
+
+
+def test_an_undated_knockout_sorts_by_its_turn_not_last():
+    # C goes out early with no lethal Life line logged (undated); A goes out
+    # later to a logged combat hit. A's knockout is the game's final one and
+    # sets its method, whatever the order Forge printed the loss lines in.
+    turns = [(A, []), (B, []), (C, []),
+             (A, []), (B, []),
+             (A, []),
+             (B, [("damage", f"Bear (3) deals 20 combat damage to {A}."),
+                  ("life_change", f"Life: {A} 20 > 0")])]
+    g = game(turns, winner=B, players=(A, B, C),
+             outcome=[lost(A), won(B), lost(C)])
+    kos = K.knockouts(g)
+    assert [k["player"] for k in kos] == [C, A], kos
+    assert kos[0]["dated_by"] == "turn_order" and kos[1]["dated_by"] == "event", kos
+    assert analysis.win_method(g) == {"method": "combat damage", "detail": "Bear"}
+
+
+def test_detect_survives_a_malformed_game():
+    bad = game_one()
+    bad["turns"][1]["turn"] = None       # Forge never writes this; a hand edit might
+    metrics, flags = K.detect({"games": [bad, game_one()]})
+    assert metrics["games"] == 2 and metrics["errors"] == 1, metrics
+    assert metrics["per_game"][0]["knockouts"] == [] and metrics["per_game"][0]["error"]
+    assert metrics["per_game"][1]["turning_point"] is not None, metrics["per_game"][1]
+    assert [f["kind"] for f in flags] == ["analyzer_error"], flags
+
+
 def test_unknown_reason_is_flagged_and_undated():
     g = two_player([], outcome_reason="because of a rule nobody has seen")
     metrics, flags = K.detect(g_result := {"games": [g]})

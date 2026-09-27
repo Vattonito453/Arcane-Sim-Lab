@@ -61,9 +61,14 @@ latest turn it can have happened on is used, and a flag is raised).
 ## Rounds
 
 `round` is the table round of the knockout's turn: a player's Nth turn is
-round N, counted with scorecard.true_round, the one Python copy of that rule.
-At the game's final knockout this is the winner's own-turn count, the unit the
-repair plan (section 2.1) measures win speed in.
+round N, counted with scorecard.true_round, the one Python copy of that rule
+(the most turns any seat has taken up to and including that turn). At the
+game's final knockout this is almost always the winner's own-turn count, the
+unit the repair plan (section 2.1) measures win speed in, and it is the same
+figure the scorecard's win round uses. It is one more than the winner's count
+when the last knockout lands on the turn of a seat that plays before the
+winner in that round (a Pact trigger on the loser's own upkeep, say): 141 of
+the 5,591 decided games with knockouts in the local corpus (2026-09-27).
 
 ## Turning point
 
@@ -564,6 +569,12 @@ def _reason_class(reason: str) -> str:
 
 
 def _loss_lines(ctx: _Ctx) -> list[tuple[str, str, _Ev]]:
+    """[(player, reason, outcome event)] for every seat that lost.
+
+    Forge words a concession "X has conceded" rather than "X has lost ...",
+    so it is read as a loss with the reason "conceded". None is logged in the
+    local corpus (the AI does not concede); without this a conceding seat
+    would get no knockout at all."""
     out = []
     seen = set()
     for ev in ctx.flat:
@@ -576,6 +587,9 @@ def _loss_lines(ctx: _Ctx) -> list[tuple[str, str, _Ev]]:
         if rest.startswith("has lost"):
             seen.add(who)
             out.append((who, rest[len("has lost"):].strip().rstrip("."), ev))
+        elif rest.startswith("has conceded"):
+            seen.add(who)
+            out.append((who, "conceded", ev))
     return out
 
 
@@ -900,7 +914,15 @@ def knockouts(game: dict, _ctx: _Ctx | None = None) -> list[dict]:
             ti = max(lo, hi - 1) if ctx.turns else 0
             turn_no = ctx.turns[ti].get("turn", 0) if ctx.turns else 0
             seq = None
-            key_idx = (ctx.flat[-1].idx + 1) if ctx.flat else 0
+            # Sorted after every event of the turn it is dated to, and before
+            # any later turn's, so an undated knockout from early in a
+            # multiplayer game can never become the game's final knockout
+            # (and set its method) just for lacking an event.
+            in_turn = [e.idx for e in ctx.flat if e.ti == ti and e.action != "game_outcome"]
+            later = [e.idx for e in ctx.flat if e.ti > ti]
+            key_idx = (max(in_turn) + 0.5 if in_turn
+                       else (later[0] - 0.5 if later
+                             else (ctx.flat[-1].idx + 1 if ctx.flat else 0)))
         else:
             ti, turn_no, seq, key_idx = ev.ti, ev.turn, ev.seq, ev.idx
 
@@ -1167,6 +1189,7 @@ def _count_share(snap: dict, seats: list[str], winner: str) -> float:
     total = sum((snap.get(s) or [0, 0])[0] for s in seats)
     mine = (snap.get(winner) or [0, 0])[0]
     return (mine + 1) / (total + len(seats)) if seats else 0.0
+
 
 
 _COMBAT_DAMAGE_PHASES = ("COMBAT_FIRST_STRIKE_DAMAGE", "COMBAT_DAMAGE")
@@ -1471,6 +1494,9 @@ def detect(ctx) -> tuple[dict, list[dict]]:
                          player's window; dated by turn order only
       unclassified_loss  Forge's loss reason is not one this module knows
       deckout            the player lost drawing from an empty library
+      analyzer_error     this module could not read the game (malformed
+                         record); the game carries no knockouts and the rest
+                         of the run is still read
     """
     result = _result_of(ctx)
     games = result.get("games") or []
@@ -1480,7 +1506,15 @@ def detect(ctx) -> tuple[dict, list[dict]]:
     flags: list[dict] = []
     tps = 0
     for n, game in enumerate(games, 1):
-        one = analyse_game(game)
+        try:
+            one = analyse_game(game)
+        except Exception as exc:  # noqa: BLE001  one bad game must not end the run
+            per_game.append({"n": n, "knockouts": [], "turning_point": None,
+                             "error": f"{type(exc).__name__}: {exc}"})
+            flags.append({"detector": DETECTOR, "kind": "analyzer_error", "game": n,
+                          "turn": None, "round": None, "player": None, "seq": None,
+                          "detail": f"{type(exc).__name__}: {exc}"})
+            continue
         per_game.append({"n": n, **one})
         if one["turning_point"]:
             tps += 1
@@ -1505,6 +1539,7 @@ def detect(ctx) -> tuple[dict, list[dict]]:
         "by_cause": dict(by_cause),
         "basis": dict(basis),
         "undated": sum(1 for f in flags if f["kind"] == "undated_knockout"),
+        "errors": sum(1 for f in flags if f["kind"] == "analyzer_error"),
         "turning_points": tps,
         "per_game": per_game,
     }
@@ -1529,6 +1564,8 @@ def main(argv: list[str]) -> int:
                       + (f" by {k['by']}" if k["by"] else "")
                       + (f" with {k['card']}" if k["card"] else "")
                       + f" [seq {k['seq']}, {k['basis']}, {k['dated_by']}]")
+            if g.get("error"):
+                print(f"    not read: {g['error']}")
             tp = g["turning_point"]
             if tp:
                 print(f"    turning point: round {tp['round']} (turn {tp['turn']}) "

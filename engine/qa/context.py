@@ -23,7 +23,9 @@ Sources, in the order a caller has them:
   from_result_dict()  an already-loaded result
 
 Flags anchor by (game, turn, player, agent_event_index) until the shim stamps
-`seq` on agent events (WS1 task 7); `anchor()` builds that record.
+`seq` on agent events (WS1 task 7); `anchor()` builds that record. A flag's
+game is 1-based (Game.number); Game.index and ctx.pilot(game, ...) are the
+0-based position in ctx.games.
 
 Stdlib only, like the rest of engine/.
 """
@@ -59,10 +61,17 @@ def seat_number(player: str | None) -> int | None:
     return int(m.group(1)) if m else None
 
 
-def anchor(game: int, turn: int | None, player: str | None, agent_event_index: int | None) -> dict:
-    """Where a flag points, until agent events carry the shim's `seq`."""
+def anchor(game: int, turn: int | None, player: str | None, agent_event_index: int | None,
+           seq: int | None = None) -> dict:
+    """Where a flag points: (game, turn, player, agent_event_index) until agent
+    events carry the shim's `seq` (WS1 task 7), then seq as well.
+
+    `game` is 1-BASED (Game.number), the numbering every QA detector's flags
+    use: /results/{file}/game/{n} serves games[n-1], qa.knockouts numbers
+    games from 1, and people say "game 1". agent_event_index is 0-based into
+    that game's agent_events."""
     return {"game": game, "turn": turn, "player": player,
-            "agent_event_index": agent_event_index}
+            "agent_event_index": agent_event_index, "seq": seq}
 
 
 # ------------------------------------------------------------- card facts --
@@ -244,6 +253,12 @@ class Game:
                 self.active[n] = t["active_player"]
             for e in t.get("events") or []:
                 self.log.append((n, e))
+
+    @property
+    def number(self) -> int:
+        """1-based game number, for flags and anything a person reads
+        (`index` stays 0-based: it is the position in ctx.games)."""
+        return self.index + 1
 
     @property
     def winner(self) -> str | None:

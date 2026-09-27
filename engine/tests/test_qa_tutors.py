@@ -190,7 +190,8 @@ def game1():
         AG(2, A, "tutor_steer", "sid=1 mode=plan value=7 stockValue=5 steer=Big Finish over=Rust Ring"),
         AG(2, A, "search_seen", SS(2, "Graveyard", "-", "Rust Ring", "Grave Whisper")),
         AG(2, A, "tutor_steer", "sid=2 mode=plan value=7 stockValue=5 steer=Rot Titan over=Rust Ring"),
-        AG(2, A, "tutor_cast", "Deep Search seeking Tide Oracle reach=false"),
+        AG(2, A, "tutor_cast",
+           "reach=false where=absent why=not-in-library route=spell Deep Search seeking Tide Oracle"),
         AG(2, A, "search_seen", SS(3, "Hand", "Tide Oracle", "Final Portal", "Deep Search")),
         AG(2, A, "tutor_steer", "sid=3 mode=plan value=5 stockValue=9 steer=Rust Ring over=Final Portal"),
     ]
@@ -263,9 +264,30 @@ def test_clause_verdicts():
 def test_parsers():
     tc = tutors.parse_tutor_cast("Worldly Seer seeking Felid Guard")
     eq((tc["tutor"], tc["want"], tc["reach"]), ("Worldly Seer", "Felid Guard", None), "0.16 detail")
+    # Shim 0.17.0's real record: single-token fields FIRST, the names last.
+    tc = tutors.parse_tutor_cast("reach=false where=Library why=restriction route=spell "
+                                 "Seer's Rhythm seeking Staff of the Warden, Reborn")
+    eq((tc["tutor"], tc["want"], tc["reach"], tc["where"], tc["why"], tc["route"]),
+       ("Seer's Rhythm", "Staff of the Warden, Reborn", False, "Library", "restriction", "spell"),
+       "0.17 prefix fields")
+    tc = tutors.parse_tutor_cast("reach=true where=Library why=ok route=etb Worldly Seer seeking A")
+    eq((tc["tutor"], tc["reach"], tc["route"]), ("Worldly Seer", True, "etb"), "0.17 reach true")
+    tc = tutors.parse_tutor_cast("reach=false where=absent why=not-in-library route=transmute "
+                                 "Mind Seer seeking Iron Idol")
+    eq((tc["tutor"], tc["where"], tc["why"]), ("Mind Seer", "absent", "not-in-library"), "absent")
+    # The suffix form is kept as a fallback only.
     tc = tutors.parse_tutor_cast("Worldly Seer seeking Felid Guard, the Warden reach=false x=1")
-    eq((tc["want"], tc["reach"]), ("Felid Guard, the Warden", False), "0.17 reach suffix")
-    eq(tutors.parse_tutor_cast("A seeking B reach=true")["reach"], True, "reach true")
+    eq((tc["tutor"], tc["want"], tc["reach"]), ("Worldly Seer", "Felid Guard, the Warden", False),
+       "suffix fallback")
+    sk = tutors.parse_tutor_record("reason=forced-choice kind=x-cost reach=true where=Library "
+                                   "why=ok route=spell Verdant Call seeking Tide Oracle")
+    eq((sk["reason"], sk["kv"]["kind"], sk["tutor"], sk["want"]),
+       ("forced-choice", "x-cost", "Verdant Call", "Tide Oracle"), "tutor_skip")
+    sk = tutors.parse_tutor_record("reason=gate-closed reach=- where=- why=- route=none "
+                                   "Deep Search seeking -")
+    eq((sk["reason"], sk["reach"], sk["where"], sk["want"]), ("gate-closed", None, None, "-"),
+       "tutor_skip without a piece")
+    eq(tutors.parse_tutor_cast("reach=true where=Library"), None, "not a tutor record")
     ss = tutors.parse_search_seen(SS(4, "Graveyard", "Tide Oracle", "Rot Titan|Rust Ring", "Grave Whisper"))
     eq((ss["sid"], ss["dest"], ss["missing"], ss["picked"], ss["src"]),
        ("4", "Graveyard", "Tide Oracle", "Rot Titan|Rust Ring", "Grave Whisper"), "search_seen")
@@ -302,9 +324,11 @@ def test_detect_counts():
     b = m["by_seat"]["Beta"]["stock"]
     eq(a["tutor_cast"], 5, "tutor_cast")
     eq(a["unreachable"], 3, "unreachable")
-    eq(a["unreachable_reasons"], {"restriction": 1, "in_graveyard": 1, "shim_reach_false": 1},
-       "reasons")
+    eq(a["unreachable_reasons"], {"restriction": 1, "in_graveyard": 1, "absent": 1},
+       "reasons (the 0.17.0 record's why=not-in-library where=absent)")
     eq(a["reach_basis"], {"forge_offer": 2, "index": 2, "shim": 1}, "basis")
+    eq(a["reach_crosscheck"], {"agree": 1}, "the shim agrees with Forge's own offer")
+    eq(a["unreachable_rate_known"], 0.6, "every cast has a basis")
     eq((a["restriction_excludes"], a["restriction_conditional"], a["restriction_unknown"]),
        (1, 1, 0), "restriction")
     eq(a["seeking_gy_exile"], 1, "piece already binned")
@@ -325,6 +349,7 @@ def test_detect_counts():
     eq((a["gy_searches"], a["gy_searches_picked"], a["gy_steers"]), (3, 3, 3), "gy searches")
     eq((a["gy_steers_no_use"], a["gy_steers_graveyard_use"], a["gy_steers_unknown"]), (1, 2, 0),
        "gy steer classes (heuristics)")
+    eq(a["gy_steers_heuristic_no_use"], 1, "v1: the heuristic is the verdict")
     eq(a["gy_steer_cards"]["no_use"], {"Rust Ring": 1}, "no-use cards")
     eq(a["gy_steer_cards"]["graveyard_use"], {"Big Finish": 1, "Rot Titan": 1}, "expected cards")
     eq((a["closer_seen"], a["closer_overrides"]), (1, 1), "closer override")
@@ -348,20 +373,27 @@ def test_detect_counts():
     kinds = {}
     for f in flags:
         kinds[f["kind"]] = kinds.get(f["kind"], 0) + 1
-        assert set(f) == {"game", "turn", "player", "kind", "detail", "anchor"}, f
-        assert set(f["anchor"]) == {"game", "turn", "player", "agent_event_index"}, f
+        assert set(f) == {"detector", "kind", "game", "turn", "player", "seq", "detail",
+                          "anchor"}, f
+        assert set(f["anchor"]) == {"game", "turn", "player", "agent_event_index", "seq"}, f
+        eq(f["detector"], "tutors", "flags name their detector")
+        eq(f["anchor"]["game"], f["game"], "one game number in a flag")
         assert "\u2014" not in f["detail"], f"em dash in a flag detail: {f['detail']}"
     eq(kinds, {"tutor_unreachable": 3, "tutor_x_zero": 1, "tutor_failed_target": 1,
                "tutor_cast_never_searches": 1, "tutor_gy_steer_no_use": 1,
                "tutor_closer_override": 1}, "flag kinds")
+    # Games are numbered from 1, as the API and qa.knockouts number them.
+    eq(sorted({f["game"] for f in flags}), [1, 2], "1-based game numbers")
     by = {(f["kind"], f["game"]): f for f in flags}
-    eq(by[("tutor_x_zero", 0)]["anchor"],
-       {"game": 0, "turn": 5, "player": A, "agent_event_index": 3}, "x anchor")
-    eq(by[("tutor_gy_steer_no_use", 0)]["anchor"]["agent_event_index"], 6, "steer anchor")
-    eq(by[("tutor_closer_override", 1)]["anchor"]["agent_event_index"], 6, "closer anchor")
-    unreach0 = [f for f in flags if f["kind"] == "tutor_unreachable" and f["game"] == 0]
-    assert any("limited to Instant,Sorcery" in f["detail"] for f in unreach0), unreach0
-    assert any("already in the graveyard" in f["detail"] for f in unreach0), unreach0
+    eq(by[("tutor_x_zero", 1)]["anchor"],
+       {"game": 1, "turn": 5, "player": A, "agent_event_index": 3, "seq": None}, "x anchor")
+    eq(by[("tutor_gy_steer_no_use", 1)]["anchor"]["agent_event_index"], 6, "steer anchor")
+    eq(by[("tutor_closer_override", 2)]["anchor"]["agent_event_index"], 6, "closer anchor")
+    unreach1 = [f for f in flags if f["kind"] == "tutor_unreachable" and f["game"] == 1]
+    assert any("limited to Instant,Sorcery" in f["detail"] for f in unreach1), unreach1
+    assert any("already in the graveyard" in f["detail"] for f in unreach1), unreach1
+    unreach2 = [f for f in flags if f["kind"] == "tutor_unreachable" and f["game"] == 2]
+    assert any("not among the seat's own cards" in f["detail"] for f in unreach2), unreach2
 
 
 def test_plan_v2_graveyard_targets():
@@ -373,6 +405,16 @@ def test_plan_v2_graveyard_targets():
     eq((a["gy_steers_no_use"], a["gy_steers_graveyard_use"]), (2, 1),
        "plan data wins: Big Finish is not a listed target, a 0 is not a target")
     eq(a["gy_steer_cards"]["graveyard_use"], {"Rot Titan": 1}, "v2 expected")
+    eq(a["gy_steers_heuristic_no_use"], 1, "the heuristic still reads Rust Ring as no use")
+    # A bad target list (the Sol Ring case): the plan's verdict says use, the
+    # heuristic beside it does not.
+    bad = copy.deepcopy(plans)
+    bad["decks"]["Alpha"]["search"]["graveyardTargets"] = {"Rust Ring": 5, "Rot Titan": 7,
+                                                           "Big Finish": 3}
+    mb, _ = run(bad)
+    ab = mb["by_seat"]["Alpha"]["plan"]
+    eq((ab["gy_steers_no_use"], ab["gy_steers_heuristic_no_use"]), (0, 1),
+       "a listed Rust Ring passes the plan check and fails the heuristic")
     # A version-1 plan carrying the field is not trusted with it.
     plans1 = copy.deepcopy(plans)
     del plans1["planVersion"]
@@ -452,6 +494,151 @@ def test_rotated_pilots_and_plans_lookup():
            "plans_20260101_000000_abc123.json", "a study cell keeps the one-file fallback")
 
 
+def prefix_result(overrides: dict | None = None):
+    """result() with every tutor_cast in shim 0.17.0's real record format
+    (fields first, names last), as the shim writes it with the flags on or
+    off. overrides: {agent event index in game 0: detail}."""
+    r = result()
+    r["meta"]["agent"] = "simlab-forge-shim/0.17.0"
+    ag = r["games"][0]["agent_events"]
+    shim = {
+        1: "reach=false where=Library why=restriction route=spell Scholar's Query seeking Tide Oracle",
+        3: "reach=true where=Library why=ok route=spell Verdant Call seeking Tide Oracle",
+        4: "reach=false where=Graveyard why=not-in-library route=spell Grave Whisper seeking Tide Oracle",
+        7: "reach=true where=Library why=ok route=transmute Mind Shuffle seeking Iron Idol",
+    }
+    shim.update(overrides or {})
+    for i, d in shim.items():
+        assert ag[i]["event"] == "tutor_cast", ag[i]
+        ag[i]["detail"] = d
+    return r
+
+
+def test_shim_017_prefix_end_to_end():
+    m, flags = run(res_=prefix_result())
+    a = m["by_seat"]["Alpha"]["plan"]
+    eq(a["tutor_cast"], 5, "tutor_cast")
+    eq(a["reach_basis"], {"shim": 5}, "every cast carries the shim's reach")
+    eq(a["unreachable"], 3, "unreachable from reach=")
+    eq(a["unreachable_reasons"], {"restriction": 1, "in_graveyard": 1, "absent": 1},
+       "reasons from the shim's why= and this module's own evidence")
+    eq(a["reach_crosscheck"], {"agree": 5}, "the shim agrees with the offers and the index")
+    # Everything keyed by the tutor's name: the index restriction, Forge's
+    # cast and resolution, the linked search, the tutor spell the shim cast.
+    eq((a["restriction_excludes"], a["restriction_conditional"], a["restriction_unknown"]),
+       (1, 1, 0), "restriction read off the real tutor name")
+    eq((a["x_resolved"], a["x_zero"]), (1, 1), "X matched to Forge's cast")
+    eq(a["failed_to_target"], 1, "failed to target matched to Forge's refusal")
+    eq((a["searched"], a["searched_not_offered"]), (3, 3), "search_seen linked")
+    eq(a["cast_never_searches"], {"keyword": 1}, "route=transmute")
+    eq(a["tutor_spells_cast_by_shim"], 5, "shim casts matched to the zone stream")
+    kinds = {}
+    for f in flags:
+        kinds[f["kind"]] = kinds.get(f["kind"], 0) + 1
+    eq(kinds, {"tutor_unreachable": 3, "tutor_x_zero": 1, "tutor_failed_target": 1,
+               "tutor_cast_never_searches": 1, "tutor_gy_steer_no_use": 1,
+               "tutor_closer_override": 1}, "flag kinds")
+    assert all(not f["detail"].startswith("reach=") and "reach=false where" not in f["detail"]
+               for f in flags), "a flag names the tutor, not the record's fields"
+
+    # The shim disagrees with Forge's offer: the shim wins, the disagreement shows.
+    m2, _ = run(res_=prefix_result({1: "reach=true where=Library why=ok route=spell "
+                                        "Scholar's Query seeking Tide Oracle"}))
+    a2 = m2["by_seat"]["Alpha"]["plan"]
+    eq((a2["unreachable"], a2["reach_crosscheck"]), (2, {"agree": 4, "disagree": 1}),
+       "shim verdict wins; the cross-check records the disagreement")
+    # why=error is not evidence: the cast falls back to Forge's own offer.
+    m3, _ = run(res_=prefix_result({1: "reach=false where=Library why=error route=spell "
+                                        "Scholar's Query seeking Tide Oracle"}))
+    a3 = m3["by_seat"]["Alpha"]["plan"]
+    eq((a3["reach_shim_error"], a3["reach_basis"], a3["unreachable"]),
+       (1, {"shim": 4, "forge_offer": 1}, 3), "why=error falls back")
+    # route= says where the search lives; none is a reason, not a mode.
+    m4, f4 = run(res_=prefix_result({
+        3: "reach=true where=Library why=ok route=activated Verdant Call seeking Tide Oracle",
+        4: "reach=false where=Library why=no-search route=none Grave Whisper seeking Tide Oracle"}))
+    a4 = m4["by_seat"]["Alpha"]["plan"]
+    eq(a4["cast_never_searches"], {"keyword": 1, "activated": 1}, "route=activated")
+    eq(a4["unreachable_reasons"], {"restriction": 1, "in_graveyard": 1, "no_search": 1,
+                                   "absent": 1}, "why=no-search")
+    assert any("has no library search" in f["detail"] for f in f4), f4
+
+
+def test_tutor_skips_and_unknown_reach():
+    r = prefix_result()
+    ag = r["games"][0]["agent_events"]
+    ag.append(AG(4, A, "tutor_skip", "reason=forced-choice kind=x-cost reach=true where=Library "
+                                     "why=ok route=spell Verdant Call seeking Tide Oracle"))
+    ag.append(AG(6, A, "tutor_skip", "reason=gate-closed reach=- where=- why=- route=spell "
+                                     "Grave Whisper seeking -"))
+    # A cast nothing can judge: no reach=, no search offer, no index entry.
+    ag.append(AG(9, A, "tutor_cast", "Nobody's Tutor seeking Mystery Card"))
+    m, flags = run(res_=r)
+    a = m["by_seat"]["Alpha"]["plan"]
+    eq((a["tutor_skips"], a["tutor_skip_reasons"]), (2, {"forced-choice": 1, "gate-closed": 1}),
+       "tutor_skip by reason")
+    eq((a["tutor_cast"], a["unreachable"], a["reach_basis"].get("unknown")), (6, 3, 1),
+       "an unjudged cast is not unreachable")
+    eq((a["unreachable_rate"], a["unreachable_rate_known"]), (0.5, 0.6),
+       "the known-basis rate leaves the unjudged cast out")
+
+
+def test_graveyard_heuristic_rules():
+    """The v1 heuristic is deck_plan._graveyard_targets' rules (r1/hotfix_plan_data)."""
+    cache = copy.deepcopy(CACHE)
+    cache.update({
+        "tide adept": fact("Creature \u2014 Human Wizard", 2, ["U"], "2",
+                           "Flash\nWhen Tide Adept enters, target instant or sorcery card in "
+                           "your graveyard gains flashback until end of turn."),
+        "ember lesson": fact("Sorcery", 2, ["R"], oracle="Draw two cards.\nFlashback {3}{R}"),
+        "grove keeper": fact("Legendary Creature \u2014 Elf", 5, ["B", "G", "U"], "3",
+                             "During each of your turns, you may play a land and cast a permanent "
+                             "spell of each permanent type from your graveyard."),
+        "ash wastes": fact("Land", 0),
+    })
+    plans = {"decks": {
+        "Alpha": {"tutors": [], "roles": {"Kessa, Grave Scholar": "commander",
+                                          "Rise Again": "filler"},
+                  "search": {"targets": {"Moss Hound": 7}}},
+        "Beta": {"tutors": [], "roles": {"Grove Keeper": "commander", "Gear Golem": "filler"}},
+    }}
+    f = qctx.CardFacts(cache=cache)
+    ctx = qctx.from_result_dict(result(), plans=plans, facts=f, forge=None)
+    d = tutors._Detector(ctx, reach=reach(f))
+    scan = tutors._GameScan(ctx.games[0])
+
+    def h(card, who=A):
+        return d.graveyard_heuristic(card, who, scan)
+
+    eq(h("Rot Titan"), (True, "reanimation_target"), "MV 6 creature in a reanimating deck")
+    eq(h("Moss Hound"), (True, "reanimation_target"), "a search value of 7 carries a cheap creature")
+    eq(h("Tide Oracle"), (False, "no_graveyard_use"), "a cheap creature is no reanimation target")
+    eq(h("Tide Adept"), (False, "no_graveyard_use"), "granting flashback is not having it")
+    eq(h("Ember Lesson"), (True, "castable_from_graveyard"), "its own flashback")
+    eq(h("Big Finish"), (True, "commander_casts_from_graveyard"), "Kessa casts instants")
+    eq(h("Ash Wastes"), (False, "land"), "lands are never targets")
+    eq(h("Kessa, Grave Scholar"), (False, "commander"), "commanders are never targets")
+    eq(h("Unheard Of"), (None, "unknown_card"), "not in the card cache")
+    # A permanent-spell commander (Muldrotha-style) is not an instant-and-
+    # sorcery commander, and Beta has no reanimation.
+    eq(h("Rust Ring", B), (False, "no_graveyard_use"), "only instants and sorceries")
+    eq(h("Gear Golem", B), (False, "no_graveyard_use"), "Beta does not reanimate")
+
+
+def test_stdout_result_is_not_measured():
+    f = facts()
+    ctx = qctx.from_result(ENGINE / "tests" / "fixtures" / "sim_sample.json", facts=f, forge=None,
+                           find_plans_file=False)
+    m, flags = tutors.detect(ctx, reach=reach(f))
+    eq(m["basis"]["measurable"], {"tutor_casts": False, "tutor_spells": False},
+       "stdout path: zeros here mean not measured")
+    eq((m["pooled"]["tutor_cast"], m["pooled"]["tutors_drawn"], flags), (0, 0, []),
+       "nothing counted")
+    m2, _ = run()
+    eq(m2["basis"]["measurable"], {"tutor_casts": True, "tutor_spells": True}, "shim with zones")
+    eq(m2["basis"]["pilots_unknown"], 0, "meta.agents names every seat")
+
+
 def test_from_jsonl():
     recs = [
         {"rec": "meta", "shim": "0.16.0", "agents": ["plan", "stock"], "players": [A, B]},
@@ -485,6 +672,8 @@ def test_from_jsonl():
         a = m["by_seat"]["Alpha"]["plan"]
         eq((a["tutor_cast"], a["x_zero"], a["tutors_drawn"]), (1, 1, 1), "raw JSONL path")
         eq([x["kind"] for x in flags], ["tutor_x_zero"], "flags from raw JSONL")
+        eq((flags[0]["game"], flags[0]["seq"]), (1, 2),
+           "game 1; seq is the Forge log entry of the tutor's cast")
         eq(m["basis"]["raw_jsonl"], 1, "basis records the raw file")
 
 

@@ -14,17 +14,29 @@ overrides).
 
 What it measures, per seat (deck x pilot), per pilot and pooled:
 
-  tutor_cast            shim `tutor_cast X seeking Y` events (the plan's own
-                        decision to tutor for a line's missing piece)
-  unreachable           of those, casts that could not find Y. Evidence, best
-                        first: the shim's own `reach=` (0.17.0+, Forge's
-                        Card.isValid at decision time); else Forge's search,
-                        when it resolved with Y as the missing piece (offered
-                        or not); else where Y was (not in the library) and
-                        the tutor's ChangeType read from the Forge index
+  tutor_cast            shim `tutor_cast` events (the plan's own decision to
+                        tutor for a line's missing piece). 0.17.0 writes
+                        `reach= where= why= route= <tutor> seeking <piece>`,
+                        with the flags on or off; before it, `<tutor> seeking
+                        <piece>`
+  unreachable           of those, casts that could not find the piece.
+                        Evidence, best first: the shim's own `reach=` (0.17.0+,
+                        Forge's filter at decision time; why=error is not
+                        evidence and is counted in reach_shim_error); else
+                        Forge's search, when it resolved with the piece as the
+                        missing one (offered or not); else where the piece was
+                        (not in the library) and the tutor's ChangeType read
+                        from the Forge index. reach_basis counts each source;
+                        a cast with none ("unknown") is not unreachable.
+                        unreachable_rate is over every cast;
+                        unreachable_rate_known over the casts with a basis.
+                        On the 135-file diagnosis corpus (no shim reach) this
+                        is 394/718, not the 316/718 restriction-only headline
+  reach_crosscheck      0.17.0+: casts where the shim's verdict agrees or
+                        disagrees with this module's own evidence
   restriction_excludes  casts whose tutor's own search restriction cannot
-                        include Y, from the Forge index alone. This is the
-                        diagnosis figure (316/718) the port test reproduces
+                        include the piece, from the Forge index alone. This is
+                        the diagnosis figure (316/718) the port test reproduces
   seeking_gy_exile      casts seeking a piece already in graveyard or exile
                         (as of the cast itself)
   searched / _not_offered  casts whose search resolved, and of those the ones
@@ -32,13 +44,20 @@ What it measures, per seat (deck x pilot), per pilot and pooled:
   x_zero / x_resolved   casts that resolved with X=0, of those that showed X
   failed_to_target      casts Forge refused to put on the stack
   cast_never_searches   casts of a card whose search is a keyword (transmute,
-                        typecycling) or activated ability: casting the spell
-                        never searches
+                        typecycling), an activated or a later triggered
+                        ability: casting the spell never searches. The shim's
+                        route= when present, else the Forge index
+  tutor_skips           0.17.0+: tutor_skip records (a plan tutor left in hand
+                        for a turn), by their last reason
   gy_searches, gy_steers_*  graveyard-destination searches, whether they still
                         picked a card (the guard), and the plan's steers: onto
                         a card with no use in the graveyard (the defect) or
                         onto a reanimation target / card castable from the
-                        graveyard (expected; reported, not penalised)
+                        graveyard (expected; reported, not penalised). A
+                        planVersion 2 plan is judged by its own
+                        search.graveyardTargets; gy_steers_heuristic_no_use
+                        is the heuristic's verdict on the same steers, so a
+                        bad target list shows
 
 Over every tutor SPELL a seat casts from hand (its plan's `tutors` minus its
 commanders; without a plan, cards whose search can find a nonland card),
@@ -59,14 +78,27 @@ whoever decided the cast:
   closer_seen/overrides searches where stock picked a proven closer, and how
                         often the plan steered away from it
   casts_per_drawn       the guard: tutor spells cast from hand per tutor
-                        drawn. Commanders recast from the command zone are
-                        not tutors drawn, so they are not counted (the
-                        diagnosis's 594/892 counted them; from hand it is
-                        544/892 on the same stock seats)
+                        drawn. A commander recast from the command zone, or
+                        a card cast from exile or the graveyard, was not a
+                        tutor drawn, so it is not counted. The diagnosis's
+                        594/892 (runs_015_default, stock) counted casts from
+                        any zone; this module's zone stream on those seats
+                        reads 544 from hand, 36 commander casts from the
+                        command zone, 15 from exile, 2 from the graveyard
+                        and 1 commander from hand, so the guard there is
+                        544/892 (61%), not 67%
 
-Flags are per-moment records {game, turn, player, kind, detail, anchor}
-anchored at (game, turn, player, agent_event_index) until agent events
-carry `seq`.
+Flags are per-moment records {detector, kind, game, turn, player, seq,
+detail, anchor}. `game` is 1-based, as the API (/results/{file}/game/{n})
+and qa.knockouts number games. `seq` is the Forge log entry of the tutor's
+cast when one is linked (null otherwise). The anchor is (game, turn, player,
+agent_event_index, seq) with the agent event's own seq, null until the shim
+stamps agent events (WS1 task 7).
+
+metrics["basis"]["measurable"] says which families this run can measure at
+all: tutor casts and searches need agent events (a shim run), the tutor
+spells (guard, phase, picks) need the zone stream. A stdout-path result has
+neither, so its zeros mean "not measured", not "no tutors".
 
 Nothing here decides what happened in a game: Forge's log, its zone stream
 and its own search offers say that. The Forge index read (ChangeType) is
@@ -346,49 +378,50 @@ class Reach:
 
 
 # --------------------------------------------------------- graveyard use --
+#
+# For a plan without search.graveyardTargets (version 1), a graveyard steer is
+# judged by the SAME rules deck_plan._graveyard_targets uses to write that
+# list for version 2 (r1/hotfix_plan_data), so a v1 run and a v2 run are read
+# alike. Mirrored rule for rule; once both branches are on main this should
+# import one shared implementation instead of keeping two copies:
+#   (a) reanimation target: a creature, when the deck reanimates, of mana
+#       value 4+ or with a library-search value of 6+;
+#   (b) a card with its own graveyard keyword (flashback, escape, unearth,
+#       retrace, jump-start, embalm, eternalize, disturb), anchored to the
+#       start of a paragraph so "target instant gains flashback" (Snapcaster)
+#       does not count;
+#   (c) an instant or sorcery, when a commander casts those from the
+#       graveyard (Kess) or grants them a graveyard keyword (Lier).
+# Commanders and lands are never targets. Oracle text is a hint about what a
+# plan meant, never a ruling on what happened: Forge's zone stream says that.
 
-_SELF_GY = re.compile(r"\b(flashback|escape|unearth|retrace|jump-start|embalm|eternalize|"
-                      r"disturb|encore|aftermath)\b", re.I)
-_REANIMATE = (
-    re.compile(r"\b(?:return|put)s?\b[^.]*?\bcreature cards?\b[^.]*?\bgraveyards?\b[^.]*?"
-               r"\b(?:to|onto) the battlefield", re.I),
-    re.compile(r"\breturn enchanted creature card to the battlefield", re.I),
-    re.compile(r"\bcreature cards? from (?:their|your|a|all) graveyards?\b[^.]*?\bputs?\b[^.]*?"
-               r"onto the battlefield", re.I),
-)
-_CMD_GY = (
-    re.compile(r"\bcast (?:an? |one |target )?(?P<what>[a-z ,]+?) (?:card|spell)s? from your graveyard",
-               re.I),
-    re.compile(r"\bcast an? (?P<what>[a-z]+) spell of each [a-z ]+ from your graveyard", re.I),
-)
-_GY_TYPES = ("instant", "sorcery", "creature", "artifact", "enchantment", "planeswalker",
-             "land", "battle")
+_GY_ZONE = re.compile(r"\bgraveyards?\b", re.I)
+_TO_BATTLEFIELD = re.compile(r"\b(?:to|onto) the battlefield\b", re.I)
+_RETURN_VERB = re.compile(r"\b(?:return|put)s?\b", re.I)
+_CREATURE_CARD = re.compile(r"\b(?:creature|permanent) cards?\b|\benchanted creature card\b",
+                            re.I)
+_GY_KEYWORD = re.compile(r"(?:^|\n)(?:flashback|escape|unearth|retrace|jump-start|embalm|"
+                         r"eternalize|disturb)\b", re.I)
+_CMDR_GY_SPELLS = re.compile(
+    r"\bcast (?:an? )?(?:instant|sorcery)(?: (?:or|and) sorcery)?(?: spells?| cards?)? "
+    r"from your graveyard"
+    r"|\b(?:instant|sorcery)(?: (?:or|and) sorcery)? cards? in your graveyard "
+    r"ha(?:s|ve) (?:flashback|jump-start|retrace|escape)", re.I)
 
 
-def _self_castable_from_gy(name: str, oracle: str) -> bool:
-    if _SELF_GY.search(oracle):
-        return True
-    low = oracle.lower()
-    me = name.lower()
-    return any(p in low for p in (f"cast {me} from your graveyard", "cast this card from your graveyard",
-                                  f"play {me} from your graveyard",
-                                  f"return {me} from your graveyard to the battlefield"))
-
-
-def _commander_gy_types(oracle: str) -> set[str]:
-    out: set[str] = set()
-    for rx in _CMD_GY:
-        for m in rx.finditer(oracle):
-            what = m.group("what").lower()
-            out |= {t for t in _GY_TYPES if t in what}
-            if "permanent" in what:
-                out |= {"creature", "artifact", "enchantment", "planeswalker", "land", "battle"}
-    return out
+def _reanimates(text: str) -> bool:
+    """Does this card put creature cards from a graveyard onto the battlefield?"""
+    for para in (text or "").split("\n"):
+        if (_GY_ZONE.search(para) and _TO_BATTLEFIELD.search(para)
+                and _RETURN_VERB.search(para) and _CREATURE_CARD.search(para)):
+            return True
+    return False
 
 
 # ---------------------------------------------------------------- parsing --
 
 _TC = re.compile(r"^(?P<tutor>.+?) seeking (?P<want>.+)$")
+_KV_HEAD = re.compile(r"^([A-Za-z]\w*)=(\S*)\s+")
 _KV_TAIL = re.compile(r"\s+([A-Za-z]\w*)=(\S*)$")
 _SS = re.compile(r"^(?P<head>.*?) missing=(?P<missing>.*) picked=(?P<picked>.*) "
                  r"planPick=(?P<planPick>.*) src=(?P<src>.*)$")
@@ -397,23 +430,69 @@ _FAILED = re.compile(r"^(?P<card>.+?) \((?P<id>\d+)\) - \[Couldn't add to stack,
 _RESOLVE = re.compile(r"^(?P<card>.+?)(?: \((?P<id>\d+)\))?(?: - |$)")
 _X = re.compile(r"\(X=(\d+)\)\s*$")
 
+# How a flag names the zone a sought piece already sat in.
+_ZONE_PHRASE = {"graveyard": "in the graveyard", "exile": "in exile", "hand": "in hand",
+                "battlefield": "on the battlefield", "command": "in the command zone"}
+# The shim's route= (where a tutor's library search lives) as this module's
+# cast modes. "spell" and "etb" search when the card is cast; "none" (no
+# library search at all) is an unreachable reason, no_search, not a mode.
+_ROUTE_MODE = {"spell": "spell", "etb": "spell", "transmute": "keyword",
+               "activated": "activated", "triggered": "triggered", "none": None}
+_NEVER_SEARCHES = {"keyword": "its search is a keyword ability",
+                   "activated": "its search is an activated ability",
+                   "triggered": "its search is a later triggered ability"}
 
-def parse_tutor_cast(detail: str) -> dict | None:
-    """"Worldly Tutor seeking Felidar Guardian[ reach=false ...]"."""
-    m = _TC.match(detail or "")
+
+def parse_tutor_record(detail: str) -> dict | None:
+    """A shim tutor record: `tutor_cast`, or `tutor_skip` (0.17.0+).
+
+    Shim 0.17.0 writes single-token key=value fields FIRST and the two card
+    names last, split by " seeking " (card names hold spaces and commas, never
+    "="):
+        reach=false where=Library why=restriction route=spell Nature's Rhythm
+            seeking Staff of Domination
+        reason=forced-choice kind=x-cost reach=true where=Library why=ok
+            route=spell Finale of Devastation seeking Tide Oracle
+    Before 0.17.0 the record is just "<tutor> seeking <piece>". Trailing
+    key=value tokens are also peeled off as a fallback.
+
+    reach is True / False / None (absent or "-"); where is the piece's zone
+    among the seat's own (Library, Hand, Battlefield, Graveyard, Exile,
+    Command, or "absent"); why is ok | not-in-library | no-search |
+    restriction | error; route is where the tutor's search lives (spell, etb,
+    activated, transmute, triggered, none)."""
+    rest, kv = detail or "", {}
+    while True:
+        h = _KV_HEAD.match(rest)
+        if not h:
+            break
+        kv[h.group(1)] = h.group(2)
+        rest = rest[h.end():]
+    m = _TC.match(rest)
     if not m:
         return None
-    want, kv = m.group("want"), {}
+    want = m.group("want")
     while True:
         t = _KV_TAIL.search(want)
         if not t:
             break
-        kv[t.group(1)] = t.group(2)
+        kv.setdefault(t.group(1), t.group(2))
         want = want[:t.start()]
-    reach = kv.get("reach")
+
+    def field(k: str) -> str | None:
+        v = kv.get(k)
+        return None if v in (None, "", "-") else v
+
+    reach = field("reach")
     return {"tutor": m.group("tutor"), "want": want.strip(),
             "reach": True if reach == "true" else (False if reach == "false" else None),
-            "kv": kv}
+            "where": field("where"), "why": field("why"), "route": field("route"),
+            "reason": field("reason"), "kv": kv}
+
+
+def parse_tutor_cast(detail: str) -> dict | None:
+    """A `tutor_cast` record (see parse_tutor_record)."""
+    return parse_tutor_record(detail)
 
 
 def parse_search_seen(detail: str) -> dict:
@@ -454,6 +533,7 @@ def primary_type(types: str) -> str:
 def new_bucket() -> dict:
     return {
         "tutor_cast": 0, "unreachable": 0, "unreachable_reasons": {}, "reach_basis": {},
+        "reach_crosscheck": {}, "reach_shim_error": 0,
         "restriction_excludes": 0, "restriction_conditional": 0, "restriction_unknown": 0,
         "seeking_gy_exile": 0, "searched": 0, "searched_not_offered": 0,
         "x_resolved": 0, "x_zero": 0, "failed_to_target": 0, "cast_never_searches": {},
@@ -462,8 +542,10 @@ def new_bucket() -> dict:
         "fetch_use": {},
         "gy_searches": 0, "gy_searches_picked": 0, "gy_steers": 0,
         "gy_steers_no_use": 0, "gy_steers_graveyard_use": 0, "gy_steers_unknown": 0,
+        "gy_steers_heuristic_no_use": 0,
         "gy_steer_cards": {"no_use": {}, "graveyard_use": {}, "unknown": {}},
         "closer_seen": 0, "closer_overrides": 0,
+        "tutor_skips": 0, "tutor_skip_reasons": {},
     }
 
 
@@ -506,6 +588,11 @@ def finalize(bucket: dict) -> dict:
     """Ratios from counts (idempotent; recomputed after every combine)."""
     b = bucket
     b["unreachable_rate"] = _rate(b.get("unreachable", 0), b.get("tutor_cast", 0))
+    # Over the casts whose reach is known: a cast with no evidence either way
+    # (no shim reach=, no Forge offer, no index entry) is not counted as
+    # reachable here, so a missing Forge index cannot flatter the gate.
+    known = b.get("tutor_cast", 0) - (b.get("reach_basis") or {}).get("unknown", 0)
+    b["unreachable_rate_known"] = _rate(b.get("unreachable", 0), known)
     b["restriction_rate"] = _rate(b.get("restriction_excludes", 0), b.get("tutor_cast", 0))
     b["casts_per_drawn"] = _rate(b.get("tutor_spells_cast", 0), b.get("tutors_drawn", 0))
     phase = b.get("phase") or {}
@@ -582,15 +669,15 @@ class _GameScan:
                 if m:
                     p = self.owner.get(int(m.group("id")))
                     self.attempts.setdefault((p, m.group("card")), []).append(
-                        {"turn": turn, "pos": pos, "card": m.group("card"),
+                        {"turn": turn, "pos": pos, "seq": e.get("seq"), "card": m.group("card"),
                          "status": "failed", "why": m.group("why")})
                     continue
                 for p in g.players:
                     if raw.startswith(p + " cast "):
                         card = e.get("object") or re.sub(r" targeting .*$", "",
                                                          raw[len(p) + 6:])
-                        a = {"turn": turn, "pos": pos, "card": card, "player": p,
-                             "status": "cast", "x": None}
+                        a = {"turn": turn, "pos": pos, "seq": e.get("seq"), "card": card,
+                             "player": p, "status": "cast", "x": None}
                         self.attempts.setdefault((p, card), []).append(a)
                         casts.append(a)
                         break
@@ -654,9 +741,16 @@ class _Detector:
             self.buckets[key] = new_bucket()
         return self.buckets[key]
 
-    def flag(self, game: int, turn, player, kind: str, detail: str, ai) -> None:
-        self.flags.append({"game": game, "turn": turn, "player": player, "kind": kind,
-                           "detail": detail, "anchor": anchor(game, turn, player, ai)})
+    def flag(self, g, turn, player, kind: str, detail: str, ai, seq=None) -> None:
+        """One per-moment record. `game` is 1-based, as /results/{file}/game/{n}
+        and qa.knockouts number games. `seq` is the Forge log entry of the
+        moment when one is linked (the tutor's own cast), like the knockouts
+        flags' seq; the anchor's `seq` is the agent event's own, null until
+        the shim stamps agent events (WS1 task 7)."""
+        ae = g.agent_events[ai] if isinstance(ai, int) and 0 <= ai < len(g.agent_events) else {}
+        self.flags.append({"detector": NAME, "kind": kind, "game": g.number, "turn": turn,
+                           "player": player, "seq": seq, "detail": detail,
+                           "anchor": anchor(g.number, turn, player, ai, ae.get("seq"))})
 
     def tutor_set(self, player: str, scan: _GameScan) -> set[str] | None:
         """The seat's tutors: its plan's list minus its commanders; without a
@@ -684,37 +778,79 @@ class _Detector:
         extra = plan.get("closers") or (plan.get("search") or {}).get("closers") or []
         return set(PROVEN_CLOSERS) | set(extra)
 
-    def deck_cards(self, player: str, scan: _GameScan) -> set[str]:
+    def deck_cards(self, player: str, scan: _GameScan) -> tuple[set[str], bool]:
+        """(cards, from_plan): the plan's cards for the whole run, else the
+        cards this seat moved in this game."""
         plan = self.ctx.plan_for(player) or {}
         cards = set(plan.get("roles") or {}) | set(plan.get("weights") or {})
-        if not cards:
-            cards = {z.get("card") for z in scan.Z
-                     if (z.get("fromPlayer") == player or z.get("toPlayer") == player)
-                     and not z.get("token")}
-        return {c for c in cards if c}
+        if cards:
+            return {c for c in cards if c} | self.ctx.commanders(player), True
+        cards = {z.get("card") for z in scan.Z
+                 if (z.get("fromPlayer") == player or z.get("toPlayer") == player)
+                 and not z.get("token")}
+        return {c for c in cards if c}, False
 
-    def reanimates(self, player: str, scan: _GameScan) -> bool | None:
-        deck = strip_seat(player)
-        if deck not in self._deck_reanimates:
-            facts = self.ctx.facts
-            known = False
-            hit = False
-            for c in self.deck_cards(player, scan):
-                o = facts.oracle(c)
+    def deck_reanimates(self, player: str, scan: _GameScan) -> bool | None:
+        """Does the deck hold a card that puts creature cards from a graveyard
+        onto the battlefield? None when no card's text is known."""
+        cards, from_plan = self.deck_cards(player, scan)
+        key = (strip_seat(player), None if from_plan else scan.g.index)
+        if key not in self._deck_reanimates:
+            known = hit = False
+            for c in sorted(cards):
+                o = self.ctx.facts.oracle(c)
                 if o:
                     known = True
-                    if any(rx.search(o) for rx in _REANIMATE):
+                    if _reanimates(o):
                         hit = True
                         break
-            self._deck_reanimates[deck] = True if hit else (False if known else None)
-        return self._deck_reanimates[deck]
+            self._deck_reanimates[key] = True if hit else (False if known else None)
+        return self._deck_reanimates[key]
 
-    def graveyard_use(self, card: str, player: str, scan: _GameScan):
-        """(True | False | None, why). Plan data first (planVersion 2's
-        search.graveyardTargets); otherwise the same three rules WS5 T1 gives
-        deck_plan: reanimation targets for decks that reanimate; flashback,
-        escape, unearth (and kin) cards; instants and sorceries (or whatever
-        type the text names) the commander can cast from the graveyard."""
+    def graveyard_heuristic(self, card: str, player: str, scan: _GameScan):
+        """(True | False | None, why) by deck_plan's graveyard-target rules
+        (see the comment above _GY_ZONE). None when the card cache does not
+        hold the card, or a creature's deck text is unknown."""
+        facts = self.ctx.facts
+        fact = facts.get(card)
+        if fact is None:
+            return None, "unknown_card"
+        # The full type line, both faces, as deck_plan reads it.
+        tline = fact.get("type_line") or ""
+        oracle = fact.get("oracle_text") or ""
+        commanders = self.ctx.commanders(player)
+        if card in commanders:
+            return False, "commander"
+        if not tline:
+            return None, "unknown_card"
+        if "Land" in tline and "Creature" not in tline:
+            return False, "land"
+        plan = self.ctx.plan_for(player) or {}
+        base = ((plan.get("search") or {}).get("targets") or {}).get(card, 1)
+        base = base if isinstance(base, (int, float)) else 1
+        undecided = False
+        if "Creature" in tline:
+            r = self.deck_reanimates(player, scan)
+            cmc = fact.get("cmc") or 0
+            if r and (cmc >= 4 or base >= 6):
+                return True, "reanimation_target"
+            undecided = r is None
+        if _GY_KEYWORD.search(oracle):
+            return True, "castable_from_graveyard"
+        if ("Instant" in tline or "Sorcery" in tline) and any(
+                _CMDR_GY_SPELLS.search(facts.oracle(c)) for c in sorted(commanders)):
+            return True, "commander_casts_from_graveyard"
+        if undecided:
+            return None, "deck_unknown"
+        return False, "no_graveyard_use"
+
+    def graveyard_use(self, card: str, player: str, scan: _GameScan) -> tuple:
+        """((use, why), (heuristic use, why)). The verdict comes from plan data
+        first (planVersion 2's search.graveyardTargets, the list that drove
+        the steer); otherwise from the heuristic. The heuristic verdict is
+        returned either way, so a bad target list (one listing Sol Ring) shows
+        up next to the plan's own verdict."""
+        heur = self.graveyard_heuristic(card, player, scan)
         plan = self.ctx.plan_for(player) or {}
         search = plan.get("search") or {}
         if plan_version(plan, self.ctx.plans_info) >= 2 and "graveyardTargets" in search:
@@ -724,29 +860,8 @@ class _Detector:
                 ok = isinstance(v, (int, float)) and v > 0
             else:
                 ok = card in set(gt)
-            return (True, "graveyard_target") if ok else (False, "not_a_graveyard_target")
-        facts = self.ctx.facts
-        oracle = facts.oracle(card)
-        types = facts.type_line(card)
-        if not types:
-            f = self.reach.target_facts(card)
-            types = " ".join(sorted(f["tokens"])) if f else ""
-        if not types and not oracle:
-            return None, "unknown_card"
-        low_types = types.lower()
-        if oracle and _self_castable_from_gy(card, oracle):
-            return True, "castable_from_graveyard"
-        for cmd in self.ctx.commanders(player):
-            allowed = _commander_gy_types(facts.oracle(cmd))
-            if allowed and any(t in low_types for t in allowed):
-                return True, "commander_casts_from_graveyard"
-        if "creature" in low_types:
-            r = self.reanimates(player, scan)
-            if r:
-                return True, "reanimation_target"
-            if r is None:
-                return None, "deck_unknown"
-        return False, "no_graveyard_use"
+            return ((True, "graveyard_target") if ok else (False, "not_a_graveyard_target")), heur
+        return heur, heur
 
     # -- per game ---------------------------------------------------------------
 
@@ -754,6 +869,7 @@ class _Detector:
         for g in self.ctx.games:
             scan = _GameScan(g)
             self._tutor_casts(g, scan)
+            self._tutor_skips(g)
             self._searches(g, scan)
             self._tutor_spells(g, scan)
 
@@ -770,6 +886,19 @@ class _Detector:
                 claimed.add(j)
                 return j, ss
         return None, None
+
+    @staticmethod
+    def _shim_reason(tc: dict) -> str | None:
+        """The shim's own why= as an unreachable reason (0.17.0+)."""
+        why = tc.get("why")
+        if why == "not-in-library":
+            where = (tc.get("where") or "").lower()
+            return "absent" if where in ("", "absent") else "in_" + where
+        if why == "restriction":
+            return "restriction"
+        if why == "no-search":
+            return "no_search"
+        return None
 
     def _tutor_casts(self, g, scan: _GameScan) -> None:
         claimed_ss: set[int] = set()
@@ -798,6 +927,7 @@ class _Detector:
                     break
             if attempt:
                 claimed_attempt.add(id(attempt))
+            seq = attempt.get("seq") if attempt else None
 
             # Where the sought piece was when the tutor left the hand.
             cut = None
@@ -839,20 +969,36 @@ class _Detector:
                 reasons.append("in_" + loc.lower())
             if restr is False:
                 reasons.append("restriction")
-            if tc["reach"] is not None:
-                basis, unreachable = "shim", tc["reach"] is False
-                if unreachable and not reasons:
-                    reasons.append("shim_reach_false")
-            elif offered is not None:
-                basis, unreachable = "forge_offer", not offered
+            # This detector's own evidence, best first: Forge's search offer,
+            # then where the piece was and the tutor's ChangeType.
+            if offered is not None:
+                own_basis, own_unreach = "forge_offer", not offered
+            elif reasons:
+                own_basis, own_unreach = ("zones" if loc != "Library" else "index"), True
+            elif restr is True or restr == COND:
+                own_basis, own_unreach = "index", False
+            else:
+                own_basis, own_unreach = "unknown", False
+            # The shim's reach= (0.17.0+) is Forge's own test at decision time,
+            # so it wins; why=error means the shim could not evaluate it.
+            shim_reach = tc["reach"]
+            if shim_reach is not None and tc.get("why") == "error":
+                b["reach_shim_error"] += 1
+                shim_reach = None
+            if shim_reach is not None:
+                basis, unreachable = "shim", shim_reach is False
+                if own_basis != "unknown":
+                    _inc(b, "reach_crosscheck", "agree" if own_unreach == unreachable else "disagree")
+                if unreachable:
+                    r = self._shim_reason(tc)
+                    if r and r not in reasons:
+                        reasons.append(r)
+                    if not reasons:
+                        reasons.append("shim_reach_false")
+            else:
+                basis, unreachable = own_basis, own_unreach
                 if unreachable and not reasons:
                     reasons.append("not_offered")
-            elif reasons:
-                basis, unreachable = ("zones" if loc != "Library" else "index"), True
-            elif restr is True or restr == COND:
-                basis, unreachable = "index", False
-            else:
-                basis, unreachable = "unknown", False
             _inc(b, "reach_basis", basis)
             if unreachable:
                 b["unreachable"] += 1
@@ -861,37 +1007,54 @@ class _Detector:
                 why = []
                 for r in reasons:
                     if r == "restriction":
-                        why.append("its search is limited to " + " or ".join(cts))
+                        why.append("its search is limited to " + " or ".join(cts)
+                                   if cts else "its search restriction excludes it")
                     elif r.startswith("in_"):
-                        zone = {"command": "command zone"}.get(r[3:], r[3:])
-                        why.append(f"it was already in the {zone}")
+                        why.append("it was already " + _ZONE_PHRASE.get(r[3:], "in " + r[3:]))
+                    elif r == "absent":
+                        why.append("it was not among the seat's own cards")
+                    elif r == "no_search":
+                        why.append("the card has no library search")
                     elif r == "not_offered":
                         why.append("Forge's search did not offer it")
                     elif r == "shim_reach_false":
                         why.append("the shim logged reach=false")
-                self.flag(g.index, t, p, "tutor_unreachable",
+                self.flag(g, t, p, "tutor_unreachable",
                           f"{tutor} was cast seeking {want}, which it could not find: "
-                          + "; ".join(why) + ".", ai)
+                          + "; ".join(why) + ".", ai, seq)
 
             if attempt and attempt["status"] == "failed":
                 b["failed_to_target"] += 1
-                self.flag(g.index, t, p, "tutor_failed_target",
+                self.flag(g, t, p, "tutor_failed_target",
                           f"{tutor} could not be cast ({attempt['why']}); "
-                          f"it was cast seeking {want}.", ai)
+                          f"it was cast seeking {want}.", ai, seq)
             elif attempt and attempt.get("x") is not None:
                 b["x_resolved"] += 1
                 if attempt["x"] == 0:
                     b["x_zero"] += 1
-                    self.flag(g.index, t, p, "tutor_x_zero",
-                              f"{tutor} resolved with X=0; it was cast seeking {want}.", ai)
+                    self.flag(g, t, p, "tutor_x_zero",
+                              f"{tutor} resolved with X=0; it was cast seeking {want}.", ai, seq)
 
-            mode = self.reach.cast_mode(tutor)
-            if mode in ("keyword", "activated"):
+            # Where the tutor's search lives: the shim's route= (0.17.0+),
+            # read off Forge's own abilities; else the Forge index.
+            route = tc.get("route")
+            mode = _ROUTE_MODE.get(route) if route else self.reach.cast_mode(tutor)
+            if mode in _NEVER_SEARCHES:
                 _inc(b, "cast_never_searches", mode)
-                self.flag(g.index, t, p, "tutor_cast_never_searches",
-                          f"{tutor} was cast as a spell seeking {want}, but its search is "
-                          f"{'a keyword' if mode == 'keyword' else 'an activated'} ability, "
-                          "so casting it never searches.", ai)
+                self.flag(g, t, p, "tutor_cast_never_searches",
+                          f"{tutor} was cast as a spell seeking {want}, but "
+                          + _NEVER_SEARCHES[mode] + ", so casting it never searches.", ai, seq)
+
+    def _tutor_skips(self, g) -> None:
+        """Shim 0.17.0's tutor_skip: one record per plan tutor left in hand
+        per turn, carrying the turn's last reason. Counted, not flagged."""
+        for a in g.agent_events:
+            if a.get("event") != "tutor_skip":
+                continue
+            tc = parse_tutor_record(a.get("detail"))
+            b = self.bucket(g.index, a.get("player"))
+            b["tutor_skips"] += 1
+            _inc(b, "tutor_skip_reasons", (tc or {}).get("reason") or "unknown")
 
     def _searches(self, g, scan: _GameScan) -> None:
         steers: dict[tuple, tuple[int, dict]] = {}
@@ -916,12 +1079,14 @@ class _Detector:
                     b["gy_searches_picked"] += 1
                 if st:
                     b["gy_steers"] += 1
-                    use, why = self.graveyard_use(st["steer"], p, scan)
+                    (use, _why), (heur, _hwhy) = self.graveyard_use(st["steer"], p, scan)
                     cls = "graveyard_use" if use else ("no_use" if use is False else "unknown")
                     b["gy_steers_" + cls] += 1
+                    if heur is False:
+                        b["gy_steers_heuristic_no_use"] += 1
                     _inc(b, "gy_steer_cards", cls, st["steer"])
                     if use is False:
-                        self.flag(g.index, t, p, "tutor_gy_steer_no_use",
+                        self.flag(g, t, p, "tutor_gy_steer_no_use",
                                   f"{src} put {st['steer']} into the graveyard over "
                                   f"{st['over']}; {st['steer']} has no use there.", st_ai)
             closers = self.closers(p)
@@ -929,7 +1094,7 @@ class _Detector:
                 b["closer_seen"] += 1
                 if st and st["steer"] not in closers:
                     b["closer_overrides"] += 1
-                    self.flag(g.index, t, p, "tutor_closer_override",
+                    self.flag(g, t, p, "tutor_closer_override",
                               f"{src}: the plan took {st['steer']} over {st['over']}, "
                               "a proven closer.", st_ai)
 
@@ -1094,6 +1259,19 @@ class _Detector:
             finalize(b)
         basis = dict(self.ctx.basis())
         basis["reach_index"] = self.reach.available
+        games = self.ctx.games
+        shim = str(self.ctx.meta.get("agent") or "").startswith("simlab-forge-shim")
+        basis["measurable"] = {
+            # tutor_cast, search_seen and tutor_steer are shim agent events
+            "tutor_casts": shim or any(g.agent_events for g in games),
+            # the guard, phase, picks and fetch use read the zone stream
+            "tutor_spells": any(g.has_zones() for g in games),
+        }
+        # Seats whose pilot (plan or stock) the result does not record: a
+        # salvaged rotated result without rotations_detail, or a stock-Forge
+        # rotated run. They land under the "unknown" pilot.
+        basis["pilots_unknown"] = sum(1 for g in games for p in g.players
+                                      if self.ctx.pilot(g.index, p) is None)
         return {"detector": NAME, "kind": KIND, "basis": basis, "pooled": pooled,
                 "by_pilot": by_pilot, "by_seat": by_seat}
 

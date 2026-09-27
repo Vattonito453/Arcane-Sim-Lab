@@ -30,6 +30,8 @@ engine/            Python, stdlib only, no frameworks
   combos.py          known combos in a deck (Commander Spellbook, disk-cached)
   analysis.py        win methods + combo assembly per run (a later win is correlation, not conversion)
   forge_index.py     Forge's own card scripts, read at runtime: DFC layouts, AI:RemoveDeck flags, tutor reach (never committed)
+  combo_bands.py     win-band classifier for combo lines (v0 for the tutoring hotfix; WS8 extends it)
+  qa/                QA layer A analyzers: each detector's detect(ctx) -> (metrics, flags); context.py builds ctx once per run
   convert_decklist.py  decklist text -> validated .dck
   tests/             test_*.py (unit; run them all, never a hand list) + smoke_test.py (live API) + fixtures/
 rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)

@@ -37,9 +37,9 @@
         "Poison Toy",
         "Thassa's Oracle",
         "Demonic Consultation",
-        "Tainted Pact",
+        "Mechanized Production",
         "Sol Ring",
-        "Mechanized Production"
+        "Tainted Pact"
       ],
       "roles": {
         "Tymna Toy": "commander",
@@ -160,8 +160,8 @@
         "Magda, Brazen Outlaw",
         "Clock of Omens",
         "Expansion // Explosion",
-        "Narset's Reversal",
-        "Liquimetal Torque"
+        "Liquimetal Torque",
+        "Narset's Reversal"
       ],
       "roles": {
         "Magda, Brazen Outlaw": "commander",

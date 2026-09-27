@@ -65,7 +65,16 @@ def true_round(game: dict, upto_turn_index: int | None = None) -> int:
     return best
 
 
-def _death_rounds(game: dict) -> dict[str, int]:
+def _knockouts(game: dict) -> list[dict] | None:
+    """qa.knockouts for one game, or None if the analyzer cannot read it."""
+    try:
+        from qa.knockouts import knockouts  # noqa: PLC0415  lazy, like win_method
+        return knockouts(game)
+    except Exception:  # noqa: BLE001  a reader must never take the endpoint down
+        return None
+
+
+def _death_rounds(game: dict, kos: list[dict] | None = None) -> dict[str, int]:
     """Round each seat was eliminated, from qa.knockouts.
 
     Forge prints every loser's loss line at game end, so dating a knockout by
@@ -75,12 +84,10 @@ def _death_rounds(game: dict) -> dict[str, int]:
     10 over the decided games). qa.knockouts dates each one by the last event
     of its cause inside the turns the player can have gone out in. The
     loss-line reading below is only the fallback for a game the analyzer
-    cannot read."""
-    try:
-        from qa.knockouts import knockouts  # noqa: PLC0415  lazy, like win_method
-        kos = knockouts(game)
-    except Exception:  # noqa: BLE001  a reader must never take the endpoint down
-        kos = None
+    cannot read. `kos` lets a caller that already ran qa.knockouts on this
+    game pass them."""
+    if kos is None:
+        kos = _knockouts(game)
     if kos:
         return {bare(k["player"]): k["round"] for k in kos}
     out: dict[str, int] = {}
@@ -213,7 +220,10 @@ def scorecards(result: dict) -> dict:
                         (e.get("raw") or "").split(" played ")[0]) == active:
                     decks[active]["landDrops"] += 1
 
-        deaths = _death_rounds(game)
+        # One knockouts parse per game serves the death rounds and the
+        # winner's method below.
+        kos = _knockouts(game)
+        deaths = _death_rounds(game, kos=kos)
         for name, rnd in deaths.items():
             if name in decks:
                 decks[name]["deathRounds"].append(rnd)
@@ -228,7 +238,8 @@ def scorecards(result: dict) -> dict:
         w["winRounds"].append(true_round(game))
         if win_method is not None:
             try:
-                w["methods"][(win_method(game) or {}).get("method") or "other"] += 1
+                w["methods"][(win_method(game, kos=kos) or {}).get("method")
+                             or "other"] += 1
             except Exception:  # noqa: BLE001
                 pass
 

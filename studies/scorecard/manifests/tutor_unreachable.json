@@ -1,0 +1,928 @@
+{
+ "figure": "tutor_unreachable",
+ "gate": "G0a precondition (tasks/25-repair-plan.md WS1 task 5, Appendix B task 18)",
+ "claim": "316/718 tutor_cast events (44.0%) cast a tutor whose own search restriction (Forge's ChangeType) cannot include the sought piece.",
+ "source": {
+  "finding": "studies/diagnosis_2026-09/diag_result.json, verified finding tutor-restrictions-missing (corrected claim); SYNTHESIS.md root cause 5",
+  "prototype": "studies/diagnosis_2026-09/verify/tutor_restrictions/classify.py (the 316), join.py (Forge offers), where2.py (graveyard/exile); verify/tutorreach/xcheck.py and fate.py (X and failed-to-target); verify/portal_override/ov.py (Magda)",
+  "corpus_rule": "every studies/**/*.jsonl file holding a tutor_cast event when the diagnosis ran (2026-09-26): classify.py globbed studies/**/*.jsonl. 135 files, 718 events."
+ },
+ "detector": "engine/qa/tutors.py",
+ "requires": [
+  "a built Forge index (py engine/forge_index.py build); it is Forge-derived and never committed",
+  "the card cache (engine/card_cache.json, or --card-cache)",
+  "the run files below, byte-identical (md5). 10 are tracked (tutor_targeting); the other 125 are gitignored study output kept on the dev box"
+ ],
+ "measured_with": {
+  "note": "The inputs the figures below were reproduced with (2026-09-27). Both feed the verdicts, so the port test prints the local ones beside these; a difference is reported, not failed: the figures still gate.",
+  "forge_index": {
+   "forge_version": "2.0.13",
+   "schema": 1,
+   "scripts": 33289,
+   "tutors": 1166
+  },
+  "card_cache": {
+   "path": "engine/card_cache.json",
+   "md5": "b199efd9d82c85e723c601c631f676b2",
+   "entries": 4347,
+   "as_of": "main at ef80299"
+  }
+ },
+ "tolerance_relative": 0.05,
+ "figures": [
+  {
+   "name": "unreachable by restriction (the headline)",
+   "runs": "all",
+   "numerator": "pooled.restriction_excludes",
+   "denominator": "pooled.tutor_cast",
+   "expect": [
+    316,
+    718
+   ]
+  },
+  {
+   "name": "resolved searches that did not offer the missing piece (join.py)",
+   "runs": "all",
+   "numerator": "pooled.searched_not_offered",
+   "denominator": "pooled.searched",
+   "expect": [
+    285,
+    498
+   ]
+  },
+  {
+   "name": "transmute or typecycling cards cast as their spell half",
+   "runs": "all",
+   "numerator": "pooled.cast_never_searches.keyword",
+   "expect": [
+    34
+   ]
+  },
+  {
+   "name": "shim X tutors resolved at X=0 (xcheck.py: four arms)",
+   "runs": [
+    "studies/agent_viability/runs_015_default/",
+    "studies/agent_viability/runs_winmax/",
+    "studies/agent_viability/runs_016_engine/",
+    "studies/behavior_rubric/runs_agent_shipping/"
+   ],
+   "numerator": "pooled.x_zero",
+   "denominator": "pooled.x_resolved",
+   "expect": [
+    18,
+    18
+   ]
+  },
+  {
+   "name": "tutor casts that failed to target (fate.py: four arms)",
+   "runs": [
+    "studies/agent_viability/runs_015_default/",
+    "studies/agent_viability/runs_winmax/",
+    "studies/agent_viability/runs_016_engine/",
+    "studies/behavior_rubric/runs_agent_shipping/"
+   ],
+   "numerator": "pooled.failed_to_target",
+   "expect": [
+    26
+   ]
+  },
+  {
+   "name": "Magda: stock Portal picks the plan overrode (three with-lines arms)",
+   "runs": [
+    "studies/agent_viability/runs_015_default/cell_",
+    "studies/agent_viability/runs_winmax/cell_",
+    "studies/agent_viability/runs_016_engine/cell_"
+   ],
+   "numerator": "by_seat.magda.plan.closer_overrides",
+   "denominator": "by_seat.magda.plan.closer_seen",
+   "expect": [
+    47,
+    47
+   ]
+  }
+ ],
+ "not_gated": [
+  {
+   "name": "casts seeking a piece already in graveyard or exile",
+   "diagnosis": 98,
+   "detector": 105,
+   "why": "where2.py read the piece's zone as of the end of the PREVIOUS turn; the detector reads it at the cast itself, which also catches pieces binned earlier in the cast turn. With where2.py's cutoff the same files give 86 graveyard + 12 exile = 98."
+  }
+ ],
+ "metric_notes": [
+  "The headline is restriction-only: pooled.restriction_excludes, 316/718. The G0a gate metric 'unreachable tutor_cast' is pooled.unreachable, every basis (restriction, piece already binned, Forge did not offer it): 394/718 (54.9%) on these same files. A PREREG must name which one it gates on.",
+  "The guard 'tutor casts per tutor drawn' (casts_per_drawn) counts tutor spells cast from hand; commanders recast from the command zone are not tutors drawn. On the stock seats of studies/agent_viability/runs_015_default (the diagnosis's source) that is 544/892 (61%, measured 2026-09-27); the diagnosis's 594/892 (67%, quoted in section 3.0 and SIM_CALIBRATION) counted a plan tutor's cast from any zone. The zone stream on those seats: 544 from hand, 36 commander casts from the command zone, 15 from exile, 2 from the graveyard, 1 commander from hand (598)."
+ ],
+ "runs": [
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_2iA_Jt0d6sM_rot0.jsonl",
+   "md5": "e98116475b2ad156a5a6580035af99ae",
+   "bytes": 5752112,
+   "tutor_cast": 34
+  },
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_2iA_Jt0d6sM_rot1.jsonl",
+   "md5": "9a2281be25480cf7a3e9ae8de9772410",
+   "bytes": 5257803,
+   "tutor_cast": 14
+  },
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_2iA_Jt0d6sM_rot2.jsonl",
+   "md5": "32feaa18ababa712bb5a74c0f843c0a9",
+   "bytes": 6316709,
+   "tutor_cast": 21
+  },
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_2iA_Jt0d6sM_rot3.jsonl",
+   "md5": "f21c6784c18ef8f465b10cc595b8094f",
+   "bytes": 7231467,
+   "tutor_cast": 9
+  },
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_n7WpsqsZtdQ_rot0.jsonl",
+   "md5": "76339bb0a29218c13c9d388175058435",
+   "bytes": 5481808,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_n7WpsqsZtdQ_rot1.jsonl",
+   "md5": "9ba393a34f18f4f81e7a5a1768962949",
+   "bytes": 5598980,
+   "tutor_cast": 11
+  },
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_n7WpsqsZtdQ_rot2.jsonl",
+   "md5": "2b94703ad7c52f768fba09005812cdd2",
+   "bytes": 5284108,
+   "tutor_cast": 20
+  },
+  {
+   "path": "studies/agent_viability/runs_015_default/cell_n7WpsqsZtdQ_rot3.jsonl",
+   "md5": "901080af84aaa363b91af380bb9722ec",
+   "bytes": 4810043,
+   "tutor_cast": 15
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_2iA_Jt0d6sM_rot0.jsonl",
+   "md5": "7509ac1c16b53ffbc79a68b86ce9f609",
+   "bytes": 6289881,
+   "tutor_cast": 21
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_2iA_Jt0d6sM_rot1.jsonl",
+   "md5": "97c61403a56cabab01ea99263864aeeb",
+   "bytes": 5461424,
+   "tutor_cast": 13
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_2iA_Jt0d6sM_rot2.jsonl",
+   "md5": "7e3ea37f22e369897722330886fd9d2d",
+   "bytes": 5681821,
+   "tutor_cast": 26
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_2iA_Jt0d6sM_rot3.jsonl",
+   "md5": "c546b76b92beac59632ea7d9f07c2e5c",
+   "bytes": 5356387,
+   "tutor_cast": 12
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_n7WpsqsZtdQ_rot0.jsonl",
+   "md5": "849322e0be9ba68479009a2099705650",
+   "bytes": 5586086,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_n7WpsqsZtdQ_rot1.jsonl",
+   "md5": "0d44696834e32c982c5ca33c5a50a89d",
+   "bytes": 5584718,
+   "tutor_cast": 12
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_n7WpsqsZtdQ_rot2.jsonl",
+   "md5": "ade55ccbc682b91b4d2ed5c8abc7ded6",
+   "bytes": 5641844,
+   "tutor_cast": 28
+  },
+  {
+   "path": "studies/agent_viability/runs_016_engine/cell_n7WpsqsZtdQ_rot3.jsonl",
+   "md5": "798d5aebb3f6e818b6103a41ea9bb665",
+   "bytes": 4808557,
+   "tutor_cast": 17
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_2iA_Jt0d6sM_rot0.jsonl",
+   "md5": "0fb7d56eb11510ed4f3b2ea94c38fb48",
+   "bytes": 2269943,
+   "tutor_cast": 13
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_2iA_Jt0d6sM_rot1.jsonl",
+   "md5": "f3bac4347c1c3075886c69a2699e3706",
+   "bytes": 2394710,
+   "tutor_cast": 9
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_2iA_Jt0d6sM_rot2.jsonl",
+   "md5": "eb998df6293a938f99895ae72393902c",
+   "bytes": 2348740,
+   "tutor_cast": 8
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_2iA_Jt0d6sM_rot3.jsonl",
+   "md5": "54b13efc2be19e4608c9f839c9cfc371",
+   "bytes": 4846061,
+   "tutor_cast": 5
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_n7WpsqsZtdQ_rot0.jsonl",
+   "md5": "8d23b879b8415cbc6b5cf1cf473b4bd4",
+   "bytes": 2233427,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_n7WpsqsZtdQ_rot1.jsonl",
+   "md5": "8a437fac53055b9d330fd07c98d753ce",
+   "bytes": 2669667,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_n7WpsqsZtdQ_rot2.jsonl",
+   "md5": "6484deee5b15bd084697c1107e77990d",
+   "bytes": 2332693,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/agent_viability/runs_pilot/cell_n7WpsqsZtdQ_rot3.jsonl",
+   "md5": "e3989514c8f27dc4520354c02975fe71",
+   "bytes": 1713228,
+   "tutor_cast": 10
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_2iA_Jt0d6sM_rot0.jsonl",
+   "md5": "fd89acbc62d22dcc052250d59fcff08c",
+   "bytes": 5075185,
+   "tutor_cast": 20
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_2iA_Jt0d6sM_rot1.jsonl",
+   "md5": "442cbefd953875b9fa06429c0a818ac0",
+   "bytes": 4607264,
+   "tutor_cast": 13
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_2iA_Jt0d6sM_rot2.jsonl",
+   "md5": "5bb39d16f571e10d9b885138aff87d63",
+   "bytes": 4603649,
+   "tutor_cast": 21
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_2iA_Jt0d6sM_rot3.jsonl",
+   "md5": "cfa50bd3ca11685d9cfa235baa3a44c8",
+   "bytes": 4594335,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_n7WpsqsZtdQ_rot0.jsonl",
+   "md5": "886c7e73f987d41cbd58be0e07fd118a",
+   "bytes": 4640835,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_n7WpsqsZtdQ_rot1.jsonl",
+   "md5": "a0ac2267b9d87246cd325c1144960b90",
+   "bytes": 4909904,
+   "tutor_cast": 8
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_n7WpsqsZtdQ_rot2.jsonl",
+   "md5": "49e7011b0032ec364725a4684de5dd53",
+   "bytes": 4503962,
+   "tutor_cast": 19
+  },
+  {
+   "path": "studies/agent_viability/runs_winmax/cell_n7WpsqsZtdQ_rot3.jsonl",
+   "md5": "4169b46e9825225a9f98cef5c22691cc",
+   "bytes": 4383167,
+   "tutor_cast": 17
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/2iA_Jt0d6sM_rot0.jsonl",
+   "md5": "9072d7a6dfbeacda8bea8c7d0ba62205",
+   "bytes": 306632,
+   "tutor_cast": 5
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/2iA_Jt0d6sM_rot1.jsonl",
+   "md5": "a4a0b6e9e0cc7b2e77de86309f1864bf",
+   "bytes": 286250,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/2iA_Jt0d6sM_rot2.jsonl",
+   "md5": "1b64374b4ae503643c1fa2971583e268",
+   "bytes": 75221,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/2iA_Jt0d6sM_rot3.jsonl",
+   "md5": "0a48b4dc740f49ef78802099de551791",
+   "bytes": 297780,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/5A6o18Bra0Y_rot0.jsonl",
+   "md5": "feccc93aea83d97eb4611cd886f25f17",
+   "bytes": 458853,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/5A6o18Bra0Y_rot1.jsonl",
+   "md5": "9d4f712ff6310b17f4db81bbccaea6d1",
+   "bytes": 264176,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/5A6o18Bra0Y_rot3.jsonl",
+   "md5": "1047c7f68c1199fc1bb13e97ca4392e8",
+   "bytes": 551653,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/B421mac67IE_rot0.jsonl",
+   "md5": "541f207eac51005dd6db522ab0c50ec8",
+   "bytes": 297364,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/B421mac67IE_rot1.jsonl",
+   "md5": "759bd3d12db76b830ad20751ee8fc9e0",
+   "bytes": 422126,
+   "tutor_cast": 10
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/B421mac67IE_rot2.jsonl",
+   "md5": "e4f9ab8904f807b9b2941861ed9d38fe",
+   "bytes": 328291,
+   "tutor_cast": 6
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/B421mac67IE_rot3.jsonl",
+   "md5": "288f0700e8bb0b245e359ac5f9c4e0c0",
+   "bytes": 397366,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/Bq-nFi0f1jA_rot0.jsonl",
+   "md5": "6cdcf3a2906abf49b62cf8162e4fc310",
+   "bytes": 510452,
+   "tutor_cast": 10
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/Bq-nFi0f1jA_rot1.jsonl",
+   "md5": "381bc9db472dec8b95a69a756b9cef1c",
+   "bytes": 211520,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/Bq-nFi0f1jA_rot2.jsonl",
+   "md5": "3d6a63b6d810ac6620afde9ae309de21",
+   "bytes": 289994,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/Bq-nFi0f1jA_rot3.jsonl",
+   "md5": "2c33b070995595b3df290d3860483984",
+   "bytes": 446697,
+   "tutor_cast": 6
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/CxKMqO36DdM_rot1.jsonl",
+   "md5": "438cff56a117010f8834561d544b86c2",
+   "bytes": 479415,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/CxKMqO36DdM_rot2.jsonl",
+   "md5": "ab8be410491122f72167f79b89052d16",
+   "bytes": 341085,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/CxKMqO36DdM_rot3.jsonl",
+   "md5": "8c3b336f6d80481f27da7bc33577b1bf",
+   "bytes": 420421,
+   "tutor_cast": 7
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/OuY6mdiXbHU_rot0.jsonl",
+   "md5": "24a23135e04a73e2f8312053d033b45c",
+   "bytes": 374187,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/OuY6mdiXbHU_rot1.jsonl",
+   "md5": "a42e511e72de871b2e92c451982a50f8",
+   "bytes": 412773,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/OuY6mdiXbHU_rot2.jsonl",
+   "md5": "405bcb99dbb92e8ad2870b2f350b8d75",
+   "bytes": 522101,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/n7WpsqsZtdQ_rot0.jsonl",
+   "md5": "5a36fbd462653156a7303c18e6dc4840",
+   "bytes": 308863,
+   "tutor_cast": 5
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/n7WpsqsZtdQ_rot1.jsonl",
+   "md5": "78abed12101839e307dc8c65cfa2e1d8",
+   "bytes": 272939,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/n7WpsqsZtdQ_rot2.jsonl",
+   "md5": "dd81671e9a69b1bd7950ec1dcaf5dd15",
+   "bytes": 197888,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/n7WpsqsZtdQ_rot3.jsonl",
+   "md5": "e1e9a05bd83a63a23788e839340a106b",
+   "bytes": 859531,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/sZA0KqXCGrY_rot0.jsonl",
+   "md5": "c297b043d67ff3bc6d20b22ddaf0a832",
+   "bytes": 410226,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent/sZA0KqXCGrY_rot1.jsonl",
+   "md5": "bebc64e374e5ba4608e9589bdc49f1e2",
+   "bytes": 404476,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/2iA_Jt0d6sM_rot0.jsonl",
+   "md5": "baf6c40e0d3da82d121979c4fd06238c",
+   "bytes": 420263,
+   "tutor_cast": 6
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/2iA_Jt0d6sM_rot1.jsonl",
+   "md5": "1850c24e6fda98a38b67e69624228886",
+   "bytes": 398414,
+   "tutor_cast": 8
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/2iA_Jt0d6sM_rot2.jsonl",
+   "md5": "7d3792f812f41e347236094f06f11213",
+   "bytes": 215540,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/2iA_Jt0d6sM_rot3.jsonl",
+   "md5": "b62ba5a7b525a46b28ffee9fb56c10f9",
+   "bytes": 359563,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/5A6o18Bra0Y_rot0.jsonl",
+   "md5": "27eb0d783b31fef6c626015ca6b78202",
+   "bytes": 229345,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/5A6o18Bra0Y_rot1.jsonl",
+   "md5": "30fcb6e7e14574bf1b1c6432393bbb90",
+   "bytes": 325170,
+   "tutor_cast": 6
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/5A6o18Bra0Y_rot2.jsonl",
+   "md5": "434e760c154304faf1d8625c03dab035",
+   "bytes": 503489,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/5A6o18Bra0Y_rot3.jsonl",
+   "md5": "e93d94477bf447766781df9ccb1ab0da",
+   "bytes": 320923,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/B421mac67IE_rot0.jsonl",
+   "md5": "a01cf0468272fbbb9c85c592d8bf04cc",
+   "bytes": 357422,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/B421mac67IE_rot1.jsonl",
+   "md5": "b94f0b55c37a30fce15b687eb7233b29",
+   "bytes": 219164,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/B421mac67IE_rot2.jsonl",
+   "md5": "2c4f61d3e7c8c682c62c0c31776a042a",
+   "bytes": 300815,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/B421mac67IE_rot3.jsonl",
+   "md5": "700abd2112162f09619b43157a571322",
+   "bytes": 279300,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/Bq-nFi0f1jA_rot0.jsonl",
+   "md5": "91d59d98518742cedc9577b673d9fa9a",
+   "bytes": 491830,
+   "tutor_cast": 5
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/Bq-nFi0f1jA_rot1.jsonl",
+   "md5": "2e52aa70e5c2db9eaa9afc5b1a817af0",
+   "bytes": 517077,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/Bq-nFi0f1jA_rot2.jsonl",
+   "md5": "e3c9372ce35764e751b639de6e9f270e",
+   "bytes": 185578,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/CxKMqO36DdM_rot1.jsonl",
+   "md5": "a9018348705c19350d4f52c64bbea6ba",
+   "bytes": 282515,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/CxKMqO36DdM_rot2.jsonl",
+   "md5": "caa0b0c99c59d860bbda4a54ad744bed",
+   "bytes": 405145,
+   "tutor_cast": 6
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/CxKMqO36DdM_rot3.jsonl",
+   "md5": "4660b437750c71424facd31cf9e1461a",
+   "bytes": 584250,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/OuY6mdiXbHU_rot0.jsonl",
+   "md5": "3ae5732727ce044474ebb7a3fbca748c",
+   "bytes": 297101,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/OuY6mdiXbHU_rot1.jsonl",
+   "md5": "bf1ec99032ba5466ce74d42a29363753",
+   "bytes": 169607,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/OuY6mdiXbHU_rot3.jsonl",
+   "md5": "d98ed8d5e95d0989609563ca7a83217e",
+   "bytes": 321491,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/n7WpsqsZtdQ_rot0.jsonl",
+   "md5": "06a4cb75581c4911c1437b8a3e18ea58",
+   "bytes": 266135,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/n7WpsqsZtdQ_rot1.jsonl",
+   "md5": "3bad6fddcd5d69335868abb9991e3a77",
+   "bytes": 331383,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/n7WpsqsZtdQ_rot2.jsonl",
+   "md5": "61826d0b39d5f708ddcd52e848a96084",
+   "bytes": 331452,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/n7WpsqsZtdQ_rot3.jsonl",
+   "md5": "d2cd722f5d5a1bd4efb5aded30c2623b",
+   "bytes": 198672,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/sZA0KqXCGrY_rot0.jsonl",
+   "md5": "375bec51981d632d5e56edd2707276c1",
+   "bytes": 435508,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/sZA0KqXCGrY_rot1.jsonl",
+   "md5": "467a5d338cefb3e2d48e7f257993e8ba",
+   "bytes": 598135,
+   "tutor_cast": 6
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_093/sZA0KqXCGrY_rot3.jsonl",
+   "md5": "d4f949963b798570f8d6a3e4d6393a7f",
+   "bytes": 185102,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/2iA_Jt0d6sM_rot0.jsonl",
+   "md5": "7afce5e9de8306a41f5a8855a1104bdd",
+   "bytes": 277733,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/2iA_Jt0d6sM_rot1.jsonl",
+   "md5": "f3ce0daf754e5a2c4fc5839a642596e4",
+   "bytes": 155236,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/2iA_Jt0d6sM_rot2.jsonl",
+   "md5": "7e60a2132751ae75a8a666ec5096fc03",
+   "bytes": 428920,
+   "tutor_cast": 9
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/5A6o18Bra0Y_rot1.jsonl",
+   "md5": "0ac2ae29212fe84753bdc2e2df739c77",
+   "bytes": 351661,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/5A6o18Bra0Y_rot2.jsonl",
+   "md5": "ced7793e1f7e0b4fb448890ed3e29d0f",
+   "bytes": 338448,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/B421mac67IE_rot0.jsonl",
+   "md5": "1accfb583cb91ee78e33e154dd5310a1",
+   "bytes": 326216,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/B421mac67IE_rot1.jsonl",
+   "md5": "793767b51d936c146e1cbdbadeef44f5",
+   "bytes": 321540,
+   "tutor_cast": 5
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/B421mac67IE_rot2.jsonl",
+   "md5": "3e443837ce543348e4fd9f843c408737",
+   "bytes": 360650,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/B421mac67IE_rot3.jsonl",
+   "md5": "eac7e43b9f30a6281fad7ded735d06cb",
+   "bytes": 323407,
+   "tutor_cast": 5
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/Bq-nFi0f1jA_rot0.jsonl",
+   "md5": "a3668a78a4622c9c3272fc203d486997",
+   "bytes": 435531,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/Bq-nFi0f1jA_rot1.jsonl",
+   "md5": "a1569ae4be8d0644fe165e548f106413",
+   "bytes": 368130,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/Bq-nFi0f1jA_rot2.jsonl",
+   "md5": "7eb47dd27db2750f425a8b38e5c37166",
+   "bytes": 415777,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/Bq-nFi0f1jA_rot3.jsonl",
+   "md5": "c8a0d7feca8a11eeeae3d204609c7998",
+   "bytes": 410724,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/CxKMqO36DdM_rot0.jsonl",
+   "md5": "8c7a0fad6786844c8b9c800172603769",
+   "bytes": 349108,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/CxKMqO36DdM_rot1.jsonl",
+   "md5": "8adf1f916c356e50cb6167d3cf49a441",
+   "bytes": 563530,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/CxKMqO36DdM_rot2.jsonl",
+   "md5": "24e7c3d050bc663bca392c6772431743",
+   "bytes": 110618,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/CxKMqO36DdM_rot3.jsonl",
+   "md5": "493ddab36ea3096a97874f6a2f04f506",
+   "bytes": 368447,
+   "tutor_cast": 7
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/OuY6mdiXbHU_rot1.jsonl",
+   "md5": "ae67beb75d4574714182aa6114419906",
+   "bytes": 217998,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/OuY6mdiXbHU_rot2.jsonl",
+   "md5": "e3e7703768a118765694ab97b7472dbc",
+   "bytes": 244288,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/OuY6mdiXbHU_rot3.jsonl",
+   "md5": "d43a5a01786c5180f7898a6c9d72b378",
+   "bytes": 279774,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/n7WpsqsZtdQ_rot0.jsonl",
+   "md5": "cbde60e439c3f93b1c96a352dd9e3c7d",
+   "bytes": 314446,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/n7WpsqsZtdQ_rot1.jsonl",
+   "md5": "0ed0cdde56e82fe5f03e09efb9056eb3",
+   "bytes": 318040,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/n7WpsqsZtdQ_rot2.jsonl",
+   "md5": "7549e06c6aeb2364bfd404f4dd2bb119",
+   "bytes": 262553,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/n7WpsqsZtdQ_rot3.jsonl",
+   "md5": "a5f89dd5d63a10095d6799bc0430feb3",
+   "bytes": 393052,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/sZA0KqXCGrY_rot0.jsonl",
+   "md5": "ba4558faceffe7c8842f1cb8f8161c5a",
+   "bytes": 380309,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/sZA0KqXCGrY_rot1.jsonl",
+   "md5": "7843d8d4c716f9fb39c5e363a9d56921",
+   "bytes": 320698,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/behavior_rubric/runs_agent_shipping/sZA0KqXCGrY_rot3.jsonl",
+   "md5": "7d9e57f938aa75b247c52f2624822b07",
+   "bytes": 341784,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_arms_v1/synergy/pod0_rot3.jsonl",
+   "md5": "3978ce001856c551743e428b558a0afe",
+   "bytes": 602452,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_arms_v1/synergy/pod7_rot0.jsonl",
+   "md5": "d3c7e7cabbbdfd3023e8da59a7c6197c",
+   "bytes": 622144,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/behavior_rubric/runs_overnight/split/c2_p7_r0.jsonl",
+   "md5": "99b0ee94f4c6f69228aacfcad007a1c3",
+   "bytes": 199549,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/engine_ab/runs/pod8_rot1.jsonl",
+   "md5": "e30424e095da2d909e8af85ff7729d49",
+   "bytes": 841185,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/precon_predict/runs_agent_015/c_r5_p12_i2.jsonl",
+   "md5": "9daf2b3df75e8f08c8a32c04cd4dc570",
+   "bytes": 820514,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/precon_predict/runs_synergy/c_r0_p06_i0.jsonl",
+   "md5": "875a6cbbf59ef109a8b211a338d1c54a",
+   "bytes": 949216,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/precon_predict/runs_synergy/c_r0_p06_i2.jsonl",
+   "md5": "e77642ce512a2b5c530d341dea6039e0",
+   "bytes": 964725,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/precon_predict/runs_synergy/c_r0_p15_i1.jsonl",
+   "md5": "00caba3c4109648d4e2728c7694a6c46",
+   "bytes": 892310,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/precon_predict/runs_synergy/c_r0_p15_i3.jsonl",
+   "md5": "1e3065d65740a2060c98ad19dcb4d5cd",
+   "bytes": 1463233,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/precon_predict/runs_synergy/c_r1_p03_i1.jsonl",
+   "md5": "d994baec2eeca662d75c9c543d0ced52",
+   "bytes": 1173217,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/precon_predict/runs_synergy/c_r1_p09_i3.jsonl",
+   "md5": "de159771751b83804e7d237449a241b5",
+   "bytes": 797693,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage1/shim_raw_20260825_105436_519749.jsonl",
+   "md5": "007dc3b5b80e1bd405fd95133c4b2f5e",
+   "bytes": 495365,
+   "tutor_cast": 7
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage1/shim_raw_20260825_105725_744800.jsonl",
+   "md5": "e142cb71de04585781949432b1ca7659",
+   "bytes": 572405,
+   "tutor_cast": 2
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage1/shim_raw_20260825_110024_992208.jsonl",
+   "md5": "4ef3dd3d55aaa4027724767893818d3f",
+   "bytes": 377463,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage1/shim_raw_20260825_110128_362068.jsonl",
+   "md5": "15ece4b3eed266f02d83b8d1230772ad",
+   "bytes": 821496,
+   "tutor_cast": 9
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage2/probeA.jsonl",
+   "md5": "0d1feabb0d9524b78fe27393802dc89a",
+   "bytes": 578915,
+   "tutor_cast": 1
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage2/probeB_inert.jsonl",
+   "md5": "d550b3d6169ef9420accb8f53b1d1465",
+   "bytes": 708897,
+   "tutor_cast": 3
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage2/shim_raw_20260825_175454_826189.jsonl",
+   "md5": "11802698818659a04fa0b320e33c53d5",
+   "bytes": 376933,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage2/shim_raw_20260825_175644_653187.jsonl",
+   "md5": "f5fa260fcfca573196a266b065115b32",
+   "bytes": 686853,
+   "tutor_cast": 5
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage2/shim_raw_20260825_180351_826851.jsonl",
+   "md5": "ebe8b241213fb6bfa4dd1ee8d021e0c2",
+   "bytes": 688498,
+   "tutor_cast": 4
+  },
+  {
+   "path": "studies/tutor_targeting/runs_stage2/shim_raw_20260825_182235_357118.jsonl",
+   "md5": "7f09f9c70e0733ac6079b14b4c3c46fc",
+   "bytes": 464154,
+   "tutor_cast": 4
+  }
+ ]
+}

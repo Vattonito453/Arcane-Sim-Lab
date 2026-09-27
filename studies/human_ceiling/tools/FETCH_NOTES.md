@@ -29,19 +29,36 @@ and the fidelity tier in `manifest.json` depends on it.
 
 ## Forge card support
 
-`tools/make_dck.py` checks names against
-`~/forge/res/cardsfolder/cardsfolder.zip` (Forge 2.0.13). Normalization:
-strip accents, drop apostrophes, other punctuation to underscore. DFC/MDFC
-resolve to the front face; true split cards keep "A // B".
+`tools/make_dck.py` resolves every name with `engine/forge_index.py`'s
+`ForgeIndex.resolve()`, built from `~/forge/res/cardsfolder/cardsfolder.zip`
+(Forge 2.0.13): the same normalisation as `engine/convert_decklist.py`.
+Transform, modal, battle, adventure and flip cards become the front face;
+true split cards keep "A // B".
 
-Pilot substitutions (magda.dck, all recorded in manifest + here):
+**Corrected 2026-09-27 (repair plan WS4 task 6).** This section used to say
+DFCs resolved to the front face. They did not: the old resolver matched
+script file names, every DFC has a `front_back.txt` script like a split card,
+so "Front // Back" was written unchanged and Forge refused it on stderr. 48
+slots in 23 of the 32 decks were played without the card, both Ral commanders
+included. Its prefix match also accepted `_____ Goblin`, which Forge does not
+have. All 32 decks were regenerated; the only changes are the 48 front-face
+renames and the `_____ Goblin` substitute below, and a Forge load check of
+all 8 pods now reports 0 refused cards (it reported those 50 before).
 
-| Published card | Not in Forge 2.0.13 | Substitute | Why |
-|---|---|---|---|
-| Dragon-Cursed Halls | land | Mountain | plain land slot |
-| Fíli and Kíli, Joyous | dwarf creature | Seven Dwarves | keeps Dwarf count for Magda |
-| Dwarven Mauler | dwarf creature | Dwarven Warriors | keeps Dwarf count |
-| Óin the Brave | dwarf creature | Dwarven Pony | keeps Dwarf count |
+Recorded substitutions (all in `manifest.json` notes, here, and in
+`make_dck.py` `RECORDED_SUBSTITUTES`, so a regeneration needs no flags):
+
+| Published card | Not in Forge 2.0.13 | Substitute | Deck | Why |
+|---|---|---|---|---|
+| Dragon-Cursed Halls | land | Mountain | magda | plain land slot |
+| Fíli and Kíli, Joyous | dwarf creature | Seven Dwarves | magda, natalie_magda | keeps Dwarf count for Magda |
+| Dwarven Mauler | dwarf creature | Dwarven Warriors | magda, natalie_magda | keeps Dwarf count |
+| Óin the Brave | dwarf creature | Dwarven Pony | magda, natalie_magda | keeps Dwarf count |
+| Gleaming Splendor | land | Island | dallas_bluefarm | plain land slot |
+| _____ Goblin | sticker creature ({2}{R}, ETB adds {R} per unique vowel on its sticker) | Priest of Urabrask | joseph_ral (both pods) | same slot: a three-mana creature that adds {R}{R}{R} on entering. Added 2026-09-27; before that Forge silently dropped the card |
+
+Regenerate every deck: `py studies/human_ceiling/tools/make_dck.py
+studies/human_ceiling/decks/*/*.txt --in-place`.
 
 ## Copyright posture
 

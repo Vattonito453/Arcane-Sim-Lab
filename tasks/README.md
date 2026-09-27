@@ -66,6 +66,17 @@ through R2. Holiday weeks count as 2 days, Thanksgiving week as 5.
 Untouched until G3; the rule, the seed and the caveats are in
 `studies/holdout/HOLDOUT.md`.
 
+## Decisions 2026-09-27
+
+Three follow-ups raised by the week-1 work; Vincent accepted the
+recommendation on each.
+
+| Decision | Accepted | Where it landed |
+|---|---|---|
+| Holdout seats that duplicate a cEDH-dev decklist (Bq-nFi0f1jA/cabbage_merchant, CxKMqO36DdM/joseph_ral) | Report holdout results per deck, and pooled both with and without those two seats; the draw stands | `studies/holdout/HOLDOUT.md` rule 5 |
+| Import warning wording | "Forge's AI doesn't cast these cards on its own" (our pilot does cast some through combo pursuit and tutoring) | `engine/convert_decklist.py`; WS4 task 3 text updated |
+| Commander fidelity | Polluted only when a commander was refused at load or the deck lists none; loaded-but-never-cast is a visible, clean-severity note (`commander_never_cast`) | `engine/run_sim.py`, `engine/validity.py` (VALIDITY_VERSION 3); WS4 task 4 text updated |
+
 ## Order
 
 Dependencies are the only reason to prefer one order over another. Within a tier,

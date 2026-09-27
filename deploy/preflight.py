@@ -371,6 +371,29 @@ def shim_pin(env=None):
     return SHIM_FLOOR, "preflight SHIM_FLOOR"
 
 
+PLAN_VERSION_FLAG = "MTG_PLAN_VERSION"
+# Version-2 plans (the tutoring hotfix) carry threatLines, graveyardTargets and
+# fix flags that only shim 0.17.0 and later read; an older shim would pilot the
+# narrowed pilot lines without the reach, zone and graveyard checks.
+PLAN_V2_SHIM_FLOOR = (0, 17, 0)
+
+
+def plan_version_supported(pin, env=None):
+    """(ok, detail): MTG_PLAN_VERSION is 1, or 2 with a shim pin >= 0.17.0."""
+    env = os.environ if env is None else env
+    raw = (env.get(PLAN_VERSION_FLAG) or "").strip()
+    if raw in ("", "1"):
+        return True, "%s=%s (version-1 plans)" % (PLAN_VERSION_FLAG, raw or "unset")
+    if raw != "2":
+        return False, "%s=%r is not a plan version (expected 1 or 2)" % (PLAN_VERSION_FLAG, raw)
+    if pin < PLAN_V2_SHIM_FLOOR:
+        return False, ("%s=2 needs shim >= %s, but the pin is %s. Tag and pin "
+                       "the 0.17.0 shim first, or set %s=1." % (
+                           PLAN_VERSION_FLAG, _fmt_version(PLAN_V2_SHIM_FLOOR),
+                           _fmt_version(pin), PLAN_VERSION_FLAG))
+    return True, "%s=2 with shim pin %s" % (PLAN_VERSION_FLAG, _fmt_version(pin))
+
+
 def result_shim_versions(meta):
     """Every shim version a result's meta names: the top-level agent and, on a
     rotated run whose rotations disagreed, each rotation's own agent."""
@@ -573,6 +596,9 @@ def main(argv):
         ({"name": "newest run on pinned shim",
           "note": "post-deploy order: deploy, smoke_test.py --sim, then preflight"},
          shim_at_least_pin(run, meta, pin, pin_source)),
+        ({"name": "plan version supported",
+          "note": "version-2 plans need shim >= 0.17.0 (tasks/25 WS5 T1)"},
+         plan_version_supported(pin)),
     ]
     broken = 0
     print("\nDEPLOYMENT INVARIANTS")

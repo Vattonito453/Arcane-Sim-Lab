@@ -504,6 +504,169 @@
           }
         }
       }
+    },
+    "hotfix_birgi": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "tribal-anthem"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Plain Commander",
+          "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+          "Grinning Ignus",
+          "Underworld Breach",
+          "Burning Inquiry"
+        ]
+      },
+      "weights": {
+        "Plain Commander": 8,
+        "Birgi, God of Storytelling // Harnfel, Horn of Bounty": 8,
+        "Grinning Ignus": 8,
+        "Underworld Breach": 8,
+        "Burning Inquiry": 8
+      },
+      "threat": [
+        "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+        "Plain Commander",
+        "Grinning Ignus",
+        "Burning Inquiry",
+        "Underworld Breach"
+      ],
+      "roles": {
+        "Plain Commander": "commander",
+        "Birgi, God of Storytelling // Harnfel, Horn of Bounty": "combo-piece",
+        "Grinning Ignus": "combo-piece",
+        "Underworld Breach": "combo-piece",
+        "Burning Inquiry": "combo-piece",
+        "Mountain": "land"
+      },
+      "personality": {
+        "aggression": 0.55,
+        "splitAttacks": 0.7,
+        "blockiness": 0.6,
+        "counterThreshold": 5,
+        "dangerLife": 8,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [
+        {
+          "cards": [
+            "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+            "Grinning Ignus"
+          ],
+          "produces": [
+            "Infinite creature ETB",
+            "Infinite creature LTB",
+            "Infinite storm count"
+          ]
+        },
+        {
+          "cards": [
+            "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
+            "Underworld Breach",
+            "Burning Inquiry"
+          ],
+          "produces": [
+            "Infinite draw triggers for all players",
+            "Infinite self-mill",
+            "Near-infinite mill",
+            "Near-infinite self-discard triggers",
+            "Near-infinite storm count"
+          ]
+        }
+      ],
+      "tutors": [],
+      "manaCreatures": [
+        "Grinning Ignus"
+      ],
+      "search": {
+        "targets": {
+          "Birgi, God of Storytelling // Harnfel, Horn of Bounty": 8,
+          "Grinning Ignus": 8,
+          "Underworld Breach": 8,
+          "Burning Inquiry": 8
+        },
+        "context": {}
+      }
+    },
+    "hotfix_tokens": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "go-wide-tokens"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Plain Commander",
+          "Token Toy A",
+          "Token Toy B",
+          "Token Toy C",
+          "Token Toy D",
+          "Token Toy E"
+        ]
+      },
+      "weights": {
+        "Plain Commander": 8,
+        "Token Toy A": 5,
+        "Token Toy B": 5,
+        "Token Toy C": 5,
+        "Token Toy D": 5,
+        "Token Toy E": 5
+      },
+      "threat": [
+        "Plain Commander"
+      ],
+      "roles": {
+        "Plain Commander": "commander",
+        "Token Toy A": "enabler",
+        "Token Toy B": "enabler",
+        "Token Toy C": "enabler",
+        "Token Toy D": "enabler",
+        "Token Toy E": "enabler",
+        "Anthem Front // Anthem Back": "filler",
+        "Swamp": "land"
+      },
+      "personality": {
+        "aggression": 0.7,
+        "splitAttacks": 0.7,
+        "blockiness": 0.5,
+        "counterThreshold": 6,
+        "dangerLife": 8,
+        "grudgeWeight": 0.25,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [],
+      "tutors": [],
+      "manaCreatures": [],
+      "search": {
+        "targets": {},
+        "context": {}
+      }
     }
   }
 }

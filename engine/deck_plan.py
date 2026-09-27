@@ -526,6 +526,14 @@ def build_plan(path: str | Path, fetch: bool = False,
     # Version 1 keeps Spellbook's spelling, because version 1 must stay
     # byte-identical to the plans built before versions existed.
     name_of = forge_namer(names) if v2 else None
+
+    # A deck card as the line pieces spell it. Version 2's pieces are in
+    # Forge's spelling, so a deck that still spells a card the Spellbook way
+    # ("Birgi, God of Storytelling // Harnfel, Horn of Bounty") is mapped
+    # before the membership test, or its own line piece would not count.
+    def as_piece(n: str) -> str:
+        return name_of(n) if name_of else n
+
     try:
         combo = combos.combos_for_dck(path, fetch=fetch)
         for v in (combo or {}).get("included", []):
@@ -570,11 +578,12 @@ def build_plan(path: str | Path, fetch: bool = False,
         tm = _TUTOR_CLAUSE.search(text)
         if tm and not _LAND_CLAUSE.search(tm.group(1)):
             tutors.append(n)
-        if v2 and (n in threat_pieces or (n in tag_cards and _FINISHER.search(text))):
+        if v2 and (as_piece(n) in threat_pieces
+                   or (n in tag_cards and _FINISHER.search(text))):
             v1_threats.add(n)
         # Version 2: an engine-only line piece is not in combo_pieces, so it
         # falls through to its role tier below instead of the blanket 8.
-        if n in combo_pieces:
+        if as_piece(n) in combo_pieces:
             roles[n], weights[n] = "combo-piece", 8
         elif n in tag_cards and (finisher_re.search(text) or cmc >= 4):
             roles[n], weights[n] = "payoff", 8
@@ -626,7 +635,7 @@ def build_plan(path: str | Path, fetch: bool = False,
         cmc = f.get("cmc") or 0
         if "Land" in tline and "Creature" not in tline:
             continue
-        if n in combo_pieces or finisher_re.search(text):
+        if as_piece(n) in combo_pieces or finisher_re.search(text):
             val = 8
         elif roles.get(n) == "payoff":
             val = 7
@@ -664,8 +673,10 @@ def build_plan(path: str | Path, fetch: bool = False,
     elif synergy and not threat_lines:
         # Version 2: a synergy line is an archetype engine ("tokens, then
         # anthem"), which combo_bands does not read as a win, so it is a
-        # threat line and never a pilot line.
-        threat_lines = synergy_lines(names, facts, tags, weights, commanders)
+        # threat line and never a pilot line. Its pieces are deck cards,
+        # mapped to Forge's spelling like every other name in version 2.
+        threat_lines = [dict(ln, cards=list(dict.fromkeys(name_of(c) for c in ln["cards"])))
+                        for ln in synergy_lines(names, facts, tags, weights, commanders)]
         lines = [ln for ln in threat_lines if combo_bands.is_win_band(ln)]
 
     graveyard_targets: dict[str, int] = {}

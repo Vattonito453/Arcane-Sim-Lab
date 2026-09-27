@@ -194,6 +194,22 @@ FACTS = {
         "oracle_text": "At the beginning of your upkeep, look at the top card of your library.",
         "type_line": "Creature — Human Wizard // Creature — Human Insect", "cmc": 1,
         "power": "1", "toughness": "1", "layout": "transform"},
+    # --- the Birgi deck: line pieces whose deck spelling is Spellbook's ------
+    "Grinning Ignus": creature("{R}, Return this creature to its owner's hand: Add {C}{C}{R}. "
+                               "Activate only as a sorcery.", 3, "2", "Elemental"),
+    "Underworld Breach": {"oracle_text": "Each nonland card in your graveyard has escape. The "
+                                         "escape cost is equal to the card's mana cost plus "
+                                         "exile three other cards from your graveyard.\nAt the "
+                                         "beginning of the end step, sacrifice this enchantment.",
+                          "type_line": "Enchantment", "cmc": 2},
+    "Burning Inquiry": {"oracle_text": "Each player draws three cards, then discards three "
+                                       "cards at random.", "type_line": "Sorcery", "cmc": 1},
+    # --- a synergy deck whose payoff is a transform card spelled "A // B" ------
+    **{f"Token Toy {c}": creature("When this creature enters, create a 1/1 white Soldier "
+                                  "creature token.", 2, "1", "Soldier") for c in "ABCDE"},
+    "Anthem Front // Anthem Back": {"oracle_text": "Creatures you control get +1/+1.",
+                                    "type_line": "Enchantment // Enchantment", "cmc": 3,
+                                    "layout": "transform"},
 }
 
 DECKS = {
@@ -217,6 +233,11 @@ DECKS = {
                                  "Island"]),
     "hotfix_unconverted": ("Plain Commander", [
         "Birgi, God of Storytelling // Harnfel, Horn of Bounty", "Sol Ring", "Island"]),
+    "hotfix_birgi": ("Plain Commander", [
+        "Birgi, God of Storytelling // Harnfel, Horn of Bounty", "Grinning Ignus",
+        "Underworld Breach", "Burning Inquiry", "Mountain"]),
+    "hotfix_tokens": ("Plain Commander", [
+        *[f"Token Toy {c}" for c in "ABCDE"], "Anthem Front // Anthem Back", "Swamp"]),
 }
 
 
@@ -237,11 +258,19 @@ MAGDA = line(["Magda, Brazen Outlaw", "Clock of Omens", "Liquimetal Torque"],
               "Put all artifact cards and a subset of creature cards from your library onto "
               "the battlefield"])
 EXPLOSION = line(["Narset's Reversal", "Expansion // Explosion"], ["Infinite magecraft triggers"])
+BIRGI = "Birgi, God of Storytelling // Harnfel, Horn of Bounty"
+BIRGI_IGNUS = line([BIRGI, "Grinning Ignus"],
+                   ["Infinite creature ETB", "Infinite creature LTB", "Infinite storm count"])
+BIRGI_BREACH = line([BIRGI, "Underworld Breach", "Burning Inquiry"],
+                    ["Infinite draw triggers for all players", "Infinite self-mill",
+                     "Near-infinite mill", "Near-infinite self-discard triggers",
+                     "Near-infinite storm count"])
 
 COMBOS = {
     "hotfix_cedh": [ORACLE_CONSULT, TAINTED_PACT, HULLBREAKER, JAMES],
     "hotfix_magda": [MAGDA, EXPLOSION],
     "hotfix_kess": [HULLBREAKER],
+    "hotfix_birgi": [BIRGI_IGNUS, BIRGI_BREACH],
 }
 
 
@@ -632,6 +661,28 @@ def checks(tmp: Path) -> None:
     print("  with the Forge index: the same line names, and a pasted DFC target key "
           "becomes Forge's front-face name; version 1 still untouched: OK")
 
+    # A line piece the deck itself spells the Spellbook way. The index maps the
+    # line to Forge's name, so version 2 maps the deck card too before asking
+    # whether it is a piece; otherwise the deck's own win piece loses its 8 and
+    # an engine piece drops out of the threat list version 1 had it in.
+    front = "Birgi, God of Storytelling"
+    b1, b2, b2i = v1["hotfix_birgi"], v2["hotfix_birgi"], v2i["hotfix_birgi"]
+    assert b1["weights"][BIRGI] == 8 and b1["roles"][BIRGI] == "combo-piece", b1["weights"]
+    assert by_cards(b2i["lines"]) == [[front, "Underworld Breach", "Burning Inquiry"]], \
+        b2i["lines"]
+    assert [front, "Grinning Ignus"] in by_cards(b2i["threatLines"]), b2i["threatLines"]
+    assert b2i["weights"][front] == 8 and b2i["roles"][front] == "combo-piece", b2i["weights"]
+    assert b2i["search"]["targets"][front] == 8, b2i["search"]["targets"]
+    assert b2i["weights"].get("Grinning Ignus", 1) < 8, b2i["weights"]   # engine-only piece
+    assert {front, "Grinning Ignus", "Underworld Breach", "Burning Inquiry"} \
+        <= set(b2i["threat"]), b2i["threat"]
+    assert "Harnfel" not in json.dumps(b2i)
+    # No index and no cached layout: the deck's own spelling is used throughout.
+    assert b2["weights"][BIRGI] == 8 and BIRGI in b2["threat"], b2["weights"]
+    assert by_cards(b2["lines"]) == [[BIRGI, "Underworld Breach", "Burning Inquiry"]]
+    print("  a line piece the deck spells 'Front // Back' still counts in version 2 when "
+          "the index renames the line: it keeps its 8 and its threat entry: OK")
+
     synthetic()
     namer = deck_plan.forge_namer(["Sol Ring"])
     # Step 2: the card cache's Scryfall layout, for a card not in this deck.
@@ -646,7 +697,16 @@ def checks(tmp: Path) -> None:
     syn = deck_plan.build_plans([path["hotfix_plain"]], synergy=True, plan_version=2)
     sp = syn["decks"]["hotfix_plain"]
     assert sp["lines"] == [] and all(ln.get("source") == "synergy" for ln in sp["threatLines"])
-    print("  version 2 synergy lines go to threatLines only: OK")
+    # ...and name their pieces the Forge way, like Spellbook lines.
+    anthem = "Anthem Front // Anthem Back"
+    tk1 = deck_plan.build_plans([path["hotfix_tokens"]], synergy=True)["decks"]["hotfix_tokens"]
+    tk2 = deck_plan.build_plans([path["hotfix_tokens"]], synergy=True,
+                                plan_version=2)["decks"]["hotfix_tokens"]
+    assert any(anthem in ln["cards"] for ln in tk1["lines"]), tk1["lines"]   # v1: as pasted
+    assert tk2["lines"] == [], tk2["lines"]
+    assert any("Anthem Front" in ln["cards"] for ln in tk2["threatLines"]), tk2["threatLines"]
+    assert anthem not in json.dumps(tk2), tk2["threatLines"]
+    print("  version 2 synergy lines go to threatLines only, in Forge's spelling: OK")
 
     print("plan hotfix: ALL ASSERTIONS PASSED")
 

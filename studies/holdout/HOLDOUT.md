@@ -2,8 +2,10 @@
 
 *Drawn 2026-09-26, before any template, tier, band or override work, as the
 repair plan requires (`tasks/25-repair-plan.md` §2.2, §3.0, WS0 task 2,
-Appendix B task 4). This file is committed on its own so that its parent
-commit, which seeds the lot, was fixed before the result was known.*
+Appendix B task 4). This file was first committed on its own, in the draw
+commit `1f8e52d` on `repair/week1`, so that the parent of that commit, which
+seeds the lot, was fixed before the result was known. See "Reproduce it" for
+how to check that on main, where the file arrived through a squash merge.*
 
 ## The draw
 
@@ -29,7 +31,9 @@ cEDH-dev with `5A6o18Bra0Y` and `OuY6mdiXbHU`.
    `sZA0KqXCGrY`.
 2. **The lot.** Draw 2 of the 4 with Python's `random.Random`, seeded with the
    40-hex commit hash of this file's parent commit read as one integer, and
-   `sample(sorted(pods), 2)`.
+   `sample(sorted(pods), 2)`. "This file's parent commit" means the parent
+   of the commit that first added this file, the draw commit `1f8e52d`; on
+   main the file arrived later through a squash merge (see "Reproduce it").
 3. **Discipline until G3 (Mon 2027-01-11).**
    - No template, tier, band, override, threshold or target is tuned on these
      two pods, and no AI experiment runs on them. WS8 targets are computed on
@@ -69,14 +73,17 @@ cEDH-dev with `5A6o18Bra0Y` and `OuY6mdiXbHU`.
 
    This is a reporting rule, not a new draw and not a new gate. The holdout
    is still `Bq-nFi0f1jA` and `CxKMqO36DdM`, all 8 seats play, and the three
-   views are cut from the same games. The 30-line floor in rule 4 still
-   counts the holdout as drawn (all 8 seats); the write-up gives the 6-seat
-   count beside it. Where the two pools would read differently against a
-   target, the write-up shows both and says so rather than picking one.
+   views are cut from the same games. Rule 4 is unchanged by this decision,
+   which covered reporting only: its 30-line floor is read on the holdout
+   as drawn (all 8 seats), and the write-up gives the 6-seat count beside
+   it. Whether the floor should count only the 6 is an open question for
+   Vincent, not settled here. Where the two pools would read differently
+   against a target, the write-up shows both and says so rather than
+   picking one.
 
 ## Reproduce it
 
-Seed (this file's parent commit):
+Seed (the parent of the draw commit `1f8e52d`):
 `d4597a05db72223090b8751304a1d71edc5d00b7`
 
 ```
@@ -88,10 +95,36 @@ Integer seeding and list sampling have been stable across Python 3 releases;
 if a later version ever prints something else, this recorded 3.8.2 result is
 the draw.
 
-To confirm the seed is this file's parent, run
-`git log --diff-filter=A --format="%H %P" -- studies/holdout/HOLDOUT.md`: it
-prints the commit that added this file, then its parent, and the parent must
-equal the seed above.
+**Confirming the seed was fixed before the draw.** The lot was drawn in
+commit `1f8e52dac9f618f2d7999aa1d24cda5f23643119` ("Holdout drawn by lot",
+2026-09-26 12:48 -0400) on the `repair/week1` branch. That commit adds this
+file and touches nothing else, and its parent is the seed above. main does
+not contain it: week 1 reached main as the squash merge `ef80299` (#63), so
+on main the commit that adds this file is `ef80299`, whose parent `39e2a41`
+has nothing to do with the lot. A check limited to main's history therefore
+finds the wrong commit. Look across every ref instead:
+
+```
+git log --all --diff-filter=A --format="%H %P" -- studies/holdout/HOLDOUT.md
+```
+
+It lists two commits that add this file:
+
+- `1f8e52dac9f618f2d7999aa1d24cda5f23643119 d4597a05db72223090b8751304a1d71edc5d00b7`:
+  the draw; its parent must equal the seed above;
+- `ef802994e20d2cf0f40a5f0926cf13178d741c69 39e2a419a2ab5a5d7e32e36f2fee23331b595010`:
+  the squash merge that carried the file to main; ignore it.
+
+`git show --stat 1f8e52d` confirms the draw commit changed only this file,
+and `git show 1f8e52d:studies/holdout/HOLDOUT.md` shows the draw as it was
+recorded at the time.
+
+**The proof lasts only while `1f8e52d` is reachable from a ref.** Today that
+is the `repair/week1` branch, locally and on GitHub (`origin/repair/week1`).
+If that branch is deleted, git can garbage-collect the commit, and nothing on
+main would then show that the seed predates the draw. Keep `repair/week1`,
+or tag `1f8e52d` (for example `holdout-draw-2026-09-26`) and push the tag
+before the branch goes. Which one is Vincent's call; no tag has been made.
 
 **SHA-256 of the pods list:**
 `15487daf4862b55cd3a3ef0b42f67d9c3dcc0a0b2a59c1e7c42724fcfb93161f`, the hash

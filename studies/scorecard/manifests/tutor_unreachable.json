@@ -13,6 +13,21 @@
   "the card cache (engine/card_cache.json, or --card-cache)",
   "the run files below, byte-identical (md5). 10 are tracked (tutor_targeting); the other 125 are gitignored study output kept on the dev box"
  ],
+ "measured_with": {
+  "note": "The inputs the figures below were reproduced with (2026-09-27). Both feed the verdicts, so the port test prints the local ones beside these; a difference is reported, not failed: the figures still gate.",
+  "forge_index": {
+   "forge_version": "2.0.13",
+   "schema": 1,
+   "scripts": 33289,
+   "tutors": 1166
+  },
+  "card_cache": {
+   "path": "engine/card_cache.json",
+   "md5": "b199efd9d82c85e723c601c631f676b2",
+   "entries": 4347,
+   "as_of": "main at ef80299"
+  }
+ },
  "tolerance_relative": 0.05,
  "figures": [
   {
@@ -93,6 +108,10 @@
    "detector": 105,
    "why": "where2.py read the piece's zone as of the end of the PREVIOUS turn; the detector reads it at the cast itself, which also catches pieces binned earlier in the cast turn. With where2.py's cutoff the same files give 86 graveyard + 12 exile = 98."
   }
+ ],
+ "metric_notes": [
+  "The headline is restriction-only: pooled.restriction_excludes, 316/718. The G0a gate metric 'unreachable tutor_cast' is pooled.unreachable, every basis (restriction, piece already binned, Forge did not offer it): 394/718 (54.9%) on these same files. A PREREG must name which one it gates on.",
+  "The guard 'tutor casts per tutor drawn' (casts_per_drawn) counts tutor spells cast from hand; commanders recast from the command zone are not tutors drawn. On the stock seats of studies/agent_viability/runs_015_default (the diagnosis's source) that is 544/892 (61%, measured 2026-09-27); the diagnosis's 594/892 (67%, quoted in section 3.0 and SIM_CALIBRATION) counted a plan tutor's cast from any zone. The zone stream on those seats: 544 from hand, 36 commander casts from the command zone, 15 from exile, 2 from the graveyard, 1 commander from hand (598)."
  ],
  "runs": [
   {

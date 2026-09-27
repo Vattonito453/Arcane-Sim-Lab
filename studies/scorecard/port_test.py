@@ -76,11 +76,35 @@ def detector_for(name: str):
     raise SystemExit(f"unknown detector in manifest: {name}")
 
 
+def inputs_of(m: dict, forge, facts) -> list[dict]:
+    """The local Forge index and card cache beside the ones the manifest's
+    figures were reproduced with (measured_with). Both feed the verdicts, so
+    a difference is reported; it does not fail the test, the figures do."""
+    want = m.get("measured_with") or {}
+    out: list[dict] = []
+    fi = want.get("forge_index") or {}
+    if fi:
+        meta = getattr(forge, "meta", None) or {}
+        have = {"forge_version": meta.get("forge_version"),
+                "tutors": (meta.get("counts") or {}).get("tutors")}
+        exp = {"forge_version": fi.get("forge_version"), "tutors": fi.get("tutors")}
+        out.append({"input": "forge index", "manifest": exp, "local": have,
+                    "same": have == exp})
+    cc = want.get("card_cache") or {}
+    if cc:
+        path = Path(facts.path) if getattr(facts, "path", None) else None
+        have = md5_of(path) if path and path.is_file() else None
+        out.append({"input": "card cache md5", "manifest": cc.get("md5"), "local": have,
+                    "path": str(path) if path else None, "same": have == cc.get("md5")})
+    return out
+
+
 def run_manifest(path: Path, root: Path, forge, facts) -> dict:
     from qa import context as qctx
     m = json.loads(path.read_text(encoding="utf-8"))
     report = {"manifest": path.name, "figure": m.get("figure"), "status": None,
-              "missing": [], "changed": [], "figures": []}
+              "missing": [], "changed": [], "figures": [],
+              "inputs": inputs_of(m, forge, facts)}
     runs = m.get("runs") or []
     for r in runs:
         p = root / r["path"]
@@ -98,6 +122,12 @@ def run_manifest(path: Path, root: Path, forge, facts) -> dict:
         report["status"] = "SKIPPED"
         report["why"] = ("no Forge index is built (py engine/forge_index.py build, or pass "
                          "--forge-index); tutor reach cannot be read without it")
+        return report
+    needs_cache = any("card cache" in x for x in m.get("requires") or [])
+    if needs_cache and not getattr(facts, "cache", None):
+        report["status"] = "SKIPPED"
+        report["why"] = (f"the card cache is empty or missing ({getattr(facts, 'path', None)}); "
+                         "pass --card-cache")
         return report
     det = detector_for(m["detector"])
     per_run: dict[str, dict] = {}
@@ -120,6 +150,7 @@ def run_manifest(path: Path, root: Path, forge, facts) -> dict:
                                   "got": got, "pass": passed})
     report["status"] = "PASS" if ok else "FAIL"
     report["not_gated"] = m.get("not_gated") or []
+    report["metric_notes"] = m.get("metric_notes") or []
     return report
 
 
@@ -164,6 +195,11 @@ def main(argv: list[str] | None = None) -> int:
                       f"{f['name']} ({f['runs']} runs)")
             for n in r.get("not_gated") or []:
                 print(f"         note {n['detector']} vs {n['diagnosis']} {n['name']} (not gated)")
+            for i in r.get("inputs") or []:
+                print(f"         input {i['input']}: local {i['local']}, manifest {i['manifest']}"
+                      + ("" if i["same"] else " (DIFFERS: figures may move)"))
+            for n in r.get("metric_notes") or []:
+                print(f"         definition: {n}")
     statuses = {r["status"] for r in reports}
     if "FAIL" in statuses:
         return 1

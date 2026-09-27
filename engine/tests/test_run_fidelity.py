@@ -282,6 +282,58 @@ def test_end_to_end_from_zone_records():
         assert v["flags"] == [] and v["quality"] == validity.CLEAN, v
 
 
+def test_a_cached_analysis_carries_the_current_verdict():
+    """The analysis cache keys on ANALYSIS_VERSION, not VALIDITY_VERSION. A
+    report cached under the week-1 rules (validity 2, Winter never cast =>
+    polluted) must not keep that verdict: the Combo lines panel would say the
+    figures are not trustworthy right under a run note that says clean."""
+    import os
+    import analysis
+    import mtg_engine
+    with tempfile.TemporaryDirectory() as d:
+        orig = mtg_engine.RESULTS_DIR
+        mtg_engine.RESULTS_DIR = Path(d)
+        try:
+            name = "sim_20260926_000000_week1_rotated.json"
+            src = Path(d) / name
+            # a row as week 1 wrote it: `missing` only, no refused / never_cast
+            fid = [{"deck": "w.dck", "player": "Winter Precon", "commanders": [WINTER],
+                    "seen": {WINTER: 0}, "missing": [WINTER], "games": 8}]
+            src.write_text(json.dumps({"meta": {**BASE, "commander_fidelity": fid,
+                                                "unsupported_cards": []},
+                                       "games": GAMES}), encoding="utf-8")
+            stale = {"version": analysis.ANALYSIS_VERSION, "file": name, "games": [],
+                     "decks": {}, "summary": {"games": 8, "methods": {"stale": 8}},
+                     "validity": {"version": 2, "quality": validity.POLLUTED,
+                                  "flags": ["commander_missing"],
+                                  "reasons": ["week-1 reason"],
+                                  "usable_for_ranking": False}}
+            cache = Path(d) / f"analysis_{name}"
+            cache.write_text(json.dumps(stale), encoding="utf-8")
+            t = src.stat().st_mtime + 5
+            os.utime(cache, (t, t))
+
+            page = mtg_engine._read_result(name)["validity"]
+            assert page["quality"] == validity.CLEAN, page
+            assert page["flags"] == ["commander_never_cast"], page
+
+            rep = mtg_engine._read_analysis(name, fetch=False)
+            # served from the cache (no recompute), with today's verdict on it
+            assert rep["summary"] == stale["summary"], rep["summary"]
+            assert rep["validity"] == page, rep["validity"]
+            assert rep["validity"]["version"] == validity.VALIDITY_VERSION
+            # the file on disk is left alone; only the served copy changes
+            assert json.loads(cache.read_text(encoding="utf-8"))["validity"]["version"] == 2
+
+            # no cache: the fresh report computes the same verdict
+            cache.unlink()
+            rep = mtg_engine._read_analysis(name, fetch=False)
+            assert rep["summary"]["methods"] != stale["summary"]["methods"], rep["summary"]
+            assert rep["validity"] == page, rep["validity"]
+        finally:
+            mtg_engine.RESULTS_DIR = orig
+
+
 def test_warn_fidelity_says_warning_or_note():
     import contextlib
     import io

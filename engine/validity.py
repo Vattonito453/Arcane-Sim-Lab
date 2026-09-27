@@ -99,8 +99,11 @@ _SEVERITY = {
 }
 
 # Bumped when the RULES here change, so a cached verdict computed by an older
-# version is recomputed rather than trusted. Consumers that cache a derived
-# report (analysis, coaching) stamp this alongside their own version.
+# version is recomputed rather than trusted. Coaching stamps this beside its
+# own cache and regenerates on a mismatch. The analysis cache does not key on
+# it: mtg_engine._read_analysis replaces the cached report's verdict with the
+# one just computed for the result, so every read carries the current rules.
+# The result endpoints never cache a verdict at all (_read_result).
 # 2 (2026-09-26): commander_missing.
 # 3 (2026-09-27): commander_missing only for a commander Forge refused or a
 #   deck file without one; a loaded commander never cast is the

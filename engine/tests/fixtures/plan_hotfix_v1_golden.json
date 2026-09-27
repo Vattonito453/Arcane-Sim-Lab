@@ -1,0 +1,509 @@
+{
+  "decks": {
+    "hotfix_cedh": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "counters-proliferate"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Tymna Toy",
+          "Thassa's Oracle",
+          "Demonic Consultation",
+          "Tainted Pact",
+          "Hullbreaker Horror",
+          "Sol Ring",
+          "Mechanized Production",
+          "Poison Toy"
+        ]
+      },
+      "weights": {
+        "Tymna Toy": 8,
+        "Thassa's Oracle": 8,
+        "Demonic Consultation": 8,
+        "Tainted Pact": 8,
+        "Hullbreaker Horror": 8,
+        "Sol Ring": 8,
+        "Mechanized Production": 8,
+        "Pact of Negation": 4,
+        "Poison Toy": 8
+      },
+      "threat": [
+        "Hullbreaker Horror",
+        "Tymna Toy",
+        "Poison Toy",
+        "Thassa's Oracle",
+        "Demonic Consultation",
+        "Tainted Pact",
+        "Sol Ring",
+        "Mechanized Production"
+      ],
+      "roles": {
+        "Tymna Toy": "commander",
+        "Thassa's Oracle": "combo-piece",
+        "Demonic Consultation": "combo-piece",
+        "Tainted Pact": "combo-piece",
+        "Hullbreaker Horror": "combo-piece",
+        "Sol Ring": "combo-piece",
+        "Mechanized Production": "combo-piece",
+        "James, Wandering Dad": "filler",
+        "Pact of Negation": "protection",
+        "Ragavan Toy": "filler",
+        "Door Toy": "filler",
+        "Poison Toy": "payoff",
+        "Island": "land"
+      },
+      "personality": {
+        "aggression": 0.55,
+        "splitAttacks": 0.7,
+        "blockiness": 0.6,
+        "counterThreshold": 5,
+        "dangerLife": 8,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [
+        {
+          "cards": [
+            "Demonic Consultation",
+            "Thassa's Oracle"
+          ],
+          "produces": [
+            "Exile your library",
+            "Win the game"
+          ]
+        },
+        {
+          "cards": [
+            "Tainted Pact",
+            "Thassa's Oracle"
+          ],
+          "produces": [
+            "Win the game"
+          ]
+        },
+        {
+          "cards": [
+            "Hullbreaker Horror",
+            "Sol Ring"
+          ],
+          "produces": [
+            "Infinite colorless mana",
+            "Infinite storm count"
+          ]
+        },
+        {
+          "cards": [
+            "James, Wandering Dad // Follow Him",
+            "Mechanized Production"
+          ],
+          "produces": [
+            "Win the game"
+          ]
+        }
+      ],
+      "tutors": [],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Thassa's Oracle": 8,
+          "Demonic Consultation": 8,
+          "Tainted Pact": 8,
+          "Hullbreaker Horror": 8,
+          "Sol Ring": 8,
+          "Mechanized Production": 8,
+          "Pact of Negation": 8,
+          "Ragavan Toy": 8,
+          "Door Toy": 8,
+          "Poison Toy": 8
+        },
+        "context": {}
+      }
+    },
+    "hotfix_magda": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "spellslinger-burn"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Magda, Brazen Outlaw",
+          "Clock of Omens",
+          "Liquimetal Torque",
+          "Narset's Reversal",
+          "Expansion // Explosion"
+        ]
+      },
+      "weights": {
+        "Magda, Brazen Outlaw": 8,
+        "Clock of Omens": 8,
+        "Liquimetal Torque": 8,
+        "Narset's Reversal": 8,
+        "Expansion // Explosion": 8
+      },
+      "threat": [
+        "Magda, Brazen Outlaw",
+        "Clock of Omens",
+        "Expansion // Explosion",
+        "Narset's Reversal",
+        "Liquimetal Torque"
+      ],
+      "roles": {
+        "Magda, Brazen Outlaw": "commander",
+        "Clock of Omens": "combo-piece",
+        "Liquimetal Torque": "combo-piece",
+        "Portal to Phyrexia": "filler",
+        "Narset's Reversal": "combo-piece",
+        "Expansion // Explosion": "combo-piece",
+        "Sol Ring": "filler",
+        "Mountain": "land"
+      },
+      "personality": {
+        "aggression": 0.6,
+        "splitAttacks": 0.7,
+        "blockiness": 0.5,
+        "counterThreshold": 4,
+        "dangerLife": 10,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [
+        {
+          "cards": [
+            "Narset's Reversal",
+            "Expansion // Explosion"
+          ],
+          "produces": [
+            "Infinite magecraft triggers"
+          ]
+        },
+        {
+          "cards": [
+            "Magda, Brazen Outlaw",
+            "Clock of Omens",
+            "Liquimetal Torque"
+          ],
+          "produces": [
+            "Infinite artifact ETB",
+            "Infinite artifact tokens",
+            "Infinite tapped Treasure tokens",
+            "Put all artifact cards and a subset of creature cards from your library onto the battlefield"
+          ]
+        }
+      ],
+      "tutors": [],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Clock of Omens": 8,
+          "Liquimetal Torque": 8,
+          "Portal to Phyrexia": 6,
+          "Narset's Reversal": 8,
+          "Expansion // Explosion": 8,
+          "Sol Ring": 5
+        },
+        "context": {
+          "Sol Ring": {
+            "hint": "ramp",
+            "beforeRound": 5
+          }
+        }
+      }
+    },
+    "hotfix_kess": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "spellslinger-burn"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Kess, Dissident Mage",
+          "Hullbreaker Horror",
+          "Sol Ring",
+          "Entomb",
+          "Snapcaster Toy"
+        ]
+      },
+      "weights": {
+        "Kess, Dissident Mage": 8,
+        "Hullbreaker Horror": 8,
+        "Sol Ring": 8,
+        "Entomb": 5,
+        "Snapcaster Toy": 5
+      },
+      "threat": [
+        "Hullbreaker Horror",
+        "Kess, Dissident Mage",
+        "Sol Ring",
+        "Archon of Cruelty"
+      ],
+      "roles": {
+        "Kess, Dissident Mage": "commander",
+        "Reanimate": "filler",
+        "Animate Dead": "filler",
+        "Unburial Rites": "filler",
+        "Archon of Cruelty": "filler",
+        "Hullbreaker Horror": "combo-piece",
+        "Stitcher's Supplier": "filler",
+        "Sol Ring": "combo-piece",
+        "Blasphemous Act": "filler",
+        "Faithless Looting": "filler",
+        "Brainstorm": "filler",
+        "Entomb": "tutor",
+        "Unearth Toy": "filler",
+        "Snapcaster Toy": "enabler",
+        "Island": "land",
+        "Swamp": "land"
+      },
+      "personality": {
+        "aggression": 0.6,
+        "splitAttacks": 0.7,
+        "blockiness": 0.5,
+        "counterThreshold": 4,
+        "dangerLife": 10,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [
+        {
+          "cards": [
+            "Hullbreaker Horror",
+            "Sol Ring"
+          ],
+          "produces": [
+            "Infinite colorless mana",
+            "Infinite storm count"
+          ]
+        }
+      ],
+      "tutors": [
+        "Entomb"
+      ],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Archon of Cruelty": 6,
+          "Hullbreaker Horror": 8,
+          "Sol Ring": 8,
+          "Blasphemous Act": 6
+        },
+        "context": {}
+      }
+    },
+    "hotfix_plain": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "ramp-big-mana"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Plain Commander",
+          "Sol Ring"
+        ]
+      },
+      "weights": {
+        "Plain Commander": 8,
+        "Sol Ring": 5
+      },
+      "threat": [
+        "Plain Commander",
+        "Archon of Cruelty"
+      ],
+      "roles": {
+        "Plain Commander": "commander",
+        "Archon of Cruelty": "filler",
+        "Faithless Looting": "filler",
+        "Brainstorm": "filler",
+        "Sol Ring": "enabler",
+        "Swamp": "land"
+      },
+      "personality": {
+        "aggression": 0.55,
+        "splitAttacks": 0.7,
+        "blockiness": 0.6,
+        "counterThreshold": 5,
+        "dangerLife": 8,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [],
+      "tutors": [],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Archon of Cruelty": 6,
+          "Sol Ring": 5
+        },
+        "context": {
+          "Sol Ring": {
+            "hint": "ramp",
+            "beforeRound": 5
+          }
+        }
+      }
+    },
+    "hotfix_lier": {
+      "factsCoverage": 1.0,
+      "tags": [],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Lier Toy"
+        ]
+      },
+      "weights": {
+        "Lier Toy": 8
+      },
+      "threat": [
+        "Lier Toy",
+        "Archon of Cruelty"
+      ],
+      "roles": {
+        "Lier Toy": "commander",
+        "Brainstorm": "filler",
+        "Blasphemous Act": "filler",
+        "Archon of Cruelty": "filler",
+        "Island": "land"
+      },
+      "personality": {
+        "aggression": 0.55,
+        "splitAttacks": 0.7,
+        "blockiness": 0.6,
+        "counterThreshold": 5,
+        "dangerLife": 8,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [],
+      "tutors": [],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Blasphemous Act": 6,
+          "Archon of Cruelty": 6
+        },
+        "context": {}
+      }
+    },
+    "hotfix_unconverted": {
+      "factsCoverage": 1.0,
+      "tags": [
+        "ramp-big-mana"
+      ],
+      "mulligan": {
+        "minLands": 2,
+        "maxLands": 5,
+        "maxMulls": 2,
+        "keepCards": [
+          "Plain Commander",
+          "Sol Ring"
+        ]
+      },
+      "weights": {
+        "Plain Commander": 8,
+        "Sol Ring": 5
+      },
+      "threat": [
+        "Plain Commander"
+      ],
+      "roles": {
+        "Plain Commander": "commander",
+        "Birgi, God of Storytelling // Harnfel, Horn of Bounty": "filler",
+        "Sol Ring": "enabler",
+        "Island": "land"
+      },
+      "personality": {
+        "aggression": 0.55,
+        "splitAttacks": 0.7,
+        "blockiness": 0.6,
+        "counterThreshold": 5,
+        "dangerLife": 8,
+        "grudgeWeight": 0.2,
+        "kingmakerRatio": 1.6,
+        "politics": 0.0,
+        "triggerMiss": 0.0,
+        "greed": 1.0,
+        "lineProximity": 6,
+        "openThreatShare": 0.6,
+        "holdInstants": 1.0,
+        "holdInstantUntilRound": 10,
+        "combatSolver": 0.0,
+        "priorityGates": 0.0
+      },
+      "lines": [],
+      "tutors": [],
+      "manaCreatures": [],
+      "search": {
+        "targets": {
+          "Birgi, God of Storytelling // Harnfel, Horn of Bounty": 8,
+          "Sol Ring": 5
+        },
+        "context": {
+          "Sol Ring": {
+            "hint": "ramp",
+            "beforeRound": 5
+          }
+        }
+      }
+    }
+  }
+}

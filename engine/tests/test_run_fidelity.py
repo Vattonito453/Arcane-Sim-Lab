@@ -224,7 +224,7 @@ def test_validity_refused_commander_is_polluted():
     assert not v["usable_for_ranking"]
     reason = _reason(v, "commander_missing")
     assert reason == (f"Forge refused to load joseph_old's commander ({RAL}) and played "
-                      f"that deck without its commander. These results do not describe "
+                      f"that deck without it. These results do not describe "
                       f"the deck as built."), reason
     # the stdout path carries the refusal without zone fields, and still pollutes
     v = _assess([{"deck": "joseph_old.dck", "player": "joseph_old", "commanders": [RAL],
@@ -274,6 +274,38 @@ def test_validity_cast_commander_is_clean():
     # results from before the field existed: clean
     assert validity.assess({"meta": dict(BASE), "games": GAMES})["flags"] == []
     assert validity.VALIDITY_VERSION >= 3
+
+
+def test_validity_survives_malformed_rows():
+    """assess promises never to raise on a malformed file."""
+    base = {"deck": "w.dck", "player": "w", "commanders": [WINTER], "refused": [],
+            "basis": "zone_stream", "seen": {WINTER: 0}, "missing": [WINTER],
+            "never_cast": [WINTER]}
+    # a count written as text still counts; junk counts as no games
+    assert _assess([{**base, "games": "8"}])["flags"] == ["commander_never_cast"]
+    assert _assess([{**base, "games": "eight"}])["flags"] == []
+    assert _assess([{**base, "games": None}])["flags"] == []
+    # a lone string is one name, not a list of its letters
+    v = _assess([{**base, "refused": RAL, "never_cast": [], "games": 8}])
+    assert v["flags"] == ["commander_missing"], v
+    assert f"({RAL})" in _reason(v, "commander_missing"), v
+    v = _assess([{**base, "never_cast": WINTER, "games": 8}])
+    assert f"({WINTER})" in _reason(v, "commander_never_cast"), v
+    # a non-list fidelity field or unsupported list is ignored, not iterated
+    for junk in ("oops", 7, {"deck": "x"}):
+        assert validity.assess({"meta": {**BASE, "commander_fidelity": junk,
+                                         "unsupported_cards": junk},
+                                "games": GAMES})["flags"] == []
+
+
+def test_partner_wording_does_not_overstate():
+    # partners: one cast, one never cast; the note names only that one
+    fid = [{"deck": "p.dck", "player": "Partners", "commanders": ["Tymna the Weaver", "Kraum"],
+            "refused": [], "basis": "zone_stream", "seen": {"Tymna the Weaver": 6, "Kraum": 0},
+            "missing": ["Kraum"], "never_cast": ["Kraum"], "games": 8}]
+    r = _reason(_assess(fid), "commander_never_cast")
+    assert "Partners's commander (Kraum) loaded" in r, r
+    assert "without that commander in play" in r and "its commander" not in r, r
 
 
 def test_validity_reads_rows_written_before_the_split():

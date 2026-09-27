@@ -246,27 +246,47 @@ def _commander_findings(meta: dict) -> tuple[list[tuple], list[tuple]]:
     by whether Forge's refusal list (meta.unsupported_cards) names the
     commander exactly as the deck spelled it. Files older than that carry no
     rows and trip neither."""
-    unsupported = {str(n).casefold() for n in meta.get("unsupported_cards") or []}
+    unsupported = {n.casefold() for n in _name_list(meta.get("unsupported_cards"))}
     missing: list[tuple] = []
     never_cast: list[tuple] = []
-    for f in meta.get("commander_fidelity") or []:
+    rows = meta.get("commander_fidelity")
+    for f in rows if isinstance(rows, list) else []:
         if not isinstance(f, dict):
             continue
-        player = f.get("player") or f.get("deck") or "a deck"
+        player = str(f.get("player") or f.get("deck") or "a deck")
         if f.get("no_commander"):
             missing.append((player, None))
             continue
+        was_missing = _name_list(f.get("missing"))
         refused = f.get("refused")
-        if refused is None:
-            refused = [c for c in f.get("missing") or [] if str(c).casefold() in unsupported]
+        refused = ([c for c in was_missing if c.casefold() in unsupported]
+                   if refused is None else _name_list(refused))
         never = f.get("never_cast")
-        if never is None:
-            never = [c for c in f.get("missing") or [] if c not in refused]
+        never = ([c for c in was_missing if c not in refused]
+                 if never is None else _name_list(never))
+        games = _count(f.get("games"))
         if refused:
-            missing.append((player, list(refused)))
-        if never and (f.get("games") or 0) > 0:
-            never_cast.append((player, list(never), f.get("games") or 0))
+            missing.append((player, refused))
+        if never and games > 0:
+            never_cast.append((player, never, games))
     return missing, never_cast
+
+
+def _name_list(value) -> list[str]:
+    """A list of names from a field that should be one. A lone string is one
+    name, never a list of its characters; anything else malformed is empty."""
+    if isinstance(value, str):
+        return [value] if value else []
+    if isinstance(value, (list, tuple)):
+        return [str(v) for v in value if v]
+    return []
+
+
+def _count(value) -> int:
+    try:
+        return max(int(value or 0), 0)
+    except (TypeError, ValueError):
+        return 0
 
 
 def _names(names: list[str]) -> str:
@@ -285,7 +305,7 @@ def _missing_reason(missing: list[tuple]) -> str:
             one = len(refused) == 1
             parts.append(f"Forge refused to load {player}'s "
                          f"{'commander' if one else 'commanders'} ({_names(refused)}) and "
-                         f"played that deck without {'its commander' if one else 'them'}.")
+                         f"played that deck without {'it' if one else 'them'}.")
     deck = "deck" if len(missing) == 1 else "decks"
     return " ".join(parts) + f" These results do not describe the {deck} as built."
 
@@ -299,13 +319,16 @@ def _never_cast_reason(never_cast: list[tuple]) -> str:
         player, names, _ = never_cast[0]
         one = len(names) == 1
         cmd = "commander" if one else "commanders"
+        # "that commander", not "its commander": with partners, the other one
+        # may well have been cast.
         return (f"{player}'s {cmd} ({_names(names)}) loaded, but Forge's AI never cast "
-                f"{'it' if one else 'them'} {where}, so the deck was tested without its "
-                f"{cmd} in play. Over a full run that usually means Forge's AI doesn't "
+                f"{'it' if one else 'them'} {where}, so the deck was tested without "
+                f"{'that commander' if one else 'those commanders'} in play. Over a full "
+                f"run that usually means Forge's AI doesn't "
                 f"cast {'that card' if one else 'those cards'} on its own.")
     items = "; ".join(f"{p} ({_names(n)})" for p, n, _ in never_cast)
     return (f"These commanders loaded, but Forge's AI never cast them {where}: {items}. "
-            f"Those decks were tested without their commanders in play. Over a full run "
+            f"Those decks were tested without those commanders in play. Over a full run "
             f"that usually means Forge's AI doesn't cast those cards on its own.")
 
 

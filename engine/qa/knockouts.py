@@ -49,7 +49,10 @@ the attack declaration that named the card, the cast or activation line, the
 stack line a triggered ability resolved from ("P triggered Blood Artist"; a
 trigger's resolution line prints its text and tags the object that set it
 off, not its source), or Forge's "receives N poison counters from P". A
-deck-out, a concession and an unknown loss carry no `by`.
+deck-out, a concession and an unknown loss carry no `by`. A lose-the-game
+effect dated by the loser's own stack line for the card (their Pact trigger)
+carries the loser as `by`; one dated only by another player's line (a
+"target player loses the game" card) carries that card's controller.
 
 `dated_by` is "event" when an event of the cause dated the knockout, and
 "turn_order" when none was found and only the turn sequence bounds it (the
@@ -795,6 +798,42 @@ def _named_event(ctx: _Ctx, evs: list[_Ev], card: str | None) -> _Ev | None:
     return None
 
 
+_STACK_VERB = re.compile(r"\s+(cast|activated|triggered)\s+(.+?)(?:\s+targeting\b.*)?$")
+
+
+def _own_card_event(ctx: _Ctx, evs: list[_Ev], card: str | None,
+                    player: str) -> tuple[_Ev | None, str | None]:
+    """The last event in `evs` in which `player`'s own `card` went on or came
+    off the stack: their stack line for it ("P triggered Pact of Negation",
+    "P cast Final Fortune"; a card named only as a target does not count), or
+    a resolution whose source is that card under their control.
+
+    A lose-the-game clause on a Pact or a Final Fortune is the loser's own, so
+    their own line dates it. Searching every player's lines instead picked up
+    an opponent casting or triggering the same card later in the loser's
+    window: on the local corpus 2 of 26 such knockouts were dated to an
+    opponent's Pact of Negation, a turn or more late, with `by` naming that
+    opponent.
+
+    Returns (event, basis of the ownership read), or (None, None)."""
+    if not card:
+        return None, None
+    for ev in reversed(evs):
+        if card not in ev.raw:
+            continue
+        if ev.action == "stack_add":
+            if _player_at(ev.raw, ctx.players) != player:
+                continue
+            m = _STACK_VERB.match(ev.raw[len(player):])
+            if m and _split_ref(m.group(2))[0] == card:
+                return ev, "log"
+        elif ev.action == "stack_resolve":
+            src, _cid, who, basis = ctx.resolution_source(ev)
+            if src == card and who == player:
+                return ev, basis or "log"
+    return None, None
+
+
 def knockouts(game: dict, _ctx: _Ctx | None = None) -> list[dict]:
     """Every player who went out of `game`, in the order they went out.
 
@@ -831,14 +870,22 @@ def knockouts(game: dict, _ctx: _Ctx | None = None) -> list[dict]:
             m = _QUOTED.search(reason)
             if m:
                 card = m.group(1)
+            own_basis = None
             if klass == "alt_win":
                 card = card or _winner_spell(ctx)
                 # Every loser goes out at the same moment: the winning spell.
                 allevs = [ev for ev in ctx.flat if ev.action != "game_outcome"]
                 ev = _named_event(ctx, allevs, card)
             else:
-                ev = _named_event(ctx, evs, card)
+                # The loser's own line for the card first (an unpaid Pact);
+                # any player's line naming it only when there is none (a
+                # "target player loses the game" effect cast by someone else).
+                ev, own_basis = _own_card_event(ctx, evs, card, player)
+                if ev is None:
+                    ev = _named_event(ctx, evs, card)
             found = {"cause": klass, "ev": ev, "card": card, "card_id": None}
+            if own_basis:
+                found.update(by=player, by_basis=own_basis)
             if ev is not None:
                 c2, cid = _resolve_source(ev)
                 if c2 == card:

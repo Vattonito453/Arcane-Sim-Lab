@@ -279,6 +279,74 @@ def test_lose_effect():
     assert k["by"] == A and k["turn"] == 3, k
 
 
+PACT = "Pact of Negation"
+PACT_LOSS = f"due to effect of spell '{PACT}'"
+
+
+def pact_pod(with_zones: bool):
+    """A and C each fail to pay for their own Pact of Negation; C casts its
+    Pact (and triggers it) inside A's window, after A's own trigger. The
+    shim's real logs print the unpaid trigger's stack line and no resolution
+    (the player is gone), as on turn 4 here."""
+    turns = [
+        (A, []),
+        (B, [("stack_add", f"{A} cast {PACT} targeting [Wrath of God]"),
+             ("stack_resolve", f"{PACT} (40) - Counter Wrath of God (7). At the beginning "
+                               "of your next upkeep, pay {3}{U}{U}. If you don't, you lose "
+                               "the game.")]),
+        (C, []),
+        (A, [("stack_add", f"{A} triggered {PACT}")]),
+        (B, [("stack_add", f"{C} cast {PACT} targeting [Fireball]"),
+             ("stack_resolve", f"{PACT} (61) - Counter Fireball (9). At the beginning of "
+                               "your next upkeep, pay {3}{U}{U}. If you don't, you lose "
+                               "the game.")]),
+        (C, [("stack_add", f"{C} triggered {PACT}")]),
+        (B, []),
+    ]
+    zones = None
+    if with_zones:
+        zones = [zone(2, PACT, 40, "Hand", "Stack", A, types="Instant", pt=""),
+                 zone(5, PACT, 61, "Hand", "Stack", C, types="Instant", pt="")]
+    return game(turns, winner=B, players=(A, B, C), zones=zones,
+                outcome=[lost(A, PACT_LOSS), won(B), lost(C, PACT_LOSS)])
+
+
+def test_lose_effect_is_dated_by_the_losers_own_line():
+    # Reviewer-reported: an opponent's later cast or trigger of the same card
+    # inside the loser's window used to date the knockout (a turn late) and
+    # name that opponent as `by`.
+    for with_zones in (False, True):
+        g = pact_pod(with_zones)
+        own_seq = next(e["seq"] for e in g["turns"][3]["events"]
+                       if e["raw"] == f"{A} triggered {PACT}")
+        c_seq = next(e["seq"] for e in g["turns"][5]["events"]
+                     if e["raw"] == f"{C} triggered {PACT}")
+        kos = K.knockouts(g)
+        assert [k["player"] for k in kos] == [A, C], kos
+        a, c = kos
+        assert a["cause"] == "lose_effect" and a["card"] == PACT, a
+        assert a["seq"] == own_seq and a["turn"] == 4 and a["by"] == A, (with_zones, a)
+        assert a["dated_by"] == "event", a
+        assert c["seq"] == c_seq and c["turn"] == 6 and c["by"] == C, (with_zones, c)
+        rounds = scorecard._death_rounds(g)
+        assert rounds == {scorecard.bare(A): 2, scorecard.bare(C): 2}, rounds
+        assert analysis.win_method(g)["method"] == "lose-the-game effect"
+
+
+def test_lose_effect_from_another_players_card_falls_back_to_any_line():
+    # "Target player loses the game": the loser has no line of their own for
+    # the card, so the caster's line dates it and names the caster.
+    door = "Door to Nothingness"
+    g = two_player([
+        ("stack_add", f"{A} activated {door} targeting [{B}]"),
+        ("stack_resolve", f"{door} (12) - Target player loses the game. "
+                          f"(Targeting: [[{B}]])"),
+    ], outcome_reason=f"due to effect of spell '{door}'")
+    (k,) = K.knockouts(g)
+    assert k["cause"] == "lose_effect" and k["card"] == door, k
+    assert k["by"] == A and k["turn"] == 3 and k["dated_by"] == "event", k
+
+
 def test_unknown_reason_is_flagged_and_undated():
     g = two_player([], outcome_reason="because of a rule nobody has seen")
     metrics, flags = K.detect(g_result := {"games": [g]})

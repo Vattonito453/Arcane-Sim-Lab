@@ -530,9 +530,13 @@ def run(args: argparse.Namespace) -> None:
         if args.humanize:
             # Deck plans are OUR strategy data; they cross to the GPL shim
             # as JSON (CLAUDE.md legal posture — the boundary is the design).
-            from deck_plan import build_plans
+            from deck_plan import build_plans, env_plan_version
             staged = forge_profile_deck_dir(args.format)
-            plans = build_plans([staged / Path(d).name for d in deck_names])
+            # MTG_PLAN_VERSION (unset: 1) picks the plan version: 2 is the
+            # tutoring hotfix's data (deck_plan docstring). A bad value raises.
+            # build_plans also reads MTG_PLAN_FIX (version 2's flag subset).
+            plans = build_plans([staged / Path(d).name for d in deck_names],
+                                plan_version=env_plan_version())
             # The id, not just the timestamp: the stamp has one-second
             # resolution, so concurrent workers collided on this filename and
             # one silently overwrote the other's plans. The loser's shim then

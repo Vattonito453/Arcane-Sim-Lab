@@ -52,6 +52,27 @@ cEDH-dev with `5A6o18Bra0Y` and `OuY6mdiXbHU`.
    assembled drivable lines. If it does not, play 16 more games per pod, up to
    64. If it is still short, Vincent's 8 fresh cEDH lists become a second
    holdout (decision 14).
+5. **How G3 reports it** (Vincent's decision, 2026-09-27). Every holdout
+   figure is reported three ways, and all three appear in the G3 write-up:
+   - **per deck**, for each of the 8 holdout seats;
+   - **pooled over all 8 seats**;
+   - **pooled over the 6 seats that are not dev duplicates**, leaving out
+     the two seats whose decklists are byte-identical to cEDH-dev decks:
+
+     | Holdout seat | Byte-identical dev deck |
+     |---|---|
+     | `Bq-nFi0f1jA/cabbage_merchant` | `5A6o18Bra0Y/cabbage_merchant` |
+     | `CxKMqO36DdM/joseph_ral` | `sZA0KqXCGrY/joseph_ral` |
+
+   Both the decklist text (`<pod>/<deck>.txt`) and the converted
+   `<pod>/dck/<deck>.dck` compare byte-identical (`cmp`, 2026-09-27).
+
+   This is a reporting rule, not a new draw and not a new gate. The holdout
+   is still `Bq-nFi0f1jA` and `CxKMqO36DdM`, all 8 seats play, and the three
+   views are cut from the same games. The 30-line floor in rule 4 still
+   counts the holdout as drawn (all 8 seats); the write-up gives the 6-seat
+   count beside it. Where the two pools would read differently against a
+   target, the write-up shows both and says so rather than picking one.
 
 ## Reproduce it
 
@@ -94,9 +115,9 @@ pod:
 
 So 2 of the 8 holdout seats are decks the dev bed will see. The draw stands
 as drawn; redrawing after seeing the result would defeat the lot. The
-proposal for G3 is to report holdout figures per deck, and the pooled holdout
-figures both with and without those two seats. That choice belongs to Vincent
-and is listed as an open question in the week-1 report.
+week-1 report proposed reporting holdout figures per deck, and the pooled
+holdout figures both with and without those two seats. Vincent accepted that
+on 2026-09-27, and it is now rule 5 above.
 
 Two fidelity notes from `studies/human_ceiling/RESULTS.md` and its manifest
 also apply: the kinnan seat in `Bq-nFi0f1jA` is a different build from the one

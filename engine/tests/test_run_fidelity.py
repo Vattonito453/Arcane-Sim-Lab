@@ -8,8 +8,12 @@ checks that:
   - the refusal line is parsed into meta.unsupported_cards (empty when clean)
     and attributed to the deck that lists the card;
   - the shim's stderr is kept on disk on success;
-  - a seat whose commander never appears in any zone record is recorded, and
-    validity.py marks such a run polluted with a visible, em-dash-free reason.
+  - commander fidelity follows the owner's decision of 2026-09-27: a
+    commander Forge REFUSED at load (or a Commander deck file that lists none)
+    makes the run polluted (commander_missing); a commander that loaded but
+    never appears in any zone record gets the commander_never_cast note, which
+    has a visible reason and leaves the quality alone; a commander that was
+    cast is clean. Every reason is em-dash free.
 
 Offline: Java is replaced by a fake process. Run:
     py engine/tests/test_run_fidelity.py -> ALL ASSERTIONS PASSED
@@ -87,14 +91,26 @@ def test_fidelity_meta_shim_path():
         assert list(fid) == ["joseph_old.dck", "joseph_new.dck"]   # one row per deck
         assert fid["joseph_old.dck"]["missing"] == [RAL], fid
         assert fid["joseph_old.dck"]["games"] == 2
+        # the old joseph_ral: Forge refused the joined name, so it was never cast
+        # BECAUSE it never loaded. That is refused, not never_cast.
+        assert fid["joseph_old.dck"]["refused"] == [RAL], fid
+        assert fid["joseph_old.dck"]["never_cast"] == [], fid
+        assert fid["joseph_old.dck"]["basis"] == "zone_stream", fid
         # the front-face cast from the command zone is what proves presence
         assert fid["joseph_new.dck"]["seen"] == {"Ral, Monsoon Mage": 1}, fid
         assert fid["joseph_new.dck"]["missing"] == []
+        # the re-converted deck's front-face name is NOT refused just because
+        # another deck's joined name was: Forge reports the name as requested
+        assert fid["joseph_new.dck"]["refused"] == [] and fid["joseph_new.dck"]["never_cast"] == []
         # a deck that spells the full name also counts either face's records
         full = Path(d) / "full.dck"
         full.write_text(OLD_DCK.replace("joseph_old", "joseph_new"), encoding="utf-8")
         f = run_sim.fidelity_meta(games, [full], [])["commander_fidelity"][0]
         assert f["seen"] == {RAL: 2} and f["missing"] == [], f
+        assert f["refused"] == [] and f["never_cast"] == [], f
+        # the refusal match ignores case (Forge's own lookup does)
+        f = run_sim.fidelity_meta([], [old], [RAL.upper()])["commander_fidelity"][0]
+        assert f["refused"] == [RAL], f
 
 
 def test_a_shared_commander_cannot_vouch_for_another_seat():
@@ -107,6 +123,7 @@ def test_a_shared_commander_cannot_vouch_for_another_seat():
         fid = {f["player"]: f for f in run_sim.fidelity_meta(games, [a, b], [])
                ["commander_fidelity"]}
         assert fid["Alpha"]["missing"] == [] and fid["Beta"]["missing"] == ["Shared Leader"], fid
+        assert fid["Beta"]["never_cast"] == ["Shared Leader"] and fid["Beta"]["refused"] == []
         # a deck whose Name= matches no zone owner at all falls back to names
         c = Path(d) / "c.dck"
         c.write_text("[metadata]\nName=Renamed\n[Commander]\n1 Shared Leader\n", encoding="utf-8")
@@ -114,39 +131,290 @@ def test_a_shared_commander_cannot_vouch_for_another_seat():
         assert fid[0]["missing"] == [], fid
 
 
-def test_stdout_path_has_no_commander_claim():
+def test_stdout_path_reports_refusals_but_never_a_cast_claim():
     with tempfile.TemporaryDirectory() as d:
-        p = Path(d) / "x.dck"
+        p, old = Path(d) / "x.dck", Path(d) / "joseph_old.dck"
         p.write_text(NEW_DCK, encoding="utf-8")
-        meta = run_sim.fidelity_meta([{"turns": []}], [p], [])
-        assert meta == {"unsupported_cards": [], "unsupported_by_deck": {}}, meta
+        old.write_text(OLD_DCK, encoding="utf-8")
+        # the stdout log never records a card entering play, so no seen /
+        # missing / never_cast; a refusal comes from stderr and holds anyway
+        meta = run_sim.fidelity_meta([{"turns": []}], [p, old], [RAL], "Commander")
+        fid = {f["deck"]: f for f in meta["commander_fidelity"]}
+        assert fid["x.dck"] == {"deck": "x.dck", "player": "joseph_new",
+                                "commanders": ["Ral, Monsoon Mage"], "refused": [],
+                                "basis": "stderr"}, fid
+        assert fid["joseph_old.dck"]["refused"] == [RAL], fid
+        assert not {"seen", "missing", "never_cast"} & set(fid["joseph_old.dck"]), fid
 
 
-def test_validity_marks_a_missing_commander():
-    base = {"source": "rotated", "humanized": True, "clock": 900}
-    games = [{"result": {"winner": "Ai(1)-x", "duration_ms": 1000}}] * 2
-    fid_missing = [{"deck": "joseph_old.dck", "player": "joseph_old", "commanders": [RAL],
-                    "seen": {RAL: 0}, "missing": [RAL], "games": 2}]
-    v = validity.assess({"meta": {**base, "commander_fidelity": fid_missing,
-                                  "unsupported_cards": [RAL]}, "games": games})
-    assert "commander_missing" in v["flags"] and v["quality"] == validity.POLLUTED, v
+def test_a_commander_deck_file_with_no_commander():
+    with tempfile.TemporaryDirectory() as d:
+        bare = Path(d) / "bare.dck"
+        bare.write_text("[metadata]\nName=Bare\n[Main]\n1 Sol Ring\n99 Island\n",
+                        encoding="utf-8")
+        games = [{"zones": [zone("Sol Ring", "Bare", "Hand", "Battlefield")]}]
+        f = run_sim.fidelity_meta(games, [bare], [], "Commander")["commander_fidelity"]
+        assert f == [{"deck": "bare.dck", "player": "Bare", "commanders": [], "refused": [],
+                      "no_commander": True, "basis": "zone_stream"}], f
+        # a constructed run has no commander to miss, and an unreadable file
+        # supports no claim either way
+        assert run_sim.fidelity_meta(games, [bare], [], "Constructed")[
+            "commander_fidelity"] == []
+        assert run_sim.fidelity_meta(games, [Path(d) / "gone.dck"], [], "Commander")[
+            "commander_fidelity"] == []
+
+
+def test_deck_files_are_read_the_way_forge_reads_them():
+    with tempfile.TemporaryDirectory() as d:
+        # Forge's CardPool takes the count as optional and skips '#'/';' lines;
+        # a BOM must not hide the [metadata] header (and so the Name=).
+        p = Path(d) / "hand.dck"
+        p.write_text("﻿[metadata]\nName=Krenko Hand\n[Commander]\n# my general\n"
+                     "Krenko, Mob Boss|RVR\n[Main]\n; ramp\n1 Sol Ring\nMountain\n",
+                     encoding="utf-8")
+        info = run_sim._dck_info(p)
+        assert info["name"] == "Krenko Hand", info
+        assert info["commanders"] == ["Krenko, Mob Boss"], info
+        assert info["cards"] == {"Krenko, Mob Boss", "Sol Ring", "Mountain"}, info
+        games = [{"zones": [zone("Krenko, Mob Boss", "Krenko Hand")]}]
+        f = run_sim.fidelity_meta(games, [p], [], "Commander")["commander_fidelity"]
+        assert len(f) == 1 and "no_commander" not in f[0] and f[0]["missing"] == [], f
+        # unsupported_by_deck ignores case, like the refusal match
+        m = run_sim.fidelity_meta([], [p], ["SOL RING"])
+        assert m["unsupported_by_deck"] == {"hand.dck": ["SOL RING"]}, m
+
+
+def test_a_refusal_printed_without_accents_still_matches():
+    # A JVM writing ASCII prints each unencodable character as '?'
+    lim = "Lim-Dûl the Necromancer"
+    assert run_sim._refused_commanders([lim], ["Lim-D?l the Necromancer"]) == [lim]
+    assert run_sim._refused_commanders([lim], ["LIM-DUL THE NECROMANCER"]) == [lim]
+    assert run_sim._refused_commanders([lim], ["Lim-Dûl the Necromancer"]) == [lim]
+    # the wildcard stands for one character, and never widens to another card
+    assert run_sim._refused_commanders([lim], ["Lim-D?l the Necro"]) == []
+    assert run_sim._refused_commanders(["Krenko, Mob Boss"], ["Lim-D?l the Necromancer"]) == []
+    # ...and the face rule still holds: a joined name does not refuse a face
+    assert run_sim._refused_commanders(["Ral, Monsoon Mage"], [RAL]) == []
+
+
+BASE = {"source": "rotated", "humanized": True, "clock": 900}
+GAMES = [{"result": {"winner": "Ai(1)-x", "duration_ms": 1000}}] * 8
+WINTER = "Winter, Cynical Opportunist"
+
+
+def _assess(fid, unsupported=()):
+    return validity.assess({"meta": {**BASE, "commander_fidelity": fid,
+                                     "unsupported_cards": list(unsupported)},
+                            "games": GAMES})
+
+
+def _reason(v, flag):
+    r = v["reasons"][v["flags"].index(flag)]
+    assert "—" not in r, r            # no em dash in copy (CLAUDE.md)
+    return r
+
+
+def test_validity_refused_commander_is_polluted():
+    # the joseph_ral case: Forge refused "Ral, Monsoon Mage // Ral, Leyline Prodigy"
+    fid = [{"deck": "joseph_old.dck", "player": "joseph_old", "commanders": [RAL],
+            "refused": [RAL], "basis": "zone_stream", "seen": {RAL: 0}, "missing": [RAL],
+            "never_cast": [], "games": 8}]
+    v = _assess(fid, [RAL])
+    assert v["flags"] == ["commander_missing"] and v["quality"] == validity.POLLUTED, v
     assert not v["usable_for_ranking"]
-    reason = v["reasons"][v["flags"].index("commander_missing")]
-    assert "joseph_old" in reason and "refused to load" in reason, reason
-    assert "without its commander" in reason and "—" not in reason, reason
-    # loaded but never cast (a commander Forge's AI refuses to play)
-    fid_uncast = [{**fid_missing[0], "commanders": ["Winter, Cynical Opportunist"],
-                   "missing": ["Winter, Cynical Opportunist"]}]
-    v = validity.assess({"meta": {**base, "commander_fidelity": fid_uncast,
-                                  "unsupported_cards": []}, "games": games})
-    reason = v["reasons"][v["flags"].index("commander_missing")]
-    assert "never casts" in reason and "refused to load" not in reason, reason
-    # present commanders, and results from before the field existed: clean
-    ok = [{**fid_missing[0], "seen": {RAL: 3}, "missing": []}]
-    assert validity.assess({"meta": {**base, "commander_fidelity": ok},
-                            "games": games})["flags"] == []
-    assert validity.assess({"meta": dict(base), "games": games})["flags"] == []
-    assert validity.VALIDITY_VERSION >= 2
+    reason = _reason(v, "commander_missing")
+    assert reason == (f"Forge refused to load joseph_old's commander ({RAL}) and played "
+                      f"that deck without it. These results do not describe "
+                      f"the deck as built."), reason
+    # the stdout path carries the refusal without zone fields, and still pollutes
+    v = _assess([{"deck": "joseph_old.dck", "player": "joseph_old", "commanders": [RAL],
+                  "refused": [RAL], "basis": "stderr"}], [RAL])
+    assert v["flags"] == ["commander_missing"] and v["quality"] == validity.POLLUTED, v
+    # a Commander deck file that lists no commander: the same verdict
+    v = _assess([{"deck": "bare.dck", "player": "Bare", "commanders": [], "refused": [],
+                  "no_commander": True, "basis": "zone_stream"}])
+    assert v["flags"] == ["commander_missing"] and v["quality"] == validity.POLLUTED, v
+    assert "Bare's deck file lists no commander" in _reason(v, "commander_missing")
+
+
+def test_validity_loaded_but_never_cast_is_a_note():
+    # Winter, Cynical Opportunist: loads, and Forge's AI never casts it
+    fid = [{"deck": "winter.dck", "player": "Winter Precon", "commanders": [WINTER],
+            "refused": [], "basis": "zone_stream", "seen": {WINTER: 0},
+            "missing": [WINTER], "never_cast": [WINTER], "games": 8}]
+    v = _assess(fid)
+    assert v["flags"] == ["commander_never_cast"], v
+    assert v["quality"] == validity.CLEAN and v["usable_for_ranking"], v
+    reason = _reason(v, "commander_never_cast")
+    assert reason.startswith(f"Winter Precon's commander ({WINTER}) loaded, but Forge's AI "
+                             f"never cast it in any of the 8 games"), reason
+    assert "refused" not in reason and "not describe" not in reason, reason
+    assert validity.summarize_flags(v) == "clean: commander_never_cast"
+    # one game: the count reads naturally
+    v = _assess([{**fid[0], "games": 1}])
+    assert "never cast it in the one game played" in _reason(v, "commander_never_cast")
+    # the note rides alongside a real verdict without softening it
+    both = _assess(fid + [{"deck": "joseph_old.dck", "player": "joseph_old",
+                           "commanders": [RAL], "refused": [RAL], "basis": "zone_stream",
+                           "seen": {RAL: 0}, "missing": [RAL], "never_cast": [],
+                           "games": 8}], [RAL])
+    assert both["flags"] == ["commander_missing", "commander_never_cast"], both
+    assert both["quality"] == validity.POLLUTED, both
+    # zero games covered: nothing to say about casting
+    assert _assess([{**fid[0], "games": 0}])["flags"] == []
+
+
+def test_validity_cast_commander_is_clean():
+    fid = [{"deck": "joseph_new.dck", "player": "joseph_new",
+            "commanders": ["Ral, Monsoon Mage"], "refused": [], "basis": "zone_stream",
+            "seen": {"Ral, Monsoon Mage": 5}, "missing": [], "never_cast": [], "games": 8}]
+    v = _assess(fid)
+    assert v["flags"] == [] and v["reasons"] == [] and v["quality"] == validity.CLEAN, v
+    assert validity.summarize_flags(v) == "clean"
+    # results from before the field existed: clean
+    assert validity.assess({"meta": dict(BASE), "games": GAMES})["flags"] == []
+    assert validity.VALIDITY_VERSION >= 3
+
+
+def test_validity_survives_malformed_rows():
+    """assess promises never to raise on a malformed file."""
+    base = {"deck": "w.dck", "player": "w", "commanders": [WINTER], "refused": [],
+            "basis": "zone_stream", "seen": {WINTER: 0}, "missing": [WINTER],
+            "never_cast": [WINTER]}
+    # a count written as text still counts; junk counts as no games
+    assert _assess([{**base, "games": "8"}])["flags"] == ["commander_never_cast"]
+    assert _assess([{**base, "games": "eight"}])["flags"] == []
+    assert _assess([{**base, "games": None}])["flags"] == []
+    # a lone string is one name, not a list of its letters
+    v = _assess([{**base, "refused": RAL, "never_cast": [], "games": 8}])
+    assert v["flags"] == ["commander_missing"], v
+    assert f"({RAL})" in _reason(v, "commander_missing"), v
+    v = _assess([{**base, "never_cast": WINTER, "games": 8}])
+    assert f"({WINTER})" in _reason(v, "commander_never_cast"), v
+    # a non-list fidelity field or unsupported list is ignored, not iterated
+    for junk in ("oops", 7, {"deck": "x"}):
+        assert validity.assess({"meta": {**BASE, "commander_fidelity": junk,
+                                         "unsupported_cards": junk},
+                                "games": GAMES})["flags"] == []
+
+
+def test_partner_wording_does_not_overstate():
+    # partners: one cast, one never cast; the note names only that one
+    fid = [{"deck": "p.dck", "player": "Partners", "commanders": ["Tymna the Weaver", "Kraum"],
+            "refused": [], "basis": "zone_stream", "seen": {"Tymna the Weaver": 6, "Kraum": 0},
+            "missing": ["Kraum"], "never_cast": ["Kraum"], "games": 8}]
+    r = _reason(_assess(fid), "commander_never_cast")
+    assert "Partners's commander (Kraum) loaded" in r, r
+    assert "without that commander in play" in r and "its commander" not in r, r
+
+
+def test_validity_reads_rows_written_before_the_split():
+    """Rows from 2026-09-26 carry `missing` only. The split comes from the
+    refusal list: Ral (refused) still pollutes, Winter (loaded) is a note."""
+    old_ral = [{"deck": "joseph_old.dck", "player": "joseph_old", "commanders": [RAL],
+                "seen": {RAL: 0}, "missing": [RAL], "games": 2}]
+    v = _assess(old_ral, [RAL])
+    assert v["flags"] == ["commander_missing"] and v["quality"] == validity.POLLUTED, v
+    old_winter = [{"deck": "w.dck", "player": "w", "commanders": [WINTER],
+                   "seen": {WINTER: 0}, "missing": [WINTER], "games": 2}]
+    v = _assess(old_winter, [])
+    assert v["flags"] == ["commander_never_cast"] and v["quality"] == validity.CLEAN, v
+
+
+def test_end_to_end_from_zone_records():
+    """fidelity_meta -> validity.assess for all three cases on one pod."""
+    with tempfile.TemporaryDirectory() as d:
+        old, new, win = (Path(d) / n for n in ("joseph_old.dck", "joseph_new.dck", "w.dck"))
+        old.write_text(OLD_DCK, encoding="utf-8")
+        new.write_text(NEW_DCK, encoding="utf-8")
+        win.write_text(f"[metadata]\nName=Winter Precon\n[Commander]\n1 {WINTER}\n"
+                       f"[Main]\n1 Sol Ring\n", encoding="utf-8")
+        games = [{"zones": [zone("Ral, Monsoon Mage", "joseph_new", seat=2),
+                            zone("Sol Ring", "Winter Precon", "Hand", "Battlefield", seat=3)],
+                  "result": {"winner": "Ai(2)-joseph_new", "duration_ms": 1000}}] * 4
+        run = lambda decks, refused: {"meta": {**BASE, **run_sim.fidelity_meta(  # noqa: E731
+            games, decks, refused, "Commander")}, "games": games}
+        # refused: polluted
+        v = validity.assess(run([old, new], [RAL]))
+        assert v["flags"] == ["commander_missing"] and v["quality"] == validity.POLLUTED, v
+        assert "joseph_old" in _reason(v, "commander_missing")
+        # loaded, never cast: a note, still clean
+        v = validity.assess(run([new, win], []))
+        assert v["flags"] == ["commander_never_cast"] and v["quality"] == validity.CLEAN, v
+        assert "in any of the 4 games" in _reason(v, "commander_never_cast")
+        # cast: clean, nothing to say
+        v = validity.assess(run([new], []))
+        assert v["flags"] == [] and v["quality"] == validity.CLEAN, v
+
+
+def test_a_cached_analysis_carries_the_current_verdict():
+    """The analysis cache keys on ANALYSIS_VERSION, not VALIDITY_VERSION. A
+    report cached under the week-1 rules (validity 2, Winter never cast =>
+    polluted) must not keep that verdict: the Combo lines panel would say the
+    figures are not trustworthy right under a run note that says clean."""
+    import os
+    import analysis
+    import mtg_engine
+    with tempfile.TemporaryDirectory() as d:
+        orig = mtg_engine.RESULTS_DIR
+        mtg_engine.RESULTS_DIR = Path(d)
+        try:
+            name = "sim_20260926_000000_week1_rotated.json"
+            src = Path(d) / name
+            # a row as week 1 wrote it: `missing` only, no refused / never_cast
+            fid = [{"deck": "w.dck", "player": "Winter Precon", "commanders": [WINTER],
+                    "seen": {WINTER: 0}, "missing": [WINTER], "games": 8}]
+            src.write_text(json.dumps({"meta": {**BASE, "commander_fidelity": fid,
+                                                "unsupported_cards": []},
+                                       "games": GAMES}), encoding="utf-8")
+            stale = {"version": analysis.ANALYSIS_VERSION, "file": name, "games": [],
+                     "decks": {}, "summary": {"games": 8, "methods": {"stale": 8}},
+                     "validity": {"version": 2, "quality": validity.POLLUTED,
+                                  "flags": ["commander_missing"],
+                                  "reasons": ["week-1 reason"],
+                                  "usable_for_ranking": False}}
+            cache = Path(d) / f"analysis_{name}"
+            cache.write_text(json.dumps(stale), encoding="utf-8")
+            t = src.stat().st_mtime + 5
+            os.utime(cache, (t, t))
+
+            page = mtg_engine._read_result(name)["validity"]
+            assert page["quality"] == validity.CLEAN, page
+            assert page["flags"] == ["commander_never_cast"], page
+
+            rep = mtg_engine._read_analysis(name, fetch=False)
+            # served from the cache (no recompute), with today's verdict on it
+            assert rep["summary"] == stale["summary"], rep["summary"]
+            assert rep["validity"] == page, rep["validity"]
+            assert rep["validity"]["version"] == validity.VALIDITY_VERSION
+            # the file on disk is left alone; only the served copy changes
+            assert json.loads(cache.read_text(encoding="utf-8"))["validity"]["version"] == 2
+
+            # no cache: the fresh report computes the same verdict
+            cache.unlink()
+            rep = mtg_engine._read_analysis(name, fetch=False)
+            assert rep["summary"]["methods"] != stale["summary"]["methods"], rep["summary"]
+            assert rep["validity"] == page, rep["validity"]
+        finally:
+            mtg_engine.RESULTS_DIR = orig
+
+
+def test_warn_fidelity_says_warning_or_note():
+    import contextlib
+    import io
+    meta = {"commander_fidelity": [
+        {"player": "joseph_old", "refused": [RAL], "never_cast": [], "games": 2},
+        {"player": "Bare", "refused": [], "no_commander": True},
+        {"player": "Winter Precon", "refused": [], "never_cast": [WINTER], "games": 2},
+        {"player": "joseph_new", "refused": [], "never_cast": [], "games": 2}]}
+    buf = io.StringIO()
+    with contextlib.redirect_stderr(buf):
+        run_sim._warn_fidelity(meta)
+    lines = buf.getvalue().splitlines()
+    assert len(lines) == 3, lines
+    assert lines[0].startswith("WARNING: Forge refused to load joseph_old's commander"), lines
+    assert lines[1].startswith("WARNING: Bare's deck file lists no commander"), lines
+    assert lines[2].startswith("NOTE: Winter Precon's commander loaded"), lines
 
 
 class _FakeShim:

@@ -373,13 +373,20 @@ export default function ResultsPage() {
           )}
         </p>
 
-        {validity && validity.quality !== "clean" && (
+        {/* A clean run can still carry a note: commander_never_cast, a
+            commander that loaded but Forge's AI never cast. It keeps the run
+            clean (owner decision 2026-09-27), so it shows without a verdict. */}
+        {validity && validity.reasons.length > 0 && (
           <p className="note">
-            <b>
-              {validity.quality === "polluted"
-                ? "These numbers are not trustworthy."
-                : "Read these numbers with care."}
-            </b>{" "}
+            {validity.quality !== "clean" && (
+              <>
+                <b>
+                  {validity.quality === "polluted"
+                    ? "These numbers are not trustworthy."
+                    : "Read these numbers with care."}
+                </b>{" "}
+              </>
+            )}
             {validity.reasons.join(" ")}
           </p>
         )}
@@ -462,10 +469,11 @@ export default function ResultsPage() {
                 .map(([method, n]) => (
                   <span key={method}>
                     <b>{n}</b>{" "}
-                    {/* Forge writes one loss line for combat damage and for
-                        life loss alike, so this cannot say "combat" alone
-                        until the knockouts analyzer reads the lethal event
-                        (repair plan WS1, WS11 task 3). */}
+                    {/* Since analysis v6 the method is the final knockout's
+                        lethal event (qa.knockouts), so combat damage, life
+                        loss and non-combat damage arrive apart. The lumped
+                        label survives only where Forge logged no lethal life
+                        change, and must still not say "combat" alone. */}
                     {method === "combat damage / life loss"
                       ? "ended as life reached 0 (combat or life loss)"
                       : method === "not recorded"
@@ -476,11 +484,23 @@ export default function ResultsPage() {
                   </span>
                 ))}
             </div>
-            <p className="note">
-              Read from the loss line Forge wrote at the end of each game. Forge
-              writes the same line for combat damage and for life loss, so the
-              two are not told apart here.
-            </p>
+            {(an.version ?? 0) >= 6 ? (
+              <p className="note">
+                Each game counts once, by the knockout that ended it, read from
+                the lethal event (the damage, life loss or poison that took the
+                last seat out) rather than from the loss lines Forge prints at
+                game end.
+                {an.summary.methods["combat damage / life loss"]
+                  ? " Life reached 0 means Forge logged no life change that tells combat from life loss."
+                  : ""}
+              </p>
+            ) : (
+              <p className="note">
+                Read from the loss line Forge wrote at the end of each game. Forge
+                writes the same line for combat damage and for life loss, so the
+                two are not told apart here.
+              </p>
+            )}
           </section>
         )}
 
@@ -566,10 +586,12 @@ export default function ResultsPage() {
                       // The summary can only say who won and when; the analysis
                       // knows HOW. Only annotate the non-default methods. A draw
                       // already says why above, so it never gets "(draw)", and
-                      // "other" names nothing a player can use.
+                      // "other" names nothing a player can use. Combat damage is
+                      // the default ending since analysis v6 split it out.
                       const m = an?.games.find((x) => x.n === g.n);
                       if (!m || g.draw || m.method === "draw" || m.method === "other"
-                          || m.method === "combat damage / life loss" || m.method === "not recorded")
+                          || m.method === "combat damage / life loss" || m.method === "combat damage"
+                          || m.method === "not recorded")
                         return null;
                       return (
                         <span className="ctanote">

@@ -1005,6 +1005,14 @@ def _read_analysis(name: str, fetch: bool = True) -> dict:
         # The maths and payload evolve; a cached report from an older analysis
         # version silently serving the old shape is worse than recomputing.
         if cached.get("version") == analysis.ANALYSIS_VERSION:
+            # The verdict is not part of the maths: it follows validity.py's
+            # current rules, which move independently of ANALYSIS_VERSION.
+            # A report cached under older rules would otherwise show its old
+            # verdict under a run note that says something else (a week-1
+            # "polluted" beside today's "clean"). _read_result has just
+            # computed the current one, so swap it in; no recompute, and no
+            # Spellbook calls.
+            cached["validity"] = result.get("validity")
             return cached
     result.setdefault("file", name)
     rep = analysis.analyse(result, fetch=fetch)

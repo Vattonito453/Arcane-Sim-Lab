@@ -56,6 +56,7 @@ services:
       # Same .env variables and defaults as the worker below; keep them equal.
       MTG_PLAN_FEEDBACK_APPLY: ${MTG_PLAN_FEEDBACK_APPLY:-0}
       SIMLAB_SHIM_REF: ${SIMLAB_SHIM_REF:-v0.16.0}
+      MTG_PLAN_VERSION: ${MTG_PLAN_VERSION:-1}
     healthcheck:
       test: ["CMD", "python3", "-c",
              "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8484/health',timeout=5).status==200 else 1)"]
@@ -87,6 +88,15 @@ services:
       # builds the plans in this container. Unvalidated, so off; only the
       # exact value "1" turns them on, and preflight fails while it is.
       MTG_PLAN_FEEDBACK_APPLY: ${MTG_PLAN_FEEDBACK_APPLY:-0}
+      # Deck-plan version (engine/deck_plan.py). 1 = the plans every study
+      # before the tutoring hotfix measured; 2 = the hotfix data (pilot
+      # lines narrowed to win-band, threatLines, graveyardTargets, fix
+      # flags), which needs shim >= 0.17.0. Flipped only at a release whose
+      # gate passed (G0a); preflight refuses 2 on an older shim.
+      MTG_PLAN_VERSION: ${MTG_PLAN_VERSION:-1}
+      # Optional per-flag override for version-2 plans (a G0a fail-branch
+      # arm). Empty = every flag on.
+      MTG_PLAN_FIX: ${MTG_PLAN_FIX:-}
     deploy:
       resources:
         limits:

@@ -9,6 +9,10 @@ COPY engine/*.py /app/engine/
 # fitted prediction model lives in a subdirectory, and /results/{file}/prediction
 # answered "no fitted model" in production while working fine locally.
 COPY engine/models/ /app/engine/models/
+# Same trap for packages: analysis.py and scorecard.py import engine/qa/ (the
+# repair plan's QA analyzers), and the top-level glob would leave it out.
+# preflight.py --files imports it inside the container to prove it shipped.
+COPY engine/qa/ /app/engine/qa/
 COPY engine/decks/*.dck /app/engine/decks/
 # The deployment self-check, shipped so it can be run against a live container
 # with one command and no file copying. It is the only check that catches a

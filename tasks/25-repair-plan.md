@@ -667,9 +667,9 @@ SERVER: $MTG_DATA_DIR/
    - Test fixtures: Ral, Monsoon Mage; Birgi; a modal land; a split card.
 3. **Import pre-check.**
    - "Forge doesn't know these cards: …". If the unknown card is the commander, the deck is rejected with that message.
-   - "Forge's AI won't cast these cards: …". This covers a flagged commander such as Winter, Cynical Opportunist, until readmission ships.
+   - "Forge's AI doesn't cast these cards on its own: …" (wording per the 2026-09-27 decision). This covers a flagged commander such as Winter, Cynical Opportunist, until readmission ships.
    - If the index is missing, the checks are skipped and the response says so.
-4. **`run_sim.py`** keeps Forge's stderr on success and writes `meta.unsupported_cards`. A run where a seat's commander never appears in any zone record is marked invalid, with a visible warning.
+4. **`run_sim.py`** keeps Forge's stderr on success and writes `meta.unsupported_cards`. Per the 2026-09-27 decision, a run is marked polluted only when a seat's commander was refused at load (or the deck lists none); a commander that loaded but was never cast gets a visible, non-polluting note (`commander_never_cast`).
 5. **`combos.parse_dck`** (`:61`) strips `|SET|art`. Purge the 38 poisoned cache entries (identity "C", 0 included) and re-query, batched and cached.
 6. **Studies.** Apply the same normalisation in `studies/human_ceiling/tools/make_dck.py:53-56`, regenerate the 32 decks, and map plan line names to Forge's names in `deck_plan.py`.
 7. **Reruns.**

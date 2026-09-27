@@ -596,8 +596,9 @@ def flagged_share(idx: ForgeIndex, deck_texts: list[str]) -> dict:
     [Main] and [Commander] slot, weighted by quantity; a slot is a land when
     its front face is a Land (an MDFC with a spell front counts as nonland);
     names Forge does not know cannot be typed, so they are counted apart and
-    left out of both numbers. On the 32 human_ceiling cEDH decks this gives
-    285/2362 (12.1%), the diagnosis figure, with 2 unknown slots."""
+    left out of both numbers. On the 32 human_ceiling cEDH decks this gave
+    285/2362 (12.1%), the diagnosis figure, with 2 unknown slots (_____ Goblin);
+    since their 2026-09-27 regeneration it is 285/2364 with 0 unknown."""
     nonland = flagged = unknown = 0
     per_card: dict[str, int] = {}
     for text in deck_texts:

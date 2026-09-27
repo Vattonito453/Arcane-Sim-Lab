@@ -2,7 +2,7 @@
 Name=joseph_ral
 Deck Type=Commander
 [Commander]
-1 Ral, Monsoon Mage // Ral, Leyline Prodigy
+1 Ral, Monsoon Mage
 [Main]
 1 Red Elemental Blast
 1 Sol Ring
@@ -25,9 +25,9 @@ Deck Type=Commander
 1 Mox Diamond
 1 Windfall
 1 Hidden Strings
-1 Sea Gate Restoration // Sea Gate, Reborn
-1 Shatterskull Smashing // Shatterskull, the Hammer Pass
-1 Birgi, God of Storytelling // Harnfel, Horn of Bounty
+1 Sea Gate Restoration
+1 Shatterskull Smashing
+1 Birgi, God of Storytelling
 1 Strike It Rich
 1 Ragavan, Nimble Pilferer
 1 Reckless Impulse
@@ -41,9 +41,9 @@ Deck Type=Commander
 1 Witch's Mark
 1 Highway Robbery
 1 Glimpse the Impossible
-1 Sink into Stupor // Soporific Springs
+1 Sink into Stupor
 1 Vexing Bauble
-1 Pinnacle Monk // Mystic Peak
+1 Pinnacle Monk
 1 Flusterstorm
 1 Fiery Islet
 1 Untimely Malfunction
@@ -86,7 +86,7 @@ Deck Type=Commander
 1 Jeska's Will
 1 Tibalt's Trickery
 1 Invoke Calamity
-1 _____ Goblin
+1 Priest of Urabrask
 1 Seething Song
 1 Wheel of Misfortune
 1 Demand Answers

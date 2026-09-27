@@ -10,8 +10,32 @@ Sources: win-condition tag heuristics over oracle text (user-editable at
 import later — task 07), card roles, and combo lines from combos.py's disk
 cache when available.
 
+Plan versions (repair plan WS5 T1 item 6, the tutoring hotfix). Version 1 is
+the default and is byte-identical to the plans built before versions existed.
+Version 2 is built only when asked (plan_version=2, or MTG_PLAN_VERSION=2 for
+run_sim and this CLI) and adds, per deck:
+  planVersion   2
+  lines         only the WIN-BAND Spellbook lines (combo_bands v0): these
+                drive the pilot's pursuit and the value 8
+  threatLines   every Spellbook line (what `lines` holds in version 1); the
+                shim reads it for opponent-facing logic
+  search.graveyardTargets   {card: 1-9} for searches that put a card in the
+                graveyard: reanimation targets (when the deck reanimates),
+                flashback/escape/unearth-style cards, and instants and
+                sorceries the commander can cast from the graveyard
+  fix           the shim 0.17.0 hotfix flags, all true (MTG_PLAN_FIX, or
+                fix=, picks a subset for the per-flag arms of G0a's fail
+                branch: "none", or a comma list such as "tutorReach")
+and changes: engine-only line pieces lose the blanket value 8 and fall back
+to their role tier; self-loss text ("you lose the game": Pact of Negation,
+Final Fortune) and saboteur text no longer read as a finisher; every card
+name in the plan (lines, threatLines, the search maps, and the deck-keyed
+fields) is the name Forge uses; the threat list keeps version 1's cards, so
+what opponents fear does not change.
+
 Usage:
   python3 deck_plan.py <deck.dck> [more.dck ...] [--out plans.json] [--fetch]
+                       [--plan-version 1|2] [--fix all|none|flag,flag]
 
 Zero dependencies (stdlib + sibling modules).
 """
@@ -19,12 +43,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import cards  # noqa: E402
+import combo_bands  # noqa: E402
 import combos  # noqa: E402
 
 # Win-condition tag vocabulary. Each tag lists lowercase oracle-text markers;
@@ -123,6 +149,20 @@ _PROTECTION = re.compile(r"hexproof|indestructible|protection from|counter targe
                          r"can't be countered|phase(s)? out", re.I)
 _FINISHER = re.compile(r"wins? the game|loses? the game|combat damage to a player|"
                        r"infect|damage can't be prevented", re.I)
+# Plan version 2 (repair plan WS5 T1 item 6). Version 1 above scores two
+# kinds of card as a finisher that are not: self-loss text ("If you don't,
+# you lose the game": Pact of Negation, Summoner's Pact, Final Fortune, Last
+# Chance, Warrior's Oath) and saboteur text ("Whenever this creature deals
+# combat damage to a player, ...", 191 of the 4,347 cached cards, almost all
+# of them card-advantage creatures). The plan says drop "loses? the game";
+# this drops only its second-person form. "lose the game" is the pilot's own
+# loss; the third-person "loses the game" is an opponent's (Vraska the
+# Unseen's assassins, "Target player loses the game") or the poison reminder
+# text on poison cards, which are this deck's finisher, and it stays.
+# Measured on the card cache: the five self-loss cards above are the only
+# cards the "lose"/"loses" split moves.
+_FINISHER_V2 = re.compile(r"wins? the game|loses the game|infect|"
+                          r"damage can't be prevented", re.I)
 # Search-target heuristics (task 20 Stage 1). Same vocabulary style as the
 # tag markers: cheap oracle-text tests, no new inference regime.
 _MANA_SOURCE = re.compile(r"add \{|add one mana|add two mana", re.I)
@@ -148,6 +188,270 @@ _PUNISHER = re.compile(
     r"|(?:that player|each opponent|they) loses? (?:\d+|x) life)",
     re.I,
 )
+
+# ---------------------------------------------------------- plan versions --
+# Version 1 is today's plan, byte for byte. Version 2 is the tutoring hotfix's
+# data (module docstring). Anything else is refused: a typo in the flag must
+# not silently run the wrong arm of an experiment.
+PLAN_VERSIONS = (1, 2)
+PLAN_VERSION_ENV = "MTG_PLAN_VERSION"
+# The shim 0.17.0 mechanisms this plan asks for. The shim treats a missing
+# flag as false, so a version-1 plan (no "fix" key) behaves as 0.16.0 did.
+V2_FIX = {"tutorReach": True, "commanderTutorZone": True,
+          "noForcedChoices": True, "graveyardDest": True}
+# Per-flag arms (G0a's fail branch: "each flag alone overnight, 5 arms"):
+# MTG_PLAN_FIX picks which flags a version-2 plan turns on, so an arm is an
+# env var, not a hand-edited plans file. Unset, empty or "all": every flag
+# (the contract's default). "none": every flag off, which leaves version 2's
+# data alone (the narrowed lines, the lowered values, threatLines). A comma
+# list of flag names: exactly those. Every flag is written, true or false,
+# so the plans file records the arm. Anything else raises, and so does
+# setting it for a version-1 plan, which has no flags: a mistyped or
+# orphaned arm must fail the run, not run 0.16.0 behaviour under its label.
+PLAN_FIX_ENV = "MTG_PLAN_FIX"
+
+# Graveyard targets (version 2, `search.graveyardTargets`). When a search puts
+# the card into the graveyard (Entomb, Buried Alive, Unmarked Grave) the shim
+# ranks the options by these values; a card that is absent scores 0, so
+# stock Forge's own pick stands when nothing here is offered. Oracle text is
+# a strategy hint only, like every heuristic in this file: Forge decides what
+# a card can actually do.
+#
+# Reanimation: one paragraph that returns or puts a creature (or permanent)
+# card from a graveyard onto the battlefield. Reanimate, Exhume, Necromancy,
+# Unburial Rites, Persist, Dread Return; Animate Dead's "Return enchanted
+# creature card to the battlefield"; Living Death's exile-then-return;
+# Victimize and Stitch Together, whose return sits in a later sentence.
+# Three things are read out first, because each made a card that reanimates
+# nothing look like one (measured on the card cache, review of 2026-09-27):
+# reminder text in parentheses (manifest dread: "...into your graveyard ...
+# if it's a creature card"), a graveyard that is only a destination
+# ("into your graveyard": Genesis Wave, Wakanda Forever!), and an activated
+# ability's cost ("Discard a creature card: Return target land card from
+# your graveyard", Floral Evoker). The graveyard must be a source.
+_GY_SOURCE = re.compile(r"\b(?:from|in)\s+(?:[\w'’]+\s+){0,3}?graveyards?\b"
+                        r"|\blibrary and/or graveyard\b"
+                        r"|\bgraveyards? from (?:your|a|their) library\b", re.I)
+_TO_BATTLEFIELD = re.compile(r"\b(?:to|onto) the battlefield\b", re.I)
+_RETURN_VERB = re.compile(r"\b(?:return|put)s?\b", re.I)
+_CREATURE_CARD = re.compile(r"\b(?:creature|permanent) cards?\b|\benchanted creature card\b",
+                            re.I)
+_REMINDER = re.compile(r"\([^()]*\)")
+# "{2}{B}, Sacrifice a creature: <effect>" and "-3: <effect>": the cost ends
+# at the first colon outside quotes.
+_COST = re.compile(r'^[^:"]*:\s+(.*)$', re.S)
+# A capped reanimation ("permanent card with mana value 3 or less": Sevinne's
+# Reclamation, Sun Titan, Angel of Indemnity) cannot return a bigger card.
+_MV_CAP = re.compile(r"\bmana value (\d+) or less\b", re.I)
+_NO_CAP = 99
+# Keywords that let a card be cast, or put onto the battlefield, or used,
+# from its owner's graveyard. Anchored to the start of a paragraph: that is
+# where the card's OWN keyword sits, so "target instant card in your
+# graveyard gains flashback" (Snapcaster Mage) is not read as Snapcaster
+# having flashback. Harmonize, aftermath, encore, scavenge and dredge were
+# added after review (Nature's Rhythm has harmonize). Mayhem is left out on
+# purpose: it works only when the card was DISCARDED this turn, and a search
+# that puts a card into the graveyard is not a discard.
+_GY_KEYWORD = re.compile(r"(?:^|\n)(?:flashback|escape|unearth|retrace|jump-start|embalm|"
+                         r"eternalize|disturb|harmonize|aftermath|encore|scavenge|dredge)\b",
+                         re.I)
+# A commander that casts instants or sorceries from the graveyard: Kess,
+# Dissident Mage ("you may cast an instant or sorcery spell from your
+# graveyard"), or one that grants them a graveyard keyword (Lier, Disciple of
+# the Drowned: "Instant and sorcery cards in your graveyard have flashback").
+_CMDR_GY_SPELLS = re.compile(
+    r"\bcast (?:an? )?(?:instant|sorcery)(?: (?:or|and) sorcery)?(?: spells?| cards?)? "
+    r"from your graveyard"
+    r"|\b(?:instant|sorcery)(?: (?:or|and) sorcery)? cards? in your graveyard "
+    r"ha(?:s|ve) (?:flashback|jump-start|retrace|escape)", re.I)
+
+
+def _reanimation_reach(text: str) -> int | None:
+    """The highest mana value this card can put onto the battlefield from a
+    graveyard (_NO_CAP when uncapped), or None when it reanimates nothing."""
+    reach = None
+    for para in _REMINDER.sub("", text or "").split("\n"):
+        cost = _COST.match(para)
+        if cost:
+            para = cost.group(1)
+        if (_GY_SOURCE.search(para) and _TO_BATTLEFIELD.search(para)
+                and _RETURN_VERB.search(para) and _CREATURE_CARD.search(para)):
+            caps = [int(x) for x in _MV_CAP.findall(para)]
+            here = max(caps) if caps else _NO_CAP
+            reach = here if reach is None else max(reach, here)
+    return reach
+
+
+def _reanimates(text: str) -> bool:
+    """Does this card put creature cards from a graveyard onto the battlefield?"""
+    return _reanimation_reach(text) is not None
+
+
+def env_plan_version() -> int:
+    """MTG_PLAN_VERSION as an int: unset or empty means 1. Raises ValueError
+    on anything but 1 or 2, so a mistyped flag fails the run loudly instead
+    of running version 1 while the experiment log says version 2."""
+    raw = (os.environ.get(PLAN_VERSION_ENV) or "").strip()
+    if not raw:
+        return 1
+    if raw not in {str(v) for v in PLAN_VERSIONS}:
+        raise ValueError(f"{PLAN_VERSION_ENV}={raw!r}: expected one of "
+                         f"{', '.join(str(v) for v in PLAN_VERSIONS)}")
+    return int(raw)
+
+
+def _check_version(plan_version) -> int:
+    if plan_version not in PLAN_VERSIONS:
+        raise ValueError(f"plan_version={plan_version!r}: expected one of {PLAN_VERSIONS}")
+    return plan_version
+
+
+def parse_plan_fix(raw: str) -> frozenset[str]:
+    """"all", "none" or a comma list of V2_FIX names (any case) -> the flags
+    to turn on. Raises ValueError on anything else."""
+    text = (raw or "").strip()
+    if text.lower() == "all":
+        return frozenset(V2_FIX)
+    if text.lower() == "none":
+        return frozenset()
+    by_lower = {k.lower(): k for k in V2_FIX}
+    names = [x.strip() for x in text.split(",") if x.strip()]
+    bad = [x for x in names if x.lower() not in by_lower]
+    if not names or bad:
+        raise ValueError(f"{PLAN_FIX_ENV}={raw!r}: expected all, none, or a comma list "
+                         f"of {', '.join(V2_FIX)}")
+    return frozenset(by_lower[x.lower()] for x in names)
+
+
+def env_plan_fix() -> frozenset[str] | None:
+    """MTG_PLAN_FIX parsed, or None when unset or empty (every flag on)."""
+    raw = (os.environ.get(PLAN_FIX_ENV) or "").strip()
+    return parse_plan_fix(raw) if raw else None
+
+
+def _check_fix(fix, v2: bool) -> frozenset[str] | None:
+    """fix as given to build_plan(s): None, a string for parse_plan_fix, or
+    an iterable of flag names."""
+    if fix is None:
+        return None
+    if not v2:
+        raise ValueError(f"fix={fix!r} ({PLAN_FIX_ENV}) needs plan version 2: a version-1 "
+                         f"plan has no fix flags")
+    if isinstance(fix, str):
+        return parse_plan_fix(fix)
+    names = list(fix)
+    return parse_plan_fix(",".join(names)) if names else frozenset()
+
+
+def forge_namer(deck_names: list[str]):
+    """name -> the name Forge gives the card (Card.getName()), for version 2.
+
+    Spellbook names a transform, modal, adventure or flip card "Front // Back"
+    ("Birgi, God of Storytelling // Harnfel, Horn of Bounty"); Forge names it
+    by its front face and a split card "A // B". A line whose piece is spelled
+    the Spellbook way never matches the card Forge put on the battlefield, so
+    the line can never complete. In order:
+      1. Forge's own index (forge_index.resolve), when it is built;
+      2. convert_decklist's normalisation: the Scryfall layout in the card
+         cache (cache only, never the network);
+      3. still "A // B" and its front face is a card in this deck while the
+         joined name is not: the front face. The deck is exactly what Forge
+         was given, so that is the card Forge loaded.
+    A name none of these can place is returned unchanged."""
+    deck = set(deck_names)
+    try:
+        import forge_index
+        idx = forge_index.load_index()
+    except Exception:  # noqa: BLE001 — no index: the fallbacks still run
+        idx = None
+    try:
+        import convert_decklist
+        fallback = convert_decklist._Names(None, convert_decklist._cached_facts)
+    except Exception:  # noqa: BLE001
+        fallback = None
+    memo: dict[str, str] = {}
+
+    def name_of(n: str) -> str:
+        if n in memo:
+            return memo[n]
+        out = None
+        if idx is not None:
+            out = idx.resolve(n)
+        if out is None and fallback is not None:
+            fallback.prime([n])
+            out = fallback(n)
+        out = out or n
+        if " // " in out and out not in deck:
+            front = out.split(" // ", 1)[0].strip()
+            if front in deck:
+                out = front
+        memo[n] = out
+        return out
+
+    return name_of
+
+
+def _graveyard_targets(names: list[str], commanders: list[str], facts: dict,
+                       targets: dict[str, int]) -> dict[str, int]:
+    """search.graveyardTargets for version 2: {card: value 1-9}.
+
+    (a) Reanimation targets, only when the deck reanimates (a reanimation
+        spell or effect in the 99, or a commander that does it): creature
+        cards, valued by what they are worth on the battlefield: by mana
+        value (8+ -> 8, 6-7 -> 7, 4-5 -> 5), or the library-search value
+        when that is 6 or more (a win piece such as Thassa's Oracle, a
+        finisher, a payoff). A cheap creature below both has no graveyard
+        value; neither does a mana dork on its early-ramp value of 5.
+    (b) Cards with flashback, escape, unearth, retrace, jump-start, embalm,
+        eternalize or disturb: castable (or returnable) from the graveyard.
+    (c) Instants and sorceries, when the commander lets the deck cast them
+        from its graveyard (Kess, Dissident Mage).
+    (b) and (c) are valued at their library-search value with a floor of 3,
+    so a cheap cantrip still outranks a card with no graveyard use. Anything
+    else is absent (score 0: stock's pick stands), which is the whole point
+    for Sol Ring. Commanders and lands are never listed.
+
+    A card in a graveyard has only its front face's characteristics, so the
+    land and creature tests read the front face: a modal spell whose back is
+    a land ("Sink into Stupor // Soporific Springs") is an instant there,
+    which Kess can cast. When every reanimation effect in the deck is capped
+    ("mana value 3 or less": Sevinne's Reclamation) a creature above the cap
+    is not a reanimation target."""
+    def text_of(n: str) -> str:
+        return _fact(facts, n).get("oracle_text") or ""
+
+    def type_of(n: str) -> str:
+        return _fact(facts, n).get("type_line") or ""
+
+    reaches = [r for r in (_reanimation_reach(text_of(n)) for n in names) if r is not None]
+    reach = max(reaches) if reaches else None
+    cmdr_spells = any(_CMDR_GY_SPELLS.search(text_of(c)) for c in commanders)
+    out: dict[str, int] = {}
+    for n in names:
+        if n in commanders or n in out:
+            continue
+        tline = type_of(n)
+        front = tline.split(" // ", 1)[0]
+        if not tline or ("Land" in front and "Creature" not in front):
+            continue
+        base = targets.get(n, 1)
+        vals: list[int] = []
+        cmc = _fact(facts, n).get("cmc") or 0
+        if reach is not None and "Creature" in front and cmc <= reach:
+            tier = 8 if cmc >= 8 else 7 if cmc >= 6 else 5 if cmc >= 4 else 0
+            # A search value of 6+ (win piece, finisher, payoff, bomb) carries
+            # over; 5 is the early-ramp value, and a mana dork is not what a
+            # reanimation spell is for.
+            val = max(tier, base if base >= 6 else 0)
+            if val:
+                vals.append(val)
+        if _GY_KEYWORD.search(text_of(n)):
+            vals.append(max(base, 3))
+        if cmdr_spells and ("Instant" in tline or "Sorcery" in tline):
+            vals.append(max(base, 3))
+        if vals:
+            out[n] = max(1, min(9, max(vals)))
+    return out
 
 
 def _fact(facts: dict, n: str) -> dict:
@@ -268,7 +572,17 @@ def read_dck(path: str | Path) -> tuple[str, list[str], list[str]]:
 
 
 def build_plan(path: str | Path, fetch: bool = False,
-               synergy: bool = False) -> tuple[str, dict]:
+               synergy: bool = False, plan_version: int = 1,
+               fix=None) -> tuple[str, dict]:
+    """(deck name, plan). plan_version 1 (the default) is byte-identical to
+    the plans built before versions existed; 2 is the tutoring hotfix's data
+    (module docstring). fix (version 2 only): None turns every flag on, or
+    "all", "none", a comma list, or an iterable of flag names (PLAN_FIX_ENV).
+    Callers that should honour MTG_PLAN_VERSION and MTG_PLAN_FIX use
+    build_plans, which reads both by default."""
+    v2 = _check_version(plan_version) == 2
+    fix_on = _check_fix(fix, v2)
+    finisher_re = _FINISHER_V2 if v2 else _FINISHER
     deck_name, commanders, main = read_dck(path)
     names = commanders + main
     facts = cards.get_many(names, fetch=fetch)
@@ -294,17 +608,47 @@ def build_plan(path: str | Path, fetch: bool = False,
     # Lines cross the GPL boundary as data: the shim tracks their completion
     # and steers tutors/casting, but only when a line is nearly done (the
     # line-of-sight gate) — knowledge here, mechanism there.
-    combo_pieces: set[str] = set()
-    lines: list[dict] = []
+    #
+    # Version 1: every Spellbook variant is a pilot line and every piece of
+    # one is a combo piece (value 8). Version 2: only win-band lines
+    # (combo_bands.is_win_band) are pilot lines and give their pieces the 8;
+    # every line still goes to threatLines, which the shim reads for what
+    # OPPONENTS fear, so narrowing the pilot's list does not blind the table.
+    combo_pieces: set[str] = set()   # v1: every line piece; v2: win-band pieces
+    lines: list[dict] = []           # v1: every line; v2: win-band lines only
+    threat_lines: list[dict] = []    # v2 only: every line
+    threat_pieces: set[str] = set()  # v2 only: every line piece
+    # Version 2 only: Spellbook's spelling becomes Forge's (forge_namer).
+    # Version 1 keeps Spellbook's spelling, because version 1 must stay
+    # byte-identical to the plans built before versions existed.
+    name_of = forge_namer(names) if v2 else None
+
+    # A deck card as the line pieces spell it. Version 2's pieces are in
+    # Forge's spelling, so a deck that still spells a card the Spellbook way
+    # ("Birgi, God of Storytelling // Harnfel, Horn of Bounty") is mapped
+    # before the membership test, or its own line piece would not count.
+    def as_piece(n: str) -> str:
+        return name_of(n) if name_of else n
+
     try:
         combo = combos.combos_for_dck(path, fetch=fetch)
         for v in (combo or {}).get("included", []):
             pieces = v.get("cards", [])
-            combo_pieces.update(pieces)
-            lines.append({"cards": pieces, "produces": v.get("produces", [])})
+            if not v2:
+                combo_pieces.update(pieces)
+                lines.append({"cards": pieces, "produces": v.get("produces", [])})
+                continue
+            mapped = list(dict.fromkeys(name_of(c) for c in pieces))
+            produces = list(v.get("produces", []))
+            threat_lines.append({"cards": mapped, "produces": produces})
+            threat_pieces.update(mapped)
+            if combo_bands.is_win_band(v):
+                lines.append({"cards": list(mapped), "produces": list(produces)})
+                combo_pieces.update(mapped)
         # Fewest pieces first: shorter lines are the achievable ones, and the
         # shim prefers the most-complete line when steering a tutor.
         lines.sort(key=lambda ln: len(ln["cards"]))
+        threat_lines.sort(key=lambda ln: len(ln["cards"]))
     except Exception:
         pass  # no cache and no network — plans work without combos
 
@@ -313,6 +657,10 @@ def build_plan(path: str | Path, fetch: bool = False,
     roles: dict[str, str] = {}
     tutors: list[str] = []
     mana_creatures: list[str] = []
+    # Version 2 only: the cards version 1 weighted 8 that version 2 does not
+    # (engine pieces, and payoffs whose only finisher text was self-loss or
+    # saboteur text). They stay in the threat list below (see there).
+    v1_threats: set[str] = set()
     for n in names:
         f = _fact(facts, n)
         text = f.get("oracle_text") or ""
@@ -326,9 +674,14 @@ def build_plan(path: str | Path, fetch: bool = False,
         tm = _TUTOR_CLAUSE.search(text)
         if tm and not _LAND_CLAUSE.search(tm.group(1)):
             tutors.append(n)
-        if n in combo_pieces:
+        if v2 and (as_piece(n) in threat_pieces
+                   or (n in tag_cards and _FINISHER.search(text))):
+            v1_threats.add(n)
+        # Version 2: an engine-only line piece is not in combo_pieces, so it
+        # falls through to its role tier below instead of the blanket 8.
+        if as_piece(n) in combo_pieces:
             roles[n], weights[n] = "combo-piece", 8
-        elif n in tag_cards and (_FINISHER.search(text) or cmc >= 4):
+        elif n in tag_cards and (finisher_re.search(text) or cmc >= 4):
             roles[n], weights[n] = "payoff", 8
         elif n in tag_cards:
             roles[n], weights[n] = "enabler", 5
@@ -378,7 +731,7 @@ def build_plan(path: str | Path, fetch: bool = False,
         cmc = f.get("cmc") or 0
         if "Land" in tline and "Creature" not in tline:
             continue
-        if n in combo_pieces or _FINISHER.search(text):
+        if as_piece(n) in combo_pieces or finisher_re.search(text):
             val = 8
         elif roles.get(n) == "payoff":
             val = 7
@@ -410,8 +763,21 @@ def build_plan(path: str | Path, fetch: bool = False,
     # predicted WORSE than stock (rank corr 0.255 -> 0.142), though it was
     # undersampled and censored so that is not a clean refutation. Either way
     # it has not earned being on by default.
-    if synergy and not lines:
-        lines = synergy_lines(names, facts, tags, weights, commanders)
+    if not v2:
+        if synergy and not lines:
+            lines = synergy_lines(names, facts, tags, weights, commanders)
+    elif synergy and not threat_lines:
+        # Version 2: a synergy line is an archetype engine ("tokens, then
+        # anthem"), which combo_bands does not read as a win, so it is a
+        # threat line and never a pilot line. Its pieces are deck cards,
+        # mapped to Forge's spelling like every other name in version 2.
+        threat_lines = [dict(ln, cards=list(dict.fromkeys(name_of(c) for c in ln["cards"])))
+                        for ln in synergy_lines(names, facts, tags, weights, commanders)]
+        lines = [ln for ln in threat_lines if combo_bands.is_win_band(ln)]
+
+    graveyard_targets: dict[str, int] = {}
+    if v2:
+        graveyard_targets = _graveyard_targets(names, commanders, facts, targets)
 
     keep = sorted((n for n, w in weights.items() if w >= 5),
                   key=lambda n: -weights[n])[:16]
@@ -440,7 +806,26 @@ def build_plan(path: str | Path, fetch: bool = False,
     threat_set |= {n for n in set(names) if _pow(n) >= 5}
     threat_set |= {n for n in set(names) if _punisher(n)}
     threat_set |= set(commanders)
-    threat = sorted(threat_set, key=lambda n: (-weights.get(n, 0), -_pow(n)))
+    if v2:
+        # The threat list is what OPPONENTS fear: the shim builds the table's
+        # threat index from it (at 8) and that index gates their counterspells.
+        # Version 1 put every nonland line piece and every tagged card with
+        # finisher text here through a weight of 8. Version 2 lowers those
+        # weights for the PILOT (it stops chasing Sol Ring, and Pact of
+        # Negation is no longer a finisher it keeps or fetches), but keeps
+        # them here, so the table's threat read is version 1's and the hotfix
+        # changes only the pilot's own data. Measured on 126 decks: without
+        # this, 101 cards (saboteur creatures such as Ragavan, and Pact of
+        # Negation) left the threat lists and the counterspell guard at G0a
+        # would have measured that too.
+        threat_set |= v1_threats
+        # Ties broken by name. Version 1 leaves them in set order, which
+        # follows the per-process string hash seed, so two builds of the same
+        # deck can list its threats in different orders. Version 2 is new, so
+        # it can be reproducible byte for byte without moving version 1.
+        threat = sorted(threat_set, key=lambda n: (-weights.get(n, 0), -_pow(n), n))
+    else:
+        threat = sorted(threat_set, key=lambda n: (-weights.get(n, 0), -_pow(n)))
     personality = dict(TAG_PERSONALITY.get(tags[0] if tags else "_default",
                                            TAG_PERSONALITY["_default"]))
     # Threat model v2: how loudly an opponent's nearly-complete combo line
@@ -500,6 +885,8 @@ def build_plan(path: str | Path, fetch: bool = False,
         # Additive (task 20 Stage 1): shims before 0.4.2 ignore this key.
         "search": {"targets": targets, "context": context},
     }
+    if v2:
+        plan = _as_v2(plan, threat_lines, graveyard_targets, name_of, fix_on)
     # Outcome feedback: let observed win methods NUDGE the plan (bounded,
     # search targets only). The cold-start invariant lives in plan_feedback:
     # a deck with no history gets exactly the plan built above, and a broken
@@ -510,7 +897,6 @@ def build_plan(path: str | Path, fetch: bool = False,
     # archetype and never changes the plan. Plans are built in run_sim, so
     # the flag that matters is the WORKER's; deploy/preflight.py asserts it.
     try:
-        import os
         import plan_feedback
         plan_feedback.note_tags(deck_name, tags)
         if os.environ.get("MTG_PLAN_FEEDBACK_APPLY", "0") == "1":
@@ -520,11 +906,67 @@ def build_plan(path: str | Path, fetch: bool = False,
     return deck_name, plan
 
 
+def _as_v2(plan: dict, threat_lines: list[dict], graveyard_targets: dict[str, int],
+           name_of, fix_on: frozenset[str] | None = None) -> dict:
+    """The version-2 layout: planVersion first, threatLines beside lines,
+    search.graveyardTargets, the fix flags, and every card name in Forge's
+    spelling. Line cards were mapped when the lines were read.
+
+    The contract names lines, threatLines and the search maps; the deck-keyed
+    fields (weights, threat, keepCards, tutors, manaCreatures, roles) are
+    mapped too, because the shim matches every one of them against
+    Card.getName(). For a deck that came through the import (which already
+    writes Forge's names) this is the identity; it matters for a precon whose
+    file spells a name in another case than Forge ("They Came From the
+    Pipes") and for a study deck pasted as "Front // Back"."""
+    def remap(d: dict) -> dict:
+        out: dict = {}
+        for k, v in d.items():
+            fk = name_of(k)
+            if fk in out and isinstance(v, int):
+                out[fk] = max(out[fk], v)   # two spellings of one card: keep the higher
+            else:
+                out.setdefault(fk, v)
+        return out
+
+    def relist(xs: list[str]) -> list[str]:
+        return list(dict.fromkeys(name_of(x) for x in xs))
+
+    search = plan["search"]
+    out: dict = {"planVersion": 2}
+    for k, v in plan.items():
+        if k == "search":
+            out[k] = {"targets": remap(search["targets"]),
+                      "context": remap(search["context"]),
+                      "graveyardTargets": remap(graveyard_targets)}
+            continue
+        if k in ("weights", "roles"):
+            v = remap(v)
+        elif k in ("threat", "tutors", "manaCreatures"):
+            v = relist(v)
+        elif k == "mulligan":
+            v = dict(v, keepCards=relist(v.get("keepCards") or []))
+        out[k] = v
+        if k == "lines":
+            out["threatLines"] = threat_lines   # every line; the shim's opponent logic
+    # Every flag written, true or false: the plans file records the arm.
+    out["fix"] = {k: (fix_on is None or k in fix_on) for k in V2_FIX}
+    return out
+
+
 def build_plans(paths: list[str | Path], fetch: bool = False,
-                synergy: bool = False) -> dict:
+                synergy: bool = False, plan_version: int | None = None,
+                fix=None) -> dict:
+    """{"decks": {name: plan}}. plan_version None reads MTG_PLAN_VERSION
+    (unset: 1) and fix None reads MTG_PLAN_FIX (unset: every flag), which is
+    how run_sim and the CLI honour both. Either raises on a bad value, and
+    a fix subset with version 1 raises too (PLAN_FIX_ENV)."""
+    version = env_plan_version() if plan_version is None else _check_version(plan_version)
+    fix = env_plan_fix() if fix is None else fix
     decks = {}
     for p in paths:
-        name, plan = build_plan(p, fetch=fetch, synergy=synergy)
+        name, plan = build_plan(p, fetch=fetch, synergy=synergy, plan_version=version,
+                                fix=fix)
         decks[name] = plan
     return {"decks": decks}
 
@@ -539,14 +981,25 @@ def main() -> None:
                          "studies/precon_predict/README.md)")
     ap.add_argument("--fetch", action="store_true",
                     help="allow Scryfall/Spellbook network fetches (cache-only otherwise)")
+    ap.add_argument("--plan-version", type=int, choices=PLAN_VERSIONS, default=None,
+                    help=f"plan version to build (default: ${PLAN_VERSION_ENV}, else 1)")
+    ap.add_argument("--fix", default=None,
+                    help=f"version 2 only: all, none, or a comma list of "
+                         f"{', '.join(V2_FIX)} (default: ${PLAN_FIX_ENV}, else all)")
     args = ap.parse_args()
-    plans = build_plans(args.decks, fetch=args.fetch, synergy=args.synergy)
+    plans = build_plans(args.decks, fetch=args.fetch, synergy=args.synergy,
+                        plan_version=args.plan_version, fix=args.fix)
     payload = json.dumps(plans, indent=2)
     if args.out:
         Path(args.out).write_text(payload, encoding="utf-8")
         for name, plan in plans["decks"].items():
+            extra = ""
+            if plan.get("planVersion", 1) >= 2:
+                extra = (f" v{plan['planVersion']} lines={len(plan['lines'])}"
+                         f"/{len(plan['threatLines'])} "
+                         f"graveyardTargets={len(plan['search']['graveyardTargets'])}")
             print(f"{name}: tags={plan['tags']} keeps={len(plan['mulligan']['keepCards'])} "
-                  f"threat={len(plan['threat'])}")
+                  f"threat={len(plan['threat'])}{extra}")
         print(f"wrote {args.out}")
     else:
         print(payload)

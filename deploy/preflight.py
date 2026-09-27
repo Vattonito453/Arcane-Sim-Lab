@@ -140,6 +140,29 @@ def deck_labels_present(body):
     return True, "%s" % labels[:3]
 
 
+def analysis_ok(body):
+    """The wincon report, from an engine that carries qa.knockouts.
+
+    ANALYSIS_VERSION 6 added per-game `knockouts` (repair plan WS1). A report
+    without them is a stale engine, or one whose image is missing engine/qa/
+    and fell back to the loss-line reading."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    missing = [k for k in ("decks", "summary", "games") if k not in body]
+    if missing:
+        return False, "missing %s" % missing
+    version = body.get("version") or 0
+    if version < 6:
+        return False, "analysis version %s < 6 (no knockouts)" % version
+    games = body.get("games") or []
+    bare = [g.get("n") for g in games
+            if not isinstance(g, dict) or not isinstance(g.get("knockouts"), list)]
+    if bare:
+        return False, "games without a knockouts list: %s" % bare[:5]
+    kos = sum(len(g["knockouts"]) for g in games)
+    return True, "v%s, %d games, %d knockouts" % (version, len(games), kos)
+
+
 def scorecards_ok(body):
     if not isinstance(body, dict) or "decks" not in body or "run" not in body:
         return False, "shape wrong"
@@ -233,7 +256,8 @@ def surfaces(run, deck):
             "name": "win-condition analysis",
             "intent": "live",
             "path": "/analysis/%s" % run,
-            "check": has_keys("decks", "summary"),
+            "check": analysis_ok,
+            "note": "per-game knockouts need engine/qa/ INSIDE the image",
         },
         {
             "name": "board reconstruction",
@@ -347,6 +371,29 @@ def shim_pin(env=None):
     return SHIM_FLOOR, "preflight SHIM_FLOOR"
 
 
+PLAN_VERSION_FLAG = "MTG_PLAN_VERSION"
+# Version-2 plans (the tutoring hotfix) carry threatLines, graveyardTargets and
+# fix flags that only shim 0.17.0 and later read; an older shim would pilot the
+# narrowed pilot lines without the reach, zone and graveyard checks.
+PLAN_V2_SHIM_FLOOR = (0, 17, 0)
+
+
+def plan_version_supported(pin, env=None):
+    """(ok, detail): MTG_PLAN_VERSION is 1, or 2 with a shim pin >= 0.17.0."""
+    env = os.environ if env is None else env
+    raw = (env.get(PLAN_VERSION_FLAG) or "").strip()
+    if raw in ("", "1"):
+        return True, "%s=%s (version-1 plans)" % (PLAN_VERSION_FLAG, raw or "unset")
+    if raw != "2":
+        return False, "%s=%r is not a plan version (expected 1 or 2)" % (PLAN_VERSION_FLAG, raw)
+    if pin < PLAN_V2_SHIM_FLOOR:
+        return False, ("%s=2 needs shim >= %s, but the pin is %s. Tag and pin "
+                       "the 0.17.0 shim first, or set %s=1." % (
+                           PLAN_VERSION_FLAG, _fmt_version(PLAN_V2_SHIM_FLOOR),
+                           _fmt_version(pin), PLAN_VERSION_FLAG))
+    return True, "%s=2 with shim pin %s" % (PLAN_VERSION_FLAG, _fmt_version(pin))
+
+
 def result_shim_versions(meta):
     """Every shim version a result's meta names: the top-level agent and, on a
     rotated run whose rotations disagreed, each rotation's own agent."""
@@ -391,7 +438,68 @@ IMAGE_FILES = [
      "the fitted prediction model; a top-level COPY glob once missed it"),
     ("/app/rules/kb", "the Comprehensive Rules KB the /ask retrieval reads"),
     ("/app/engine/decks", "bundled decks"),
+    ("/app/engine/qa/__init__.py",
+     "the QA analyzers package; the same top-level glob would miss it"),
+    ("/app/engine/qa/knockouts.py",
+     "knockouts: analysis.win_method and the scorecards read it"),
 ]
+
+# Modules that must IMPORT in the image, not merely exist on disk. analysis.py
+# imports engine/qa/ at module load, so a missing or broken package would take
+# /analysis down at request time while every file check above passed.
+IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard"]
+
+
+def _engine_dir():
+    """/app/engine in the container; the repo's engine/ when run locally."""
+    if os.path.isdir("/app/engine"):
+        return "/app/engine"
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "engine")
+
+
+def check_imports(engine_dir=None):
+    """Import the engine modules the image must carry, and run the knockouts
+    detector on a two-turn synthetic game, so "imports" means "works"."""
+    import importlib
+    engine_dir = engine_dir or _engine_dir()
+    if engine_dir not in sys.path:
+        sys.path.insert(0, engine_dir)
+    print("\nIMAGE IMPORTS (%s)" % engine_dir)
+    bad = 0
+    for name in IMAGE_IMPORTS:
+        try:
+            importlib.import_module(name)
+            print("  %-9s %s" % ("ok", name))
+        except Exception as e:  # noqa: BLE001
+            bad += 1
+            print("  %-9s %s: %s: %s" % ("BROKEN", name, type(e).__name__, e))
+    try:
+        from qa import knockouts
+        game = {
+            "players": ["Ai(1)-A", "Ai(2)-B"],
+            "result": {"winner": "Ai(1)-A", "draw": False},
+            "turns": [
+                {"turn": 1, "active_player": "Ai(1)-A", "events": [
+                    {"seq": 1, "action": "damage",
+                     "raw": "Bear (7) deals 40 combat damage to Ai(2)-B."},
+                    {"seq": 2, "action": "life_change",
+                     "raw": "Life: Ai(2)-B 40 > 0"},
+                    {"seq": 3, "action": "game_outcome",
+                     "raw": "Ai(2)-B has lost because life total reached 0"}]},
+            ],
+        }
+        metrics, _flags = knockouts.detect({"games": [game]})
+        cause = metrics["by_cause"]
+        ok = cause == {"combat_damage": 1}
+        if not ok:
+            bad += 1
+        print("  %-9s knockouts.detect on a synthetic game: %s" %
+              ("ok" if ok else "WRONG", cause))
+    except Exception as e:  # noqa: BLE001
+        bad += 1
+        print("  %-9s knockouts.detect: %s: %s" % ("BROKEN", type(e).__name__, e))
+    return bad
 
 
 def check_files():
@@ -488,6 +596,9 @@ def main(argv):
         ({"name": "newest run on pinned shim",
           "note": "post-deploy order: deploy, smoke_test.py --sim, then preflight"},
          shim_at_least_pin(run, meta, pin, pin_source)),
+        ({"name": "plan version supported",
+          "note": "version-2 plans need shim >= 0.17.0 (tasks/25 WS5 T1)"},
+         plan_version_supported(pin)),
     ]
     broken = 0
     print("\nDEPLOYMENT INVARIANTS")
@@ -499,6 +610,7 @@ def main(argv):
 
     if args.files:
         failures += [("files", "")] * check_files()
+        failures += [("imports", "")] * check_imports()
 
     print()
     if failures:

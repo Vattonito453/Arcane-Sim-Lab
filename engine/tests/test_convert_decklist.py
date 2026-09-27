@@ -81,7 +81,7 @@ FLAGS = {
                                     "land": False},
     # Forge's counterspell pre-pass still casts a flagged counterspell...
     "Pact of Negation": {"remove": "All", "kinds": ["counterspell"], "land": False},
-    # ...and a flagged land is still played; neither is "won't cast".
+    # ...and a flagged land is still played; neither gets the ai_wont_cast warning.
     "Glimmer Test Vault": {"remove": "All", "kinds": ["activation"], "land": True},
 }
 IDX = forge_index.ForgeIndex(Path("."), {"forge_version": "test"}, CARDS, FLAGS)
@@ -132,7 +132,7 @@ assert {r["from"]: r["to"] for r in rep["renamed"]} == {
 }, rep["renamed"]
 check_shape(rep["warnings"])
 kinds = [w["kind"] for w in rep["warnings"]]
-assert kinds == ["unknown_card"], rep["warnings"]         # Pact and the land are not "won't cast"
+assert kinds == ["unknown_card"], rep["warnings"]         # Pact and the land get no ai_wont_cast
 unk = rep["warnings"][0]
 assert unk["cards"] == ["_____ Goblin"], unk
 assert unk["message"].startswith("Forge doesn't know these cards: _____ Goblin."), unk
@@ -147,16 +147,24 @@ content, rep = convert(RAL_LIST.replace("Ral, Monsoon Mage // Ral, Leyline Prodi
                        index=IDX)
 assert dck_names(content)["commander"] == ["Ral, Monsoon Mage"]
 
-# a flagged commander: Forge's AI won't cast it, and the warning says so
+# a flagged commander: Forge's AI doesn't cast it on its own, and the warning
+# says so in the owner's wording (decision 2026-09-27), not "won't cast"
 content, rep = convert("1 Winter, Cynical Opportunist\n1 Pact of Negation\n1 Sol Ring\n96 Island",
                        "Winter Test", index=IDX)
 check_shape(rep["warnings"])
 wont = [w for w in rep["warnings"] if w["kind"] == "ai_wont_cast"]
 assert len(wont) == 1, rep["warnings"]
 assert wont[0]["cards"] == ["Winter, Cynical Opportunist"], wont
-assert wont[0]["message"].startswith(
-    "Forge's AI won't cast these cards: Winter, Cynical Opportunist."), wont
-assert "This includes your commander." in wont[0]["message"], wont
+assert wont[0]["message"] == (
+    "Forge's AI doesn't cast these cards on its own: Winter, Cynical Opportunist. "
+    "This includes your commander."), wont
+assert "won't" not in wont[0]["message"], wont
+# a flagged spell that is not the commander: same wording, no commander clause
+content, rep = convert("1 Sol Ring\n1 Winter, Cynical Opportunist\n97 Island",
+                       "Winter Main", index=IDX)
+wont = [w for w in rep["warnings"] if w["kind"] == "ai_wont_cast"]
+assert [w["message"] for w in wont] == [
+    "Forge's AI doesn't cast these cards on its own: Winter, Cynical Opportunist."], wont
 
 # an unknown COMMANDER rejects the deck with the same message
 try:
@@ -204,6 +212,8 @@ assert [w["kind"] for w in rep["warnings"]] == ["index_missing"], rep["warnings"
 im = rep["warnings"][0]
 assert im["cards"] == ["Sea Gate Restoration // Sea Gate, Reborn"], im
 assert "skipped" in im["message"] and "Sea Gate Restoration // Sea Gate, Reborn" in im["message"], im
+assert "cards its AI doesn't cast on its own" in im["message"], im     # same wording as ai_wont_cast
+assert "won't" not in im["message"], im
 assert rep["forge_index"] is None
 
 # no index and nothing cached: every " // " name stays as pasted, and is named

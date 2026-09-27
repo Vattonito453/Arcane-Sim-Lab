@@ -227,7 +227,7 @@ def _warnings(idx, names: _Names, commander: str, main_names: list[str]) -> list
     out: list[dict] = []
     if idx is None:
         msg = ("Forge's card list isn't available yet, so two checks were skipped: "
-               "cards Forge doesn't know, and cards its AI won't cast.")
+               "cards Forge doesn't know, and cards its AI doesn't cast on its own.")
         if names.unresolved:
             msg += (f" These double-faced names were left as pasted and may not load: "
                     f"{_join(names.unresolved)}.")
@@ -239,7 +239,10 @@ def _warnings(idx, names: _Names, commander: str, main_names: list[str]) -> list
                                f"The simulation will play without them."})
     # Forge's AI drops every AI:RemoveDeck:All card from its choices. Lands are
     # still played, and a flagged counterspell is still cast by Forge's
-    # counterspell pre-pass, so only a flagged SPELL is "won't cast".
+    # counterspell pre-pass, so only a flagged SPELL gets this warning. The
+    # wording is "doesn't cast on its own" (owner decision 2026-09-27), not
+    # "won't cast": the plan agent does cast some flagged spells itself (line
+    # pieces and tutors), and an effect can still cast one for free.
     wont: list[str] = []
     for nm in [commander] + main_names:
         flag = idx.flag(nm)
@@ -247,7 +250,7 @@ def _warnings(idx, names: _Names, commander: str, main_names: list[str]) -> list
                 and nm not in wont:
             wont.append(nm)
     if wont:
-        msg = f"Forge's AI won't cast these cards: {_join(wont)}."
+        msg = f"Forge's AI doesn't cast these cards on its own: {_join(wont)}."
         if commander in wont:
             msg += " This includes your commander."
         out.append({"kind": "ai_wont_cast", "cards": wont, "message": msg})

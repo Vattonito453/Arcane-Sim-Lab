@@ -521,6 +521,32 @@ def test_elimination_is_not_a_swing_and_draws_have_none():
     assert K.turning_point(g) is None
 
 
+def test_turning_point_tie_break_is_mass_exits():
+    # Turns 3 and 5 move A's power share by exactly the same amount (0.25 to
+    # 0.5). Turn 3 does it by killing B's two creatures, turn 5 by casting
+    # three of A's own, which is the larger shift in creature count. The UX
+    # review's tie-break is mass exits, so turn 3 is the turning point.
+    zones = [
+        zone(2, "Bear", 20, "Hand", "Battlefield", B, pt="3/3"),
+        zone(2, "Bear", 21, "Hand", "Battlefield", B, pt="3/3"),
+        zone(3, "Bear", 20, "Battlefield", "Graveyard", B, pt="3/3"),
+        zone(3, "Bear", 21, "Battlefield", "Graveyard", B, pt="3/3"),
+        zone(4, "Bear", 22, "Hand", "Battlefield", B, pt="3/3"),
+        zone(4, "Bear", 23, "Hand", "Battlefield", B, pt="3/3"),
+        zone(5, "Cub", 30, "Hand", "Battlefield", A, pt="2/2"),
+        zone(5, "Cub", 31, "Hand", "Battlefield", A, pt="2/2"),
+        zone(5, "Cub", 32, "Hand", "Battlefield", A, pt="2/2"),
+    ]
+    turns = [(A, []), (B, []), (A, []), (B, []), (A, []), (B, []),
+             (A, [("damage", f"Cub (30) deals 20 combat damage to {B}."),
+                  ("life_change", f"Life: {B} 20 > 0")])]
+    g = game(turns, winner=A, players=(A, B), zones=zones, outcome=[won(A), lost(B)])
+    ctx = K._Ctx(g)
+    assert K._exits_per_turn(ctx) == [0, 0, 2, 0, 0, 0, 0], K._exits_per_turn(ctx)
+    tp = K.turning_point(g)
+    assert tp is not None and tp["turn"] == 3 and tp["shift"] == 0.25, tp
+
+
 def test_turning_point_on_stdout_is_inferred():
     turns = [(A, [("stack_add", f"{A} cast Grizzly Bears"),
                   ("stack_resolve", "Grizzly Bears - Creature 2 / 2")]),

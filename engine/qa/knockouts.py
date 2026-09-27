@@ -88,7 +88,9 @@ The shift is the change in the winner's share of the table's creature power,
 smoothed as if every seat also had one 3-power creature so that a lone 2/2 on
 turn 2 does not read as the biggest swing of the game. Seats already knocked
 out are left out of both ends of a turn's comparison, so an elimination is
-never itself counted as a swing. `event_hint` names what moved the most
+never itself counted as a swing. Two turns with the same shift are split by
+mass exits (more creatures leaving the battlefield wins), then by the shift in
+creature count. `event_hint` names what moved the most
 creature power toward the winner on that turn (a spell or ability's
 resolution, or "combat"), each creature entering or leaving being charged to
 the resolution or combat damage Forge logged it with; `event_by` is whose
@@ -1191,6 +1193,47 @@ def _count_share(snap: dict, seats: list[str], winner: str) -> float:
     return (mine + 1) / (total + len(seats)) if seats else 0.0
 
 
+def _exits_per_turn(ctx: _Ctx) -> list[int]:
+    """Creatures that left the battlefield on each turn index: the turning
+    point's tie-break (UX review problem 1: mass exits break a tie in board
+    power). Shim runs read the zone records (typed since shim 0.3.0; an
+    untyped record counts when it is a token with P/T or the card cache,
+    never fetched, says creature). Stdout runs read Forge's "... from
+    Battlefield" lines, which do not say what the card was: a token counts,
+    and otherwise only a card the cache knows as a creature, the same rule
+    the board inference charges exits by."""
+    counts = [0] * len(ctx.turns)
+    if ctx.zones.present:
+        ti_of: dict[int, int] = {}
+        for i, t in enumerate(ctx.turns):
+            ti_of.setdefault(t.get("turn", 0), i)
+        for rec in ctx.game.get("zones") or []:
+            if rec.get("from") != "Battlefield":
+                continue
+            i = ti_of.get(rec.get("turn", 0) or 0)
+            if i is None:
+                continue
+            types = rec.get("types") or ""
+            if types:
+                creature = "Creature" in types.split(",")
+            elif rec.get("token") and _power_of(rec.get("pt")) is not None:
+                creature = True
+            else:
+                creature = bool(_printed(rec.get("card") or "")[0])
+            if creature:
+                counts[i] += 1
+        return counts
+    for ev in ctx.flat:
+        if ev.action == "zone_change" and "from Battlefield" in ev.raw:
+            mm = re.match(r"^(.+?)\s*\((\d+)\)\s+was put into\s+\w+\s+from\s+Battlefield",
+                          ev.raw)
+            if not mm:
+                continue
+            name = mm.group(1).strip()
+            if "token" in name.lower() or _printed(name)[0]:
+                counts[ev.ti] += 1
+    return counts
+
 
 _COMBAT_DAMAGE_PHASES = ("COMBAT_FIRST_STRIKE_DAMAGE", "COMBAT_DAMAGE")
 
@@ -1419,6 +1462,7 @@ def turning_point(game: dict, kos: list[dict] | None = None,
 
     best = None
     empty: dict = {}
+    exits = _exits_per_turn(ctx)
     for i in range(len(snaps)):
         seats = [p for p in seats_all if p == winner or out_at.get(p, 10 ** 9) > i]
         before = snaps[i - 1] if i else empty
@@ -1428,7 +1472,10 @@ def turning_point(game: dict, kos: list[dict] | None = None,
         if shift <= 0:
             continue
         cshift = _count_share(after, seats, winner) - _count_share(before, seats, winner)
-        key = (round(shift, 6), round(cshift, 6))
+        # A tie in the power shift goes to the turn more creatures left the
+        # battlefield on (the UX review's tie-break), then to the larger
+        # shift in creature count.
+        key = (round(shift, 6), exits[i] if i < len(exits) else 0, round(cshift, 6))
         if best is None or key > best[0]:
             best = (key, i, seats, before, after, shift)
     if best is None:

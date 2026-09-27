@@ -450,6 +450,7 @@ def seed_sweep() -> list[str]:
     for seed in SEEDS:
         env = dict(os.environ, PYTHONHASHSEED=seed)
         env.pop("MTG_PLAN_VERSION", None)
+        env.pop("MTG_PLAN_FIX", None)
         proc = subprocess.run([sys.executable, str(Path(__file__).resolve()), "--emit-v1"],
                               capture_output=True, env=env, timeout=120)
         assert proc.returncode == 0, (seed, proc.stderr.decode("utf-8", "replace")[-800:])
@@ -463,7 +464,7 @@ def by_cards(lines: list[dict]) -> list[list[str]]:
 
 def main() -> None:
     saved = {k: os.environ.get(k) for k in ("MTG_DATA_DIR", "MTG_PLAN_VERSION",
-                                            "MTG_PLAN_FEEDBACK_APPLY")}
+                                            "MTG_PLAN_FIX", "MTG_PLAN_FEEDBACK_APPLY")}
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         data = tmp / "data"
@@ -471,6 +472,7 @@ def main() -> None:
         os.environ["MTG_DATA_DIR"] = str(data)       # plan_feedback.note_tags writes here
         os.environ.pop("MTG_PLAN_FEEDBACK_APPLY", None)
         os.environ.pop("MTG_PLAN_VERSION", None)
+        os.environ.pop("MTG_PLAN_FIX", None)
         try:
             if "--write-golden" in sys.argv:
                 write_golden(tmp)
@@ -577,6 +579,59 @@ def checks(tmp: Path) -> None:
     else:
         raise AssertionError("plan_version=3 must be refused")
     print("  MTG_PLAN_VERSION=2 builds version 2; 3, 'two' and '1.0' are refused: OK")
+
+    # MTG_PLAN_FIX: the per-flag arms. Only "fix" moves; every flag is written.
+    all_on = dumps(deck_plan.build_plans(decks, plan_version=2))
+    flags = list(deck_plan.V2_FIX)
+
+    def fix_of(plans: dict) -> set[tuple[str, bool]]:
+        return {tuple(sorted(p["fix"].items())) for p in plans["decks"].values()}
+
+    def without_fix(plans: dict) -> str:
+        return dumps({"decks": {n: {k: v for k, v in p.items() if k != "fix"}
+                                for n, p in plans["decks"].items()}})
+
+    for raw, on in (("all", set(flags)), ("none", set()), ("tutorReach", {"tutorReach"}),
+                    (" graveyarddest , TUTORREACH ", {"graveyardDest", "tutorReach"})):
+        os.environ["MTG_PLAN_FIX"] = raw
+        got = deck_plan.build_plans(decks, plan_version=2)
+        assert fix_of(got) == {tuple(sorted((k, k in on) for k in flags))}, (raw, fix_of(got))
+        assert without_fix(got) == without_fix(json.loads(all_on)), raw
+        # The same arm through the parameter, which wins over the env.
+        os.environ["MTG_PLAN_FIX"] = "none"
+        assert fix_of(deck_plan.build_plans(decks, plan_version=2, fix=raw)) == fix_of(got)
+    os.environ["MTG_PLAN_FIX"] = "all"
+    assert dumps(deck_plan.build_plans(decks, plan_version=2)) == all_on
+    os.environ["MTG_PLAN_FIX"] = ""
+    assert dumps(deck_plan.build_plans(decks, plan_version=2)) == all_on
+    for bad in ("tutorreach,bogus", "yes", ","):
+        os.environ["MTG_PLAN_FIX"] = bad
+        try:
+            deck_plan.build_plans(decks, plan_version=2)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"MTG_PLAN_FIX={bad!r} must be refused")
+    # An arm with no version 2 would run 0.16.0 behaviour under its label.
+    os.environ["MTG_PLAN_FIX"] = "tutorReach"
+    for call in (lambda: deck_plan.build_plans(decks),
+                 lambda: deck_plan.build_plans(decks, plan_version=1)):
+        try:
+            call()
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("MTG_PLAN_FIX with a version-1 plan must be refused")
+    os.environ.pop("MTG_PLAN_FIX", None)
+    try:
+        deck_plan.build_plan(path["hotfix_cedh"], fix="none")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("fix= with a version-1 plan must be refused")
+    assert dumps(deck_plan.build_plans(decks)) == v1_text
+    print("  MTG_PLAN_FIX picks the version-2 flag arm (all, none, a list; any case), "
+          "moves nothing but 'fix', and is refused when bad or with version 1: OK")
 
     # ------------------------------------------------------- 2. version 2 --
     v1 = json.loads(v1_text)["decks"]

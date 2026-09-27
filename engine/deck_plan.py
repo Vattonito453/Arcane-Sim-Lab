@@ -23,7 +23,9 @@ run_sim and this CLI) and adds, per deck:
                 graveyard: reanimation targets (when the deck reanimates),
                 flashback/escape/unearth-style cards, and instants and
                 sorceries the commander can cast from the graveyard
-  fix           the shim 0.17.0 hotfix flags, all true
+  fix           the shim 0.17.0 hotfix flags, all true (MTG_PLAN_FIX, or
+                fix=, picks a subset for the per-flag arms of G0a's fail
+                branch: "none", or a comma list such as "tutorReach")
 and changes: engine-only line pieces lose the blanket value 8 and fall back
 to their role tier; self-loss text ("you lose the game": Pact of Negation,
 Final Fortune) and saboteur text no longer read as a finisher; every card
@@ -33,7 +35,7 @@ what opponents fear does not change.
 
 Usage:
   python3 deck_plan.py <deck.dck> [more.dck ...] [--out plans.json] [--fetch]
-                       [--plan-version 1|2]
+                       [--plan-version 1|2] [--fix all|none|flag,flag]
 
 Zero dependencies (stdlib + sibling modules).
 """
@@ -197,6 +199,16 @@ PLAN_VERSION_ENV = "MTG_PLAN_VERSION"
 # flag as false, so a version-1 plan (no "fix" key) behaves as 0.16.0 did.
 V2_FIX = {"tutorReach": True, "commanderTutorZone": True,
           "noForcedChoices": True, "graveyardDest": True}
+# Per-flag arms (G0a's fail branch: "each flag alone overnight, 5 arms"):
+# MTG_PLAN_FIX picks which flags a version-2 plan turns on, so an arm is an
+# env var, not a hand-edited plans file. Unset, empty or "all": every flag
+# (the contract's default). "none": every flag off, which leaves version 2's
+# data alone (the narrowed lines, the lowered values, threatLines). A comma
+# list of flag names: exactly those. Every flag is written, true or false,
+# so the plans file records the arm. Anything else raises, and so does
+# setting it for a version-1 plan, which has no flags: a mistyped or
+# orphaned arm must fail the run, not run 0.16.0 behaviour under its label.
+PLAN_FIX_ENV = "MTG_PLAN_FIX"
 
 # Graveyard targets (version 2, `search.graveyardTargets`). When a search puts
 # the card into the graveyard (Entomb, Buried Alive, Unmarked Grave) the shim
@@ -292,6 +304,43 @@ def _check_version(plan_version) -> int:
     if plan_version not in PLAN_VERSIONS:
         raise ValueError(f"plan_version={plan_version!r}: expected one of {PLAN_VERSIONS}")
     return plan_version
+
+
+def parse_plan_fix(raw: str) -> frozenset[str]:
+    """"all", "none" or a comma list of V2_FIX names (any case) -> the flags
+    to turn on. Raises ValueError on anything else."""
+    text = (raw or "").strip()
+    if text.lower() == "all":
+        return frozenset(V2_FIX)
+    if text.lower() == "none":
+        return frozenset()
+    by_lower = {k.lower(): k for k in V2_FIX}
+    names = [x.strip() for x in text.split(",") if x.strip()]
+    bad = [x for x in names if x.lower() not in by_lower]
+    if not names or bad:
+        raise ValueError(f"{PLAN_FIX_ENV}={raw!r}: expected all, none, or a comma list "
+                         f"of {', '.join(V2_FIX)}")
+    return frozenset(by_lower[x.lower()] for x in names)
+
+
+def env_plan_fix() -> frozenset[str] | None:
+    """MTG_PLAN_FIX parsed, or None when unset or empty (every flag on)."""
+    raw = (os.environ.get(PLAN_FIX_ENV) or "").strip()
+    return parse_plan_fix(raw) if raw else None
+
+
+def _check_fix(fix, v2: bool) -> frozenset[str] | None:
+    """fix as given to build_plan(s): None, a string for parse_plan_fix, or
+    an iterable of flag names."""
+    if fix is None:
+        return None
+    if not v2:
+        raise ValueError(f"fix={fix!r} ({PLAN_FIX_ENV}) needs plan version 2: a version-1 "
+                         f"plan has no fix flags")
+    if isinstance(fix, str):
+        return parse_plan_fix(fix)
+    names = list(fix)
+    return parse_plan_fix(",".join(names)) if names else frozenset()
 
 
 def forge_namer(deck_names: list[str]):
@@ -523,12 +572,16 @@ def read_dck(path: str | Path) -> tuple[str, list[str], list[str]]:
 
 
 def build_plan(path: str | Path, fetch: bool = False,
-               synergy: bool = False, plan_version: int = 1) -> tuple[str, dict]:
+               synergy: bool = False, plan_version: int = 1,
+               fix=None) -> tuple[str, dict]:
     """(deck name, plan). plan_version 1 (the default) is byte-identical to
     the plans built before versions existed; 2 is the tutoring hotfix's data
-    (module docstring). Callers that should honour MTG_PLAN_VERSION pass
-    env_plan_version(); build_plans does that by default."""
+    (module docstring). fix (version 2 only): None turns every flag on, or
+    "all", "none", a comma list, or an iterable of flag names (PLAN_FIX_ENV).
+    Callers that should honour MTG_PLAN_VERSION and MTG_PLAN_FIX use
+    build_plans, which reads both by default."""
     v2 = _check_version(plan_version) == 2
+    fix_on = _check_fix(fix, v2)
     finisher_re = _FINISHER_V2 if v2 else _FINISHER
     deck_name, commanders, main = read_dck(path)
     names = commanders + main
@@ -833,7 +886,7 @@ def build_plan(path: str | Path, fetch: bool = False,
         "search": {"targets": targets, "context": context},
     }
     if v2:
-        plan = _as_v2(plan, threat_lines, graveyard_targets, name_of)
+        plan = _as_v2(plan, threat_lines, graveyard_targets, name_of, fix_on)
     # Outcome feedback: let observed win methods NUDGE the plan (bounded,
     # search targets only). The cold-start invariant lives in plan_feedback:
     # a deck with no history gets exactly the plan built above, and a broken
@@ -854,7 +907,7 @@ def build_plan(path: str | Path, fetch: bool = False,
 
 
 def _as_v2(plan: dict, threat_lines: list[dict], graveyard_targets: dict[str, int],
-           name_of) -> dict:
+           name_of, fix_on: frozenset[str] | None = None) -> dict:
     """The version-2 layout: planVersion first, threatLines beside lines,
     search.graveyardTargets, the fix flags, and every card name in Forge's
     spelling. Line cards were mapped when the lines were read.
@@ -896,18 +949,24 @@ def _as_v2(plan: dict, threat_lines: list[dict], graveyard_targets: dict[str, in
         out[k] = v
         if k == "lines":
             out["threatLines"] = threat_lines   # every line; the shim's opponent logic
-    out["fix"] = dict(V2_FIX)
+    # Every flag written, true or false: the plans file records the arm.
+    out["fix"] = {k: (fix_on is None or k in fix_on) for k in V2_FIX}
     return out
 
 
 def build_plans(paths: list[str | Path], fetch: bool = False,
-                synergy: bool = False, plan_version: int | None = None) -> dict:
+                synergy: bool = False, plan_version: int | None = None,
+                fix=None) -> dict:
     """{"decks": {name: plan}}. plan_version None reads MTG_PLAN_VERSION
-    (unset: 1), which is how run_sim and the CLI honour the flag."""
+    (unset: 1) and fix None reads MTG_PLAN_FIX (unset: every flag), which is
+    how run_sim and the CLI honour both. Either raises on a bad value, and
+    a fix subset with version 1 raises too (PLAN_FIX_ENV)."""
     version = env_plan_version() if plan_version is None else _check_version(plan_version)
+    fix = env_plan_fix() if fix is None else fix
     decks = {}
     for p in paths:
-        name, plan = build_plan(p, fetch=fetch, synergy=synergy, plan_version=version)
+        name, plan = build_plan(p, fetch=fetch, synergy=synergy, plan_version=version,
+                                fix=fix)
         decks[name] = plan
     return {"decks": decks}
 
@@ -924,9 +983,12 @@ def main() -> None:
                     help="allow Scryfall/Spellbook network fetches (cache-only otherwise)")
     ap.add_argument("--plan-version", type=int, choices=PLAN_VERSIONS, default=None,
                     help=f"plan version to build (default: ${PLAN_VERSION_ENV}, else 1)")
+    ap.add_argument("--fix", default=None,
+                    help=f"version 2 only: all, none, or a comma list of "
+                         f"{', '.join(V2_FIX)} (default: ${PLAN_FIX_ENV}, else all)")
     args = ap.parse_args()
     plans = build_plans(args.decks, fetch=args.fetch, synergy=args.synergy,
-                        plan_version=args.plan_version)
+                        plan_version=args.plan_version, fix=args.fix)
     payload = json.dumps(plans, indent=2)
     if args.out:
         Path(args.out).write_text(payload, encoding="utf-8")

@@ -67,13 +67,16 @@ def unsupported_cards(lines) -> list[str]:
 
 
 def _dck_info(path: Path) -> dict:
-    """{"name", "commanders", "cards"} from a .dck: the Name= Forge seats the
-    deck under, its [Commander] entries and every card name it lists."""
-    info = {"name": path.stem, "commanders": [], "cards": set()}
+    """{"name", "commanders", "cards", "read"} from a .dck: the Name= Forge
+    seats the deck under, its [Commander] entries, every card name it lists,
+    and whether the file could be read at all (an unreadable file supports no
+    claim about its commander either way)."""
+    info = {"name": path.stem, "commanders": [], "cards": set(), "read": False}
     try:
         text = path.read_text(encoding="utf-8", errors="replace")
     except OSError:
         return info
+    info["read"] = True
     section = ""
     for line in text.splitlines():
         line = line.strip()
@@ -104,17 +107,43 @@ def _strip_seat(player: str) -> str:
     return re.sub(r"^Ai\(\d+\)-", "", player or "")
 
 
-def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str]) -> dict:
+def _refused_commanders(commanders: list[str], unsupported: list[str]) -> list[str]:
+    """The commanders Forge refused at load. Forge prints the name exactly as
+    the deck file requested it, so this matches that name (ignoring case) and
+    never a face: a deck listing "Ral, Monsoon Mage" loads fine even when
+    another deck's "Ral, Monsoon Mage // Ral, Leyline Prodigy" was refused."""
+    refused = {n.casefold() for n in unsupported}
+    return [c for c in commanders if c.casefold() in refused]
+
+
+def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
+                  fmt: str | None = None) -> dict:
     """What the run actually played, for result meta.
 
     unsupported_cards   every card Forge refused (empty when clean), and
     unsupported_by_deck which staged deck lists each one.
-    commander_fidelity  shim path only (games carry zone records): per deck,
-                        how often each commander appears in any zone record.
-                        The shim records a commander when it moves (cast from
-                        the command zone and on), so 0 over a whole run means
-                        Forge refused it or its AI never cast it; validity.py
-                        marks such a run polluted with the reason.
+    commander_fidelity  one row per deck that has a commander, plus (in a
+                        Commander-format run) one per readable deck file that
+                        lists none. On every path:
+      refused       commanders Forge refused at load. Read from its stderr,
+                    so it holds on the stdout path too. The deck played
+                    without them, and validity.py marks the run polluted.
+      no_commander  a Commander-format deck file with no [Commander] entry:
+                    the same verdict for the same reason.
+      basis         "zone_stream" when games carry shim zone records, else
+                    "stderr". Only zone_stream rows carry the fields below,
+                    because the stdout log never records a card entering play.
+    On the shim path only:
+      seen          zone records per commander over the run. The shim records
+                    a commander when it moves (cast from the command zone and
+                    on), so 0 means refused or never cast.
+      missing       commanders with seen == 0, refused ones included (the field
+                    predates `refused` and keeps its meaning).
+      never_cast    missing and not refused: the commander loaded and Forge's
+                    AI never cast it (Winter, Cynical Opportunist is scripted
+                    AI:RemoveDeck:All). validity.py shows a note, not a
+                    polluted verdict (owner decision 2026-09-27).
+      games         games the zone records cover.
     """
     decks = []
     seen_paths: set[str] = set()
@@ -127,38 +156,58 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str]) -
                for p, info in decks}
     meta: dict = {"unsupported_cards": list(unsupported),
                   "unsupported_by_deck": {k: v for k, v in by_deck.items() if v}}
+    commander_format = (fmt or "").lower() == "commander"
+    # Zone records exist on the shim path only: the stdout log never records a
+    # card entering play, so it can say what Forge refused but not what it cast.
     zoned = [g for g in games if isinstance(g, dict) and "zones" in g]
-    if not zoned:
-        return meta          # stdout path: the log never records entries
+    basis = "zone_stream" if zoned else "stderr"
     records = [z for g in zoned for z in (g.get("zones") or [])]
     owners = {_strip_seat(z.get("fromPlayer") or z.get("toPlayer") or "") for z in records}
     fidelity = []
     for p, info in decks:
         if not info["commanders"]:
+            if commander_format and info["read"]:
+                fidelity.append({"deck": p.name, "player": info["name"], "commanders": [],
+                                 "refused": [], "no_commander": True, "basis": basis})
             continue
-        # Attribute by seat when the deck's Name= shows up as an owner, so a
-        # mirror or shared commander cannot vouch for a deck that lost its own.
-        by_owner = info["name"] in owners
-        seen = {}
-        for c in info["commanders"]:
-            faces = _faces(c)
-            seen[c] = sum(1 for z in records if z.get("card") in faces and (
-                not by_owner or _strip_seat(z.get("fromPlayer") or z.get("toPlayer") or "")
-                == info["name"]))
-        fidelity.append({"deck": p.name, "player": info["name"],
-                         "commanders": info["commanders"], "seen": seen,
-                         "missing": [c for c in info["commanders"] if not seen[c]],
-                         "games": len(zoned)})
+        row = {"deck": p.name, "player": info["name"], "commanders": info["commanders"],
+               "refused": _refused_commanders(info["commanders"], unsupported),
+               "basis": basis}
+        if zoned:
+            # Attribute by seat when the deck's Name= shows up as an owner, so a
+            # mirror or shared commander cannot vouch for a deck that lost its own.
+            by_owner = info["name"] in owners
+            seen = {}
+            for c in info["commanders"]:
+                faces = _faces(c)
+                seen[c] = sum(1 for z in records if z.get("card") in faces and (
+                    not by_owner or _strip_seat(z.get("fromPlayer") or z.get("toPlayer") or "")
+                    == info["name"]))
+            missing = [c for c in info["commanders"] if not seen[c]]
+            row.update({"seen": seen, "missing": missing,
+                        "never_cast": [c for c in missing if c not in row["refused"]],
+                        "games": len(zoned)})
+        fidelity.append(row)
     meta["commander_fidelity"] = fidelity
     return meta
 
 
 def _warn_fidelity(meta: dict) -> None:
+    """One stderr line per finding. Refused and missing commanders make the
+    run polluted (WARNING); a loaded commander Forge's AI never cast is a
+    note (owner decision 2026-09-27)."""
     for f in meta.get("commander_fidelity") or []:
-        if f.get("missing"):
-            print(f"WARNING: {f['player']}'s commander never appeared in any zone record "
-                  f"over {f.get('games')} game(s): {', '.join(f['missing'])}. "
+        if f.get("refused"):
+            print(f"WARNING: Forge refused to load {f['player']}'s commander "
+                  f"({', '.join(f['refused'])}) and played the deck without it. "
                   f"This run is not a test of that deck.", file=sys.stderr)
+        if f.get("no_commander"):
+            print(f"WARNING: {f['player']}'s deck file lists no commander. "
+                  f"This run is not a test of that deck.", file=sys.stderr)
+        if f.get("never_cast"):
+            print(f"NOTE: {f['player']}'s commander loaded but never appeared in any zone "
+                  f"record over {f.get('games')} game(s): {', '.join(f['never_cast'])}. "
+                  f"Forge's AI never cast it.", file=sys.stderr)
 
 
 def _merge_unsupported(metas: list[dict]) -> list[str]:
@@ -532,7 +581,8 @@ def run(args: argparse.Namespace) -> None:
         # commander ever appears in a zone record (WS4 task 4).
         staged = forge_profile_deck_dir(args.format)
         result.setdefault("meta", {}).update(fidelity_meta(
-            result.get("games") or [], [staged / d for d in deck_names], refused))
+            result.get("games") or [], [staged / d for d in deck_names], refused,
+            args.format))
         _warn_fidelity(result["meta"])
         # The per-game wall the run actually used. Without it, a later
         # validity check has to GUESS which clock a file ran under
@@ -589,7 +639,8 @@ def run(args: argparse.Namespace) -> None:
                   "games": all_games, "summary": _summarize_by_deck(all_games)}
         result["meta"].update(fidelity_meta(
             all_games, [forge_profile_deck_dir(args.format) / d for d in deck_names],
-            _merge_unsupported(stock_metas)))
+            _merge_unsupported(stock_metas), args.format))
+        _warn_fidelity(result["meta"])
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         json_path = result_path(out_dir, stamp, args.run_id, rotated=True)
         # The per-game wall the run actually used. Without it, a later
@@ -647,7 +698,8 @@ def run(args: argparse.Namespace) -> None:
     # Stock Forge's stderr is merged into this stream, refusals included.
     result["meta"].update(fidelity_meta(
         result.get("games") or [], [forge_profile_deck_dir(args.format) / d for d in deck_names],
-        unsupported_cards(stdout_lines)))
+        unsupported_cards(stdout_lines), args.format))
+    _warn_fidelity(result["meta"])
     json_path = result_path(out_dir, stamp, args.run_id, rotated=False)
     result.setdefault("meta", {})["clock"] = args.clock
     json_path.write_text(json.dumps(result, indent=2), encoding="utf-8")

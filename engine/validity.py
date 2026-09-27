@@ -41,14 +41,21 @@ wins ~11%, seat 4 ~36%), so these win rates are not comparable to anything.
 
 `unknown_pilot`: written before the shim recorded which agent ran.
 
-`commander_missing` (certain, shim path only): a seat's commander never
-appears in any zone record over the whole run (run_sim writes
-`meta.commander_fidelity`). The shim records a commander when it leaves the
-command zone, so zero means Forge refused to load it (it is then also in
-`meta.unsupported_cards`: both Ral decks lost "Ral, Monsoon Mage // Ral,
-Leyline Prodigy" this way for 30 games) or Forge's AI never cast it (a
-commander scripted AI:RemoveDeck:All, such as Winter, Cynical Opportunist).
-Either way the run did not test the deck as built, so it is polluted.
+`commander_missing` (certain, any path): Forge played a seat without its
+commander, because it refused to load it at startup or the deck file lists no
+commander in a Commander run (run_sim writes `meta.commander_fidelity`; a
+refused card is also in `meta.unsupported_cards`). Both Ral decks lost "Ral,
+Monsoon Mage // Ral, Leyline Prodigy" this way for 30 games. The run did not
+test the deck as built, so it is polluted.
+
+`commander_never_cast` (a note, shim path only): the commander loaded, but it
+never appears in any zone record over the run. The shim records a commander
+when it leaves the command zone, so this means Forge's AI never cast it: a
+commander scripted AI:RemoveDeck:All, such as Winter, Cynical Opportunist, or
+in a short run just chance. That is a limit of Forge's AI, not a defect in
+the run, so it does not change the quality (owner decision 2026-09-27: only a
+commander that FAILED TO LOAD makes a run polluted). It is still a flag with
+a reason, so every surface that shows reasons shows it.
 
 CLI:
     python3 engine/validity.py <result.json> [more.json ...]
@@ -87,13 +94,18 @@ _SEVERITY = {
     "suspected_clock_cut_wins": SUSPECT,
     "mixed_pilot": SUSPECT,
     "unknown_pilot": SUSPECT,
+    # A note: shown with its reason, never lowers the quality.
+    "commander_never_cast": CLEAN,
 }
 
 # Bumped when the RULES here change, so a cached verdict computed by an older
 # version is recomputed rather than trusted. Consumers that cache a derived
 # report (analysis, coaching) stamp this alongside their own version.
 # 2 (2026-09-26): commander_missing.
-VALIDITY_VERSION = 2
+# 3 (2026-09-27): commander_missing only for a commander Forge refused or a
+#   deck file without one; a loaded commander never cast is the
+#   commander_never_cast note.
+VALIDITY_VERSION = 3
 
 
 def _clock_seconds(meta: dict) -> int | None:
@@ -185,10 +197,13 @@ def assess(result: dict) -> dict:
             "Written before the run recorded which agent piloted it, so it "
             "cannot be compared against either stock or agent baselines.")
 
-    missing = _missing_commanders(meta)
+    missing, never_cast = _commander_findings(meta)
     if missing:
         flags.append("commander_missing")
-        reasons.append(_commander_reason(meta, missing))
+        reasons.append(_missing_reason(missing))
+    if never_cast:
+        flags.append("commander_never_cast")
+        reasons.append(_never_cast_reason(never_cast))
 
     # Severity is the worst flag present, never the last one evaluated. An
     # earlier version let a "suspect" flag mask a later "polluted" one purely
@@ -216,45 +231,84 @@ def assess(result: dict) -> dict:
     }
 
 
-def _missing_commanders(meta: dict) -> list[dict]:
-    """Seats whose commander never appeared, from meta.commander_fidelity.
-    Absent on stdout-path and older runs, which therefore never trip this."""
-    out = []
+def _commander_findings(meta: dict) -> tuple[list[tuple], list[tuple]]:
+    """(missing, never_cast) from meta.commander_fidelity.
+
+    missing     [(player, refused names, or None for a deck file with no
+                commander)]: Forge played the seat without its commander.
+    never_cast  [(player, names, games)]: loaded, never in a zone record.
+
+    Rows written on 2026-09-26 (validity 2) carry only `missing`, which lumps
+    both cases together; they are split here the way run_sim now splits them,
+    by whether Forge's refusal list (meta.unsupported_cards) names the
+    commander exactly as the deck spelled it. Files older than that carry no
+    rows and trip neither."""
+    unsupported = {str(n).casefold() for n in meta.get("unsupported_cards") or []}
+    missing: list[tuple] = []
+    never_cast: list[tuple] = []
     for f in meta.get("commander_fidelity") or []:
-        if isinstance(f, dict) and f.get("missing") and (f.get("games") or 0) > 0:
-            out.append(f)
-    return out
+        if not isinstance(f, dict):
+            continue
+        player = f.get("player") or f.get("deck") or "a deck"
+        if f.get("no_commander"):
+            missing.append((player, None))
+            continue
+        refused = f.get("refused")
+        if refused is None:
+            refused = [c for c in f.get("missing") or [] if str(c).casefold() in unsupported]
+        never = f.get("never_cast")
+        if never is None:
+            never = [c for c in f.get("missing") or [] if c not in refused]
+        if refused:
+            missing.append((player, list(refused)))
+        if never and (f.get("games") or 0) > 0:
+            never_cast.append((player, list(never), f.get("games") or 0))
+    return missing, never_cast
 
 
-def _commander_reason(meta: dict, missing: list[dict]) -> str:
+def _names(names: list[str]) -> str:
+    # Card names contain commas, so several are separated by semicolons.
+    return "; ".join(names)
+
+
+def _missing_reason(missing: list[tuple]) -> str:
     """Plain words for the UI: no em dash (CLAUDE.md copy rule)."""
-    refused = set(meta.get("unsupported_cards") or [])
-    parts, n_refused, any_uncast = [], 0, False
-    for f in missing:
-        for c in f["missing"]:
-            faces = {c, *(p.strip() for p in c.split(" // "))}
-            if faces & refused:
-                n_refused += 1
-                parts.append(f"{f.get('player')} ({c}, which Forge refused to load)")
-            else:
-                any_uncast = True
-                parts.append(f"{f.get('player')} ({c})")
-    games = max((f.get("games") or 0) for f in missing)
+    parts = []
+    for player, refused in missing:
+        if refused is None:
+            parts.append(f"{player}'s deck file lists no commander, so Forge played "
+                         f"that deck without one.")
+        else:
+            one = len(refused) == 1
+            parts.append(f"Forge refused to load {player}'s "
+                         f"{'commander' if one else 'commanders'} ({_names(refused)}) and "
+                         f"played that deck without {'its commander' if one else 'them'}.")
+    deck = "deck" if len(missing) == 1 else "decks"
+    return " ".join(parts) + f" These results do not describe the {deck} as built."
+
+
+def _never_cast_reason(never_cast: list[tuple]) -> str:
+    """The note for a commander that loaded and was never cast. It reports a
+    limit of Forge's AI, so it says what the run shows without condemning it."""
+    games = max(g for _, _, g in never_cast)
     where = "in the one game played" if games == 1 else f"in any of the {games} games"
-    text = f"A commander never appeared {where} for: {'; '.join(parts)}."
-    if n_refused == 1:
-        text += " Forge played that deck without its commander."
-    elif n_refused > 1:
-        text += " Forge played those decks without their commanders."
-    if any_uncast:
-        text += (" A commander Forge loads but never casts is usually one its AI "
-                 "refuses to play.")
-    return text + " These results do not describe the deck as built."
+    if len(never_cast) == 1:
+        player, names, _ = never_cast[0]
+        one = len(names) == 1
+        cmd = "commander" if one else "commanders"
+        return (f"{player}'s {cmd} ({_names(names)}) loaded, but Forge's AI never cast "
+                f"{'it' if one else 'them'} {where}, so the deck was tested without its "
+                f"{cmd} in play. Over a full run that usually means Forge's AI doesn't "
+                f"cast {'that card' if one else 'those cards'} on its own.")
+    items = "; ".join(f"{p} ({_names(n)})" for p, n, _ in never_cast)
+    return (f"These commanders loaded, but Forge's AI never cast them {where}: {items}. "
+            f"Those decks were tested without their commanders in play. Over a full run "
+            f"that usually means Forge's AI doesn't cast those cards on its own.")
 
 
 def summarize_flags(verdict: dict) -> str:
     """One short line for a log or a CLI, never for the UI."""
-    if verdict["quality"] == CLEAN:
+    if not verdict["flags"]:
         return "clean"
     return f"{verdict['quality']}: {', '.join(verdict['flags'])}"
 

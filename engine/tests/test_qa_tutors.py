@@ -431,6 +431,25 @@ def test_rotated_pilots_and_plans_lookup():
         eq(qctx.find_plans(s / "cell_POD1_rot0.jsonl").name, "plans_POD1.json", "study naming")
         (s / "other.jsonl").write_text("", encoding="utf-8")
         eq(qctx.find_plans(s / "other.jsonl"), None, "no match among several plans")
+        # A pod name matches a whole "_" part of the run's name, never a
+        # substring: plans_a.json is not every run whose name holds an "a".
+        t = d / "tokens"
+        t.mkdir()
+        (t / "plans_a.json").write_text("{}", encoding="utf-8")
+        (t / "plans_b.json").write_text("{}", encoding="utf-8")
+        eq(qctx.find_plans(t / "cell_banana_rot0.jsonl"), None, "no substring match")
+        eq(qctx.find_plans(t / "cell_a_rot0.jsonl").name, "plans_a.json", "whole-part match")
+        # One plans file in a directory is a study run's, but never another
+        # production run's: a run-id result takes its own plans or none.
+        o = d / "sim_results"
+        o.mkdir()
+        (o / "plans_20260101_000000_abc123.json").write_text("{}", encoding="utf-8")
+        eq(qctx.find_plans(o / "sim_20260102_000000_def456_rotated.json"), None,
+           "another run's plans are not this run's")
+        eq(qctx.find_plans(o / "sim_20260101_000000_abc123.json").name,
+           "plans_20260101_000000_abc123.json", "its own plans still found")
+        eq(qctx.find_plans(o / "cell_POD1_rot0.jsonl").name,
+           "plans_20260101_000000_abc123.json", "a study cell keeps the one-file fallback")
 
 
 def test_from_jsonl():

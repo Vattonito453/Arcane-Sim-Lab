@@ -192,24 +192,33 @@ def find_plans(path: str | Path) -> Path | None:
 
     Production: run_sim writes plans_<stamp>_<run id>.json beside the result
     sim_<stamp>_<run id>[_rotated].json. Studies: plans_<pod>.json in the
-    run's directory, a plans/ subdirectory, or the parent, where <pod> is part
-    of the run file's name. With no name match, a directory holding exactly
-    one plans file is taken to be that run's."""
+    run's directory, a plans/ subdirectory, or the parent, where <pod> is a
+    whole "_"-separated part of the run file's name (plans_a.json does not
+    match every name holding an "a"). With no name match, a directory holding
+    exactly one plans file is taken to be that run's, except for a result
+    whose name carries a run id: that run's plans are its own or none, never
+    the one plans file another run left in engine/sim_results."""
     p = Path(path)
     stem = p.name.split(".")[0]
     m = re.match(r"^sim_\d{8}_\d{6}_([A-Za-z0-9_-]+?)(?:_rotated)?$", stem)
-    if m and m.group(1) != "rotated":
+    has_run_id = bool(m and m.group(1) != "rotated")
+    if has_run_id:
         hits = sorted(p.parent.glob(f"plans_*_{m.group(1)}.json"))
         if hits:
             return hits[-1]
+
+    def names_pod(c: Path) -> bool:
+        pod = c.stem[len("plans_"):]
+        return bool(pod) and re.search(rf"(?:^|_){re.escape(pod)}(?:_|$)", stem) is not None
+
     for d in (p.parent, p.parent / "plans", p.parent.parent):
         if not d.is_dir():
             continue
         cands = sorted(d.glob("plans_*.json"))
-        named = [c for c in cands if c.stem[len("plans_"):] and c.stem[len("plans_"):] in stem]
+        named = [c for c in cands if names_pod(c)]
         if named:
             return max(named, key=lambda c: len(c.stem))
-        if d == p.parent and len(cands) == 1:
+        if d == p.parent and len(cands) == 1 and not has_run_id:
             return cands[0]
     return None
 

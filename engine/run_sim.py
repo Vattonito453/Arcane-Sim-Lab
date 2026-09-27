@@ -21,6 +21,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 
@@ -73,7 +74,9 @@ def _dck_info(path: Path) -> dict:
     claim about its commander either way)."""
     info = {"name": path.stem, "commanders": [], "cards": set(), "read": False}
     try:
-        text = path.read_text(encoding="utf-8", errors="replace")
+        # utf-8-sig: a byte-order mark would otherwise hide the [metadata]
+        # header, and with it the Name= that seat attribution relies on.
+        text = path.read_text(encoding="utf-8-sig", errors="replace")
     except OSError:
         return info
     info["read"] = True
@@ -86,10 +89,19 @@ def _dck_info(path: Path) -> dict:
         if section == "metadata" and line.lower().startswith("name="):
             info["name"] = line.split("=", 1)[1].strip() or info["name"]
             continue
-        m = re.match(r"^\d+\s+(.+?)\s*$", line)
-        if not m or section not in ("commander", "main"):
+        # Read card lines the way Forge 2.0.13's CardPool does (checked in
+        # its class file): the leading count is optional and defaults to 1,
+        # and a line starting with '#' or ';' is a comment. Requiring a count
+        # here would report a hand-written "Krenko, Mob Boss" commander line
+        # as no_commander and mark a good run polluted.
+        if not line or line[0] in "#;" or section not in ("commander", "main"):
+            continue
+        m = re.match(r"^(?:\d+\s+)?(.+?)\s*$", line)
+        if not m:
             continue
         name = m.group(1).split("|", 1)[0].strip()
+        if not name:
+            continue
         info["cards"].add(name)
         if section == "commander":
             info["commanders"].append(name)
@@ -107,13 +119,34 @@ def _strip_seat(player: str) -> str:
     return re.sub(r"^Ai\(\d+\)-", "", player or "")
 
 
+def _fold(name: str) -> str:
+    """Case- and accent-free form of a card name ("Lim-Dûl" -> "lim-dul")."""
+    return "".join(c for c in unicodedata.normalize("NFKD", name)
+                   if not unicodedata.combining(c)).casefold()
+
+
 def _refused_commanders(commanders: list[str], unsupported: list[str]) -> list[str]:
     """The commanders Forge refused at load. Forge prints the name exactly as
     the deck file requested it, so this matches that name (ignoring case) and
     never a face: a deck listing "Ral, Monsoon Mage" loads fine even when
-    another deck's "Ral, Monsoon Mage // Ral, Leyline Prodigy" was refused."""
-    refused = {n.casefold() for n in unsupported}
-    return [c for c in commanders if c.casefold() in refused]
+    another deck's "Ral, Monsoon Mage // Ral, Leyline Prodigy" was refused.
+
+    The refusal arrives on the JVM's stderr, whose encoding follows the
+    container's locale. The worker image sets none, and a JVM writing ASCII
+    prints each character it cannot encode as '?' ("Lim-D?l"). A refused
+    commander with an accented name must still be caught, or the run would
+    read as clean with a never-cast note instead of polluted. So names are
+    compared accent-free, and in a refusal that carries '?' each '?' stands
+    for exactly one character."""
+    folded = {_fold(n) for n in unsupported}
+    wild = [re.compile("".join("." if ch == "?" else re.escape(ch) for ch in _fold(n)), re.S)
+            for n in unsupported if "?" in n]
+    out = []
+    for c in commanders:
+        f = _fold(c)
+        if f in folded or any(p.fullmatch(f) for p in wild):
+            out.append(c)
+    return out
 
 
 def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
@@ -152,8 +185,11 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
             continue
         seen_paths.add(str(p))
         decks.append((p, _dck_info(p)))
-    by_deck = {p.name: [n for n in unsupported if n in info["cards"]]
-               for p, info in decks}
+    # Ignoring case, as _refused_commanders does (Forge's own lookup does).
+    by_deck = {}
+    for p, info in decks:
+        listed = {c.casefold() for c in info["cards"]}
+        by_deck[p.name] = [n for n in unsupported if n.casefold() in listed]
     meta: dict = {"unsupported_cards": list(unsupported),
                   "unsupported_by_deck": {k: v for k, v in by_deck.items() if v}}
     commander_format = (fmt or "").lower() == "commander"

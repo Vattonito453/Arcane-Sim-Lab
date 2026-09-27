@@ -164,6 +164,39 @@ def test_a_commander_deck_file_with_no_commander():
             "commander_fidelity"] == []
 
 
+def test_deck_files_are_read_the_way_forge_reads_them():
+    with tempfile.TemporaryDirectory() as d:
+        # Forge's CardPool takes the count as optional and skips '#'/';' lines;
+        # a BOM must not hide the [metadata] header (and so the Name=).
+        p = Path(d) / "hand.dck"
+        p.write_text("﻿[metadata]\nName=Krenko Hand\n[Commander]\n# my general\n"
+                     "Krenko, Mob Boss|RVR\n[Main]\n; ramp\n1 Sol Ring\nMountain\n",
+                     encoding="utf-8")
+        info = run_sim._dck_info(p)
+        assert info["name"] == "Krenko Hand", info
+        assert info["commanders"] == ["Krenko, Mob Boss"], info
+        assert info["cards"] == {"Krenko, Mob Boss", "Sol Ring", "Mountain"}, info
+        games = [{"zones": [zone("Krenko, Mob Boss", "Krenko Hand")]}]
+        f = run_sim.fidelity_meta(games, [p], [], "Commander")["commander_fidelity"]
+        assert len(f) == 1 and "no_commander" not in f[0] and f[0]["missing"] == [], f
+        # unsupported_by_deck ignores case, like the refusal match
+        m = run_sim.fidelity_meta([], [p], ["SOL RING"])
+        assert m["unsupported_by_deck"] == {"hand.dck": ["SOL RING"]}, m
+
+
+def test_a_refusal_printed_without_accents_still_matches():
+    # A JVM writing ASCII prints each unencodable character as '?'
+    lim = "Lim-Dûl the Necromancer"
+    assert run_sim._refused_commanders([lim], ["Lim-D?l the Necromancer"]) == [lim]
+    assert run_sim._refused_commanders([lim], ["LIM-DUL THE NECROMANCER"]) == [lim]
+    assert run_sim._refused_commanders([lim], ["Lim-Dûl the Necromancer"]) == [lim]
+    # the wildcard stands for one character, and never widens to another card
+    assert run_sim._refused_commanders([lim], ["Lim-D?l the Necro"]) == []
+    assert run_sim._refused_commanders(["Krenko, Mob Boss"], ["Lim-D?l the Necromancer"]) == []
+    # ...and the face rule still holds: a joined name does not refuse a face
+    assert run_sim._refused_commanders(["Ral, Monsoon Mage"], [RAL]) == []
+
+
 BASE = {"source": "rotated", "humanized": True, "clock": 900}
 GAMES = [{"result": {"winner": "Ai(1)-x", "duration_ms": 1000}}] * 8
 WINTER = "Winter, Cynical Opportunist"

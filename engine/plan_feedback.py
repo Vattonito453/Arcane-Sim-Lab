@@ -186,9 +186,14 @@ def apply_to_plan(plan: dict, deck_name: str, tags: list[str]) -> dict:
     total = sum(obs["methods"].values())
     if not total:
         return plan
-    # Labels come from analysis._METHODS verbatim; "combat" alone matches
+    # Labels come from analysis._CAUSE_LABEL verbatim; "combat" alone matches
     # nothing there (found by running the committed fixture through this).
-    combat = (obs["methods"].get("combat damage / life loss", 0)
+    # Since ANALYSIS_VERSION 6 a combat kill records as "combat damage"; the
+    # lumped "combat damage / life loss" label is kept for stores written
+    # before it. Drains and burn ("life loss", "non-combat damage") no longer
+    # count as combat, which was the RC4 route to finisher-tilted tutors.
+    combat = (obs["methods"].get("combat damage", 0)
+              + obs["methods"].get("combat damage / life loss", 0)
               + obs["methods"].get("commander damage", 0))
     spell = obs["methods"].get("spell", 0)
     targets = (plan.get("search") or {}).get("targets") or {}

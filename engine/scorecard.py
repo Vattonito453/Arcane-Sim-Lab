@@ -15,8 +15,14 @@ separately).
 
 Confidence, stated per section because the UI must not flatten it:
   outcomes   measured   winner, seats, turns come from the result record
-  timing     measured   rounds counted per player (see true_round)
-  methods    measured   parsed from Forge's own loss lines
+  timing     measured   rounds counted per player (see true_round); a
+                        knockout's round comes from qa.knockouts, dated by
+                        its lethal event, not by the loss line Forge prints
+                        at game end
+  methods    measured   the cause of each game's final knockout
+                        (qa.knockouts via analysis.win_method); Forge's loss
+                        line gives the cause, the lethal event splits life
+                        loss from combat and non-combat damage
   blocking   measured   neutral observer, live power/toughness at decision time
   attacking  measured   same, with the eligible-attacker denominator
   mulligans  measured   GameEventMulligan, every seat, same terms
@@ -60,7 +66,23 @@ def true_round(game: dict, upto_turn_index: int | None = None) -> int:
 
 
 def _death_rounds(game: dict) -> dict[str, int]:
-    """Round each seat was eliminated, from Forge's own loss lines."""
+    """Round each seat was eliminated, from qa.knockouts.
+
+    Forge prints every loser's loss line at game end, so dating a knockout by
+    its loss line put every knockout on the final turn: on the playtester's
+    run Skrat's Revenge read a median knockout round of 14, while its
+    knockouts, read from the lethal events, came on rounds 7 to 12 (median
+    10 over the decided games). qa.knockouts dates each one by the last event
+    of its cause inside the turns the player can have gone out in. The
+    loss-line reading below is only the fallback for a game the analyzer
+    cannot read."""
+    try:
+        from qa.knockouts import knockouts  # noqa: PLC0415  lazy, like win_method
+        kos = knockouts(game)
+    except Exception:  # noqa: BLE001  a reader must never take the endpoint down
+        kos = None
+    if kos:
+        return {bare(k["player"]): k["round"] for k in kos}
     out: dict[str, int] = {}
     for i, t in enumerate(game.get("turns") or []):
         for e in t.get("events") or []:

@@ -21,6 +21,15 @@ runs it is inference over a log that never records cards entering the
 battlefield (83-86% exit-match, see CLAUDE.md). The payload's `basis` and
 `note` say which path each report is on.
 
+How each game ended comes from qa.knockouts (repair plan WS1): every player's
+knockout with its cause, the player whose card dealt it, and the turn, dated
+by the lethal event rather than by Forge's loss lines (which are all printed at
+game end). A game's `method` is the cause of its FINAL knockout, so the old
+"combat damage / life loss" bucket is split into combat damage, non-combat
+damage and life loss, and a game like the playtester's game 1 (two seats out
+to poison, the last to combat) reads "combat damage" with the poison
+knockouts listed beside it.
+
 Combo knowledge comes from combos.py (Commander Spellbook, cached on disk).
 
 CLI:
@@ -40,6 +49,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import board  # noqa: E402
 import cards  # noqa: E402
 import combos  # noqa: E402
+from qa import knockouts as qa_knockouts  # noqa: E402
 
 # Bump when the payload shape or the maths change: the API caches reports on
 # disk beside the results, and a stale cache would silently serve the old shape.
@@ -49,7 +59,11 @@ import combos  # noqa: E402
 # instead of inferring it from stdout, the "fired" reading is gone, and each
 # combo carries `won_after_assembly`. A v4 cache entry holds inferred numbers
 # and the old reading, so it must not be served.
-ANALYSIS_VERSION = 5
+# Bumped to 6 on 2026-09-27: `method` comes from the final knockout's lethal
+# event (qa.knockouts), so "combat damage / life loss" is split; each game
+# carries `knockouts` and `turning_point`; summary carries `knockout_causes`.
+# A v5 entry reads the last-printed loss line and must not be served.
+ANALYSIS_VERSION = 6
 
 _AI = re.compile(r"^Ai\(\d+\)-")
 # "X has kept a hand of 7 cards" / "X has mulliganed down to 6 cards" — take the
@@ -68,7 +82,27 @@ _SPELL = re.compile(r"won by spell '(.+)'\s*\.?\s*$")
 # would count ability text as a spell piece being cast.
 _CAST_LINE = re.compile(r"^(.+?)\s+cast\s+(.+?)(?:\s+targeting|\.|$)", re.I)
 
-# Loss-reason text -> method label. Matched as substrings of Forge's reason.
+# Knockout cause (qa.knockouts) -> the method label the UI and plan_feedback
+# read. Poison, commander damage, spell and deckout keep their v5 labels.
+# "combat damage / life loss" survives only for a life-total loss whose lethal
+# Life line was never logged (cause life_total), where the two cannot be told
+# apart; the UI still words that bucket as "life reached 0".
+_CAUSE_LABEL = {
+    "combat_damage": "combat damage",
+    "noncombat_damage": "non-combat damage",
+    "life_loss": "life loss",
+    "life_total": "combat damage / life loss",
+    "poison": "poison",
+    "commander_damage": "commander damage",
+    "alt_win": "spell",
+    "lose_effect": "lose-the-game effect",
+    "deckout": "deckout",
+    "concession": "concession",
+    "unknown": "other",
+}
+
+# Loss-reason text -> method label, for the fallback below. Matched as
+# substrings of Forge's reason.
 _METHODS = [
     ("won by spell", "spell"),
     ("poison counter", "poison"),
@@ -233,12 +267,35 @@ def p_all_drawn(seen: int, lib_pieces: int, deck_size: int = 99) -> float:
     return comb(deck_size - lib_pieces, seen - lib_pieces) / comb(deck_size, seen)
 
 
-def win_method(game: dict) -> dict:
-    """How this game actually ended, from the game_outcome record."""
+def win_method(game: dict, kos: list[dict] | None = None) -> dict:
+    """How this game ended: the cause of its final knockout.
+
+    {"method", "detail"}: method is a _CAUSE_LABEL value, or "draw", or "not
+    recorded" for a log with no loss lines. detail is the spell's name for a
+    spell win (the UI prints "won by <detail>"), otherwise the card that dealt
+    the final knockout, or Forge's loss reason when no card is known.
+    `kos` lets a caller that already ran qa.knockouts on this game pass them.
+    """
     result = game.get("result") or {}
     if result.get("draw"):
         return {"method": "draw", "detail": "clock or stalemate"}
+    if kos is None:
+        try:
+            kos = qa_knockouts.knockouts(game)
+        except Exception:  # noqa: BLE001  a reader must never take the page down
+            kos = None
+    if kos:
+        final = kos[-1]
+        return {"method": _CAUSE_LABEL.get(final["cause"], "other"),
+                "detail": final.get("card") or final.get("reason") or ""}
+    return _method_from_loss_lines(game)
 
+
+def _method_from_loss_lines(game: dict) -> dict:
+    """The v5 classifier, kept only as the fallback if qa.knockouts cannot
+    read a game: the last-printed loss line, which Forge prints at game end in
+    seat order, so it names the right cause only by luck in a multiplayer
+    game."""
     losses: list[tuple[str, str]] = []
     for t in game.get("turns") or []:
         for e in t.get("events") or []:
@@ -321,9 +378,19 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
         cards.get_many(piece_names, fetch=fetch)
 
     games_out: list[dict] = []
+    knockout_causes: dict[str, int] = {}
     for game in result.get("games") or []:
         n = len(games_out) + 1
-        method = win_method(game)
+        # One parse serves the method, the per-knockout list and the turning
+        # point. A game qa.knockouts cannot read keeps the loss-line method
+        # and carries no knockouts rather than failing the whole report.
+        try:
+            story = qa_knockouts.analyse_game(game)
+        except Exception:  # noqa: BLE001
+            story = {"knockouts": None, "turning_point": None}
+        method = win_method(game, kos=story["knockouts"])
+        for k in story["knockouts"] or []:
+            knockout_causes[k["cause"]] = knockout_causes.get(k["cause"], 0) + 1
         winner = (game.get("result") or {}).get("winner")
         turns = game.get("turns") or []
         end_turn = turns[-1].get("turn", 0) if turns else 0
@@ -332,6 +399,14 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
             "winner": _bare(winner) if winner else None,
             "ended_turn": end_turn,
             **method,
+            # Every knockout, in the order players went out: cause, the player
+            # whose card dealt it, turn and table round (qa.knockouts). The
+            # replay may show these per seat only after the W3 hand audit
+            # (repair plan WS11 task 1).
+            "knockouts": story["knockouts"] or [],
+            # The turn the board swung hardest toward the winner; inferred
+            # (labelled) on stdout runs. Also audit-gated before UI use.
+            "turning_point": story["turning_point"],
         })
 
         # Draw model covers every seated deck, combos or not — draw velocity is
@@ -465,7 +540,10 @@ def analyse(result: dict, deck_dirs: list[Path] | None = None,
         "validity": validity.assess(result),
         "games": games_out,
         "decks": per_deck,
-        "summary": {"games": total, "methods": methods},
+        # methods: one per game, the final knockout's cause. knockout_causes:
+        # every knockout, so "two out to poison, one to combat" is countable.
+        "summary": {"games": total, "methods": methods,
+                    "knockout_causes": knockout_causes},
         # Which board path the assembly numbers came from, and the note worded
         # for it. The note used to say "inferred" on every run, including shim
         # runs whose replay board is a read.

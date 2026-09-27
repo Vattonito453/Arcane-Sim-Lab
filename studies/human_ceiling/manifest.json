@@ -119,7 +119,7 @@
     "joseph_ral": {
      "source": "moxfield D9E7YZlcFUe8Jbihd-LLGA, corrected to the topdeck-REGISTERED list (6-card delta swapped back; Moxfield had post-event edits)",
      "fidelity": "published",
-     "note": "10 sticker-sheet entries from the registered list excluded; Forge has no sticker support"
+     "note": "10 sticker-sheet entries from the registered list excluded; Forge has no sticker support. _____ Goblin (a sticker creature, not in Forge 2.0.13) substituted with Priest of Urabrask (recorded 2026-09-27; before that Forge silently dropped it, and the commander too: see tools/FETCH_NOTES.md)"
     }
    },
    "status": "COMPLETE: sim done, trace extracted"
@@ -135,7 +135,8 @@
    "decklists": {
     "joseph_ral": {
      "source": "same corrected registered list as finals",
-     "fidelity": "published"
+     "fidelity": "published",
+     "note": "same list and the same _____ Goblin -> Priest of Urabrask substitute as the finals seat (recorded 2026-09-27)"
     },
     "tyler_bluefarm": {
      "source": "topdeck.gg OnpUT2WC1HVDXLTixcg19VdbBAz1",

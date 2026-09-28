@@ -41,7 +41,11 @@ the rules KB, deck listing, the results index, run summaries, single-game
 payloads, `/cards`, the wincon analysis endpoint, path-traversal probes on both
 results and analysis, and the three ways `POST /simulate` should refuse a bad
 request — then queues a real 2-game Forge run and follows it through to a
-readable result file.
+readable result file. It also checks each run's game story, pilot and
+commanders in the summary and game payloads. With `--flag-key <a flags-only
+key>` it adds the POST /flags checks (accepted there, 403 from `/simulate` and
+`/decks`, one real flag written, noted "smoke test: safe to delete"); without
+it they are skipped, not failed.
 
 Point it anywhere, including at a deployment:
 
@@ -98,11 +102,31 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    floor. The footnote reports each deck's draw velocity per turn cycle. Import
    shows the same detection the moment a deck is pasted, plus "one swap away" —
    which single card would unlock the most known combos.
+   Since R1 the page also says **who piloted the run** under the lede ("Piloted
+   by Sim Lab's plan agent on Forge's AI (plan version 1, shim 0.15.0)."; a
+   stdout run reads "Piloted by Forge's own AI."), and *Against real
+   playgroups* carries the prediction's pilot label directly above its table
+   ("Fit on stock Forge games; this run used Sim Lab's pilot." plus the rank
+   check's status). A pilot whose latest rank check failed gets no figures,
+   only the reason. Each row of the **Games** table is one sentence from
+   `engine/game_story.py`: the winner and turn, who went out, how and when, and
+   on shim runs the "Biggest board swing" (never on a stdout run, whose board
+   is inferred). On the playtester's run game 1 reads "Skrat's Revenge, turn 10.
+   Out: Stella Lee and Krenko Goblins (poison, turn 9), Kess (combat, turn 10).
+   Biggest board swing: turn 8, Ezuri's Predation."
 4. **Replay.** Top-down table: seats around a centre line, each seat's creatures
    pinned to the middle edge, real Scryfall card faces, identical copies collapsed
    into one tile with a count (`Zombie Token 44`). Attackers get a red ring and an
    "attacking X →" line on the centre edge. Space plays, arrows step, shift+arrows
-   jump a turn, `?t=<n>` deep-links an event.
+   jump a turn, `?t=<n>` deep-links an event. On a shim run with a swing the
+   page's one primary is **Watch the biggest board swing** (and `t` does the
+   same); otherwise the play button is the primary. A seat goes grey, reads
+   "Out on turn N" and clears its permanents at the event Forge dates its loss
+   by. **Flag this moment** opens a form under the head that follows the
+   playhead; typing in it never moves the replay, Escape closes it. Sending
+   needs a flags-only key (`MTG_FLAG_KEYS`, see `deploy/HOSTING.md`) or an API
+   key, except on a fully open local engine; the flag lands in
+   `MTG_DATA_DIR/simkb/review_queue/human/`, which nothing serves back.
 5. **Results** (`/results`). Every finished run, filterable by deck. Runs are
    named by matchup — "Wyleth vs Drana vs Kilo vs Wilhelt" — not by the result
    filename, which is only the address and sits in the row tooltip.
@@ -205,6 +229,8 @@ results are all seat-rotated files whose post-processing masked the first two.
    already-cached entries on load.
 
 Still open, unchanged, and documented in `tasks/`: `_list_results()` parses all 33
-result files to build the index; `runSummary`/`runGame` use `force-cache`, which
+result files to build the index; the summary and game payloads are sent as
+`public, max-age=300` (R1; they were immutable and fetched with `force-cache`
+before, and the client now tags them `?v=r1` to get past that old cache), which
 becomes a cross-user leak once responses are per-user; `Chrome.tsx` hardcodes
 `vincent` and a `Pro` badge.

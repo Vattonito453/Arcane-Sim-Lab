@@ -402,7 +402,11 @@ results page, index and replay read them; old runs otherwise fall back to a
 live read of each deck file, which fails once a deck is deleted):
 `sudo docker exec deploy-api-1 python3 /app/engine/readapt.py --check --all`,
 then `--write --all`. It keeps each file's mtime, only adds decks meta does
-not name yet, and skips decks whose file is gone.
+not name yet, and skips decks whose file is gone. It also leaves the original
+beside each result as `<name>.bak` (measured locally on five results: only
+`meta.commanders` differs once parsed; the rewrite is compact JSON, so an
+indented original also shrinks). Nothing reads the `.bak` files; once the
+pages look right, they can be removed to get the disk back.
 
 ### The tunnel option, retired
 

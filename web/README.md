@@ -92,13 +92,27 @@ components/
   DeckGallery.tsx                 the gallery, shared by /decks /playtest /new
   ApiBaseSetting.tsx              engine URL control (used only by Chrome)
   Tabletop.tsx  Mascot.tsx  ManaPips.tsx
+  FlagMoment.tsx                  the replay's "Flag this moment" form; the only
+                                  code that sends a flags-only key (sendFlag)
+  PredictionPanel.tsx             playgroup prediction, its pilot label and the
+                                  withheld state when a rank check failed
 lib/
   api.ts                          engine client, configurable base URL
   types.ts                        response shapes, mirroring the engine exactly
   format.ts                       stripAi, pct, timeAgo, runDate, scryfallArt, …
   cards.ts                        Scryfall card-fact client + memo
   replay.ts                       event-folding engine (pure, testable)
+  story.ts                        the game story's words (one sentence per game)
+                                  from the engine's knockouts, out seats and
+                                  swing; the engine applies the display switches
 ```
+
+**Payloads (R1, measured 2026-09-28 gzipped as the engine sends them).**
+`runSummary` is 2.6 KB for the playtester's 8-game run and 3.8 KB for the
+largest local 16-game run (it carries every game's story); `runGame` is about
+21 KB for game 1 and 25 KB at the median on the same 8-game run (26 KB median,
+43 KB max on the 16-game one). Both revalidate (`max-age=300`) because the
+story follows `MTG_TURNING_POINT` and `MTG_KNOCKOUT_DETAIL`.
 
 ## Responsive contract
 

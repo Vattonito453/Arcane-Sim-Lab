@@ -328,9 +328,15 @@ def pilot(meta: dict) -> dict:
 
     shim_words = f"shim {shim}" if shim else ("Sim Lab's shim" if via_shim else None)
     plan_words = []
-    if plan_version is not None:
+    # The plan's version and fix flags describe the plan seats only. run_sim
+    # records them whenever plans were BUILT, which includes a run whose
+    # seats all fell back to stock; naming them there would read as "a plan
+    # piloted this" on a run no plan touched.
+    has_plan = kind in ("plan", "mixed")
+    if has_plan and plan_version is not None:
         plan_words.append(f"plan version {plan_version}")
-    if plan_fix is not None and plan_version is not None and plan_version >= 2:
+    if (has_plan and plan_fix is not None and plan_version is not None
+            and plan_version >= 2):
         on = len(plan_fix)
         plan_words.append("tutoring fixes on" if on >= _PLAN_FIX_COUNT
                           else "tutoring fixes off" if on == 0

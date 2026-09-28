@@ -283,7 +283,19 @@ def test_pilot_plan_stock_mixed_unknown():
     assert "plan version 2, tutoring fixes on, shim 0.17.0" in v2["label"], v2
     off = validity.pilot({"humanized": True, "random_dials": False})
     assert off["random"] is False and off["note"] is None, off
-    for p in (plan, stock, stdout, mixed, v2):
+    # run_sim records the plan whenever plans were built, including a run whose
+    # seats all fell back to stock: the label must not name a plan no seat ran.
+    fell_back = validity.pilot({"agent": "simlab-forge-shim/0.17.0", "humanized": False,
+                                "humanized_by_rotation": [False] * 4,
+                                "rotations_detail": _rot(["stock"] * 4),
+                                "plan_version": 2, "plan_fix": ["tutorReach"]})
+    assert fell_back["kind"] == "stock", fell_back
+    assert fell_back["label"] == "Piloted by Forge's own AI (shim 0.17.0).", fell_back
+    part = validity.pilot({"agent": "simlab-forge-shim/0.17.0",
+                           "rotations_detail": _rot(["plan", "stock", "stock", "stock"]),
+                           "plan_version": 2, "plan_fix": []})
+    assert "plan version 2, tutoring fixes off" in part["label"], part
+    for p in (plan, stock, stdout, mixed, v2, fell_back, part):
         assert EM_DASH not in p["label"] and "umaniz" not in p["label"], p
 
 

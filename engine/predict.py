@@ -18,6 +18,7 @@ The model file is small JSON: feature list, standardiser, ridge weights.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
@@ -240,6 +241,21 @@ def model_pilot(model: dict) -> str:
     return "stock" if str(model.get("arm") or "").lower().startswith("stock") else "unknown"
 
 
+def model_fingerprint(model: dict) -> str:
+    """Which fitted model a rank check measured: a hash of the parameters
+    that define its predictions, not of the file.
+
+    A rank check measures one fitted function under one pilot. The refit
+    after G3 is a different function, so a check of the old model must
+    neither keep withholding the new one (decision 19: "suppressed until a
+    refit") nor lend it a pass it never earned. An edit to the file's notes
+    (arm_pilot, ground_truth, the LOO figures) changes nothing a check
+    measured, so it must not change the identity either."""
+    core = {k: model.get(k) for k in ("features", "weights", "mu", "sd", "intercept")}
+    blob = json.dumps(core, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
+
+
 def load_rank_checks(path=None) -> list[dict] | None:
     """The committed rank-check records, in file order.
 
@@ -258,12 +274,19 @@ def load_rank_checks(path=None) -> list[dict] | None:
     return [c for c in checks if isinstance(c, dict)]
 
 
-def latest_check(checks: list[dict], pilot_id: str) -> dict | None:
+def latest_check(checks: list[dict], pilot_id: str, model: str | None = None) -> dict | None:
     """The most recent record for this pilot: latest date, and the later
-    line in the file when two share a date (a re-check appends)."""
+    line in the file when two share a date (a re-check appends).
+
+    With `model` (model_fingerprint of the served model), a record that names
+    a different model is skipped: it checked another fitted function. A
+    record that names no model still counts, so a failed record can never be
+    silenced by leaving the field out; the reader always writes it."""
     best, best_key = None, None
     for i, c in enumerate(checks):
         if c.get("pilot") != pilot_id:
+            continue
+        if model is not None and c.get("model") not in (None, model):
             continue
         key = (str(c.get("date") or ""), i)
         if best_key is None or key > best_key:
@@ -289,10 +312,12 @@ def pilot_honesty(model: dict, pilot: dict, checks: list[dict] | None) -> dict:
     """Label, match and suppression for one run.
 
     pilot is engine/pilot.run_pilot(meta); checks is load_rank_checks().
-    Suppressed only when the latest check for the run's pilot failed, or when
-    the record itself is missing (fail closed). A pilot with no check keeps
-    the label and says so; the model's own pilot needs no check."""
+    Suppressed only when the latest check of THIS model for the run's pilot
+    failed, or when the record itself is missing (fail closed). A pilot with
+    no check keeps the label and says so; the model's own pilot needs no
+    check."""
     arm_pilot = model_pilot(model)
+    fingerprint = model_fingerprint(model)
     match = pilot.get("id") == arm_pilot
     fit_on = ("stock Forge games" if arm_pilot == "stock"
               else f"games from {model.get('arm') or 'another pilot'}")
@@ -321,7 +346,7 @@ def pilot_honesty(model: dict, pilot: dict, checks: list[dict] | None) -> dict:
                   "is no way to confirm the model still ranks decks under this "
                   "run's pilot.")
     else:
-        rec = latest_check(checks, str(pilot.get("id")))
+        rec = latest_check(checks, str(pilot.get("id")), fingerprint)
         if rec is None:
             rank = {"status": "none",
                     "text": "No rank check has been run for this pilot yet."}
@@ -335,7 +360,8 @@ def pilot_honesty(model: dict, pilot: dict, checks: list[dict] | None) -> dict:
             reason = (f"The rank check for this pilot failed ({_fmt_check(rec)}), so the "
                       f"model no longer ranks decks reliably under it. The prediction "
                       f"is withheld for this pilot until the model is refit.")
-    return {"model_arm": {"text": model.get("arm"), "pilot": arm_pilot},
+    return {"model_arm": {"text": model.get("arm"), "pilot": arm_pilot,
+                          "model": fingerprint},
             "pilot": pilot, "pilot_match": match, "label": label,
             "rank_check": rank, "suppressed": suppressed,
             "suppressed_by": by, "suppressed_reason": reason}

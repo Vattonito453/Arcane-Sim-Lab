@@ -225,7 +225,9 @@ export interface PredictionReport {
   /** Pilot honesty (repair plan WS11 task 11). Present on every answer from
    *  a fitted model; absent from an engine older than R1, so each is optional
    *  and the panel renders as before without them. */
-  model_arm?: { text: string | null; pilot: string };
+  /** model is predict.model_fingerprint: a rank check applies only to the
+   *  fitted model it measured, so a refit starts with no check. */
+  model_arm?: { text: string | null; pilot: string; model?: string };
   pilot?: PredictionPilot;
   pilot_match?: boolean;
   /** One sentence, written by the engine: "Fit on stock Forge games; this

@@ -110,7 +110,8 @@ def test_match_needs_no_check():
     assert h["pilot_match"] is True and h["suppressed"] is False, h
     assert h["label"] == "Fit on stock Forge games; this run used stock Forge too.", h
     assert h["rank_check"]["status"] == "model_arm", h
-    assert h["model_arm"] == {"text": "stock Forge, decided games", "pilot": "stock"}
+    assert h["model_arm"] == {"text": "stock Forge, decided games", "pilot": "stock",
+                              "model": predict.model_fingerprint(MODEL)}, h
     # Matching never depends on the record: even a missing file is fine.
     assert predict.pilot_honesty(MODEL, pilot.run_pilot({}), None)["suppressed"] is False
 
@@ -149,6 +150,43 @@ def test_latest_fail_suppresses():
     assert h2["suppressed"] is True, h2
 
 
+def test_checks_belong_to_the_model_they_measured():
+    """Decision 19: withheld 'until a refit'. A check measured one fitted
+    function; after the refit it must neither keep withholding the new model
+    nor lend it a pass. Notes in the model file are not the model."""
+    shipped = predict.Predictor.load().m
+    fp = predict.model_fingerprint(shipped)
+    refit = dict(shipped, weights=[w * 1.1 for w in shipped["weights"]])
+    assert predict.model_fingerprint(refit) != fp
+    # arm_pilot, ground truth and LOO notes do not change what a check measured.
+    noted = dict(shipped, arm_pilot="stock", ground_truth="x", loo={"spearman": 0.1})
+    assert predict.model_fingerprint(noted) == fp
+    run = pilot.run_pilot(_plan_meta())
+    old_fail = dict(_record(R1, False, value=0.21), model=fp)
+    # The model the check measured: withheld.
+    h = predict.pilot_honesty(shipped, run, [old_fail])
+    assert h["suppressed"] is True and h["rank_check"]["status"] == "fail", h
+    assert h["model_arm"]["model"] == fp, h
+    # The refit: the old fail no longer applies; no check has run for it yet.
+    h = predict.pilot_honesty(refit, run, [old_fail])
+    assert h["suppressed"] is False and h["rank_check"]["status"] == "none", h
+    # Nor does an old pass carry over to it.
+    old_pass = dict(_record(R1, True), model=fp)
+    h = predict.pilot_honesty(refit, run, [old_pass])
+    assert h["rank_check"]["status"] == "none", h
+    # A record that names no model still counts, so leaving the field out can
+    # never silence a failure.
+    h = predict.pilot_honesty(refit, run, [_record(R1, False)])
+    assert h["suppressed"] is True, h
+    # The refit's own later check is the one that counts for it.
+    new_pass = dict(_record(R1, True, date="2027-01-20"),
+                    model=predict.model_fingerprint(refit))
+    h = predict.pilot_honesty(refit, run, [old_fail, new_pass])
+    assert h["rank_check"]["status"] == "pass" and h["suppressed"] is False, h
+    h = predict.pilot_honesty(shipped, run, [old_fail, new_pass])
+    assert h["suppressed"] is True, h
+
+
 def test_missing_record_fails_closed_for_other_pilots():
     h = predict.pilot_honesty(MODEL, pilot.run_pilot(_plan_meta()), None)
     assert h["suppressed"] is True and h["suppressed_by"] == "rank_record_missing", h
@@ -165,7 +203,8 @@ def test_missing_record_fails_closed_for_other_pilots():
 def test_committed_record_and_model_are_consistent():
     checks = predict.load_rank_checks()
     assert isinstance(checks, list), "engine/models/rank_checks.json must parse"
-    need = {"release", "date", "pilot", "jar_sha", "metric", "value", "threshold", "pass"}
+    need = {"release", "date", "pilot", "jar_sha", "metric", "value", "threshold", "pass",
+            "model"}
     for c in checks:
         assert need <= set(c), (sorted(need - set(c)), c)
         assert isinstance(c["pass"], bool), c

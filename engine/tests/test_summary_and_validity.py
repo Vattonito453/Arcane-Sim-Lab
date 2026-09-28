@@ -162,11 +162,29 @@ def test_a_mixed_pod_is_flagged_as_a_different_experiment():
 
 
 def test_a_run_predating_the_pilot_flag_is_suspect():
-    r = _result([_game(winner=A, draw=False, duration_ms=1000)])
+    # A SHIM run that records neither humanized nor per-seat agents: the shim
+    # can run either pilot, so which one played cannot be said.
+    r = _result([_game(winner=A, draw=False, duration_ms=1000)],
+                agent="simlab-forge-shim/0.2.0")
     del r["meta"]["humanized"]
     v = validity.assess(r)
     assert v["quality"] == validity.SUSPECT and "unknown_pilot" in v["flags"], v
-    print("  a run that cannot say which agent ran is suspect: OK")
+    print("  a shim run that cannot say which agent ran is suspect: OK")
+
+
+def test_a_stdout_run_is_stock_not_unknown():
+    # No shim agent: the stdout path, which only Forge's own AI can play (the
+    # plan agent arrived with the shim). Its pilot line reads "Piloted by
+    # Forge's own AI." and the prediction calls it the model's own arm, so
+    # validity must not call the same run unplaceable (VALIDITY_VERSION 5).
+    r = _result([_game(winner=A, draw=False, duration_ms=1000)])
+    del r["meta"]["humanized"]
+    v = validity.assess(r)
+    assert "unknown_pilot" not in v["flags"] and v["quality"] == validity.CLEAN, v
+    assert not any("which agent piloted" in s for s in v["reasons"]), v
+    assert validity.pilot(r["meta"])["kind"] == "stock", validity.pilot(r["meta"])
+    assert validity.VALIDITY_VERSION >= 5
+    print("  a stdout run is stock Forge, not an unknown pilot: OK")
 
 
 def test_a_malformed_file_does_not_crash_the_gate():
@@ -191,6 +209,7 @@ def main() -> None:
                test_severity_is_the_worst_flag_not_the_last_one,
                test_a_mixed_pod_is_flagged_as_a_different_experiment,
                test_a_run_predating_the_pilot_flag_is_suspect,
+               test_a_stdout_run_is_stock_not_unknown,
                test_a_malformed_file_does_not_crash_the_gate):
         fn()
     print("timeouts + validity: ALL ASSERTIONS PASSED")

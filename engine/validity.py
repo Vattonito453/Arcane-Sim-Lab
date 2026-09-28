@@ -39,7 +39,14 @@ wins ~11%, seat 4 ~36%), so these win rates are not comparable to anything.
 `mixed_pilot`: some seats ran the plan agent and some fell back to stock
 (audit A8). A mixed pod is a different experiment, not a degraded one.
 
-`unknown_pilot`: written before the shim recorded which agent ran.
+`unknown_pilot`: a shim run that records neither per-seat agents nor
+`humanized`, so which pilot played it cannot be said (pilot.run_pilot's
+"unknown", worded "Pilot not recorded" on the run page). A stdout run is NOT
+flagged: the plan agent only ever ran inside the shim (it arrived with the
+shim on 2026-07-31), so a run with no shim agent is Forge's own AI, which is
+what its pilot line and the prediction label say. Until VALIDITY_VERSION 5
+every such run was flagged here as unplaceable while the same page called it
+stock Forge.
 
 `commander_missing` (certain, any path): Forge played a seat without its
 commander, because it refused to load it at startup or the deck file lists no
@@ -66,7 +73,7 @@ import json
 import sys
 from pathlib import Path
 
-from pilot import disclose as _pilot_disclose
+from pilot import disclose as _pilot_disclose, run_pilot as _run_pilot
 
 # Every per-game clock the pipeline has shipped with, newest first: 900 s
 # (2026-08-03, measured), 300 s (2026-08-03, a guess that was too short), 240 s
@@ -112,7 +119,10 @@ _SEVERITY = {
 #   commander_never_cast note.
 # 4 (2026-09-28): mixed_pilot only when some rotations ran the plan agent and
 #   some did not; an all-stock run is no longer called a mixed pod.
-VALIDITY_VERSION = 4
+# 5 (2026-09-28): unknown_pilot only when pilot.run_pilot cannot name the
+#   pilot; a stdout run is stock Forge, as its pilot line says. (4 and 5 ship
+#   together in R1; 4 was never deployed.)
+VALIDITY_VERSION = 5
 
 
 def _clock_seconds(meta: dict) -> int | None:
@@ -203,7 +213,10 @@ def assess(result: dict) -> dict:
             f"Mixed pod: {sum(1 for x in by_rotation if x)} of {len(by_rotation)} "
             f"rotations ran the plan agent and the rest fell back to stock. "
             f"That is a different experiment, not a degraded one.")
-    elif "humanized" not in meta:
+    elif "humanized" not in meta and _run_pilot(meta)["kind"] == "unknown":
+        # The same derivation as the pilot line and the prediction label: a
+        # run with no shim agent is stock Forge (the plan agent only ever ran
+        # in the shim), so only a shim run that records no pilot is unplaced.
         flags.append("unknown_pilot")
         reasons.append(
             "Written before the run recorded which agent piloted it, so it "

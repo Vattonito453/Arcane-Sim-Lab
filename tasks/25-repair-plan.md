@@ -177,6 +177,7 @@ The total is about **128 developer-days**, or about 118 if the executor is a NO-
 - Shim 0.17.0 adds a `seedForge` flag that calls `forge.util.MyRandom.setRandom(new Random(seed))` per game. This is one call to a public API.
 - E2 checks that the same seed gives the same opening shuffles and hands. It runs within 0.17.0, because 0.16.0 cannot seed.
 - Until E2 passes, every n is sized as unpaired. After it passes, arms share seed lists, which pairs opening hands. Games are expected to diverge after the first differing decision.
+- **E2 passed on 2026-09-28, 10/10** (`studies/e2_seeding/RESULTS.md`): a shared seed pairs the deal, the first player and the first mulligan round. Same-arm games then stay identical in play until the AI takes a decision drawn from Java's unseeded `Collections.shuffle` (a modal spell's mode, a gift recipient) or taps mana sources in another order. Keep sizing n as unpaired and treat the pairing as variance reduction on the opening only. Pairing deeper would need those shuffles routed through `MyRandom` (an upstream Card-Forge PR, or a per-game reseed in the shim).
 
 **Arm-neutral metric definitions** (implemented once, in `engine/qa/`):
 - **Assembled.** At some zone record, every piece of a reference line is in the zone the line requires.
@@ -1450,7 +1451,7 @@ At 7 days a week, holidays included, the core through G3 (about 95 days) lands a
 | Forced abilities misbehave in Forge's sub-choosers | E1 exceptions and `exec_abort` reasons | PARTIAL or NO-GO branch; every failure aborts to stock |
 | The executor overrates combo decks against passive tables | G3 red flags: mean win round < 5.0; responses < 20% in the readmit-opponent arm | "Ceiling" label; interaction work first |
 | CPU per game rises on the 2-vCPU VM | 2-core affinity timing at G1; VM idle-queue timing at G3 | Loop caps; +25% budget; the existing 120-turn cap |
-| Paired comparisons are not really paired | E2 | Size every n as unpaired |
+| Paired comparisons are not really paired | E2 passed (the deal pairs 10/10); play can still diverge on unseeded `Collections.shuffle` decisions | Size every n as unpaired; pair only the opening |
 | Goodhart: a metric met by not acting | Guards table (§3.0) on every target | The change fails its gate |
 | Overfitting to the dev decks and Richard's pod | Holdout reported beside dev at G3; holdout lines scored blind at G-lines | Ship only what holds on the holdout |
 | The holdout is too thin to judge conversion | Assembled-line count at G3 | More games, up to 64 per pod; then Vincent's fresh lists |

@@ -77,6 +77,22 @@ recommendation on each.
 | Import warning wording | "Forge's AI doesn't cast these cards on its own" (our pilot does cast some through combo pursuit and tutoring) | `engine/convert_decklist.py`; WS4 task 3 text updated |
 | Commander fidelity | Polluted only when a commander was refused at load or the deck lists none; loaded-but-never-cast is a visible, clean-severity note (`commander_never_cast`) | `engine/run_sim.py`, `engine/validity.py` (VALIDITY_VERSION 3); WS4 task 4 text updated |
 
+## Open after week 3 (owner)
+
+Each has a recommendation; none blocks the R1 code, and the first two block
+only the R1 deploy.
+
+| # | Decision | Recommendation |
+|---|---|---|
+| a | Richard's flags key | Generate it and set `MTG_FLAG_KEYS=richard:<key>` on the VM (`deploy/HOSTING.md`, "Giving a playtester a flag key"). Owner only: agents never generate secrets. |
+| b | Ship the swing as built | Yes: "Biggest board swing", shim runs only, withheld when nothing swung. `MTG_TURNING_POINT=off` holds it entirely. |
+| c | Precon-8 rank check scope and threshold | All 66 precons, 768 games, pass at rank correlation 0.40 as pre-registered in `studies/rank_check_r1/PREREG.md`; about 7-10 h at 12 JVMs. The label ships either way ("no rank check yet"). |
+| d | WS3's C1 criterion (>= 17/20) | Replace it. Forge itself converted 10 of the 20 real source boards; the 28/32 figure counted only games that had already reached 4+ combats. Use board-level agreement with the source games instead (18/20 measured). |
+| e | S8 success rule | Keep the strict rule the regression names (Blasphemous Act or Hullbreaker Horror; the plan pilot binned Archon of Cruelty 20/20, a fail) and report the widened rule beside it until Richard answers the Unmarked Grave question. |
+| f | WS3's load row | Pass as worded: all 10 rows apply and play 20/20 per arm. 9/10 load exactly as written because Forge runs ETB replacements on load (documented). |
+| g | Knockout card convention (D3) | Keep damage summed by card name; any page that ever shows a damage card says "most damage from". |
+| h | Decision 4 checklist sign-off | Sign it: the spike passed, and the checklist is recorded in the shim README. |
+
 ## Order
 
 Dependencies are the only reason to prefer one order over another. Within a tier,
@@ -167,8 +183,23 @@ Don't rebuild these. See `deploy_plan.md` for the measurements.
 - Front end: home, import, run progress, run results, replay theater
 - Docker compose with env config, healthcheck, `.env.example`
 - G0a, the tutoring-hotfix gate: PASS on 2026-09-27 (`studies/hotfix_g0/RESULTS.md`).
-  Shim 0.17.0 is cleared for R1 at commit b8894e1 only; merge simlab-forge-shim
-  PR #15, tag `v0.17.0` there, and set `MTG_PLAN_VERSION=2` at the R1 deploy.
+  Shim PR #15 merged as `33243d5` (tree identical to the tested `b8894e1`) and
+  tagged `v0.17.0`; compose pins it with `MTG_PLAN_VERSION=2` (the R1 pin).
+- Week 3 (2026-09-28):
+  - G-harness PASS on the 4-player route (`studies/scenarios/SPIKE.md`). Shim
+    0.17.1 adds `--scenario` (branch `shim-0.17.1-scenario`, dev box only; the
+    production pin stays 0.17.0). Suite S1-S9, S5b and C1 with stock and plan
+    baselines in `studies/scenarios/BASELINE.md`: stock reproduces its S1 and S2
+    failures (0/20 each), about 21 min per arm at 8 JVMs.
+  - E2 PASS, 10/10: a shared seed pairs the deal, first player and first
+    mulligan (`studies/e2_seeding/RESULTS.md`).
+  - Knockout audit PASS, 39/40; turning-point audit FAIL, 8/20
+    (`studies/knockout_audit/RESULTS.md`). It ships as "Biggest board swing",
+    shim runs only, withheld when the winner's raw share did not rise. The
+    card-attribution fixes made after the audit (D1, D2) are not re-audited.
+  - R1 product: per-game story (knockouts, out seats, swing), commander names,
+    the pilot on every run, "Flag this moment" (`MTG_FLAG_KEYS`), and the
+    prediction label with per-pilot rank checks (`studies/rank_check_r1/`).
 
 ## What is deliberately NOT here
 

@@ -17,6 +17,13 @@ more ordinary JVMs:
 Prediction if identity-hash order is the cause: the pinned replicates agree
 with each other through turn 16 on every seed, while ordinary replicates
 keep diverging. Output under $E2_OUT/diag, never into git.
+
+Review note (2026-09-28): the premise above is false. Forge also calls
+java.util.Collections.shuffle(List), whose one-argument form draws from a
+clock-seeded static Random that --seed-forge does not replace (CharmAi mode
+order, AiCostDecision gift recipient, DiscardAi; see review_e2.py scan).
+That source, not identity hashes, is what the play divergences here follow;
+the hash pin did remove the tap-order-only swaps. RESULTS.md has the reading.
 """
 from __future__ import annotations
 

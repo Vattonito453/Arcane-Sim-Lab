@@ -1016,6 +1016,9 @@ footer.chrome {
   section { margin-bottom: 32px; }
   .head .btns { margin-left: 0; width: 100%; }
   .head .btns .btn { flex: 1; justify-content: center; }
+  /* The primary takes a row of its own; the secondaries share the next. Three
+     equal thirds at 375px stood "Watch the biggest board swing" five lines tall. */
+  .head .btns .btn.pri { flex-basis: 100%; }
   /* .btn is nowrap by design so labels don't break mid-phrase on a wide screen.
      At 390px a long one ("Generate coaching report (~$0.01, about 20 s)") is
      simply wider than the viewport, so here it wraps and grows instead. */

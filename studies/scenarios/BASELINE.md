@@ -15,8 +15,8 @@ elsewhere after the load; the owner picks the reading), and C1 fails its target:
 trials) put the harness at 48/100, 43/50 on the boards the game won.
 
 The review (branch `r3/harness-review`) found that 3 of the 20 C1 boards
-had been written with an unpaid shock land untapped that was tapped in the
-game (anomaly 14), regenerated them, re-ran those 3 boards in every C1
+had been written with unpaid shock lands untapped that were tapped in the
+game (4 lands, anomaly 14), regenerated them, re-ran those 3 boards in every C1
 run below, and re-ran S1, S2 and all of C1 under stock for 10 trials each
 (Review re-run, at the end). Every C1 figure here is on the regenerated
 boards; before the fix the stock row read 9/20 and the supplement 49/100.

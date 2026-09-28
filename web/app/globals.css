@@ -767,8 +767,14 @@ input.txt:focus { outline: none; border-color: var(--mana-cyan); }
 .vcr { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-top: 1px solid var(--hairline); }
 .vbtn { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--hairline-strong); border-radius: var(--r-control); background: transparent; color: var(--ink-3); transition: color var(--dur-fast), border-color var(--dur-fast); }
 .vbtn:hover { color: var(--ink-1); border-color: var(--ink-3); }
-.vbtn.play { width: 38px; height: 38px; background: var(--mana-cyan); border-color: var(--mana-cyan); color: var(--ink-on-fill); box-shadow: var(--glow-cyan); }
-.vbtn.play:hover { box-shadow: var(--glow-cyan-strong); }
+.vbtn.play { width: 38px; height: 38px; background: var(--mana-cyan); border-color: var(--mana-cyan); color: var(--ink-on-fill); }
+/* Glow ranks the primary (DESIGN_SYSTEM law 4: nothing else glows). Play is
+   the replay's primary only when no "Watch the ..." button heads the page (a
+   draw, a stdout run, a withheld swing); the page marks it .lead then. Beside
+   that button it stays filled, since cyan is interaction, but unlit. */
+.vbtn.play.lead { box-shadow: var(--glow-cyan); }
+.vbtn.play.lead:hover { box-shadow: var(--glow-cyan-strong); }
+.vbtn.play:not(.lead):hover { background: var(--mana-cyan-ink); border-color: var(--mana-cyan-ink); }
 .vbtn svg { width: 13px; height: 13px; }
 .scrub { flex: 1; position: relative; height: 28px; cursor: pointer; }
 .scrub .rail2 { position: absolute; top: 13px; left: 0; right: 0; height: 3px; background: rgba(148, 163, 184, 0.14); border-radius: 2px; }

@@ -418,6 +418,9 @@ export default function ReplayPage() {
       )
     : null;
   const watchLabel = tp ? `Watch the ${tp.label.toLowerCase()}` : null;
+  // One glowing control per view: "Watch the ..." when it is shown, else the
+  // transport's play button (globals.css .vbtn.play.lead).
+  const hasWatch = Boolean(watchLabel && tpIdx != null);
   return (
     <>
       <Chrome tabs={tabs} />
@@ -438,7 +441,7 @@ export default function ReplayPage() {
             {/* The view's one primary (tasks/26-ux-review.md section 4.6). It
                 is absent, not disabled, when there is no turning point: a
                 draw, or the server holding it back. */}
-            {watchLabel && tpIdx != null && (
+            {hasWatch && (
               <button className="btn pri" onClick={watchTurningPoint}>
                 {watchLabel}
               </button>
@@ -552,7 +555,11 @@ export default function ReplayPage() {
                     <path d="m15 18-6-6 6-6" />
                   </svg>
                 </button>
-                <button className="vbtn play" title={playing ? "Pause" : "Play"} onClick={playPause}>
+                <button
+                  className={hasWatch ? "vbtn play" : "vbtn play lead"}
+                  title={playing ? "Pause" : "Play"}
+                  onClick={playPause}
+                >
                   {playing ? (
                     <svg viewBox="0 0 24 24">
                       <path d="M8 5h3.2v14H8zM12.8 5H16v14h-3.2z" fill="currentColor" />

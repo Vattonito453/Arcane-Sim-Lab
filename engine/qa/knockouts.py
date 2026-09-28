@@ -58,6 +58,38 @@ carries the loser as `by`; one dated only by another player's line (a
 "turn_order" when none was found and only the turn sequence bounds it (the
 latest turn it can have happened on is used, and a flag is raised).
 
+## Card (`card`)
+
+`card` is a card NAME, never one object, and unlike turn, cause and killer it
+is not audited: the week-3 audit reported it without a threshold (27 of 40
+before the fixes below; studies/knockout_audit/RESULTS.md, "Fixes after the
+audit"). Anything that shows it must say what it is:
+  - combat or non-combat damage, and poison dealt as infect damage: the name
+    whose damage lines to the player in the lethal group add up to the most
+    (for poison, the poison damage lines of the lethal turn). Damage is summed
+    by NAME, deliberately: six Goblin Tokens dealing 8 each (48) outrank one
+    Goblin Piledriver dealing 22, so the card reads "Goblin Token", the army,
+    not the largest single creature. The audit's readers read "the source" per
+    object (defect D3), so this is a recorded convention, and a surface that
+    names the card words it as the name that dealt the most damage, never as
+    "the creature that did it". A tie goes to the name that hit FIRST, the
+    pre-registered card rule (it went to the later hit until defect D2).
+  - poison counters given without damage (a trigger such as Etali, Primal
+    Sickness's "they get that many poison counters", or a proliferate such as
+    Karn's Bastion's): the source of the resolution that gave the lethal
+    counter. Forge writes "P receives N poison counter from Q" while that
+    effect resolves, then its "Resolve Stack" line, so the card is that
+    resolution's source (its own head, the stack line it pairs with, or its
+    "[Damage Source: ...]" tag); a trigger that gives counters for another
+    creature's damage (Virulent Silencer) is named, not the creature whose
+    damage set it off. Counters with no resolution behind them (toxic combat
+    damage) carry no card: the log does not say which creature's damage gave
+    them. `by` stays Forge's own "from Q". Until defect D1 these all carried
+    no card.
+  - commander damage: the commander. Alternate win and lose effect: the card
+    Forge's loss line quotes. Life loss: the source of the resolution that
+    drained the life. Deck-out, concession and unknown: none.
+
 ## Rounds
 
 `round` is the table round of the knockout's turn: a player's Nth turn is
@@ -90,12 +122,24 @@ turn 2 does not read as the biggest swing of the game. Seats already knocked
 out are left out of both ends of a turn's comparison, so an elimination is
 never itself counted as a swing. Two turns with the same shift are split by
 mass exits (more creatures leaving the battlefield wins), then by the shift in
-creature count. `event_hint` names what moved the most
-creature power toward the winner on that turn (a spell or ability's
-resolution, or "combat"), each creature entering or leaving being charged to
-the resolution or combat damage Forge logged it with; `event_by` is whose
-card it was. On a stdout run whose owners the log cannot tell, it is what
-moved the most power at all.
+creature count. The turn picked must also raise the winner's RAW
+(unsmoothed) share: the smoothing alone can grow a share the table never
+moved (a winner already holding all the creature power who adds another
+creature reads 100% before and 100% after; a wipe of the opponents' board
+while the winner has no creature reads 0% before and after), and such a pick
+is withheld (None) rather than shown as a swing. That rule is the week-3
+audit's defect T1 (studies/knockout_audit/RESULTS.md); the audit failed the
+turning point (8 of 20), and the rule is not re-audited. What the metric
+measures is narrower than "the turn the game turned" by construction (defect
+T2): only creatures count, at their power as they entered, so burn, auras,
+equipment, counters added later and alternate wins never move it. This
+module still computes it on stdout runs (for /analysis and a future
+re-audit); game_story holds those from every page. `event_hint` names what
+moved the most creature power toward the winner on that turn (a spell or
+ability's resolution, or "combat"), each creature entering or leaving being
+charged to the resolution or combat damage Forge logged it with; `event_by`
+is whose card it was. On a stdout run whose owners the log cannot tell, it is
+what moved the most power at all.
 
 Stdlib only. The card cache is consulted without fetching, and only on stdout
 runs or pre-0.3.0 shim logs whose zone records carry no types or P/T.
@@ -160,6 +204,10 @@ _NAME_ID = re.compile(r"^(?P<name>.*?)\s*\((?P<id>\d+)\)\s*$")
 _RESOLVE_HEAD = re.compile(r"^(?P<name>[^\[\]]+?) \((?P<id>\d+)\) -\s")
 # "... [Card: Drown in the Loch (72), Activator: Ai(1)-Kess, Reanimator, ..."
 _CARD_TAG = re.compile(r"\[(?:Card|Zone Changer): (?P<name>[^\[\]]+?) \((?P<id>\d+)\)")
+# A damage trigger's resolution: "Whenever Etali deals combat damage to a
+# player, they get that many poison counters. ... [Damage Source: Etali,
+# Primal Sickness (268), Damaged: Ai(2)-NanMan Felix Five-Boots, Amount: 11]"
+_DAMAGE_SOURCE_TAG = re.compile(r"\[Damage Source: (?P<name>[^\[\]]+?) \((?P<id>\d+)\)")
 # "Leonin Shikari - Creature 2 / 2" (a creature spell resolving, stdout)
 # The whole line, anchored: a trigger's printed text can END in
 # "[..., SpellAbility: Hyrax Tower Scout - Creature 3 / 3]", and an unanchored
@@ -434,7 +482,8 @@ class _Ctx:
         who = self.owners.controller(ev.idx, card_id, card)
         return (who, "log") if who else (None, None)
 
-    def pairs(self, ti: int) -> dict[int, tuple[str, str, str | None]]:
+    def pairs(self, ti: int, tag_blind: bool = False
+              ) -> dict[int, tuple[str, str, str | None]]:
         """{resolution event index: (player, card, id)} for turn index `ti`,
         pairing each "Resolve Stack" line with the "Add To Stack" line it
         resolves.
@@ -444,10 +493,20 @@ class _Ctx:
         tag naming the object that set it off, not its source; the source and
         its controller are on the stack line ("Ai(4)-Drana Vampires triggered
         Blood Artist"). Pairing is by name, most recent first, and only a
-        text-only resolution may fall back to the top of the stack."""
+        text-only resolution may fall back to the top of the stack.
+
+        `tag_blind` matches names only in the text before Forge's trailing
+        tags. The default also matches inside them, so a trigger whose tag
+        names the spell that set it off ("Whenever you cast a spell,
+        proliferate. [Card: Forgotten Ancient (367), ...]") pairs with that
+        spell's cast line instead of the trigger's own (Inexorable Tide). Only
+        the poison-counter source (defect D1) reads the tag-blind pairing:
+        the default feeds audited fields (a drain's `by`, a deck-out's
+        dating), and changing it is left for a re-audit to measure."""
         cache = self.__dict__.setdefault("_pairs", {})
-        if ti in cache:
-            return cache[ti]
+        key = (ti, tag_blind)
+        if key in cache:
+            return cache[key]
         stack: list[tuple[str, str, str | None]] = []
         out: dict[int, tuple[str, str, str | None]] = {}
         for ev in self.flat:
@@ -463,14 +522,15 @@ class _Ctx:
                         stack.append((who, name, cid))
             elif ev.action == "stack_resolve" and stack:
                 headed = bool(_RESOLVE_HEAD.match(ev.raw) or _RESOLVE_PT.match(ev.raw))
+                text = _TAGS.split(ev.raw, 1)[0] if tag_blind else ev.raw
                 pick = next((j for j in range(len(stack) - 1, -1, -1)
-                             if stack[j][1] and (ev.raw.startswith(stack[j][1])
-                                                 or stack[j][1] in ev.raw)), None)
+                             if stack[j][1] and (text.startswith(stack[j][1])
+                                                 or stack[j][1] in text)), None)
                 if pick is None and not headed:
                     pick = len(stack) - 1
                 if pick is not None:
                     out[ev.idx] = stack.pop(pick)
-        cache[ti] = out
+        cache[key] = out
         return out
 
     def resolution_source(self, res: _Ev) -> tuple[str | None, str | None,
@@ -639,15 +699,29 @@ def _drain_source(ctx: _Ctx, lethal: _Ev) -> _Ev | None:
 
 
 def _main_source(hits: list[_Ev]) -> _Ev:
-    """The damage line of the source that dealt the most in `hits` (by card
-    name, so nine Beast tokens outweigh the one Squirrel that connected
-    last); on a tie, the later one."""
+    """A damage line of the card name that dealt the most in `hits`.
+
+    Summed by card NAME, deliberately (module docstring, "Card"): nine Beast
+    tokens outweigh the one Squirrel that connected last, and six Goblin
+    Tokens at 8 each outweigh one Goblin Piledriver at 22. The audit's readers
+    counted per object instead (defect D3); the name convention is kept and
+    documented rather than changed.
+
+    A tie goes to the name whose first hit came FIRST, the pre-registered
+    rule ("on a tie, the first one listed"); it went to the later hit until
+    the audit's defect D2 (four unblocked 1/1s, Bird Illusion, Elemental,
+    Bird Illusion, Elemental: Bird Illusion Token). The line returned is that
+    name's LAST hit, as before the fix: callers read its card id to attribute
+    `by`, the audited field."""
     total: dict[str, int] = defaultdict(int)
+    first: dict[str, int] = {}
     last: dict[str, _Ev] = {}
     for ev in hits:
-        total[ev.dmg[0]] += ev.dmg[2]
-        last[ev.dmg[0]] = ev
-    name = max(total, key=lambda n: (total[n], last[n].idx))
+        name = ev.dmg[0]
+        total[name] += ev.dmg[2]
+        first.setdefault(name, ev.idx)
+        last[name] = ev
+    name = max(total, key=lambda n: (total[n], -first[n]))
     return last[name]
 
 
@@ -691,6 +765,73 @@ def _life_knockout(ctx: _Ctx, player: str, evs: list[_Ev]) -> dict:
     return out
 
 
+def _infect_behind(hits: list[_Ev], last: _Ev) -> bool:
+    """Whether the counter line `last` follows poison DAMAGE to the player:
+    infect damage Forge wrote since the player's previous counter line in the
+    same turn. Forge prints every infect damage line of a combat step and then
+    one "receives N poison counter" line per player, so a counter line with no
+    such damage before it was given by something else (a trigger, a
+    proliferate)."""
+    for ev in reversed(hits[:hits.index(last)]):
+        if ev.ti != last.ti or ev.recv:
+            return False
+        if ev.dmg:
+            return True
+    return False
+
+
+# What may sit between a counter line and the "Resolve Stack" line of the
+# effect that gave the counters: other counter or damage lines of the same
+# resolution, life changes, replacement effects, deaths, mana.
+_WHILE_RESOLVING = {"damage", "life_change", "replacement_effect", "zone_change",
+                    "mana"}
+
+
+def _counter_resolution(ctx: _Ctx, recv_ev: _Ev) -> _Ev | None:
+    """The resolution that gave the counters on `recv_ev`, or None.
+
+    Forge writes an effect's counter lines while it resolves and its "Resolve
+    Stack" line after them ("... receives 1 poison counter from P", then
+    "Karn's Bastion (18) - Proliferate."). So it is the next resolution in the
+    same turn, with nothing between but lines an effect writes as it resolves.
+    A stack line or a phase line first means no effect was resolving: the
+    counters came with damage (toxic), and a later trigger that resolves in
+    the same step (a creature's death trigger) is not their source."""
+    flat = ctx.flat
+    for j in range(recv_ev.idx + 1, min(len(flat), recv_ev.idx + 8)):
+        ev = flat[j]
+        if ev.ti != recv_ev.ti:
+            return None
+        if ev.action == "stack_resolve":
+            return ev
+        if ev.action not in _WHILE_RESOLVING:
+            return None
+    return None
+
+
+def _counter_source(ctx: _Ctx, res: _Ev) -> tuple[str | None, str | None]:
+    """(card, id) of the resolution `res` that gave poison counters.
+
+    A spell or activated ability names itself ("Karn's Bastion (18) -
+    Proliferate."). A trigger prints its text, and its source is the stack
+    line it pairs with ("P triggered Etali, Primal Sickness"), paired on the
+    text before Forge's tags (_Ctx.pairs, tag_blind): the tags name what set
+    the trigger off, so "Poisonous 3 (...) [Damage Source: Solemn Simulacrum
+    (243) ...]" must not pair with the Sword that triggered beside it. The
+    "[Damage Source: ...]" tag gives the card's instance number when it names
+    the same card, and the card itself when nothing pairs."""
+    head = _RESOLVE_HEAD.match(res.raw)
+    if head:
+        card, cid = head.group("name").strip(), head.group("id")
+    else:
+        pair = ctx.pairs(res.ti, tag_blind=True).get(res.idx)
+        card, cid = (pair[1], pair[2]) if pair else (None, None)
+    tag = _DAMAGE_SOURCE_TAG.search(res.raw)
+    if tag and (card is None or card == tag.group("name").strip()):
+        return tag.group("name").strip(), cid or tag.group("id")
+    return card, cid
+
+
 def _poison_knockout(ctx: _Ctx, player: str, evs: list[_Ev]) -> dict:
     hits = [ev for ev in evs
             if (ev.dmg and ev.dmg[5] and ev.dmg[4] == player)
@@ -698,15 +839,26 @@ def _poison_knockout(ctx: _Ctx, player: str, evs: list[_Ev]) -> dict:
     if not hits:
         return {"cause": "poison", "ev": None}
     last = hits[-1]
-    dmg = ([ev for ev in hits if ev.dmg and ev.ti == last.ti]
-           or [ev for ev in hits if ev.dmg])
     out = {"cause": "poison", "ev": last}
-    if dmg:
-        src = _main_source(dmg)
-        out.update(card=src.dmg[0], card_id=src.dmg[1], src_ev=src)
     recv = [ev for ev in hits if ev.recv and ev.recv[2]]
     if recv:
         out["recv_from"] = recv[-1].recv[2]
+    if last.recv and not _infect_behind(hits, last):
+        # The lethal counters came without damage (defect D1: these carried no
+        # card). The card is what gave them; `by` stays Forge's own "from P",
+        # which the audit passed, rather than being re-derived from the card.
+        res = _counter_resolution(ctx, last)
+        if res is not None:
+            card, cid = _counter_source(ctx, res)
+            if card:
+                out.update(card=card, card_id=cid, src_ev=res)
+        if out.get("recv_from"):
+            out.update(by=out["recv_from"], by_basis="log")
+        return out
+    dmg = [ev for ev in hits if ev.dmg and ev.ti == last.ti]
+    if dmg:
+        src = _main_source(dmg)
+        out.update(card=src.dmg[0], card_id=src.dmg[1], src_ev=src)
     return out
 
 
@@ -1435,10 +1587,12 @@ def turning_point(game: dict, kos: list[dict] | None = None,
     """The turn with the largest shift in board power toward the winner.
 
     {turn, round, seat, shift, basis, inferred, event_hint, event_by,
-     event_seq, share_before, share_after} or None (a draw, no winner, or no turn that
-    moved the board toward the winner). `seat` is whose turn it was;
+     event_seq, share_before, share_after} or None (a draw, no winner, no turn
+    that moved the board toward the winner, or a pick whose raw share did not
+    rise: see the module docstring, defect T1). `seat` is whose turn it was;
     share_before/after are the winner's raw share of the table's creature
-    power among the seats compared (for prose: "from 15% to 86%").
+    power among the seats compared (for prose: "from 15% to 86%"), and
+    share_after is always above share_before.
     """
     res = game.get("result") or {}
     winner = res.get("winner")
@@ -1485,6 +1639,16 @@ def turning_point(game: dict, kos: list[dict] | None = None,
     def raw_share(snap):
         total = sum((snap.get(s) or [0, 0])[1] for s in seats)
         return round((snap.get(winner) or [0, 0])[1] / total, 3) if total else 0.0
+
+    # Defect T1: the smoothing prior can raise the winner's share on a turn
+    # the table's creature power did not move toward them (100% before, 100%
+    # after, the winner only adding to a board nobody else had). That is no
+    # swing, so the pick is withheld rather than shown; the next-best turn is
+    # not promoted in its place, which would be a new, unaudited selection.
+    # Compared at the precision the payload carries, so share_after is always
+    # above share_before where a turning point is returned.
+    if raw_share(after) <= raw_share(before):
+        return None
 
     # The hint is what moved the most power toward the winner; on a stdout
     # run whose owners the log cannot tell, what moved the most power at all.

@@ -264,6 +264,71 @@ the failure message says so.
 The address to hand out is `http://EXTERNAL_IP/` (find it with
 `gcloud compute instances describe simlab --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'`).
 
+### Giving a playtester a flag key
+
+"Flag this moment" in the replay lets a playtester mark a play that looks
+wrong and say why. The flag is written to `/data/simkb/review_queue/human/`
+on the data volume; nothing serves it back publicly, and you triage the queue
+(decision 11 in `tasks/README.md`: 30 minutes a week). To send one, the tester
+needs a **flags-only key**. It can flag moments and nothing else: the engine
+refuses it on `/simulate`, `/decks` and every other write with a 403, so it
+cannot start a 4 GB sim. Generating and handing out the key is **you**; an
+agent never creates a real one.
+
+1. Generate a key (any machine with Python):
+
+   ```bash
+   python3 -c "import secrets; print(secrets.token_urlsafe(24))"
+   ```
+
+2. On the VM, add it to `deploy/.env` under a label that names the tester:
+
+   ```
+   MTG_FLAG_KEYS=richard:<the generated key>
+   ```
+
+   More testers are comma-separated, one key each so any one can be revoked
+   alone: `richard:<key1>,vincent:<key2>`. The label is recorded as the flag's
+   reporter; it may use letters, digits, `.`, `_` and `-` (up to 40), and the
+   key may not contain `,` or `:` (`token_urlsafe` never does). **Never** put
+   a tester's key in `MTG_API_KEYS` or `WEB_API_KEY`: those can start sims.
+
+3. Recreate the api container so it reads the new value. No image rebuild is
+   needed; the key is read at start, not baked in:
+
+   ```bash
+   cd ~/simlab/deploy && docker compose --env-file .env up -d api
+   ```
+
+4. Check it. Preflight should print `ok  playtester flag keys` (it reads the
+   same `.env` through compose); a malformed entry fails it and says so. Then
+   `smoke_test.py --flag-key <key>` with a flags key labelled for **yourself**
+   (not the tester's), because that check writes one real flag, "smoke test:
+   safe to delete", under the key's label.
+
+5. Send the key to the tester privately (a direct message, not a group
+   thread or an issue). What to tell them: open any replay, press **Flag this
+   moment**, and paste the key into **Flag key** once. Their browser remembers
+   it (that browser only) and sends it only with flags.
+
+6. To revoke, delete that entry from `MTG_FLAG_KEYS` and recreate the api
+   container again. Their saved key then gets "That flag key was not
+   recognised."
+
+Each key may send `MTG_FLAG_PER_HOUR` flags an hour (60 by default). To read
+the queue:
+
+```bash
+sudo docker exec deploy-api-1 ls -1t /data/simkb/review_queue/human/
+sudo docker exec deploy-api-1 cat /data/simkb/review_queue/human/<id>.json
+```
+
+Each file holds the run, the game, the anchor (event index, turn, round and
+seat), the flagged log line, the note, the reporter and a UTC timestamp. The
+notes are the tester's own words: private data that never goes into this
+repo (decision 9 puts human data in the private data repo). The keyed
+`GET /qa/queue` that the nightly reviewer reads is week 4.
+
 ### Plain HTTP, and when to fix that
 
 This runbook serves HTTP on port 80: fine for a playtest link shared with
@@ -361,6 +426,10 @@ curl -s -o /dev/null -w "%{http_code}\n" -X POST https://your-url/engine/simulat
 ```
 
 `401` is the passing result. `200` means `MTG_API_KEYS` did not reach the process.
+
+Once `MTG_FLAG_KEYS` is set, add `--flag-key <your own flags key>` to the
+smoke test: it proves the key can flag and is refused (403) by `/simulate`
+and `/decks`, and it writes one flag noted "smoke test: safe to delete".
 
 ## Before it is public rather than link-shared
 

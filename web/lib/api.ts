@@ -62,6 +62,96 @@ export function setApiKey(key: string) {
   else window.localStorage.removeItem("simlab.apiKey");
 }
 
+/** The playtester's flags-only key ("Flag this moment", POST /flags).
+ *
+ *  Its own storage key, never mixed with simlab.apiKey: a flag key can flag and
+ *  nothing else, and it is sent ONLY with sendFlag() below, never by get/post/
+ *  del. Every accessor tolerates storage that throws (private windows, blocked
+ *  site data): the form then simply asks for the key each time. */
+const FLAG_KEY_STORAGE = "simlab.flagKey";
+
+export function savedFlagKey(): string {
+  try {
+    return window.localStorage.getItem(FLAG_KEY_STORAGE) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export function saveFlagKey(key: string): void {
+  try {
+    if (key) window.localStorage.setItem(FLAG_KEY_STORAGE, key);
+    else window.localStorage.removeItem(FLAG_KEY_STORAGE);
+  } catch {
+    /* storage unavailable: the key is used for this send only */
+  }
+}
+
+/** Where a flag points. `event_index` is the replay's step index (its ?t=);
+ *  the engine derives the turn itself and cross-checks `event_seq` and `turn`,
+ *  answering 409 when this browser's copy of the game is stale. */
+export interface FlagAnchor {
+  event_index: number;
+  event_seq?: number;
+  turn?: number;
+  /** Raw seat key ("Ai(2)-Deck"), or null for "not about one seat". */
+  player?: string | null;
+}
+
+export interface FlagRequest {
+  run: string;
+  game: number;
+  anchor: FlagAnchor;
+  note: string;
+}
+
+export interface FlagReceipt {
+  ok: boolean;
+  id: string;
+  reporter: string;
+  created: string;
+}
+
+/** A refused or failed flag, with what the form needs to explain it. */
+export class FlagError extends Error {
+  status: number; // 0 = the request never got an answer
+  retryAfter: number;
+  constructor(message: string, status: number, retryAfter = 0) {
+    super(message);
+    this.name = "FlagError";
+    this.status = status;
+    this.retryAfter = retryAfter;
+  }
+}
+
+/** POST /flags with the flag key and nothing else as the credential. */
+export async function sendFlag(req: FlagRequest, flagKey: string): Promise<FlagReceipt> {
+  let r: Response;
+  try {
+    r = await fetch(`${apiBase()}/flags`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(flagKey ? { Authorization: `Bearer ${flagKey}` } : {}),
+      },
+      body: JSON.stringify(req),
+    });
+  } catch (e) {
+    throw new FlagError(e instanceof Error ? e.message : String(e), 0);
+  }
+  let body: { error?: unknown; retry_after?: unknown } & Partial<FlagReceipt> = {};
+  try {
+    body = await r.json();
+  } catch {
+    /* a proxy error page, say: the status alone has to explain it */
+  }
+  if (!r.ok) {
+    const retry = Number(r.headers.get("Retry-After") ?? body.retry_after ?? 0) || 0;
+    throw new FlagError(typeof body.error === "string" ? body.error : "", r.status, retry);
+  }
+  return body as FlagReceipt;
+}
+
 /** Thrown for 429/503 so callers can show the wait instead of a raw error. */
 export class RateLimited extends Error {
   retryAfter: number;

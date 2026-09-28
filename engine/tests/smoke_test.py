@@ -9,6 +9,13 @@ queue -> Forge -> adapted JSON -> per-game payload path that the front end walks
     python3 engine/tests/smoke_test.py --sim                  # + one real 2-game sim
     python3 engine/tests/smoke_test.py --base http://host:3000/engine
     python3 engine/tests/smoke_test.py --key <MTG_API_KEYS value>
+    python3 engine/tests/smoke_test.py --flag-key <an MTG_FLAG_KEYS key>
+
+--flag-key checks POST /flags: the key is accepted there, refused (403) by
+/simulate and /decks, and one real flag is written against the newest result
+with the note "smoke test: safe to delete". Use the operator's own flags key,
+never a playtester's, so the flag is not filed under their name. Without it
+the flags checks are skipped, not failed.
 
 --sim runs Forge for real rather than faking a result: a 2-deck 2-game run
 measured 10 s and a 3-deck run 27 s on an M-series laptop, so there is no reason
@@ -82,6 +89,9 @@ def main() -> int:
     p.add_argument("--base", default="http://127.0.0.1:8484",
                    help="API base URL (use .../engine when going through the proxy)")
     p.add_argument("--key", default=None, help="API key, if the server has MTG_API_KEYS set")
+    p.add_argument("--flag-key", default=None,
+                   help="a flags-only key from MTG_FLAG_KEYS (the operator's own); "
+                        "enables the POST /flags checks, which write one flag")
     p.add_argument("--sim", action="store_true", help="also run one real 2-game simulation")
     p.add_argument("--sim-timeout", type=int, default=600)
     a = p.parse_args()
@@ -281,6 +291,34 @@ def main() -> int:
                         {"decks": [d["file"] for d in decks[:2]], "games": 100000}, key=a.key)
         check("POST /simulate rejects an oversized game count", st in (400, 401),
               f"status {st}: {body}")
+
+    print("\nflags (Flag this moment)")
+    if not a.flag_key:
+        print("  note  no --flag-key given: flags checks skipped."
+              "\n        pass the operator's own MTG_FLAG_KEYS key to run them.")
+    else:
+        st, body = call(base, "/flags", "POST", {})
+        check("POST /flags without a key is refused", st == 401, f"status {st}: {body}")
+        st, body = call(base, "/flags", "POST", {}, key=a.flag_key)
+        # 400 means the key passed the gate and the empty body was refused.
+        check("POST /flags accepts the flag key", st == 400, f"status {st}: {body}")
+        st, body = call(base, "/flags", "POST",
+                        {"run": "../../etc/passwd", "game": 1, "anchor": {"event_index": 0}},
+                        key=a.flag_key)
+        check("POST /flags blocks path traversal", st == 400, f"status {st}: {body}")
+        st, body = call(base, "/simulate", "POST", {"decks": [], "games": 0}, key=a.flag_key)
+        check("the flag key cannot start a simulation (403)", st == 403, f"status {st}: {body}")
+        st, body = call(base, "/decks", "POST", {"name": "x", "text": ""}, key=a.flag_key)
+        check("the flag key cannot import a deck (403)", st == 403, f"status {st}: {body}")
+        if newest:
+            st, body = call(base, "/flags", "POST",
+                            {"run": newest, "game": 1, "anchor": {"event_index": 0},
+                             "note": "smoke test: safe to delete"}, key=a.flag_key)
+            check("POST /flags writes a flag against the newest run",
+                  st == 200 and isinstance(body, dict) and bool(body.get("id"))
+                  and bool(body.get("reporter")), f"status {st}: {body}")
+        else:
+            print("  note  no result files: the flag write check needs one.")
 
     if a.sim:
         print("\nlive simulation (real Forge)")

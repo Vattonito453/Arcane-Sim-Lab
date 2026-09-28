@@ -64,7 +64,7 @@ def executed(t: dict) -> bool:
 
 
 RUN_KEYS = ("jar_name", "jar_sha256", "repo_commit", "trials", "seed", "started", "finished", "arms",
-            "parallel", "wall_s", "trials_run", "trials_cached")
+            "parallel", "wall_s", "trials_run", "trials_cached", "invocations")
 
 
 def load(dirs: list[Path]) -> dict:

@@ -310,6 +310,26 @@ def main() -> None:
             R.FORGE_JAR = saved
         print("  line pieces in hand; stale cached trials detected, reported and re-run: OK")
 
+        # 5d. run.json keeps every invocation into one --out (a top-up run
+        # used to overwrite the first run's provenance).
+        rj = tmp / "run_hist.json"
+        assert R.previous_invocations(rj) == []
+        legacy = {"started": "t0", "finished": "t1", "repo_commit": "abc", "trials": 1, "wall_s": 389.4,
+                  "trials_run": 20, "trials_cached": 0, "parallel": 8, "scenarios": {"a": {}, "b": {}}}
+        rj.write_text(json.dumps(legacy), encoding="utf-8")
+        h = R.previous_invocations(rj)
+        assert len(h) == 1 and h[0]["wall_s"] == 389.4 and h[0]["scenarios"] == 2, h
+        second = dict(legacy, started="t2", finished="t3", wall_s=82.2, trials_run=3, trials_cached=17)
+        second["invocations"] = h + [R.invocation_record(second)]
+        rj.write_text(json.dumps(second), encoding="utf-8")
+        assert [x["wall_s"] for x in R.previous_invocations(rj)] == [389.4, 82.2]
+        crashed = dict(second, started="t4", wall_s=None, invocations=second["invocations"])
+        del crashed["finished"]
+        rj.write_text(json.dumps(crashed), encoding="utf-8")
+        h3 = R.previous_invocations(rj)
+        assert len(h3) == 3 and h3[-1]["started"] == "t4" and h3[-1]["finished"] is None, h3
+        print("  run.json invocation history (legacy, topped up, interrupted): OK")
+
         # 6. Aggregate and markdown.
         rows = [t, t2, t3, t4, t5, t6, missing]
         a = R.aggregate(rows)

@@ -633,6 +633,32 @@ def markdown(report: dict) -> str:
 
 # --- main ---------------------------------------------------------------------
 
+INVOCATION_KEYS = ("started", "finished", "repo_commit", "jar_sha256", "arms", "trials", "seed", "parallel",
+                   "wall_s", "trials_run", "trials_cached")
+
+
+def invocation_record(run: dict) -> dict:
+    """One invocation's provenance, as kept in run.json's history."""
+    return dict({k: run.get(k) for k in INVOCATION_KEYS}, scenarios=len(run.get("scenarios") or {}))
+
+
+def previous_invocations(path: Path) -> list[dict]:
+    """The invocation history of an existing run.json; a run.json written
+    before the history existed counts as one invocation (its own fields)."""
+    if not path.exists():
+        return []
+    try:
+        old = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError:
+        return []
+    if "invocations" not in old:
+        return [invocation_record(old)] if old.get("started") else []
+    hist = list(old["invocations"])
+    if not old.get("finished"):
+        # that invocation was interrupted: its own record was never appended
+        hist.append(invocation_record(old))
+    return hist
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("scenarios", nargs="*", help="scenario JSON files (simlab-scenario/1)")
@@ -717,6 +743,12 @@ def main() -> None:
            "arms": arm_names, "arm_defs": {a: arms[a] for a in arm_names}, "trials": args.trials,
            "seed": args.seed, "timeout": args.timeout, "horizon": args.horizon, "parallel": args.parallel,
            "scenarios": scen_meta}
+    # run.json's top-level fields describe this invocation only; every
+    # earlier invocation into the same --out is kept under "invocations", so
+    # a directory topped up later (a supplement, a re-run of stale trials)
+    # still says what ran first.
+    history = previous_invocations(out / "run.json")
+    run["invocations"] = history
     (out / "run.json").write_text(json.dumps(run, indent=1), encoding="utf-8")
     t0 = time.time()
     print(f"{len(jobs)} trials, {args.parallel} at a time", flush=True)
@@ -730,6 +762,7 @@ def main() -> None:
     # This invocation's wall clock: the whole run only when nothing was cached.
     run.update({"wall_s": round(wall, 1), "trials_run": len(jobs) - cached, "trials_cached": cached,
                 "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
+    run["invocations"] = history + [invocation_record(run)]
     (out / "run.json").write_text(json.dumps(run, indent=1), encoding="utf-8")
     write_report(out)
     print((out / "report.md").read_text(encoding="utf-8"))

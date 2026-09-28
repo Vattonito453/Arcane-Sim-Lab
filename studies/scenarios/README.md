@@ -44,7 +44,18 @@ scenario turn when the scenario has no `horizon_turns`; default 8),
 `--plans` (a prebuilt plans JSON keyed by deck name, used for every plan
 seat), `--data-dir` (the `MTG_DATA_DIR` to build plans from), `--fetch`
 (let the plan build fetch card data), `--xmx` (JVM heap, default 3g),
-`--force` (re-run finished trials), `--report-only`.
+`--force` (re-run finished trials), `--report-only`. The Forge desktop jar
+is `$FORGE_JAR` (default: the dev box's
+`C:/Users/Vatto/forge/forge-gui-desktop-2.0.13-jar-with-dependencies.jar`);
+Java runs with its folder as the working directory.
+
+A finished trial in `--out` is reused, not re-run, but only while its
+shim record carries the SHA-256 of the state file the runner has just
+written for it. After a scenario or deck edit the old game is stale: the
+runner re-runs it (and says so), and `--report-only` marks any trial whose
+game played another state (`state_matches: false`, the arm's `stale`
+count, a "Stale trials" line in `report.md`). `run.json`'s `repo_commit`
+ends in `-dirty` when `studies/scenarios` had uncommitted changes.
 
 ## Scenario JSON (`simlab-scenario/1`)
 
@@ -154,13 +165,20 @@ and turns) is one of:
   won" / "has lost") decide. When Forge's setGameOver threw at the
   turn-cap kill, no such lines exist and the result's alive flags are not
   reliable, so the trial is unscored (`success: null`, `unscored`) and
-  leaves the denominator.
+  leaves the denominator. The outcome is read when the game really ends,
+  which is 1 to 3 turns after the cap (the shim polls the turn every 2 s):
+  a loss in those extra turns counts. On S5b it moved nothing (checked
+  from the logs): every plan-arm loss came on the seat's turn-13 draw, and
+  no stock game reached the seat's next turn (17).
 
 **`line`** is `{"seat": i, "pieces": [names]}`: the
 cards whose casts, activations and trigger resolutions the report counts
 for that seat (token copies count, since Forge names them after the card).
 **`horizon_turns`**: the game is called at turn `turn + horizon_turns`
-(the shim's `--max-turns`); default 8, two table rounds at four seats.
+(the shim's `--max-turns`); default 8, two table rounds at four seats. The
+shim checks the cap every 2 s, so a capped game ends 1 to 3 turns later
+(`BASELINE.md`, anomaly 1); `win` and `zone` successes read their own
+`by_turn`, so the extra turns never count for them.
 
 ## What a run reports
 
@@ -173,10 +191,13 @@ shim's JSONL:
   graveyard, exile and command as multisets, library in order, each
   battlefield card's tapped, sick, counters, damage, attachment and
   commander flags, token count). `loaded` = applied with no difference.
-  `line_loaded`: the line seat's line pieces on the battlefield read back
-  as written, whatever else differs (a real board can differ off the line,
-  because Forge runs enter-the-battlefield replacements such as Mox
-  Diamond's during the load).
+  `line_loaded`: the line seat's line pieces read back as written,
+  whatever else differs: card by card on the battlefield, by count in
+  every other zone (so a line held in hand is checked too). A real board
+  can differ off the line, because Forge runs enter-the-battlefield
+  replacements such as Mox Diamond's during the load. `state_matches`:
+  the game played the state file now beside it (false only for a stale
+  trial, above).
 - `winner_seat`, `turns`, `draw`, `turnCapped`, `timedOut`, `error`,
   `killFailed`, `success`, `kill_on_scenario_turn` (the success seat, or
   any winner without `success`, won during the scenario turn),
@@ -193,11 +214,14 @@ shim's JSONL:
 - `agent_events` (plan-seat telemetry by event) and
   `agent_events_on_pieces` (those naming a piece).
 - `ms` (game wall time), `ms_per_turn`, `ms_per_decision` (always null:
-  0.17.1 exposes no per-decision timing), `exceptions` and three samples
-  from the JVM's stderr, `rc`, `wall_s`, `outcomes` (Forge's outcome
-  line per seat) and `game_over_threw`.
+  0.17.1 exposes no per-decision timing), `exceptions` (the number of
+  stderr lines containing `Exception`, the word `Error` or `shim: fatal`,
+  so a stack trace with a `Caused by` exception counts twice) and three
+  samples, `rc`,
+  `wall_s`, `outcomes` (Forge's outcome line per seat) and
+  `game_over_threw`.
 
-Per arm (`summary`): trials, finished, loaded, line_loaded, scored and
+Per arm (`summary`): trials, finished, loaded, line_loaded, stale, scored and
 unscored, success (of scored) with a Wilson 95% interval, kills on the scenario turn, turns to kill (median, mean), draws,
 turn caps, timeouts, errors, exceptions, mean line activity, iterations and
 extra combats, mean game ms, and wall time. `report.md` is the same as a
@@ -208,9 +232,14 @@ the invocation's wall clock (also in `run.json`: `wall_s`, `trials_run`,
 **Pairing.** Trial `k` of every arm uses `--seed-forge seed+k` and the
 same state file (same shuffled libraries), so arms start from identical
 boards and identical Forge seeds. Forge's play under a seed is not fully
-deterministic (`SPIKE.md`: stock-only games repeated exactly over 12 turns
-in 7 of 7 runs; games with plan seats split into two or three variants from
-the same seed), so treat trials as paired openings, not replays.
+deterministic, for stock seats either (`SPIKE.md`): on one seed stock-only
+games repeated exactly over 12 turns in 7 of 7 runs, but on a second seed
+they split into 2 to 4 variants over 6 runs, the first split always the
+order in which Forge taps mana sources; games with plan seats split the
+same way. Treat trials as paired openings, not replays. On scenario
+boards the scenario turn itself has repeated: S1 and S2 re-run on the same
+seeds and jar played an identical scenario turn in 10 of 10 paired trials
+each (`BASELINE.md`, anomaly 9).
 
 ## Limits of the state format
 
@@ -258,6 +287,18 @@ What `GameState` can seed, and what it cannot (Forge 2.0.13 source,
   (`IndexOutOfBoundsException`, 2 C1 boards). Negative life is set after
   the check and works: the seat loses at the game's first check. The
   writer refuses 0; `board_from_game.py` writes an already-lost seat at -1.
+- **A seeded life total counts as life lost or gained this turn.**
+  `GameState` sets life with Forge's `Player.setLife`, which follows the
+  rule that setting a life total is a loss or a gain: a seat seeded at 30
+  starts the scenario turn having lost 10 life this turn, and a seat whose
+  shock land the shim paid back has gained 2. Life-gain and life-loss
+  replacement effects apply to those changes (triggers do not: they are
+  suppressed during the load); a seat that cannot gain life keeps the
+  paid total, which the board check reports. Measured exposure: none of
+  the 741 distinct cards in the suite's 16 decks reads a this-turn life
+  count (Forge's scripts, 2026-09-28), so no committed scenario is
+  affected; check again for a deck with spectacle, bloodthirst or "if an
+  opponent lost life this turn".
 - **The discarded opening.** Forge deals opening hands and resolves
   mulligans before the hook, then the state replaces every zone. So the
   log's first `Turn 1 (...)` line, the `MULLIGAN` entries, the `rubric`
@@ -294,7 +335,16 @@ off to isolate the choice under test). Baselines, verdicts and anomalies:
   zones from a real shim game at the end of a turn's precombat main phase;
   `suite/c1/make_c1.py` draws the 20 boards (seeded) and keeps each source
   game's outcome in `suite/c1/sources.json`. This is also how the suite
-  grows from confirmed misplays (WS3 task 5).
+  grows from confirmed misplays (WS3 task 5). What the board check proves
+  is that Forge loaded what the file says; that the file matches the
+  source game rests on `board_from_game.py`'s reading of the shim's
+  records, which has known gaps, each named in the board's `notes`: a
+  token with no known script, a clone placed under its printed name, and
+  a card that entered tapped and left before its next untap (Forge logs
+  no tap event for a card entering tapped; one that later untaps is read
+  as tapped, 4 lands on 3 C1 boards). Regenerate with
+  `py studies/scenarios/suite/c1/make_c1.py --runs-root <checkout>/studies
+  --forge-index <MTG_DATA_DIR>/forge_index/2.0.13/cards.json`.
 - Plans for the plan arm: `--data-dir <scratch>/g0a/cache_cedh` for the
   cEDH scenarios and C1, `--data-dir <scratch>/g0a/cache_richard` for S8.
 
@@ -308,7 +358,8 @@ off to isolate the choice under test). Baselines, verdicts and anomalies:
   `smoke/report.json`: the end-to-end smoke run (4 trials per arm, both
   arms loaded 4/4 and won on the scenario turn 4/4). It is a loader check,
   not a pilot comparison: this board converts for any pilot.
-- `tests/test_writer.py`, `tests/test_report.py`.
+- `tests/test_writer.py`, `tests/test_report.py`,
+  `tests/test_board_from_game.py` (each prints ALL ASSERTIONS PASSED).
 - `SPIKE.md`: the gate.
 - `board_from_game.py`: a scenario board from a real shim game.
 - `suite/`, `BASELINE.md`: the initial suite and its baselines;

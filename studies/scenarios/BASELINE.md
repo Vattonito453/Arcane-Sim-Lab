@@ -6,9 +6,10 @@ pilot, on shim 0.17.1 (`967cb71`) on the dev box on 2026-09-28. Stock
 reproduces every in-game failure the plan names: 0/20 on S1 and S2, and 0/20
 on every other loop scenario (S3, S4, S6, S7). Of the four acceptance rows
 fixed in the plan, two pass (S1 and S2 reproduce; one arm takes 21 min), the
-load row is partial (every S scenario loads exactly in 20/20 trials per arm;
-C1 plays all 20 boards and seeds the Godo and Helm line on all 20, but 10
-boards differ elsewhere after the load), and C1 fails its target: stock won
+load row passes as the plan words it and fails on the stricter reading
+(every S scenario loads exactly in 20/20 trials per arm; C1 plays all 20
+boards and seeds the Godo and Helm line on all 20, but 10 boards differ
+elsewhere after the load; the owner picks the reading), and C1 fails its target: stock won
 10/20 against a target of at least 17/20. Forge itself won only 10 of these
 20 boards in the games they came from, and 5 stock trials per board (100
 trials) put the harness at 48/100, 43/50 on the boards the game won.
@@ -31,7 +32,7 @@ Hullbreaker Horror. And it kills itself under an opposing Torpor Orb in all
 
 | Metric (tasks/25-repair-plan.md, WS3) | Target | Measured | Verdict |
 |---|---|---|---|
-| Scenarios that load and play | 10/10, or 8/10 via the 2-player fallback | 4-player route. Stock and plan: S1 to S9, S5b and S8 loaded exactly as written and played to a result in 20/20 trials each, with no errored game. C1: all 20 boards play in both arms, and the line pieces (Godo, Helm attached) load as written on 20/20. The whole board loads exactly on 10/20; the other 10 differ in 1 to 3 cards off the line (below). So 9 of the plan's 10 rows pass outright and C1 passes on its line but not on its whole board. | **Partial** (9/10 exact; C1 line 20/20, board 10/20) |
+| Scenarios that load and play | 10/10, or 8/10 via the 2-player fallback | 4-player route. Stock and plan: S1 to S9, S5b and S8 loaded exactly as written and played to a result in 20/20 trials each, with no errored game. C1: all 20 boards play in both arms, and the line pieces (Godo, Helm attached) load as written on 20/20. The whole board loads exactly on 10/20; the other 10 differ in 1 to 3 cards off the line (below). So 9 of the plan's 10 rows pass outright and C1 passes on its line but not on its whole board. | **Pass as worded, fail if "load" means exactly as written.** The plan's metric is "load and play": all 10 rows apply and play in 20/20 trials per arm (10/10). Read as "loads exactly as written", it is 9/10, below the 10/10 target (the 8/10 allowance is for the 2-player fallback, not taken). The review replaced the previous verdict, "Partial", which the plan does not define; the owner picks the reading. |
 | C1 positive control | ≥ 17/20 under stock | **10/20** won within 8 turns (4/20 on the scenario turn). Forge's own games on the same 20 boards: 10/20 within 8 turns, 5/20 on the turn. Board by board, the harness agrees with the game on 18/20. The review's 10 trials per board: 97/200. | **Fail** |
 | Stock reproduces its in-game failures on S1 and S2 | ≤ 2/20 each | S1 **0/20**, S2 **0/20**. The Conscripts copy's untap never targeted Kiki-Jiki (0 of 39 triggers), and Derevi's trigger never targeted Gaea's Cradle (0 of 155). The review's re-run: 0/10 each, 0 of 19 and 0 of 74. | **Pass** |
 | Suite wall time, one arm | under 50 min | Stock **1,274 s (21.2 min)**, plan **1,441 s (24.0 min)**, 220 trials per arm at 8 JVMs. | **Pass** |

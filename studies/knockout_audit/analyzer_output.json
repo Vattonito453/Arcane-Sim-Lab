@@ -1,0 +1,1027 @@
+{
+ "blob": "16ff99d9527fb675c4a1d35099430b641f3c4a6d",
+ "context_blob": "ed6994bc28795fb94b5212d3dfb89b735e04fed4",
+ "games": {
+  "R-g01": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-Krenko Goblins",
+     "turn": 34,
+     "round": 9,
+     "cause": "poison",
+     "by": "Ai(2)-Skrat's Revenge",
+     "card": "Phyrexian Beast Token",
+     "basis": "zones",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(3)-Stella Lee, Wild Card",
+     "turn": 34,
+     "round": 9,
+     "cause": "poison",
+     "by": "Ai(2)-Skrat's Revenge",
+     "card": "Phyrexian Beast Token",
+     "basis": "zones",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(1)-Kess, Reanimator",
+     "turn": 36,
+     "round": 10,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Skrat's Revenge",
+     "card": "Phyrexian Beast Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 45
+    }
+   ],
+   "turning_point": {
+    "turn": 30,
+    "round": 8,
+    "seat": "Ai(2)-Skrat's Revenge",
+    "shift": 0.587,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Ezuri's Predation",
+    "event_by": "Ai(2)-Skrat's Revenge",
+    "share_before": 0.15,
+    "share_after": 0.857
+   }
+  },
+  "R-g02": {
+   "knockouts": [
+    {
+     "player": "Ai(2)-Skrat's Revenge",
+     "turn": 27,
+     "round": 7,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 12
+    },
+    {
+     "player": "Ai(4)-Krenko Goblins",
+     "turn": 31,
+     "round": 9,
+     "cause": "noncombat_damage",
+     "by": "Ai(3)-Stella Lee, Wild Card",
+     "card": "Magma Opus",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 4
+    },
+    {
+     "player": "Ai(3)-Stella Lee, Wild Card",
+     "turn": 32,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 23
+    }
+   ],
+   "turning_point": {
+    "turn": 27,
+    "round": 7,
+    "seat": "Ai(1)-Kess, Reanimator",
+    "shift": 0.286,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Reanimate",
+    "event_by": "Ai(1)-Kess, Reanimator",
+    "share_before": 0.143,
+    "share_after": 0.632
+   }
+  },
+  "R-g03": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Skrat's Revenge",
+     "turn": 29,
+     "round": 8,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Stella Lee, Wild Card",
+     "card": "Phyrexian Beast Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 40
+    },
+    {
+     "player": "Ai(4)-Kess, Reanimator",
+     "turn": 32,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Stella Lee, Wild Card",
+     "card": "Phyrexian Beast Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 36
+    },
+    {
+     "player": "Ai(3)-Krenko Goblins",
+     "turn": 34,
+     "round": 10,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Stella Lee, Wild Card",
+     "card": "Phyrexian Beast Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 41
+    }
+   ],
+   "turning_point": {
+    "turn": 28,
+    "round": 7,
+    "seat": "Ai(1)-Skrat's Revenge",
+    "shift": 0.713,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Ezuri's Predation",
+    "event_by": "Ai(2)-Stella Lee, Wild Card",
+    "share_before": 0.103,
+    "share_after": 1.0
+   }
+  },
+  "R-g04": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Skrat's Revenge",
+     "turn": 47,
+     "round": 12,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Krenko Goblins",
+     "card": "Goblin Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 12
+    },
+    {
+     "player": "Ai(3)-Krenko Goblins",
+     "turn": 63,
+     "round": 17,
+     "cause": "combat_damage",
+     "by": "Ai(4)-Kess, Reanimator",
+     "card": "Razaketh, the Foulblooded",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 8
+    },
+    {
+     "player": "Ai(2)-Stella Lee, Wild Card",
+     "turn": 67,
+     "round": 19,
+     "cause": "combat_damage",
+     "by": "Ai(4)-Kess, Reanimator",
+     "card": "Razaketh, the Foulblooded",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 15
+    }
+   ],
+   "turning_point": {
+    "turn": 51,
+    "round": 13,
+    "seat": "Ai(4)-Kess, Reanimator",
+    "shift": 0.314,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Razaketh, the Foulblooded",
+    "event_by": "Ai(4)-Kess, Reanimator",
+    "share_before": 0.0,
+    "share_after": 1.0
+   }
+  },
+  "R-g05": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-Skrat's Revenge",
+     "turn": 37,
+     "round": 10,
+     "cause": "noncombat_damage",
+     "by": "Ai(1)-Stella Lee, Wild Card",
+     "card": "Guttersnipe",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 2
+    },
+    {
+     "player": "Ai(3)-Kess, Reanimator",
+     "turn": 40,
+     "round": 11,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Stella Lee, Wild Card",
+     "card": "Elemental Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 11
+    },
+    {
+     "player": "Ai(2)-Krenko Goblins",
+     "turn": 42,
+     "round": 12,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Stella Lee, Wild Card",
+     "card": "Elemental Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 4
+    }
+   ],
+   "turning_point": {
+    "turn": 37,
+    "round": 10,
+    "seat": "Ai(1)-Stella Lee, Wild Card",
+    "shift": 0.115,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Galvanic Iteration",
+    "event_by": "Ai(1)-Stella Lee, Wild Card",
+    "share_before": 0.387,
+    "share_after": 0.525
+   }
+  },
+  "R-g06": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-Skrat's Revenge",
+     "turn": 35,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Krenko Goblins",
+     "card": "Goblin Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 13
+    }
+   ],
+   "turning_point": null
+  },
+  "R-g07": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Krenko Goblins",
+     "turn": 31,
+     "round": 8,
+     "cause": "noncombat_damage",
+     "by": "Ai(4)-Stella Lee, Wild Card",
+     "card": "Crackle with Power",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 5
+    },
+    {
+     "player": "Ai(3)-Skrat's Revenge",
+     "turn": 43,
+     "round": 12,
+     "cause": "noncombat_damage",
+     "by": "Ai(4)-Stella Lee, Wild Card",
+     "card": "Jaya's Immolating Inferno",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 9
+    },
+    {
+     "player": "Ai(4)-Stella Lee, Wild Card",
+     "turn": 52,
+     "round": 17,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 10
+    }
+   ],
+   "turning_point": {
+    "turn": 44,
+    "round": 13,
+    "seat": "Ai(2)-Kess, Reanimator",
+    "shift": 0.246,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Valgavoth, Terror Eater",
+    "event_by": "Ai(2)-Kess, Reanimator",
+    "share_before": 0.333,
+    "share_after": 0.652
+   }
+  },
+  "R-g08": {
+   "knockouts": [
+    {
+     "player": "Ai(3)-Skrat's Revenge",
+     "turn": 29,
+     "round": 8,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Krenko Goblins",
+     "card": "Goblin Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 79
+    },
+    {
+     "player": "Ai(1)-Krenko Goblins",
+     "turn": 37,
+     "round": 10,
+     "cause": "noncombat_damage",
+     "by": "Ai(4)-Stella Lee, Wild Card",
+     "card": "Crackle with Power",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 20
+    },
+    {
+     "player": "Ai(4)-Stella Lee, Wild Card",
+     "turn": 44,
+     "round": 14,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Kess, Reanimator",
+     "card": "Kess, Dissident Mage",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 3
+    }
+   ],
+   "turning_point": {
+    "turn": 37,
+    "round": 10,
+    "seat": "Ai(4)-Stella Lee, Wild Card",
+    "shift": 0.206,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "combat",
+    "event_by": null,
+    "share_before": 0.583,
+    "share_after": 0.875
+   }
+  },
+  "S-g01": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": 50,
+     "round": 13,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 183
+    },
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": 50,
+     "round": 13,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Keiga, the Tide Star",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 75
+    }
+   ],
+   "turning_point": {
+    "turn": 38,
+    "round": 10,
+    "seat": "Ai(2)-Ur-Dragon B3",
+    "shift": 0.32,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "The Ur-Dragon",
+    "event_by": "Ai(2)-Ur-Dragon B3",
+    "share_before": 0.0,
+    "share_after": 0.769
+   }
+  },
+  "S-g02": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": 34,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Stormbreath Dragon",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 21
+    },
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": 37,
+     "round": 10,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Dromoka, the Eternal",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 33
+    },
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": 47,
+     "round": 15,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "The Ur-Dragon",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 54
+    }
+   ],
+   "turning_point": {
+    "turn": 43,
+    "round": 13,
+    "seat": "Ai(2)-Ur-Dragon B3",
+    "shift": 0.305,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "The Ur-Dragon",
+    "event_by": "Ai(2)-Ur-Dragon B3",
+    "share_before": 0.0,
+    "share_after": 0.476
+   }
+  },
+  "S-g03": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": 30,
+     "round": 8,
+     "cause": "noncombat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 6
+    },
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": 33,
+     "round": 9,
+     "cause": "noncombat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 11
+    },
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": 33,
+     "round": 9,
+     "cause": "noncombat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 18
+    }
+   ],
+   "turning_point": {
+    "turn": 18,
+    "round": 5,
+    "seat": "Ai(2)-Ur-Dragon B3",
+    "shift": 0.221,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Kokusho, the Evening Star",
+    "event_by": "Ai(2)-Ur-Dragon B3",
+    "share_before": 0.0,
+    "share_after": 1.0
+   }
+  },
+  "S-g04": {
+   "knockouts": [
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": 46,
+     "round": 12,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Hoard-Smelter Dragon",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 9
+    },
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": 55,
+     "round": 15,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Scion of the Ur-Dragon",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 7
+    },
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": 57,
+     "round": 16,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 71
+    }
+   ],
+   "turning_point": {
+    "turn": 34,
+    "round": 9,
+    "seat": "Ai(2)-Ur-Dragon B3",
+    "shift": 0.24,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Deathbringer Regent",
+    "event_by": "Ai(2)-Ur-Dragon B3",
+    "share_before": 0.0,
+    "share_after": 1.0
+   }
+  },
+  "S-g05": {
+   "knockouts": [
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": 41,
+     "round": 11,
+     "cause": "poison",
+     "by": "Ai(1)-Atraxa Counters B3",
+     "card": null,
+     "basis": "log",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(2)-Ur-Dragon B3",
+     "turn": 50,
+     "round": 14,
+     "cause": "alt_win",
+     "by": "Ai(1)-Atraxa Counters B3",
+     "card": "Simic Ascendancy",
+     "basis": "log",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": 50,
+     "round": 14,
+     "cause": "alt_win",
+     "by": "Ai(1)-Atraxa Counters B3",
+     "card": "Simic Ascendancy",
+     "basis": "log",
+     "dated_by": "event"
+    }
+   ],
+   "turning_point": {
+    "turn": 44,
+    "round": 12,
+    "seat": "Ai(1)-Atraxa Counters B3",
+    "shift": 0.164,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "combat",
+    "event_by": null,
+    "share_before": 0.125,
+    "share_after": 0.385
+   }
+  },
+  "S-g06": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": 29,
+     "round": 8,
+     "cause": "combat_damage",
+     "by": "Ai(2)-Ur-Dragon B3",
+     "card": "Gnome Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 66
+    },
+    {
+     "player": "Ai(2)-Ur-Dragon B3",
+     "turn": 32,
+     "round": 9,
+     "cause": "deckout",
+     "by": null,
+     "card": null,
+     "basis": "zones",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": 39,
+     "round": 12,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Meren Graveyard B3",
+     "card": "Plant Token",
+     "basis": "zones",
+     "dated_by": "event",
+     "amount": 10
+    }
+   ],
+   "turning_point": {
+    "turn": 35,
+    "round": 10,
+    "seat": "Ai(3)-Meren Graveyard B3",
+    "shift": 0.167,
+    "basis": "zones",
+    "inferred": false,
+    "event_hint": "Acidic Slime",
+    "event_by": "Ai(3)-Meren Graveyard B3",
+    "share_before": 0.0,
+    "share_after": 1.0
+   }
+  },
+  "T-g01": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": 29,
+     "round": 8,
+     "cause": "commander_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Wildsear, Scouring Maw",
+     "basis": "log",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": 41,
+     "round": 12,
+     "cause": "poison",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": null,
+     "basis": "log",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": 43,
+     "round": 13,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Wildsear, Scouring Maw",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 26
+    }
+   ],
+   "turning_point": {
+    "turn": 21,
+    "round": 6,
+    "seat": "Ai(3)-Dnide Wildsear",
+    "shift": 0.177,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Wildsear, Scouring Maw",
+    "event_by": "Ai(3)-Dnide Wildsear",
+    "share_before": 0.286,
+    "share_after": 0.615
+   }
+  },
+  "T-g03": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": 28,
+     "round": 7,
+     "cause": "combat_damage",
+     "by": "Ai(4)-N3cro Raggadragga",
+     "card": "Tender Wildguide",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 38
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": 32,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(2)-NanMan Felix Five-Boots",
+     "card": "Slither Blade",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 5
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": 33,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Wildsear, Scouring Maw",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 30
+    }
+   ],
+   "turning_point": {
+    "turn": 30,
+    "round": 8,
+    "seat": "Ai(3)-Dnide Wildsear",
+    "shift": 0.203,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Wildsear, Scouring Maw",
+    "event_by": "Ai(3)-Dnide Wildsear",
+    "share_before": 0.2,
+    "share_after": 0.481
+   }
+  },
+  "T-g04": {
+   "knockouts": [
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": 25,
+     "round": 7,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 46
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": 28,
+     "round": 8,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 65
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": 30,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Renata, Called to the Hunt",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 74
+    }
+   ],
+   "turning_point": {
+    "turn": 13,
+    "round": 4,
+    "seat": "Ai(1)-Shelly Siona",
+    "shift": 0.163,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Ellivere of the Wild Court",
+    "event_by": "Ai(1)-Shelly Siona",
+    "share_before": 1.0,
+    "share_after": 1.0
+   }
+  },
+  "T-g07": {
+   "knockouts": [
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": 23,
+     "round": 6,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Laelia, the Blade Reforged",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 22
+    },
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": 28,
+     "round": 8,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Glory Bearers",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 9
+    },
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": 31,
+     "round": 9,
+     "cause": "combat_damage",
+     "by": "Ai(4)-N3cro Raggadragga",
+     "card": "Radha, Heir to Keld",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 19
+    }
+   ],
+   "turning_point": {
+    "turn": 29,
+    "round": 8,
+    "seat": "Ai(4)-N3cro Raggadragga",
+    "shift": 0.107,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Paradise Druid",
+    "event_by": "Ai(4)-N3cro Raggadragga",
+    "share_before": 0.5,
+    "share_after": 0.636
+   }
+  },
+  "T-g15": {
+   "knockouts": [
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": 23,
+     "round": 6,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Forgeborn Oreads",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 12
+    },
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": 38,
+     "round": 12,
+     "cause": "combat_damage",
+     "by": "Ai(2)-NanMan Felix Five-Boots",
+     "card": "Nalfeshnee",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 7
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": 44,
+     "round": 15,
+     "cause": "commander_damage",
+     "by": "Ai(2)-NanMan Felix Five-Boots",
+     "card": "Felix Five-Boots",
+     "basis": "log",
+     "dated_by": "event"
+    }
+   ],
+   "turning_point": {
+    "turn": 32,
+    "round": 10,
+    "seat": "Ai(2)-NanMan Felix Five-Boots",
+    "shift": 0.243,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Nalfeshnee",
+    "event_by": "Ai(2)-NanMan Felix Five-Boots",
+    "share_before": 0.0,
+    "share_after": 0.6
+   }
+  },
+  "T-g16": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": 25,
+     "round": 7,
+     "cause": "commander_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "basis": "log",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": 39,
+     "round": 11,
+     "cause": "noncombat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Flaming Tyrannosaurus",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 3
+    },
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": 39,
+     "round": 11,
+     "cause": "noncombat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Flaming Tyrannosaurus",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 3
+    }
+   ],
+   "turning_point": {
+    "turn": 33,
+    "round": 9,
+    "seat": "Ai(3)-Dnide Wildsear",
+    "shift": 0.144,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Wildsear, Scouring Maw",
+    "event_by": "Ai(3)-Dnide Wildsear",
+    "share_before": 0.44,
+    "share_after": 0.611
+   }
+  },
+  "T-g17": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": 25,
+     "round": 7,
+     "cause": "commander_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "basis": "log",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": 31,
+     "round": 9,
+     "cause": "commander_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "basis": "log",
+     "dated_by": "event"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": 35,
+     "round": 11,
+     "cause": "commander_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "basis": "log",
+     "dated_by": "event"
+    }
+   ],
+   "turning_point": {
+    "turn": 21,
+    "round": 6,
+    "seat": "Ai(1)-Shelly Siona",
+    "shift": 0.127,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Dragonlord Dromoka",
+    "event_by": "Ai(1)-Shelly Siona",
+    "share_before": 0.133,
+    "share_after": 0.35
+   }
+  },
+  "T-g18": {
+   "knockouts": [
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": 24,
+     "round": 6,
+     "cause": "combat_damage",
+     "by": "Ai(1)-Shelly Siona",
+     "card": "Serra Paragon",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 8
+    },
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": 26,
+     "round": 7,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Wildsear, Scouring Maw",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 30
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": 28,
+     "round": 8,
+     "cause": "combat_damage",
+     "by": "Ai(3)-Dnide Wildsear",
+     "card": "Wildsear, Scouring Maw",
+     "basis": "log",
+     "dated_by": "event",
+     "amount": 38
+    }
+   ],
+   "turning_point": {
+    "turn": 14,
+    "round": 4,
+    "seat": "Ai(3)-Dnide Wildsear",
+    "shift": 0.146,
+    "basis": "log",
+    "inferred": true,
+    "event_hint": "Wildsear, Scouring Maw",
+    "event_by": "Ai(3)-Dnide Wildsear",
+    "share_before": 0.4,
+    "share_after": 0.625
+   }
+  }
+ }
+}

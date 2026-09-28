@@ -1,0 +1,369 @@
+{
+ "reader": "B1",
+ "pass": "B",
+ "games": [
+  {
+   "game": "R-g01",
+   "eliminations": [
+    {
+     "player": "Ai(3)-Stella Lee, Wild Card",
+     "turn": "34",
+     "cause": "poison",
+     "killer": "Ai(2)-Skrat's Revenge",
+     "card": "Triumph of the Hordes",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Krenko Goblins",
+     "turn": "34",
+     "cause": "poison",
+     "killer": "Ai(2)-Skrat's Revenge",
+     "card": "Triumph of the Hordes",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(1)-Kess, Reanimator",
+     "turn": "36",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Skrat's Revenge",
+     "card": "Phyrexian Beast Token",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "30",
+    "card": "Ezuri's Predation"
+   }
+  },
+  {
+   "game": "R-g02",
+   "eliminations": [
+    {
+     "player": "Ai(2)-Skrat's Revenge",
+     "turn": "27",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Krenko Goblins",
+     "turn": "31",
+     "cause": "noncombat_damage",
+     "killer": "Ai(3)-Stella Lee, Wild Card",
+     "card": "Magma Opus",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Stella Lee, Wild Card",
+     "turn": "32",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "27",
+    "card": "Valgavoth, Terror Eater"
+   }
+  },
+  {
+   "game": "R-g04",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Skrat's Revenge",
+     "turn": "47",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Krenko Goblins",
+     "card": "Goblin Token",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Krenko Goblins",
+     "turn": "63",
+     "cause": "combat_damage",
+     "killer": "Ai(4)-Kess, Reanimator",
+     "card": "Razaketh, the Foulblooded",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-Stella Lee, Wild Card",
+     "turn": "67",
+     "cause": "combat_damage",
+     "killer": "Ai(4)-Kess, Reanimator",
+     "card": "Razaketh, the Foulblooded",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "51",
+    "card": "Razaketh, the Foulblooded"
+   }
+  },
+  {
+   "game": "R-g07",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Krenko Goblins",
+     "turn": "31",
+     "cause": "noncombat_damage",
+     "killer": "Ai(4)-Stella Lee, Wild Card",
+     "card": "Crackle with Power",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Skrat's Revenge",
+     "turn": "43",
+     "cause": "noncombat_damage",
+     "killer": "Ai(4)-Stella Lee, Wild Card",
+     "card": "Jaya's Immolating Inferno",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Stella Lee, Wild Card",
+     "turn": "52",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "44",
+    "card": "Valgavoth, Terror Eater"
+   }
+  },
+  {
+   "game": "S-g02",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": "34",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "Stormbreath Dragon",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": "37",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "Dromoka, the Eternal",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": "47",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "The Ur-Dragon",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "43",
+    "card": "The Ur-Dragon"
+   }
+  },
+  {
+   "game": "S-g03",
+   "eliminations": [
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": "30",
+     "cause": "noncombat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Tempest",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": "33",
+     "cause": "noncombat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Tempest",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": "33",
+     "cause": "noncombat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "Dragon Tempest",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "30",
+    "card": "Utvara Hellkite"
+   }
+  },
+  {
+   "game": "S-g05",
+   "eliminations": [
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": "41",
+     "cause": "poison",
+     "killer": "Ai(1)-Atraxa Counters B3",
+     "card": "Karn's Bastion",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-Ur-Dragon B3",
+     "turn": "50",
+     "cause": "alt_win",
+     "killer": "Ai(1)-Atraxa Counters B3",
+     "card": "Simic Ascendancy",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": "50",
+     "cause": "alt_win",
+     "killer": "Ai(1)-Atraxa Counters B3",
+     "card": "Simic Ascendancy",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "47",
+    "card": "Simic Ascendancy"
+   }
+  },
+  {
+   "game": "S-g06",
+   "eliminations": [
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": "29",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "The Ur-Dragon",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-Ur-Dragon B3",
+     "turn": "32",
+     "cause": "deckout",
+     "killer": "self",
+     "card": "The Ur-Dragon",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": "39",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Meren Graveyard B3",
+     "card": "Carrion Feeder",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "32",
+    "card": "The Ur-Dragon"
+   }
+  },
+  {
+   "game": "T-g01",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": "29",
+     "cause": "commander_damage",
+     "killer": "Ai(3)-Dnide Wildsear",
+     "card": "Wildsear, Scouring Maw",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": "41",
+     "cause": "poison",
+     "killer": "Ai(3)-Dnide Wildsear",
+     "card": "Etali, Primal Sickness",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": "43",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Dnide Wildsear",
+     "card": "Wildsear, Scouring Maw",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "25",
+    "card": "Runes of the Deus"
+   }
+  },
+  {
+   "game": "T-g03",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": "28",
+     "cause": "combat_damage",
+     "killer": "Ai(4)-N3cro Raggadragga",
+     "card": "Craterhoof Behemoth",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": "32",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-NanMan Felix Five-Boots",
+     "card": "Slither Blade",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": "33",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Dnide Wildsear",
+     "card": "Klothys, God of Destiny",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "23",
+    "card": "Unnatural Growth"
+   }
+  },
+  {
+   "game": "T-g04",
+   "eliminations": [
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": "25",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": "28",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": "30",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Shelly Siona",
+     "card": "Renata, Called to the Hunt",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "21",
+    "card": "Siona, Captain of the Pyleas"
+   }
+  }
+ ]
+}

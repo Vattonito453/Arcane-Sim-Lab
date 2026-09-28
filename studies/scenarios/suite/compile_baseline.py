@@ -21,12 +21,14 @@ from __future__ import annotations
 import argparse
 import json
 import statistics
+import sys
 from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 TRIAL_KEYS = ("file", "loaded", "applied", "has_result", "winner_seat", "turns", "success",
-              "kill_on_scenario_turn", "turns_to_kill", "piece_counts", "iterations_max_turn",
+              "kill_on_scenario_turn", "turns_to_kill", "piece_counts", "piece_targets",
+              "iterations_max_turn",
               "iterations_scenario_turn", "extra_combats_scenario_turn", "zone_first", "alive",
               "draw", "turnCapped", "timedOut", "error", "exceptions", "wall_s", "ms", "board_diffs")
 
@@ -80,7 +82,17 @@ def arm_row(trials: list[dict], summary: dict) -> dict:
         "zone_first": dict(Counter(str(t.get("zone_first")) for t in ran)) if any("zone_first" in t for t in ran) else None,
         "piece_totals": dict(sum((Counter({f"{p} {v}": n for v, n in c.items()})
                                   for t in ran for p, c in (t.get("piece_counts") or {}).items()), Counter())),
+        "piece_targets": {p: dict(c.most_common()) for p, c in sorted(targets(ran).items())},
     }
+
+
+def targets(ran: list[dict]) -> dict[str, Counter]:
+    """Every line piece's targets summed over the arm's finished trials."""
+    tot: dict[str, Counter] = {}
+    for t in ran:
+        for p, c in (t.get("piece_targets") or {}).items():
+            tot.setdefault(p, Counter()).update(c)
+    return tot
 
 
 def f(v) -> str:
@@ -112,11 +124,13 @@ def main() -> None:
     ap.add_argument("--c1", type=Path, nargs="*", default=[])
     ap.add_argument("--timing", type=Path, nargs="*", default=[])
     ap.add_argument("--json", type=Path, default=HERE / "baseline.json")
+    ap.add_argument("--md", type=Path, help="also write the tables to this file (UTF-8)")
     args = ap.parse_args()
     reports = {"suite": load(args.suite), "s8": load(args.s8), "c1": load(args.c1)}
     out = {"runs": {k: v["runs"] for k, v in reports.items() if v},
            "timing": {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in args.timing},
            "scenarios": {}, "c1": {}}
+    md: list[str] = []
     rows = []
     for key in ("suite", "s8"):
         rep = reports[key]
@@ -127,7 +141,22 @@ def main() -> None:
                 out["scenarios"][sid]["arms"][arm] = dict(
                     r, trials_detail=[{k: t.get(k) for k in TRIAL_KEYS} for t in a["trials"]])
                 rows.append((sid, arm, r))
-    print("\n".join(table(rows)))
+    md += table(rows)
+    # What the line pieces targeted (the choice S1 and S2 test), and the
+    # tutor's pick for the zone scenarios (S8, S9).
+    md += ["", "| Scenario | Arm | Piece | Targets, summed over trials (top 6) |", "|---|---|---|---|"]
+    for sid, arm, r in rows:
+        for piece, c in r["piece_targets"].items():
+            top = list(c.items())[:6]
+            md.append(f"| {sid} | {arm} | {piece} | " + "; ".join(f"{k} x{n}" for k, n in top) + " |")
+    md += ["", "| Scenario | Arm | First move per trial (the pick) | Named cards (strict) |", "|---|---|---|---|"]
+    for sid, arm, r in rows:
+        if r["zone_first"] is None:
+            continue
+        named = set((out["scenarios"][sid]["success"] or {}).get("cards", []))
+        strict = sum(n for k, n in r["zone_first"].items() if k in named)
+        picks = "; ".join(f"{k} x{n}" for k, n in sorted(r["zone_first"].items(), key=lambda kv: -kv[1]))
+        md.append(f"| {sid} | {arm} | {picks} | {strict}/{r['finished']} |")
     # C1: one trial per real board, paired with the board's own game.
     rep = reports["c1"]
     if rep:
@@ -138,13 +167,11 @@ def main() -> None:
         for sid, s in rep["scenarios"].items():
             for arm in arms:
                 t = s["arms"][arm]["trials"][0]
-                per_arm[arm].append(dict({k: t.get(k) for k in TRIAL_KEYS}, id=sid,
-                                         in_game=by_id[sid]))
-        print()
-        print("| C1 | Arm | Loaded | Finished | Won within 8 turns (success) | Won on the scenario turn | "
-              "Executed (extra combat on the scenario turn) | In game, same boards: won within 8 turns / same turn / ever | "
-              "Agreement with the game (within 8) | Wall s (sum) |")
-        print("|---|---|---|---|---|---|---|---|---|---|")
+                per_arm[arm].append(dict({k: t.get(k) for k in TRIAL_KEYS}, id=sid, in_game=by_id[sid]))
+        md += ["", "| C1 | Arm | Loaded | Finished | Won within 8 turns (success) | Won on the scenario turn | "
+                   "Executed | In game, same boards: won within 8 turns / same turn / ever | "
+                   "Agreement with the game (within 8) | Errors / exceptions | Wall s (sum) |",
+               "|---|---|---|---|---|---|---|---|---|---|---|"]
         for arm, ts in per_arm.items():
             ran = [t for t in ts if t.get("has_result")]
             ig = [t["in_game"] for t in ts]
@@ -160,12 +187,31 @@ def main() -> None:
                    "exceptions": sum(t.get("exceptions") or 0 for t in ts),
                    "errors": sum(bool(t.get("error")) for t in ran)}
             out["c1"][arm] = dict(row, boards=ts)
-            print(f"| C1 | {arm} | {row['loaded']}/{row['trials']} | {row['finished']}/{row['trials']} | "
-                  f"{row['success']}/{row['finished']} | {row['kill_on_scenario_turn']}/{row['finished']} | "
-                  f"{row['executed']}/{row['finished']} | {row['in_game_within_horizon']} / {row['in_game_same_turn']} / "
-                  f"{row['in_game_ever']} of {len(ig)} | {agree}/{len(ran)} | {row['wall_s_total']} |")
+            md.append(f"| C1 | {arm} | {row['loaded']}/{row['trials']} | {row['finished']}/{row['trials']} | "
+                      f"{row['success']}/{row['finished']} | {row['kill_on_scenario_turn']}/{row['finished']} | "
+                      f"{row['executed']}/{row['finished']} | {row['in_game_within_horizon']} / "
+                      f"{row['in_game_same_turn']} / {row['in_game_ever']} of {len(ig)} | {agree}/{len(ran)} | "
+                      f"{row['errors']} / {row['exceptions']} | {row['wall_s_total']} |")
+        # Per board: the game's own outcome beside each arm's.
+        md += ["", "| Board | Turn | In game: won within 8 / same turn (end turn) | "
+               + " | ".join(f"{a}: success / turns to kill / extra combats" for a in arms) + " |",
+               "|---|---|---|" + "---|" * len(arms)]
+        for sid in rep["scenarios"]:
+            g = by_id[sid]
+            cells = []
+            for arm in arms:
+                t = next(x for x in per_arm[arm] if x["id"] == sid)
+                cells.append(f"{'yes' if t.get('success') else 'no'} / {f(t.get('turns_to_kill'))} / "
+                             f"{f(t.get('extra_combats_scenario_turn'))}")
+            md.append(f"| {sid} | {g['turn']} | {'yes' if g['won_within_horizon'] else 'no'} / "
+                      f"{'yes' if g['won_on_attach_turn'] else 'no'} ({g['end_turn']}) | " + " | ".join(cells) + " |")
+    text = "\n".join(md) + "\n"
+    sys.stdout.reconfigure(encoding="utf-8")
+    print(text)
+    if args.md:
+        args.md.write_text(text, encoding="utf-8")
     args.json.write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
-    print(f"\nwrote {args.json}")
+    print(f"wrote {args.json}")
 
 
 if __name__ == "__main__":

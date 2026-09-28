@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Suite baseline tables from run_scenarios.py output directories.
 
-    py studies/scenarios/suite/compile_baseline.py --suite OUT/suite --s8 OUT/s8 --c1 OUT/c1 \\
+    py studies/scenarios/suite/compile_baseline.py --suite OUT/stock/suite OUT/plan/suite \\
+        --s8 OUT/stock/s8 OUT/plan/s8 --c1 OUT/stock/c1 OUT/plan/c1 \\
         [--timing OUT/timing_stock.json ...] --json studies/scenarios/suite/baseline.json
 
 Reads each directory's report.json (rebuild it first with
-run_scenarios.py --report-only --out DIR), prints the markdown tables that
+run_scenarios.py --report-only --out DIR); several directories of one kind
+(one per arm) are merged by arm. Prints the markdown tables that
 BASELINE.md carries and writes a compact JSON summary (per scenario and arm,
 plus the handful of per-trial fields the tables use). Raw logs stay in the
 run directories, outside git.
@@ -33,10 +35,27 @@ def executed(t: dict) -> bool:
     return (t.get("iterations_max_turn") or 0) >= 5 or (t.get("extra_combats_scenario_turn") or 0) > 0
 
 
-def load(d: Path | None) -> dict:
-    if not d:
-        return {}
-    return json.loads((d / "report.json").read_text(encoding="utf-8"))
+RUN_KEYS = ("jar_name", "jar_sha256", "repo_commit", "trials", "seed", "started", "finished", "arms",
+            "parallel", "wall_s", "trials_run", "trials_cached")
+
+
+def load(dirs: list[Path]) -> dict:
+    """One kind's reports (one directory per arm, or one with every arm),
+    merged: scenarios keep every arm found; runs lists each directory's
+    provenance."""
+    merged: dict = {}
+    for d in dirs or []:
+        rep = json.loads((d / "report.json").read_text(encoding="utf-8"))
+        merged.setdefault("runs", []).append(dict({k: rep["run"].get(k) for k in RUN_KEYS}, dir=d.as_posix()))
+        arms = merged.setdefault("arms", [])
+        arms += [a for a in rep["run"]["arms"] if a not in arms]
+        for sid, sc in rep["scenarios"].items():
+            into = merged.setdefault("scenarios", {}).setdefault(sid, dict(sc, arms={}))
+            for arm, a in sc["arms"].items():
+                if arm in into["arms"]:
+                    raise SystemExit(f"{sid}: arm {arm} appears in two directories")
+                into["arms"][arm] = a
+    return merged
 
 
 def arm_row(trials: list[dict], summary: dict) -> dict:
@@ -88,16 +107,14 @@ def table(rows: list[tuple[str, str, dict]]) -> list[str]:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--suite", type=Path)
-    ap.add_argument("--s8", type=Path)
-    ap.add_argument("--c1", type=Path)
+    ap.add_argument("--suite", type=Path, nargs="*", default=[])
+    ap.add_argument("--s8", type=Path, nargs="*", default=[])
+    ap.add_argument("--c1", type=Path, nargs="*", default=[])
     ap.add_argument("--timing", type=Path, nargs="*", default=[])
     ap.add_argument("--json", type=Path, default=HERE / "baseline.json")
     args = ap.parse_args()
     reports = {"suite": load(args.suite), "s8": load(args.s8), "c1": load(args.c1)}
-    out = {"runs": {k: {x: v["run"].get(x) for x in ("jar_name", "jar_sha256", "repo_commit", "trials", "seed",
-                                                     "started", "arms", "parallel")}
-                    for k, v in reports.items() if v},
+    out = {"runs": {k: v["runs"] for k, v in reports.items() if v},
            "timing": {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in args.timing},
            "scenarios": {}, "c1": {}}
     rows = []
@@ -116,7 +133,7 @@ def main() -> None:
     if rep:
         src = json.loads((HERE / "c1" / "sources.json").read_text(encoding="utf-8"))
         by_id = {c["id"]: c for c in src["chosen"]}
-        arms = rep["run"]["arms"]
+        arms = rep["arms"]
         per_arm = {arm: [] for arm in arms}
         for sid, s in rep["scenarios"].items():
             for arm in arms:

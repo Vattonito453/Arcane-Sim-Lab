@@ -110,7 +110,7 @@ function TelemetryInner() {
   ];
 
   const title = summary
-    ? runTitle(((summary.meta?.decks as string[]) ?? []).map(labelFor))
+    ? runTitle(((summary.meta?.decks as string[]) ?? []).map(labelFor), summary.commanders)
     : file.replace(/\.json$/, "");
 
   if (err) {

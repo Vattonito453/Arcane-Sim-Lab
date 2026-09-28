@@ -225,7 +225,7 @@ export default function Home() {
         const best = Object.entries(r.summary!.win_rates).sort((a, b) => b[1] - a[1])[0];
         return {
           file: r.file,
-          title: runTitle(names),
+          title: runTitle(names, r.commanders),
           winner: best ? stripAi(best[0]) : null,
           rate: best ? best[1] : 0,
           games: r.games ?? r.summary!.games,

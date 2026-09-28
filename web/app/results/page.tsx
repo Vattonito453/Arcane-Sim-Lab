@@ -54,7 +54,12 @@ function ResultsIndexInner() {
         const names = r.summary
           ? Object.keys(r.summary.win_rates).map(stripAi)
           : (r.decks ?? []).map(deckSlug);
-        return { r, names, title: runTitle(names), win: r.summary ? topWin(r.summary) : null };
+        return {
+          r,
+          names,
+          title: runTitle(names, r.commanders),
+          win: r.summary ? topWin(r.summary) : null,
+        };
       });
   }, [results]);
 

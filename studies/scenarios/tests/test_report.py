@@ -188,12 +188,19 @@ def main() -> None:
         assert not t5["loaded"] and t5["applied"]
         for want in ("seat 1 life 10 != 12", "library order", "battlefield", "tokens 0 != 1"):
             assert want in d, (want, d)
+        assert t5["line_loaded"] is False, "Helm fell off Godo: the line itself did not load"
+        # A difference off the line (the tapped Mountain untapped) leaves the line loaded.
+        off = jsonl(info, A, 5)
+        off[1]["seats"][0]["Battlefield"][2]["tapped"] = False
+        t5b = R.parse_trial(write_trial(tmp, 4, off), sc, info)
+        assert not t5b["loaded"] and t5b["line_loaded"] is True, t5b["board_diffs"]
+        assert R.parse_trial(write_trial(tmp, 4, jsonl(info, A, 5)), sc, info)["line_loaded"] is True
         failed = jsonl(info, None, -1)
         failed[1] = {"rec": "scenario", "game": 0, "file": "x", "sha256": "0", "applied": False,
                      "error": "java.lang.RuntimeException: Non-matching number of players"}
         t6 = R.parse_trial(write_trial(tmp, 5, failed), sc, info)
         assert not t6["applied"] and not t6["loaded"] and "Non-matching" in t6["apply_error"]
-        print("  board check: life, tapped, library order, attachment, token count, failed apply: OK")
+        print("  board check: life, tapped, library order, attachment, token count, line pieces, failed apply: OK")
 
         # 5. A missing trial and a truncated one.
         missing = R.parse_trial(tmp / "trial_9.jsonl", sc, info)
@@ -273,7 +280,7 @@ def main() -> None:
                   "scenarios": {"t": {"description": "d", "turn": 5, "success": sc["success"], "line": sc["line"],
                                       "arms": {"stock": {"summary": a, "trials": rows}}}}}
         md = R.markdown(report)
-        assert "| stock | 4/7 | 3/6 |" in md and "Board differences" in md, md
+        assert "| stock | 4 / 4 of 7 | 3/6 |" in md and "Board differences" in md, md
         assert "—" not in md, "no em dash in the report"
         print("  aggregate, Wilson interval and markdown: OK")
 

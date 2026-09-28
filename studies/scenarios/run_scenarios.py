@@ -193,11 +193,7 @@ def check_board(info: dict, rec: dict) -> list[str]:
             if c.get("token"):
                 tokens_have += 1
                 continue
-            have_sig[json.dumps({"card": c["card"], "tapped": c.get("tapped", False),
-                                 "sick": c.get("sick", False), "counters": _counts(c.get("counters")),
-                                 "attached_to": ids.get(c.get("attachedTo")),
-                                 "commander": bool(c.get("commander")),
-                                 "damage": int(c.get("damage", 0))}, sort_keys=True)] += 1
+            have_sig[_have_sig(c, ids)] += 1
         need_sig = Counter()
         tokens_need = 0
         transformed = 0
@@ -208,7 +204,7 @@ def check_board(info: dict, rec: dict) -> list[str]:
             if s.get("transformed"):
                 transformed += 1        # compared by count: it reads back under its back face
                 continue
-            need_sig[json.dumps({k: v for k, v in s.items() if k != "token"}, sort_keys=True)] += 1
+            need_sig[_need_sig(s)] += 1
         if have_sig != need_sig:
             missing = list((need_sig - have_sig).elements())
             extra = list((have_sig - need_sig).elements())
@@ -219,6 +215,40 @@ def check_board(info: dict, rec: dict) -> list[str]:
         if tokens_have != tokens_need:
             diffs.append(f"seat {i} tokens {tokens_have} != {tokens_need}")
     return diffs
+
+
+def _have_sig(c: dict, ids: dict) -> str:
+    """A battlefield card as the shim read it back, in the writer's terms."""
+    return json.dumps({"card": c["card"], "tapped": c.get("tapped", False),
+                       "sick": c.get("sick", False), "counters": _counts(c.get("counters")),
+                       "attached_to": ids.get(c.get("attachedTo")),
+                       "commander": bool(c.get("commander")),
+                       "damage": int(c.get("damage", 0))}, sort_keys=True)
+
+
+def _need_sig(s: dict) -> str:
+    """A battlefield card as the writer placed it (writer.expected_sig)."""
+    return json.dumps({k: v for k, v in s.items() if k != "token"}, sort_keys=True)
+
+
+def line_loaded(info: dict, rec: dict, line: dict | None) -> bool | None:
+    """Whether the line seat's line pieces on the battlefield read back as
+    written (card, tapped, sickness, counters, attachment), whatever else on
+    the board differs. A real-game board can differ elsewhere because Forge
+    runs enter-the-battlefield replacements while it loads (Mox Diamond, a
+    clone's copy choice); this says whether the line under test survived."""
+    if not line or not info or not rec or line.get("seat") is None:
+        return None
+    seats, i = rec.get("seats") or [], line["seat"]
+    if i >= len(seats) or i >= len(info["seats"]):
+        return None
+    pieces = set(line.get("pieces", []))
+    ids = {c["id"]: c["card"] for s in seats for c in s.get("Battlefield", [])}
+    have = Counter(_have_sig(c, ids) for c in seats[i].get("Battlefield", [])
+                   if not c.get("token") and c["card"] in pieces)
+    need = Counter(_need_sig(s) for s in info["seats"][i]["battlefield"]
+                   if not s["token"] and not s.get("transformed") and s.get("card") in pieces)
+    return have == need
 
 
 def zone_moves(recs: list[dict], seat: str | None, frm: str, to: str, first_turn: int,
@@ -261,6 +291,7 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     t["apply_error"] = scen.get("error") if scen else "no scenario record"
     t["board_diffs"] = check_board(info, scen) if (info and t["applied"]) else []
     t["loaded"] = t["applied"] and not t["board_diffs"]
+    t["line_loaded"] = line_loaded(info, scen, sc.get("line")) if t["applied"] else False
     s_turn = int(sc.get("turn", 1))
     t["scenario_turn"] = s_turn
     t["has_result"] = res is not None
@@ -420,6 +451,7 @@ def aggregate(trials: list[dict]) -> dict:
     return {
         "trials": len(trials), "finished": n,
         "loaded": sum(t.get("loaded", False) for t in trials),
+        "line_loaded": sum(bool(t.get("line_loaded")) for t in trials),
         "applied": sum(t.get("applied", False) for t in trials),
         "scored": len(scored), "unscored": n - len(scored),
         "success": k, "success_rate": round(k / len(scored), 3) if scored else None,
@@ -506,7 +538,7 @@ def markdown(report: dict) -> str:
         out += [f"## {sid}", "", s["description"], "",
                 f"Scenario turn {s['turn']}; success: {goal}; line pieces: "
                 f"{', '.join((s.get('line') or {}).get('pieces', [])) or '–'}.", "",
-                "| Arm | Loaded | Success | 95% CI | Kill on scenario turn | Turns to kill (median) "
+                "| Arm | Loaded (exact / line pieces) | Success | 95% CI | Kill on scenario turn | Turns to kill (median) "
                 "| Line activity (mean) | Iterations, best turn (mean) | Extra combats, scenario turn (mean) "
                 "| Draws / capped / timed out | Errors / exceptions | Game ms (mean) | Wall s (total) |",
                 "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
@@ -514,7 +546,8 @@ def markdown(report: dict) -> str:
             a = row["summary"]
             ci = a["success_wilson95"]
             out.append(
-                f"| {arm} | {a['loaded']}/{a['trials']} | {a['success']}/{a.get('scored', a['finished'])} | "
+                f"| {arm} | {a['loaded']} / {a.get('line_loaded', '–')} of {a['trials']} | "
+                f"{a['success']}/{a.get('scored', a['finished'])} | "
                 f"{'–' if ci is None else f'{ci[0]:.2f}-{ci[1]:.2f}'} | "
                 f"{a['kill_on_scenario_turn']}/{a['finished']} | {_f(a['turns_to_kill_median'])} | "
                 f"{_f(a['piece_activity_mean'])} | {_f(a['iterations_max_turn_mean'])} | "

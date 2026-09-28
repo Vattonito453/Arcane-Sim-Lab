@@ -26,7 +26,7 @@ from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-TRIAL_KEYS = ("file", "loaded", "applied", "has_result", "winner_seat", "turns", "success",
+TRIAL_KEYS = ("file", "loaded", "line_loaded", "applied", "has_result", "winner_seat", "turns", "success",
               "kill_on_scenario_turn", "turns_to_kill", "piece_counts", "piece_targets",
               "iterations_max_turn",
               "iterations_scenario_turn", "extra_combats_scenario_turn", "zone_first", "alive",
@@ -65,6 +65,7 @@ def arm_row(trials: list[dict], summary: dict) -> dict:
     ttk = [t["turns_to_kill"] for t in ran if t.get("turns_to_kill") is not None]
     return {
         "trials": len(trials), "finished": len(ran), "loaded": sum(bool(t.get("loaded")) for t in trials),
+        "line_loaded": sum(bool(t.get("line_loaded")) for t in trials),
         "success": sum(bool(t.get("success")) for t in ran), "wilson95": summary.get("success_wilson95"),
         "scored": sum(t.get("success") is not None for t in ran),
         "kill_on_scenario_turn": sum(bool(t.get("kill_on_scenario_turn")) for t in ran),
@@ -101,14 +102,14 @@ def f(v) -> str:
 
 
 def table(rows: list[tuple[str, str, dict]]) -> list[str]:
-    out = ["| Scenario | Arm | Loaded | Finished | Success (of scored) | 95% CI | Kill on scenario turn | Line seat won (any turn) "
+    out = ["| Scenario | Arm | Loaded (exact / line pieces) | Finished | Success (of scored) | 95% CI | Kill on scenario turn | Line seat won (any turn) "
            "| Turns to kill (median) | Executed | Iterations, best turn (mean / max) | Extra combats (mean) "
            "| Capped / timed out | Errors / exceptions | Wall s (sum of trials) |",
            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for sid, arm, r in rows:
         ci = r["wilson95"]
         out.append(
-            f"| {sid} | {arm} | {r['loaded']}/{r['trials']} | {r['finished']}/{r['trials']} | "
+            f"| {sid} | {arm} | {r['loaded']} / {r['line_loaded']} of {r['trials']} | {r['finished']}/{r['trials']} | "
             f"{r['success']}/{r['scored']} | {'–' if not ci else f'{ci[0]:.2f}-{ci[1]:.2f}'} | "
             f"{r['kill_on_scenario_turn']}/{r['finished']} | {r['any_win_by_line_seat']}/{r['finished']} | "
             f"{f(r['turns_to_kill_median'])} | {r['executed']}/{r['finished']} | "
@@ -169,7 +170,7 @@ def main() -> None:
             for arm in arms:
                 t = s["arms"][arm]["trials"][0]
                 per_arm[arm].append(dict({k: t.get(k) for k in TRIAL_KEYS}, id=sid, in_game=by_id[sid]))
-        md += ["", "| C1 | Arm | Loaded | Finished | Won within 8 turns (success) | Won on the scenario turn | "
+        md += ["", "| C1 | Arm | Loaded (exact / line pieces) | Finished | Won within 8 turns (success) | Won on the scenario turn | "
                    "Executed | In game, same boards: won within 8 turns / same turn / ever | "
                    "Agreement with the game (within 8) | Errors / exceptions | Wall s (sum) |",
                "|---|---|---|---|---|---|---|---|---|---|---|"]
@@ -178,6 +179,8 @@ def main() -> None:
             ig = [t["in_game"] for t in ts]
             agree = sum(bool(t.get("success")) == t["in_game"]["won_within_horizon"] for t in ran)
             row = {"trials": len(ts), "finished": len(ran), "loaded": sum(bool(t.get("loaded")) for t in ts),
+                   "line_loaded": sum(bool(t.get("line_loaded")) for t in ts),
+                   "applied": sum(bool(t.get("applied")) for t in ts),
                    "success": sum(bool(t.get("success")) for t in ran),
                    "kill_on_scenario_turn": sum(bool(t.get("kill_on_scenario_turn")) for t in ran),
                    "executed": sum(executed(t) for t in ran),
@@ -188,7 +191,8 @@ def main() -> None:
                    "exceptions": sum(t.get("exceptions") or 0 for t in ts),
                    "errors": sum(bool(t.get("error")) for t in ran)}
             out["c1"][arm] = dict(row, boards=ts)
-            md.append(f"| C1 | {arm} | {row['loaded']}/{row['trials']} | {row['finished']}/{row['trials']} | "
+            md.append(f"| C1 | {arm} | {row['loaded']} / {row['line_loaded']} of {row['trials']} | "
+                      f"{row['finished']}/{row['trials']} | "
                       f"{row['success']}/{row['finished']} | {row['kill_on_scenario_turn']}/{row['finished']} | "
                       f"{row['executed']}/{row['finished']} | {row['in_game_within_horizon']} / "
                       f"{row['in_game_same_turn']} / {row['in_game_ever']} of {len(ig)} | {agree}/{len(ran)} | "

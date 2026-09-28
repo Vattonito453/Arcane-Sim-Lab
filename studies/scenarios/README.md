@@ -227,6 +227,15 @@ What `GameState` can seed, and what it cannot (Forge 2.0.13 source,
 - **Hidden information.** Forge's AI decides with whatever its own code
   reads; the harness does not change what a seat can see.
 
+**Seen on scenario boards, not caused by the harness.** A plan seat logs
+`attack_reask` once in a turn with extra combats (smoke, plan arm: 4 of 4
+trials; also present in G0a's games on the same pod): its attack guard
+counts declarations per turn, so from the second combat on it hands the
+declaration to Forge unchanged, and the plan pilot's attack logic does not
+run in extra combats. Combat work is frozen until G4 (owner decision 1);
+read Godo, Helm and other extra-combat results on the plan arm with that in
+mind.
+
 ## Files
 
 - `writer.py`: scenario JSON to state text; `parse_state` reads state text
@@ -234,6 +243,8 @@ What `GameState` can seed, and what it cannot (Forge 2.0.13 source,
 - `run_scenarios.py`: the runner and report.
 - `spike/spike_4p.json`: the G-harness spike board (every field above).
 - `smoke/smoke_godo_helm.json` with `smoke/report.md` and
-  `smoke/report.json`: the end-to-end smoke run (4 trials per arm).
+  `smoke/report.json`: the end-to-end smoke run (4 trials per arm, both
+  arms loaded 4/4 and won on the scenario turn 4/4). It is a loader check,
+  not a pilot comparison: this board converts for any pilot.
 - `tests/test_writer.py`, `tests/test_report.py`.
 - `SPIKE.md`: the gate.

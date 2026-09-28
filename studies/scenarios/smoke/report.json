@@ -1,0 +1,667 @@
+{
+ "run": {
+  "cli": [
+   "studies/scenarios/run_scenarios.py",
+   "studies/scenarios/smoke/smoke_godo_helm.json",
+   "--jar",
+   "C:/Users/Vatto/AppData/Local/Temp/claude/C--Users-Vatto-Magic-Rules-Engine/7a2e31e0-09c8-49d0-ab6f-f767ccb4d74a/scratchpad/harness/shim-0.17.1-967cb71.jar",
+   "--out",
+   "C:/Users/Vatto/AppData/Local/Temp/claude/C--Users-Vatto-Magic-Rules-Engine/7a2e31e0-09c8-49d0-ab6f-f767ccb4d74a/scratchpad/harness/smoke_run3",
+   "--arms",
+   "stock,plan",
+   "--trials",
+   "4",
+   "--parallel",
+   "4",
+   "--seed",
+   "2026101400",
+   "--data-dir",
+   "C:/Users/Vatto/AppData/Local/Temp/claude/C--Users-Vatto-Magic-Rules-Engine/7a2e31e0-09c8-49d0-ab6f-f767ccb4d74a/scratchpad/g0a/cache_cedh"
+  ],
+  "started": "2026-09-28T07:54:16",
+  "repo_commit": "553dcf5b811b",
+  "jar": "C:\\Users\\Vatto\\AppData\\Local\\Temp\\claude\\C--Users-Vatto-Magic-Rules-Engine\\7a2e31e0-09c8-49d0-ab6f-f767ccb4d74a\\scratchpad\\harness\\shim-0.17.1-967cb71.jar",
+  "jar_name": "shim-0.17.1-967cb71.jar",
+  "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+  "forge_jar": "C:\\Users\\Vatto\\forge\\forge-gui-desktop-2.0.13-jar-with-dependencies.jar",
+  "arms": [
+   "stock",
+   "plan"
+  ],
+  "arm_defs": {
+   "stock": {
+    "pilot": "stock:Default"
+   },
+   "plan": {
+    "pilot": "plan:SimLabHuman",
+    "plan_version": 2,
+    "fix": "all"
+   }
+  },
+  "trials": 4,
+  "seed": 2026101400,
+  "timeout": 900,
+  "horizon": 8,
+  "parallel": 4,
+  "scenarios": {
+   "smoke_godo_helm": {
+    "path": "C:\\Users\\Vatto\\Magic Rules Engine\\.claude\\worktrees\\wf_f5b207b0-735-2\\studies\\scenarios\\smoke\\smoke_godo_helm.json",
+    "sha256": "d1c27c3f806b72d8fc6425c334865b9295b131f55d875eb7ff68bbc0c0d95f50",
+    "decks": [
+     "C:\\Users\\Vatto\\Magic Rules Engine\\.claude\\worktrees\\wf_f5b207b0-735-2\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\derevi.dck",
+     "C:\\Users\\Vatto\\Magic Rules Engine\\.claude\\worktrees\\wf_f5b207b0-735-2\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\godo_archetype.dck",
+     "C:\\Users\\Vatto\\Magic Rules Engine\\.claude\\worktrees\\wf_f5b207b0-735-2\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\nadu.dck",
+     "C:\\Users\\Vatto\\Magic Rules Engine\\.claude\\worktrees\\wf_f5b207b0-735-2\\studies\\human_ceiling\\decks\\2iA_Jt0d6sM\\dck\\rograkh_silas.dck"
+    ],
+    "plans": {
+     "plan": {
+      "path": "C:\\Users\\Vatto\\AppData\\Local\\Temp\\claude\\C--Users-Vatto-Magic-Rules-Engine\\7a2e31e0-09c8-49d0-ab6f-f767ccb4d74a\\scratchpad\\harness\\smoke_run3\\plans\\plans_v2_8dd1742d07ee.json",
+      "sha256": "ed88b2e47b64ba49af70c738c8da9e36db08f73ff816c3025e0a76739e51d7d6"
+     }
+    }
+   }
+  }
+ },
+ "scenarios": {
+  "smoke_godo_helm": {
+   "description": "Harness smoke test, not the C1 control: Godo, Bandit Warlord with Helm of the Host attached on its controller's turn 5 main phase, the other three cEDH-A seats (pod 2iA_Jt0d6sM) on light boards at 40 life. Checks that a 4-player state loads for every arm and plays to a result. C1 proper (WS3 task 4) must reproduce the Helm-attached boards of the stock games it is compared with.",
+   "turn": 5,
+   "success": {
+    "type": "win",
+    "seat": 1,
+    "by_turn": 9
+   },
+   "line": {
+    "seat": 1,
+    "pieces": [
+     "Godo, Bandit Warlord",
+     "Helm of the Host"
+    ]
+   },
+   "arms": {
+    "stock": {
+     "summary": {
+      "trials": 4,
+      "finished": 4,
+      "loaded": 4,
+      "applied": 4,
+      "success": 4,
+      "success_rate": 1.0,
+      "success_wilson95": [
+       0.51,
+       1.0
+      ],
+      "kill_on_scenario_turn": 4,
+      "turns_to_kill_median": 0.0,
+      "turns_to_kill_mean": 0.0,
+      "draws": 0,
+      "turn_capped": 0,
+      "timed_out": 0,
+      "errored": 0,
+      "kill_failed": 0,
+      "exceptions": 0,
+      "piece_activity_mean": 67.5,
+      "iterations_max_turn_mean": 67.5,
+      "iterations_scenario_turn_mean": 67.5,
+      "extra_combats_scenario_turn_mean": 21.5,
+      "game_ms_mean": 47660.25,
+      "ms_per_turn_mean": 47660.25,
+      "ms_per_decision": null,
+      "wall_s_total": 242.3,
+      "wall_s_mean": 60.58,
+      "winners": {
+       "1": 4
+      }
+     },
+     "trials": [
+      {
+       "file": "trial_0.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "793500cd4607e0142ad0ed761b91e2f4ea779b483cb720b17bbf2773a6a56a1d",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 37784,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 44
+        },
+        "Helm of the Host": {
+         "triggered": 22
+        }
+       },
+       "piece_activity_total": 66,
+       "iterations_max_turn": 66,
+       "iterations_scenario_turn": 66,
+       "combats_max_turn": 22,
+       "extra_combats_scenario_turn": 21,
+       "agent_events": {},
+       "agent_events_on_pieces": 0,
+       "ms_per_turn": 37784,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 50.7,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      },
+      {
+       "file": "trial_1.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "ebeaaf6ce28a93c0389a65d4dd36839e73dff9de5c938ee7efb8ec4cc93f8d09",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 66641,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 46
+        },
+        "Helm of the Host": {
+         "triggered": 23
+        }
+       },
+       "piece_activity_total": 69,
+       "iterations_max_turn": 69,
+       "iterations_scenario_turn": 69,
+       "combats_max_turn": 23,
+       "extra_combats_scenario_turn": 22,
+       "agent_events": {},
+       "agent_events_on_pieces": 0,
+       "ms_per_turn": 66641,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 79.7,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      },
+      {
+       "file": "trial_2.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "bcc0e4b6b362f313edcd4dd5d3c00ec17645c59f71a48b262f9eb275a4797a92",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 15927,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 44
+        },
+        "Helm of the Host": {
+         "triggered": 22
+        }
+       },
+       "piece_activity_total": 66,
+       "iterations_max_turn": 66,
+       "iterations_scenario_turn": 66,
+       "combats_max_turn": 22,
+       "extra_combats_scenario_turn": 21,
+       "agent_events": {},
+       "agent_events_on_pieces": 0,
+       "ms_per_turn": 15927,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 28.5,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      },
+      {
+       "file": "trial_3.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "beb1786fe73ece3e0dcce5379f68b6898166bde172946050928ef8be084b18aa",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 70289,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 46
+        },
+        "Helm of the Host": {
+         "triggered": 23
+        }
+       },
+       "piece_activity_total": 69,
+       "iterations_max_turn": 69,
+       "iterations_scenario_turn": 69,
+       "combats_max_turn": 23,
+       "extra_combats_scenario_turn": 22,
+       "agent_events": {},
+       "agent_events_on_pieces": 0,
+       "ms_per_turn": 70289,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 83.4,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      }
+     ]
+    },
+    "plan": {
+     "summary": {
+      "trials": 4,
+      "finished": 4,
+      "loaded": 4,
+      "applied": 4,
+      "success": 4,
+      "success_rate": 1.0,
+      "success_wilson95": [
+       0.51,
+       1.0
+      ],
+      "kill_on_scenario_turn": 4,
+      "turns_to_kill_median": 0.0,
+      "turns_to_kill_mean": 0.0,
+      "draws": 0,
+      "turn_capped": 0,
+      "timed_out": 0,
+      "errored": 0,
+      "kill_failed": 0,
+      "exceptions": 0,
+      "piece_activity_mean": 66.0,
+      "iterations_max_turn_mean": 66.0,
+      "iterations_scenario_turn_mean": 66.0,
+      "extra_combats_scenario_turn_mean": 21.0,
+      "game_ms_mean": 32523.5,
+      "ms_per_turn_mean": 32523.5,
+      "ms_per_decision": null,
+      "wall_s_total": 165.0,
+      "wall_s_mean": 41.25,
+      "winners": {
+       "1": 4
+      }
+     },
+     "trials": [
+      {
+       "file": "trial_0.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "793500cd4607e0142ad0ed761b91e2f4ea779b483cb720b17bbf2773a6a56a1d",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 34086,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 44
+        },
+        "Helm of the Host": {
+         "triggered": 22
+        }
+       },
+       "piece_activity_total": 66,
+       "iterations_max_turn": 66,
+       "iterations_scenario_turn": 66,
+       "combats_max_turn": 22,
+       "extra_combats_scenario_turn": 21,
+       "agent_events": {
+        "added_block": 2,
+        "attack_reask": 1,
+        "block_skip": 1,
+        "instant_hold": 6,
+        "mull_keep": 4,
+        "mull_take": 2,
+        "search_seen": 3,
+        "tutor_skip": 1
+       },
+       "agent_events_on_pieces": 5,
+       "ms_per_turn": 34086,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 42.8,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      },
+      {
+       "file": "trial_1.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "ebeaaf6ce28a93c0389a65d4dd36839e73dff9de5c938ee7efb8ec4cc93f8d09",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 34519,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 44
+        },
+        "Helm of the Host": {
+         "triggered": 22
+        }
+       },
+       "piece_activity_total": 66,
+       "iterations_max_turn": 66,
+       "iterations_scenario_turn": 66,
+       "combats_max_turn": 22,
+       "extra_combats_scenario_turn": 21,
+       "agent_events": {
+        "added_block": 2,
+        "attack_reask": 1,
+        "block_skip": 1,
+        "instant_hold": 6,
+        "mull_keep": 3,
+        "mull_take": 3,
+        "search_seen": 3,
+        "tutor_skip": 1
+       },
+       "agent_events_on_pieces": 5,
+       "ms_per_turn": 34519,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 43.1,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      },
+      {
+       "file": "trial_2.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "bcc0e4b6b362f313edcd4dd5d3c00ec17645c59f71a48b262f9eb275a4797a92",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 31792,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 44
+        },
+        "Helm of the Host": {
+         "triggered": 22
+        }
+       },
+       "piece_activity_total": 66,
+       "iterations_max_turn": 66,
+       "iterations_scenario_turn": 66,
+       "combats_max_turn": 22,
+       "extra_combats_scenario_turn": 21,
+       "agent_events": {
+        "added_block": 2,
+        "attack_reask": 1,
+        "block_skip": 1,
+        "instant_hold": 6,
+        "mull_keep": 4,
+        "mull_take": 2,
+        "search_seen": 3,
+        "tutor_skip": 1
+       },
+       "agent_events_on_pieces": 5,
+       "ms_per_turn": 31792,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 40.4,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      },
+      {
+       "file": "trial_3.jsonl",
+       "ran": true,
+       "shim": "0.17.1",
+       "shim_commit": "967cb71a3eef",
+       "scenario_sha256": "beb1786fe73ece3e0dcce5379f68b6898166bde172946050928ef8be084b18aa",
+       "applied": true,
+       "apply_error": null,
+       "board_diffs": [],
+       "loaded": true,
+       "scenario_turn": 5,
+       "has_result": true,
+       "winner": "Ai(2)-godo_archetype",
+       "draw": false,
+       "turns": 5,
+       "timedOut": false,
+       "turnCapped": false,
+       "ms": 29697,
+       "error": null,
+       "killFailed": false,
+       "alive": [
+        false,
+        true,
+        false,
+        false
+       ],
+       "winner_seat": 1,
+       "success": true,
+       "kill_on_scenario_turn": true,
+       "turns_to_kill": 0,
+       "line_seat": 1,
+       "piece_counts": {
+        "Godo, Bandit Warlord": {
+         "triggered": 44
+        },
+        "Helm of the Host": {
+         "triggered": 22
+        }
+       },
+       "piece_activity_total": 66,
+       "iterations_max_turn": 66,
+       "iterations_scenario_turn": 66,
+       "combats_max_turn": 22,
+       "extra_combats_scenario_turn": 21,
+       "agent_events": {
+        "added_block": 2,
+        "attack_reask": 1,
+        "block_skip": 1,
+        "instant_hold": 6,
+        "mull_keep": 4,
+        "mull_take": 1,
+        "search_seen": 3,
+        "tutor_skip": 1
+       },
+       "agent_events_on_pieces": 5,
+       "ms_per_turn": 29697,
+       "ms_per_decision": null,
+       "exceptions": 0,
+       "exception_samples": [],
+       "rc": 0,
+       "wall_s": 38.7,
+       "players": [
+        "Ai(1)-derevi",
+        "Ai(2)-godo_archetype",
+        "Ai(3)-nadu",
+        "Ai(4)-rograkh_silas"
+       ]
+      }
+     ]
+    }
+   }
+  }
+ }
+}

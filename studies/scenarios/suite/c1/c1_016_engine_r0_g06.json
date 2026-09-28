@@ -25,7 +25,8 @@
      "card": "Rhystic Study"
     },
     {
-     "card": "Breeding Pool"
+     "card": "Breeding Pool",
+     "tapped": true
     },
     {
      "card": "Savannah",
@@ -247,6 +248,7 @@
  "phase": "MAIN1",
  "notes": [
   "Board from cell_2iA_Jt0d6sM_rot0.jsonl game 6, turn 21 (Ai(2)-godo_archetype), as it stood at the end of the precombat main phase: shim zone, tap, counter and attach records; life from Forge's log.",
+  "Tapped because they entered tapped and had not untapped (Forge logs no tap for a card entering tapped; read from each card's next untap): Breeding Pool (Ai(1)-derevi).",
   "Not carried: poison and other player counters, the library order (the rest of each deck is shuffled per trial), commander tax and damage, this-turn effects, the mana pool."
  ],
  "success": {

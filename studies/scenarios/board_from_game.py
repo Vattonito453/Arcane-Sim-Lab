@@ -15,7 +15,11 @@ turn's precombat main phase.
 What it carries: battlefield (cards, tapped, P1P1/M1M1/charge/loyalty
 counters, equipment and aura attachments, summoning sickness for what the
 active seat took control of this turn), hand, graveyard, exile, life, lands
-played this turn, and each seat's deck (the game's own seat order).
+played this turn, and each seat's deck (the game's own seat order). A card
+that entered tapped has no tap record (Forge fires no tap event for it), so
+it is read as tapped when its next record is an untap; one that entered
+tapped and left before untapping cannot be told apart and is written
+untapped.
 What it cannot carry, and says so in the scenario's notes: tokens with no
 known Forge token script, poison and other player counters (not in the shim's
 records), the library order (the rest of the deck is shuffled per trial),
@@ -111,12 +115,13 @@ def snapshot(recs: list[dict], turn: int) -> dict:
     attach: dict[int, str | None] = {}
     lands_played = defaultdict(int)
     names: dict[int, str] = {}
-    for r in recs:
+    live = [r for r in recs if r.get("rec") in ("zone", "tap", "counters", "attach")]
+    cut = len(live)
+    for i, r in enumerate(live):
         kind = r.get("rec")
-        if kind not in ("zone", "tap", "counters", "attach"):
-            continue
         t = int(r.get("turn", 0))
         if t > turn or (t == turn and r.get("phase", "") not in PRE_COMBAT):
+            cut = i
             break
         cid = r.get("cardId")
         if kind == "zone":
@@ -142,8 +147,29 @@ def snapshot(recs: list[dict], turn: int) -> dict:
             counters[cid][r.get("type")] = int(r.get("n", 0))
         elif kind == "attach":
             attach[cid] = r.get("to")
+    # A permanent that ENTERED tapped has no tap record: Forge sets an
+    # entering card tapped with Card.setTapped (TapEffect's ETB branch, "do
+    # not fire Taps triggers"), which fires no GameEventCardTapped. Its
+    # next tap record is then an untap (Card.untap fires only on a tapped
+    # card), so a battlefield card with no tap record since it entered, whose
+    # next record is an untap before it moves, was tapped at the snapshot.
+    # Measured on C1's source games: 4 unpaid shock lands on 3 of 20 boards.
+    entered_tapped = []
+    for cid, c in cards.items():
+        if c["zone"] != "Battlefield" or cid in tapped:
+            continue
+        for r in live[cut:]:
+            if r.get("cardId") != cid:
+                continue
+            if r.get("rec") == "zone":
+                break
+            if r.get("rec") == "tap":
+                if r.get("tapped") is False:
+                    tapped[cid] = True
+                    entered_tapped.append(cid)
+                break
     return {"cards": cards, "tapped": tapped, "counters": counters, "attach": attach,
-            "lands_played": dict(lands_played)}
+            "lands_played": dict(lands_played), "entered_tapped": entered_tapped}
 
 
 def back_faces(index: Path | None) -> dict[str, str]:
@@ -249,6 +275,11 @@ def build(path: Path, game: int, turn: int, sid: str, deck_dir: Path | None,
     if copies:
         notes.append("Placed under their printed names, so Forge asks again what they copy: "
                      + ", ".join(copies) + ".")
+    if snap["entered_tapped"]:
+        notes.append("Tapped because they entered tapped and had not untapped (Forge logs no tap for a card "
+                     "entering tapped; read from each card's next untap): "
+                     + ", ".join(f"{snap['cards'][cid]['logged_as']} ({snap['cards'][cid]['player']})"
+                                 for cid in snap["entered_tapped"]) + ".")
     notes.append("Not carried: poison and other player counters, the library order (the rest of each deck "
                  "is shuffled per trial), commander tax and damage, this-turn effects, the mana pool.")
     return {"format": "simlab-scenario/1", "id": sid,

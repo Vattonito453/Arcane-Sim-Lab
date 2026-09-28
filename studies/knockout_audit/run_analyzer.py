@@ -38,7 +38,9 @@ TP_KEEP = ("turn", "round", "seat", "shift", "basis", "inferred", "event_hint",
 
 
 def git_blob(path: Path) -> str:
-    data = path.read_bytes()
+    # A Windows checkout with core.autocrlf=true holds CRLF; git stores LF, so
+    # normalise before hashing or the blob never matches the committed one.
+    data = path.read_bytes().replace(b"\r\n", b"\n")
     return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
 
 

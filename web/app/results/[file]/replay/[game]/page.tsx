@@ -17,6 +17,7 @@ import { runTitle, scryfallArt, shortName, stripAi } from "@/lib/format";
 import { boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt, summarizeGame, type Step } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
+import { FlagMoment } from "@/components/FlagMoment";
 
 const SPEED_MS: Record<number, number> = { 1: 300, 2: 150, 4: 75 };
 
@@ -69,6 +70,8 @@ export default function ReplayPage() {
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [copied, setCopied] = useState(false);
+  const [flagOpen, setFlagOpen] = useState(false);
+  const flagBtnRef = useRef<HTMLButtonElement | null>(null);
   const seeded = useRef(false);
   const listRef = useRef<HTMLDivElement | null>(null);
   const curRef = useRef<HTMLDivElement | null>(null);
@@ -82,6 +85,7 @@ export default function ReplayPage() {
     setAbsent(false);
     setIdx(0);
     setPlaying(false);
+    setFlagOpen(false);
     api
       .runGame(file, gameNum)
       .then((r) => live && setData(r))
@@ -229,8 +233,12 @@ export default function ReplayPage() {
   // keyboard: space play/pause, arrows step, shift+arrows jump turns
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      const tag = (e.target as HTMLElement | null)?.tagName;
+      const target = e.target as HTMLElement | null;
+      const tag = target?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      // Inside the flag form, and on the button that opens it, space and
+      // arrows belong to the control (space presses it), not to playback.
+      if (target?.closest?.("form, [data-own-keys]")) return;
       if (e.code === "Space") {
         e.preventDefault();
         playPause();
@@ -363,6 +371,20 @@ export default function ReplayPage() {
             <button className="btn" onClick={copyLink}>
               {copied ? "Copied" : "Copy link at this event"}
             </button>
+            {/* Secondary, like its neighbour: the play button is the primary. */}
+            <button
+              ref={flagBtnRef}
+              className="btn"
+              data-own-keys=""
+              aria-expanded={flagOpen}
+              aria-controls="flag-moment"
+              onClick={() => {
+                setPlaying(false); // a moving playhead would move the flag
+                setFlagOpen((o) => !o);
+              }}
+            >
+              Flag this moment
+            </button>
           </div>
         </div>
 
@@ -386,6 +408,22 @@ export default function ReplayPage() {
             Jump to the deciding turn
           </a>
         </p>
+
+        {flagOpen && (
+          <FlagMoment
+            id="flag-moment"
+            file={file}
+            game={gameNum}
+            step={cur}
+            index={clamp(idx, 0, n - 1)}
+            total={n}
+            players={game.players}
+            onClose={() => {
+              setFlagOpen(false);
+              flagBtnRef.current?.focus();
+            }}
+          />
+        )}
 
         <div className="stage">
           <div>

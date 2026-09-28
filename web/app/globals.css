@@ -1168,3 +1168,42 @@ footer.chrome {
 @media (max-width: 720px) {
   .runbar { margin: 16px -16px -32px; padding: 10px 14px; }
 }
+
+/* ── flag this moment (replay; repair plan WS2 layer A task 5) ──
+   components/FlagMoment.tsx. A bordered row inside the page's glass sheet,
+   like .theater, NOT a second panel: panels never nest. Secondary throughout:
+   its buttons are plain .btn, because the play button is the page's primary
+   and nothing here may glow. Fields keep the global 2px cyan focus-visible
+   ring (unlike input.txt, which trades it for a border colour). */
+.flagbox { max-width: 760px; margin: 0 0 30px; padding: 16px 18px 18px;
+  border: 1px solid var(--hairline-strong); border-radius: var(--r-action);
+  background: var(--row-ground); }
+.flagbox .sh { margin-bottom: 6px; }
+.flag-where { color: var(--ink-3); font-size: 13.5px; line-height: 1.6; }
+.flag-where b { color: var(--ink-1); font-weight: 600; }
+/* The flagged log line, verbatim: data, so mono, set off by a hairline rule. */
+.flag-line { margin-top: var(--sp-2); padding: 6px 0 6px 12px;
+  border-left: 2px solid var(--hairline-strong); color: var(--ink-2);
+  font-family: var(--font-data); font-size: 12.5px; line-height: 1.6; overflow-wrap: anywhere; }
+textarea.flag-note { display: block; width: 100%; min-height: 96px; padding: 10px 12px;
+  background: var(--surface-obsidian); border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-control); color: var(--ink-1); font: inherit; font-size: 13.5px;
+  line-height: 1.6; resize: vertical; transition: border-color var(--dur-fast); }
+.flag-field { display: block; width: 100%; height: var(--control-h); padding: 0 12px;
+  background-color: var(--surface-obsidian); border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-control); color: var(--ink-1); font: inherit; font-size: 13.5px;
+  transition: border-color var(--dur-fast); }
+textarea.flag-note:focus, .flag-field:focus { border-color: var(--mana-cyan); }
+.flag-field[aria-invalid="true"] { border-color: var(--state-failed); }
+.flag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; margin-top: var(--sp-4); }
+.flag-forget { margin-top: var(--sp-1); margin-left: -8px; }
+.flag-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--sp-4); }
+/* Outcome line: the status primitive carries the state by shape (§7). */
+.flag-result { margin-top: var(--sp-3); color: var(--ink-2); font-size: 13.5px; line-height: 1.6; }
+.flag-result:empty { margin: 0; }   /* kept in the tree: a live region must exist before it speaks */
+.flag-result .st { font-size: 13.5px; vertical-align: 1px; }
+@media (max-width: 720px) {
+  .flagbox { padding: 14px; }
+  .flag-grid { grid-template-columns: 1fr; }
+  .flag-grid > div + div { margin-top: var(--sp-4); }
+}

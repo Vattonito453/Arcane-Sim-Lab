@@ -2,7 +2,9 @@
 
 /** Replay theater — /results/[file]/replay/[game] ([game] is 1-based).
  *  Fetches exactly one game (GET /results/{file}/game/{n}) rather than the whole
- *  run, so a 48-turn replay costs ~15 KB on the wire instead of ~235 KB.
+ *  run, so a replay costs ~21 KB on the wire (gzipped) instead of ~235 KB.
+ *  The payload also carries the game's story (engine/game_story.py): out
+ *  seats, dated by Forge, and the turning point the primary jumps to.
  *  All replay state comes from lib/replay.ts: buildTimeline() folds the raw
  *  event log into steps; foldTo() derives a best-effort board at any step.
  *  The event feed on the right is the authoritative record. */

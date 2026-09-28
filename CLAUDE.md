@@ -392,9 +392,14 @@ regenerates by running a sim.
    `disk I/O error`. Use a real volume; point `MTG_DATA_DIR` somewhere local.
 3. **`next build` needs network** the first time (`next/font` fetches and
    self-hosts Inter and Geist Mono). Offline builds fail on fonts, not on code.
-4. **Prefer the small API payloads.** `api.runSummary(file)` (~930 B) and
-   `api.runGame(file, n)` (~15 KB) exist because `api.result(file)` is ~235 KB
-   gzipped. Don't reintroduce whole-run fetches into pages.
+4. **Prefer the small API payloads.** `api.runSummary(file)` (gzipped: 2.6 KB
+   for the playtester's 8-game run, 3.9 KB for a 16-game one; it carries every
+   game's story since R1, and was 1.4 KB before) and `api.runGame(file, n)`
+   (gzipped: 21 KB for game 1 of that run, median 25.5 KB) exist because
+   `api.result(file)` is ~235 KB gzipped. Measured 2026-09-28 as the API sends
+   them (json.dumps + gzip 6). Don't reintroduce whole-run fetches into pages.
+   Both revalidate (max-age=300) because the story follows the
+   `MTG_TURNING_POINT` / `MTG_KNOCKOUT_DETAIL` switches (engine/game_story.py).
 5. **Player keys carry a seat prefix** — `"Ai(2)-Kilo Helm Final"`. Strip with
    `stripAi()` for display; keep the raw key for lookups. Note `Ai(2)-` also
    looks like Forge's `(123)` instance-id syntax — parsers must not confuse them.

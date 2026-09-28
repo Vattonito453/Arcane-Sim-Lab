@@ -297,6 +297,30 @@ not the api — rate limits are in-process, so two api replicas double every
 quota. And the data volume must stay a real filesystem (the job queue is
 SQLite); the named docker volume on the VM's boot disk is exactly that.
 
+**Game-story switches (R1).** What the results page and the replay say about
+how each game went is set by two api-container variables, applied
+server-side in the payloads (`engine/game_story.py`), so the week-3 hand
+audit of the knockout and turning-point readings can be applied without a
+code change:
+
+| Variable | Values | Default |
+|---|---|---|
+| `MTG_TURNING_POINT` | `swing`: labelled "Biggest swing" (audit not passed); `audited`: labelled "Turning point"; `off`: not shown (held) | `swing` |
+| `MTG_KNOCKOUT_DETAIL` | `on`: each knockout's cause and killer shown; `off`: who went out, and when, only | `on` |
+
+Set them in `deploy/.env`, then `docker compose --env-file .env up -d api`
+(no rebuild; compose passes both through). Browsers pick the change up
+within 5 minutes (the summary and game payloads are `max-age=300`).
+`/health` reports the values in force under `story`, and preflight prints
+them under GAME STORY SWITCHES.
+
+**After deploying R1, backfill commander names** into existing results (the
+results page, index and replay read them; old runs otherwise fall back to a
+live read of each deck file, which fails once a deck is deleted):
+`sudo docker exec deploy-api-1 python3 /app/engine/readapt.py --check --all`,
+then `--write --all`. It keeps each file's mtime, only adds decks meta does
+not name yet, and skips decks whose file is gone.
+
 ### The tunnel option, retired
 
 An earlier version of this doc led with a Cloudflare quick tunnel from the Mac.

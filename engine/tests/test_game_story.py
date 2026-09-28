@@ -41,7 +41,7 @@ EM_DASH = "—"
 
 def test_switch_defaults_are_not_audited_and_detail_on():
     sw = game_story.switches({})
-    assert sw == {"turning_point": "swing", "turning_point_label": "Biggest swing",
+    assert sw == {"turning_point": "swing", "turning_point_label": "Biggest board swing",
                   "knockout_detail": True, "invalid": []}, sw
 
 
@@ -71,7 +71,7 @@ def test_game_one_story_public_subset():
     for o in st["out"]:
         assert set(o) == {"player", "turn", "round", "seq"} and isinstance(o["seq"], int), o
     tp = st["turning_point"]
-    assert tp is not None and tp["label"] == "Biggest swing", tp
+    assert tp is not None and tp["label"] == "Biggest board swing", tp
     assert tp["basis"] == "zones" and tp["round"] == 1, tp
     assert set(tp) == {"turn", "round", "card", "by", "combat", "basis", "label", "seq",
                        "share_before", "share_after"}, tp
@@ -93,12 +93,40 @@ def test_turning_point_label_follows_the_switch():
     assert st["turning_point"] is None
 
 
-def test_stdout_turning_point_is_labelled_inferred():
+def _stdout_swing_game():
+    """A stock-Forge (stdout) game whose inferred board has a clear swing:
+    B's Krenko makes ten Goblins on turn 2 and B wins."""
+    from test_qa_knockouts import game, lost, won  # noqa: PLC0415
+    turns = [(A, [("stack_add", f"{A} cast Grizzly Bears"),
+                  ("stack_resolve", "Grizzly Bears - Creature 2 / 2")]),
+             (B, [("stack_add", f"{B} cast Krenko, Mob Boss"),
+                  ("stack_resolve", "Krenko, Mob Boss - Creature 3 / 3"),
+                  ("stack_add", f"{B} activated Krenko, Mob Boss"),
+                  ("stack_resolve", f"Krenko, Mob Boss (401) - {B} creates ten 1/1 red "
+                                    "Goblin creature tokens.")]),
+             (A, [])]
+    return game(turns, winner=B, players=(A, B), outcome=[lost(A), won(B)])
+
+
+def test_stdout_turning_point_is_held_in_every_mode():
+    # The week-3 audit (T2 and the path table): the inferred board's swing
+    # agreed with the readers in 1 of 8 stdout games, so it never ships, not
+    # even labelled "(inferred)", whatever MTG_TURNING_POINT says.
+    from qa import knockouts as K  # noqa: PLC0415
+    g = _stdout_swing_game()
+    raw = K.turning_point(g)
+    assert raw is not None and raw["basis"] == "log" and raw["turn"] == 2, raw
+    for mode in ("swing", "audited", "off"):
+        st = game_story.of_game(g, game_story.switches({"MTG_TURNING_POINT": mode}))
+        assert st["turning_point"] is None, (mode, st["turning_point"])
+        # Who went out, and how, still ships on the stdout path.
+        assert [k["player"] for k in st["knockouts"]] == [A], st["knockouts"]
     st = game_story.of_game(game_one(with_zones=False), game_story.switches({}))
-    tp = st["turning_point"]
-    assert tp is None or tp["basis"] == "inferred", tp
+    assert st["turning_point"] is None, st["turning_point"]
     for k in st["knockouts"]:
         assert k["basis"] == "log", k
+    # The shim path still ships it.
+    assert game_story.of_game(game_one(), game_story.switches({}))["turning_point"]
 
 
 def test_draw_has_no_turning_point_and_bad_game_is_empty():
@@ -432,11 +460,11 @@ def test_summary_game_and_index_carry_story_commanders_and_pilot():
                     os.environ[k] = v
     assert s["commanders"] == {"Skrat's Revenge": ["The Unbeatable Squirrel Girl"]}, s
     assert s["pilot"]["kind"] == "plan" and s["pilot"]["shim"] == "0.15.0", s["pilot"]
-    assert s["story"] == {"turning_point_label": "Biggest swing", "knockout_detail": True,
+    assert s["story"] == {"turning_point_label": "Biggest board swing", "knockout_detail": True,
                           "basis": "zones"}, s["story"]
     g1 = s["games"][0]
     assert [k["cause"] for k in g1["knockouts"]] == ["poison", "poison", "combat_damage"]
-    assert len(g1["out"]) == 3 and g1["turning_point"]["label"] == "Biggest swing", g1
+    assert len(g1["out"]) == 3 and g1["turning_point"]["label"] == "Biggest board swing", g1
     # The game payload carries the same story for that game.
     for key in ("knockouts", "out", "turning_point"):
         assert g[key] == g1[key], key

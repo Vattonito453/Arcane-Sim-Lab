@@ -202,9 +202,15 @@ def main() -> int:
                   str([k for g in games for k in g.get("knockouts") or []][:1]))
             tps = [g["turning_point"] for g in games if g.get("turning_point")]
             story = summary.get("story") or {}
-            check("turning points carry their basis and the label in force",
-                  all(tp.get("basis") in ("zones", "inferred")
-                      and tp.get("label") == story.get("turning_point_label") for tp in tps),
+            # Held on stdout runs (inferred board; the week-3 audit agreed on
+            # 1 of 8) and withheld when the raw share did not rise, so every
+            # one that ships is a zone-stream read that raised the share.
+            check("turning points are zone reads that raised the share, with the label in force",
+                  all(tp.get("basis") == "zones"
+                      and tp.get("label") == story.get("turning_point_label")
+                      and isinstance(tp.get("share_before"), (int, float))
+                      and isinstance(tp.get("share_after"), (int, float))
+                      and tp["share_after"] > tp["share_before"] for tp in tps),
                   f"label={story.get('turning_point_label')} {str(tps[:1])[:120]}")
             pilot = summary.get("pilot") or {}
             check("summary discloses the pilot",

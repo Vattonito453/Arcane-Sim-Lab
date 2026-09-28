@@ -85,7 +85,11 @@ export interface Pilot extends PilotIdentity {
  *  counter; `round` is the table turn a player counts, and the one to show
  *  as "turn N". cause, by and card are null when MTG_KNOCKOUT_DETAIL is off
  *  on the server. `basis` says where `by` came from: the shim's zone stream
- *  (a read) or Forge's event log. */
+ *  (a read) or Forge's event log. `card` is a card NAME and is not audited:
+ *  for damage, the name whose lines dealt the most, same-named tokens summed
+ *  ("Goblin Token" can stand for six), so any copy that shows it says "most
+ *  damage from", never "the creature that did it". Today only an alternate
+ *  win's card (the winning spell) is shown. */
 export interface Knockout {
   player: string;
   turn: number;
@@ -118,11 +122,13 @@ export interface OutSeat {
   seq: number | null;
 }
 
-/** The turn the board swung hardest toward the winner. `label` is what to
- *  call it ("Biggest swing" until the hand audit passes, then "Turning
- *  point"); `basis` "inferred" means reconstructed from the stdout log, and
- *  must be labelled so. `card` is null when combat moved it (`combat`) or
- *  nothing could be named. */
+/** The turn the winner's share of the table's creature power grew the most
+ *  (creatures only, at their power as they entered). `label` is what to call
+ *  it ("Biggest board swing" until a re-audit passes, then "Turning point").
+ *  Shim runs only: the engine holds it on stdout runs, so `basis` is
+ *  "zones"; "inferred" can come only from an older engine, and must be
+ *  labelled so. share_after is above share_before. `card` is null when
+ *  combat moved it (`combat`) or nothing could be named. */
 export interface TurningPoint {
   turn: number;
   round: number;

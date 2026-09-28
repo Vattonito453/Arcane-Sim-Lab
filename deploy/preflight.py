@@ -192,9 +192,11 @@ def game_story_ok(body):
 def analysis_ok(body):
     """The wincon report, from an engine that carries qa.knockouts.
 
-    ANALYSIS_VERSION 6 added per-game `knockouts` (repair plan WS1). A report
-    without them is a stale engine, or one whose image is missing engine/qa/
-    and fell back to the loss-line reading."""
+    ANALYSIS_VERSION 6 added per-game `knockouts` (repair plan WS1), and 7
+    the week-3 audit's analyzer fixes (knockout card attribution, the raw-rise
+    rule for the turning point). A report below 7 is a stale engine, or one
+    whose image is missing engine/qa/ and fell back to the loss-line
+    reading."""
     if not isinstance(body, dict):
         return False, "expected an object"
     missing = [k for k in ("decks", "summary", "games") if k not in body]
@@ -203,6 +205,8 @@ def analysis_ok(body):
     version = body.get("version") or 0
     if version < 6:
         return False, "analysis version %s < 6 (no knockouts)" % version
+    if version < 7:
+        return False, "analysis version %s < 7 (knockouts before the week-3 audit fixes)" % version
     games = body.get("games") or []
     bare = [g.get("n") for g in games
             if not isinstance(g, dict) or not isinstance(g.get("knockouts"), list)]
@@ -748,8 +752,9 @@ def main(argv):
     if isinstance(sw, dict):
         tp = sw.get("turning_point")
         print("  %-6s %-30s %s" % ("info", "MTG_TURNING_POINT", "%s: %s" % (
-            tp, {"swing": 'labelled "Biggest swing" (the week-3 audit failed the '
-                          'turning point, 8 of 20; studies/knockout_audit/RESULTS.md)',
+            tp, {"swing": 'labelled "Biggest board swing", shim runs only (the '
+                          'week-3 audit failed the turning point, 8 of 20; '
+                          'studies/knockout_audit/RESULTS.md)',
                  "audited": 'labelled "Turning point" (only after a re-audit passes: '
                             'the week-3 audit failed it, 8 of 20)',
                  "off": "held: not shown"}.get(tp, "?"))))

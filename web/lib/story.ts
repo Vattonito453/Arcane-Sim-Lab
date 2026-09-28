@@ -2,13 +2,17 @@
  *  (tasks/26-ux-review.md problem 1, section 5.4):
  *
  *    "Skrat's Revenge, turn 10. Out: Stella Lee and Krenko Goblins (poison,
- *     turn 9), Kess (combat, turn 10). Biggest swing: turn 8, Ezuri's Predation."
+ *     turn 9), Kess (combat, turn 10). Biggest board swing: turn 8, Ezuri's
+ *     Predation."
  *
  *  Pure functions over the engine's story payload (engine/game_story.py), so
  *  the results page and the replay say exactly the same thing. Every fact is
  *  the engine's: who went out and when (dated by the lethal event Forge
  *  logged), the cause (Forge's own loss line), the killer, and the turn the
- *  board turned. Nothing here reads a log or a card.
+ *  winner's share of creature power grew the most. Nothing here reads a log
+ *  or a card. A knockout's damage card is never shown: it is a name summed
+ *  over same-named tokens and not audited (qa.knockouts, "Card"); only an
+ *  alternate win's spell is, which Forge's loss line quotes.
  *
  *  Turns are table turns (a player's Nth turn is turn N), never Forge's
  *  per-player counter. Names follow shortName(), one name per deck
@@ -98,8 +102,16 @@ function outClause(kos: Knockout[], winner: string | null, name: (key: string) =
 
 export function turningPointClause(tp: TurningPoint): string {
   const what = tp.card ? `, ${tp.card}` : tp.combat ? ", in combat" : "";
+  // The engine holds every inferred one since the week-3 audit fixes; the
+  // mark stays for an older engine that still sends them.
   return `${tp.label}${tp.basis === "inferred" ? " (inferred)" : ""}: turn ${tp.round}${what}.`;
 }
+
+/** The label the server sends only once the turning point has passed a
+ *  re-audit (MTG_TURNING_POINT=audited; engine/game_story.py LABELS). Any
+ *  other label is the unaudited "Biggest board swing", which carries the
+ *  audit's figure in the note below. */
+const AUDITED_LABEL = "Turning point";
 
 /** The sentence as segments (the winner strong), for rendering. */
 export function storySegments(input: StoryInput, commanders?: CommanderMap): Seg[] {
@@ -139,22 +151,24 @@ export function storyNote(meta: StoryMeta | undefined): string {
   );
   if (label) {
     const lower = label.toLowerCase();
-    const what = `The ${lower} is the turn the winner's share of the table's creature power grew the most`;
-    if (meta.basis === "zones") {
-      parts.push(`${what}, read from the zone stream, which records every creature entering and leaving play.`);
-    } else if (meta.basis === "inferred") {
+    const audit = meta.knockout_detail ? "the same audit" : "an audit";
+    // The engine shows it only where the shim's zone stream recorded the
+    // board (engine/game_story.py): a stdout run's board is inferred, and its
+    // swing matched the audit's readers in 1 of 8 games.
+    if (meta.basis === "inferred") {
       parts.push(
-        `${what}. On this run it is inferred: Forge's log records creatures leaving the battlefield but never entering, so board power is rebuilt from casts, token lines and combat.`,
+        `No ${lower} is shown for this run: Forge's log records creatures leaving the battlefield but never entering, so its board is only inferred, and ${audit} found an inferred swing matched the turning point independent readers named in only 1 of 8 games.`,
       );
     } else {
       parts.push(
-        `${what}: read from the zone stream where a game has one, and inferred from Forge's log (marked "inferred") where it does not.`,
+        `The ${lower} is the turn the winner's share of the table's creature power grew the most, read from the zone stream. It counts creatures only, at the power they entered with, so burn, auras, equipment and counters added later never move it, and a game where no turn raised that share has none.${meta.basis === "mixed" ? " Games without a zone stream show none, since their board is only inferred." : ""}`,
       );
-    }
-    if (label === "Biggest swing") {
-      parts.push(
-        `${meta.knockout_detail ? "The same audit" : "An audit"} found it matched the turning point independent readers named in only 8 of 20 games, so read it as the biggest shift in board power, not as the moment the game was decided.`,
-      );
+      if (label !== AUDITED_LABEL) {
+        const Audit = audit.charAt(0).toUpperCase() + audit.slice(1);
+        parts.push(
+          `${Audit} found it matched the turning point independent readers named in 7 of 12 such games, so read it as the biggest shift in creature power, not as the moment the game was decided.`,
+        );
+      }
     }
   }
   return parts.join(" ");

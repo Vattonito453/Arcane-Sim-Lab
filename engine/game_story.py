@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The public story of each game: who went out, when and how, and the turn
-the board turned. What the results page's one-sentence game rows and the
-replay's out seats and "Watch the turning point" control read.
+of the biggest board swing. What the results page's one-sentence game rows
+and the replay's out seats and "Watch the ..." control read.
 
 Repair plan WS11 task 1 (tasks/25-repair-plan.md), UX review problem 1 and
 sections 4.6 and 5.4 (tasks/26-ux-review.md). The facts come from
@@ -16,22 +16,35 @@ and applies the two display switches below.
                    `round` the table turn a player counts ("turn 9"); show
                    `round`. `basis` says where `by` came from: "zones" (the
                    shim's zone stream, a read) or "log" (Forge's event log).
+                   `card` is a card NAME and is not audited (qa.knockouts,
+                   "Card"): for damage it is the name whose damage lines add
+                   up to the most, same-named tokens summed, so "Goblin
+                   Token" can stand for six of them. Word it as the name that
+                   dealt the most damage, never as "the creature that did
+                   it". The pages show it only for an alternate win, where it
+                   is the winning spell Forge's loss line quotes.
     out            [{player, turn, round, seq}]: the seats that went out and
                    the event Forge dates it by (`seq` of the lethal event;
                    null when only Forge's turn order bounds it, in which case
                    the seat is out from the end of that turn).
     turning_point  {turn, round, card, by, combat, basis, label, seq,
-                   share_before, share_after} or null. The turn with the
-                   largest shift in board power toward the winner. `basis`
-                   is "zones" (read from the zone stream on shim runs) or
-                   "inferred" (reconstructed from the stdout log, which never
-                   records a creature entering play). `card` is what moved
-                   the most power that turn, null when it was combat
-                   (`combat` true) or nothing could be named. `label` is the
-                   words the UI shows (see MTG_TURNING_POINT). Null for a
-                   draw (a game the clock cut off included, whatever winner
-                   it records), when no turn moved the board toward the
-                   winner, or when the switch is off.
+                   share_before, share_after} or null. The turn the winner's
+                   share of the table's creature power grew the most, and
+                   only that: creatures at their power as they entered, so
+                   burn, auras, equipment, counters and alternate wins never
+                   move it (the week-3 audit's defect T2). `basis` is always
+                   "zones" (read from the shim's zone stream): a stdout run's
+                   board is inferred, and its swing agreed with the audit's
+                   readings in 1 of 8 games, so it is held (null) there in
+                   every mode. `card` is what moved the most power that
+                   turn, null when it was combat (`combat` true) or nothing
+                   could be named. `label` is the words the UI shows (see
+                   MTG_TURNING_POINT). share_after is always above
+                   share_before (qa.knockouts withholds a pick whose raw
+                   share did not rise: defect T1). Null for a draw (a game
+                   the clock cut off included, whatever winner it records),
+                   a stdout run, when no turn raised the winner's share, or
+                   when the switch is off.
 
 ## Display switches (server-side; set in the API's environment)
 
@@ -51,14 +64,20 @@ scorecards' "how it won" (/results/{file}/scorecards, served immutable).
 unswitched; no page renders those. If the knockout audit fails, hiding the
 per-game cause here does not hide those aggregates.
 
-    MTG_TURNING_POINT    swing (default)  label "Biggest swing": the week-3
-                                          audit failed the turning point (8 of
-                                          20 against the 16 required;
+    MTG_TURNING_POINT    swing (default)  label "Biggest board swing": the
+                                          week-3 audit failed the turning
+                                          point (8 of 20 against the 16
+                                          required, 7 of 12 on shim runs;
                                           studies/knockout_audit/RESULTS.md),
-                                          so this stays until a re-audit on a
+                                          so it ships named for what it
+                                          measures until a re-audit on a
                                           fresh draw passes
-                         audited          label "Turning point"
+                         audited          label "Turning point" (only after
+                                          that re-audit passes)
                          off              no turning point at all (held)
+                         Whatever the value, a stdout run's is held, and a pick
+                         whose raw share did not rise is withheld (see the
+                         payload above); neither rule is re-audited.
     MTG_KNOCKOUT_DETAIL  on (default)     cause and killer shown; the week-3
                                           audit passed knockouts (39 of 40
                                           against the 38 required)
@@ -78,7 +97,9 @@ TURNING_POINT_ENV = "MTG_TURNING_POINT"
 KNOCKOUT_DETAIL_ENV = "MTG_KNOCKOUT_DETAIL"
 
 TURNING_POINT_MODES = ("swing", "audited", "off")
-LABELS = {"swing": "Biggest swing", "audited": "Turning point"}
+# "Board": the metric reads creature power only (the week-3 audit, T2), so the
+# unaudited label says so rather than promising the swing of the whole game.
+LABELS = {"swing": "Biggest board swing", "audited": "Turning point"}
 
 # qa.knockouts names a hint it could not attribute this way; it names no card.
 _NO_CARD = {"a resolving ability"}
@@ -116,6 +137,12 @@ def _public_knockout(k: dict, detail: bool) -> dict:
 
 def _public_turning_point(tp: dict | None, mode: str) -> dict | None:
     if not tp or mode == "off":
+        return None
+    if tp.get("basis") != "zones":
+        # A stdout run: the board is inferred from a log that never records a
+        # creature entering play, and the audit found the swing on the
+        # readers' turn in 1 of 8 such games. Held in every mode; lifting it
+        # takes a re-audit that covers the stdout path, and a code change.
         return None
     hint = tp.get("event_hint")
     combat = hint == "combat"

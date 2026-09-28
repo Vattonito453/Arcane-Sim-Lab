@@ -141,8 +141,9 @@ export default function ReplayPage() {
   // cleared; before R1 every loser stayed seated until the final event.
   const outs = useMemo(() => (timeline ? outSteps(timeline, data?.out) : []), [timeline, data?.out]);
 
-  // The turning point (labelled "Biggest swing" until its audit passes), and
-  // the first step of its turn: where "Watch the turning point" lands.
+  // The turning point (labelled "Biggest board swing" until a re-audit
+  // passes; shim runs only, engine/game_story.py), and the first step of its
+  // turn: where "Watch the ..." lands.
   const tp = data?.turning_point ?? null;
   const tpIdx = useMemo(() => {
     if (!timeline || !tp) return null;

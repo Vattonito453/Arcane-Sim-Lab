@@ -272,8 +272,11 @@ def latest_check(checks: list[dict], pilot_id: str) -> dict | None:
 
 
 def _fmt_check(c: dict) -> str:
-    """"R1, 2026-10-16: rank correlation 0.47 against a threshold of 0.40"."""
-    where = ", ".join(str(x) for x in (c.get("release"), c.get("date")) if x)
+    """"2026-10-16: rank correlation 0.47 against a threshold of 0.40".
+
+    The release id ("R1") stays in the record, not in the copy: it is an
+    internal name a player cannot read (ui-review: no raw ids on screen)."""
+    where = str(c.get("date") or "")
     try:
         figures = (f"rank correlation {float(c['value']):.2f} against a "
                    f"threshold of {float(c['threshold']):.2f}")

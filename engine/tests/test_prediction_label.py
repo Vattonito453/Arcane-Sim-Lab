@@ -129,7 +129,9 @@ def test_latest_pass_keeps_the_label_and_says_so():
                                                              release="R2.1", value=0.52)]
     h = predict.pilot_honesty(MODEL, pilot.run_pilot(_plan_meta()), checks)
     assert h["suppressed"] is False and h["rank_check"]["status"] == "pass", h
-    assert "R2.1, 2026-12-16" in h["rank_check"]["text"], h
+    assert "2026-12-16" in h["rank_check"]["text"], h
+    # The release id is an internal name: it stays in the record, off the page.
+    assert "R2.1" not in h["rank_check"]["text"] and h["rank_check"]["record"]["release"] == "R2.1"
     assert "0.52" in h["rank_check"]["text"] and "0.40" in h["rank_check"]["text"], h
 
 

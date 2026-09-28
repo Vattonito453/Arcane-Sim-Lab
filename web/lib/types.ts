@@ -222,6 +222,33 @@ export interface PredictionReport {
   reason?: string;
   decks?: PredictionDeck[];
   model?: Record<string, unknown>;
+  /** Pilot honesty (repair plan WS11 task 11). Present on every answer from
+   *  a fitted model; absent from an engine older than R1, so each is optional
+   *  and the panel renders as before without them. */
+  model_arm?: { text: string | null; pilot: string };
+  pilot?: PredictionPilot;
+  pilot_match?: boolean;
+  /** One sentence, written by the engine: "Fit on stock Forge games; this
+   *  run used Sim Lab's pilot." Render it beside the figures, verbatim. */
+  label?: string;
+  rank_check?: {
+    status: "model_arm" | "none" | "pass" | "fail" | "unreadable";
+    text: string;
+  };
+  /** True when the latest rank check for this run's pilot failed (or the
+   *  record is missing): the engine then sends no figures at all. */
+  suppressed?: boolean;
+  suppressed_by?: "rank_check" | "rank_record_missing" | null;
+  suppressed_reason?: string | null;
+}
+
+/** engine/pilot.py run_pilot(): which pilot played the run. */
+export interface PredictionPilot {
+  id: string;
+  kind: "stock" | "plan" | "mixed" | "unknown";
+  shim: string | null;
+  plan_version: number | null;
+  text: string;
 }
 
 export interface SimResult {

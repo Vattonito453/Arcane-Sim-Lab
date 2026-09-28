@@ -1,0 +1,62 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "spike_4p",
+  "description": "G-harness spike: a 4-player Commander board exercising every field the format carries (tapped, summoning sickness, counters, marked damage, a token, equipment attached, commanders on the battlefield and in the command zone, explicit library tops, graveyard, exile, life, poison), on the cEDH-A pod 2iA_Jt0d6sM.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/derevi.dck",
+      "life": 40,
+      "battlefield": [
+        {"card": "Derevi, Empyrial Tactician", "sick": true},
+        {"card": "Command Tower", "tapped": true},
+        "Breeding Pool",
+        {"card": "Sol Ring", "tapped": true},
+        {"card": "Birds of Paradise", "counters": {"P1P1": 1}, "damage": 1}
+      ],
+      "hand": ["Force of Will", "Rhystic Study"],
+      "graveyard": ["Arid Mesa"],
+      "library": {"top": ["Ancient Tomb", "Mana Crypt"], "rest": "shuffled"}
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/godo_archetype.dck",
+      "life": 35,
+      "battlefield": [
+        {"card": "Godo, Bandit Warlord", "id": "godo"},
+        {"card": "Helm of the Host", "attached_to": "godo"},
+        {"card": "Mountain", "tapped": true},
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        {"card": "Urza's Saga", "counters": {"LORE": 2}},
+        {"token": "c_a_treasure_sac"}
+      ],
+      "hand": ["Lightning Bolt"],
+      "library": {"top": ["Sol Ring"], "rest": "shuffled"}
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/nadu.dck",
+      "life": 30,
+      "poison": 3,
+      "battlefield": [
+        {"card": "Nadu, Winged Wisdom", "id": "nadu", "sick": true},
+        {"card": "Lightning Greaves", "attached_to": "nadu"},
+        "Forest",
+        "Island"
+      ],
+      "hand": ["Mystical Tutor"],
+      "exile": ["Force of Negation"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/rograkh_silas.dck",
+      "battlefield": ["Badlands", {"card": "Steam Vents", "tapped": true}, "Mox Opal"],
+      "hand": ["Dark Ritual"],
+      "graveyard": ["Lion's Eye Diamond"]
+    }
+  ],
+  "active": 1,
+  "turn": 5,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 1, "by_turn": 9},
+  "line": {"seat": 1, "pieces": ["Godo, Bandit Warlord", "Helm of the Host"]},
+  "horizon_turns": 4
+}

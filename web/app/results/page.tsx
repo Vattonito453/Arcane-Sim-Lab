@@ -14,7 +14,7 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
 import type { ResultIndexEntry, SimSummary } from "@/lib/types";
-import { deckSlug, fmtDate, pct, runTitle, stripAi, timeAgo } from "@/lib/format";
+import { deckSlug, fmtDate, pct, runTitle, shortName, stripAi, timeAgo } from "@/lib/format";
 import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 
 const PAGE = 25;
@@ -54,11 +54,14 @@ function ResultsIndexInner() {
         const names = r.summary
           ? Object.keys(r.summary.win_rates).map(stripAi)
           : (r.decks ?? []).map(deckSlug);
+        const top = r.summary ? topWin(r.summary) : null;
         return {
           r,
           names,
           title: runTitle(names, r.commanders),
-          win: r.summary ? topWin(r.summary) : null,
+          // The winner under the same one name the title uses ("Kess", not
+          // "Kess, Reanimator" beside "Kess vs Skrat's Revenge vs ...").
+          win: top ? ([shortName(top[0], names, r.commanders), top[1]] as [string, number]) : null,
         };
       });
   }, [results]);

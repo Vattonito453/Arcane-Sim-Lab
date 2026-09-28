@@ -236,9 +236,11 @@ export default function ReplayPage() {
       const target = e.target as HTMLElement | null;
       const tag = target?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
-      // Inside the flag form, and on the button that opens it, space and
-      // arrows belong to the control (space presses it), not to playback.
-      if (target?.closest?.("form, [data-own-keys]")) return;
+      // Inside the flag form every key belongs to the form. On the button that
+      // opens it only space does (space presses it): arrows still step, so
+      // focus returning there after Close leaves "arrows step events" true.
+      if (target?.closest?.("form")) return;
+      if (e.code === "Space" && target?.closest?.("[data-own-keys]")) return;
       if (e.code === "Space") {
         e.preventDefault();
         playPause();

@@ -29,8 +29,9 @@ and applies the two display switches below.
                    the most power that turn, null when it was combat
                    (`combat` true) or nothing could be named. `label` is the
                    words the UI shows (see MTG_TURNING_POINT). Null for a
-                   draw, when no turn moved the board toward the winner, or
-                   when the switch is off.
+                   draw (a game the clock cut off included, whatever winner
+                   it records), when no turn moved the board toward the
+                   winner, or when the switch is off.
 
 ## Display switches (server-side; set in the API's environment)
 
@@ -133,12 +134,17 @@ def of_game(game: dict, sw: dict | None = None) -> dict:
     except Exception:  # noqa: BLE001 - one unreadable game must not fail a run
         return empty()
     kos = raw.get("knockouts") or []
+    tp = raw.get("turning_point")
+    if (game.get("result") or {}).get("timedOut"):
+        # The clock cut this game off: any winner it records is an artifact
+        # of the timeout (audit A16; validity.clock_cut_wins), so there is no
+        # turn the game turned toward it.
+        tp = None
     return {
         "knockouts": [_public_knockout(k, sw["knockout_detail"]) for k in kos],
         "out": [{"player": k.get("player"), "turn": k.get("turn"),
                  "round": k.get("round"), "seq": k.get("seq")} for k in kos],
-        "turning_point": _public_turning_point(raw.get("turning_point"),
-                                               sw["turning_point"]),
+        "turning_point": _public_turning_point(tp, sw["turning_point"]),
     }
 
 

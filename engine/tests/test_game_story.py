@@ -105,6 +105,11 @@ def test_draw_has_no_turning_point_and_bad_game_is_empty():
     g = game_one()
     g["result"] = {"winner": None, "draw": True}
     assert game_story.of_game(g)["turning_point"] is None
+    # A clock-cut game is a draw whatever winner it records (audit A16).
+    g = game_one()
+    g["result"] = {"winner": B, "draw": False, "timedOut": True}
+    st = game_story.of_game(g)
+    assert st["turning_point"] is None and len(st["out"]) == 3, st
     assert game_story.of_game({"turns": "not a list"}) == game_story.empty()
 
 

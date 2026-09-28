@@ -516,7 +516,7 @@ export default function ResultsPage() {
 
         {/* Measured first, modelled second: the corrected rates only read
             correctly once the reader has seen the raw ones they correct. */}
-        <PredictionPanel report={pred} />
+        <PredictionPanel report={pred} commanders={data.commanders} />
 
         {an && Object.keys(an.summary?.methods ?? {}).length > 0 && (
           <section>

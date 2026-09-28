@@ -28,13 +28,22 @@
  *  All styling comes from globals.css; this file adds none.
  */
 
+import { shortName, type CommanderMap } from "@/lib/format";
 import type { PredictionReport } from "@/lib/types";
 
 function pp(x: number): string {
   return `${x >= 0 ? "+" : ""}${x.toFixed(1)}`;
 }
 
-export function PredictionPanel({ report }: { report: PredictionReport | null }) {
+export function PredictionPanel({
+  report,
+  commanders,
+}: {
+  report: PredictionReport | null;
+  /** The engine's commanders, for one name per deck (the same name the run
+   *  title, the scorecards and the game stories use). Optional. */
+  commanders?: CommanderMap;
+}) {
   if (!report) return null;
 
   // A report can be available while no deck in it is: a run without per-seat
@@ -79,6 +88,9 @@ export function PredictionPanel({ report }: { report: PredictionReport | null })
     (a, b) => b.expected_win_rate - a.expected_win_rate,
   );
   const basis = decks[0].basis;
+  // Collisions are judged over every deck in the run, scored or not, as the
+  // run title judges them, so a deck never reads under two names on one page.
+  const allNames = (report.decks ?? []).map((d) => d.deck);
 
   return (
     <section>
@@ -119,7 +131,7 @@ export function PredictionPanel({ report }: { report: PredictionReport | null })
         <tbody>
           {decks.map((d) => (
             <tr key={d.deck}>
-              <td>{d.deck}</td>
+              <td>{shortName(d.deck, allNames, commanders)}</td>
               <td className="r mono">{d.sim_win_rate.toFixed(1)}%</td>
               <td className="r mono">
                 <b>{d.expected_win_rate.toFixed(1)}%</b>

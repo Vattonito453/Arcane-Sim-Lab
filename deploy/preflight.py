@@ -63,10 +63,18 @@ DEFAULT_BASE = "http://127.0.0.1:8484"
 # HTTP plumbing
 # --------------------------------------------------------------------------
 
-def fetch(base, path, timeout=60):
-    """Return (status, parsed_or_text). Never raises."""
+def fetch(base, path, timeout=60, body=None):
+    """Return (status, parsed_or_text). Never raises. With `body`, POSTs it as
+    JSON and sends NO credential: preflight probes a write route only to prove
+    it exists and is gated, never to write."""
     try:
-        r = urllib.request.urlopen(base + path, timeout=timeout)
+        if body is None:
+            req = base + path
+        else:
+            req = urllib.request.Request(base + path, data=json.dumps(body).encode(),
+                                         headers={"Content-Type": "application/json"},
+                                         method="POST")
+        r = urllib.request.urlopen(req, timeout=timeout)
         body = r.read().decode("utf-8", "replace")
         try:
             return r.status, json.loads(body)
@@ -192,14 +200,108 @@ def cached_read_endpoint(body):
         body.get("ok"), body.get("reason"))
 
 
+# "Flag this moment" (repair plan WS2 layer A task 5). Two facts: the route is
+# deployed and gated (always meant to be live: admin keys can flag), and the
+# playtesters' flags-only keys are loaded (live only once Vincent has set
+# MTG_FLAG_KEYS; unset is a deliberate off, not a failure).
+FLAG_KEYS_ENV = "MTG_FLAG_KEYS"
+
+
+def _fully_open(env):
+    """Neither key set: the engine takes anonymous writes (local dev only)."""
+    return not (env.get("MTG_API_KEYS") or "").strip() and \
+        not (env.get(FLAG_KEYS_ENV) or "").strip()
+
+
+def flag_route_gated(body):
+    """POST /flags with no credential and an empty body. A deployed route
+    answers 401 from the flags gate (or, on a fully open dev server, 400 for
+    the empty body); an engine that predates /flags answers 404."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    err = str(body.get("error") or "")
+    if "flag key" in err or "pass run" in err:
+        return True, "route present and gated (%s)" % err
+    return False, "unexpected answer: %s" % err[:80]
+
+
+def parse_flag_keys_env(env=None):
+    """(keys loaded, malformed entries) for MTG_FLAG_KEYS, by the engine's own
+    parser so the two can never disagree about the format."""
+    env = os.environ if env is None else env
+    raw = env.get(FLAG_KEYS_ENV) or ""
+    engine_dir = _engine_dir()
+    if engine_dir not in sys.path:
+        sys.path.insert(0, engine_dir)
+    from mtg_engine import parse_flag_keys
+    keys, bad = parse_flag_keys(raw)
+    return len(keys), bad
+
+
+def flag_keys_loaded(env=None):
+    """Predicate on GET /health: every MTG_FLAG_KEYS entry parses, and the
+    running engine reports that it loaded flag keys."""
+    def check(body):
+        if not isinstance(body, dict):
+            return False, "expected an object"
+        n, bad = parse_flag_keys_env(env)
+        if bad:
+            return False, ("%d malformed %s entr(y/ies) skipped: the format is "
+                           "label:key,label:key (deploy/HOSTING.md)" % (bad, FLAG_KEYS_ENV))
+        if body.get("flags") is not True:
+            return False, ("the engine reports flags=%s: it loaded no flag key. "
+                           "Recreate the api container after editing .env."
+                           % body.get("flags"))
+        return True, "%d flag key(s) configured; the engine reports flags=true" % n
+    return check
+
+
+def flag_surfaces(env=None):
+    """The two flags entries for the manifest, the second decided by the env."""
+    env = os.environ if env is None else env
+    route = {
+        "name": "flag route (POST /flags)",
+        "intent": "live",
+        "path": "/flags",
+        "post": {},
+        # Production always sets MTG_API_KEYS, so only the gate's 401 passes
+        # there. 400 is accepted only when this env says the engine is open.
+        "expect": (401, 400) if _fully_open(env) else (401,),
+        "check": flag_route_gated,
+        "note": "an unkeyed POST must meet the flags gate; 404 means the "
+                "engine image predates /flags",
+    }
+    if (env.get(FLAG_KEYS_ENV) or "").strip():
+        keys = {
+            "name": "playtester flag keys",
+            "intent": "live",
+            "path": "/health",
+            "check": flag_keys_loaded(env),
+            "note": "MTG_FLAG_KEYS reaches the api through docker-compose.yml",
+        }
+    else:
+        keys = {
+            "name": "playtester flag keys",
+            "intent": "off",
+            "reason": "MTG_FLAG_KEYS is unset, so no playtester holds a flags-only "
+                      "key yet and only admin keys can flag a moment. Generating "
+                      "one is the owner's call (deploy/HOSTING.md, \"Giving a "
+                      "playtester a flag key\").",
+        }
+    return [route, keys]
+
+
 # --------------------------------------------------------------------------
 # The manifest. THIS is the statement of intent.
 # --------------------------------------------------------------------------
 # intent="live" -> must pass, or preflight fails.
 # intent="off"  -> deliberately not enabled; reason is mandatory and is
 #                  printed so it never gets re-investigated as a bug.
+# Optional keys: "post" probes the path with an UNKEYED POST of that JSON body
+# (to prove a write route exists and is gated; it never writes), and "expect"
+# lists the statuses that count as answered (default (200,)).
 
-def surfaces(run, deck):
+def surfaces(run, deck, env=None):
     return [
         {
             "name": "rules KB",
@@ -322,7 +424,7 @@ def surfaces(run, deck):
                       "validated (repair plan RC4). The store still fills. "
                       "Asserted under DEPLOYMENT INVARIANTS, not just noted.",
         },
-    ]
+    ] + flag_surfaces(env)
 
 
 # --------------------------------------------------------------------------
@@ -567,8 +669,8 @@ def main(argv):
         if s["intent"] == "off":
             off.append(s)
             continue
-        st, body = fetch(args.base, s["path"])
-        if st != 200:
+        st, body = fetch(args.base, s["path"], body=s.get("post"))
+        if st not in s.get("expect", (200,)):
             ok, detail = False, "HTTP %s" % st
         else:
             try:

@@ -39,6 +39,11 @@ Moxfield/Arena text export into a validated `.dck` file.)
 | `GET /sim-status?id={job_id}` | Poll every ~4s. `state`: `running` → `done` or `error`. When done: `result` = `{games, draws, wins:{player:n}, win_rates:{player:0..1}}` | `samples/sim_status_done.json` |
 | `GET /estimate?decks=4&games=16` | Before queueing: `{decks, games_requested, games_to_play, rotations, typical_seconds:[low,high]}`. `games_to_play` is rounded up to whole seat rotations; the range is the one `/sim-status` reports once queued. The only source of a duration estimate; never keep one client-side | — |
 
+### Flags ("Flag this moment")
+| Endpoint | Purpose | Sample |
+|---|---|---|
+| `POST /flags` body `{"run":"sim_….json", "game":3, "anchor":{"event_index":812, "event_seq":1450, "turn":21, "player":"Ai(2)-…"}, "note":"…"}` | A playtester flags a replay moment. Needs a flags-only key (`MTG_FLAG_KEYS`, `Authorization: Bearer <key>`) or an API key. `event_index` is the replay's 0-based position in `events_pregame` + each turn's events (its `?t=`); the server derives turn and reporter and returns `{ok, id, reporter, created, anchor}`. 409 = the browser's copy of the game is stale; 413 = note over 1000 characters. There is no public read of flags. Full contract: the comment above `build_flag` in `engine/mtg_engine.py` | — |
+
 Player keys look like `"Ai(2)-Inspirit Omega"` — strip the `Ai(n)-` prefix for display.
 A 4-deck, 16-game sim usually takes 40 to 105 minutes (ask `GET /estimate`): design for
 it (progress state, notify on completion, history of past runs). 409/error states must be

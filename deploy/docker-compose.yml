@@ -46,6 +46,11 @@ services:
       MTG_READ_PER_MIN: ${MTG_READ_PER_MIN:-240}
       MTG_ASK_PER_HOUR: ${MTG_ASK_PER_HOUR:-30}
       MTG_COACH_PER_HOUR: ${MTG_COACH_PER_HOUR:-20}
+      # Playtesters' flags-only keys ("label:key,label:key"): each can POST
+      # /flags and nothing else. Optional; empty = only admin keys can flag,
+      # which preflight reports as deliberately off. Read by the api only.
+      MTG_FLAG_KEYS: ${MTG_FLAG_KEYS:-}
+      MTG_FLAG_PER_HOUR: ${MTG_FLAG_PER_HOUR:-60}
       # Rules-assistant generation; absent = /ask degrades to plain search.
       MTG_LLM_API_KEY: ${MTG_LLM_API_KEY:-}
       MTG_LLM_MODEL: ${MTG_LLM_MODEL:-claude-haiku-4-5}

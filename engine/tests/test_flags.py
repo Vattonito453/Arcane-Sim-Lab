@@ -474,6 +474,51 @@ def test_health_reports_flags_boolean():
     print("  /health says flags=true and names no key or label: OK")
 
 
+def test_preflight_reports_flags():
+    """deploy/preflight.py: the route is always meant to be live; the keys are
+    live when MTG_FLAG_KEYS is set and a deliberate off (not a failure) when not."""
+    sys.path.insert(0, str(ENGINE.parent / "deploy"))
+    import preflight
+    fresh()
+    keyed = {"MTG_API_KEYS": ADMIN, "MTG_FLAG_KEYS": f"richard:{RICHARD},{BARE}"}
+
+    route, keys = preflight.flag_surfaces({"MTG_API_KEYS": ADMIN})
+    assert route["intent"] == "live" and route["expect"] == (401,), route
+    assert keys["intent"] == "off" and "HOSTING.md" in keys["reason"], keys
+    assert preflight.flag_surfaces({})[0]["expect"] == (401, 400)  # fully open dev
+    names = [s["name"] for s in preflight.surfaces("r.json", "d.dck", env={"MTG_API_KEYS": "k"})]
+    assert names.count("flag route (POST /flags)") == 1 and "playtester flag keys" in names
+
+    # The route probe against a live engine: unkeyed, gated, nothing written.
+    before = len(queue_files())
+    st, body = preflight.fetch(BASE, route["path"], body=route["post"])
+    assert st in route["expect"], (st, body)
+    ok, detail = route["check"](body)
+    assert ok, detail
+    assert len(queue_files()) == before, "the preflight probe must never write"
+    assert not preflight.flag_route_gated({"error": "unknown endpoint"})[0]
+
+    # Keys set: live, and checked against /health.
+    route, keys = preflight.flag_surfaces(keyed)
+    assert keys["intent"] == "live" and keys["path"] == "/health", keys
+    st, health = preflight.fetch(BASE, "/health")
+    ok, detail = keys["check"](health)
+    assert st == 200 and ok, (st, detail)
+    # A malformed entry in the env is a failure, not a silent skip.
+    ok, detail = preflight.flag_surfaces(dict(keyed, MTG_FLAG_KEYS="Richard G:abc"))[1]["check"](health)
+    assert not ok and "malformed" in detail, detail
+    # The env names keys but the running engine loaded none (stale container).
+    saved = mtg_engine.FLAG_KEYS
+    mtg_engine.FLAG_KEYS = {}
+    try:
+        st, health = preflight.fetch(BASE, "/health")
+        ok, detail = keys["check"](health)
+        assert not ok and "flags=False" in detail, detail
+    finally:
+        mtg_engine.FLAG_KEYS = saved
+    print("  preflight: route live and gated; keys live when set, deliberately off when not: OK")
+
+
 def test_refuses_public_bind_with_only_flag_keys():
     saved_api, saved_bind = mtg_engine.API_KEYS, os.environ.get("MTG_BIND")
     outcome: dict = {}
@@ -514,6 +559,7 @@ def main() -> int:
         test_rate_limit()
         test_no_public_read()
         test_health_reports_flags_boolean()
+        test_preflight_reports_flags()
         test_refuses_public_bind_with_only_flag_keys()
     finally:
         shutil.rmtree(_TMP, ignore_errors=True)

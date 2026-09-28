@@ -1009,12 +1009,21 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
 #       turn               optional; cross-checked the same way. The server
 #                          derives turn from event_index either way.
 #       player             optional; the seat the flag is about (a raw key such
-#                          as "Ai(2)-Kess, Reanimator"). Defaults to that
-#                          turn's active player.
-#       agent_event_index  optional, as below.
+#                          as "Ai(2)-Kess, Reanimator"). Left out, it defaults
+#                          to that turn's active player. null (or "") means
+#                          "not about one seat" and is stored as null: the
+#                          web's "Not about one seat" choice, which used to be
+#                          silently rewritten to the active player.
+#       agent_event_index  optional, as below; its agent event must be on the
+#                          same turn as event_index (400 otherwise).
 #     pilot decision (the QA schema's anchor, for tools that flag agent events):
-#       turn               required; Forge's per-player turn number, 0 = pregame
-#       player             optional seat; defaults to the turn's active player
+#       turn               required; the game's turn counter as in turns[].turn
+#                          (one per player turn), 0 = pregame. Must match the
+#                          agent event's own turn when it records one.
+#       player             optional seat, null as above; left out, it defaults
+#                          to the agent event's own player (the seat that made
+#                          the decision: a blocker, a counterspell holder),
+#                          else the turn's active player
 #       agent_event_index  0-based into that game's agent_events
 #   note    optional text, at most FLAG_NOTE_MAX characters after control and
 #           format characters are removed (newlines kept)
@@ -1126,10 +1135,16 @@ def build_flag(payload: dict, reporter: str) -> dict:
     note = clean_flag_note(payload.get("note"))
 
     data = json.loads(path.read_text(encoding="utf-8"))
-    games = data.get("games") or []
+    # RESULTS_DIR also holds analysis_*.json and plans_*.json, which pass the
+    # name guard; one that is not an object used to raise AttributeError (500).
+    games = data.get("games") if isinstance(data, dict) else None
+    if not isinstance(games, list):
+        raise FlagRejected(400, "that file is not a simulation result")
     if not 1 <= n <= len(games):
         raise FlagRejected(400, f"game {n} is not in this run (it has {len(games)})")
     g = games[n - 1]
+    if not isinstance(g, dict):
+        raise FlagRejected(400, "that file is not a simulation result")
     turns = g.get("turns") or []
     players = [p for p in (g.get("players") or []) if isinstance(p, str)]
     agent_events = g.get("agent_events") or []
@@ -1165,15 +1180,30 @@ def build_flag(payload: dict, reporter: str) -> dict:
             raise FlagRejected(400, f"turn {turn} is not in game {n}")
         active = by_turn.get(turn, "")
     agent_seq = None
+    decider = None   # the seat that made the flagged pilot decision, if recorded
     if aei is not None:
         aei = _flag_int(aei, "anchor.agent_event_index")
         if not 0 <= aei < len(agent_events):
             raise FlagRejected(400, f"anchor.agent_event_index {aei} is not in game {n} "
                                     f"(it has {len(agent_events)} pilot decisions)")
-        rec = agent_events[aei]
-        agent_seq = rec.get("seq") if isinstance(rec, dict) else None
-    if player_in in (None, ""):
-        player = active or None
+        rec = agent_events[aei] if isinstance(agent_events[aei], dict) else {}
+        agent_seq = rec.get("seq")
+        # Agent events carry the game's own turn counter (measured: every
+        # agent event in a 16-game shim run names a turn in turns[]). A
+        # different turn means the anchor points at two moments at once.
+        rec_turn = rec.get("turn")
+        if isinstance(rec_turn, int) and not isinstance(rec_turn, bool) and rec_turn != turn:
+            raise FlagRejected(400, f"anchor.agent_event_index {aei} is on turn {rec_turn}, "
+                                    f"not turn {turn}")
+        if isinstance(rec.get("player"), str) and rec["player"] in players:
+            decider = rec["player"]
+    if "player" not in anchor_in:
+        # Left out: the decision's own seat when there is one (blocks, counters
+        # and instant windows are often NOT the active player's), else the
+        # seat whose turn it is.
+        player = decider or active or None
+    elif player_in in (None, ""):
+        player = None   # "not about one seat", as the web sends it
     elif isinstance(player_in, str) and player_in in players:
         player = player_in
     else:
@@ -1792,9 +1822,11 @@ def serve(port: int = 8484) -> None:
                 return self._send({"error": f"a flag is at most {FLAG_BODY_MAX} bytes"}, 413)
             try:
                 payload = json.loads(self.rfile.read(length) or b"{}")
-            except ValueError:
+            except (ValueError, RecursionError):
                 # Was an uncaught exception: the connection dropped with no
                 # response at all instead of a 400 the caller could read.
+                # RecursionError is a deeply nested body ("[" * 5000 fits in
+                # the 16 KB flag cap), which is not a ValueError.
                 return self._send({"error": "the body must be JSON"}, 400)
             if not isinstance(payload, dict):
                 return self._send({"error": "the body must be a JSON object"}, 400)

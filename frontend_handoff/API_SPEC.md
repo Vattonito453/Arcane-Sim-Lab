@@ -42,7 +42,7 @@ Moxfield/Arena text export into a validated `.dck` file.)
 ### Flags ("Flag this moment")
 | Endpoint | Purpose | Sample |
 |---|---|---|
-| `POST /flags` body `{"run":"sim_….json", "game":3, "anchor":{"event_index":812, "event_seq":1450, "turn":21, "player":"Ai(2)-…"}, "note":"…"}` | A playtester flags a replay moment. Needs a flags-only key (`MTG_FLAG_KEYS`, `Authorization: Bearer <key>`) or an API key. `event_index` is the replay's 0-based position in `events_pregame` + each turn's events (its `?t=`); the server derives turn and reporter and returns `{ok, id, reporter, created, anchor}`. 409 = the browser's copy of the game is stale; 413 = note over 1000 characters. There is no public read of flags. Full contract: the comment above `build_flag` in `engine/mtg_engine.py` | — |
+| `POST /flags` body `{"run":"sim_….json", "game":3, "anchor":{"event_index":812, "event_seq":1450, "turn":21, "player":"Ai(2)-…"}, "note":"…"}` | A playtester flags a replay moment. Needs a flags-only key (`MTG_FLAG_KEYS`, `Authorization: Bearer <key>`) or an API key. `event_index` is the replay's 0-based position in `events_pregame` + each turn's events (its `?t=`); the server derives turn and reporter and returns `{ok, id, reporter, created, anchor}`. `player` left out defaults to the active seat; `"player": null` means "not about one seat" and is stored as null. 409 = the browser's copy of the game is stale; 413 = note over 1000 characters. There is no public read of flags. Full contract: the comment above `build_flag` in `engine/mtg_engine.py` | — |
 
 Player keys look like `"Ai(2)-Inspirit Omega"` — strip the `Ai(n)-` prefix for display.
 A 4-deck, 16-game sim usually takes 40 to 105 minutes (ask `GET /estimate`): design for

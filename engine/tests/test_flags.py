@@ -89,11 +89,18 @@ SYNTH_RUN = {
             {"turn": 3, "active_player": A, "events": [
                 {"seq": 8, "action": "phase", "raw": f"{A}'s Untap step"}]},
         ],
+        # The third is a decision by the NON-active seat on B's turn (a block
+        # skip), the case where "the turn's active player" is the wrong seat.
         "agent_events": [{"turn": 1, "kind": "tutor_cast"},
-                         {"turn": 2, "kind": "attack", "seq": 77}],
+                         {"turn": 2, "kind": "attack", "seq": 77},
+                         {"turn": 2, "player": A, "event": "block_skip", "seq": 78}],
     }],
 }
 (RESULTS / SYNTH).write_text(json.dumps(SYNTH_RUN), encoding="utf-8")
+# RESULTS_DIR also holds non-result JSON (plans_*, analysis_*) that passes the
+# name guard; this one is not even an object.
+NOT_A_RUN = "plans_20260101_000000.json"
+(RESULTS / NOT_A_RUN).write_text("[1, 2, 3]", encoding="utf-8")
 
 BASE = ""
 
@@ -309,6 +316,13 @@ def test_validation():
         ({"anchor": {"turn": 1, "agent_event_index": 0}}, 400, "0 pilot decisions"),
         ({"note": "n" * 1001}, 413, "limit is 1000"),
         ({"note": {"text": "x"}}, 400, "note must be text"),
+        # A JSON file in sim_results that is not a run: 400, never a 500.
+        ({"run": NOT_A_RUN}, 400, "not a simulation result"),
+        # An agent event on another turn than the anchor names: two moments
+        # at once, refused rather than stored inconsistent.
+        ({"run": SYNTH, "anchor": {"turn": 3, "agent_event_index": 1}}, 400, "is on turn 2"),
+        ({"run": SYNTH, "anchor": {"event_index": 0, "agent_event_index": 1}}, 400,
+         "is on turn 2, not turn 0"),
     ]
     before = len(queue_files())
     for patch, code, needle in cases:
@@ -322,6 +336,10 @@ def test_validation():
     assert st == 400 and "JSON" in body["error"], (st, body)
     st, body, _ = call("/flags", raw=b"[1, 2]", key=RICHARD)
     assert st == 400 and "object" in body["error"], (st, body)
+    # Deeply nested JSON fits under the 16 KB cap and raises RecursionError,
+    # not ValueError: it used to drop the connection with no response.
+    st, body, _ = call("/flags", raw=b"[" * 5000 + b"]" * 5000, key=RICHARD)
+    assert st == 400 and "JSON" in body["error"], (st, body)
     big = json.dumps({"run": FIXTURE, "game": 1, "anchor": {"event_index": 1},
                       "note": "n" * (mtg_engine.FLAG_BODY_MAX + 1)}).encode()
     st, body, _ = call("/flags", raw=big, key=RICHARD)
@@ -402,6 +420,22 @@ def test_written_file():
     assert st == 200 and body["anchor"]["turn"] == 3, (st, body)
     rec = json.loads((mtg_engine.REVIEW_QUEUE_HUMAN / f"{body['id']}.json").read_text("utf-8"))
     assert rec["round"] == 2 and rec["player"] == A, rec
+
+    # "Not about one seat": the web sends player null (or ""). It is stored as
+    # null, not rewritten to the active player; left out, it defaults.
+    for sent in (None, ""):
+        st, body, _ = flag({"run": SYNTH, "anchor": {"event_index": 4, "player": sent}})
+        assert st == 200 and body["anchor"]["player"] is None, (sent, st, body)
+        rec = json.loads((mtg_engine.REVIEW_QUEUE_HUMAN / f"{body['id']}.json").read_text("utf-8"))
+        assert rec["player"] is None and rec["active_player"] == B, rec
+    st, body, _ = flag({"run": SYNTH, "anchor": {"event_index": 4}})
+    assert st == 200 and body["anchor"]["player"] == B, (st, body)
+    # A pilot decision by the non-active seat defaults to THAT seat (the one
+    # that decided), not to whoever's turn it is; an explicit seat still wins.
+    st, body, _ = flag({"run": SYNTH, "anchor": {"turn": 2, "agent_event_index": 2}})
+    assert st == 200 and body["anchor"]["player"] == A and body["anchor"]["seq"] == 78, (st, body)
+    st, body, _ = flag({"run": SYNTH, "anchor": {"turn": 2, "agent_event_index": 2, "player": B}})
+    assert st == 200 and body["anchor"]["player"] == B, (st, body)
 
     # Identical requests get distinct ids; no temp file survives any write.
     ids = {flag()[1]["id"] for _ in range(5)}

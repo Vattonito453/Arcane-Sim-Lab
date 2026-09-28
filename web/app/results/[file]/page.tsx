@@ -72,6 +72,8 @@ interface GameRow {
   endedRound: number | null;
   durationMs: number;
   decidedBy: string;
+  /** Stopped by the per-game clock or the turn cap rather than finished. */
+  censored: boolean;
   /** The game in one sentence (lib/story.ts), or null from an engine older
    *  than R1, whose summary carries no story: the row then falls back to
    *  decidedBy and the analysis method, as before. */
@@ -140,6 +142,7 @@ function toRow(g: RunGameSummary, clockSeconds: number | null, commanders?: Comm
     endedRound,
     durationMs,
     decidedBy,
+    censored: timedOut || r.turnCapped === true,
     story,
     text: story ? story.map((s) => s.text).join("") : decidedBy,
   };
@@ -312,8 +315,18 @@ export default function ResultsPage() {
   // then the label says "player turns", since it reads about 4x high. The
   // game stories count table turns too, so the lede says "turns", not
   // "rounds", and the two never disagree on a page.
-  const endedRounds = gameRows.map((g) => g.endedRound).filter((r): r is number => r != null);
-  const medRounds = sc?.run?.medianGameRound ?? (endedRounds.length ? median(endedRounds) : null);
+  // The fallback leaves out games the clock or the turn cap stopped, as the
+  // scorecard's medianGameRound does; counting them made the lede read one
+  // median while the scorecards loaded and another once they arrived (11 then
+  // 12 turns on the playtester's run). Same pick as scorecard.py med(): the
+  // upper middle of an even count, not the rounded mean of the two.
+  const endedRounds = gameRows
+    .filter((g) => !g.censored)
+    .map((g) => g.endedRound)
+    .filter((r): r is number => r != null)
+    .sort((a, b) => a - b);
+  const medRounds =
+    sc?.run?.medianGameRound ?? (endedRounds.length ? endedRounds[Math.floor(endedRounds.length / 2)] : null);
   const turnWord = medRounds ? "turns" : "player turns";
   // One name per deck, the same one the title and the game stories use.
   const short = (name: string) => shortName(name, rows.map((r) => r.name), data.commanders);

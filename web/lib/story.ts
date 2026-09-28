@@ -69,7 +69,9 @@ export interface StoryInput {
 function paren(k: Knockout, winner: string | null, name: (key: string) => string): string {
   const cause = causeWords(k);
   let killer: string | null = null;
-  if (k.by && k.by !== winner) killer = k.by === k.player ? "own card" : `by ${name(k.by)}`;
+  // "from its own card" (an unpaid Pact, life paid to its own spell): bare
+  // "own card" after the cause read "a lose-the-game effect own card".
+  if (k.by && k.by !== winner) killer = k.by === k.player ? "from its own card" : `by ${name(k.by)}`;
   const how = [cause, killer].filter(Boolean).join(" ");
   return [how, `turn ${k.round}`].filter(Boolean).join(", ");
 }

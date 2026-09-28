@@ -180,11 +180,13 @@ Verify after any deploy that touches the agent — one line, no jar archaeology:
 
 ```bash
 sudo docker logs deploy-worker-1 2>&1 | grep 'shim commit'
-git -C /path/to/simlab-forge-shim ls-remote origin v0.16.0   # the pinned tag; should match
+git -C /path/to/simlab-forge-shim ls-remote origin v0.17.0   # the pinned tag; should match
 ```
 
 For an annotated tag, `ls-remote` prints two lines; the commit is the one
-ending `^{}`. For v0.16.0 it is shim commit `62fe295`.
+ending `^{}`. For v0.17.0 it is shim commit `33243d5` (the squash merge of
+simlab-forge-shim PR #15, whose tree is identical to `b8894e1`, the commit
+the G0a gate tested). The previous pin, v0.16.0, is `62fe295`.
 
 If it prints `vendor-staged`, a jar from `deploy/sync-shim.sh` is being used and
 the clone was skipped — fine locally, wrong on the VM. Delete
@@ -194,17 +196,19 @@ the clone was skipped — fine locally, wrong on the VM. Delete
 
 Production no longer builds whatever the shim's `main` happens to be. The
 worker's `SIMLAB_SHIM_REF` build arg comes from `docker-compose.yml`, which
-defaults it to the current release tag (**`v0.16.0`**, the repair plan's R0
-pin, which fixes 0.15.0's attack re-ask loop), and `deploy/.env` may override
-it for a test build.
+defaults it to the current release tag (**`v0.17.0`**, the repair plan's R1
+pin: the tutoring hotfix, read by version-2 plans, which compose also defaults
+to since R1), and `deploy/.env` may override either for a test build or a
+rollback (`MTG_PLAN_VERSION=1` plays as 0.16.0 did).
 
 - **Pin a tag, never a bare commit.** `Dockerfile.worker` clones with
   `git clone -b "$SIMLAB_SHIM_REF"`, which accepts a branch or a tag only. A
   branch moves under you, so a release pins a tag.
 - **The tag must exist before the build.** The ref is fetched from the GitHub
   API before the clone, so a missing tag fails the worker build outright; the
-  containers already running keep serving. The tag `v0.16.0` on shim commit
-  `62fe295` is created at the R0 deploy, in the `simlab-forge-shim` repo:
+  containers already running keep serving. Each release tags the shim first,
+  in the `simlab-forge-shim` repo (R0 tagged `v0.16.0` on `62fe295` like this;
+  R1's `v0.17.0` on `33243d5` already exists):
 
   ```bash
   git -C /path/to/simlab-forge-shim tag -a v0.16.0 62fe295 -m "Sim Lab release pin (R0)"

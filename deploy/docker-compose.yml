@@ -69,8 +69,8 @@ services:
       # is off, and the newest result comes from at least the pinned shim.
       # Same .env variables and defaults as the worker below; keep them equal.
       MTG_PLAN_FEEDBACK_APPLY: ${MTG_PLAN_FEEDBACK_APPLY:-0}
-      SIMLAB_SHIM_REF: ${SIMLAB_SHIM_REF:-v0.16.0}
-      MTG_PLAN_VERSION: ${MTG_PLAN_VERSION:-1}
+      SIMLAB_SHIM_REF: ${SIMLAB_SHIM_REF:-v0.17.0}
+      MTG_PLAN_VERSION: ${MTG_PLAN_VERSION:-2}
     healthcheck:
       test: ["CMD", "python3", "-c",
              "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8484/health',timeout=5).status==200 else 1)"]
@@ -93,7 +93,7 @@ services:
         # Bumping the pin: tag the shim, then change this default, the api's
         # mirror above and SHIM_FLOOR in deploy/preflight.py in one commit.
         # See deploy/HOSTING.md "Releases pin a shim tag".
-        SIMLAB_SHIM_REF: ${SIMLAB_SHIM_REF:-v0.16.0}
+        SIMLAB_SHIM_REF: ${SIMLAB_SHIM_REF:-v0.17.0}
     volumes:
       - mtg-data:/data
     environment:
@@ -105,9 +105,10 @@ services:
       # Deck-plan version (engine/deck_plan.py). 1 = the plans every study
       # before the tutoring hotfix measured; 2 = the hotfix data (pilot
       # lines narrowed to win-band, threatLines, graveyardTargets, fix
-      # flags), which needs shim >= 0.17.0. Flipped only at a release whose
-      # gate passed (G0a); preflight refuses 2 on an older shim.
-      MTG_PLAN_VERSION: ${MTG_PLAN_VERSION:-1}
+      # flags), which needs shim >= 0.17.0. Flipped to 2 at R1 after its gate
+      # passed (G0a, studies/hotfix_g0/RESULTS.md); preflight refuses 2 on an
+      # older shim. Roll back by setting MTG_PLAN_VERSION=1 in deploy/.env.
+      MTG_PLAN_VERSION: ${MTG_PLAN_VERSION:-2}
       # Optional per-flag override for version-2 plans (a G0a fail-branch
       # arm). Empty = every flag on.
       MTG_PLAN_FIX: ${MTG_PLAN_FIX:-}

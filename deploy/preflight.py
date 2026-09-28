@@ -489,13 +489,14 @@ def surfaces(run, deck, env=None):
 
 NUDGE_FLAG = "MTG_PLAN_FEEDBACK_APPLY"
 
-# The oldest shim a production result may come from. 0.16.0 fixes the attack
-# re-ask loop that 0.15.0 (the playtester run that prompted the repair plan)
-# still had, and its new dials default to 0.15.0 behaviour. Raise this with
+# The oldest shim a production result may come from. 0.17.0 is the R1 pin:
+# the tutoring hotfix behind plan-data flags (G0a PASS), on top of 0.16.0's
+# fix for 0.15.0's attack re-ask loop. With version-1 plans it plays as
+# 0.16.0 did, so a MTG_PLAN_VERSION=1 rollback still meets it. Raise this with
 # every release pin (SIMLAB_SHIM_REF in docker-compose.yml). When compose also
 # hands this container a version-tag SIMLAB_SHIM_REF newer than the floor,
 # that tag is the bar instead, so a new pin is never checked against an old one.
-SHIM_FLOOR = (0, 16, 0)
+SHIM_FLOOR = (0, 17, 0)
 _SHIM_AGENT = re.compile(r"simlab-forge-shim/(\d+)\.(\d+)\.(\d+)")
 _SHIM_TAG = re.compile(r"^v?(\d+)\.(\d+)\.(\d+)$")
 

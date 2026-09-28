@@ -10,8 +10,8 @@ load row is partial (every S scenario loads exactly in 20/20 trials per arm;
 C1 plays all 20 boards and seeds the Godo and Helm line on all 20, but 10
 boards differ elsewhere after the load), and C1 fails its target: stock won
 9/20 against a target of at least 17/20. Forge itself won only 10 of these
-20 boards in the games they came from, and 5 extra stock trials per board
-(100 trials) put the harness at 49/100, 42/50 on the boards the game won.
+20 boards in the games they came from, and 5 stock trials per board (100
+trials) put the harness at 49/100, 42/50 on the boards the game won.
 
 The plan arm is reported, not judged. It converts S5 (Thassa's Oracle) 20/20
 on the scenario turn and no other S scenario (C1: 11/20). It also reproduces both tutor

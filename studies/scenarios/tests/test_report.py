@@ -97,7 +97,9 @@ def jsonl(info: dict, winner: str | None, turns: int, extra_combats: int = 2) ->
             entry("PHASE", f"Additional{A}'s Beginning of Combat Step")
         entry("STACK_ADD", f"{A} triggered Helm of the Host", card="Helm of the Host", cardId=600)
         entry("STACK_RESOLVE", "At the beginning of combat on your turn, create a token", card="Helm of the Host")
-        entry("STACK_ADD", f"{A} triggered Godo, Bandit Warlord", card="Godo, Bandit Warlord", cardId=700 + k)
+        # The first Godo trigger names targets, commas in a card name included.
+        tgt = f" targeting [Kiki-Jiki, Mirror Breaker (499), {B}]" if k == 0 else ""
+        entry("STACK_ADD", f"{A} triggered Godo, Bandit Warlord{tgt}", card="Godo, Bandit Warlord", cardId=700 + k)
     entry("STACK_ADD", f"{A} cast Lightning Bolt targeting [{B}]", card="Lightning Bolt", cardId=9)
     entry("STACK_ADD", f"{B} activated Godo, Bandit Warlord", card="Godo, Bandit Warlord", cardId=5)  # other seat
     if turns > 5:
@@ -145,13 +147,15 @@ def main() -> None:
         assert t["piece_counts"] == {"Godo, Bandit Warlord": {"triggered": 3},
                                      "Helm of the Host": {"triggered": 3}}, t["piece_counts"]
         assert t["piece_activity_total"] == 6, "pre-apply and other-seat entries are not counted"
+        assert t["piece_targets"] == {"Godo, Bandit Warlord": {"triggered: Kiki-Jiki, Mirror Breaker": 1,
+                                                               f"triggered: {B}": 1}}, t["piece_targets"]
         assert t["iterations_scenario_turn"] == 6 and t["iterations_max_turn"] == 6
         assert t["extra_combats_scenario_turn"] == 2 and t["combats_max_turn"] == 3
         assert t["agent_events"] == {"combo_cast": 1, "counter_veto": 1}
         assert t["agent_events_on_pieces"] == 1
         assert t["ms_per_decision"] is None and t["ms_per_turn"] == 12000
         assert t["exceptions"] == 0 and t["wall_s"] == 20.0 and t["shim"] == "0.17.1"
-        print("  kill on the scenario turn: loaded, success, pieces, iterations, extra combats: OK")
+        print("  kill on the scenario turn: loaded, success, pieces, targets, iterations, extra combats: OK")
 
         # 2. A later kill: counted per turn, turns to kill 2, still inside by_turn.
         p = write_trial(tmp, 1, jsonl(info, A, 7, extra_combats=0),

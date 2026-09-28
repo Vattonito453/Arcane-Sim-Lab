@@ -63,6 +63,11 @@ ARMS = {
 SEAT = re.compile(r"^(?:Additional)?Ai\((\d+)\)-")
 TURN = re.compile(r"^Turn (\d+) ")
 STACK_VERB = re.compile(r"^Ai\((\d+)\)-.*? (cast|activated|triggered) ")
+TARGETS = re.compile(r" targeting \[(.*)\]\s*$", re.S)
+# Card names contain commas, so a target list splits on each "(instance id)"
+# (the rule board.py _refs() and replay.ts attackerNames() follow); a player
+# target (Ai(2)-name) carries no id.
+TARGET_ID = re.compile(r" \(\d+\)(?:, |$)")
 # Forge names the command-zone effect card it creates for every commander
 # player; it is bookkeeping, not a card the scenario placed.
 COMMAND_EFFECT = "Commander Effect"
@@ -304,6 +309,7 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     per_turn = defaultdict(Counter)       # turn -> Counter(verb) for line pieces
     combats = Counter()                   # turn -> beginning-of-combat steps
     by_piece = defaultdict(Counter)
+    targets = defaultdict(Counter)        # piece -> Counter("verb: target")
     for r in recs:
         if r.get("rec") != "entry":
             continue
@@ -326,9 +332,17 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
             if m and (lseat is None or int(m.group(1)) - 1 == lseat):
                 per_turn[turn][m.group(2)] += 1
                 by_piece[r["card"]][m.group(2)] += 1
+                tm = TARGETS.search(msg)
+                for name in (TARGET_ID.split(tm.group(1)) if tm else []):
+                    if name.strip():
+                        targets[r["card"]][f"{m.group(2)}: {name.strip()}"] += 1
     it = {k: v["activated"] + v["triggered"] for k, v in per_turn.items()}
     t["line_seat"] = lseat
     t["piece_counts"] = {k: dict(v) for k, v in sorted(by_piece.items())}
+    # What each line piece's casts, activations and triggers targeted (S1 and
+    # S2 test a trigger's target: did the copy untap Kiki, did Derevi untap
+    # Cradle).
+    t["piece_targets"] = {k: dict(v.most_common()) for k, v in sorted(targets.items())}
     t["piece_activity_total"] = sum(sum(v.values()) for v in by_piece.values())
     t["iterations_max_turn"] = max(it.values()) if it else 0
     t["iterations_scenario_turn"] = it.get(s_turn, 0)

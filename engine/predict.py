@@ -181,23 +181,33 @@ class Predictor:
                     f"tends to produce for a deck like this.")
         drivers = sorted(((k, v) for k, v in p["contributions"].items() if k != "sim"),
                          key=lambda kv: -abs(kv[1]))
-        REASON = {
-            "aggression": ("wins through combat, and the sim's AI blocks far "
-                           "less than a human does", "leans on combat less than most"),
-            "interaction": ("carries a lot of removal and counterspells, which "
-                            "an AI uses worse than a person", "runs light on interaction"),
-            "avg_cmc": ("is expensive, and the AI stumbles on high curves",
-                        "is cheap to cast"),
+        # How the deck sits against the calibration set: (above the model's
+        # mean, below it). The sentence is chosen by the deck's POSITION and
+        # the direction by the contribution's sign, so it is right for a
+        # feature of either weight sign. The old table keyed the sentence on
+        # the contribution's sign alone, which is only right for a negative
+        # weight: avg_cmc weighs +0.968, so a cheap deck (negative
+        # contribution) was explained as "is expensive" (repair plan WS11
+        # task 12). No mechanism is claimed; only what the fitted relation
+        # says about decks like this one.
+        DESCRIBE = {
             "creatures": ("is creature-dense", "runs few creatures"),
-            "complexity": ("needs a plan the AI does not follow",
-                           "plays straightforwardly"),
+            "avg_cmc": ("has a higher curve than most", "has a lower curve than most"),
+            "aggression": ("leans on combat more than most",
+                           "leans on combat less than most"),
+            "interaction": ("carries more removal and counterspells than most",
+                            "runs light on interaction"),
+            "complexity": ("is more complex to pilot than most", "plays straightforwardly"),
         }
         for k, v in drivers[:1]:
-            if abs(v) < 0.5 or k not in REASON:
+            if abs(v) < 0.5 or k not in DESCRIBE or k not in self.features:
                 continue
-            hi, lo = REASON[k]
-            out.append(f"Adjusted {'down' if v < 0 else 'up'} because this deck "
-                       f"{hi if v < 0 else lo}.")
+            above = values[k] >= self.m["mu"][self.features.index(k)]
+            desc = DESCRIBE[k][0 if above else 1]
+            out.append(f"Adjusted {'up' if v > 0 else 'down'} because this deck {desc}: "
+                       f"among the {self.m.get('n_decks') or 'calibration'} calibration "
+                       f"decks, decks like that won {'more' if v > 0 else 'less'} often "
+                       f"at human tables than the simulation alone suggests.")
         out.append(f"Typical error is about {p['typical_error_pp']:.1f} points, "
                    f"from leave-one-out testing on "
                    f"{p['basis']['trained_on_decks']} decks.")

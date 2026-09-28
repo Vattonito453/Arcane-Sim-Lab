@@ -181,6 +181,27 @@ def test_copy_has_no_em_dash():
                 assert "—" not in s, s
 
 
+def test_explanation_follows_the_weight_sign():
+    """WS11 task 12: avg_cmc weighs +0.968, so a cheap deck is adjusted DOWN
+    and must not be called expensive; creatures weighs -2.33."""
+    m = predict.Predictor.load()
+    mu = dict(zip(m.features, m.m["mu"]))
+    cheap = dict(mu, avg_cmc=mu["avg_cmc"] - 0.8)
+    line = [s for s in m.explain(cheap) if s.startswith("Adjusted")]
+    assert line and line[0].startswith("Adjusted down because this deck has a lower curve"), line
+    assert "expensive" not in " ".join(m.explain(cheap))
+    dear = dict(mu, avg_cmc=mu["avg_cmc"] + 0.8)
+    line = [s for s in m.explain(dear) if s.startswith("Adjusted")]
+    assert line and line[0].startswith("Adjusted up because this deck has a higher curve"), line
+    dense = dict(mu, creatures=mu["creatures"] + 12)
+    line = [s for s in m.explain(dense) if s.startswith("Adjusted")]
+    assert line and line[0].startswith("Adjusted down because this deck is creature-dense"), line
+    assert "won less often" in line[0], line
+    for vals in (cheap, dear, dense):
+        for s in m.explain(vals):
+            assert "—" not in s, s
+
+
 # ---- the endpoint ---------------------------------------------------
 
 def _serve(meta, checks):

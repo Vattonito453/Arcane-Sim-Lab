@@ -29,6 +29,15 @@ and salvage()'s reconstructed meta is deliberately marked incomplete. Only
 the agent string is refreshed, because that is the one meta field the raw log
 is authoritative for.
 
+COMMANDERS (repair plan WS11 task 6). run_sim writes meta.commanders ({deck
+Name=: [commanders]}) from 2026-09-28. For older results the second pass,
+backfill_commanders(), reads each deck of meta.decks through
+mtg_engine._find_deck and adds the decks it finds; it needs no raw logs. It
+only ever ADDS a deck that meta does not name yet (what run_sim recorded at
+run time beats today's deck file), skips a deck whose file is gone, and
+leaves a file with no deck found untouched. It keeps the file's mtime, like
+the re-parse, and keeps any .bak an earlier pass wrote.
+
 Usage:
   python3 engine/readapt.py --check <result.json> [...]   # report only
   python3 engine/readapt.py --write <result.json> [...]   # rewrite in place
@@ -171,18 +180,69 @@ def readapt(path: Path, write: bool = False) -> dict:
     meta["readapted"] = True
     merged["meta"] = meta
 
+    report["backup"] = _rewrite(path, merged, overwrite_backup=True)
+    report["written"] = True
+    return report
+
+
+def _rewrite(path: Path, data: dict, overwrite_backup: bool) -> str:
+    """Atomically replace `path` with `data`, keeping its mtime. Copies the
+    current file to <name>.bak first (unless one exists and
+    overwrite_backup is False, so a later pass never replaces the original
+    an earlier pass saved). Returns the backup's name."""
     st = path.stat()
     backup = path.with_suffix(path.suffix + ".bak")
-    shutil.copy2(path, backup)
+    if overwrite_backup or not backup.exists():
+        shutil.copy2(path, backup)
     tmp = path.with_suffix(path.suffix + ".tmp")
-    tmp.write_text(json.dumps(merged), encoding="utf-8")
+    tmp.write_text(json.dumps(data), encoding="utf-8")
     os.replace(tmp, path)
     # The results index sorts runs by mtime and the results page shows it as
     # the run's date. A re-adapt is not a new run: keep the file's own time,
     # or every re-adapted run would jump to the top of the list dated today.
     os.utime(path, ns=(st.st_atime_ns, st.st_mtime_ns))
+    return backup.name
+
+
+def backfill_commanders(path: Path, write: bool = False, find=None) -> dict:
+    """Add meta.commanders for the decks this run names and can still find.
+
+    Report: {file, ok, written, added: {deck: [commanders]}, missing: [deck
+    files not found], reason}. `find(filename) -> Path | None` defaults to
+    mtg_engine._find_deck (imported decks, then bundled)."""
+    import commanders  # noqa: PLC0415
+    report: dict = {"file": path.name, "ok": False, "written": False,
+                    "added": {}, "missing": []}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        report["reason"] = f"result unreadable: {e}"
+        return report
+    meta = dict(data.get("meta") or {})
+    decks = meta.get("decks") or []
+    if not decks:
+        report["reason"] = "no decks recorded in meta"
+        return report
+    found, missing = commanders.lookup(decks, find=find)
+    report["missing"] = missing
+    have = meta.get("commanders") if isinstance(meta.get("commanders"), dict) else {}
+    added = {k: v for k, v in found.items() if k not in have}
+    report["ok"] = True
+    if not found:
+        report["ok"] = False
+        report["reason"] = ("no deck file found (" + ", ".join(missing)
+                            + "); nothing to add")
+        return report
+    if not added:
+        report["reason"] = "commanders already recorded"
+        return report
+    report["added"] = added
+    if not write:
+        return report
+    meta["commanders"] = {**have, **added}
+    data["meta"] = meta
+    report["backup"] = _rewrite(path, data, overwrite_backup=False)
     report["written"] = True
-    report["backup"] = backup.name
     return report
 
 
@@ -208,6 +268,7 @@ def main(argv: list[str]) -> int:
         return 2
 
     gained_any = 0
+    commanders_any = 0
     for p in paths:
         r = readapt(p, write=args.write)
         if r["ok"] and any(v > 0 for v in r.get("gained", {}).values()):
@@ -219,8 +280,20 @@ def main(argv: list[str]) -> int:
             print(f"up to date  {r['file']}")
         else:
             print(f"skipped     {r['file']}: {r.get('reason')}")
+        # Second pass, independent of raw logs: commander names from the
+        # decks' own .dck files (repair plan WS11 task 6).
+        c = backfill_commanders(p, write=args.write)
+        gone = f" (not found: {', '.join(c['missing'])})" if c.get("missing") else ""
+        if c["added"]:
+            commanders_any += 1
+            print(f"{'  commanders' if c['written'] else '  would add'}: "
+                  + "; ".join(f"{k}: {' + '.join(v) or 'none listed'}"
+                              for k, v in c["added"].items()) + gone)
+        else:
+            print(f"  commanders: {c.get('reason')}{gone}")
     print(f"\n{gained_any} of {len(paths)} result(s) "
-          f"{'rewritten' if args.write else 'would gain data'}."
+          f"{'rewritten' if args.write else 'would gain data'}; commanders "
+          f"{'added to' if args.write else 'would be added to'} {commanders_any}."
           + ("" if args.write else " Re-run with --write to apply."))
     return 0
 

@@ -14,6 +14,7 @@
     "wall_s": 798.4,
     "trials_run": 180,
     "trials_cached": 0,
+    "invocations": null,
     "dir": "stock/suite"
    },
    {
@@ -29,6 +30,7 @@
     "wall_s": 843.9,
     "trials_run": 180,
     "trials_cached": 0,
+    "invocations": null,
     "dir": "plan/suite"
    }
   ],
@@ -46,6 +48,7 @@
     "wall_s": 82.2,
     "trials_run": 20,
     "trials_cached": 0,
+    "invocations": null,
     "dir": "stock/s8"
    },
    {
@@ -61,6 +64,7 @@
     "wall_s": 79.5,
     "trials_run": 20,
     "trials_cached": 0,
+    "invocations": null,
     "dir": "plan/s8"
    }
   ],
@@ -68,31 +72,91 @@
    {
     "jar_name": "shim-0.17.1-967cb71.jar",
     "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
-    "repo_commit": "02a91bf6c7d3",
+    "repo_commit": "51fc0c8118e9-dirty",
     "trials": 1,
     "seed": 2026101400,
-    "started": "2026-09-28T12:59:15",
-    "finished": "2026-09-28T13:05:44",
+    "started": "2026-09-28T14:29:52",
+    "finished": "2026-09-28T14:31:14",
     "arms": ["stock"],
-    "parallel": 8,
-    "wall_s": 389.4,
-    "trials_run": 20,
-    "trials_cached": 0,
+    "parallel": 6,
+    "wall_s": 82.2,
+    "trials_run": 3,
+    "trials_cached": 17,
+    "invocations": [
+     {
+      "started": "2026-09-28T12:59:15",
+      "finished": "2026-09-28T13:05:44",
+      "repo_commit": "02a91bf6c7d3",
+      "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+      "arms": ["stock"],
+      "trials": 1,
+      "seed": 2026101400,
+      "parallel": 8,
+      "wall_s": 389.4,
+      "trials_run": 20,
+      "trials_cached": 0,
+      "scenarios": 20
+     },
+     {
+      "started": "2026-09-28T14:29:52",
+      "finished": "2026-09-28T14:31:14",
+      "repo_commit": "51fc0c8118e9-dirty",
+      "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+      "arms": ["stock"],
+      "trials": 1,
+      "seed": 2026101400,
+      "parallel": 6,
+      "wall_s": 82.2,
+      "trials_run": 3,
+      "trials_cached": 17,
+      "scenarios": 20
+     }
+    ],
     "dir": "stock/c1"
    },
    {
     "jar_name": "shim-0.17.1-967cb71.jar",
     "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
-    "repo_commit": "02a91bf6c7d3",
+    "repo_commit": "51fc0c8118e9-dirty",
     "trials": 1,
     "seed": 2026101400,
-    "started": "2026-09-28T12:50:03",
-    "finished": "2026-09-28T12:58:35",
+    "started": "2026-09-28T14:31:14",
+    "finished": "2026-09-28T14:32:22",
     "arms": ["plan"],
-    "parallel": 8,
-    "wall_s": 511.6,
-    "trials_run": 20,
-    "trials_cached": 0,
+    "parallel": 6,
+    "wall_s": 67.9,
+    "trials_run": 3,
+    "trials_cached": 17,
+    "invocations": [
+     {
+      "started": "2026-09-28T12:50:03",
+      "finished": "2026-09-28T12:58:35",
+      "repo_commit": "02a91bf6c7d3",
+      "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+      "arms": ["plan"],
+      "trials": 1,
+      "seed": 2026101400,
+      "parallel": 8,
+      "wall_s": 511.6,
+      "trials_run": 20,
+      "trials_cached": 0,
+      "scenarios": 20
+     },
+     {
+      "started": "2026-09-28T14:31:14",
+      "finished": "2026-09-28T14:32:22",
+      "repo_commit": "51fc0c8118e9-dirty",
+      "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+      "arms": ["plan"],
+      "trials": 1,
+      "seed": 2026101400,
+      "parallel": 6,
+      "wall_s": 67.9,
+      "trials_run": 3,
+      "trials_cached": 17,
+      "scenarios": 20
+     }
+    ],
     "dir": "plan/c1"
    }
   ]
@@ -1242,14 +1306,14 @@
    "loaded": 10,
    "line_loaded": 20,
    "applied": 20,
-   "success": 9,
+   "success": 10,
    "kill_on_scenario_turn": 4,
    "executed": 15,
    "in_game_within_horizon": 10,
    "in_game_same_turn": 5,
    "in_game_ever": 14,
-   "agreement": 17,
-   "wall_s_total": 1808.3,
+   "agreement": 18,
+   "wall_s_total": 1724.6,
    "exceptions": 0,
    "errors": 0,
    "boards": {
@@ -1264,8 +1328,8 @@
      ["trial_0.jsonl", false, true, true, true, 1, 49, true, true, 0, 31, 31, 9, null, [false, true, false, false], false, false, false, null, 0, 58.0, 35053, 2, "c1_015_default_r2_g08", true, true, 49],
      ["trial_0.jsonl", false, true, true, true, 0, 60, false, false, null, 2, 2, 0, null, [true, false, false, false], false, false, false, null, 0, 50.8, 28956, 5, "c1_015_default_r2_g13", false, false, 57],
      ["trial_0.jsonl", true, true, true, true, 1, 18, true, false, 2, 38, 38, 12, null, [false, true, false, false], false, false, false, null, 0, 40.6, 29786, 0, "c1_015_default_r3_g06", true, false, 19],
-     ["trial_0.jsonl", false, true, true, true, null, 34, false, false, null, 16, 5, 1, null, [true, true, false, false], true, true, false, null, 0, 134.6, 122217, 2, "c1_015_default_r3_g08", false, false, 38],
-     ["trial_0.jsonl", true, true, true, true, 1, 28, true, false, 7, 27, 5, 1, null, [false, true, false, false], false, false, false, null, 0, 106.0, 91906, 0, "c1_016_engine_r0_g06", false, false, 32],
+     ["trial_0.jsonl", false, true, true, true, 1, 34, false, false, 10, 16, 5, 1, null, [false, true, false, false], false, false, false, null, 0, 80.7, 69642, 2, "c1_015_default_r3_g08", false, false, 38],
+     ["trial_0.jsonl", true, true, true, true, 1, 29, true, false, 8, 41, 5, 1, null, [false, true, false, false], false, false, false, null, 0, 82.2, 71155, 0, "c1_016_engine_r0_g06", false, false, 32],
      ["trial_0.jsonl", false, true, true, true, null, 33, false, false, null, 8, 2, 0, null, [true, true, true, true], true, true, false, null, 0, 90.8, 76204, 2, "c1_016_engine_r0_g09", false, false, 36],
      ["trial_0.jsonl", false, true, true, true, 1, 43, true, false, 3, 24, 7, 2, null, [false, true, false, false], false, false, false, null, 0, 54.5, 40333, 2, "c1_016_engine_r0_g12", true, false, 43],
      ["trial_0.jsonl", true, true, true, true, 2, 37, false, false, null, 4, 2, 0, null, [false, false, true, false], false, false, false, null, 0, 69.6, 58449, 0, "c1_016_engine_r0_g15", false, false, 35],
@@ -1273,7 +1337,7 @@
      ["trial_0.jsonl", true, true, true, true, 1, 25, true, true, 0, 61, 61, 19, null, [false, true, false, false], false, false, false, null, 0, 50.0, 39360, 0, "c1_016_engine_r2_g02", true, true, 25],
      ["trial_0.jsonl", false, true, true, true, null, 44, false, false, null, 11, 5, 1, null, [true, true, false, false], true, true, false, null, 0, 80.0, 70189, 2, "c1_016_engine_r2_g03", false, false, 53],
      ["trial_0.jsonl", false, true, true, true, null, 44, false, false, null, 2, 2, 0, null, [true, true, true, false], true, true, false, null, 0, 105.2, 94230, 4, "c1_016_engine_r2_g12", false, false, 52],
-     ["trial_0.jsonl", true, true, true, true, null, 42, false, false, null, 6, 6, 2, null, [true, true, true, false], true, true, false, null, 0, 45.7, 34295, 0, "c1_016_engine_r3_g01", true, false, 40],
+     ["trial_0.jsonl", true, true, true, true, 1, 39, true, false, 6, 30, 6, 2, null, [false, true, false, false], false, false, false, null, 0, 39.7, 28836, 0, "c1_016_engine_r3_g01", true, false, 40],
      ["trial_0.jsonl", true, true, true, true, null, 41, false, false, null, 11, 2, 0, null, [true, true, true, true], true, true, false, null, 0, 113.0, 102213, 0, "c1_016_engine_r3_g11", false, false, 42]
     ]}
   },
@@ -1284,13 +1348,13 @@
    "line_loaded": 20,
    "applied": 20,
    "success": 11,
-   "kill_on_scenario_turn": 4,
+   "kill_on_scenario_turn": 3,
    "executed": 17,
    "in_game_within_horizon": 10,
    "in_game_same_turn": 5,
    "in_game_ever": 14,
    "agreement": 15,
-   "wall_s_total": 1978.0,
+   "wall_s_total": 1904.8,
    "exceptions": 0,
    "errors": 0,
    "boards": {
@@ -1305,8 +1369,8 @@
      ["trial_0.jsonl", false, true, true, true, 1, 52, true, false, 3, 17, 15, 5, null, [false, true, false, false], false, false, false, null, 0, 98.2, 75163, 2, "c1_015_default_r2_g08", true, true, 49],
      ["trial_0.jsonl", false, true, true, true, 0, 62, false, false, null, 2, 2, 0, null, [true, false, false, false], false, false, false, null, 0, 55.1, 32095, 5, "c1_015_default_r2_g13", false, false, 57],
      ["trial_0.jsonl", true, true, true, true, 1, 18, true, false, 2, 41, 41, 13, null, [false, true, false, false], false, false, false, null, 0, 44.9, 35278, 0, "c1_015_default_r3_g06", true, false, 19],
-     ["trial_0.jsonl", false, true, true, true, 1, 28, true, false, 4, 45, 5, 1, null, [false, true, false, false], false, false, false, null, 0, 97.3, 85511, 2, "c1_015_default_r3_g08", false, false, 38],
-     ["trial_0.jsonl", true, true, true, true, 1, 25, true, false, 4, 62, 6, 2, null, [false, true, false, false], false, false, false, null, 0, 68.9, 55689, 0, "c1_016_engine_r0_g06", false, false, 32],
+     ["trial_0.jsonl", false, true, true, true, 1, 28, true, false, 4, 45, 5, 1, null, [false, true, false, false], false, false, false, null, 0, 67.9, 56683, 2, "c1_015_default_r3_g08", false, false, 38],
+     ["trial_0.jsonl", true, true, true, true, 1, 25, true, false, 4, 71, 6, 2, null, [false, true, false, false], false, false, false, null, 0, 47.2, 35951, 0, "c1_016_engine_r0_g06", false, false, 32],
      ["trial_0.jsonl", false, true, true, true, null, 33, false, false, null, 9, 2, 0, null, [true, true, true, true], true, true, false, null, 0, 94.1, 80440, 2, "c1_016_engine_r0_g09", false, false, 36],
      ["trial_0.jsonl", false, true, true, true, null, 49, false, false, null, 9, 9, 3, null, [false, true, true, true], true, true, false, null, 0, 93.7, 80296, 2, "c1_016_engine_r0_g12", true, false, 43],
      ["trial_0.jsonl", true, true, true, true, null, 39, false, false, null, 7, 2, 0, null, [false, false, true, true], true, true, false, null, 0, 86.4, 76258, 0, "c1_016_engine_r0_g15", false, false, 35],
@@ -1314,7 +1378,7 @@
      ["trial_0.jsonl", true, true, true, true, 1, 25, true, true, 0, 61, 61, 19, null, [false, true, false, false], false, false, false, null, 0, 62.3, 52591, 0, "c1_016_engine_r2_g02", true, true, 25],
      ["trial_0.jsonl", false, true, true, true, null, 44, false, false, null, 5, 5, 1, null, [true, true, false, true], true, true, false, null, 0, 84.5, 74427, 2, "c1_016_engine_r2_g03", false, false, 53],
      ["trial_0.jsonl", false, true, true, true, null, 44, false, false, null, 5, 2, 0, null, [true, true, true, false], true, true, false, null, 0, 87.1, 76249, 4, "c1_016_engine_r2_g12", false, false, 52],
-     ["trial_0.jsonl", true, true, true, true, 1, 33, true, true, 0, 61, 61, 19, null, [false, true, false, false], false, false, false, null, 0, 65.9, 54013, 0, "c1_016_engine_r3_g01", true, false, 40],
+     ["trial_0.jsonl", true, true, true, true, 1, 40, true, false, 7, 27, 6, 2, null, [false, true, false, false], false, false, false, null, 0, 43.8, 33012, 0, "c1_016_engine_r3_g01", true, false, 40],
      ["trial_0.jsonl", true, true, true, true, 1, 40, true, false, 8, 21, 2, 0, null, [false, true, false, false], false, false, false, null, 0, 74.6, 62837, 0, "c1_016_engine_r3_g11", false, false, 42]
     ]}
   }
@@ -1324,25 +1388,69 @@
    {
     "jar_name": "shim-0.17.1-967cb71.jar",
     "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
-    "repo_commit": "27e5d90780ae",
+    "repo_commit": "51fc0c8118e9-dirty",
     "trials": 5,
     "seed": 2026101400,
-    "started": "2026-09-28T13:06:33",
-    "finished": "2026-09-28T13:21:42",
+    "started": "2026-09-28T14:32:23",
+    "finished": "2026-09-28T14:36:00",
     "arms": ["stock"],
-    "parallel": 8,
-    "wall_s": 909.0,
-    "trials_run": 80,
-    "trials_cached": 20,
+    "parallel": 6,
+    "wall_s": 217.5,
+    "trials_run": 15,
+    "trials_cached": 85,
+    "invocations": [
+     {
+      "started": "2026-09-28T12:59:15",
+      "finished": "2026-09-28T13:05:44",
+      "repo_commit": "02a91bf6c7d3",
+      "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+      "arms": ["stock"],
+      "trials": 1,
+      "seed": 2026101400,
+      "parallel": 8,
+      "wall_s": 389.4,
+      "trials_run": 20,
+      "trials_cached": 0,
+      "scenarios": 20
+     },
+     {
+      "started": "2026-09-28T13:06:33",
+      "finished": "2026-09-28T13:21:42",
+      "repo_commit": "27e5d90780ae",
+      "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+      "arms": ["stock"],
+      "trials": 5,
+      "seed": 2026101400,
+      "parallel": 8,
+      "wall_s": 909.0,
+      "trials_run": 80,
+      "trials_cached": 20,
+      "scenarios": 20
+     },
+     {
+      "started": "2026-09-28T14:32:23",
+      "finished": "2026-09-28T14:36:00",
+      "repo_commit": "51fc0c8118e9-dirty",
+      "jar_sha256": "56758de2551b70e8510545f5b426fcdc5fc2adfcb6781f570e9d89375ff064fe",
+      "arms": ["stock"],
+      "trials": 5,
+      "seed": 2026101400,
+      "parallel": 6,
+      "wall_s": 217.5,
+      "trials_run": 15,
+      "trials_cached": 85,
+      "scenarios": 20
+     }
+    ],
     "dir": "final/stock_c1_x5"
    }
   ],
   "stock": {
-   "won_within_8": 49,
+   "won_within_8": 48,
    "trials": 100,
-   "wilson95": [0.394, 0.587],
-   "on_boards_the_game_won": [42, 50],
-   "on_boards_it_did_not": [7, 50],
+   "wilson95": [0.385, 0.577],
+   "on_boards_the_game_won": [43, 50],
+   "on_boards_it_did_not": [5, 50],
    "boards": {
     "columns": ["id", "won_within_8", "trials", "won_on_scenario_turn", "loaded", "line_loaded", "in_game_won_within_8"],
     "rows": [
@@ -1356,7 +1464,7 @@
      ["c1_015_default_r2_g13", 0, 5, 0, 0, 5, false],
      ["c1_015_default_r3_g06", 5, 5, 0, 5, 5, true],
      ["c1_015_default_r3_g08", 1, 5, 0, 0, 5, false],
-     ["c1_016_engine_r0_g06", 4, 5, 0, 5, 5, false],
+     ["c1_016_engine_r0_g06", 2, 5, 0, 5, 5, false],
      ["c1_016_engine_r0_g09", 0, 5, 0, 0, 5, false],
      ["c1_016_engine_r0_g12", 5, 5, 0, 0, 5, true],
      ["c1_016_engine_r0_g15", 0, 5, 0, 5, 5, false],
@@ -1364,7 +1472,7 @@
      ["c1_016_engine_r2_g02", 5, 5, 5, 5, 5, true],
      ["c1_016_engine_r2_g03", 0, 5, 0, 0, 5, false],
      ["c1_016_engine_r2_g12", 0, 5, 0, 0, 5, false],
-     ["c1_016_engine_r3_g01", 3, 5, 0, 5, 5, true],
+     ["c1_016_engine_r3_g01", 4, 5, 0, 5, 5, true],
      ["c1_016_engine_r3_g11", 1, 5, 0, 5, 5, false]
     ]}
   }

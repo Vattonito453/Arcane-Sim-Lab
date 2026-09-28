@@ -9,9 +9,16 @@ fixed in the plan, two pass (S1 and S2 reproduce; one arm takes 21 min), the
 load row is partial (every S scenario loads exactly in 20/20 trials per arm;
 C1 plays all 20 boards and seeds the Godo and Helm line on all 20, but 10
 boards differ elsewhere after the load), and C1 fails its target: stock won
-9/20 against a target of at least 17/20. Forge itself won only 10 of these
+10/20 against a target of at least 17/20. Forge itself won only 10 of these
 20 boards in the games they came from, and 5 stock trials per board (100
-trials) put the harness at 49/100, 42/50 on the boards the game won.
+trials) put the harness at 48/100, 43/50 on the boards the game won.
+
+The review (branch `r3/harness-review`) found that 3 of the 20 C1 boards
+had been written with an unpaid shock land untapped that was tapped in the
+game (anomaly 14), regenerated them, re-ran those 3 boards in every C1
+run below, and re-ran S1, S2 and all of C1 under stock for 10 trials each
+(Review re-run, at the end). Every C1 figure here is on the regenerated
+boards; before the fix the stock row read 9/20 and the supplement 49/100.
 
 The plan arm is reported, not judged. It converts S5 (Thassa's Oracle) 20/20
 on the scenario turn and no other S scenario (C1: 11/20). It also reproduces both tutor
@@ -25,8 +32,8 @@ Hullbreaker Horror. And it kills itself under an opposing Torpor Orb in all
 | Metric (tasks/25-repair-plan.md, WS3) | Target | Measured | Verdict |
 |---|---|---|---|
 | Scenarios that load and play | 10/10, or 8/10 via the 2-player fallback | 4-player route. Stock and plan: S1 to S9, S5b and S8 loaded exactly as written and played to a result in 20/20 trials each, with no errored game. C1: all 20 boards play in both arms, and the line pieces (Godo, Helm attached) load as written on 20/20. The whole board loads exactly on 10/20; the other 10 differ in 1 to 3 cards off the line (below). So 9 of the plan's 10 rows pass outright and C1 passes on its line but not on its whole board. | **Partial** (9/10 exact; C1 line 20/20, board 10/20) |
-| C1 positive control | ≥ 17/20 under stock | **9/20** won within 8 turns (4/20 on the scenario turn). Forge's own games on the same 20 boards: 10/20 within 8 turns, 5/20 on the turn. Board by board, the harness agrees with the game on 17/20. | **Fail** |
-| Stock reproduces its in-game failures on S1 and S2 | ≤ 2/20 each | S1 **0/20**, S2 **0/20**. The Conscripts copy's untap never targeted Kiki-Jiki (0 of 39 triggers), and Derevi's trigger never targeted Gaea's Cradle (0 of 155). | **Pass** |
+| C1 positive control | ≥ 17/20 under stock | **10/20** won within 8 turns (4/20 on the scenario turn). Forge's own games on the same 20 boards: 10/20 within 8 turns, 5/20 on the turn. Board by board, the harness agrees with the game on 18/20. The review's 10 trials per board: 97/200. | **Fail** |
+| Stock reproduces its in-game failures on S1 and S2 | ≤ 2/20 each | S1 **0/20**, S2 **0/20**. The Conscripts copy's untap never targeted Kiki-Jiki (0 of 39 triggers), and Derevi's trigger never targeted Gaea's Cradle (0 of 155). The review's re-run: 0/10 each, 0 of 19 and 0 of 74. | **Pass** |
 | Suite wall time, one arm | under 50 min | Stock **1,274 s (21.2 min)**, plan **1,441 s (24.0 min)**, 220 trials per arm at 8 JVMs. | **Pass** |
 
 Why C1 fails, and what it does and does not show:
@@ -34,19 +41,21 @@ Why C1 fails, and what it does and does not show:
 - The target came from "stock converts 28/32 in games once Helm is
   attached". That figure (studies/diagnosis_2026-09/verify/helm.py) counts
   games where the Godo seat reached 4 or more combats in one turn, pooled
-  over pilots: it conditions on the loop having already run. A board seeded
+  over pilots (stock alone: 19 of 22; recomputed from `helm_rows.json` in
+  review): it conditions on the loop having already run. A board seeded
   before combat cannot condition on that. Among stock seat-games with Helm
   attached to Godo, 21 of 31 were eventually won. Among the 23 attached in
   the precombat main phase of Godo's own turn (the population C1 draws from),
   the 20 drawn won 14/20 at any time, 10/20 within 8 turns and 5/20 on the
   attach turn.
 - So no pilot that plays like Forge could reach 17/20 on these boards.
-  With the 95% intervals, the harness's 9/20 (0.26 to 0.66) and the games'
+  With the 95% intervals, the harness's 10/20 (0.30 to 0.70) and the games'
   10/20 are the same rate. A supplement of 5 stock trials per board (100
-  trials, below) gives 49/100 (0.39 to 0.59). On the 10 boards the game won
-  within 8 turns, the harness won 42/50; on the other 10 it won 7/50. The
-  harness tracks Forge board by board, and the 17/20 target was set on the
-  wrong base.
+  trials, below) gives 48/100 (0.39 to 0.58), and the review's 10 trials
+  per board give 97/200 (0.42 to 0.55). On the 10 boards the game won
+  within 8 turns, the harness won 43/50 in the supplement (85/100 in the
+  review); on the other 10 it won 5/50 (12/100). The harness tracks Forge
+  board by board, and the 17/20 target was set on the wrong base.
 - What would pass the target as written is a board that converts for any
   pilot, like `smoke/smoke_godo_helm.json` (4/4 for both arms). That is a
   loader check, not a control on Forge's play, which is why C1 uses real
@@ -77,7 +86,14 @@ Why C1 fails, and what it does and does not show:
   parsing, which is rebuilt from the raw logs): stock suite `facd33c`, stock
   S8 `a74ab54`, stock C1 `02a91bf`, plan suite `c775175`, plan S8 and C1
   `02a91bf`. All reports were rebuilt with `--report-only` at the commit
-  that adds this file.
+  that adds this file. In review, the 3 regenerated C1 boards (anomaly 14)
+  were re-run in stock C1, plan C1 and the supplement by the same commands
+  on a copy of these directories (6 JVMs; the runner re-ran exactly the 21
+  trials whose state file had changed). Those invocations record
+  `51fc0c8-dirty`: the trial code was committed, the dirty file was an
+  uncommitted SPIKE.md edit. `suite/baseline.json` lists every invocation
+  per directory under `invocations`; the review's copy is
+  `<scratch>/harness_review/final/`.
 
 ```bash
 # one arm (the driver ran these three in sequence, timing each)
@@ -111,8 +127,9 @@ tables use).
 ## Per scenario and arm
 
 Columns: *Loaded* is exact (every zone, life and battlefield signature as
-written) / line pieces only (the line seat's line pieces on the
-battlefield as written). *Success* is out of scored trials (see S5b).
+written) / line pieces only (the line seat's line pieces as written: on
+the battlefield card by card, in other zones by count). *Success* is out
+of scored trials (see S5b).
 *Kill on scenario turn* is a win by the line seat on turn 9. *Executed* is
 derived: 5 or more activations and triggers of line pieces in one turn, or
 an extra combat on the scenario turn. *Iterations* are those activations
@@ -219,8 +236,8 @@ game's own outcome is the comparison.
 
 | C1 | Arm | Loaded (exact / line pieces) | Finished | Won within 8 turns (success) | Won on the scenario turn | Executed | In game, same boards: won within 8 turns / same turn / ever | Agreement with the game (within 8) | Errors / exceptions | Wall s (sum) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| C1 | stock | 10 / 20 of 20 | 20/20 | 9/20 | 4/20 | 15/20 | 10 / 5 / 14 of 20 | 17/20 | 0 / 0 | 1808.3 |
-| C1 | plan | 10 / 20 of 20 | 20/20 | 11/20 | 4/20 | 17/20 | 10 / 5 / 14 of 20 | 15/20 | 0 / 0 | 1978.0 |
+| C1 | stock | 10 / 20 of 20 | 20/20 | 10/20 | 4/20 | 15/20 | 10 / 5 / 14 of 20 | 18/20 | 0 / 0 | 1724.6 |
+| C1 | plan | 10 / 20 of 20 | 20/20 | 11/20 | 3/20 | 17/20 | 10 / 5 / 14 of 20 | 15/20 | 0 / 0 | 1904.8 |
 
 | Board | Turn | In game: won within 8 / same turn (end turn) | stock: success / turns to kill / extra combats | plan: success / turns to kill / extra combats |
 |---|---|---|---|---|
@@ -233,8 +250,8 @@ game's own outcome is the comparison.
 | c1_015_default_r2_g08 | 49 | yes / yes (49) | yes / 0 / 9 | yes / 3 / 5 |
 | c1_015_default_r2_g13 | 54 | no / no (57) | no / – / 0 | no / – / 0 |
 | c1_015_default_r3_g06 | 16 | yes / no (19) | yes / 2 / 12 | yes / 2 / 13 |
-| c1_015_default_r3_g08 | 24 | no / no (38) | no / – / 1 | yes / 4 / 1 |
-| c1_016_engine_r0_g06 | 21 | no / no (32) | yes / 7 / 1 | yes / 4 / 2 |
+| c1_015_default_r3_g08 | 24 | no / no (38) | no / 10 / 1 | yes / 4 / 1 |
+| c1_016_engine_r0_g06 | 21 | no / no (32) | yes / 8 / 1 | yes / 4 / 2 |
 | c1_016_engine_r0_g09 | 24 | no / no (36) | no / – / 0 | no / – / 0 |
 | c1_016_engine_r0_g12 | 40 | yes / no (43) | yes / 3 / 2 | no / – / 3 |
 | c1_016_engine_r0_g15 | 29 | no / no (35) | no / – / 0 | no / – / 0 |
@@ -242,19 +259,23 @@ game's own outcome is the comparison.
 | c1_016_engine_r2_g02 | 25 | yes / yes (25) | yes / 0 / 19 | yes / 0 / 19 |
 | c1_016_engine_r2_g03 | 35 | no / no (53) | no / – / 1 | no / – / 1 |
 | c1_016_engine_r2_g12 | 35 | no / no (52) | no / – / 0 | no / – / 0 |
-| c1_016_engine_r3_g01 | 33 | yes / no (40) | no / – / 2 | yes / 0 / 19 |
+| c1_016_engine_r3_g01 | 33 | yes / no (40) | yes / 6 / 2 | yes / 7 / 2 |
 | c1_016_engine_r3_g11 | 32 | no / no (42) | no / – / 0 | yes / 8 / 0 |
 
-- Stock disagrees with its source game on 3 boards. On 2 the game won
-  within 8 turns and the harness did not. In r0_g14 an opponent exiled Godo
-  with Swords to Plowshares before combat, which did not happen in the game
-  (the seeded board gives every seat a fresh priority window in the main
-  phase). In 016_r3_g01 Godo took 2 extra combats and did not finish. On the
-  third, 016_r0_g06, the harness won in 7 turns and the game took 11.
+- Stock disagrees with its source game on 2 boards. In r0_g14 the game won
+  within 8 turns and the harness did not: an opponent exiled Godo with
+  Swords to Plowshares before combat, which did not happen in the game (the
+  seeded board gives every seat a fresh priority window in the main
+  phase). In 016_r0_g06 the harness won in 8 turns and the game took 11.
+  (On the pre-fix boards 016_r3_g01 was a third disagreement: 2 extra
+  combats and no win in trial 0; on the regenerated board stock won it in
+  6 turns.)
 - Of the 5 boards the game won on the attach turn (10 to 22 combats), stock
   converted 4 the same way, on the scenario turn with 9 to 21 extra combats;
   the fifth is r0_g14. Of the 5 the game won 2 to 7 turns later, stock won
-  4, also 2 to 7 turns after the scenario turn.
+  all 5, also 2 to 7 turns after the scenario turn.
+- On 015_r3_g08 stock won in 10 turns, 2 past the 8-turn window, so it is
+  scored a loss; in the game Godo never won (it ended on turn 38).
 - 10 boards load with differences off the line, the same 10 in both arms,
   because Forge runs enter-the-battlefield replacement effects while
   GameState places the board. Mox Diamond is on 8 of them: it goes to the
@@ -272,25 +293,28 @@ game's own outcome is the comparison.
 
 **Supplement: 5 stock trials per board** (seeds 2026101400..04, the fixed
 boards and the same jar; trial 0 is the run above, trials 1 to 4 ran after
-it, 909 s at 8 JVMs, commit `27e5d90`; not part of the fixed acceptance,
-which is the 20-trial row):
+it, 909 s at 8 JVMs, commit `27e5d90`, and the review re-ran all 5 trials
+of the 3 regenerated boards; not part of the fixed acceptance, which is
+the 20-trial row):
 
 | | Trials | Won within 8 turns | 95% CI | Won on the scenario turn | Loaded (exact / line pieces) | Errors / exceptions |
 |---|---|---|---|---|---|---|
-| All 20 boards | 100 | 49 | 0.39-0.59 | 20 | 50 / 100 | 0 / 0 |
-| The 10 boards the game won within 8 turns | 50 | 42 | | | | |
-| The 10 boards it did not | 50 | 7 | | | | |
+| All 20 boards | 100 | 48 | 0.39-0.58 | 20 | 50 / 100 | 0 / 0 |
+| The 10 boards the game won within 8 turns | 50 | 43 | | | | |
+| The 10 boards it did not | 50 | 5 | | | | |
 
 Per board, the harness is consistent with itself. The 4 boards it
 converted on the scenario turn did so 5/5 each, and 5 more boards went
-5/5 or 4/5 within 8 turns (016_r3_g01 went 3/5). Seven boards went 0/5,
+5/5 or 4/5 within 8 turns. Seven boards went 0/5,
 and all 7 but r0_g14 were also losses in the game. **r0_g14 is the one
 systematic difference found:** in 5/5 trials derevi exiles Godo with
 Swords to Plowshares in the precombat main phase. In the game derevi never
 cast Swords at all, and Godo won on that turn. The seeded board starts
 every seat at the top of the main phase with that Swords in hand and white
 mana open. Whatever held Forge's AI back in the game, which this harness
-cannot see, is gone.
+cannot see, is gone. (The review checked that this is not the
+entered-tapped gap of anomaly 14: board_from_game finds no such card on
+r0_g14, and the review's 10 trials also went 0/10.)
 
 ## Wall times
 
@@ -305,7 +329,14 @@ mean trial takes 28 to 54 s per S scenario, 90 s (stock) and 99 s (plan) on
 C1, whose boards play a real game for up to 8 turns. One C1 board
 (r2_g06, a turn-capped game with 1 combat) took 389 s stock and 512 s plan
 by itself, which sets C1's elapsed time. The harness agent estimated 21 min
-from its smoke run; the measurement is 21.2 min (stock).
+from its smoke run; the measurement is 21.2 min (stock). These are the
+original runs, on the pre-fix C1 boards (anomaly 14 changed 4 tapped
+flags on 3 boards, which does not bear on timing); the review's top-up of
+those 3 boards took 82 s (stock) and 68 s (plan) at 6 JVMs, and the C1
+table's per-trial wall sums (1,724.6 s and 1,904.8 s) now count those 3
+re-run trials in place of the originals. The review's
+own stock run of S1, S2 and all 20 C1 boards at 10 trials each (220
+trials, 6 JVMs) took 2,657 s.
 
 ## Anomalies and notes
 
@@ -368,7 +399,14 @@ from its smoke run; the measurement is 21.2 min (stock).
    first log difference always falls after turn 9, so every turn-9 action
    and target is the same. The final turn count moves by the cap overshoot
    in 3 of them. Whole logs were byte-identical in 2/20 (S1) and 2/18 (S2).
-   This agrees with SPIKE.md's determinism measurements.
+   This agrees with SPIKE.md's determinism measurements. The review's
+   re-run (seeds k = 0..9, same jar) repeated it: the scenario turn's log
+   entries were identical to this run's in 10/10 paired trials of S1 and
+   10/10 of S2, whole logs in 1/10 and 2/10. On C1 the review's trials at
+   seeds 0..4 matched the supplement trial for trial, success and
+   kill-on-turn, in 100/100 on the pre-fix boards and 14/15 on the 3
+   regenerated ones, so a C1 game is reproducible in outcome most of the
+   time but not always.
 10. **Plan pilot in extra combats.** The plan seat's attack guard hands
     every combat after the first back to Forge (`attack_reask`; combat work
     is frozen until G4, owner decision 1). So the plan arm's C1 row is
@@ -391,14 +429,73 @@ from its smoke run; the measurement is 21.2 min (stock).
     WS4's normalisation will write them. The S8 plans were built from those
     copies, so they are not byte-identical to G0a's Richard plans. Nothing
     of the decks is committed.
+14. **Three C1 boards had a tapped shock land written untapped (found in
+    review, fixed in `3126e7e`).** Forge puts a card that enters tapped
+    into play with `Card.setTapped`, which fires no tap event, so the
+    shim's tap stream never says so and `board_from_game.py` wrote such a
+    card untapped. In C1's source games that was 4 unpaid shock lands
+    still tapped at the snapshot, all opponents': 015_r3_g08 (rograkh's
+    Watery Grave, derevi's Hallowed Fountain), 016_r0_g06 (derevi's
+    Breeding Pool), 016_r3_g01 (rograkh's Steam Vents). The board check
+    could not catch it, because it compares Forge's loaded board with the
+    file, not the file with the game, and the state's tapped flag
+    overrides "enters tapped" on load. `board_from_game.py` now reads a
+    card as tapped when its next record is an untap; `make_c1.py`
+    reproduced the 20 boards byte for byte before the fix and changed
+    exactly these 3 after it, each noting the card. The 3 boards were
+    re-run in every C1 run here. Effect: stock trial 0 went from 9/20 to
+    10/20 (016_r3_g01 now wins in 6 turns) and agreement with the games
+    from 17/20 to 18/20; the plan row stayed 11/20 (3/20 on the turn, was
+    4/20); the supplement went from 49/100 to 48/100; over the review's 10
+    trials per board the 3 boards read 16/30 before the fix and 16/30
+    after it.
+15. **Harness fixes in review that did not move a number here.** The
+    runner now re-runs a cached trial whose state file changed (stale),
+    marks such trials in reports, and compile_baseline refuses them (all
+    560 committed trials matched their state files); `line_loaded` now
+    checks the line pieces in every zone, not only the battlefield (it
+    read true for lines held in hand without checking them; every count
+    above is unchanged); `run.json` keeps every invocation into one
+    directory. `suite/baseline.json` was rebuilt from the raw logs with
+    this code and differs from the previous one only in the C1 rows of
+    anomaly 14 and the added provenance.
+
+## Review re-run (stock, 10 trials each)
+
+The review re-ran S1, S2 and all 20 C1 boards under stock on the same jar,
+seeds 2026101400..09 (k = 0..4 repeat the runs above, 5..9 are new), 6
+JVMs, 220 trials in 2,657 s, then the 3 regenerated boards again (30
+trials, the runner picking them as stale). Raw output:
+`<scratch>/harness_review/runs/stock10/`.
+
+| Scenario | Trials | Success | 95% CI | Kill on scenario turn | Loaded (exact / line pieces) | Errors / exceptions |
+|---|---|---|---|---|---|---|
+| s1_kiki_conscripts | 10 | 0 | 0.00-0.28 | 0 | 10 / 10 | 0 / 0 |
+| s2_derevi_emiel_cradle | 10 | 0 | 0.00-0.28 | 0 | 10 / 10 | 0 / 0 |
+| C1, 20 boards | 200 | 97 | 0.42-0.55 | 40 | 100 / 200 | 0 / 1 |
+| C1, seeds 0..4 | 100 | 49 | 0.39-0.59 | | | |
+| C1, seeds 5..9 (new) | 100 | 48 | 0.39-0.58 | | | |
+| C1, the 10 boards the game won within 8 turns | 100 | 85 | | | | |
+| C1, the 10 boards it did not | 100 | 12 | | | | |
+
+S1: Kiki copied Conscripts once on turn 9 in 10/10 trials and once on
+turn 13 in 9/10 (plus Legion Warboss once, on turn 14); the copy's untap
+targeted Thalia on turn 9 (10) and Bartz Klauser on turn 13 (9), never
+Kiki, as in the 20-trial run.
+S2: Derevi's trigger resolved 74 times, never on Gaea's Cradle. Both
+reproduce the 20-trial rows within noise, and C1's 97/200 agrees with
+the 20-trial row (10/20) and the supplement (48/100). Per board the 10
+trials rank the boards as the supplement does: the 4 boards converted on
+the scenario turn went 10/10 each, r0_g14 went 0/10.
 
 ## What this gives G1 (Fri 10/23)
 
 G1 compares the E1 prototype against stock on S1, S2, S3, S4 and S6 with
 "stock at most 2/20 on the same scenarios, and C1 not broken". This
 baseline has stock at 0/20 on all five. For "not broken", C1's stock
-reference is 9/20 won within 8 turns, 4/20 on the scenario turn and 15/20
+reference is 10/20 won within 8 turns, 4/20 on the scenario turn and 15/20
 executed (an extra combat, or 5 or more line triggers in a turn), on these
-seeds and boards; over 5 trials per board it is 49/100 (20/100 on the
-scenario turn). Rerun the stock arm on the same jar and seeds for a paired
-comparison, and don't compare against the plan's 17/20.
+seeds and boards; over 5 trials per board it is 48/100 (20/100 on the
+scenario turn) and over 10, 97/200 (40/200). Rerun the stock arm on the
+same jar and seeds for a paired comparison, and don't compare against the
+plan's 17/20.

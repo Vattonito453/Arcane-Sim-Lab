@@ -234,9 +234,10 @@ same state file (same shuffled libraries), so arms start from identical
 boards and identical Forge seeds. Forge's play under a seed is not fully
 deterministic, for stock seats either (`SPIKE.md`): on one seed stock-only
 games repeated exactly over 12 turns in 7 of 7 runs, but on a second seed
-they split into 2 to 4 variants over 6 runs, the first split always the
-order in which Forge taps mana sources; games with plan seats split the
-same way. Treat trials as paired openings, not replays. On scenario
+they split into two to five variants over 16 runs, first on the order in
+which Forge taps mana sources and, in one game, on whether a seat attacks;
+games with plan seats split the same ways. Treat trials as paired
+openings, not replays. On scenario
 boards the scenario turn itself has repeated: S1 and S2 re-run on the same
 seeds and jar played an identical scenario turn in 10 of 10 paired trials
 each (`BASELINE.md`, anomaly 9).

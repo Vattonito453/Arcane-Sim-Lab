@@ -236,6 +236,37 @@ plays as 0.17.0 does; byte identity of whole runs is not claimed, because
 0.17.0 does not have it with itself. (The formal seeding study, E2, is
 separate.)
 
+**Re-measured in review (2026-09-28), on a second seed.** The same
+comparison, `--seed-forge 2026102800`, eight runs per jar (0.17.0
+`b8894e1`, 0.17.1 `967cb71`) at 6 JVMs, turns 1 to 12. Variants of
+byte-identical records, and in brackets the variants left once the order
+in which the same mana sources were tapped is forgiven (the E2 review
+found same-seed pairs that differ only in that order):
+
+| Arm, game | 0.17.0, 8 runs | 0.17.1, 8 runs |
+|---|---|---|
+| stock, game 0 | A B B A B C D D [A B B A B A B B] | D E A E C B A B [B B A B A B A B] |
+| stock, game 1 | A A A A A B B B [same] | B B A B B A A A [same] |
+| plan, game 0 | A A B A B A B B [all A] | A B B A A A A A [all A] |
+| plan, game 1 | A B A B C A A A [same] | A A C B A B A B [same] |
+
+**Stock games are not deterministic either.** On this seed they split
+into five variants (game 0) and two (game 1); "every stock game
+identical" above held for seed 2026101500, not in general. The first
+splits seen, all on both jars: the order Forge taps mana sources for one
+payment (turn 9 of game 0: Exotic Orchard or Savannah first, Savannah for
+W or G); a real decision, nadu's turn-7 attack in game 1 (attack or not,
+for a stock seat and a plan seat alike, since Forge's own attack code
+decides it for both); and plan game 1's third variant, where derevi's
+plan seat spends its turn-9 mana differently (in variant A it casts
+Derevi from the command zone). With tap order forgiven, every variant
+of every game was played by both jars. Headers differ only in `shim`,
+`shimCommit` and the two null fields. So the conclusion stands on what
+the measurement can show: no split that a single jar does not also show
+against itself, and a code path without `--scenario` that is the 0.17.0
+call (`match.startGame(game)`) line for line. Scratch:
+`harness_review/det/`, `det_compare.py`, `det_norm.py`.
+
 ## Cost
 
 Per trial, one JVM and one game: Forge initialisation about 15 s, the apply
@@ -244,4 +275,5 @@ about 1 s, then play. Smoke scenario (Godo and Helm, 4 JVMs at once,
 for 8 trials. At 8 JVMs the
 10-scenario suite at 20 trials for one arm is roughly 200 trials x 50 s / 8,
 about 21 minutes, inside the 50-minute acceptance line; that is an
-estimate from the smoke run, not a measurement of the suite.
+estimate from the smoke run, not a measurement of the suite. (Measured
+afterwards, `BASELINE.md`: 21.2 min stock, 24.0 min plan, at 8 JVMs.)

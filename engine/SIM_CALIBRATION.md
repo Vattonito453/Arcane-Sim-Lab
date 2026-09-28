@@ -230,7 +230,16 @@ from +0.20 to +0.11. Holding removal makes removal-dense precons win in the
 sim; human precon tables do not reward that. The shipped prediction model is
 fitted on the stock arm, so agent-produced win rates carry a bias it does
 not correct. Details in `tasks/21-interaction-timing.md` and the study
-README.
+README. From R1 every prediction says so: `/results/{file}/prediction`
+carries the model's arm, the run's pilot id (`engine/pilot.py`) and the
+label "Fit on stock Forge games; this run used Sim Lab's pilot.", and a
+pre-registered rank check at each pilot-changing release
+(`studies/rank_check_r1/PREREG.md`, recorded in
+`engine/models/rank_checks.json`) withholds the prediction for a pilot
+whose check fails, until a refit after G3 (decision 19). A record applies
+only to the fitted model it measured (`predict.model_fingerprint`), so the
+refit starts with no check for any pilot rather than inheriting the old
+model's passes or failures.
 
 ## Engine A/B, shim 0.16.0 (2026-09-09): built, measured, not shipped
 

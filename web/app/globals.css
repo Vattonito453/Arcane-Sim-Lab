@@ -1228,3 +1228,17 @@ textarea.flag-note:focus, .flag-field:focus { border-color: var(--mana-cyan); }
   .flag-grid { grid-template-columns: 1fr; }
   .flag-grid > div + div { margin-top: var(--sp-4); }
 }
+
+/* ── prediction label (repair plan WS11 task 11, decision 19) ──
+   Which pilot the playgroup model was fitted on, against the pilot that
+   played this run, with the rank-check status beside it. It sits directly
+   above the figures it qualifies, in body ink rather than at the note floor,
+   because it changes how every number under it reads. A hairline rule marks
+   it off; no colour, because nothing here is a status. The same element
+   carries the plain message when a failed rank check withholds the figures. */
+.predlabel {
+  color: var(--ink-2); font-size: 13px; line-height: 1.6; max-width: 760px;
+  margin: 0 0 14px; padding-left: 10px;
+  border-left: 2px solid var(--hairline-strong);
+}
+.predlabel b { color: var(--ink-1); font-weight: 600; }

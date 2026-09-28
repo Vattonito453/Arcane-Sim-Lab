@@ -15,7 +15,15 @@
  *   - the basis (decks trained on, human games, out-of-sample error) is on
  *     the panel, not buried in a tooltip;
  *   - when the fitted model is absent the panel says so plainly instead of
- *     rendering zeros, which is exactly how this failed silently before.
+ *     rendering zeros, which is exactly how this failed silently before;
+ *   - the engine's pilot label ("Fit on stock Forge games; this run used Sim
+ *     Lab's pilot.") sits directly above the figures, with the rank-check
+ *     status beside it (repair plan WS11 task 11, decision 19). The model was
+ *     fitted on one pilot and nearly every run is played by another, and that
+ *     changes how every number in the table reads;
+ *   - when the latest rank check for the run's pilot failed, the engine sends
+ *     no figures, and the panel says why in plain words instead of drawing
+ *     an empty table.
  *
  *  All styling comes from globals.css; this file adds none.
  */
@@ -34,6 +42,22 @@ export function PredictionPanel({ report }: { report: PredictionReport | null })
   // their missing numbers threw, which took the whole results page down with
   // "Application error". Only rows the model actually scored are drawn.
   const scored = (report.decks ?? []).filter((d) => d.available !== false);
+
+  // Withheld by a failed rank check (or a missing check record): the engine
+  // sent no figures, so there is nothing to draw and one thing to say.
+  if (report.suppressed) {
+    return (
+      <section>
+        <div className="sh">
+          <h2>Against real playgroups</h2>
+          <span className="meta">withheld for this run</span>
+        </div>
+        <p className="predlabel">
+          {report.label && <b>{report.label}</b>} {report.suppressed_reason}
+        </p>
+      </section>
+    );
+  }
 
   // Absent model: say it, do not draw an empty table. The reason string is
   // written by the engine and names the actual fix.
@@ -72,6 +96,15 @@ export function PredictionPanel({ report }: { report: PredictionReport | null })
         {basis.human_games.toLocaleString()} recorded human games, with the range each
         deck plausibly lands in.
       </p>
+
+      {/* The label qualifies every figure below it, so it sits directly
+          above the table, not in the closing note. Engine-written text,
+          rendered verbatim. */}
+      {report.label && (
+        <p className="predlabel">
+          <b>{report.label}</b> {report.rank_check?.text}
+        </p>
+      )}
 
       <table className="telet">
         <thead>

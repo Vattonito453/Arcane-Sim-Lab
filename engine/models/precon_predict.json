@@ -37,6 +37,7 @@
  },
  "n_decks": 66,
  "arm": "stock Forge, decided games",
+ "arm_pilot": "stock",
  "human_games": 10982,
  "ground_truth": "playgroup.gg commander precons, captured 2026-08-03",
  "ceiling": {

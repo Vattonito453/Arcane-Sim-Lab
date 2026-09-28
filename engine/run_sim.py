@@ -1009,7 +1009,8 @@ def _merged_shim_meta(sub_metas: list[dict], orders: list[list[str]]) -> dict:
     detail = []
     for order, m in zip(orders, sub_metas):
         d: dict = {"seats": order}
-        for k in ("agent", "agents", "profiles", "seedBases", "seedGameStride"):
+        for k in ("agent", "agents", "profiles", "seedBases", "seedGameStride",
+                  "planVersions", "fixFlags"):
             if m.get(k) is not None:
                 d[k] = m[k]
         detail.append(d)

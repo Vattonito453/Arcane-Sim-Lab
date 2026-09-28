@@ -94,3 +94,14 @@ py studies/rank_check_r1/read_rank_check.py --write-record  # decided reading ->
 ```
 
 Expected wall time at 8 JVMs: 384 cells x (2 games + about 31 s of JVM start, measured on G0a) / 8. With the stock arm's game length at a 900 s cap (392 s mean) that is **about 11 hours**; with the 0.15.0 arm's (554 s mean at the cap) **about 15 hours**. 0.16.0 removed the attack re-ask loop that lengthened the 0.15.0 arm's games, so the R1 pilot is expected between the two. At 12 JVMs (G0a's setting, 36 GB of heap on the 64 GB box) the same run takes about 7 to 10 hours.
+
+## Amendment 1 (2026-09-28, before launch)
+
+Made in review of the setup, after the one-game smoke (which is never read) and before any game of the run. The question, bed, pilot, settings, metric, threshold and decidability rules above are unchanged. What changed is what the runner and reader record and what they refuse:
+
+1. **A record names the model it measured.** Each record gains `model`, the fingerprint of the served model's fitted parameters (`engine/predict.py model_fingerprint`: features, weights, standardiser and intercept, not the file's notes). The engine applies a record only to that model. Without it, a failed R1 record would keep withholding the prediction for this pilot after the refit after G3, which contradicts "withheld until the model is refit" above, and a pass would be shown for a refit model that no check measured. A record without the field still applies to every model, so leaving it out cannot silence a failure. The reader refuses a second record for the same release, pilot and model.
+2. **The pre-registration commit covers the code, and the reader holds the run to it.** `assert_preregistered` now returns the latest commit that touched any of this file, `run_rank_check.py` or `read_rank_check.py`. It used to return only this file's commit, so a reader edited and committed after games had been played would have passed the guard while every record still pointed at this file's older commit. `--write-record` now refuses unless every cell recorded the commit that is current when the record is written.
+3. **One plans file per run.** `plans` refuses to rebuild once any cell of the run has played (a rebuild fetches card facts again), and `--write-record` refuses when the cells ran on more than one plans file.
+4. **Provenance.** Each cell records the checkout's commit read once before any game, not when the cell finishes (the smoke cell recorded a commit made while it played). The reader writes `rank_checks.json` with LF line endings, because `.gitattributes` stores `*.json` byte-for-byte and a CRLF rewrite on the Windows box would change every line of the record file.
+
+The smoke cell's `.cell.json` keeps the original pre-registration commit a8af484; the reader never reads it.

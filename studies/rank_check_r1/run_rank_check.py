@@ -64,17 +64,23 @@ def git(*args: str) -> str:
 
 
 def assert_preregistered() -> str:
-    """The commit that pre-registered this study, or exit. Every file must be
-    tracked and unchanged: an edited reader could drift toward the data."""
-    for f in PREREG_FILES:
-        rel = f"studies/rank_check_r1/{f}"
+    """The commit that fixed this study's protocol AND code, or exit.
+
+    Every file must be tracked and unchanged, and the commit returned is the
+    latest one that touched ANY of them, not only PREREG.md: every cell
+    records it, and the reader refuses to write a record unless every cell
+    ran under the commit that is current at read time. So an edit to the
+    reader or runner committed after the first game (an edited reader could
+    drift toward the data) cannot hide behind the PREREG's older commit."""
+    rels = [f"studies/rank_check_r1/{f}" for f in PREREG_FILES]
+    for rel in rels:
         tracked = subprocess.run(["git", "-C", str(REPO), "ls-files", "--error-unmatch", rel],
                                  capture_output=True, text=True).returncode == 0
         dirty = git("status", "--porcelain", "--", rel)
         if not tracked or dirty:
             sys.exit(f"refusing to run: {rel} is not committed and unchanged "
                      f"({dirty or 'untracked'})")
-    return git("log", "-1", "--format=%H %cI", "--", "studies/rank_check_r1/PREREG.md")
+    return git("log", "-1", "--format=%H %cI", "--", *rels)
 
 
 def assert_pilot_env():
@@ -107,8 +113,16 @@ def plans_path() -> Path:
 def build_plans():
     """Version-2 plans for all 66 precons, one file, as production builds
     them (deck_plan.build_plans, plan_version=2, every fix flag), from a
-    scratch copy of the committed caches plus Forge's own card index."""
+    scratch copy of the committed caches plus Forge's own card index.
+
+    Refuses once any cell has run: a rebuild fetches card facts again, and a
+    run whose cells played two different plans files is not one pilot."""
     assert_pilot_env()
+    started = sorted((OUT / "runs").glob("*.cell.json")) if (OUT / "runs").is_dir() else []
+    if plans_path().is_file() and started:
+        sys.exit(f"refusing to rebuild {plans_path()}: {len(started)} cell(s) of the run "
+                 f"already played with it. Resume with `run`; a new plans file is a new run "
+                 f"in a new RANK_CHECK_OUT.")
     cache = OUT / "cache"
     cache.mkdir(parents=True, exist_ok=True)
     for f in ("card_cache.json", "combo_cache.json"):
@@ -165,7 +179,8 @@ def results_in(p: Path) -> int:
     return p.read_text(encoding="utf-8", errors="replace").count('"rec":"result"')
 
 
-def play(cell: dict, runs: Path, games: int, prereg: str, plans_sha: str) -> str:
+def play(cell: dict, runs: Path, games: int, prereg: str, plans_sha: str,
+         repo_commit: str) -> str:
     out = runs / f"{cell['name']}.jsonl"
     if results_in(out) >= games:
         return f"{cell['name']} cached"
@@ -195,7 +210,10 @@ def play(cell: dict, runs: Path, games: int, prereg: str, plans_sha: str) -> str
         "seed": cell["seed"], "started": started, "wall_s": round(time.time() - t0, 1),
         "rc": rc, "results": results_in(out), "games": games, "attempts": attempts,
         "jar": str(JAR), "jar_sha256": JAR_SHA256, "plans_sha256": plans_sha,
-        "repo_commit": git("rev-parse", "HEAD"), "prereg_commit": prereg, "cmd": cmd},
+        # The checkout the run was launched from, read once before any game;
+        # read here, at the end of a cell, it named whatever was committed
+        # while the JVM played (the smoke recorded a later commit).
+        "repo_commit": repo_commit, "prereg_commit": prereg, "cmd": cmd},
         indent=1), encoding="utf-8")
     return f"{cell['name']} rc={rc} results={results_in(out)}/{games} ({time.time() - t0:.0f}s)"
 
@@ -206,21 +224,21 @@ def _start():
     assert_jar()
     if not plans_path().is_file():
         sys.exit(f"no plans at {plans_path()}; run `plans` first")
-    return prereg, sha256(plans_path())
+    return prereg, sha256(plans_path()), git("rev-parse", "HEAD")
 
 
 def smoke():
     """One game in the first cell's seat order, into OUT/smoke. The reader
     never reads this folder; it proves the invocation, the plans and the
     pilot identity before an overnight run is committed to."""
-    prereg, plans_sha = _start()
+    prereg, plans_sha, repo = _start()
     runs = OUT / "smoke"
     runs.mkdir(parents=True, exist_ok=True)
-    print(play(cells(1)[0], runs, 1, prereg, plans_sha), flush=True)
+    print(play(cells(1)[0], runs, 1, prereg, plans_sha, repo), flush=True)
 
 
 def run(workers: int):
-    prereg, plans_sha = _start()
+    prereg, plans_sha, repo = _start()
     runs = OUT / "runs"
     runs.mkdir(parents=True, exist_ok=True)
     todo = cells()
@@ -228,7 +246,8 @@ def run(workers: int):
     print(f"rank check R1: {len(todo)} cells ({len(todo) * GAMES_PER_CELL} games), "
           f"{done} already complete, {workers} JVMs; prereg {prereg}; out {runs}", flush=True)
     with ThreadPoolExecutor(max_workers=workers) as ex:
-        for msg in ex.map(lambda c: play(c, runs, GAMES_PER_CELL, prereg, plans_sha), todo):
+        for msg in ex.map(lambda c: play(c, runs, GAMES_PER_CELL, prereg, plans_sha, repo),
+                          todo):
             print(msg, flush=True)
     left = [c["name"] for c in todo if results_in(runs / f"{c['name']}.jsonl") < GAMES_PER_CELL]
     print(f"incomplete cells: {len(left)}" + (f" (rerun `run` to retry): {left[:8]}" if left else ""))

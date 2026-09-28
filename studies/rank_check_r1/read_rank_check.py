@@ -56,7 +56,7 @@ def collect(runs: Path) -> dict:
     co = R.cohort()
     decks = {c["name"]: {"g": 0, "alive": 0, "timed_out": 0, "turn_capped": 0,
                          "decided": 0, "wins": 0} for c in co}
-    pilots, commits, plan_shas, jar_shas = set(), set(), set(), set()
+    pilots, commits, plan_shas, jar_shas, preregs = set(), set(), set(), set(), set()
     missing, short, ms = [], [], []
     games = 0
     for cell in R.cells():
@@ -94,9 +94,12 @@ def collect(runs: Path) -> dict:
         prov = f.with_suffix(".cell.json")
         if prov.exists():
             try:
-                jar_shas.add(json.loads(prov.read_text(encoding="utf-8")).get("jar_sha256"))
+                pj = json.loads(prov.read_text(encoding="utf-8"))
             except ValueError:
-                pass
+                pj = {}
+            jar_shas.add(pj.get("jar_sha256"))
+            plan_shas.add(pj.get("plans_sha256"))
+            preregs.add(str(pj.get("prereg_commit") or "").split(" ")[0] or None)
         if len(results) < R.GAMES_PER_CELL:
             short.append(cell["name"])
         for r in results[:R.GAMES_PER_CELL]:
@@ -120,7 +123,8 @@ def collect(runs: Path) -> dict:
     return {"decks": decks, "games": games, "missing": missing, "short": short,
             "pilots": sorted(p for p in pilots if p), "shim_commits": sorted(c for c in commits if c),
             "plans_sha256": sorted(s for s in plan_shas if s),
-            "jar_sha256": sorted(s for s in jar_shas if s), "ms": ms}
+            "jar_sha256": sorted(s for s in jar_shas if s),
+            "prereg_commits": sorted(s for s in preregs if s), "ms": ms}
 
 
 def served(model, survival: float, creatures: float, avg_cmc: float) -> float:
@@ -170,6 +174,8 @@ def analyse(c: dict) -> dict:
            "missing_cells": len(c["missing"]), "short_cells": len(c["short"]),
            "pilots": c["pilots"], "shim_commits": c["shim_commits"],
            "plans_sha256": c["plans_sha256"], "jar_sha256": c["jar_sha256"],
+           "prereg_commits": c["prereg_commits"],
+           "model": predict.model_fingerprint(model.m),
            "metric": METRIC, "rho": rho, "threshold": THRESHOLD, "decided": decided,
            "pass": bool(decided and round(rho, 3) >= THRESHOLD)}
     if n < 3:
@@ -246,6 +252,7 @@ def report(a: dict, runs: Path):
     print(f"Precon-8 rank check, read {time.strftime('%Y-%m-%d')}: {runs}")
     print(f"  pilot(s) {a['pilots']}  shim commit {a['shim_commits']}  "
           f"plans {[s[:12] for s in a['plans_sha256']]}")
+    print(f"  model {a['model']}  prereg commit(s) {[s[:12] for s in a['prereg_commits']]}")
     print(f"  games {a['games']}/{a['design_games']}, decks with >= {MIN_GAMES_PER_DECK} "
           f"games {a['n_decks']}, missing cells {a['missing_cells']}, short cells {a['short_cells']}")
     if a["n_decks"] < 3:
@@ -287,18 +294,38 @@ def write_record(a: dict, release: str, prereg: str) -> dict:
         sys.exit(f"pilot {a['pilots']} is not the R1 pilot {EXPECTED_PILOT}: no record written")
     if a["jar_sha256"] and a["jar_sha256"] != [R.JAR_SHA256]:
         sys.exit(f"cells ran on jar(s) {a['jar_sha256']}, not {R.JAR_SHA256}: no record written")
+    if len(a["plans_sha256"]) != 1:
+        sys.exit(f"cells ran on {len(a['plans_sha256'])} plans files {a['plans_sha256']}; "
+                 f"one run is one pilot: no record written")
+    # Every cell must have run under the protocol and code current now. A
+    # reader or runner edited and committed after games were played moves the
+    # current commit past the cells' one, and the reading refuses.
+    head = prereg.split()[0] if prereg else None
+    if a["prereg_commits"] != [head]:
+        sys.exit(f"cells ran under pre-registration commit(s) {a['prereg_commits']}, but the "
+                 f"study files are now at {head}: the protocol or its code changed after "
+                 f"games were played. No record written")
     data = json.loads(RECORDS.read_text(encoding="utf-8"))
     checks = data["checks"] if isinstance(data, dict) else data
-    if any(c.get("release") == release and c.get("pilot") == EXPECTED_PILOT for c in checks):
-        sys.exit(f"a {release} record for {EXPECTED_PILOT} already exists; records are never "
-                 f"edited, and a re-run cannot overturn a reading (PREREG.md)")
+    if any(c.get("release") == release and c.get("pilot") == EXPECTED_PILOT
+           and c.get("model") in (None, a["model"]) for c in checks):
+        sys.exit(f"a {release} record for {EXPECTED_PILOT} and this model already exists; "
+                 f"records are never edited, and a re-run cannot overturn a reading (PREREG.md)")
     rec = {"release": release, "date": time.strftime("%Y-%m-%d"), "pilot": EXPECTED_PILOT,
+           # Which fitted model this check measured (predict.model_fingerprint).
+           # The engine applies a record only to that model, so the refit after
+           # G3 is neither withheld by this reading nor vouched for by it.
+           "model": a["model"],
            "jar_sha": R.JAR_SHA256, "plan_version": 2, "metric": METRIC,
            "value": round(a["rho"], 3), "threshold": THRESHOLD, "pass": a["pass"],
            "n_decks": a["n_decks"], "games": a["games"], "study": "studies/rank_check_r1",
            "prereg_commit": prereg.split()[0] if prereg else None}
     checks.append(rec)
-    RECORDS.write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
+    # LF on every platform: .gitattributes stores *.json byte-for-byte
+    # (-text), so a CRLF rewrite on the Windows box that runs this study
+    # would commit every line of the record file as changed.
+    with open(RECORDS, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(data, indent=1) + "\n")
     return rec
 
 

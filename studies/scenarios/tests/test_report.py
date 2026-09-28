@@ -239,7 +239,8 @@ def main() -> None:
             except W.ScenarioError:
                 continue
             raise AssertionError(f"accepted {badsucc}")
-        assert "moves its first such move is one of Helm of the Host" in R.success_text(zsc["success"])
+        assert "first Library to Graveyard move by turn 6 is one of: Helm of the Host" in R.success_text(
+            zsc["success"]), R.success_text(zsc["success"])
         print("  zone (first pick, any pick, deadline, owner, load-time moves) and alive successes: OK")
 
         # 6. Aggregate and markdown.

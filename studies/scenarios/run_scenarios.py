@@ -436,10 +436,13 @@ def success_text(succ: dict | None) -> str:
         return "no success condition"
     kind = succ.get("type", "win")
     if kind == "zone":
-        which = "its first such move is one of" if succ.get("first") else "any of"
-        also = f" or any {'/'.join(succ['types_any'])} card" if succ.get("types_any") else ""
-        return (f"seat {succ['seat']} moves {which} {', '.join(succ['cards'])}{also} from "
-                f"{succ['from']} to {succ['to']} by turn {succ['by_turn']}")
+        also = f", or any {'/'.join(succ['types_any'])} card" if succ.get("types_any") else ""
+        names = f"{', '.join(succ['cards'])}{also}"
+        if succ.get("first"):
+            return (f"seat {succ['seat']}'s first {succ['from']} to {succ['to']} move by turn "
+                    f"{succ['by_turn']} is one of: {names}")
+        return (f"seat {succ['seat']} moves one of: {names} from {succ['from']} to {succ['to']} "
+                f"by turn {succ['by_turn']}")
     if kind == "alive":
         return f"seat {succ['seat']} has not lost at turn {succ['by_turn']}"
     return f"seat {succ['seat']} wins by turn {succ.get('by_turn', 'the cap')}"
@@ -452,7 +455,9 @@ def markdown(report: dict) -> str:
            f"Shim `{run['jar_name']}` (sha256 `{run['jar_sha256'][:16]}`), repo `{run['repo_commit']}`, "
            f"{run['trials']} trials per arm, seeds {run['seed']}..{run['seed'] + run['trials'] - 1}, "
            f"started {run['started']}. Trial k of every arm shares its Forge seed and library "
-           f"shuffle. ms per decision: not exposed by this shim.",
+           f"shuffle. ms per decision: not exposed by this shim."
+           + (f" Wall clock {run['wall_s']} s at {run['parallel']} JVMs ({run['trials_run']} trials run, "
+              f"{run['trials_cached']} cached)." if run.get("wall_s") is not None else ""),
            ""]
     for sid, s in report["scenarios"].items():
         goal = success_text(s.get("success"))
@@ -477,7 +482,9 @@ def markdown(report: dict) -> str:
         picks = [(arm, row["summary"].get("zone_first")) for arm, row in s["arms"].items()
                  if row["summary"].get("zone_first")]
         if picks:
-            out += ["", "First qualifying move per trial (None: no such move by the deadline):"]
+            z = s.get("success") or {}
+            out += ["", f"First {z.get('from')} to {z.get('to')} move per trial, the pick "
+                        f"(None: no such move by the deadline):"]
             out += [f"- {arm}: " + ", ".join(f"{k} {v}" for k, v in sorted(z.items(), key=lambda kv: -kv[1]))
                     for arm, z in picks]
         diffs = [(arm, t["file"], t["board_diffs"]) for arm, row in s["arms"].items()
@@ -571,10 +578,17 @@ def main() -> None:
     (out / "run.json").write_text(json.dumps(run, indent=1), encoding="utf-8")
     t0 = time.time()
     print(f"{len(jobs)} trials, {args.parallel} at a time", flush=True)
+    cached = 0
     with ThreadPoolExecutor(max_workers=args.parallel) as ex:
         for r in ex.map(run_cell, jobs):
+            cached += r.endswith(" cached")
             print(r, flush=True)
-    print(f"wall {time.time() - t0:.0f}s", flush=True)
+    wall = time.time() - t0
+    print(f"wall {wall:.0f}s", flush=True)
+    # This invocation's wall clock: the whole run only when nothing was cached.
+    run.update({"wall_s": round(wall, 1), "trials_run": len(jobs) - cached, "trials_cached": cached,
+                "finished": time.strftime("%Y-%m-%dT%H:%M:%S")})
+    (out / "run.json").write_text(json.dumps(run, indent=1), encoding="utf-8")
     write_report(out)
     print((out / "report.md").read_text(encoding="utf-8"))
 

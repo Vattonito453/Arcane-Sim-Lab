@@ -113,7 +113,10 @@ written `T:<name>`) or `token_info` (Forge's inline token string, written
 | `id` | `Id:N` | A label for `attached_to`; the writer numbers labels 1, 2, ... in order of appearance. Unique across the scenario. |
 | `attached_to` | `AttachedTo:N` | An equipment or aura on the labelled card, own or another seat's. Forge attaches only cards that are attachments. Read back exactly (measured: equipment on own creature). |
 | `commander` | `IsCommander` | Added by the writer to every card named in the deck's `[Commander]` section, wherever it is placed; a commander the scenario does not place goes to the command zone. Forge then builds the commander effect. |
-| `face_down`, `transformed`, `flipped`, `no_etb`, `monstrous`, `renowned`, `token_flag`, `set` | `FaceDown`, `Transformed`, `Flipped`, `NoETBTrigs`, `Monstrous`, `Renowned`, `IsToken`, `Set:` | Passed through; not exercised by the spike. |
+| `imprinting` | `Imprinting:N,...` | On the host (Isochron Scepter): the labelled card(s) it imprinted. Pair it with `exiled_with` on the exiled card; Forge's Scepter needs both (S6). |
+| `exiled_with` | `ExiledWith:N` | On an exiled card: the labelled permanent that exiled it. |
+| `transformed` | `Transformed` | A double-faced card on its back face (written under its front-face name). The board check compares it by count, since it reads back under the back face's name (measured: Invasion of Ikoria as Zilortha, C1). |
+| `face_down`, `flipped`, `no_etb`, `monstrous`, `renowned`, `token_flag`, `set` | `FaceDown`, `Flipped`, `NoETBTrigs`, `Monstrous`, `Renowned`, `IsToken`, `Set:` | Passed through; not exercised. |
 
 **Zones:** `battlefield`, `hand`, `graveyard`, `exile`, `command`,
 `library`. Every zone of every seat is written, empty ones included:
@@ -132,9 +135,22 @@ seats' turns counted, as Forge counts it), `phase` (one of `UNTAP`,
 (clear summoning sickness on every card), `success`, `line`,
 `horizon_turns`, `notes`, `tests`.
 
-**`success`** is `{"type": "win", "seat": i, "by_turn": T}`: seat `i` wins
-at or before game turn `T`. Optional; without it the report still records
-the winner and turns. **`line`** is `{"seat": i, "pieces": [names]}`: the
+**`success`** (optional; without it the report still records the winner
+and turns) is one of:
+
+- `{"type": "win", "seat": i, "by_turn": T}`: seat `i` wins at or before
+  game turn `T` (`by_turn` optional).
+- `{"type": "zone", "seat": i, "from": Z1, "to": Z2, "cards": [names],
+  "types_any": [types], "first": true, "by_turn": T}`: a card in `cards`,
+  or with `types_any` any card Forge types as one of those (`Creature`,
+  `Instant`, ...), moves from zone `Z1` to zone `Z2` for seat `i` by turn
+  `T`; with `"first": true` the seat's first such move must qualify. This
+  scores a tutor's pick (S8, S9) from the shim's zone records; `zone_first`
+  in the report is the pick. Zone records written while the state loads
+  carry turn 1, so the scenario turn must be above 1.
+- `{"type": "alive", "seat": i, "by_turn": T}`: seat `i` has not lost when
+  the game ends. Set `horizon_turns` so the game is called at `T`. This
+  scores "do not kill yourself" (S5b). **`line`** is `{"seat": i, "pieces": [names]}`: the
 cards whose casts, activations and trigger resolutions the report counts
 for that seat (token copies count, since Forge names them after the card).
 **`horizon_turns`**: the game is called at turn `turn + horizon_turns`
@@ -154,7 +170,8 @@ shim's JSONL:
 - `winner_seat`, `turns`, `draw`, `turnCapped`, `timedOut`, `error`,
   `killFailed`, `success`, `kill_on_scenario_turn` (the success seat, or
   any winner without `success`, won during the scenario turn),
-  `turns_to_kill` (result turn minus scenario turn).
+  `turns_to_kill` (result turn minus scenario turn). For `zone` scenarios,
+  `zone_moves` (the seat's qualifying-zone moves in order) and `zone_first`.
 - `piece_counts` (per piece: cast / activated / triggered, the line seat
   only, from Forge's `STACK_ADD` log entries), `piece_activity_total`,
   `iterations_max_turn` and `iterations_scenario_turn` (activations plus
@@ -236,6 +253,25 @@ run in extra combats. Combat work is frozen until G4 (owner decision 1);
 read Godo, Helm and other extra-combat results on the plan arm with that in
 mind.
 
+## The suite (WS3 task 4)
+
+`suite/` holds the initial suite: `s1_*` to `s9_*` (S5b included) and
+`c1/`, 20 real stock-game boards for the positive control. Each file's
+`description` says what it tests and its success condition; `notes` name
+every deviation (a card placed that the deck does not list, a piece left
+off to isolate the choice under test). Baselines, verdicts and anomalies:
+`BASELINE.md`.
+
+- Decks are study decks from allowed pods only (never the holdout pods).
+  S8 is Richard's own pod, read through `$SIMLAB_PRIVATE` at run time.
+- C1 boards come from `board_from_game.py`, which rebuilds every seat's
+  zones from a real shim game at the end of a turn's precombat main phase;
+  `suite/c1/make_c1.py` draws the 20 boards (seeded) and keeps each source
+  game's outcome in `suite/c1/sources.json`. This is also how the suite
+  grows from confirmed misplays (WS3 task 5).
+- Plans for the plan arm: `--data-dir <scratch>/g0a/cache_cedh` for the
+  cEDH scenarios and C1, `--data-dir <scratch>/g0a/cache_richard` for S8.
+
 ## Files
 
 - `writer.py`: scenario JSON to state text; `parse_state` reads state text
@@ -248,3 +284,5 @@ mind.
   not a pilot comparison: this board converts for any pilot.
 - `tests/test_writer.py`, `tests/test_report.py`.
 - `SPIKE.md`: the gate.
+- `board_from_game.py`: a scenario board from a real shim game.
+- `suite/`, `BASELINE.md`: the initial suite and its baselines.

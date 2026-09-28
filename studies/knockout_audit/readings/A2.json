@@ -1,0 +1,339 @@
+{
+ "reader": "A2",
+ "pass": "A",
+ "games": [
+  {
+   "game": "R-g01",
+   "eliminations": [
+    {
+     "player": "Ai(3)-Stella Lee, Wild Card",
+     "turn": "34",
+     "cause": "poison",
+     "killer": "Ai(2)-Skrat's Revenge",
+     "card": "Triumph of the Hordes",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Krenko Goblins",
+     "turn": "34",
+     "cause": "poison",
+     "killer": "Ai(2)-Skrat's Revenge",
+     "card": "Triumph of the Hordes",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(1)-Kess, Reanimator",
+     "turn": "36",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Skrat's Revenge",
+     "card": "Phyrexian Beast Token",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "30",
+    "card": "Ezuri's Predation"
+   }
+  },
+  {
+   "game": "R-g02",
+   "eliminations": [
+    {
+     "player": "Ai(2)-Skrat's Revenge",
+     "turn": "27",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Krenko Goblins",
+     "turn": "31",
+     "cause": "noncombat_damage",
+     "killer": "Ai(3)-Stella Lee, Wild Card",
+     "card": "Magma Opus",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Stella Lee, Wild Card",
+     "turn": "32",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Kess, Reanimator",
+     "card": "Valgavoth, Terror Eater",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "27",
+    "card": "Valgavoth, Terror Eater"
+   }
+  },
+  {
+   "game": "R-g04",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Skrat's Revenge",
+     "turn": "47",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Krenko Goblins",
+     "card": "Goblin Token",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Krenko Goblins",
+     "turn": "63",
+     "cause": "combat_damage",
+     "killer": "Ai(4)-Kess, Reanimator",
+     "card": "Razaketh, the Foulblooded",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-Stella Lee, Wild Card",
+     "turn": "67",
+     "cause": "combat_damage",
+     "killer": "Ai(4)-Kess, Reanimator",
+     "card": "Razaketh, the Foulblooded",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "51",
+    "card": "Razaketh, the Foulblooded"
+   }
+  },
+  {
+   "game": "R-g05",
+   "eliminations": [
+    {
+     "player": "Ai(4)-Skrat's Revenge",
+     "turn": "37",
+     "cause": "noncombat_damage",
+     "killer": "Ai(1)-Stella Lee, Wild Card",
+     "card": "Guttersnipe",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Kess, Reanimator",
+     "turn": "40",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Stella Lee, Wild Card",
+     "card": "Elemental Token",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-Krenko Goblins",
+     "turn": "42",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Stella Lee, Wild Card",
+     "card": "Elemental Token",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "33",
+    "card": "Brass's Bounty"
+   }
+  },
+  {
+   "game": "R-g06",
+   "eliminations": [
+    {
+     "player": "Ai(4)-Skrat's Revenge",
+     "turn": "35",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Krenko Goblins",
+     "card": "Goblin Balloon Brigade",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": null
+  },
+  {
+   "game": "S-g01",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Atraxa Counters B3",
+     "turn": "50",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "The Ur-Dragon",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": "50",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-Ur-Dragon B3",
+     "card": "Kolaghan, the Storm's Fury",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": null
+  },
+  {
+   "game": "S-g05",
+   "eliminations": [
+    {
+     "player": "Ai(3)-Meren Graveyard B3",
+     "turn": "41",
+     "cause": "poison",
+     "killer": "Ai(1)-Atraxa Counters B3",
+     "card": "Karn's Bastion",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-Ur-Dragon B3",
+     "turn": "50",
+     "cause": "alt_win",
+     "killer": "Ai(1)-Atraxa Counters B3",
+     "card": "Simic Ascendancy",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-Kilo Helm Final",
+     "turn": "50",
+     "cause": "alt_win",
+     "killer": "Ai(1)-Atraxa Counters B3",
+     "card": "Simic Ascendancy",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "47",
+    "card": "Simic Ascendancy"
+   }
+  },
+  {
+   "game": "T-g03",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": "28",
+     "cause": "combat_damage",
+     "killer": "Ai(4)-N3cro Raggadragga",
+     "card": "Craterhoof Behemoth",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": "32",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-NanMan Felix Five-Boots",
+     "card": "Slither Blade",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": "33",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Dnide Wildsear",
+     "card": "Klothys, God of Destiny",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "23",
+    "card": "Unnatural Growth"
+   }
+  },
+  {
+   "game": "T-g07",
+   "eliminations": [
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": "23",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Dnide Wildsear",
+     "card": "Laelia, the Blade Reforged",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": "28",
+     "cause": "combat_damage",
+     "killer": "Ai(1)-Shelly Siona",
+     "card": "Glory Bearers",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": "31",
+     "cause": "combat_damage",
+     "killer": "Ai(4)-N3cro Raggadragga",
+     "card": "Radha, Heir to Keld",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "27",
+    "card": "Tribute to the World Tree"
+   }
+  },
+  {
+   "game": "T-g15",
+   "eliminations": [
+    {
+     "player": "Ai(1)-Shelly Siona",
+     "turn": "23",
+     "cause": "combat_damage",
+     "killer": "Ai(3)-Dnide Wildsear",
+     "card": "Forgeborn Oreads",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": "38",
+     "cause": "combat_damage",
+     "killer": "Ai(2)-NanMan Felix Five-Boots",
+     "card": "Nalfeshnee",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": "44",
+     "cause": "commander_damage",
+     "killer": "Ai(2)-NanMan Felix Five-Boots",
+     "card": "Felix Five-Boots",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "42",
+    "card": "Felix Five-Boots"
+   }
+  },
+  {
+   "game": "T-g17",
+   "eliminations": [
+    {
+     "player": "Ai(4)-N3cro Raggadragga",
+     "turn": "25",
+     "cause": "commander_damage",
+     "killer": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(3)-Dnide Wildsear",
+     "turn": "31",
+     "cause": "commander_damage",
+     "killer": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "confidence": "sure"
+    },
+    {
+     "player": "Ai(2)-NanMan Felix Five-Boots",
+     "turn": "35",
+     "cause": "commander_damage",
+     "killer": "Ai(1)-Shelly Siona",
+     "card": "Siona, Captain of the Pyleas",
+     "confidence": "sure"
+    }
+   ],
+   "turning_point": {
+    "turn": "13",
+    "card": "Crystalline Armor"
+   }
+  }
+ ]
+}

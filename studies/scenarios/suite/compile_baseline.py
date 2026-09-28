@@ -26,11 +26,37 @@ from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+# Per-trial fields kept in baseline.json (piece counts and targets are
+# summed per arm; board differences are counted, and listed in the run's
+# report.md, which stays with the raw logs).
 TRIAL_KEYS = ("file", "loaded", "line_loaded", "applied", "has_result", "winner_seat", "turns", "success",
-              "kill_on_scenario_turn", "turns_to_kill", "piece_counts", "piece_targets",
-              "iterations_max_turn",
+              "kill_on_scenario_turn", "turns_to_kill", "iterations_max_turn",
               "iterations_scenario_turn", "extra_combats_scenario_turn", "zone_first", "alive",
-              "draw", "turnCapped", "timedOut", "error", "exceptions", "wall_s", "ms", "board_diffs")
+              "draw", "turnCapped", "timedOut", "error", "exceptions", "wall_s", "ms")
+
+
+def detail(t: dict) -> dict:
+    return dict({k: t.get(k) for k in TRIAL_KEYS}, board_diffs=len(t.get("board_diffs") or []))
+
+
+def table_of(rows: list[dict]) -> dict:
+    """Per-trial dicts as one header and one row per trial (a third the size)."""
+    cols = list(rows[0]) if rows else []
+    return {"columns": cols, "rows": [[r.get(c) for c in cols] for r in rows]}
+
+
+def dumps(o, pad: str = "") -> str:
+    """JSON with one line per table row, so baseline.json diffs by trial."""
+    if isinstance(o, dict) and set(o) == {"columns", "rows"}:
+        rows = ",\n".join(pad + "  " + json.dumps(r, ensure_ascii=False) for r in o["rows"])
+        return ("{\n" + pad + ' "columns": ' + json.dumps(o["columns"]) + ",\n" + pad + ' "rows": [\n'
+                + rows + "\n" + pad + " ]}")
+    if isinstance(o, dict) and any(isinstance(v, (dict, list)) and v for v in o.values()):
+        body = ",\n".join(pad + " " + json.dumps(k) + ": " + dumps(v, pad + " ") for k, v in o.items())
+        return "{\n" + body + "\n" + pad + "}"
+    if isinstance(o, list) and any(isinstance(v, dict) for v in o):
+        return "[\n" + ",\n".join(pad + " " + dumps(v, pad + " ") for v in o) + "\n" + pad + "]"
+    return json.dumps(o, ensure_ascii=False)
 
 
 def executed(t: dict) -> bool:
@@ -48,7 +74,7 @@ def load(dirs: list[Path]) -> dict:
     merged: dict = {}
     for d in dirs or []:
         rep = json.loads((d / "report.json").read_text(encoding="utf-8"))
-        merged.setdefault("runs", []).append(dict({k: rep["run"].get(k) for k in RUN_KEYS}, dir=d.as_posix()))
+        merged.setdefault("runs", []).append(dict({k: rep["run"].get(k) for k in RUN_KEYS}, dir="/".join(d.parts[-2:])))   # arm/kind; the raw tree stays outside git
         arms = merged.setdefault("arms", [])
         arms += [a for a in rep["run"]["arms"] if a not in arms]
         for sid, sc in rep["scenarios"].items():
@@ -141,7 +167,7 @@ def main() -> None:
             for arm, a in s["arms"].items():
                 r = arm_row(a["trials"], a["summary"])
                 out["scenarios"][sid]["arms"][arm] = dict(
-                    r, trials_detail=[{k: t.get(k) for k in TRIAL_KEYS} for t in a["trials"]])
+                    r, trials_detail=table_of([detail(t) for t in a["trials"]]))
                 rows.append((sid, arm, r))
     md += table(rows)
     # What the line pieces targeted (the choice S1 and S2 test), and the
@@ -169,7 +195,7 @@ def main() -> None:
         for sid, s in rep["scenarios"].items():
             for arm in arms:
                 t = s["arms"][arm]["trials"][0]
-                per_arm[arm].append(dict({k: t.get(k) for k in TRIAL_KEYS}, id=sid, in_game=by_id[sid]))
+                per_arm[arm].append(dict(detail(t), id=sid, in_game=by_id[sid]))
         md += ["", "| C1 | Arm | Loaded (exact / line pieces) | Finished | Won within 8 turns (success) | Won on the scenario turn | "
                    "Executed | In game, same boards: won within 8 turns / same turn / ever | "
                    "Agreement with the game (within 8) | Errors / exceptions | Wall s (sum) |",
@@ -190,7 +216,11 @@ def main() -> None:
                    "wall_s_total": round(sum(t.get("wall_s") or 0 for t in ts), 1),
                    "exceptions": sum(t.get("exceptions") or 0 for t in ts),
                    "errors": sum(bool(t.get("error")) for t in ran)}
-            out["c1"][arm] = dict(row, boards=ts)
+            out["c1"][arm] = dict(row, boards=table_of(
+                [dict({k: v for k, v in t.items() if k != "in_game"},
+                      in_game_won_within_8=t["in_game"]["won_within_horizon"],
+                      in_game_won_same_turn=t["in_game"]["won_on_attach_turn"],
+                      in_game_end_turn=t["in_game"]["end_turn"]) for t in ts]))
             md.append(f"| C1 | {arm} | {row['loaded']} / {row['line_loaded']} of {row['trials']} | "
                       f"{row['finished']}/{row['trials']} | "
                       f"{row['success']}/{row['finished']} | {row['kill_on_scenario_turn']}/{row['finished']} | "
@@ -215,7 +245,7 @@ def main() -> None:
     print(text)
     if args.md:
         args.md.write_text(text, encoding="utf-8")
-    args.json.write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
+    args.json.write_text(dumps(out) + "\n", encoding="utf-8")
     print(f"wrote {args.json}")
 
 

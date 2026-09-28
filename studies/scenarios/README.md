@@ -150,7 +150,13 @@ and turns) is one of:
   carry turn 1, so the scenario turn must be above 1.
 - `{"type": "alive", "seat": i, "by_turn": T}`: seat `i` has not lost when
   the game ends. Set `horizon_turns` so the game is called at `T`. This
-  scores "do not kill yourself" (S5b). **`line`** is `{"seat": i, "pieces": [names]}`: the
+  scores "do not kill yourself" (S5b). Forge's own outcome lines ("has
+  won" / "has lost") decide. When Forge's setGameOver threw at the
+  turn-cap kill, no such lines exist and the result's alive flags are not
+  reliable, so the trial is unscored (`success: null`, `unscored`) and
+  leaves the denominator.
+
+**`line`** is `{"seat": i, "pieces": [names]}`: the
 cards whose casts, activations and trigger resolutions the report counts
 for that seat (token copies count, since Forge names them after the card).
 **`horizon_turns`**: the game is called at turn `turn + horizon_turns`
@@ -167,6 +173,10 @@ shim's JSONL:
   graveyard, exile and command as multisets, library in order, each
   battlefield card's tapped, sick, counters, damage, attachment and
   commander flags, token count). `loaded` = applied with no difference.
+  `line_loaded`: the line seat's line pieces on the battlefield read back
+  as written, whatever else differs (a real board can differ off the line,
+  because Forge runs enter-the-battlefield replacements such as Mox
+  Diamond's during the load).
 - `winner_seat`, `turns`, `draw`, `turnCapped`, `timedOut`, `error`,
   `killFailed`, `success`, `kill_on_scenario_turn` (the success seat, or
   any winner without `success`, won during the scenario turn),
@@ -177,18 +187,23 @@ shim's JSONL:
   `iterations_max_turn` and `iterations_scenario_turn` (activations plus
   triggers of line pieces in the best turn and in the scenario turn),
   `combats_max_turn` and `extra_combats_scenario_turn` (beginning-of-combat
-  steps of the line seat).
+  steps of the line seat). `piece_targets`: what each line piece's casts,
+  activations and triggers targeted (split on each instance id, since card
+  names contain commas); S1 and S2 test exactly this.
 - `agent_events` (plan-seat telemetry by event) and
   `agent_events_on_pieces` (those naming a piece).
 - `ms` (game wall time), `ms_per_turn`, `ms_per_decision` (always null:
   0.17.1 exposes no per-decision timing), `exceptions` and three samples
-  from the JVM's stderr, `rc`, `wall_s`.
+  from the JVM's stderr, `rc`, `wall_s`, `outcomes` (Forge's outcome
+  line per seat) and `game_over_threw`.
 
-Per arm (`summary`): trials, finished, loaded, success with a Wilson 95%
-interval, kills on the scenario turn, turns to kill (median, mean), draws,
+Per arm (`summary`): trials, finished, loaded, line_loaded, scored and
+unscored, success (of scored) with a Wilson 95% interval, kills on the scenario turn, turns to kill (median, mean), draws,
 turn caps, timeouts, errors, exceptions, mean line activity, iterations and
 extra combats, mean game ms, and wall time. `report.md` is the same as a
-table per scenario, with any board differences listed.
+table per scenario, with any board differences listed; its header carries
+the invocation's wall clock (also in `run.json`: `wall_s`, `trials_run`,
+`trials_cached`).
 
 **Pairing.** Trial `k` of every arm uses `--seed-forge seed+k` and the
 same state file (same shuffled libraries), so arms start from identical
@@ -231,7 +246,18 @@ What `GameState` can seed, and what it cannot (Forge 2.0.13 source,
   what to copy, "enters tapped" is overridden by the `tapped` flag.
   Triggered abilities are suppressed while the state loads, so a seeded
   creature's "when this enters" search never happened (a seeded Godo has
-  not fetched its equipment).
+  not fetched its equipment). Measured on C1's real boards: Mox Diamond
+  goes to the graveyard or takes a land from hand (8 of 20 boards); a
+  clone can re-pick and die (3); a battle can leave (1). `NoETBTrigs` does
+  not help: it still moves the card through `moveToPlay`, which runs
+  replacements. The board check reports these, and `line_loaded` says
+  whether the line survived them.
+- **Life 0 crashes the load in a multiplayer state.** `GameState` sets a
+  life of 0 before its state-based check, which removes that seat, then
+  indexes past the end of the shortened player list
+  (`IndexOutOfBoundsException`, 2 C1 boards). Negative life is set after
+  the check and works: the seat loses at the game's first check. The
+  writer refuses 0; `board_from_game.py` writes an already-lost seat at -1.
 - **The discarded opening.** Forge deals opening hands and resolves
   mulligans before the hook, then the state replaces every zone. So the
   log's first `Turn 1 (...)` line, the `MULLIGAN` entries, the `rubric`

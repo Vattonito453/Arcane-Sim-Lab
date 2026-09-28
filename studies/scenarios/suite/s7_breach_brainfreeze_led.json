@@ -1,0 +1,40 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s7_breach_brainfreeze_led",
+  "description": "S7, the negative control. Underworld Breach and Lion's Eye Diamond on rograkh_silas's battlefield, Brain Freeze and Dark Ritual in hand and nine spent cards in the graveyard, on its turn (pod 2iA_Jt0d6sM). The human line: build storm with rituals, crack Diamond for mana, escape Diamond, rituals and Brain Freeze from the graveyard with Breach, and Brain Freeze the opponents out of cards. Tests a graveyard loop nothing in the pilot can direct yet: expected to fail in every arm for now (in games Brain Freeze was escaped twice in the whole corpus, and cast three or more times in a turn 0 of 62 times). Success: rograkh_silas wins by turn 12 (the opponents lose drawing from empty libraries).",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/rograkh_silas.dck",
+      "battlefield": ["Underworld Breach", "Lion's Eye Diamond", "Underground Sea", "Volcanic Island", "Badlands", "Command Tower"],
+      "hand": ["Brain Freeze", "Dark Ritual", "Gitaxian Probe"],
+      "graveyard": ["Cabal Ritual", "Rite of Flame", "Mental Misstep", "Daze", "Pyroblast", "Snap", "Chain of Vapor", "Windfall", "Gamble"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/derevi.dck",
+      "battlefield": ["Tropical Island", "Tundra", "Savannah", "Birds of Paradise"],
+      "hand": ["Windswept Heath", "Enlightened Tutor"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/godo_archetype.dck",
+      "battlefield": ["Mountain", "Mountain", "Mountain", "Ancient Tomb", "Sol Ring"],
+      "hand": ["Mountain", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/nadu.dck",
+      "battlefield": ["Forest", "Island", "Breeding Pool", "Llanowar Elves", "Birds of Paradise"],
+      "hand": ["Misty Rainforest", "Green Sun's Zenith"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 0, "by_turn": 12},
+  "line": {"seat": 0, "pieces": ["Underworld Breach", "Brain Freeze", "Lion's Eye Diamond"]},
+  "horizon_turns": 4,
+  "notes": [
+    "The storm count cannot be seeded (Forge's state format does not carry this-turn counts), so storm starts at 0 and every copy of Brain Freeze has to be earned on the turn, as a human would from this board.",
+    "Lion's Eye Diamond carries AI:RemoveDeck:All: Forge's AI never activates it on its own (0 activations in the corpus).",
+    "A pass is a surprise to investigate, not a result to bank: the control exists to show the harness does not hand out wins.",
+    "Opponents hold no instant-speed interaction; every seat at 40 life."
+  ]
+}

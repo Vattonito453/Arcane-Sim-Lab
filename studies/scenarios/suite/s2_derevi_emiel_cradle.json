@@ -1,0 +1,43 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s2_derevi_emiel_cradle",
+  "description": "S2. Derevi, Empyrial Tactician, Emiel the Blessed and Gaea's Cradle on derevi's turn (pod 2iA_Jt0d6sM), five creatures in play so Cradle taps for 5, and Walking Ballista as the outlet. The loop: tap Cradle, pay 3 to blink Derevi with Emiel, Derevi's enter trigger untaps Cradle; net mana grows each pass and goes into Ballista counters and pings. Tests the trigger target (in games Derevi untapped Cradle after an Emiel blink 0 of 216 times). Success: derevi wins on the scenario turn.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/derevi.dck",
+      "battlefield": [
+        "Derevi, Empyrial Tactician", "Emiel the Blessed", "Gaea's Cradle",
+        {"card": "Walking Ballista", "counters": {"P1P1": 1}},
+        "Birds of Paradise", "Noble Hierarch",
+        "Tropical Island", "Tundra", "Savannah", "Command Tower"
+      ],
+      "hand": ["Windswept Heath", "Enlightened Tutor"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/godo_archetype.dck",
+      "battlefield": ["Mountain", "Mountain", "Mountain", "Ancient Tomb", "Sol Ring"],
+      "hand": ["Mountain", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/nadu.dck",
+      "battlefield": ["Forest", "Island", "Breeding Pool", "Llanowar Elves", "Birds of Paradise"],
+      "hand": ["Misty Rainforest", "Green Sun's Zenith"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/rograkh_silas.dck",
+      "battlefield": ["Underground Sea", "Volcanic Island", "Badlands", "Ragavan, Nimble Pilferer"],
+      "hand": ["Polluted Delta", "Timetwister"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 0, "by_turn": 9},
+  "line": {"seat": 0, "pieces": ["Derevi, Empyrial Tactician", "Emiel the Blessed", "Walking Ballista"]},
+  "horizon_turns": 4,
+  "notes": [
+    "Deviation: Walking Ballista is not in derevi's list. The plan names it as the outlet, so the harness places it (the writer warns); the plan arm's plan data does not know the card.",
+    "Gaea's Cradle's mana ability never reaches the stack, so the report counts Emiel activations and Derevi triggers, not Cradle taps.",
+    "Opponents hold no instant-speed interaction; every seat at 40 life."
+  ]
+}

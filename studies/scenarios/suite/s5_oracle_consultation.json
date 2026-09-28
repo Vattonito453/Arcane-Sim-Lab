@@ -1,0 +1,37 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s5_oracle_consultation",
+  "description": "S5. Thassa's Oracle and Demonic Consultation in tymna_thrasios's hand on its turn (pod n7WpsqsZtdQ), with UU and B open. The line: Consultation naming a card not in the library exiles the library, then Oracle's enter trigger wins (or Oracle first, Consultation in response to the trigger). Tests the one line the plan pilot converts in games (17 same-turn Oracle wins on plan seats, 0 for stock, which refuses Consultation: it carries AI:RemoveDeck:All). Success: tymna_thrasios wins on the scenario turn.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/tymna_thrasios.dck",
+      "battlefield": ["Underground Sea", "Tropical Island", "Scrubland", "Bayou", "Command Tower", "Birds of Paradise"],
+      "hand": ["Thassa's Oracle", "Demonic Consultation", "Polluted Delta"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/magda.dck",
+      "battlefield": ["Mountain", "Mountain", "Mountain", "Sol Ring", "Dwarven Grunt"],
+      "hand": ["Mountain", "Smuggler's Copter"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/rog_ishai.dck",
+      "battlefield": ["Volcanic Island", "Tundra", "Plateau", "Ragavan, Nimble Pilferer"],
+      "hand": ["Arid Mesa", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/selvala_archetype.dck",
+      "battlefield": ["Snow-Covered Forest", "Snow-Covered Forest", "Snow-Covered Forest", "Llanowar Elves"],
+      "hand": ["Snow-Covered Forest", "Natural Order"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 0, "by_turn": 9},
+  "line": {"seat": 0, "pieces": ["Thassa's Oracle", "Demonic Consultation"]},
+  "horizon_turns": 4,
+  "notes": [
+    "Opponents hold no instant-speed interaction; every seat at 40 life.",
+    "A pilot that casts Consultation without then winning exiles its own library and loses on its next draw; the report's winner and alive fields show it."
+  ]
+}

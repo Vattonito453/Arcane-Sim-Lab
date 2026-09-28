@@ -1,0 +1,43 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s3_druid_reconfiguration",
+  "description": "S3. Devoted Druid with Swift Reconfiguration attached (a Vehicle artifact, not a creature, so -1/-1 counters cannot kill it) on tymna_thrasios's turn (pod n7WpsqsZtdQ), with Walking Ballista as the outlet. The loop: tap Druid for G, put a -1/-1 counter on it to untap it, repeat for any amount of green mana, then Ballista counters and pings. Tests a flagged activation: Devoted Druid carries AI:RemoveDeck:All, so Forge's AI never offers its untap (0 uses in the study corpus). Success: tymna_thrasios wins on the scenario turn.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/tymna_thrasios.dck",
+      "battlefield": [
+        {"card": "Devoted Druid", "id": "druid"},
+        {"card": "Swift Reconfiguration", "attached_to": "druid"},
+        {"card": "Walking Ballista", "counters": {"P1P1": 1}},
+        "Tropical Island", "Bayou", "Underground Sea", "Command Tower"
+      ],
+      "hand": ["Misty Rainforest", "Mystical Tutor"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/magda.dck",
+      "battlefield": ["Mountain", "Mountain", "Mountain", "Sol Ring", "Dwarven Grunt"],
+      "hand": ["Mountain", "Smuggler's Copter"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/rog_ishai.dck",
+      "battlefield": ["Volcanic Island", "Tundra", "Plateau", "Ragavan, Nimble Pilferer"],
+      "hand": ["Arid Mesa", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/selvala_archetype.dck",
+      "battlefield": ["Snow-Covered Forest", "Snow-Covered Forest", "Snow-Covered Forest", "Llanowar Elves"],
+      "hand": ["Snow-Covered Forest", "Natural Order"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 0, "by_turn": 9},
+  "line": {"seat": 0, "pieces": ["Devoted Druid", "Walking Ballista"]},
+  "horizon_turns": 4,
+  "notes": [
+    "Reading of the plan's 'an untapper': Devoted Druid untaps itself; Swift Reconfiguration is the enabler the study decks hold (tymna_thrasios lists both, and Commander Spellbook names this pair).",
+    "Deviation: Walking Ballista is not in tymna_thrasios's list; the harness places it as a direct outlet so the kill needs no second combo (Thrasios, the deck's own outlet, would need a draw-the-deck and Thassa's Oracle finish). The writer warns; the plan arm's plan data does not know the card.",
+    "Opponents hold no instant-speed interaction; every seat at 40 life."
+  ]
+}

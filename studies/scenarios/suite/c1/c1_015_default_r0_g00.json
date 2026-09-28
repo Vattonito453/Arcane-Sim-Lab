@@ -1,0 +1,222 @@
+{
+ "format": "simlab-scenario/1",
+ "id": "c1_015_default_r0_g00",
+ "description": "C1 positive control. A real stock game's board at the moment Helm of the Host sat on Godo, Bandit Warlord before combat on Godo's turn; every seat stock in the stock arm. Forge alone converted boards like this in games; the harness must not change that.",
+ "source": {
+  "file": "cell_2iA_Jt0d6sM_rot0.jsonl",
+  "game": 0,
+  "turn": 25,
+  "active": "Ai(2)-godo_archetype",
+  "agents": [
+   "plan",
+   "stock",
+   "stock",
+   "stock"
+  ],
+  "shim": "0.15.0"
+ },
+ "seats": [
+  {
+   "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/derevi.dck",
+   "life": 36,
+   "lands_played": 0,
+   "battlefield": [
+    {
+     "card": "Bountiful Promenade",
+     "tapped": true
+    },
+    {
+     "card": "Mox Amber"
+    },
+    {
+     "card": "Phyrexian Metamorph"
+    },
+    {
+     "card": "Breeding Pool",
+     "tapped": true
+    },
+    {
+     "card": "Savannah",
+     "tapped": true
+    },
+    {
+     "card": "Delighted Halfling",
+     "tapped": true
+    },
+    {
+     "card": "Derevi, Empyrial Tactician"
+    }
+   ],
+   "hand": [
+    "Utopia Sprawl",
+    "Snap",
+    "Mental Misstep",
+    "Chromatic Orrery",
+    "Ranger-Captain of Eos"
+   ],
+   "graveyard": [
+    "Noxious Revival",
+    "Wooded Foothills",
+    "Enlightened Tutor",
+    "Worldly Tutor"
+   ],
+   "exile": []
+  },
+  {
+   "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/godo_archetype.dck",
+   "life": 43,
+   "lands_played": 0,
+   "battlefield": [
+    {
+     "card": "Command Beacon",
+     "tapped": true
+    },
+    {
+     "card": "Dwarven Ruins",
+     "tapped": true
+    },
+    {
+     "card": "Helm of the Host",
+     "attached_to": "c200"
+    },
+    {
+     "card": "Mox Opal",
+     "tapped": true
+    },
+    {
+     "card": "Veilstone Amulet"
+    },
+    {
+     "card": "Treasure Vault",
+     "tapped": true
+    },
+    {
+     "card": "Mishra's Workshop"
+    },
+    {
+     "card": "Mountain",
+     "tapped": true
+    },
+    {
+     "card": "Godo, Bandit Warlord",
+     "id": "c200"
+    }
+   ],
+   "hand": [
+    "Seething Song",
+    "Desperate Ritual",
+    "Pyroblast",
+    "Tezzeret, Cruel Captain"
+   ],
+   "graveyard": [
+    "Sandstone Needle",
+    "Wild Slash",
+    "Ghostfire Slice",
+    "Red Elemental Blast",
+    "Wandering Archaic"
+   ],
+   "exile": []
+  },
+  {
+   "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/nadu.dck",
+   "life": 43,
+   "lands_played": 0,
+   "battlefield": [
+    {
+     "card": "Mox Diamond"
+    }
+   ],
+   "hand": [
+    "Miscast",
+    "Eternal Witness",
+    "Trinket Mage",
+    "Chord of Calling",
+    "Unctus, Grand Metatect",
+    "Flusterstorm",
+    "Flesh Duplicate"
+   ],
+   "graveyard": [
+    "Lotus Petal",
+    "Misdirection",
+    "Displacer Kitten",
+    "Mystical Tutor",
+    "Mishra's Factory",
+    "Dryad Arbor",
+    "Force of Will"
+   ],
+   "exile": []
+  },
+  {
+   "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/rograkh_silas.dck",
+   "life": 40,
+   "lands_played": 0,
+   "battlefield": [
+    {
+     "card": "Mana Vault"
+    },
+    {
+     "card": "Volcanic Island",
+     "tapped": true
+    },
+    {
+     "card": "Watery Grave",
+     "tapped": true
+    },
+    {
+     "card": "Blood Crypt",
+     "tapped": true
+    },
+    {
+     "card": "Underground Sea",
+     "tapped": true
+    },
+    {
+     "card": "Rograkh, Son of Rohgahh"
+    }
+   ],
+   "hand": [
+    "Rhystic Study",
+    "Cabal Ritual",
+    "Grim Tutor"
+   ],
+   "graveyard": [
+    "Gamble",
+    "Polluted Delta",
+    "Bloodstained Mire",
+    "Nashi, Moon Sage's Scion",
+    "Brain Freeze",
+    "Snapback",
+    "Jeska's Will",
+    "Arid Mesa"
+   ],
+   "exile": [
+    "City of Brass",
+    "Praetor's Grasp",
+    "Wooded Foothills",
+    "Chain of Vapor",
+    "Mnemonic Betrayal"
+   ]
+  }
+ ],
+ "active": 1,
+ "turn": 25,
+ "phase": "MAIN1",
+ "notes": [
+  "Board from cell_2iA_Jt0d6sM_rot0.jsonl game 0, turn 25 (Ai(2)-godo_archetype), as it stood at the end of the precombat main phase: shim zone, tap, counter and attach records; life from Forge's log.",
+  "Placed under their printed names, so Forge asks again what they copy: Phyrexian Metamorph as Veilstone Amulet (Ai(1)-derevi).",
+  "Not carried: poison and other player counters, the library order (the rest of each deck is shuffled per trial), commander tax and damage, this-turn effects, the mana pool."
+ ],
+ "success": {
+  "type": "win",
+  "seat": 1,
+  "by_turn": 33
+ },
+ "line": {
+  "seat": 1,
+  "pieces": [
+   "Godo, Bandit Warlord",
+   "Helm of the Host"
+  ]
+ },
+ "horizon_turns": 8
+}

@@ -1,0 +1,44 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s6_scepter_reversal",
+  "description": "S6. Isochron Scepter with Dramatic Reversal imprinted, Sol Ring, Arcane Signet and Fellwar Stone, and Walking Ballista, on tymna_thrasios's turn (pod n7WpsqsZtdQ). The loop: rocks make 4, Scepter costs 2 to cast a free Reversal that untaps every nonland permanent, net 2 per pass; the mana goes into Ballista counters and pings. Tests an activation loop with an X outlet (Isochron Scepter carries AI:RemoveDeck:All). Success: tymna_thrasios wins on the scenario turn.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/tymna_thrasios.dck",
+      "battlefield": [
+        {"card": "Isochron Scepter", "id": "scepter", "imprinting": "reversal"},
+        "Sol Ring", "Arcane Signet", "Fellwar Stone",
+        {"card": "Walking Ballista", "counters": {"P1P1": 1}},
+        "Tropical Island", "Underground Sea", "Bayou", "Command Tower"
+      ],
+      "exile": [{"card": "Dramatic Reversal", "id": "reversal", "exiled_with": "scepter"}],
+      "hand": ["Misty Rainforest", "Mystical Tutor"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/magda.dck",
+      "battlefield": ["Mountain", "Mountain", "Mountain", "Sol Ring", "Dwarven Grunt"],
+      "hand": ["Mountain", "Smuggler's Copter"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/rog_ishai.dck",
+      "battlefield": ["Volcanic Island", "Tundra", "Plateau", "Ragavan, Nimble Pilferer"],
+      "hand": ["Arid Mesa", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/selvala_archetype.dck",
+      "battlefield": ["Snow-Covered Forest", "Snow-Covered Forest", "Snow-Covered Forest", "Llanowar Elves"],
+      "hand": ["Snow-Covered Forest", "Natural Order"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 0, "by_turn": 9},
+  "line": {"seat": 0, "pieces": ["Isochron Scepter", "Dramatic Reversal", "Walking Ballista"]},
+  "horizon_turns": 4,
+  "notes": [
+    "Deviation: no allowed study deck lists Isochron Scepter (the holdout pods are off-limits), and none lists Walking Ballista beside Dramatic Reversal. tymna_thrasios lists Dramatic Reversal and the rocks; the harness places Scepter and Ballista (the writer warns), and the plan arm's plan data knows neither.",
+    "The imprint is seeded with Forge's own Imprinting / ExiledWith options, the pair Forge writes when it saves a board with an imprinted Scepter.",
+    "Opponents hold no instant-speed interaction; every seat at 40 life."
+  ]
+}

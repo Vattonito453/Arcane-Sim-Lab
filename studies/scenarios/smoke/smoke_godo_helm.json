@@ -1,0 +1,37 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "smoke_godo_helm",
+  "description": "Harness smoke test, not the C1 control: Godo, Bandit Warlord with Helm of the Host attached on its controller's turn 5 main phase, the other three cEDH-A seats (pod 2iA_Jt0d6sM) on light boards at 40 life. Checks that a 4-player state loads for every arm and plays to a result. C1 proper (WS3 task 4) must reproduce the Helm-attached boards of the stock games it is compared with.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/derevi.dck",
+      "battlefield": ["Command Tower", "Breeding Pool", "Savannah", {"card": "Birds of Paradise"}],
+      "hand": ["Swords to Plowshares", "Force of Will", "Rhystic Study"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/godo_archetype.dck",
+      "battlefield": [
+        {"card": "Godo, Bandit Warlord", "id": "godo"},
+        {"card": "Helm of the Host", "attached_to": "godo"},
+        "Mountain", "Mountain", "Mountain", "Ancient Tomb", "Sol Ring"
+      ],
+      "hand": ["Lightning Bolt", "Deflecting Swat"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/nadu.dck",
+      "battlefield": ["Forest", "Island", "Breeding Pool", "Llanowar Elves"],
+      "hand": ["Mystical Tutor", "Swan Song", "Force of Negation"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/2iA_Jt0d6sM/dck/rograkh_silas.dck",
+      "battlefield": ["Badlands", "Steam Vents", "Mox Opal", "Sol Ring"],
+      "hand": ["Dark Ritual", "Pyroblast", "Mental Misstep"]
+    }
+  ],
+  "active": 1,
+  "turn": 5,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 1, "by_turn": 9},
+  "line": {"seat": 1, "pieces": ["Godo, Bandit Warlord", "Helm of the Host"]},
+  "horizon_turns": 8
+}

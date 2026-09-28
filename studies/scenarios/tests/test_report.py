@@ -236,6 +236,19 @@ def main() -> None:
         W.validate(asc)
         assert R.parse_trial(write_trial(tmp, 7, jsonl(info, None, 9)), asc, info)["success"]
         assert not R.parse_trial(write_trial(tmp, 7, jsonl(info, A, 6)), asc, info)["success"]
+        # Forge's outcome lines outrank the result's alive flags ...
+        lost = jsonl(info, None, 9)
+        lost.insert(-1, {"rec": "entry", "game": 0, "seq": 9999, "type": "GAME_OUTCOME",
+                         "message": f"{B} has lost trying to draw cards from empty library"})
+        assert R.parse_trial(write_trial(tmp, 7, lost), asc, info)["success"] is False
+        # ... and without them, a setGameOver that threw leaves the trial unscored.
+        threw = R.parse_trial(write_trial(tmp, 8, jsonl(info, None, 9), err=(
+            "shim: game 0 setGameOver threw java.lang.NullPointerException: x; recording the game as "
+            "ended by the shim\n")), asc, info)
+        assert threw["success"] is None and threw["unscored"] and threw["game_over_threw"]
+        agg = R.aggregate([threw, R.parse_trial(write_trial(tmp, 7, jsonl(info, None, 9)), asc, info)])
+        assert agg["finished"] == 2 and agg["scored"] == 1 and agg["unscored"] == 1 and agg["success"] == 1
+        assert agg["success_rate"] == 1.0
         for badsucc in ({"type": "zone", "seat": 0, "by_turn": 6}, {"type": "lose", "seat": 0},
                         {"type": "win", "seat": 5}, dict(zsc["success"], cards=[])):
             try:
@@ -245,7 +258,7 @@ def main() -> None:
             raise AssertionError(f"accepted {badsucc}")
         assert "first Library to Graveyard move by turn 6 is one of: Helm of the Host" in R.success_text(
             zsc["success"]), R.success_text(zsc["success"])
-        print("  zone (first pick, any pick, deadline, owner, load-time moves) and alive successes: OK")
+        print("  zone (first pick, any pick, deadline, owner, load-time moves) and alive (outcome lines, unscored) successes: OK")
 
         # 6. Aggregate and markdown.
         rows = [t, t2, t3, t4, t5, t6, missing]

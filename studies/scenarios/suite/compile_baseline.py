@@ -66,6 +66,7 @@ def arm_row(trials: list[dict], summary: dict) -> dict:
     return {
         "trials": len(trials), "finished": len(ran), "loaded": sum(bool(t.get("loaded")) for t in trials),
         "success": sum(bool(t.get("success")) for t in ran), "wilson95": summary.get("success_wilson95"),
+        "scored": sum(t.get("success") is not None for t in ran),
         "kill_on_scenario_turn": sum(bool(t.get("kill_on_scenario_turn")) for t in ran),
         "turns_to_kill_median": statistics.median(ttk) if ttk else None,
         "any_win_by_line_seat": sum(1 for t in ran if t.get("turns_to_kill") is not None),
@@ -100,7 +101,7 @@ def f(v) -> str:
 
 
 def table(rows: list[tuple[str, str, dict]]) -> list[str]:
-    out = ["| Scenario | Arm | Loaded | Finished | Success | 95% CI | Kill on scenario turn | Line seat won (any turn) "
+    out = ["| Scenario | Arm | Loaded | Finished | Success (of scored) | 95% CI | Kill on scenario turn | Line seat won (any turn) "
            "| Turns to kill (median) | Executed | Iterations, best turn (mean / max) | Extra combats (mean) "
            "| Capped / timed out | Errors / exceptions | Wall s (sum of trials) |",
            "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
@@ -108,7 +109,7 @@ def table(rows: list[tuple[str, str, dict]]) -> list[str]:
         ci = r["wilson95"]
         out.append(
             f"| {sid} | {arm} | {r['loaded']}/{r['trials']} | {r['finished']}/{r['trials']} | "
-            f"{r['success']}/{r['finished']} | {'–' if not ci else f'{ci[0]:.2f}-{ci[1]:.2f}'} | "
+            f"{r['success']}/{r['scored']} | {'–' if not ci else f'{ci[0]:.2f}-{ci[1]:.2f}'} | "
             f"{r['kill_on_scenario_turn']}/{r['finished']} | {r['any_win_by_line_seat']}/{r['finished']} | "
             f"{f(r['turns_to_kill_median'])} | {r['executed']}/{r['finished']} | "
             f"{f(r['iterations_max_turn_mean'])} / {r['iterations_max_turn_max']} | "

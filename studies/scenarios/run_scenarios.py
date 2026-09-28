@@ -62,6 +62,10 @@ ARMS = {
 }
 SEAT = re.compile(r"^(?:Additional)?Ai\((\d+)\)-")
 TURN = re.compile(r"^Turn (\d+) ")
+# Forge's outcome lines, written when the game ends: "<seat> has lost trying
+# to draw cards from empty library", "<seat> has won because all opponents
+# have lost" (every surviving seat of a draw reads "has won").
+OUTCOME = re.compile(r"^((?:Additional)?Ai\(\d+\)-.+?) has (won|lost)\b")
 STACK_VERB = re.compile(r"^Ai\((\d+)\)-.*? (cast|activated|triggered) ")
 TARGETS = re.compile(r" targeting \[(.*)\]\s*$", re.S)
 # Card names contain commas, so a target list splits on each "(instance id)"
@@ -260,6 +264,17 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     s_turn = int(sc.get("turn", 1))
     t["scenario_turn"] = s_turn
     t["has_result"] = res is not None
+    err = path.with_suffix(".err")
+    err_text = err.read_text(encoding="utf-8", errors="replace") if err.exists() else ""
+    game_over_threw = "setGameOver threw" in err_text
+    t["game_over_threw"] = game_over_threw
+    outcomes = {}
+    for r in recs:
+        if r.get("rec") == "entry" and r.get("type") == "GAME_OUTCOME":
+            m = OUTCOME.match(r.get("message", ""))
+            if m:
+                outcomes[m.group(1)] = m.group(2)
+    t["outcomes"] = outcomes
     if res:
         t.update({k: res.get(k) for k in ("winner", "draw", "turns", "timedOut", "turnCapped", "ms")})
         t["error"] = res.get("errorClass") if res.get("error") else None
@@ -292,8 +307,20 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     elif stype == "alive":
         # The seat has not lost when the game ends (the scenario caps the game
         # at by_turn through horizon_turns): for "do not kill yourself" tests.
+        # Forge's own outcome lines decide. When setGameOver threw at the
+        # shim's turn-cap kill (a Forge NullPointerException the shim catches)
+        # those lines are never written and the result's alive flags are not
+        # reliable (measured: seats at 33 and 40 life flagged dead), so the
+        # trial is left unscored rather than guessed.
+        seat_name = players[succ["seat"]] if succ["seat"] < len(players) else None
         alive = t.get("alive") or []
-        t["success"] = bool(res and succ["seat"] < len(alive) and alive[succ["seat"]])
+        if seat_name in outcomes:
+            t["success"] = outcomes[seat_name] == "won"
+        elif game_over_threw:
+            t["success"] = None
+            t["unscored"] = "setGameOver threw before Forge wrote the outcome"
+        else:
+            t["success"] = bool(res and succ["seat"] < len(alive) and alive[succ["seat"]])
     else:
         t["success"] = bool(succ and won and t.get("turns") is not None and t["turns"] <= by_turn)
     t["kill_on_scenario_turn"] = bool(won and t.get("turns") == s_turn)
@@ -356,12 +383,10 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     t["ms_per_turn"] = round(t["ms"] / turns_played) if (t.get("ms") and turns_played) else None
     # 0.17.1 exposes no per-decision timing; the executor prototype adds it.
     t["ms_per_decision"] = None
-    err = path.with_suffix(".err")
     exc = []
-    if err.exists():
-        for l in err.read_text(encoding="utf-8", errors="replace").splitlines():
-            if "Exception" in l or "shim: fatal" in l or re.search(r"\bError\b", l):
-                exc.append(l.strip()[:200])
+    for l in err_text.splitlines():
+        if "Exception" in l or "shim: fatal" in l or re.search(r"\bError\b", l):
+            exc.append(l.strip()[:200])
     t["exceptions"] = len(exc)
     t["exception_samples"] = list(dict.fromkeys(exc))[:3]
     cell = path.with_suffix(".cell.json")
@@ -388,14 +413,17 @@ def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float] | None:
 def aggregate(trials: list[dict]) -> dict:
     ran = [t for t in trials if t.get("has_result")]
     n = len(ran)
-    k = sum(t["success"] for t in ran)
+    scored = [t for t in ran if t.get("success") is not None]
+    k = sum(bool(t["success"]) for t in scored)
     ttk = [t["turns_to_kill"] for t in ran if t["turns_to_kill"] is not None]
     mean = lambda xs: round(sum(xs) / len(xs), 2) if xs else None
     return {
         "trials": len(trials), "finished": n,
         "loaded": sum(t.get("loaded", False) for t in trials),
         "applied": sum(t.get("applied", False) for t in trials),
-        "success": k, "success_rate": round(k / n, 3) if n else None, "success_wilson95": wilson(k, n),
+        "scored": len(scored), "unscored": n - len(scored),
+        "success": k, "success_rate": round(k / len(scored), 3) if scored else None,
+        "success_wilson95": wilson(k, len(scored)),
         "kill_on_scenario_turn": sum(t["kill_on_scenario_turn"] for t in ran),
         "turns_to_kill_median": statistics.median(ttk) if ttk else None,
         "turns_to_kill_mean": mean(ttk),
@@ -486,7 +514,7 @@ def markdown(report: dict) -> str:
             a = row["summary"]
             ci = a["success_wilson95"]
             out.append(
-                f"| {arm} | {a['loaded']}/{a['trials']} | {a['success']}/{a['finished']} | "
+                f"| {arm} | {a['loaded']}/{a['trials']} | {a['success']}/{a.get('scored', a['finished'])} | "
                 f"{'–' if ci is None else f'{ci[0]:.2f}-{ci[1]:.2f}'} | "
                 f"{a['kill_on_scenario_turn']}/{a['finished']} | {_f(a['turns_to_kill_median'])} | "
                 f"{_f(a['piece_activity_mean'])} | {_f(a['iterations_max_turn_mean'])} | "

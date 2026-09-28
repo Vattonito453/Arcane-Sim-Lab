@@ -464,7 +464,7 @@ export default function ResultsPage() {
         </div>
 
         {sc ? (
-          <DeckScorecards report={sc} />
+          <DeckScorecards report={sc} commanders={data.commanders} />
         ) : (
           <section>
             <div className="sh">

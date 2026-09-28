@@ -19,7 +19,9 @@ studies/scenarios/SPIKE.md). Output under --out:
     report.json, report.md           per scenario and arm
 
 A finished trial (its JSONL has a result record) is not re-run unless
---force. Raw output stays out of git; commit summaries only.
+--force, or unless its shim record names a different state file SHA-256
+than the one just written for it (the scenario or a deck changed since it
+ran). Raw output stays out of git; commit summaries only.
 
 Arms are data: ARMS below, extended or overridden by --arms-file (JSON
 {name: {"pilot": "stock:Default" | "plan:SimLabHuman", "plan_version": 1|2,
@@ -35,7 +37,6 @@ import json
 import math
 import os
 import re
-import shutil
 import statistics
 import subprocess
 import sys
@@ -75,6 +76,9 @@ TARGET_ID = re.compile(r" \(\d+\)(?:, |$)")
 # Forge names the command-zone effect card it creates for every commander
 # player; it is bookkeeping, not a card the scenario placed.
 COMMAND_EFFECT = "Commander Effect"
+# The shim's header and scenario records (compact JSON; spaces allowed).
+REC_HEAD = re.compile(r'"rec"\s*:\s*"(?:scenario|meta)"')
+REC_RESULT = re.compile(r'"rec"\s*:\s*"result"')
 
 
 def sha256(p: Path) -> str:
@@ -82,9 +86,17 @@ def sha256(p: Path) -> str:
 
 
 def repo_commit() -> str:
+    """HEAD, with "-dirty" when studies/scenarios differs from it (the
+    runner, the writer or a scenario file), as the shim's build does."""
     r = subprocess.run(["git", "-C", str(REPO), "rev-parse", "--short=12", "HEAD"],
                        capture_output=True, text=True)
-    return r.stdout.strip() or "unknown"
+    head = r.stdout.strip() or "unknown"
+    if head != "unknown":
+        s = subprocess.run(["git", "-C", str(REPO), "status", "--porcelain", "--", str(HERE)],
+                           capture_output=True, text=True)
+        if s.stdout.strip():
+            head += "-dirty"
+    return head
 
 
 # --- setup ----------------------------------------------------------------
@@ -138,13 +150,37 @@ def trial_cmd(jar: Path, decks: list[Path], sc: dict, pilots: list[str], plans: 
 
 
 def has_result(p: Path) -> bool:
-    return p.exists() and '"rec":"result"' in p.read_text(encoding="utf-8", errors="replace")
+    return p.exists() and REC_RESULT.search(p.read_text(encoding="utf-8", errors="replace")) is not None
+
+
+def recorded_state_sha(p: Path) -> str | None:
+    """The state file SHA-256 the shim recorded for a trial (its scenario
+    record, else the meta header), or None."""
+    if not p.exists():
+        return None
+    meta_sha = None
+    for line in p.read_text(encoding="utf-8", errors="replace").splitlines():
+        if REC_HEAD.search(line):
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            if r.get("rec") == "scenario" and r.get("sha256"):
+                return r["sha256"]
+            meta_sha = meta_sha or r.get("scenarioSha256")
+    return meta_sha
 
 
 def run_cell(job: dict) -> str:
     out: Path = job["out"]
+    stale = False
     if has_result(out) and not job["force"]:
-        return f"{job['label']} cached"
+        # A cached trial is reused only if it played the state just written:
+        # a scenario or deck edited since would otherwise pair an old game
+        # with the new board check.
+        if recorded_state_sha(out) == sha256(job["state"]):
+            return f"{job['label']} cached"
+        stale = True
     out.parent.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     with out.with_suffix(".err").open("w", encoding="utf-8") as eh:
@@ -155,7 +191,7 @@ def run_cell(job: dict) -> str:
         {"rc": rc, "wall_s": round(wall, 1), "cmd": job["cmd"], "seed": job["seed"],
          "started": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(t0))}, indent=1),
         encoding="utf-8")
-    return f"{job['label']} rc={rc} {wall:.0f}s"
+    return f"{job['label']} rc={rc} {wall:.0f}s" + (" (re-run: its cached game played another state)" if stale else "")
 
 
 # --- reading one trial ------------------------------------------------------
@@ -232,11 +268,14 @@ def _need_sig(s: dict) -> str:
 
 
 def line_loaded(info: dict, rec: dict, line: dict | None) -> bool | None:
-    """Whether the line seat's line pieces on the battlefield read back as
-    written (card, tapped, sickness, counters, attachment), whatever else on
-    the board differs. A real-game board can differ elsewhere because Forge
-    runs enter-the-battlefield replacements while it loads (Mox Diamond, a
-    clone's copy choice); this says whether the line under test survived."""
+    """Whether the line seat's line pieces read back as written, whatever
+    else on the board differs: on the battlefield card by card (tapped,
+    sickness, counters, attachment), and in hand, graveyard, exile, command
+    and library by count, so a line held in hand (S5's Oracle and
+    Consultation) is checked too. A real-game board can differ elsewhere
+    because Forge runs enter-the-battlefield replacements while it loads
+    (Mox Diamond, a clone's copy choice); this says whether the line under
+    test survived."""
     if not line or not info or not rec or line.get("seat") is None:
         return None
     seats, i = rec.get("seats") or [], line["seat"]
@@ -248,7 +287,14 @@ def line_loaded(info: dict, rec: dict, line: dict | None) -> bool | None:
                    if not c.get("token") and c["card"] in pieces)
     need = Counter(_need_sig(s) for s in info["seats"][i]["battlefield"]
                    if not s["token"] and not s.get("transformed") and s.get("card") in pieces)
-    return have == need
+    if have != need:
+        return False
+    for zone in ("hand", "graveyard", "exile", "command", "library"):
+        got = Counter(c["card"] for c in seats[i].get(zone.capitalize(), []) if c["card"] in pieces)
+        want = Counter(n for n in info["seats"][i]["zones"][zone] if n in pieces)
+        if got != want:
+            return False
+    return True
 
 
 def zone_moves(recs: list[dict], seat: str | None, frm: str, to: str, first_turn: int,
@@ -287,6 +333,12 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     t["shim"] = meta.get("shim")
     t["shim_commit"] = meta.get("shimCommit")
     t["scenario_sha256"] = scen.get("sha256") if scen else None
+    # Did this game play the state file now beside it? False means the
+    # trial ran on an older state (the scenario or a deck changed since),
+    # so its board check and scoring describe another board.
+    state = path.parent.parent / f"{path.stem}.state"
+    t["state_matches"] = (t["scenario_sha256"] == sha256(state)) \
+        if (t["scenario_sha256"] and state.exists()) else None
     t["applied"] = bool(scen and scen.get("applied"))
     t["apply_error"] = scen.get("error") if scen else "no scenario record"
     t["board_diffs"] = check_board(info, scen) if (info and t["applied"]) else []
@@ -453,6 +505,8 @@ def aggregate(trials: list[dict]) -> dict:
         "loaded": sum(t.get("loaded", False) for t in trials),
         "line_loaded": sum(bool(t.get("line_loaded")) for t in trials),
         "applied": sum(t.get("applied", False) for t in trials),
+        # trials whose game played a different state file than the one now on disk
+        "stale": sum(t.get("state_matches") is False for t in trials),
         "scored": len(scored), "unscored": n - len(scored),
         "success": k, "success_rate": round(k / len(scored), 3) if scored else None,
         "success_wilson95": wilson(k, len(scored)),
@@ -562,6 +616,12 @@ def markdown(report: dict) -> str:
                         f"(None: no such move by the deadline):"]
             out += [f"- {arm}: " + ", ".join(f"{k} {v}" for k, v in sorted(z.items(), key=lambda kv: -kv[1]))
                     for arm, z in picks]
+        stale = [(arm, t["file"]) for arm, row in s["arms"].items()
+                 for t in row["trials"] if t.get("state_matches") is False]
+        if stale:
+            out += ["", f"**Stale trials ({len(stale)}):** these games played an older state file than the "
+                        "one now in the run directory (the scenario or a deck changed since); re-run them: "
+                        + ", ".join(f"{arm} {f}" for arm, f in stale[:10])]
         diffs = [(arm, t["file"], t["board_diffs"]) for arm, row in s["arms"].items()
                  for t in row["trials"] if t.get("board_diffs")]
         if diffs:
@@ -593,6 +653,12 @@ def main() -> None:
     ap.add_argument("--force", action="store_true", help="re-run finished trials")
     ap.add_argument("--report-only", action="store_true", help="rebuild report.json/.md from --out")
     args = ap.parse_args()
+    # The report prints card names and en dashes; a Windows console's code
+    # page cannot always encode them (compile_baseline.py does the same).
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except AttributeError:
+        pass
     out = Path(args.out)
     if args.report_only:
         write_report(out)
@@ -643,6 +709,7 @@ def main() -> None:
                 seed = args.seed + k
                 jl = out / sid / arm_name / f"trial_{k}.jsonl"
                 jobs.append({"label": f"{sid} {arm_name} {k}", "out": jl, "seed": seed, "force": args.force,
+                             "state": out / sid / f"trial_{k}.state",
                              "cmd": trial_cmd(arm_jar, decks, sc, pilots, plans, out / sid / f"trial_{k}.state",
                                               seed, jl, args.timeout, args.horizon, args.xmx)})
     run = {"cli": sys.argv, "started": time.strftime("%Y-%m-%dT%H:%M:%S"), "repo_commit": repo_commit(),

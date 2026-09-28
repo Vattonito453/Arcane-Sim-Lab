@@ -195,6 +195,14 @@ def main() -> None:
         t5b = R.parse_trial(write_trial(tmp, 4, off), sc, info)
         assert not t5b["loaded"] and t5b["line_loaded"] is True, t5b["board_diffs"]
         assert R.parse_trial(write_trial(tmp, 4, jsonl(info, A, 5)), sc, info)["line_loaded"] is True
+        # A line held in hand (S5's Oracle and Consultation) is checked too,
+        # not passed because nothing of it is on the battlefield.
+        hand_line = dict(sc, line={"seat": 0, "pieces": ["Lightning Bolt"]})
+        assert R.parse_trial(write_trial(tmp, 4, jsonl(info, A, 5)), hand_line, info)["line_loaded"] is True
+        lost_bolt = jsonl(info, A, 5)
+        lost_bolt[1]["seats"][0]["Hand"] = []
+        tb = R.parse_trial(write_trial(tmp, 4, lost_bolt), hand_line, info)
+        assert tb["line_loaded"] is False and not tb["loaded"], "the line's card left the hand"
         failed = jsonl(info, None, -1)
         failed[1] = {"rec": "scenario", "game": 0, "file": "x", "sha256": "0", "applied": False,
                      "error": "java.lang.RuntimeException: Non-matching number of players"}
@@ -266,6 +274,41 @@ def main() -> None:
         assert "first Library to Graveyard move by turn 6 is one of: Helm of the Host" in R.success_text(
             zsc["success"]), R.success_text(zsc["success"])
         print("  zone (first pick, any pick, deadline, owner, load-time moves) and alive (outcome lines, unscored) successes: OK")
+
+        # 5c. A cached trial is reused only if it played the state now beside
+        # it: after a scenario or deck edit the old game is stale, reported as
+        # such and re-run rather than paired with the new board check.
+        run_dir = tmp / "run" / "t" / "stock"
+        run_dir.mkdir(parents=True)
+        state = run_dir.parent / "trial_0.state"
+        state.write_text("turn=5\n", encoding="utf-8")
+        sha = R.sha256(state)
+        recs = jsonl(info, A, 5)
+        recs[0]["scenarioSha256"] = recs[1]["sha256"] = sha
+        fresh = write_trial(run_dir, 0, recs)
+        assert R.recorded_state_sha(fresh) == sha
+        assert R.parse_trial(fresh, sc, info)["state_matches"] is True
+        saved = R.FORGE_JAR
+        R.FORGE_JAR = tmp / "forge.jar"          # run_cell's cwd: any existing directory
+        try:
+            job = {"label": "t stock 0", "out": fresh, "seed": 0, "force": False, "state": state,
+                   "cmd": [sys.executable, "-c", "raise SystemExit(0)"]}
+            assert R.run_cell(job).endswith(" cached"), "same state: the finished trial is reused"
+            state.write_text("turn=6\n", encoding="utf-8")     # the scenario changed since
+            ts = R.parse_trial(fresh, sc, info)
+            assert ts["state_matches"] is False and R.aggregate([ts])["stale"] == 1
+            md = R.markdown({"run": {"jar_name": "j", "jar_sha256": "0" * 64, "repo_commit": "c", "trials": 1,
+                                     "seed": 0, "started": "now"},
+                             "scenarios": {"t": {"description": "d", "turn": 5, "success": sc["success"],
+                                                 "line": sc["line"],
+                                                 "arms": {"stock": {"summary": R.aggregate([ts]),
+                                                                    "trials": [ts]}}}}})
+            assert "Stale trials (1)" in md, md
+            r = R.run_cell(job)
+            assert "re-run" in r and not r.endswith(" cached"), r
+        finally:
+            R.FORGE_JAR = saved
+        print("  line pieces in hand; stale cached trials detected, reported and re-run: OK")
 
         # 6. Aggregate and markdown.
         rows = [t, t2, t3, t4, t5, t6, missing]

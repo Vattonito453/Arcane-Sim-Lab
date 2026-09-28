@@ -31,7 +31,7 @@
 
 import { Fragment, useState } from "react";
 import { PageDetails } from "@/components/Chrome";
-import { plural } from "@/lib/format";
+import { plural, shortName } from "@/lib/format";
 import type { AnalysedCombo, AnalysisDeck, AnalysisReport } from "@/lib/types";
 
 const SPELLBOOK = "https://commanderspellbook.com/combo/";
@@ -513,8 +513,15 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
         ? "board partly read, partly inferred"
         : "board inferred from the event log";
 
+  // One name per deck, the one the run title and the game stories use
+  // (shortName): "Kess", not "Kess, Reanimator", from each deck's own
+  // [Commander] entries in this payload.
+  const allNames = decks.map(([name]) => name);
+  const cmdrMap = Object.fromEntries(decks.map(([name, d]) => [name, d.commanders ?? []]));
+  const label = (name: string) => shortName(name, allNames, cmdrMap);
+
   const idleByDeck = decks
-    .map(([name, d]) => ({ name, n: Math.max(0, ...d.combos.map((c) => c.idle_online_turns ?? 0)) }))
+    .map(([name, d]) => ({ name: label(name), n: Math.max(0, ...d.combos.map((c) => c.idle_online_turns ?? 0)) }))
     .filter((x) => x.n > 0);
 
   return (
@@ -552,7 +559,7 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
               <tr className="cl-deck">
                 <th colSpan={COLS} scope="rowgroup">
                   <span className="cl-sticky">
-                    {name}
+                    {label(name)}
                     {meta && <span className="cl-deckmeta">{meta}</span>}
                   </span>
                 </th>
@@ -713,7 +720,7 @@ export function ComboLines({ report }: { report: AnalysisReport | null }) {
             {" "}Draw velocity:{" "}
             {decks
               .filter(([, d]) => d.draws?.per_own_turn != null)
-              .map(([name, d]) => `${name} ${d.draws?.per_own_turn}/turn cycle`)
+              .map(([name, d]) => `${label(name)} ${d.draws?.per_own_turn}/turn cycle`)
               .join(" · ")}
             .
           </>

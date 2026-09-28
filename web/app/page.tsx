@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api, type SimEstimate } from "@/lib/api";
 import type { DeckEntry, ResultIndexEntry } from "@/lib/types";
-import { fmtRange, pct, runTitle, stripAi, timeAgo } from "@/lib/format";
+import { fmtRange, pct, runTitle, shortName, stripAi, timeAgo } from "@/lib/format";
 import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 import { Mascot } from "@/components/Mascot";
 import { PIP_SRC } from "@/components/ManaPips";
@@ -225,8 +225,9 @@ export default function Home() {
         const best = Object.entries(r.summary!.win_rates).sort((a, b) => b[1] - a[1])[0];
         return {
           file: r.file,
-          title: runTitle(names),
-          winner: best ? stripAi(best[0]) : null,
+          title: runTitle(names, r.commanders),
+          // The same one name the title gives the deck.
+          winner: best ? shortName(best[0], names, r.commanders) : null,
           rate: best ? best[1] : 0,
           games: r.games ?? r.summary!.games,
           when: timeAgo(r.modified),

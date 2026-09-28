@@ -6,6 +6,9 @@ export interface DeckEntry {
   /** From the .dck [Commander] section; null when the deck has none. The
    *  picker resolves art + color identity through /cards, batched. */
   commander?: string | null;
+  /** Every [Commander] entry (partners, backgrounds), a joined DFC name shown
+   *  as the face Forge logs. Optional: an older engine sends `commander` only. */
+  commanders?: string[];
   source?: "imported" | "bundled";
 }
 
@@ -33,7 +36,106 @@ export interface ResultIndexEntry {
   humanized?: boolean;
   agent?: string;
   validity?: Validity;
+  /** Who piloted the run, in words (engine validity.pilot). Optional: an
+   *  engine older than R1 does not send it. */
+  pilot?: Pilot;
+  /** Each deck's commanders by deck name (engine/commanders.py). */
+  commanders?: Commanders;
   error?: string;
+}
+
+/** {deck name (the player key minus its Ai(n)- prefix): [commanders]},
+ *  read by the engine from each deck's own [Commander] section. A deck whose
+ *  file could not be found has no entry: show its name alone, never a guess. */
+export type Commanders = Record<string, string[]>;
+
+/** engine/validity.py pilot(): who piloted a run. `label` and `note` are the
+ *  words to show; the rest is for logic. */
+export interface Pilot {
+  kind: "plan" | "stock" | "mixed" | "unknown";
+  agent: string | null;
+  shim: string | null;
+  plan_decks: number | null;
+  stock_decks: number | null;
+  plan_version: number | null;
+  plan_fix: string[] | null;
+  /** True while any random dial remains in the pilot. */
+  random: boolean;
+  label: string;
+  /** "Some choices are random on purpose." or null. */
+  note: string | null;
+}
+
+/** One knockout (engine/game_story.py). `turn` is Forge's per-player turn
+ *  counter; `round` is the table turn a player counts, and the one to show
+ *  as "turn N". cause, by and card are null when MTG_KNOCKOUT_DETAIL is off
+ *  on the server. `basis` says where `by` came from: the shim's zone stream
+ *  (a read) or Forge's event log. */
+export interface Knockout {
+  player: string;
+  turn: number;
+  round: number;
+  cause:
+    | "combat_damage"
+    | "noncombat_damage"
+    | "life_loss"
+    | "life_total"
+    | "poison"
+    | "commander_damage"
+    | "alt_win"
+    | "lose_effect"
+    | "deckout"
+    | "concession"
+    | "unknown"
+    | null;
+  by: string | null;
+  card: string | null;
+  basis: "zones" | "log";
+}
+
+/** A seat that went out, and the event Forge dates it by: the lethal event's
+ *  `seq`, or null when only Forge's turn order bounds it (then the seat is out
+ *  from the end of that turn). */
+export interface OutSeat {
+  player: string;
+  turn: number;
+  round: number;
+  seq: number | null;
+}
+
+/** The turn the board swung hardest toward the winner. `label` is what to
+ *  call it ("Biggest swing" until the hand audit passes, then "Turning
+ *  point"); `basis` "inferred" means reconstructed from the stdout log, and
+ *  must be labelled so. `card` is null when combat moved it (`combat`) or
+ *  nothing could be named. */
+export interface TurningPoint {
+  turn: number;
+  round: number;
+  card: string | null;
+  by: string | null;
+  combat: boolean;
+  basis: "zones" | "inferred";
+  label: string;
+  seq: number | null;
+  share_before: number | null;
+  share_after: number | null;
+}
+
+/** The story fields every game carries in the summary and the game payload.
+ *  Optional: an engine older than R1 sends none of them. */
+export interface GameStory {
+  knockouts?: Knockout[];
+  out?: OutSeat[];
+  turning_point?: TurningPoint | null;
+}
+
+/** Run-level story facts: the turning-point label in force (null when the
+ *  server holds it), whether causes and killers are shown, and which board
+ *  path the stories were read from. */
+export interface StoryMeta {
+  turning_point_label: string | null;
+  knockout_detail: boolean;
+  basis: "zones" | "inferred" | "mixed";
 }
 
 export interface SimSummary {
@@ -233,7 +335,7 @@ export interface SimResult {
 }
 
 /** GET /results/{file}/summary — a run without its event logs. */
-export interface RunGameSummary {
+export interface RunGameSummary extends GameStory {
   n: number;
   players: string[];
   result: SimGame["result"];
@@ -252,15 +354,21 @@ export interface RunSummary {
   games: RunGameSummary[];
   file: string;
   validity?: Validity;
+  commanders?: Commanders;
+  pilot?: Pilot;
+  story?: StoryMeta;
 }
 
-/** GET /results/{file}/game/{n} — one game's full event log. */
-export interface RunGame {
+/** GET /results/{file}/game/{n} — one game's full event log, plus its story. */
+export interface RunGame extends GameStory {
   meta: SimResult["meta"];
   file: string;
   n: number;
   games_total: number;
   game: SimGame;
+  commanders?: Commanders;
+  pilot?: Pilot;
+  story?: StoryMeta;
 }
 
 /** GET /sim-status .progress — how far along, and whether it is still moving.

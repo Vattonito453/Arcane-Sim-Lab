@@ -20,10 +20,12 @@ zero-dependency API. Use it three ways:
        GET  /results              index of adapted sim result files
        GET  /results/{file}       one full sim result (games -> turns -> events)
                                   ?snapshots=1 adds board_snapshot events
-       GET  /results/{file}/summary   run without event logs (~KB, not MB)
+       GET  /results/{file}/summary   run without event logs (~KB, not MB), with
+                                  each game's story (knockouts, out seats, turning
+                                  point), the decks' commanders and the pilot
        GET  /results/{file}/prediction predicted real-playgroup win rates
        GET  /results/{file}/scorecards  per-deck: outcomes, timing, behaviour
-       GET  /results/{file}/game/{n}  one game's events
+       GET  /results/{file}/game/{n}  one game's events and its story
        GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
        GET  /estimate?decks=4&games=16  typical duration + played game count
                                   for a sim of that size, before it is queued
@@ -363,6 +365,7 @@ def _deck_labels(raw_decks: list) -> list:
 
 def _list_decks() -> list[dict]:
     import combos
+    import commanders as cmdrs
     decks: dict[str, dict] = {}
     for d in _deck_dirs():
         if not d.is_dir():
@@ -392,10 +395,14 @@ def _list_decks() -> list[dict]:
             # [Commander] section honestly reports null (name-only tile).
             try:
                 _, commanders = combos.parse_dck(text)
+                # Partners and backgrounds too, with a joined DFC name shown
+                # as the face Forge logs (engine/commanders.py).
+                commanders = [cmdrs.display_name(c) for c in commanders]
             except Exception:  # noqa: BLE001 — one odd file must not 500 the list
                 commanders = []
             decks[f.name] = {"file": f.name, "name": name,
                              "commander": commanders[0] if commanders else None,
+                             "commanders": commanders,
                              "source": "imported" if d == IMPORTED_DECKS else "bundled"}
     return [decks[k] for k in sorted(decks)]
 
@@ -705,6 +712,7 @@ def _list_results() -> list[dict]:
     or clock-polluted run even if it wanted to — the 7/31-8/2 rotation-off
     window was indistinguishable from a good run in every listing.
     """
+    import commanders
     import validity
     out = []
     for f in sorted(RESULTS_DIR.glob("sim_*.json"), reverse=True):
@@ -723,6 +731,11 @@ def _list_results() -> list[dict]:
             entry["rotated"] = meta.get("source") == "rotated"
             entry["humanized"] = meta.get("humanized")
             entry["agent"] = meta.get("agent")
+            # Who piloted it, in words (repair plan WS11 task 10), and each
+            # deck's commanders from its own .dck (WS11 task 6): the list
+            # surfaces name decks and show avatars from these, never a guess.
+            entry["pilot"] = validity.pilot(meta)
+            entry["commanders"] = commanders.of_run(meta)
             v = validity.assess(d)
             entry["validity"] = {"quality": v["quality"], "flags": v["flags"],
                                  "usable_for_ranking": v["usable_for_ranking"],
@@ -764,7 +777,11 @@ def _read_result_summary(name: str) -> dict:
     so the results table no longer costs a multi-megabyte download.
     """
     from scorecard import true_round
+    import commanders
+    import game_story
+    import validity
     data = _read_result(name)
+    sw = game_story.switches()
     games = []
     for i, g in enumerate(data.get("games", []), 1):
         turns = g.get("turns", [])
@@ -778,13 +795,36 @@ def _read_result_summary(name: str) -> dict:
             # Forge's per-player counter and reads ~4x high to a person.
             "ended_round": true_round(g),
             "events": sum(len(t.get("events", [])) for t in turns),
+            # The game's story (engine/game_story.py): every knockout with
+            # its cause, killer and turn; the out seats and the event Forge
+            # dates each by; the turning point. The display switches are
+            # applied here, server-side.
+            **game_story.of_game(g, sw),
         })
     meta = data.get("meta", {})
     return {"meta": meta, "summary": data.get("summary"),
             # Parallel to meta.decks. Every page with a deck picker needs a
             # name, and the raw value is a container path.
             "deck_labels": _deck_labels(meta.get("decks") or []),
+            # {deck name: [commanders]} from each deck's [Commander] section.
+            "commanders": commanders.of_run(meta),
+            "pilot": validity.pilot(meta),
+            "story": _story_meta(data, sw),
             "games": games, "file": name, "validity": data.get("validity")}
+
+
+def _story_meta(data: dict, sw: dict) -> dict:
+    """Run-level facts the game-story UI needs beside the per-game stories:
+    the turning-point label in force (None when held), whether knockout
+    causes and killers are shown, and which board path the stories were read
+    from ("zones": the shim's zone stream, a read; "inferred": the stdout
+    log; "mixed"), which decides the honesty note."""
+    games = data.get("games") or []
+    zoned = sum(1 for g in games if (g or {}).get("zones"))
+    basis = ("zones" if games and zoned == len(games)
+             else "mixed" if zoned else "inferred")
+    return {"turning_point_label": sw["turning_point_label"],
+            "knockout_detail": sw["knockout_detail"], "basis": basis}
 
 
 _AI_SEAT = re.compile(r"^Ai\(\d+\)-")
@@ -910,12 +950,22 @@ def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None)
 
 def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
     """One game out of a run — the payload a replay actually needs."""
+    import commanders
+    import game_story
+    import validity
     data = _read_result(name, snapshots=snapshots)
     games = data.get("games", [])
     if n < 1 or n > len(games):
         raise IndexError(f"game {n} not in {name} (has {len(games)})")
-    return {"meta": data.get("meta", {}), "file": name, "n": n,
-            "games_total": len(games), "game": games[n - 1]}
+    meta = data.get("meta", {})
+    return {"meta": meta, "file": name, "n": n,
+            "games_total": len(games), "game": games[n - 1],
+            "commanders": commanders.of_run(meta),
+            "pilot": validity.pilot(meta),
+            "story": _story_meta({"games": [games[n - 1]]}, game_story.switches()),
+            # knockouts, out, turning_point: the same story the summary
+            # carries for this game (engine/game_story.py).
+            **game_story.of_game(games[n - 1])}
 
 
 _JOB_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
@@ -1282,6 +1332,13 @@ def serve(port: int = 8484) -> None:
                     except Exception:  # noqa: BLE001 - health must never 500
                         st["llm"] = False
                         st["llm_model"] = None
+                    # The game-story display switches in force (operators and
+                    # preflight read them here; the payloads apply them).
+                    try:
+                        import game_story
+                        st["story"] = game_story.switches()
+                    except Exception:  # noqa: BLE001
+                        st["story"] = None
                     return self._send(st)
                 if parts[0] == "decks":
                     if len(parts) > 1:
@@ -1344,14 +1401,22 @@ def serve(port: int = 8484) -> None:
                         return self._send(_list_results())
                     snaps = q.get("snapshots", ["0"])[0] not in ("0", "", "false")
                     IMMUTABLE = "public, max-age=31536000, immutable"  # results never change
+                    # The summary and game payloads carry the game story,
+                    # which follows two server-side switches
+                    # (MTG_TURNING_POINT, MTG_KNOCKOUT_DETAIL), and the
+                    # commanders a readapt backfills. Under the immutable
+                    # header a flipped switch would never reach a browser that
+                    # had cached the page, so these two revalidate.
+                    STORY_CACHE = "public, max-age=300"
                     try:
                         # /results/{file}/game/{n} — one game, not the whole run
                         if len(parts) >= 4 and parts[2] == "game":
                             return self._send(
                                 _read_result_game(parts[1], int(parts[3]), snapshots=snaps),
-                                cache=IMMUTABLE)
+                                cache=STORY_CACHE)
                         if len(parts) >= 3 and parts[2] == "summary":
-                            return self._send(_read_result_summary(parts[1]), cache=IMMUTABLE)
+                            return self._send(_read_result_summary(parts[1]),
+                                              cache=STORY_CACHE)
                         if len(parts) >= 3 and parts[2] == "prediction":
                             return self._send(_read_result_prediction(parts[1]),
                                               cache=IMMUTABLE)

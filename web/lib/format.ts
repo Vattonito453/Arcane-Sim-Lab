@@ -5,13 +5,45 @@ export function stripAi(player: string): string {
   return player.replace(/^Ai\(\d+\)-/, "");
 }
 
-/** "Wilhelt Zombies B3" → "Wilhelt" (first word), for tight UI labels.
- *  Falls back to the full name when two decks in the pod share a first word. */
-export function shortName(deckName: string, all: string[] = []): string {
+/** {deck name: [commanders]}, as the engine reads them from each deck's own
+ *  [Commander] section (engine/commanders.py). */
+export type CommanderMap = Record<string, string[]>;
+
+/** The part of a deck name before its first comma, when that part IS the
+ *  commander's name: the commander's full name, the part of it before its
+ *  own comma, or its leading words ("Kess" for Kess, Dissident Mage;
+ *  "Stella Lee" for Stella Lee, Wild Card; "Edgar" for Edgar Markov). */
+function commanderHead(deck: string, commanders: string[] | undefined): string | null {
+  const at = deck.indexOf(",");
+  if (at <= 0 || !commanders?.length) return null;
+  const head = deck.slice(0, at).trim();
+  if (!head) return null;
+  const hit = commanders.some((c) => {
+    const name = c.trim();
+    return name === head || name.split(",")[0].trim() === head || name.startsWith(`${head} `);
+  });
+  return hit ? head : null;
+}
+
+/** A deck's one name, used everywhere it appears (tasks/26-ux-review.md,
+ *  problem 5): the deck's own name, as on Moxfield and Archidekt. When the
+ *  part before a comma is the commander's name, what follows the comma drops:
+ *  "Kess, Reanimator" (Kess, Dissident Mage) is "Kess", "Stella Lee, Wild
+ *  Card" is "Stella Lee"; "Skrat's Revenge" and "Krenko Goblins" stay as
+ *  they are.
+ *
+ *  The old rule kept the first whitespace token, comma included, which put
+ *  "Kess, vs Stella vs Skrat's vs Krenko" in the report's h1 and "Kess," on a
+ *  seat plate. Commanders come from the engine, never from a guess, so
+ *  without them (an older engine, a deck file that is gone) the full name
+ *  stands. Two decks whose short names collide both keep their full names. */
+export function shortName(deckName: string, all: string[] = [], commanders?: CommanderMap): string {
   const clean = stripAi(deckName);
-  const first = clean.split(/\s+/)[0];
-  const clash = all.filter((o) => stripAi(o).split(/\s+/)[0] === first).length > 1;
-  return clash ? clean : first;
+  const short = (n: string) => commanderHead(n, commanders?.[n]) ?? n;
+  const mine = short(clean);
+  if (mine === clean) return clean;
+  const others = Array.from(new Set(all.map(stripAi))).filter((o) => o !== clean);
+  return others.some((o) => short(o) === mine) ? clean : mine;
 }
 
 /** What a run is called in the interface.
@@ -21,15 +53,13 @@ export function shortName(deckName: string, all: string[] = []): string {
  *  actually recognise, so that is the title; the filename stays as small mono
  *  metadata for anyone who needs to find the file on disk.
  *
- *  A pair keeps full deck names; three or four would run to ~70 characters, so
- *  those collapse to first words, which stay unambiguous via shortName().
+ *  One name per deck, the same one every other surface uses (shortName):
+ *  "Kess vs Skrat's Revenge vs Stella Lee vs Krenko Goblins".
  */
-export function runTitle(deckNames: string[]): string {
+export function runTitle(deckNames: string[], commanders?: CommanderMap): string {
   const names = deckNames.map(stripAi).filter(Boolean);
   if (names.length === 0) return "Untitled run";
-  if (names.length === 1) return names[0];
-  if (names.length === 2) return `${names[0]} vs ${names[1]}`;
-  return names.map((n) => shortName(n, names)).join(" vs ");
+  return names.map((n) => shortName(n, names, commanders)).join(" vs ");
 }
 
 /** Seat number from a player key: "Ai(2)-X" → 2 (1-based, 0 if absent). */

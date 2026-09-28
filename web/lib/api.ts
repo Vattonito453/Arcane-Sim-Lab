@@ -132,6 +132,14 @@ export interface Health {
    *  Optional so an older engine still typechecks. */
   llm?: boolean;
   llm_model?: string | null;
+  /** The game-story display switches in force (engine/game_story.py). The
+   *  payloads already apply them; this is for operators. */
+  story?: {
+    turning_point: "swing" | "audited" | "off";
+    turning_point_label: string | null;
+    knockout_detail: boolean;
+    invalid: string[];
+  } | null;
 }
 
 /** GET /estimate: what a sim of this size will play and how long it usually
@@ -147,6 +155,16 @@ export interface SimEstimate {
   /** [low, high] seconds a sim this size typically takes. Not a timeout. */
   typical_seconds: [number, number];
 }
+
+/** Query tag on the summary and game payloads. Until R1 the engine served
+ *  both as immutable and the client fetched them with force-cache, so any
+ *  browser that had opened a run holds the pre-R1 payload (no game story, no
+ *  commanders) under the bare URL for a year. A new URL is the only way past
+ *  that cache; the engine now sends max-age=300 because the story follows
+ *  server-side switches, and these fetches use the default cache mode so the
+ *  header is honoured. Bump this only when a payload change must reach
+ *  browsers at once. The engine ignores the parameter. */
+const PAYLOAD_TAG = "v=r1";
 
 let healthMemo: Promise<Health> | null = null;
 
@@ -178,14 +196,18 @@ export const api = {
     ),
   results: () => get<ResultIndexEntry[]>("/results"),
 
-  /** Run overview WITHOUT event logs — a few KB instead of ~2.6 MB. */
+  /** Run overview WITHOUT event logs — a few KB instead of ~2.6 MB — with
+   *  each game's story, the decks' commanders and the pilot. */
   runSummary: (file: string) =>
-    get<RunSummary>(`/results/${encodeURIComponent(file)}/summary`, { cache: "force-cache" }),
-  /** One game's full event log — what a replay needs (~20 KB gzipped). */
+    get<RunSummary>(`/results/${encodeURIComponent(file)}/summary?${PAYLOAD_TAG}`, {
+      cache: "default",
+    }),
+  /** One game's full event log and its story — what a replay needs (~21 KB
+   *  gzipped). */
   runGame: (file: string, n: number, snapshots = false) =>
     get<RunGame>(
-      `/results/${encodeURIComponent(file)}/game/${n}${snapshots ? "?snapshots=1" : ""}`,
-      { cache: "force-cache" },
+      `/results/${encodeURIComponent(file)}/game/${n}?${PAYLOAD_TAG}${snapshots ? "&snapshots=1" : ""}`,
+      { cache: "default" },
     ),
   /** Win-condition telemetry for one deck — computed server-side so the
    *  browser never fetches the whole ~235 KB run (CLAUDE.md gotcha 4). */

@@ -166,6 +166,9 @@ Don't rebuild these. See `deploy_plan.md` for the measurements.
   (`engine/board.py`, 86.5% exit match — see CLAUDE.md for the ceiling)
 - Front end: home, import, run progress, run results, replay theater
 - Docker compose with env config, healthcheck, `.env.example`
+- G0a, the tutoring-hotfix gate: PASS on 2026-09-27 (`studies/hotfix_g0/RESULTS.md`).
+  Shim 0.17.0 is cleared for R1 at commit b8894e1 only; merge simlab-forge-shim
+  PR #15, tag `v0.17.0` there, and set `MTG_PLAN_VERSION=2` at the R1 deploy.
 
 ## What is deliberately NOT here
 

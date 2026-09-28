@@ -15,7 +15,7 @@
  *  The flags-only key (MTG_FLAG_KEYS) is saved in this browser under its own
  *  storage key once a flag is accepted, and lib/api sendFlag() is the only
  *  code that ever sends it. It is a secondary action: plain .btn, never the
- *  page's primary (the play button). */
+ *  page's primary ("Watch the ...", or the play button when that is absent). */
 
 import { useEffect, useId, useRef, useState } from "react";
 import { FlagError, saveFlagKey, savedFlagKey, sendFlag } from "@/lib/api";
@@ -188,11 +188,11 @@ export function FlagMoment({
       <p className="flag-where">
         Event <span className="mono">{index + 1}</span> of{" "}
         <span className="mono">{total.toLocaleString()}</span> in game {game}
+        {/* "Turn", the table turn, as the game story, the transport and the
+            out seats count it; the engine still stores it as `round`. */}
         {step.round > 0 ? (
           <>
-            : round <b>{step.round}</b>, <b>{turnName}</b>
-            {/* "Drana Vampires' turn", the way the log's own phase lines put it. */}
-            {turnName.endsWith("s") ? "’" : "’s"} turn.
+            , turn <b>{step.round}</b>. <b>{turnName}</b> is the active player.
           </>
         ) : (
           <>, before the first turn.</>

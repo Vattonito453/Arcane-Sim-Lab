@@ -129,10 +129,13 @@ export function storyNote(meta: StoryMeta | undefined): string {
   if (!meta) return "";
   const label = meta.turning_point_label;
   const parts: string[] = [];
+  // The audit figures are studies/knockout_audit/RESULTS.md (week 3). Its
+  // readers were independent model readers of the game logs, not people, so
+  // the copy says "independent readings", never "a human reading".
   parts.push(
     meta.knockout_detail
-      ? "Who went out, how and when comes from Forge's own loss lines, each dated by the lethal event in its log."
-      : "Who went out and when comes from Forge's own log, each dated by the lethal event. How each seat went out is hidden until those readings are checked by hand.",
+      ? "Who went out, how and when comes from Forge's own loss lines, each dated by the lethal event in its log. An audit found these matched independent readings of the logs in 39 of 40 knockouts."
+      : "Who went out and when comes from Forge's own log, each dated by the lethal event. How each seat went out is not shown.",
   );
   if (label) {
     const lower = label.toLowerCase();
@@ -149,7 +152,9 @@ export function storyNote(meta: StoryMeta | undefined): string {
       );
     }
     if (label === "Biggest swing") {
-      parts.push("It has not yet been checked against a human reading of the games.");
+      parts.push(
+        `${meta.knockout_detail ? "The same audit" : "An audit"} found it matched the turning point independent readers named in only 8 of 20 games, so read it as the biggest shift in board power, not as the moment the game was decided.`,
+      );
     }
   }
   return parts.join(" ");

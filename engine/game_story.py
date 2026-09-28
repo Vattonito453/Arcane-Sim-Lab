@@ -39,8 +39,17 @@ The knockout and turning-point readings ship to users only after the week-3
 hand audit (repair plan WS1 acceptance: at least 95% agreement on 40
 knockouts; at least 16 of 20 turning points agreeing with a human reading).
 Both are switches, so the lead can apply the audit result without a code
-change, and the payload itself carries the decision, so no client can show
-more than the server allows.
+change, and the summary and game payloads carry the decision, so the pages
+that read them cannot show more than the server allows.
+
+Scope: the switches govern the game story only (the results page's game
+rows and the replay's lede, out seats and primary). Two run-level surfaces
+read the same analyzer and are NOT switched: "How games ended" (the final
+knockout's cause per game, from /analysis/{file}, disk-cached) and the
+scorecards' "how it won" (/results/{file}/scorecards, served immutable).
+/analysis also still serves every game's full knockouts and raw turning point
+unswitched; no page renders those. If the knockout audit fails, hiding the
+per-game cause here does not hide those aggregates.
 
     MTG_TURNING_POINT    swing (default)  label "Biggest swing": the audit
                                           has not passed yet

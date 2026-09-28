@@ -312,7 +312,11 @@ Set them in `deploy/.env`, then `docker compose --env-file .env up -d api`
 (no rebuild; compose passes both through). Browsers pick the change up
 within 5 minutes (the summary and game payloads are `max-age=300`).
 `/health` reports the values in force under `story`, and preflight prints
-them under GAME STORY SWITCHES.
+them under GAME STORY SWITCHES. They govern the game story only (the
+results page's game rows and the replay). The run page's "How games ended"
+counts and the scorecards' "how it won" read the same knockout analyzer and
+are not switched, so a failed knockout audit needs more than
+`MTG_KNOCKOUT_DETAIL=off` to take its causes off the page.
 
 **After deploying R1, backfill commander names** into existing results (the
 results page, index and replay read them; old runs otherwise fall back to a

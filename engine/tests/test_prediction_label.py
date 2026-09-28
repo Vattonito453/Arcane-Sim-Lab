@@ -23,6 +23,7 @@ import mtg_engine  # noqa: E402
 import pilot  # noqa: E402
 import predict  # noqa: E402
 import run_sim  # noqa: E402
+import validity  # noqa: E402
 from shim_log_adapter import parse_shim_jsonl  # noqa: E402
 
 V2_FLAGS = {"tutorReach": True, "commanderTutorZone": True,
@@ -302,6 +303,24 @@ def test_endpoint_suppressed_has_no_figures():
     # The same record does not touch a different pilot.
     other = _serve(_plan_meta(shim="0.16.0", versions=None), [_record(R1, False)])
     assert other["available"] is True and other["rank_check"]["status"] == "none", other
+
+
+def test_endpoint_carries_the_run_pages_pilot():
+    """One pilot derivation (week-3 integration): the prediction payload's
+    pilot is the object the run summary, game payload and results index carry
+    (validity.pilot, i.e. pilot.disclose over pilot.run_pilot), so the run
+    page's pilot line and this label can never disagree."""
+    for meta in ({}, _plan_meta(), _plan_meta(shim="0.16.0", versions=None),
+                 _plan_meta(agents=["plan", "stock", "stock", "stock"]),
+                 _plan_meta(flags=dict(V2_FLAGS, tutorReach=False))):
+        out = _serve(meta, [])
+        assert out["pilot"] == validity.pilot(meta), (out["pilot"], validity.pilot(meta))
+        ident = pilot.run_pilot(meta)
+        assert {k: out["pilot"][k] for k in ident} == ident, out["pilot"]
+    r1 = _serve(_plan_meta(), [])["pilot"]
+    assert r1["id"] == R1 and r1["label"] == (
+        "Piloted by Sim Lab's plan agent on Forge's AI "
+        "(plan version 2, tutoring fixes on, shim 0.17.0)."), r1
 
 
 def test_endpoint_missing_record_file():

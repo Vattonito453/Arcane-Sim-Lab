@@ -66,6 +66,8 @@ import json
 import sys
 from pathlib import Path
 
+from pilot import disclose as _pilot_disclose
+
 # Every per-game clock the pipeline has shipped with, newest first: 900 s
 # (2026-08-03, measured), 300 s (2026-08-03, a guess that was too short), 240 s
 # and 120 s (the original defaults). Only used for files whose meta predates
@@ -245,144 +247,15 @@ def assess(result: dict) -> dict:
 # Pilot disclosure (repair plan WS11 task 10)
 # ---------------------------------------------------------------------------
 
-_SHIM_PREFIX = "simlab-forge-shim"
-# Plan version 2 carries these tutoring-hotfix flags (engine/deck_plan.py
-# V2_FIX). Named here only to count them; the UI never shows the flag names.
-_PLAN_FIX_COUNT = 4
-
-
-def _deck_agents(meta: dict) -> dict[str, set]:
-    """{deck: {"plan", "stock", ...}} from the per-rotation seat records (or
-    the one-rotation meta.agents aligned with meta.players)."""
-    out: dict[str, set] = {}
-    for rot in meta.get("rotations_detail") or []:
-        if not isinstance(rot, dict):
-            continue
-        seats, agents = rot.get("seats") or [], rot.get("agents") or []
-        for deck, agent in zip(seats, agents):
-            out.setdefault(str(deck), set()).add(str(agent))
-    if not out and isinstance(meta.get("agents"), list):
-        players = meta.get("players") or [f"seat {i + 1}" for i in range(len(meta["agents"]))]
-        for deck, agent in zip(players, meta["agents"]):
-            out.setdefault(str(deck), set()).add(str(agent))
-    return out
-
-
 def pilot(meta: dict) -> dict:
-    """Who piloted a run, disclosed on every run page.
+    """Who piloted a run, disclosed on every run page: engine/pilot.disclose.
 
-    {"kind", "agent", "shim", "plan_decks", "stock_decks", "plan_version",
-     "plan_fix", "random", "label", "note"}; plan_decks / stock_decks count
-    the decks that ran only that pilot in every rotation (a deck whose seat
-    fell back in one rotation is in neither; None when the run records no
-    per-seat pilot):
-      kind         "plan" (every seat on Sim Lab's plan agent), "stock"
-                   (Forge's own AI; on the stdout path or through the shim),
-                   "mixed", or "unknown" (written before runs recorded it)
-      agent        meta.agent verbatim ("simlab-forge-shim/0.15.0")
-      shim         the shim version, or None (stock stdout path, or a
-                   rotated run whose rotations disagreed)
-      plan_version, plan_fix   from meta when run_sim recorded them (from
-                   2026-09-28); plan_fix is the list of flags that were on
-      random       True while any random dial remains in the pilot: every
-                   plan seat to date skips some blocks at random by design
-                   (owner decision 8 retires that at E8). A run that records
-                   meta.random_dials is taken at its word.
-      label, note  the words the UI shows. "Humanized" is no longer a
-                   product claim (owner decision 8); the note says what is
-                   true instead: "Some choices are random on purpose."
-    Copy rules apply (these strings reach the UI): no em dash."""
-    meta = meta or {}
-    agent = meta.get("agent") if isinstance(meta.get("agent"), str) else None
-    shim = None
-    if agent and agent.startswith(_SHIM_PREFIX + "/"):
-        shim = agent.split("/", 1)[1] or None
-    via_shim = bool(agent and agent.startswith(_SHIM_PREFIX))
-    per_deck = _deck_agents(meta)
-    plan_decks = sorted(d for d, a in per_deck.items() if a == {"plan"})
-    stock_decks = sorted(d for d, a in per_deck.items() if a and "plan" not in a)
-    by_rot = meta.get("humanized_by_rotation")
-    humanized = meta.get("humanized")
-    if per_deck:
-        if len(plan_decks) == len(per_deck):
-            kind = "plan"
-        elif len(stock_decks) == len(per_deck):
-            kind = "stock"
-        else:
-            kind = "mixed"
-    elif humanized is True:
-        kind = "plan"
-    elif isinstance(by_rot, list) and any(by_rot):
-        kind = "mixed"
-    elif humanized is False:
-        kind = "stock"
-    else:
-        kind = "unknown"
-
-    plan_version = meta.get("plan_version")
-    plan_version = plan_version if isinstance(plan_version, int) else None
-    fix = meta.get("plan_fix")
-    plan_fix = [str(f) for f in fix] if isinstance(fix, list) else None
-
-    random_dials = meta.get("random_dials")
-    random = (random_dials if isinstance(random_dials, bool)
-              else kind in ("plan", "mixed"))
-
-    shim_words = f"shim {shim}" if shim else ("Sim Lab's shim" if via_shim else None)
-    plan_words = []
-    # The plan's version and fix flags describe the plan seats only. run_sim
-    # records them whenever plans were BUILT, which includes a run whose
-    # seats all fell back to stock; naming them there would read as "a plan
-    # piloted this" on a run no plan touched.
-    has_plan = kind in ("plan", "mixed")
-    if has_plan and plan_version is not None:
-        plan_words.append(f"plan version {plan_version}")
-    if (has_plan and plan_fix is not None and plan_version is not None
-            and plan_version >= 2):
-        on = len(plan_fix)
-        plan_words.append("tutoring fixes on" if on >= _PLAN_FIX_COUNT
-                          else "tutoring fixes off" if on == 0
-                          else f"{on} of {_PLAN_FIX_COUNT} tutoring fixes on")
-    detail = ", ".join(w for w in [*plan_words, shim_words] if w)
-    tail = f" ({detail})" if detail else ""
-    if kind == "plan":
-        label = f"Piloted by Sim Lab's plan agent on Forge's AI{tail}."
-    elif kind == "stock":
-        label = (f"Piloted by Forge's own AI{tail}." if via_shim
-                 else "Piloted by Forge's own AI.")
-    elif kind == "mixed":
-        n_plan = len(plan_decks)
-        # A deck that ran the plan in some rotations and stock in others (a
-        # rotation whose seats fell back) is in neither count, so "N decks on
-        # the plan agent, the rest on Forge's own AI" would be untrue: with one
-        # of four rotations fallen back it read "0 decks on Sim Lab's plan
-        # agent" for a run the plan piloted three quarters of. Say it by
-        # rotation instead.
-        split = per_deck and n_plan + len(stock_decks) < len(per_deck)
-        if per_deck and not split:
-            label = (f"Mixed pilots: {n_plan} {'deck' if n_plan == 1 else 'decks'} on "
-                     f"Sim Lab's plan agent, the rest on Forge's own AI{tail}.")
-        elif isinstance(by_rot, list) and by_rot:
-            ran = sum(1 for x in by_rot if x)
-            label = (f"Mixed pilots: {ran} of {len(by_rot)} seat rotations ran Sim Lab's "
-                     f"plan agent, the rest Forge's own AI{tail}.")
-        else:
-            label = (f"Mixed pilots: some seat rotations ran Sim Lab's plan agent "
-                     f"and the rest Forge's own AI{tail}.")
-    else:
-        label = "Pilot not recorded: this run predates it."
-    return {
-        "kind": kind,
-        "agent": agent,
-        "shim": shim,
-        "plan_decks": len(plan_decks) if per_deck else None,
-        "stock_decks": len(stock_decks) if per_deck else None,
-        "plan_version": plan_version,
-        "plan_fix": plan_fix,
-        "random": bool(random),
-        "label": label,
-        "note": "Some choices are random on purpose." if random else None,
-    }
+    One derivation for every surface: the run page, the results index and the
+    game payload read this, and the prediction payload carries the same
+    object, so the pilot line and the prediction label can never disagree.
+    Kept under this name because the payload builders and the week-3 tests
+    call validity.pilot()."""
+    return _pilot_disclose(meta)
 
 
 def _commander_findings(meta: dict) -> tuple[list[tuple], list[tuple]]:

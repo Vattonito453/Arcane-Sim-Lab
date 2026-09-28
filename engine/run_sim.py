@@ -238,19 +238,6 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
     return meta
 
 
-def _plan_meta(plans: dict) -> dict:
-    """The plan version and the tutoring-hotfix flags that were on, for result
-    meta, so every run can disclose its pilot (repair plan WS11 task 10)."""
-    decks = [p for p in (plans.get("decks") or {}).values() if isinstance(p, dict)]
-    if not decks:
-        return {}
-    out: dict = {"plan_version": max(int(p.get("planVersion", 1)) for p in decks)}
-    fixes = [p["fix"] for p in decks if isinstance(p.get("fix"), dict)]
-    if fixes:
-        out["plan_fix"] = sorted(k for k, v in fixes[0].items() if v)
-    return out
-
-
 def _warn_fidelity(meta: dict) -> None:
     """One stderr line per finding. Refused and missing commanders make the
     run polluted (WARNING); a loaded commander Forge's AI never cast is a
@@ -550,7 +537,6 @@ def run(args: argparse.Namespace) -> None:
         shim_jar = find_shim_jar(args.shim_jar)
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         args.plans_file = None
-        plan_meta: dict = {}
         if args.humanize:
             # Deck plans are OUR strategy data; they cross to the GPL shim
             # as JSON (CLAUDE.md legal posture — the boundary is the design).
@@ -571,7 +557,6 @@ def run(args: argparse.Namespace) -> None:
             tag = f"_{safe_run_id(args.run_id)}" if args.run_id else f"_pid{os.getpid()}"
             args.plans_file = out_dir / f"plans_{stamp}{tag}.json"
             args.plans_file.write_text(json.dumps(plans, indent=2), encoding="utf-8")
-            plan_meta = _plan_meta(plans)
             print(f"plans   : {args.plans_file} "
                   f"({', '.join(plans['decks'])})")
             if len(plans["decks"]) < len(deck_names):
@@ -648,9 +633,11 @@ def run(args: argparse.Namespace) -> None:
         result.setdefault("meta", {}).update(fidelity_meta(
             result.get("games") or [], [staged / d for d in deck_names], refused,
             args.format))
-        # plan_version / plan_fix: which plan the plan seats ran (pilot
-        # disclosure, repair plan WS11 task 10). Empty on a stock-seat run.
-        result["meta"].update(plan_meta)
+        # The plan version and fix flags each seat ran are NOT written here:
+        # the shim reports them per seat (planVersions, fixFlags), the adapter
+        # and _merged_shim_meta carry them, and engine/pilot.py derives the
+        # pilot from them. A second, run-level spelling taken from the plans
+        # file would name a plan for seats that fell back to stock.
         _warn_fidelity(result["meta"])
         # The per-game wall the run actually used. Without it, a later
         # validity check has to GUESS which clock a file ran under

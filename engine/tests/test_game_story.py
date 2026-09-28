@@ -170,20 +170,20 @@ def test_of_run_prefers_what_the_run_recorded():
     assert commanders.of_run({}, find=lambda f: None) == {}
 
 
-def test_run_sim_writes_commanders_and_plan_meta():
+def test_run_sim_writes_commanders_and_one_plan_spelling():
     with tempfile.TemporaryDirectory() as d:
         p = Path(d) / "krenko.dck"
         p.write_text("[metadata]\nName=Krenko Goblins\n[Commander]\n1 Krenko, Mob Boss\n"
                      "[Main]\n1 Sol Ring\n", encoding="utf-8")
         meta = run_sim.fidelity_meta([], [p], [], "Commander")
     assert meta["commanders"] == {"Krenko Goblins": ["Krenko, Mob Boss"]}, meta
-    plans = {"decks": {"a": {"planVersion": 2, "fix": {"tutorReach": True,
-                                                      "graveyardDest": False}},
-                       "b": {"planVersion": 2, "fix": {"tutorReach": True,
-                                                      "graveyardDest": False}}}}
-    assert run_sim._plan_meta(plans) == {"plan_version": 2, "plan_fix": ["tutorReach"]}
-    assert run_sim._plan_meta({"decks": {"a": {}}}) == {"plan_version": 1}
-    assert run_sim._plan_meta({}) == {}
+    # The plan version and fix flags reach a result one way only: per seat,
+    # as the shim reports them (planVersions / fixFlags, carried by the
+    # adapter and _merged_shim_meta; test_prediction_label covers that path).
+    # The run-level plan_version / plan_fix spelling from the week-3 branch is
+    # gone, so the pilot line and the prediction label read the same fields.
+    assert "plan_version" not in meta and "plan_fix" not in meta, meta
+    assert not hasattr(run_sim, "_plan_meta")
 
 
 # --- readapt backfill -----------------------------------------------------------
@@ -251,17 +251,35 @@ def test_backfill_skips_gracefully_when_no_deck_is_found():
 
 # --- pilot disclosure -----------------------------------------------------------
 
-def _rot(agents):
+def _rot(agents, version=None, fix=None):
+    """Per-rotation seat records as run_sim._merged_shim_meta writes them.
+    With version, each plan seat also carries the shim's planVersions and
+    fixFlags entry (null for a stock seat, as the shim writes it)."""
     decks = [f"d{i}.dck" for i in range(len(agents))]
-    return [{"seats": decks[i:] + decks[:i], "agents": agents[i:] + agents[:i]}
-            for i in range(len(agents))]
+    rots = []
+    for i in range(len(agents)):
+        seat_agents = agents[i:] + agents[:i]
+        rot = {"seats": decks[i:] + decks[:i], "agents": seat_agents}
+        if version is not None:
+            rot["planVersions"] = [version if a == "plan" else None for a in seat_agents]
+            rot["fixFlags"] = [dict(fix or {}) if a == "plan" else None for a in seat_agents]
+        rots.append(rot)
+    return rots
+
+
+V2_FIX = {"commanderTutorZone": True, "graveyardDest": True,
+          "noForcedChoices": True, "tutorReach": True}
 
 
 def test_pilot_plan_stock_mixed_unknown():
     plan = validity.pilot({"agent": "simlab-forge-shim/0.15.0", "humanized": True,
                            "rotations_detail": _rot(["plan"] * 4)})
     assert plan["kind"] == "plan" and plan["shim"] == "0.15.0" and plan["random"], plan
-    assert plan["label"] == "Piloted by Sim Lab's plan agent on Forge's AI (shim 0.15.0).", plan
+    # Shims before 0.17.0 read version-1 plans only (engine/pilot.py), so the
+    # line names the version the prediction's pilot id carries.
+    assert plan["label"] == ("Piloted by Sim Lab's plan agent on Forge's AI "
+                             "(plan version 1, shim 0.15.0)."), plan
+    assert plan["id"] == "plan/0.15.0/v1", plan
     assert plan["note"] == "Some choices are random on purpose.", plan
     stock = validity.pilot({"agent": "simlab-forge-shim/0.15.0", "humanized": False,
                             "humanized_by_rotation": [False] * 4,
@@ -271,29 +289,37 @@ def test_pilot_plan_stock_mixed_unknown():
     stdout = validity.pilot({"humanized": False})
     assert stdout["kind"] == "stock" and stdout["shim"] is None, stdout
     assert stdout["label"] == "Piloted by Forge's own AI.", stdout
+    # A result with no agent at all is on the stdout path, which only Forge's
+    # own AI can play (every plan seat runs behind the shim, and the shim
+    # adapter always records meta.agent): stock, as the prediction reads it.
+    assert validity.pilot({})["kind"] == "stock", validity.pilot({})
     mixed = validity.pilot({"agent": "simlab-forge-shim/0.16.0",
                             "rotations_detail": _rot(["plan", "stock", "stock", "stock"])})
     assert mixed["kind"] == "mixed" and mixed["plan_decks"] == 1, mixed
     assert mixed["stock_decks"] == 3, mixed
-    assert validity.pilot({})["kind"] == "unknown"
+    # A shim run that records neither per-seat agents nor humanized.
+    assert validity.pilot({"agent": "simlab-forge-shim/0.9.0"})["kind"] == "unknown"
     v2 = validity.pilot({"agent": "simlab-forge-shim/0.17.0", "humanized": True,
-                         "plan_version": 2,
-                         "plan_fix": ["commanderTutorZone", "graveyardDest",
-                                      "noForcedChoices", "tutorReach"]})
+                         "rotations_detail": _rot(["plan"] * 4, 2, V2_FIX)})
     assert "plan version 2, tutoring fixes on, shim 0.17.0" in v2["label"], v2
+    assert v2["id"] == "plan/0.17.0/v2", v2
+    two_of_four = validity.pilot({
+        "agent": "simlab-forge-shim/0.17.0", "humanized": True,
+        "rotations_detail": _rot(["plan"] * 4, 2, dict(V2_FIX, graveyardDest=False,
+                                                       noForcedChoices=False))})
+    assert "plan version 2, 2 of 4 tutoring fixes on" in two_of_four["label"], two_of_four
     off = validity.pilot({"humanized": True, "random_dials": False})
     assert off["random"] is False and off["note"] is None, off
     # run_sim records the plan whenever plans were built, including a run whose
     # seats all fell back to stock: the label must not name a plan no seat ran.
     fell_back = validity.pilot({"agent": "simlab-forge-shim/0.17.0", "humanized": False,
                                 "humanized_by_rotation": [False] * 4,
-                                "rotations_detail": _rot(["stock"] * 4),
-                                "plan_version": 2, "plan_fix": ["tutorReach"]})
+                                "rotations_detail": _rot(["stock"] * 4, 2, V2_FIX)})
     assert fell_back["kind"] == "stock", fell_back
     assert fell_back["label"] == "Piloted by Forge's own AI (shim 0.17.0).", fell_back
     part = validity.pilot({"agent": "simlab-forge-shim/0.17.0",
-                           "rotations_detail": _rot(["plan", "stock", "stock", "stock"]),
-                           "plan_version": 2, "plan_fix": []})
+                           "rotations_detail": _rot(["plan", "stock", "stock", "stock"], 2,
+                                                    {k: False for k in V2_FIX})})
     assert "plan version 2, tutoring fixes off" in part["label"], part
     # One rotation of four fell back to stock for every seat: every deck ran
     # the plan in three rotations, so no deck is "on" either pilot alone and
@@ -306,11 +332,53 @@ def test_pilot_plan_stock_mixed_unknown():
                              for i, a in enumerate(["plan", "stock", "plan", "plan"])]})
     assert one_down["kind"] == "mixed", one_down
     assert one_down["label"] == ("Mixed pilots: 3 of 4 seat rotations ran Sim Lab's plan "
-                                 "agent, the rest Forge's own AI (shim 0.16.0)."), one_down
+                                 "agent, the rest Forge's own AI (plan version 1, shim 0.16.0)."), one_down
     assert "0 decks" not in one_down["label"], one_down
     assert mixed["label"].startswith("Mixed pilots: 1 deck on Sim Lab's plan agent"), mixed
-    for p in (plan, stock, stdout, mixed, v2, fell_back, part, one_down):
+    for p in (plan, stock, stdout, mixed, v2, two_of_four, fell_back, part, one_down):
         assert EM_DASH not in p["label"] and "umaniz" not in p["label"], p
+
+
+def test_run_page_and_prediction_read_one_pilot():
+    """The pilot line (validity.pilot) and the prediction label (pilot_honesty
+    over the same object) come from one derivation: every field run_pilot
+    decides is identical in the run page's disclosure, for every meta shape
+    either branch tested."""
+    import pilot as pilot_mod
+    metas = [
+        {}, {"humanized": False}, {"agent": "forge"},
+        {"agent": "simlab-forge-shim/0.9.0"},
+        {"agent": "simlab-forge-shim/0.9.0", "humanized": True},
+        {"agent": "simlab-forge-shim/0.15.0", "humanized": True,
+         "rotations_detail": _rot(["plan"] * 4)},
+        {"agent": "simlab-forge-shim/0.17.0", "humanized": True,
+         "rotations_detail": _rot(["plan"] * 4, 2, V2_FIX)},
+        {"agent": "simlab-forge-shim/0.17.0", "humanized": True,
+         "rotations_detail": _rot(["plan"] * 4, 1, {})},
+        {"agent": "simlab-forge-shim/0.17.0", "humanized": True,
+         "rotations_detail": _rot(["plan"] * 4)},
+        {"agent": "simlab-forge-shim/0.17.0",
+         "rotations_detail": _rot(["plan", "stock", "stock", "stock"], 2, V2_FIX)},
+        {"agent": "simlab-forge-shim/0.16.0", "humanized": False,
+         "humanized_by_rotation": [True, False, True, True]},
+        {"agent": "simlab-forge-shim/0.17.0", "humanized": True, "agents": ["plan"] * 2,
+         "players": ["Ai(1)-A", "Ai(2)-B"], "planVersions": [2, 2],
+         "fixFlags": [V2_FIX, V2_FIX]},
+    ]
+    for meta in metas:
+        ident = pilot_mod.run_pilot(meta)
+        shown = validity.pilot(meta)
+        for k, v in ident.items():
+            assert shown[k] == v, (k, meta, ident, shown)
+        # The label's category is the id's category.
+        word = {"plan": "Piloted by Sim Lab's plan agent", "stock": "Piloted by Forge's own AI",
+                "mixed": "Mixed pilots", "unknown": "Pilot not recorded"}[ident["kind"]]
+        assert shown["label"].startswith(word), (meta, shown)
+        # A plan version appears in the line exactly when the id carries one.
+        if ident["plan_version"] is not None and ident["kind"] in ("plan", "mixed"):
+            assert f"plan version {ident['plan_version']}" in shown["label"], shown
+        else:
+            assert "plan version" not in shown["label"], shown
 
 
 def test_an_all_stock_run_is_not_a_mixed_pod():

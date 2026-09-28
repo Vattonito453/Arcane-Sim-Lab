@@ -311,7 +311,9 @@ def _fmt_check(c: dict) -> str:
 def pilot_honesty(model: dict, pilot: dict, checks: list[dict] | None) -> dict:
     """Label, match and suppression for one run.
 
-    pilot is engine/pilot.run_pilot(meta); checks is load_rank_checks().
+    pilot is engine/pilot.run_pilot(meta), or pilot.disclose(meta) (its
+    superset, which the endpoint passes so this payload carries the run
+    page's own pilot object); checks is load_rank_checks().
     Suppressed only when the latest check of THIS model for the run's pilot
     failed, or when the record itself is missing (fail closed). A pilot with
     no check keeps the label and says so; the model's own pilot needs no

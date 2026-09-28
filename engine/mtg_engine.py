@@ -935,14 +935,17 @@ def _read_result_prediction(name: str) -> dict:
     rates = summary.get("win_rates") or {}
     try:
         from predict import Predictor, deck_features, load_rank_checks, pilot_honesty
-        from pilot import run_pilot
+        import validity
     except Exception as e:  # pragma: no cover - import guard
         return {"file": name, "available": False, "reason": f"predict unavailable: {e}"}
     model = Predictor.load()
     if model is None:
         return {"file": name, "available": False,
                 "reason": "no fitted model; run studies/precon_predict/analyze.py"}
-    honesty = pilot_honesty(model.m, run_pilot(data.get("meta")), load_rank_checks())
+    # The same pilot object the run summary, game payload and results index
+    # carry (validity.pilot -> pilot.disclose, built on pilot.run_pilot), so
+    # the run page's pilot line and this label cannot disagree.
+    honesty = pilot_honesty(model.m, validity.pilot(data.get("meta")), load_rank_checks())
     if honesty["suppressed"]:
         return {"file": name, **honesty, "available": False,
                 "reason": honesty["suppressed_reason"], "decks": []}

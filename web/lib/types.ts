@@ -49,16 +49,31 @@ export interface ResultIndexEntry {
  *  file could not be found has no entry: show its name alone, never a guess. */
 export type Commanders = Record<string, string[]>;
 
-/** engine/validity.py pilot(): who piloted a run. `label` and `note` are the
- *  words to show; the rest is for logic. */
-export interface Pilot {
+/** engine/pilot.py run_pilot(): which pilot played the run, as one id.
+ *  The rank checks behind the prediction label are keyed by `id`. */
+export interface PilotIdentity {
+  /** "stock", "plan/0.17.0/v2", "plan/0.17.0/v2/fix=none", "mixed/...". */
+  id: string;
   kind: "plan" | "stock" | "mixed" | "unknown";
-  agent: string | null;
   shim: string | null;
+  plan_version: number | null;
+  /** The plan seats' tutoring-hotfix flags: "all", "none", "mixed", the
+   *  names that were on, or null when not recorded (or not version 2). */
+  fix: "all" | "none" | "mixed" | string[] | null;
+  /** How many fix flags the shim reported. */
+  fix_total: number | null;
+  text: string;
+}
+
+/** engine/pilot.py disclose() (served as validity.pilot): the identity plus
+ *  its wording. ONE object for every surface: the run summary, the game
+ *  payload, the results index and the prediction payload all carry it, so
+ *  the pilot line and the prediction label cannot disagree. `label` and
+ *  `note` are the words to show; the rest is for logic. */
+export interface Pilot extends PilotIdentity {
+  agent: string | null;
   plan_decks: number | null;
   stock_decks: number | null;
-  plan_version: number | null;
-  plan_fix: string[] | null;
   /** True while any random dial remains in the pilot. */
   random: boolean;
   label: string;
@@ -330,7 +345,8 @@ export interface PredictionReport {
   /** model is predict.model_fingerprint: a rank check applies only to the
    *  fitted model it measured, so a refit starts with no check. */
   model_arm?: { text: string | null; pilot: string; model?: string };
-  pilot?: PredictionPilot;
+  /** The run's pilot: the same object the run summary carries. */
+  pilot?: Pilot;
   pilot_match?: boolean;
   /** One sentence, written by the engine: "Fit on stock Forge games; this
    *  run used Sim Lab's pilot." Render it beside the figures, verbatim. */
@@ -344,15 +360,6 @@ export interface PredictionReport {
   suppressed?: boolean;
   suppressed_by?: "rank_check" | "rank_record_missing" | null;
   suppressed_reason?: string | null;
-}
-
-/** engine/pilot.py run_pilot(): which pilot played the run. */
-export interface PredictionPilot {
-  id: string;
-  kind: "stock" | "plan" | "mixed" | "unknown";
-  shim: string | null;
-  plan_version: number | null;
-  text: string;
 }
 
 export interface SimResult {

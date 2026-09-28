@@ -194,6 +194,9 @@ Regent's wipe, Tribute plus five mana creatures): those are the 8 agreements.
 
 ## Analyzer defects, for the lead to route (not fixed here)
 
+(Added 2026-09-28: D1, D2 and T1 have since been fixed and D3 documented;
+see "Fixes after the audit" at the end. None of those changes is audited.)
+
 Knockout pass-rule fields (turn, cause, killer): **no defect found** in 40
 scored items, nor in the 23 unscored ones (see "Supplementary").
 
@@ -373,3 +376,94 @@ py studies/knockout_audit/run_analyzer.py <runs_dir> analyzer_output.json
 py studies/knockout_audit/score.py analyzer_output.json --out=items.json
 py studies/knockout_audit/score.py analyzer_output.json --self-mode=null
 ```
+
+## Fixes after the audit
+
+Made 2026-09-28 on branch `r3/audit-fixes`, after this audit was scored,
+from the defects above. `engine/qa/knockouts.py` is now blob
+**`026ce30ffef888316cd0781cbbe3037840e6a50d`** (`context.py` unchanged);
+`engine/game_story.py` carries the display rules. Everything above this
+section describes the audited blob `16ff99d`, and `analyzer_output.json` and
+`items.json` are left as that blob produced them.
+
+**Nothing in this section is audited.** The fixes were designed from the
+disagreements on these items, so agreement on the same items is no evidence
+that they are right on other games; a re-audit needs a fresh draw (PREREG,
+"Pass thresholds and what follows").
+
+### What changed
+
+| Defect | Change | Where |
+|---|---|---|
+| D1 | A poison knockout whose lethal counters came without damage now names what gave them: the resolution Forge writes right after the "receives N poison counter" line (a spell or activated ability by its own head, such as Karn's Bastion; a trigger by the stack line it pairs with, such as Etali, Primal Sickness, matched on the text before Forge's trailing tags; the `[Damage Source: ...]` tag supplies the instance number). Counters with no resolution behind them (toxic combat damage) still name no card. `by` stays Forge's own "from P", as scored here. | `_poison_knockout`, `_counter_resolution`, `_counter_source` |
+| D2 | A card tie goes to the name that hit first (READER.md's rule). | `_main_source` |
+| D3 | **Kept.** Damage is still summed by card name, so "Goblin Token" can stand for six of them. The convention is written into the module docstring ("Card"), the game-story payload docs and the web types: the card is a name, is not audited, and any surface that shows it words it as the name that dealt the most damage, never as the creature that did it. No page shows a damage card today; the only knockout card on a page is an alternate win's spell, quoted from Forge's loss line. | docstrings only |
+| T1 | A turning point whose winner's raw (unsmoothed) share did not rise on the turn picked is withheld (null). The next-best turn is not promoted in its place, which would be a new selection. | `turning_point` |
+| T2 | Not fixable by construction. The shipped label is now **"Biggest board swing"** (`MTG_TURNING_POINT=swing`), and the results page's note says what it counts: creatures at their power as they entered, so burn, auras, equipment, later counters and alternate wins never move it. | `game_story.LABELS`, `web/lib/story.ts` |
+| Path | The turning point is **held on every stdout run** (inferred board; 1 of 8 here) in every switch mode. The analyzer still computes it there, for `/analysis` and a future re-audit. | `game_story._public_turning_point` |
+
+`MTG_TURNING_POINT` keeps its three values: `swing` (the default, "Biggest
+board swing"), `audited` ("Turning point", reserved for a re-audit that
+passes) and `off`. `ANALYSIS_VERSION` is 7, so cached `/analysis` reports
+from the audited blob are recomputed.
+
+### What was checked (regression only)
+
+On the audited reading set (22 games, 63 knockouts), fixed blob against
+audited blob:
+- **Turn, cause, killer, round and dating are identical on all 63
+  knockouts.** The pass-rule score is 39 of 40, as before.
+- **Card: 27 to 33 of 40.** The five D1 and D2 items now match the readers
+  (S-g05 Meren Karn's Bastion; T-g01 NanMan Etali, Primal Sickness; R-g05
+  Krenko Bird Illusion Token; S-g01 Meren Deathbringer Regent; T-g03 NanMan
+  Klothys, God of Destiny), and so does S-g06 Atraxa, a D3 item whose tie
+  the first-hit rule now settles (Carrion Feeder). One unscored knockout's
+  card changed by the same tie rule (T-g07 Dnide: Siona, Captain of the
+  Pyleas). The seven remaining differences are the readers naming an
+  enabling card (R-g01 twice, S-g03 twice, T-g03 Shelly), a card for a
+  deck-out (S-g06 Ur-Dragon), and the D3 convention (R-g08 Skrat).
+- **Turning point: 8 of 20, unchanged.** Only T-g04 moved: its pick (turn 13,
+  raw 100% to 100%) is now withheld, and it still disagrees. Under the
+  shipped rules these 20 games show the 12 shim picks exactly as scored (7 of
+  12 agree) and hold the 8 stdout ones.
+
+Across the whole local corpus (61 result files, 579 games, 1,354 knockouts;
+not audited, read only to see what moved):
+- Turn, cause, round, seq and dating are unchanged on every knockout.
+- **One killer changed, and the fix is right by Forge's own line.** In
+  `sim_20260801_190949_rotated.json` game 7, Meren's tenth poison counter
+  came from Atraxa's Tezzeret's Gambit proliferate on turn 35 ("receives 1
+  poison counter from Ai(2)-Atraxa Counters B3"); the audited blob, finding
+  no poison damage that turn, took the card and the killer from Kilo's
+  Inkmoth Nexus hit on turn 34 (its `basis` is now `log`, from that line,
+  where it was `zones`). That game is not in this audit's sample.
+  This is a change to an audited field on 1 of 1,354 knockouts, and it is
+  unaudited like the rest.
+- The card changed on 133 knockouts: 86 exact ties now going to the first
+  hit (each checked to be an equal total), 40 poison knockouts that had no
+  card (D1: proliferates such as Karn's Bastion, Viral Drake, Surge Conductor
+  and Inexorable Tide; triggers such as Etali's and Poisonous), and 7 poison
+  knockouts whose card changed: 6 had named an infect hit that did not give
+  the lethal counter (it came afterwards, without damage), and 1 the later
+  of tied infect hits.
+- Turning points: 22 of 481 withheld by the raw-rise rule (20 stdout, 2
+  shim). No other turning point changed.
+
+A known effect of the T1 rule, recorded so it is not mistaken for a bug: a
+wipe of the opponents' creatures while the winner has none reads 0% before
+and 0% after, so that turn cannot be the biggest board swing, although a
+reader might name it the turn the game turned. `test_qa_knockouts.py`
+pins it.
+
+### The plan consequence is unchanged
+
+- **Knockout turn, cause and killer: audited** (39 of 40) and shipped
+  (`MTG_KNOCKOUT_DETAIL=on`). One killer outside the sample changed after
+  the audit, as above.
+- **Knockout card: unaudited.** D1 and D2 changed it after the audit; it
+  stays off the pages except as an alternate win's quoted spell.
+- **Turning point: failed.** It ships as "Biggest board swing" on shim runs
+  only, withheld where the raw share did not rise, or the owner holds it
+  with `MTG_TURNING_POINT=off`. It can be labelled "Turning point" only
+  after a re-audit on a fresh draw passes, and that re-audit should score
+  the rules above (a withheld pick counts as the analyzer naming no turn).

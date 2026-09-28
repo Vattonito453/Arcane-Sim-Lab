@@ -218,6 +218,9 @@ def main() -> None:
     two_heads = json.loads(json.dumps(base))
     two_heads["seats"][0]["hand"].append({"card": "Sol Ring", "token": "c_a_treasure_sac"})
     bad_cases["card and token"] = two_heads
+    zero = json.loads(json.dumps(base))
+    zero["seats"][3]["life"] = 0
+    bad_cases["life 0 (Forge's GameState indexes past the removed seat)"] = zero
     for name, case in bad_cases.items():
         case["_path"] = str(REPO / "studies/scenarios/spike/spike_4p.json")
         try:

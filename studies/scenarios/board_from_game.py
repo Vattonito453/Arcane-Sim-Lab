@@ -197,7 +197,15 @@ def build(path: Path, game: int, turn: int, sid: str, deck_dir: Path | None,
             hosts[cid] = cands[0][0]
             labels.setdefault(cands[0][0], f"c{cands[0][0]}")
     for i, p in enumerate(players):
-        seat = {"deck": _rel(decks[i]), "life": life.get(p, 40),
+        hp = life.get(p, 40)
+        if hp == 0:
+            # A seat at 0 has already lost. Forge's GameState crashes on a
+            # life of 0 in a multiplayer state (writer.validate says why); at
+            # -1 the seat loses at the game's first state-based check, as it
+            # had in the game.
+            notes.append(f"{p} had already lost (life 0); written at -1, which GameState can load.")
+            hp = -1
+        seat = {"deck": _rel(decks[i]), "life": hp,
                 "lands_played": snap["lands_played"].get(p, 0),
                 "battlefield": [], "hand": [], "graveyard": [], "exile": []}
         for cid, c in bf_by_player[p]:

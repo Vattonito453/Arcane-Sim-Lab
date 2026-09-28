@@ -217,6 +217,14 @@ def validate(sc: dict) -> None:
             raise ScenarioError(f"seat {i}: unknown keys {sorted(bad)}")
         if "deck" not in seat:
             raise ScenarioError(f"seat {i}: deck is required")
+        if int(seat.get("life", 40)) == 0:
+            # Forge's GameState sets a life of 0 before its state-based
+            # check, which removes that seat, then indexes past the end of
+            # the shortened player list (IndexOutOfBoundsException, measured
+            # on 2 C1 boards). A negative life is set after that check, and
+            # the seat loses at the game's first one.
+            raise ScenarioError(f"seat {i}: life 0 crashes Forge's GameState; write a negative life "
+                                f"for a seat that has already lost")
         for z in ZONES:
             if z == "library" and isinstance(seat.get(z), dict):
                 lib = seat[z]

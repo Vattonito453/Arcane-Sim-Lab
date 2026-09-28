@@ -123,6 +123,16 @@ def targets(ran: list[dict]) -> dict[str, Counter]:
     return tot
 
 
+def wilson(k: int, n: int, z: float = 1.96) -> list[float] | None:
+    if not n:
+        return None
+    p = k / n
+    d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = z * (p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5 / d
+    return [round(max(0.0, c - h), 3), round(min(1.0, c + h), 3)]
+
+
 def f(v) -> str:
     return "–" if v is None else str(v)
 
@@ -150,6 +160,8 @@ def main() -> None:
     ap.add_argument("--suite", type=Path, nargs="*", default=[])
     ap.add_argument("--s8", type=Path, nargs="*", default=[])
     ap.add_argument("--c1", type=Path, nargs="*", default=[])
+    ap.add_argument("--c1-supplement", type=Path, nargs="*", default=[],
+                    help="C1 runs with several trials per board (every trial counted, per board)")
     ap.add_argument("--timing", type=Path, nargs="*", default=[])
     ap.add_argument("--json", type=Path, default=HERE / "baseline.json")
     ap.add_argument("--md", type=Path, help="also write the tables to this file (UTF-8)")
@@ -240,6 +252,34 @@ def main() -> None:
                              f"{f(t.get('extra_combats_scenario_turn'))}")
             md.append(f"| {sid} | {g['turn']} | {'yes' if g['won_within_horizon'] else 'no'} / "
                       f"{'yes' if g['won_on_attach_turn'] else 'no'} ({g['end_turn']}) | " + " | ".join(cells) + " |")
+    # C1 supplement: several trials per board, every trial counted.
+    sup = load(args.c1_supplement)
+    if sup:
+        src = json.loads((HERE / "c1" / "sources.json").read_text(encoding="utf-8"))
+        by_id = {c["id"]: c for c in src["chosen"]}
+        out["c1_supplement"] = {"runs": sup["runs"]}
+        for arm in sup["arms"]:
+            rows, k_all, n_all = [], 0, 0
+            split = {True: [0, 0], False: [0, 0]}
+            for sid, s in sup["scenarios"].items():
+                ran = [t for t in s["arms"][arm]["trials"] if t.get("has_result")]
+                k = sum(bool(t.get("success")) for t in ran)
+                g = by_id[sid]["won_within_horizon"]
+                split[g][0] += k
+                split[g][1] += len(ran)
+                k_all, n_all = k_all + k, n_all + len(ran)
+                rows.append({"id": sid, "won_within_8": k, "trials": len(ran),
+                             "won_on_scenario_turn": sum(bool(t.get("kill_on_scenario_turn")) for t in ran),
+                             "loaded": sum(bool(t.get("loaded")) for t in ran),
+                             "line_loaded": sum(bool(t.get("line_loaded")) for t in ran),
+                             "in_game_won_within_8": g})
+            out["c1_supplement"][arm] = {
+                "won_within_8": k_all, "trials": n_all, "wilson95": sup["scenarios"] and wilson(k_all, n_all),
+                "on_boards_the_game_won": split[True], "on_boards_it_did_not": split[False],
+                "boards": table_of(rows)}
+            md += ["", f"C1 supplement ({arm}): {k_all}/{n_all} won within 8 turns; "
+                       f"{split[True][0]}/{split[True][1]} on the boards the game won, "
+                       f"{split[False][0]}/{split[False][1]} on the others."]
     text = "\n".join(md) + "\n"
     sys.stdout.reconfigure(encoding="utf-8")
     print(text)

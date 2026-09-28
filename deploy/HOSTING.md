@@ -373,6 +373,14 @@ code change:
 | `MTG_TURNING_POINT` | `swing`: labelled "Biggest swing" (audit not passed); `audited`: labelled "Turning point"; `off`: not shown (held) | `swing` |
 | `MTG_KNOCKOUT_DETAIL` | `on`: each knockout's cause and killer shown; `off`: who went out, and when, only | `on` |
 
+The week-3 audit has reported (`studies/knockout_audit/RESULTS.md`), and
+both defaults are its result, so R1 sets neither variable. Knockouts passed
+(39 of 40 against the 38 required), so cause and killer ship
+(`MTG_KNOCKOUT_DETAIL=on`). The turning point failed (8 of 20 against the 16
+required), so it keeps the "Biggest swing" label (`MTG_TURNING_POINT=swing`);
+`audited` stays off-limits until a refined analyzer passes a re-audit on a
+fresh draw.
+
 Set them in `deploy/.env`, then `docker compose --env-file .env up -d api`
 (no rebuild; compose passes both through). Browsers pick the change up
 within 5 minutes (the summary and game payloads are `max-age=300`).

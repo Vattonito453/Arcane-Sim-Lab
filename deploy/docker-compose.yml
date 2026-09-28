@@ -48,9 +48,11 @@ services:
       MTG_COACH_PER_HOUR: ${MTG_COACH_PER_HOUR:-20}
       # Game-story display switches (engine/game_story.py), set from the
       # week-3 knockout / turning-point hand audit without a code change.
-      #   MTG_TURNING_POINT   swing = "Biggest swing" (not audited, default),
-      #                       audited = "Turning point", off = held
-      #   MTG_KNOCKOUT_DETAIL on = cause and killer shown (default), off = hidden
+      #   MTG_TURNING_POINT   swing = "Biggest swing" (default; the audit
+      #                       failed it, 8/20), audited = "Turning point",
+      #                       off = held
+      #   MTG_KNOCKOUT_DETAIL on = cause and killer shown (default; the audit
+      #                       passed knockouts, 39/40), off = hidden
       MTG_TURNING_POINT: ${MTG_TURNING_POINT:-swing}
       MTG_KNOCKOUT_DETAIL: ${MTG_KNOCKOUT_DETAIL:-on}
       # Playtesters' flags-only keys ("label:key,label:key"): each can POST

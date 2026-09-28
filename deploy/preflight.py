@@ -748,11 +748,14 @@ def main(argv):
     if isinstance(sw, dict):
         tp = sw.get("turning_point")
         print("  %-6s %-30s %s" % ("info", "MTG_TURNING_POINT", "%s: %s" % (
-            tp, {"swing": 'labelled "Biggest swing" (audit not passed yet)',
-                 "audited": 'labelled "Turning point" (audit passed)',
+            tp, {"swing": 'labelled "Biggest swing" (the week-3 audit failed the '
+                          'turning point, 8 of 20; studies/knockout_audit/RESULTS.md)',
+                 "audited": 'labelled "Turning point" (only after a re-audit passes: '
+                            'the week-3 audit failed it, 8 of 20)',
                  "off": "held: not shown"}.get(tp, "?"))))
         print("  %-6s %-30s %s" % ("info", "MTG_KNOCKOUT_DETAIL",
-                                   "on: cause and killer shown" if sw.get("knockout_detail")
+                                   "on: cause and killer shown (the week-3 audit passed "
+                                   "knockouts, 39 of 40)" if sw.get("knockout_detail")
                                    else "off: who went out and when only"))
         if sw.get("invalid"):
             print("  %-6s %-30s unrecognised value in %s; the default is in force" % (

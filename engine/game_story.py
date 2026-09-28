@@ -51,11 +51,17 @@ scorecards' "how it won" (/results/{file}/scorecards, served immutable).
 unswitched; no page renders those. If the knockout audit fails, hiding the
 per-game cause here does not hide those aggregates.
 
-    MTG_TURNING_POINT    swing (default)  label "Biggest swing": the audit
-                                          has not passed yet
+    MTG_TURNING_POINT    swing (default)  label "Biggest swing": the week-3
+                                          audit failed the turning point (8 of
+                                          20 against the 16 required;
+                                          studies/knockout_audit/RESULTS.md),
+                                          so this stays until a re-audit on a
+                                          fresh draw passes
                          audited          label "Turning point"
                          off              no turning point at all (held)
-    MTG_KNOCKOUT_DETAIL  on (default)     cause and killer shown
+    MTG_KNOCKOUT_DETAIL  on (default)     cause and killer shown; the week-3
+                                          audit passed knockouts (39 of 40
+                                          against the 38 required)
                          off              cause, by and card are null; who
                                           went out, and when, still ship
 

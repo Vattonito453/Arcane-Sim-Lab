@@ -140,6 +140,28 @@ def deck_labels_present(body):
     return True, "%s" % labels[:3]
 
 
+def game_story_ok(body):
+    """Every game carries its story (engine/game_story.py), and the run its
+    commanders and pilot. A 200 without them is an engine older than R1, or
+    one whose analyzer failed on every game (all stories empty)."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    games = body.get("games") or []
+    if not games or not all(isinstance(g.get("knockouts"), list) and "turning_point" in g
+                            for g in games):
+        return False, "games carry no knockouts/turning_point (engine older than R1?)"
+    if not isinstance(body.get("commanders"), dict) or not (body.get("pilot") or {}).get("label"):
+        return False, "commanders or pilot missing"
+    decided = [g for g in games if (g.get("result") or {}).get("winner")
+               and not (g.get("result") or {}).get("draw")]
+    if decided and not any(g["knockouts"] for g in decided):
+        return False, "no knockouts in any decided game: the analyzer failed on every one"
+    story = body.get("story") or {}
+    return True, "label=%s detail=%s pilot=%s" % (
+        story.get("turning_point_label"), story.get("knockout_detail"),
+        body["pilot"].get("kind"))
+
+
 def analysis_ok(body):
     """The wincon report, from an engine that carries qa.knockouts.
 
@@ -232,6 +254,15 @@ def surfaces(run, deck):
             "path": "/results/%s/summary" % run,
             "check": deck_labels_present,
             "note": "deck pickers must never render a server path",
+        },
+        {
+            "name": "game story",
+            "intent": "live",
+            "path": "/results/%s/summary" % run,
+            "check": game_story_ok,
+            "note": "knockouts, out seats, turning point, commanders and pilot "
+                    "(engine/game_story.py; MTG_TURNING_POINT / MTG_KNOCKOUT_DETAIL "
+                    "set what is shown)",
         },
         {
             "name": "deck scorecards",
@@ -447,7 +478,8 @@ IMAGE_FILES = [
 # Modules that must IMPORT in the image, not merely exist on disk. analysis.py
 # imports engine/qa/ at module load, so a missing or broken package would take
 # /analysis down at request time while every file check above passed.
-IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard"]
+IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard", "game_story",
+                 "commanders"]
 
 
 def _engine_dir():
@@ -582,6 +614,27 @@ def main(argv):
     print("\nDELIBERATELY OFF (not failures)")
     for s in off:
         print("  off    %-30s %s" % (s["name"], s["reason"]))
+
+    # The game-story display switches (engine/game_story.py) are set from the
+    # week-3 hand audit, without a code change, so their state is printed
+    # rather than asserted.
+    st, health = fetch(args.base, "/health")
+    sw = health.get("story") if (st == 200 and isinstance(health, dict)) else None
+    print("\nGAME STORY SWITCHES (set from the knockout / turning-point audit)")
+    if isinstance(sw, dict):
+        tp = sw.get("turning_point")
+        print("  %-6s %-30s %s" % ("info", "MTG_TURNING_POINT", "%s: %s" % (
+            tp, {"swing": 'labelled "Biggest swing" (audit not passed yet)',
+                 "audited": 'labelled "Turning point" (audit passed)',
+                 "off": "held: not shown"}.get(tp, "?"))))
+        print("  %-6s %-30s %s" % ("info", "MTG_KNOCKOUT_DETAIL",
+                                   "on: cause and killer shown" if sw.get("knockout_detail")
+                                   else "off: who went out and when only"))
+        if sw.get("invalid"):
+            print("  %-6s %-30s unrecognised value in %s; the default is in force" % (
+                "warn", "switch value", ", ".join(sw["invalid"])))
+    else:
+        print("  %-6s %-30s engine older than R1 (no story in /health)" % ("info", "switches"))
 
     # Deployment invariants. The probe run IS the newest result (pick_run), so
     # the shim check reads the same file the surfaces above were probed on.

@@ -46,6 +46,13 @@ services:
       MTG_READ_PER_MIN: ${MTG_READ_PER_MIN:-240}
       MTG_ASK_PER_HOUR: ${MTG_ASK_PER_HOUR:-30}
       MTG_COACH_PER_HOUR: ${MTG_COACH_PER_HOUR:-20}
+      # Game-story display switches (engine/game_story.py), set from the
+      # week-3 knockout / turning-point hand audit without a code change.
+      #   MTG_TURNING_POINT   swing = "Biggest swing" (not audited, default),
+      #                       audited = "Turning point", off = held
+      #   MTG_KNOCKOUT_DETAIL on = cause and killer shown (default), off = hidden
+      MTG_TURNING_POINT: ${MTG_TURNING_POINT:-swing}
+      MTG_KNOCKOUT_DETAIL: ${MTG_KNOCKOUT_DETAIL:-on}
       # Rules-assistant generation; absent = /ask degrades to plain search.
       MTG_LLM_API_KEY: ${MTG_LLM_API_KEY:-}
       MTG_LLM_MODEL: ${MTG_LLM_MODEL:-claude-haiku-4-5}

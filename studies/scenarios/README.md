@@ -311,4 +311,6 @@ off to isolate the choice under test). Baselines, verdicts and anomalies:
 - `tests/test_writer.py`, `tests/test_report.py`.
 - `SPIKE.md`: the gate.
 - `board_from_game.py`: a scenario board from a real shim game.
-- `suite/`, `BASELINE.md`: the initial suite and its baselines.
+- `suite/`, `BASELINE.md`: the initial suite and its baselines;
+  `suite/compile_baseline.py` turns run directories (one per arm) into
+  BASELINE.md's tables and the committed `suite/baseline.json`.

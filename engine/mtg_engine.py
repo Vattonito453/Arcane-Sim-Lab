@@ -814,18 +814,29 @@ def _read_result_prediction(name: str) -> dict:
     error, and a plain-language explanation. Degrades honestly: if no model
     has been fitted, or a deck file cannot be found, it says so rather than
     inventing a figure.
+
+    Pilot honesty (repair plan WS11 task 11, decision 19): every answer from
+    a fitted model carries model_arm, pilot, pilot_match, label, rank_check
+    and suppressed. A run whose pilot's latest committed rank check failed
+    (engine/models/rank_checks.json) gets no figures at all: available is
+    false, suppressed is true and suppressed_reason says why.
     """
     data = _read_result(name)
     summary = data.get("summary") or {}
     rates = summary.get("win_rates") or {}
     try:
-        from predict import Predictor, deck_features
+        from predict import Predictor, deck_features, load_rank_checks, pilot_honesty
+        from pilot import run_pilot
     except Exception as e:  # pragma: no cover - import guard
         return {"file": name, "available": False, "reason": f"predict unavailable: {e}"}
     model = Predictor.load()
     if model is None:
         return {"file": name, "available": False,
                 "reason": "no fitted model; run studies/precon_predict/analyze.py"}
+    honesty = pilot_honesty(model.m, run_pilot(data.get("meta")), load_rank_checks())
+    if honesty["suppressed"]:
+        return {"file": name, **honesty, "available": False,
+                "reason": honesty["suppressed_reason"], "decks": []}
     # Display name -> deck file. summary.win_rates is keyed by the deck's
     # DISPLAY name ("Ur-Dragon B3"), while _find_deck wants a filename, so
     # every lookup used to miss and every row came back "deck file not
@@ -885,7 +896,7 @@ def _read_result_prediction(name: str) -> dict:
         except Exception as e:
             row.update(available=False, reason=str(e))
         decks.append(row)
-    return {"file": name, "available": True, "decks": decks,
+    return {"file": name, **honesty, "available": True, "decks": decks,
             "model": {"features": model.features,
                       "basis": model.m.get("ground_truth"),
                       "trained_on_decks": model.m.get("n_decks"),
@@ -1353,8 +1364,12 @@ def serve(port: int = 8484) -> None:
                         if len(parts) >= 3 and parts[2] == "summary":
                             return self._send(_read_result_summary(parts[1]), cache=IMMUTABLE)
                         if len(parts) >= 3 and parts[2] == "prediction":
-                            return self._send(_read_result_prediction(parts[1]),
-                                              cache=IMMUTABLE)
+                            # No immutable header: the answer depends on the
+                            # committed rank checks as well as the result, and a
+                            # failed check must withdraw a prediction that a
+                            # browser already holds (decision 19). Same reasoning
+                            # as /analysis below; the computation is cheap.
+                            return self._send(_read_result_prediction(parts[1]))
                         if len(parts) >= 3 and parts[2] == "scorecards":
                             return self._send(_read_result_scorecards(parts[1]),
                                               cache=IMMUTABLE)

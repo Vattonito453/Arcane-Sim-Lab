@@ -208,6 +208,126 @@ def load_default():
     return Predictor.load()
 
 
+# ---- pilot honesty (repair plan WS11 task 11, decision 19) ----------
+# The model was fitted on stock Forge games; every production run is piloted
+# by Sim Lab's plan agent. So every prediction carries the model's arm, the
+# run's pilot, whether they match and a label, and a pilot whose latest rank
+# check failed gets no prediction at all. The checks are committed records
+# (rank_checks.json), written by a study's reader, never by hand-editing a
+# threshold into code.
+
+DEFAULT_RANK_CHECKS = MODEL_DIR / "rank_checks.json"
+
+
+def model_pilot(model: dict) -> str:
+    """The pilot id (engine/pilot.py) of the games a model was fitted on.
+
+    `arm_pilot` is explicit on the shipped model; a model without it is read
+    from its `arm` text, and only a stock arm is recognised that way."""
+    explicit = model.get("arm_pilot")
+    if explicit:
+        return str(explicit)
+    return "stock" if str(model.get("arm") or "").lower().startswith("stock") else "unknown"
+
+
+def load_rank_checks(path=None) -> list[dict] | None:
+    """The committed rank-check records, in file order.
+
+    Accepts {"checks": [...]} (the committed layout, which has room for a note)
+    or a bare list. None when the file is missing or unreadable: the caller
+    must then fail closed, because an absent record cannot show that a
+    pilot's latest check did not fail."""
+    p = Path(path or DEFAULT_RANK_CHECKS)
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    checks = data.get("checks") if isinstance(data, dict) else data
+    if not isinstance(checks, list):
+        return None
+    return [c for c in checks if isinstance(c, dict)]
+
+
+def latest_check(checks: list[dict], pilot_id: str) -> dict | None:
+    """The most recent record for this pilot: latest date, and the later
+    line in the file when two share a date (a re-check appends)."""
+    best, best_key = None, None
+    for i, c in enumerate(checks):
+        if c.get("pilot") != pilot_id:
+            continue
+        key = (str(c.get("date") or ""), i)
+        if best_key is None or key > best_key:
+            best, best_key = c, key
+    return best
+
+
+def _fmt_check(c: dict) -> str:
+    """"R1, 2026-10-16: rank correlation 0.47 against a threshold of 0.40"."""
+    where = ", ".join(str(x) for x in (c.get("release"), c.get("date")) if x)
+    try:
+        figures = (f"rank correlation {float(c['value']):.2f} against a "
+                   f"threshold of {float(c['threshold']):.2f}")
+    except (KeyError, TypeError, ValueError):
+        figures = "figures not recorded"
+    return f"{where}: {figures}" if where else figures
+
+
+def pilot_honesty(model: dict, pilot: dict, checks: list[dict] | None) -> dict:
+    """Label, match and suppression for one run.
+
+    pilot is engine/pilot.run_pilot(meta); checks is load_rank_checks().
+    Suppressed only when the latest check for the run's pilot failed, or when
+    the record itself is missing (fail closed). A pilot with no check keeps
+    the label and says so; the model's own pilot needs no check."""
+    arm_pilot = model_pilot(model)
+    match = pilot.get("id") == arm_pilot
+    fit_on = ("stock Forge games" if arm_pilot == "stock"
+              else f"games from {model.get('arm') or 'another pilot'}")
+    kind = pilot.get("kind")
+    if match:
+        label = (f"Fit on {fit_on}; this run used stock Forge too." if arm_pilot == "stock"
+                 else f"Fit on {fit_on}, the same pilot as this run.")
+    elif kind == "plan":
+        label = f"Fit on {fit_on}; this run used Sim Lab's pilot."
+    elif kind == "mixed":
+        label = f"Fit on {fit_on}; this run mixed Sim Lab's pilot with stock Forge seats."
+    elif kind == "stock":
+        label = f"Fit on {fit_on}; this run used stock Forge."
+    else:
+        label = f"Fit on {fit_on}; this run does not record its pilot."
+
+    suppressed, reason, by = False, None, None
+    if match:
+        rank = {"status": "model_arm",
+                "text": "This run used the pilot the model was fitted on."}
+    elif checks is None:
+        rank = {"status": "unreadable",
+                "text": "The rank-check record is missing from this deployment."}
+        suppressed, by = True, "rank_record_missing"
+        reason = ("The rank-check record is missing from this deployment, so there "
+                  "is no way to confirm the model still ranks decks under this "
+                  "run's pilot.")
+    else:
+        rec = latest_check(checks, str(pilot.get("id")))
+        if rec is None:
+            rank = {"status": "none",
+                    "text": "No rank check has been run for this pilot yet."}
+        elif rec.get("pass") is True:
+            rank = {"status": "pass", "record": rec,
+                    "text": f"Rank check passed for this pilot ({_fmt_check(rec)})."}
+        else:
+            rank = {"status": "fail", "record": rec,
+                    "text": f"Rank check failed for this pilot ({_fmt_check(rec)})."}
+            suppressed, by = True, "rank_check"
+            reason = (f"The rank check for this pilot failed ({_fmt_check(rec)}), so the "
+                      f"model no longer ranks decks reliably under it. The prediction "
+                      f"is withheld for this pilot until the model is refit.")
+    return {"model_arm": {"text": model.get("arm"), "pilot": arm_pilot},
+            "pilot": pilot, "pilot_match": match, "label": label,
+            "rank_check": rank, "suppressed": suppressed,
+            "suppressed_by": by, "suppressed_reason": reason}
+
+
 if __name__ == "__main__":
     import sys
     p = Predictor.load()

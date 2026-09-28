@@ -1,0 +1,4 @@
+{
+ "about": "Rank checks of the playgroup prediction model (precon_predict.json) under each pilot: repair plan WS11 task 11, decision 19. One record per check, appended by the study's reader (studies/rank_check_r1/read_rank_check.py --write-record) and never edited afterwards. GET /results/{file}/prediction reads the latest record whose pilot equals the run's pilot id (engine/pilot.py): pass keeps the label, fail withholds the prediction for that pilot until the model is refit, no record keeps the label and says no check has been run. Fields: release, date, pilot, jar_sha, plan_version, metric, value, threshold, pass, n_decks, games, study, prereg_commit.",
+ "checks": []
+}

@@ -103,15 +103,34 @@ def has_keys(*keys):
     return check
 
 
-def available_true(body):
-    """For endpoints that self-report readiness with {"available": bool}."""
+def prediction_ok(body):
+    """The playgroup prediction, with its pilot label (WS11 task 11).
+
+    Live means one of two things: figures with the label that says which
+    pilot the model was fitted on, or a prediction withheld because the
+    committed rank check for the run's pilot failed. The second is a decision
+    (decision 19), recorded in engine/models/rank_checks.json, not a dark
+    surface. A withheld prediction because that record is MISSING from the
+    image is a failure, and so is an answer with no label (an engine older
+    than R1)."""
     if not isinstance(body, dict):
         return False, "expected an object"
+    if "label" not in body or "pilot" not in body:
+        if body.get("available") is False:
+            return False, "available=%s reason=%s" % (
+                body.get("available"), body.get("reason"))
+        return False, "no pilot label (engine older than R1?)"
+    pilot = (body.get("pilot") or {}).get("id")
+    if body.get("suppressed"):
+        if body.get("suppressed_by") == "rank_check":
+            return True, "withheld by rank check for pilot %s: %s" % (
+                pilot, body.get("suppressed_reason"))
+        return False, "withheld: %s" % body.get("suppressed_reason")
     if body.get("available") is True:
         n = len(body.get("decks") or [])
-        return True, "available, %d decks scored" % n
-    return False, "available=%s reason=%s" % (
-        body.get("available"), body.get("reason"))
+        return True, "available, %d decks scored; pilot %s; rank check %s" % (
+            n, pilot, (body.get("rank_check") or {}).get("status"))
+    return False, "available=%s reason=%s" % (body.get("available"), body.get("reason"))
 
 
 def kb_loaded(body):
@@ -243,8 +262,9 @@ def surfaces(run, deck):
             "name": "playgroup prediction",
             "intent": "live",
             "path": "/results/%s/prediction" % run,
-            "check": available_true,
-            "note": "needs engine/models/precon_predict.json INSIDE the image",
+            "check": prediction_ok,
+            "note": "needs engine/models/precon_predict.json and rank_checks.json "
+                    "INSIDE the image; a rank-check failure withholds it by design",
         },
         {
             "name": "replay events",
@@ -436,6 +456,8 @@ def shim_at_least_pin(run, meta, pin, pin_source):
 IMAGE_FILES = [
     ("/app/engine/models/precon_predict.json",
      "the fitted prediction model; a top-level COPY glob once missed it"),
+    ("/app/engine/models/rank_checks.json",
+     "rank checks per pilot; without it the prediction is withheld on plan runs"),
     ("/app/rules/kb", "the Comprehensive Rules KB the /ask retrieval reads"),
     ("/app/engine/decks", "bundled decks"),
     ("/app/engine/qa/__init__.py",
@@ -447,7 +469,7 @@ IMAGE_FILES = [
 # Modules that must IMPORT in the image, not merely exist on disk. analysis.py
 # imports engine/qa/ at module load, so a missing or broken package would take
 # /analysis down at request time while every file check above passed.
-IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard"]
+IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard", "pilot", "predict"]
 
 
 def _engine_dir():

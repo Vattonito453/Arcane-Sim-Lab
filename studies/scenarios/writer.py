@@ -256,6 +256,19 @@ def validate(sc: dict) -> None:
             raise ScenarioError(f"success {kind!r} needs {sorted(missing)}")
         if kind == "zone" and (not isinstance(succ["cards"], list) or not succ["cards"]):
             raise ScenarioError("success 'zone' needs a non-empty cards list")
+        if kind == "zone" and int(sc.get("turn", 1)) <= 1:
+            # The shim's zone records written while the state loads carry
+            # turn 1, so a zone success scored from turn 1 would count them.
+            raise ScenarioError("success 'zone' needs a scenario turn above 1 (load-time zone records carry turn 1)")
+    line = sc.get("line")
+    if line is not None:
+        if not isinstance(line, dict) or not isinstance(line.get("seat"), int) \
+                or not 0 <= line["seat"] < len(seats):
+            raise ScenarioError("line needs a seat index")
+        if not isinstance(line.get("pieces"), list) or not all(isinstance(p, str) for p in line["pieces"]):
+            raise ScenarioError("line pieces are a list of card names")
+    if "horizon_turns" in sc and (not isinstance(sc["horizon_turns"], int) or sc["horizon_turns"] < 1):
+        raise ScenarioError("horizon_turns is a whole number of turns, at least 1")
     ids = [c.get("id") for seat in seats for z in ZONES
            for c in _zone_specs(seat, z) if isinstance(c, dict) and "id" in c]
     dup = [k for k, n in Counter(map(str, ids)).items() if n > 1]

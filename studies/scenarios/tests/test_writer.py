@@ -221,6 +221,12 @@ def main() -> None:
     zero = json.loads(json.dumps(base))
     zero["seats"][3]["life"] = 0
     bad_cases["life 0 (Forge's GameState indexes past the removed seat)"] = zero
+    bad_cases["zone success scored from turn 1 (load-time zone records carry turn 1)"] = dict(
+        base, turn=1, success={"type": "zone", "seat": 0, "from": "Library", "to": "Graveyard",
+                               "cards": ["Sol Ring"], "by_turn": 3})
+    bad_cases["line seat out of range"] = dict(base, line={"seat": 4, "pieces": ["Sol Ring"]})
+    bad_cases["line pieces not a list"] = dict(base, line={"seat": 0, "pieces": "Sol Ring"})
+    bad_cases["horizon of 0 turns"] = dict(base, horizon_turns=0)
     for name, case in bad_cases.items():
         case["_path"] = str(REPO / "studies/scenarios/spike/spike_4p.json")
         try:
@@ -230,6 +236,15 @@ def main() -> None:
             continue
         raise AssertionError(f"{name} was accepted")
     print(f"  validation refuses {len(bad_cases)} malformed scenarios: OK")
+    # ... and accepts every committed scenario (validation only: S8's decks
+    # are private, so building it needs $SIMLAB_PRIVATE).
+    committed = sorted((REPO / "studies/scenarios").glob("*/*.json")) + sorted(
+        (REPO / "studies/scenarios/suite/c1").glob("c1_*.json"))
+    committed = [p for p in committed if json.loads(p.read_text(encoding="utf-8")).get("format") == W.FORMAT]
+    for p in committed:
+        W.validate(json.loads(p.read_text(encoding="utf-8")))
+    assert len(committed) >= 32, f"only {len(committed)} committed scenarios found"
+    print(f"  every committed scenario validates ({len(committed)} files): OK")
 
     # 6. A card placed beyond the deck's copies is warned about, not dropped.
     over = json.loads(json.dumps(base))

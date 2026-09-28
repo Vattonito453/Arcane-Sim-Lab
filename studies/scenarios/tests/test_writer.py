@@ -236,6 +236,31 @@ def main() -> None:
     assert any("Sol Ring placed 2x" in w for w in info["warnings"]), info["warnings"]
     print("  over-placement warns: OK")
 
+    # 7. Imprint: the host names the exiled card, the exiled card names its host.
+    imp = json.loads(json.dumps(base))
+    imp["_path"] = base_path
+    imp["seats"][0]["battlefield"].append({"card": "Isochron Scepter", "id": "scepter", "imprinting": "rev"})
+    imp["seats"][0]["exile"] = [{"card": "Dramatic Reversal", "id": "rev", "exiled_with": "scepter"}]
+    W.validate(imp)
+    text_i, info_i = W.build(imp, seed=0)
+    st_i = dict(l.split("=", 1) for l in text_i.splitlines())
+    scepter = [c for c in st_i["p0battlefield"].split(";") if c.startswith("Isochron Scepter")][0]
+    rev = st_i["p0exile"]
+    sid = scepter.split("Id:")[1].split("|")[0]
+    rid = rev.split("Id:")[1].split("|")[0]
+    assert f"Imprinting:{rid}" in scepter and f"ExiledWith:{sid}" in rev, (scepter, rev)
+    assert any("Isochron Scepter placed 1x, deck holds 0" in w for w in info_i["warnings"])
+    back = W.state_to_seat_specs(W.parse_state(text_i))[0]
+    assert {"card": "Dramatic Reversal", "id": f"id{rid}", "exiled_with": f"id{sid}"} in back["exile"]
+    dang = json.loads(json.dumps(imp))
+    dang["seats"][0]["exile"][0]["exiled_with"] = "nobody"
+    try:
+        W.build(dang, seed=0)
+        raise AssertionError("dangling exiled_with accepted")
+    except W.ScenarioError:
+        pass
+    print("  imprint (Imprinting / ExiledWith), inverse parse, dangling reference refused: OK")
+
     print("writer: ALL ASSERTIONS PASSED")
 
 

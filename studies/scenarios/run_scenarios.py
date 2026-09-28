@@ -205,6 +205,24 @@ def check_board(info: dict, rec: dict) -> list[str]:
     return diffs
 
 
+def zone_moves(recs: list[dict], seat: str | None, frm: str, to: str, first_turn: int,
+               last_turn: int) -> list[str]:
+    """Card names the seat moved from zone frm to zone to, in order, from the
+    shim's zone records stamped first_turn..last_turn. The records written
+    while the state loads carry turn 1, so a scenario turn above 1 excludes
+    them. The seat is the zone's owner: fromPlayer, or toPlayer when the
+    move starts on the stack."""
+    out = []
+    for r in recs:
+        if r.get("rec") != "zone" or r.get("from") != frm or r.get("to") != to:
+            continue
+        if not first_turn <= int(r.get("turn", 0)) <= last_turn:
+            continue
+        if (r.get("fromPlayer") or r.get("toPlayer")) == seat:
+            out.append(r.get("card"))
+    return out
+
+
 def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     """One trial's JSONL (and its .err / .cell.json) -> the report row."""
     t = {"file": path.name, "ran": path.exists()}
@@ -243,8 +261,26 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
     succ = sc.get("success")
     target = succ["seat"] if succ else win_seat
     won = win_seat is not None and win_seat == target
-    t["success"] = bool(succ and won and t.get("turns") is not None
-                        and t["turns"] <= int(succ.get("by_turn", 10 ** 6)))
+    stype = (succ or {}).get("type", "win")
+    by_turn = int((succ or {}).get("by_turn", 10 ** 6))
+    if stype == "zone":
+        # A named card moved between two zones for the seat (a tutor's pick):
+        # zone records from the scenario turn to by_turn, in the order Forge
+        # moved them.
+        seat_name = players[succ["seat"]] if succ["seat"] < len(players) else None
+        moves = zone_moves(recs, seat_name, succ["from"], succ["to"], s_turn, by_turn)
+        t["zone_moves"] = moves[:10]
+        t["zone_first"] = moves[0] if moves else None
+        wanted = set(succ["cards"])
+        t["success"] = bool(moves and moves[0] in wanted) if succ.get("first") else \
+            any(m in wanted for m in moves)
+    elif stype == "alive":
+        # The seat has not lost when the game ends (the scenario caps the game
+        # at by_turn through horizon_turns): for "do not kill yourself" tests.
+        alive = t.get("alive") or []
+        t["success"] = bool(res and succ["seat"] < len(alive) and alive[succ["seat"]])
+    else:
+        t["success"] = bool(succ and won and t.get("turns") is not None and t["turns"] <= by_turn)
     t["kill_on_scenario_turn"] = bool(won and t.get("turns") == s_turn)
     t["turns_to_kill"] = (t["turns"] - s_turn) if (won and t.get("turns") is not None) else None
 
@@ -355,6 +391,8 @@ def aggregate(trials: list[dict]) -> dict:
         "wall_s_total": round(sum(t.get("wall_s") or 0 for t in trials), 1),
         "wall_s_mean": mean([t["wall_s"] for t in trials if t.get("wall_s")]),
         "winners": dict(Counter(str(t.get("winner_seat")) for t in ran)),
+        # zone scenarios: the seat's first qualifying move per trial (the pick)
+        "zone_first": dict(Counter(str(t.get("zone_first")) for t in ran if "zone_first" in t)),
     }
 
 
@@ -383,6 +421,19 @@ def _f(v) -> str:
     return "–" if v is None else str(v)
 
 
+def success_text(succ: dict | None) -> str:
+    if not succ:
+        return "no success condition"
+    kind = succ.get("type", "win")
+    if kind == "zone":
+        which = "its first such move is one of" if succ.get("first") else "any of"
+        return (f"seat {succ['seat']} moves {which} {', '.join(succ['cards'])} from "
+                f"{succ['from']} to {succ['to']} by turn {succ['by_turn']}")
+    if kind == "alive":
+        return f"seat {succ['seat']} has not lost at turn {succ['by_turn']}"
+    return f"seat {succ['seat']} wins by turn {succ.get('by_turn', 'the cap')}"
+
+
 def markdown(report: dict) -> str:
     run = report["run"]
     out = [f"# Scenario report",
@@ -393,8 +444,7 @@ def markdown(report: dict) -> str:
            f"shuffle. ms per decision: not exposed by this shim.",
            ""]
     for sid, s in report["scenarios"].items():
-        succ = s.get("success")
-        goal = (f"seat {succ['seat']} wins by turn {succ.get('by_turn')}" if succ else "no success condition")
+        goal = success_text(s.get("success"))
         out += [f"## {sid}", "", s["description"], "",
                 f"Scenario turn {s['turn']}; success: {goal}; line pieces: "
                 f"{', '.join((s.get('line') or {}).get('pieces', [])) or '–'}.", "",
@@ -413,6 +463,12 @@ def markdown(report: dict) -> str:
                 f"{_f(a['extra_combats_scenario_turn_mean'])} | "
                 f"{a['draws']} / {a['turn_capped']} / {a['timed_out']} | "
                 f"{a['errored']} / {a['exceptions']} | {_f(a['game_ms_mean'])} | {a['wall_s_total']} |")
+        picks = [(arm, row["summary"].get("zone_first")) for arm, row in s["arms"].items()
+                 if row["summary"].get("zone_first")]
+        if picks:
+            out += ["", "First qualifying move per trial (None: no such move by the deadline):"]
+            out += [f"- {arm}: " + ", ".join(f"{k} {v}" for k, v in sorted(z.items(), key=lambda kv: -kv[1]))
+                    for arm, z in picks]
         diffs = [(arm, t["file"], t["board_diffs"]) for arm, row in s["arms"].items()
                  for t in row["trials"] if t.get("board_diffs")]
         if diffs:

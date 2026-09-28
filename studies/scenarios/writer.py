@@ -52,13 +52,22 @@ FLAG_OPTS = {"tapped": "Tapped", "sick": "SummonSick", "face_down": "FaceDown",
              "token_flag": "IsToken", "monstrous": "Monstrous",
              "renowned": "Renowned"}
 CARD_KEYS = {"card", "token", "token_info", "id", "attached_to", "counters",
-             "damage", "set", *FLAG_OPTS}
+             "damage", "set", "imprinting", "exiled_with", *FLAG_OPTS}
 HEADS = ("card", "token", "token_info")   # exactly one per card spec
 SEAT_KEYS = {"deck", "pilots", "life", "poison", "counters", "lands_played",
              "label", *ZONES}
 TOP_KEYS = {"format", "id", "description", "seats", "active", "turn", "phase",
             "success", "line", "horizon_turns", "notes", "remove_sickness",
-            "tests"}
+            "tests", "source"}
+# success types -> required keys (run_scenarios.parse_trial scores them):
+#   win:   the seat wins (at or before game turn by_turn, when given);
+#   zone:  a card in cards moves from zone `from` to zone `to` for the seat
+#          by by_turn (with "first": true, the seat's first such move must be
+#          one of them), which is how a tutor's pick is scored;
+#   alive: the seat has not lost when the game ends (cap the game at by_turn
+#          with horizon_turns), which is how "do not kill yourself" is scored.
+SUCCESS_TYPES = {"win": set(), "zone": {"from", "to", "cards", "by_turn"},
+                 "alive": {"by_turn"}}
 
 
 class ScenarioError(ValueError):
@@ -165,6 +174,20 @@ def card_text(spec: dict, ids: dict[str, int]) -> str:
         if ref not in ids:
             raise ScenarioError(f"attached_to {ref!r} names no card id in the scenario")
         opts.append(f"AttachedTo:{ids[ref]}")
+    # Imprint (Isochron Scepter holding Dramatic Reversal): the host names the
+    # imprinted card(s) with Imprinting:, and the exiled card names its host
+    # with ExiledWith:. Forge's Scepter reads both (IsImprinted+ExiledWithSource).
+    if "imprinting" in spec:
+        refs = spec["imprinting"] if isinstance(spec["imprinting"], list) else [spec["imprinting"]]
+        for ref in map(str, refs):
+            if ref not in ids:
+                raise ScenarioError(f"imprinting {ref!r} names no card id in the scenario")
+        opts.append("Imprinting:" + ",".join(str(ids[str(r)]) for r in refs))
+    if "exiled_with" in spec:
+        ref = str(spec["exiled_with"])
+        if ref not in ids:
+            raise ScenarioError(f"exiled_with {ref!r} names no card id in the scenario")
+        opts.append(f"ExiledWith:{ids[ref]}")
     return "|".join(opts)
 
 
@@ -215,8 +238,15 @@ def validate(sc: dict) -> None:
         raise ScenarioError("turn must be >= 1")
     succ = sc.get("success")
     if succ is not None:
-        if succ.get("type") != "win" or not isinstance(succ.get("seat"), int):
-            raise ScenarioError('success is {"type": "win", "seat": i, "by_turn": T}')
+        kind = succ.get("type")
+        if kind not in SUCCESS_TYPES or not isinstance(succ.get("seat"), int) \
+                or not 0 <= succ["seat"] < len(seats):
+            raise ScenarioError(f"success type is one of {sorted(SUCCESS_TYPES)} with a seat index")
+        missing = SUCCESS_TYPES[kind] - set(succ)
+        if missing:
+            raise ScenarioError(f"success {kind!r} needs {sorted(missing)}")
+        if kind == "zone" and (not isinstance(succ["cards"], list) or not succ["cards"]):
+            raise ScenarioError("success 'zone' needs a non-empty cards list")
     ids = [c.get("id") for seat in seats for z in ZONES
            for c in _zone_specs(seat, z) if isinstance(c, dict) and "id" in c]
     dup = [k for k, n in Counter(map(str, ids)).items() if n > 1]
@@ -432,6 +462,10 @@ def state_to_seat_specs(parsed: dict) -> list[dict]:
                         spec["id"] = f"id{v}"
                     elif k in ("AttachedTo", "Attaching"):
                         spec["attached_to"] = f"id{v}"
+                    elif k == "Imprinting":
+                        spec["imprinting"] = [f"id{x}" for x in v.split(",")]
+                    elif k == "ExiledWith":
+                        spec["exiled_with"] = f"id{v}"
                     elif k == "Counters":
                         spec["counters"] = {a: int(b) for a, b in
                                             (p.split("=", 1) for p in v.split(","))}
@@ -469,9 +503,12 @@ def canonical(parsed: dict) -> dict:
     for ps in out["players"].values():
         for cards in ps["zones"].values():
             for c in cards:
-                for k in ("Id", "AttachedTo", "Attaching"):
+                for k in ("Id", "AttachedTo", "Attaching", "ExiledWith"):
                     if k in c["opts"]:
-                        c["opts"]["AttachedTo" if k == "Attaching" else k] = ren[c["opts"].pop(k)]
+                        v = c["opts"].pop(k)
+                        c["opts"]["AttachedTo" if k == "Attaching" else k] = ren.get(v, v)
+                if "Imprinting" in c["opts"]:
+                    c["opts"]["Imprinting"] = ",".join(ren.get(x, x) for x in c["opts"]["Imprinting"].split(","))
     return out
 
 

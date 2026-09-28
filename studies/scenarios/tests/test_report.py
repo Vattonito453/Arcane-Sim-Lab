@@ -200,6 +200,44 @@ def main() -> None:
         assert tt["bad_lines"] == 1 and not tt["has_result"] and not tt["applied"]
         print("  missing and truncated trials: OK")
 
+        # 5b. zone and alive success types (a tutor's pick; not killing yourself).
+        def zrec(turn, card, frm, to, owner):
+            return {"rec": "zone", "game": 0, "turn": turn, "phase": "MAIN1", "card": card, "cardId": 1,
+                    "from": frm, "to": to, "fromPlayer": owner if frm not in ("Stack", "None") else "",
+                    "toPlayer": owner, "types": "Artifact", "pt": "", "token": False}
+        zsc = dict(sc, success={"type": "zone", "seat": 0, "from": "Library", "to": "Graveyard",
+                                "cards": ["Helm of the Host"], "first": True, "by_turn": 6})
+        W.validate(zsc)
+        base = jsonl(info, None, 13)
+        picks = [zrec(1, "Sol Ring", "Library", "Graveyard", A),          # while the state loads
+                 zrec(5, "Island", "Library", "Graveyard", B),            # the other seat
+                 zrec(5, "Lightning Bolt", "Stack", "Graveyard", A),      # not from the library
+                 zrec(5, "Helm of the Host", "Library", "Graveyard", A),  # the pick
+                 zrec(6, "Sol Ring", "Library", "Graveyard", A)]
+        tz = R.parse_trial(write_trial(tmp, 6, base[:2] + picks + base[2:]), zsc, info)
+        assert tz["success"] and tz["zone_first"] == "Helm of the Host", tz.get("zone_moves")
+        assert tz["zone_moves"] == ["Helm of the Host", "Sol Ring"], tz["zone_moves"]
+        wrong = [zrec(5, "Sol Ring", "Library", "Graveyard", A), zrec(5, "Helm of the Host", "Library", "Graveyard", A)]
+        tzw = R.parse_trial(write_trial(tmp, 7, base[:2] + wrong + base[2:]), zsc, info)
+        assert not tzw["success"] and tzw["zone_first"] == "Sol Ring"
+        anyz = dict(zsc, success=dict(zsc["success"], first=False))
+        assert R.parse_trial(write_trial(tmp, 7, base[:2] + wrong + base[2:]), anyz, info)["success"]
+        late = [zrec(7, "Helm of the Host", "Library", "Graveyard", A)]
+        assert not R.parse_trial(write_trial(tmp, 7, base[:2] + late + base[2:]), zsc, info)["success"]
+        asc = dict(sc, success={"type": "alive", "seat": 1, "by_turn": 9})
+        W.validate(asc)
+        assert R.parse_trial(write_trial(tmp, 7, jsonl(info, None, 9)), asc, info)["success"]
+        assert not R.parse_trial(write_trial(tmp, 7, jsonl(info, A, 6)), asc, info)["success"]
+        for badsucc in ({"type": "zone", "seat": 0, "by_turn": 6}, {"type": "lose", "seat": 0},
+                        {"type": "win", "seat": 5}, dict(zsc["success"], cards=[])):
+            try:
+                W.validate(dict(sc, success=badsucc))
+            except W.ScenarioError:
+                continue
+            raise AssertionError(f"accepted {badsucc}")
+        assert "moves its first such move is one of Helm of the Host" in R.success_text(zsc["success"])
+        print("  zone (first pick, any pick, deadline, owner, load-time moves) and alive successes: OK")
+
         # 6. Aggregate and markdown.
         rows = [t, t2, t3, t4, t5, t6, missing]
         a = R.aggregate(rows)

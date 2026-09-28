@@ -82,6 +82,12 @@ def load(dirs: list[Path]) -> dict:
             for arm, a in sc["arms"].items():
                 if arm in into["arms"]:
                     raise SystemExit(f"{sid}: arm {arm} appears in two directories")
+                # A baseline never counts a game that played another state
+                # than the one in its run directory (run_scenarios.py re-runs
+                # such a trial; a report built before the re-run still lists it).
+                stale = [t["file"] for t in a["trials"] if t.get("state_matches") is False]
+                if stale:
+                    raise SystemExit(f"{d}: {sid} {arm} has stale trials {stale[:5]}; re-run them first")
                 into["arms"][arm] = a
     return merged
 

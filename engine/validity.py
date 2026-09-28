@@ -273,7 +273,9 @@ def pilot(meta: dict) -> dict:
 
     {"kind", "agent", "shim", "plan_decks", "stock_decks", "plan_version",
      "plan_fix", "random", "label", "note"}; plan_decks / stock_decks count
-    the decks on each pilot (None when the run records no per-seat pilot):
+    the decks that ran only that pilot in every rotation (a deck whose seat
+    fell back in one rotation is in neither; None when the run records no
+    per-seat pilot):
       kind         "plan" (every seat on Sim Lab's plan agent), "stock"
                    (Forge's own AI; on the stdout path or through the shim),
                    "mixed", or "unknown" (written before runs recorded it)
@@ -349,10 +351,21 @@ def pilot(meta: dict) -> dict:
         label = (f"Piloted by Forge's own AI{tail}." if via_shim
                  else "Piloted by Forge's own AI.")
     elif kind == "mixed":
-        n_plan, n_stock = len(plan_decks), len(stock_decks)
-        if per_deck:
+        n_plan = len(plan_decks)
+        # A deck that ran the plan in some rotations and stock in others (a
+        # rotation whose seats fell back) is in neither count, so "N decks on
+        # the plan agent, the rest on Forge's own AI" would be untrue: with one
+        # of four rotations fallen back it read "0 decks on Sim Lab's plan
+        # agent" for a run the plan piloted three quarters of. Say it by
+        # rotation instead.
+        split = per_deck and n_plan + len(stock_decks) < len(per_deck)
+        if per_deck and not split:
             label = (f"Mixed pilots: {n_plan} {'deck' if n_plan == 1 else 'decks'} on "
                      f"Sim Lab's plan agent, the rest on Forge's own AI{tail}.")
+        elif isinstance(by_rot, list) and by_rot:
+            ran = sum(1 for x in by_rot if x)
+            label = (f"Mixed pilots: {ran} of {len(by_rot)} seat rotations ran Sim Lab's "
+                     f"plan agent, the rest Forge's own AI{tail}.")
         else:
             label = (f"Mixed pilots: some seat rotations ran Sim Lab's plan agent "
                      f"and the rest Forge's own AI{tail}.")

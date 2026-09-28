@@ -295,7 +295,21 @@ def test_pilot_plan_stock_mixed_unknown():
                            "rotations_detail": _rot(["plan", "stock", "stock", "stock"]),
                            "plan_version": 2, "plan_fix": []})
     assert "plan version 2, tutoring fixes off" in part["label"], part
-    for p in (plan, stock, stdout, mixed, v2, fell_back, part):
+    # One rotation of four fell back to stock for every seat: every deck ran
+    # the plan in three rotations, so no deck is "on" either pilot alone and
+    # the label must count rotations, not claim "0 decks on the plan agent".
+    decks = [f"d{i}.dck" for i in range(4)]
+    one_down = validity.pilot({
+        "agent": "simlab-forge-shim/0.16.0", "humanized": False,
+        "humanized_by_rotation": [True, False, True, True],
+        "rotations_detail": [{"seats": decks[i:] + decks[:i], "agents": [a] * 4}
+                             for i, a in enumerate(["plan", "stock", "plan", "plan"])]})
+    assert one_down["kind"] == "mixed", one_down
+    assert one_down["label"] == ("Mixed pilots: 3 of 4 seat rotations ran Sim Lab's plan "
+                                 "agent, the rest Forge's own AI (shim 0.16.0)."), one_down
+    assert "0 decks" not in one_down["label"], one_down
+    assert mixed["label"].startswith("Mixed pilots: 1 deck on Sim Lab's plan agent"), mixed
+    for p in (plan, stock, stdout, mixed, v2, fell_back, part, one_down):
         assert EM_DASH not in p["label"] and "umaniz" not in p["label"], p
 
 

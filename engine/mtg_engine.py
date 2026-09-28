@@ -37,6 +37,9 @@ zero-dependency API. Use it three ways:
        POST /decks                {"name":..., "text":..., "commander"?} -> validated .dck
        POST /ask                  {"q":"..."} -> grounded rules answer (authed, quota'd)
        POST /coaching             {"result_file":..., "deck":...} -> coaching report (authed)
+       POST /flags                {"run", "game", "anchor", "note"} -> a human flag in
+                                  $MTG_DATA_DIR/simkb/review_queue/human/ (a flags-only
+                                  key from MTG_FLAG_KEYS, or an API key; see build_flag)
        DELETE /decks/{file}       remove an IMPORTED deck (authed; bundled refuse)
 """
 from __future__ import annotations
@@ -670,6 +673,60 @@ ASK_PER_HOUR = int(os.environ.get("MTG_ASK_PER_HOUR", "30"))
 COACH_PER_HOUR = int(os.environ.get("MTG_COACH_PER_HOUR", "20"))
 ALLOW_OPEN_PUBLIC = os.environ.get("MTG_ALLOW_OPEN_PUBLIC", "0") == "1"
 
+# Flags-only keys (repair plan WS2 layer A task 5; decision 11). MTG_API_KEYS is
+# one flat set and any key in it can start a 4 GB simulation, so a playtester
+# who should only be able to say "this play looks wrong" gets a key from this
+# SEPARATE set instead. A flags key can POST /flags and nothing else: every
+# other write refuses it with a 403, in every mode (Handler._write_denial).
+#
+# Format: comma-separated `label:key` entries, for example
+#     MTG_FLAG_KEYS=richard:Qm3v...,vincent-phone:Zp8x...
+# The label is the flag's `reporter`, derived here on the server; a reporter in
+# the request body is ignored. Labels are 1-40 of [A-Za-z0-9_.-], starting with
+# a letter or digit. A bare key with no label is accepted and reported as
+# `flagkey-<first 8 hex of sha256(key)>`; an admin key from MTG_API_KEYS (which
+# may also flag) reports as `admin-<same>`. Keys may not contain "," or ":";
+# `secrets.token_urlsafe` never produces either. Malformed entries are skipped
+# and counted (the server prints the count at start, never a key).
+#
+# Flag keys never satisfy serve()'s refuse-to-bind-publicly check: that check
+# guards the simulation faucet, and only MTG_API_KEYS closes it.
+FLAG_LABEL_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,39}$")
+
+
+def _key_tag(key: str) -> str:
+    """A short, stable, non-reversible name for a key (for reporters and logs)."""
+    import hashlib
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:8]
+
+
+def parse_flag_keys(raw: str | None) -> tuple[dict[str, str], int]:
+    """MTG_FLAG_KEYS -> ({key: reporter label}, count of malformed entries skipped)."""
+    keys: dict[str, str] = {}
+    bad = 0
+    for entry in (raw or "").split(","):
+        entry = entry.strip()
+        if not entry:
+            continue
+        if ":" in entry:
+            label, key = (s.strip() for s in entry.split(":", 1))
+            if not FLAG_LABEL_RE.match(label) or not key or ":" in key:
+                bad += 1
+                continue
+        else:
+            label, key = "", entry
+        keys[key] = label or f"flagkey-{_key_tag(key)}"
+    return keys, bad
+
+
+FLAG_KEYS, FLAG_KEYS_MALFORMED = parse_flag_keys(os.environ.get("MTG_FLAG_KEYS", ""))
+FLAG_PER_HOUR = int(os.environ.get("MTG_FLAG_PER_HOUR", "60"))
+FLAG_NOTE_MAX = 1000          # characters, after control characters are stripped
+FLAG_BODY_MAX = 16_384        # bytes; a flag is a few hundred, a full note ~4 KB
+FLAG_ONLY_REFUSAL = ("this is a flag key: it can flag moments in a replay and "
+                     "nothing else. Starting simulations or changing decks needs "
+                     "an API key.")
+
 _rate_lock = threading.Lock()
 _hits: dict[str, list[float]] = {}
 
@@ -733,6 +790,22 @@ def _list_results() -> list[dict]:
     return out
 
 
+def _result_path(name: str) -> Path:
+    """The traversal guard for a result filename: a bare *.json name that exists
+    in RESULTS_DIR. Every route that takes a result filename, reads and POST
+    /flags alike, goes through here, so the rule lives in one place.
+
+    ValueError for a name that is not a bare *.json filename (a path, a
+    traversal, a non-string); FileNotFoundError when it is well-formed but
+    absent."""
+    if not isinstance(name, str) or name != Path(name).name or not name.endswith(".json"):
+        raise ValueError("bad result filename")
+    f = RESULTS_DIR / name
+    if not f.is_file():
+        raise FileNotFoundError(name)
+    return f
+
+
 def _read_result(name: str, snapshots: bool = False) -> dict:
     """One full sim result JSON by bare filename (no path traversal).
 
@@ -740,11 +813,7 @@ def _read_result(name: str, snapshots: bool = False) -> dict:
     turn. That reconstruction is inference (Forge logs no battlefield entries), so
     meta.board_snapshots records how it was derived.
     """
-    if name != Path(name).name or not name.endswith(".json"):
-        raise ValueError("bad result filename")
-    f = RESULTS_DIR / name
-    if not f.is_file():
-        raise FileNotFoundError(name)
+    f = _result_path(name)
     data = json.loads(f.read_text(encoding="utf-8"))
     if snapshots and "board_snapshots" not in data.get("meta", {}):
         import board
@@ -916,6 +985,257 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
         raise IndexError(f"game {n} not in {name} (has {len(games)})")
     return {"meta": data.get("meta", {}), "file": name, "n": n,
             "games_total": len(games), "game": games[n - 1]}
+
+
+# ---------- "Flag this moment": POST /flags (WS2 layer A task 5) ----------
+#
+# A playtester watching a replay marks a moment ("why did Hullbreaker bounce
+# itself?") and the note lands in the human review queue, which ranks first in
+# the reviewer's nightly budget. There is deliberately NO public read of these
+# files: they hold a person's words, and the keyed GET /qa/queue is week 4.
+#
+# REQUEST (JSON object):
+#   run     result filename, e.g. "sim_20260925_003803_d0eb966b8d33_rotated.json";
+#           the same traversal guard as every /results route (_result_path)
+#   game    1-based game number, as in /results/{file}/game/{n}
+#   anchor  where in that game. Two shapes, one required field each:
+#     replay moment (what the web sends):
+#       event_index        0-based position in the replay's flat event list:
+#                          events_pregame, then each turn's events in order.
+#                          It is the replay's ?t= value and "event N of M" - 1.
+#       event_seq          optional; that event's `seq`. Cross-checked, so a
+#                          browser holding a stale (re-adapted) game gets a 409
+#                          instead of flagging the wrong moment.
+#       turn               optional; cross-checked the same way. The server
+#                          derives turn from event_index either way.
+#       player             optional; the seat the flag is about (a raw key such
+#                          as "Ai(2)-Kess, Reanimator"). Defaults to that
+#                          turn's active player.
+#       agent_event_index  optional, as below.
+#     pilot decision (the QA schema's anchor, for tools that flag agent events):
+#       turn               required; Forge's per-player turn number, 0 = pregame
+#       player             optional seat; defaults to the turn's active player
+#       agent_event_index  0-based into that game's agent_events
+#   note    optional text, at most FLAG_NOTE_MAX characters after control and
+#           format characters are removed (newlines kept)
+# Anything else in the body is ignored, `reporter` included.
+#
+# WRITTEN: $MTG_DATA_DIR/simkb/review_queue/human/<id>.json, via a temp file
+# in the same directory and an atomic rename:
+#   {schema: "simlab.flag/1", id, source: "flag_this_play", run, game,
+#    anchor: {game, turn, player, agent_event_index, seq, event_index, event_seq},
+#    turn, round, player, active_player, event: {action, raw} | null,
+#    note, reporter, created}
+# `anchor` is a superset of the QA schema's {game, turn, player,
+# agent_event_index, seq} (engine/qa/context.py anchor()), so the reviewer can
+# treat human and detector flags alike. `seq` is the agent event's shim seq
+# when there is one (WS1 task 7), else null. `round` is the table round
+# (the active player's Nth turn), which is what a person reading the queue
+# counts in. `event` copies the flagged log line so the queue reads on its own.
+
+REVIEW_QUEUE_HUMAN = (Path(os.environ.get("MTG_DATA_DIR", str(Path(__file__).parent)))
+                      / "simkb" / "review_queue" / "human")
+
+
+class FlagRejected(Exception):
+    """A flag request the server refuses, with the HTTP status to answer."""
+
+    def __init__(self, code: int, msg: str):
+        super().__init__(msg)
+        self.code = code
+        self.msg = msg
+
+
+def flag_reporter(key: str) -> str | None:
+    """Who a flag is from, derived from the credential alone; None = refuse.
+
+    An admin key or a flags key is always accepted. With no key, a flag is
+    accepted only on a fully open server (neither MTG_API_KEYS nor
+    MTG_FLAG_KEYS set: local development), matching how every write behaves
+    there. A key that is presented but matches nothing is refused even then:
+    recording a note under a credential the server does not recognise would
+    give it a reporter nobody can vouch for."""
+    if key:
+        if key in API_KEYS:
+            return f"admin-{_key_tag(key)}"
+        return FLAG_KEYS.get(key)
+    if not API_KEYS and not FLAG_KEYS:
+        return "open-mode"
+    return None
+
+
+def clean_flag_note(raw) -> str:
+    """The note as stored: control and format characters removed, newlines kept.
+
+    Cc covers C0/C1 controls and DEL (a terminal escape in a note would run
+    when someone cats the queue file); Cf covers bidi overrides and other
+    invisible format characters that can make a line read differently from
+    what it contains; Cs is lone surrogates, which JSON admits and a UTF-8
+    file cannot hold. Tabs become spaces."""
+    import unicodedata
+    if raw is None:
+        return ""
+    if not isinstance(raw, str):
+        raise FlagRejected(400, "note must be text")
+    text = raw.replace("\r\n", "\n").replace("\r", "\n").replace("\t", " ")
+    text = "".join(ch for ch in text
+                   if ch == "\n" or unicodedata.category(ch) not in ("Cc", "Cf", "Cs"))
+    text = text.strip()
+    if len(text) > FLAG_NOTE_MAX:
+        raise FlagRejected(413, f"note is {len(text)} characters; the limit is {FLAG_NOTE_MAX}")
+    return text
+
+
+def _flag_int(value, name: str) -> int:
+    # bool is an int subclass: `true` must not pass as game 1.
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise FlagRejected(400, f"{name} must be a whole number")
+    return value
+
+
+def _round_of(turns: list, turn: int) -> int:
+    """Table round of `turn`: how many turns its active player has taken by then
+    (web/lib/replay.ts buildTimeline counts the same way). 0 for pregame."""
+    taken: dict = {}
+    for t in turns:
+        ap = t.get("active_player")
+        taken[ap] = taken.get(ap, 0) + 1
+        if t.get("turn") == turn:
+            return taken[ap]
+    return 0
+
+
+def build_flag(payload: dict, reporter: str) -> dict:
+    """Validate a POST /flags body against the run it names; the record to write
+    (without its id). Raises FlagRejected with a 4xx for anything wrong."""
+    if not isinstance(payload, dict):
+        raise FlagRejected(400, "the body must be a JSON object")
+    run = payload.get("run")
+    if not isinstance(run, str) or not run:
+        raise FlagRejected(400, "pass run: the result file name")
+    try:
+        path = _result_path(run)
+    except ValueError:
+        raise FlagRejected(400, "bad run file name") from None
+    except FileNotFoundError:
+        raise FlagRejected(404, "no such run") from None
+    n = _flag_int(payload.get("game"), "game")
+    anchor_in = payload.get("anchor")
+    if not isinstance(anchor_in, dict):
+        raise FlagRejected(400, "pass anchor: {\"event_index\": ...} for a replay moment")
+    note = clean_flag_note(payload.get("note"))
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    games = data.get("games") or []
+    if not 1 <= n <= len(games):
+        raise FlagRejected(400, f"game {n} is not in this run (it has {len(games)})")
+    g = games[n - 1]
+    turns = g.get("turns") or []
+    players = [p for p in (g.get("players") or []) if isinstance(p, str)]
+    agent_events = g.get("agent_events") or []
+    flat = [(0, "", ev) for ev in (g.get("events_pregame") or [])]
+    flat += [(t.get("turn"), t.get("active_player") or "", ev)
+             for t in turns for ev in (t.get("events") or [])]
+
+    ei, aei = anchor_in.get("event_index"), anchor_in.get("agent_event_index")
+    turn_in, player_in = anchor_in.get("turn"), anchor_in.get("player")
+    if ei is None and aei is None:
+        raise FlagRejected(400, "anchor needs event_index (a replay moment) or "
+                                "agent_event_index (a pilot decision)")
+    stale = FlagRejected(409, "this replay is out of date: the server's copy of this "
+                              "game has changed. Reload the replay and flag the moment again.")
+    ev = None
+    if ei is not None:
+        ei = _flag_int(ei, "anchor.event_index")
+        if not 0 <= ei < len(flat):
+            raise FlagRejected(400, f"anchor.event_index {ei} is not in game {n} "
+                                    f"(it has {len(flat)} events)")
+        turn, active, ev = flat[ei]
+        seq_in = anchor_in.get("event_seq")
+        if seq_in is not None and _flag_int(seq_in, "anchor.event_seq") != ev.get("seq"):
+            raise stale
+        if turn_in is not None and _flag_int(turn_in, "anchor.turn") != turn:
+            raise stale
+    else:
+        if turn_in is None:
+            raise FlagRejected(400, "an anchor without event_index needs turn")
+        turn = _flag_int(turn_in, "anchor.turn")
+        by_turn = {t.get("turn"): t.get("active_player") or "" for t in turns}
+        if turn != 0 and turn not in by_turn:
+            raise FlagRejected(400, f"turn {turn} is not in game {n}")
+        active = by_turn.get(turn, "")
+    agent_seq = None
+    if aei is not None:
+        aei = _flag_int(aei, "anchor.agent_event_index")
+        if not 0 <= aei < len(agent_events):
+            raise FlagRejected(400, f"anchor.agent_event_index {aei} is not in game {n} "
+                                    f"(it has {len(agent_events)} pilot decisions)")
+        rec = agent_events[aei]
+        agent_seq = rec.get("seq") if isinstance(rec, dict) else None
+    if player_in in (None, ""):
+        player = active or None
+    elif isinstance(player_in, str) and player_in in players:
+        player = player_in
+    else:
+        raise FlagRejected(400, "anchor.player must be one of this game's seats")
+
+    created = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    return {
+        "schema": "simlab.flag/1",
+        "id": None,
+        "source": "flag_this_play",
+        "run": run,
+        "game": n,
+        "anchor": {"game": n, "turn": turn, "player": player,
+                   "agent_event_index": aei, "seq": agent_seq,
+                   "event_index": ei, "event_seq": ev.get("seq") if ev else None},
+        "turn": turn,
+        "round": _round_of(turns, turn),
+        "player": player,
+        "active_player": active or None,
+        "event": ({"action": ev.get("action"), "raw": str(ev.get("raw", ""))[:500]}
+                  if ev else None),
+        "note": note,
+        "reporter": reporter,
+        "created": created,
+    }
+
+
+def write_flag(record: dict) -> dict:
+    """Give the record a unique id and write it atomically; the stored record.
+
+    Temp file in the queue directory, fsync, then os.replace: a reader (the
+    nightly pull, Vincent's triage) sees either no file or a whole one, never
+    half a note. The id is the UTC second plus 32 random bits, and an id whose
+    file already exists is drawn again."""
+    import secrets
+    import tempfile
+    qdir = REVIEW_QUEUE_HUMAN
+    qdir.mkdir(parents=True, exist_ok=True)
+    stamp = record.get("created", "").replace("-", "").replace(":", "")
+    stamp = stamp.replace("T", "-").rstrip("Z") or time.strftime("%Y%m%d-%H%M%S", time.gmtime())
+    for _ in range(8):
+        fid = f"flag-{stamp}-{secrets.token_hex(4)}"
+        final = qdir / f"{fid}.json"
+        if not final.exists():
+            break
+    else:
+        raise OSError("could not allocate a unique flag id")
+    out = dict(record, id=fid)
+    fd, tmp = tempfile.mkstemp(dir=str(qdir), prefix=".flag-", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(out, fh, indent=1, ensure_ascii=False)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, final)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+    return out
 
 
 _JOB_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
@@ -1237,13 +1557,29 @@ def serve(port: int = 8484) -> None:
             self.wfile.write(body)
 
         # ---- gates ----
+        def _credential(self) -> str:
+            return _bearer(self.headers.get("Authorization", "")) or \
+                self.headers.get("X-Api-Key", "")
+
+        def _write_denial(self) -> tuple[int, str] | None:
+            """None when the caller may perform expensive/writing operations,
+            else the (status, message) to refuse with.
+
+            A flags-only key is refused with a 403 in EVERY mode, open mode
+            included: it is never an admin credential, so handing one out can
+            never start a sim, whatever MTG_API_KEYS happens to hold."""
+            key = self._credential()
+            if key and key in API_KEYS:
+                return None
+            if key and key in FLAG_KEYS:
+                return 403, FLAG_ONLY_REFUSAL
+            if not API_KEYS:
+                return None   # open mode; serve() has already warned about this
+            return 401, "an API key is required for this endpoint"
+
         def _authed(self) -> bool:
             """True when the caller may perform expensive/writing operations."""
-            if not API_KEYS:
-                return True   # open mode; serve() has already warned about this
-            key = _bearer(self.headers.get("Authorization", "")) or \
-                self.headers.get("X-Api-Key", "")
-            return key in API_KEYS
+            return self._write_denial() is None
 
         def _deny(self, code: int, msg: str, retry: int = 0):
             if retry:
@@ -1282,6 +1618,10 @@ def serve(port: int = 8484) -> None:
                     except Exception:  # noqa: BLE001 - health must never 500
                         st["llm"] = False
                         st["llm_model"] = None
+                    # Whether playtester flag keys are configured (POST /flags
+                    # also takes an API key, so the route works either way).
+                    # A boolean only, never a key or a count; preflight reads it.
+                    st["flags"] = bool(FLAG_KEYS)
                     return self._send(st)
                 if parts[0] == "decks":
                     if len(parts) > 1:
@@ -1414,14 +1754,58 @@ def serve(port: int = 8484) -> None:
             except Exception as e:  # noqa: BLE001
                 return self._send({"error": str(e)}, 500)
 
+        def _post_flag(self, payload: dict):
+            """POST /flags: auth, then quota, then validation, then the write.
+
+            The quota is taken BEFORE validation on purpose: validating means
+            parsing the named result file (up to ~6 MB), so a key that only
+            ever sent bad requests must still be bounded."""
+            key = self._credential()
+            reporter = flag_reporter(key)
+            if reporter is None:
+                return self._deny(401, (
+                    "that key was not recognised; flagging needs a flag key or an API key"
+                    if key else "a flag key is required to flag a moment"))
+            ok, retry = _rate_ok(f"flag:{self.client_key}", FLAG_PER_HOUR, 3600.0)
+            if not ok:
+                return self._deny(429, f"flag quota is {FLAG_PER_HOUR}/hour", retry)
+            try:
+                rec = write_flag(build_flag(payload, reporter))
+            except FlagRejected as e:
+                return self._send({"error": e.msg}, e.code)
+            return self._send({"ok": True, "id": rec["id"], "reporter": rec["reporter"],
+                               "created": rec["created"], "anchor": rec["anchor"]})
+
         def do_POST(self):
             u = urlparse(self.path)
-            length = int(self.headers.get("Content-Length", 0))
-            payload = json.loads(self.rfile.read(length) or b"{}")
+            route = u.path.strip("/")
             try:
-                route = u.path.strip("/")
-                if route in ("simulate", "decks", "ask", "coaching") and not self._authed():
-                    return self._deny(401, "an API key is required for this endpoint")
+                length = int(self.headers.get("Content-Length") or 0)
+            except ValueError:
+                length = -1
+            if length < 0:
+                self.close_connection = True   # the body cannot be framed
+                return self._send({"error": "bad Content-Length"}, 400)
+            if route == "flags" and length > FLAG_BODY_MAX:
+                # Not read, so this connection cannot carry another request.
+                self.close_connection = True
+                return self._send({"error": f"a flag is at most {FLAG_BODY_MAX} bytes"}, 413)
+            try:
+                payload = json.loads(self.rfile.read(length) or b"{}")
+            except ValueError:
+                # Was an uncaught exception: the connection dropped with no
+                # response at all instead of a 400 the caller could read.
+                return self._send({"error": "the body must be JSON"}, 400)
+            if not isinstance(payload, dict):
+                return self._send({"error": "the body must be a JSON object"}, 400)
+            try:
+                if route == "flags":
+                    # Its own gate: flags keys are accepted here and nowhere else.
+                    return self._post_flag(payload)
+                if route in ("simulate", "decks", "ask", "coaching"):
+                    denied = self._write_denial()
+                    if denied:
+                        return self._deny(*denied)
 
                 if route == "coaching":
                     result_file = str(payload.get("result_file") or "").strip()
@@ -1537,9 +1921,9 @@ def serve(port: int = 8484) -> None:
             try:
                 if len(parts) == 2 and parts[0] == "decks":
                     # Destructive and writing: same gate as the other writes.
-                    if not self._authed():
-                        return self._deny(
-                            401, "an API key is required for this endpoint")
+                    denied = self._write_denial()
+                    if denied:
+                        return self._deny(*denied)
                     p = _find_deck(parts[1])
                     if p is None:
                         return self._send({"error": "no such deck"}, 404)
@@ -1589,11 +1973,15 @@ def serve(port: int = 8484) -> None:
     worker.ensure_embedded()  # no-op when MTG_EMBEDDED_WORKER=0 (deployed mode)
 
     mode = f"{len(API_KEYS)} API key(s)" if API_KEYS else "OPEN — no auth"
-    print(f"MTG engine API on http://{host}:{port}  [{mode}]")
+    print(f"MTG engine API on http://{host}:{port}  [{mode}, {len(FLAG_KEYS)} flag key(s)]")
     print(f"  limits: {SIM_PER_HOUR} sims/hour/caller, <={SIM_MAX_GAMES} games, "
-          f"{SIM_MAX_QUEUED} queued max, {READ_PER_MIN} reads/min")
+          f"{SIM_MAX_QUEUED} queued max, {READ_PER_MIN} reads/min, "
+          f"{FLAG_PER_HOUR} flags/hour/key")
     if not API_KEYS:
         print("  WARNING: /simulate and /decks are unauthenticated", file=sys.stderr)
+    if FLAG_KEYS_MALFORMED:
+        print(f"  WARNING: MTG_FLAG_KEYS: skipped {FLAG_KEYS_MALFORMED} malformed "
+              "entr(y/ies); the format is label:key,label:key", file=sys.stderr)
 
     srv = ThreadingHTTPServer((host, port), Handler)
     srv.daemon_threads = True   # don't let in-flight requests block shutdown

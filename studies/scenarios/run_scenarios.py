@@ -191,27 +191,34 @@ def check_board(info: dict, rec: dict) -> list[str]:
                                  "damage": int(c.get("damage", 0))}, sort_keys=True)] += 1
         need_sig = Counter()
         tokens_need = 0
+        transformed = 0
         for s in want["battlefield"]:
             if s["token"]:
                 tokens_need += 1
+                continue
+            if s.get("transformed"):
+                transformed += 1        # compared by count: it reads back under its back face
                 continue
             need_sig[json.dumps({k: v for k, v in s.items() if k != "token"}, sort_keys=True)] += 1
         if have_sig != need_sig:
             missing = list((need_sig - have_sig).elements())
             extra = list((have_sig - need_sig).elements())
-            diffs.append(f"seat {i} battlefield: missing {missing} extra {extra}")
+            if missing or len(extra) != transformed:
+                diffs.append(f"seat {i} battlefield: missing {missing} extra {extra}")
+        elif transformed:
+            diffs.append(f"seat {i} battlefield: {transformed} transformed card(s) missing")
         if tokens_have != tokens_need:
             diffs.append(f"seat {i} tokens {tokens_have} != {tokens_need}")
     return diffs
 
 
 def zone_moves(recs: list[dict], seat: str | None, frm: str, to: str, first_turn: int,
-               last_turn: int) -> list[str]:
-    """Card names the seat moved from zone frm to zone to, in order, from the
-    shim's zone records stamped first_turn..last_turn. The records written
-    while the state loads carry turn 1, so a scenario turn above 1 excludes
-    them. The seat is the zone's owner: fromPlayer, or toPlayer when the
-    move starts on the stack."""
+               last_turn: int) -> list[tuple[str, str]]:
+    """(card name, Forge's core types) the seat moved from zone frm to zone
+    to, in order, from the shim's zone records stamped first_turn..last_turn.
+    The records written while the state loads carry turn 1, so a scenario
+    turn above 1 excludes them. The seat is the zone's owner: fromPlayer, or
+    toPlayer when the move starts on the stack."""
     out = []
     for r in recs:
         if r.get("rec") != "zone" or r.get("from") != frm or r.get("to") != to:
@@ -219,7 +226,7 @@ def zone_moves(recs: list[dict], seat: str | None, frm: str, to: str, first_turn
         if not first_turn <= int(r.get("turn", 0)) <= last_turn:
             continue
         if (r.get("fromPlayer") or r.get("toPlayer")) == seat:
-            out.append(r.get("card"))
+            out.append((r.get("card"), r.get("types", "")))
     return out
 
 
@@ -269,11 +276,14 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
         # moved them.
         seat_name = players[succ["seat"]] if succ["seat"] < len(players) else None
         moves = zone_moves(recs, seat_name, succ["from"], succ["to"], s_turn, by_turn)
-        t["zone_moves"] = moves[:10]
-        t["zone_first"] = moves[0] if moves else None
+        t["zone_moves"] = [m[0] for m in moves[:10]]
+        t["zone_first"] = moves[0][0] if moves else None
         wanted = set(succ["cards"])
-        t["success"] = bool(moves and moves[0] in wanted) if succ.get("first") else \
-            any(m in wanted for m in moves)
+        # types_any: a move also qualifies when Forge types the card as any of
+        # these (a class of right answers, such as "usable from the graveyard").
+        types_any = set(succ.get("types_any") or [])
+        ok = lambda m: m[0] in wanted or bool(types_any & set(m[1].split(",")))
+        t["success"] = bool(moves and ok(moves[0])) if succ.get("first") else any(map(ok, moves))
     elif stype == "alive":
         # The seat has not lost when the game ends (the scenario caps the game
         # at by_turn through horizon_turns): for "do not kill yourself" tests.
@@ -427,7 +437,8 @@ def success_text(succ: dict | None) -> str:
     kind = succ.get("type", "win")
     if kind == "zone":
         which = "its first such move is one of" if succ.get("first") else "any of"
-        return (f"seat {succ['seat']} moves {which} {', '.join(succ['cards'])} from "
+        also = f" or any {'/'.join(succ['types_any'])} card" if succ.get("types_any") else ""
+        return (f"seat {succ['seat']} moves {which} {', '.join(succ['cards'])}{also} from "
                 f"{succ['from']} to {succ['to']} by turn {succ['by_turn']}")
     if kind == "alive":
         return f"seat {succ['seat']} has not lost at turn {succ['by_turn']}"

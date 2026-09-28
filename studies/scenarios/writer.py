@@ -61,9 +61,10 @@ TOP_KEYS = {"format", "id", "description", "seats", "active", "turn", "phase",
             "tests", "source"}
 # success types -> required keys (run_scenarios.parse_trial scores them):
 #   win:   the seat wins (at or before game turn by_turn, when given);
-#   zone:  a card in cards moves from zone `from` to zone `to` for the seat
-#          by by_turn (with "first": true, the seat's first such move must be
-#          one of them), which is how a tutor's pick is scored;
+#   zone:  a card in cards (or, with types_any, any card Forge types as one
+#          of those) moves from zone `from` to zone `to` for the seat by
+#          by_turn (with "first": true, the seat's first such move must
+#          qualify), which is how a tutor's pick is scored;
 #   alive: the seat has not lost when the game ends (cap the game at by_turn
 #          with horizon_turns), which is how "do not kill yourself" is scored.
 SUCCESS_TYPES = {"win": set(), "zone": {"from", "to", "cards", "by_turn"},
@@ -353,12 +354,16 @@ def expected_sig(spec: dict, names: dict[str, str]) -> dict:
     compared by count only: Forge names a token by its script's card name
     (Treasure Token), which the scenario does not spell."""
     token = "card" not in spec
-    return {"card": None if token else spec["card"], "token": token,
-            "tapped": bool(spec.get("tapped")), "sick": bool(spec.get("sick")),
-            "counters": {k: int(v) for k, v in (spec.get("counters") or {}).items()},
-            "attached_to": names.get(str(spec["attached_to"])) if "attached_to" in spec else None,
-            "commander": bool(spec.get("commander")),
-            "damage": int(spec.get("damage", 0))}
+    sig = {"card": None if token else spec["card"], "token": token,
+           "tapped": bool(spec.get("tapped")), "sick": bool(spec.get("sick")),
+           "counters": {k: int(v) for k, v in (spec.get("counters") or {}).items()},
+           "attached_to": names.get(str(spec["attached_to"])) if "attached_to" in spec else None,
+           "commander": bool(spec.get("commander")),
+           "damage": int(spec.get("damage", 0))}
+    if spec.get("transformed"):
+        # Reads back under its back face's name, which the scenario does not spell.
+        sig["transformed"] = True
+    return sig
 
 
 # --- Forge state text -> structure (for tests and for importing puzzles) --

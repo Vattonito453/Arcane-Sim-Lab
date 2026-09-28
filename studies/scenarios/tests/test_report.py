@@ -224,6 +224,10 @@ def main() -> None:
         assert R.parse_trial(write_trial(tmp, 7, base[:2] + wrong + base[2:]), anyz, info)["success"]
         late = [zrec(7, "Helm of the Host", "Library", "Graveyard", A)]
         assert not R.parse_trial(write_trial(tmp, 7, base[:2] + late + base[2:]), zsc, info)["success"]
+        typed = dict(zsc, success=dict(zsc["success"], cards=["Nothing"], types_any=["Artifact"]))
+        assert R.parse_trial(write_trial(tmp, 6, base[:2] + picks + base[2:]), typed, info)["success"]
+        typed2 = dict(zsc, success=dict(zsc["success"], cards=["Nothing"], types_any=["Creature"]))
+        assert not R.parse_trial(write_trial(tmp, 6, base[:2] + picks + base[2:]), typed2, info)["success"]
         asc = dict(sc, success={"type": "alive", "seat": 1, "by_turn": 9})
         W.validate(asc)
         assert R.parse_trial(write_trial(tmp, 7, jsonl(info, None, 9)), asc, info)["success"]

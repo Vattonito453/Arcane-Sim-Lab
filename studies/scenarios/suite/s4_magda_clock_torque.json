@@ -1,0 +1,42 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s4_magda_clock_torque",
+  "description": "S4. Magda, Brazen Outlaw with Clock of Omens and Liquimetal Torque on magda's turn (pod n7WpsqsZtdQ). The loop: Torque makes Magda an artifact; Clock taps Magda and a Treasure to untap Magda; Magda becoming tapped makes a Treasure; repeat for any number of tapped Treasures, then sacrifice them five at a time to Magda to put every artifact onto the battlefield, Grinding Station among them (each Treasure entering untaps Station, which mills 3 per artifact sacrificed). Tests an activated loop with a flagged piece (Clock of Omens carries AI:RemoveDeck:All; 0 activations of a printed Clock in 135 battlefield entries in the corpus) and the human Magda game-2 win. Success: magda wins by turn 12 (the opponents lose drawing from empty libraries on their turns 10 to 12).",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/magda.dck",
+      "battlefield": [
+        "Magda, Brazen Outlaw", "Clock of Omens", "Liquimetal Torque",
+        {"token": "c_a_treasure_sac"}, {"token": "c_a_treasure_sac"},
+        "Sol Ring", "Mountain", "Mountain", "Mountain", "Mountain"
+      ],
+      "hand": ["Mountain", "Lightning Bolt"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/rog_ishai.dck",
+      "battlefield": ["Volcanic Island", "Tundra", "Plateau", "Ragavan, Nimble Pilferer"],
+      "hand": ["Arid Mesa", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/selvala_archetype.dck",
+      "battlefield": ["Snow-Covered Forest", "Snow-Covered Forest", "Snow-Covered Forest", "Llanowar Elves"],
+      "hand": ["Snow-Covered Forest", "Natural Order"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/tymna_thrasios.dck",
+      "battlefield": ["Tropical Island", "Bayou", "Underground Sea", "Birds of Paradise"],
+      "hand": ["Misty Rainforest", "Necrodominance"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "win", "seat": 0, "by_turn": 12},
+  "line": {"seat": 0, "pieces": ["Magda, Brazen Outlaw", "Clock of Omens", "Liquimetal Torque"]},
+  "horizon_turns": 4,
+  "notes": [
+    "The finisher is in the library, not on the board: Commander Spellbook's line produces infinite Treasures and 'put all artifact cards onto the battlefield', and Grinding Station is magda's own artifact that turns that into a mill kill. A pilot that loops Clock but never searches still shows up in the activation counts.",
+    "The report counts Clock and Torque activations and Magda triggers per turn; the loop running is iterations well above 5 in the scenario turn.",
+    "Opponents hold no instant-speed interaction; every seat at 40 life."
+  ]
+}

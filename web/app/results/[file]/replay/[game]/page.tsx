@@ -14,7 +14,10 @@ import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { RunGame } from "@/lib/types";
 import { runTitle, scryfallArt, shortName, stripAi } from "@/lib/format";
-import { boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt, summarizeGame, type Step } from "@/lib/replay";
+import {
+  boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt, outSteps, summarizeGame, type Step,
+} from "@/lib/replay";
+import { storySegments } from "@/lib/story";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
 
@@ -107,27 +110,44 @@ export default function ReplayPage() {
   const summary = useMemo(() => (game ? summarizeGame(game) : null), [game]);
   const n = timeline?.steps.length ?? 0;
 
+  // Commanders come from the engine, read from each deck's own [Commander]
+  // section; the first-word guess is only the fallback for an older engine.
+  const commanders = data?.commanders;
   const seats = useMemo(() => {
     if (!game) return [];
     return game.players.map((p) => {
-      const commander = commanderGuess(stripAi(p), [game]);
+      const commander = commanders?.[stripAi(p)]?.[0] ?? commanderGuess(stripAi(p), [game]);
       return {
         player: p,
-        label: shortName(p, game.players),
+        label: shortName(p, game.players, commanders),
         art: scryfallArt(commander),
         commander,
       };
     });
-  }, [game]);
+  }, [game, commanders]);
 
-  // Back-link reads as the matchup; the filename stays in the footer.
-  const backLabel = seats.length ? runTitle(seats.map((s) => s.label)) : file;
+  // Back-link reads as the matchup; the filename stays in the footer (it used
+  // to be the back link's text while the game loaded, too).
+  const backLabel = game ? runTitle(game.players, commanders) : "Run overview";
+
+  // Out seats, placed on the timeline at the event Forge dates each loss by
+  // (engine/game_story.py). From there the seat is greyed and its board is
+  // cleared; before R1 every loser stayed seated until the final event.
+  const outs = useMemo(() => (timeline ? outSteps(timeline, data?.out) : []), [timeline, data?.out]);
+
+  // The turning point (labelled "Biggest swing" until its audit passes), and
+  // the first step of its turn: where "Watch the turning point" lands.
+  const tp = data?.turning_point ?? null;
+  const tpIdx = useMemo(() => {
+    if (!timeline || !tp) return null;
+    return timeline.turns.find((t) => t.turn === tp.turn)?.start ?? null;
+  }, [timeline, tp]);
 
   // On a shim run the battlefield is read from the zone stream at the playhead;
   // on a stock run it is folded from the text. Same call either way.
   const board = useMemo(
-    () => (timeline ? foldTo(timeline, idx, game?.zones) : null),
-    [timeline, idx, game?.zones],
+    () => (timeline ? foldTo(timeline, idx, game?.zones, outs) : null),
+    [timeline, idx, game?.zones, outs],
   );
   // Taps, counters, attachments at the playhead (shim >= 0.12.0 results;
   // older results render exactly as before).
@@ -136,10 +156,13 @@ export default function ReplayPage() {
     () => boardFxAt(game?.boardfx, cur0?.turn ?? 0, cur0?.phase ?? ""),
     [game, cur0?.turn, cur0?.phase],
   );
-  const hands = useMemo(
-    () => handsAt(game?.zones, cur0?.turn ?? 0, cur0?.phase ?? ""),
-    [game, cur0?.turn, cur0?.phase],
-  );
+  const hands = useMemo(() => {
+    const read = handsAt(game?.zones, cur0?.turn ?? 0, cur0?.phase ?? "");
+    // A seat that is out has no hand either: everything it owned left the
+    // game with it (rule 800.4a), as its permanents left the table.
+    for (const o of outs) if (o.at <= idx) read.delete(o.player);
+    return read;
+  }, [game, cur0?.turn, cur0?.phase, outs, idx]);
   const cur: Step | null = timeline && n > 0 ? timeline.steps[clamp(idx, 0, n - 1)] : null;
 
   // Static card facts (type line, P/T, oracle text) for every name this game
@@ -206,6 +229,13 @@ export default function ReplayPage() {
     });
   }, [idx, n]);
 
+  // "Watch the turning point": to the start of its turn, then play it out.
+  const watchTurningPoint = useCallback(() => {
+    if (tpIdx == null) return;
+    setIdx(clamp(tpIdx, 0, Math.max(0, n - 1)));
+    setPlaying(true);
+  }, [tpIdx, n]);
+
   // playback clock
   useEffect(() => {
     if (!playing || n === 0) return;
@@ -242,11 +272,17 @@ export default function ReplayPage() {
         e.preventDefault();
         if (e.shiftKey) jumpTurn(-1);
         else seek(idx - 1);
+      } else if ((e.key === "t" || e.key === "T") && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        // The review's keyboard map: T is the turning point.
+        if (tpIdx != null) {
+          e.preventDefault();
+          watchTurningPoint();
+        }
       }
     };
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
-  }, [idx, seek, jumpTurn, playPause]);
+  }, [idx, seek, jumpTurn, playPause, tpIdx, watchTurningPoint]);
 
   // keep the feed pinned to the playhead (scroll the list only, not the page)
   useEffect(() => {
@@ -331,18 +367,44 @@ export default function ReplayPage() {
     );
   }
 
-  // Rounds, not Forge's per-player turn counter: at a table every player
+  // Table turns, not Forge's per-player turn counter: at a table every player
   // gets a turn 1, so the raw counter reads 4x too high to a Magic player.
+  // They are the "turn N" of the story sentence, so the replay says turn too.
   const R = timeline.totalRounds;
   const frac = n > 1 ? (idx / (n - 1)) * 100 : 0;
   const tickEvery = Math.max(1, Math.ceil(R / 8));
   const ticks = timeline.turns.filter(
     (t, i) => t.round % tickEvery === 0 && (i === 0 || timeline.turns[i - 1].round !== t.round),
   );
-  const decidingIdx = timeline.turns.length ? timeline.turns[timeline.turns.length - 1].start : 0;
+  const lastTurnIdx = timeline.turns.length ? timeline.turns[timeline.turns.length - 1].start : 0;
   const lo = Math.max(0, idx - 40);
   const hi = Math.min(n, idx + 41);
-  const phaseLabel = cur.round > 0 ? `Round ${cur.round} · ${cur.phase.replace(/ step$/i, "").toLowerCase()}` : "Pregame";
+  const phaseLabel = cur.round > 0 ? `Turn ${cur.round} · ${cur.phase.replace(/ step$/i, "").toLowerCase()}` : "Pregame";
+  // The game in one sentence, the same words as its row on the results page
+  // (lib/story.ts). Null from an engine older than R1, which sends no story.
+  // A draw says why when the result knows, as the results page does.
+  const marks = game.result as RunGame["game"]["result"] & { timedOut?: boolean; turnCapped?: boolean };
+  const clockS = typeof data.meta?.clock === "number" && data.meta.clock > 0 ? data.meta.clock : null;
+  const noWinnerText = marks.timedOut
+    ? `Draw: hit the ${clockS ? `${Math.round(clockS / 60)}-minute` : "per-game"} clock on turn ${R}`
+    : marks.turnCapped
+      ? `Draw: reached the turn limit on turn ${R}`
+      : `A draw after ${R} ${R === 1 ? "turn" : "turns"}`;
+  const story = Array.isArray(data.knockouts)
+    ? storySegments(
+        {
+          players: game.players,
+          // A game the clock cut off is a draw whatever winner the record
+          // carries (audit A16), as on the results page.
+          winner: summary.draw || marks.timedOut ? null : summary.winner,
+          endedRound: summary.endedRound,
+          noWinnerText,
+          story: data,
+        },
+        commanders,
+      )
+    : null;
+  const watchLabel = tp ? `Watch the ${tp.label.toLowerCase()}` : null;
   return (
     <>
       <Chrome tabs={tabs} />
@@ -354,12 +416,20 @@ export default function ReplayPage() {
             <div className="sub">
               {seats.map((s) => s.label).join(" · ")}
               <span className="sep">·</span>
-              <span className="mono">{R}</span> rounds
+              <span className="mono">{R}</span> {R === 1 ? "turn" : "turns"}
               <span className="sep">·</span>
               <span className="mono">{fmtClock(summary.durationMs)}</span>
             </div>
           </div>
           <div className="btns">
+            {/* The view's one primary (tasks/26-ux-review.md section 4.6). It
+                is absent, not disabled, when there is no turning point: a
+                draw, or the server holding it back. */}
+            {watchLabel && tpIdx != null && (
+              <button className="btn pri" onClick={watchTurningPoint}>
+                {watchLabel}
+              </button>
+            )}
             <button className="btn" onClick={copyLink}>
               {copied ? "Copied" : "Copy link at this event"}
             </button>
@@ -367,24 +437,31 @@ export default function ReplayPage() {
         </div>
 
         <p className="lede">
-          {summary.draw ? (
-            <>This game ended in a <b>draw</b> after {R} rounds.</>
+          {story ? (
+            story.map((s, k) => (s.strong ? <b key={k}>{s.text}</b> : <Fragment key={k}>{s.text}</Fragment>))
+          ) : summary.draw ? (
+            <>This game ended in a <b>draw</b> after {R} turns.</>
           ) : (
             <>
-              <b>{summary.winnerName}</b> won on <b>round {summary.endedRound}</b> via {summary.decidedBy}.
+              <b>{summary.winnerName}</b> won on <b>turn {summary.endedRound}</b> via {summary.decidedBy}.
             </>
           )}{" "}
           <span className="only-fine-pointer">Use space to play; arrows step events. </span>
-          <a
-            className="bl"
-            href={`?t=${decidingIdx}`}
-            onClick={(e) => {
-              e.preventDefault();
-              seek(decidingIdx);
-            }}
-          >
-            Jump to the deciding turn
-          </a>
+          {/* Without a turning point, the last turn is still one click away,
+              under its honest name: it was called "the deciding turn" and
+              landed two turns after the game had turned. */}
+          {tpIdx == null && (
+            <a
+              className="bl"
+              href={`?t=${lastTurnIdx}`}
+              onClick={(e) => {
+                e.preventDefault();
+                seek(lastTurnIdx);
+              }}
+            >
+              Jump to the last turn
+            </a>
+          )}
         </p>
 
         <div className="stage">
@@ -470,14 +547,14 @@ export default function ReplayPage() {
                       <Fragment key={t.turn}>
                         <div className="tick" style={{ left }} />
                         <div className="ticklab" style={{ left }}>
-                          R{t.round}
+                          T{t.round}
                         </div>
                       </Fragment>
                     );
                   })}
                 </div>
                 <div className="clock">
-                  round {cur.round > 0 ? cur.round : "–"} of {R}
+                  turn {cur.round > 0 ? cur.round : "–"} of {R}
                 </div>
               </div>
             </div>
@@ -485,14 +562,23 @@ export default function ReplayPage() {
             <p className="note only-fine-pointer">
               Keyboard: <span className="mono">space</span> play or pause ·{" "}
               <span className="mono">← →</span> step one event ·{" "}
-              <span className="mono">shift ← →</span> jump a turn.
+              <span className="mono">shift ← →</span> jump a turn
+              {tpIdx != null && (
+                <>
+                  {" "}· <span className="mono">t</span> {tp?.label.toLowerCase()}
+                </>
+              )}
+              .
             </p>
             {/* Stays at every width and on every input: it is the honesty note,
                 not a keyboard hint. "on the right" was also wrong on a phone,
                 where the log stacks below the table. */}
             <p className="note">
               Replays fold the event log into board state locally. The event log is the
-              authoritative record.
+              authoritative record. A seat goes grey, and its permanents leave the table,
+              at the event Forge&apos;s log dates its loss by.
+              {tp?.basis === "inferred" &&
+                ` The ${tp.label.toLowerCase()} is inferred on this run: Forge's log records creatures leaving the battlefield but never entering.`}
             </p>
           </div>
 
@@ -511,7 +597,7 @@ export default function ReplayPage() {
                     className={`ev${isCur ? " cur" : ""}`}
                     ref={isCur ? curRef : undefined}
                   >
-                    <span className="tt">{s.round > 0 ? `R${s.round}` : "–"}</span>
+                    <span className="tt">{s.round > 0 ? `T${s.round}` : "–"}</span>
                     <div>
                       <Hi text={s.text} hi={s.hi} />
                     </div>
@@ -520,17 +606,9 @@ export default function ReplayPage() {
                 );
               })}
             </div>
+            {/* "Skip to the deciding turn" lived here and duplicated the lede's
+                link; the turning point is the head's primary now. */}
             <div className="logfoot">
-              <a
-                className="bl"
-                href={`?t=${decidingIdx}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  seek(decidingIdx);
-                }}
-              >
-                Skip to the deciding turn
-              </a>
               <span className="mono">{n.toLocaleString()} events</span>
             </div>
           </div>

@@ -1168,3 +1168,24 @@ footer.chrome {
 @media (max-width: 720px) {
   .runbar { margin: 16px -16px -32px; padding: 10px 14px; }
 }
+
+/* ── game story (R1, repair plan WS11 task 1) ──
+   The results page's games table carries one sentence per game in its
+   "What happened" column (lib/story.ts): the winner and the turn, who went
+   out and how, and the turn the board turned. Every other games-table cell
+   stays on one line; this one wraps. The pilot line sits under the lede it
+   qualifies. Tokens only; no new colours. */
+.games.storyt td.c-story { white-space: normal; height: auto; padding: 11px 14px;
+  line-height: 1.5; color: var(--ink-3); }
+.games.storyt td.c-story b { color: var(--ink-1); font-weight: 600; }
+@media (min-width: 721px) {
+  .games.storyt td.id { width: 64px; }
+  .games.storyt td.dur { width: 80px; }
+  .games.storyt td.c-act { width: 90px; }
+}
+.lede + .pilotnote { margin-top: -18px; margin-bottom: 18px; }
+@media (max-width: 720px) {
+  /* Stacked: the sentence is the row's first line, clear of the pinned
+     Watch link; the duration follows as the meta line. */
+  .games.stackable td.c-story { display: block; padding: 0 62px 5px 0; font-size: 13.5px; }
+}

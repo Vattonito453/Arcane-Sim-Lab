@@ -32,7 +32,8 @@
             "target": {"player": "opponent", "policy": "largest_library"}},
            {"op": "activate", "card": "Clock of Omens", "api": "Untap",
             "target": {"card": "Magda, Brazen Outlaw"}}],
-         "until": {"no_progress": {"of": "opp_library", "after": 2}}, "max": 150}
+         "until": {"no_progress": {"of": "opp_library", "after": 1}}, "max": 150},
+        {"op": "pass", "hold": true}
       ]
     }
   ]

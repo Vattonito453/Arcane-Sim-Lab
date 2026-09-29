@@ -133,6 +133,13 @@ without). A run finished from R1.1 on also carries the worker's record
 (`meta.ai_wont_play_by_deck`), which the summary's `meta` repeats: +40 B more
 on the playtester's run with that record added. `runGame` is unchanged;
 `GET /decks/{file}` gains the same two lists for one deck (+80 to +110 B).
+
+**Week 4 combined (repair/week4, re-measured 2026-09-29, same method).** With
+both `standings` and `disclosures` on the summary, `runSummary` is 3,078 B for
+the playtester's run (the production copy, which predates the worker's record),
+2.1 KB at the median over 63 local results, and 4.3 KB for the largest local
+16-game run; `runGame` for game 1 of the playtester's run is 21.5 KB.
+
 **Win rates.** Every rate on every page is the engine's published one
 (`standings` on the summary, game and index payloads and on `/sim-status`):
 wins over decided games (finished with a winner), whole percents below 30

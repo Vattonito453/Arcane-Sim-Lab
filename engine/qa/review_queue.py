@@ -19,8 +19,9 @@ All under $MTG_DATA_DIR/simkb/review_queue/.
 
 read_queue() is GET /qa/queue (a reviewer key from MTG_REVIEW_KEYS only; an
 API key is refused because the web build inlines one): human flags first, then auto
-flags, paged by a cursor that is a watermark on each file's write time (see
-read_queue for why a two-second settle window makes that watermark exact).
+flags (across pages, not only within one), paged by a cursor holding one
+watermark per queue on each file's write time (see read_queue for why a
+two-second settle window makes each watermark exact).
 
 Stdlib only, like the rest of engine/.
 """
@@ -208,36 +209,61 @@ def enqueue(doc: dict, data_dir: str | Path, *, cap: int = CAP_PER_RUN,
 
 # ------------------------------------------------------------ the reader --
 
-def parse_cursor(raw: str | None) -> int:
-    """GET /qa/queue's cursor: "" or absent = from the start; else the decimal
-    nanosecond watermark a previous page returned. ValueError otherwise."""
+def parse_cursor(raw: str | None) -> tuple[int, int]:
+    """GET /qa/queue's cursor -> (human watermark, auto watermark), ns.
+
+    "" or absent = from the start. A previous page's cursor is "<human>.<auto>"
+    (each a decimal ns watermark); a bare number is both. ValueError
+    otherwise."""
     if raw is None or raw == "":
-        return 0
-    raw = raw.strip()
-    if not raw.isdigit() or len(raw) > 20:
+        return (0, 0)
+    parts = raw.strip().split(".")
+    if len(parts) not in (1, 2) or not all(
+            x and len(x) <= 20 and all("0" <= c <= "9" for c in x) for x in parts):
         raise ValueError("since must be a cursor returned by /qa/queue")
-    return int(raw)
+    h = int(parts[0])
+    return (h, int(parts[1]) if len(parts) == 2 else h)
 
 
-def read_queue(data_dir: str | Path, since: int = 0, limit: int = DEFAULT_PAGE,
+def _oldest(entries: list, limit: int) -> list:
+    """The oldest `limit` entries (sorted by stamp), extended so a page never
+    splits entries that share one stamp: the next page starts after the
+    cursor, so a split group would lose its second half."""
+    if limit <= 0:
+        return []
+    page = entries[:limit]
+    while len(page) < len(entries) and page and entries[len(page)][0] == page[-1][0]:
+        page.append(entries[len(page)])
+    return page
+
+
+def read_queue(data_dir: str | Path, since=(0, 0), limit: int = DEFAULT_PAGE,
                now_ns: int | None = None) -> dict:
     """Open review items written after `since`: human flags first, then auto.
 
-    The cursor is a watermark on the time each file became visible (_stamp,
-    ns). Every writer builds the file under a temporary name and renames it
-    into place, and the stamp is taken at or after the rename; items younger
-    than SETTLE_SECONDS are still held for the next pull, so the watermark
-    never passes a time at which a file could be on its way in and nothing
-    is skipped. A page is the oldest `limit` items
-    by write time (extended to finish a group sharing one mtime), ordered
-    human first, then auto by priority. Clients should still de-duplicate by
-    id: an item that is rewritten gets a new mtime and is served again."""
+    Each queue has its own watermark on the time each file became visible
+    (_stamp, ns); `since` is (human, auto) as parse_cursor returns it, or one
+    number for both. Every writer builds the file under a temporary name and
+    renames it into place, and the stamp is taken at or after the rename;
+    items younger than SETTLE_SECONDS are still held for the next pull, so a
+    watermark never passes a time at which a file could be on its way in and
+    nothing is skipped.
+
+    A page is every pending human flag first (the oldest `limit` of them),
+    then, in what room is left, the oldest pending auto items; a group
+    sharing one stamp is never split. So human flags come first ACROSS pages,
+    not just within one: a human flag written after hundreds of auto items
+    is still on the next page pulled. Within the page human flags are in
+    write order and auto items by priority. Clients should still
+    de-duplicate by id: an item that is rewritten gets a new stamp and is
+    served again."""
+    since_h, since_a = (since, since) if isinstance(since, int) else since
     qroot = root(data_dir)
     now_ns = time.time_ns() if now_ns is None else now_ns
     settled = now_ns - int(SETTLE_SECONDS * 1e9)
-    entries: list[tuple[int, str, str, Path]] = []
+    pending: dict[str, list[tuple[int, str, Path]]] = {"human": [], "auto": []}
     held = 0
-    for source in ("human", "auto"):
+    for source, floor in (("human", since_h), ("auto", since_a)):
         d = qroot / source
         try:
             names = os.listdir(d)
@@ -251,41 +277,42 @@ def read_queue(data_dir: str | Path, since: int = 0, limit: int = DEFAULT_PAGE,
                 mt = _stamp(p.stat())
             except OSError:
                 continue
-            if mt <= since:
+            if mt <= floor:
                 continue
             if mt > settled:
                 held += 1
                 continue
-            entries.append((mt, source, n, p))
-    entries.sort()
+            pending[source].append((mt, n, p))
+        pending[source].sort()
     limit = max(1, int(limit))
-    page = entries[:limit]
-    while len(page) < len(entries) and page and entries[len(page)][0] == page[-1][0]:
-        page.append(entries[len(page)])
-    more = len(page) < len(entries)
-    cursor = page[-1][0] if page else since
+    page_h = _oldest(pending["human"], limit)
+    page_a = _oldest(pending["auto"], limit - len(page_h))
+    more = len(page_h) < len(pending["human"]) or len(page_a) < len(pending["auto"])
+    cursor_h = page_h[-1][0] if page_h else since_h
+    cursor_a = page_a[-1][0] if page_a else since_a
     human: list[dict] = []
     auto: list[dict] = []
     unreadable = 0
-    for mt, source, _n, p in page:
-        try:
-            rec = json.loads(p.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
-            unreadable += 1
-            continue
-        if not isinstance(rec, dict):
-            unreadable += 1
-            continue
-        rec = dict(rec, queue=source,
-                   queued_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(mt / 1e9)))
-        if source == "human":
-            rec.setdefault("priority", PRIORITY["human"])
-            human.append(rec)
-        else:
-            auto.append(rec)
+    for source, page in (("human", page_h), ("auto", page_a)):
+        for mt, _n, p in page:
+            try:
+                rec = json.loads(p.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                unreadable += 1
+                continue
+            if not isinstance(rec, dict):
+                unreadable += 1
+                continue
+            rec = dict(rec, queue=source,
+                       queued_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(mt / 1e9)))
+            if source == "human":
+                rec.setdefault("priority", PRIORITY["human"])
+                human.append(rec)
+            else:
+                auto.append(rec)
     human.sort(key=lambda r: (str(r.get("created") or ""), str(r.get("id") or "")))
     auto.sort(key=lambda r: (r.get("priority") or 9, str(r.get("created") or ""),
                              str(r.get("id") or "")))
-    return {"items": human + auto, "cursor": str(cursor), "more": more,
+    return {"items": human + auto, "cursor": f"{cursor_h}.{cursor_a}", "more": more,
             "counts": {"human": len(human), "auto": len(auto)},
             "held_for_settle": held, "unreadable": unreadable}

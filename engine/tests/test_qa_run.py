@@ -431,14 +431,27 @@ def queue_reader() -> None:
        "counts")
     eq(page["items"][0]["queue"], "human", "each item says which queue")
     cur = page["cursor"]
+    eq(cur, f"{base + 2 * 10**9}.{base + 4 * 10**9}", "one watermark per queue")
     eq(rq.read_queue(ddir, rq.parse_cursor(cur))["items"], [], "nothing after the cursor")
+    # Human flags first ACROSS pages: flag-1 was written after two auto items,
+    # and still comes on the first page.
+    p1 = rq.read_queue(ddir, rq.parse_cursor(""), limit=1)
+    eq(([i["id"] for i in p1["items"]], p1["more"]), (["flag-1"], True), "the human flag first")
     # Paging: a page never splits items that share one write time.
-    p1 = rq.read_queue(ddir, 0, limit=1)
-    eq(([i["id"] for i in p1["items"]], p1["more"]),
+    p2 = rq.read_queue(ddir, rq.parse_cursor(p1["cursor"]), limit=1)
+    eq(([i["id"] for i in p2["items"]], p2["more"]),
        (["sim_a#g1a1.tutor.x_zero", "sim_a#g1a2.knockout.deckout"], True),
        "the two items written in the same ns come together")
-    p2 = rq.read_queue(ddir, rq.parse_cursor(p1["cursor"]), limit=1)
-    eq([i["id"] for i in p2["items"]], ["flag-1"], "then the next")
+    p3 = rq.read_queue(ddir, rq.parse_cursor(p2["cursor"]), limit=1)
+    eq([i["id"] for i in p3["items"]], ["sim_b#g1a1.tutor.unreachable"], "then the next")
+    p4 = rq.read_queue(ddir, rq.parse_cursor(p3["cursor"]), limit=1)
+    eq((p4["items"], p4["more"], p4["unreadable"]), ([], False, 1), "then only the broken file")
+    # A human flag that lands while auto items are still being paged comes next.
+    put("human", "flag-late.json", {"id": "flag-late", "created": "2026-09-01T00:00:09Z"},
+        base + 9 * 10**9)
+    p2b = rq.read_queue(ddir, rq.parse_cursor(p1["cursor"]), limit=1)
+    eq([i["id"] for i in p2b["items"]], ["flag-late"], "a later human flag jumps the auto items")
+    (root / "human" / "flag-late.json").unlink()
     # A file younger than the settle window waits for the next pull.
     fresh = time.time_ns()
     put("human", "flag-2.json", {"id": "flag-2", "created": "x"}, fresh)
@@ -447,13 +460,15 @@ def queue_reader() -> None:
        "held, and the cursor does not pass it")
     page = rq.read_queue(ddir, rq.parse_cursor(cur), now_ns=fresh + 3 * 10**9)
     eq([i["id"] for i in page["items"]], ["flag-2"], "served once settled")
-    for bad in ("abc", "-1", "1.5", "9" * 21):
+    for bad in ("abc", "-1", "1.", ".5", "1.2.3", "1,2", "²", "9" * 21, "1." + "9" * 21):
         try:
             rq.parse_cursor(bad)
         except ValueError:
             continue
         raise AssertionError(f"cursor {bad!r} accepted")
-    eq(rq.parse_cursor(""), 0, "empty cursor = from the start")
+    eq(rq.parse_cursor(""), (0, 0), "empty cursor = from the start")
+    eq(rq.parse_cursor("7"), (7, 7), "a bare number is both watermarks")
+    eq(rq.parse_cursor(" 5.6 "), (5, 6), "human.auto")
 
 
 def public_view() -> None:

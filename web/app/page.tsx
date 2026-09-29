@@ -256,6 +256,9 @@ export default function Home() {
 
     return {
       runs: finished.length, totalGames, top, recent, excluded, otherPilots, pilotText, digitsOf,
+      // The runs the board is actually built from: this pilot's group, not
+      // every rankable run (the note said "3 of 7" for a board built from 1).
+      built: group.length,
     };
   }, [results]);
 
@@ -401,25 +404,31 @@ export default function Home() {
                 <p className="note">
                   Wins over decided games, from runs piloted by {view.pilotText ?? "one pilot"} only:
                   a different pilot or version plays differently, so its runs are never pooled
-                  with these
-                  {view.otherPilots > 0 && (
-                    <>
-                      {" "}
-                      (<b>{view.otherPilots}</b> {view.otherPilots === 1 ? "run" : "runs"} left out)
-                    </>
-                  )}
-                  . Pooled across pods and seats, so read a deck against its own pod&apos;s average in
-                  the run report, not against this list.
-                  {view.excluded > 0 && (
+                  with these. Pooled across pods and seats, so read a deck against its own
+                  pod&apos;s average in the run report, not against this list.
+                  {/* The count is this pilot's group, and each run left out is
+                      named once, under the reason it was left out. */}
+                  {view.built < view.runs && (
                     <>
                       {" "}
                       Built from{" "}
                       <b>
-                        {view.runs - view.excluded} of {view.runs}{" "}
-                        {view.runs === 1 ? "run" : "runs"}
+                        {view.built} of {view.runs} {view.runs === 1 ? "run" : "runs"}
                       </b>
-                      : the rest are not seat-comparable and would measure
-                      seating or clock cutoffs rather than decks.
+                      {view.otherPilots > 0 && (
+                        <>
+                          ; <b>{view.otherPilots}</b> {view.otherPilots === 1 ? "run" : "runs"} used
+                          another pilot or version
+                        </>
+                      )}
+                      {view.excluded > 0 && (
+                        <>
+                          ; <b>{view.excluded}</b> {view.excluded === 1 ? "is" : "are"} not
+                          seat-comparable and would measure seating or clock cutoffs rather than
+                          decks
+                        </>
+                      )}
+                      .
                     </>
                   )}
                 </p>

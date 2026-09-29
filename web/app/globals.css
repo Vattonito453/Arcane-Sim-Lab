@@ -1262,8 +1262,9 @@ textarea.flag-note:focus, .flag-field:focus { border-color: var(--mana-cyan); }
      running, queued, done and failed, never a deck's result);
    - at 800 to 1024 px the four-seat table's plates squeezed the deck name to
      0 to 11 px behind the pips and "40 life · 0 on board", so an out seat
-     showed only an avatar. The life line now wraps under the name when the
-     plate is too narrow for both, and the name keeps room for a few words. */
+     showed only an avatar. The name no longer shrinks: when the plate is too
+     narrow for everything, the life line wraps under it, and only a name
+     longer than the whole plate (less the avatar) is cut with an ellipsis. */
 .games.legacyt th.g-n { width: 64px; }
 .games.legacyt th.g-who { width: 220px; }
 .games.legacyt th.g-end { width: 70px; }
@@ -1271,4 +1272,4 @@ textarea.flag-note:focus, .flag-field:focus { border-color: var(--mana-cyan); }
 .games.legacyt th.g-act { width: 90px; }
 .schead .screc { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
 .plate { flex-wrap: wrap; row-gap: 2px; }
-.plate .pn { min-width: 6em; }
+.plate .pn { flex-shrink: 0; max-width: calc(100% - 33px); }   /* 24px avatar + 9px gap */

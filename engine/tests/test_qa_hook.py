@@ -232,6 +232,28 @@ def sweeper() -> None:
             worker._qa_children.pop("someone", None)
     eq(worker.sweep_qa(now, data_dir=ddir, launch=launch), "sim_20260101_000000_d", "then it does")
 
+    # A child that never records its attempt (it died first, or the volume
+    # refused the write) is still retried only MAX_ATTEMPTS times, not every
+    # sweep forever; a garbled attempts.json does not break the sweep.
+    ddir2 = _TMP / "sweep2"
+    (ddir2 / "sim_results").mkdir(parents=True)
+    p = ddir2 / "sim_results" / "sim_20260101_000009_e.json"
+    p.write_text('{"meta": {}, "games": []}', encoding="utf-8")
+    os.utime(p, (now - 3600, now - 3600))
+    launched.clear()
+    for _ in range(qa.MAX_ATTEMPTS + 2):
+        captured(worker.sweep_qa, now, data_dir=ddir2, launch=launch)
+    eq(launched, ["sim_20260101_000009_e.json"] * qa.MAX_ATTEMPTS,
+       "no attempts.json: still bounded by MAX_ATTEMPTS")
+    q = ddir2 / "sim_results" / "sim_20260101_000010_f.json"
+    q.write_text('{"meta": {}, "games": []}', encoding="utf-8")
+    os.utime(q, (now - 3000, now - 3000))
+    garbled = ddir2 / "simkb" / "runs" / "sim_20260101_000010_f" / "attempts.json"
+    garbled.parent.mkdir(parents=True)
+    garbled.write_text('{"attempts": "many", "last_started_epoch": "yesterday"}', encoding="utf-8")
+    eq(worker.sweep_qa(now, data_dir=ddir2, launch=launch), "sim_20260101_000010_f",
+       "a garbled attempts.json counts as none")
+
 
 def idle() -> None:
     real = worker.sweep_qa

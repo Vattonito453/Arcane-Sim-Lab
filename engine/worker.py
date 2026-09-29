@@ -41,6 +41,11 @@ QA_FRESH_SECONDS = 60.0
 _qa_lock = threading.Lock()
 _qa_children: dict[str, subprocess.Popen] = {}   # run stem -> child
 _qa_gave_up: set[str] = set()
+# Sweeper launches per run stem in this process. attempts.json (written by the
+# child, qa.run.note_attempt) is the durable count, but a child that dies
+# before writing it, or cannot write it (a full or read-only volume), would
+# otherwise be relaunched every sweep forever; the larger of the two counts.
+_qa_sweeps: dict[str, int] = {}
 _last_sweep = 0.0
 
 
@@ -144,7 +149,11 @@ def sweep_qa(now: float | None = None, *, results_dir: Path | None = None,
         if qa_run.qa_path(f.name, data_dir).is_file():
             continue
         att = qa_run.read_attempts(f.name, data_dir)
-        tries = int(att.get("attempts") or 0)
+        try:
+            tries = int(att.get("attempts") or 0)
+        except (TypeError, ValueError):
+            tries = 0
+        tries = max(tries, _qa_sweeps.get(stem, 0))
         if tries >= qa_run.MAX_ATTEMPTS:
             if stem not in _qa_gave_up:
                 _qa_gave_up.add(stem)
@@ -154,6 +163,7 @@ def sweep_qa(now: float | None = None, *, results_dir: Path | None = None,
         started = att.get("last_started_epoch")
         if isinstance(started, (int, float)) and now - started < QA_TIMEOUT_SECONDS + 30:
             continue
+        _qa_sweeps[stem] = _qa_sweeps.get(stem, 0) + 1
         (launch or launch_qa)(f, reason="sweep")
         return stem
     return None

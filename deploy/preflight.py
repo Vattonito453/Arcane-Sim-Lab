@@ -1022,15 +1022,19 @@ def main(argv):
             broken += 1
         print("  %-6s %-30s %s" % ("ok" if ok else "FAIL", s["name"], detail))
 
+    image = 0
     if args.files:
-        failures += [("files", "")] * check_files()
-        failures += [("imports", "")] * check_imports()
+        image = check_files() + check_imports()
+        failures += [("image", "")] * image
 
     print()
     if failures:
-        dark = len(failures) - broken
+        # Counted apart: a missing /app file is an image defect, not a dark
+        # surface, and on a dev box (no /app) every file check misses.
+        dark = len(failures) - broken - image
         print("PREFLIGHT FAILED: %d surface(s) meant to be live are dark; "
-              "%d deployment invariant(s) broken." % (dark, broken))
+              "%d deployment invariant(s) broken; %d image check(s) failed."
+              % (dark, broken, image))
         for s, detail in failures:
             if isinstance(s, dict):
                 print("  - %s: %s" % (s["name"], detail))

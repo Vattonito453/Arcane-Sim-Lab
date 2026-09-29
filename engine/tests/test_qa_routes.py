@@ -242,6 +242,36 @@ def queue_route() -> None:
         mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS, mtg_engine.REVIEW_KEYS = saved
 
 
+def review_keys_never_open_public_bind() -> None:
+    """Only MTG_API_KEYS closes the simulation faucet: reviewer keys alone
+    never satisfy serve()'s refuse-to-bind-publicly check."""
+    saved = mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS, os.environ.get("MTG_BIND")
+    outcome: dict = {}
+    s = socket.socket()
+    s.bind(("127.0.0.1", 0))
+    port = s.getsockname()[1]
+    s.close()
+
+    def attempt():
+        try:
+            mtg_engine.serve(port)
+            outcome["ran"] = True
+        except SystemExit as e:
+            outcome["exit"] = str(e)
+
+    try:
+        mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS = set(), {}
+        assert mtg_engine.REVIEW_KEYS and not mtg_engine.ALLOW_OPEN_PUBLIC
+        os.environ["MTG_BIND"] = "0.0.0.0"
+        t = threading.Thread(target=attempt, daemon=True)
+        t.start()
+        t.join(timeout=60)
+    finally:
+        mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS = saved[0], saved[1]
+        os.environ["MTG_BIND"] = saved[2] or "127.0.0.1"
+    assert "refusing to bind" in outcome.get("exit", ""), outcome
+
+
 def rq_settle() -> float:
     from qa import review_queue
     return review_queue.SETTLE_SECONDS
@@ -309,6 +339,7 @@ def main() -> None:
         setup_data()
         report_route()
         queue_route()
+        review_keys_never_open_public_bind()
         preflight_checks()
     finally:
         shutil.rmtree(_TMP, ignore_errors=True)

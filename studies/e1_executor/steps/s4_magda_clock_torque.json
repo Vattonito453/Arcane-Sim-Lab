@@ -11,7 +11,7 @@
       "id": "magda_clock_station",
       "pieces": {"Magda, Brazen Outlaw": "Battlefield", "Clock of Omens": "Battlefield",
                  "Liquimetal Torque": "Battlefield"},
-      "budget_ms": 600000,
+      "budget_ms": 780000,
       "triggers": [
         {"card": "Grinding Station", "confirm": true},
         {"card": "Battered Golem", "confirm": true}

@@ -18,7 +18,7 @@ measurement or by legal posture — violating them silently breaks the product.
 
 ```
 engine/            Python, stdlib only, no frameworks
-  mtg_engine.py      rules KB + HTTP API (the server). ~1,555 lines.
+  mtg_engine.py      rules KB + HTTP API (the server). ~2,140 lines.
   jobqueue.py        SQLite job queue: enqueue/claim/finish/get
   worker.py          polls the queue, runs sims
   run_sim.py         invokes Forge (Java) as a subprocess
@@ -32,12 +32,19 @@ engine/            Python, stdlib only, no frameworks
   forge_index.py     Forge's own card scripts, read at runtime: DFC layouts, AI:RemoveDeck flags, tutor reach (never committed)
   combo_bands.py     win-band classifier for combo lines (v0 for the tutoring hotfix; WS8 extends it)
   qa/                QA layer A analyzers: each detector's detect(ctx) -> (metrics, flags); context.py builds ctx once per run
+  game_story.py      per-game story for the payloads: knockouts, out seats, biggest board swing (switches below)
+  commanders.py      commander names from each .dck's [Commander] section (partners, DFC faces)
+  pilot.py           run_pilot / disclose: the ONE derivation of who piloted a run (rank checks key on it)
+  models/            prediction model + rank_checks.json (per-pilot rank-check records)
   convert_decklist.py  decklist text -> validated .dck
   tests/             test_*.py (unit; run them all, never a hand list) + smoke_test.py (live API) + fixtures/
 rules/             Comprehensive Rules KB (build_rules_kb.py + kb/*.json)
 web/               Next.js 15 App Router, React 19, TypeScript strict
   app/globals.css    THE ENTIRE DESIGN SYSTEM. Pages add no CSS.
-  lib/               api.ts, types.ts, format.ts, cards.ts, replay.ts
+  lib/               api.ts, types.ts, format.ts, cards.ts, replay.ts, story.ts
+  components/        incl. FlagMoment.tsx (Flag this moment), PredictionPanel.tsx
+studies/           pre-registered experiments (PREREG.md before any game, RESULTS.md after)
+  scenarios/         seeded-board harness: writer.py, run_scenarios.py, suite/ S1-S9 + C1, BASELINE.md
 Design System/     DESIGN_SYSTEM.md (BINDING) + tokens css + backdrop art + dc.html specs
 mockups/           design_principles.md (superseded for visuals) + v3 HTML wireframes
 deploy/            Dockerfiles (api/worker/web), compose, worker-entrypoint.sh
@@ -104,6 +111,11 @@ Consequences you must respect:
   upgrading every replay.
 - Cards of unknown type go in an "Unidentified" group. Don't guess them onto the
   battlefield and don't silently drop them.
+- **A card that enters the battlefield tapped fires no tap event** (Forge's
+  TapEffect ETB branch uses `Card.setTapped`), so shim tap records never show
+  it. `studies/scenarios/board_from_game.py` infers it from the card's next
+  untap; `web/lib/replay.ts` does not yet, so such a card shows untapped in
+  the replay until it next untaps.
 - If you change reconstruction, re-run `python3 engine/board.py <result>.json`
   on BOTH a stdout fixture and a shim result, and confirm neither
   `exit_match_rate` regressed.
@@ -149,6 +161,28 @@ From `engine/SIM_CALIBRATION.md`:
 - Engine/combo decks sim **below** their real strength (the AI can't pilot
   politics or protection timing). Label these results a floor, not a verdict.
 - Show telemetry next to outcomes. A deck can lose sims and still be healthy.
+- **Game story honesty (week-3 audit, `studies/knockout_audit/RESULTS.md`).**
+  Knockout turn, cause and killer passed a blind audit, 39 of 40 (readers
+  were independent model readers, not people). The turning point FAILED,
+  8 of 20 (7 of 12 on the shim path, 1 of 8 on stdout): it measures only
+  creature-power share, so it cannot see burn, alternate wins or equipment.
+  What ships is "Biggest board swing", shown only on shim runs, withheld
+  when the winner's raw share did not rise. "Turning point" may be shown
+  only after a re-audit on a fresh draw passes. Switches (api container):
+  `MTG_TURNING_POINT` = swing (default) | audited | off, and
+  `MTG_KNOCKOUT_DETAIL` = on (default) | off.
+- A knockout's `card` is a name summed over same-named sources (six Goblin
+  tokens count as one "Goblin Token") and is **not audited**. The only card a
+  page shows is an alternate win's spell; any other wording must say "most
+  damage from", never "the creature that did it".
+- **One pilot derivation.** The run page's pilot line, the prediction label
+  and validity's `unknown_pilot` flag all come from `pilot.run_pilot` /
+  `pilot.disclose`: change them together. `planVersions` and `fixFlags` (per
+  seat, from the shim) are the only plan-version meta fields. A run with no
+  shim agent is stock Forge: the plan agent only ever ran inside the shim.
+- **Predictions are fit on stock Forge games.** On a plan-piloted run the page
+  says so; a failed rank check recorded in `engine/models/rank_checks.json` for
+  the run's pilot and the served model withholds the figures (decision 19).
 
 ### UI design rules are binding
 
@@ -167,6 +201,9 @@ is the binding spec. In short:
 - Content sits on glass panels over the fixed backdrop; never text on unscrimmed
   art; panels never nest.
 - Never disable the primary — state the blocker beside it.
+- On the replay, "Watch the biggest board swing" is the primary when shown.
+  The transport's play button glows only as `.vbtn.play.lead`, when no Watch
+  button is shown. Below 720 px the head's `.btn.pri` takes its own row.
 - Every field keeps a persistent visible label; 2px cyan focus ring everywhere.
 - **No em dash in copy.** Anything a user reads (JSX text, string literals,
   `aria-label`/`title`/`placeholder`, page metadata, and engine strings that
@@ -280,7 +317,16 @@ committed cache).
 - Rate limiting in `_rate_ok()` is **in-process**, so limits are per-container.
   Two API replicas double every quota. Scale workers, not the API, until there's
   a shared store.
-- Result filenames are validated against path traversal. Keep that.
+- Result filenames are validated against path traversal. Keep that. One
+  helper, `_result_path`, guards every result route and `/flags`.
+- **Flags-only keys** (`MTG_FLAG_KEYS`, `label:key` entries) may POST `/flags`
+  and get a 403 on every other write, in every mode, open mode included. The
+  reporter comes from the key, never the body. Flag keys never satisfy the
+  refuse-to-bind-publicly check; only `MTG_API_KEYS` does. No route reads the
+  human flag queue back (`MTG_DATA_DIR/simkb/review_queue/human/`). Flags are
+  rate limited per key (`MTG_FLAG_PER_HOUR`, default 60), quota before
+  validation. Note the web build still inlines one admin key
+  (`NEXT_PUBLIC_API_KEY`) for the trusted playtest group until tasks/06.
 
 ### Sim timing: three numbers, and they are not interchangeable
 
@@ -330,7 +376,7 @@ lost to block buffering. See deploy/HOSTING.md.
 # Engine — every test, discovered. Do NOT replace this with a hand-written
 # list: the previous list named 8 files while 16 existed, so "running the
 # loop" silently ran half the suite. Each must print ALL ASSERTIONS PASSED.
-for t in engine/tests/test_*.py; do
+for t in engine/tests/test_*.py studies/scenarios/tests/test_*.py; do
   python3 "$t" >/dev/null 2>&1 && echo "pass  $t" || echo "FAIL  $t"
 done
 
@@ -340,6 +386,12 @@ python3 engine/tests/smoke_test.py --sim                      # needs the API up
                                                               # 35 -> 37 and every doc that
                                                               # pinned one now reads as a failure.
                                                               # --sim runs real Forge (~40 s)
+                                                              # --flag-key <your own flags key>
+                                                              # adds the /flags checks (skipped,
+                                                              # not failed, without one)
+
+# Before every shim release: the seeded-board scenario suite (WS3), about
+# 21 min per arm at 8 JVMs; commands and baselines in studies/scenarios/BASELINE.md.
 
 # Is the DEPLOYMENT actually serving what we think? Tests and a clean deploy
 # both passed while the prediction model was missing from the image, because
@@ -392,9 +444,12 @@ regenerates by running a sim.
    `disk I/O error`. Use a real volume; point `MTG_DATA_DIR` somewhere local.
 3. **`next build` needs network** the first time (`next/font` fetches and
    self-hosts Inter and Geist Mono). Offline builds fail on fonts, not on code.
-4. **Prefer the small API payloads.** `api.runSummary(file)` (~930 B) and
-   `api.runGame(file, n)` (~15 KB) exist because `api.result(file)` is ~235 KB
-   gzipped. Don't reintroduce whole-run fetches into pages.
+4. **Prefer the small API payloads.** Measured 2026-09-28, gzipped as the API
+   sends them: `api.runSummary(file)` is 2.6 KB for an 8-game run and 3.8 KB
+   for a 16-game one (it carries every game's story); `api.runGame(file, n)` is
+   about 21-26 KB (43 KB max seen); `api.result(file)` is 196-409 KB. Both small
+   payloads revalidate (max-age=300, client tag `?v=r1`) because the story
+   follows the switches. Don't reintroduce whole-run fetches into pages.
 5. **Player keys carry a seat prefix** — `"Ai(2)-Kilo Helm Final"`. Strip with
    `stripAi()` for display; keep the raw key for lookups. Note `Ai(2)-` also
    looks like Forge's `(123)` instance-id syntax — parsers must not confuse them.
@@ -413,6 +468,16 @@ regenerates by running a sim.
    imported decks go to `MTG_DATA_DIR/decks` because that's the only path the
    worker container can also see. Use `_find_deck()` / `_list_decks()`, never a
    bare `Path(__file__).parent / "decks"`.
+10. **A seed pairs openings; it never replays a game.** `--seed-forge` deals
+   the same opening hands (E2: 10/10, `studies/e2_seeding/`), but games then
+   split on mana-source tap order, wall-clock-limited AI decisions and
+   `Collections.shuffle`, stock seats included. Never test "no behaviour
+   change" by byte-diffing one seeded game; compare variants or rates.
+11. **Seeded boards (`--scenario`, shim >= 0.17.1) have three traps.** Loading
+   a GameState runs enter-the-battlefield replacements (Mox Diamond, clones,
+   battles change on load; no option skips them). A life of 0 crashes a
+   multiplayer GameState: write -1 for a seat that has already lost. A seeded
+   life total counts as life lost or gained this turn (rule 119.5).
 
 ## Working agreements
 

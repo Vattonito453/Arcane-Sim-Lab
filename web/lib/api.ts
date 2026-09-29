@@ -62,6 +62,96 @@ export function setApiKey(key: string) {
   else window.localStorage.removeItem("simlab.apiKey");
 }
 
+/** The playtester's flags-only key ("Flag this moment", POST /flags).
+ *
+ *  Its own storage key, never mixed with simlab.apiKey: a flag key can flag and
+ *  nothing else, and it is sent ONLY with sendFlag() below, never by get/post/
+ *  del. Every accessor tolerates storage that throws (private windows, blocked
+ *  site data): the form then simply asks for the key each time. */
+const FLAG_KEY_STORAGE = "simlab.flagKey";
+
+export function savedFlagKey(): string {
+  try {
+    return window.localStorage.getItem(FLAG_KEY_STORAGE) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export function saveFlagKey(key: string): void {
+  try {
+    if (key) window.localStorage.setItem(FLAG_KEY_STORAGE, key);
+    else window.localStorage.removeItem(FLAG_KEY_STORAGE);
+  } catch {
+    /* storage unavailable: the key is used for this send only */
+  }
+}
+
+/** Where a flag points. `event_index` is the replay's step index (its ?t=);
+ *  the engine derives the turn itself and cross-checks `event_seq` and `turn`,
+ *  answering 409 when this browser's copy of the game is stale. */
+export interface FlagAnchor {
+  event_index: number;
+  event_seq?: number;
+  turn?: number;
+  /** Raw seat key ("Ai(2)-Deck"), or null for "not about one seat". */
+  player?: string | null;
+}
+
+export interface FlagRequest {
+  run: string;
+  game: number;
+  anchor: FlagAnchor;
+  note: string;
+}
+
+export interface FlagReceipt {
+  ok: boolean;
+  id: string;
+  reporter: string;
+  created: string;
+}
+
+/** A refused or failed flag, with what the form needs to explain it. */
+export class FlagError extends Error {
+  status: number; // 0 = the request never got an answer
+  retryAfter: number;
+  constructor(message: string, status: number, retryAfter = 0) {
+    super(message);
+    this.name = "FlagError";
+    this.status = status;
+    this.retryAfter = retryAfter;
+  }
+}
+
+/** POST /flags with the flag key and nothing else as the credential. */
+export async function sendFlag(req: FlagRequest, flagKey: string): Promise<FlagReceipt> {
+  let r: Response;
+  try {
+    r = await fetch(`${apiBase()}/flags`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(flagKey ? { Authorization: `Bearer ${flagKey}` } : {}),
+      },
+      body: JSON.stringify(req),
+    });
+  } catch (e) {
+    throw new FlagError(e instanceof Error ? e.message : String(e), 0);
+  }
+  let body: { error?: unknown; retry_after?: unknown } & Partial<FlagReceipt> = {};
+  try {
+    body = await r.json();
+  } catch {
+    /* a proxy error page, say: the status alone has to explain it */
+  }
+  if (!r.ok) {
+    const retry = Number(r.headers.get("Retry-After") ?? body.retry_after ?? 0) || 0;
+    throw new FlagError(typeof body.error === "string" ? body.error : "", r.status, retry);
+  }
+  return body as FlagReceipt;
+}
+
 /** Thrown for 429/503 so callers can show the wait instead of a raw error. */
 export class RateLimited extends Error {
   retryAfter: number;
@@ -132,6 +222,14 @@ export interface Health {
    *  Optional so an older engine still typechecks. */
   llm?: boolean;
   llm_model?: string | null;
+  /** The game-story display switches in force (engine/game_story.py). The
+   *  payloads already apply them; this is for operators. */
+  story?: {
+    turning_point: "swing" | "audited" | "off";
+    turning_point_label: string | null;
+    knockout_detail: boolean;
+    invalid: string[];
+  } | null;
 }
 
 /** GET /estimate: what a sim of this size will play and how long it usually
@@ -147,6 +245,16 @@ export interface SimEstimate {
   /** [low, high] seconds a sim this size typically takes. Not a timeout. */
   typical_seconds: [number, number];
 }
+
+/** Query tag on the summary and game payloads. Until R1 the engine served
+ *  both as immutable and the client fetched them with force-cache, so any
+ *  browser that had opened a run holds the pre-R1 payload (no game story, no
+ *  commanders) under the bare URL for a year. A new URL is the only way past
+ *  that cache; the engine now sends max-age=300 because the story follows
+ *  server-side switches, and these fetches use the default cache mode so the
+ *  header is honoured. Bump this only when a payload change must reach
+ *  browsers at once. The engine ignores the parameter. */
+const PAYLOAD_TAG = "v=r1";
 
 let healthMemo: Promise<Health> | null = null;
 
@@ -178,14 +286,18 @@ export const api = {
     ),
   results: () => get<ResultIndexEntry[]>("/results"),
 
-  /** Run overview WITHOUT event logs — a few KB instead of ~2.6 MB. */
+  /** Run overview WITHOUT event logs — a few KB instead of ~2.6 MB — with
+   *  each game's story, the decks' commanders and the pilot. */
   runSummary: (file: string) =>
-    get<RunSummary>(`/results/${encodeURIComponent(file)}/summary`, { cache: "force-cache" }),
-  /** One game's full event log — what a replay needs (~20 KB gzipped). */
+    get<RunSummary>(`/results/${encodeURIComponent(file)}/summary?${PAYLOAD_TAG}`, {
+      cache: "default",
+    }),
+  /** One game's full event log and its story — what a replay needs (~21 KB
+   *  gzipped). */
   runGame: (file: string, n: number, snapshots = false) =>
     get<RunGame>(
-      `/results/${encodeURIComponent(file)}/game/${n}${snapshots ? "?snapshots=1" : ""}`,
-      { cache: "force-cache" },
+      `/results/${encodeURIComponent(file)}/game/${n}?${PAYLOAD_TAG}${snapshots ? "&snapshots=1" : ""}`,
+      { cache: "default" },
     ),
   /** Win-condition telemetry for one deck — computed server-side so the
    *  browser never fetches the whole ~235 KB run (CLAUDE.md gotcha 4). */

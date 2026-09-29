@@ -225,6 +225,16 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
                         "games": len(zoned)})
         fidelity.append(row)
     meta["commander_fidelity"] = fidelity
+    # Every deck's commanders, keyed by the Name= Forge seats it under, for
+    # the run summary, the results index and the game payload (repair plan
+    # WS11 task 6). A joined DFC name is shown as the face Forge logs.
+    try:
+        import commanders as _cmdrs
+        meta["commanders"] = {info["name"]: [_cmdrs.display_name(c)
+                                             for c in info["commanders"]]
+                              for _p, info in decks if info["read"]}
+    except Exception:  # noqa: BLE001 - a label must never fail a finished run
+        pass
     return meta
 
 
@@ -623,6 +633,11 @@ def run(args: argparse.Namespace) -> None:
         result.setdefault("meta", {}).update(fidelity_meta(
             result.get("games") or [], [staged / d for d in deck_names], refused,
             args.format))
+        # The plan version and fix flags each seat ran are NOT written here:
+        # the shim reports them per seat (planVersions, fixFlags), the adapter
+        # and _merged_shim_meta carry them, and engine/pilot.py derives the
+        # pilot from them. A second, run-level spelling taken from the plans
+        # file would name a plan for seats that fell back to stock.
         _warn_fidelity(result["meta"])
         # The per-game wall the run actually used. Without it, a later
         # validity check has to GUESS which clock a file ran under
@@ -981,7 +996,8 @@ def _merged_shim_meta(sub_metas: list[dict], orders: list[list[str]]) -> dict:
     detail = []
     for order, m in zip(orders, sub_metas):
         d: dict = {"seats": order}
-        for k in ("agent", "agents", "profiles", "seedBases", "seedGameStride"):
+        for k in ("agent", "agents", "profiles", "seedBases", "seedGameStride",
+                  "planVersions", "fixFlags"):
             if m.get(k) is not None:
                 d[k] = m[k]
         detail.append(d)

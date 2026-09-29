@@ -39,7 +39,14 @@ wins ~11%, seat 4 ~36%), so these win rates are not comparable to anything.
 `mixed_pilot`: some seats ran the plan agent and some fell back to stock
 (audit A8). A mixed pod is a different experiment, not a degraded one.
 
-`unknown_pilot`: written before the shim recorded which agent ran.
+`unknown_pilot`: a shim run that records neither per-seat agents nor
+`humanized`, so which pilot played it cannot be said (pilot.run_pilot's
+"unknown", worded "Pilot not recorded" on the run page). A stdout run is NOT
+flagged: the plan agent only ever ran inside the shim (it arrived with the
+shim on 2026-07-31), so a run with no shim agent is Forge's own AI, which is
+what its pilot line and the prediction label say. Until VALIDITY_VERSION 5
+every such run was flagged here as unplaceable while the same page called it
+stock Forge.
 
 `commander_missing` (certain, any path): Forge played a seat without its
 commander, because it refused to load it at startup or the deck file lists no
@@ -65,6 +72,8 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+
+from pilot import disclose as _pilot_disclose, run_pilot as _run_pilot
 
 # Every per-game clock the pipeline has shipped with, newest first: 900 s
 # (2026-08-03, measured), 300 s (2026-08-03, a guess that was too short), 240 s
@@ -108,7 +117,12 @@ _SEVERITY = {
 # 3 (2026-09-27): commander_missing only for a commander Forge refused or a
 #   deck file without one; a loaded commander never cast is the
 #   commander_never_cast note.
-VALIDITY_VERSION = 3
+# 4 (2026-09-28): mixed_pilot only when some rotations ran the plan agent and
+#   some did not; an all-stock run is no longer called a mixed pod.
+# 5 (2026-09-28): unknown_pilot only when pilot.run_pilot cannot name the
+#   pilot; a stdout run is stock Forge, as its pilot line says. (4 and 5 ship
+#   together in R1; 4 was never deployed.)
+VALIDITY_VERSION = 5
 
 
 def _clock_seconds(meta: dict) -> int | None:
@@ -188,13 +202,21 @@ def assess(result: dict) -> dict:
             f"real; the comparison between decks is not.")
 
     by_rotation = meta.get("humanized_by_rotation")
-    if isinstance(by_rotation, list) and by_rotation and not all(by_rotation):
+    # Mixed means SOME rotations ran the plan agent and some did not. An
+    # all-stock run (every entry false: a stock-Forge arm run through the
+    # shim) is a clean stock experiment, and "Mixed pod: 0 of 4 rotations ran
+    # the plan agent" was simply untrue (repair plan WS11 task 10).
+    if (isinstance(by_rotation, list) and by_rotation and any(by_rotation)
+            and not all(by_rotation)):
         flags.append("mixed_pilot")
         reasons.append(
             f"Mixed pod: {sum(1 for x in by_rotation if x)} of {len(by_rotation)} "
             f"rotations ran the plan agent and the rest fell back to stock. "
             f"That is a different experiment, not a degraded one.")
-    elif "humanized" not in meta:
+    elif "humanized" not in meta and _run_pilot(meta)["kind"] == "unknown":
+        # The same derivation as the pilot line and the prediction label: a
+        # run with no shim agent is stock Forge (the plan agent only ever ran
+        # in the shim), so only a shim run that records no pilot is unplaced.
         flags.append("unknown_pilot")
         reasons.append(
             "Written before the run recorded which agent piloted it, so it "
@@ -232,6 +254,21 @@ def assess(result: dict) -> dict:
         "humanized": meta.get("humanized"),
         "agent": meta.get("agent"),
     }
+
+
+# ---------------------------------------------------------------------------
+# Pilot disclosure (repair plan WS11 task 10)
+# ---------------------------------------------------------------------------
+
+def pilot(meta: dict) -> dict:
+    """Who piloted a run, disclosed on every run page: engine/pilot.disclose.
+
+    One derivation for every surface: the run page, the results index and the
+    game payload read this, and the prediction payload carries the same
+    object, so the pilot line and the prediction label can never disagree.
+    Kept under this name because the payload builders and the week-3 tests
+    call validity.pilot()."""
+    return _pilot_disclose(meta)
 
 
 def _commander_findings(meta: dict) -> tuple[list[tuple], list[tuple]]:

@@ -179,6 +179,14 @@ def parse_shim_jsonl(text: str, source: str = "simlab-forge-shim") -> dict:
     for k in ("seedBases", "seedGameStride"):
         if meta_rec.get(k) is not None:
             result["meta"][k] = meta_rec[k]
+    # Per-seat plan version and hotfix flags (shim >= 0.17.0), aligned with
+    # meta.players. With the shim version they identify the pilot
+    # (engine/pilot.py), which the prediction's rank checks are keyed by:
+    # 0.17.0 with version-1 plans behaves as 0.16.0 did, so the jar alone
+    # does not say how a run was piloted.
+    for k in ("planVersions", "fixFlags"):
+        if isinstance(meta_rec.get(k), list):
+            result["meta"][k] = meta_rec[k]
 
     # One parsed game per source game, guaranteed by the placeholder above.
     # Assert it rather than trust it: a silent mismatch here shifts every

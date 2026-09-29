@@ -20,10 +20,12 @@ zero-dependency API. Use it three ways:
        GET  /results              index of adapted sim result files
        GET  /results/{file}       one full sim result (games -> turns -> events)
                                   ?snapshots=1 adds board_snapshot events
-       GET  /results/{file}/summary   run without event logs (~KB, not MB)
+       GET  /results/{file}/summary   run without event logs (~KB, not MB), with
+                                  each game's story (knockouts, out seats, turning
+                                  point), the decks' commanders and the pilot
        GET  /results/{file}/prediction predicted real-playgroup win rates
        GET  /results/{file}/scorecards  per-deck: outcomes, timing, behaviour
-       GET  /results/{file}/game/{n}  one game's events
+       GET  /results/{file}/game/{n}  one game's events and its story
        GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
        GET  /estimate?decks=4&games=16  typical duration + played game count
                                   for a sim of that size, before it is queued
@@ -37,6 +39,9 @@ zero-dependency API. Use it three ways:
        POST /decks                {"name":..., "text":..., "commander"?} -> validated .dck
        POST /ask                  {"q":"..."} -> grounded rules answer (authed, quota'd)
        POST /coaching             {"result_file":..., "deck":...} -> coaching report (authed)
+       POST /flags                {"run", "game", "anchor", "note"} -> a human flag in
+                                  $MTG_DATA_DIR/simkb/review_queue/human/ (a flags-only
+                                  key from MTG_FLAG_KEYS, or an API key; see build_flag)
        DELETE /decks/{file}       remove an IMPORTED deck (authed; bundled refuse)
 """
 from __future__ import annotations
@@ -363,6 +368,7 @@ def _deck_labels(raw_decks: list) -> list:
 
 def _list_decks() -> list[dict]:
     import combos
+    import commanders as cmdrs
     decks: dict[str, dict] = {}
     for d in _deck_dirs():
         if not d.is_dir():
@@ -392,10 +398,14 @@ def _list_decks() -> list[dict]:
             # [Commander] section honestly reports null (name-only tile).
             try:
                 _, commanders = combos.parse_dck(text)
+                # Partners and backgrounds too, with a joined DFC name shown
+                # as the face Forge logs (engine/commanders.py).
+                commanders = [cmdrs.display_name(c) for c in commanders]
             except Exception:  # noqa: BLE001 — one odd file must not 500 the list
                 commanders = []
             decks[f.name] = {"file": f.name, "name": name,
                              "commander": commanders[0] if commanders else None,
+                             "commanders": commanders,
                              "source": "imported" if d == IMPORTED_DECKS else "bundled"}
     return [decks[k] for k in sorted(decks)]
 
@@ -670,6 +680,60 @@ ASK_PER_HOUR = int(os.environ.get("MTG_ASK_PER_HOUR", "30"))
 COACH_PER_HOUR = int(os.environ.get("MTG_COACH_PER_HOUR", "20"))
 ALLOW_OPEN_PUBLIC = os.environ.get("MTG_ALLOW_OPEN_PUBLIC", "0") == "1"
 
+# Flags-only keys (repair plan WS2 layer A task 5; decision 11). MTG_API_KEYS is
+# one flat set and any key in it can start a 4 GB simulation, so a playtester
+# who should only be able to say "this play looks wrong" gets a key from this
+# SEPARATE set instead. A flags key can POST /flags and nothing else: every
+# other write refuses it with a 403, in every mode (Handler._write_denial).
+#
+# Format: comma-separated `label:key` entries, for example
+#     MTG_FLAG_KEYS=richard:Qm3v...,vincent-phone:Zp8x...
+# The label is the flag's `reporter`, derived here on the server; a reporter in
+# the request body is ignored. Labels are 1-40 of [A-Za-z0-9_.-], starting with
+# a letter or digit. A bare key with no label is accepted and reported as
+# `flagkey-<first 8 hex of sha256(key)>`; an admin key from MTG_API_KEYS (which
+# may also flag) reports as `admin-<same>`. Keys may not contain "," or ":";
+# `secrets.token_urlsafe` never produces either. Malformed entries are skipped
+# and counted (the server prints the count at start, never a key).
+#
+# Flag keys never satisfy serve()'s refuse-to-bind-publicly check: that check
+# guards the simulation faucet, and only MTG_API_KEYS closes it.
+FLAG_LABEL_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,39}$")
+
+
+def _key_tag(key: str) -> str:
+    """A short, stable, non-reversible name for a key (for reporters and logs)."""
+    import hashlib
+    return hashlib.sha256(key.encode("utf-8")).hexdigest()[:8]
+
+
+def parse_flag_keys(raw: str | None) -> tuple[dict[str, str], int]:
+    """MTG_FLAG_KEYS -> ({key: reporter label}, count of malformed entries skipped)."""
+    keys: dict[str, str] = {}
+    bad = 0
+    for entry in (raw or "").split(","):
+        entry = entry.strip()
+        if not entry:
+            continue
+        if ":" in entry:
+            label, key = (s.strip() for s in entry.split(":", 1))
+            if not FLAG_LABEL_RE.match(label) or not key or ":" in key:
+                bad += 1
+                continue
+        else:
+            label, key = "", entry
+        keys[key] = label or f"flagkey-{_key_tag(key)}"
+    return keys, bad
+
+
+FLAG_KEYS, FLAG_KEYS_MALFORMED = parse_flag_keys(os.environ.get("MTG_FLAG_KEYS", ""))
+FLAG_PER_HOUR = int(os.environ.get("MTG_FLAG_PER_HOUR", "60"))
+FLAG_NOTE_MAX = 1000          # characters, after control characters are stripped
+FLAG_BODY_MAX = 16_384        # bytes; a flag is a few hundred, a full note ~4 KB
+FLAG_ONLY_REFUSAL = ("this is a flag key: it can flag moments in a replay and "
+                     "nothing else. Starting simulations or changing decks needs "
+                     "an API key.")
+
 _rate_lock = threading.Lock()
 _hits: dict[str, list[float]] = {}
 
@@ -705,6 +769,7 @@ def _list_results() -> list[dict]:
     or clock-polluted run even if it wanted to — the 7/31-8/2 rotation-off
     window was indistinguishable from a good run in every listing.
     """
+    import commanders
     import validity
     out = []
     for f in sorted(RESULTS_DIR.glob("sim_*.json"), reverse=True):
@@ -723,6 +788,11 @@ def _list_results() -> list[dict]:
             entry["rotated"] = meta.get("source") == "rotated"
             entry["humanized"] = meta.get("humanized")
             entry["agent"] = meta.get("agent")
+            # Who piloted it, in words (repair plan WS11 task 10), and each
+            # deck's commanders from its own .dck (WS11 task 6): the list
+            # surfaces name decks and show avatars from these, never a guess.
+            entry["pilot"] = validity.pilot(meta)
+            entry["commanders"] = commanders.of_run(meta)
             v = validity.assess(d)
             entry["validity"] = {"quality": v["quality"], "flags": v["flags"],
                                  "usable_for_ranking": v["usable_for_ranking"],
@@ -733,6 +803,22 @@ def _list_results() -> list[dict]:
     return out
 
 
+def _result_path(name: str) -> Path:
+    """The traversal guard for a result filename: a bare *.json name that exists
+    in RESULTS_DIR. Every route that takes a result filename, reads and POST
+    /flags alike, goes through here, so the rule lives in one place.
+
+    ValueError for a name that is not a bare *.json filename (a path, a
+    traversal, a non-string); FileNotFoundError when it is well-formed but
+    absent."""
+    if not isinstance(name, str) or name != Path(name).name or not name.endswith(".json"):
+        raise ValueError("bad result filename")
+    f = RESULTS_DIR / name
+    if not f.is_file():
+        raise FileNotFoundError(name)
+    return f
+
+
 def _read_result(name: str, snapshots: bool = False) -> dict:
     """One full sim result JSON by bare filename (no path traversal).
 
@@ -740,11 +826,7 @@ def _read_result(name: str, snapshots: bool = False) -> dict:
     turn. That reconstruction is inference (Forge logs no battlefield entries), so
     meta.board_snapshots records how it was derived.
     """
-    if name != Path(name).name or not name.endswith(".json"):
-        raise ValueError("bad result filename")
-    f = RESULTS_DIR / name
-    if not f.is_file():
-        raise FileNotFoundError(name)
+    f = _result_path(name)
     data = json.loads(f.read_text(encoding="utf-8"))
     if snapshots and "board_snapshots" not in data.get("meta", {}):
         import board
@@ -764,7 +846,11 @@ def _read_result_summary(name: str) -> dict:
     so the results table no longer costs a multi-megabyte download.
     """
     from scorecard import true_round
+    import commanders
+    import game_story
+    import validity
     data = _read_result(name)
+    sw = game_story.switches()
     games = []
     for i, g in enumerate(data.get("games", []), 1):
         turns = g.get("turns", [])
@@ -778,13 +864,36 @@ def _read_result_summary(name: str) -> dict:
             # Forge's per-player counter and reads ~4x high to a person.
             "ended_round": true_round(g),
             "events": sum(len(t.get("events", [])) for t in turns),
+            # The game's story (engine/game_story.py): every knockout with
+            # its cause, killer and turn; the out seats and the event Forge
+            # dates each by; the turning point. The display switches are
+            # applied here, server-side.
+            **game_story.of_game(g, sw),
         })
     meta = data.get("meta", {})
     return {"meta": meta, "summary": data.get("summary"),
             # Parallel to meta.decks. Every page with a deck picker needs a
             # name, and the raw value is a container path.
             "deck_labels": _deck_labels(meta.get("decks") or []),
+            # {deck name: [commanders]} from each deck's [Commander] section.
+            "commanders": commanders.of_run(meta),
+            "pilot": validity.pilot(meta),
+            "story": _story_meta(data, sw),
             "games": games, "file": name, "validity": data.get("validity")}
+
+
+def _story_meta(data: dict, sw: dict) -> dict:
+    """Run-level facts the game-story UI needs beside the per-game stories:
+    the turning-point label in force (None when held), whether knockout
+    causes and killers are shown, and which board path the stories were read
+    from ("zones": the shim's zone stream, a read; "inferred": the stdout
+    log; "mixed"), which decides the honesty note."""
+    games = data.get("games") or []
+    zoned = sum(1 for g in games if (g or {}).get("zones"))
+    basis = ("zones" if games and zoned == len(games)
+             else "mixed" if zoned else "inferred")
+    return {"turning_point_label": sw["turning_point_label"],
+            "knockout_detail": sw["knockout_detail"], "basis": basis}
 
 
 _AI_SEAT = re.compile(r"^Ai\(\d+\)-")
@@ -814,18 +923,32 @@ def _read_result_prediction(name: str) -> dict:
     error, and a plain-language explanation. Degrades honestly: if no model
     has been fitted, or a deck file cannot be found, it says so rather than
     inventing a figure.
+
+    Pilot honesty (repair plan WS11 task 11, decision 19): every answer from
+    a fitted model carries model_arm, pilot, pilot_match, label, rank_check
+    and suppressed. A run whose pilot's latest committed rank check failed
+    (engine/models/rank_checks.json) gets no figures at all: available is
+    false, suppressed is true and suppressed_reason says why.
     """
     data = _read_result(name)
     summary = data.get("summary") or {}
     rates = summary.get("win_rates") or {}
     try:
-        from predict import Predictor, deck_features
+        from predict import Predictor, deck_features, load_rank_checks, pilot_honesty
+        import validity
     except Exception as e:  # pragma: no cover - import guard
         return {"file": name, "available": False, "reason": f"predict unavailable: {e}"}
     model = Predictor.load()
     if model is None:
         return {"file": name, "available": False,
                 "reason": "no fitted model; run studies/precon_predict/analyze.py"}
+    # The same pilot object the run summary, game payload and results index
+    # carry (validity.pilot -> pilot.disclose, built on pilot.run_pilot), so
+    # the run page's pilot line and this label cannot disagree.
+    honesty = pilot_honesty(model.m, validity.pilot(data.get("meta")), load_rank_checks())
+    if honesty["suppressed"]:
+        return {"file": name, **honesty, "available": False,
+                "reason": honesty["suppressed_reason"], "decks": []}
     # Display name -> deck file. summary.win_rates is keyed by the deck's
     # DISPLAY name ("Ur-Dragon B3"), while _find_deck wants a filename, so
     # every lookup used to miss and every row came back "deck file not
@@ -885,7 +1008,7 @@ def _read_result_prediction(name: str) -> dict:
         except Exception as e:
             row.update(available=False, reason=str(e))
         decks.append(row)
-    return {"file": name, "available": True, "decks": decks,
+    return {"file": name, **honesty, "available": True, "decks": decks,
             "model": {"features": model.features,
                       "basis": model.m.get("ground_truth"),
                       "trained_on_decks": model.m.get("n_decks"),
@@ -910,12 +1033,303 @@ def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None)
 
 def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
     """One game out of a run — the payload a replay actually needs."""
+    import commanders
+    import game_story
+    import validity
     data = _read_result(name, snapshots=snapshots)
     games = data.get("games", [])
     if n < 1 or n > len(games):
         raise IndexError(f"game {n} not in {name} (has {len(games)})")
-    return {"meta": data.get("meta", {}), "file": name, "n": n,
-            "games_total": len(games), "game": games[n - 1]}
+    meta = data.get("meta", {})
+    return {"meta": meta, "file": name, "n": n,
+            "games_total": len(games), "game": games[n - 1],
+            "commanders": commanders.of_run(meta),
+            "pilot": validity.pilot(meta),
+            "story": _story_meta({"games": [games[n - 1]]}, game_story.switches()),
+            # knockouts, out, turning_point: the same story the summary
+            # carries for this game (engine/game_story.py).
+            **game_story.of_game(games[n - 1])}
+
+
+# ---------- "Flag this moment": POST /flags (WS2 layer A task 5) ----------
+#
+# A playtester watching a replay marks a moment ("why did Hullbreaker bounce
+# itself?") and the note lands in the human review queue, which ranks first in
+# the reviewer's nightly budget. There is deliberately NO public read of these
+# files: they hold a person's words, and the keyed GET /qa/queue is week 4.
+#
+# REQUEST (JSON object):
+#   run     result filename, e.g. "sim_20260925_003803_d0eb966b8d33_rotated.json";
+#           the same traversal guard as every /results route (_result_path)
+#   game    1-based game number, as in /results/{file}/game/{n}
+#   anchor  where in that game. Two shapes, one required field each:
+#     replay moment (what the web sends):
+#       event_index        0-based position in the replay's flat event list:
+#                          events_pregame, then each turn's events in order.
+#                          It is the replay's ?t= value and "event N of M" - 1.
+#       event_seq          optional; that event's `seq`. Cross-checked, so a
+#                          browser holding a stale (re-adapted) game gets a 409
+#                          instead of flagging the wrong moment.
+#       turn               optional; cross-checked the same way. The server
+#                          derives turn from event_index either way.
+#       player             optional; the seat the flag is about (a raw key such
+#                          as "Ai(2)-Kess, Reanimator"). Left out, it defaults
+#                          to that turn's active player. null (or "") means
+#                          "not about one seat" and is stored as null: the
+#                          web's "Not about one seat" choice, which used to be
+#                          silently rewritten to the active player.
+#       agent_event_index  optional, as below; its agent event must be on the
+#                          same turn as event_index (400 otherwise).
+#     pilot decision (the QA schema's anchor, for tools that flag agent events):
+#       turn               required; the game's turn counter as in turns[].turn
+#                          (one per player turn), 0 = pregame. Must match the
+#                          agent event's own turn when it records one.
+#       player             optional seat, null as above; left out, it defaults
+#                          to the agent event's own player (the seat that made
+#                          the decision: a blocker, a counterspell holder),
+#                          else the turn's active player
+#       agent_event_index  0-based into that game's agent_events
+#   note    optional text, at most FLAG_NOTE_MAX characters after control and
+#           format characters are removed (newlines kept)
+# Anything else in the body is ignored, `reporter` included.
+#
+# WRITTEN: $MTG_DATA_DIR/simkb/review_queue/human/<id>.json, via a temp file
+# in the same directory and an atomic rename:
+#   {schema: "simlab.flag/1", id, source: "flag_this_play", run, game,
+#    anchor: {game, turn, player, agent_event_index, seq, event_index, event_seq},
+#    turn, round, player, active_player, event: {action, raw} | null,
+#    note, reporter, created}
+# `anchor` is a superset of the QA schema's {game, turn, player,
+# agent_event_index, seq} (engine/qa/context.py anchor()), so the reviewer can
+# treat human and detector flags alike. `seq` is the agent event's shim seq
+# when there is one (WS1 task 7), else null. `round` is the table round
+# (the active player's Nth turn), which is what a person reading the queue
+# counts in. `event` copies the flagged log line so the queue reads on its own.
+
+REVIEW_QUEUE_HUMAN = (Path(os.environ.get("MTG_DATA_DIR", str(Path(__file__).parent)))
+                      / "simkb" / "review_queue" / "human")
+
+
+class FlagRejected(Exception):
+    """A flag request the server refuses, with the HTTP status to answer."""
+
+    def __init__(self, code: int, msg: str):
+        super().__init__(msg)
+        self.code = code
+        self.msg = msg
+
+
+def flag_reporter(key: str) -> str | None:
+    """Who a flag is from, derived from the credential alone; None = refuse.
+
+    An admin key or a flags key is always accepted. With no key, a flag is
+    accepted only on a fully open server (neither MTG_API_KEYS nor
+    MTG_FLAG_KEYS set: local development), matching how every write behaves
+    there. A key that is presented but matches nothing is refused even then:
+    recording a note under a credential the server does not recognise would
+    give it a reporter nobody can vouch for."""
+    if key:
+        if key in API_KEYS:
+            return f"admin-{_key_tag(key)}"
+        return FLAG_KEYS.get(key)
+    if not API_KEYS and not FLAG_KEYS:
+        return "open-mode"
+    return None
+
+
+def clean_flag_note(raw) -> str:
+    """The note as stored: control and format characters removed, newlines kept.
+
+    Cc covers C0/C1 controls and DEL (a terminal escape in a note would run
+    when someone cats the queue file); Cf covers bidi overrides and other
+    invisible format characters that can make a line read differently from
+    what it contains; Cs is lone surrogates, which JSON admits and a UTF-8
+    file cannot hold. Tabs become spaces."""
+    import unicodedata
+    if raw is None:
+        return ""
+    if not isinstance(raw, str):
+        raise FlagRejected(400, "note must be text")
+    text = raw.replace("\r\n", "\n").replace("\r", "\n").replace("\t", " ")
+    text = "".join(ch for ch in text
+                   if ch == "\n" or unicodedata.category(ch) not in ("Cc", "Cf", "Cs"))
+    text = text.strip()
+    if len(text) > FLAG_NOTE_MAX:
+        raise FlagRejected(413, f"note is {len(text)} characters; the limit is {FLAG_NOTE_MAX}")
+    return text
+
+
+def _flag_int(value, name: str) -> int:
+    # bool is an int subclass: `true` must not pass as game 1.
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise FlagRejected(400, f"{name} must be a whole number")
+    return value
+
+
+def _round_of(turns: list, turn: int) -> int:
+    """Table round of `turn`: how many turns its active player has taken by then
+    (web/lib/replay.ts buildTimeline counts the same way). 0 for pregame."""
+    taken: dict = {}
+    for t in turns:
+        ap = t.get("active_player")
+        taken[ap] = taken.get(ap, 0) + 1
+        if t.get("turn") == turn:
+            return taken[ap]
+    return 0
+
+
+def build_flag(payload: dict, reporter: str) -> dict:
+    """Validate a POST /flags body against the run it names; the record to write
+    (without its id). Raises FlagRejected with a 4xx for anything wrong."""
+    if not isinstance(payload, dict):
+        raise FlagRejected(400, "the body must be a JSON object")
+    run = payload.get("run")
+    if not isinstance(run, str) or not run:
+        raise FlagRejected(400, "pass run: the result file name")
+    try:
+        path = _result_path(run)
+    except ValueError:
+        raise FlagRejected(400, "bad run file name") from None
+    except FileNotFoundError:
+        raise FlagRejected(404, "no such run") from None
+    n = _flag_int(payload.get("game"), "game")
+    anchor_in = payload.get("anchor")
+    if not isinstance(anchor_in, dict):
+        raise FlagRejected(400, "pass anchor: {\"event_index\": ...} for a replay moment")
+    note = clean_flag_note(payload.get("note"))
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    # RESULTS_DIR also holds analysis_*.json and plans_*.json, which pass the
+    # name guard; one that is not an object used to raise AttributeError (500).
+    games = data.get("games") if isinstance(data, dict) else None
+    if not isinstance(games, list):
+        raise FlagRejected(400, "that file is not a simulation result")
+    if not 1 <= n <= len(games):
+        raise FlagRejected(400, f"game {n} is not in this run (it has {len(games)})")
+    g = games[n - 1]
+    if not isinstance(g, dict):
+        raise FlagRejected(400, "that file is not a simulation result")
+    turns = g.get("turns") or []
+    players = [p for p in (g.get("players") or []) if isinstance(p, str)]
+    agent_events = g.get("agent_events") or []
+    flat = [(0, "", ev) for ev in (g.get("events_pregame") or [])]
+    flat += [(t.get("turn"), t.get("active_player") or "", ev)
+             for t in turns for ev in (t.get("events") or [])]
+
+    ei, aei = anchor_in.get("event_index"), anchor_in.get("agent_event_index")
+    turn_in, player_in = anchor_in.get("turn"), anchor_in.get("player")
+    if ei is None and aei is None:
+        raise FlagRejected(400, "anchor needs event_index (a replay moment) or "
+                                "agent_event_index (a pilot decision)")
+    stale = FlagRejected(409, "this replay is out of date: the server's copy of this "
+                              "game has changed. Reload the replay and flag the moment again.")
+    ev = None
+    if ei is not None:
+        ei = _flag_int(ei, "anchor.event_index")
+        if not 0 <= ei < len(flat):
+            raise FlagRejected(400, f"anchor.event_index {ei} is not in game {n} "
+                                    f"(it has {len(flat)} events)")
+        turn, active, ev = flat[ei]
+        seq_in = anchor_in.get("event_seq")
+        if seq_in is not None and _flag_int(seq_in, "anchor.event_seq") != ev.get("seq"):
+            raise stale
+        if turn_in is not None and _flag_int(turn_in, "anchor.turn") != turn:
+            raise stale
+    else:
+        if turn_in is None:
+            raise FlagRejected(400, "an anchor without event_index needs turn")
+        turn = _flag_int(turn_in, "anchor.turn")
+        by_turn = {t.get("turn"): t.get("active_player") or "" for t in turns}
+        if turn != 0 and turn not in by_turn:
+            raise FlagRejected(400, f"turn {turn} is not in game {n}")
+        active = by_turn.get(turn, "")
+    agent_seq = None
+    decider = None   # the seat that made the flagged pilot decision, if recorded
+    if aei is not None:
+        aei = _flag_int(aei, "anchor.agent_event_index")
+        if not 0 <= aei < len(agent_events):
+            raise FlagRejected(400, f"anchor.agent_event_index {aei} is not in game {n} "
+                                    f"(it has {len(agent_events)} pilot decisions)")
+        rec = agent_events[aei] if isinstance(agent_events[aei], dict) else {}
+        agent_seq = rec.get("seq")
+        # Agent events carry the game's own turn counter (measured: every
+        # agent event in a 16-game shim run names a turn in turns[]). A
+        # different turn means the anchor points at two moments at once.
+        rec_turn = rec.get("turn")
+        if isinstance(rec_turn, int) and not isinstance(rec_turn, bool) and rec_turn != turn:
+            raise FlagRejected(400, f"anchor.agent_event_index {aei} is on turn {rec_turn}, "
+                                    f"not turn {turn}")
+        if isinstance(rec.get("player"), str) and rec["player"] in players:
+            decider = rec["player"]
+    if "player" not in anchor_in:
+        # Left out: the decision's own seat when there is one (blocks, counters
+        # and instant windows are often NOT the active player's), else the
+        # seat whose turn it is.
+        player = decider or active or None
+    elif player_in in (None, ""):
+        player = None   # "not about one seat", as the web sends it
+    elif isinstance(player_in, str) and player_in in players:
+        player = player_in
+    else:
+        raise FlagRejected(400, "anchor.player must be one of this game's seats")
+
+    created = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    return {
+        "schema": "simlab.flag/1",
+        "id": None,
+        "source": "flag_this_play",
+        "run": run,
+        "game": n,
+        "anchor": {"game": n, "turn": turn, "player": player,
+                   "agent_event_index": aei, "seq": agent_seq,
+                   "event_index": ei, "event_seq": ev.get("seq") if ev else None},
+        "turn": turn,
+        "round": _round_of(turns, turn),
+        "player": player,
+        "active_player": active or None,
+        "event": ({"action": ev.get("action"), "raw": str(ev.get("raw", ""))[:500]}
+                  if ev else None),
+        "note": note,
+        "reporter": reporter,
+        "created": created,
+    }
+
+
+def write_flag(record: dict) -> dict:
+    """Give the record a unique id and write it atomically; the stored record.
+
+    Temp file in the queue directory, fsync, then os.replace: a reader (the
+    nightly pull, Vincent's triage) sees either no file or a whole one, never
+    half a note. The id is the UTC second plus 32 random bits, and an id whose
+    file already exists is drawn again."""
+    import secrets
+    import tempfile
+    qdir = REVIEW_QUEUE_HUMAN
+    qdir.mkdir(parents=True, exist_ok=True)
+    stamp = record.get("created", "").replace("-", "").replace(":", "")
+    stamp = stamp.replace("T", "-").rstrip("Z") or time.strftime("%Y%m%d-%H%M%S", time.gmtime())
+    for _ in range(8):
+        fid = f"flag-{stamp}-{secrets.token_hex(4)}"
+        final = qdir / f"{fid}.json"
+        if not final.exists():
+            break
+    else:
+        raise OSError("could not allocate a unique flag id")
+    out = dict(record, id=fid)
+    fd, tmp = tempfile.mkstemp(dir=str(qdir), prefix=".flag-", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(out, fh, indent=1, ensure_ascii=False)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, final)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+    return out
 
 
 _JOB_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
@@ -1237,13 +1651,29 @@ def serve(port: int = 8484) -> None:
             self.wfile.write(body)
 
         # ---- gates ----
+        def _credential(self) -> str:
+            return _bearer(self.headers.get("Authorization", "")) or \
+                self.headers.get("X-Api-Key", "")
+
+        def _write_denial(self) -> tuple[int, str] | None:
+            """None when the caller may perform expensive/writing operations,
+            else the (status, message) to refuse with.
+
+            A flags-only key is refused with a 403 in EVERY mode, open mode
+            included: it is never an admin credential, so handing one out can
+            never start a sim, whatever MTG_API_KEYS happens to hold."""
+            key = self._credential()
+            if key and key in API_KEYS:
+                return None
+            if key and key in FLAG_KEYS:
+                return 403, FLAG_ONLY_REFUSAL
+            if not API_KEYS:
+                return None   # open mode; serve() has already warned about this
+            return 401, "an API key is required for this endpoint"
+
         def _authed(self) -> bool:
             """True when the caller may perform expensive/writing operations."""
-            if not API_KEYS:
-                return True   # open mode; serve() has already warned about this
-            key = _bearer(self.headers.get("Authorization", "")) or \
-                self.headers.get("X-Api-Key", "")
-            return key in API_KEYS
+            return self._write_denial() is None
 
         def _deny(self, code: int, msg: str, retry: int = 0):
             if retry:
@@ -1282,6 +1712,17 @@ def serve(port: int = 8484) -> None:
                     except Exception:  # noqa: BLE001 - health must never 500
                         st["llm"] = False
                         st["llm_model"] = None
+                    # The game-story display switches in force (operators and
+                    # preflight read them here; the payloads apply them).
+                    try:
+                        import game_story
+                        st["story"] = game_story.switches()
+                    except Exception:  # noqa: BLE001
+                        st["story"] = None
+                    # Whether playtester flag keys are configured (POST /flags
+                    # also takes an API key, so the route works either way).
+                    # A boolean only, never a key or a count; preflight reads it.
+                    st["flags"] = bool(FLAG_KEYS)
                     return self._send(st)
                 if parts[0] == "decks":
                     if len(parts) > 1:
@@ -1344,17 +1785,29 @@ def serve(port: int = 8484) -> None:
                         return self._send(_list_results())
                     snaps = q.get("snapshots", ["0"])[0] not in ("0", "", "false")
                     IMMUTABLE = "public, max-age=31536000, immutable"  # results never change
+                    # The summary and game payloads carry the game story,
+                    # which follows two server-side switches
+                    # (MTG_TURNING_POINT, MTG_KNOCKOUT_DETAIL), and the
+                    # commanders a readapt backfills. Under the immutable
+                    # header a flipped switch would never reach a browser that
+                    # had cached the page, so these two revalidate.
+                    STORY_CACHE = "public, max-age=300"
                     try:
                         # /results/{file}/game/{n} — one game, not the whole run
                         if len(parts) >= 4 and parts[2] == "game":
                             return self._send(
                                 _read_result_game(parts[1], int(parts[3]), snapshots=snaps),
-                                cache=IMMUTABLE)
+                                cache=STORY_CACHE)
                         if len(parts) >= 3 and parts[2] == "summary":
-                            return self._send(_read_result_summary(parts[1]), cache=IMMUTABLE)
+                            return self._send(_read_result_summary(parts[1]),
+                                              cache=STORY_CACHE)
                         if len(parts) >= 3 and parts[2] == "prediction":
-                            return self._send(_read_result_prediction(parts[1]),
-                                              cache=IMMUTABLE)
+                            # No immutable header: the answer depends on the
+                            # committed rank checks as well as the result, and a
+                            # failed check must withdraw a prediction that a
+                            # browser already holds (decision 19). Same reasoning
+                            # as /analysis below; the computation is cheap.
+                            return self._send(_read_result_prediction(parts[1]))
                         if len(parts) >= 3 and parts[2] == "scorecards":
                             return self._send(_read_result_scorecards(parts[1]),
                                               cache=IMMUTABLE)
@@ -1414,14 +1867,60 @@ def serve(port: int = 8484) -> None:
             except Exception as e:  # noqa: BLE001
                 return self._send({"error": str(e)}, 500)
 
+        def _post_flag(self, payload: dict):
+            """POST /flags: auth, then quota, then validation, then the write.
+
+            The quota is taken BEFORE validation on purpose: validating means
+            parsing the named result file (up to ~6 MB), so a key that only
+            ever sent bad requests must still be bounded."""
+            key = self._credential()
+            reporter = flag_reporter(key)
+            if reporter is None:
+                return self._deny(401, (
+                    "that key was not recognised; flagging needs a flag key or an API key"
+                    if key else "a flag key is required to flag a moment"))
+            ok, retry = _rate_ok(f"flag:{self.client_key}", FLAG_PER_HOUR, 3600.0)
+            if not ok:
+                return self._deny(429, f"flag quota is {FLAG_PER_HOUR}/hour", retry)
+            try:
+                rec = write_flag(build_flag(payload, reporter))
+            except FlagRejected as e:
+                return self._send({"error": e.msg}, e.code)
+            return self._send({"ok": True, "id": rec["id"], "reporter": rec["reporter"],
+                               "created": rec["created"], "anchor": rec["anchor"]})
+
         def do_POST(self):
             u = urlparse(self.path)
-            length = int(self.headers.get("Content-Length", 0))
-            payload = json.loads(self.rfile.read(length) or b"{}")
+            route = u.path.strip("/")
             try:
-                route = u.path.strip("/")
-                if route in ("simulate", "decks", "ask", "coaching") and not self._authed():
-                    return self._deny(401, "an API key is required for this endpoint")
+                length = int(self.headers.get("Content-Length") or 0)
+            except ValueError:
+                length = -1
+            if length < 0:
+                self.close_connection = True   # the body cannot be framed
+                return self._send({"error": "bad Content-Length"}, 400)
+            if route == "flags" and length > FLAG_BODY_MAX:
+                # Not read, so this connection cannot carry another request.
+                self.close_connection = True
+                return self._send({"error": f"a flag is at most {FLAG_BODY_MAX} bytes"}, 413)
+            try:
+                payload = json.loads(self.rfile.read(length) or b"{}")
+            except (ValueError, RecursionError):
+                # Was an uncaught exception: the connection dropped with no
+                # response at all instead of a 400 the caller could read.
+                # RecursionError is a deeply nested body ("[" * 5000 fits in
+                # the 16 KB flag cap), which is not a ValueError.
+                return self._send({"error": "the body must be JSON"}, 400)
+            if not isinstance(payload, dict):
+                return self._send({"error": "the body must be a JSON object"}, 400)
+            try:
+                if route == "flags":
+                    # Its own gate: flags keys are accepted here and nowhere else.
+                    return self._post_flag(payload)
+                if route in ("simulate", "decks", "ask", "coaching"):
+                    denied = self._write_denial()
+                    if denied:
+                        return self._deny(*denied)
 
                 if route == "coaching":
                     result_file = str(payload.get("result_file") or "").strip()
@@ -1537,9 +2036,9 @@ def serve(port: int = 8484) -> None:
             try:
                 if len(parts) == 2 and parts[0] == "decks":
                     # Destructive and writing: same gate as the other writes.
-                    if not self._authed():
-                        return self._deny(
-                            401, "an API key is required for this endpoint")
+                    denied = self._write_denial()
+                    if denied:
+                        return self._deny(*denied)
                     p = _find_deck(parts[1])
                     if p is None:
                         return self._send({"error": "no such deck"}, 404)
@@ -1589,11 +2088,15 @@ def serve(port: int = 8484) -> None:
     worker.ensure_embedded()  # no-op when MTG_EMBEDDED_WORKER=0 (deployed mode)
 
     mode = f"{len(API_KEYS)} API key(s)" if API_KEYS else "OPEN — no auth"
-    print(f"MTG engine API on http://{host}:{port}  [{mode}]")
+    print(f"MTG engine API on http://{host}:{port}  [{mode}, {len(FLAG_KEYS)} flag key(s)]")
     print(f"  limits: {SIM_PER_HOUR} sims/hour/caller, <={SIM_MAX_GAMES} games, "
-          f"{SIM_MAX_QUEUED} queued max, {READ_PER_MIN} reads/min")
+          f"{SIM_MAX_QUEUED} queued max, {READ_PER_MIN} reads/min, "
+          f"{FLAG_PER_HOUR} flags/hour/key")
     if not API_KEYS:
         print("  WARNING: /simulate and /decks are unauthenticated", file=sys.stderr)
+    if FLAG_KEYS_MALFORMED:
+        print(f"  WARNING: MTG_FLAG_KEYS: skipped {FLAG_KEYS_MALFORMED} malformed "
+              "entr(y/ies); the format is label:key,label:key", file=sys.stderr)
 
     srv = ThreadingHTTPServer((host, port), Handler)
     srv.daemon_threads = True   # don't let in-flight requests block shutdown

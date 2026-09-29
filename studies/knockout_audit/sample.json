@@ -1,0 +1,595 @@
+{
+ "seed": 20261012,
+ "files": {
+  "R": {
+   "file": "sim_20260925_003803_d0eb966b8d33_rotated.json",
+   "md5": "396ef82b5d818f67298682af924df3a2"
+  },
+  "S": {
+   "file": "sim_20260801_193328.json",
+   "md5": "df282cd5cb44527001e9f229c447d6bd"
+  },
+  "T": {
+   "file": "sim_20260723_101044.json",
+   "md5": "340c7b65b953ff3f7497be7bf275345c"
+  }
+ },
+ "tp_games": [
+  "R-g01",
+  "R-g02",
+  "R-g03",
+  "R-g04",
+  "R-g05",
+  "R-g07",
+  "R-g08",
+  "S-g02",
+  "S-g03",
+  "S-g04",
+  "S-g05",
+  "S-g06",
+  "T-g01",
+  "T-g03",
+  "T-g04",
+  "T-g07",
+  "T-g15",
+  "T-g16",
+  "T-g17",
+  "T-g18"
+ ],
+ "reading_set": [
+  "R-g01",
+  "R-g02",
+  "R-g03",
+  "R-g04",
+  "R-g05",
+  "R-g06",
+  "R-g07",
+  "R-g08",
+  "S-g01",
+  "S-g02",
+  "S-g03",
+  "S-g04",
+  "S-g05",
+  "S-g06",
+  "T-g01",
+  "T-g03",
+  "T-g04",
+  "T-g07",
+  "T-g15",
+  "T-g16",
+  "T-g17",
+  "T-g18"
+ ],
+ "games": {
+  "R-g01": {
+   "run": "R",
+   "n": 1,
+   "players": [
+    "Ai(1)-Kess, Reanimator",
+    "Ai(2)-Skrat's Revenge",
+    "Ai(3)-Stella Lee, Wild Card",
+    "Ai(4)-Krenko Goblins"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "R-g02": {
+   "run": "R",
+   "n": 2,
+   "players": [
+    "Ai(3)-Stella Lee, Wild Card",
+    "Ai(4)-Krenko Goblins",
+    "Ai(1)-Kess, Reanimator",
+    "Ai(2)-Skrat's Revenge"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "R-g03": {
+   "run": "R",
+   "n": 3,
+   "players": [
+    "Ai(2)-Stella Lee, Wild Card",
+    "Ai(3)-Krenko Goblins",
+    "Ai(4)-Kess, Reanimator",
+    "Ai(1)-Skrat's Revenge"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "R-g04": {
+   "run": "R",
+   "n": 4,
+   "players": [
+    "Ai(1)-Skrat's Revenge",
+    "Ai(2)-Stella Lee, Wild Card",
+    "Ai(3)-Krenko Goblins",
+    "Ai(4)-Kess, Reanimator"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "R-g05": {
+   "run": "R",
+   "n": 5,
+   "players": [
+    "Ai(1)-Stella Lee, Wild Card",
+    "Ai(2)-Krenko Goblins",
+    "Ai(3)-Kess, Reanimator",
+    "Ai(4)-Skrat's Revenge"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "R-g06": {
+   "run": "R",
+   "n": 6,
+   "players": [
+    "Ai(4)-Skrat's Revenge",
+    "Ai(1)-Stella Lee, Wild Card",
+    "Ai(2)-Krenko Goblins",
+    "Ai(3)-Kess, Reanimator"
+   ],
+   "decided": false,
+   "turning_point_requested": false,
+   "knockouts_in_game": 1
+  },
+  "R-g07": {
+   "run": "R",
+   "n": 7,
+   "players": [
+    "Ai(2)-Kess, Reanimator",
+    "Ai(3)-Skrat's Revenge",
+    "Ai(4)-Stella Lee, Wild Card",
+    "Ai(1)-Krenko Goblins"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "R-g08": {
+   "run": "R",
+   "n": 8,
+   "players": [
+    "Ai(1)-Krenko Goblins",
+    "Ai(2)-Kess, Reanimator",
+    "Ai(3)-Skrat's Revenge",
+    "Ai(4)-Stella Lee, Wild Card"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "S-g01": {
+   "run": "S",
+   "n": 1,
+   "players": [
+    "Ai(1)-Atraxa Counters B3",
+    "Ai(2)-Ur-Dragon B3",
+    "Ai(3)-Meren Graveyard B3",
+    "Ai(4)-Kilo Helm Final"
+   ],
+   "decided": false,
+   "turning_point_requested": false,
+   "knockouts_in_game": 2
+  },
+  "S-g02": {
+   "run": "S",
+   "n": 2,
+   "players": [
+    "Ai(1)-Atraxa Counters B3",
+    "Ai(2)-Ur-Dragon B3",
+    "Ai(3)-Meren Graveyard B3",
+    "Ai(4)-Kilo Helm Final"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "S-g03": {
+   "run": "S",
+   "n": 3,
+   "players": [
+    "Ai(1)-Atraxa Counters B3",
+    "Ai(2)-Ur-Dragon B3",
+    "Ai(3)-Meren Graveyard B3",
+    "Ai(4)-Kilo Helm Final"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "S-g04": {
+   "run": "S",
+   "n": 4,
+   "players": [
+    "Ai(1)-Atraxa Counters B3",
+    "Ai(2)-Ur-Dragon B3",
+    "Ai(3)-Meren Graveyard B3",
+    "Ai(4)-Kilo Helm Final"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "S-g05": {
+   "run": "S",
+   "n": 5,
+   "players": [
+    "Ai(1)-Atraxa Counters B3",
+    "Ai(2)-Ur-Dragon B3",
+    "Ai(3)-Meren Graveyard B3",
+    "Ai(4)-Kilo Helm Final"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "S-g06": {
+   "run": "S",
+   "n": 6,
+   "players": [
+    "Ai(2)-Ur-Dragon B3",
+    "Ai(3)-Meren Graveyard B3",
+    "Ai(4)-Kilo Helm Final",
+    "Ai(1)-Atraxa Counters B3"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g01": {
+   "run": "T",
+   "n": 1,
+   "players": [
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga",
+    "Ai(1)-Shelly Siona",
+    "Ai(2)-NanMan Felix Five-Boots"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g03": {
+   "run": "T",
+   "n": 3,
+   "players": [
+    "Ai(1)-Shelly Siona",
+    "Ai(2)-NanMan Felix Five-Boots",
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g04": {
+   "run": "T",
+   "n": 4,
+   "players": [
+    "Ai(1)-Shelly Siona",
+    "Ai(2)-NanMan Felix Five-Boots",
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g07": {
+   "run": "T",
+   "n": 7,
+   "players": [
+    "Ai(1)-Shelly Siona",
+    "Ai(2)-NanMan Felix Five-Boots",
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g15": {
+   "run": "T",
+   "n": 15,
+   "players": [
+    "Ai(1)-Shelly Siona",
+    "Ai(2)-NanMan Felix Five-Boots",
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g16": {
+   "run": "T",
+   "n": 16,
+   "players": [
+    "Ai(1)-Shelly Siona",
+    "Ai(2)-NanMan Felix Five-Boots",
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g17": {
+   "run": "T",
+   "n": 17,
+   "players": [
+    "Ai(1)-Shelly Siona",
+    "Ai(2)-NanMan Felix Five-Boots",
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  },
+  "T-g18": {
+   "run": "T",
+   "n": 18,
+   "players": [
+    "Ai(2)-NanMan Felix Five-Boots",
+    "Ai(3)-Dnide Wildsear",
+    "Ai(4)-N3cro Raggadragga",
+    "Ai(1)-Shelly Siona"
+   ],
+   "decided": true,
+   "turning_point_requested": true,
+   "knockouts_in_game": 3
+  }
+ },
+ "frame_size": 63,
+ "knockouts": [
+  {
+   "id": "R-g01:Ai(3)-Stella Lee, Wild Card",
+   "game": "R-g01",
+   "eliminated_player": "Ai(3)-Stella Lee, Wild Card",
+   "reason_class": "poison"
+  },
+  {
+   "id": "R-g01:Ai(4)-Krenko Goblins",
+   "game": "R-g01",
+   "eliminated_player": "Ai(4)-Krenko Goblins",
+   "reason_class": "poison"
+  },
+  {
+   "id": "R-g02:Ai(2)-Skrat's Revenge",
+   "game": "R-g02",
+   "eliminated_player": "Ai(2)-Skrat's Revenge",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g02:Ai(3)-Stella Lee, Wild Card",
+   "game": "R-g02",
+   "eliminated_player": "Ai(3)-Stella Lee, Wild Card",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g03:Ai(3)-Krenko Goblins",
+   "game": "R-g03",
+   "eliminated_player": "Ai(3)-Krenko Goblins",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g03:Ai(4)-Kess, Reanimator",
+   "game": "R-g03",
+   "eliminated_player": "Ai(4)-Kess, Reanimator",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g04:Ai(1)-Skrat's Revenge",
+   "game": "R-g04",
+   "eliminated_player": "Ai(1)-Skrat's Revenge",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g04:Ai(2)-Stella Lee, Wild Card",
+   "game": "R-g04",
+   "eliminated_player": "Ai(2)-Stella Lee, Wild Card",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g04:Ai(3)-Krenko Goblins",
+   "game": "R-g04",
+   "eliminated_player": "Ai(3)-Krenko Goblins",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g05:Ai(2)-Krenko Goblins",
+   "game": "R-g05",
+   "eliminated_player": "Ai(2)-Krenko Goblins",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g08:Ai(1)-Krenko Goblins",
+   "game": "R-g08",
+   "eliminated_player": "Ai(1)-Krenko Goblins",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g08:Ai(3)-Skrat's Revenge",
+   "game": "R-g08",
+   "eliminated_player": "Ai(3)-Skrat's Revenge",
+   "reason_class": "life"
+  },
+  {
+   "id": "R-g08:Ai(4)-Stella Lee, Wild Card",
+   "game": "R-g08",
+   "eliminated_player": "Ai(4)-Stella Lee, Wild Card",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g01:Ai(3)-Meren Graveyard B3",
+   "game": "S-g01",
+   "eliminated_player": "Ai(3)-Meren Graveyard B3",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g02:Ai(1)-Atraxa Counters B3",
+   "game": "S-g02",
+   "eliminated_player": "Ai(1)-Atraxa Counters B3",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g02:Ai(4)-Kilo Helm Final",
+   "game": "S-g02",
+   "eliminated_player": "Ai(4)-Kilo Helm Final",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g03:Ai(1)-Atraxa Counters B3",
+   "game": "S-g03",
+   "eliminated_player": "Ai(1)-Atraxa Counters B3",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g03:Ai(4)-Kilo Helm Final",
+   "game": "S-g03",
+   "eliminated_player": "Ai(4)-Kilo Helm Final",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g04:Ai(1)-Atraxa Counters B3",
+   "game": "S-g04",
+   "eliminated_player": "Ai(1)-Atraxa Counters B3",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g05:Ai(2)-Ur-Dragon B3",
+   "game": "S-g05",
+   "eliminated_player": "Ai(2)-Ur-Dragon B3",
+   "reason_class": "spell"
+  },
+  {
+   "id": "S-g05:Ai(3)-Meren Graveyard B3",
+   "game": "S-g05",
+   "eliminated_player": "Ai(3)-Meren Graveyard B3",
+   "reason_class": "poison"
+  },
+  {
+   "id": "S-g05:Ai(4)-Kilo Helm Final",
+   "game": "S-g05",
+   "eliminated_player": "Ai(4)-Kilo Helm Final",
+   "reason_class": "spell"
+  },
+  {
+   "id": "S-g06:Ai(1)-Atraxa Counters B3",
+   "game": "S-g06",
+   "eliminated_player": "Ai(1)-Atraxa Counters B3",
+   "reason_class": "life"
+  },
+  {
+   "id": "S-g06:Ai(2)-Ur-Dragon B3",
+   "game": "S-g06",
+   "eliminated_player": "Ai(2)-Ur-Dragon B3",
+   "reason_class": "deckout"
+  },
+  {
+   "id": "T-g01:Ai(1)-Shelly Siona",
+   "game": "T-g01",
+   "eliminated_player": "Ai(1)-Shelly Siona",
+   "reason_class": "commander"
+  },
+  {
+   "id": "T-g01:Ai(2)-NanMan Felix Five-Boots",
+   "game": "T-g01",
+   "eliminated_player": "Ai(2)-NanMan Felix Five-Boots",
+   "reason_class": "poison"
+  },
+  {
+   "id": "T-g03:Ai(1)-Shelly Siona",
+   "game": "T-g03",
+   "eliminated_player": "Ai(1)-Shelly Siona",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g03:Ai(2)-NanMan Felix Five-Boots",
+   "game": "T-g03",
+   "eliminated_player": "Ai(2)-NanMan Felix Five-Boots",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g04:Ai(2)-NanMan Felix Five-Boots",
+   "game": "T-g04",
+   "eliminated_player": "Ai(2)-NanMan Felix Five-Boots",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g04:Ai(4)-N3cro Raggadragga",
+   "game": "T-g04",
+   "eliminated_player": "Ai(4)-N3cro Raggadragga",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g07:Ai(1)-Shelly Siona",
+   "game": "T-g07",
+   "eliminated_player": "Ai(1)-Shelly Siona",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g15:Ai(3)-Dnide Wildsear",
+   "game": "T-g15",
+   "eliminated_player": "Ai(3)-Dnide Wildsear",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g15:Ai(4)-N3cro Raggadragga",
+   "game": "T-g15",
+   "eliminated_player": "Ai(4)-N3cro Raggadragga",
+   "reason_class": "commander"
+  },
+  {
+   "id": "T-g16:Ai(1)-Shelly Siona",
+   "game": "T-g16",
+   "eliminated_player": "Ai(1)-Shelly Siona",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g16:Ai(2)-NanMan Felix Five-Boots",
+   "game": "T-g16",
+   "eliminated_player": "Ai(2)-NanMan Felix Five-Boots",
+   "reason_class": "life"
+  },
+  {
+   "id": "T-g16:Ai(4)-N3cro Raggadragga",
+   "game": "T-g16",
+   "eliminated_player": "Ai(4)-N3cro Raggadragga",
+   "reason_class": "commander"
+  },
+  {
+   "id": "T-g17:Ai(2)-NanMan Felix Five-Boots",
+   "game": "T-g17",
+   "eliminated_player": "Ai(2)-NanMan Felix Five-Boots",
+   "reason_class": "commander"
+  },
+  {
+   "id": "T-g17:Ai(3)-Dnide Wildsear",
+   "game": "T-g17",
+   "eliminated_player": "Ai(3)-Dnide Wildsear",
+   "reason_class": "commander"
+  },
+  {
+   "id": "T-g17:Ai(4)-N3cro Raggadragga",
+   "game": "T-g17",
+   "eliminated_player": "Ai(4)-N3cro Raggadragga",
+   "reason_class": "commander"
+  },
+  {
+   "id": "T-g18:Ai(1)-Shelly Siona",
+   "game": "T-g18",
+   "eliminated_player": "Ai(1)-Shelly Siona",
+   "reason_class": "life"
+  }
+ ],
+ "note": "Output of draw.py (seed 20261012) on the three pre-registered files; the forge_line field is omitted here because Richard's game logs stay off the repo."
+}

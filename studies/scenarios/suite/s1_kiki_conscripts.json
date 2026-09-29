@@ -1,0 +1,87 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s1_kiki_conscripts",
+  "description": "S1. Kiki-Jiki, Mirror Breaker and Zealous Conscripts untapped on winota_lua's turn (pod OuY6mdiXbHU). The loop: Kiki copies Conscripts (its only legal copy target here), the hasty copy's enter trigger untaps Kiki, repeat for any number of hasty 3/3s, then attack. Tests the trigger target on every pass (in games the copy untapped Kiki 0 of 8 times; it took Rionya, Mirage Phalanx, Winota or an opponent's permanent). Success: winota_lua wins on the scenario turn.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/OuY6mdiXbHU/dck/winota_lua.dck",
+      "battlefield": [
+        "Kiki-Jiki, Mirror Breaker",
+        "Zealous Conscripts",
+        "Plateau",
+        "Mountain",
+        "Plains"
+      ],
+      "hand": [
+        "Swords to Plowshares",
+        "Legion Warboss"
+      ],
+      "lands_played": 1
+    },
+    {
+      "deck": "studies/human_ceiling/decks/OuY6mdiXbHU/dck/winota_ian.dck",
+      "battlefield": [
+        "Plains",
+        "Plains",
+        "Mountain",
+        "Plateau",
+        "Mother of Runes",
+        "Thalia, Guardian of Thraben"
+      ],
+      "hand": [
+        "Plains",
+        "Legion Warboss"
+      ]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/OuY6mdiXbHU/dck/winota_mike.dck",
+      "battlefield": [
+        "Plains",
+        "Plains",
+        "Mountain",
+        "Sacred Foundry",
+        "Ragavan, Nimble Pilferer"
+      ],
+      "hand": [
+        "Plains",
+        "Goblin Rabblemaster"
+      ]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/OuY6mdiXbHU/dck/winota_rachel.dck",
+      "battlefield": [
+        "Plains",
+        "Plains",
+        "Mountain",
+        "Plateau",
+        "Goblin Rabblemaster"
+      ],
+      "hand": [
+        "Plains",
+        "Legion Warboss"
+      ]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {
+    "type": "win",
+    "seat": 0,
+    "by_turn": 9
+  },
+  "line": {
+    "seat": 0,
+    "pieces": [
+      "Kiki-Jiki, Mirror Breaker",
+      "Zealous Conscripts"
+    ]
+  },
+  "horizon_turns": 4,
+  "notes": [
+    "Kiki's only legal copy target is Conscripts (Winota is legendary and stays in the command zone), so every activation reaches the Conscripts trigger, the choice under test. A probe with Mirage Phalanx beside them showed stock Forge copying Phalanx instead, which tests a different choice.",
+    "Three lands and this turn's land drop already used, so Winota (4 mana) cannot be cast: her attack trigger adds combat damage on its own and would blur whether the loop ran. The loop itself needs no mana.",
+    "Opponents hold no instant-speed interaction, so the scenario measures the pilot, not a counterspell.",
+    "Every seat at 40 life: without the loop the board deals under 10 damage, far short of a kill."
+  ]
+}

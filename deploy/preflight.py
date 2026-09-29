@@ -63,10 +63,18 @@ DEFAULT_BASE = "http://127.0.0.1:8484"
 # HTTP plumbing
 # --------------------------------------------------------------------------
 
-def fetch(base, path, timeout=60):
-    """Return (status, parsed_or_text). Never raises."""
+def fetch(base, path, timeout=60, body=None):
+    """Return (status, parsed_or_text). Never raises. With `body`, POSTs it as
+    JSON and sends NO credential: preflight probes a write route only to prove
+    it exists and is gated, never to write."""
     try:
-        r = urllib.request.urlopen(base + path, timeout=timeout)
+        if body is None:
+            req = base + path
+        else:
+            req = urllib.request.Request(base + path, data=json.dumps(body).encode(),
+                                         headers={"Content-Type": "application/json"},
+                                         method="POST")
+        r = urllib.request.urlopen(req, timeout=timeout)
         body = r.read().decode("utf-8", "replace")
         try:
             return r.status, json.loads(body)
@@ -103,15 +111,34 @@ def has_keys(*keys):
     return check
 
 
-def available_true(body):
-    """For endpoints that self-report readiness with {"available": bool}."""
+def prediction_ok(body):
+    """The playgroup prediction, with its pilot label (WS11 task 11).
+
+    Live means one of two things: figures with the label that says which
+    pilot the model was fitted on, or a prediction withheld because the
+    committed rank check for the run's pilot failed. The second is a decision
+    (decision 19), recorded in engine/models/rank_checks.json, not a dark
+    surface. A withheld prediction because that record is MISSING from the
+    image is a failure, and so is an answer with no label (an engine older
+    than R1)."""
     if not isinstance(body, dict):
         return False, "expected an object"
+    if "label" not in body or "pilot" not in body:
+        if body.get("available") is False:
+            return False, "available=%s reason=%s" % (
+                body.get("available"), body.get("reason"))
+        return False, "no pilot label (engine older than R1?)"
+    pilot = (body.get("pilot") or {}).get("id")
+    if body.get("suppressed"):
+        if body.get("suppressed_by") == "rank_check":
+            return True, "withheld by rank check for pilot %s: %s" % (
+                pilot, body.get("suppressed_reason"))
+        return False, "withheld: %s" % body.get("suppressed_reason")
     if body.get("available") is True:
         n = len(body.get("decks") or [])
-        return True, "available, %d decks scored" % n
-    return False, "available=%s reason=%s" % (
-        body.get("available"), body.get("reason"))
+        return True, "available, %d decks scored; pilot %s; rank check %s" % (
+            n, pilot, (body.get("rank_check") or {}).get("status"))
+    return False, "available=%s reason=%s" % (body.get("available"), body.get("reason"))
 
 
 def kb_loaded(body):
@@ -140,12 +167,36 @@ def deck_labels_present(body):
     return True, "%s" % labels[:3]
 
 
+def game_story_ok(body):
+    """Every game carries its story (engine/game_story.py), and the run its
+    commanders and pilot. A 200 without them is an engine older than R1, or
+    one whose analyzer failed on every game (all stories empty)."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    games = body.get("games") or []
+    if not games or not all(isinstance(g.get("knockouts"), list) and "turning_point" in g
+                            for g in games):
+        return False, "games carry no knockouts/turning_point (engine older than R1?)"
+    if not isinstance(body.get("commanders"), dict) or not (body.get("pilot") or {}).get("label"):
+        return False, "commanders or pilot missing"
+    decided = [g for g in games if (g.get("result") or {}).get("winner")
+               and not (g.get("result") or {}).get("draw")]
+    if decided and not any(g["knockouts"] for g in decided):
+        return False, "no knockouts in any decided game: the analyzer failed on every one"
+    story = body.get("story") or {}
+    return True, "label=%s detail=%s pilot=%s" % (
+        story.get("turning_point_label"), story.get("knockout_detail"),
+        body["pilot"].get("kind"))
+
+
 def analysis_ok(body):
     """The wincon report, from an engine that carries qa.knockouts.
 
-    ANALYSIS_VERSION 6 added per-game `knockouts` (repair plan WS1). A report
-    without them is a stale engine, or one whose image is missing engine/qa/
-    and fell back to the loss-line reading."""
+    ANALYSIS_VERSION 6 added per-game `knockouts` (repair plan WS1), and 7
+    the week-3 audit's analyzer fixes (knockout card attribution, the raw-rise
+    rule for the turning point). A report below 7 is a stale engine, or one
+    whose image is missing engine/qa/ and fell back to the loss-line
+    reading."""
     if not isinstance(body, dict):
         return False, "expected an object"
     missing = [k for k in ("decks", "summary", "games") if k not in body]
@@ -154,6 +205,8 @@ def analysis_ok(body):
     version = body.get("version") or 0
     if version < 6:
         return False, "analysis version %s < 6 (no knockouts)" % version
+    if version < 7:
+        return False, "analysis version %s < 7 (knockouts before the week-3 audit fixes)" % version
     games = body.get("games") or []
     bare = [g.get("n") for g in games
             if not isinstance(g, dict) or not isinstance(g.get("knockouts"), list)]
@@ -192,14 +245,108 @@ def cached_read_endpoint(body):
         body.get("ok"), body.get("reason"))
 
 
+# "Flag this moment" (repair plan WS2 layer A task 5). Two facts: the route is
+# deployed and gated (always meant to be live: admin keys can flag), and the
+# playtesters' flags-only keys are loaded (live only once Vincent has set
+# MTG_FLAG_KEYS; unset is a deliberate off, not a failure).
+FLAG_KEYS_ENV = "MTG_FLAG_KEYS"
+
+
+def _fully_open(env):
+    """Neither key set: the engine takes anonymous writes (local dev only)."""
+    return not (env.get("MTG_API_KEYS") or "").strip() and \
+        not (env.get(FLAG_KEYS_ENV) or "").strip()
+
+
+def flag_route_gated(body):
+    """POST /flags with no credential and an empty body. A deployed route
+    answers 401 from the flags gate (or, on a fully open dev server, 400 for
+    the empty body); an engine that predates /flags answers 404."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    err = str(body.get("error") or "")
+    if "flag key" in err or "pass run" in err:
+        return True, "route present and gated (%s)" % err
+    return False, "unexpected answer: %s" % err[:80]
+
+
+def parse_flag_keys_env(env=None):
+    """(keys loaded, malformed entries) for MTG_FLAG_KEYS, by the engine's own
+    parser so the two can never disagree about the format."""
+    env = os.environ if env is None else env
+    raw = env.get(FLAG_KEYS_ENV) or ""
+    engine_dir = _engine_dir()
+    if engine_dir not in sys.path:
+        sys.path.insert(0, engine_dir)
+    from mtg_engine import parse_flag_keys
+    keys, bad = parse_flag_keys(raw)
+    return len(keys), bad
+
+
+def flag_keys_loaded(env=None):
+    """Predicate on GET /health: every MTG_FLAG_KEYS entry parses, and the
+    running engine reports that it loaded flag keys."""
+    def check(body):
+        if not isinstance(body, dict):
+            return False, "expected an object"
+        n, bad = parse_flag_keys_env(env)
+        if bad:
+            return False, ("%d malformed %s entr(y/ies) skipped: the format is "
+                           "label:key,label:key (deploy/HOSTING.md)" % (bad, FLAG_KEYS_ENV))
+        if body.get("flags") is not True:
+            return False, ("the engine reports flags=%s: it loaded no flag key. "
+                           "Recreate the api container after editing .env."
+                           % body.get("flags"))
+        return True, "%d flag key(s) configured; the engine reports flags=true" % n
+    return check
+
+
+def flag_surfaces(env=None):
+    """The two flags entries for the manifest, the second decided by the env."""
+    env = os.environ if env is None else env
+    route = {
+        "name": "flag route (POST /flags)",
+        "intent": "live",
+        "path": "/flags",
+        "post": {},
+        # Production always sets MTG_API_KEYS, so only the gate's 401 passes
+        # there. 400 is accepted only when this env says the engine is open.
+        "expect": (401, 400) if _fully_open(env) else (401,),
+        "check": flag_route_gated,
+        "note": "an unkeyed POST must meet the flags gate; 404 means the "
+                "engine image predates /flags",
+    }
+    if (env.get(FLAG_KEYS_ENV) or "").strip():
+        keys = {
+            "name": "playtester flag keys",
+            "intent": "live",
+            "path": "/health",
+            "check": flag_keys_loaded(env),
+            "note": "MTG_FLAG_KEYS reaches the api through docker-compose.yml",
+        }
+    else:
+        keys = {
+            "name": "playtester flag keys",
+            "intent": "off",
+            "reason": "MTG_FLAG_KEYS is unset, so no playtester holds a flags-only "
+                      "key yet and only admin keys can flag a moment. Generating "
+                      "one is the owner's call (deploy/HOSTING.md, \"Giving a "
+                      "playtester a flag key\").",
+        }
+    return [route, keys]
+
+
 # --------------------------------------------------------------------------
 # The manifest. THIS is the statement of intent.
 # --------------------------------------------------------------------------
 # intent="live" -> must pass, or preflight fails.
 # intent="off"  -> deliberately not enabled; reason is mandatory and is
 #                  printed so it never gets re-investigated as a bug.
+# Optional keys: "post" probes the path with an UNKEYED POST of that JSON body
+# (to prove a write route exists and is gated; it never writes), and "expect"
+# lists the statuses that count as answered (default (200,)).
 
-def surfaces(run, deck):
+def surfaces(run, deck, env=None):
     return [
         {
             "name": "rules KB",
@@ -234,6 +381,15 @@ def surfaces(run, deck):
             "note": "deck pickers must never render a server path",
         },
         {
+            "name": "game story",
+            "intent": "live",
+            "path": "/results/%s/summary" % run,
+            "check": game_story_ok,
+            "note": "knockouts, out seats, turning point, commanders and pilot "
+                    "(engine/game_story.py; MTG_TURNING_POINT / MTG_KNOCKOUT_DETAIL "
+                    "set what is shown)",
+        },
+        {
             "name": "deck scorecards",
             "intent": "live",
             "path": "/results/%s/scorecards" % run,
@@ -243,8 +399,9 @@ def surfaces(run, deck):
             "name": "playgroup prediction",
             "intent": "live",
             "path": "/results/%s/prediction" % run,
-            "check": available_true,
-            "note": "needs engine/models/precon_predict.json INSIDE the image",
+            "check": prediction_ok,
+            "note": "needs engine/models/precon_predict.json and rank_checks.json "
+                    "INSIDE the image; a rank-check failure withholds it by design",
         },
         {
             "name": "replay events",
@@ -322,7 +479,7 @@ def surfaces(run, deck):
                       "validated (repair plan RC4). The store still fills. "
                       "Asserted under DEPLOYMENT INVARIANTS, not just noted.",
         },
-    ]
+    ] + flag_surfaces(env)
 
 
 # --------------------------------------------------------------------------
@@ -332,13 +489,14 @@ def surfaces(run, deck):
 
 NUDGE_FLAG = "MTG_PLAN_FEEDBACK_APPLY"
 
-# The oldest shim a production result may come from. 0.16.0 fixes the attack
-# re-ask loop that 0.15.0 (the playtester run that prompted the repair plan)
-# still had, and its new dials default to 0.15.0 behaviour. Raise this with
+# The oldest shim a production result may come from. 0.17.0 is the R1 pin:
+# the tutoring hotfix behind plan-data flags (G0a PASS), on top of 0.16.0's
+# fix for 0.15.0's attack re-ask loop. With version-1 plans it plays as
+# 0.16.0 did, so a MTG_PLAN_VERSION=1 rollback still meets it. Raise this with
 # every release pin (SIMLAB_SHIM_REF in docker-compose.yml). When compose also
 # hands this container a version-tag SIMLAB_SHIM_REF newer than the floor,
 # that tag is the bar instead, so a new pin is never checked against an old one.
-SHIM_FLOOR = (0, 16, 0)
+SHIM_FLOOR = (0, 17, 0)
 _SHIM_AGENT = re.compile(r"simlab-forge-shim/(\d+)\.(\d+)\.(\d+)")
 _SHIM_TAG = re.compile(r"^v?(\d+)\.(\d+)\.(\d+)$")
 
@@ -436,6 +594,8 @@ def shim_at_least_pin(run, meta, pin, pin_source):
 IMAGE_FILES = [
     ("/app/engine/models/precon_predict.json",
      "the fitted prediction model; a top-level COPY glob once missed it"),
+    ("/app/engine/models/rank_checks.json",
+     "rank checks per pilot; without it the prediction is withheld on plan runs"),
     ("/app/rules/kb", "the Comprehensive Rules KB the /ask retrieval reads"),
     ("/app/engine/decks", "bundled decks"),
     ("/app/engine/qa/__init__.py",
@@ -447,7 +607,8 @@ IMAGE_FILES = [
 # Modules that must IMPORT in the image, not merely exist on disk. analysis.py
 # imports engine/qa/ at module load, so a missing or broken package would take
 # /analysis down at request time while every file check above passed.
-IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard"]
+IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard", "game_story",
+                 "commanders", "pilot", "predict"]
 
 
 def _engine_dir():
@@ -567,8 +728,8 @@ def main(argv):
         if s["intent"] == "off":
             off.append(s)
             continue
-        st, body = fetch(args.base, s["path"])
-        if st != 200:
+        st, body = fetch(args.base, s["path"], body=s.get("post"))
+        if st not in s.get("expect", (200,)):
             ok, detail = False, "HTTP %s" % st
         else:
             try:
@@ -582,6 +743,31 @@ def main(argv):
     print("\nDELIBERATELY OFF (not failures)")
     for s in off:
         print("  off    %-30s %s" % (s["name"], s["reason"]))
+
+    # The game-story display switches (engine/game_story.py) are set from the
+    # week-3 hand audit, without a code change, so their state is printed
+    # rather than asserted.
+    st, health = fetch(args.base, "/health")
+    sw = health.get("story") if (st == 200 and isinstance(health, dict)) else None
+    print("\nGAME STORY SWITCHES (set from the knockout / turning-point audit)")
+    if isinstance(sw, dict):
+        tp = sw.get("turning_point")
+        print("  %-6s %-30s %s" % ("info", "MTG_TURNING_POINT", "%s: %s" % (
+            tp, {"swing": 'labelled "Biggest board swing", shim runs only (the '
+                          'week-3 audit failed the turning point, 8 of 20; '
+                          'studies/knockout_audit/RESULTS.md)',
+                 "audited": 'labelled "Turning point" (only after a re-audit passes: '
+                            'the week-3 audit failed it, 8 of 20)',
+                 "off": "held: not shown"}.get(tp, "?"))))
+        print("  %-6s %-30s %s" % ("info", "MTG_KNOCKOUT_DETAIL",
+                                   "on: cause and killer shown (the week-3 audit passed "
+                                   "knockouts, 39 of 40)" if sw.get("knockout_detail")
+                                   else "off: who went out and when only"))
+        if sw.get("invalid"):
+            print("  %-6s %-30s unrecognised value in %s; the default is in force" % (
+                "warn", "switch value", ", ".join(sw["invalid"])))
+    else:
+        print("  %-6s %-30s engine older than R1 (no story in /health)" % ("info", "switches"))
 
     # Deployment invariants. The probe run IS the newest result (pick_run), so
     # the shim check reads the same file the surfaces above were probed on.

@@ -24,7 +24,7 @@
  *    phase         "Ai(1)-Kilo Helm Final's Untap step" / "Ai(2)-Drana Vampires' Upkeep step"
  */
 
-import type { BoardFxRec, SimEvent, SimGame, ZoneRec } from "./types";
+import type { BoardFxRec, OutSeat, SimEvent, SimGame, ZoneRec } from "./types";
 import { stripAi } from "./format";
 
 /* ── public shapes ─────────────────────────────────────────────────────── */
@@ -488,6 +488,44 @@ function resolveShape(raw: string, name: string): { board: boolean; kinds?: stri
   return { board: false }; // instant/sorcery effect text — not a permanent
 }
 
+/** A seat that went out, placed on the timeline: `at` is the step it is out
+ *  from. */
+export interface OutAt {
+  player: string;
+  at: number;
+  turn: number;
+  round: number;
+}
+
+/** Place the engine's out seats (engine/game_story.py) on the timeline.
+ *
+ *  Forge prints every loser's "has lost" line at game end, so the fold's own
+ *  "out" op put all three losers out on the final turn: in the playtester's
+ *  game 1, Stella and Krenko sat at full opacity with 46 and 19 poison for 95
+ *  events after Forge had stopped giving them turns (tasks/26-ux-review.md,
+ *  problem 1). The engine dates each loss by the lethal event Forge logged
+ *  (`seq`); a seat is out from that step. When only Forge's turn order bounds
+ *  it (`seq` null, or a seq this log does not carry), it is out from the last
+ *  step of the turn it is dated to. */
+export function outSteps(timeline: Timeline, out: OutSeat[] | undefined): OutAt[] {
+  if (!out?.length) return [];
+  const bySeq = new Map<number, number>();
+  timeline.steps.forEach((s, i) => {
+    if (!bySeq.has(s.seq)) bySeq.set(s.seq, i);
+  });
+  const res: OutAt[] = [];
+  for (const o of out) {
+    let at = o.seq != null ? bySeq.get(o.seq) : undefined;
+    if (at === undefined) {
+      const j = timeline.turns.findIndex((t) => t.turn === o.turn);
+      if (j < 0) continue;
+      at = (timeline.turns[j + 1]?.start ?? timeline.steps.length) - 1;
+    }
+    res.push({ player: o.player, at, turn: o.turn, round: o.round });
+  }
+  return res;
+}
+
 /** Fold steps 0..i (inclusive) into a board state. Best-effort by design:
  *  the event feed stays the authoritative record.
  *
@@ -495,8 +533,14 @@ function resolveShape(raw: string, name: string): { board: boolean; kinds?: stri
  *  all: it is read from the zone stream at the playhead's turn and phase, the
  *  same source board.py measured at exit_match_rate 1.0. The text fold used to
  *  drive the table on every run while the note under it said "read from the
- *  zone stream"; tokens then existed only once they attacked or blocked. */
-export function foldTo(timeline: Timeline, i: number, zones?: ZoneRec[]): BoardState {
+ *  zone stream"; tokens then existed only once they attacked or blocked.
+ *
+ *  `outs` (outSteps) marks each seat out from the step Forge dates its loss
+ *  by, and clears its permanents from the table: when a player leaves a
+ *  multiplayer game, everything they own leaves with them (rule 800.4a). The
+ *  app applies no rule of its own to decide WHO is out or when; that is
+ *  Forge's record, read by the engine. */
+export function foldTo(timeline: Timeline, i: number, zones?: ZoneRec[], outs?: OutAt[]): BoardState {
   const seats: Seat[] = timeline.players.map((p) => ({
     player: p,
     life: 40, // Commander
@@ -597,12 +641,25 @@ export function foldTo(timeline: Timeline, i: number, zones?: ZoneRec[]): BoardS
         break;
     }
   }
+  const gone = new Set<string>();
+  for (const o of outs ?? []) {
+    if (o.at > last) continue;
+    const s = byName.get(o.player);
+    if (s) s.eliminated = { turn: o.turn, round: o.round };
+    gone.add(o.player);
+  }
+  // An out seat's attacks and blocks leave with its creatures; otherwise the
+  // table would draw its declared blockers back as "proved present" tiles.
+  const liveAttacks = attacks.filter((l) => !gone.has(l.from));
+  const liveBlocks = blocks.filter((b) => !gone.has(b.by));
   if (zones && zones.length) {
     const at = timeline.steps[last];
     const read = battlefieldAt(zones, at?.turn ?? 0, at?.phase ?? "", timeline.players);
-    return { seats, battlefield: read, attacks, blocks, stack: pending.map((p) => p.name) };
+    for (const p of gone) read.set(p, []);
+    return { seats, battlefield: read, attacks: liveAttacks, blocks: liveBlocks, stack: pending.map((p) => p.name) };
   }
-  return { seats, battlefield, attacks, blocks, stack: pending.map((p) => p.name) };
+  for (const p of gone) battlefield.set(p, []);
+  return { seats, battlefield, attacks: liveAttacks, blocks: liveBlocks, stack: pending.map((p) => p.name) };
 }
 
 /* ── board-state stream (shim >= 0.12.0) ───────────────────────────────── */
@@ -927,7 +984,12 @@ export function summarizeGame(game: SimGame): GameSummary {
 
 /** Best-effort commander name for a deck: the first cast card whose first word
  *  matches the deck name's first word ("Kilo Helm Final" → "Kilo, Apogee Mind").
- *  Falls back to the deck name minus trailing version noise (Alpha/Omega/B3/v2). */
+ *  Falls back to the deck name minus trailing version noise (Alpha/Omega/B3/v2).
+ *
+ *  A FALLBACK only, for a live game still being played and for an engine
+ *  older than R1. A finished run carries each deck's real commanders from its
+ *  .dck (RunGame.commanders, engine/commanders.py); this guess gave Skrat's
+ *  Revenge (The Unbeatable Squirrel Girl) no avatar at all. */
 export function commanderGuess(deckName: string, games?: SimGame[]): string {
   const clean = stripAi(deckName);
   const token = (clean.split(/\s+/)[0] || "").toLowerCase().replace(/[^a-z0-9'-]/g, "");

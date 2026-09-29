@@ -63,7 +63,13 @@ from qa import knockouts as qa_knockouts  # noqa: E402
 # event (qa.knockouts), so "combat damage / life loss" is split; each game
 # carries `knockouts` and `turning_point`; summary carries `knockout_causes`.
 # A v5 entry reads the last-printed loss line and must not be served.
-ANALYSIS_VERSION = 6
+# Bumped to 7 on 2026-09-28: the week-3 audit's fixes to qa.knockouts. A
+# knockout's card breaks ties on the first hit (D2) and names what gave
+# poison counters without damage (D1), which also corrects the killer of a
+# poison knockout that had been read off an earlier turn's infect hit; a
+# turning point whose raw share did not rise is withheld (T1). A v6 entry
+# carries the old cards and those turning points.
+ANALYSIS_VERSION = 7
 
 _AI = re.compile(r"^Ai\(\d+\)-")
 # "X has kept a hand of 7 cards" / "X has mulliganed down to 6 cards" — take the
@@ -272,8 +278,10 @@ def win_method(game: dict, kos: list[dict] | None = None) -> dict:
 
     {"method", "detail"}: method is a _CAUSE_LABEL value, or "draw", or "not
     recorded" for a log with no loss lines. detail is the spell's name for a
-    spell win (the UI prints "won by <detail>"), otherwise the card that dealt
-    the final knockout, or Forge's loss reason when no card is known.
+    spell win (the UI prints "won by <detail>", the only place it is shown),
+    otherwise the final knockout's card, or Forge's loss reason when no card
+    is known. That card is a NAME and is not audited (qa.knockouts, "Card"):
+    for damage, the name whose lines dealt the most, same-named tokens summed.
     `kos` lets a caller that already ran qa.knockouts on this game pass them.
     """
     result = game.get("result") or {}

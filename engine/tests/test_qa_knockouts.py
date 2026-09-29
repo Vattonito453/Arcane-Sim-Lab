@@ -227,6 +227,202 @@ def test_life_total_with_no_life_line():
     assert analysis.win_method(g)["method"] == "combat damage / life loss"
 
 
+# --- the card: week-3 audit defects D1 (poison without damage), D2 (ties) and
+# --- D3 (same-named sources summed, a kept convention) ------------------------
+
+POISONED = "because of obtaining 10 poison counters"
+
+
+def test_poison_from_a_trigger_names_the_trigger_source():
+    # D1, stdout. Forge's order: the ordinary combat damage, the trigger's
+    # stack line, the counter line while it resolves, then its resolution,
+    # which prints its text and tags the damage source.
+    g = two_player([
+        ("combat", f"{A} assigned Etali, Primal Sickness (268) and Destiny Spinner (218) "
+                   f"to attack {B}."),
+        ("damage", f"Etali, Primal Sickness (268) deals 11 combat damage to {B}."),
+        ("damage", f"Destiny Spinner (218) deals 2 combat damage to {B}."),
+        ("life_change", f"Life: {B} 32 > 19"),
+        ("stack_add", f"{A} triggered Etali, Primal Sickness"),
+        ("damage", f"{B} receives 11 poison counter from {A}"),
+        ("stack_resolve", "Whenever Etali deals combat damage to a player, they get that many "
+                          "poison counters. (A player with ten or more poison counters loses "
+                          f"the game.) [Damage Source: Etali, Primal Sickness (268), Damaged: "
+                          f"{B}, Amount: 11]"),
+    ], outcome_reason=POISONED)
+    (k,) = K.knockouts(g)
+    assert k["cause"] == "poison" and k["turn"] == 3 and k["dated_by"] == "event", k
+    assert k["card"] == "Etali, Primal Sickness", k       # was None before D1
+    assert k["by"] == A and k["basis"] == "log", k        # Forge's own "from P"
+
+
+def _proliferate_pod():
+    """C's Inkmoth Nexus puts nine infect counters on B (turn 3); A's Karn's
+    Bastion proliferates the tenth on the next turn (turn 4), inside B's
+    window; A then finishes C. Shim run, so the zone stream knows who
+    controls each land."""
+    turns = [
+        (A, []),
+        (B, []),
+        (C, [("combat", f"{C} assigned Inkmoth Nexus (41) to attack {B}."),
+             ("damage", f"Inkmoth Nexus (41) deals 9 combat damage to {B}(as poison counters)."),
+             ("damage", f"{B} receives 9 poison counter from {C}")]),
+        (A, [("stack_add", f"{A} activated Karn's Bastion"),
+             ("damage", f"{B} receives 1 poison counter from {A}"),
+             ("replacement_effect", "If one or more counters would be put on an artifact or "
+                                    "creature you control, that many plus one of each of "
+                                    "those kinds of counters are put on that permanent "
+                                    "instead."),
+             ("stack_resolve", "Karn's Bastion (18) - Proliferate. (Choose any number of "
+                               "permanents and/or players, then give each another counter "
+                               "of each kind already there.)")]),
+        (C, []),
+        (A, [("damage", f"Bear (3) deals 20 combat damage to {C}."),
+             ("life_change", f"Life: {C} 20 > 0")]),
+    ]
+    zones = [zone(1, "Karn's Bastion", 18, "Hand", "Battlefield", A, types="Land", pt=""),
+             zone(3, "Inkmoth Nexus", 41, "Hand", "Battlefield", C, types="Land", pt="")]
+    return game(turns, winner=A, players=(A, B, C), zones=zones,
+                outcome=[won(A), lost(B, POISONED), lost(C)])
+
+
+def test_poison_from_proliferate_names_it_and_its_controller():
+    # D1 on the shim path. Before the fix the card came from any infect hit
+    # in the window, so this read "Inkmoth Nexus" with C, whose counters did
+    # not finish B, as the killer; Forge says the tenth came from A.
+    kos = {k["player"]: k for k in K.knockouts(_proliferate_pod())}
+    b = kos[B]
+    assert b["cause"] == "poison" and b["turn"] == 4 and b["dated_by"] == "event", b
+    assert b["card"] == "Karn's Bastion", b
+    assert b["by"] == A and b["basis"] == "log", b
+
+
+def test_infect_then_proliferate_in_one_turn_names_the_proliferate():
+    # Infect takes B to 9 in combat; a proliferate that same turn gives the
+    # tenth. The lethal counter is the proliferate's.
+    g = two_player([
+        ("combat", f"{A} assigned Inkmoth Nexus (41) to attack {B}."),
+        ("damage", f"Inkmoth Nexus (41) deals 9 combat damage to {B}(as poison counters)."),
+        ("damage", f"{B} receives 9 poison counter from {A}"),
+        ("stack_add", f"{A} cast Tezzeret's Gambit"),
+        ("damage", f"{B} receives 1 poison counter from {A}"),
+        ("stack_resolve", f"Tezzeret's Gambit (180) - {A} draws two cards. Proliferate."),
+    ], outcome_reason=POISONED)
+    (k,) = K.knockouts(g)
+    assert k["card"] == "Tezzeret's Gambit" and k["by"] == A, k
+    # Infect alone still names the damage source, as before.
+    g = two_player([
+        ("combat", f"{A} assigned Inkmoth Nexus (41) to attack {B}."),
+        ("damage", f"Inkmoth Nexus (41) deals 10 combat damage to {B}(as poison counters)."),
+        ("damage", f"{B} receives 10 poison counter from {A}"),
+        # A combat-damage trigger resolving next is not the poison source.
+        ("stack_add", f"{A} triggered Sword of Feast and Famine"),
+        ("stack_resolve", "Whenever equipped creature deals combat damage to a player, that "
+                          "player discards a card. [Damage Source: Inkmoth Nexus (41)]"),
+    ], outcome_reason=POISONED)
+    (k,) = K.knockouts(g)
+    assert k["card"] == "Inkmoth Nexus" and k["by"] == A, k
+
+
+def test_poison_trigger_source_ignores_the_tags():
+    # The tag names what set a trigger off, not its source: "Whenever you
+    # cast a spell, proliferate. [Card: Forgotten Ancient ...]" is Inexorable
+    # Tide's trigger, and a Poisonous trigger tagged with its creature must
+    # not pair with the Sword that triggered beside it.
+    g = two_player([
+        ("stack_add", f"{A} cast Forgotten Ancient"),
+        ("stack_add", f"{A} triggered Inexorable Tide"),
+        ("damage", f"{B} receives 1 poison counter from {A}"),
+        ("stack_resolve", f"Whenever you cast a spell, proliferate. [Card: Forgotten Ancient "
+                          f"(367), Activator: {A}, SpellAbility: Forgotten Ancient - Creature "
+                          "0 / 3]"),
+        ("stack_resolve", "Forgotten Ancient - Creature 0 / 3"),
+    ], outcome_reason=POISONED)
+    (k,) = K.knockouts(g)
+    assert k["card"] == "Inexorable Tide", k
+    g = two_player([
+        ("combat", f"{A} assigned Solemn Simulacrum (243) to attack {B}."),
+        ("damage", f"Solemn Simulacrum (243) deals 6 combat damage to {B}."),
+        ("life_change", f"Life: {B} 40 > 34"),
+        ("stack_add", f"{A} triggered Solemn Simulacrum"),
+        ("stack_add", f"{A} triggered Sword of Forge and Frontier"),
+        ("stack_resolve", "Whenever equipped creature deals combat damage to a player, exile "
+                          "the top two cards of your library. [Damage Source: Solemn "
+                          f"Simulacrum (243), Damaged: {B}, Amount: 6]"),
+        ("damage", f"{B} receives 3 poison counter from {A}"),
+        ("stack_resolve", "Poisonous 3 (Whenever this creature deals combat damage to a "
+                          "player, that player gets three poison counters.) [Damage Source: "
+                          f"Solemn Simulacrum (243), Damaged: {B}, Amount: 6]"),
+    ], outcome_reason=POISONED)
+    (k,) = K.knockouts(g)
+    assert k["card"] == "Solemn Simulacrum", k
+
+
+def test_poison_counters_with_no_resolution_name_no_card():
+    # Toxic: the counters come with ordinary combat damage and no effect
+    # resolves for them. A death trigger that resolves later in the step is
+    # not their source, so the card stays unknown rather than guessed.
+    g = two_player([
+        ("combat", f"{A} assigned Bilious Skulldweller (77) to attack {B}."),
+        ("damage", f"Bilious Skulldweller (77) deals 1 combat damage to {B}."),
+        ("life_change", f"Life: {B} 5 > 4"),
+        ("damage", f"{B} receives 1 poison counter from {A}"),
+        ("zone_change", "Solemn Simulacrum (41) was put into Graveyard from Battlefield."),
+        ("stack_add", f"{A} triggered Solemn Simulacrum"),
+        ("stack_resolve", "When Solemn Simulacrum dies, you may draw a card. [Zone Changer: "
+                          "Solemn Simulacrum (41)]"),
+    ], outcome_reason=POISONED)
+    (k,) = K.knockouts(g)
+    assert k["cause"] == "poison" and k["card"] is None, k
+    assert k["by"] == A and k["dated_by"] == "event", k
+
+
+def test_card_tie_goes_to_the_first_hit():
+    # D2, the pre-registered rule ("on a tie, the first one listed"): four
+    # unblocked 1/1s, Bird Illusion, Elemental, Bird Illusion, Elemental.
+    g = two_player([
+        ("combat", f"{A} assigned Bird Illusion Token (10), Elemental Token (11), Bird "
+                   f"Illusion Token (12) and Elemental Token (13) to attack {B}."),
+        ("damage", f"Bird Illusion Token (10) deals 1 combat damage to {B}."),
+        ("damage", f"Elemental Token (11) deals 1 combat damage to {B}."),
+        ("damage", f"Bird Illusion Token (12) deals 1 combat damage to {B}."),
+        ("damage", f"Elemental Token (13) deals 1 combat damage to {B}."),
+        ("life_change", f"Life: {B} 4 > 0"),
+    ])
+    (k,) = K.knockouts(g)
+    assert k["cause"] == "combat_damage" and k["card"] == "Bird Illusion Token", k
+    assert k["by"] == A, k
+    # A three-way tie at the top, below it a larger single hit that is not
+    # the most: the first of the tied names wins, not the last.
+    g = two_player([
+        ("combat", f"{A} assigned Kolaghan, the Storm's Fury (5), Deathbringer Regent (6), "
+                   f"Dragon Token (7), Dragon Token (8) and Keiga, the Tide Star (9) to "
+                   f"attack {B}."),
+        ("damage", f"Kolaghan, the Storm's Fury (5) deals 18 combat damage to {B}."),
+        ("damage", f"Deathbringer Regent (6) deals 19 combat damage to {B}."),
+        ("damage", f"Dragon Token (7) deals 10 combat damage to {B}."),
+        ("damage", f"Dragon Token (8) deals 9 combat damage to {B}."),
+        ("damage", f"Keiga, the Tide Star (9) deals 19 combat damage to {B}."),
+        ("life_change", f"Life: {B} 75 > -10"),
+    ])
+    (k,) = K.knockouts(g)
+    assert k["card"] == "Deathbringer Regent", k
+
+
+def test_card_sums_same_named_sources_by_design():
+    # D3 is a kept convention: damage is summed by card NAME, so six Goblin
+    # Tokens at 8 (48) outrank one Goblin Piledriver at 22. The audit's
+    # readers counted per object; the name is documented, not changed.
+    ids = list(range(20, 26))
+    evs = [("combat", f"{A} assigned Goblin Piledriver (19), "
+                      + ", ".join(f"Goblin Token ({i})" for i in ids) + f" to attack {B}."),
+           ("damage", f"Goblin Piledriver (19) deals 22 combat damage to {B}.")]
+    evs += [("damage", f"Goblin Token ({i}) deals 8 combat damage to {B}.") for i in ids]
+    evs.append(("life_change", f"Life: {B} 70 > 0"))
+    (k,) = K.knockouts(two_player(evs))
+    assert k["card"] == "Goblin Token" and k["by"] == A and k["amount"] == 70, k
+
+
 # --- commander damage, alternate wins, lose effects, unknowns ------------------
 
 def test_commander_damage_prefers_the_commander():
@@ -521,11 +717,13 @@ def test_elimination_is_not_a_swing_and_draws_have_none():
     assert K.turning_point(g) is None
 
 
-def test_turning_point_tie_break_is_mass_exits():
-    # Turns 3 and 5 move A's power share by exactly the same amount (0.25 to
-    # 0.5). Turn 3 does it by killing B's two creatures, turn 5 by casting
-    # three of A's own, which is the larger shift in creature count. The UX
-    # review's tie-break is mass exits, so turn 3 is the turning point.
+def _tie_break_board(winner_has_a_creature: bool):
+    """B plays two 3/3s on turn 2, loses both on turn 3, plays two more on
+    turn 4; A casts creatures on turn 5 and kills B on turn 7. With
+    `winner_has_a_creature`, A has a 3/3 Cub from turn 1 and casts four 3/3
+    Elves on turn 5, which makes turns 3 and 5 tie exactly in smoothed shift
+    (0.4 to 0.667 each); without it A casts three 2/2s on turn 5 (0.25 to
+    0.5 on both turns)."""
     zones = [
         zone(2, "Bear", 20, "Hand", "Battlefield", B, pt="3/3"),
         zone(2, "Bear", 21, "Hand", "Battlefield", B, pt="3/3"),
@@ -533,18 +731,80 @@ def test_turning_point_tie_break_is_mass_exits():
         zone(3, "Bear", 21, "Battlefield", "Graveyard", B, pt="3/3"),
         zone(4, "Bear", 22, "Hand", "Battlefield", B, pt="3/3"),
         zone(4, "Bear", 23, "Hand", "Battlefield", B, pt="3/3"),
-        zone(5, "Cub", 30, "Hand", "Battlefield", A, pt="2/2"),
-        zone(5, "Cub", 31, "Hand", "Battlefield", A, pt="2/2"),
-        zone(5, "Cub", 32, "Hand", "Battlefield", A, pt="2/2"),
     ]
+    if winner_has_a_creature:
+        zones.insert(0, zone(1, "Cub", 30, "Hand", "Battlefield", A, pt="3/3"))
+        zones += [zone(5, "Elf", 31 + i, "Hand", "Battlefield", A, pt="3/3")
+                  for i in range(4)]
+    else:
+        zones += [zone(5, "Cub", 30 + i, "Hand", "Battlefield", A, pt="2/2")
+                  for i in range(3)]
     turns = [(A, []), (B, []), (A, []), (B, []), (A, []), (B, []),
              (A, [("damage", f"Cub (30) deals 20 combat damage to {B}."),
                   ("life_change", f"Life: {B} 20 > 0")])]
-    g = game(turns, winner=A, players=(A, B), zones=zones, outcome=[won(A), lost(B)])
+    return game(turns, winner=A, players=(A, B), zones=zones, outcome=[won(A), lost(B)])
+
+
+def test_turning_point_tie_break_is_mass_exits():
+    # Turns 3 and 5 move A's smoothed power share by exactly the same amount.
+    # Turn 3 does it by killing B's two creatures, turn 5 by casting four of
+    # A's own, which is the larger shift in creature count. The UX review's
+    # tie-break is mass exits, so turn 3 is the turning point. Both turns
+    # raise A's raw share (33% to 100%, and 33% to 71%).
+    g = _tie_break_board(winner_has_a_creature=True)
     ctx = K._Ctx(g)
     assert K._exits_per_turn(ctx) == [0, 0, 2, 0, 0, 0, 0], K._exits_per_turn(ctx)
     tp = K.turning_point(g)
-    assert tp is not None and tp["turn"] == 3 and tp["shift"] == 0.25, tp
+    assert tp is not None and tp["turn"] == 3 and tp["shift"] == 0.267, tp
+    assert (tp["share_before"], tp["share_after"]) == (0.333, 1.0), tp
+
+
+def test_a_wipe_the_winner_had_no_creatures_for_is_not_a_board_swing():
+    # The rule T1 adds, where it bites: A holds no creature power when B's
+    # board dies on turn 3, so A's raw share reads 0% before and after. The
+    # smoothing alone made that turn the biggest shift (tied with turn 5, and
+    # picked by the mass-exit tie-break), so the game shows none. The metric
+    # is the winner's share of creature power, and it did not rise; a reader
+    # may still call that wipe the turn the game turned (RESULTS.md, "Fixes
+    # after the audit").
+    assert K.turning_point(_tie_break_board(winner_has_a_creature=False)) is None
+
+
+def _lone_winner_board(opponent_creature: bool):
+    """A plays a 2/2 on turn 1 and a 5/5 on turn 3, then kills B on turn 5.
+    With `opponent_creature`, B has a 3/3 from turn 2."""
+    zones = [zone(1, "Bear", 1, "Hand", "Battlefield", A, pt="2/2"),
+             zone(3, "Giant", 3, "Hand", "Battlefield", A, pt="5/5")]
+    if opponent_creature:
+        zones.append(zone(2, "Ogre", 2, "Hand", "Battlefield", B, pt="3/3"))
+        zones.sort(key=lambda z: z["turn"])
+    turns = [(A, []), (B, []), (A, []), (B, []),
+             (A, [("damage", f"Giant (3) deals 20 combat damage to {B}."),
+                  ("life_change", f"Life: {B} 20 > 0")])]
+    return game(turns, winner=A, players=(A, B), zones=zones, outcome=[won(A), lost(B)])
+
+
+def test_turning_point_needs_the_raw_share_to_rise():
+    # T1: the smoothed share rises most on turn 3 (0.625 to 0.769), when A
+    # already held all the creature power and only added to it: 100% before,
+    # 100% after. That is no swing, so nothing is shown, and the next-best
+    # turn is not promoted in its place.
+    g = _lone_winner_board(opponent_creature=False)
+    ctx = K._Ctx(g)
+    snaps, _basis = K.board_power(g, _ctx=ctx)
+    seats = [A, B]
+    shifts = [K._share(snaps[i], seats, A, K.SHARE_PRIOR)
+              - K._share(snaps[i - 1] if i else {}, seats, A, K.SHARE_PRIOR)
+              for i in range(3)]
+    assert max(range(3), key=lambda i: shifts[i]) == 2, shifts   # turn 3 wins smoothed
+    assert K.turning_point(g) is None
+    metrics, _flags = K.detect({"games": [g]})
+    assert metrics["turning_points"] == 0, metrics
+    # With an opponent on the board the same turn moves the raw share (40% to
+    # 70%), and it ships.
+    tp = K.turning_point(_lone_winner_board(opponent_creature=True))
+    assert tp is not None and tp["turn"] == 3, tp
+    assert (tp["share_before"], tp["share_after"]) == (0.4, 0.7), tp
 
 
 def test_turning_point_on_stdout_is_inferred():
@@ -585,7 +845,7 @@ def test_detect_accepts_the_shared_context_shapes():
 def test_analysis_payload_shape_is_additive():
     rep = analysis.analyse({"games": [game_one(), two_player([])], "meta": {"decks": []}},
                            deck_dirs=[], fetch=False)
-    assert rep["version"] == 6, rep["version"]
+    assert rep["version"] == 7, rep["version"]
     for g in rep["games"]:
         # The keys the results page and the scorecards already read ...
         for key in ("n", "winner", "ended_turn", "method", "detail"):

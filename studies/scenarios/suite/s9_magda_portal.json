@@ -1,0 +1,43 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s9_magda_portal",
+  "description": "S9, the Magda regression. Magda, Brazen Outlaw with five Treasures on magda's turn (pod n7WpsqsZtdQ), Portal to Phyrexia in the library, and every opponent with creatures in play. Magda's ability (sacrifice five Treasures) puts an artifact or Dragon from the library onto the battlefield; Portal to Phyrexia (each opponent sacrifices three creatures, then a reanimation each upkeep) is the pick a human makes. In games the plan pilot passed Portal over in 47 of 47 searches where stock would have taken it. Tests the tutor target. Success: the first card magda's seat moves from library to battlefield on the scenario turn is Portal to Phyrexia.",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/magda.dck",
+      "battlefield": [
+        "Magda, Brazen Outlaw",
+        {"token": "c_a_treasure_sac"}, {"token": "c_a_treasure_sac"}, {"token": "c_a_treasure_sac"},
+        {"token": "c_a_treasure_sac"}, {"token": "c_a_treasure_sac"},
+        "Mountain", "Mountain", "Mountain", "Ancient Tomb"
+      ],
+      "hand": ["Mountain", "Lightning Bolt"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/rog_ishai.dck",
+      "battlefield": ["Volcanic Island", "Tundra", "Plateau", "Ragavan, Nimble Pilferer", "Esper Sentinel", "Valley Floodcaller"],
+      "hand": ["Arid Mesa", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/selvala_archetype.dck",
+      "battlefield": ["Snow-Covered Forest", "Snow-Covered Forest", "Snow-Covered Forest", "Llanowar Elves", "Fyndhorn Elves", "Priest of Titania"],
+      "hand": ["Snow-Covered Forest", "Natural Order"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/tymna_thrasios.dck",
+      "battlefield": ["Tropical Island", "Bayou", "Underground Sea", "Birds of Paradise", "Delighted Halfling", "Esper Sentinel"],
+      "hand": ["Misty Rainforest", "Necrodominance"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "zone", "seat": 0, "from": "Library", "to": "Battlefield",
+              "cards": ["Portal to Phyrexia"], "first": true, "by_turn": 9},
+  "line": {"seat": 0, "pieces": ["Magda, Brazen Outlaw"]},
+  "horizon_turns": 1,
+  "notes": [
+    "Nothing else on magda's board puts a card from its library onto the battlefield on the scenario turn (no Urza's Saga, no fetch effects), so the first such move is Magda's pick; the report lists it per trial (None: Magda's ability was not used).",
+    "Opponents hold no instant-speed interaction; every seat at 40 life."
+  ]
+}

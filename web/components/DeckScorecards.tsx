@@ -13,7 +13,7 @@
  *  are different claims. */
 
 import type { DeckScorecard, ScorecardReport } from "@/lib/types";
-import { pct } from "@/lib/format";
+import { pct, shortName, type CommanderMap } from "@/lib/format";
 
 /** Forge's own loss-line wording, shortened for a chip. Forge writes the same
  *  "life total reached 0" line for combat damage and for life loss (Kess's
@@ -61,7 +61,7 @@ function readOf(d: DeckScorecard, podMedianRound: number | null): string {
       // method and must not imply it was the only one.
       how = ` ${top[1] < d.wins ? "mostly " : ""}${methodClause(top[0])}`;
     }
-    const when = d.medianWinRound ? `, closing on round ${d.medianWinRound}` : "";
+    const when = d.medianWinRound ? `, closing on turn ${d.medianWinRound}` : "";
     parts.push(`Won ${d.wins} of ${decided}${how}${when}.`);
   } else if (decided > 0) {
     parts.push(`Won none of ${decided} decided ${one(decided, "game", "games")}.`);
@@ -72,9 +72,9 @@ function readOf(d: DeckScorecard, podMedianRound: number | null): string {
   if (d.wins === 0 && d.medianDeathRound) {
     const gap =
       podMedianRound && podMedianRound > d.medianDeathRound
-        ? ` (the table played to round ${podMedianRound})`
+        ? ` (the table played to turn ${podMedianRound})`
         : "";
-    parts.push(`Knocked out on round ${d.medianDeathRound}${gap}.`);
+    parts.push(`Knocked out on turn ${d.medianDeathRound}${gap}.`);
   } else if (d.survivalRate !== null && d.wins > 0) {
     parts.push(`Still standing at the end of ${pct(d.survivalRate)} of them.`);
   }
@@ -116,11 +116,13 @@ function Stat({ label, value, hint }: { label: string; value: string; hint?: str
 }
 
 function Card({
-  d, baseline, podMedianRound,
+  d, baseline, podMedianRound, name,
 }: {
   d: DeckScorecard;
   baseline: number | null;
   podMedianRound: number | null;
+  /** The deck's one name (shortName), the same the title and stories use. */
+  name: string;
 }) {
   const rate = d.winRate ?? 0;
   const beats = baseline !== null && rate >= baseline;
@@ -132,7 +134,7 @@ function Card({
   return (
     <article className="sccard">
       <header className="schead">
-        <h3>{d.deck}</h3>
+        <h3>{name}</h3>
         <span className={`st ${d.wins === 0 ? "bad" : beats ? "win" : "loss"}`}>
           <i />
           {d.wins} of {d.games - d.censored}
@@ -149,14 +151,14 @@ function Card({
 
       <div className="scstats">
         <Stat
-          label="median win round"
+          label="median win turn"
           value={d.medianWinRound ? String(d.medianWinRound) : "–"}
-          hint="Table rounds, counted per player. Blank when the deck never won."
+          hint="Table turns: a player's Nth turn is turn N. Blank when the deck never won."
         />
         <Stat
           label="knocked out on"
-          value={d.medianDeathRound ? `round ${d.medianDeathRound}` : "–"}
-          hint="Median round this deck was eliminated, from Forge's own loss lines."
+          value={d.medianDeathRound ? `turn ${d.medianDeathRound}` : "–"}
+          hint="Median turn this deck was knocked out on, dated by the lethal event in Forge's log."
         />
         <Stat
           label="survived to the end"
@@ -266,8 +268,15 @@ function Card({
   );
 }
 
-export function DeckScorecards({ report }: { report: ScorecardReport }) {
+export function DeckScorecards({
+  report, commanders,
+}: {
+  report: ScorecardReport;
+  /** The engine's commanders, for one name per deck (optional). */
+  commanders?: CommanderMap;
+}) {
   const { decks, run } = report;
+  const all = decks.map((x) => x.deck);
   if (!decks.length) return null;
   return (
     <section>
@@ -291,13 +300,19 @@ export function DeckScorecards({ report }: { report: ScorecardReport }) {
       </div>
       <div className="scgrid">
         {decks.map((d) => (
-          <Card key={d.deck} d={d} baseline={run.baseline} podMedianRound={run.medianGameRound} />
+          <Card
+            key={d.deck}
+            d={d}
+            baseline={run.baseline}
+            podMedianRound={run.medianGameRound}
+            name={shortName(d.deck, all, commanders)}
+          />
         ))}
       </div>
       <p className="note">
         The marker on each bar sits at{" "}
         {run.baseline === null ? "an even share" : pct(run.baseline, 1)}, an even
-        share of a {decks.length}-deck pod. Rounds are table rounds: every player
+        share of a {decks.length}-deck pod. Turns are table turns: every player
         gets a turn 1, then a turn 2. Games cut off by the per-game clock count
         as played but never as decided, so they cannot move a win rate.{" "}
         {run.hasBehaviour ? (

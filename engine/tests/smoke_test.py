@@ -9,6 +9,13 @@ queue -> Forge -> adapted JSON -> per-game payload path that the front end walks
     python3 engine/tests/smoke_test.py --sim                  # + one real 2-game sim
     python3 engine/tests/smoke_test.py --base http://host:3000/engine
     python3 engine/tests/smoke_test.py --key <MTG_API_KEYS value>
+    python3 engine/tests/smoke_test.py --flag-key <an MTG_FLAG_KEYS key>
+
+--flag-key checks POST /flags: the key is accepted there, refused (403) by
+/simulate and /decks, and one real flag is written against the newest result
+with the note "smoke test: safe to delete". Use the operator's own flags key,
+never a playtester's, so the flag is not filed under their name. Without it
+the flags checks are skipped, not failed.
 
 --sim runs Forge for real rather than faking a result: a 2-deck 2-game run
 measured 10 s and a 3-deck run 27 s on an M-series laptop, so there is no reason
@@ -67,12 +74,24 @@ def call(base: str, path: str, method: str = "GET", body: dict | None = None,
         return status, raw.decode("utf-8", "replace")
 
 
+def header(base: str, path: str, name: str) -> str | None:
+    """One response header of a GET, or None when the request fails."""
+    try:
+        with urllib.request.urlopen(base + path, timeout=TIMEOUT) as r:
+            return r.headers.get(name)
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--base", default="http://127.0.0.1:8484",
                    help="API base URL (use .../engine when going through the proxy)")
     p.add_argument("--key", default=None, help="API key, if the server has MTG_API_KEYS set")
+    p.add_argument("--flag-key", default=None,
+                   help="a flags-only key from MTG_FLAG_KEYS (the operator's own); "
+                        "enables the POST /flags checks, which write one flag")
     p.add_argument("--sim", action="store_true", help="also run one real 2-game simulation")
     p.add_argument("--sim-timeout", type=int, default=600)
     a = p.parse_args()
@@ -139,6 +158,15 @@ def main() -> int:
     st, results = call(base, "/results")
     ok_res = check("GET /results is a list", st == 200 and isinstance(results, list))
     newest = results[0]["file"] if ok_res and results else None
+    if ok_res and results:
+        check("results index names each run's pilot and commanders",
+              all(isinstance(r.get("commanders"), dict) and (r.get("pilot") or {}).get("label")
+                  for r in results if not r.get("error")),
+              str({k: results[0].get(k) for k in ("pilot", "commanders")})[:160])
+    story_sw = health.get("story") if isinstance(health, dict) else None
+    check("health reports the game-story switches",
+          isinstance(story_sw, dict) and story_sw.get("turning_point") in ("swing", "audited", "off")
+          and isinstance(story_sw.get("knockout_detail"), bool), str(story_sw))
     if not newest:
         print("  note  no result files on this engine — payload checks skipped."
               "\n        run with --sim, or copy one into MTG_DATA_DIR/sim_results.")
@@ -159,6 +187,44 @@ def main() -> int:
             check("every seat appears in summary.wins",
                   bool(seats) and len({bare(s) for s in seats} - {bare(w) for w in wins}) == 0,
                   f"seats={sorted(bare(s) for s in seats)} wins={sorted(bare(w) for w in wins)}")
+            # The R1 game story (engine/game_story.py): every game carries its
+            # knockouts, out seats and turning point (null for a draw or when
+            # MTG_TURNING_POINT=off); the run carries commanders, the pilot and
+            # the switch state the stories were built under.
+            check("summary games carry knockouts, out seats and a turning point",
+                  bool(games) and all(isinstance(g.get("knockouts"), list)
+                                      and isinstance(g.get("out"), list)
+                                      and "turning_point" in g for g in games),
+                  str(games[0])[:160] if games else "no games")
+            ko_keys = {"player", "turn", "round", "cause", "by", "card", "basis"}
+            check("knockouts are the public subset",
+                  all(set(k) == ko_keys for g in games for k in g.get("knockouts") or []),
+                  str([k for g in games for k in g.get("knockouts") or []][:1]))
+            tps = [g["turning_point"] for g in games if g.get("turning_point")]
+            story = summary.get("story") or {}
+            # Held on stdout runs (inferred board; the week-3 audit agreed on
+            # 1 of 8) and withheld when the raw share did not rise, so every
+            # one that ships is a zone-stream read that raised the share.
+            check("turning points are zone reads that raised the share, with the label in force",
+                  all(tp.get("basis") == "zones"
+                      and tp.get("label") == story.get("turning_point_label")
+                      and isinstance(tp.get("share_before"), (int, float))
+                      and isinstance(tp.get("share_after"), (int, float))
+                      and tp["share_after"] > tp["share_before"] for tp in tps),
+                  f"label={story.get('turning_point_label')} {str(tps[:1])[:120]}")
+            pilot = summary.get("pilot") or {}
+            check("summary discloses the pilot",
+                  pilot.get("kind") in ("plan", "stock", "mixed", "unknown")
+                  and bool(pilot.get("label")) and "—" not in pilot.get("label", ""),
+                  str(pilot)[:160])
+            check("summary carries commanders by deck name",
+                  isinstance(summary.get("commanders"), dict), str(summary.get("commanders")))
+            # The story follows server-side switches, so the summary and game
+            # payloads must revalidate; an immutable header would pin a
+            # flipped switch out of every browser that had the page cached.
+            cc = header(base, f"/results/{enc}/summary", "Cache-Control") or ""
+            check("summary is cacheable but not immutable",
+                  "max-age" in cc and "immutable" not in cc, cc)
             if games:
                 st, one = call(base, f"/results/{enc}/game/1")
                 ok_game = check("GET /results/{file}/game/1 is 200", st == 200, str(one)[:120])
@@ -166,6 +232,13 @@ def main() -> int:
                     g = one.get("game") or {}
                     check("game payload has players and turns",
                           bool(g.get("players")) and bool(g.get("turns")))
+                    check("game payload carries the same story as the summary",
+                          all(one.get(k) == games[0].get(k)
+                              for k in ("knockouts", "out", "turning_point")),
+                          str({k: one.get(k) for k in ("out", "turning_point")})[:160])
+                    check("game payload carries commanders and the pilot",
+                          isinstance(one.get("commanders"), dict)
+                          and bool((one.get("pilot") or {}).get("label")))
                     names = {e.get("object") for t in g.get("turns", [])
                              for e in t.get("events", []) if e.get("object")}
                     if names:
@@ -224,6 +297,34 @@ def main() -> int:
                         {"decks": [d["file"] for d in decks[:2]], "games": 100000}, key=a.key)
         check("POST /simulate rejects an oversized game count", st in (400, 401),
               f"status {st}: {body}")
+
+    print("\nflags (Flag this moment)")
+    if not a.flag_key:
+        print("  note  no --flag-key given: flags checks skipped."
+              "\n        pass the operator's own MTG_FLAG_KEYS key to run them.")
+    else:
+        st, body = call(base, "/flags", "POST", {})
+        check("POST /flags without a key is refused", st == 401, f"status {st}: {body}")
+        st, body = call(base, "/flags", "POST", {}, key=a.flag_key)
+        # 400 means the key passed the gate and the empty body was refused.
+        check("POST /flags accepts the flag key", st == 400, f"status {st}: {body}")
+        st, body = call(base, "/flags", "POST",
+                        {"run": "../../etc/passwd", "game": 1, "anchor": {"event_index": 0}},
+                        key=a.flag_key)
+        check("POST /flags blocks path traversal", st == 400, f"status {st}: {body}")
+        st, body = call(base, "/simulate", "POST", {"decks": [], "games": 0}, key=a.flag_key)
+        check("the flag key cannot start a simulation (403)", st == 403, f"status {st}: {body}")
+        st, body = call(base, "/decks", "POST", {"name": "x", "text": ""}, key=a.flag_key)
+        check("the flag key cannot import a deck (403)", st == 403, f"status {st}: {body}")
+        if newest:
+            st, body = call(base, "/flags", "POST",
+                            {"run": newest, "game": 1, "anchor": {"event_index": 0},
+                             "note": "smoke test: safe to delete"}, key=a.flag_key)
+            check("POST /flags writes a flag against the newest run",
+                  st == 200 and isinstance(body, dict) and bool(body.get("id"))
+                  and bool(body.get("reporter")), f"status {st}: {body}")
+        else:
+            print("  note  no result files: the flag write check needs one.")
 
     if a.sim:
         print("\nlive simulation (real Forge)")

@@ -1,0 +1,99 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s8_kess_unmarked_grave",
+  "description": "S8, the Richard regression. Kess, Dissident Mage on the battlefield and Unmarked Grave in hand on Kess's turn, with Blasphemous Act, Sol Ring and Hullbreaker Horror in the library, in Richard's own pod. Unmarked Grave puts any nonlegendary card from the library into the graveyard; with Kess out, the right pick is a card the deck can use from there: Blasphemous Act (castable from the graveyard with Kess) or Hullbreaker Horror (a reanimation target). In Richard's run the plan pilot binned Sol Ring twice ('steer=Sol Ring over=Blasphemous Act'). Tests the tutor's destination. Success: the first card Kess's seat moves from library to graveyard on the scenario turn is one the deck can use from there: an instant or sorcery (Kess casts it) or a creature (a reanimation target), Blasphemous Act and Hullbreaker Horror being the two the regression names; Sol Ring or any other artifact, land or enchantment fails.",
+  "seats": [
+    {
+      "deck": "$SIMLAB_PRIVATE/dck/kess_reanimator_305b76d7.dck",
+      "battlefield": [
+        "Kess, Dissident Mage",
+        "Island",
+        "Island",
+        "Swamp",
+        "Swamp",
+        "Mountain",
+        "Mountain"
+      ],
+      "hand": [
+        "Unmarked Grave",
+        "Island"
+      ]
+    },
+    {
+      "deck": "$SIMLAB_PRIVATE/dck/krenko_goblins.dck",
+      "battlefield": [
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        "Mountain"
+      ],
+      "hand": [
+        "Mountain",
+        "Mountain"
+      ]
+    },
+    {
+      "deck": "$SIMLAB_PRIVATE/dck/skrat_s_revenge_239c6293.dck",
+      "battlefield": [
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Forest"
+      ],
+      "hand": [
+        "Forest",
+        "Forest"
+      ]
+    },
+    {
+      "deck": "$SIMLAB_PRIVATE/dck/stella_lee_wild_card_79f6872f.dck",
+      "battlefield": [
+        "Island",
+        "Island",
+        "Island",
+        "Mountain",
+        "Mountain"
+      ],
+      "hand": [
+        "Island",
+        "Mountain"
+      ]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {
+    "type": "zone",
+    "seat": 0,
+    "from": "Library",
+    "to": "Graveyard",
+    "cards": [
+      "Blasphemous Act",
+      "Hullbreaker Horror"
+    ],
+    "types_any": [
+      "Instant",
+      "Sorcery",
+      "Creature"
+    ],
+    "first": true,
+    "by_turn": 9
+  },
+  "line": {
+    "seat": 0,
+    "pieces": [
+      "Unmarked Grave"
+    ]
+  },
+  "horizon_turns": 1,
+  "notes": [
+    "Private data: Richard's four decklists are read at run time from $SIMLAB_PRIVATE (the scratch folder holding dck/). They are never committed; this file names only the pieces the plan already names and basic lands.",
+    "Success was first written as Blasphemous Act or Hullbreaker Horror only. A 2-trial probe (before the 20-trial run) showed the plan pilot binning Archon of Cruelty, a reanimation target like Hullbreaker, so the rule was widened to the class the regression is about (graveyard-usable, by Forge's own card types) and the pick is listed per trial so the class can be judged.",
+    "Richard's Stella Lee deck lists two double-faced cards as 'A / B' (Primal Amulet, Riverglide Pathway), which Forge does not load. The run reads a scratch copy of the four decks with those two lines at their front faces (the WS4 normalisation); without it that seat's library reads back two cards short and the board check fails.",
+    "Every seat is otherwise lands only, so nothing else moves a Kess card from library to graveyard on the scenario turn; the report lists the pick in every trial (None: Unmarked Grave was not cast).",
+    "Opponents are Richard's own pod, as in the run the regression came from; every seat at 40 life."
+  ]
+}

@@ -11,7 +11,7 @@
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type {
@@ -24,7 +24,8 @@ import type {
 import { ComboLines } from "@/components/ComboLines";
 import { DeckScorecards } from "@/components/DeckScorecards";
 import { PredictionPanel } from "@/components/PredictionPanel";
-import { fmtDay, pct, plural, runDate, runTitle, stripAi } from "@/lib/format";
+import { fmtDay, pct, plural, runDate, runTitle, shortName, stripAi, type CommanderMap } from "@/lib/format";
+import { storyNote, storySegments, type Seg } from "@/lib/story";
 
 /** "12:05". A missing duration is an en dash: a draw logged without one
  *  printed "NaN:NaN" here (tasks/26-ux-review.md, problem 6). */
@@ -71,9 +72,17 @@ interface GameRow {
   endedRound: number | null;
   durationMs: number;
   decidedBy: string;
+  /** Stopped by the per-game clock or the turn cap rather than finished. */
+  censored: boolean;
+  /** The game in one sentence (lib/story.ts), or null from an engine older
+   *  than R1, whose summary carries no story: the row then falls back to
+   *  decidedBy and the analysis method, as before. */
+  story: Seg[] | null;
+  /** Plain text of whatever the row says, for the filter. */
+  text: string;
 }
 
-function toRow(g: RunGameSummary, clockSeconds: number | null): GameRow {
+function toRow(g: RunGameSummary, clockSeconds: number | null, commanders?: CommanderMap): GameRow {
   const r = g.result as RunGameSummary["result"] & ResultMarks;
   // A game the clock cut off is a draw whatever winner the record carries:
   // the engine's summary counts it that way (audit A16), so the table must too.
@@ -110,6 +119,21 @@ function toRow(g: RunGameSummary, clockSeconds: number | null): GameRow {
         : r.missingResult
           ? "No result: none was recorded"
           : "–";
+  // One sentence per game, in the UX review's form: the winner and the turn,
+  // who went out (cause, killer when it was not the winner, turn) and the
+  // turn the board turned. A game nobody won opens with decidedBy instead.
+  const story = Array.isArray(g.knockouts)
+    ? storySegments(
+        {
+          players: g.players,
+          winner: draw ? null : key,
+          endedRound,
+          noWinnerText: decidedBy === "–" ? "No result" : decidedBy,
+          story: g,
+        },
+        commanders,
+      )
+    : null;
   return {
     n: g.n,
     winnerName,
@@ -118,6 +142,9 @@ function toRow(g: RunGameSummary, clockSeconds: number | null): GameRow {
     endedRound,
     durationMs,
     decidedBy,
+    censored: timedOut || r.turnCapped === true,
+    story,
+    text: story ? story.map((s) => s.text).join("") : decidedBy,
   };
 }
 
@@ -209,7 +236,7 @@ export default function ResultsPage() {
     // run_sim stamps the per-game clock it ran under (seconds).
     const clock = data.meta?.clock;
     const clockSeconds = typeof clock === "number" && clock > 0 ? clock : null;
-    const gameRows: GameRow[] = data.games.map((g) => toRow(g, clockSeconds));
+    const gameRows: GameRow[] = data.games.map((g) => toRow(g, clockSeconds, data.commanders));
     const medTurns = median(gameRows.map((g) => g.endedTurn));
     const rotated = data.meta?.source === "rotated";
 
@@ -226,7 +253,9 @@ export default function ResultsPage() {
 
   // The matchup, not the filename: "sim_20260724_094940_rotated.json" tells a
   // reader nothing. The address lives in the details disclosure at the foot.
-  const title = view ? runTitle(view.rows.map((r) => r.name)) : file.replace(/\.json$/, "");
+  const title = view
+    ? runTitle(view.rows.map((r) => r.name), data?.commanders)
+    : file.replace(/\.json$/, "");
   const enc = encodeURIComponent(file);
   const when = runDate(file);
 
@@ -280,10 +309,27 @@ export default function ResultsPage() {
   }
 
   const { rows, tops, topNames, gameRows, games, baseline, medTurns, rotated } = view;
-  // Table rounds when the scorecards have loaded; Forge player-turns only as
-  // the fallback for a run whose scorecards could not be computed. The two
-  // are different units and the label says which one is on screen.
-  const medRounds = sc?.run?.medianGameRound ?? null;
+  // Table turns (a player's Nth turn is turn N): from the scorecards when
+  // they have loaded, else from the summary's ended_round per game. Forge's
+  // per-player counter only for a summary so old it carries neither, and
+  // then the label says "player turns", since it reads about 4x high. The
+  // game stories count table turns too, so the lede says "turns", not
+  // "rounds", and the two never disagree on a page.
+  // The fallback leaves out games the clock or the turn cap stopped, as the
+  // scorecard's medianGameRound does; counting them made the lede read one
+  // median while the scorecards loaded and another once they arrived (11 then
+  // 12 turns on the playtester's run). Same pick as scorecard.py med(): the
+  // upper middle of an even count, not the rounded mean of the two.
+  const endedRounds = gameRows
+    .filter((g) => !g.censored)
+    .map((g) => g.endedRound)
+    .filter((r): r is number => r != null)
+    .sort((a, b) => a - b);
+  const medRounds =
+    sc?.run?.medianGameRound ?? (endedRounds.length ? endedRounds[Math.floor(endedRounds.length / 2)] : null);
+  const turnWord = medRounds ? "turns" : "player turns";
+  // One name per deck, the same one the title and the game stories use.
+  const short = (name: string) => shortName(name, rows.map((r) => r.name), data.commanders);
   const top = rows[0];
   const second = rows.find((r) => !topNames.has(r.name));
   const draws = data.summary.draws;
@@ -300,16 +346,20 @@ export default function ResultsPage() {
     const needle = q.trim().toLowerCase();
     return (
       (g.winnerName ?? "draw").toLowerCase().includes(needle) ||
-      g.decidedBy.toLowerCase().includes(needle) ||
+      g.text.toLowerCase().includes(needle) ||
       (g.endedRound != null && `turn ${g.endedRound}`.includes(needle))
     );
   });
+  // Every row carries a story from an R1 engine; an older engine's summary
+  // carries none, and the table keeps its old columns for it.
+  const storied = gameRows.some((g) => g.story !== null);
+  const pilot = data.pilot;
 
   const tieText =
     tops.length > 1
-      ? `, tied with ${tops.slice(1).map((t) => t.name).join(" and ")}`
+      ? `, tied with ${tops.slice(1).map((t) => short(t.name)).join(" and ")}`
       : second
-        ? `, ${top.wins - second.wins} ${top.wins - second.wins === 1 ? "win" : "wins"} clear of ${second.name} (${pct(second.rate)})`
+        ? `, ${top.wins - second.wins} ${top.wins - second.wins === 1 ? "win" : "wins"} clear of ${short(second.name)} (${pct(second.rate)})`
         : "";
 
   return (
@@ -347,7 +397,7 @@ export default function ResultsPage() {
         </div>
 
         <p className="lede">
-          <b>{top.name}</b> won <b>{top.wins} of {games}</b> {gameWord} ({pct(top.rate)})
+          <b>{short(top.name)}</b> won <b>{top.wins} of {games}</b> {gameWord} ({pct(top.rate)})
           {tieText}.{" "}
           {draws > 0 ? (
             <>
@@ -365,13 +415,24 @@ export default function ResultsPage() {
                     rather than finishing
                   </>
                 ))}
-              ; the median game ran <b>{medRounds ?? medTurns} {medRounds ? "rounds" : "turns"}</b>.
+              ; the median game ran <b>{medRounds ?? medTurns} {turnWord}</b>.
             </>
           ) : (
             <>No draws; the median game ran{" "}
-              <b>{medRounds ?? medTurns} {medRounds ? "rounds" : "turns"}</b>.</>
+              <b>{medRounds ?? medTurns} {turnWord}</b>.</>
           )}
         </p>
+
+        {/* Who played these games, on every run (repair plan WS11 task 10):
+            the pilot and the shim version, worded by the engine. "Humanized"
+            is not a claim any more; while a random dial remains the engine
+            says what is true instead. */}
+        {pilot && (
+          <p className="note pilotnote">
+            {pilot.label}
+            {pilot.note ? ` ${pilot.note}` : ""}
+          </p>
+        )}
 
         {/* A clean run can still carry a note: commander_never_cast, a
             commander that loaded but Forge's AI never cast. It keeps the run
@@ -399,7 +460,7 @@ export default function ResultsPage() {
           <div className="fig">
             <div className="n">{medRounds ?? medTurns}</div>
             <div className="l">
-              median {medRounds ? "rounds" : "turns"} per game
+              median {turnWord} per game
             </div>
           </div>
           <div className="fig">
@@ -407,7 +468,7 @@ export default function ResultsPage() {
               {(top.rate * 100).toFixed(0)}
               <small>%</small>
             </div>
-            <div className="l">top win rate ({top.name})</div>
+            <div className="l">top win rate ({short(top.name)})</div>
           </div>
           <div className="fig">
             <div className="n">{draws}</div>
@@ -416,7 +477,7 @@ export default function ResultsPage() {
         </div>
 
         {sc ? (
-          <DeckScorecards report={sc} />
+          <DeckScorecards report={sc} commanders={data.commanders} />
         ) : (
           <section>
             <div className="sh">
@@ -429,7 +490,7 @@ export default function ResultsPage() {
               <tbody>
                 {rows.map((r) => (
                   <tr key={r.name}>
-                    <td className="nm">{r.name}</td>
+                    <td className="nm">{short(r.name)}</td>
                     <td>
                       <div className="rail">
                         <div className="fill" style={{ width: `${Math.max(r.rate * 100, r.wins > 0 ? 1 : 0)}%` }} />
@@ -455,7 +516,7 @@ export default function ResultsPage() {
 
         {/* Measured first, modelled second: the corrected rates only read
             correctly once the reader has seen the raw ones they correct. */}
-        <PredictionPanel report={pred} />
+        <PredictionPanel report={pred} commanders={data.commanders} />
 
         {an && Object.keys(an.summary?.methods ?? {}).length > 0 && (
           <section>
@@ -536,6 +597,54 @@ export default function ResultsPage() {
                 (globals.css): below 720px the head hides and each row reflows to
                 two lines rather than hiding four of its six columns behind a
                 horizontal scroll nobody discovers. */}
+            {storied ? (
+              // One sentence per game (tasks/26-ux-review.md section 5.4): who
+              // won and when, who went out and how, and the turn the board
+              // turned. The winner, the turn and the method used to be three
+              // columns that could not say a pod has three knockouts.
+              <table className="games stackable storyt">
+                <thead>
+                  <tr>
+                    <th className="c-drop">Game</th>
+                    <th>What happened</th>
+                    <th>Duration</th>
+                    <th className="r">Replay</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filtered.map((g) => (
+                    <tr
+                      key={g.n}
+                      className="click"
+                      onClick={() => router.push(`/results/${enc}/replay/${g.n}`)}
+                    >
+                      <td className="id c-drop">#{g.n}</td>
+                      <td className="c-story">
+                        <span className="only-narrow-inline gnum">#{g.n} </span>
+                        {(g.story ?? []).map((s, k) =>
+                          s.strong ? <b key={k}>{s.text}</b> : <Fragment key={k}>{s.text}</Fragment>,
+                        )}
+                      </td>
+                      <td className="dur c-meta">{fmtClock(g.durationMs)}</td>
+                      <td className="r c-act">
+                        <Link
+                          className="bl"
+                          href={`/results/${enc}/replay/${g.n}`}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Watch
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                  {filtered.length === 0 && (
+                    <tr>
+                      <td className="c-empty" colSpan={4}>No games match “{q}”.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            ) : (
             <table className="games stackable">
               <thead>
                 <tr>
@@ -618,9 +727,12 @@ export default function ResultsPage() {
                 )}
               </tbody>
             </table>
+            )}
           </div>
+          {/* The honesty note, worded for the path the stories were read on:
+              a zone-stream read on shim runs, inference on stdout runs. */}
           <p className="note">
-            Open a replay to see what actually did the killing.
+            {storied ? storyNote(data.story) : "Open a replay to see what actually did the killing."}
           </p>
         </section>
 

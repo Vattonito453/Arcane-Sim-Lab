@@ -180,11 +180,13 @@ Verify after any deploy that touches the agent — one line, no jar archaeology:
 
 ```bash
 sudo docker logs deploy-worker-1 2>&1 | grep 'shim commit'
-git -C /path/to/simlab-forge-shim ls-remote origin v0.16.0   # the pinned tag; should match
+git -C /path/to/simlab-forge-shim ls-remote origin v0.17.0   # the pinned tag; should match
 ```
 
 For an annotated tag, `ls-remote` prints two lines; the commit is the one
-ending `^{}`. For v0.16.0 it is shim commit `62fe295`.
+ending `^{}`. For v0.17.0 it is shim commit `33243d5` (the squash merge of
+simlab-forge-shim PR #15, whose tree is identical to `b8894e1`, the commit
+the G0a gate tested). The previous pin, v0.16.0, is `62fe295`.
 
 If it prints `vendor-staged`, a jar from `deploy/sync-shim.sh` is being used and
 the clone was skipped — fine locally, wrong on the VM. Delete
@@ -194,17 +196,19 @@ the clone was skipped — fine locally, wrong on the VM. Delete
 
 Production no longer builds whatever the shim's `main` happens to be. The
 worker's `SIMLAB_SHIM_REF` build arg comes from `docker-compose.yml`, which
-defaults it to the current release tag (**`v0.16.0`**, the repair plan's R0
-pin, which fixes 0.15.0's attack re-ask loop), and `deploy/.env` may override
-it for a test build.
+defaults it to the current release tag (**`v0.17.0`**, the repair plan's R1
+pin: the tutoring hotfix, read by version-2 plans, which compose also defaults
+to since R1), and `deploy/.env` may override either for a test build or a
+rollback (`MTG_PLAN_VERSION=1` plays as 0.16.0 did).
 
 - **Pin a tag, never a bare commit.** `Dockerfile.worker` clones with
   `git clone -b "$SIMLAB_SHIM_REF"`, which accepts a branch or a tag only. A
   branch moves under you, so a release pins a tag.
 - **The tag must exist before the build.** The ref is fetched from the GitHub
   API before the clone, so a missing tag fails the worker build outright; the
-  containers already running keep serving. The tag `v0.16.0` on shim commit
-  `62fe295` is created at the R0 deploy, in the `simlab-forge-shim` repo:
+  containers already running keep serving. Each release tags the shim first,
+  in the `simlab-forge-shim` repo (R0 tagged `v0.16.0` on `62fe295` like this;
+  R1's `v0.17.0` on `33243d5` already exists):
 
   ```bash
   git -C /path/to/simlab-forge-shim tag -a v0.16.0 62fe295 -m "Sim Lab release pin (R0)"
@@ -264,6 +268,71 @@ the failure message says so.
 The address to hand out is `http://EXTERNAL_IP/` (find it with
 `gcloud compute instances describe simlab --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'`).
 
+### Giving a playtester a flag key
+
+"Flag this moment" in the replay lets a playtester mark a play that looks
+wrong and say why. The flag is written to `/data/simkb/review_queue/human/`
+on the data volume; nothing serves it back publicly, and you triage the queue
+(decision 11 in `tasks/README.md`: 30 minutes a week). To send one, the tester
+needs a **flags-only key**. It can flag moments and nothing else: the engine
+refuses it on `/simulate`, `/decks` and every other write with a 403, so it
+cannot start a 4 GB sim. Generating and handing out the key is **you**; an
+agent never creates a real one.
+
+1. Generate a key (any machine with Python):
+
+   ```bash
+   python3 -c "import secrets; print(secrets.token_urlsafe(24))"
+   ```
+
+2. On the VM, add it to `deploy/.env` under a label that names the tester:
+
+   ```
+   MTG_FLAG_KEYS=richard:<the generated key>
+   ```
+
+   More testers are comma-separated, one key each so any one can be revoked
+   alone: `richard:<key1>,vincent:<key2>`. The label is recorded as the flag's
+   reporter; it may use letters, digits, `.`, `_` and `-` (up to 40), and the
+   key may not contain `,` or `:` (`token_urlsafe` never does). **Never** put
+   a tester's key in `MTG_API_KEYS` or `WEB_API_KEY`: those can start sims.
+
+3. Recreate the api container so it reads the new value. No image rebuild is
+   needed; the key is read at start, not baked in:
+
+   ```bash
+   cd ~/simlab/deploy && docker compose --env-file .env up -d api
+   ```
+
+4. Check it. Preflight should print `ok  playtester flag keys` (it reads the
+   same `.env` through compose); a malformed entry fails it and says so. Then
+   `smoke_test.py --flag-key <key>` with a flags key labelled for **yourself**
+   (not the tester's), because that check writes one real flag, "smoke test:
+   safe to delete", under the key's label.
+
+5. Send the key to the tester privately (a direct message, not a group
+   thread or an issue). What to tell them: open any replay, press **Flag this
+   moment**, and paste the key into **Flag key** once. Their browser remembers
+   it (that browser only) and sends it only with flags.
+
+6. To revoke, delete that entry from `MTG_FLAG_KEYS` and recreate the api
+   container again. Their saved key then gets "That flag key was not
+   recognised."
+
+Each key may send `MTG_FLAG_PER_HOUR` flags an hour (60 by default). To read
+the queue:
+
+```bash
+sudo docker exec deploy-api-1 ls -1t /data/simkb/review_queue/human/
+sudo docker exec deploy-api-1 cat /data/simkb/review_queue/human/<id>.json
+```
+
+Each file holds the run, the game, the anchor (event index, turn, round and
+seat), the flagged log line, the note, the reporter and a UTC timestamp. The
+notes are the tester's own words: private data that never goes into this
+repo (decision 9 puts human data in the private data repo). The keyed
+`GET /qa/queue` that the nightly reviewer reads is week 4.
+
 ### Plain HTTP, and when to fix that
 
 This runbook serves HTTP on port 80: fine for a playtest link shared with
@@ -296,6 +365,52 @@ Two constraints inherited from the engine (see CLAUDE.md): scale **workers**,
 not the api — rate limits are in-process, so two api replicas double every
 quota. And the data volume must stay a real filesystem (the job queue is
 SQLite); the named docker volume on the VM's boot disk is exactly that.
+
+**Game-story switches (R1).** What the results page and the replay say about
+how each game went is set by two api-container variables, applied
+server-side in the payloads (`engine/game_story.py`), so the week-3 hand
+audit of the knockout and turning-point readings can be applied without a
+code change:
+
+| Variable | Values | Default |
+|---|---|---|
+| `MTG_TURNING_POINT` | `swing`: labelled "Biggest board swing" (audit not passed); `audited`: labelled "Turning point"; `off`: not shown (held) | `swing` |
+| `MTG_KNOCKOUT_DETAIL` | `on`: each knockout's cause and killer shown; `off`: who went out, and when, only | `on` |
+
+The week-3 audit has reported (`studies/knockout_audit/RESULTS.md`), and
+both defaults are its result, so R1 sets neither variable. Knockouts passed
+(39 of 40 against the 38 required), so cause and killer ship
+(`MTG_KNOCKOUT_DETAIL=on`). The turning point failed (8 of 20 against the 16
+required), so it ships named for what it measures, "Biggest board swing"
+(the largest rise in the winner's share of creature power;
+`MTG_TURNING_POINT=swing`), with two rules that apply whatever the switch
+says: it is held on stdout runs (their board is inferred, and there it
+agreed in 1 of 8 games), and it is withheld when the winner's raw share did
+not rise on the turn picked. `audited` stays off-limits until a refined
+analyzer passes a re-audit on a fresh draw. The fixes made after the audit
+(those two rules, and the knockout card's attribution) are listed under
+"Fixes after the audit" in the same file and are not re-audited.
+
+Set them in `deploy/.env`, then `docker compose --env-file .env up -d api`
+(no rebuild; compose passes both through). Browsers pick the change up
+within 5 minutes (the summary and game payloads are `max-age=300`).
+`/health` reports the values in force under `story`, and preflight prints
+them under GAME STORY SWITCHES. They govern the game story only (the
+results page's game rows and the replay). The run page's "How games ended"
+counts and the scorecards' "how it won" read the same knockout analyzer and
+are not switched, so a failed knockout audit needs more than
+`MTG_KNOCKOUT_DETAIL=off` to take its causes off the page.
+
+**After deploying R1, backfill commander names** into existing results (the
+results page, index and replay read them; old runs otherwise fall back to a
+live read of each deck file, which fails once a deck is deleted):
+`sudo docker exec deploy-api-1 python3 /app/engine/readapt.py --check --all`,
+then `--write --all`. It keeps each file's mtime, only adds decks meta does
+not name yet, and skips decks whose file is gone. It also leaves the original
+beside each result as `<name>.bak` (measured locally on five results: only
+`meta.commanders` differs once parsed; the rewrite is compact JSON, so an
+indented original also shrinks). Nothing reads the `.bak` files; once the
+pages look right, they can be removed to get the disk back.
 
 ### The tunnel option, retired
 
@@ -333,6 +448,10 @@ curl -s -o /dev/null -w "%{http_code}\n" -X POST https://your-url/engine/simulat
 ```
 
 `401` is the passing result. `200` means `MTG_API_KEYS` did not reach the process.
+
+Once `MTG_FLAG_KEYS` is set, add `--flag-key <your own flags key>` to the
+smoke test: it proves the key can flag and is refused (403) by `/simulate`
+and `/decks`, and it writes one flag noted "smoke test: safe to delete".
 
 ## Before it is public rather than link-shared
 

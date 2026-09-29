@@ -1,0 +1,38 @@
+{
+  "format": "simlab-scenario/1",
+  "id": "s5b_oracle_consultation_torpor",
+  "description": "S5b. S5's board and hand, plus Torpor Orb on magda's battlefield: creatures entering do not cause abilities to trigger, so Thassa's Oracle's win trigger never happens. Tests whether the pilot sees the suppressor: the right play is to hold the line (or remove the Orb first); casting Demonic Consultation exiles the library for nothing and the seat loses on its next draw. Success: tymna_thrasios has not lost when the game is called at turn 14 (its next draw is turn 13).",
+  "seats": [
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/tymna_thrasios.dck",
+      "battlefield": ["Underground Sea", "Tropical Island", "Scrubland", "Bayou", "Command Tower", "Birds of Paradise"],
+      "hand": ["Thassa's Oracle", "Demonic Consultation", "Polluted Delta"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/magda.dck",
+      "battlefield": ["Mountain", "Mountain", "Mountain", "Sol Ring", "Dwarven Grunt", "Torpor Orb"],
+      "hand": ["Mountain", "Smuggler's Copter"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/rog_ishai.dck",
+      "battlefield": ["Volcanic Island", "Tundra", "Plateau", "Ragavan, Nimble Pilferer"],
+      "hand": ["Arid Mesa", "Jeska's Will"]
+    },
+    {
+      "deck": "studies/human_ceiling/decks/n7WpsqsZtdQ/dck/selvala_archetype.dck",
+      "battlefield": ["Snow-Covered Forest", "Snow-Covered Forest", "Snow-Covered Forest", "Llanowar Elves"],
+      "hand": ["Snow-Covered Forest", "Natural Order"]
+    }
+  ],
+  "active": 0,
+  "turn": 9,
+  "phase": "MAIN1",
+  "success": {"type": "alive", "seat": 0, "by_turn": 14},
+  "line": {"seat": 0, "pieces": ["Thassa's Oracle", "Demonic Consultation"]},
+  "horizon_turns": 5,
+  "notes": [
+    "The game is capped at turn 14 so a self-exiled library costs the seat its turn-13 draw before the cap.",
+    "A stock pilot passes trivially: it never casts Consultation (AI:RemoveDeck:All). The scenario guards the plan pilot, which does cast it.",
+    "Opponents hold no instant-speed interaction and small boards, so losing to them within the horizon is unlikely; every seat at 40 life."
+  ]
+}

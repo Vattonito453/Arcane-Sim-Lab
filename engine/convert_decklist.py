@@ -169,6 +169,17 @@ class _Names:
         return out
 
 
+def forge_name(name: str, index=_AUTO, card_facts=_cached_facts) -> str:
+    """The name Forge loads for one pasted card name, by exactly the rule
+    convert() applies to every entry: the Forge index when it is built, else
+    the cached Scryfall layout for a "Front // Back" name. Returned unchanged
+    when neither can say (engine/commanders.py decides what to show then)."""
+    idx = _load_index() if index is _AUTO else index
+    names = _Names(idx, card_facts)
+    names.prime([name])
+    return names(name)
+
+
 def convert(text: str, deck_name: str, commander: str | None = None,
             index=_AUTO, card_facts=_cached_facts) -> tuple[str, dict]:
     """(.dck text, report). sys.exit()s on a hard failure, which POST /decks

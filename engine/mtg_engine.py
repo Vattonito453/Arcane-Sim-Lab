@@ -412,12 +412,21 @@ def _list_decks() -> list[dict]:
 
 def _read_deck_cards(path: Path) -> dict:
     """One deck's contents with counts expanded — what the playtest sandbox
-    shuffles. Pure data: no legality, no validation, no rules."""
+    shuffles. Pure data: no legality, no validation, no rules. Plus the deck
+    page's two disclosure lists (engine/disclosure.py), read from Forge's own
+    card index; `disclosures` is None only if computing them failed."""
     name = path.stem
     commanders: list[str] = []
     main: list[str] = []
     section = None
-    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+    text = path.read_text(encoding="utf-8", errors="replace")
+    try:
+        import disclosure
+        disclosures = disclosure.of_deck_text(text)
+    except Exception as e:  # noqa: BLE001 - the deck itself must still load
+        sys.stderr.write(f"deck disclosures skipped: {e}\n")
+        disclosures = None
+    for line in text.splitlines():
         line = line.strip()
         if not line:
             continue
@@ -440,7 +449,7 @@ def _read_deck_cards(path: Path) -> dict:
     # are not — the front end needs to know which it is looking at.
     source = "imported" if path.parent == IMPORTED_DECKS else "bundled"
     return {"file": path.name, "name": name, "source": source,
-            "commanders": commanders, "main": main}
+            "commanders": commanders, "main": main, "disclosures": disclosures}
 
 
 def _queued_count() -> int:
@@ -879,7 +888,27 @@ def _read_result_summary(name: str) -> dict:
             "commanders": commanders.of_run(meta),
             "pilot": validity.pilot(meta),
             "story": _story_meta(data, sw),
+            # Per deck: cards Forge could not load, and cards Forge's AI
+            # doesn't cast on its own (repair plan WS11 task 4). Here and in
+            # GET /decks/{file}, the two smallest payloads that need them.
+            "disclosures": _disclosures_of_run(meta),
             "games": games, "file": name, "validity": data.get("validity")}
+
+
+def _disclosures_of_run(meta: dict) -> dict | None:
+    """engine/disclosure.for_run, never fatal: a summary without its
+    disclosures still renders, and the page says the lists are unavailable."""
+    try:
+        import disclosure
+        out = disclosure.for_run(meta, find=_find_deck)
+    except Exception as e:  # noqa: BLE001
+        sys.stderr.write(f"disclosures skipped: {e}\n")
+        return None
+    # `file` is for the engine's own lookups (telemetry, coaching); the page
+    # keys decks by name, and meta.decks already carries the paths.
+    out["decks"] = {name: {k: v for k, v in row.items() if k != "file"}
+                    for name, row in out["decks"].items()}
+    return out
 
 
 def _story_meta(data: dict, sw: dict) -> dict:
@@ -1511,6 +1540,8 @@ def _import_deck(payload: dict) -> dict:
     # Forge's AI won't cast, or a note that the Forge index is not built yet.
     return {"ok": True, "file": slug, "saved": saved, "report": report,
             "warnings": report.get("warnings", []),
+            # The same two lists the deck page and the run page show.
+            "disclosures": report.get("disclosures"),
             "cards_cached": _warm_card_cache(content),
             "combos": _deck_combos(content)}
 

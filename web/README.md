@@ -122,8 +122,10 @@ story follows `MTG_TURNING_POINT` and `MTG_KNOCKOUT_DETAIL`.
 carries `disclosures` (per deck, cards Forge could not load and cards its AI
 doesn't cast on its own): 2,655 -> 2,934 B on the playtester's run, a median
 of +193 B over the 61 local results, and 4.2 KB for the largest (3.9 KB
-without). `runGame` is unchanged; `GET /decks/{file}` gains the same two lists
-for one deck (+80 to +110 B).
+without). A run finished from R1.1 on also carries the worker's record
+(`meta.ai_wont_play_by_deck`), which the summary's `meta` repeats: +40 B more
+on the playtester's run with that record added. `runGame` is unchanged;
+`GET /decks/{file}` gains the same two lists for one deck (+80 to +110 B).
 
 ## Responsive contract
 

@@ -188,11 +188,16 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
             continue
         seen_paths.add(str(p))
         decks.append((p, _dck_info(p)))
-    # Ignoring case, as _refused_commanders does (Forge's own lookup does).
+    # Ignoring case and accents, with a refusal's '?' standing for one
+    # character, as _refused_commanders does: the worker's JVM prints an
+    # accented letter as '?', and an exact match attributed such a refusal to
+    # no deck, so the run page's "Cards Forge could not load" read "none".
     by_deck = {}
     for p, info in decks:
         listed = {c.casefold() for c in info["cards"]}
-        by_deck[p.name] = [n for n in unsupported if n.casefold() in listed]
+        cards = sorted(info["cards"])
+        by_deck[p.name] = [n for n in unsupported if n.casefold() in listed
+                           or _refused_commanders(cards, [n])]
     meta: dict = {"unsupported_cards": list(unsupported),
                   "unsupported_by_deck": {k: v for k, v in by_deck.items() if v}}
     commander_format = (fmt or "").lower() == "commander"

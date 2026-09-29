@@ -96,10 +96,16 @@ components/
                                   code that sends a flags-only key (sendFlag)
   PredictionPanel.tsx             playgroup prediction, its pilot label and the
                                   withheld state when a rank check failed
+  LoadError.tsx                   a failed load in a player's words; the raw
+                                  fetch message only in a dev build
 lib/
   api.ts                          engine client, configurable base URL
   types.ts                        response shapes, mirroring the engine exactly
-  format.ts                       stripAi, pct, timeAgo, runDate, scryfallArt, …
+  format.ts                       stripAi, pct, fmtRate, fmtTurn, timeAgo, …
+  standings.ts                    reads and words the engine's published win
+                                  rates (engine/standings.py): decided games
+                                  are the one denominator, the leader is a
+                                  leader, a tie or nobody; no page divides
   cards.ts                        Scryfall card-fact client + memo
   replay.ts                       event-folding engine (pure, testable)
   story.ts                        the game story's words (one sentence per game)
@@ -107,12 +113,19 @@ lib/
                                   swing; the engine applies the display switches
 ```
 
-**Payloads (R1, measured 2026-09-28 gzipped as the engine sends them).**
-`runSummary` is 2.6 KB for the playtester's 8-game run and 3.8 KB for the
-largest local 16-game run (it carries every game's story); `runGame` is about
-21 KB for game 1 and 25 KB at the median on the same 8-game run (26 KB median,
-43 KB max on the 16-game one). Both revalidate (`max-age=300`) because the
+**Payloads (measured 2026-09-29 gzipped as the engine sends them, with the
+week-4 standings).** `runSummary` is 2.7 KB for the playtester's 8-game run and
+4.0 KB for the largest local 16-game run (it carries every game's story and
+the published standings); `runGame` is about 21 KB for game 1 on either run
+(25 KB at the median on the 8-game run, 26 KB median and 43 KB max on the
+16-game one, measured 2026-09-28). Both revalidate (`max-age=300`) because the
 story follows `MTG_TURNING_POINT` and `MTG_KNOCKOUT_DETAIL`.
+
+**Win rates.** Every rate on every page is the engine's published one
+(`standings` on the summary, game and index payloads and on `/sim-status`):
+wins over decided games (finished with a winner), whole percents below 30
+decided games, and "Leader" only above an even share. The only reference
+drawn beside a rate is the labelled pod average (decision 13).
 
 ## Responsive contract
 

@@ -94,6 +94,14 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    included, and the baseline marker reads 25% for four decks / 33.3% for three.
    If a 3-deck run ever shows "1 deck" and a 100% baseline again, the summary lost
    its winless seats — see `summarize()` in `engine/forge_log_adapter.py`.
+   Every rate is wins over **decided** games (`engine/standings.py`), the same
+   figure in the lede, the scorecards, the prediction table, the results index
+   and the running page's "Done." line. On the playtester's run that is "Kess
+   won 4 of 7 decided games (57%) ... 1 game hit the 15-minute clock and isn't
+   counted", never 50%. Whole percents below 30 decided games. A tie reads as a
+   tie, and a top deck at or below an even share reads "No clear leader"; the
+   results index column is *Leader*. The home leaderboard shows one pilot and
+   version only and says how many runs it leaves out.
    Below the rates, **Combo lines (from Commander Spellbook)**: which known combos each deck contains
    (Commander Spellbook), how often all pieces were on the battlefield at once,
    and whether that seat then won, next to what raw draw odds alone predicted

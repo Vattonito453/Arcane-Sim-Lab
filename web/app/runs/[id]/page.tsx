@@ -6,7 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import type { JobStatus, LiveGame } from "@/lib/types";
 import { deckSlug, fmtDuration, fmtRange, fmtRate, plural, runTitle, scryfallArt, shortName, stripAi, timeAgo } from "@/lib/format";
-import { exclusionText, standingsOf } from "@/lib/standings";
+import { andList, exclusionText, standingsOf } from "@/lib/standings";
 import { boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
@@ -514,7 +514,7 @@ export default function RunPage() {
                 </>
               ) : doneSt.leader.kind === "tie" ? (
                 <>
-                  Done. <b>{doneSt.leader.decks.map(doneShort).join(" and ")}</b> tied, each winning{" "}
+                  Done. <b>{andList(doneSt.leader.decks.map(doneShort))}</b> tied, each winning{" "}
                   <b>
                     {doneTop.wins} of {doneTop.decided} decided games ({fmtRate(doneTop.rate, doneSt.digits)})
                   </b>

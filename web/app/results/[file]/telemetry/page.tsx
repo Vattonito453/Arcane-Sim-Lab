@@ -168,9 +168,11 @@ function TelemetryInner() {
   const deckName = oneName(stripAi(rep.player_key ?? "") || labelFor(rep.deck));
   // The lede's second sentence, from the damage table below: a sum by source
   // name over the run (same-named tokens add up), so it says "the most damage".
+  // The unit is spelled out: a bare "(99)" after a card name reads as Forge's
+  // instance-id syntax, the machine text this page no longer prints.
   const topSrc = rep.deaths.by_source[0];
   const deathLine = topSrc
-    ? `Across the run, the most damage dealt to it came from ${topSrc.source} (${topSrc.damage}).`
+    ? `Across the run, the most damage dealt to it came from ${topSrc.source} (${topSrc.damage} damage).`
     : "";
 
   return (

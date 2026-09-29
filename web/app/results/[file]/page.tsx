@@ -28,7 +28,7 @@ import { PredictionPanel } from "@/components/PredictionPanel";
 import {
   fmtAverage, fmtDay, fmtRate, fmtTurn, plural, runDate, runTitle, shortName, stripAi, type CommanderMap,
 } from "@/lib/format";
-import { exclusionText, median, standingsOf } from "@/lib/standings";
+import { andList, exclusionText, median, standingsOf } from "@/lib/standings";
 import { storyNote, storySegments, type Seg } from "@/lib/story";
 
 /** "12:05". A missing duration is an en dash: a draw logged without one
@@ -395,7 +395,7 @@ export default function ResultsPage() {
             </>
           ) : st.leader.kind === "tie" ? (
             <>
-              <b>{st.leader.decks.map(short).join(" and ")}</b> tied, each winning{" "}
+              <b>{andList(st.leader.decks.map(short))}</b> tied, each winning{" "}
               <b>{top.wins} of {top.decided}</b> decided games ({rate(top.rate)}).
             </>
           ) : (

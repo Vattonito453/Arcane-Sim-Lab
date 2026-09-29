@@ -81,6 +81,14 @@ export function exclusionText(st: Standings, clockWords = "the per-game clock"):
   return `${total} games aren't counted: ${list}.`;
 }
 
+/** "Kess", "Kess and Stella Lee", "Kess, Stella Lee and Krenko Goblins": the
+ *  one way every surface lists tied decks. */
+export function andList(names: string[]): string {
+  return names.length > 2
+    ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`
+    : names.join(" and ");
+}
+
 /** The run's leader for a list row, under the one name the title uses:
  *  "Kess", "Kess and Stella Lee (tied)", or "No clear leader". The rate is
  *  separate so a row can set it in mono. */
@@ -91,11 +99,7 @@ export function leaderOf(
   const { kind, decks, rate } = st.leader;
   if (kind === "leader" && decks.length) return { text: short(decks[0]), rate: fmtRate(rate, st.digits) };
   if (kind === "tie" && decks.length) {
-    const names = decks.map(short);
-    const list = names.length > 2
-      ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`
-      : names.join(" and ");
-    return { text: `${list} (tied)`, rate: fmtRate(rate, st.digits) };
+    return { text: `${andList(decks.map(short))} (tied)`, rate: fmtRate(rate, st.digits) };
   }
   return { text: st.decided ? "No clear leader" : "Nothing decided", rate: null };
 }

@@ -164,8 +164,11 @@ export function PredictionPanel({
               <td className="r mono">
                 {d.low.toFixed(dg)} to {d.high.toFixed(dg)}
               </td>
+              {/* The difference of the two figures as shown, so the row adds
+                  up at whole percents (30.5 less 28.4 printed "+2" beside
+                  "31%" and "28%"). */}
               <td className="r mono">
-                {pp(d.expected_win_rate - d.sim_win_rate, dg)}
+                {pp(Number(d.expected_win_rate.toFixed(dg)) - Number(d.sim_win_rate.toFixed(dg)), dg)}
               </td>
             </tr>
           ))}

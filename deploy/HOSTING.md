@@ -293,7 +293,10 @@ is finished: at lowered priority, detached, and killed if it runs past
 120 s, so it can never delay a run or fail one. While idle, the worker's
 sweeper re-runs it every 30 s for one finished run that has no `qa.json`
 (newest first), so a lost or killed analysis recovers on its own, and a
-fresh deploy backfills older runs over the next few minutes. A run whose
+fresh deploy backfills older runs at one per 30 s of idle time: about 25
+minutes for the 50 runs production held on 2026-09-29, paused while a sim
+runs (`run.py --all`, below, does them at once). The newest run is first, so
+preflight's `qa.json` check is not waiting on the backlog. A run whose
 analysis is killed three times is left alone and logged once
 ("QA gave up on ..."). Flags at medium severity and above are also filed
 in `/data/simkb/review_queue/auto/`, at most 30 per run, spread across

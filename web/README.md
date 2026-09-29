@@ -139,6 +139,11 @@ both `standings` and `disclosures` on the summary, `runSummary` is 3,078 B for
 the playtester's run (the production copy, which predates the worker's record),
 2.1 KB at the median over 63 local results, and 4.3 KB for the largest local
 16-game run; `runGame` for game 1 of the playtester's run is 21.5 KB.
+Re-measured on r4/week4-verify (same method): `runGame` now carries the
+run's standings too, 25.8 KB median and 32.7 KB max on the playtester's run
+and 26.8 KB median and 44.3 KB max on the largest local 16-game run;
+`result` (the whole run, which no page fetches) is 201 KB and 418 KB on the
+same two runs, and `GET /results/{file}/qa` is 4.0 KB on either.
 
 **Win rates.** Every rate on every page is the engine's published one
 (`standings` on the summary, game and index payloads and on `/sim-status`):

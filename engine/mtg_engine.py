@@ -2110,8 +2110,17 @@ def serve(port: int = 8484) -> None:
                 self.close_connection = True   # the body cannot be framed
                 return self._send({"error": "bad Content-Length"}, 400)
             if route == "flags" and length > FLAG_BODY_MAX:
-                # Not read, so this connection cannot carry another request.
+                # Not parsed, so this connection cannot carry another request.
                 self.close_connection = True
+                # A body only a little over the cap is read and dropped first:
+                # closing a socket with unread data sends a reset, which on
+                # Windows aborted the client before it read this 413 (a
+                # flaky test_flags). A large one is never read.
+                if length <= 4 * FLAG_BODY_MAX:
+                    try:
+                        self.rfile.read(length)
+                    except OSError:
+                        pass
                 return self._send({"error": f"a flag is at most {FLAG_BODY_MAX} bytes"}, 413)
             try:
                 payload = json.loads(self.rfile.read(length) or b"{}")

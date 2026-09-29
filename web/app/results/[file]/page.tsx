@@ -519,7 +519,11 @@ export default function ResultsPage() {
         {/* Per deck, the cards Forge could not load and the cards its AI
             doesn't cast on its own (repair plan WS11 task 4): what the
             numbers above were played without. */}
-        <RunDisclosureSection report={data.disclosures} name={short} />
+        <RunDisclosureSection
+          report={data.disclosures}
+          name={short}
+          stock={data.pilot?.kind === "stock"}
+        />
 
         {an && Object.keys(an.summary?.methods ?? {}).length > 0 && (
           <section>

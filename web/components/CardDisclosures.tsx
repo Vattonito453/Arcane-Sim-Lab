@@ -28,15 +28,17 @@ const TITLE: Record<Kind, string> = {
 
 /** What the list means for the result, in one plain sentence, which names
  *  the commander when it is on the list. No em dash: this is copy. */
-function meaning(kind: Kind, d: DeckDisclosure, where: DisclosureWhere): string {
+function meaning(kind: Kind, d: DeckDisclosure, where: DisclosureWhere, stock = false): string {
   const cards = (kind === "load" ? d.could_not_load : d.ai_wont_play) ?? [];
   const one = cards.length === 1;
   if (kind === "load") {
     const names = one ? "this name" : "these names";
     if (where === "run") {
+      // Index basis: the engine has already dropped any name this run's own
+      // log shows in play (engine/disclosure.shown_in_run).
       return d.load_basis === "run"
         ? `Forge left ${one ? "this card" : "these"} out of every game, so this deck played short of its list.`
-        : `This run is older than Forge's own load report, so this list comes from Forge's card list today: Forge doesn't know ${names} as written, so ${one ? "it was" : "they were"} most likely left out of every game.`;
+        : `This run is older than Forge's own load report, so this list comes from Forge's card list today: Forge doesn't know ${names} as written and this run's log never shows ${one ? "it" : "them"}, so ${one ? "it was" : "they were"} most likely left out of every game.`;
     }
     return `Forge doesn't know ${names} as written, so a simulation plays this deck without ${one ? "it" : "them"}; check the spelling, and name a double-faced card by its front face alone.`;
   }
@@ -45,9 +47,13 @@ function meaning(kind: Kind, d: DeckDisclosure, where: DisclosureWhere): string 
   const commander = d.commander_ai_wont_play.length > 0;
   const subject = one ? (commander ? "the commander" : "this card") : "these";
   const also = commander && !one ? ", the commander included," : ",";
-  const pilot = one
-    ? "Sim Lab's pilot can still cast it while chasing a combo or tutoring, and work to have the pilot cast such cards is scheduled for November."
-    : "Sim Lab's pilot can cast some while chasing a combo or tutoring, and work to have it cast the rest is scheduled for November.";
+  // A run Forge's own AI played for every seat had no Sim Lab pilot to cast
+  // any of these, so the pilot clause would describe a different run.
+  const pilot = where === "run" && stock
+    ? "every seat in this run was Forge's own AI, without Sim Lab's pilot."
+    : one
+      ? "Sim Lab's pilot can still cast it while chasing a combo or tutoring, and work to have the pilot cast such cards is scheduled for November."
+      : "Sim Lab's pilot can cast some while chasing a combo or tutoring, and work to have it cast the rest is scheduled for November.";
   return where === "run"
     ? `Forge's AI passes over ${subject} when it picks a spell${also} so a simulation rarely casts ${one ? "it" : "them"} and this result may understate the deck; ${pilot}`
     : `A simulation will rarely cast ${subject}${also} so its result may understate this deck; ${pilot}`;
@@ -92,6 +98,7 @@ export function DisclosureList({
   d,
   where,
   unavailable,
+  stock = false,
 }: {
   kind: Kind;
   d: DeckDisclosure;
@@ -99,6 +106,8 @@ export function DisclosureList({
   /** Why a null list cannot be checked, as a clause ("Forge's card list
    *  isn't on this server yet"). */
   unavailable: string;
+  /** A run Forge's own AI played for every seat (pilot kind "stock"). */
+  stock?: boolean;
 }) {
   const cards = kind === "load" ? d.could_not_load : d.ai_wont_play;
   if (cards == null) {
@@ -128,7 +137,7 @@ export function DisclosureList({
           </li>
         ))}
       </ul>
-      <p className="dsc-why">{meaning(kind, d, where)}</p>
+      <p className="dsc-why">{meaning(kind, d, where, stock)}</p>
     </details>
   );
 }
@@ -138,15 +147,17 @@ export function DeckDisclosureRows({
   d,
   where,
   unavailable,
+  stock = false,
 }: {
   d: DeckDisclosure;
   where: DisclosureWhere;
   unavailable: string;
+  stock?: boolean;
 }) {
   return (
     <div className="dsc-rows">
       <DisclosureList kind="load" d={d} where={where} unavailable={unavailable} />
-      <DisclosureList kind="ai" d={d} where={where} unavailable={unavailable} />
+      <DisclosureList kind="ai" d={d} where={where} unavailable={unavailable} stock={stock} />
     </div>
   );
 }
@@ -159,10 +170,13 @@ const NO_FILE = "This deck's file is no longer on the server";
 export function RunDisclosureSection({
   report,
   name,
+  stock = false,
 }: {
   report: RunDisclosures | null | undefined;
   /** The deck's one display name (shortName), keyed by its Name=. */
   name: (deck: string) => string;
+  /** Forge's own AI played every seat (the run's pilot kind is "stock"). */
+  stock?: boolean;
 }) {
   if (!report || !report.decks) return null;
   const decks = Object.entries(report.decks);
@@ -182,7 +196,7 @@ export function RunDisclosureSection({
         {decks.map(([deck, d]) => (
           <div className="dsc-deck" key={deck}>
             <h3>{name(deck)}</h3>
-            <DeckDisclosureRows d={d} where="run" unavailable={why} />
+            <DeckDisclosureRows d={d} where="run" unavailable={why} stock={stock} />
           </div>
         ))}
       </div>

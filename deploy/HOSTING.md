@@ -322,10 +322,11 @@ detectors.
   that failed; the same lands in `docker compose logs worker`.
 - Time budget: `python3 -u /app/engine/qa/budget.py --corpus` in the worker
   container measures it on the VM (target: p95 under 10 s).
-- `MTG_QA=0` in the worker's environment turns the hook and the sweeper
-  off. Preflight then fails its qa.json check, on purpose.
-- `MTG_QA_QUEUE_MIN_SEVERITY` (`low` | `medium` | `high`, default `medium`)
-  sets what reaches the review queue.
+- `MTG_QA=0` in `deploy/.env` (compose passes it to the worker) turns the
+  hook and the sweeper off. Preflight then fails its qa.json check, on
+  purpose.
+- `MTG_QA_QUEUE_MIN_SEVERITY` (`low` | `medium` | `high`, default `medium`),
+  also in `deploy/.env`, sets what reaches the review queue.
 
 The address to hand out is `http://EXTERNAL_IP/` (find it with
 `gcloud compute instances describe simlab --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'`).

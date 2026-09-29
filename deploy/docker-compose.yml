@@ -118,6 +118,13 @@ services:
       # Optional per-flag override for version-2 plans (a G0a fail-branch
       # arm). Empty = every flag on.
       MTG_PLAN_FIX: ${MTG_PLAN_FIX:-}
+      # QA layer A (engine/qa/run.py after every finished run, and the idle
+      # sweeper). Read HERE: the worker launches it. MTG_QA=0 turns both off
+      # (preflight then fails its qa.json check, on purpose).
+      # MTG_QA_QUEUE_MIN_SEVERITY = low | medium | high: what reaches the
+      # review queue.
+      MTG_QA: ${MTG_QA:-1}
+      MTG_QA_QUEUE_MIN_SEVERITY: ${MTG_QA_QUEUE_MIN_SEVERITY:-medium}
     deploy:
       resources:
         limits:

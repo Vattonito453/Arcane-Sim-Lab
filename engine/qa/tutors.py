@@ -741,15 +741,17 @@ class _Detector:
             self.buckets[key] = new_bucket()
         return self.buckets[key]
 
-    def flag(self, g, turn, player, kind: str, detail: str, ai, seq=None) -> None:
+    def flag(self, g, turn, player, kind: str, detail: str, ai, seq=None,
+             card: str | None = None) -> None:
         """One per-moment record. `game` is 1-based, as /results/{file}/game/{n}
         and qa.knockouts number games. `seq` is the Forge log entry of the
         moment when one is linked (the tutor's own cast), like the knockouts
         flags' seq; the anchor's `seq` is the agent event's own, null until
-        the shim stamps agent events (WS1 task 7)."""
+        the shim stamps agent events (WS1 task 7). `card` is the tutor the
+        flag is about (a card name, as the shim or Forge logged it)."""
         ae = g.agent_events[ai] if isinstance(ai, int) and 0 <= ai < len(g.agent_events) else {}
         self.flags.append({"detector": NAME, "kind": kind, "game": g.number, "turn": turn,
-                           "player": player, "seq": seq, "detail": detail,
+                           "player": player, "seq": seq, "detail": detail, "card": card,
                            "anchor": anchor(g.number, turn, player, ai, ae.get("seq"))})
 
     def tutor_set(self, player: str, scan: _GameScan) -> set[str] | None:
@@ -1021,19 +1023,20 @@ class _Detector:
                         why.append("the shim logged reach=false")
                 self.flag(g, t, p, "tutor_unreachable",
                           f"{tutor} was cast seeking {want}, which it could not find: "
-                          + "; ".join(why) + ".", ai, seq)
+                          + "; ".join(why) + ".", ai, seq, card=tutor)
 
             if attempt and attempt["status"] == "failed":
                 b["failed_to_target"] += 1
                 self.flag(g, t, p, "tutor_failed_target",
                           f"{tutor} could not be cast ({attempt['why']}); "
-                          f"it was cast seeking {want}.", ai, seq)
+                          f"it was cast seeking {want}.", ai, seq, card=tutor)
             elif attempt and attempt.get("x") is not None:
                 b["x_resolved"] += 1
                 if attempt["x"] == 0:
                     b["x_zero"] += 1
                     self.flag(g, t, p, "tutor_x_zero",
-                              f"{tutor} resolved with X=0; it was cast seeking {want}.", ai, seq)
+                              f"{tutor} resolved with X=0; it was cast seeking {want}.", ai, seq,
+                              card=tutor)
 
             # Where the tutor's search lives: the shim's route= (0.17.0+),
             # read off Forge's own abilities; else the Forge index.
@@ -1043,7 +1046,8 @@ class _Detector:
                 _inc(b, "cast_never_searches", mode)
                 self.flag(g, t, p, "tutor_cast_never_searches",
                           f"{tutor} was cast as a spell seeking {want}, but "
-                          + _NEVER_SEARCHES[mode] + ", so casting it never searches.", ai, seq)
+                          + _NEVER_SEARCHES[mode] + ", so casting it never searches.", ai, seq,
+                          card=tutor)
 
     def _tutor_skips(self, g) -> None:
         """Shim 0.17.0's tutor_skip: one record per plan tutor left in hand
@@ -1088,7 +1092,8 @@ class _Detector:
                     if use is False:
                         self.flag(g, t, p, "tutor_gy_steer_no_use",
                                   f"{src} put {st['steer']} into the graveyard over "
-                                  f"{st['over']}; {st['steer']} has no use there.", st_ai)
+                                  f"{st['over']}; {st['steer']} has no use there.", st_ai,
+                                  card=None if src == "?" else src)
             closers = self.closers(p)
             if any(x in closers for x in picked):
                 b["closer_seen"] += 1
@@ -1096,7 +1101,7 @@ class _Detector:
                     b["closer_overrides"] += 1
                     self.flag(g, t, p, "tutor_closer_override",
                               f"{src}: the plan took {st['steer']} over {st['over']}, "
-                              "a proven closer.", st_ai)
+                              "a proven closer.", st_ai, card=None if src == "?" else src)
 
     def _tutor_spells(self, g, scan: _GameScan) -> None:
         Z = scan.Z

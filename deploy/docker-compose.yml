@@ -60,6 +60,12 @@ services:
       # which preflight reports as deliberately off. Read by the api only.
       MTG_FLAG_KEYS: ${MTG_FLAG_KEYS:-}
       MTG_FLAG_PER_HOUR: ${MTG_FLAG_PER_HOUR:-60}
+      # Reviewer keys: the only credential that reads GET /qa/queue (testers'
+      # flag notes). Never an MTG_API_KEYS key: WEB_API_KEY above is one of
+      # those and is inlined into the served JavaScript, so an API key is not
+      # private. Optional; empty = nobody reads the queue over HTTP, which
+      # preflight reports as deliberately off. Read by the api only.
+      MTG_REVIEW_KEYS: ${MTG_REVIEW_KEYS:-}
       # Rules-assistant generation; absent = /ask degrades to plain search.
       MTG_LLM_API_KEY: ${MTG_LLM_API_KEY:-}
       MTG_LLM_MODEL: ${MTG_LLM_MODEL:-claude-haiku-4-5}
@@ -112,6 +118,13 @@ services:
       # Optional per-flag override for version-2 plans (a G0a fail-branch
       # arm). Empty = every flag on.
       MTG_PLAN_FIX: ${MTG_PLAN_FIX:-}
+      # QA layer A (engine/qa/run.py after every finished run, and the idle
+      # sweeper). Read HERE: the worker launches it. MTG_QA=0 turns both off
+      # (preflight then fails its qa.json check, on purpose).
+      # MTG_QA_QUEUE_MIN_SEVERITY = low | medium | high: what reaches the
+      # review queue.
+      MTG_QA: ${MTG_QA:-1}
+      MTG_QA_QUEUE_MIN_SEVERITY: ${MTG_QA_QUEUE_MIN_SEVERITY:-medium}
     deploy:
       resources:
         limits:

@@ -36,6 +36,9 @@ forge_index/
 # Human flags (POST /flags) land under $MTG_DATA_DIR/simkb/review_queue/human/,
 # which is engine/ locally. They hold playtesters' own words: never commit them.
 engine/simkb/review_queue/
+# QA layer A output (engine/qa/run.py): $MTG_DATA_DIR/simkb/runs/<run>/qa.json
+# and attempts.json, regenerated from the results by `run.py --all`.
+engine/simkb/runs/
 
 # ── simulation output (large, regenerable) ───────────────────────────────
 # ~140 MB of raw Forge logs and adapted results (measured 2026-08-04).

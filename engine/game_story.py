@@ -175,6 +175,18 @@ def of_game(game: dict, sw: dict | None = None) -> dict:
         raw = K.analyse_game(game)
     except Exception:  # noqa: BLE001 - one unreadable game must not fail a run
         return empty()
+    return from_analysis(game, raw, sw)
+
+
+def from_analysis(game: dict, raw: dict | None, sw: dict | None = None) -> dict:
+    """of_game() from an analysis already run: qa.knockouts.analyse_game's
+    {"knockouts", "turning_point"} for this game. QA layer A
+    (engine/qa/run.py) passes the knockouts detector's per-game output, so a
+    run's qa.json carries the story the pages show without parsing each game
+    twice. None (the analyzer could not read the game) is the empty story."""
+    sw = sw or switches()
+    if not isinstance(raw, dict):
+        return empty()
     kos = raw.get("knockouts") or []
     tp = raw.get("turning_point")
     if (game.get("result") or {}).get("timedOut"):

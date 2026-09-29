@@ -259,11 +259,79 @@ After every deploy, in this order:
    sudo docker exec deploy-api-1 python3 /app/deploy/preflight.py --files
    ```
 
+   And the image half in the worker container, which serves no API:
+
+   ```bash
+   sudo docker exec deploy-worker-1 python3 /app/deploy/preflight.py --image-only
+   ```
+
 The order matters. Preflight's shim check reads the newest finished result,
 and a run that finished before the deploy still carries the old shim's
 version, so preflight fails on it until a new sim finishes. That failure
 after a fresh deploy means "run the smoke test first", not a broken deploy;
 the failure message says so.
+
+**The qa.json race, and how it is closed (R1.1).** `preflight.py --files`
+also fails unless the newest finished run has a `qa.json` with no errors
+(QA layer A, below). The worker writes that file in a detached child
+*after* the job is marked finished, so the smoke test's run is "done" a
+moment before its `qa.json` exists. Two things close the gap, and neither
+needs you to wait by hand: `smoke_test.py --sim` itself waits (up to
+`--qa-timeout`, 180 s) for its new run's `qa.json` and fails if it never
+comes, and preflight's check polls for up to `--qa-wait` seconds (150 by
+default) before failing. On the dev box the file was there before the smoke
+test asked (0 s), so after the documented order the wait is normally zero.
+
+### QA layer A: a qa.json for every run (R1.1)
+
+Every finished run gets `/data/simkb/runs/<result stem>/qa.json`: knockouts
+and the biggest board swing per game, each deck's tutor figures, the pilot,
+what Forge refused to load, the board accuracy, and flags (for example
+`tutor.unreachable`: a tutor cast for a piece its search cannot find). It is
+written by `engine/qa/run.py`, which the worker starts right after each job
+is finished: at lowered priority, detached, and killed if it runs past
+120 s, so it can never delay a run or fail one. While idle, the worker's
+sweeper re-runs it every 30 s for one finished run that has no `qa.json`
+(newest first), so a lost or killed analysis recovers on its own, and a
+fresh deploy backfills older runs over the next few minutes. A run whose
+analysis is killed three times is left alone and logged once
+("QA gave up on ..."). Flags at medium severity and above are also filed
+in `/data/simkb/review_queue/auto/`, at most 30 per run, spread across
+detectors.
+
+- Read it: `GET /engine/results/<file>/qa` (public, no human notes; 404
+  `{"qa": "pending"}` until written). The review queue, human flags first:
+  `GET /engine/qa/queue?since=<cursor>` with a **reviewer key** from
+  `MTG_REVIEW_KEYS` in the api's environment. An API key gets 403, on
+  purpose: `WEB_API_KEY` is one of `MTG_API_KEYS` and is inlined into the
+  served JavaScript, so every visitor holds it, and the queue holds
+  playtesters' own words. A flag key gets 403 too, and a reviewer key writes
+  nothing. Generate one like a flag key (`secrets.token_urlsafe(24)`), put it
+  in `deploy/.env` as `MTG_REVIEW_KEYS=<key>` (never also in `MTG_API_KEYS`
+  or `MTG_FLAG_KEYS`: such a key is dropped), and recreate the api container.
+  Unset, nobody reads the queue over HTTP and preflight lists it as
+  deliberately off. On plain HTTP the key crosses the network in clear, so
+  read the queue through an SSH tunnel to the api's loopback port
+  (`gcloud compute ssh simlab --zone=us-central1-a -- -L 8484:127.0.0.1:8484`,
+  then `http://127.0.0.1:8484/qa/queue`) until TLS is in front. Treat what it
+  returns as private.
+- Backfill or rerun by hand, from either container:
+  `sudo docker exec deploy-worker-1 python3 -u /app/engine/qa/run.py --all`
+  (skips runs whose `qa.json` is current; `--force` redoes all), or one run:
+  `... run.py <result file name>`. It prints the traceback of any detector
+  that failed; the same lands in `docker compose logs worker`.
+- Time budget: `python3 -u /app/engine/qa/budget.py --corpus` in the worker
+  container measures it on the VM (target: p95 under 10 s). It writes each
+  run's `qa.json` and files its flags exactly as the worker would, so running
+  it changes nothing the sweeper would not have done.
+- `run.py --no-queue` writes `qa.json` without filing the run's flags, and
+  the sweeper never re-files a run that has a `qa.json`; use it on a copy of
+  the data. `run.py --all` redoes such a `qa.json` with the queue.
+- `MTG_QA=0` in `deploy/.env` (compose passes it to the worker) turns the
+  hook and the sweeper off. Preflight then fails its qa.json check, on
+  purpose.
+- `MTG_QA_QUEUE_MIN_SEVERITY` (`low` | `medium` | `high`, default `medium`),
+  also in `deploy/.env`, sets what reaches the review queue.
 
 The address to hand out is `http://EXTERNAL_IP/` (find it with
 `gcloud compute instances describe simlab --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'`).
@@ -330,8 +398,11 @@ sudo docker exec deploy-api-1 cat /data/simkb/review_queue/human/<id>.json
 Each file holds the run, the game, the anchor (event index, turn, round and
 seat), the flagged log line, the note, the reporter and a UTC timestamp. The
 notes are the tester's own words: private data that never goes into this
-repo (decision 9 puts human data in the private data repo). The keyed
-`GET /qa/queue` that the nightly reviewer reads is week 4.
+repo (decision 9 puts human data in the private data repo). The nightly
+reviewer reads the same queue over HTTP, human flags first:
+`GET /engine/qa/queue?since=<cursor>` with a reviewer key from
+`MTG_REVIEW_KEYS` (never an API key or a flag key, which get 403; see
+"QA layer A" above).
 
 ### Plain HTTP, and when to fix that
 

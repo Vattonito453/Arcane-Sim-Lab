@@ -11,6 +11,8 @@ COPY engine/*.py /app/engine/
 COPY engine/models/ /app/engine/models/
 # Same trap for packages: analysis.py and scorecard.py import engine/qa/ (the
 # repair plan's QA analyzers), and the top-level glob would leave it out.
+# GET /results/{file}/qa and GET /qa/queue read through engine/qa/run.py and
+# engine/qa/review_queue.py, and `run.py --all` backfills from here too.
 # preflight.py --files imports it inside the container to prove it shipped.
 COPY engine/qa/ /app/engine/qa/
 COPY engine/decks/*.dck /app/engine/decks/

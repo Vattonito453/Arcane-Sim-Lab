@@ -262,7 +262,11 @@ export default function RunPage() {
   // the matchup — and keep the id in the details disclosure at the foot.
   const podTitle = deckNames.length ? runTitle(deckNames, status?.commanders) : "Simulation run";
 
-  const resultBase = status?.result_file ? (status.result_file.split("/").pop() ?? null) : null;
+  // Either separator: an engine on a Windows dev box reports a backslashed
+  // path, and splitting on "/" alone sent "View results" to a 404.
+  const resultBase = status?.result_file
+    ? (status.result_file.split(/[\\/]/).pop() ?? null)
+    : null;
   const resultHref = resultBase ? `/results/${encodeURIComponent(resultBase)}` : null;
 
   // Don't yank the page away mid-playback. The sim finishing is not a reason to
@@ -685,7 +689,7 @@ export default function RunPage() {
         )}
         <PageDetails label="Run details">
           <div>job {id}</div>
-          {status?.result_file && <div>{status.result_file.split("/").pop()}</div>}
+          {resultBase && <div>{resultBase}</div>}
         </PageDetails>
       </div>
       <Footer />

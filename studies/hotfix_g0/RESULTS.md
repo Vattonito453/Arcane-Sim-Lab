@@ -30,9 +30,12 @@ The playtester's own complaint, on their own pod (16 games per arm):
 
 | Richard's pod | C (flags off) | Z (0.16.0) | T (hotfix) |
 |---|---|---|---|
-| Plan steers that put Sol Ring in the graveyard | 12 | 9 | **0** |
+| Plan steers onto Sol Ring, any destination | 12 | 9 | **0** |
+| of which into the graveyard | 7 | 5 | **0** |
 | Unreachable shim tutor casts | 13 / 22 | – | **0 / 3** |
 | Graveyard steers onto a card with no graveyard use | 7 of 19 | – | **0** of 10 |
+
+**Correction (2026-09-29).** The Richard's-pod row first read "Plan steers that put Sol Ring in the graveyard: 12 / 9 / 0". Those figures count every plan steer onto Sol Ring at any destination, including searches to hand (Gamble) and to exile. Counting only searches whose destination is the graveyard gives 7 in C and 5 in Z, measured from the same raw logs by pairing each steer with its search's `dest`. T is 0 either way, so no verdict changes. Found while building Richard's before-and-after pack.
 
 ## Guards (T against C)
 
@@ -112,7 +115,7 @@ So `combo_hold` is deal rarity, and G0a stands.
 1. Merge simlab-forge-shim PR #15 and tag `v0.17.0` **at b8894e1**, the commit this gate tested. Anything that lands on the branch after b8894e1 is not covered by G0a.
 2. Set `SIMLAB_SHIM_REF=v0.17.0` and `MTG_PLAN_VERSION=2` at the R1 deploy. Preflight refuses plan version 2 on an older shim.
 3. The worker image will contain the 0.17.0 shim. Running it on our server imposes nothing. Publishing that image would require the shim repo to stay public at the tagged commit (CLAUDE.md, legal posture).
-4. Richard's before-and-after pack uses the mechanism counts above: Sol Ring put in the graveyard, 12 to 0, and unreachable tutor casts, 13 of 22 to 0 of 3, each shown against the same kind of moment after the fix. No win rates.
+4. Richard's before-and-after pack shows mechanism counts from their own run and two reruns on the R1 pilot (published in week 4): Sol Ring put in the graveyard 2 before, 0 and 0 after; unreachable shim tutor casts 4 of 5 before, 0 of 1 and 0 of 0 after. No win rates.
 
 ## Reproduce
 

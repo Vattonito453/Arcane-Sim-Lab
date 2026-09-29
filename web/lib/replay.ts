@@ -186,6 +186,8 @@ const RE_TURN_LINE = /^Turn \d+\s*$/;
 const RE_TALLY = /Ai\(\d+\)-(.+?): (\d+)(?=\s+Ai\(\d+\)-|\s*$)/g;
 const RE_POISON_LOSS = /^(.+?) has lost because of obtaining (\d+) poison counters?\.?\s*$/;
 const RE_GENERALS = /^(.+?) has lost due to accumulation of (\d+) damage from generals\.?\s*$/;
+// A cleaned "has won" line (no Ai(n)- prefix), for the clock-cut rewording.
+const RE_WON_TEXT = /^(.+?) has won\b/;
 
 /** Strip Ai(n)- prefixes and Forge instance ids for display. An id in `keep`
  *  belongs to a name that means two different objects in this game, so it is
@@ -510,6 +512,25 @@ export function buildTimeline(game: SimGame): Timeline {
   for (const s of steps) {
     if (s.kind === "game_outcome" && RE_TURN_LINE.test(s.text)) {
       s.text = totalRounds ? `The game ended on turn ${totalRounds}.` : "The game ended.";
+    }
+  }
+  // A game the clock or the turn cap stopped is a draw whatever Forge's
+  // outcome object says (audit A16): the story, the run page and every win
+  // rate count it that way. Forge still prints "X has won because all
+  // opponents have lost" for the seats left standing and a match tally that
+  // credits one of them, so the reworded log would name a winner on the one
+  // game the page calls a draw (the playtester's game 6). Only the words
+  // change; the step, its index and its highlight stay.
+  const marks = game.result as SimGame["result"] & { timedOut?: boolean; turnCapped?: boolean };
+  const cut = marks?.timedOut ? "hit the per-game clock" : marks?.turnCapped ? "reached the turn limit" : null;
+  if (cut) {
+    for (const s of steps) {
+      let m: RegExpMatchArray | null;
+      if (s.kind === "game_outcome" && (m = s.text.match(RE_WON_TEXT))) {
+        s.text = `Forge's log names ${m[1]} a winner, but the game ${cut}, so it counts as a draw.`;
+      } else if (s.kind === "match_result" && s.text.startsWith("Forge's match tally")) {
+        s.text = `${s.text} This game ${cut}, so Sim Lab counts it as a draw.`;
+      }
     }
   }
   return {

@@ -27,6 +27,9 @@ import { LoadError } from "@/components/LoadError";
 
 const SPEED_MS: Record<number, number> = { 1: 300, 2: 150, 4: 75 };
 
+/** Game length out of a result raw, as the run page reads it. */
+const RE_TOOK_MS = /(?:Took|ended in) (\d+) ms/;
+
 function fmtClock(ms: number): string {
   if (typeof ms !== "number" || !Number.isFinite(ms) || ms < 0) return "–"; // never "NaN:NaN"
   const s = Math.round(ms / 1000);
@@ -428,6 +431,12 @@ export default function ReplayPage() {
         commanders,
       )
     : null;
+  // The game's length, with the run page's fallback for a line the adapter
+  // did not time ("Took 900412 ms." in the result's raw): the playtester's
+  // clock-cut game 6 read 15:01 in the run's table and "–" here.
+  const durationMs = Number.isFinite(summary.durationMs)
+    ? summary.durationMs
+    : Number(game.result.raw?.match(RE_TOOK_MS)?.[1] ?? NaN);
   const watchLabel = tp ? `Watch the ${tp.label.toLowerCase()}` : null;
   // One glowing control per view: "Watch the ..." when it is shown, else the
   // transport's play button (globals.css .vbtn.play.lead).
@@ -445,7 +454,7 @@ export default function ReplayPage() {
               <span className="sep">·</span>
               <span className="mono">{R}</span> {R === 1 ? "turn" : "turns"}
               <span className="sep">·</span>
-              <span className="mono">{fmtClock(summary.durationMs)}</span>
+              <span className="mono">{fmtClock(durationMs)}</span>
             </div>
           </div>
           <div className="btns">

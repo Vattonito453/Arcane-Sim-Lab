@@ -96,6 +96,28 @@ test("namesakes are numbered, never shown by Forge's instance id", () => {
   }
 });
 
+test("a clock-cut game's log never names a winner the page calls a draw", () => {
+  // Forge prints "has won" for every seat left standing when the shim forces
+  // the clock draw, and its tally credits one of them (the playtester's game 6).
+  const cut = {
+    ...game,
+    result: { winner: null, draw: true, duration_ms: 900000, raw: "", timedOut: true },
+  };
+  const steps = replay.buildTimeline(cut).steps;
+  const at = (seq) => steps.find((s) => s.seq === seq).text;
+  assert.equal(steps.length, 15);
+  assert.equal(
+    at(14),
+    "Forge's log names Skrat's Revenge a winner, but the game hit the per-game clock, so it counts as a draw.",
+  );
+  assert.equal(
+    at(15),
+    "Forge's match tally: Kess, Reanimator 0; Skrat's Revenge 1. This game hit the per-game clock, so Sim Lab counts it as a draw.",
+  );
+  // A decided game keeps Forge's words.
+  assert.equal(text(14), "Skrat's Revenge has won because all opponents have lost");
+});
+
 test("the ops still read the raw line (the fold is unchanged)", () => {
   const life = timeline.steps.find((s) => s.seq === 9);
   assert.deepEqual(life.op, { t: "life", p: K, to: 0 });

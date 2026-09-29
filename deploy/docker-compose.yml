@@ -60,6 +60,12 @@ services:
       # which preflight reports as deliberately off. Read by the api only.
       MTG_FLAG_KEYS: ${MTG_FLAG_KEYS:-}
       MTG_FLAG_PER_HOUR: ${MTG_FLAG_PER_HOUR:-60}
+      # Reviewer keys: the only credential that reads GET /qa/queue (testers'
+      # flag notes). Never an MTG_API_KEYS key: WEB_API_KEY above is one of
+      # those and is inlined into the served JavaScript, so an API key is not
+      # private. Optional; empty = nobody reads the queue over HTTP, which
+      # preflight reports as deliberately off. Read by the api only.
+      MTG_REVIEW_KEYS: ${MTG_REVIEW_KEYS:-}
       # Rules-assistant generation; absent = /ask degrades to plain search.
       MTG_LLM_API_KEY: ${MTG_LLM_API_KEY:-}
       MTG_LLM_MODEL: ${MTG_LLM_MODEL:-claude-haiku-4-5}

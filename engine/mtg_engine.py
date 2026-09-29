@@ -30,8 +30,9 @@ zero-dependency API. Use it three ways:
        GET  /results/{file}/qa    the run's QA layer A report (engine/qa/run.py);
                                   404 {"qa": "pending"} until the worker writes it
        GET  /qa/queue?since=<cursor>&limit=N  open review items, human flags
-                                  first (ADMIN key from MTG_API_KEYS only; a flags
-                                  key gets 403): engine/qa/review_queue.py
+                                  first (a REVIEWER key from MTG_REVIEW_KEYS only;
+                                  an API key or a flags key gets 403):
+                                  engine/qa/review_queue.py
        GET  /estimate?decks=4&games=16  typical duration + played game count
                                   for a sim of that size, before it is queued
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
@@ -739,6 +740,30 @@ FLAG_ONLY_REFUSAL = ("this is a flag key: it can flag moments in a replay and "
                      "nothing else. Starting simulations or changing decks needs "
                      "an API key.")
 
+# Reviewer keys: the ONLY credential that reads the review queue (GET
+# /qa/queue), which holds playtesters' own words (human flag notes and their
+# reporters). Not an MTG_API_KEYS key: the web build inlines one of those
+# into the served JavaScript (deploy/docker-compose.yml, WEB_API_KEY ->
+# NEXT_PUBLIC_API_KEY), so anyone who loads the site holds it, and a queue
+# that accepted it would be public in practice. A reviewer key reads the
+# queue and does nothing else: every write refuses it with a 403, in every
+# mode, like a flags key. Comma-separated plain keys; one that is also an
+# API key or a flags key is dropped (counted, never printed), since that key
+# is already in hands the queue must not reach. Unset = nobody can read the
+# queue over HTTP (preflight reports it as deliberately off).
+def parse_review_keys(raw: str | None, api_keys=(), flag_keys=()) -> tuple[set[str], int]:
+    """MTG_REVIEW_KEYS -> (reviewer keys, count dropped for overlapping an
+    API key or a flags key)."""
+    keys = {k.strip() for k in (raw or "").split(",") if k.strip()}
+    clash = {k for k in keys if k in api_keys or k in flag_keys}
+    return keys - clash, len(clash)
+
+
+REVIEW_KEYS, REVIEW_KEYS_DROPPED = parse_review_keys(
+    os.environ.get("MTG_REVIEW_KEYS", ""), API_KEYS, FLAG_KEYS)
+REVIEW_ONLY_REFUSAL = ("this is a reviewer key: it can read the review queue and "
+                       "nothing else.")
+
 _rate_lock = threading.Lock()
 _hits: dict[str, list[float]] = {}
 
@@ -1074,7 +1099,11 @@ def _read_qa_queue(since: str | None, limit: str | None) -> dict:
 
 
 QUEUE_FLAG_KEY_REFUSAL = ("this is a flag key: it can flag moments in a replay and "
-                          "nothing else. Reading the review queue needs an API key.")
+                          "nothing else. Reading the review queue needs a reviewer key.")
+QUEUE_API_KEY_REFUSAL = ("an API key cannot read the review queue: the web build "
+                         "carries one, so it is not private. Reading the queue needs "
+                         "a reviewer key (MTG_REVIEW_KEYS).")
+QUEUE_NO_KEY_REFUSAL = "a reviewer key (MTG_REVIEW_KEYS) is required to read the review queue"
 
 
 def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
@@ -1103,7 +1132,8 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
 # itself?") and the note lands in the human review queue, which ranks first in
 # the reviewer's nightly budget. There is deliberately NO public read of these
 # files: they hold a person's words. The only read is GET /qa/queue, which
-# needs an admin key from MTG_API_KEYS (a flags key gets 403).
+# needs a reviewer key from MTG_REVIEW_KEYS (an API key or a flags key gets
+# 403; the web build inlines an API key, so an API key is not private).
 #
 # REQUEST (JSON object):
 #   run     result filename, e.g. "sim_20260925_003803_d0eb966b8d33_rotated.json";
@@ -1714,6 +1744,8 @@ def serve(port: int = 8484) -> None:
                 return None
             if key and key in FLAG_KEYS:
                 return 403, FLAG_ONLY_REFUSAL
+            if key and key in REVIEW_KEYS:
+                return 403, REVIEW_ONLY_REFUSAL
             if not API_KEYS:
                 return None   # open mode; serve() has already warned about this
             return 401, "an API key is required for this endpoint"
@@ -1770,6 +1802,9 @@ def serve(port: int = 8484) -> None:
                     # also takes an API key, so the route works either way).
                     # A boolean only, never a key or a count; preflight reads it.
                     st["flags"] = bool(FLAG_KEYS)
+                    # Whether a reviewer key can read GET /qa/queue. Same
+                    # rule: a boolean only; preflight reads it.
+                    st["review"] = bool(REVIEW_KEYS)
                     return self._send(st)
                 if parts[0] == "decks":
                     if len(parts) > 1:
@@ -1887,13 +1922,17 @@ def serve(port: int = 8484) -> None:
                         return self._send({"error": str(e)}, 404)
                 if parts[0] == "qa" and len(parts) == 2 and parts[1] == "queue":
                     # The review queue holds playtesters' own words (human
-                    # flag notes), so it needs an ADMIN key in every mode,
-                    # open mode included; a flags-only key gets a 403.
+                    # flag notes), so it needs a REVIEWER key (MTG_REVIEW_KEYS)
+                    # in every mode, open mode included. An API key gets a 403
+                    # (the web build inlines one: see REVIEW_KEYS), and so
+                    # does a flags key.
                     key = self._credential()
-                    if not (key and key in API_KEYS):
+                    if not (key and key in REVIEW_KEYS):
                         if key and key in FLAG_KEYS:
                             return self._deny(403, QUEUE_FLAG_KEY_REFUSAL)
-                        return self._deny(401, "an API key is required to read the review queue")
+                        if key and key in API_KEYS:
+                            return self._deny(403, QUEUE_API_KEY_REFUSAL)
+                        return self._deny(401, QUEUE_NO_KEY_REFUSAL)
                     try:
                         return self._send(_read_qa_queue(q.get("since", [None])[0],
                                                          q.get("limit", [None])[0]),
@@ -2160,7 +2199,8 @@ def serve(port: int = 8484) -> None:
     worker.ensure_embedded()  # no-op when MTG_EMBEDDED_WORKER=0 (deployed mode)
 
     mode = f"{len(API_KEYS)} API key(s)" if API_KEYS else "OPEN — no auth"
-    print(f"MTG engine API on http://{host}:{port}  [{mode}, {len(FLAG_KEYS)} flag key(s)]")
+    print(f"MTG engine API on http://{host}:{port}  [{mode}, {len(FLAG_KEYS)} flag key(s), "
+          f"{len(REVIEW_KEYS)} review key(s)]")
     print(f"  limits: {SIM_PER_HOUR} sims/hour/caller, <={SIM_MAX_GAMES} games, "
           f"{SIM_MAX_QUEUED} queued max, {READ_PER_MIN} reads/min, "
           f"{FLAG_PER_HOUR} flags/hour/key")
@@ -2169,6 +2209,9 @@ def serve(port: int = 8484) -> None:
     if FLAG_KEYS_MALFORMED:
         print(f"  WARNING: MTG_FLAG_KEYS: skipped {FLAG_KEYS_MALFORMED} malformed "
               "entr(y/ies); the format is label:key,label:key", file=sys.stderr)
+    if REVIEW_KEYS_DROPPED:
+        print(f"  WARNING: MTG_REVIEW_KEYS: dropped {REVIEW_KEYS_DROPPED} key(s) that are "
+              "also API or flag keys; a reviewer key must be its own", file=sys.stderr)
 
     srv = ThreadingHTTPServer((host, port), Handler)
     srv.daemon_threads = True   # don't let in-flight requests block shutdown

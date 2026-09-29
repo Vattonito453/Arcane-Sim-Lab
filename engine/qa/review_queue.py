@@ -17,7 +17,8 @@ reader:
 
 All under $MTG_DATA_DIR/simkb/review_queue/.
 
-read_queue() is GET /qa/queue (admin key only): human flags first, then auto
+read_queue() is GET /qa/queue (a reviewer key from MTG_REVIEW_KEYS only; an
+API key is refused because the web build inlines one): human flags first, then auto
 flags, paged by a cursor that is a watermark on each file's write time (see
 read_queue for why a two-second settle window makes that watermark exact).
 

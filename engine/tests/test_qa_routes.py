@@ -3,9 +3,11 @@
 
   GET /results/{file}/qa    public, the same traversal guard as the sibling
                             result routes (_result_path), never a human note
-  GET /qa/queue?since=      the review queue, human flags first; an ADMIN key
-                            from MTG_API_KEYS only (a flags key gets 403, no
-                            key or an unknown key 401, open mode included)
+  GET /qa/queue?since=      the review queue, human flags first; a REVIEWER
+                            key from MTG_REVIEW_KEYS only. An API key gets 403
+                            (the web build inlines one, so it is not private),
+                            so does a flags key; no key or an unknown key 401,
+                            open mode included. A reviewer key writes nothing.
 
 These checks pin: the served report and its 404 while pending; traversal
 probes; that neither a playtester's note written through POST /flags nor a
@@ -34,6 +36,7 @@ from pathlib import Path
 
 ADMIN = "admin-key-for-qa-tests-0001"
 FLAGGER = "flag-key-for-qa-tests-0001"
+REVIEWER = "review-key-for-qa-tests-0001"
 NOTE = "PRIVATE-NOTE-7f3a: why did it bin Sol Ring?"
 
 _TMP = Path(tempfile.mkdtemp(prefix="simlab_qa_routes_"))
@@ -42,6 +45,9 @@ os.environ["MTG_EMBEDDED_WORKER"] = "0"
 os.environ["MTG_BIND"] = "127.0.0.1"
 os.environ["MTG_API_KEYS"] = ADMIN
 os.environ["MTG_FLAG_KEYS"] = f"tester:{FLAGGER}"
+# The admin and flags keys listed as reviewer keys too: both must be dropped
+# (the web build inlines an admin key; a flags key is a tester's).
+os.environ["MTG_REVIEW_KEYS"] = f"{REVIEWER},{ADMIN},{FLAGGER}"
 for k in ("MTG_TURNING_POINT", "MTG_KNOCKOUT_DETAIL", "MTG_FLAG_PER_HOUR",
           "MTG_ALLOW_OPEN_PUBLIC", "MTG_QA_QUEUE_MIN_SEVERITY"):
     os.environ.pop(k, None)
@@ -183,34 +189,57 @@ def report_route() -> None:
 
 def queue_route() -> None:
     time.sleep(rq_settle() + 0.5)   # let the files settle past the queue's window
+    eq((mtg_engine.REVIEW_KEYS, mtg_engine.REVIEW_KEYS_DROPPED), ({REVIEWER}, 2),
+       "a reviewer key that is also an API or flags key is dropped")
     eq(call("/qa/queue")[0], 401, "no key")
     eq(call("/qa/queue", key="not-a-key")[0], 401, "an unknown key")
     st, body, _, _ = call("/qa/queue", key=FLAGGER)
     eq(st, 403, "a flags-only key cannot read the queue")
     assert "flag key" in body["error"], body
-    st, body, raw, hd = call("/qa/queue", key=ADMIN, header="x-api-key")
-    eq(st, 200, "admin key via X-Api-Key")
+    # The web build inlines an admin key (WEB_API_KEY -> NEXT_PUBLIC_API_KEY),
+    # so an admin key is in every visitor's browser: it must not read notes.
+    st, body, raw, _ = call("/qa/queue", key=ADMIN)
+    eq(st, 403, "an API key cannot read the queue")
+    assert "reviewer key" in body["error"] and NOTE not in raw, body
+    eq(call("/qa/queue", key=ADMIN, header="x-api-key")[0], 403, "nor via X-Api-Key")
+    st, body, raw, hd = call("/qa/queue", key=REVIEWER, header="x-api-key")
+    eq(st, 200, "reviewer key via X-Api-Key")
     eq(hd.get("Cache-Control"), "no-store", "never cached: it holds a person's words")
     items = body["items"]
     eq(items[0]["queue"], "human", "human flags rank first")
-    eq(items[0]["note"], NOTE, "the admin sees the note")
+    eq(items[0]["note"], NOTE, "the reviewer sees the note")
     auto = [i for i in items if i["queue"] == "auto"]
     assert auto and all(i["source"].startswith("detector:") for i in auto), auto
     eq(body["counts"], {"human": 1, "auto": len(auto)}, "counts")
-    st, body2, _, _ = call(f"/qa/queue?since={body['cursor']}", key=ADMIN)
+    st, body2, _, _ = call(f"/qa/queue?since={body['cursor']}", key=REVIEWER)
     eq((st, body2["items"], body2["cursor"]), (200, [], body["cursor"]), "caught up")
-    st, p1, _, _ = call("/qa/queue?limit=1", key=ADMIN)
+    st, p1, _, _ = call("/qa/queue?limit=1", key=REVIEWER)
     eq((st, len(p1["items"]) >= 1, p1["more"]), (200, True, True), "paged")
-    for q in ("since=abc", "since=-5", "limit=0", "limit=abc", "limit=99999"):
-        eq(call(f"/qa/queue?{q}", key=ADMIN)[0], 400, q)
-    eq(call("/qa/queue/extra", key=ADMIN)[0], 404, "no other qa routes")
+    for q in ("since=abc", "since=-5", "since=%C2%B2", "limit=0", "limit=abc", "limit=99999"):
+        eq(call(f"/qa/queue?{q}", key=REVIEWER)[0], 400, q)
+    eq(call("/qa/queue/extra", key=REVIEWER)[0], 404, "no other qa routes")
 
-    saved = mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS
+    # A reviewer key writes nothing: the same 403 a flags key gets.
+    st, body, _, _ = call("/simulate", {"decks": ["a", "b"], "games": 1}, key=REVIEWER)
+    eq(st, 403, f"a reviewer key cannot start a simulation: {body}")
+    assert "reviewer key" in body["error"], body
+    st, body, _, _ = call("/flags", {"run": FIXTURE, "game": 1, "anchor": {"event_index": 3},
+                                     "note": "x"}, key=REVIEWER)
+    eq(st, 401, f"nor file a flag: {body}")
+    eq(call("/health")[1].get("review"), True, "/health says a reviewer key is loaded")
+
+    saved = mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS, mtg_engine.REVIEW_KEYS
     mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS = set(), {}
     try:
-        eq(call("/qa/queue")[0], 401, "open mode still needs an admin key")
+        eq(call("/qa/queue")[0], 401, "open mode still needs a reviewer key")
+        eq(call("/qa/queue", key="anything")[0], 401, "open mode: an unknown key too")
+        st, body, _, _ = call("/simulate", {"decks": ["a", "b"], "games": 1}, key=REVIEWER)
+        eq(st, 403, "open mode: a reviewer key still writes nothing")
+        mtg_engine.REVIEW_KEYS = set()
+        eq(call("/qa/queue", key=REVIEWER)[0], 401, "no reviewer keys: nobody reads it")
+        eq(call("/health")[1].get("review"), False, "/health says so")
     finally:
-        mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS = saved
+        mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS, mtg_engine.REVIEW_KEYS = saved
 
 
 def rq_settle() -> float:
@@ -255,6 +284,23 @@ def preflight_checks() -> None:
     ok, detail = preflight.qa_report_ok(BASE, "sim_20990101_000000_nope.json", wait=0)
     assert not ok and "HTTP 404" in detail, detail
     eq(preflight.check_imports(str(ENGINE)), 0, "every image import works, QA analysis included")
+
+    # The review queue's two manifest entries: the gate is always live; the
+    # reviewer keys are live when MTG_REVIEW_KEYS is set, a deliberate off not.
+    route, keys = preflight.review_surfaces({"MTG_API_KEYS": ADMIN})
+    eq((route["intent"], route["expect"], keys["intent"]), ("live", (401,), "off"), "unset")
+    assert "web build" in keys["reason"], keys
+    st, body = preflight.fetch(BASE, route["path"])
+    assert st in route["expect"] and route["check"](body)[0], (st, body)
+    old_gate = {"error": "an API key is required to read the review queue"}
+    assert not route["check"](old_gate)[0], "the admin-key gate this review replaced fails"
+    route, keys = preflight.review_surfaces({"MTG_REVIEW_KEYS": REVIEWER})
+    eq((keys["intent"], keys["path"]), ("live", "/health"), "set")
+    ok, detail = keys["check"](preflight.fetch(BASE, "/health")[1])
+    assert ok, detail
+    assert not keys["check"]({"review": False})[0], "set in the env, none loaded"
+    names = [s["name"] for s in preflight.surfaces("r.json", "d.dck", env={"MTG_API_KEYS": "k"})]
+    assert "review queue gate (GET /qa/queue)" in names and "reviewer keys" in names, names
 
 
 def main() -> None:

@@ -347,6 +347,68 @@ def flag_surfaces(env=None):
     return [route, keys]
 
 
+# The review queue read (GET /qa/queue, R1.1). It holds playtesters' own
+# words, so only a reviewer key from MTG_REVIEW_KEYS reads it: an API key is
+# refused because the web build inlines one. Two facts, like the flags: the
+# route is deployed and gated (always), and a reviewer key is loaded (live
+# only once Vincent has set MTG_REVIEW_KEYS; unset is a deliberate off).
+REVIEW_KEYS_ENV = "MTG_REVIEW_KEYS"
+
+
+def review_route_gated(body):
+    """GET /qa/queue with no credential: the reviewer gate's 401. An engine
+    that predates R1.1 answers 404; one from before the reviewer-key rule
+    asks for an API key, which the web build makes public."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    err = str(body.get("error") or "")
+    if "reviewer key" in err:
+        return True, "route present and gated (%s)" % err
+    return False, "unexpected answer: %s" % err[:80]
+
+
+def review_keys_loaded(body):
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    if body.get("review") is not True:
+        return False, ("the engine reports review=%s: it loaded no reviewer key. A key "
+                       "that is also in MTG_API_KEYS or MTG_FLAG_KEYS is dropped; "
+                       "recreate the api container after editing .env." % body.get("review"))
+    return True, "the engine reports review=true"
+
+
+def review_surfaces(env=None):
+    """The two review-queue entries for the manifest, the second decided by the env."""
+    env = os.environ if env is None else env
+    route = {
+        "name": "review queue gate (GET /qa/queue)",
+        "intent": "live",
+        "path": "/qa/queue",
+        "expect": (401,),
+        "check": review_route_gated,
+        "note": "an unkeyed GET must meet the reviewer gate; 404 means the engine "
+                "image predates R1.1",
+    }
+    if (env.get(REVIEW_KEYS_ENV) or "").strip():
+        keys = {
+            "name": "reviewer keys",
+            "intent": "live",
+            "path": "/health",
+            "check": review_keys_loaded,
+            "note": "MTG_REVIEW_KEYS reaches the api through docker-compose.yml",
+        }
+    else:
+        keys = {
+            "name": "reviewer keys",
+            "intent": "off",
+            "reason": "MTG_REVIEW_KEYS is unset, so nobody can read the review queue "
+                      "over HTTP; the files are on the volume. The nightly reviewer "
+                      "(layer B) needs one, and an API key will not do: the web "
+                      "build inlines one (deploy/HOSTING.md, \"QA layer A\").",
+        }
+    return [route, keys]
+
+
 # --------------------------------------------------------------------------
 # The manifest. THIS is the statement of intent.
 # --------------------------------------------------------------------------
@@ -490,7 +552,7 @@ def surfaces(run, deck, env=None):
                       "validated (repair plan RC4). The store still fills. "
                       "Asserted under DEPLOYMENT INVARIANTS, not just noted.",
         },
-    ] + flag_surfaces(env)
+    ] + flag_surfaces(env) + review_surfaces(env)
 
 
 # --------------------------------------------------------------------------

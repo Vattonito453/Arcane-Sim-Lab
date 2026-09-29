@@ -56,7 +56,7 @@ os.environ["MTG_API_KEYS"] = ADMIN
 # Three malformed entries: a label with a space, an empty key, an empty label.
 os.environ["MTG_FLAG_KEYS"] = (f"richard:{RICHARD}, {BARE} ,limited:{LIMITED},"
                                f"other:{OTHER},bad label:zzz,nolabel:,:nokey")
-for k in ("MTG_FLAG_PER_HOUR", "MTG_ALLOW_OPEN_PUBLIC", "MTG_ALLOW_ORIGIN"):
+for k in ("MTG_FLAG_PER_HOUR", "MTG_ALLOW_OPEN_PUBLIC", "MTG_ALLOW_ORIGIN", "MTG_REVIEW_KEYS"):
     os.environ.pop(k, None)
 
 ENGINE = Path(__file__).resolve().parent.parent
@@ -497,12 +497,14 @@ def test_no_public_read():
             assert st in (400, 404), (path, key, st)
             assert "private words" not in json.dumps(got), (path, key)
     # The one read of the human queue is GET /qa/queue (week 4), for the
-    # nightly reviewer: an admin key only. A flags key or no key never sees it.
-    for key, want in ((None, 401), (RICHARD, 403), ("not-a-key", 401)):
+    # nightly reviewer: a reviewer key (MTG_REVIEW_KEYS) only, none set here.
+    # An admin key is refused too: the web build inlines one, so every visitor
+    # holds it. A flags key or no key never sees it either.
+    for key, want in ((None, 401), (RICHARD, 403), (ADMIN, 403), ("not-a-key", 401)):
         st, got, _ = call("/qa/queue", key=key)
         assert st == want, ("/qa/queue", key, st)
         assert "private words" not in json.dumps(got), ("/qa/queue", key)
-    print("  no public route reads a human note back; /qa/queue needs an admin key: OK")
+    print("  no public route reads a human note back; /qa/queue needs a reviewer key: OK")
 
 
 def test_health_reports_flags_boolean():

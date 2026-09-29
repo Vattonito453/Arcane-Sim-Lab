@@ -301,8 +301,20 @@ detectors.
 
 - Read it: `GET /engine/results/<file>/qa` (public, no human notes; 404
   `{"qa": "pending"}` until written). The review queue, human flags first:
-  `GET /engine/qa/queue?since=<cursor>` with an **API key** (a flag key gets
-  403). It holds playtesters' own words, so treat its output as private.
+  `GET /engine/qa/queue?since=<cursor>` with a **reviewer key** from
+  `MTG_REVIEW_KEYS` in the api's environment. An API key gets 403, on
+  purpose: `WEB_API_KEY` is one of `MTG_API_KEYS` and is inlined into the
+  served JavaScript, so every visitor holds it, and the queue holds
+  playtesters' own words. A flag key gets 403 too, and a reviewer key writes
+  nothing. Generate one like a flag key (`secrets.token_urlsafe(24)`), put it
+  in `deploy/.env` as `MTG_REVIEW_KEYS=<key>` (never also in `MTG_API_KEYS`
+  or `MTG_FLAG_KEYS`: such a key is dropped), and recreate the api container.
+  Unset, nobody reads the queue over HTTP and preflight lists it as
+  deliberately off. On plain HTTP the key crosses the network in clear, so
+  read the queue through an SSH tunnel to the api's loopback port
+  (`gcloud compute ssh simlab --zone=us-central1-a -- -L 8484:127.0.0.1:8484`,
+  then `http://127.0.0.1:8484/qa/queue`) until TLS is in front. Treat what it
+  returns as private.
 - Backfill or rerun by hand, from either container:
   `sudo docker exec deploy-worker-1 python3 -u /app/engine/qa/run.py --all`
   (skips runs whose `qa.json` is current; `--force` redoes all), or one run:
@@ -382,8 +394,9 @@ seat), the flagged log line, the note, the reporter and a UTC timestamp. The
 notes are the tester's own words: private data that never goes into this
 repo (decision 9 puts human data in the private data repo). The nightly
 reviewer reads the same queue over HTTP, human flags first:
-`GET /engine/qa/queue?since=<cursor>` with an API key (never a flag key,
-which gets 403; see "QA layer A" above).
+`GET /engine/qa/queue?since=<cursor>` with a reviewer key from
+`MTG_REVIEW_KEYS` (never an API key or a flag key, which get 403; see
+"QA layer A" above).
 
 ### Plain HTTP, and when to fix that
 

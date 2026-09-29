@@ -52,7 +52,7 @@ python3 mtg_engine.py serve 8484
 | `GET /health` | KB stats |
 | `POST /simulate` `{"decks":[...],"deck_dir":"...","games":10}` | Runs Forge, returns adapted JSON with win rates |
 | `GET /results/{file}/qa` | The run's `qa.json` (public, no human notes); 404 `{"qa": "pending"}` until written |
-| `GET /qa/queue?since=<cursor>` | Review queue, human flags first; admin key from `MTG_API_KEYS` only |
+| `GET /qa/queue?since=<cursor>` | Review queue, human flags first; a reviewer key from `MTG_REVIEW_KEYS` only (an API key gets 403: the web build inlines one) |
 
 CORS is open (`*`) for dev. CLI mirrors every endpoint (`python3 mtg_engine.py rule 903.10a`, `search`, `keyword`, `glossary`, `turn-structure`, `validate-log`, `stats`, `serve`).
 

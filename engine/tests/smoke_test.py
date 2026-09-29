@@ -10,6 +10,7 @@ queue -> Forge -> adapted JSON -> per-game payload path that the front end walks
     python3 engine/tests/smoke_test.py --base http://host:3000/engine
     python3 engine/tests/smoke_test.py --key <MTG_API_KEYS value>
     python3 engine/tests/smoke_test.py --flag-key <an MTG_FLAG_KEYS key>
+    python3 engine/tests/smoke_test.py --review-key <an MTG_REVIEW_KEYS key>
 
 --flag-key checks POST /flags: the key is accepted there, refused (403) by
 /simulate and /decks, and one real flag is written against the newest result
@@ -19,7 +20,9 @@ the flags checks are skipped, not failed.
 
 QA layer A (R1.1): GET /results/{newest}/qa is checked when the engine has
 it (an older engine is detected and the checks skipped), GET /qa/queue must
-refuse no key (401) and a flags key (403), and with --key it must list. With
+refuse no key (401), a flags key (403) and an API key (403: the web build
+inlines one, so an API key is not private), and with --review-key it must
+list. The queue read prints nothing it returns: it holds testers' notes. With
 --sim, the new run's qa.json must appear within --qa-timeout seconds (180 by
 default): the worker writes it right after the job finishes, and waiting for
 it here is what lets preflight, run next, find it.
@@ -135,14 +138,18 @@ def qa_checks(base: str, newest: str | None, a) -> bool:
         st, body = call(base, "/qa/queue", key=a.flag_key)
         check("the flag key cannot read the review queue (403)", st == 403, f"status {st}: {body}")
     if a.key:
-        st, body = call(base, "/qa/queue?limit=5", key=a.key)
-        check("GET /qa/queue with the API key lists items and a cursor",
+        st, body = call(base, "/qa/queue?limit=1", key=a.key)
+        check("an API key cannot read the review queue (403)", st == 403, f"status {st}")
+    if a.review_key:
+        st, body = call(base, "/qa/queue?limit=5", key=a.review_key)
+        # Shape only, never the items: they hold playtesters' own words.
+        check("GET /qa/queue with the reviewer key lists items and a cursor",
               st == 200 and isinstance(body, dict) and isinstance(body.get("items"), list)
-              and isinstance(body.get("cursor"), str), f"status {st}: {str(body)[:160]}")
-        st, body = call(base, "/qa/queue?since=not-a-cursor", key=a.key)
+              and isinstance(body.get("cursor"), str), f"status {st}")
+        st, body = call(base, "/qa/queue?since=not-a-cursor", key=a.review_key)
         check("GET /qa/queue refuses a malformed cursor", st == 400, f"status {st}")
     else:
-        print("  note  no --key: the keyed /qa/queue read is not checked.")
+        print("  note  no --review-key: the keyed /qa/queue read is not checked.")
     return True
 
 
@@ -175,6 +182,8 @@ def main() -> int:
     p.add_argument("--flag-key", default=None,
                    help="a flags-only key from MTG_FLAG_KEYS (the operator's own); "
                         "enables the POST /flags checks, which write one flag")
+    p.add_argument("--review-key", default=None,
+                   help="a reviewer key (MTG_REVIEW_KEYS): enables the GET /qa/queue read check")
     p.add_argument("--sim", action="store_true", help="also run one real 2-game simulation")
     p.add_argument("--sim-timeout", type=int, default=600)
     p.add_argument("--qa-timeout", type=int, default=180,

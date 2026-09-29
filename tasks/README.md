@@ -86,7 +86,7 @@ only the R1 deploy.
 |---|---|---|
 | a | Richard's flags key | Generate it and set `MTG_FLAG_KEYS=richard:<key>` on the VM (`deploy/HOSTING.md`, "Giving a playtester a flag key"). Owner only: agents never generate secrets. |
 | b | Ship the swing as built | Yes: "Biggest board swing", shim runs only, withheld when nothing swung. `MTG_TURNING_POINT=off` holds it entirely. |
-| c | Precon-8 rank check scope and threshold | All 66 precons, 768 games, pass at rank correlation 0.40 as pre-registered in `studies/rank_check_r1/PREREG.md`; about 7-10 h at 12 JVMs. The label ships either way ("no rank check yet"). |
+| c | Precon-8 rank check scope and threshold | Done 2026-09-29: run as pre-registered (all 66 precons, 768 games, 8 JVMs) and PASSED, rho 0.510 against 0.40 (`studies/rank_check_r1/RESULTS.md`). Nothing to decide unless you want a different bed next release. |
 | d | WS3's C1 criterion (>= 17/20) | Replace it. Forge itself converted 10 of the 20 real source boards; the 28/32 figure counted only games that had already reached 4+ combats. Use board-level agreement with the source games instead (18/20 measured). |
 | e | S8 success rule | Keep the strict rule the regression names (Blasphemous Act or Hullbreaker Horror; the plan pilot binned Archon of Cruelty 20/20, a fail) and report the widened rule beside it until Richard answers the Unmarked Grave question. |
 | f | WS3's load row | Pass as worded: all 10 rows apply and play 20/20 per arm. 9/10 load exactly as written because Forge runs ETB replacements on load (documented). |
@@ -199,7 +199,8 @@ Don't rebuild these. See `deploy_plan.md` for the measurements.
     card-attribution fixes made after the audit (D1, D2) are not re-audited.
   - R1 product: per-game story (knockouts, out seats, swing), commander names,
     the pilot on every run, "Flag this moment" (`MTG_FLAG_KEYS`), and the
-    prediction label with per-pilot rank checks (`studies/rank_check_r1/`).
+    prediction label with per-pilot rank checks; the R1 rank check PASSED,
+    rho 0.510 against 0.40 (`studies/rank_check_r1/RESULTS.md`).
 
 ## What is deliberately NOT here
 

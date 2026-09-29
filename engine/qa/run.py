@@ -99,6 +99,12 @@ absent or null, never guessed:
                           already_queued, written
   errors[]                {stage, error[, game]}: every detector error and
                           timeout, an unreadable result, a failed queue write
+  notes[]                 {stage, note}: what the analysis could not judge
+                          although nothing failed (a card missing from the
+                          card cache leaves a graveyard steer unjudged, so
+                          the run is under-flagged, not clean: on the
+                          playtester's run a cold cache gave 5 flags, a warm
+                          one 14). Layer A writes these; never a human note
 
 Exit status: 0 qa.json written with no errors; 1 written with errors (with
 --all: any run had errors or was not written); 2 nothing written (no such
@@ -599,10 +605,26 @@ def _inputs(ctx) -> dict:
 
 # ------------------------------------------------------------- analysis --
 
+DEFAULT_DETECTORS = ("knockouts", "tutors")
+
+
 def _default_detectors():
-    from qa import knockouts, tutors
-    return [("knockouts", knockouts.detect, knockouts.KIND),
-            ("tutors", tutors.detect, tutors.KIND)]
+    """The registry, one module at a time: a module that fails to import
+    (a bad deploy, a syntax error) becomes that detector's error in
+    qa.json, and the rest still run. Importing them together used to raise
+    out of analyze(), so one broken module left a qa.json with no games, no
+    knockouts and no board accuracy (measured on the verify branch)."""
+    import importlib
+    out = []
+    for name in DEFAULT_DETECTORS:
+        try:
+            mod = importlib.import_module(f"qa.{name}")
+            out.append((name, mod.detect, getattr(mod, "KIND", None)))
+        except Exception as e:  # noqa: BLE001 - recorded by _timed as this detector's error
+            def broken(ctx, _e=e, _n=name):
+                raise ImportError(f"qa.{_n} did not import: {type(_e).__name__}: {_e}")
+            out.append((name, broken, None))
+    return out
 
 
 def analyze(path: str | Path, *, result: dict | None = None, detectors=None,
@@ -625,7 +647,7 @@ def analyze(path: str | Path, *, result: dict | None = None, detectors=None,
                  "status": "partial", "run_state": None, "inputs": None, "basis": None,
                  "board_accuracy": None, "pilot": None, "fidelity": None, "games": [],
                  "decks": {}, "flags": [], "detectors": dets, "review_queue": None,
-                 "errors": errors}
+                 "errors": errors, "notes": []}
 
     def build_ctx():
         from qa import context as qctx
@@ -714,8 +736,35 @@ def analyze(path: str | Path, *, result: dict | None = None, detectors=None,
     flags.sort(key=lambda f: (-_SEV_RANK.get(f["severity"], 0), f["anchor"].get("game") or 0,
                               f["anchor"].get("turn") or 0, f["id"]))
     doc["flags"] = flags
+    try:
+        doc["notes"] = coverage_notes(doc)
+    except Exception as e:  # noqa: BLE001
+        errors.append({"stage": "notes", "error": f"{type(e).__name__}: {e}"})
     doc["seconds"] = round(time.perf_counter() - clock.t0, 3)
     return doc
+
+
+def coverage_notes(doc: dict) -> list[dict]:
+    """What this analysis could not judge although no stage failed. The
+    card cache is read, never fetched (qa/context.CardFacts), so a card it
+    does not hold is unknown and its flag is simply not raised: the status
+    stays "complete" and only these notes say the run is under-flagged."""
+    notes: list[dict] = []
+    unknown = 0
+    for d in (doc.get("decks") or {}).values():
+        for b in (((d or {}).get("tutors") or {}).get("by_pilot") or {}).values():
+            if isinstance(b, dict) and isinstance(b.get("gy_steers_unknown"), int):
+                unknown += b["gy_steers_unknown"]
+    if (doc.get("inputs") or {}).get("card_cache_entries") == 0:
+        notes.append({"stage": "inputs", "note": "no card cache: every check that reads "
+                      "card facts (graveyard use, target types) is unknown, so the flags "
+                      "that depend on them are missing"})
+    if unknown:
+        s = "" if unknown == 1 else "s"
+        notes.append({"stage": "tutors", "note": f"{unknown} graveyard steer{s} not judged: "
+                      "the card is not in the card cache, so no tutor.gy_steer_no_use flag "
+                      "could be raised for " + ("it" if unknown == 1 else "them")})
+    return notes
 
 
 def finish(doc: dict, ddir: str | Path | None = None, *, queue: bool = True) -> Path:
@@ -747,7 +796,8 @@ def run_one(path: str | Path, ddir: str | Path | None = None, *, queue: bool = T
         doc = {"schema": SCHEMA, "analyzer": ANALYZER, "run": name, "run_stem": run_stem(name),
                "generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                "status": "partial", "games": [], "decks": {}, "flags": [], "detectors": {},
-               "errors": [{"stage": "analyze", "error": f"{type(e).__name__}: {e}"}]}
+               "errors": [{"stage": "analyze", "error": f"{type(e).__name__}: {e}"}],
+               "notes": []}
     try:
         out = finish(doc, ddir, queue=queue)
     except OSError as e:

@@ -264,6 +264,39 @@ def errors_path() -> None:
     assert d["games"][0]["knockouts"], "knockouts still filled"
     eq(d["decks"]["Alpha"]["tutors"], None, "no tutors detector ran: null, never zeros")
 
+    # Nothing failed, but a cold card cache under-flags: the notes say so
+    # while the status stays "complete" (the playtester's run gave 5 flags
+    # cold and 14 warm, with no error either way).
+    d = qa.analyze(RESULTS / SHIM, facts=EMPTY_FACTS, load_forge=False)
+    eq((d["errors"], d["inputs"]["card_cache_entries"]), ([], 0), "clean, cold")
+    assert any(n["stage"] == "inputs" and "no card cache" in n["note"] for n in d["notes"]), d
+    fake = {"inputs": {"card_cache_entries": 9},
+            "decks": {"A": {"tutors": {"by_pilot": {"plan": {"gy_steers_unknown": 3}}}},
+                      "B": {"tutors": None}}}
+    eq(qa.coverage_notes(fake), [{"stage": "tutors", "note": "3 graveyard steers not judged: "
+                                  "the card is not in the card cache, so no "
+                                  "tutor.gy_steer_no_use flag could be raised for them"}],
+       "unjudged steers counted across decks")
+    eq(qa.coverage_notes({"inputs": {"card_cache_entries": 9}, "decks": {}}), [],
+       "a warm cache and nothing unjudged: no notes")
+    assert "—" not in json.dumps(d["notes"]), "no em dash in a note"
+
+    # A detector module that does not import is that detector's error; the
+    # others, the games and the board accuracy are still filled (it used to
+    # raise out of analyze and leave an empty qa.json).
+    saved = qa.DEFAULT_DETECTORS
+    qa.DEFAULT_DETECTORS = ("knockouts", "no_such_detector")
+    try:
+        d = qa.analyze(RESULTS / SHIM, facts=EMPTY_FACTS, load_forge=False)
+    finally:
+        qa.DEFAULT_DETECTORS = saved
+    by = {e["stage"]: e["error"] for e in d["errors"]}
+    assert "did not import" in by.get("no_such_detector", ""), d["errors"]
+    eq((d["detectors"]["no_such_detector"]["status"], d["detectors"]["knockouts"]["status"],
+        d["detectors"]["board_accuracy"]["status"]), ("error", "ok", "ok"),
+       "one broken module, the rest still run")
+    assert d["games"] and d["games"][0]["knockouts"], "knockouts still filled"
+
     # A spent global budget: later stages are skipped, not run over time.
     d = qa.analyze(RESULTS / SHIM, facts=EMPTY_FACTS, load_forge=False,
                    detectors=[("slow", slow, "rules"),

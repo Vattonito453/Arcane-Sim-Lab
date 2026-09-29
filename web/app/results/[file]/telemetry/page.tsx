@@ -13,13 +13,19 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
-import type { RunSummary, TelemetryReport } from "@/lib/types";
+import type { RunSummary, TelemetryReport, TelemetryStatus } from "@/lib/types";
 import { deckLabel, plural, runTitle, stripAi } from "@/lib/format";
 
 const ST_CLASS = { healthy: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { healthy: "Healthy", partial: "Partial", cold: "Never fired" } as const;
 
-function Status({ s }: { s: keyof typeof ST_CLASS }) {
+/** Why a row has no verdict: Forge's AI doesn't cast the card on its own. */
+const AI_SKIPS_NOTE = "Forge's AI doesn't cast it on its own";
+
+function Status({ s }: { s: TelemetryStatus }) {
+  // No verdict, so no status shape either: a card Forge's AI doesn't cast
+  // on its own is neither healthy nor cold, and never a cut candidate.
+  if (s === "ai_skips") return <span className="st-na">Not judged</span>;
   return (
     <span className={`st ${ST_CLASS[s]}`}>
       <i />
@@ -161,6 +167,12 @@ function TelemetryInner() {
   const castGames = cmd ? Math.round(cmd.cast_rate * games) : 0;
   const coldWatched = rep.watched.filter((w) => w.status === "cold");
   const deckName = stripAi(rep.player_key ?? "") || rep.deck.replace(/\.dck$/, "");
+  // Rows on this page about a card Forge's AI doesn't cast on its own.
+  const skippedShown = [
+    ...(cmd?.ai_wont_play ? [cmd.name] : []),
+    ...rep.watched.filter((w) => w.ai_wont_play).map((w) => w.name),
+  ];
+  const skippedAll = rep.ai_wont_play ?? null;
 
   return (
     <>
@@ -187,9 +199,10 @@ function TelemetryInner() {
               <b>{cmd.name}</b> was cast in <b>{castGames} of {games}</b> {gameWord}
               {cmd.median_turn != null && (
                 <>
-                  , first arriving on median turn <b>{cmd.median_turn}</b>
+                  , first arriving on median turn <b>{tableTurn(cmd.median_turn)}</b>
                 </>
               )}
+              {cmd.ai_wont_play && <> ({AI_SKIPS_NOTE})</>}
               .{" "}
             </>
           ) : (
@@ -256,6 +269,7 @@ function TelemetryInner() {
                       Commander ignition
                       <small>
                         {cmd.name} · cast in {castGames} of {games}
+                        {cmd.ai_wont_play && <> · {AI_SKIPS_NOTE}</>}
                       </small>
                     </td>
                     <td className="val">
@@ -290,7 +304,10 @@ function TelemetryInner() {
                   <tr key={w.name}>
                     <td className="nm">
                       {w.name}
-                      <small>watched card</small>
+                      <small>
+                        watched card
+                        {w.ai_wont_play && <> · {AI_SKIPS_NOTE}</>}
+                      </small>
                     </td>
                     <td className="val">{w.events_per_game}/g</td>
                     <td className="stc">
@@ -305,6 +322,27 @@ function TelemetryInner() {
                 Zero events can mean the card was never drawn as easily as never cast; the log
                 only records what happened, not why it didn&apos;t.
               </p>
+            )}
+            {/* Repair plan WS6 task 4: a card Forge's AI never casts is not a
+                cut candidate, so its rows carry no verdict, and the page says
+                why wherever such a row appears. */}
+            {skippedShown.length > 0 ? (
+              <p className="note">
+                Forge&apos;s AI doesn&apos;t cast {skippedShown.join(" or ")} on its own, so
+                telemetry never calls {skippedShown.length === 1 ? "it" : "them"} cold: a card the
+                AI skips is not a cut candidate, however rarely it shows up. Sim Lab&apos;s pilot can
+                cast some such cards while chasing a combo or tutoring.
+              </p>
+            ) : (
+              skippedAll &&
+              skippedAll.length > 0 && (
+                <p className="note">
+                  {plural(skippedAll.length, "card")} in this deck{" "}
+                  {skippedAll.length === 1 ? "is one" : "are ones"} Forge&apos;s AI doesn&apos;t cast
+                  on its own (listed on the run&apos;s overview); telemetry never calls{" "}
+                  {skippedAll.length === 1 ? "it" : "them"} cold.
+                </p>
+              )
             )}
           </section>
 

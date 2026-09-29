@@ -19,23 +19,27 @@ import {
   type CardFacts, type CardMap, type Kind,
 } from "@/lib/cards";
 import { useCardPreview } from "@/components/CardPreview";
-import type { DeckCards } from "@/lib/types";
+import { DeckDisclosureSection, disclosureOf, INLINE_NOTE } from "@/components/CardDisclosures";
+import type { DeckCards, DeckDisclosure } from "@/lib/types";
 
 function factsKey(name: string): string {
   return normalizeName(name).toLowerCase();
 }
 
 function CardRow({
-  name, qty, facts, bind,
+  name, qty, facts, bind, disclosure,
 }: {
   name: string;
   qty: number;
   facts?: CardFacts;
+  /** The deck's disclosure lists: a card on one says so on its own row. */
+  disclosure?: DeckDisclosure | null;
   /** Preview handlers. `tap: true` is safe here — a card row has no other
    *  click action, so tap cannot fight anything (ui-review §2). */
   bind: ReturnType<typeof useCardPreview>["bind"];
 }) {
   const face = cardFace(facts);
+  const flagged = disclosureOf(name, disclosure);
   return (
     <div
       className="card-row"
@@ -61,6 +65,7 @@ function CardRow({
           {facts?.power != null && facts?.toughness != null && (
             <> · {facts.power}/{facts.toughness}</>
           )}
+          {flagged && <span className="dsc-tag"> · {INLINE_NOTE[flagged]}</span>}
         </div>
         {facts?.oracle_text && <div className="cr-o">{facts.oracle_text}</div>}
       </div>
@@ -267,13 +272,24 @@ export default function DeckPage() {
           )}
         </p>
 
+        {/* Cards Forge could not load and cards its AI doesn't cast on its
+            own (repair plan WS11 task 4), ahead of the list they come from. */}
+        <DeckDisclosureSection d={deck?.disclosures} />
+
         {deck && deck.commanders.length > 0 && (
           <section>
             <div className="sh">
               <h2>Commander</h2>
             </div>
             {deck.commanders.map((c) => (
-              <CardRow key={c} name={c} qty={1} facts={facts[factsKey(c)]} bind={preview.bind} />
+              <CardRow
+                key={c}
+                name={c}
+                qty={1}
+                facts={facts[factsKey(c)]}
+                bind={preview.bind}
+                disclosure={deck.disclosures}
+              />
             ))}
           </section>
         )}
@@ -294,6 +310,7 @@ export default function DeckPage() {
                   qty={r.qty}
                   facts={facts[factsKey(r.name)]}
                   bind={preview.bind}
+                  disclosure={deck?.disclosures}
                 />
               ))}
             </section>

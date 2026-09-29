@@ -71,6 +71,8 @@ export interface ResultIndexEntry {
   pilot?: Pilot;
   /** Each deck's commanders by deck name (engine/commanders.py). */
   commanders?: Commanders;
+  /** The published win rates. Optional: an older engine does not send them. */
+  standings?: Standings;
   error?: string;
 }
 
@@ -197,7 +199,40 @@ export interface SimSummary {
    *  2026-08-03. */
   timeouts?: number;
   wins: Record<string, number>;
-  win_rates: Record<string, number>; // 0..1, keys may carry "Ai(n)-" prefix
+  /** Legacy: wins over every scored game, keys may carry "Ai(n)-". No page
+   *  reads it; the published rate is `Standings` (engine/standings.py). */
+  win_rates: Record<string, number>;
+}
+
+/** One deck's published win rate (engine/standings.py). `rate` is wins over
+ *  the decided games the deck sat in, null when none was decided. */
+export interface StandingsDeck {
+  deck: string;
+  wins: number;
+  decided: number;
+  games: number;
+  rate: number | null;
+}
+
+/** The run's published win rates (repair plan WS11 task 9). Decided games,
+ *  finished with a winner, are the one denominator on every surface; pages
+ *  format `rate` with `digits` (0 below 30 decided games) and never divide
+ *  anything themselves. `leader` is "leader" (one deck, above the average),
+ *  "tie" (several share the most wins, above it) or "none" (no clear leader:
+ *  nobody beat an even share, or nothing was decided). `average` is an even
+ *  share of the pod, the only reference shown beside a win rate until the
+ *  archetype baselines are re-measured (decision 13). Decks come in the
+ *  order every surface lists them. */
+export interface Standings {
+  version: number;
+  games: number;
+  decided: number;
+  undecided: { clock: number; turn_cap: number; draw: number; no_result: number };
+  pod: number;
+  average: number | null;
+  digits: 0 | 1;
+  decks: StandingsDeck[];
+  leader: { kind: "leader" | "tie" | "none"; decks: string[]; rate: number | null };
 }
 
 /** engine/validity.py — whether a run's numbers can be trusted, and why not. */
@@ -295,8 +330,14 @@ export interface DeckScorecard {
   wins: number;
   draws: number;
   censored: number;
+  /** The published denominator (engine/standings.py): games this deck sat in
+   *  that finished with a winner. Optional: an older engine does not send it. */
+  decidedGames?: number;
+  /** wins / decidedGames, the published rate. */
   winRate: number | null;
   survivalRate: number | null;
+  /** True medians (engine/scorecard.py med): an even count gives the value
+   *  halfway between the two middle games, so 15.5 is a real answer. */
   medianWinRound: number | null;
   medianDeathRound: number | null;
   methods: Record<string, number>;
@@ -331,6 +372,11 @@ export interface ScorecardReport {
      *  cap). A game tripping both is attributed to the clock, so these two
      *  sum to censored and never above it. */
     timedOut?: number; turnCapped?: number;
+    /** The rest of the gap between games and decided: declared draws and
+     *  crashed or lost records. Optional: an older engine does not send them. */
+    drawn?: number; noResult?: number;
+    /** Digits for a win rate: 0 below 30 decided games. */
+    digits?: 0 | 1;
     baseline: number | null;
     medianGameRound: number | null;
     hasBehaviour: boolean;
@@ -345,6 +391,7 @@ export type DeckLabels = string[];
  *  fraction, which is what the engine sends. */
 export interface PredictionDeck {
   deck: string;
+  /** The published rate (wins over decided games), as a percentage. */
   sim_win_rate: number;
   expected_win_rate: number;
   low: number;
@@ -363,8 +410,16 @@ export interface PredictionDeck {
    *  than re-deriving the explanation in TSX, so the page and any coaching
    *  text can never disagree about what the model said. */
   explanation: string[];
+  /** Operator detail: may name files or commands, so it is never rendered.
+   *  The page words `reason_code` for players. */
   reason?: string;
+  reason_code?: PredictionReasonCode;
 }
+
+/** Why a prediction, or one deck's row, is unavailable. */
+export type PredictionReasonCode =
+  | "no_model" | "unavailable" | "suppressed"
+  | "no_decided_games" | "deck_file_missing" | "no_survival" | "features";
 
 /** The endpoint answers {available:false, reason} when no fitted model is in
  *  the image, which is exactly how it failed silently in production for
@@ -372,7 +427,12 @@ export interface PredictionDeck {
 export interface PredictionReport {
   file: string;
   available: boolean;
+  /** Operator detail, never rendered: see reason_code. */
   reason?: string;
+  reason_code?: PredictionReasonCode;
+  /** The run's decided games and the digits its rates are shown to. */
+  decided?: number;
+  digits?: 0 | 1;
   decks?: PredictionDeck[];
   model?: Record<string, unknown>;
   /** Pilot honesty (repair plan WS11 task 11). Present on every answer from
@@ -432,6 +492,8 @@ export interface RunSummary {
   /** Per deck, cards Forge could not load or its AI doesn't cast on its own.
    *  Optional: an older engine does not send it. */
   disclosures?: RunDisclosures | null;
+  /** The published win rates. Optional: an older engine does not send them. */
+  standings?: Standings;
 }
 
 /** GET /results/{file}/game/{n} — one game's full event log, plus its story. */
@@ -444,6 +506,9 @@ export interface RunGame extends GameStory {
   commanders?: Commanders;
   pilot?: Pilot;
   story?: StoryMeta;
+  /** The run's standings: the replay names the run and its seats in the run
+   *  page's order. Optional: an older engine does not send them. */
+  standings?: Standings;
 }
 
 /** GET /sim-status .progress — how far along, and whether it is still moving.
@@ -482,6 +547,12 @@ export interface JobStatus {
   elapsed?: number;
   error?: string | null;
   result?: SimSummary;
+  /** The finished job's published win rates (standings.from_summary). */
+  standings?: Standings;
+  /** Each deck's own name (its .dck Name=), parallel to decks, and its
+   *  commanders. Optional: an older engine sends neither. */
+  deck_labels?: string[];
+  commanders?: Commanders;
   result_file?: string;
   /** Queued jobs ahead of this one. Present only while state is "queued". */
   queued_ahead?: number;
@@ -652,14 +723,8 @@ export interface TelemetryReport {
     status: TelemetryStatus;
     ai_wont_play?: boolean;
   } | null;
-  engine: {
-    charge_events: number;
-    charge_events_per_game: number;
-    charge_status: "healthy" | "partial" | "cold";
-    proliferate_events: number;
-    proliferate_per_game: number;
-    proliferate_status: "healthy" | "partial" | "cold";
-  };
+  /* The universal charge-counter and proliferate rows are gone (repair
+     plan WS11 task 8): Atraxa-era metrics, counted across all seats. */
   watched: TelemetryWatched[];
   /** This deck's cards Forge's AI doesn't cast on its own; null: unknown. */
   ai_wont_play?: string[] | null;
@@ -668,7 +733,10 @@ export interface TelemetryReport {
     median_turn: number | null;
   };
   wins: number;
-  win_rate: number;
+  /** Games this deck sat in that finished with a winner (engine/standings.py). */
+  decided?: number;
+  /** wins / decided, the published rate; null when nothing was decided. */
+  win_rate: number | null;
   method: string;
   file: string;
   decks: string[];

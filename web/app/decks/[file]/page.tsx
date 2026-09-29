@@ -14,6 +14,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api } from "@/lib/api";
 import { ManaPips } from "@/components/ManaPips";
+import { LoadError } from "@/components/LoadError";
 import {
   cardFace, KIND_LABEL, KIND_ORDER, kindOf, loadCards, normalizeName,
   type CardFacts, type CardMap, type Kind,
@@ -165,7 +166,7 @@ export default function DeckPage() {
               <div className="sub">Could not load this deck</div>
             </div>
           </div>
-          <p className="note">{err}. Check that the engine API is running, then reload.</p>
+          <LoadError err={err} wait={null} what="deck" />
         </div>
         <Footer />
       </>

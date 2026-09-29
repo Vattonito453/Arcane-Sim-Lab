@@ -6,10 +6,11 @@
 > page renders win-con support rows, engine metrics and a damage-by-source
 > table. The text below is kept for its constraints, which still bind, and for
 > its acceptance criteria, which the shipped page should be re-read against.
-> Two real gaps remain and are NOT this task: the watched-cards rows populate
-> only from a hand-typed `?watch=` URL with no UI control, and the engine
-> metrics are hardcoded to one archetype (charge counters, proliferate) so they
-> render for every deck regardless of what it does.
+> One real gap remains and is NOT this task: the watched-cards rows populate
+> only from a hand-typed `?watch=` URL with no UI control. The hardcoded
+> charge-counter and proliferate rows were deleted on 2026-09-29 (repair plan
+> WS11 task 8), and imported decks now resolve their commander; a deck's own
+> plan rows arrive with its win-con tags (WS12).
 
 **Why:** `engine/deck_telemetry.py` measures whether a deck's plan actually fired
 and nothing in the product shows it. `engine/SIM_CALIBRATION.md` step 3 says a win

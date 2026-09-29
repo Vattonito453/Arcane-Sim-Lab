@@ -13,6 +13,7 @@ import { Chrome, EngineDown, Footer, PageDetails, useLlmLive, type TabDef } from
 import { api, RateLimited } from "@/lib/api";
 import type { CoachingReport, RunSummary } from "@/lib/types";
 import { deckLabel, pct, plural, runTitle, stripAi } from "@/lib/format";
+import { standingsOf } from "@/lib/standings";
 
 const ST_CLASS = { running: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { running: "Running", partial: "Partial", cold: "Never fired" } as const;
@@ -114,9 +115,15 @@ function CoachingInner() {
     },
   ];
 
+  // The run page's title and order (the engine's standings), never the
+  // result filename while the summary loads.
+  const st = summary ? standingsOf(summary, summary.games.flatMap((g) => g.players)) : null;
   const title = summary
-    ? runTitle(((summary.meta?.decks as string[]) ?? []).map(labelFor), summary.commanders)
-    : file.replace(/\.json$/, "");
+    ? runTitle(
+        st?.decks.map((d) => d.deck) ?? ((summary.meta?.decks as string[]) ?? []).map(labelFor),
+        summary.commanders,
+      )
+    : "Sim results";
   const deckName = labelFor(deck);
 
   const selector = (

@@ -13,18 +13,12 @@ import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api";
-import type { ResultIndexEntry, SimSummary } from "@/lib/types";
-import { deckSlug, fmtDate, pct, runTitle, shortName, stripAi, timeAgo } from "@/lib/format";
+import type { ResultIndexEntry } from "@/lib/types";
+import { deckSlug, fmtDate, runTitle, shortName, timeAgo } from "@/lib/format";
+import { leaderOf, standingsOf } from "@/lib/standings";
 import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 
 const PAGE = 25;
-
-function topWin(s: SimSummary): [string, number] | null {
-  const entries = Object.entries(s.win_rates);
-  if (entries.length === 0) return null;
-  entries.sort((a, b) => b[1] - a[1]);
-  return entries[0];
-}
 
 function ResultsIndexInner() {
   const router = useRouter();
@@ -51,17 +45,19 @@ function ResultsIndexInner() {
     return [...results]
       .sort((a, b) => b.modified - a.modified)
       .map((r) => {
-        const names = r.summary
-          ? Object.keys(r.summary.win_rates).map(stripAi)
-          : (r.decks ?? []).map(deckSlug);
-        const top = r.summary ? topWin(r.summary) : null;
+        // The engine's published standings (engine/standings.py): decided
+        // games are the denominator and the leader is a leader, a tie or
+        // nobody. This column used to crown whichever deck topped
+        // summary.win_rates "Winner", at exactly an even share included.
+        const st = standingsOf(r);
+        const names = st ? st.decks.map((d) => d.deck) : (r.decks ?? []).map(deckSlug);
         return {
           r,
           names,
           title: runTitle(names, r.commanders),
-          // The winner under the same one name the title uses ("Kess", not
-          // "Kess, Reanimator" beside "Kess vs Skrat's Revenge vs ...").
-          win: top ? ([shortName(top[0], names, r.commanders), top[1]] as [string, number]) : null,
+          // Under the same one name the title uses ("Kess", not "Kess,
+          // Reanimator" beside "Kess vs Skrat's Revenge vs ...").
+          lead: st ? leaderOf(st, (d) => shortName(d, names, r.commanders)) : null,
         };
       });
   }, [results]);
@@ -137,13 +133,13 @@ function ResultsIndexInner() {
                   <tr>
                     <th>Run</th>
                     <th className="r">Games</th>
-                    <th>Winner</th>
+                    <th>Leader</th>
                     <th className="r">When</th>
                     <th className="r">Replay</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {visible.map(({ r, title, win }) => {
+                  {visible.map(({ r, title, lead }) => {
                     const enc = encodeURIComponent(r.file);
                     return (
                       // Stacked at ≤720px the row reads as a card, so the whole
@@ -203,20 +199,23 @@ function ResultsIndexInner() {
                             );
                           })()}
                         </td>
+                        {/* Words and a rate, no glyph: status shapes mark
+                            states (running, queued, done, failed), never a
+                            deck's result. */}
                         <td className="c-meta">
-                          {win ? (
+                          {lead ? (
                             <>
-                              <span className="st win">
-                                <i />
-                                {stripAi(win[0])}
-                              </span>{" "}
-                              <span className="mono">{pct(win[1])}</span>
+                              <span className="only-narrow-inline">Leader: </span>
+                              {lead.text}
+                              {lead.rate && (
+                                <>
+                                  {" "}
+                                  <span className="mono">{lead.rate}</span>
+                                </>
+                              )}
                             </>
                           ) : (
-                            <span className="st loss">
-                              <i />
-                              no summary
-                            </span>
+                            "–"
                           )}
                         </td>
                         {/* Absolute, not "2 d ago": four runs of this matchup

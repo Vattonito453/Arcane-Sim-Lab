@@ -14,7 +14,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api, type SimEstimate } from "@/lib/api";
 import type { DeckEntry, ResultIndexEntry } from "@/lib/types";
-import { fmtRange, pct, runTitle, shortName, stripAi, timeAgo } from "@/lib/format";
+import { fmtRange, fmtRate, runTitle, shortName, timeAgo } from "@/lib/format";
+import { leaderOf, standingsOf } from "@/lib/standings";
 import { Chrome, EngineDown, Footer } from "@/components/Chrome";
 import { Mascot } from "@/components/Mascot";
 import { PIP_SRC } from "@/components/ManaPips";
@@ -145,7 +146,8 @@ interface DeckAgg {
   name: string;
   runs: number;
   wins: number;
-  games: number;
+  /** Decided games, the published denominator (engine/standings.py). */
+  decided: number;
   rate: number;
 }
 
@@ -195,46 +197,69 @@ export default function Home() {
     const rankable = finished.filter((r) => r.validity?.usable_for_ranking);
     const excluded = finished.length - rankable.length;
 
-    // Per-deck aggregate across every finished run it appeared in.
+    // Grouped by pilot and version, never pooled across them (repair plan
+    // WS11 task 9; engine/SIM_CALIBRATION.md: never mix agent and stock
+    // numbers unlabelled). The id is engine/pilot.py's run_pilot id, the one
+    // the rank checks key on: "stock", "plan/0.17.0/v2" and so on. The board
+    // shows the group of the newest rankable run, which is the pilot the
+    // product plays now, and says how many runs it leaves out.
+    const pilotId = (r: ResultIndexEntry) => r.pilot?.id ?? "unrecorded";
+    const current = rankable[0] ? pilotId(rankable[0]) : null;
+    const group = rankable.filter((r) => pilotId(r) === current);
+    const otherPilots = rankable.length - group.length;
+    const pilotText = rankable[0]?.pilot?.text ?? null;
+
+    // Per-deck aggregate across this pilot's runs, from the published
+    // standings: wins over decided games, never wins over games.
     const agg = new Map<string, DeckAgg>();
-    for (const r of rankable) {
-      if (!r.summary) continue;
-      const games = r.summary.games;
-      const seats = new Set(Object.keys(r.summary.win_rates).map(stripAi));
-      for (const name of seats) {
-        const a = agg.get(name) ?? { name, runs: 0, wins: 0, games: 0, rate: 0 };
+    for (const r of group) {
+      const st = standingsOf(r);
+      if (!st) continue;
+      for (const d of st.decks) {
+        const a = agg.get(d.deck) ?? { name: d.deck, runs: 0, wins: 0, decided: 0, rate: 0 };
         a.runs += 1;
-        a.games += games;
-        agg.set(name, a);
-      }
-      for (const [key, w] of Object.entries(r.summary.wins)) {
-        const a = agg.get(stripAi(key));
-        if (a) a.wins += w;
+        a.wins += d.wins;
+        a.decided += d.decided;
+        agg.set(d.deck, a);
       }
     }
+    // One name per deck (shortName) across the group: the commanders every
+    // run in it names, and a collision keeps both full names.
+    const groupCommanders = Object.assign({}, ...group.map((r) => r.commanders ?? {}));
+    const allNames = [...agg.keys()];
     const top = [...agg.values()]
-      .map((a) => ({ ...a, rate: a.games > 0 ? a.wins / a.games : 0 }))
+      .filter((a) => a.decided > 0)
+      .map((a) => ({ ...a, rate: a.wins / a.decided, label: shortName(a.name, allNames, groupCommanders) }))
       .sort((a, b) => b.runs - a.runs || b.rate - a.rate)
       .slice(0, 5);
+    // Whole percents below 30 decided games, the engine's rule per deck.
+    const digitsOf = (a: DeckAgg) => (a.decided < 30 ? 0 : 1);
 
     const recent = finished
-      .filter((r) => r.summary)
       .slice(0, 4)
       .map((r) => {
-        const names = Object.keys(r.summary!.win_rates).map(stripAi);
-        const best = Object.entries(r.summary!.win_rates).sort((a, b) => b[1] - a[1])[0];
+        const st = standingsOf(r);
+        if (!st) return null;
+        const names = st.decks.map((d) => d.deck);
+        // The same one name the title gives the deck; a leader, a tie or
+        // nobody, never a "winner" at an even share.
+        const lead = leaderOf(st, (d) => shortName(d, names, r.commanders));
         return {
           file: r.file,
           title: runTitle(names, r.commanders),
-          // The same one name the title gives the deck.
-          winner: best ? shortName(best[0], names, r.commanders) : null,
-          rate: best ? best[1] : 0,
-          games: r.games ?? r.summary!.games,
+          lead,
+          games: r.games ?? st.games,
           when: timeAgo(r.modified),
         };
-      });
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null);
 
-    return { runs: finished.length, totalGames, top, recent, excluded };
+    return {
+      runs: finished.length, totalGames, top, recent, excluded, otherPilots, pilotText, digitsOf,
+      // The runs the board is actually built from: this pilot's group, not
+      // every rankable run (the note said "3 of 7" for a board built from 1).
+      built: group.length,
+    };
   }, [results]);
 
   return (
@@ -366,29 +391,44 @@ export default function Home() {
                             className="deck-row__fill"
                             style={{ width: `${Math.round(d.rate * 100)}%` }}
                           />
-                          <span className="deck-row__name">{d.name}</span>
+                          <span className="deck-row__name">{d.label}</span>
                           <span className="deck-row__meta">
-                            {d.runs} {d.runs === 1 ? "run" : "runs"}
+                            {d.runs} {d.runs === 1 ? "run" : "runs"}, {d.decided} decided
                           </span>
                         </span>
-                        <span className="deck-row__pct mono">{pct(d.rate)}</span>
+                        <span className="deck-row__pct mono">{fmtRate(d.rate, view.digitsOf(d))}</span>
                       </Link>
                     );
                   })}
                 </div>
                 <p className="note">
-                  Pooled across every pod and seat, so read a deck against its own pod&apos;s
-                  baseline in the run report, not against this list.
-                  {view.excluded > 0 && (
+                  Wins over decided games, from runs piloted by {view.pilotText ?? "one pilot"} only:
+                  a different pilot or version plays differently, so its runs are never pooled
+                  with these. Pooled across pods and seats, so read a deck against its own
+                  pod&apos;s average in the run report, not against this list.
+                  {/* The count is this pilot's group, and each run left out is
+                      named once, under the reason it was left out. */}
+                  {view.built < view.runs && (
                     <>
                       {" "}
                       Built from{" "}
                       <b>
-                        {view.runs - view.excluded} of {view.runs}{" "}
-                        {view.runs === 1 ? "run" : "runs"}
+                        {view.built} of {view.runs} {view.runs === 1 ? "run" : "runs"}
                       </b>
-                      : the rest are not seat-comparable and would measure
-                      seating or clock cutoffs rather than decks.
+                      {view.otherPilots > 0 && (
+                        <>
+                          ; <b>{view.otherPilots}</b> {view.otherPilots === 1 ? "run" : "runs"} used
+                          another pilot or version
+                        </>
+                      )}
+                      {view.excluded > 0 && (
+                        <>
+                          ; <b>{view.excluded}</b> {view.excluded === 1 ? "is" : "are"} not
+                          seat-comparable and would measure seating or clock cutoffs rather than
+                          decks
+                        </>
+                      )}
+                      .
                     </>
                   )}
                 </p>
@@ -418,7 +458,8 @@ export default function Home() {
                   <span className="simrow__title">{r.title}</span>
                   <span className="simrow__meta">
                     <b>
-                      {r.winner ?? "Draw"} {pct(r.rate)}
+                      {r.lead.text}
+                      {r.lead.rate ? ` ${r.lead.rate}` : ""}
                     </b>{" "}
                     · {r.games} {r.games === 1 ? "game" : "games"} · {r.when}
                   </span>

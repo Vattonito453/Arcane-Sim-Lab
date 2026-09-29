@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { api } from "@/lib/api";
-import type { JobStatus, LiveGame, SimSummary } from "@/lib/types";
-import { deckSlug, fmtDuration, fmtRange, pct, plural, runTitle, scryfallArt, shortName, stripAi, timeAgo } from "@/lib/format";
+import type { JobStatus, LiveGame } from "@/lib/types";
+import { deckSlug, fmtDuration, fmtRange, fmtRate, plural, runTitle, scryfallArt, shortName, stripAi, timeAgo } from "@/lib/format";
+import { andList, exclusionText, standingsOf } from "@/lib/standings";
 import { boardFxAt, buildTimeline, commanderGuess, foldTo, handsAt } from "@/lib/replay";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
@@ -31,13 +32,6 @@ const BEATS = new Set([
  *  minute — close to the pace Forge produces four-deck games at. */
 const BEATS_PER_SEC = 6;
 const SPEEDS = [0.5, 1, 2, 4];
-
-function topWin(s: SimSummary): [string, number] | null {
-  const entries = Object.entries(s.win_rates);
-  if (entries.length === 0) return null;
-  entries.sort((a, b) => b[1] - a[1]);
-  return entries[0];
-}
 
 export default function RunPage() {
   const params = useParams();
@@ -230,7 +224,12 @@ export default function RunPage() {
   const state = status ? (status.state ?? (status.error ? "error" : "idle")) : undefined;
 
   const decks = status?.decks ?? [];
-  const deckNames = decks.map((d) => (d.endsWith(".dck") ? deckSlug(d) : stripAi(d)));
+  // The decks' own names from the engine (each .dck's Name=), falling back to
+  // the path for an older engine. The path read "Kess Reanimator 305b76d7":
+  // an import id in the page title (repair plan WS11 task 7).
+  const deckNames = decks.map(
+    (d, i) => status?.deck_labels?.[i] ?? (d.endsWith(".dck") ? deckSlug(d) : stripAi(d)),
+  );
   const games = status?.games;
   const started = status?.started;
   const live = started ? Math.max(0, now / 1000 - started) : (status?.elapsed ?? 0);
@@ -261,7 +260,7 @@ export default function RunPage() {
   const short = id.length > 12 ? id.slice(0, 12) : id;
   // A truncated job id is an address, not a title. Name the run by what it is —
   // the matchup — and keep the id in the details disclosure at the foot.
-  const podTitle = deckNames.length ? runTitle(deckNames) : "Simulation run";
+  const podTitle = deckNames.length ? runTitle(deckNames, status?.commanders) : "Simulation run";
 
   const resultBase = status?.result_file ? (status.result_file.split("/").pop() ?? null) : null;
   const resultHref = resultBase ? `/results/${encodeURIComponent(resultBase)}` : null;
@@ -279,7 +278,11 @@ export default function RunPage() {
   }, [state, resultHref, router, stillWatching]);
 
   const res = status?.result;
-  const win = res ? topWin(res) : null;
+  // The finished job's published rates; rebuilt from its summary the same
+  // way when an older engine sends none (lib/standings.ts).
+  const doneSt = status ? standingsOf({ standings: status.standings, summary: res }) : null;
+  const doneTop = doneSt?.decks[0] ?? null;
+  const doneShort = (d: string) => shortName(d, doneSt?.decks.map((x) => x.deck) ?? [], status?.commanders);
 
   return (
     <>
@@ -494,18 +497,39 @@ export default function RunPage() {
                 )}
               </div>
             </div>
+            {/* The engine's published rates (standings.from_summary): wins
+                over decided games, a leader only above an even share. */}
             <p className="lede">
-              {win ? (
+              {!doneSt || !doneTop ? (
+                <>Done. The run finished.</>
+              ) : doneSt.decided === 0 ? (
+                <>Done. No game in this run was decided.</>
+              ) : doneSt.leader.kind === "leader" ? (
                 <>
-                  Done. <b>{stripAi(win[0])}</b> won{" "}
+                  Done. <b>{doneShort(doneTop.deck)}</b> won{" "}
                   <b>
-                    {res?.wins[win[0]] ?? 0} of {res?.games ?? games ?? 0} games ({pct(win[1])})
+                    {doneTop.wins} of {doneTop.decided} decided games ({fmtRate(doneTop.rate, doneSt.digits)})
+                  </b>
+                  .
+                </>
+              ) : doneSt.leader.kind === "tie" ? (
+                <>
+                  Done. <b>{andList(doneSt.leader.decks.map(doneShort))}</b> tied, each winning{" "}
+                  <b>
+                    {doneTop.wins} of {doneTop.decided} decided games ({fmtRate(doneTop.rate, doneSt.digits)})
                   </b>
                   .
                 </>
               ) : (
-                <>Done. The run finished.</>
+                <>
+                  Done. No clear leader: the most any deck won was{" "}
+                  <b>
+                    {doneTop.wins} of {doneTop.decided} decided games ({fmtRate(doneTop.rate, doneSt.digits)})
+                  </b>
+                  .
+                </>
               )}{" "}
+              {doneSt && exclusionText(doneSt) && <>{exclusionText(doneSt)} </>}
               {/* A run that was cut short still lands here as "done". Saying
                   so on the way out beats letting the reader discover it from
                   a game count that does not match what they asked for. */}
@@ -527,12 +551,16 @@ export default function RunPage() {
                 <div className="l">games played</div>
               </div>
               <div className="fig">
-                <div className="n">{res?.draws ?? 0}</div>
-                <div className="l">draws</div>
+                <div className="n">{doneSt ? doneSt.decided : "–"}</div>
+                <div className="l">decided, the games a win rate counts</div>
               </div>
               <div className="fig">
-                <div className="n">{win ? pct(win[1]) : "–"}</div>
-                <div className="l">{win ? `${stripAi(win[0])} win rate` : "top win rate"}</div>
+                <div className="n">{doneTop ? fmtRate(doneTop.rate, doneSt?.digits) : "–"}</div>
+                <div className="l">
+                  {doneTop && doneSt?.leader.kind === "leader"
+                    ? `leader's win rate (${doneShort(doneTop.deck)})`
+                    : "top win rate"}
+                </div>
               </div>
               <div className="fig">
                 <div className="n">{fmtDuration(elapsed)}</div>

@@ -13,7 +13,7 @@
  *  are different claims. */
 
 import type { DeckScorecard, ScorecardReport } from "@/lib/types";
-import { pct, shortName, type CommanderMap } from "@/lib/format";
+import { fmtAverage, fmtRate, fmtTurn, pct, shortName, type CommanderMap } from "@/lib/format";
 
 /** Forge's own loss-line wording, shortened for a chip. Forge writes the same
  *  "life total reached 0" line for combat damage and for life loss (Kess's
@@ -43,7 +43,9 @@ function one(n: number, s: string, p: string): string {
  *  below rather than take our word for it. */
 function readOf(d: DeckScorecard, podMedianRound: number | null): string {
   const parts: string[] = [];
-  const decided = d.games - d.censored;
+  // The published denominator (engine/standings.py); an older engine sends
+  // no decidedGames, and games less censored is the nearest it had.
+  const decided = d.decidedGames ?? d.games - d.censored;
 
   if (d.wins > 0) {
     const ranked = Object.entries(d.methods).sort((a, b) => b[1] - a[1]);
@@ -61,7 +63,8 @@ function readOf(d: DeckScorecard, podMedianRound: number | null): string {
       // method and must not imply it was the only one.
       how = ` ${top[1] < d.wins ? "mostly " : ""}${methodClause(top[0])}`;
     }
-    const when = d.medianWinRound ? `, closing on turn ${d.medianWinRound}` : "";
+    // A true median: turns 14 and 17 give 15.5 (engine/scorecard.py med).
+    const when = d.medianWinRound ? `, with a median winning turn of ${fmtTurn(d.medianWinRound)}` : "";
     parts.push(`Won ${d.wins} of ${decided}${how}${when}.`);
   } else if (decided > 0) {
     parts.push(`Won none of ${decided} decided ${one(decided, "game", "games")}.`);
@@ -72,9 +75,9 @@ function readOf(d: DeckScorecard, podMedianRound: number | null): string {
   if (d.wins === 0 && d.medianDeathRound) {
     const gap =
       podMedianRound && podMedianRound > d.medianDeathRound
-        ? ` (the table played to turn ${podMedianRound})`
+        ? ` (the median game ran to turn ${fmtTurn(podMedianRound)})`
         : "";
-    parts.push(`Knocked out on turn ${d.medianDeathRound}${gap}.`);
+    parts.push(`Knocked out on turn ${fmtTurn(d.medianDeathRound)} at the median${gap}.`);
   } else if (d.survivalRate !== null && d.wins > 0) {
     parts.push(`Still standing at the end of ${pct(d.survivalRate)} of them.`);
   }
@@ -116,16 +119,17 @@ function Stat({ label, value, hint }: { label: string; value: string; hint?: str
 }
 
 function Card({
-  d, baseline, podMedianRound, name,
+  d, baseline, podMedianRound, name, digits,
 }: {
   d: DeckScorecard;
   baseline: number | null;
   podMedianRound: number | null;
   /** The deck's one name (shortName), the same the title and stories use. */
   name: string;
+  /** Whole percents below 30 decided games (engine/standings.py). */
+  digits: number;
 }) {
   const rate = d.winRate ?? 0;
-  const beats = baseline !== null && rate >= baseline;
   const methods = Object.entries(d.methods).sort((a, b) => b[1] - a[1]);
   const b = d.blocking;
   const a = d.attacking;
@@ -133,13 +137,14 @@ function Card({
 
   return (
     <article className="sccard">
+      {/* The record as a count, not a status: status glyphs mark states
+          (running, queued, done, failed), never a deck result. */}
       <header className="schead">
         <h3>{name}</h3>
-        <span className={`st ${d.wins === 0 ? "bad" : beats ? "win" : "loss"}`}>
-          <i />
-          {d.wins} of {d.games - d.censored}
+        <span className="screc">
+          {d.wins} of {d.decidedGames ?? d.games - d.censored} decided
         </span>
-        <span className="scrate mono">{d.winRate === null ? "–" : pct(d.winRate)}</span>
+        <span className="scrate mono">{fmtRate(d.winRate, digits)}</span>
       </header>
 
       <div className="rail">
@@ -152,13 +157,13 @@ function Card({
       <div className="scstats">
         <Stat
           label="median win turn"
-          value={d.medianWinRound ? String(d.medianWinRound) : "–"}
-          hint="Table turns: a player's Nth turn is turn N. Blank when the deck never won."
+          value={d.medianWinRound ? fmtTurn(d.medianWinRound) : "–"}
+          hint="The middle of its winning turns; with an even count, halfway between the two middle games (turns 14 and 17 give 15.5). Table turns: a player's Nth turn is turn N. Blank when the deck never won."
         />
         <Stat
           label="knocked out on"
-          value={d.medianDeathRound ? `turn ${d.medianDeathRound}` : "–"}
-          hint="Median turn this deck was knocked out on, dated by the lethal event in Forge's log."
+          value={d.medianDeathRound ? `turn ${fmtTurn(d.medianDeathRound)}` : "–"}
+          hint="Median turn this deck was knocked out on, dated by the lethal event in Forge's log; with an even count, halfway between the two middle games."
         />
         <Stat
           label="survived to the end"
@@ -296,6 +301,8 @@ export function DeckScorecards({
               which is how a version skew turns into a quiet overclaim. */}
           {run.timedOut === undefined && run.turnCapped === undefined
             && run.censored > 0 && <>, {run.censored} undecided</>}
+          {(run.drawn ?? 0) > 0 && <>, {run.drawn} drawn</>}
+          {(run.noResult ?? 0) > 0 && <>, {run.noResult} with no result</>}
         </span>
       </div>
       <div className="scgrid">
@@ -306,15 +313,17 @@ export function DeckScorecards({
             baseline={run.baseline}
             podMedianRound={run.medianGameRound}
             name={shortName(d.deck, all, commanders)}
+            digits={run.digits ?? 0}
           />
         ))}
       </div>
       <p className="note">
-        The marker on each bar sits at{" "}
-        {run.baseline === null ? "an even share" : pct(run.baseline, 1)}, an even
-        share of a {decks.length}-deck pod. Turns are table turns: every player
-        gets a turn 1, then a turn 2. Games cut off by the per-game clock count
-        as played but never as decided, so they cannot move a win rate.{" "}
+        Win rates are wins over decided games: a game the per-game clock or the
+        turn cap stopped, a draw, or a game with no result counts as played but
+        never as decided, so it cannot move a win rate. The marker on each bar
+        sits at {run.baseline === null ? "an even share" : fmtAverage(run.baseline)}, an
+        even share of a {decks.length}-deck pod. Turns are table turns: every
+        player gets a turn 1, then a turn 2.{" "}
         {run.hasBehaviour ? (
           <>
             Blocking, attacking and opening-hand figures are read from the

@@ -480,6 +480,16 @@ def _job_status(job_id: str | None) -> dict:
     out = {"state": job["state"], "id": job["id"], "decks": job["decks"],
            "games": job["games"], "started": job["started"],
            "elapsed": job.get("elapsed"), "error": job["error"]}
+    # The decks' own names and commanders, read from the .dck files, so the
+    # running page titles the pod the way the run page will ("Kess vs Skrat's
+    # Revenge"), not from the paths ("Kess Reanimator 305b76d7 vs Skrat S
+    # Revenge 239c6293", an import id in an h1: WS11 task 7).
+    try:
+        import commanders
+        out["deck_labels"] = _deck_labels(job["decks"] or [])
+        out["commanders"] = commanders.of_run({"decks": job["decks"] or []})
+    except Exception:  # noqa: BLE001 - a label must never take a status down
+        pass
     if job["state"] == "queued":
         # Report the truth. Calling a queued job "running" meant that behind a
         # backlog you watched an elapsed timer tick for a job Forge had not
@@ -488,6 +498,13 @@ def _job_status(job_id: str | None) -> dict:
     if job.get("result"):
         out["result"] = job["result"].get("summary")
         out["result_file"] = job["result"].get("result_file")
+        # The published win rates (engine/standings.py): the running page's
+        # "Done." line reads these, never its own wins over games.
+        try:
+            import standings
+            out["standings"] = standings.from_summary(out["result"] or {})
+        except Exception:  # noqa: BLE001 - a label must never take a status down
+            pass
         if job["result"].get("incomplete"):
             out["incomplete"] = True
             out["warning"] = job["result"].get("warning")
@@ -809,6 +826,7 @@ def _list_results() -> list[dict]:
     window was indistinguishable from a good run in every listing.
     """
     import commanders
+    import standings
     import validity
     out = []
     for f in sorted(RESULTS_DIR.glob("sim_*.json"), reverse=True):
@@ -832,6 +850,11 @@ def _list_results() -> list[dict]:
             # surfaces name decks and show avatars from these, never a guess.
             entry["pilot"] = validity.pilot(meta)
             entry["commanders"] = commanders.of_run(meta)
+            # The published win rates (repair plan WS11 task 9): decided
+            # games are the one denominator, and the leader is a "leader", a
+            # "tie" or "none". The index and the home leaderboard read these,
+            # never summary.win_rates.
+            entry["standings"] = standings.standings(d)
             v = validity.assess(d)
             entry["validity"] = {"quality": v["quality"], "flags": v["flags"],
                                  "usable_for_ranking": v["usable_for_ranking"],
@@ -887,6 +910,7 @@ def _read_result_summary(name: str) -> dict:
     from scorecard import true_round
     import commanders
     import game_story
+    import standings
     import validity
     data = _read_result(name)
     sw = game_story.switches()
@@ -922,6 +946,9 @@ def _read_result_summary(name: str) -> dict:
             # doesn't cast on its own (repair plan WS11 task 4). Here and in
             # GET /decks/{file}, the two smallest payloads that need them.
             "disclosures": _disclosures_of_run(meta),
+            # The published win rates (engine/standings.py, WS11 task 9):
+            # decided games are the one denominator on every surface.
+            "standings": standings.standings(data),
             "games": games, "file": name, "validity": data.get("validity")}
 
 
@@ -990,23 +1017,31 @@ def _read_result_prediction(name: str) -> dict:
     false, suppressed is true and suppressed_reason says why.
     """
     data = _read_result(name)
-    summary = data.get("summary") or {}
-    rates = summary.get("win_rates") or {}
+    import standings
+    # The published win rates: decided games, the denominator every other
+    # surface uses and the one the model's training arm used ("stock Forge,
+    # decided games"). summary.win_rates divided by every scored game and was
+    # keyed "Ai(n)-Deck" on an unrotated run, so every row of such a run came
+    # back "deck file not found" (week-3 review).
+    table = standings.standings(data)
+    # reason_code is what the page reads; reason is operator detail and may
+    # name files or commands, so it is never rendered to a player.
     try:
         from predict import Predictor, deck_features, load_rank_checks, pilot_honesty
         import validity
     except Exception as e:  # pragma: no cover - import guard
-        return {"file": name, "available": False, "reason": f"predict unavailable: {e}"}
+        return {"file": name, "available": False, "reason_code": "unavailable",
+                "reason": f"predict unavailable: {e}"}
     model = Predictor.load()
     if model is None:
-        return {"file": name, "available": False,
+        return {"file": name, "available": False, "reason_code": "no_model",
                 "reason": "no fitted model; run studies/precon_predict/analyze.py"}
     # The same pilot object the run summary, game payload and results index
     # carry (validity.pilot -> pilot.disclose, built on pilot.run_pilot), so
     # the run page's pilot line and this label cannot disagree.
     honesty = pilot_honesty(model.m, validity.pilot(data.get("meta")), load_rank_checks())
     if honesty["suppressed"]:
-        return {"file": name, **honesty, "available": False,
+        return {"file": name, **honesty, "available": False, "reason_code": "suppressed",
                 "reason": honesty["suppressed_reason"], "decks": []}
     # Display name -> deck file. summary.win_rates is keyed by the deck's
     # DISPLAY name ("Ur-Dragon B3"), while _find_deck wants a filename, so
@@ -1043,31 +1078,43 @@ def _read_result_prediction(name: str) -> dict:
                 row[1] += 1
 
     decks = []
-    for deck, rate in sorted(rates.items()):
-        row = {"deck": deck, "sim_win_rate": round(100.0 * rate, 1)}
+    for st in table["decks"]:
+        deck, rate = st["deck"], st["rate"]
+        row = {"deck": deck, "wins": st["wins"], "decided": st["decided"],
+               "sim_win_rate": None if rate is None else round(100.0 * rate, 1)}
+        if rate is None:
+            row.update(available=False, reason_code="no_decided_games",
+                       reason="no decided games for this deck")
+            decks.append(row)
+            continue
         path = by_name.get(deck) or _find_deck(deck) or _find_deck(deck + ".dck")
         if not path:
-            row.update(available=False, reason="deck file not found")
+            row.update(available=False, reason_code="deck_file_missing",
+                       reason="deck file not found")
             decks.append(row)
             continue
         counts = seen.get(deck)
         if not counts or not counts[0]:
-            row.update(available=False,
+            row.update(available=False, reason_code="no_survival",
                        reason="this run records no per-seat survival, which "
                               "the model needs; re-run to collect it")
             decks.append(row)
             continue
         try:
             vals = deck_features(path)
+            # Display only: the served model's features are survival,
+            # creatures and avg_cmc; explain() quotes this figure, so it is
+            # the page's own published rate.
             vals["sim"] = 100.0 * rate
             vals["survival"] = 100.0 * counts[1] / counts[0]
             row.update(model.predict(vals), available=True,
                        survival_pct=round(vals["survival"], 1),
                        explanation=model.explain(vals))
         except Exception as e:
-            row.update(available=False, reason=str(e))
+            row.update(available=False, reason_code="features", reason=str(e))
         decks.append(row)
     return {"file": name, **honesty, "available": True, "decks": decks,
+            "decided": table["decided"], "digits": table["digits"],
             "model": {"features": model.features,
                       "basis": model.m.get("ground_truth"),
                       "trained_on_decks": model.m.get("n_decks"),
@@ -1084,6 +1131,11 @@ def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None)
     """
     data = _read_result(name)
     import deck_telemetry
+    # The commander comes from the run's own record (meta.commanders) or the
+    # deck file found through _find_deck (imported first, then bundled):
+    # deck_telemetry._commander_of. It used to hand _find_deck the container
+    # path from meta.decks, which the traversal rule refuses, so every
+    # imported deck read "No commander could be identified" (WS11 task 8).
     report = deck_telemetry.compute(data, deck, watch)
     report["file"] = name
     report["decks"] = data.get("meta", {}).get("decks", [])
@@ -1139,6 +1191,7 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
     """One game out of a run — the payload a replay actually needs."""
     import commanders
     import game_story
+    import standings
     import validity
     data = _read_result(name, snapshots=snapshots)
     games = data.get("games", [])
@@ -1149,6 +1202,10 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
             "games_total": len(games), "game": games[n - 1],
             "commanders": commanders.of_run(meta),
             "pilot": validity.pilot(meta),
+            # The run's published standings: the replay names the run and its
+            # seats in the run page's order (back link, flag form), not in
+            # this game's seat order.
+            "standings": standings.standings(data),
             "story": _story_meta({"games": [games[n - 1]]}, game_story.switches()),
             # knockouts, out, turning_point: the same story the summary
             # carries for this game (engine/game_story.py).
@@ -2002,9 +2059,14 @@ def serve(port: int = 8484) -> None:
                 if parts[0] == "board" and len(parts) > 1:
                     import board
                     try:
-                        return self._send(board.validate(_read_result(parts[1]), fetch=False))
-                    except FileNotFoundError:
+                        data = _read_result(parts[1])
+                    except (FileNotFoundError, ValueError):
+                        # ValueError is the traversal guard (_result_path): a
+                        # 404 like /results and /analysis, never a 500. Only
+                        # the read is guarded, so a reconstruction bug still
+                        # surfaces as the 500 it is.
                         return self._send({"error": "no such result"}, 404)
+                    return self._send(board.validate(data, fetch=False))
                 return self._send({"error": "unknown endpoint"}, 404)
             except Exception as e:  # noqa: BLE001
                 return self._send({"error": str(e)}, 500)

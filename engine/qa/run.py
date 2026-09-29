@@ -248,7 +248,11 @@ def note_attempt(name: str, ddir: str | Path | None = None) -> dict:
     leave a run alone while an attempt may still be running, and to stop
     retrying one that is killed every time."""
     prev = read_attempts(name, ddir)
-    rec = {"attempts": int(prev.get("attempts") or 0) + 1,
+    try:
+        done = int(prev.get("attempts") or 0)
+    except (TypeError, ValueError):
+        done = 0   # garbled: count afresh rather than crash every attempt
+    rec = {"attempts": done + 1,
            "last_started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
            "last_started_epoch": time.time(), "pid": os.getpid(),
            "analyzer": ANALYZER}

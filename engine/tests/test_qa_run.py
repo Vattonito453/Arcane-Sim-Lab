@@ -226,6 +226,10 @@ def idempotent(first: dict) -> None:
                                                                 "detectors", "review_queue")}
     eq(strip(d), strip(first), "the same qa.json apart from timing and the queue note")
     eq(qa.read_attempts(SHIM, _TMP)["attempts"], 2, "each attempt counted")
+    # A garbled count must not crash every later attempt (no qa.json, ever).
+    qa.attempts_path(SHIM, _TMP).write_text('{"attempts": "many"}', encoding="utf-8")
+    rc, _ = qa.run_one(RESULTS / SHIM, _TMP, quiet=True)
+    eq((rc, qa.read_attempts(SHIM, _TMP)["attempts"]), (0, 1), "garbled count: counted afresh")
     leftovers = [p for p in (_TMP / "simkb").rglob("*") if p.name.startswith((".qa-", ".tmp-"))]
     eq(leftovers, [], "no temp files left behind")
 

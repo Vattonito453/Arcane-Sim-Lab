@@ -68,7 +68,8 @@ SYSTEM_PROMPT = (
     "never claim it. Only suggest cutting cards that appear in the decklist, "
     "and never suggest cutting, or mark cold, a card listed in ai_wont_play: "
     "Forge's AI doesn't cast those on its own, so the sim cannot judge them; "
-    "a support_chain row about one that never fired has status \"ai_skips\". "
+    "a support_chain row about one that never fired has status \"ai_skips\" "
+    "and names the card; use \"ai_skips\" for nothing else. "
     "Reply with STRICT JSON only — no markdown fences, no commentary — "
     "matching exactly:\n"
     "{\"verdict\": {\"headline\": string (<=80 chars), \"prose\": string "
@@ -228,6 +229,13 @@ def _validate(d: dict, decklist: list[str], skipped=()) -> None:
         if named:
             raise ValueError(f"support_chain calls {named[0]} cold, but Forge's AI "
                              f"doesn't cast it on its own (use ai_skips)")
+        # "ai_skips" renders as "Not judged": it may only stand for a card on
+        # the list, or a model could hide any cold link behind it.
+        if row.get("status") == "ai_skips" and not disclosure.mentions(
+                " ".join(str(row.get(k) or "") for k in ("link", "measured", "reading")),
+                skipped):
+            raise ValueError(f"support_chain marks {row.get('link')} ai_skips, but it "
+                             f"names no card Forge's AI doesn't cast on its own")
     for m in d.get("matchups", []):
         if not m.get("pod") or not isinstance(m.get("win_rate"), (int, float)):
             raise ValueError("malformed matchup row")

@@ -378,6 +378,23 @@ def test_coach_exclusion():
         assert "cold" in str(e), e
     cold["support_chain"][-1]["status"] = "ai_skips"
     coach._validate(cold, ["Sol Ring"], skipped)                       # no verdict: fine
+    # "ai_skips" only for a card on the list: it renders as "Not judged", and
+    # must not hide a cold verdict on any other card
+    dodge = json.loads(json.dumps(GOOD))
+    dodge["support_chain"].append({"link": "Sol Ring ramp", "status": "ai_skips",
+                                   "measured": "0/g", "reading": "never fired"})
+    for sk in (skipped, ()):
+        try:
+            coach._validate(dodge, ["Sol Ring"], sk)
+            raise AssertionError("ai_skips on a card off the list must be rejected")
+        except ValueError as e:
+            assert "ai_skips" in str(e), e
+    # the commander's row may name the card in its reading rather than its link
+    cmd_row = json.loads(json.dumps(GOOD))
+    cmd_row["support_chain"].append({"link": "Commander ignition", "status": "ai_skips",
+                                     "measured": "0 of 8", "reading": "Unwinding Clock "
+                                     "is one Forge's AI doesn't cast on its own"})
+    coach._validate(cmd_row, ["Sol Ring"], skipped)
     cold["support_chain"][-1]["status"] = "partial"
     coach._validate(cold, ["Sol Ring"], skipped)                       # measured: fine
 

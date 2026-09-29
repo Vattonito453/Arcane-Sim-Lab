@@ -1,0 +1,39 @@
+{
+  "format": "simlab-steps/1",
+  "scenario": "s4_magda_clock_torque",
+  "deck": "magda",
+  "state": "Arbitrarily many tapped Treasures from the Magda, Clock of Omens and Liquimetal Torque loop (Torque makes Magda an artifact; Clock taps Magda and one other artifact to untap Magda; Magda becoming tapped makes a Treasure), followed by the outlet, Magda's five-Treasure search, three times: Battered Golem, Grinding Station and Maskwood Nexus (plan_patch values them for the plan pilot's search steering). With Maskwood Nexus, Battered Golem is a Dwarf, so a Clock activation that taps Magda and Golem makes two Treasures, which keeps the Grinding Station mill loop going after Forge's sacrifice choice takes the newest Treasure each time.",
+  "state_step": 2,
+  "outlet_step": 3,
+  "plan_patch": {"search": {"targets": {"Battered Golem": 9, "Grinding Station": 9, "Maskwood Nexus": 9}}},
+  "lines": [
+    {
+      "id": "magda_clock_station",
+      "pieces": {"Magda, Brazen Outlaw": "Battlefield", "Clock of Omens": "Battlefield",
+                 "Liquimetal Torque": "Battlefield"},
+      "budget_ms": 600000,
+      "triggers": [
+        {"card": "Grinding Station", "confirm": true},
+        {"card": "Battered Golem", "confirm": true}
+      ],
+      "steps": [
+        {"op": "activate", "card": "Liquimetal Torque", "api": "Animate",
+         "target": {"card": "Magda, Brazen Outlaw"}},
+        {"op": "activate", "card": "Sol Ring", "api": "Mana"},
+        {"loop": [
+           {"op": "activate", "card": "Clock of Omens", "api": "Untap",
+            "target": {"card": "Magda, Brazen Outlaw"}}],
+         "until": {"count": 20}},
+        {"loop": [
+           {"op": "activate", "card": "Magda, Brazen Outlaw", "api": "ChangeZone"}],
+         "until": {"count": 3}},
+        {"loop": [
+           {"op": "activate", "card": "Grinding Station", "api": "Mill",
+            "target": {"player": "opponent", "policy": "largest_library"}},
+           {"op": "activate", "card": "Clock of Omens", "api": "Untap",
+            "target": {"card": "Magda, Brazen Outlaw"}}],
+         "until": {"no_progress": {"of": "opp_library", "after": 2}}, "max": 150}
+      ]
+    }
+  ]
+}

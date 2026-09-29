@@ -1,0 +1,27 @@
+{
+  "format": "simlab-steps/1",
+  "scenario": "s6_scepter_reversal",
+  "deck": "tymna_thrasios",
+  "state": "Unbounded mana floating from the Isochron Scepter and Dramatic Reversal loop (tap the three rocks for 4, pay 2 to copy and cast Reversal, which untaps the rocks and the Scepter: net 2 per pass).",
+  "state_step": 0,
+  "outlet_step": 2,
+  "lines": [
+    {
+      "id": "scepter_reversal_ballista",
+      "pieces": {"Isochron Scepter": "Battlefield", "Dramatic Reversal": "Exile", "Walking Ballista": "Battlefield"},
+      "budget_ms": 240000,
+      "steps": [
+        {"loop": [
+           {"op": "activate", "card": "Sol Ring", "api": "Mana"},
+           {"op": "activate", "card": "Arcane Signet", "api": "Mana"},
+           {"op": "activate", "card": "Fellwar Stone", "api": "ManaReflected"},
+           {"op": "activate", "card": "Isochron Scepter", "api": "Play"}],
+         "until": {"mana_at_least": 476}, "max": 400},
+        {"op": "activate", "card": "Walking Ballista", "api": "PutCounter", "max": 200},
+        {"op": "activate", "card": "Walking Ballista", "api": "DealDamage",
+         "target": {"player": "opponent", "policy": "lowest_life"},
+         "until": {"opponents_out": true}, "max": 200}
+      ]
+    }
+  ]
+}

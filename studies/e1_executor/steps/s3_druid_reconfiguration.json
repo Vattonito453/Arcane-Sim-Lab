@@ -1,0 +1,25 @@
+{
+  "format": "simlab-steps/1",
+  "scenario": "s3_druid_reconfiguration",
+  "deck": "tymna_thrasios",
+  "state": "Unbounded green mana floating from the Devoted Druid loop (tap for G, put a -1/-1 counter to untap; Swift Reconfiguration keeps the Druid a noncreature Vehicle, so the counters never kill it).",
+  "state_step": 0,
+  "outlet_step": 2,
+  "lines": [
+    {
+      "id": "druid_ballista",
+      "pieces": {"Devoted Druid": "Battlefield", "Swift Reconfiguration": "Battlefield", "Walking Ballista": "Battlefield"},
+      "budget_ms": 240000,
+      "steps": [
+        {"loop": [
+           {"op": "activate", "card": "Devoted Druid", "api": "Mana"},
+           {"op": "activate", "card": "Devoted Druid", "api": "Untap"}],
+         "until": {"mana_at_least": 476}, "max": 600},
+        {"op": "activate", "card": "Walking Ballista", "api": "PutCounter", "max": 200},
+        {"op": "activate", "card": "Walking Ballista", "api": "DealDamage",
+         "target": {"player": "opponent", "policy": "lowest_life"},
+         "until": {"opponents_out": true}, "max": 200}
+      ]
+    }
+  ]
+}

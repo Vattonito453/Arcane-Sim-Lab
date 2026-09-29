@@ -324,6 +324,25 @@ def cli() -> None:
                        timeout=300)
     c = json.loads([x for x in r.stdout.splitlines() if x.startswith("qa --all: ")][-1][10:])
     eq((c["written"], c["skipped_current"]), (1, 4), "stale analyzer version redone")
+    # A qa.json written with --no-queue (what budget.py used to do on the VM)
+    # has flags that were never filed; the sweeper skips any run with a
+    # qa.json, so --all must redo it with the queue, and then leave it alone.
+    for f in (_TMP / "simkb" / "review_queue" / "auto").glob(qa.run_stem(SHIM) + "#*.json"):
+        f.unlink()
+    r = subprocess.run(py + [SHIM, "--no-queue", "--quiet"], capture_output=True, text=True,
+                       env=env)
+    eq((r.returncode, qa.read_qa(SHIM, _TMP)["review_queue"]), (0, None), "--no-queue write")
+    assert qa.read_qa(SHIM, _TMP)["flags"], "the shim run has flags to file"
+    r = subprocess.run(py + ["--all", "--quiet"], capture_output=True, text=True, env=env,
+                       timeout=300)
+    c = json.loads([x for x in r.stdout.splitlines() if x.startswith("qa --all: ")][-1][10:])
+    eq((c["written"], c["skipped_current"]), (1, 4), "a --no-queue report is redone by --all")
+    filed = list((_TMP / "simkb" / "review_queue" / "auto").glob(qa.run_stem(SHIM) + "#*.json"))
+    assert filed and qa.read_qa(SHIM, _TMP)["review_queue"]["written"] == len(filed), filed
+    r = subprocess.run(py + ["--all", "--quiet", "--no-queue"], capture_output=True, text=True,
+                       env=env, timeout=300)
+    c = json.loads([x for x in r.stdout.splitlines() if x.startswith("qa --all: ")][-1][10:])
+    eq(c["written"], 0, "--all --no-queue does not chase unfiled flags")
     r = subprocess.run(py + ["--all", "--force", "--quiet", "--limit", "2"], capture_output=True,
                        text=True, env=env, timeout=300)
     c = json.loads([x for x in r.stdout.splitlines() if x.startswith("qa --all: ")][-1][10:])

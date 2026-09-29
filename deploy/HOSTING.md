@@ -321,7 +321,12 @@ detectors.
   `... run.py <result file name>`. It prints the traceback of any detector
   that failed; the same lands in `docker compose logs worker`.
 - Time budget: `python3 -u /app/engine/qa/budget.py --corpus` in the worker
-  container measures it on the VM (target: p95 under 10 s).
+  container measures it on the VM (target: p95 under 10 s). It writes each
+  run's `qa.json` and files its flags exactly as the worker would, so running
+  it changes nothing the sweeper would not have done.
+- `run.py --no-queue` writes `qa.json` without filing the run's flags, and
+  the sweeper never re-files a run that has a `qa.json`; use it on a copy of
+  the data. `run.py --all` redoes such a `qa.json` with the queue.
 - `MTG_QA=0` in `deploy/.env` (compose passes it to the worker) turns the
   hook and the sweeper off. Preflight then fails its qa.json check, on
   purpose.

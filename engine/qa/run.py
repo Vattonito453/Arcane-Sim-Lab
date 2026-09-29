@@ -4,13 +4,19 @@
     py -u engine/qa/run.py <result>          one run: a path, or a result name
                                              in $MTG_DATA_DIR/sim_results
     py -u engine/qa/run.py --all             every sim_*.json in sim_results
-                                             with no qa.json, or one written
-                                             by another analyzer version
+                                             with no qa.json, one written by
+                                             another analyzer version, or one
+                                             written with --no-queue
     py -u engine/qa/run.py --all --force     every run, rewritten
 
 Options: --data-dir DIR (default $MTG_DATA_DIR, else engine/, the same
 default every engine module uses), --nice N (POSIX: lower this process's
 priority by N), --no-queue (write qa.json only), --quiet.
+
+--no-queue is for a COPY of the data: the worker's sweeper never re-files a
+run that has a qa.json, so on the live volume it keeps that run's flags out
+of the review queue until `--all` (which redoes a qa.json written without
+the queue) or `--force` runs without it.
 
 It works the same on the dev box and inside either VM container:
     sudo docker exec deploy-worker-1 python3 -u /app/engine/qa/run.py --all
@@ -783,11 +789,19 @@ def public(doc: dict, sw: dict | None = None) -> dict:
 
 # ----------------------------------------------------------------- --all --
 
-def _stale(name: str, ddir) -> bool:
+def _stale(name: str, ddir, queue: bool = True) -> bool:
+    """Whether --all should (re)write this run's qa.json: none, unreadable,
+    another analyzer version, or (when queueing) one written with --no-queue
+    whose flags were never filed. The sweeper skips any run that has a
+    qa.json, so without the last rule a --no-queue write would keep that
+    run's flags out of the review queue for good."""
     try:
-        return read_qa(name, ddir).get("analyzer") != ANALYZER
+        doc = read_qa(name, ddir)
     except (OSError, ValueError):
         return True
+    if not isinstance(doc, dict) or doc.get("analyzer") != ANALYZER:
+        return True
+    return bool(queue and doc.get("flags") and doc.get("review_queue") is None)
 
 
 def run_all(ddir: str | Path | None = None, *, force: bool = False, queue: bool = True,
@@ -799,7 +813,7 @@ def run_all(ddir: str | Path | None = None, *, force: bool = False, queue: bool 
     files = sorted(rdir.glob("sim_*.json")) if rdir.is_dir() else []
     counts = {"runs": len(files), "written": 0, "with_errors": 0, "not_written": 0,
               "skipped_current": 0, "seconds": []}
-    todo = [f for f in files if force or _stale(f.name, ddir)]
+    todo = [f for f in files if force or _stale(f.name, ddir, queue)]
     counts["skipped_current"] = len(files) - len(todo)
     if limit is not None:
         todo = todo[:limit]

@@ -15,8 +15,12 @@ busy box the analyzer only gets what Forge leaves.
                against the 10 s budget
   --corpus     one run on every sim_*.json there, and its distribution
 
-It writes each run's qa.json into that data dir, exactly as `run.py --all`
-would (never the review queue: --no-queue). On the VM:
+It writes each run's qa.json into that data dir AND files the run's flags in
+the review queue, exactly as the worker's hook would (the queue is
+idempotent, so a repeat files nothing new). It must not pass --no-queue: a
+run whose qa.json exists is never filed later (the sweeper and `run.py
+--all` skip it), so a budget run on the VM with --no-queue would have kept
+every measured run's flags out of the review queue for good. On the VM:
     sudo docker exec deploy-worker-1 python3 -u /app/engine/qa/budget.py --corpus
 
 Measured 2026-09-29, Windows dev box (32 logical CPUs, otherwise idle),
@@ -59,8 +63,10 @@ def _pct(xs: list[float], q: float) -> float:
 
 
 def time_one(path: Path, ddir: Path) -> tuple[float, int, dict]:
+    # No --no-queue: see the module docstring. The queue write is part of what
+    # the hook does, so it belongs in the timing too.
     cmd = [sys.executable, "-u", str(RUN), str(path), "--data-dir", str(ddir),
-           "--no-queue", "--quiet", "--nice", str(NICE)]
+           "--quiet", "--nice", str(NICE)]
     kw: dict = {"stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
     if os.name == "nt":
         kw["creationflags"] = getattr(subprocess, "BELOW_NORMAL_PRIORITY_CLASS", 0)

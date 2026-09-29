@@ -21,6 +21,7 @@ import type {
   RunSummary,
   ScorecardReport,
 } from "@/lib/types";
+import { RunDisclosureSection } from "@/components/CardDisclosures";
 import { ComboLines } from "@/components/ComboLines";
 import { DeckScorecards } from "@/components/DeckScorecards";
 import { PredictionPanel } from "@/components/PredictionPanel";
@@ -517,6 +518,11 @@ export default function ResultsPage() {
         {/* Measured first, modelled second: the corrected rates only read
             correctly once the reader has seen the raw ones they correct. */}
         <PredictionPanel report={pred} commanders={data.commanders} />
+
+        {/* Per deck, the cards Forge could not load and the cards its AI
+            doesn't cast on its own (repair plan WS11 task 4): what the
+            numbers above were played without. */}
+        <RunDisclosureSection report={data.disclosures} name={short} />
 
         {an && Object.keys(an.summary?.methods ?? {}).length > 0 && (
           <section>

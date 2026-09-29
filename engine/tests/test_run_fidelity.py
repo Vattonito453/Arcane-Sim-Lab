@@ -195,6 +195,16 @@ def test_a_refusal_printed_without_accents_still_matches():
     assert run_sim._refused_commanders(["Krenko, Mob Boss"], ["Lim-D?l the Necromancer"]) == []
     # ...and the face rule still holds: a joined name does not refuse a face
     assert run_sim._refused_commanders(["Ral, Monsoon Mage"], [RAL]) == []
+    # the per-deck split (the run page's "Cards Forge could not load") reads
+    # the refusal the same way, so it reaches the deck that lost the card
+    with tempfile.TemporaryDirectory() as d:
+        p = Path(d) / "lim.dck"
+        p.write_text(f"[metadata]\nName=Lim\n[Commander]\n1 Sol Ring\n[Main]\n1 {lim}\n",
+                     encoding="utf-8")
+        other = Path(d) / "other.dck"
+        other.write_text("[metadata]\nName=Other\n[Commander]\n1 Sol Ring\n", encoding="utf-8")
+        m = run_sim.fidelity_meta([], [p, other], ["Lim-D?l the Necromancer"])
+        assert m["unsupported_by_deck"] == {"lim.dck": ["Lim-D?l the Necromancer"]}, m
 
 
 BASE = {"source": "rotated", "humanized": True, "clock": 900}

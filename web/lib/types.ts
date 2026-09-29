@@ -21,6 +21,36 @@ export interface DeckCards {
   source?: "imported" | "bundled";
   commanders: string[];
   main: string[];
+  /** The deck page's two lists (engine/disclosure.py). Optional: an older
+   *  engine does not send it; null when computing it failed. */
+  disclosures?: DeckDisclosureSet | null;
+}
+
+/** engine/disclosure.py: one deck's cards the simulation does not play as
+ *  written (repair plan WS11 task 4). A null list means "cannot say" (no
+ *  Forge card index on the server, or the deck file is gone), never "none";
+ *  an empty list is a clean answer. */
+export interface DeckDisclosure {
+  /** Cards Forge refused at load: every game was played without them. */
+  could_not_load: string[] | null;
+  /** "run": Forge's own load report for this run. "index": Forge's card
+   *  list today (a deck page, an import, or a run older than the report). */
+  load_basis: "run" | "index" | null;
+  /** Cards Forge's AI doesn't cast on its own (scripted AI:RemoveDeck:All). */
+  ai_wont_play: string[] | null;
+  /** The subset of ai_wont_play that is this deck's commander. */
+  commander_ai_wont_play: string[];
+}
+
+/** One deck's disclosure plus the Forge version it was read against. */
+export interface DeckDisclosureSet extends DeckDisclosure {
+  index: string | null;
+}
+
+/** The run summary's disclosures, keyed like `commanders` (deck Name=). */
+export interface RunDisclosures {
+  index: string | null;
+  decks: Record<string, DeckDisclosure>;
 }
 
 export interface ResultIndexEntry {
@@ -399,6 +429,9 @@ export interface RunSummary {
   commanders?: Commanders;
   pilot?: Pilot;
   story?: StoryMeta;
+  /** Per deck, cards Forge could not load or its AI doesn't cast on its own.
+   *  Optional: an older engine does not send it. */
+  disclosures?: RunDisclosures | null;
 }
 
 /** GET /results/{file}/game/{n} — one game's full event log, plus its story. */
@@ -586,16 +619,24 @@ export interface ImportResponse {
   report?: ImportReport;
   cards_cached?: number;
   combos?: DeckCombos;
+  /** The same two lists the deck page shows (engine/disclosure.py). */
+  disclosures?: DeckDisclosureSet | null;
 }
 
 /** GET /results/{file}/telemetry?deck= — deck_telemetry.compute() output.
  *  Statuses come from documented thresholds in engine/deck_telemetry.py;
  *  never recompute them client-side. */
+/** "ai_skips" replaces "cold" for a card Forge's AI doesn't cast on its own:
+ *  no verdict, never a cut candidate (engine/deck_telemetry.py). */
+export type TelemetryStatus = "healthy" | "partial" | "cold" | "ai_skips";
+
 export interface TelemetryWatched {
   name: string;
   events: number;
   events_per_game: number;
-  status: "healthy" | "partial" | "cold";
+  status: TelemetryStatus;
+  /** Forge's AI doesn't cast this card on its own. */
+  ai_wont_play?: boolean;
 }
 
 export interface TelemetryReport {
@@ -608,7 +649,8 @@ export interface TelemetryReport {
     cast_rate: number; // 0..1, share of games with >=1 cast
     median_turn: number | null;
     casts_per_game: number;
-    status: "healthy" | "partial" | "cold";
+    status: TelemetryStatus;
+    ai_wont_play?: boolean;
   } | null;
   engine: {
     charge_events: number;
@@ -619,6 +661,8 @@ export interface TelemetryReport {
     proliferate_status: "healthy" | "partial" | "cold";
   };
   watched: TelemetryWatched[];
+  /** This deck's cards Forge's AI doesn't cast on its own; null: unknown. */
+  ai_wont_play?: string[] | null;
   deaths: {
     by_source: { source: string; damage: number }[];
     median_turn: number | null;
@@ -654,7 +698,9 @@ export interface CoachingReport {
   };
   support_chain?: {
     link: string;
-    status: "running" | "partial" | "cold";
+    /** "ai_skips": a cached report's "cold" on a card Forge's AI doesn't
+     *  cast on its own, re-marked when served (engine/coach.py). */
+    status: "running" | "partial" | "cold" | "ai_skips";
     measured: string;
     reading: string;
   }[];
@@ -666,6 +712,10 @@ export interface CoachingReport {
     evidence: string;
   }[];
   play_guide?: string[];
+  /** Cards Forge's AI doesn't cast on its own: never suggested as cuts. */
+  ai_wont_play?: string[];
+  /** Cuts of such cards in a report cached before that rule, withheld. */
+  withheld_cuts?: { action: "add" | "cut"; card: string; reason: string; evidence: string }[];
   archetype?: { class: string; baseline: number | null; sim_is_floor: boolean; why: string };
   meta?: { model: string; deck_hash: string; gauntlet_id: string; generated: string };
 }

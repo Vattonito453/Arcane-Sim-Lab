@@ -96,6 +96,10 @@ components/
                                   code that sends a flags-only key (sendFlag)
   PredictionPanel.tsx             playgroup prediction, its pilot label and the
                                   withheld state when a rank check failed
+  CardDisclosures.tsx             per deck, "Cards Forge could not load" and
+                                  "Cards Forge's AI doesn't cast on its own"
+                                  (run page, deck page, import); the engine
+                                  computes both lists (engine/disclosure.py)
 lib/
   api.ts                          engine client, configurable base URL
   types.ts                        response shapes, mirroring the engine exactly
@@ -113,6 +117,15 @@ largest local 16-game run (it carries every game's story); `runGame` is about
 21 KB for game 1 and 25 KB at the median on the same 8-game run (26 KB median,
 43 KB max on the 16-game one). Both revalidate (`max-age=300`) because the
 story follows `MTG_TURNING_POINT` and `MTG_KNOCKOUT_DETAIL`.
+
+**R1.1 disclosures (re-measured 2026-09-29, same method).** `runSummary` now
+carries `disclosures` (per deck, cards Forge could not load and cards its AI
+doesn't cast on its own): 2,655 -> 2,934 B on the playtester's run, a median
+of +193 B over the 61 local results, and 4.2 KB for the largest (3.9 KB
+without). A run finished from R1.1 on also carries the worker's record
+(`meta.ai_wont_play_by_deck`), which the summary's `meta` repeats: +40 B more
+on the playtester's run with that record added. `runGame` is unchanged;
+`GET /decks/{file}` gains the same two lists for one deck (+80 to +110 B).
 
 ## Responsive contract
 

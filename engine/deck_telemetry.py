@@ -19,6 +19,11 @@ these elsewhere — the UI maps the status strings, nothing more):
         healthy: >= 2.0    partial: > 0    cold: 0
     commander, by share of games with at least one cast:
         healthy: >= 0.8    partial: > 0    cold: 0
+    ai_skips replaces cold for a card Forge's AI doesn't cast on its own
+    (engine/disclosure.py, scripted AI:RemoveDeck:All): zero events for such
+    a card say nothing about the card, so it gets no verdict and is never a
+    cut candidate. The report lists those cards as ``ai_wont_play`` (None
+    when the Forge index or the deck file is unavailable).
 
 Usage:
   python3 deck_telemetry.py <deck_substring> [--cards "Lux Cannon,Dawnsire,..."]
@@ -71,7 +76,11 @@ def _commander_of(deck: str) -> str | None:
     try:
         # Lazy import: mtg_engine serves telemetry and imports this module.
         from mtg_engine import _find_deck
-        path = _find_deck(deck)
+        # meta.decks holds container paths ("/data/decks/x.dck") and
+        # _find_deck refuses anything but a bare filename, so an imported
+        # deck's commander was never found here (production telemetry showed
+        # "No commander could be identified" for every imported deck).
+        path = _find_deck(Path(deck).name)
     except Exception:
         path = None
     if path is None:
@@ -87,7 +96,11 @@ def _commander_of(deck: str) -> str | None:
             continue
         if in_cmd and line:
             parts = line.split(" ", 1)
-            return parts[1] if parts[0].isdigit() and len(parts) == 2 else line
+            name = parts[1] if parts[0].isdigit() and len(parts) == 2 else line
+            # Forge's "|SET|art" printing suffix is not part of the name: a
+            # precon line "1 Winter, Cynical Opportunist|DSC|1" is logged and
+            # cast as "Winter, Cynical Opportunist".
+            return name.split("|", 1)[0].strip()
     return None
 
 
@@ -99,13 +112,33 @@ def _status(per_game: float) -> str:
     return "cold"
 
 
+_AUTO = object()
+
+
+def _judged(status: str, skipped: bool) -> str:
+    """No "cold" verdict for a card Forge's AI doesn't cast on its own."""
+    return "ai_skips" if skipped and status == "cold" else status
+
+
+def _ai_wont_play(result: dict, deck: str) -> list[str] | None:
+    try:
+        import disclosure
+        row = disclosure.for_result_deck(result.get("meta") or {}, deck)
+    except Exception:  # noqa: BLE001 - telemetry must still compute without it
+        return None
+    return None if row is None else row.get("ai_wont_play")
+
+
 def compute(result: dict, deck_substring: str, watch: list[str] | None = None,
-            commander: str | None = None) -> dict:
+            commander: str | None = None, ai_wont_play=_AUTO) -> dict:
     """Structured telemetry for one deck across every game in one result.
 
     Raises ValueError when no deck in ``result.meta.decks`` matches
     ``deck_substring`` or the payload holds no games. ``commander`` overrides
     the [Commander] line lookup (useful when the deck file is unavailable).
+    ``ai_wont_play`` overrides the disclosure lookup (engine/disclosure.py):
+    the cards Forge's AI doesn't cast on its own, which get "ai_skips"
+    instead of "cold". None means unknown, and then nothing is exempted.
     """
     decks = result.get("meta", {}).get("decks", [])
     deck = _match_deck(decks, deck_substring)
@@ -118,6 +151,10 @@ def compute(result: dict, deck_substring: str, watch: list[str] | None = None,
     watch = [c for c in (watch or []) if c]
     if commander is None:
         commander = _commander_of(deck)
+    if ai_wont_play is _AUTO:
+        ai_wont_play = _ai_wont_play(result, deck)
+    from disclosure import matches as _skips
+    skipped = list(ai_wont_play or [])
 
     player_key = None
     wins = 0
@@ -187,8 +224,10 @@ def compute(result: dict, deck_substring: str, watch: list[str] | None = None,
             "median_turn": (statistics.median(first_cast_turns)
                             if first_cast_turns else None),
             "casts_per_game": round(cmd_casts / n, 2),
-            "status": ("healthy" if games_cast / n >= HEALTHY_COMMANDER_CAST_RATE
-                       else "partial" if games_cast else "cold"),
+            "status": _judged("healthy" if games_cast / n >= HEALTHY_COMMANDER_CAST_RATE
+                              else "partial" if games_cast else "cold",
+                              _skips(commander, skipped)),
+            "ai_wont_play": _skips(commander, skipped),
         } if commander else None),
         "engine": {
             "charge_events": charge,
@@ -202,8 +241,11 @@ def compute(result: dict, deck_substring: str, watch: list[str] | None = None,
             "name": c,
             "events": hits[c],
             "events_per_game": round(hits[c] / n, 2),
-            "status": _status(hits[c] / n),
+            "status": _judged(_status(hits[c] / n), _skips(c, skipped)),
+            "ai_wont_play": _skips(c, skipped),
         } for c in watch],
+        # This deck's cards Forge's AI doesn't cast on its own (None: unknown).
+        "ai_wont_play": ai_wont_play,
         "deaths": {
             "by_source": [{"source": s, "damage": a} for s, a in
                           sorted(dmg.items(), key=lambda kv: -kv[1])[:6]],

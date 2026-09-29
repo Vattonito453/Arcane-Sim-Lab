@@ -1251,3 +1251,39 @@ textarea.flag-note:focus, .flag-field:focus { border-color: var(--mana-cyan); }
   border-left: 2px solid var(--hairline-strong);
 }
 .predlabel b { color: var(--ink-1); font-weight: 600; }
+
+/* ── card disclosures (R1.1, repair plan WS11 task 4) ──
+   components/CardDisclosures.tsx: per deck, the cards Forge could not load
+   and the cards its AI doesn't cast on its own, on the run page, the deck
+   page and at import. Each list is a native <details> (keyboard operable,
+   announced as a disclosure); its summary gets the global 2px cyan focus
+   ring, which the :where() rule in base does not cover. Rows sit inside the
+   page's glass sheet, never a second panel. No status colour: a disclosure
+   is information, not a state. */
+.dsc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 22px 40px; }
+.dsc-deck h3 { font-size: 13.5px; font-weight: 600; color: var(--ink-1); margin-bottom: 4px; }
+.dsc-rows { max-width: 760px; }
+.dsc { border-top: 1px solid var(--hairline); padding: 6px 0; font-size: 13px; color: var(--ink-2); }
+.dsc-rows > .dsc:last-child { border-bottom: 1px solid var(--hairline); }
+.dsc summary { display: inline-flex; align-items: baseline; min-height: 28px; padding: 4px 0;
+  cursor: pointer; list-style: none; color: var(--ink-1); }
+.dsc summary::-webkit-details-marker { display: none; }
+.dsc summary::before { content: "\25B8"; margin-right: 6px; color: var(--ink-4); }
+.dsc[open] summary::before { content: "\25BE"; }
+.dsc summary:hover { color: var(--mana-cyan-ink); }
+.dsc summary:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+.dsc-static { display: flex; align-items: center; min-height: 40px; color: var(--ink-3); }
+.dsc-cards { list-style: none; columns: 2 200px; column-gap: 24px; margin: 4px 0 0 18px; }
+.dsc-cards li { padding: 2px 0; font-size: 12.5px; color: var(--ink-2); break-inside: avoid; }
+.dsc-role { color: var(--ink-4); }
+.dsc-why { margin: 6px 0 6px 18px; max-width: 680px; color: var(--ink-3); font-size: 12.5px; line-height: 1.6; }
+/* Inside an import check row: the row draws the rules, the list does not. */
+.ck.ck-dsc { align-items: flex-start; }
+.ck.ck-dsc .res { margin-top: 5px; }
+.ck .dsc { border: 0; padding: 0; }
+.ck .dsc-static { min-height: 0; color: var(--ink-1); }
+/* On a deck page card row: which list names this card. */
+.card-row .cr-t .dsc-tag { color: var(--ink-3); }
+/* Telemetry and coaching: a card Forge's AI doesn't cast on its own gets no
+   verdict, so no status shape either (status is shape, DESIGN_SYSTEM §7). */
+.st-na { font-size: 12.5px; color: var(--ink-4); white-space: nowrap; }

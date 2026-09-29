@@ -12,7 +12,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Chrome, EngineDown, Footer, PageDetails, useLlmLive, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
 import type { CoachingReport, RunSummary } from "@/lib/types";
-import { deckLabel, pct, runTitle, stripAi } from "@/lib/format";
+import { deckLabel, pct, plural, runTitle, stripAi } from "@/lib/format";
 
 const ST_CLASS = { running: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { running: "Running", partial: "Partial", cold: "Never fired" } as const;
@@ -208,10 +208,17 @@ function CoachingInner() {
                         </td>
                         <td className="val">{row.measured}</td>
                         <td className="stc">
-                          <span className={`st ${ST_CLASS[row.status]}`}>
-                            <i />
-                            {ST_WORD[row.status]}
-                          </span>
+                          {/* A cached report's "cold" on a card Forge's AI
+                              doesn't cast on its own, re-marked by the
+                              engine: no verdict, so no status shape. */}
+                          {row.status === "ai_skips" ? (
+                            <span className="st-na">Not judged</span>
+                          ) : (
+                            <span className={`st ${ST_CLASS[row.status]}`}>
+                              <i />
+                              {ST_WORD[row.status]}
+                            </span>
+                          )}
                         </td>
                       </tr>
                     ))}
@@ -260,6 +267,25 @@ function CoachingInner() {
                     </div>
                   ))}
                 </div>
+                {/* Repair plan WS6 task 4: a card Forge's AI never casts is
+                    not a cut candidate. The engine rejects such a cut and
+                    withholds one from a report cached before the rule; the
+                    page names both, so the absence is not a mystery. */}
+                {(rep.withheld_cuts?.length ?? 0) > 0 && (
+                  <p className="note">
+                    Withheld from this cached report:{" "}
+                    {rep.withheld_cuts!.map((c) => `cut ${c.card}`).join(", ")}. Forge&apos;s AI
+                    doesn&apos;t cast {rep.withheld_cuts!.length === 1 ? "that card" : "those cards"}{" "}
+                    on its own, so this run cannot judge{" "}
+                    {rep.withheld_cuts!.length === 1 ? "it" : "them"}.
+                  </p>
+                )}
+                {(rep.ai_wont_play?.length ?? 0) > 0 && (
+                  <p className="note">
+                    Never suggested as cuts: the {plural(rep.ai_wont_play!.length, "card")} Forge&apos;s
+                    AI doesn&apos;t cast on its own ({rep.ai_wont_play!.join(", ")}).
+                  </p>
+                )}
 
                 <div className="sh">
                   <h2>Play guide</h2>

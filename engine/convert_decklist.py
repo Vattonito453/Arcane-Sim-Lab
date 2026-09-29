@@ -22,6 +22,8 @@ Rules applied:
   - pre-check (WS4 task 3): the report carries `warnings`, a list of
     {"kind": "unknown_card" | "ai_wont_cast" | "index_missing", "cards", "message"}.
     A commander Forge does not know rejects the deck.
+  - disclosure (WS11 task 4): the report also carries `disclosures`, the same
+    two lists the deck page and the run page show (engine/disclosure.py).
 
 Where the names come from: Forge's own card index (engine/forge_index.py),
 because Forge decides what Forge loads. When the index is not built, a
@@ -230,7 +232,23 @@ def convert(text: str, deck_name: str, commander: str | None = None,
               "renamed": names.renamed,
               "forge_index": getattr(idx, "version", None),
               "warnings": _warnings(idx, names, commander, [name for _, name in out_main])}
+    report["disclosures"] = _disclosures(idx, names, commander, report["warnings"])
     return "\n".join(lines) + "\n", report
+
+
+def _disclosures(idx, names: _Names, commander: str, warnings: list[dict]) -> dict:
+    """The import's two lists in the shape the deck page and the run page use
+    (engine/disclosure.py): cards Forge could not load and cards Forge's AI
+    doesn't cast on its own. Read off the pre-check warnings, so the lists and
+    the messages can never disagree. None when no index is built."""
+    if idx is None:
+        return {"index": None, "could_not_load": None, "load_basis": None,
+                "ai_wont_play": None, "commander_ai_wont_play": []}
+    wont = next((list(w["cards"]) for w in warnings if w["kind"] == "ai_wont_cast"), [])
+    return {"index": getattr(idx, "version", None),
+            "could_not_load": list(names.unknown), "load_basis": "index",
+            "ai_wont_play": wont,
+            "commander_ai_wont_play": [commander] if commander in wont else []}
 
 
 def _warnings(idx, names: _Names, commander: str, main_names: list[str]) -> list[dict]:
@@ -253,12 +271,12 @@ def _warnings(idx, names: _Names, commander: str, main_names: list[str]) -> list
     # counterspell pre-pass, so only a flagged SPELL gets this warning. The
     # wording is "doesn't cast on its own" (owner decision 2026-09-27), not
     # "won't cast": the plan agent does cast some flagged spells itself (line
-    # pieces and tutors), and an effect can still cast one for free.
+    # pieces and tutors), and an effect can still cast one for free. The rule
+    # is disclosure.ai_skips, the same one the run and deck pages list by.
+    from disclosure import ai_skips
     wont: list[str] = []
     for nm in [commander] + main_names:
-        flag = idx.flag(nm)
-        if flag and "spell" in flag.get("kinds", []) and not flag.get("land") \
-                and nm not in wont:
+        if ai_skips(idx.flag(nm)) and nm not in wont:
             wont.append(nm)
     if wont:
         msg = f"Forge's AI doesn't cast these cards on its own: {_join(wont)}."

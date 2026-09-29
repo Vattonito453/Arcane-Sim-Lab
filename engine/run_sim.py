@@ -177,6 +177,9 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
                     AI:RemoveDeck:All). validity.py shows a note, not a
                     polluted verdict (owner decision 2026-09-27).
       games         games the zone records cover.
+    Also, when the Forge index is built (engine/disclosure.record_for_run):
+    ai_wont_play_by_deck  {deck Name=: cards Forge's AI doesn't cast on its
+                          own}, and ai_wont_play_index, the Forge version.
     """
     decks = []
     seen_paths: set[str] = set()
@@ -185,11 +188,16 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
             continue
         seen_paths.add(str(p))
         decks.append((p, _dck_info(p)))
-    # Ignoring case, as _refused_commanders does (Forge's own lookup does).
+    # Ignoring case and accents, with a refusal's '?' standing for one
+    # character, as _refused_commanders does: the worker's JVM prints an
+    # accented letter as '?', and an exact match attributed such a refusal to
+    # no deck, so the run page's "Cards Forge could not load" read "none".
     by_deck = {}
     for p, info in decks:
         listed = {c.casefold() for c in info["cards"]}
-        by_deck[p.name] = [n for n in unsupported if n.casefold() in listed]
+        cards = sorted(info["cards"])
+        by_deck[p.name] = [n for n in unsupported if n.casefold() in listed
+                           or _refused_commanders(cards, [n])]
     meta: dict = {"unsupported_cards": list(unsupported),
                   "unsupported_by_deck": {k: v for k, v in by_deck.items() if v}}
     commander_format = (fmt or "").lower() == "commander"
@@ -234,6 +242,16 @@ def fidelity_meta(games: list, deck_paths: list[Path], unsupported: list[str],
                                              for c in info["commanders"]]
                               for _p, info in decks if info["read"]}
     except Exception:  # noqa: BLE001 - a label must never fail a finished run
+        pass
+    # Each deck's cards Forge's AI doesn't cast on its own, read here, on the
+    # machine whose Forge played the run, against that Forge's own index
+    # (repair plan WS11 task 4): the run page keeps its list even after an
+    # imported deck is deleted. Absent when the index is not built yet; the
+    # run page then reads the deck files at request time.
+    try:
+        import disclosure as _disc
+        meta.update(_disc.record_for_run([p for p, info in decks if info["read"]]))
+    except Exception:  # noqa: BLE001 - a disclosure must never fail a finished run
         pass
     return meta
 

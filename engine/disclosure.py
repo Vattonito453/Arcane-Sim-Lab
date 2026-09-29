@@ -241,14 +241,76 @@ def _refused_here(cards, refused) -> list[tuple[str, str]]:
     return out
 
 
-def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
+# Where Forge's log puts a card name between fixed delimiters, so a longer
+# name that merely ends with it ("Big Nothing Like This (4)") is never read
+# as it: a land drop, a line that opens with "Name (id)" (a zone change, a
+# mana ability), and a damage event's source.
+_LOG_PLAYED = re.compile(r"^.+?\splayed\s(.+?)\s\((\d+)\)")
+_LOG_OPENS = re.compile(r"^([^()\[\]]+?)\s\((\d+)\)(?:\s+was put into|\s+-\s)")
+_LOG_SOURCE = re.compile(r"^(.+?)\s\((\d+)\)$")
+
+
+def shown_in_run(result: dict | None):
+    """A predicate over card names: does the run's own record show a card
+    by exactly this name in a game? Evidence is only what Forge printed or
+    the shim recorded in a name's own slot: an event's `object` (a cast, a
+    trigger), a zone record's `card`, a land drop, a line that opens with
+    "Name (id)" (a zone change, a mana ability), and a damage source.
+    Case-free, as Forge's lookup is.
+
+    Used for a run older than Forge's load report, whose could-not-load
+    list is today's index standing in: a name the run shows in play was
+    loaded by the Forge that played it (measured: a July run cast Adamantium
+    Bonding Tank in 2 games while today's index does not know it, and the
+    page said it was "most likely left out of every game")."""
+    names: set[str] = set()
+
+    def add(n) -> None:
+        n = str(n or "").strip()
+        if n:
+            names.add(n.casefold())
+
+    for g in (result or {}).get("games") or []:
+        if not isinstance(g, dict):
+            continue
+        for z in g.get("zones") or []:
+            if isinstance(z, dict):
+                add(z.get("card"))
+        for t in g.get("turns") or []:
+            if not isinstance(t, dict):
+                continue
+            for e in t.get("events") or []:
+                if not isinstance(e, dict):
+                    continue
+                add(e.get("object"))
+                raw = str(e.get("raw") or "")
+                for rx in (_LOG_PLAYED, _LOG_OPENS):
+                    m = rx.match(raw)
+                    if m:
+                        add(m.group(1))
+                m = _LOG_SOURCE.match(str(e.get("source") or ""))
+                if m:
+                    add(m.group(1))
+
+    def shows(card: str) -> bool:
+        c = _clean(card)
+        return bool(c) and c.casefold() in names
+    return shows
+
+
+def for_run(meta: dict, find=None, idx=_AUTO, result: dict | None = None) -> dict:
     """The run summary's `disclosures`: {"index": version or None, "decks":
     {deck Name=: {file, could_not_load, load_basis, ai_wont_play,
     commander_ai_wont_play}}}, keyed like `commanders` and the win rates.
 
     could_not_load: Forge's own load report when the run carries one
     (meta.unsupported_cards exists, even empty: basis "run"), else today's
-    index against the deck file (basis "index"), else None. The report is
+    index against the deck file (basis "index"), else None. With the
+    `result` itself, an index-basis name the run shows in play is dropped
+    (shown_in_run): today's Forge may not be the one that played it. The
+    joined "A // B" or "A / B" spelling is only cleared by that exact name,
+    never by its front face, which another deck's copy could have put in
+    play while this deck's line was refused. The report is
     attributed to each deck by run_sim's unsupported_by_deck AND by matching
     it against the deck file's own lines: a salvaged run (run_sim.salvage)
     carries unsupported_cards with no per-deck split, and run_sim's split
@@ -273,6 +335,7 @@ def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
               for r in (meta.get("commander_fidelity") or [])
               if isinstance(r, dict) and r.get("deck") and r.get("player")}
     decks: dict[str, dict] = {}
+    shows = None                  # shown_in_run(result), built on first need
     placed: set[str] = set()      # refusals attributed to some deck
     unplaced_rows: list[dict] = []  # salvaged run, deck file gone: decided last
     for raw in meta.get("decks") or []:
@@ -306,6 +369,10 @@ def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
         else:
             row["could_not_load"] = from_index["could_not_load"]
             row["load_basis"] = from_index["load_basis"]
+            if row["could_not_load"] and result is not None:
+                if shows is None:
+                    shows = shown_in_run(result)
+                row["could_not_load"] = [c for c in row["could_not_load"] if not shows(c)]
         if isinstance(stored.get(name), list):
             wont = [str(c) for c in stored[name]]
             row["ai_wont_play"] = wont

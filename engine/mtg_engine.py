@@ -945,19 +945,21 @@ def _read_result_summary(name: str) -> dict:
             # Per deck: cards Forge could not load, and cards Forge's AI
             # doesn't cast on its own (repair plan WS11 task 4). Here and in
             # GET /decks/{file}, the two smallest payloads that need them.
-            "disclosures": _disclosures_of_run(meta),
+            "disclosures": _disclosures_of_run(meta, data),
             # The published win rates (engine/standings.py, WS11 task 9):
             # decided games are the one denominator on every surface.
             "standings": standings.standings(data),
             "games": games, "file": name, "validity": data.get("validity")}
 
 
-def _disclosures_of_run(meta: dict) -> dict | None:
+def _disclosures_of_run(meta: dict, data: dict | None = None) -> dict | None:
     """engine/disclosure.for_run, never fatal: a summary without its
-    disclosures still renders, and the page says the lists are unavailable."""
+    disclosures still renders, and the page says the lists are unavailable.
+    `data` (the result) lets a run older than Forge's load report clear a
+    name today's index does not know but the run itself shows in play."""
     try:
         import disclosure
-        out = disclosure.for_run(meta, find=_find_deck)
+        out = disclosure.for_run(meta, find=_find_deck, result=data)
     except Exception as e:  # noqa: BLE001
         sys.stderr.write(f"disclosures skipped: {e}\n")
         return None

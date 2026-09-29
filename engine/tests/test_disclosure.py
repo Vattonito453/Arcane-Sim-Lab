@@ -190,6 +190,51 @@ def test_run_lists():
     old = disclosure.for_run(_meta())["decks"]["Schemer Test"]
     assert old["load_basis"] == "index" and old["could_not_load"] == WANT_UNKNOWN, old
 
+    # ...unless the run itself shows the card in play: the Forge that played
+    # it knew the name, whatever today's index says (a July run cast
+    # Adamantium Bonding Tank twice; the page said "most likely left out").
+    # Evidence: "Name (id)" in any line, case-free; a front face never clears
+    # the joined "A // B" or "A / B" spelling, which another deck's copy
+    # could have put in play while this deck's line was refused.
+    shown = {"games": [
+        {"turns": [{"turn": 3, "events": [
+            {"action": "land_drop", "raw": "Ai(1)-Schemer Test played nothing like this (41)"},
+            {"action": "stack_add", "raw": "Ai(2)-Clean Test cast Storm Mage",
+             "object": "Storm Mage"},
+            {"action": "zone_change", "raw": "Tide Restoration (7) was put into Graveyard."}]}]},
+        "not a game"]}
+    seen = disclosure.for_run(_meta(), result=shown)["decks"]["Schemer Test"]
+    assert seen["load_basis"] == "index", seen
+    assert seen["could_not_load"] == ["Storm Mage // Storm Prodigy",
+                                      "Tide Restoration / Tide, Reborn"], seen
+    # a longer name that merely contains the card's name is not evidence
+    tail = {"games": [{"turns": [{"events": [
+        {"raw": "Ai(1)-X played Everything Like This Nothing Like This Too (3)"},
+        {"raw": "Ai(1)-X cast Big Nothing Like This (4)"},
+        {"raw": "Big Nothing Like This (5) was put into Graveyard from Battlefield."},
+        {"action": "damage", "source": "Big Nothing Like This (6)", "raw": "..."}]}]}]}
+    kept = disclosure.for_run(_meta(), result=tail)["decks"]["Schemer Test"]
+    assert kept["could_not_load"] == WANT_UNKNOWN, kept
+    # each other slot the name has its own delimiters in is evidence
+    for ev in ({"raw": "Nothing Like This (5) - {T}: Add {C}."},
+               {"action": "damage", "source": "Nothing Like This (6)", "raw": "..."}):
+        got = disclosure.for_run(_meta(), result={"games": [{"turns": [{"events": [ev]}]}]})
+        assert "Nothing Like This" not in got["decks"]["Schemer Test"]["could_not_load"], ev
+    zoned = {"games": [{"zones": [{"card": "Nothing Like This"}], "turns": []}]}
+    assert "Nothing Like This" not in \
+        disclosure.for_run(_meta(), result=zoned)["decks"]["Schemer Test"]["could_not_load"]
+    # the exact joined spelling in the log does clear it (a split card)
+    joined = {"games": [{"turns": [{"events": [
+        {"action": "stack_add", "raw": "Ai(1)-X cast Tide Restoration / Tide, Reborn",
+         "object": "Tide Restoration / Tide, Reborn"}]}]}]}
+    assert "Tide Restoration / Tide, Reborn" not in \
+        disclosure.for_run(_meta(), result=joined)["decks"]["Schemer Test"]["could_not_load"]
+    # Forge's own load report is never second-guessed by the log
+    rep = _meta(unsupported_cards=["Nothing Like This"],
+                unsupported_by_deck={FLAGGED_FILE: ["Nothing Like This"]})
+    assert disclosure.for_run(rep, result=shown)["decks"]["Schemer Test"]["could_not_load"] \
+        == ["Nothing Like This"]
+
     # the worker's record outlives a deleted deck; the seat name comes from
     # the fidelity rows and the commander from the run's own record
     gone = {"source": "rotated", "decks": ["/data/decks/deleted_deck_0000aaaa.dck"],

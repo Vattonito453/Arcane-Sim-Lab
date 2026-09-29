@@ -34,7 +34,10 @@ empty chart.
 from __future__ import annotations
 
 import re
+import statistics
 from collections import Counter, defaultdict
+
+import standings
 
 _AI = re.compile(r"^Ai\(\d+\)-")
 _LOST = re.compile(r"^(.+?) has lost ")
@@ -228,12 +231,14 @@ def scorecards(result: dict) -> dict:
             if name in decks:
                 decks[name]["deathRounds"].append(rnd)
 
-        winner = res.get("winner")
-        if not winner or res.get("draw"):
+        # The published rule for a win (engine/standings.py): a decided game
+        # has a winner and nothing cut it short or lost its record.
+        winner = standings.winner_of(game)
+        if winner is None:
             for name in players:
                 slot(name)["draws"] += 1
             continue
-        w = slot(bare(winner))
+        w = slot(winner)
         w["wins"] += 1
         w["winRounds"].append(true_round(game))
         if win_method is not None:
@@ -244,10 +249,22 @@ def scorecards(result: dict) -> dict:
                 pass
 
     def med(xs: list[int]):
+        """The median, as a statistician means it: the middle value, and
+        halfway between the two middle values for an even count. The old
+        pick took the upper middle, so four wins on turns 9, 14, 17 and 19
+        read "median win turn 17" (week-3 review); it is 15.5. A half turn
+        is shown as one, never rounded to either neighbour."""
         if not xs:
             return None
-        s = sorted(xs)
-        return s[len(s) // 2]
+        m = statistics.median(xs)
+        return int(m) if float(m).is_integer() else float(m)
+
+    # The published win rates (engine/standings.py): decided games are the
+    # one denominator, the same figure the run page's lede, the results index
+    # and the prediction table print, and the same deck order.
+    table = standings.standings(result)
+    published = {s["deck"]: s for s in table["decks"]}
+    order = {s["deck"]: i for i, s in enumerate(table["decks"])}
 
     out = []
     for name, d in decks.items():
@@ -256,13 +273,18 @@ def scorecards(result: dict) -> dict:
         free_opp = b["freeTaken"] + b["freeMissed"]
         blocks_made = b["v3"] + b["v2"] + b["v1"] + b["v0"]
         committable = a["attackers"] + a["heldEligible"]
+        pub = published.get(name) or {}
         out.append({
             "deck": name,
             "games": d["games"],
             "wins": d["wins"],
             "draws": d["draws"],
             "censored": d["censored"],
-            "winRate": _rate(d["wins"], d["games"] - d["censored"]),
+            # The games that count toward the win rate: finished with a
+            # winner. A clock-cut, turn-capped, drawn or crashed game is not
+            # one of them.
+            "decidedGames": pub.get("decided", 0),
+            "winRate": pub.get("rate"),
             "survivalRate": _rate(d["survived"], d["decided"]),
             "medianWinRound": med(d["winRounds"]),
             "medianDeathRound": med(d["deathRounds"]),
@@ -302,17 +324,23 @@ def scorecards(result: dict) -> dict:
                 "landsKept": _rate(m["lands"], d["mullSeats"]),
             },
         })
-    out.sort(key=lambda r: (-(r["winRate"] or 0), r["deck"]))
+    out.sort(key=lambda r: (order.get(r["deck"], len(order)), r["deck"]))
 
-    decided = len(games) - run_censored
     return {
         "decks": out,
         "run": {
             "games": len(games),
-            "decided": decided,
+            # Decided in the published sense (engine/standings.py). censored
+            # (clock or turn cap) keeps its meaning for the other figures;
+            # drawn and noResult name the rest of the gap.
+            "decided": table["decided"],
             "censored": run_censored,
             "timedOut": run_timed_out,
             "turnCapped": run_turn_capped,
+            "drawn": table["undecided"]["draw"],
+            "noResult": table["undecided"]["no_result"],
+            # Whole percents below 30 decided games (standings.digits).
+            "digits": table["digits"],
             # An even table: the number every win rate must be read against.
             "baseline": (1 / len(out)) if out else None,
             "medianGameRound": med([true_round(g) for g in games

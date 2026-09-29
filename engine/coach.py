@@ -31,6 +31,7 @@ import archetype as archetype_mod  # noqa: E402
 import deck_telemetry  # noqa: E402
 import llm  # noqa: E402
 import os  # noqa: E402
+import standings  # noqa: E402
 import validity  # noqa: E402
 from deck_plan import read_dck  # noqa: E402
 
@@ -112,19 +113,14 @@ def build_context(result: dict, deck_file: str) -> dict:
 
     games = result.get("games", [])
     n = len(games)
-    pod: dict[str, int] = {}
-    for g in games:
-        for p in g.get("players", []):
-            pod.setdefault(_AI_PREFIX.sub("", p), 0)
-        winner = (g.get("result") or {}).get("winner")
-        if winner:
-            key = _AI_PREFIX.sub("", winner)
-            pod[key] = pod.get(key, 0) + 1
+    # The published win rates (engine/standings.py): wins over decided
+    # games. This counted every recorded winner over every game, so a
+    # clock-cut game still credited its "winner" to an opponent.
+    table = standings.standings(result)
     me = _AI_PREFIX.sub("", telemetry.get("player_key") or "")
-    opponents = [{"name": name, "wins": w,
-                  "win_rate": round(w / n, 3) if n else 0}
-                 for name, w in sorted(pod.items(), key=lambda kv: -kv[1])
-                 if name != me]
+    opponents = [{"name": s["deck"], "wins": s["wins"], "decided": s["decided"],
+                  "win_rate": round(s["rate"], 3) if s["rate"] is not None else 0}
+                 for s in table["decks"] if s["deck"] != me]
 
     return {
         "deck": deck_path.name,
@@ -132,8 +128,9 @@ def build_context(result: dict, deck_file: str) -> dict:
         "commander": commander,
         "decklist": main,
         "games": n,
+        "decided": telemetry["decided"],
         "rotated": result.get("meta", {}).get("source") == "rotated",
-        "win_rate": telemetry["win_rate"],
+        "win_rate": telemetry["win_rate"] if telemetry["win_rate"] is not None else 0.0,
         "wins": telemetry["wins"],
         "archetype": arch,
         "telemetry": telemetry,

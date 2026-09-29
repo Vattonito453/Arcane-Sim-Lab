@@ -426,7 +426,9 @@ def surfaces(run, deck, env=None):
             "name": "deck telemetry",
             "intent": "live",
             "path": "/results/%s/telemetry?deck=%s" % (run, deck),
-            "check": has_keys("games", "deck", "engine"),
+            # "engine" (the charge-counter and proliferate rows) is gone:
+            # WS11 task 8. "decided" is the published denominator.
+            "check": has_keys("games", "deck", "watched", "decided"),
             "note": "CLAUDE.md called this 'no UI yet'; it has had one for a while",
         },
         {

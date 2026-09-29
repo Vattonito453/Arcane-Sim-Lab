@@ -27,6 +27,11 @@ zero-dependency API. Use it three ways:
        GET  /results/{file}/scorecards  per-deck: outcomes, timing, behaviour
        GET  /results/{file}/game/{n}  one game's events and its story
        GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
+       GET  /results/{file}/qa    the run's QA layer A report (engine/qa/run.py);
+                                  404 {"qa": "pending"} until the worker writes it
+       GET  /qa/queue?since=<cursor>&limit=N  open review items, human flags
+                                  first (ADMIN key from MTG_API_KEYS only; a flags
+                                  key gets 403): engine/qa/review_queue.py
        GET  /estimate?decks=4&games=16  typical duration + played game count
                                   for a sim of that size, before it is queued
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
@@ -1031,6 +1036,47 @@ def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None)
     return report
 
 
+class QAPending(Exception):
+    """The run exists but QA layer A has not written its qa.json yet."""
+
+
+def _read_result_qa(name: str) -> dict:
+    """GET /results/{file}/qa: the run's QA layer A report (engine/qa/run.py).
+
+    Same traversal guard as every sibling route (_result_path), and the run
+    must exist. The stored qa.json is served through qa.run.public: the
+    turning point follows this process's game-story switches, and no human
+    flag note can appear (layer A never reads the human queue; public()
+    drops any flag carrying a note regardless). QAPending when the run has
+    no qa.json yet: the worker writes it within a couple of minutes of the
+    run finishing, and its sweeper backfills older runs."""
+    f = _result_path(name)
+    from qa import run as qa_run
+    import game_story
+    try:
+        doc = qa_run.read_qa(f.name, RESULTS_DIR.parent)
+    except FileNotFoundError:
+        raise QAPending(name) from None
+    return qa_run.public(doc, game_story.switches())
+
+
+def _read_qa_queue(since: str | None, limit: str | None) -> dict:
+    """GET /qa/queue (admin key): open review items, human flags first.
+    ValueError for a bad cursor or limit."""
+    from qa import review_queue
+    try:
+        n = int(limit) if limit not in (None, "") else review_queue.DEFAULT_PAGE
+    except ValueError:
+        raise ValueError("limit must be a whole number") from None
+    if not 1 <= n <= 5000:
+        raise ValueError("limit must be 1..5000")
+    return review_queue.read_queue(RESULTS_DIR.parent, review_queue.parse_cursor(since), n)
+
+
+QUEUE_FLAG_KEY_REFUSAL = ("this is a flag key: it can flag moments in a replay and "
+                          "nothing else. Reading the review queue needs an API key.")
+
+
 def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
     """One game out of a run — the payload a replay actually needs."""
     import commanders
@@ -1056,7 +1102,8 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
 # A playtester watching a replay marks a moment ("why did Hullbreaker bounce
 # itself?") and the note lands in the human review queue, which ranks first in
 # the reviewer's nightly budget. There is deliberately NO public read of these
-# files: they hold a person's words, and the keyed GET /qa/queue is week 4.
+# files: they hold a person's words. The only read is GET /qa/queue, which
+# needs an admin key from MTG_API_KEYS (a flags key gets 403).
 #
 # REQUEST (JSON object):
 #   run     result filename, e.g. "sim_20260925_003803_d0eb966b8d33_rotated.json";
@@ -1808,6 +1855,16 @@ def serve(port: int = 8484) -> None:
                             # browser already holds (decision 19). Same reasoning
                             # as /analysis below; the computation is cheap.
                             return self._send(_read_result_prediction(parts[1]))
+                        if len(parts) >= 3 and parts[2] == "qa":
+                            # QA layer A's report. Not immutable: a new
+                            # analyzer version rewrites it, and the swing
+                            # follows the story switches.
+                            try:
+                                return self._send(_read_result_qa(parts[1]))
+                            except QAPending:
+                                return self._send(
+                                    {"error": "no QA report for this run yet", "qa": "pending",
+                                     "file": parts[1]}, 404)
                         if len(parts) >= 3 and parts[2] == "scorecards":
                             return self._send(_read_result_scorecards(parts[1]),
                                               cache=IMMUTABLE)
@@ -1828,6 +1885,21 @@ def serve(port: int = 8484) -> None:
                         return self._send({"error": "no such result"}, 404)
                     except (IndexError, ValueError) as e:
                         return self._send({"error": str(e)}, 404)
+                if parts[0] == "qa" and len(parts) == 2 and parts[1] == "queue":
+                    # The review queue holds playtesters' own words (human
+                    # flag notes), so it needs an ADMIN key in every mode,
+                    # open mode included; a flags-only key gets a 403.
+                    key = self._credential()
+                    if not (key and key in API_KEYS):
+                        if key and key in FLAG_KEYS:
+                            return self._deny(403, QUEUE_FLAG_KEY_REFUSAL)
+                        return self._deny(401, "an API key is required to read the review queue")
+                    try:
+                        return self._send(_read_qa_queue(q.get("since", [None])[0],
+                                                         q.get("limit", [None])[0]),
+                                          cache="no-store")
+                    except ValueError as e:
+                        return self._send({"error": str(e)}, 400)
                 if parts[0] == "cards":
                     raw = q.get("names", [""])[0]
                     names = [n for n in re.split(r"[|\n]", raw) if n.strip()]

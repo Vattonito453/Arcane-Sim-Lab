@@ -488,14 +488,21 @@ def test_no_public_read():
     st, body, _ = flag({"note": "private words 7f3c"})
     assert st == 200, (st, body)
     fid = body["id"]
-    for path in ("/flags", f"/flags/{fid}", "/qa/queue", "/simkb/review_queue/human",
+    for path in ("/flags", f"/flags/{fid}", "/simkb/review_queue/human",
                  f"/simkb/review_queue/human/{fid}.json", "/review_queue",
-                 f"/results/..%2fsimkb%2freview_queue%2fhuman%2f{fid}.json"):
+                 f"/results/..%2fsimkb%2freview_queue%2fhuman%2f{fid}.json",
+                 f"/results/..%2fsimkb%2freview_queue%2fhuman%2f{fid}.json/qa"):
         for key in (None, RICHARD, ADMIN):
             st, got, _ = call(path, key=key)
             assert st in (400, 404), (path, key, st)
             assert "private words" not in json.dumps(got), (path, key)
-    print("  no route reads a human note back, with or without a key: OK")
+    # The one read of the human queue is GET /qa/queue (week 4), for the
+    # nightly reviewer: an admin key only. A flags key or no key never sees it.
+    for key, want in ((None, 401), (RICHARD, 403), ("not-a-key", 401)):
+        st, got, _ = call("/qa/queue", key=key)
+        assert st == want, ("/qa/queue", key, st)
+        assert "private words" not in json.dumps(got), ("/qa/queue", key)
+    print("  no public route reads a human note back; /qa/queue needs an admin key: OK")
 
 
 def test_health_reports_flags_boolean():

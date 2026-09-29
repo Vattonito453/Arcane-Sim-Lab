@@ -49,7 +49,7 @@ function meaning(kind: Kind, d: DeckDisclosure, where: DisclosureWhere): string 
     ? "Sim Lab's pilot can still cast it while chasing a combo or tutoring, and work to have the pilot cast such cards is scheduled for November."
     : "Sim Lab's pilot can cast some while chasing a combo or tutoring, and work to have it cast the rest is scheduled for November.";
   return where === "run"
-    ? `Forge's AI passes over ${subject} when it picks a spell${also} so ${one ? "it was" : "they were"} rarely cast here and this result may understate the deck; ${pilot}`
+    ? `Forge's AI passes over ${subject} when it picks a spell${also} so a simulation rarely casts ${one ? "it" : "them"} and this result may understate the deck; ${pilot}`
     : `A simulation will rarely cast ${subject}${also} so its result may understate this deck; ${pilot}`;
 }
 
@@ -176,7 +176,7 @@ export function RunDisclosureSection({
       </div>
       <p className="sdesc">
         Cards Forge could not load, and cards its AI doesn&apos;t cast on its own. Telemetry
-        and coaching never mark these cards cold or suggest cutting them.
+        and coaching never call a card on the second list cold or suggest cutting it.
       </p>
       <div className="dsc-grid">
         {decks.map(([deck, d]) => (
@@ -205,7 +205,7 @@ export function DeckDisclosureSection({
       </div>
       <p className="sdesc">
         What a simulation of this deck leaves out or rarely casts. Telemetry and coaching never
-        mark these cards cold or suggest cutting them.
+        call a card Forge&apos;s AI doesn&apos;t cast on its own cold, or suggest cutting it.
       </p>
       <DeckDisclosureRows d={d} where="deck" unavailable={NO_INDEX} />
     </section>

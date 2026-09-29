@@ -166,6 +166,9 @@ function TelemetryInner() {
   const cmd = rep.commander;
   const castGames = cmd ? Math.round(cmd.cast_rate * games) : 0;
   const coldWatched = rep.watched.filter((w) => w.status === "cold");
+  // "ai_skips" replaces "cold" only, so these rows also logged zero events:
+  // the lede must not count them as cards that showed up.
+  const unseenSkipped = rep.watched.filter((w) => w.status === "ai_skips");
   const deckName = stripAi(rep.player_key ?? "") || rep.deck.replace(/\.dck$/, "");
   // Rows on this page about a card Forge's AI doesn't cast on its own.
   const skippedShown = [
@@ -219,6 +222,18 @@ function TelemetryInner() {
                 <>
                   <b>{coldWatched.length} of {plural(rep.watched.length, "watched card")}</b> never
                   fired
+                  {unseenSkipped.length > 0 && (
+                    <>
+                      , and {unseenSkipped.length} more never showed up that Forge&apos;s AI
+                      doesn&apos;t cast on its own
+                    </>
+                  )}
+                </>
+              ) : unseenSkipped.length > 0 ? (
+                <>
+                  <b>{unseenSkipped.length} of {plural(rep.watched.length, "watched card")}</b>{" "}
+                  never showed up, and Forge&apos;s AI doesn&apos;t cast{" "}
+                  {unseenSkipped.length === 1 ? "it" : "them"} on its own
                 </>
               ) : (
                 <>all {plural(rep.watched.length, "watched card")} showed up</>

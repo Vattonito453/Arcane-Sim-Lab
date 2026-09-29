@@ -221,6 +221,72 @@ def test_run_lists():
     assert disclosure.for_result_deck(m, "nope.dck") is None
 
 
+def test_run_load_report_attribution():
+    """Forge's load report reaches the deck that lost the card even when
+    run_sim's per-deck split is missing or missed it."""
+    # A salvaged run (run_sim.salvage): unsupported_cards, no per-deck split.
+    # This used to read "none" on every deck, basis "run".
+    salv = disclosure.for_run(_meta(unsupported_cards=["Nothing Like This"]))["decks"]
+    assert salv["Schemer Test"]["could_not_load"] == ["Nothing Like This"], salv
+    assert salv["Schemer Test"]["load_basis"] == "run", salv
+    assert salv["Clean Test"]["could_not_load"] == [], salv
+    # Refusals are compared case-free, as Forge's own lookup is.
+    low = disclosure.for_run(_meta(unsupported_cards=["nothing like this"]))["decks"]
+    assert low["Schemer Test"]["could_not_load"] == ["Nothing Like This"], low
+
+    # The worker's JVM writes an accented letter as '?', which run_sim's exact
+    # split never attributed: the deck's own spelling comes back.
+    accent = "accent_test_5678cdef.dck"
+    (_data / "decks" / accent).write_text(
+        "[metadata]\nName=Accent Test\n[Commander]\n1 Sol Ring\n[Main]\n"
+        "1 Lim-Dûl's Hex\n98 Island\n", encoding="utf-8")
+    try:
+        m = {"decks": [f"/data/decks/{accent}", f"/app/engine/decks/{CLEAN_FILE}"],
+             "unsupported_cards": ["Lim-D?l's Hex"], "unsupported_by_deck": {}}
+        a = disclosure.for_run(m)["decks"]
+        assert a["Accent Test"]["could_not_load"] == ["Lim-Dûl's Hex"], a
+        assert a["Accent Test"]["load_basis"] == "run", a
+        assert a["Clean Test"]["could_not_load"] == [], a
+        # a '?' is one character, never a run of them
+        assert disclosure._refused_here(["Lim-Dûl's Hex"], ["Lim-D??l's Hex"]) == []
+    finally:
+        (_data / "decks" / accent).unlink()
+
+    # Salvaged and the deck file deleted: "none" only if every refusal is
+    # placed on another deck, else "cannot say".
+    gone = "/data/decks/deleted_deck_0000aaaa.dck"
+    placed = disclosure.for_run({"decks": [f"/data/decks/{FLAGGED_FILE}", gone],
+                                 "unsupported_cards": ["Nothing Like This"]})["decks"]
+    assert placed["Deleted Deck"]["could_not_load"] == [], placed
+    assert placed["Deleted Deck"]["load_basis"] == "run", placed
+    loose = disclosure.for_run({"decks": [f"/data/decks/{FLAGGED_FILE}", gone],
+                                "unsupported_cards": ["Some Other Card"]})["decks"]
+    assert loose["Deleted Deck"]["could_not_load"] is None, loose
+    assert loose["Deleted Deck"]["load_basis"] is None, loose
+    assert loose["Schemer Test"]["could_not_load"] == [], loose
+    # With run_sim's split present, a deleted deck keeps what it recorded.
+    split = disclosure.for_run({"decks": [gone], "unsupported_cards": ["Some Other Card"],
+                                "unsupported_by_deck": {}})["decks"]
+    assert split["Deleted Deck"]["could_not_load"] == [], split
+
+
+def test_mentions_whole_names():
+    """A cold coaching row is matched to a card by its whole name only."""
+    m = disclosure.mentions
+    assert m("Aetherflux Reservoir drain", ["Flux"]) == []
+    assert m("Flashback value", ["Flash"]) == []
+    assert m("Flux, cast for X", ["Flux"]) == ["Flux"]
+    assert m("Commander: Winter, Cynical Opportunist", ["Winter, Cynical Opportunist"]) \
+        == ["Winter, Cynical Opportunist"]
+    assert m("Lim-Dul's Vault digs", ["Lim-Dûl's Vault"]) == ["Lim-Dûl's Vault"]
+    import coach
+    row = {"verdict": {"headline": "h", "prose": "p"},
+           "support_chain": [{"link": "Aetherflux Reservoir drain", "status": "cold",
+                              "measured": "0/g", "reading": "never fired"}],
+           "matchups": [], "changes": [], "play_guide": ["x"]}
+    coach._validate(row, ["Flux", "Aetherflux Reservoir"], ["Flux"])   # not about Flux
+
+
 def test_worker_records_at_run_time():
     import run_sim
     paths = [_data / "decks" / FLAGGED_FILE, _data / "decks" / CLEAN_FILE]
@@ -378,12 +444,25 @@ def test_payload_fields():
     # the game payload does not carry them (the summary is the smallest one that needs them)
     assert "disclosures" not in me._read_result_game("sim_disclosure_test.json", 1)
 
+    # deploy/preflight.py reads both payloads: live with an index, dark without
+    sys.path.insert(0, str(ENGINE.parent / "deploy"))
+    import preflight
+    ok, detail = preflight.disclosures_ok(s)
+    assert ok and "index test" in detail and "decks=2" in detail, detail
+    ok, detail = preflight.disclosures_ok({**s, "disclosures": {**d, "index": None}})
+    assert not ok and "forge_index" in detail, detail
+    assert not preflight.disclosures_ok({"meta": {}})[0]            # engine older than R1.1
+    names = [x["name"] for x in preflight.surfaces("r.json", "d.dck")]
+    assert "card disclosures (run)" in names and "card disclosures (deck)" in names
+
     deck = me._read_deck_cards(_data / "decks" / FLAGGED_FILE)
     dd = deck["disclosures"]
     assert dd["index"] == "test" and dd["ai_wont_play"] == WANT_WONT, dd
     assert dd["could_not_load"] == WANT_UNKNOWN and dd["load_basis"] == "index", dd
     assert deck["commanders"] == ["Wintry Schemer"], deck
     assert me._read_deck_cards(_data / "decks" / CLEAN_FILE)["disclosures"]["ai_wont_play"] == []
+    ok, detail = preflight.disclosures_ok(deck)
+    assert ok and "decks=1" in detail, detail
 
     import convert_decklist
     orig = (convert_decklist._load_index, me._warm_card_cache, me._deck_combos)

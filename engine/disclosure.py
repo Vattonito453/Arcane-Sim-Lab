@@ -42,6 +42,7 @@ first, then bundled; CLAUDE.md gotcha 9), never a bare path.
 from __future__ import annotations
 
 import re
+import unicodedata
 from pathlib import Path
 
 _AUTO = object()          # "load this machine's index / use _find_deck"
@@ -208,6 +209,38 @@ def _find_default(filename: str):
         return p if p.is_file() else None
 
 
+def _refusal_fold(name: str) -> str:
+    """Case- and accent-free form, as run_sim._fold compares refusals."""
+    return "".join(ch for ch in unicodedata.normalize("NFKD", _clean(name))
+                   if not unicodedata.combining(ch)).casefold()
+
+
+def _refused_here(cards, refused) -> list[tuple[str, str]]:
+    """(deck spelling, Forge's refusal) for each of the deck's `cards` that a
+    name in Forge's load report (meta.unsupported_cards) names.
+
+    Forge prints the name the deck file requested, but on the JVM's stderr,
+    whose encoding follows the container's locale; the worker sets none, so
+    each character ASCII cannot encode arrives as '?' ("Lim-D?l's Vault").
+    Compared as run_sim._refused_commanders does: accent- and case-free, a '?'
+    in a refusal standing for exactly one character."""
+    pats = []
+    for r in refused:
+        f = _refusal_fold(r)
+        if not f:
+            continue
+        rx = "".join("." if ch == "?" else re.escape(ch) for ch in f) if "?" in f else None
+        pats.append((r, f, re.compile(rx, re.S) if rx else None))
+    out: list[tuple[str, str]] = []
+    for c in cards:
+        fc = _refusal_fold(c)
+        for r, f, rx in pats:
+            if fc == f or (rx is not None and rx.fullmatch(fc)):
+                out.append((c, r))
+                break
+    return out
+
+
 def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
     """The run summary's `disclosures`: {"index": version or None, "decks":
     {deck Name=: {file, could_not_load, load_basis, ai_wont_play,
@@ -215,15 +248,23 @@ def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
 
     could_not_load: Forge's own load report when the run carries one
     (meta.unsupported_cards exists, even empty: basis "run"), else today's
-    index against the deck file (basis "index"), else None.
+    index against the deck file (basis "index"), else None. The report is
+    attributed to each deck by run_sim's unsupported_by_deck AND by matching
+    it against the deck file's own lines: a salvaged run (run_sim.salvage)
+    carries unsupported_cards with no per-deck split, and run_sim's split
+    compares exact names, so a refusal the JVM wrote with '?' for an accented
+    letter reached no deck. When a refusal cannot be placed and a deck's file
+    is gone, that deck's list is None ("cannot say"), never "none".
     ai_wont_play: what run_sim recorded on the worker, else today's index
     against the deck file, else None (no index, or the file is gone)."""
     meta = meta if isinstance(meta, dict) else {}
     find = find or _find_default
     idx = _load_index(idx)
     recorded_load = isinstance(meta.get("unsupported_cards"), list)
-    by_file = meta.get("unsupported_by_deck")
-    by_file = by_file if isinstance(by_file, dict) else {}
+    refused = [str(c) for c in (meta.get("unsupported_cards") or []) if str(c).strip()] \
+        if recorded_load else []
+    split_at_run = isinstance(meta.get("unsupported_by_deck"), dict)
+    by_file = meta.get("unsupported_by_deck") if split_at_run else {}
     stored = meta.get("ai_wont_play_by_deck")
     stored = stored if isinstance(stored, dict) else {}
     # The Name= each staged file was seated under, from run_sim's fidelity
@@ -232,6 +273,8 @@ def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
               for r in (meta.get("commander_fidelity") or [])
               if isinstance(r, dict) and r.get("deck") and r.get("player")}
     decks: dict[str, dict] = {}
+    placed: set[str] = set()      # refusals attributed to some deck
+    unplaced_rows: list[dict] = []  # salvaged run, deck file gone: decided last
     for raw in meta.get("decks") or []:
         base = Path(str(raw)).name
         try:
@@ -243,10 +286,23 @@ def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
         name, commanders, main = parse_dck(text, seated.get(base, fallback)) \
             if text is not None else (seated.get(base, fallback), [], [])
         from_index = of_names(idx if text is not None else None, commanders, main)
-        row = {"file": base}
+        row = {"file": base, "could_not_load": None, "load_basis": None}
         if recorded_load:
-            row["could_not_load"] = [str(c) for c in (by_file.get(base) or [])]
+            listed = [str(c) for c in (by_file.get(base) or [])]
+            placed.update(listed)
             row["load_basis"] = "run"
+            if text is not None:
+                hits = _refused_here(commanders + main, refused)
+                placed.update(r for _c, r in hits)
+                # The deck's own spelling ('?' restored), then anything the
+                # run's split named that the file no longer lists.
+                matched = {r for _c, r in hits}
+                row["could_not_load"] = [c for c, _r in hits] + \
+                    [r for r in listed if r not in matched]
+            elif split_at_run:
+                row["could_not_load"] = listed
+            else:
+                unplaced_rows.append(row)
         else:
             row["could_not_load"] = from_index["could_not_load"]
             row["load_basis"] = from_index["load_basis"]
@@ -261,6 +317,13 @@ def for_run(meta: dict, find=None, idx=_AUTO) -> dict:
             row["ai_wont_play"] = from_index["ai_wont_play"]
             row["commander_ai_wont_play"] = from_index["commander_ai_wont_play"]
         decks[name] = row
+    # A salvaged run and a deleted deck: "none" only when every refusal is
+    # already placed on another deck; otherwise this deck cannot be cleared.
+    clear = all(r in placed for r in refused)
+    for row in unplaced_rows:
+        row["could_not_load"] = [] if clear else None
+        if not clear:
+            row["load_basis"] = None
     version = meta.get("ai_wont_play_index") if stored else None
     return {"index": version or getattr(idx, "version", None), "decks": decks}
 
@@ -299,6 +362,16 @@ def matches(card: str, skipped) -> bool:
 
 def mentions(text: str, skipped) -> list[str]:
     """The `skipped` cards whose full name appears in free text (a coaching
-    support-chain link such as "Commander: Winter, Cynical Opportunist")."""
+    support-chain link such as "Commander: Winter, Cynical Opportunist").
+
+    As a whole name, never inside a longer word: Forge 2.0.13's 2,404 listed
+    spells include "Flux", "Flash" and "Raze", which a bare substring test
+    finds in "Aetherflux Reservoir", "Flashback" and "Bloodcrazed Goblin",
+    rejecting a sound coaching reply or re-marking a cached row."""
     t = _fold(text)
-    return [s for s in skipped or [] if _fold(s) and _fold(s) in t]
+    out = []
+    for s in skipped or []:
+        k = _fold(s)
+        if k and re.search(r"(?<!\w)" + re.escape(k) + r"(?!\w)", t):
+            out.append(s)
+    return out

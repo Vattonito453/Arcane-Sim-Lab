@@ -230,6 +230,42 @@ def scorecards_ok(body):
     return True, "%d decks, behaviour=%s" % (len(decks), run.get("hasBehaviour"))
 
 
+_DISCLOSURE_KEYS = ("could_not_load", "load_basis", "ai_wont_play", "commander_ai_wont_play")
+
+
+def disclosures_ok(body):
+    """Per deck, the cards Forge could not load and the cards its AI doesn't
+    cast on its own (engine/disclosure.py; repair plan WS11 task 4, R1.1).
+
+    Two ways this is dark while answering 200: an engine older than R1.1 (no
+    `disclosures`), and an api container that cannot read the Forge card
+    index the worker builds into $MTG_DATA_DIR/forge_index on the shared
+    volume (`index` null). The api image has no Forge jar, so without that
+    volume every AI list, and every old run's load list, reads "not checked"
+    on every page. Works on the run summary and on GET /decks/{file}."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    d = body.get("disclosures")
+    if not isinstance(d, dict):
+        return False, "no disclosures (engine older than R1.1, or computing them failed)"
+    if not d.get("index"):
+        return False, ("no Forge card index readable here: the worker builds it "
+                       "into $MTG_DATA_DIR/forge_index on the shared volume")
+    rows = d.get("decks") if "decks" in d else {"deck": d}
+    if not isinstance(rows, dict) or not rows:
+        return False, "no decks in the disclosures"
+    bad = [n for n, r in rows.items()
+           if not isinstance(r, dict) or any(k not in r for k in _DISCLOSURE_KEYS)]
+    if bad:
+        return False, "decks missing a list: %s" % bad[:2]
+    unchecked = [n for n, r in rows.items() if r.get("ai_wont_play") is None]
+    listed = sum(len(r.get("ai_wont_play") or []) + len(r.get("could_not_load") or [])
+                 for r in rows.values())
+    return True, "index %s, decks=%d, cards listed=%d%s" % (
+        d.get("index"), len(rows), listed,
+        "; AI list not checked for %s (deck file gone?)" % unchecked[:2] if unchecked else "")
+
+
 def cached_read_endpoint(body):
     """/ask and /coaching are READ-ONLY caches by design.
 
@@ -421,6 +457,20 @@ def surfaces(run, deck, env=None):
             "intent": "live",
             "path": "/board/%s" % run,
             "check": has_keys("basis", "exit_match_rate"),
+        },
+        {
+            "name": "card disclosures (run)",
+            "intent": "live",
+            "path": "/results/%s/summary" % run,
+            "check": disclosures_ok,
+            "note": "cards Forge could not load / its AI doesn't cast on its own; "
+                    "needs the worker-built Forge index on the shared /data volume",
+        },
+        {
+            "name": "card disclosures (deck)",
+            "intent": "live",
+            "path": "/decks/%s" % deck,
+            "check": disclosures_ok,
         },
         {
             "name": "deck telemetry",

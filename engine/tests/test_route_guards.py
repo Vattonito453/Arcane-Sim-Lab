@@ -128,11 +128,39 @@ def test_payloads_carry_standings():
     print("  summary, game and index carry one standings object: OK")
 
 
+def test_done_job_status():
+    """A finished job's status carries the published standings (the running
+    page's "Done." line) and each deck's own name and commanders (its title
+    read "Kess Reanimator 305b76d7 vs ..." from the import paths)."""
+    import jobqueue
+    decks = Path(_TMP) / "decks"
+    decks.mkdir(exist_ok=True)
+    (decks / "kess_reanimator_305b76d7.dck").write_text(
+        "[metadata]\nName=Kess, Reanimator\n[Commander]\n1 Kess, Dissident Mage\n[Main]\n1 Sol Ring\n",
+        encoding="utf-8")
+    paths = ["/data/decks/kess_reanimator_305b76d7.dck", "/data/decks/missing_1a2b3c4d.dck"]
+    jid = jobqueue.enqueue({"decks": paths, "games": 3})
+    check(jobqueue.claim()["id"] == jid, "claim")
+    summary = {"games": 3, "draws": 1, "timeouts": 1,
+               "wins": {"Kess, Reanimator": 2, "Missing": 0}}
+    check(jobqueue.finish(jid, {"summary": summary, "result_file": FIXTURE}), "finish")
+    code, st = get(f"/sim-status?id={jid}")
+    check(code == 200 and st["state"] == "done", st)
+    check(st["deck_labels"] == ["Kess, Reanimator", "Missing"], st.get("deck_labels"))
+    check(st["commanders"] == {"Kess, Reanimator": ["Kess, Dissident Mage"]}, st.get("commanders"))
+    s = st["standings"]
+    check(s["decided"] == 2 and s["undecided"]["clock"] == 1, s)
+    check(s["decks"][0]["deck"] == "Kess, Reanimator" and s["decks"][0]["rate"] == 1.0, s["decks"])
+    check(s["leader"]["kind"] == "leader", s["leader"])
+    print("  a finished job's status: standings, deck names, commanders: OK")
+
+
 def main():
     start_server()
     test_bad_names_are_404_on_every_route()
     test_board_still_works()
     test_payloads_carry_standings()
+    test_done_job_status()
     print("test_route_guards: ALL ASSERTIONS PASSED")
 
 

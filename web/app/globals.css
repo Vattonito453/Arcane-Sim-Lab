@@ -1251,3 +1251,24 @@ textarea.flag-note:focus, .flag-field:focus { border-color: var(--mana-cyan); }
   border-left: 2px solid var(--hairline-strong);
 }
 .predlabel b { color: var(--ink-1); font-weight: 600; }
+
+/* ── truth patch, the rest (repair plan WS11 tasks 7 and 9, week 4) ──
+   Three leftovers from the week-3 reviews, tokens only:
+   - the legacy games table (a summary from an engine older than R1, with no
+     story) set its column widths as inline styles, which the design rules
+     allow only for computed percentages; they live here now;
+   - a scorecard's record ("4 of 7 decided") is a count, not a status, so it
+     is plain text where a status glyph used to be (status shapes mark
+     running, queued, done and failed, never a deck's result);
+   - at 800 to 1024 px the four-seat table's plates squeezed the deck name to
+     0 to 11 px behind the pips and "40 life · 0 on board", so an out seat
+     showed only an avatar. The life line now wraps under the name when the
+     plate is too narrow for both, and the name keeps room for a few words. */
+.games.legacyt th.g-n { width: 64px; }
+.games.legacyt th.g-who { width: 220px; }
+.games.legacyt th.g-end { width: 70px; }
+.games.legacyt th.g-dur { width: 80px; }
+.games.legacyt th.g-act { width: 90px; }
+.schead .screc { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
+.plate { flex-wrap: wrap; row-gap: 2px; }
+.plate .pn { min-width: 6em; }

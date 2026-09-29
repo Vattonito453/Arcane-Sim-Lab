@@ -83,6 +83,7 @@ export function FlagMoment({
   index,
   total,
   players,
+  name = stripAi,
   onClose,
 }: {
   id: string;
@@ -91,7 +92,12 @@ export function FlagMoment({
   step: Step;
   index: number;
   total: number;
+  /** The game's player keys, in the order to offer them: the replay passes
+   *  the run page's order, so the seats read the same way on both pages. */
   players: string[];
+  /** A seat's one name (shortName, the name the run title and the stories
+   *  use). The option values stay the raw player keys the engine checks. */
+  name?: (player: string) => string;
   onClose: () => void;
 }) {
   const uid = useId();
@@ -166,7 +172,7 @@ export function FlagMoment({
     keyRef.current?.focus();
   };
 
-  const turnName = stripAi(step.active);
+  const turnName = name(step.active);
   return (
     <form
       id={id}
@@ -236,7 +242,7 @@ export function FlagMoment({
           >
             {players.map((p) => (
               <option key={p} value={p}>
-                {stripAi(p)}
+                {name(p)}
               </option>
             ))}
             <option value="">Not about one seat</option>

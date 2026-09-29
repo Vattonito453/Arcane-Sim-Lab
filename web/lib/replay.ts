@@ -171,16 +171,38 @@ const RE_DMG = /^(.+?) deals (\d+) (?:[\w-]+ )*damage(?:\s*\([^)]*\))? to (.+?)\
 const RE_LOST = /^(.+?) has lost /;
 const RE_WON = /^(.+?) has won /;
 
-/** Strip Ai(n)- prefixes and Forge instance ids for display. Ids in `keep`
- *  stay: they belong to names that mean two different objects in this game. */
-export function cleanRaw(raw: string, keep?: Set<number>): string {
+/* Forge's own bookkeeping lines, reworded for the log (repair plan WS11
+ * task 7: no raw Forge strings). Only the words change: every line keeps its
+ * step, so "event N of M", ?t= links and a flag's event index still point at
+ * the same event. The event log stays the authoritative record. */
+// "Ai(1)-Kess has restored control over themself": Forge handing a seat's
+// choices back to its own controller (at game end, or after a Mindslaver turn).
+const RE_CONTROL = /^(.+?) has restored control over (?:themself|themselves|himself|herself)\s*$/;
+// "Turn 18": Forge's own game-length figure, which counts neither table turns
+// nor its per-player counter (a game that ended on everyone's tenth turn,
+// 36 turns in all, prints "Turn 18"). Reworded with the table turn.
+const RE_TURN_LINE = /^Turn \d+\s*$/;
+// "Ai(1)-Kess: 0 Ai(2)-Skrat's Revenge: 1 ...": Forge's match tally.
+const RE_TALLY = /Ai\(\d+\)-(.+?): (\d+)(?=\s+Ai\(\d+\)-|\s*$)/g;
+const RE_POISON_LOSS = /^(.+?) has lost because of obtaining (\d+) poison counters?\.?\s*$/;
+const RE_GENERALS = /^(.+?) has lost due to accumulation of (\d+) damage from generals\.?\s*$/;
+
+/** Strip Ai(n)- prefixes and Forge instance ids for display. An id in `keep`
+ *  belongs to a name that means two different objects in this game, so it is
+ *  shown as that object's number among its namesakes ("Slug Token #2"), not as
+ *  Forge's raw instance id ("Slug Token (1306)"), which is machine text. */
+export function cleanRaw(raw: string, keep?: Map<number, number>): string {
   const noAi = raw.replace(RE_AI, "");
   if (!keep || keep.size === 0) return noAi.replace(RE_NUM, "");
-  return noAi.replace(RE_NUM, (m, id) => (keep.has(Number(id)) ? m : ""));
+  return noAi.replace(RE_NUM, (m, id) => {
+    const n = keep.get(Number(id));
+    return n ? ` #${n}` : "";
+  });
 }
 
 /** Instance ids of every combatant whose NAME is shared by two or more
- *  distinct objects in this game, so the log can keep telling them apart.
+ *  distinct objects in this game, so the log can keep telling them apart,
+ *  each mapped to its number among its namesakes (cleanRaw shows "#2").
  *
  *  Stripping every id made "Lightning Runner deals 5 damage" and "Lightning
  *  Runner deals 2 combat damage" read as one creature doing the impossible;
@@ -189,7 +211,7 @@ export function cleanRaw(raw: string, keep?: Set<number>): string {
  *  into a blocker that seemed to die before damage. Only names that attack,
  *  block, deal or take damage, or leave the battlefield are considered, so a
  *  deck's four Islands stay plain "Island". */
-export function ambiguousIds(game: SimGame): Set<number> {
+export function ambiguousIds(game: SimGame): Map<number, number> {
   const ids = new Map<string, Set<number>>();
   const add = (name: string, id: number) => {
     const n = name.trim();
@@ -231,8 +253,10 @@ export function ambiguousIds(game: SimGame): Set<number> {
   };
   for (const ev of game.events_pregame ?? []) scan(ev);
   for (const t of game.turns) for (const ev of t.events) scan(ev);
-  const out = new Set<number>();
-  for (const s of ids.values()) if (s.size > 1) for (const id of s) out.add(id);
+  // id -> its number among the objects sharing its name, in order of first
+  // appearance in the log (a Set keeps insertion order).
+  const out = new Map<number, number>();
+  for (const s of ids.values()) if (s.size > 1) [...s].forEach((id, i) => out.set(id, i + 1));
   return out;
 }
 
@@ -328,7 +352,7 @@ function parseDamage(raw: string): { source: string; amount: number; target: str
 /* ── timeline ──────────────────────────────────────────────────────────── */
 
 function stepFor(
-  ev: SimEvent, turn: number, active: string, phase: string, keep?: Set<number>,
+  ev: SimEvent, turn: number, active: string, phase: string, keep?: Map<number, number>,
   known: readonly Possessive[] = [],
 ): Step {
   const raw = ev.raw;
@@ -352,8 +376,22 @@ function stepFor(
         step.op = { t: "life", p: m[1], to: Number(m[3]) };
         step.delta = Number(m[3]) - Number(m[2]);
         step.hi = [stripAi(m[1])];
+        // "Life: Kess 40 > 39" was Forge's notation, shown raw.
+        step.text = `${stripAi(m[1])} goes from ${m[2]} to ${m[3]} life.`;
       }
       break;
+    case "player_control":
+      if ((m = raw.match(RE_CONTROL))) {
+        step.text = `${stripAi(m[1])} controls their own choices again.`;
+        step.hi = [stripAi(m[1])];
+      }
+      break;
+    case "match_result": {
+      const tally = Array.from(raw.matchAll(RE_TALLY), (x) => `${x[1]} ${x[2]}`);
+      // Semicolons: deck names carry commas ("Kess, Reanimator 1").
+      if (tally.length) step.text = `Forge's match tally: ${tally.join("; ")}.`;
+      break;
+    }
     case "damage": {
       if ((m = raw.match(RE_POISON))) {
         step.op = { t: "poison", p: m[1], n: Number(m[2]) };
@@ -386,6 +424,7 @@ function stepFor(
         step.hi = [m[1]];
       } else if (raw.startsWith("Send countered spell")) {
         step.op = { t: "counterpop" };
+        step.text = "The countered spell goes to its owner's graveyard.";
       }
       break;
     case "combat":
@@ -418,9 +457,14 @@ function stepFor(
       if ((m = raw.match(RE_LOST))) {
         step.op = { t: "out", p: m[1] };
         step.hi = [stripAi(m[1])];
+        let w: RegExpMatchArray | null;
+        if ((w = raw.match(RE_POISON_LOSS))) step.text = `${stripAi(w[1])} has lost to ${w[2]} poison counters.`;
+        else if ((w = raw.match(RE_GENERALS))) step.text = `${stripAi(w[1])} has lost to ${w[2]} commander damage.`;
       } else if ((m = raw.match(RE_WON))) {
         step.hi = [stripAi(m[1])];
       }
+      // "Turn 18" is reworded once the game's table turns are known
+      // (buildTimeline), so it can say the same turn the story says.
       break;
     case "discard":
       if ((m = raw.match(/^(.+?) discards (.+?)(?: \(\d+\))?\.?\s*$/))) {
@@ -460,12 +504,20 @@ export function buildTimeline(game: SimGame): Timeline {
       phase = step.phase; // phase events update it; others inherit
     }
   }
+  const totalRounds = turns.length ? Math.max(...turns.map((t) => t.round)) : 0;
+  // Forge's "Turn 18" game-length line, in table turns: the same count the
+  // game story, the transport and the out seats use.
+  for (const s of steps) {
+    if (s.kind === "game_outcome" && RE_TURN_LINE.test(s.text)) {
+      s.text = totalRounds ? `The game ended on turn ${totalRounds}.` : "The game ended.";
+    }
+  }
   return {
     steps,
     players: game.players,
     turns,
     totalTurns: game.turns.length ? game.turns[game.turns.length - 1].turn : 0,
-    totalRounds: turns.length ? Math.max(...turns.map((t) => t.round)) : 0,
+    totalRounds,
   };
 }
 

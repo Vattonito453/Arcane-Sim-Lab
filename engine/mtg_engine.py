@@ -465,6 +465,16 @@ def _job_status(job_id: str | None) -> dict:
     out = {"state": job["state"], "id": job["id"], "decks": job["decks"],
            "games": job["games"], "started": job["started"],
            "elapsed": job.get("elapsed"), "error": job["error"]}
+    # The decks' own names and commanders, read from the .dck files, so the
+    # running page titles the pod the way the run page will ("Kess vs Skrat's
+    # Revenge"), not from the paths ("Kess Reanimator 305b76d7 vs Skrat S
+    # Revenge 239c6293", an import id in an h1: WS11 task 7).
+    try:
+        import commanders
+        out["deck_labels"] = _deck_labels(job["decks"] or [])
+        out["commanders"] = commanders.of_run({"decks": job["decks"] or []})
+    except Exception:  # noqa: BLE001 - a label must never take a status down
+        pass
     if job["state"] == "queued":
         # Report the truth. Calling a queued job "running" meant that behind a
         # backlog you watched an elapsed timer tick for a job Forge had not

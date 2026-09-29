@@ -23,6 +23,7 @@ import { storySegments } from "@/lib/story";
 import { loadCards, type CardFacts, type CardMap } from "@/lib/cards";
 import { Tabletop, TabletopNote } from "@/components/Tabletop";
 import { FlagMoment } from "@/components/FlagMoment";
+import { LoadError } from "@/components/LoadError";
 
 const SPEED_MS: Record<number, number> = { 1: 300, 2: 150, 4: 75 };
 
@@ -132,9 +133,24 @@ export default function ReplayPage() {
     });
   }, [game, commanders]);
 
-  // Back-link reads as the matchup; the filename stays in the footer (it used
-  // to be the back link's text while the game loaded, too).
-  const backLabel = game ? runTitle(game.players, commanders) : "Run overview";
+  // Back-link reads as the matchup, in the run page's order: the engine's
+  // standings order, which the run page's title uses. This game's seat order
+  // named the same run "Stella Lee vs Krenko Goblins vs Kess vs Skrat's
+  // Revenge" on game 2 (week-3 review). The filename stays in the footer.
+  const runOrder = useMemo(() => {
+    if (!game) return [];
+    const order = data?.standings?.decks.map((d) => d.deck) ?? [];
+    const rank = (p: string) => {
+      const i = order.indexOf(stripAi(p));
+      return i < 0 ? order.length : i;
+    };
+    return [...game.players].sort((a, b) => rank(a) - rank(b));
+  }, [game, data?.standings]);
+  const backLabel = game ? runTitle(runOrder, commanders) : "Run overview";
+  const seatName = useCallback(
+    (p: string) => shortName(p, game?.players ?? [], commanders),
+    [game, commanders],
+  );
 
   // Out seats, placed on the timeline at the event Forge dates each loss by
   // (engine/game_story.py). From there the seat is greyed and its board is
@@ -349,13 +365,8 @@ export default function ReplayPage() {
               </Link>
               .
             </p>
-          ) : wait != null ? (
-            <p className="note">
-              {err}. The engine is throttling reads. Try again in about{" "}
-              <span className="mono">{wait}</span> s.
-            </p>
           ) : (
-            <p className="note">{err}. Check that the engine API is running, then reload.</p>
+            <LoadError err={err} wait={wait} what="replay" />
           )}
         </div>
         <Footer />
@@ -502,7 +513,8 @@ export default function ReplayPage() {
             step={cur}
             index={clamp(idx, 0, n - 1)}
             total={n}
-            players={game.players}
+            players={runOrder}
+            name={seatName}
             onClose={() => {
               setFlagOpen(false);
               flagBtnRef.current?.focus();

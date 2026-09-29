@@ -2080,6 +2080,10 @@ def serve(port: int = 8484) -> None:
             parsing the named result file (up to ~6 MB), so a key that only
             ever sent bad requests must still be bounded."""
             key = self._credential()
+            if key and key in REVIEW_KEYS:
+                # The same 403 as every other write: the key is recognised,
+                # it just reads the queue and nothing else.
+                return self._deny(403, REVIEW_ONLY_REFUSAL)
             reporter = flag_reporter(key)
             if reporter is None:
                 return self._deny(401, (

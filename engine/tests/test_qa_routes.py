@@ -225,7 +225,8 @@ def queue_route() -> None:
     assert "reviewer key" in body["error"], body
     st, body, _, _ = call("/flags", {"run": FIXTURE, "game": 1, "anchor": {"event_index": 3},
                                      "note": "x"}, key=REVIEWER)
-    eq(st, 401, f"nor file a flag: {body}")
+    eq(st, 403, f"nor file a flag: {body}")
+    assert "reviewer key" in body["error"], body
     eq(call("/health")[1].get("review"), True, "/health says a reviewer key is loaded")
 
     saved = mtg_engine.API_KEYS, mtg_engine.FLAG_KEYS, mtg_engine.REVIEW_KEYS

@@ -1,4 +1,21 @@
 {
  "about": "Rank checks of the playgroup prediction model (precon_predict.json) under each pilot: repair plan WS11 task 11, decision 19. One record per check, appended by the study's reader (studies/rank_check_r1/read_rank_check.py --write-record) and never edited afterwards. GET /results/{file}/prediction reads the latest record whose pilot equals the run's pilot id (engine/pilot.py) and whose model equals the served model's fingerprint (predict.model_fingerprint: a hash of the fitted parameters, so a refit needs its own check and a check of the old model neither withholds nor vouches for the new one): pass keeps the label, fail withholds the prediction for that pilot until the model is refit, no record keeps the label and says no check has been run. Fields: release, date, pilot, model, jar_sha, plan_version, metric, value, threshold, pass, n_decks, games, study, prereg_commit.",
- "checks": []
+ "checks": [
+  {
+   "release": "R1",
+   "date": "2026-09-29",
+   "pilot": "plan/0.17.0/v2",
+   "model": "cba8b3be2fd29455",
+   "jar_sha": "c2273bef30d7cd9edb20d711f81bce01444470a91e9d15bbf23f2e3fd3081dfd",
+   "plan_version": 2,
+   "metric": "spearman(predicted, human)",
+   "value": 0.51,
+   "threshold": 0.4,
+   "pass": true,
+   "n_decks": 66,
+   "games": 768,
+   "study": "studies/rank_check_r1",
+   "prereg_commit": "c63ef321f2677a25f8539dba408ba90eff159daf"
+  }
+ ]
 }

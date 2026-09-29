@@ -94,11 +94,16 @@ Name=Clean Test
 1 Sol Ring
 [Main]
 1 Plain Rock
-1 Tide Restoration // Tide, Reborn
+1 Tide Restoration
 97 Island
 """
-WANT_WONT = ["Wintry Schemer", "Grim Consult", "Storm Mage", "Heat // Chill"]
-WANT_UNKNOWN = ["Nothing Like This", "Tide Restoration / Tide, Reborn"]
+# The deck file spells the DFC "Storm Mage // Storm Prodigy", which Forge
+# refuses at load (the Ral case), so it is a card Forge could not load and not
+# one its AI skips; an import rewrites it to "Storm Mage", which loads and is.
+WANT_WONT = ["Wintry Schemer", "Grim Consult", "Heat // Chill"]
+WANT_UNKNOWN = ["Storm Mage // Storm Prodigy", "Nothing Like This",
+                "Tide Restoration / Tide, Reborn"]
+WANT_WONT_IMPORTED = ["Wintry Schemer", "Grim Consult", "Storm Mage", "Heat // Chill"]
 FLAGGED_FILE = "schemer_test_1234abcd.dck"
 CLEAN_FILE = "clean_test.dck"
 (_data / "decks" / FLAGGED_FILE).write_text(FLAGGED, encoding="utf-8")
@@ -118,13 +123,18 @@ def test_rule():
 def test_deck_lists():
     d = disclosure.of_deck_text(FLAGGED, IDX)
     assert d["index"] == "test", d
-    # flagged spell, flagged commander, a DFC by its front face, a split card;
-    # never the counterspell or the land
+    # flagged spell, flagged commander, a split card by its joined name; never
+    # the counterspell or the land
     assert d["ai_wont_play"] == WANT_WONT, d
     assert d["commander_ai_wont_play"] == ["Wintry Schemer"], d
-    # a count-less line still loads in Forge, so it is checked; a single-slash
-    # name is one Forge refuses (Richard's "Primal Amulet / Primal Wellspring")
+    # a DFC spelled "Front // Back" and a single-slash name (Richard's "Primal
+    # Amulet / Primal Wellspring") are refused as written; a count-less line
+    # still loads in Forge, so it is checked too
     assert d["could_not_load"] == WANT_UNKNOWN and d["load_basis"] == "index", d
+    assert disclosure.refused_as_written(IDX, "Storm Mage // Storm Prodigy")
+    assert not disclosure.refused_as_written(IDX, "storm mage")          # front face, any case
+    assert not disclosure.refused_as_written(IDX, "Heat // Chill")       # split keeps " // "
+    assert not disclosure.refused_as_written(IDX, "Grim Consult|SET|1")  # printing suffix
     none = disclosure.of_deck_text(CLEAN, IDX)
     assert none["could_not_load"] == [] and none["ai_wont_play"] == [], none
     assert none["commander_ai_wont_play"] == []
@@ -146,7 +156,8 @@ def test_import_and_deck_page_agree():
     page = disclosure.of_deck_text(content, IDX)
     for k in ("index", "could_not_load", "ai_wont_play", "commander_ai_wont_play", "load_basis"):
         assert imp[k] == page[k], (k, imp[k], page[k])
-    assert imp["ai_wont_play"] == WANT_WONT and imp["could_not_load"] == ["Nothing Like This"]
+    assert imp["ai_wont_play"] == WANT_WONT_IMPORTED, imp
+    assert imp["could_not_load"] == ["Nothing Like This"], imp
     # and the warning names the same cards in the owner's wording
     wont = [w for w in rep["warnings"] if w["kind"] == "ai_wont_cast"][0]
     assert wont["cards"] == imp["ai_wont_play"], wont

@@ -10,8 +10,10 @@ lists per deck, shown on the run page, the deck page and at import:
                   from its stderr (run_sim writes meta.unsupported_cards and
                   meta.unsupported_by_deck; basis "run"). A run older than
                   that check, a deck page and an import read it from the
-                  Forge index instead: names Forge doesn't know, which it
-                  refuses the same way (basis "index").
+                  Forge index instead (basis "index"): names Forge doesn't
+                  know, and the joined "Front // Back" spelling of a
+                  non-split card, both of which it refuses at load
+                  (refused_as_written).
   ai_wont_play    cards scripted AI:RemoveDeck:All whose spell Forge's AI
                   doesn't cast on its own (the owner's wording, 2026-09-27).
                   ONE rule, the same one behind the import warning
@@ -72,25 +74,50 @@ def _clean(name: str) -> str:
     return (name or "").split("|", 1)[0].strip()
 
 
-def ai_wont_play(idx, names) -> list[str]:
-    """The Forge names, in first-seen order, of the cards among `names` that
-    Forge's AI doesn't cast on its own. A name Forge doesn't know is not
-    listed here (it is in could_not_load instead)."""
-    out: list[str] = []
-    for n in names:
-        forge = idx.resolve(_clean(n))
-        if forge and forge not in out and ai_skips(idx.flag(forge)):
-            out.append(forge)
-    return out
+def refused_as_written(idx, name: str) -> bool:
+    """Whether Forge refuses this .dck name at load, read from the index.
+
+    Forge loads a card by its own name (ignoring case): the front face of a
+    transform, modal, battle, adventure or flip card, and "A // B" for a split
+    card. So a name the index cannot resolve is refused (a typo, or a
+    single-slash "Primal Amulet / Primal Wellspring", measured refused in the
+    G0a stderr), and so is the joined "Front // Back" spelling of a non-split
+    card, which the index resolves but Forge does not (measured: both Ral
+    decks lost their commander that way). convert_decklist rewrites both
+    forms it can on import; this is for deck files written before it did."""
+    c = _clean(name)
+    if not c:
+        return False
+    forge = idx.resolve(c)
+    if forge is None:
+        return True
+    if " // " in c and " // " not in forge:
+        return True
+    return False
 
 
 def unknown_to_forge(idx, names) -> list[str]:
-    """Names Forge doesn't know, as the deck spells them, first-seen order."""
+    """Names Forge refuses at load, as the deck spells them, first-seen order."""
     out: list[str] = []
     for n in names:
         c = _clean(n)
-        if c and idx.resolve(c) is None and c not in out:
+        if c and c not in out and refused_as_written(idx, c):
             out.append(c)
+    return out
+
+
+def ai_wont_play(idx, names) -> list[str]:
+    """The Forge names, in first-seen order, of the cards among `names` that
+    Forge's AI doesn't cast on its own. A name Forge refuses at load is not
+    listed here (it never reaches a game; it is in could_not_load instead)."""
+    out: list[str] = []
+    for n in names:
+        c = _clean(n)
+        if not c or refused_as_written(idx, c):
+            continue
+        forge = idx.resolve(c)
+        if forge and forge not in out and ai_skips(idx.flag(forge)):
+            out.append(forge)
     return out
 
 

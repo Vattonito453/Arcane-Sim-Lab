@@ -740,7 +740,12 @@ IMAGE_FILES = [
 # `--image-only` in the worker (which runs qa/run.py after every job).
 IMAGE_IMPORTS = ["qa", "qa.context", "qa.knockouts", "qa.tutors", "qa.run",
                  "qa.review_queue", "analysis", "scorecard", "game_story", "board",
-                 "validity", "combo_bands", "commanders", "pilot", "predict"]
+                 "validity", "combo_bands", "commanders", "pilot", "predict",
+                 # Week 4: the run summary imports standings unguarded (a
+                 # missing module is a 500 on every run page), and every
+                 # disclosure list, the telemetry exemption and the coach's
+                 # cut rule read disclosure.
+                 "standings", "disclosure"]
 
 # QA layer A (repair plan WS2 layer A task 6): the newest finished run must
 # have a qa.json with no errors. The worker writes it in a detached child

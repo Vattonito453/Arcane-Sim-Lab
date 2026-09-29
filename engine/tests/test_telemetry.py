@@ -113,8 +113,11 @@ def test_universal_rows_are_gone():
     check("engine" not in rep, "the charge-counter and proliferate rows are gone")
     blob = json.dumps(rep).lower()
     check("charge" not in blob and "proliferate_" not in blob, blob[:300])
-    check(sorted(rep) == ["commander", "deaths", "decided", "deck", "games", "method",
-                          "player_key", "source", "watched", "win_rate", "wins"], sorted(rep))
+    # ai_wont_play: the R1.1 disclosure list (engine/disclosure.py), merged
+    # in week 4 beside these rows; the engine block must stay gone.
+    check(sorted(rep) == ["ai_wont_play", "commander", "deaths", "decided", "deck", "games",
+                          "method", "player_key", "source", "watched", "win_rate", "wins"],
+          sorted(rep))
     print("  no charge-counter or proliferate rows: OK")
 
 

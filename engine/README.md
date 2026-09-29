@@ -20,6 +20,7 @@ run_sim.py ──► Forge JVM ──► forge_log_adapter.py ──► game_log
 | `setup_forge.sh` | Installs Forge 2.0.13 (~290MB) on your machine | Run locally |
 | `decks/*.dck` | Four ready 100-card Commander decks (Krenko, Drana, Selvala, Talrand) | Counts verified (100 each); card names use evergreen staples |
 | `tests/test_adapter.py` | Adapter unit tests using Forge's exact log format | Passing |
+| `qa/run.py` | QA layer A: one `qa.json` per finished run under `$MTG_DATA_DIR/simkb/runs/<stem>/` (knockouts, swing, tutor figures, pilot, fidelity, flags); the worker runs it after each job and sweeps runs without one; `--all` backfills | Tests: `tests/test_qa_run.py`, `test_qa_hook.py`, `test_qa_routes.py` |
 
 **Setup:** `bash setup_forge.sh` once, then the command below. If any deck card name isn't in Forge's database, the raw log in `sim_results/` names the offender — fix that line in the `.dck` and rerun. (Verified working end-to-end on macOS Apple Silicon, 25+ real games.)
 
@@ -50,6 +51,8 @@ python3 mtg_engine.py serve 8484
 | `GET /turn-structure` | Ordered phases/steps with attached rules — drive your UI's turn tracker straight off this |
 | `GET /health` | KB stats |
 | `POST /simulate` `{"decks":[...],"deck_dir":"...","games":10}` | Runs Forge, returns adapted JSON with win rates |
+| `GET /results/{file}/qa` | The run's `qa.json` (public, no human notes); 404 `{"qa": "pending"}` until written |
+| `GET /qa/queue?since=<cursor>` | Review queue, human flags first; admin key from `MTG_API_KEYS` only |
 
 CORS is open (`*`) for dev. CLI mirrors every endpoint (`python3 mtg_engine.py rule 903.10a`, `search`, `keyword`, `glossary`, `turn-structure`, `validate-log`, `stats`, `serve`).
 

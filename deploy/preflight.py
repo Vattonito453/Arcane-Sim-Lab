@@ -37,6 +37,17 @@ shows, checked after the surfaces:
   - the newest result was piloted by a shim at least as new as the release
     pin. A run finished BEFORE the deploy fails this until a new sim finishes,
     so the post-deploy order is: deploy, smoke_test.py --sim, then preflight.
+  - with --files: the newest result has a qa.json (QA layer A, R1.1) with no
+    errors, read through GET /results/{file}/qa. The worker writes it in a
+    detached child after the run finishes, so the check waits for it (up to
+    --qa-wait, 150 s by default) rather than racing the worker.
+
+IN THE WORKER CONTAINER, which serves no API, run the image half only:
+
+    python3 deploy/preflight.py --image-only
+
+It checks the same files and imports as --files, including the in-memory QA
+analysis the worker runs after every job.
 
 MAINTAINING THIS. When you add a user-visible feature, add a SURFACE entry in
 the same commit. When you deliberately turn something off, move it to
@@ -602,13 +613,30 @@ IMAGE_FILES = [
      "the QA analyzers package; the same top-level glob would miss it"),
     ("/app/engine/qa/knockouts.py",
      "knockouts: analysis.win_method and the scorecards read it"),
+    ("/app/engine/qa/run.py",
+     "QA layer A: the worker runs it after every finished run (qa.json)"),
+    ("/app/engine/qa/review_queue.py",
+     "the review queue behind GET /qa/queue and QA's auto flags"),
 ]
 
 # Modules that must IMPORT in the image, not merely exist on disk. analysis.py
 # imports engine/qa/ at module load, so a missing or broken package would take
-# /analysis down at request time while every file check above passed.
-IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard", "game_story",
-                 "commanders", "pilot", "predict"]
+# /analysis down at request time while every file check above passed. The
+# same list is checked in BOTH images: `--files` here in the api container,
+# `--image-only` in the worker (which runs qa/run.py after every job).
+IMAGE_IMPORTS = ["qa", "qa.context", "qa.knockouts", "qa.tutors", "qa.run",
+                 "qa.review_queue", "analysis", "scorecard", "game_story", "board",
+                 "validity", "combo_bands", "commanders", "pilot", "predict"]
+
+# QA layer A (repair plan WS2 layer A task 6): the newest finished run must
+# have a qa.json with no errors. The worker writes it in a detached child
+# after the job finishes, so a preflight run straight after a sim can arrive
+# first: the check polls for up to QA_WAIT_SECONDS before failing (the
+# worker's own ceiling is 120 s; the smoke test's --sim run waits for its
+# qa.json too, so after the documented order the wait is normally zero).
+QA_SCHEMA = "simlab.qa/1"
+QA_WAIT_SECONDS = 150.0
+QA_POLL_SECONDS = 5.0
 
 
 def _engine_dir():
@@ -660,7 +688,66 @@ def check_imports(engine_dir=None):
     except Exception as e:  # noqa: BLE001
         bad += 1
         print("  %-9s knockouts.detect: %s: %s" % ("BROKEN", type(e).__name__, e))
+        game = None
+    try:
+        # The whole QA layer A analysis, in memory (nothing is written): the
+        # context, every detector and the qa.json assembly.
+        from qa import run as qa_run
+        doc = qa_run.analyze("sim_00000000_000000_preflight.json",
+                             result={"meta": {}, "games": [game]}, load_forge=False)
+        kos = ((doc.get("games") or [{}])[0].get("knockouts")) or []
+        ok = (doc.get("schema") == QA_SCHEMA and not doc.get("errors")
+              and [k.get("cause") for k in kos] == ["combat_damage"])
+        if not ok:
+            bad += 1
+        print("  %-9s qa.run.analyze on a synthetic game: %s, %d error(s)%s" % (
+            "ok" if ok else "WRONG", doc.get("analyzer"), len(doc.get("errors") or []),
+            "" if not doc.get("errors") else ": %s" % doc["errors"][:2]))
+    except Exception as e:  # noqa: BLE001
+        bad += 1
+        print("  %-9s qa.run.analyze: %s: %s" % ("BROKEN", type(e).__name__, e))
     return bad
+
+
+def qa_report_ok(base, run, wait=QA_WAIT_SECONDS, poll=QA_POLL_SECONDS,
+                 fetch_=None, sleep=None, clock=None):
+    """(ok, detail): the probe run (the newest result) has a qa.json with no
+    errors, served by GET /results/{run}/qa. A 404 {"qa": "pending"} is
+    polled until `wait` runs out, because the worker writes qa.json in a
+    detached child after the job finishes (see QA_WAIT_SECONDS)."""
+    import time as _time
+    fetch_ = fetch_ or fetch
+    sleep = sleep or _time.sleep
+    clock = clock or _time.monotonic
+    deadline = clock() + max(0.0, wait)
+    waited = False
+    while True:
+        st, body = fetch_(base, "/results/%s/qa" % run)
+        if st == 200 and isinstance(body, dict) and body.get("schema") == QA_SCHEMA:
+            errs = body.get("errors") or []
+            if errs:
+                shown = "; ".join("[%s] %s" % (e.get("stage"), e.get("error"))
+                                  for e in errs[:3] if isinstance(e, dict))
+                return False, ("qa.json for %s has %d error(s): %s. Rerun it with "
+                               "engine/qa/run.py %s in the worker container to see the "
+                               "traceback." % (run, len(errs), shown, run))
+            return True, "%s: %s, %d flag(s), no errors%s" % (
+                run, body.get("analyzer"), len(body.get("flags") or []),
+                " (after waiting for the worker)" if waited else "")
+        if st == 200:
+            return False, ("GET /results/{file}/qa answered with something that is not a "
+                           "qa report: the engine predates QA layer A (R1.1)")
+        if st == 404 and isinstance(body, dict) and body.get("qa") == "pending":
+            if clock() >= deadline:
+                return False, ("no qa.json for %s after waiting %d s. The worker writes "
+                               "it after each run and its sweeper backfills; check "
+                               "`docker compose logs worker` for 'QA', or run "
+                               "engine/qa/run.py %s in the worker container." % (
+                                   run, int(wait), run))
+            waited = True
+            sleep(poll)
+            continue
+        return False, "HTTP %s: %s" % (st, str(body)[:160])
 
 
 def check_files():
@@ -709,8 +796,24 @@ def main(argv):
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--base", default=os.environ.get("PREFLIGHT_BASE", DEFAULT_BASE))
     ap.add_argument("--files", action="store_true",
-                    help="also check image contents (run inside the container)")
+                    help="also check image contents (run inside the container) and "
+                         "that the newest run has a clean qa.json")
+    ap.add_argument("--image-only", action="store_true",
+                    help="only the image contents and imports, no HTTP (the worker "
+                         "container, which serves no API)")
+    ap.add_argument("--qa-wait", type=float, default=QA_WAIT_SECONDS,
+                    help="with --files: seconds to wait for the newest run's qa.json "
+                         "(default %(default)s)")
     args = ap.parse_args(argv)
+
+    if args.image_only:
+        bad = check_files() + check_imports()
+        print()
+        if bad:
+            print("PREFLIGHT FAILED: %d image check(s) failed." % bad)
+            return 1
+        print("PREFLIGHT OK: every file and module this image must carry is there and works.")
+        return 0
 
     run = pick_run(args.base)
     if not run:
@@ -786,6 +889,12 @@ def main(argv):
           "note": "version-2 plans need shim >= 0.17.0 (tasks/25 WS5 T1)"},
          plan_version_supported(pin)),
     ]
+    if args.files:
+        invariants.append(
+            ({"name": "newest run has a clean qa.json",
+              "note": "QA layer A (R1.1): post-deploy order is smoke_test.py --sim, "
+                      "then preflight; the check waits up to --qa-wait seconds"},
+             qa_report_ok(args.base, run, wait=args.qa_wait)))
     broken = 0
     print("\nDEPLOYMENT INVARIANTS")
     for s, (ok, detail) in invariants:

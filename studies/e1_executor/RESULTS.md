@@ -17,7 +17,9 @@ same way it failed in development: the Derevi trigger was bound to Gaea's
 Cradle every time, and Forge's `chooseBinary` then tapped it. There were 0
 unhandled exceptions and 0 executor aborts, C1 is not broken, the executor's
 median decision under 2-core affinity was 0.362 ms against a 2 s limit, and
-the Java diff is 396 lines with a clean lint.
+the Java diff is 396 lines with a clean lint. An independent review (last
+section) confirmed the reading, reproduced every scenario's outcome on
+fresh seeds and corrected the S1 attack split to 31 and 15.
 
 ## The verdict and what the plan does with it
 
@@ -61,8 +63,10 @@ Three things G1 does not settle, each for the owner or Phase B:
    (`exec-proto-binary`, 1a6c5d1, not run here) made S2 20/20 on dev seeds
    at 417 Java lines. Extending decision 4 is the owner's call.
 2. **A trigger-target line whose payoff is combat reaches its state, not a
-   kill.** The pilot's attack split sent 33 attackers at one opponent and
-   17 at another in all 20 S1 trials; the third was never attacked. Phase
+   kill.** The pilot's attack split sent 31 attackers at one opponent and
+   15 at another (46 in all) in all 20 S1 trials; the third was never
+   attacked. (First published as 33 and 17, which counted the `Ai(n)` seat
+   prefixes as instance ids; corrected by the review below.) Phase
    B's `hand_off_attack` is this same hand-off.
 3. **Long lines cost Forge's time.** S4's games took 603 to 737 s against
    the 900 s clock (the line alone 504 to 631 s, budget 780 s), 2.5 to 3
@@ -133,18 +137,22 @@ Scenario by scenario:
 
 - **S1.** In every trial the line armed on turn 9, Kiki-Jiki copied Zealous
   Conscripts 44 times, and every copy's enter trigger was bound to Kiki-Jiki
-  (880 of 880 bound on turn 9; one further Conscripts trigger that turn,
-  outside the line, went where Forge chose, Thalia). The loop stopped on
+  (880 of 880 bound on turn 9; in one trial, trial 4, the pilot activated
+  Kiki-Jiki once more after the hand-off, and that copy's trigger, outside
+  the line, went where Forge chose, Thalia). The loop stopped on
   `power_vs_life` and the `pass` outlet handed combat to the pilot, which
-  declared 33 attackers at winota_ian and 17 at winota_mike in 20 of 20
-  trials. Two opponents died; the line armed again on turn 11 (16 copies,
+  declared 31 attackers (Zealous Conscripts) at winota_ian and 15
+  (Kiki-Jiki and 14 Conscripts) at winota_mike in 20 of 20 trials: all 45
+  Conscripts and Kiki-Jiki. Two opponents died; the line armed again on turn 11 (16 copies,
   320 binds) and the seat won on turn 11 in 20 of 20, two turns after the
   scenario turn, so 0/20 kills by S1's rule. Stock never bound the untap to
   Kiki-Jiki: its Conscripts triggers targeted Thalia (turn 9, 20 times),
   Bartz Klauser (turn 13, 18) and Serra Ascendant (1). The 560 printed
   lines are 280 `CompletionException`/`ConcurrentModificationException`
-  pairs from Forge's parallel attack futures with some 50 attackers, caught
-  by Forge; every game finished normally.
+  pairs from Forge's parallel attack futures with 46 attackers, caught
+  by Forge; every game finished normally. They do not change the
+  declaration: the pinned timing trials with no such line (4 of 8)
+  declared the same 31 and 15.
 - **S2.** On turn 9 the executor bound Derevi's trigger to the tapped
   Gaea's Cradle in 20 of 20 trials (stock: 0 of 155 Derevi triggers on the
   Cradle, which went to Ragavan, Birds of Paradise and Sol Ring), declined
@@ -212,8 +220,12 @@ the same pilot on week 3's 0.17.1 jar (reported, not gated).
 
 Eight JVMs at once, each started with `-XX:ActiveProcessorCount=2` and
 pinned right after start to its own pair of logical CPUs (masks 3, C, 30,
-C0, 300, C00, 3000, C000). All eight masks were observed on the running
-JVMs, and every timing trial's record carries its mask and the flag.
+C0, 300, C00, 3000, C000). Every timing trial's record carries its mask
+and the flag, and no two trials ran on one mask at once. The record is the
+mask the runner asked for: the runner does not read it back, and no saved
+artifact shows the running JVMs' affinity. The review verified the same
+code path live (below): every JVM held its own mask from about a second
+after start, and the JVM itself read 2 active processors.
 
 | Scenario | Trials | G1 success | Kills | Decisions | Decision ms, median / p95 / max | Game s | Printed exception lines |
 |---|---|---|---|---|---|---|---|
@@ -276,3 +288,180 @@ py studies/e1_executor/read_g1.py --json <scratch>/g1/g1_reading.json --md <scra
 Raw output (JSONL, stderr, cell records, the harness's reports, load logs)
 is in `<scratch>/g1/runs/`, outside git. A re-run on the same seeds pairs
 openings but is not byte-identical (CLAUDE.md, gotcha 10).
+
+## Independent review (branch `r4/e1-review`)
+
+An adversarial review of the prototype, its step data and this reading,
+after the gate. Nothing the gate pinned changed: no Java, step file,
+plans, runner, writer, reader or PREREG edit. The review corrected two
+statements in this file and the README (the S1 attack split, the affinity
+wording) and adds this section. **It confirms the verdict: GO under the
+pre-registered primary reading, PARTIAL by kills only**, with the notes
+at the end. Raw output: `<scratch>/e1_review/runs/`.
+
+### What was checked
+
+- **The jar.** A fresh `javac` of `exec-proto` at `88e7564` against Forge
+  2.0.13 gives 19 class files byte-identical to the G1 jar's
+  (`BUILD_COMMIT` `88e756456304`); the jar's SHA-256 is the pinned one.
+- **The boundary** (decision 4's checklist, shim README "Boundary
+  rulings"). `git diff --numstat 13eeed7..88e7564 -- '*.java'`: 395 added,
+  1 removed (the version string), 396 strict; the card-name lint passes
+  (10 files, 35,069 names). The `orderAndPlaySimultaneousSa` override binds
+  a target only on a trigger whose host card the armed line's `triggers`
+  data names, skips copies and Charm triggers, and hands every other
+  trigger, a failed bind and a bound trigger `playStack` refuses to
+  `super`; with no plan `steps` the hooks run the 0.17.1 code. Decisions go
+  through `canPlay`, `ComputerUtilCost.canPayCost`, `canTarget` and
+  `ComputerUtil.playStack`; the rest is reading public state and setting
+  the chosen ability's own activating player and targets. No card name,
+  and no scoring beyond the plan's closed vocabulary (`lowest_life`,
+  `largest_library`, the five stop predicates). The override is 20 lines,
+  91 with its helpers, against decision 4's 600. One widening is
+  disclosed in the shim README and is load-bearing: a mana ability is
+  returned as an action (WS9 Phase A item 1 says "a non-mana activation"),
+  and S3's and S6's loops need it to float mana.
+- **Gate integrity.** The PREREG commit is 20:13:12; all 300 gate cells
+  started after it (first 20:13:35) and exited 0; no JSONL with a gate
+  seed exists anywhere else in the scratch folder; the gate seeds
+  (2026102300-347) are disjoint from the dev range (2026200000-999); the
+  jar, step files, runner, writer and scenario files hash to their pins;
+  the commits after the PREREG touch only README, RESULTS and
+  `g1_summary.json`. `read_g1.py` re-run on a copy of the raw output
+  reproduces `g1_reading.md` line for line (GO, no provenance problem).
+  An independent tally from the raw result and StepRunner records (not
+  the harness or the reader) gives the same kills, timeouts, aborts and
+  per-scenario medians, and the same pooled 2-core median, 0.362 ms over
+  24,306 decisions, computed as pre-registered (every StepRunner record's
+  `ms=` in the timing phase, pooled).
+- **The S1 finding itself.** On turn 9 every trial put exactly 44
+  Conscripts copy triggers on the stack while the line was armed, and all
+  44 carried Kiki-Jiki as their target (880 of 880); the one other
+  Conscripts trigger that turn (trial 4) came from an activation the pilot
+  made after the hand-off, and Forge's AI aimed it at Thalia, as the
+  checklist requires once the line has ended.
+- **2-core pinning.** Windows' own topology
+  (`GetLogicalProcessorInformation`) puts logical processors 2k and 2k+1
+  on one physical core for all 16 cores, so masks 3 to C000 are one
+  core's two hardware threads each, as the PREREG assumed without
+  checking. In the gate's timing phase no two JVMs held one mask at once
+  (at most 8 ran together; the apparent overlaps are under a second, from
+  start stamps cut to the second). Live, on the same code path (6 JVMs,
+  masks 3 to C00, S3 exec, seeds 2026103160-165, polled every 5 s): every
+  JVM held exactly its mask from the first poll, about a second after
+  start, to its end, and `jcmd VM.info` read "CPU: total 32 (initial
+  active 2)". 6/6 kills; executor median 0.252 ms over 7,170 decisions.
+- **Step data.** Each file names its scenario and the line seat's deck;
+  every card it names is on that board or, for S4's searches (Battered
+  Golem, Grinding Station, Maskwood Nexus), in magda's library; Walking
+  Ballista and Isochron Scepter are the harness's documented placements.
+  Forge adjudicates every action, so nothing in the data can fake a kill.
+  What is fitted to these boards is listed in the notes.
+
+### Reproduction on fresh seeds
+
+REVIEW seeds 2026103100-199 (outside the gate's and the dev range; no
+other run used them), 6 JVMs unpinned, the G1 jar, step files and plans.
+
+| Scenario | Stock kills | Exec kills | Exec strict state then outlet (`read_g1.py`) | Gate (20 trials) |
+|---|---|---|---|---|
+| S1 | 0/10 | 0/10 | 10/10 (440 of 440 line triggers bound on turn 9; in trial 0, as in the gate's trial 4, the pilot's one activation after the hand-off went to Thalia; split 31 and 15 in 10/10) | 0/20 kills, 20/20 |
+| S2 | 0/10 | 0/10 | 0/10 (bound to the Cradle 10/10, then tapped) | 0/20 |
+| S3 | 0/10 | 10/10 | 10/10 | 20/20 |
+| S6 | 0/10 | 10/10 | 10/10 | 20/20 |
+| S4 (exec only, 6 trials) | – | 6/6 by turn 12 | 6/6 | 20/20 |
+
+Seeds 2026103100-109 (S4: 2026103170-175). 86 trials, every one exit 0,
+no `Exception in thread`, no `shim: fatal`, 0 aborts, 0 budget stops, 0
+timeouts; S1 exec printed 354 of Forge's caught attack-future lines.
+Executor median 0.393 ms over 25,320 decisions (unpinned, S1 to S6
+without S4). S4's line took 446 to 548 s and its game 528 to 625 s at 6
+JVMs (gate, 8 JVMs: 504 to 631 and 603 to 737). The same outcome as the
+gate on every scenario.
+
+**C1**, 5 boards chosen by rule (every fourth board in sorted order from
+the third: 015_r0_g14, 015_r2_g08, 016_r0_g06, 016_r2_g00, 016_r3_g01),
+seed 2026103120, one trial each: stock 3/5, exec 3/5, `plan017` 3/5; exec
+and `plan017` (the same pilot on both jars) finished alike on all 5
+boards; 0 executor records; 0 non-zero exits. The gate read 2, 2 and 1 on
+the same boards: one trial per board moves a board either way.
+
+**No behaviour change without steps**, the builder's check repeated on
+the final jar (theirs ran `aa91088`; the later commits touch only
+`StepRunner`, which is never built without `steps`): pod 2iA_Jt0d6sM, no
+`--scenario`, every seat the plan pilot on G0a's version-2 plans, 2 games,
+`--max-turns 12`, seed 2026103150, 3 runs of 0.17.1 (967cb71) and 3 of
+`88e7564`. Over turns 1 to 12, game 1 is byte-identical in all six runs
+(`entry`, `zone`, `tap`, `agent` records); game 0 is identical in five and
+in all six once the order of mana taps is forgiven (the odd one out is a
+0.17.1 run). Headers differ only in `shim`, `shimCommit` and `planSteps`.
+Runs of either jar split from turn 13, the turn-cap kill.
+
+### Corrections made here
+
+- **The S1 attack split is 31 and 15, not 33 and 17** (46 attackers: all
+  45 Conscripts and Kiki-Jiki). The first count read every "(n)" in the
+  declaration, including the `Ai(1)` and `Ai(2)` / `Ai(3)` seat prefixes,
+  the confusion CLAUDE.md gotcha 5 warns about. Fixed above and in the
+  README; no figure in the verdict used it.
+- **Affinity.** "All eight masks were observed on the running JVMs" had no
+  saved artifact behind it; reworded above and verified live here.
+
+### Notes for the owner and Phase B (not fixed: none changes the reading)
+
+1. **The GO rests on S1's reading, and that reading was chosen knowing
+   the dev result.** The plan's parenthetical predates every E1 game, but
+   S1's step file (its `pass` outlet and `state_step`, `d1f5142`, 16:00)
+   followed the builder's first S1 runs (14:46), and the PREREG fixed the
+   primary reading after the dev runs had shown 0/20 kills; both documents
+   say so. The binding G1 asks about did work (880/880, 440/440): what
+   fails is combat, which is frozen. PARTIAL's premise, "trigger targeting
+   (S1, S2) fails", does not describe S1's data, which is why GO is the
+   better reading, not only the pre-registered one.
+2. **A broad reading of NO-GO would bite on S2.** Its failure is Forge's
+   `TapOrUntap` sub-chooser (`chooseBinary`) defeating a forced trigger in
+   20 of 20 trials. The PREREG counts only `not-played` and `exception`
+   aborts as sub-chooser misbehaviour, which is the measure the plan's
+   risk table names; read as "any sub-chooser defeats a forced ability",
+   NO-GO's first clause would hold. Stopping the executor when three
+   scenarios convert 20/20 is not what that clause is for, so the PREREG's
+   reading stands, but it matters for Phase B: every "tap or untap target
+   permanent" line (Derevi; Kiki-Jiki with Pestermite or Deceiver Exarch)
+   is not drivable until the owner rules on `chooseBinary`.
+3. **Latent executor defects**, none exercised by a G1 scenario, for
+   Phase B's `StepRunner` (a shim change now would void the gate):
+   - an armed line is closed only when its seat next gets priority, so in
+     the next turn's untap step a named trigger could still be bound or
+     answered (S4's holding line ended at turn 10's first priority with no
+     record in between);
+   - a bound trigger skips `prepareSingleSa`, and `bind` sets only the
+     first targeting ability in the chain, so a trigger with two targeted
+     parts would be played with the second unset instead of going to
+     `super`;
+   - `budget_ms` is checked only between actions, so a loop stopped
+     through `confirmTrigger` has no wall budget;
+   - a line is marked tried at the turn's first main-phase priority even
+     when its pieces are missing, so pieces that arrive later that turn
+     cannot arm it until the next turn;
+   - `pieces` does not cover every card the steps name (S4's Sol Ring and
+     its library targets); Phase B's arming should.
+4. **Harness, left alone because `run_g1.py` pins `run_scenarios.py`:**
+   `--affinity` ignores the result of the PowerShell call and records the
+   requested mask, so a failed pin would be silent; a cached trial is
+   reused without checking the jar. Fix both at the next harness change.
+5. **What the step data fits to these boards.** `mana_at_least: 476` is
+   exactly 119 Ballista counters, 120 damage with the one already placed,
+   for three opponents at 40 life: no margin, and wrong on any other
+   board. S4 taps Sol Ring for mana no later step spends (the step file
+   and its commits do not say why; tapping it changes which artifacts
+   Clock of Omens' cost can take), fetches Battered Golem and Maskwood
+   Nexus to work with Forge's cost choosers (commit `321ef57`), relies on `plan_patch`
+   search targets (no step op picks a search result), and ends with a
+   holding pass so the pilot's own deliberation on a 50-Treasure board
+   cannot run out the clock. None of it bypasses a rule, but Phase B's
+   templates need a life-relative mana stop, a search-pick channel and
+   arming that checks the library.
+6. **Cost, not decision time, is the CPU risk.** The gated metric is the
+   executor's own compute (under a millisecond); S4 spends 2 to 3 s of
+   Forge's wall time per executor action, all of it the opponents' AI at
+   priority. G3's VM check has to price lines like it.

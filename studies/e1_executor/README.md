@@ -11,7 +11,9 @@ in this README was run on a seed outside the DEV range 2026200000-2026200999.
 **G1 result:** GO under the pre-registered primary reading, PARTIAL if S1
 is read by kills only; see `PREREG.md` (the rules, fixed before any gate
 game), `RESULTS.md` (the gate's figures) and `g1_summary.json` (the
-reader's output). `run_g1.py` and `read_g1.py` reproduce it.
+reader's output). `run_g1.py` and `read_g1.py` reproduce it. An
+independent review confirmed the reading, reproduced it on fresh seeds
+and corrected the S1 attack split (`RESULTS.md`, "Independent review").
 
 **Development result, in short** (20 trials per arm, DEV seeds
 2026200000-019, jar `88e7564`, step files at `e28eeb2`; the gate's own
@@ -272,10 +274,15 @@ What happened, scenario by scenario:
   `power_vs_life` (untapped power at least the opponents' 120 life plus
   15). The `pass` outlet hands combat to the 0.17.1 pilot. Forge's
   `AiAttackController` in assault mode sends every attacker at one
-  defender, then the plan's split pass (`splitAttacks`) moves 15 of them
-  onto a second opponent: the declaration was 33 attackers at one
-  opponent and 17 at another in 20 of 20 trials, and the third opponent
-  was never attacked. Two opponents die on turn 9; the line arms again on
+  defender (read from Forge's source, not observed apart from the split
+  that follows), then the plan's split pass (`splitAttacks`) moves 15 of
+  them onto a second opponent: the declaration was 31 attackers (Zealous
+  Conscripts) at one opponent and 15 (Kiki-Jiki and 14 Conscripts) at
+  another, 46 in all, in 20 of 20 trials, and the third opponent was never
+  attacked. (An earlier count read 33 and 17: it counted the `Ai(1)` and
+  `Ai(2)` seat prefixes as instance ids, the trap CLAUDE.md gotcha 5
+  names; corrected in the review, `RESULTS.md`.) Two opponents die on
+  turn 9; the line arms again on
   turn 11 and the seat wins then, 20 of 20. So S1 is 0/20 by its success
   rule and 20/20 on "the stated infinite state followed by the outlet".
   No data can fix the split: attack distribution is not an executor
@@ -283,7 +290,7 @@ What happened, scenario by scenario:
   split pass only ever moves a third of the attackers to one other
   opponent. The 578 printed exception lines are 289
   `ConcurrentModificationException`s thrown inside Forge's parallel
-  must-attack futures (`AiAttackController.declareAttackers`) with 50
+  must-attack futures (`AiAttackController.declareAttackers`) with 46
   attackers; Forge catches them and the games finish normally.
 - **S2.** The Derevi trigger is bound to the tapped Gaea's Cradle in
   every trial (`op=bind ... target=Gaea's Cradle`), Emiel's "you may"
@@ -394,6 +401,12 @@ used 2026101400), 4 JVMs pinned to CPUs 8-31 beside the timing run:
 |---|---|---|---|---|---|---|
 | stock | 10/20 | 4/20 | 16/20 | 18/20 (stock) | 0 / 0 | – |
 | exec (plan, no steps) | 9/20 | 4/20 | 17/20 | 16/20 (plan) | 0 / 0 | 0 |
+
+The "same outcome as week 3" column is weak evidence: it pairs one trial
+per board on seed 2026200000 with week 3's one trial per board on seed
+2026101400, so it measures two single draws, not the jar. The paired,
+same-seed comparison is G1's (`RESULTS.md`, C1: exec and `plan017`, the
+same pilot on both jars, differ on 1 board of 20).
 
 Week 3 read stock 10/20 (4/20 on the turn) and plan 11/20 (3/20). One
 trial per board on a different seed moves a board or two either way

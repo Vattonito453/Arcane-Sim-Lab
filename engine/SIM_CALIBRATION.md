@@ -75,6 +75,14 @@ identically to a broken one: the simulator, not the decks, is the ceiling.
 
 ## How to report simulation results honestly
 
+0. One denominator: decided games, the games that finished with a winner
+   (not clock-cut, turn-capped, drawn or crashed). `engine/standings.py`
+   publishes every rate the product shows, with its precision (whole percents
+   below 30 decided games) and the leader ("leader", "tie", or "none" at or
+   below an even share); pages format it and never divide. It is the same
+   definition the prediction model's training arm ("stock Forge, decided
+   games") and the R1 rank check used. Leaderboards group runs by pilot and
+   version (`engine/pilot.py` ids) and never pool across them.
 1. Always seat-rotate.
 2. Until the archetype baselines are re-measured under the plan agent after
    G3 (decision 13, above), compare a deck's win rate only to the labelled pod

@@ -374,7 +374,9 @@ def test_detect_counts():
     for f in flags:
         kinds[f["kind"]] = kinds.get(f["kind"], 0) + 1
         assert set(f) == {"detector", "kind", "game", "turn", "player", "seq", "detail",
-                          "anchor"}, f
+                          "card", "anchor"}, f
+        # The card a flag is about is the tutor, the first name its detail gives.
+        assert f["card"] and f["detail"].startswith(f["card"]), f
         assert set(f["anchor"]) == {"game", "turn", "player", "agent_event_index", "seq"}, f
         eq(f["detector"], "tutors", "flags name their detector")
         eq(f["anchor"]["game"], f["game"], "one game number in a flag")

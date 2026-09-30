@@ -73,9 +73,17 @@ COPY engine/*.py /app/engine/
 # answered "no fitted model" in production while working fine locally.
 COPY engine/models/ /app/engine/models/
 # Same trap for packages: analysis.py and scorecard.py import engine/qa/ (the
-# repair plan's QA analyzers), and the top-level glob would leave it out.
+# repair plan's QA analyzers), and the top-level glob would leave it out. This
+# image also RUNS engine/qa/run.py after every finished job (QA layer A,
+# worker.launch_qa); everything it imports is in engine/*.py or engine/qa/,
+# and it reads the card cache and the Forge index from /data at runtime.
 COPY engine/qa/ /app/engine/qa/
 COPY engine/decks/*.dck /app/engine/decks/
+# The deployment self-check, for its image half in this container (no API
+# here): `python3 /app/deploy/preflight.py --image-only` proves engine/qa/
+# shipped and that the QA analysis runs, which the api container's check
+# cannot see from its own image.
+COPY deploy/preflight.py /app/deploy/preflight.py
 
 # The shim jar (vendor-staged or built from source in shim-builder).
 # run_sim.py's default agent is 'auto' = humanized via this jar.

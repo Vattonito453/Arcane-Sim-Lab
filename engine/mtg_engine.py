@@ -27,6 +27,12 @@ zero-dependency API. Use it three ways:
        GET  /results/{file}/scorecards  per-deck: outcomes, timing, behaviour
        GET  /results/{file}/game/{n}  one game's events and its story
        GET  /results/{file}/telemetry?deck=sub&watch=a|b  win-con telemetry for one deck
+       GET  /results/{file}/qa    the run's QA layer A report (engine/qa/run.py);
+                                  404 {"qa": "pending"} until the worker writes it
+       GET  /qa/queue?since=<cursor>&limit=N  open review items, human flags
+                                  first (a REVIEWER key from MTG_REVIEW_KEYS only;
+                                  an API key or a flags key gets 403):
+                                  engine/qa/review_queue.py
        GET  /estimate?decks=4&games=16  typical duration + played game count
                                   for a sim of that size, before it is queued
        GET  /cards?names=a|b|c    Scryfall card facts (cached); ?fetch=0 for cache-only
@@ -412,12 +418,21 @@ def _list_decks() -> list[dict]:
 
 def _read_deck_cards(path: Path) -> dict:
     """One deck's contents with counts expanded — what the playtest sandbox
-    shuffles. Pure data: no legality, no validation, no rules."""
+    shuffles. Pure data: no legality, no validation, no rules. Plus the deck
+    page's two disclosure lists (engine/disclosure.py), read from Forge's own
+    card index; `disclosures` is None only if computing them failed."""
     name = path.stem
     commanders: list[str] = []
     main: list[str] = []
     section = None
-    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+    text = path.read_text(encoding="utf-8", errors="replace")
+    try:
+        import disclosure
+        disclosures = disclosure.of_deck_text(text)
+    except Exception as e:  # noqa: BLE001 - the deck itself must still load
+        sys.stderr.write(f"deck disclosures skipped: {e}\n")
+        disclosures = None
+    for line in text.splitlines():
         line = line.strip()
         if not line:
             continue
@@ -440,7 +455,7 @@ def _read_deck_cards(path: Path) -> dict:
     # are not — the front end needs to know which it is looking at.
     source = "imported" if path.parent == IMPORTED_DECKS else "bundled"
     return {"file": path.name, "name": name, "source": source,
-            "commanders": commanders, "main": main}
+            "commanders": commanders, "main": main, "disclosures": disclosures}
 
 
 def _queued_count() -> int:
@@ -465,6 +480,16 @@ def _job_status(job_id: str | None) -> dict:
     out = {"state": job["state"], "id": job["id"], "decks": job["decks"],
            "games": job["games"], "started": job["started"],
            "elapsed": job.get("elapsed"), "error": job["error"]}
+    # The decks' own names and commanders, read from the .dck files, so the
+    # running page titles the pod the way the run page will ("Kess vs Skrat's
+    # Revenge"), not from the paths ("Kess Reanimator 305b76d7 vs Skrat S
+    # Revenge 239c6293", an import id in an h1: WS11 task 7).
+    try:
+        import commanders
+        out["deck_labels"] = _deck_labels(job["decks"] or [])
+        out["commanders"] = commanders.of_run({"decks": job["decks"] or []})
+    except Exception:  # noqa: BLE001 - a label must never take a status down
+        pass
     if job["state"] == "queued":
         # Report the truth. Calling a queued job "running" meant that behind a
         # backlog you watched an elapsed timer tick for a job Forge had not
@@ -473,6 +498,13 @@ def _job_status(job_id: str | None) -> dict:
     if job.get("result"):
         out["result"] = job["result"].get("summary")
         out["result_file"] = job["result"].get("result_file")
+        # The published win rates (engine/standings.py): the running page's
+        # "Done." line reads these, never its own wins over games.
+        try:
+            import standings
+            out["standings"] = standings.from_summary(out["result"] or {})
+        except Exception:  # noqa: BLE001 - a label must never take a status down
+            pass
         if job["result"].get("incomplete"):
             out["incomplete"] = True
             out["warning"] = job["result"].get("warning")
@@ -734,6 +766,30 @@ FLAG_ONLY_REFUSAL = ("this is a flag key: it can flag moments in a replay and "
                      "nothing else. Starting simulations or changing decks needs "
                      "an API key.")
 
+# Reviewer keys: the ONLY credential that reads the review queue (GET
+# /qa/queue), which holds playtesters' own words (human flag notes and their
+# reporters). Not an MTG_API_KEYS key: the web build inlines one of those
+# into the served JavaScript (deploy/docker-compose.yml, WEB_API_KEY ->
+# NEXT_PUBLIC_API_KEY), so anyone who loads the site holds it, and a queue
+# that accepted it would be public in practice. A reviewer key reads the
+# queue and does nothing else: every write refuses it with a 403, in every
+# mode, like a flags key. Comma-separated plain keys; one that is also an
+# API key or a flags key is dropped (counted, never printed), since that key
+# is already in hands the queue must not reach. Unset = nobody can read the
+# queue over HTTP (preflight reports it as deliberately off).
+def parse_review_keys(raw: str | None, api_keys=(), flag_keys=()) -> tuple[set[str], int]:
+    """MTG_REVIEW_KEYS -> (reviewer keys, count dropped for overlapping an
+    API key or a flags key)."""
+    keys = {k.strip() for k in (raw or "").split(",") if k.strip()}
+    clash = {k for k in keys if k in api_keys or k in flag_keys}
+    return keys - clash, len(clash)
+
+
+REVIEW_KEYS, REVIEW_KEYS_DROPPED = parse_review_keys(
+    os.environ.get("MTG_REVIEW_KEYS", ""), API_KEYS, FLAG_KEYS)
+REVIEW_ONLY_REFUSAL = ("this is a reviewer key: it can read the review queue and "
+                       "nothing else.")
+
 _rate_lock = threading.Lock()
 _hits: dict[str, list[float]] = {}
 
@@ -770,6 +826,7 @@ def _list_results() -> list[dict]:
     window was indistinguishable from a good run in every listing.
     """
     import commanders
+    import standings
     import validity
     out = []
     for f in sorted(RESULTS_DIR.glob("sim_*.json"), reverse=True):
@@ -793,6 +850,11 @@ def _list_results() -> list[dict]:
             # surfaces name decks and show avatars from these, never a guess.
             entry["pilot"] = validity.pilot(meta)
             entry["commanders"] = commanders.of_run(meta)
+            # The published win rates (repair plan WS11 task 9): decided
+            # games are the one denominator, and the leader is a "leader", a
+            # "tie" or "none". The index and the home leaderboard read these,
+            # never summary.win_rates.
+            entry["standings"] = standings.standings(d)
             v = validity.assess(d)
             entry["validity"] = {"quality": v["quality"], "flags": v["flags"],
                                  "usable_for_ranking": v["usable_for_ranking"],
@@ -848,6 +910,7 @@ def _read_result_summary(name: str) -> dict:
     from scorecard import true_round
     import commanders
     import game_story
+    import standings
     import validity
     data = _read_result(name)
     sw = game_story.switches()
@@ -879,7 +942,32 @@ def _read_result_summary(name: str) -> dict:
             "commanders": commanders.of_run(meta),
             "pilot": validity.pilot(meta),
             "story": _story_meta(data, sw),
+            # Per deck: cards Forge could not load, and cards Forge's AI
+            # doesn't cast on its own (repair plan WS11 task 4). Here and in
+            # GET /decks/{file}, the two smallest payloads that need them.
+            "disclosures": _disclosures_of_run(meta, data),
+            # The published win rates (engine/standings.py, WS11 task 9):
+            # decided games are the one denominator on every surface.
+            "standings": standings.standings(data),
             "games": games, "file": name, "validity": data.get("validity")}
+
+
+def _disclosures_of_run(meta: dict, data: dict | None = None) -> dict | None:
+    """engine/disclosure.for_run, never fatal: a summary without its
+    disclosures still renders, and the page says the lists are unavailable.
+    `data` (the result) lets a run older than Forge's load report clear a
+    name today's index does not know but the run itself shows in play."""
+    try:
+        import disclosure
+        out = disclosure.for_run(meta, find=_find_deck, result=data)
+    except Exception as e:  # noqa: BLE001
+        sys.stderr.write(f"disclosures skipped: {e}\n")
+        return None
+    # `file` is for the engine's own lookups (telemetry, coaching); the page
+    # keys decks by name, and meta.decks already carries the paths.
+    out["decks"] = {name: {k: v for k, v in row.items() if k != "file"}
+                    for name, row in out["decks"].items()}
+    return out
 
 
 def _story_meta(data: dict, sw: dict) -> dict:
@@ -931,23 +1019,31 @@ def _read_result_prediction(name: str) -> dict:
     false, suppressed is true and suppressed_reason says why.
     """
     data = _read_result(name)
-    summary = data.get("summary") or {}
-    rates = summary.get("win_rates") or {}
+    import standings
+    # The published win rates: decided games, the denominator every other
+    # surface uses and the one the model's training arm used ("stock Forge,
+    # decided games"). summary.win_rates divided by every scored game and was
+    # keyed "Ai(n)-Deck" on an unrotated run, so every row of such a run came
+    # back "deck file not found" (week-3 review).
+    table = standings.standings(data)
+    # reason_code is what the page reads; reason is operator detail and may
+    # name files or commands, so it is never rendered to a player.
     try:
         from predict import Predictor, deck_features, load_rank_checks, pilot_honesty
         import validity
     except Exception as e:  # pragma: no cover - import guard
-        return {"file": name, "available": False, "reason": f"predict unavailable: {e}"}
+        return {"file": name, "available": False, "reason_code": "unavailable",
+                "reason": f"predict unavailable: {e}"}
     model = Predictor.load()
     if model is None:
-        return {"file": name, "available": False,
+        return {"file": name, "available": False, "reason_code": "no_model",
                 "reason": "no fitted model; run studies/precon_predict/analyze.py"}
     # The same pilot object the run summary, game payload and results index
     # carry (validity.pilot -> pilot.disclose, built on pilot.run_pilot), so
     # the run page's pilot line and this label cannot disagree.
     honesty = pilot_honesty(model.m, validity.pilot(data.get("meta")), load_rank_checks())
     if honesty["suppressed"]:
-        return {"file": name, **honesty, "available": False,
+        return {"file": name, **honesty, "available": False, "reason_code": "suppressed",
                 "reason": honesty["suppressed_reason"], "decks": []}
     # Display name -> deck file. summary.win_rates is keyed by the deck's
     # DISPLAY name ("Ur-Dragon B3"), while _find_deck wants a filename, so
@@ -984,31 +1080,43 @@ def _read_result_prediction(name: str) -> dict:
                 row[1] += 1
 
     decks = []
-    for deck, rate in sorted(rates.items()):
-        row = {"deck": deck, "sim_win_rate": round(100.0 * rate, 1)}
+    for st in table["decks"]:
+        deck, rate = st["deck"], st["rate"]
+        row = {"deck": deck, "wins": st["wins"], "decided": st["decided"],
+               "sim_win_rate": None if rate is None else round(100.0 * rate, 1)}
+        if rate is None:
+            row.update(available=False, reason_code="no_decided_games",
+                       reason="no decided games for this deck")
+            decks.append(row)
+            continue
         path = by_name.get(deck) or _find_deck(deck) or _find_deck(deck + ".dck")
         if not path:
-            row.update(available=False, reason="deck file not found")
+            row.update(available=False, reason_code="deck_file_missing",
+                       reason="deck file not found")
             decks.append(row)
             continue
         counts = seen.get(deck)
         if not counts or not counts[0]:
-            row.update(available=False,
+            row.update(available=False, reason_code="no_survival",
                        reason="this run records no per-seat survival, which "
                               "the model needs; re-run to collect it")
             decks.append(row)
             continue
         try:
             vals = deck_features(path)
+            # Display only: the served model's features are survival,
+            # creatures and avg_cmc; explain() quotes this figure, so it is
+            # the page's own published rate.
             vals["sim"] = 100.0 * rate
             vals["survival"] = 100.0 * counts[1] / counts[0]
             row.update(model.predict(vals), available=True,
                        survival_pct=round(vals["survival"], 1),
                        explanation=model.explain(vals))
         except Exception as e:
-            row.update(available=False, reason=str(e))
+            row.update(available=False, reason_code="features", reason=str(e))
         decks.append(row)
     return {"file": name, **honesty, "available": True, "decks": decks,
+            "decided": table["decided"], "digits": table["digits"],
             "model": {"features": model.features,
                       "basis": model.m.get("ground_truth"),
                       "trained_on_decks": model.m.get("n_decks"),
@@ -1025,16 +1133,67 @@ def _read_result_telemetry(name: str, deck: str, watch: list[str] | None = None)
     """
     data = _read_result(name)
     import deck_telemetry
+    # The commander comes from the run's own record (meta.commanders) or the
+    # deck file found through _find_deck (imported first, then bundled):
+    # deck_telemetry._commander_of. It used to hand _find_deck the container
+    # path from meta.decks, which the traversal rule refuses, so every
+    # imported deck read "No commander could be identified" (WS11 task 8).
     report = deck_telemetry.compute(data, deck, watch)
     report["file"] = name
     report["decks"] = data.get("meta", {}).get("decks", [])
     return report
 
 
+class QAPending(Exception):
+    """The run exists but QA layer A has not written its qa.json yet."""
+
+
+def _read_result_qa(name: str) -> dict:
+    """GET /results/{file}/qa: the run's QA layer A report (engine/qa/run.py).
+
+    Same traversal guard as every sibling route (_result_path), and the run
+    must exist. The stored qa.json is served through qa.run.public: the
+    turning point follows this process's game-story switches, and no human
+    flag note can appear (layer A never reads the human queue; public()
+    drops any flag carrying a note regardless). QAPending when the run has
+    no qa.json yet: the worker writes it within a couple of minutes of the
+    run finishing, and its sweeper backfills older runs."""
+    f = _result_path(name)
+    from qa import run as qa_run
+    import game_story
+    try:
+        doc = qa_run.read_qa(f.name, RESULTS_DIR.parent)
+    except FileNotFoundError:
+        raise QAPending(name) from None
+    return qa_run.public(doc, game_story.switches())
+
+
+def _read_qa_queue(since: str | None, limit: str | None) -> dict:
+    """GET /qa/queue (admin key): open review items, human flags first.
+    ValueError for a bad cursor or limit."""
+    from qa import review_queue
+    try:
+        n = int(limit) if limit not in (None, "") else review_queue.DEFAULT_PAGE
+    except ValueError:
+        raise ValueError("limit must be a whole number") from None
+    if not 1 <= n <= 5000:
+        raise ValueError("limit must be 1..5000")
+    return review_queue.read_queue(RESULTS_DIR.parent, review_queue.parse_cursor(since), n)
+
+
+QUEUE_FLAG_KEY_REFUSAL = ("this is a flag key: it can flag moments in a replay and "
+                          "nothing else. Reading the review queue needs a reviewer key.")
+QUEUE_API_KEY_REFUSAL = ("an API key cannot read the review queue: the web build "
+                         "carries one, so it is not private. Reading the queue needs "
+                         "a reviewer key (MTG_REVIEW_KEYS).")
+QUEUE_NO_KEY_REFUSAL = "a reviewer key (MTG_REVIEW_KEYS) is required to read the review queue"
+
+
 def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
     """One game out of a run — the payload a replay actually needs."""
     import commanders
     import game_story
+    import standings
     import validity
     data = _read_result(name, snapshots=snapshots)
     games = data.get("games", [])
@@ -1045,6 +1204,10 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
             "games_total": len(games), "game": games[n - 1],
             "commanders": commanders.of_run(meta),
             "pilot": validity.pilot(meta),
+            # The run's published standings: the replay names the run and its
+            # seats in the run page's order (back link, flag form), not in
+            # this game's seat order.
+            "standings": standings.standings(data),
             "story": _story_meta({"games": [games[n - 1]]}, game_story.switches()),
             # knockouts, out, turning_point: the same story the summary
             # carries for this game (engine/game_story.py).
@@ -1056,7 +1219,9 @@ def _read_result_game(name: str, n: int, snapshots: bool = False) -> dict:
 # A playtester watching a replay marks a moment ("why did Hullbreaker bounce
 # itself?") and the note lands in the human review queue, which ranks first in
 # the reviewer's nightly budget. There is deliberately NO public read of these
-# files: they hold a person's words, and the keyed GET /qa/queue is week 4.
+# files: they hold a person's words. The only read is GET /qa/queue, which
+# needs a reviewer key from MTG_REVIEW_KEYS (an API key or a flags key gets
+# 403; the web build inlines an API key, so an API key is not private).
 #
 # REQUEST (JSON object):
 #   run     result filename, e.g. "sim_20260925_003803_d0eb966b8d33_rotated.json";
@@ -1511,6 +1676,8 @@ def _import_deck(payload: dict) -> dict:
     # Forge's AI won't cast, or a note that the Forge index is not built yet.
     return {"ok": True, "file": slug, "saved": saved, "report": report,
             "warnings": report.get("warnings", []),
+            # The same two lists the deck page and the run page show.
+            "disclosures": report.get("disclosures"),
             "cards_cached": _warm_card_cache(content),
             "combos": _deck_combos(content)}
 
@@ -1667,6 +1834,8 @@ def serve(port: int = 8484) -> None:
                 return None
             if key and key in FLAG_KEYS:
                 return 403, FLAG_ONLY_REFUSAL
+            if key and key in REVIEW_KEYS:
+                return 403, REVIEW_ONLY_REFUSAL
             if not API_KEYS:
                 return None   # open mode; serve() has already warned about this
             return 401, "an API key is required for this endpoint"
@@ -1723,6 +1892,9 @@ def serve(port: int = 8484) -> None:
                     # also takes an API key, so the route works either way).
                     # A boolean only, never a key or a count; preflight reads it.
                     st["flags"] = bool(FLAG_KEYS)
+                    # Whether a reviewer key can read GET /qa/queue. Same
+                    # rule: a boolean only; preflight reads it.
+                    st["review"] = bool(REVIEW_KEYS)
                     return self._send(st)
                 if parts[0] == "decks":
                     if len(parts) > 1:
@@ -1808,6 +1980,16 @@ def serve(port: int = 8484) -> None:
                             # browser already holds (decision 19). Same reasoning
                             # as /analysis below; the computation is cheap.
                             return self._send(_read_result_prediction(parts[1]))
+                        if len(parts) >= 3 and parts[2] == "qa":
+                            # QA layer A's report. Not immutable: a new
+                            # analyzer version rewrites it, and the swing
+                            # follows the story switches.
+                            try:
+                                return self._send(_read_result_qa(parts[1]))
+                            except QAPending:
+                                return self._send(
+                                    {"error": "no QA report for this run yet", "qa": "pending",
+                                     "file": parts[1]}, 404)
                         if len(parts) >= 3 and parts[2] == "scorecards":
                             return self._send(_read_result_scorecards(parts[1]),
                                               cache=IMMUTABLE)
@@ -1828,6 +2010,25 @@ def serve(port: int = 8484) -> None:
                         return self._send({"error": "no such result"}, 404)
                     except (IndexError, ValueError) as e:
                         return self._send({"error": str(e)}, 404)
+                if parts[0] == "qa" and len(parts) == 2 and parts[1] == "queue":
+                    # The review queue holds playtesters' own words (human
+                    # flag notes), so it needs a REVIEWER key (MTG_REVIEW_KEYS)
+                    # in every mode, open mode included. An API key gets a 403
+                    # (the web build inlines one: see REVIEW_KEYS), and so
+                    # does a flags key.
+                    key = self._credential()
+                    if not (key and key in REVIEW_KEYS):
+                        if key and key in FLAG_KEYS:
+                            return self._deny(403, QUEUE_FLAG_KEY_REFUSAL)
+                        if key and key in API_KEYS:
+                            return self._deny(403, QUEUE_API_KEY_REFUSAL)
+                        return self._deny(401, QUEUE_NO_KEY_REFUSAL)
+                    try:
+                        return self._send(_read_qa_queue(q.get("since", [None])[0],
+                                                         q.get("limit", [None])[0]),
+                                          cache="no-store")
+                    except ValueError as e:
+                        return self._send({"error": str(e)}, 400)
                 if parts[0] == "cards":
                     raw = q.get("names", [""])[0]
                     names = [n for n in re.split(r"[|\n]", raw) if n.strip()]
@@ -1860,9 +2061,14 @@ def serve(port: int = 8484) -> None:
                 if parts[0] == "board" and len(parts) > 1:
                     import board
                     try:
-                        return self._send(board.validate(_read_result(parts[1]), fetch=False))
-                    except FileNotFoundError:
+                        data = _read_result(parts[1])
+                    except (FileNotFoundError, ValueError):
+                        # ValueError is the traversal guard (_result_path): a
+                        # 404 like /results and /analysis, never a 500. Only
+                        # the read is guarded, so a reconstruction bug still
+                        # surfaces as the 500 it is.
                         return self._send({"error": "no such result"}, 404)
+                    return self._send(board.validate(data, fetch=False))
                 return self._send({"error": "unknown endpoint"}, 404)
             except Exception as e:  # noqa: BLE001
                 return self._send({"error": str(e)}, 500)
@@ -1874,6 +2080,10 @@ def serve(port: int = 8484) -> None:
             parsing the named result file (up to ~6 MB), so a key that only
             ever sent bad requests must still be bounded."""
             key = self._credential()
+            if key and key in REVIEW_KEYS:
+                # The same 403 as every other write: the key is recognised,
+                # it just reads the queue and nothing else.
+                return self._deny(403, REVIEW_ONLY_REFUSAL)
             reporter = flag_reporter(key)
             if reporter is None:
                 return self._deny(401, (
@@ -1900,8 +2110,17 @@ def serve(port: int = 8484) -> None:
                 self.close_connection = True   # the body cannot be framed
                 return self._send({"error": "bad Content-Length"}, 400)
             if route == "flags" and length > FLAG_BODY_MAX:
-                # Not read, so this connection cannot carry another request.
+                # Not parsed, so this connection cannot carry another request.
                 self.close_connection = True
+                # A body only a little over the cap is read and dropped first:
+                # closing a socket with unread data sends a reset, which on
+                # Windows aborted the client before it read this 413 (a
+                # flaky test_flags). A large one is never read.
+                if length <= 4 * FLAG_BODY_MAX:
+                    try:
+                        self.rfile.read(length)
+                    except OSError:
+                        pass
                 return self._send({"error": f"a flag is at most {FLAG_BODY_MAX} bytes"}, 413)
             try:
                 payload = json.loads(self.rfile.read(length) or b"{}")
@@ -2088,7 +2307,8 @@ def serve(port: int = 8484) -> None:
     worker.ensure_embedded()  # no-op when MTG_EMBEDDED_WORKER=0 (deployed mode)
 
     mode = f"{len(API_KEYS)} API key(s)" if API_KEYS else "OPEN — no auth"
-    print(f"MTG engine API on http://{host}:{port}  [{mode}, {len(FLAG_KEYS)} flag key(s)]")
+    print(f"MTG engine API on http://{host}:{port}  [{mode}, {len(FLAG_KEYS)} flag key(s), "
+          f"{len(REVIEW_KEYS)} review key(s)]")
     print(f"  limits: {SIM_PER_HOUR} sims/hour/caller, <={SIM_MAX_GAMES} games, "
           f"{SIM_MAX_QUEUED} queued max, {READ_PER_MIN} reads/min, "
           f"{FLAG_PER_HOUR} flags/hour/key")
@@ -2097,6 +2317,9 @@ def serve(port: int = 8484) -> None:
     if FLAG_KEYS_MALFORMED:
         print(f"  WARNING: MTG_FLAG_KEYS: skipped {FLAG_KEYS_MALFORMED} malformed "
               "entr(y/ies); the format is label:key,label:key", file=sys.stderr)
+    if REVIEW_KEYS_DROPPED:
+        print(f"  WARNING: MTG_REVIEW_KEYS: dropped {REVIEW_KEYS_DROPPED} key(s) that are "
+              "also API or flag keys; a reviewer key must be its own", file=sys.stderr)
 
     srv = ThreadingHTTPServer((host, port), Handler)
     srv.daemon_threads = True   # don't let in-flight requests block shutdown

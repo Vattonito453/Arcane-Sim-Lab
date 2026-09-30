@@ -21,10 +21,15 @@ import type {
   RunSummary,
   ScorecardReport,
 } from "@/lib/types";
+import { RunDisclosureSection } from "@/components/CardDisclosures";
 import { ComboLines } from "@/components/ComboLines";
+import { LoadError } from "@/components/LoadError";
 import { DeckScorecards } from "@/components/DeckScorecards";
 import { PredictionPanel } from "@/components/PredictionPanel";
-import { fmtDay, pct, plural, runDate, runTitle, shortName, stripAi, type CommanderMap } from "@/lib/format";
+import {
+  fmtAverage, fmtDay, fmtRate, fmtTurn, plural, runDate, runTitle, shortName, stripAi, type CommanderMap,
+} from "@/lib/format";
+import { andList, exclusionText, median, standingsOf } from "@/lib/standings";
 import { storyNote, storySegments, type Seg } from "@/lib/story";
 
 /** "12:05". A missing duration is an en dash: a draw logged without one
@@ -33,13 +38,6 @@ function fmtClock(ms: number | null | undefined): string {
   if (typeof ms !== "number" || !Number.isFinite(ms) || ms < 0) return "–";
   const s = Math.round(ms / 1000);
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
-}
-
-function median(xs: number[]): number {
-  if (!xs.length) return 0;
-  const s = [...xs].sort((a, b) => a - b);
-  const mid = Math.floor(s.length / 2);
-  return s.length % 2 ? s[mid] : Math.round((s[mid - 1] + s[mid]) / 2);
 }
 
 /** Winner key out of a result raw, for the rare run whose result.winner is null
@@ -82,7 +80,9 @@ interface GameRow {
   text: string;
 }
 
-function toRow(g: RunGameSummary, clockSeconds: number | null, commanders?: CommanderMap): GameRow {
+function toRow(
+  g: RunGameSummary, clockSeconds: number | null, commanders?: CommanderMap, roster: string[] = [],
+): GameRow {
   const r = g.result as RunGameSummary["result"] & ResultMarks;
   // A game the clock cut off is a draw whatever winner the record carries:
   // the engine's summary counts it that way (audit A16), so the table must too.
@@ -113,7 +113,7 @@ function toRow(g: RunGameSummary, clockSeconds: number | null, commanders?: Comm
         ? `Draw: reached the turn limit${onTurn}`
         : `Draw${onTurn}`
     : winnerName
-      ? `${winnerName} won${onTurn}`
+      ? `${shortName(winnerName, roster, commanders)} won${onTurn}`
       : r.error
         ? "No result: this game crashed"
         : r.missingResult
@@ -211,51 +211,41 @@ export default function ResultsPage() {
     if (!data) return null;
     const games = data.games.length;
 
-    // The pod roster comes from the games, not from summary.win_rates, for two
-    // reasons. A winless deck is missing from the summary of any run adapted
-    // before that was fixed, and reading the roster off the summary sizes a
-    // 4-deck pod as a 1-deck pod — which sets the even-seats baseline to 100%.
-    // Rotated runs also key the summary by bare deck name while games[].players
-    // keep the Ai(n)- seat prefix; folding both through stripAi() puts the two
-    // in one namespace, so every row below is already a display label.
-    const wins = new Map<string, number>();
-    for (const g of data.games) for (const p of g.players) wins.set(stripAi(p), 0);
-    for (const [key, w] of Object.entries(data.summary.wins)) {
-      const label = stripAi(key);
-      wins.set(label, (wins.get(label) ?? 0) + w);
-    }
-    const baseline = wins.size > 0 ? 1 / wins.size : 0.25;
-    const rows = [...wins.entries()]
-      // Recomputed rather than read from win_rates: that map is keyed the same
-      // way and would reintroduce the raw-vs-stripped mismatch.
-      .map(([name, w]) => ({ name, wins: w, rate: games > 0 ? w / games : 0 }))
-      .sort((a, b) => b.rate - a.rate || a.name.localeCompare(b.name));
-    const maxWins = rows.length ? rows[0].wins : 0;
-    const tops = rows.filter((r) => r.wins === maxWins);
-    const topNames = new Set(tops.map((t) => t.name));
+    // The engine's published win rates (engine/standings.py, repair plan WS11
+    // task 9): decided games are the one denominator, the same figure the
+    // scorecards, the prediction table and the results index print. The page
+    // used to divide wins by every game (Kess "50%" here, "4 of 7, 57%" on
+    // its card). The roster still comes from the games, so a winless deck is
+    // listed and a 4-deck pod is never sized as a 1-deck pod.
+    const st = standingsOf(data, data.games.flatMap((g) => g.players));
+    if (!st) return null;
+    const rows = st.decks.map((d) => ({ name: d.deck, wins: d.wins, decided: d.decided, rate: d.rate }));
+    const leaders = new Set(st.leader.decks);
     // run_sim stamps the per-game clock it ran under (seconds).
     const clock = data.meta?.clock;
     const clockSeconds = typeof clock === "number" && clock > 0 ? clock : null;
-    const gameRows: GameRow[] = data.games.map((g) => toRow(g, clockSeconds, data.commanders));
+    const roster = rows.map((r) => r.name);
+    const gameRows: GameRow[] = data.games.map((g) => toRow(g, clockSeconds, data.commanders, roster));
     const medTurns = median(gameRows.map((g) => g.endedTurn));
     const rotated = data.meta?.source === "rotated";
 
-    // First game the leading deck actually won — target for the primary action.
-    let watchGame = 1;
+    // First game the leader (or a tied leader) won: the primary's target.
+    // With no clear leader, the first game anyone won.
+    let watchGame = gameRows.find((g) => g.winnerName && !g.draw)?.n ?? 1;
     for (const g of gameRows) {
-      if (g.winnerName && topNames.has(g.winnerName)) {
+      if (g.winnerName && leaders.has(g.winnerName)) {
         watchGame = g.n;
         break;
       }
     }
-    return { games, baseline, rows, tops, topNames, gameRows, medTurns, rotated, watchGame };
-  }, [data, file]);
+    return { games, st, rows, gameRows, medTurns, rotated, watchGame, clockSeconds };
+  }, [data]);
 
   // The matchup, not the filename: "sim_20260724_094940_rotated.json" tells a
-  // reader nothing. The address lives in the details disclosure at the foot.
-  const title = view
-    ? runTitle(view.rows.map((r) => r.name), data?.commanders)
-    : file.replace(/\.json$/, "");
+  // reader nothing. The address lives in the details disclosure at the foot,
+  // and a neutral heading holds its place while the summary loads (the stem
+  // sat in the h1 until then).
+  const title = view ? runTitle(view.rows.map((r) => r.name), data?.commanders) : "Sim results";
   const enc = encodeURIComponent(file);
   const when = runDate(file);
 
@@ -278,14 +268,7 @@ export default function ResultsPage() {
               <div className="sub">{wait != null ? "Rate limited" : "Could not load this result"}</div>
             </div>
           </div>
-          {wait != null ? (
-            <p className="note">
-              {err}. The engine is throttling reads. Try again in about{" "}
-              <span className="mono">{wait}</span> s.
-            </p>
-          ) : (
-            <p className="note">{err}. Check that the engine API is running, then reload.</p>
-          )}
+          <LoadError err={err} wait={wait} what="run" />
         </div>
         <Footer />
       </>
@@ -308,7 +291,7 @@ export default function ResultsPage() {
     );
   }
 
-  const { rows, tops, topNames, gameRows, games, baseline, medTurns, rotated } = view;
+  const { st, rows, gameRows, games, medTurns, rotated, clockSeconds } = view;
   // Table turns (a player's Nth turn is turn N): from the scorecards when
   // they have loaded, else from the summary's ended_round per game. Forge's
   // per-player counter only for a summary so old it carries neither, and
@@ -318,28 +301,27 @@ export default function ResultsPage() {
   // The fallback leaves out games the clock or the turn cap stopped, as the
   // scorecard's medianGameRound does; counting them made the lede read one
   // median while the scorecards loaded and another once they arrived (11 then
-  // 12 turns on the playtester's run). Same pick as scorecard.py med(): the
-  // upper middle of an even count, not the rounded mean of the two.
+  // 12 turns on the playtester's run). Same median as scorecard.py med(): the
+  // true median, halfway between the two middle games for an even count
+  // (it used to take the upper middle, which read one game high).
   const endedRounds = gameRows
     .filter((g) => !g.censored)
     .map((g) => g.endedRound)
-    .filter((r): r is number => r != null)
-    .sort((a, b) => a - b);
-  const medRounds =
-    sc?.run?.medianGameRound ?? (endedRounds.length ? endedRounds[Math.floor(endedRounds.length / 2)] : null);
-  const turnWord = medRounds ? "turns" : "player turns";
+    .filter((r): r is number => r != null);
+  const medRounds = sc?.run?.medianGameRound ?? median(endedRounds);
+  const turnWord = medRounds != null ? "turns" : "player turns";
+  const medShown = fmtTurn(medRounds ?? medTurns);
   // One name per deck, the same one the title and the game stories use.
   const short = (name: string) => shortName(name, rows.map((r) => r.name), data.commanders);
+  // The engine sets the precision: whole percents below 30 decided games.
+  const rate = (r: number | null) => fmtRate(r, st.digits);
   const top = rows[0];
-  const second = rows.find((r) => !topNames.has(r.name));
-  const draws = data.summary.draws;
-  // Clock-cut games. They are draws too, so this qualifies the draw count
-  // rather than adding to it: a pod that mostly times out reads as four decks
-  // all "below an even share" at once, which is a property of the clock and
-  // not of any deck.
-  const timeouts = data.summary.timeouts ?? 0;
+  const leaders = new Set(st.leader.decks);
+  const second = rows.find((r) => !leaders.has(r.name));
+  const clockWords = clockSeconds ? `the ${Math.round(clockSeconds / 60)}-minute clock` : "the per-game clock";
+  // The games that are not in the denominator, said once, inline.
+  const excluded = exclusionText(st, clockWords);
   const validity = data.validity;
-  const gameWord = rotated ? "seat-rotated games" : "games";
 
   const filtered = gameRows.filter((g) => {
     if (!q.trim()) return true;
@@ -355,12 +337,18 @@ export default function ResultsPage() {
   const storied = gameRows.some((g) => g.story !== null);
   const pilot = data.pilot;
 
-  const tieText =
-    tops.length > 1
-      ? `, tied with ${tops.slice(1).map((t) => short(t.name)).join(" and ")}`
-      : second
-        ? `, ${top.wins - second.wins} ${top.wins - second.wins === 1 ? "win" : "wins"} clear of ${short(second.name)} (${pct(second.rate)})`
-        : "";
+  const clearText =
+    second && top && second.wins < top.wins
+      ? `, ${top.wins - second.wins} ${top.wins - second.wins === 1 ? "win" : "wins"} clear of ${short(second.name)} (${rate(second.rate)})`
+      : "";
+  // "Leader", not "winner" (UX review 5.2 item 6): a deck at an even share
+  // did what chance does, so it leads nothing.
+  const topFigLabel =
+    st.leader.kind === "leader"
+      ? `leader's win rate (${short(top.name)})`
+      : st.leader.kind === "tie"
+        ? "top win rate (tied)"
+        : "top win rate, no clear leader";
 
   return (
     <>
@@ -396,31 +384,30 @@ export default function ResultsPage() {
           </div>
         </div>
 
+        {/* One denominator: decided games (engine/standings.py). The games
+            that are not in it are named once, right after the rate. */}
         <p className="lede">
-          <b>{short(top.name)}</b> won <b>{top.wins} of {games}</b> {gameWord} ({pct(top.rate)})
-          {tieText}.{" "}
-          {draws > 0 ? (
+          {st.decided === 0 || !top ? (
+            <>No game in this run was decided, so no deck has a win rate here.</>
+          ) : st.leader.kind === "leader" ? (
             <>
-              {draws} {draws === 1 ? "game" : "games"} ended drawn
-              {timeouts > 0 &&
-                (timeouts >= draws ? (
-                  <>
-                    , {draws === 1 ? "and it hit" : "all of them hitting"} the
-                    per-game clock rather than finishing
-                  </>
-                ) : (
-                  <>
-                    , <b>{timeouts}</b> of those because{" "}
-                    {timeouts === 1 ? "it hit" : "they hit"} the per-game clock
-                    rather than finishing
-                  </>
-                ))}
-              ; the median game ran <b>{medRounds ?? medTurns} {turnWord}</b>.
+              <b>{short(top.name)}</b> won <b>{top.wins} of {top.decided}</b> decided games (
+              {rate(top.rate)}){clearText}.
+            </>
+          ) : st.leader.kind === "tie" ? (
+            <>
+              <b>{andList(st.leader.decks.map(short))}</b> tied, each winning{" "}
+              <b>{top.wins} of {top.decided}</b> decided games ({rate(top.rate)}).
             </>
           ) : (
-            <>No draws; the median game ran{" "}
-              <b>{medRounds ?? medTurns} {turnWord}</b>.</>
-          )}
+            <>
+              No clear leader: the most any deck won was <b>{top.wins} of {top.decided}</b>{" "}
+              decided games ({rate(top.rate)}), no better than an even share (
+              {fmtAverage(st.average)}).
+            </>
+          )}{" "}
+          {excluded && <>{excluded} </>}
+          The median game ran <b>{medShown} {turnWord}</b>.
         </p>
 
         {/* Who played these games, on every run (repair plan WS11 task 10):
@@ -458,21 +445,27 @@ export default function ResultsPage() {
             <div className="l">games in this run</div>
           </div>
           <div className="fig">
-            <div className="n">{medRounds ?? medTurns}</div>
+            <div className="n">{st.decided}</div>
+            <div className="l">decided, the games a win rate counts</div>
+          </div>
+          <div className="fig">
+            <div className="n">{medShown}</div>
             <div className="l">
               median {turnWord} per game
             </div>
           </div>
           <div className="fig">
             <div className="n">
-              {(top.rate * 100).toFixed(0)}
-              <small>%</small>
+              {top && top.rate != null ? (
+                <>
+                  {(top.rate * 100).toFixed(st.digits)}
+                  <small>%</small>
+                </>
+              ) : (
+                "–"
+              )}
             </div>
-            <div className="l">top win rate ({short(top.name)})</div>
-          </div>
-          <div className="fig">
-            <div className="n">{draws}</div>
-            <div className="l">{draws === 1 ? "draw" : "draws"}</div>
+            <div className="l">{topFigLabel}</div>
           </div>
         </div>
 
@@ -483,7 +476,7 @@ export default function ResultsPage() {
             <div className="sh">
               <h2>Win rates</h2>
               <span className="meta">
-                {plural(games, "game")}, {plural(rows.length, "deck")}
+                {plural(st.decided, "decided game")}, {plural(rows.length, "deck")}
               </span>
             </div>
             <table className="podt">
@@ -493,23 +486,28 @@ export default function ResultsPage() {
                     <td className="nm">{short(r.name)}</td>
                     <td>
                       <div className="rail">
-                        <div className="fill" style={{ width: `${Math.max(r.rate * 100, r.wins > 0 ? 1 : 0)}%` }} />
-                        <div className="base" style={{ left: `${baseline * 100}%` }} />
+                        <div
+                          className="fill"
+                          style={{ width: `${Math.max((r.rate ?? 0) * 100, r.wins > 0 ? 1 : 0)}%` }}
+                        />
+                        {st.average != null && (
+                          <div className="base" style={{ left: `${st.average * 100}%` }} />
+                        )}
                       </div>
                     </td>
-                    <td className="pct">{pct(r.rate)}</td>
+                    <td className="pct">{rate(r.rate)}</td>
+                    {/* A count, not a verdict: status glyphs mark states
+                        (running, queued, done, failed), never a deck result. */}
                     <td className="res">
-                      <span className={`st ${r.wins === 0 ? "bad" : r.rate >= baseline ? "win" : "loss"}`}>
-                        <i />
-                        {r.wins} of {games}
-                      </span>
+                      {r.wins} of {r.decided}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <p className="note">
-              The marker sits at {pct(baseline, 1)}, an even share of a {rows.length}-player pod.
+              Wins over decided games. The marker sits at {fmtAverage(st.average)}, an even share
+              of a {rows.length}-deck pod.
             </p>
           </section>
         )}
@@ -517,6 +515,15 @@ export default function ResultsPage() {
         {/* Measured first, modelled second: the corrected rates only read
             correctly once the reader has seen the raw ones they correct. */}
         <PredictionPanel report={pred} commanders={data.commanders} />
+
+        {/* Per deck, the cards Forge could not load and the cards its AI
+            doesn't cast on its own (repair plan WS11 task 4): what the
+            numbers above were played without. */}
+        <RunDisclosureSection
+          report={data.disclosures}
+          name={short}
+          stock={data.pilot?.kind === "stock"}
+        />
 
         {an && Object.keys(an.summary?.methods ?? {}).length > 0 && (
           <section>
@@ -645,17 +652,19 @@ export default function ResultsPage() {
                 </tbody>
               </table>
             ) : (
-            <table className="games stackable">
+            // Column widths live in globals.css (.games.legacyt): the rule
+            // allows inline styles only for computed percentages. "Won by",
+            // not "Winner": the cell is one game's result, and the run's
+            // leader is the lede's to name (UX review 5.2 item 6).
+            <table className="games stackable legacyt">
               <thead>
                 <tr>
-                  <th style={{ width: 64 }}>Game</th>
-                  <th style={{ width: 220 }}>Winner</th>
-                  <th style={{ width: 70 }}>Ended</th>
-                  <th style={{ width: 80 }}>Duration</th>
+                  <th className="g-n">Game</th>
+                  <th className="g-who">Won by</th>
+                  <th className="g-end">Ended</th>
+                  <th className="g-dur">Duration</th>
                   <th>Decided by</th>
-                  <th className="r" style={{ width: 90 }}>
-                    Replay
-                  </th>
+                  <th className="r g-act">Replay</th>
                 </tr>
               </thead>
               <tbody>
@@ -671,19 +680,9 @@ export default function ResultsPage() {
                     <td className="id c-drop">#{g.n}</td>
                     <td className="c-title">
                       <span className="only-narrow-inline gnum">#{g.n} </span>
-                      {g.draw ? (
-                        <span className="st out">
-                          <i />
-                          Draw
-                        </span>
-                      ) : g.winnerName && topNames.has(g.winnerName) ? (
-                        <span className="st win">
-                          <i />
-                          {g.winnerName}
-                        </span>
-                      ) : (
-                        (g.winnerName ?? "–")
-                      )}
+                      {/* Plain words: status glyphs mark states, never a deck
+                          result, and the one name per deck applies here too. */}
+                      {g.draw ? "Draw" : g.winnerName ? short(g.winnerName) : "–"}
                     </td>
                     {/* The table turn, never Forge's per-player counter ("T36"
                         for a game that ended on everyone's ninth turn). */}

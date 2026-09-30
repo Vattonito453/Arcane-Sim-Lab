@@ -29,10 +29,31 @@
  */
 
 import { shortName, type CommanderMap } from "@/lib/format";
-import type { PredictionReport } from "@/lib/types";
+import type { PredictionReasonCode, PredictionReport } from "@/lib/types";
 
-function pp(x: number): string {
-  return `${x >= 0 ? "+" : ""}${x.toFixed(1)}`;
+function pp(x: number, digits: number): string {
+  return `${x >= 0 ? "+" : ""}${x.toFixed(digits)}`;
+}
+
+/** Why there are no figures, in words a player can use. The engine's own
+ *  `reason` is operator detail ("no fitted model; run studies/precon_predict/
+ *  analyze.py", "deck file not found") and is never rendered: an unrotated run
+ *  used to print "No corrected win rates for this run. deck file not found"
+ *  (week-3 review). Only the code crosses into copy. */
+const REASON_WORDS: Record<PredictionReasonCode, string> = {
+  no_model: "The model that corrects these figures is not part of this deployment.",
+  unavailable: "The model that corrects these figures is not part of this deployment.",
+  suppressed: "The figures are withheld for this run.",
+  no_decided_games: "No game in this run was decided, so there is no win rate to correct.",
+  deck_file_missing:
+    "The model reads each deck's list, and the deck files this run was played with are no longer on the server.",
+  no_survival:
+    "This run predates the per-seat survival record the model needs. A new run of these decks collects it.",
+  features: "The model could not read these decks' lists.",
+};
+
+function reasonWords(code: PredictionReasonCode | undefined): string {
+  return (code && REASON_WORDS[code]) || "The model could not score this run.";
 }
 
 export function PredictionPanel({
@@ -78,7 +99,7 @@ export function PredictionPanel({
         </div>
         <p className="note">
           No corrected win rates for this run.{" "}
-          {report.reason ?? report.decks?.find((d) => d.reason)?.reason ?? "The fitted model is not available."}
+          {reasonWords(report.reason_code ?? report.decks?.find((d) => d.reason_code)?.reason_code)}
         </p>
       </section>
     );
@@ -91,6 +112,10 @@ export function PredictionPanel({
   // Collisions are judged over every deck in the run, scored or not, as the
   // run title judges them, so a deck never reads under two names on one page.
   const allNames = (report.decks ?? []).map((d) => d.deck);
+  // Whole percents below 30 decided games, as every other rate on the page.
+  // A modelled figure carries no more precision than the one it corrects.
+  const dg = report.digits ?? 1;
+  const unscored = (report.decks ?? []).filter((d) => d.available === false);
 
   return (
     <section>
@@ -98,7 +123,7 @@ export function PredictionPanel({
         <h2>Against real playgroups</h2>
         <span className="meta">
           modelled, not simulated; {"±"}
-          {decks[0].typical_error_pp.toFixed(1)} points typical error
+          {decks[0].typical_error_pp.toFixed(dg)} points typical error
         </span>
       </div>
 
@@ -132,20 +157,30 @@ export function PredictionPanel({
           {decks.map((d) => (
             <tr key={d.deck}>
               <td>{shortName(d.deck, allNames, commanders)}</td>
-              <td className="r mono">{d.sim_win_rate.toFixed(1)}%</td>
+              <td className="r mono">{d.sim_win_rate.toFixed(dg)}%</td>
               <td className="r mono">
-                <b>{d.expected_win_rate.toFixed(1)}%</b>
+                <b>{d.expected_win_rate.toFixed(dg)}%</b>
               </td>
               <td className="r mono">
-                {d.low.toFixed(1)} to {d.high.toFixed(1)}
+                {d.low.toFixed(dg)} to {d.high.toFixed(dg)}
               </td>
+              {/* The difference of the two figures as shown, so the row adds
+                  up at whole percents (30.5 less 28.4 printed "+2" beside
+                  "31%" and "28%"). */}
               <td className="r mono">
-                {pp(d.expected_win_rate - d.sim_win_rate)}
+                {pp(Number(d.expected_win_rate.toFixed(dg)) - Number(d.sim_win_rate.toFixed(dg)), dg)}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {unscored.length > 0 && (
+        <p className="note">
+          Not modelled:{" "}
+          {unscored.map((d) => shortName(d.deck, allNames, commanders)).join(", ")}.{" "}
+          {reasonWords(unscored[0].reason_code)}
+        </p>
+      )}
 
       {/* Do NOT explain the correction using one deck's direction. The first
           version said a correction "means the simulated table is harsher than

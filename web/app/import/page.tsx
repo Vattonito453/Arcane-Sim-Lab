@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
-import type { ImportResponse } from "@/lib/types";
+import type { DeckDisclosureSet, ImportResponse } from "@/lib/types";
 import { plural } from "@/lib/format";
 import { Chrome, Footer } from "@/components/Chrome";
+import { DisclosureList } from "@/components/CardDisclosures";
 
 const SOURCES = ["Paste a list", "Moxfield URL", "Archidekt URL", "Upload .dck"];
 
@@ -55,6 +56,21 @@ function importWarnings(resp: ImportResponse | null): ImportWarning[] {
       (w as ImportWarning).message.trim() !== "" &&
       Array.isArray((w as ImportWarning).cards),
   );
+}
+
+/** The warning kinds the two disclosure lists replace on this page. */
+const LISTED_KINDS = new Set(["unknown_card", "ai_wont_cast"]);
+
+/** The response's disclosure lists, shape-checked like its warnings, or
+ *  null for an engine too old to send them. With no Forge index both lists
+ *  are null, and the index_missing warning says the checks were skipped. */
+function importDisclosures(resp: ImportResponse): DeckDisclosureSet | null {
+  const d = resp.disclosures;
+  if (!d || typeof d !== "object") return null;
+  const okList = (v: unknown) => v === null || Array.isArray(v);
+  if (!okList(d.could_not_load) || !okList(d.ai_wont_play)) return null;
+  if (d.could_not_load === null && d.ai_wont_play === null) return null;
+  return { ...d, commander_ai_wont_play: d.commander_ai_wont_play ?? [] };
 }
 
 const BASICS = new Set(["plains", "island", "swamp", "mountain", "forest", "wastes"]);
@@ -158,6 +174,7 @@ export default function ImportPage() {
 
   const report = resp?.ok ? resp.report : undefined;
   const warnings = importWarnings(resp);
+  const disclosures = resp?.ok ? importDisclosures(resp) : null;
 
   return (
     <>
@@ -394,26 +411,54 @@ export default function ImportPage() {
                   `message`, so the page renders the message alone. The list is
                   appended only as a fallback for a message that omits a card,
                   never to repeat names the user has just read. */}
-              {warnings.map((w, i) => {
-                const unnamed = w.cards.filter((c) => !w.message.includes(c));
-                return (
-                  <div className="ck" key={`${w.kind}-${i}`}>
-                    <span className="lbl">
-                      {w.message}
-                      {unnamed.length > 0 && (
-                        <>
-                          {" "}
-                          <small>{unnamed.join(" · ")}</small>
-                        </>
-                      )}
-                    </span>
-                    <span className="res st warn">
-                      <i />
-                      Needs a look
-                    </span>
-                  </div>
-                );
-              })}
+              {/* The same two lists the deck page and the run page show
+                  (repair plan WS11 task 4), each with its cards on expand.
+                  They stand in for the unknown_card and ai_wont_cast
+                  messages, which say the same thing; an engine too old to
+                  send the lists keeps its messages below. */}
+              {disclosures &&
+                (["load", "ai"] as const).map((kind) => {
+                  const list = kind === "load" ? disclosures.could_not_load : disclosures.ai_wont_play;
+                  if (list == null) return null;
+                  return (
+                    <div className="ck ck-dsc" key={kind}>
+                      <span className="lbl">
+                        <DisclosureList
+                          kind={kind}
+                          d={disclosures}
+                          where="import"
+                          unavailable="Forge's card list isn't on this server yet"
+                        />
+                      </span>
+                      <span className={`res st ${list.length ? "warn" : "ok"}`}>
+                        <i />
+                        {list.length ? "Needs a look" : "Passed"}
+                      </span>
+                    </div>
+                  );
+                })}
+              {warnings
+                .filter((w) => !disclosures || !LISTED_KINDS.has(w.kind))
+                .map((w, i) => {
+                  const unnamed = w.cards.filter((c) => !w.message.includes(c));
+                  return (
+                    <div className="ck" key={`${w.kind}-${i}`}>
+                      <span className="lbl">
+                        {w.message}
+                        {unnamed.length > 0 && (
+                          <>
+                            {" "}
+                            <small>{unnamed.join(" · ")}</small>
+                          </>
+                        )}
+                      </span>
+                      <span className="res st warn">
+                        <i />
+                        Needs a look
+                      </span>
+                    </div>
+                  );
+                })}
 
               {checks.count > 0 && (
                 <p className="note">

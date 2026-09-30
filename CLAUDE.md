@@ -18,7 +18,7 @@ measurement or by legal posture — violating them silently breaks the product.
 
 ```
 engine/            Python, stdlib only, no frameworks
-  mtg_engine.py      rules KB + HTTP API (the server). ~2,140 lines.
+  mtg_engine.py      rules KB + HTTP API (the server). ~2,360 lines.
   jobqueue.py        SQLite job queue: enqueue/claim/finish/get
   worker.py          polls the queue, runs sims
   run_sim.py         invokes Forge (Java) as a subprocess
@@ -31,10 +31,13 @@ engine/            Python, stdlib only, no frameworks
   analysis.py        win methods + combo assembly per run (a later win is correlation, not conversion)
   forge_index.py     Forge's own card scripts, read at runtime: DFC layouts, AI:RemoveDeck flags, tutor reach (never committed)
   combo_bands.py     win-band classifier for combo lines (v0 for the tutoring hotfix; WS8 extends it)
-  qa/                QA layer A analyzers: each detector's detect(ctx) -> (metrics, flags); context.py builds ctx once per run
+  qa/                QA layer A analyzers: each detector's detect(ctx) -> (metrics, flags); context.py builds ctx once per run;
+                     run.py writes qa.json per run, review_queue.py files flags, budget.py times it
   game_story.py      per-game story for the payloads: knockouts, out seats, biggest board swing (switches below)
   commanders.py      commander names from each .dck's [Commander] section (partners, DFC faces)
   pilot.py           run_pilot / disclose: the ONE derivation of who piloted a run (rank checks key on it)
+  standings.py       the ONE place win rates are computed (decided games; leader / tie / no clear leader)
+  disclosure.py      per deck: cards Forge could not load, cards its AI doesn't cast on its own
   models/            prediction model + rank_checks.json (per-pilot rank-check records)
   convert_decklist.py  decklist text -> validated .dck
   tests/             test_*.py (unit; run them all, never a hand list) + smoke_test.py (live API) + fixtures/
@@ -45,6 +48,7 @@ web/               Next.js 15 App Router, React 19, TypeScript strict
   components/        incl. FlagMoment.tsx (Flag this moment), PredictionPanel.tsx
 studies/           pre-registered experiments (PREREG.md before any game, RESULTS.md after)
   scenarios/         seeded-board harness: writer.py, run_scenarios.py, suite/ S1-S9 + C1, BASELINE.md
+  e1_executor/       combo-executor prototype data (steps/ in simlab-steps/1) and the G1 gate (RESULTS.md)
 Design System/     DESIGN_SYSTEM.md (BINDING) + tokens css + backdrop art + dc.html specs
 mockups/           design_principles.md (superseded for visuals) + v3 HTML wireframes
 deploy/            Dockerfiles (api/worker/web), compose, worker-entrypoint.sh
@@ -183,6 +187,21 @@ From `engine/SIM_CALIBRATION.md`:
 - **Predictions are fit on stock Forge games.** On a plan-piloted run the page
   says so; a failed rank check recorded in `engine/models/rank_checks.json` for
   the run's pilot and the served model withholds the figures (decision 19).
+- **Win rates come only from `engine/standings.py`:** wins over decided games,
+  whole percents below 30 decided games. Never divide by all games or read
+  `summary.win_rates` on a surface. "Leader" appears only above an even share,
+  and a tie reads as a tie. The home leaderboard groups runs by pilot id and
+  never pools across pilots or versions.
+- **Dead-card disclosures** (`engine/disclosure.py`): "Cards Forge could not
+  load" and "Cards Forge's AI doesn't cast on its own" (the 2026-09-27 wording,
+  flagged spells only) on the run page, the deck page and at import. On a run
+  older than Forge's own load report, the load list is today's Forge index
+  minus any card the run's log shows in play, and the page says so. On a
+  stock-piloted run the copy never mentions Sim Lab's pilot. A card Forge's AI
+  skips gets telemetry status `ai_skips` ("Not judged"), never `cold`, and the
+  coach may never suggest cutting it. The api container reads the Forge index
+  the worker builds on the shared `/data` volume; it is derived from Forge's
+  GPL card scripts, built at runtime and never committed.
 
 ### UI design rules are binding
 
@@ -273,6 +292,15 @@ telemetry, coaching, the training corpus, and — critically — all AI decision
   obligation for the shim, which is satisfied only while the
   `simlab-forge-shim` repo stays public at the commit the image was built
   from. Do not push this image anywhere public without checking that first.
+- **The combo executor keeps the boundary this way** (shim branch `exec-proto`,
+  0.18.0-proto, dev box only; G1 GO, `studies/e1_executor/`). Combo steps are
+  plan data (`"steps"` in the plans JSON the shim already reads, so
+  `plansSha256` covers them); the Java interprets them generically through
+  `canPlay`, `canPayCost`, `canTarget` and `playStack`, and binds a trigger's
+  target only when an armed line's data names the trigger's host, handing
+  everything else to `super` (owner decision 4's checklist). `chooseBinary` is
+  outside that list: it lives only on the evidence branch `exec-proto-binary`
+  until the owner extends decision 4.
 - Prefer upstream PRs to Card-Forge over carrying a fork; any fork we do carry
   must be public from day one.
 - GPL non-compliance is the only path where Forge contributors could ever
@@ -327,6 +355,13 @@ committed cache).
   rate limited per key (`MTG_FLAG_PER_HOUR`, default 60), quota before
   validation. Note the web build still inlines one admin key
   (`NEXT_PUBLIC_API_KEY`) for the trusted playtest group until tasks/06.
+- **Reviewer keys** (`MTG_REVIEW_KEYS`) are the only keys that read `GET
+  /qa/queue` (human flag notes included; `Cache-Control: no-store`). An API
+  key gets a 403 there precisely because the web build inlines one; a flags
+  key gets a 403 too. A reviewer key writes nothing (403 on every write, POST
+  /flags included) and never satisfies the refuse-to-bind check. `GET
+  /results/{file}/qa` is public, goes through `_result_path`, and carries no
+  human note.
 
 ### Sim timing: three numbers, and they are not interchangeable
 
@@ -376,7 +411,7 @@ lost to block buffering. See deploy/HOSTING.md.
 # Engine — every test, discovered. Do NOT replace this with a hand-written
 # list: the previous list named 8 files while 16 existed, so "running the
 # loop" silently ran half the suite. Each must print ALL ASSERTIONS PASSED.
-for t in engine/tests/test_*.py studies/scenarios/tests/test_*.py; do
+for t in engine/tests/test_*.py studies/*/tests/test_*.py; do
   python3 "$t" >/dev/null 2>&1 && echo "pass  $t" || echo "FAIL  $t"
 done
 
@@ -392,6 +427,15 @@ python3 engine/tests/smoke_test.py --sim                      # needs the API up
 
 # Before every shim release: the seeded-board scenario suite (WS3), about
 # 21 min per arm at 8 JVMs; commands and baselines in studies/scenarios/BASELINE.md.
+
+# QA layer A over a COPY of the corpus (p95 under 1 s locally), and the web's
+# node tests. In production, also run preflight in the worker container:
+#   sudo docker exec deploy-worker-1 python3 /app/deploy/preflight.py --image-only
+# preflight --files requires a clean qa.json on the newest run and waits up to
+# --qa-wait (150 s) for the detached hook. On a dev box it always ends FAILED on
+# the 8 /app image checks, worded "8 image check(s) failed".
+MTG_DATA_DIR=/tmp/qacopy python3 -u engine/qa/run.py --all
+cd web && node --test scripts/*.test.mjs
 
 # Is the DEPLOYMENT actually serving what we think? Tests and a clean deploy
 # both passed while the prediction model was missing from the image, because
@@ -444,12 +488,14 @@ regenerates by running a sim.
    `disk I/O error`. Use a real volume; point `MTG_DATA_DIR` somewhere local.
 3. **`next build` needs network** the first time (`next/font` fetches and
    self-hosts Inter and Geist Mono). Offline builds fail on fonts, not on code.
-4. **Prefer the small API payloads.** Measured 2026-09-28, gzipped as the API
-   sends them: `api.runSummary(file)` is 2.6 KB for an 8-game run and 3.8 KB
-   for a 16-game one (it carries every game's story); `api.runGame(file, n)` is
-   about 21-26 KB (43 KB max seen); `api.result(file)` is 196-409 KB. Both small
-   payloads revalidate (max-age=300, client tag `?v=r1`) because the story
-   follows the switches. Don't reintroduce whole-run fetches into pages.
+4. **Prefer the small API payloads.** Measured 2026-09-29, gzipped as the API
+   sends them: `api.runSummary(file)` is 3.1 KB for an 8-game run and 4.3 KB
+   for a 16-game one (every game's story, standings and disclosures);
+   `api.runGame(file, n)` is about 21 KB for game 1 and 26-27 KB at the median
+   (44 KB max seen); `GET /results/{file}/qa` is 2.8-4.0 KB; `api.result(file)`
+   is 201-418 KB. The small payloads revalidate (max-age=300, client tag
+   `?v=r1`) because the story follows the switches. Don't reintroduce whole-run
+   fetches into pages.
 5. **Player keys carry a seat prefix** — `"Ai(2)-Kilo Helm Final"`. Strip with
    `stripAi()` for display; keep the raw key for lookups. Note `Ai(2)-` also
    looks like Forge's `(123)` instance-id syntax — parsers must not confuse them.
@@ -478,6 +524,15 @@ regenerates by running a sim.
    battles change on load; no option skips them). A life of 0 crashes a
    multiplayer GameState: write -1 for a seat that has already lost. A seeded
    life total counts as life lost or gained this turn (rule 119.5).
+12. **qa.json is written once and never redone on its own.** The worker runs
+   `engine/qa/run.py` after `jobqueue.finish` (detached, niced, 120 s watchdog;
+   `MTG_QA=0` turns the hook and the idle sweeper off). The sweeper backfills
+   one run per 30 s of idle time, newest first, and gives up after 3 attempts.
+   `errors[]` records a failed stage and `notes[]` what went unjudged. The tutor
+   flags need a warm `$MTG_DATA_DIR/card_cache.json` (Richard's run: 5 flags
+   cold, 14 warm, `complete` both times), and a qa.json written before the card
+   cache or the Forge index existed stays that way. After a readapt, or once the
+   cache warms, rerun `engine/qa/run.py --all --force`.
 
 ## Working agreements
 

@@ -96,10 +96,20 @@ components/
                                   code that sends a flags-only key (sendFlag)
   PredictionPanel.tsx             playgroup prediction, its pilot label and the
                                   withheld state when a rank check failed
+  CardDisclosures.tsx             per deck, "Cards Forge could not load" and
+                                  "Cards Forge's AI doesn't cast on its own"
+                                  (run page, deck page, import); the engine
+                                  computes both lists (engine/disclosure.py)
+  LoadError.tsx                   a failed load in a player's words; the raw
+                                  fetch message only in a dev build
 lib/
   api.ts                          engine client, configurable base URL
   types.ts                        response shapes, mirroring the engine exactly
-  format.ts                       stripAi, pct, timeAgo, runDate, scryfallArt, …
+  format.ts                       stripAi, pct, fmtRate, fmtTurn, timeAgo, …
+  standings.ts                    reads and words the engine's published win
+                                  rates (engine/standings.py): decided games
+                                  are the one denominator, the leader is a
+                                  leader, a tie or nobody; no page divides
   cards.ts                        Scryfall card-fact client + memo
   replay.ts                       event-folding engine (pure, testable)
   story.ts                        the game story's words (one sentence per game)
@@ -107,12 +117,39 @@ lib/
                                   swing; the engine applies the display switches
 ```
 
-**Payloads (R1, measured 2026-09-28 gzipped as the engine sends them).**
-`runSummary` is 2.6 KB for the playtester's 8-game run and 3.8 KB for the
-largest local 16-game run (it carries every game's story); `runGame` is about
-21 KB for game 1 and 25 KB at the median on the same 8-game run (26 KB median,
-43 KB max on the 16-game one). Both revalidate (`max-age=300`) because the
+**Payloads (measured 2026-09-29 gzipped as the engine sends them, with the
+week-4 standings).** `runSummary` is 2.7 KB for the playtester's 8-game run and
+4.0 KB for the largest local 16-game run (it carries every game's story and
+the published standings); `runGame` is about 21 KB for game 1 on either run
+(25 KB at the median on the 8-game run, 26 KB median and 43 KB max on the
+16-game one, measured 2026-09-28). Both revalidate (`max-age=300`) because the
 story follows `MTG_TURNING_POINT` and `MTG_KNOCKOUT_DETAIL`.
+
+**R1.1 disclosures (re-measured 2026-09-29, same method).** `runSummary` now
+carries `disclosures` (per deck, cards Forge could not load and cards its AI
+doesn't cast on its own): 2,655 -> 2,934 B on the playtester's run, a median
+of +193 B over the 61 local results, and 4.2 KB for the largest (3.9 KB
+without). A run finished from R1.1 on also carries the worker's record
+(`meta.ai_wont_play_by_deck`), which the summary's `meta` repeats: +40 B more
+on the playtester's run with that record added. `runGame` is unchanged;
+`GET /decks/{file}` gains the same two lists for one deck (+80 to +110 B).
+
+**Week 4 combined (repair/week4, re-measured 2026-09-29, same method).** With
+both `standings` and `disclosures` on the summary, `runSummary` is 3,078 B for
+the playtester's run (the production copy, which predates the worker's record),
+2.1 KB at the median over 63 local results, and 4.3 KB for the largest local
+16-game run; `runGame` for game 1 of the playtester's run is 21.5 KB.
+Re-measured on r4/week4-verify (same method): `runGame` now carries the
+run's standings too, 25.8 KB median and 32.7 KB max on the playtester's run
+and 26.8 KB median and 44.3 KB max on the largest local 16-game run;
+`result` (the whole run, which no page fetches) is 201 KB and 418 KB on the
+same two runs, and `GET /results/{file}/qa` is 4.0 KB on either.
+
+**Win rates.** Every rate on every page is the engine's published one
+(`standings` on the summary, game and index payloads and on `/sim-status`):
+wins over decided games (finished with a winner), whole percents below 30
+decided games, and "Leader" only above an even share. The only reference
+drawn beside a rate is the labelled pod average (decision 13).
 
 ## Responsive contract
 

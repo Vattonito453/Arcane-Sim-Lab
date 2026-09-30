@@ -37,6 +37,17 @@ shows, checked after the surfaces:
   - the newest result was piloted by a shim at least as new as the release
     pin. A run finished BEFORE the deploy fails this until a new sim finishes,
     so the post-deploy order is: deploy, smoke_test.py --sim, then preflight.
+  - with --files: the newest result has a qa.json (QA layer A, R1.1) with no
+    errors, read through GET /results/{file}/qa. The worker writes it in a
+    detached child after the run finishes, so the check waits for it (up to
+    --qa-wait, 150 s by default) rather than racing the worker.
+
+IN THE WORKER CONTAINER, which serves no API, run the image half only:
+
+    python3 deploy/preflight.py --image-only
+
+It checks the same files and imports as --files, including the in-memory QA
+analysis the worker runs after every job.
 
 MAINTAINING THIS. When you add a user-visible feature, add a SURFACE entry in
 the same commit. When you deliberately turn something off, move it to
@@ -230,6 +241,42 @@ def scorecards_ok(body):
     return True, "%d decks, behaviour=%s" % (len(decks), run.get("hasBehaviour"))
 
 
+_DISCLOSURE_KEYS = ("could_not_load", "load_basis", "ai_wont_play", "commander_ai_wont_play")
+
+
+def disclosures_ok(body):
+    """Per deck, the cards Forge could not load and the cards its AI doesn't
+    cast on its own (engine/disclosure.py; repair plan WS11 task 4, R1.1).
+
+    Two ways this is dark while answering 200: an engine older than R1.1 (no
+    `disclosures`), and an api container that cannot read the Forge card
+    index the worker builds into $MTG_DATA_DIR/forge_index on the shared
+    volume (`index` null). The api image has no Forge jar, so without that
+    volume every AI list, and every old run's load list, reads "not checked"
+    on every page. Works on the run summary and on GET /decks/{file}."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    d = body.get("disclosures")
+    if not isinstance(d, dict):
+        return False, "no disclosures (engine older than R1.1, or computing them failed)"
+    if not d.get("index"):
+        return False, ("no Forge card index readable here: the worker builds it "
+                       "into $MTG_DATA_DIR/forge_index on the shared volume")
+    rows = d.get("decks") if "decks" in d else {"deck": d}
+    if not isinstance(rows, dict) or not rows:
+        return False, "no decks in the disclosures"
+    bad = [n for n, r in rows.items()
+           if not isinstance(r, dict) or any(k not in r for k in _DISCLOSURE_KEYS)]
+    if bad:
+        return False, "decks missing a list: %s" % bad[:2]
+    unchecked = [n for n, r in rows.items() if r.get("ai_wont_play") is None]
+    listed = sum(len(r.get("ai_wont_play") or []) + len(r.get("could_not_load") or [])
+                 for r in rows.values())
+    return True, "index %s, decks=%d, cards listed=%d%s" % (
+        d.get("index"), len(rows), listed,
+        "; AI list not checked for %s (deck file gone?)" % unchecked[:2] if unchecked else "")
+
+
 def cached_read_endpoint(body):
     """/ask and /coaching are READ-ONLY caches by design.
 
@@ -336,6 +383,68 @@ def flag_surfaces(env=None):
     return [route, keys]
 
 
+# The review queue read (GET /qa/queue, R1.1). It holds playtesters' own
+# words, so only a reviewer key from MTG_REVIEW_KEYS reads it: an API key is
+# refused because the web build inlines one. Two facts, like the flags: the
+# route is deployed and gated (always), and a reviewer key is loaded (live
+# only once Vincent has set MTG_REVIEW_KEYS; unset is a deliberate off).
+REVIEW_KEYS_ENV = "MTG_REVIEW_KEYS"
+
+
+def review_route_gated(body):
+    """GET /qa/queue with no credential: the reviewer gate's 401. An engine
+    that predates R1.1 answers 404; one from before the reviewer-key rule
+    asks for an API key, which the web build makes public."""
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    err = str(body.get("error") or "")
+    if "reviewer key" in err:
+        return True, "route present and gated (%s)" % err
+    return False, "unexpected answer: %s" % err[:80]
+
+
+def review_keys_loaded(body):
+    if not isinstance(body, dict):
+        return False, "expected an object"
+    if body.get("review") is not True:
+        return False, ("the engine reports review=%s: it loaded no reviewer key. A key "
+                       "that is also in MTG_API_KEYS or MTG_FLAG_KEYS is dropped; "
+                       "recreate the api container after editing .env." % body.get("review"))
+    return True, "the engine reports review=true"
+
+
+def review_surfaces(env=None):
+    """The two review-queue entries for the manifest, the second decided by the env."""
+    env = os.environ if env is None else env
+    route = {
+        "name": "review queue gate (GET /qa/queue)",
+        "intent": "live",
+        "path": "/qa/queue",
+        "expect": (401,),
+        "check": review_route_gated,
+        "note": "an unkeyed GET must meet the reviewer gate; 404 means the engine "
+                "image predates R1.1",
+    }
+    if (env.get(REVIEW_KEYS_ENV) or "").strip():
+        keys = {
+            "name": "reviewer keys",
+            "intent": "live",
+            "path": "/health",
+            "check": review_keys_loaded,
+            "note": "MTG_REVIEW_KEYS reaches the api through docker-compose.yml",
+        }
+    else:
+        keys = {
+            "name": "reviewer keys",
+            "intent": "off",
+            "reason": "MTG_REVIEW_KEYS is unset, so nobody can read the review queue "
+                      "over HTTP; the files are on the volume. The nightly reviewer "
+                      "(layer B) needs one, and an API key will not do: the web "
+                      "build inlines one (deploy/HOSTING.md, \"QA layer A\").",
+        }
+    return [route, keys]
+
+
 # --------------------------------------------------------------------------
 # The manifest. THIS is the statement of intent.
 # --------------------------------------------------------------------------
@@ -423,10 +532,26 @@ def surfaces(run, deck, env=None):
             "check": has_keys("basis", "exit_match_rate"),
         },
         {
+            "name": "card disclosures (run)",
+            "intent": "live",
+            "path": "/results/%s/summary" % run,
+            "check": disclosures_ok,
+            "note": "cards Forge could not load / its AI doesn't cast on its own; "
+                    "needs the worker-built Forge index on the shared /data volume",
+        },
+        {
+            "name": "card disclosures (deck)",
+            "intent": "live",
+            "path": "/decks/%s" % deck,
+            "check": disclosures_ok,
+        },
+        {
             "name": "deck telemetry",
             "intent": "live",
             "path": "/results/%s/telemetry?deck=%s" % (run, deck),
-            "check": has_keys("games", "deck", "engine"),
+            # "engine" (the charge-counter and proliferate rows) is gone:
+            # WS11 task 8. "decided" is the published denominator.
+            "check": has_keys("games", "deck", "watched", "decided"),
             "note": "CLAUDE.md called this 'no UI yet'; it has had one for a while",
         },
         {
@@ -479,7 +604,7 @@ def surfaces(run, deck, env=None):
                       "validated (repair plan RC4). The store still fills. "
                       "Asserted under DEPLOYMENT INVARIANTS, not just noted.",
         },
-    ] + flag_surfaces(env)
+    ] + flag_surfaces(env) + review_surfaces(env)
 
 
 # --------------------------------------------------------------------------
@@ -602,13 +727,35 @@ IMAGE_FILES = [
      "the QA analyzers package; the same top-level glob would miss it"),
     ("/app/engine/qa/knockouts.py",
      "knockouts: analysis.win_method and the scorecards read it"),
+    ("/app/engine/qa/run.py",
+     "QA layer A: the worker runs it after every finished run (qa.json)"),
+    ("/app/engine/qa/review_queue.py",
+     "the review queue behind GET /qa/queue and QA's auto flags"),
 ]
 
 # Modules that must IMPORT in the image, not merely exist on disk. analysis.py
 # imports engine/qa/ at module load, so a missing or broken package would take
-# /analysis down at request time while every file check above passed.
-IMAGE_IMPORTS = ["qa", "qa.knockouts", "analysis", "scorecard", "game_story",
-                 "commanders", "pilot", "predict"]
+# /analysis down at request time while every file check above passed. The
+# same list is checked in BOTH images: `--files` here in the api container,
+# `--image-only` in the worker (which runs qa/run.py after every job).
+IMAGE_IMPORTS = ["qa", "qa.context", "qa.knockouts", "qa.tutors", "qa.run",
+                 "qa.review_queue", "analysis", "scorecard", "game_story", "board",
+                 "validity", "combo_bands", "commanders", "pilot", "predict",
+                 # Week 4: the run summary imports standings unguarded (a
+                 # missing module is a 500 on every run page), and every
+                 # disclosure list, the telemetry exemption and the coach's
+                 # cut rule read disclosure.
+                 "standings", "disclosure"]
+
+# QA layer A (repair plan WS2 layer A task 6): the newest finished run must
+# have a qa.json with no errors. The worker writes it in a detached child
+# after the job finishes, so a preflight run straight after a sim can arrive
+# first: the check polls for up to QA_WAIT_SECONDS before failing (the
+# worker's own ceiling is 120 s; the smoke test's --sim run waits for its
+# qa.json too, so after the documented order the wait is normally zero).
+QA_SCHEMA = "simlab.qa/1"
+QA_WAIT_SECONDS = 150.0
+QA_POLL_SECONDS = 5.0
 
 
 def _engine_dir():
@@ -660,7 +807,66 @@ def check_imports(engine_dir=None):
     except Exception as e:  # noqa: BLE001
         bad += 1
         print("  %-9s knockouts.detect: %s: %s" % ("BROKEN", type(e).__name__, e))
+        game = None
+    try:
+        # The whole QA layer A analysis, in memory (nothing is written): the
+        # context, every detector and the qa.json assembly.
+        from qa import run as qa_run
+        doc = qa_run.analyze("sim_00000000_000000_preflight.json",
+                             result={"meta": {}, "games": [game]}, load_forge=False)
+        kos = ((doc.get("games") or [{}])[0].get("knockouts")) or []
+        ok = (doc.get("schema") == QA_SCHEMA and not doc.get("errors")
+              and [k.get("cause") for k in kos] == ["combat_damage"])
+        if not ok:
+            bad += 1
+        print("  %-9s qa.run.analyze on a synthetic game: %s, %d error(s)%s" % (
+            "ok" if ok else "WRONG", doc.get("analyzer"), len(doc.get("errors") or []),
+            "" if not doc.get("errors") else ": %s" % doc["errors"][:2]))
+    except Exception as e:  # noqa: BLE001
+        bad += 1
+        print("  %-9s qa.run.analyze: %s: %s" % ("BROKEN", type(e).__name__, e))
     return bad
+
+
+def qa_report_ok(base, run, wait=QA_WAIT_SECONDS, poll=QA_POLL_SECONDS,
+                 fetch_=None, sleep=None, clock=None):
+    """(ok, detail): the probe run (the newest result) has a qa.json with no
+    errors, served by GET /results/{run}/qa. A 404 {"qa": "pending"} is
+    polled until `wait` runs out, because the worker writes qa.json in a
+    detached child after the job finishes (see QA_WAIT_SECONDS)."""
+    import time as _time
+    fetch_ = fetch_ or fetch
+    sleep = sleep or _time.sleep
+    clock = clock or _time.monotonic
+    deadline = clock() + max(0.0, wait)
+    waited = False
+    while True:
+        st, body = fetch_(base, "/results/%s/qa" % run)
+        if st == 200 and isinstance(body, dict) and body.get("schema") == QA_SCHEMA:
+            errs = body.get("errors") or []
+            if errs:
+                shown = "; ".join("[%s] %s" % (e.get("stage"), e.get("error"))
+                                  for e in errs[:3] if isinstance(e, dict))
+                return False, ("qa.json for %s has %d error(s): %s. Rerun it with "
+                               "engine/qa/run.py %s in the worker container to see the "
+                               "traceback." % (run, len(errs), shown, run))
+            return True, "%s: %s, %d flag(s), no errors%s" % (
+                run, body.get("analyzer"), len(body.get("flags") or []),
+                " (after waiting for the worker)" if waited else "")
+        if st == 200:
+            return False, ("GET /results/{file}/qa answered with something that is not a "
+                           "qa report: the engine predates QA layer A (R1.1)")
+        if st == 404 and isinstance(body, dict) and body.get("qa") == "pending":
+            if clock() >= deadline:
+                return False, ("no qa.json for %s after waiting %d s. The worker writes "
+                               "it after each run and its sweeper backfills; check "
+                               "`docker compose logs worker` for 'QA', or run "
+                               "engine/qa/run.py %s in the worker container." % (
+                                   run, int(wait), run))
+            waited = True
+            sleep(poll)
+            continue
+        return False, "HTTP %s: %s" % (st, str(body)[:160])
 
 
 def check_files():
@@ -709,8 +915,24 @@ def main(argv):
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--base", default=os.environ.get("PREFLIGHT_BASE", DEFAULT_BASE))
     ap.add_argument("--files", action="store_true",
-                    help="also check image contents (run inside the container)")
+                    help="also check image contents (run inside the container) and "
+                         "that the newest run has a clean qa.json")
+    ap.add_argument("--image-only", action="store_true",
+                    help="only the image contents and imports, no HTTP (the worker "
+                         "container, which serves no API)")
+    ap.add_argument("--qa-wait", type=float, default=QA_WAIT_SECONDS,
+                    help="with --files: seconds to wait for the newest run's qa.json "
+                         "(default %(default)s)")
     args = ap.parse_args(argv)
+
+    if args.image_only:
+        bad = check_files() + check_imports()
+        print()
+        if bad:
+            print("PREFLIGHT FAILED: %d image check(s) failed." % bad)
+            return 1
+        print("PREFLIGHT OK: every file and module this image must carry is there and works.")
+        return 0
 
     run = pick_run(args.base)
     if not run:
@@ -786,6 +1008,12 @@ def main(argv):
           "note": "version-2 plans need shim >= 0.17.0 (tasks/25 WS5 T1)"},
          plan_version_supported(pin)),
     ]
+    if args.files:
+        invariants.append(
+            ({"name": "newest run has a clean qa.json",
+              "note": "QA layer A (R1.1): post-deploy order is smoke_test.py --sim, "
+                      "then preflight; the check waits up to --qa-wait seconds"},
+             qa_report_ok(args.base, run, wait=args.qa_wait)))
     broken = 0
     print("\nDEPLOYMENT INVARIANTS")
     for s, (ok, detail) in invariants:
@@ -794,15 +1022,19 @@ def main(argv):
             broken += 1
         print("  %-6s %-30s %s" % ("ok" if ok else "FAIL", s["name"], detail))
 
+    image = 0
     if args.files:
-        failures += [("files", "")] * check_files()
-        failures += [("imports", "")] * check_imports()
+        image = check_files() + check_imports()
+        failures += [("image", "")] * image
 
     print()
     if failures:
-        dark = len(failures) - broken
+        # Counted apart: a missing /app file is an image defect, not a dark
+        # surface, and on a dev box (no /app) every file check misses.
+        dark = len(failures) - broken - image
         print("PREFLIGHT FAILED: %d surface(s) meant to be live are dark; "
-              "%d deployment invariant(s) broken." % (dark, broken))
+              "%d deployment invariant(s) broken; %d image check(s) failed."
+              % (dark, broken, image))
         for s, detail in failures:
             if isinstance(s, dict):
                 print("  - %s: %s" % (s["name"], detail))

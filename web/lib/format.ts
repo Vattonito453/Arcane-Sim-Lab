@@ -78,6 +78,30 @@ export function pct(x: number, digits = 0): string {
   return `${(x * 100).toFixed(digits)}%`;
 }
 
+/** A published win rate (engine/standings.py) at the digits the engine sets:
+ *  whole percents below 30 decided games, one decimal from there. A deck
+ *  with no decided games has no rate, and reads as an en dash. */
+export function fmtRate(rate: number | null | undefined, digits: number = 0): string {
+  return typeof rate === "number" && Number.isFinite(rate) ? pct(rate, digits) : "–";
+}
+
+/** An even share of the pod, the one reference a win rate is shown against
+ *  until the archetype baselines are re-measured (decision 13): "25%",
+ *  "33.3%". It is exact, not a measurement, so it keeps its decimal. */
+export function fmtAverage(avg: number | null | undefined): string {
+  if (typeof avg !== "number" || !Number.isFinite(avg)) return "–";
+  const one = (avg * 100).toFixed(1);
+  return `${one.endsWith(".0") ? one.slice(0, -2) : one}%`;
+}
+
+/** A median turn: "15" or "15.5". The engine takes the true median (the
+ *  midpoint of the two middle games for an even count), so a half turn is
+ *  a real answer and is never rounded to either neighbour. */
+export function fmtTurn(n: number | null | undefined): string {
+  if (typeof n !== "number" || !Number.isFinite(n)) return "–";
+  return Number.isInteger(n) ? String(n) : n.toFixed(1);
+}
+
 export function timeAgo(unixSeconds: number): string {
   const s = Math.max(0, Math.floor(Date.now() / 1000 - unixSeconds));
   if (s < 60) return `${s} s ago`;
@@ -178,6 +202,21 @@ export function timesWord(n: number): string {
 export const SERVER_DOWN =
   "Sim Lab's server isn't answering. Your decks and sims are safe. Try again in a minute.";
 
+/** A failed load, in words a player can use (repair plan WS11 task 7).
+ *
+ *  The raw message is operator detail: lib/api formats it as "GET
+ *  /results/x/summary → 404: no such result", and pages printed it verbatim
+ *  followed by "Check that the engine API is running", a path, a status code
+ *  and an instruction for whoever runs the server. Pages show the raw text
+ *  only outside production, gated at the use site with a literal NODE_ENV
+ *  comparison (see SERVER_DOWN). `what` names the thing: "run", "replay". */
+export function loadError(msg: string | null | undefined, what: string): string {
+  const m = msg ?? "";
+  if (/→ 404\b/.test(m)) return `This ${what} is not on the server.`;
+  if (/failed to fetch|networkerror|load failed|fetch failed/i.test(m)) return SERVER_DOWN;
+  return `Something went wrong loading this ${what}. Try again in a minute.`;
+}
+
 /** Readable deck name from whatever the job payload carries.
  *
  *  A job's `decks` are the paths /simulate was handed, and in a container those
@@ -195,8 +234,9 @@ export function deckSlug(file: string): string {
   const base = file.split(/[\\/]/).pop() ?? file;
   return base
     .replace(/\.dck$/i, "")
-    // Imported decks get an 8-hex uniqueness suffix; it is an address, not a name.
-    .replace(/-[0-9a-f]{8}$/i, "")
+    // Imported decks get an 8-hex uniqueness suffix, after a hyphen or (the
+    // importer's own form) an underscore; it is an address, not a name.
+    .replace(/[-_][0-9a-f]{8}$/i, "")
     .replace(/[_-]+/g, " ")
     .replace(/\s+/g, " ")
     .trim()

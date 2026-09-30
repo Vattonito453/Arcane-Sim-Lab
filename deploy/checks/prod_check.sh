@@ -22,6 +22,13 @@ sudo docker ps --format '{{.Names}}  {{.Status}}  {{.Image}}'
 section "preflight (api container)"
 sudo docker exec deploy-api-1 python3 /app/deploy/preflight.py --files 2>&1 | tail -45
 
+section "preflight image half (worker container; R1.1 and later)"
+sudo docker exec deploy-worker-1 sh -c 'test -f /app/deploy/preflight.py && python3 /app/deploy/preflight.py --image-only 2>&1 | tail -25 || echo "no preflight in this worker image (before R1.1)"'
+
+section "QA layer A (qa.json per run, review queue counts)"
+sudo docker exec deploy-worker-1 sh -c 'r=$(ls /data/sim_results/sim_*.json 2>/dev/null | wc -l); q=$(ls /data/simkb/runs/*/qa.json 2>/dev/null | wc -l); echo "results: $r  with qa.json: $q"; echo "auto queue: $(ls /data/simkb/review_queue/auto 2>/dev/null | wc -l)  human queue: $(ls /data/simkb/review_queue/human 2>/dev/null | wc -l)"'
+sudo docker logs deploy-worker-1 2>&1 | grep -E "QA (started|killed|gave up|not started)|QA sweep failed" | tail -10 || true
+
 section "shim version and commit (worker container)"
 sudo docker logs deploy-worker-1 2>&1 | grep -m1 'shim commit' || echo "no 'shim commit' line in worker log"
 sudo docker exec deploy-worker-1 sh -c 'ls -la /opt/simlab-forge-shim 2>/dev/null; cat /opt/simlab-forge-shim/COMMIT 2>/dev/null || echo "no COMMIT file"'

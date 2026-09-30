@@ -94,6 +94,14 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    included, and the baseline marker reads 25% for four decks / 33.3% for three.
    If a 3-deck run ever shows "1 deck" and a 100% baseline again, the summary lost
    its winless seats — see `summarize()` in `engine/forge_log_adapter.py`.
+   Every rate is wins over **decided** games (`engine/standings.py`), the same
+   figure in the lede, the scorecards, the prediction table, the results index
+   and the running page's "Done." line. On the playtester's run that is "Kess
+   won 4 of 7 decided games (57%) ... 1 game hit the 15-minute clock and isn't
+   counted", never 50%. Whole percents below 30 decided games. A tie reads as a
+   tie, and a top deck at or below an even share reads "No clear leader"; the
+   results index column is *Leader*. The home leaderboard shows one pilot and
+   version only and says how many runs it leaves out.
    Below the rates, **Combo lines (from Commander Spellbook)**: which known combos each deck contains
    (Commander Spellbook), how often all pieces were on the battlefield at once,
    and whether that seat then won, next to what raw draw odds alone predicted
@@ -114,6 +122,26 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    is inferred). On the playtester's run game 1 reads "Skrat's Revenge, turn 10.
    Out: Stella Lee and Krenko Goblins (poison, turn 9), Kess (combat, turn 10).
    Biggest board swing: turn 8, Ezuri's Predation."
+   Since R1.1, **Cards not played as written** lists, per deck, the cards
+   Forge could not load and the cards its AI doesn't cast on its own (each a
+   disclosure that opens with a click or Enter; the deck page and import show
+   the same two lists, and the deck page tags each card row). On a run older
+   than Forge's own load report the first list is read from today's Forge
+   card index and says so; a name the run's own log shows in play is left
+   off it, because the Forge that played the run knew it (21 of 49 such names
+   across the local corpus on 2026-09-29, for example Adamantium Bonding Tank
+   cast in July runs). Distrust "none" on such a run a little: it is today's
+   index, not that run's Forge. On the playtester's run Stella Lee lists
+   "Primal Amulet / Primal Wellspring" and "Riverglide Pathway / Lavaglide
+   Pathway" (single-slash names Forge refuses), and Kess lists 8 AI cards.
+   Every finished run also gets a QA report, `GET /results/<file>/qa`
+   (`simlab.qa/1`: knockouts, swing, tutor figures, pilot, flags), written by
+   the worker within seconds of the run finishing; 404 `{"qa": "pending"}`
+   until then. Its tutor flags read the card cache, so a cold
+   `MTG_DATA_DIR/card_cache.json` under-flags without recording an error
+   (the playtester's run: 5 flags cold, 14 warm); its `notes` then say "no
+   card cache" and how many graveyard steers went unjudged, while `status`
+   stays "complete". A `qa.json` is not redone when the cache warms later.
 4. **Replay.** Top-down table: seats around a centre line, each seat's creatures
    pinned to the middle edge, real Scryfall card faces, identical copies collapsed
    into one tile with a count (`Zombie Token 44`). Attackers get a red ring and an
@@ -126,7 +154,9 @@ If you do hit it: stop the dev server, `rm -rf web/.next`, start it again.
    playhead; typing in it never moves the replay, Escape closes it. Sending
    needs a flags-only key (`MTG_FLAG_KEYS`, see `deploy/HOSTING.md`) or an API
    key, except on a fully open local engine; the flag lands in
-   `MTG_DATA_DIR/simkb/review_queue/human/`, which nothing serves back.
+   `MTG_DATA_DIR/simkb/review_queue/human/`, which only `GET /qa/queue` with a
+   reviewer key (`MTG_REVIEW_KEYS`) serves back: an API key, a flags key and
+   no key are refused there, and no public route carries a note.
 5. **Results** (`/results`). Every finished run, filterable by deck. Runs are
    named by matchup — "Wyleth vs Drana vs Kilo vs Wilhelt" — not by the result
    filename, which is only the address and sits in the row tooltip.

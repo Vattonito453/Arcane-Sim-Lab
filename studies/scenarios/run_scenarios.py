@@ -25,9 +25,13 @@ ran). Raw output stays out of git; commit summaries only.
 
 Arms are data: ARMS below, extended or overridden by --arms-file (JSON
 {name: {"pilot": "stock:Default" | "plan:SimLabHuman", "plan_version": 1|2,
-"fix": "all"|"none"|"a,b", "jar": path}}). A seat's "pilots" object in the
-scenario overrides the arm's pilot for that seat (for example "1 plan seat vs
-3 stock"). Stdlib only.
+"fix": "all"|"none"|"a,b", "jar": path, "steps": true}}). A seat's "pilots"
+object in the scenario overrides the arm's pilot for that seat (for example
+"1 plan seat vs 3 stock"). An arm with "steps" (the E1 executor, shim >=
+0.18.0-proto) is the plan arm plus the scenario's hand-written step file,
+--steps DIR/<scenario id>.json (studies/e1_executor/README.md), merged into
+its line deck's plan; a scenario without one runs that arm without steps.
+Stdlib only.
 """
 from __future__ import annotations
 
@@ -40,6 +44,7 @@ import re
 import statistics
 import subprocess
 import sys
+import threading
 import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
@@ -60,7 +65,18 @@ ARMS = {
     # Every seat the plan agent (production's pilot), version-2 plans
     # (the tutoring hotfix) with every fix flag on.
     "plan": {"pilot": "plan:SimLabHuman", "plan_version": 2, "fix": "all"},
+    # The plan arm plus the E1 executor's step data for the line seat.
+    "exec": {"pilot": "plan:SimLabHuman", "plan_version": 2, "fix": "all", "steps": True},
 }
+DEFAULT_STEPS = REPO / "studies" / "e1_executor" / "steps"
+STEPS_FORMAT = "simlab-steps/1"
+# The stop predicates the shim's StepRunner reads (repair plan WS9 part 3).
+STOP_PREDICATES = {"count", "power_vs_life", "opponents_out", "mana_at_least", "no_progress"}
+NO_PROGRESS_OF = {"mana", "opp_life", "opp_library", "power", "permanents"}
+STEP_ZONES = {"Battlefield", "Hand", "Graveyard", "Exile", "Command", "Library"}
+# StepRunner's agent-record detail: position, the executor's own decision
+# time, ms since the line armed, then the event's fields.
+EXEC_DETAIL = re.compile(r"^line=(\S+) step=(\d+) act=(\d+) it=(\d+) ms=([\d.]+) at=(\d+) ?(.*)$")
 SEAT = re.compile(r"^(?:Additional)?Ai\((\d+)\)-")
 TURN = re.compile(r"^Turn (\d+) ")
 # Forge's outcome lines, written when the game ends: "<seat> has lost trying
@@ -137,10 +153,184 @@ def build_plans(decks: list[Path], arm: dict, out: Path, data_dir: str | None,
     return path
 
 
+# --- the E1 executor arm (repair plan WS9 Phase A) ---------------------------
+
+def validate_steps(steps: dict) -> list[str]:
+    """Schema errors in a simlab-steps/1 file ([] when it is well formed).
+    The shim reads only "lines"; the rest is the runner's."""
+    err = []
+    if steps.get("format") != STEPS_FORMAT:
+        err.append(f"format must be {STEPS_FORMAT}")
+    if not isinstance(steps.get("deck"), str):
+        err.append("deck (the line deck's name) is required")
+    lines = steps.get("lines")
+    if not isinstance(lines, list) or not lines:
+        return err + ["lines must be a non-empty list"]
+
+    def action(a, where):
+        if not isinstance(a, dict):
+            return [f"{where}: not an object"]
+        e = []
+        op = a.get("op", "activate")
+        if op not in ("activate", "cast", "pass"):
+            e.append(f"{where}: op {op!r} is not activate, cast or pass")
+        if op != "pass" and not isinstance(a.get("card"), str):
+            e.append(f"{where}: card is required")
+        if a.get("zone", "Battlefield") not in STEP_ZONES:
+            e.append(f"{where}: zone must be one of {sorted(STEP_ZONES)}")
+        t = a.get("target")
+        if t is not None and (not isinstance(t, dict) or ("card" in t) == ("player" in t)):
+            e.append(f"{where}: target needs exactly one of card, player")
+        elif t and t.get("player") not in (None, "self", "opponent"):
+            e.append(f"{where}: target player must be self or opponent")
+        return e
+
+    for i, line in enumerate(lines):
+        w = f"lines[{i}]"
+        if not isinstance(line, dict) or not isinstance(line.get("id"), str):
+            err.append(f"{w}: id is required")
+            continue
+        pieces = line.get("pieces", {})
+        if not isinstance(pieces, dict) or not set(pieces.values()) <= STEP_ZONES:
+            err.append(f"{w}: pieces must map card name to a zone ({sorted(STEP_ZONES)})")
+        for j, t in enumerate(line.get("triggers", [])):
+            if not isinstance(t, dict) or not isinstance(t.get("card"), str):
+                err.append(f"{w}.triggers[{j}]: card is required")
+            elif "target" in t:
+                err += action({"op": "activate", "card": t["card"], "target": t["target"]},
+                              f"{w}.triggers[{j}]")
+        steps_ = line.get("steps")
+        if not isinstance(steps_, list) or not steps_:
+            err.append(f"{w}: steps must be a non-empty list")
+            continue
+        for j, st in enumerate(steps_):
+            sw = f"{w}.steps[{j}]"
+            if not isinstance(st, dict):
+                err.append(f"{sw}: not an object")
+                continue
+            body = st.get("loop", [st])
+            if not isinstance(body, list) or not body:
+                err.append(f"{sw}: loop must be a non-empty list")
+                continue
+            for k, a in enumerate(body):
+                err += action(a, f"{sw}.loop[{k}]" if "loop" in st else sw)
+            bad = set(st.get("until", {})) - STOP_PREDICATES
+            if bad:
+                err.append(f"{sw}: unknown stop predicate(s) {sorted(bad)}")
+            np_ = st.get("until", {}).get("no_progress")
+            if np_ is not None and np_.get("of", "mana") not in NO_PROGRESS_OF:
+                err.append(f"{sw}: no_progress.of must be one of {sorted(NO_PROGRESS_OF)}")
+    n = len(lines[0].get("steps") or []) if isinstance(lines[0], dict) else 0
+    for k in ("state_step", "outlet_step"):
+        if k in steps and not (isinstance(steps[k], int) and 0 <= steps[k] < n):
+            err.append(f"{k} must index lines[0].steps")
+    return err
+
+
+def load_steps(steps_dir: Path, sid: str) -> tuple[Path, dict] | None:
+    """The scenario's step file, validated, or None when it has none."""
+    p = Path(steps_dir) / f"{sid}.json"
+    if not p.exists():
+        return None
+    steps = json.loads(p.read_text(encoding="utf-8"))
+    bad = validate_steps(steps)
+    if bad:
+        sys.exit(f"{p}: " + "; ".join(bad))
+    return p, steps
+
+
+def _deep_merge(base: dict, patch: dict) -> dict:
+    out = dict(base)
+    for k, v in patch.items():
+        out[k] = _deep_merge(out[k], v) if isinstance(v, dict) and isinstance(out.get(k), dict) else v
+    return out
+
+
+def merge_steps(plans_path: Path, steps: dict, out: Path, sid: str) -> Path:
+    """A plans file for the exec arm: the arm's plans with the step file's
+    "lines" as the line deck's "steps" (the channel the shim reads) and its
+    optional "plan_patch" deep-merged into that deck's plan."""
+    plans = json.loads(Path(plans_path).read_text(encoding="utf-8"))
+    deck = steps["deck"]
+    if deck not in plans.get("decks", {}):
+        sys.exit(f"step file deck {deck!r} is not in {plans_path}")
+    plan = _deep_merge(plans["decks"][deck], steps.get("plan_patch") or {})
+    plan["steps"] = {"lines": steps["lines"]}
+    plans["decks"][deck] = plan
+    text = json.dumps(plans, indent=1)
+    path = out / "plans" / f"plans_exec_{sid}_{hashlib.sha256(text.encode()).hexdigest()[:12]}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if not path.exists():
+        path.write_text(text, encoding="utf-8")
+    return path
+
+
+def exec_records(recs: list[dict]) -> list[dict]:
+    """StepRunner's agent records (exec_arm/step/stop/abort), parsed."""
+    out = []
+    for r in recs:
+        if r.get("rec") != "agent" or not str(r.get("event", "")).startswith("exec_"):
+            continue
+        m = EXEC_DETAIL.match(r.get("detail", ""))
+        if not m:
+            continue
+        rest = m.group(7)
+        why = re.search(r"\bwhy=(\S+)", rest)
+        op = re.search(r"\bop=(\S+)", rest)
+        out.append({"event": r["event"], "turn": r.get("turn"), "player": r.get("player"),
+                    "line": m.group(1), "step": int(m.group(2)), "act": int(m.group(3)),
+                    "it": int(m.group(4)), "ms": float(m.group(5)), "at": int(m.group(6)),
+                    "why": why.group(1) if why else None, "op": op.group(1) if op else None,
+                    "detail": rest})
+    return out
+
+
+def exec_summary(recs: list[dict], line_player: str | None, s_turn: int, meta: dict | None) -> dict:
+    """One trial's executor figures. "state" is the step file's stated
+    infinite state (state_step's loop stopped on one of its own predicates,
+    not on max, the budget or exhaustion); "outlet" is outlet_step firing (an
+    action issued, or for a pass step the line seat declaring attackers on
+    the scenario turn after the hand-off)."""
+    ex = exec_records(recs)
+    meta = meta or {}
+    stops = Counter(e["why"] for e in ex if e["event"] == "exec_stop" and e["op"] != "confirm")
+    aborts = [e["detail"].split("why=", 1)[-1] for e in ex if e["event"] == "exec_abort"]
+    st, ot = meta.get("state_step"), meta.get("outlet_step")
+    state = st is not None and any(e["event"] == "exec_stop" and e["step"] == st and e["op"] != "confirm"
+                                   and e["why"] in STOP_PREDICATES for e in ex)
+    outlet = False
+    if ot is not None:
+        if meta.get("outlet_op") == "pass":
+            handed = any(e["event"] == "exec_stop" and e["step"] == ot and e["why"] == "handoff" for e in ex)
+            turn, attacked = None, False
+            for r in recs:
+                if r.get("rec") != "entry":
+                    continue
+                m = TURN.match(r.get("message", "")) if r.get("type") == "TURN" else None
+                if m:
+                    # as parse_trial counts: the first TURN entry is the scenario turn
+                    turn = s_turn if turn is None else int(m.group(1))
+                elif (turn == s_turn and r.get("type") == "COMBAT" and line_player
+                      and r.get("message", "").startswith(line_player + " assigned")):
+                    attacked = True
+            outlet = handed and attacked
+        else:
+            outlet = any(e["event"] == "exec_step" and e["step"] == ot and e["op"] in ("activate", "cast")
+                         for e in ex)
+    ms = [e["ms"] for e in ex]
+    return {"line_player": line_player, "armed": sum(e["event"] == "exec_arm" for e in ex),
+            "actions": sum(e["event"] == "exec_step" and e["op"] in ("activate", "cast") for e in ex),
+            "binds": sum(e["event"] == "exec_step" and e["op"] == "bind" for e in ex),
+            "confirms": sum(e["op"] == "confirm" for e in ex),
+            "stops": dict(stops), "aborts": aborts, "decisions": len(ms), "decision_ms": ms,
+            "state": state, "outlet": outlet, "state_then_outlet": state and outlet}
+
+
 def trial_cmd(jar: Path, decks: list[Path], sc: dict, pilots: list[str], plans: Path | None,
-              state: Path, seed: int, out: Path, timeout: int, horizon: int, xmx: str) -> list[str]:
+              state: Path, seed: int, out: Path, timeout: int, horizon: int, xmx: str,
+              jvm_args: list[str] | None = None) -> list[str]:
     max_turns = int(sc.get("turn", 1)) + int(sc.get("horizon_turns", horizon))
-    cmd = ["java", f"-Xmx{xmx}", "-cp", f"{jar}{os.pathsep}{FORGE_JAR}", "simlab.shim.SimShim",
+    cmd = ["java", *(jvm_args or []), f"-Xmx{xmx}", "-cp", f"{jar}{os.pathsep}{FORGE_JAR}", "simlab.shim.SimShim",
            "--decks", *map(str, decks), "--games", "1", "--timeout", str(timeout),
            "--max-turns", str(max_turns), "--seat-pilots", ",".join(pilots),
            "--seed-forge", str(seed), "--scenario", str(state), "--out", str(out)]
@@ -171,6 +361,20 @@ def recorded_state_sha(p: Path) -> str | None:
     return meta_sha
 
 
+def recorded_plans_sha(p: Path) -> str | None:
+    """The plans file SHA-256 in a trial's shim header (null without plans),
+    so a trial whose plans or step data changed is re-run, not reused."""
+    for line in p.read_text(encoding="utf-8", errors="replace").splitlines():
+        if REC_HEAD.search(line):
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            if r.get("rec") == "meta":
+                return r.get("plansSha256")
+    return None
+
+
 def run_cell(job: dict) -> str:
     out: Path = job["out"]
     stale = False
@@ -178,20 +382,28 @@ def run_cell(job: dict) -> str:
         # A cached trial is reused only if it played the state just written:
         # a scenario or deck edited since would otherwise pair an old game
         # with the new board check.
-        if recorded_state_sha(out) == sha256(job["state"]):
+        if recorded_state_sha(out) == sha256(job["state"]) and recorded_plans_sha(out) == job.get("plans_sha"):
             return f"{job['label']} cached"
         stale = True
     out.parent.mkdir(parents=True, exist_ok=True)
+    # --affinity: worker slot i pins its JVM to masks[i % n] (Windows CPU
+    # affinity, set right after start; Forge spends its first ~15 s loading).
+    masks = job.get("affinity") or []
+    mask = masks[int(threading.current_thread().name.rsplit("_", 1)[-1]) % len(masks)] if masks else None
     t0 = time.time()
     with out.with_suffix(".err").open("w", encoding="utf-8") as eh:
-        rc = subprocess.run(job["cmd"], cwd=str(FORGE_JAR.parent), stdout=subprocess.DEVNULL,
-                            stderr=eh).returncode
+        p = subprocess.Popen(job["cmd"], cwd=str(FORGE_JAR.parent), stdout=subprocess.DEVNULL, stderr=eh)
+        if mask:
+            subprocess.run(["powershell", "-NoProfile", "-Command",
+                            f"(Get-Process -Id {p.pid}).ProcessorAffinity = {int(mask, 16)}"],
+                           capture_output=True)
+        rc = p.wait()
     wall = time.time() - t0
     out.with_suffix(".cell.json").write_text(json.dumps(
-        {"rc": rc, "wall_s": round(wall, 1), "cmd": job["cmd"], "seed": job["seed"],
+        {"rc": rc, "wall_s": round(wall, 1), "cmd": job["cmd"], "seed": job["seed"], "affinity": mask,
          "started": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(t0))}, indent=1),
         encoding="utf-8")
-    return f"{job['label']} rc={rc} {wall:.0f}s" + (" (re-run: its cached game played another state)" if stale else "")
+    return f"{job['label']} rc={rc} {wall:.0f}s" + (" (re-run: its cached game played another state or plans file)" if stale else "")
 
 
 # --- reading one trial ------------------------------------------------------
@@ -315,8 +527,10 @@ def zone_moves(recs: list[dict], seat: str | None, frm: str, to: str, first_turn
     return out
 
 
-def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
-    """One trial's JSONL (and its .err / .cell.json) -> the report row."""
+def parse_trial(path: Path, sc: dict, info: dict | None, exec_meta: dict | None = None) -> dict:
+    """One trial's JSONL (and its .err / .cell.json) -> the report row.
+    exec_meta: the exec arm's step-file facts (state_step, outlet_step,
+    outlet_op), for the executor columns."""
     t = {"file": path.name, "ran": path.exists()}
     if not path.exists():
         return t
@@ -464,8 +678,15 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
         1 for r in recs if r.get("rec") == "agent" and any(p in r.get("detail", "") for p in pieces))
     turns_played = (t["turns"] - s_turn + 1) if t.get("turns") else None
     t["ms_per_turn"] = round(t["ms"] / turns_played) if (t.get("ms") and turns_played) else None
-    # 0.17.1 exposes no per-decision timing; the executor prototype adds it.
+    # Per-decision timing exists only for the E1 executor's own decisions
+    # (shim 0.18.0-proto exec_* records); none for stock or plan seats.
     t["ms_per_decision"] = None
+    if exec_meta is not None or any(r.get("rec") == "agent" and str(r.get("event", "")).startswith("exec_")
+                                    for r in recs):
+        lp = players[lseat] if lseat is not None and lseat < len(players) else None
+        t["exec"] = exec_summary(recs, lp, s_turn, exec_meta)
+        ms = t["exec"]["decision_ms"]
+        t["ms_per_decision"] = round(statistics.median(ms), 3) if ms else None
     exc = []
     for l in err_text.splitlines():
         if "Exception" in l or "shim: fatal" in l or re.search(r"\bError\b", l):
@@ -477,6 +698,11 @@ def parse_trial(path: Path, sc: dict, info: dict | None) -> dict:
         c = json.loads(cell.read_text(encoding="utf-8"))
         t["rc"] = c.get("rc")
         t["wall_s"] = c.get("wall_s")
+    # Unhandled: the JVM exited non-zero, the shim died, or the game ended as
+    # an errored result. Exceptions Forge catches and prints (its attack AI's
+    # worker futures, a failed setGameOver the shim catches) are in
+    # `exceptions`, not here.
+    t["unhandled"] = bool(t.get("rc") not in (None, 0) or "shim: fatal" in err_text or t.get("error"))
     t["players"] = players
     return t
 
@@ -500,7 +726,7 @@ def aggregate(trials: list[dict]) -> dict:
     k = sum(bool(t["success"]) for t in scored)
     ttk = [t["turns_to_kill"] for t in ran if t["turns_to_kill"] is not None]
     mean = lambda xs: round(sum(xs) / len(xs), 2) if xs else None
-    return {
+    summary = {
         "trials": len(trials), "finished": n,
         "loaded": sum(t.get("loaded", False) for t in trials),
         "line_loaded": sum(bool(t.get("line_loaded")) for t in trials),
@@ -519,6 +745,7 @@ def aggregate(trials: list[dict]) -> dict:
         "errored": sum(bool(t.get("error")) for t in ran),
         "kill_failed": sum(bool(t.get("killFailed")) for t in ran),
         "exceptions": sum(t.get("exceptions", 0) for t in trials),
+        "unhandled": sum(bool(t.get("unhandled")) for t in trials),
         "piece_activity_mean": mean([t["piece_activity_total"] for t in ran]),
         "iterations_max_turn_mean": mean([t["iterations_max_turn"] for t in ran]),
         "iterations_scenario_turn_mean": mean([t["iterations_scenario_turn"] for t in ran]),
@@ -532,6 +759,28 @@ def aggregate(trials: list[dict]) -> dict:
         # zone scenarios: the seat's first qualifying move per trial (the pick)
         "zone_first": dict(Counter(str(t.get("zone_first")) for t in ran if "zone_first" in t)),
     }
+    ex = [t["exec"] for t in ran if "exec" in t]
+    if ex:
+        ms = sorted(m for e in ex for m in e["decision_ms"])
+        pct = lambda q: ms[min(len(ms) - 1, int(q * len(ms)))] if ms else None
+        stops = Counter()
+        for e in ex:
+            stops.update(e["stops"])
+        summary["exec"] = {
+            "trials": len(ex), "armed": sum(e["armed"] > 0 for e in ex),
+            "state": sum(e["state"] for e in ex), "outlet": sum(e["outlet"] for e in ex),
+            "state_then_outlet": sum(e["state_then_outlet"] for e in ex),
+            "state_then_outlet_wilson95": wilson(sum(e["state_then_outlet"] for e in ex), len(ex)),
+            "aborted": sum(bool(e["aborts"]) for e in ex),
+            "abort_reasons": dict(Counter(" ".join(a.split()[:2]) for e in ex for a in e["aborts"])),
+            "stop_reasons": dict(stops),
+            "actions_mean": mean([e["actions"] for e in ex]),
+            "decisions": len(ms),
+            "decision_ms_median": round(statistics.median(ms), 3) if ms else None,
+            "decision_ms_p95": pct(0.95), "decision_ms_max": ms[-1] if ms else None,
+        }
+        summary["ms_per_decision"] = summary["exec"]["decision_ms_median"]
+    return summary
 
 
 def write_report(out: Path) -> dict:
@@ -542,10 +791,11 @@ def write_report(out: Path) -> dict:
         rows = {}
         for arm in run["arms"]:
             trials = []
+            ex_meta = (meta.get("steps") or {}).get(arm)
             for k in range(run["trials"]):
                 info_p = out / sid / f"trial_{k}.info.json"
                 info = json.loads(info_p.read_text(encoding="utf-8")) if info_p.exists() else None
-                trials.append(parse_trial(out / sid / arm / f"trial_{k}.jsonl", sc, info))
+                trials.append(parse_trial(out / sid / arm / f"trial_{k}.jsonl", sc, info, ex_meta))
             rows[arm] = {"summary": aggregate(trials), "trials": trials}
         report["scenarios"][sid] = {"description": sc.get("description", ""),
                                     "turn": sc.get("turn"), "success": sc.get("success"),
@@ -583,7 +833,7 @@ def markdown(report: dict) -> str:
            f"Shim `{run['jar_name']}` (sha256 `{run['jar_sha256'][:16]}`), repo `{run['repo_commit']}`, "
            f"{run['trials']} trials per arm, seeds {run['seed']}..{run['seed'] + run['trials'] - 1}, "
            f"started {run['started']}. Trial k of every arm shares its Forge seed and library "
-           f"shuffle. ms per decision: not exposed by this shim."
+           f"shuffle. ms per decision: the E1 executor's own decisions only (exec arms)."
            + (f" Wall clock {run['wall_s']} s at {run['parallel']} JVMs ({run['trials_run']} trials run, "
               f"{run['trials_cached']} cached)." if run.get("wall_s") is not None else ""),
            ""]
@@ -608,6 +858,27 @@ def markdown(report: dict) -> str:
                 f"{_f(a['extra_combats_scenario_turn_mean'])} | "
                 f"{a['draws']} / {a['turn_capped']} / {a['timed_out']} | "
                 f"{a['errored']} / {a['exceptions']} | {_f(a['game_ms_mean'])} | {a['wall_s_total']} |")
+        exs = [(arm, row["summary"]["exec"], row["summary"]) for arm, row in s["arms"].items()
+               if row["summary"].get("exec")]
+        if exs:
+            out += ["", "Executor (E1): *state* = the step file's stated infinite state reached (its loop "
+                        "stopped on its own predicate); *outlet* = the outlet step fired after it.", "",
+                    "| Arm | Armed | State | Outlet | State then outlet | 95% CI | Aborted (reasons) "
+                    "| Stops | Actions (mean) | Decisions | Decision ms (median / p95 / max) "
+                    "| Unhandled / printed exceptions |",
+                    "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+            for arm, e, a in exs:
+                ci = e["state_then_outlet_wilson95"]
+                reasons = "; ".join(f"{k} x{v}" for k, v in sorted(e["abort_reasons"].items()))
+                stops = "; ".join(f"{k} x{v}" for k, v in sorted(e["stop_reasons"].items(), key=str))
+                out.append(
+                    f"| {arm} | {e['armed']}/{e['trials']} | {e['state']} | {e['outlet']} | "
+                    f"{e['state_then_outlet']}/{e['trials']} | "
+                    f"{'–' if ci is None else f'{ci[0]:.2f}-{ci[1]:.2f}'} | "
+                    f"{e['aborted']}{f' ({reasons})' if reasons else ''} | {stops or '–'} | "
+                    f"{_f(e['actions_mean'])} | {e['decisions']} | {_f(e['decision_ms_median'])} / "
+                    f"{_f(e['decision_ms_p95'])} / {_f(e['decision_ms_max'])} | "
+                    f"{a.get('unhandled', '–')} / {a['exceptions']} |")
         picks = [(arm, row["summary"].get("zone_first")) for arm, row in s["arms"].items()
                  if row["summary"].get("zone_first")]
         if picks:
@@ -674,8 +945,14 @@ def main() -> None:
                     help="turns after the scenario turn before the cap, unless the scenario sets horizon_turns")
     ap.add_argument("--plans", help="prebuilt plans JSON for plan seats (keyed by deck name)")
     ap.add_argument("--data-dir", help="MTG_DATA_DIR for building plans (card and combo caches)")
+    ap.add_argument("--steps", default=str(DEFAULT_STEPS),
+                    help="step files for arms with \"steps\" (<scenario id>.json; default %(default)s)")
     ap.add_argument("--fetch", action="store_true", help="let plan building fetch card data")
     ap.add_argument("--xmx", default="3g")
+    ap.add_argument("--jvm-arg", action="append", default=[],
+                    help="extra JVM option, repeatable (e.g. -XX:ActiveProcessorCount=2 for 2-core timing)")
+    ap.add_argument("--affinity", help="comma list of hex CPU masks; worker slot i pins its JVM to "
+                    "mask i mod n (Windows; e.g. 3,C,30,C0 for four 2-core slots)")
     ap.add_argument("--force", action="store_true", help="re-run finished trials")
     ap.add_argument("--report-only", action="store_true", help="rebuild report.json/.md from --out")
     args = ap.parse_args()
@@ -729,6 +1006,18 @@ def main() -> None:
             if any(p.startswith("plan") for p in pilots):
                 plans = Path(args.plans).resolve() if args.plans else build_plans(
                     decks, arm, out, args.data_dir, args.fetch)
+                found = load_steps(Path(args.steps), sid) if arm.get("steps") else None
+                if arm.get("steps") and found is None:
+                    print(f"{sid}: warning: arm {arm_name} has no step file; it runs without steps")
+                if found:
+                    sp_, steps = found
+                    plans = merge_steps(plans, steps, out, sid)
+                    body = steps["lines"][0]["steps"]
+                    ot = steps.get("outlet_step")
+                    scen_meta[sid].setdefault("steps", {})[arm_name] = {
+                        "path": str(sp_.resolve()), "sha256": sha256(sp_), "deck": steps["deck"],
+                        "state_step": steps.get("state_step"), "outlet_step": ot,
+                        "outlet_op": body[ot].get("op", "activate") if ot is not None else None}
                 scen_meta[sid].setdefault("plans", {})[arm_name] = {"path": str(plans), "sha256": sha256(plans)}
             arm_jar = Path(arm.get("jar", jar)).resolve()
             for k in range(args.trials):
@@ -736,8 +1025,11 @@ def main() -> None:
                 jl = out / sid / arm_name / f"trial_{k}.jsonl"
                 jobs.append({"label": f"{sid} {arm_name} {k}", "out": jl, "seed": seed, "force": args.force,
                              "state": out / sid / f"trial_{k}.state",
+                             "plans_sha": sha256(plans) if plans is not None else None,
+                             "affinity": [m.strip() for m in args.affinity.split(",")] if args.affinity else None,
                              "cmd": trial_cmd(arm_jar, decks, sc, pilots, plans, out / sid / f"trial_{k}.state",
-                                              seed, jl, args.timeout, args.horizon, args.xmx)})
+                                              seed, jl, args.timeout, args.horizon, args.xmx,
+                                              args.jvm_arg)})
     run = {"cli": sys.argv, "started": time.strftime("%Y-%m-%dT%H:%M:%S"), "repo_commit": repo_commit(),
            "jar": str(jar), "jar_name": jar.name, "jar_sha256": sha256(jar), "forge_jar": str(FORGE_JAR),
            "arms": arm_names, "arm_defs": {a: arms[a] for a in arm_names}, "trials": args.trials,
@@ -753,7 +1045,7 @@ def main() -> None:
     t0 = time.time()
     print(f"{len(jobs)} trials, {args.parallel} at a time", flush=True)
     cached = 0
-    with ThreadPoolExecutor(max_workers=args.parallel) as ex:
+    with ThreadPoolExecutor(max_workers=args.parallel, thread_name_prefix="slot") as ex:
         for r in ex.map(run_cell, jobs):
             cached += r.endswith(" cached")
             print(r, flush=True)

@@ -13,13 +13,21 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { Chrome, Footer, PageDetails, type TabDef } from "@/components/Chrome";
 import { api, RateLimited } from "@/lib/api";
-import type { RunSummary, TelemetryReport } from "@/lib/types";
-import { deckLabel, plural, runTitle, stripAi } from "@/lib/format";
+import type { RunSummary, TelemetryReport, TelemetryStatus } from "@/lib/types";
+import { deckLabel, plural, runTitle, shortName, stripAi } from "@/lib/format";
+import { standingsOf } from "@/lib/standings";
+import { LoadError } from "@/components/LoadError";
 
 const ST_CLASS = { healthy: "ok", partial: "warn", cold: "bad" } as const;
 const ST_WORD = { healthy: "Healthy", partial: "Partial", cold: "Never fired" } as const;
 
-function Status({ s }: { s: keyof typeof ST_CLASS }) {
+/** Why a row has no verdict: Forge's AI doesn't cast the card on its own. */
+const AI_SKIPS_NOTE = "Forge's AI doesn't cast it on its own";
+
+function Status({ s }: { s: TelemetryStatus }) {
+  // No verdict, so no status shape either: a card Forge's AI doesn't cast
+  // on its own is neither healthy nor cold, and never a cut candidate.
+  if (s === "ai_skips") return <span className="st-na">Not judged</span>;
   return (
     <span className={`st ${ST_CLASS[s]}`}>
       <i />
@@ -109,9 +117,16 @@ function TelemetryInner() {
     },
   ];
 
+  // The run's one title, in the run page's order (the engine's standings)
+  // and never the result filename, which is an address: it sat in the h1
+  // while the page loaded.
+  const st = summary ? standingsOf(summary, summary.games.flatMap((g) => g.players)) : null;
   const title = summary
-    ? runTitle(((summary.meta?.decks as string[]) ?? []).map(labelFor), summary.commanders)
-    : file.replace(/\.json$/, "");
+    ? runTitle(
+        st?.decks.map((d) => d.deck) ?? ((summary.meta?.decks as string[]) ?? []).map(labelFor),
+        summary.commanders,
+      )
+    : "Sim results";
 
   if (err) {
     return (
@@ -124,14 +139,7 @@ function TelemetryInner() {
               <div className="sub">{wait != null ? "Rate limited" : "Could not load telemetry"}</div>
             </div>
           </div>
-          {wait != null ? (
-            <p className="note">
-              {err}. The engine is throttling reads. Try again in about{" "}
-              <span className="mono">{wait}</span> s.
-            </p>
-          ) : (
-            <p className="note">{err}. Check that the engine API is running, then reload.</p>
-          )}
+          <LoadError err={err} wait={wait} what="run's telemetry" />
         </div>
         <Footer />
       </>
@@ -160,7 +168,27 @@ function TelemetryInner() {
   const cmd = rep.commander;
   const castGames = cmd ? Math.round(cmd.cast_rate * games) : 0;
   const coldWatched = rep.watched.filter((w) => w.status === "cold");
-  const deckName = stripAi(rep.player_key ?? "") || rep.deck.replace(/\.dck$/, "");
+  // "ai_skips" replaces "cold" only, so these rows also logged zero events:
+  // the lede must not count them as cards that showed up.
+  const unseenSkipped = rep.watched.filter((w) => w.status === "ai_skips");
+  // Rows on this page about a card Forge's AI doesn't cast on its own.
+  const skippedShown = [
+    ...(cmd?.ai_wont_play ? [cmd.name] : []),
+    ...rep.watched.filter((w) => w.ai_wont_play).map((w) => w.name),
+  ];
+  const skippedAll = rep.ai_wont_play ?? null;
+  // One name per deck (shortName), the name the run title and stories use.
+  const allLabels = decks.map(labelFor);
+  const oneName = (label: string) => shortName(label, allLabels, summary.commanders);
+  const deckName = oneName(stripAi(rep.player_key ?? "") || labelFor(rep.deck));
+  // The lede's second sentence, from the damage table below: a sum by source
+  // name over the run (same-named tokens add up), so it says "the most damage".
+  // The unit is spelled out: a bare "(99)" after a card name reads as Forge's
+  // instance-id syntax, the machine text this page no longer prints.
+  const topSrc = rep.deaths.by_source[0];
+  const deathLine = topSrc
+    ? `Across the run, the most damage dealt to it came from ${topSrc.source} (${topSrc.damage} damage).`
+    : "";
 
   return (
     <>
@@ -174,7 +202,10 @@ function TelemetryInner() {
             <div className="sub">
               <span className="mono">{games}</span> {games === 1 ? "game" : "games"} in this run
               <span className="sep">·</span>
-              won <span className="mono">{rep.wins}</span> of <span className="mono">{games}</span>
+              {/* The published denominator: decided games (engine/standings.py). */}
+              won <span className="mono">{rep.wins}</span> of{" "}
+              <span className="mono">{rep.decided ?? games}</span>
+              {rep.decided != null ? " decided" : ""}
               <span className="sep">·</span>
               {rotated ? "seat-rotated" : "fixed seats"}
             </div>
@@ -187,32 +218,48 @@ function TelemetryInner() {
               <b>{cmd.name}</b> was cast in <b>{castGames} of {games}</b> {gameWord}
               {cmd.median_turn != null && (
                 <>
-                  , first arriving on median turn <b>{cmd.median_turn}</b>
+                  , first arriving on median turn <b>{tableTurn(cmd.median_turn)}</b>
                 </>
               )}
+              {cmd.ai_wont_play && <> ({AI_SKIPS_NOTE})</>}
               .{" "}
             </>
           ) : (
             <>
-              No commander could be identified for this deck, so telemetry covers its engine
-              and watched cards only.{" "}
+              No commander could be identified for this deck: its deck file lists none, or the file
+              is no longer on the server and the run did not record one.{" "}
             </>
           )}
-          The table logged charge counters <b>{rep.engine.charge_events_per_game}</b> times a
-          game and proliferate <b>{rep.engine.proliferate_per_game}</b>
+          {/* The table-wide charge-counter and proliferate figures that used
+              to follow here are gone (repair plan WS11 task 8): they were one
+              archetype's metrics, counted across every seat, and read the same
+              for a reanimator deck as for Atraxa. */}
           {rep.watched.length > 0 && (
             <>
-              ; {coldWatched.length > 0 ? (
+              {coldWatched.length > 0 ? (
                 <>
                   <b>{coldWatched.length} of {plural(rep.watched.length, "watched card")}</b> never
                   fired
+                  {unseenSkipped.length > 0 && (
+                    <>
+                      , and {unseenSkipped.length} more never showed up that Forge&apos;s AI
+                      doesn&apos;t cast on its own
+                    </>
+                  )}
+                  .
+                </>
+              ) : unseenSkipped.length > 0 ? (
+                <>
+                  <b>{unseenSkipped.length} of {plural(rep.watched.length, "watched card")}</b>{" "}
+                  never showed up, and Forge&apos;s AI doesn&apos;t cast{" "}
+                  {unseenSkipped.length === 1 ? "it" : "them"} on its own.
                 </>
               ) : (
-                <>all {plural(rep.watched.length, "watched card")} showed up</>
-              )}
+                <>All {plural(rep.watched.length, "watched card")} showed up.</>
+              )}{" "}
             </>
           )}
-          .{" "}
+          {deathLine}{" "}
           {!rotated && (
             <>This run is <b>not seat-rotated</b>, so its outcomes are not seat-comparable.</>
           )}
@@ -238,7 +285,7 @@ function TelemetryInner() {
                 >
                   {decks.map((d) => (
                     <option key={d} value={d}>
-                      {labelFor(d)}
+                      {oneName(labelFor(d))}
                     </option>
                   ))}
                 </select>
@@ -256,6 +303,7 @@ function TelemetryInner() {
                       Commander ignition
                       <small>
                         {cmd.name} · cast in {castGames} of {games}
+                        {cmd.ai_wont_play && <> · {AI_SKIPS_NOTE}</>}
                       </small>
                     </td>
                     <td className="val">
@@ -266,31 +314,25 @@ function TelemetryInner() {
                     </td>
                   </tr>
                 )}
-                <tr>
-                  <td className="nm">
-                    Charge counters
-                    <small>station, triggers, additions · all seats</small>
-                  </td>
-                  <td className="val">{rep.engine.charge_events_per_game}/g</td>
-                  <td className="stc">
-                    <Status s={rep.engine.charge_status} />
-                  </td>
-                </tr>
-                <tr>
-                  <td className="nm">
-                    Proliferate
-                    <small>resolutions and mentions · all seats</small>
-                  </td>
-                  <td className="val">{rep.engine.proliferate_per_game}/g</td>
-                  <td className="stc">
-                    <Status s={rep.engine.proliferate_status} />
-                  </td>
-                </tr>
+                {/* The charge-counter and proliferate rows are gone (WS11
+                    task 8): every deck got them, counted across all seats. */}
+                {!cmd && rep.watched.length === 0 && (
+                  <tr>
+                    <td className="nm">
+                      Nothing to measure for this deck yet
+                      <small>no commander was identified and no cards are being watched</small>
+                    </td>
+                    <td className="val">–</td>
+                  </tr>
+                )}
                 {rep.watched.map((w) => (
                   <tr key={w.name}>
                     <td className="nm">
                       {w.name}
-                      <small>watched card</small>
+                      <small>
+                        watched card
+                        {w.ai_wont_play && <> · {AI_SKIPS_NOTE}</>}
+                      </small>
                     </td>
                     <td className="val">{w.events_per_game}/g</td>
                     <td className="stc">
@@ -305,6 +347,27 @@ function TelemetryInner() {
                 Zero events can mean the card was never drawn as easily as never cast; the log
                 only records what happened, not why it didn&apos;t.
               </p>
+            )}
+            {/* Repair plan WS6 task 4: a card Forge's AI never casts is not a
+                cut candidate, so its rows carry no verdict, and the page says
+                why wherever such a row appears. */}
+            {skippedShown.length > 0 ? (
+              <p className="note">
+                Forge&apos;s AI doesn&apos;t cast {skippedShown.join(" or ")} on its own, so
+                telemetry never calls {skippedShown.length === 1 ? "it" : "them"} cold: a card the
+                AI skips is not a cut candidate, however rarely it shows up. Sim Lab&apos;s pilot can
+                cast some such cards while chasing a combo or tutoring.
+              </p>
+            ) : (
+              skippedAll &&
+              skippedAll.length > 0 && (
+                <p className="note">
+                  {plural(skippedAll.length, "card")} in this deck{" "}
+                  {skippedAll.length === 1 ? "is one" : "are ones"} Forge&apos;s AI doesn&apos;t cast
+                  on its own (listed on the run&apos;s overview); telemetry never calls{" "}
+                  {skippedAll.length === 1 ? "it" : "them"} cold.
+                </p>
+              )
             )}
           </section>
 

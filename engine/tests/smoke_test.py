@@ -10,12 +10,22 @@ queue -> Forge -> adapted JSON -> per-game payload path that the front end walks
     python3 engine/tests/smoke_test.py --base http://host:3000/engine
     python3 engine/tests/smoke_test.py --key <MTG_API_KEYS value>
     python3 engine/tests/smoke_test.py --flag-key <an MTG_FLAG_KEYS key>
+    python3 engine/tests/smoke_test.py --review-key <an MTG_REVIEW_KEYS key>
 
 --flag-key checks POST /flags: the key is accepted there, refused (403) by
 /simulate and /decks, and one real flag is written against the newest result
 with the note "smoke test: safe to delete". Use the operator's own flags key,
 never a playtester's, so the flag is not filed under their name. Without it
 the flags checks are skipped, not failed.
+
+QA layer A (R1.1): GET /results/{newest}/qa is checked when the engine has
+it (an older engine is detected and the checks skipped), GET /qa/queue must
+refuse no key (401), a flags key (403) and an API key (403: the web build
+inlines one, so an API key is not private), and with --review-key it must
+list. The queue read prints nothing it returns: it holds testers' notes. With
+--sim, the new run's qa.json must appear within --qa-timeout seconds (180 by
+default): the worker writes it right after the job finishes, and waiting for
+it here is what lets preflight, run next, find it.
 
 --sim runs Forge for real rather than faking a result: a 2-deck 2-game run
 measured 10 s and a 3-deck run 27 s on an M-series laptop, so there is no reason
@@ -83,6 +93,86 @@ def header(base: str, path: str, name: str) -> str | None:
         return None
 
 
+QA_SCHEMA = "simlab.qa/1"
+
+
+def _qa_shape_ok(body) -> bool:
+    return (isinstance(body, dict) and body.get("schema") == QA_SCHEMA
+            and isinstance(body.get("games"), list) and isinstance(body.get("flags"), list)
+            and isinstance(body.get("errors"), list) and isinstance(body.get("decks"), dict))
+
+
+def qa_checks(base: str, newest: str | None, a) -> bool:
+    """QA layer A's read routes (R1.1). Returns whether this server has them.
+
+    An engine older than R1.1 answers /results/{file}/qa with the whole
+    result (its catch-all serves the run for any sub-path) and /qa/queue with
+    "unknown endpoint", so both are detected and skipped, not failed."""
+    print("\nQA layer A (qa.json and the review queue)")
+    if not newest:
+        print("  note  no result files: the qa checks need one.")
+        return False
+    enc = urllib.parse.quote(newest)
+    st, body = call(base, f"/results/{enc}/qa")
+    if st == 200 and isinstance(body, dict) and "schema" not in body:
+        print("  note  this engine predates GET /results/{file}/qa (R1.1): qa checks skipped.")
+        return False
+    if st == 404 and isinstance(body, dict) and body.get("qa") == "pending":
+        print(f"  note  {newest} has no qa.json yet (the worker's sweeper backfills it;"
+              "\n        preflight.py --files is the check that fails on this).")
+    elif check(f"GET /results/{newest}/qa is a qa report", st == 200 and _qa_shape_ok(body),
+               f"status {st}: {str(body)[:160]}"):
+        check("qa report carries no human flag notes",
+              not any("note" in f or "reporter" in f for f in body["flags"]
+                      if isinstance(f, dict)), str(body["flags"][:2])[:160])
+        check("qa report records its errors (none expected)", body["errors"] == [],
+              str(body["errors"])[:200])
+    st, _ = call(base, "/results/..%2f..%2fetc%2fpasswd/qa")
+    check("qa route blocks path traversal", st in (400, 404), f"status {st}")
+    st, body = call(base, "/qa/queue")
+    if st == 404:
+        print("  note  this engine has no GET /qa/queue: queue checks skipped.")
+        return True
+    check("GET /qa/queue without a key is refused", st == 401, f"status {st}: {body}")
+    if a.flag_key:
+        st, body = call(base, "/qa/queue", key=a.flag_key)
+        check("the flag key cannot read the review queue (403)", st == 403, f"status {st}: {body}")
+    if a.key:
+        st, body = call(base, "/qa/queue?limit=1", key=a.key)
+        check("an API key cannot read the review queue (403)", st == 403, f"status {st}")
+    if a.review_key:
+        st, body = call(base, "/qa/queue?limit=5", key=a.review_key)
+        # Shape only, never the items: they hold playtesters' own words.
+        check("GET /qa/queue with the reviewer key lists items and a cursor",
+              st == 200 and isinstance(body, dict) and isinstance(body.get("items"), list)
+              and isinstance(body.get("cursor"), str), f"status {st}")
+        st, body = call(base, "/qa/queue?since=not-a-cursor", key=a.review_key)
+        check("GET /qa/queue refuses a malformed cursor", st == 400, f"status {st}")
+    else:
+        print("  note  no --review-key: the keyed /qa/queue read is not checked.")
+    return True
+
+
+def wait_for_qa(base: str, name: str, timeout: int) -> None:
+    """The worker writes the new run's qa.json in a detached child right
+    after the job finishes: wait for it (bounded), so the post-deploy order
+    (this, then preflight) hands preflight a run whose qa.json exists."""
+    enc = urllib.parse.quote(name)
+    started = time.time()
+    st, body = 0, None
+    while time.time() - started < timeout:
+        st, body = call(base, f"/results/{enc}/qa")
+        if not (st == 404 and isinstance(body, dict) and body.get("qa") == "pending"):
+            break
+        time.sleep(3)
+    took = int(time.time() - started)
+    if check(f"the new run's qa.json was written ({took}s)", st == 200 and _qa_shape_ok(body),
+             f"status {st}: {str(body)[:200]}"):
+        check("the new run's qa.json covers its games and has no errors",
+              len(body["games"]) >= 1 and body["errors"] == [],
+              f"games={len(body['games'])} errors={body['errors'][:2]}")
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -92,8 +182,12 @@ def main() -> int:
     p.add_argument("--flag-key", default=None,
                    help="a flags-only key from MTG_FLAG_KEYS (the operator's own); "
                         "enables the POST /flags checks, which write one flag")
+    p.add_argument("--review-key", default=None,
+                   help="a reviewer key (MTG_REVIEW_KEYS): enables the GET /qa/queue read check")
     p.add_argument("--sim", action="store_true", help="also run one real 2-game simulation")
     p.add_argument("--sim-timeout", type=int, default=600)
+    p.add_argument("--qa-timeout", type=int, default=180,
+                   help="with --sim: seconds to wait for the new run's qa.json")
     a = p.parse_args()
     base = a.base.rstrip("/")
 
@@ -278,6 +372,8 @@ def main() -> int:
         st, _ = call(base, "/analysis/..%2f..%2fetc%2fpasswd")
         check("analysis blocks path traversal", st in (400, 404), f"status {st}")
 
+    qa_route = qa_checks(base, newest, a)
+
     print("\nguards")
     st, _ = call(base, "/no-such-endpoint")
     check("unknown endpoint is 404", st == 404, f"status {st}")
@@ -354,7 +450,8 @@ def main() -> int:
                     check("run summary reports the games it was asked for",
                           res.get("games") == 2, str(res)[:200])
                     rf = last.get("result_file") or ""
-                    name = rf.rsplit("/", 1)[-1]
+                    # Either separator: a Windows dev box reports a backslashed path.
+                    name = rf.replace("\\", "/").rsplit("/", 1)[-1]
                     if check("job names a result file", bool(name), rf):
                         st, idx = call(base, "/results")
                         check("new result appears in the index",
@@ -363,6 +460,8 @@ def main() -> int:
                         st, sm = call(base, f"/results/{urllib.parse.quote(name)}/summary")
                         check("new result is readable", st == 200 and isinstance(sm, dict),
                               str(sm)[:120])
+                        if qa_route:
+                            wait_for_qa(base, name, a.qa_timeout)
 
     total = passed + len(failed)
     print(f"\n{passed}/{total} checks passed")

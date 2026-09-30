@@ -18,6 +18,7 @@ import { Chrome, Footer, PageDetails } from "@/components/Chrome";
 import { api } from "@/lib/api";
 import { cardFace, loadCards, normalizeName, type CardMap } from "@/lib/cards";
 import { useCardPreview } from "@/components/CardPreview";
+import { LoadError } from "@/components/LoadError";
 import type { DeckCards } from "@/lib/types";
 
 type ZoneName = "library" | "hand" | "battlefield" | "graveyard" | "exile" | "command";
@@ -330,7 +331,7 @@ export default function PlaytestPage() {
               <div className="sub">Could not load this deck</div>
             </div>
           </div>
-          <p className="note">{err}. Check that the engine API is running, then reload.</p>
+          <LoadError err={err} wait={null} what="deck" />
         </div>
         <Footer />
       </>

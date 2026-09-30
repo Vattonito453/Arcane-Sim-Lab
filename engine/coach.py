@@ -13,7 +13,11 @@ to the model:
   - verdict.win_rate / baseline / sim_is_floor are overwritten from the
     context after generation, so a displayed rate always has its baseline;
   - every suggested change must carry an evidence tag from a fixed
-    vocabulary or the output is rejected (one retry, then fail closed).
+    vocabulary or the output is rejected (one retry, then fail closed);
+  - a card Forge's AI doesn't cast on its own (engine/disclosure.py) is never
+    a "cut" and never "cold": the sim says nothing about a card its AI skips.
+    New output that does either is rejected; a report cached before this
+    rule has such rows withheld when it is served (`withheld_cuts`).
 EDHREC consensus is not wired up yet, so "consensus" is not accepted as
 evidence in v1 — changes are [sim-evidence] or [theory].
 """
@@ -31,11 +35,14 @@ import archetype as archetype_mod  # noqa: E402
 import deck_telemetry  # noqa: E402
 import llm  # noqa: E402
 import os  # noqa: E402
+import standings  # noqa: E402
 import validity  # noqa: E402
 from deck_plan import read_dck  # noqa: E402
 
 EVIDENCE = {"sim-evidence", "theory"}   # "consensus" arrives with EDHREC data
-STATUSES = {"running", "partial", "cold"}
+# "ai_skips": a link on a card Forge's AI doesn't cast on its own, which the
+# sim cannot judge (the telemetry status of the same name). Never "cold".
+STATUSES = {"running", "partial", "cold", "ai_skips"}
 _AI_PREFIX = re.compile(r"^Ai\(\d+\)-")
 
 CALIBRATION_NOTES = [
@@ -45,6 +52,10 @@ CALIBRATION_NOTES = [
     "A deck whose machinery fires but loses to archetype bias is probably fine "
     "in human hands; a deck whose machinery never fires is actually broken.",
     "Telemetry counts are event-log substring matches, not rules-level reads.",
+    "Cards listed in ai_wont_play are ones Forge's AI doesn't cast on its own "
+    "(the pilot casts some while chasing a combo or tutoring). Their absence "
+    "from the log says nothing about the card: never call one cold (use "
+    "ai_skips), and never suggest cutting one.",
 ]
 
 SYSTEM_PROMPT = (
@@ -55,13 +66,17 @@ SYSTEM_PROMPT = (
     "the simulated result is a floor, not a verdict. Every suggested change "
     "cites evidence: \"sim-evidence\" when a number in the context backs it, "
     "otherwise \"theory\"; community consensus data is not available, so "
-    "never claim it. Only suggest cutting cards that appear in the decklist. "
+    "never claim it. Only suggest cutting cards that appear in the decklist, "
+    "and never suggest cutting, or mark cold, a card listed in ai_wont_play: "
+    "Forge's AI doesn't cast those on its own, so the sim cannot judge them; "
+    "a support_chain row about one that never fired has status \"ai_skips\" "
+    "and names the card; use \"ai_skips\" for nothing else. "
     "Reply with STRICT JSON only — no markdown fences, no commentary — "
     "matching exactly:\n"
     "{\"verdict\": {\"headline\": string (<=80 chars), \"prose\": string "
     "(2-3 sentences, coaching voice)},\n"
     " \"support_chain\": [{\"link\": string, \"status\": \"running\"|"
-    "\"partial\"|\"cold\", \"measured\": string, \"reading\": string}],\n"
+    "\"partial\"|\"cold\"|\"ai_skips\", \"measured\": string, \"reading\": string}],\n"
     " \"matchups\": [{\"pod\": string, \"win_rate\": number, \"note\": "
     "string}],\n"
     " \"changes\": [{\"action\": \"add\"|\"cut\", \"card\": string, "
@@ -109,22 +124,22 @@ def build_context(result: dict, deck_file: str) -> dict:
     telemetry = deck_telemetry.compute(result, deck_path.stem,
                                        commander=commander)
     arch = archetype_mod.classify(main, commander)
+    # The same list telemetry exempted; read from the deck file itself when
+    # the run's meta.decks names no file this deck resolves to.
+    skipped = telemetry.get("ai_wont_play")
+    if skipped is None:
+        skipped = _ai_wont_play_of(deck_path)
 
     games = result.get("games", [])
     n = len(games)
-    pod: dict[str, int] = {}
-    for g in games:
-        for p in g.get("players", []):
-            pod.setdefault(_AI_PREFIX.sub("", p), 0)
-        winner = (g.get("result") or {}).get("winner")
-        if winner:
-            key = _AI_PREFIX.sub("", winner)
-            pod[key] = pod.get(key, 0) + 1
+    # The published win rates (engine/standings.py): wins over decided
+    # games. This counted every recorded winner over every game, so a
+    # clock-cut game still credited its "winner" to an opponent.
+    table = standings.standings(result)
     me = _AI_PREFIX.sub("", telemetry.get("player_key") or "")
-    opponents = [{"name": name, "wins": w,
-                  "win_rate": round(w / n, 3) if n else 0}
-                 for name, w in sorted(pod.items(), key=lambda kv: -kv[1])
-                 if name != me]
+    opponents = [{"name": s["deck"], "wins": s["wins"], "decided": s["decided"],
+                  "win_rate": round(s["rate"], 3) if s["rate"] is not None else 0}
+                 for s in table["decks"] if s["deck"] != me]
 
     return {
         "deck": deck_path.name,
@@ -132,14 +147,61 @@ def build_context(result: dict, deck_file: str) -> dict:
         "commander": commander,
         "decklist": main,
         "games": n,
+        "decided": telemetry["decided"],
         "rotated": result.get("meta", {}).get("source") == "rotated",
-        "win_rate": telemetry["win_rate"],
+        "win_rate": telemetry["win_rate"] if telemetry["win_rate"] is not None else 0.0,
         "wins": telemetry["wins"],
         "archetype": arch,
         "telemetry": telemetry,
         "opponents": opponents,
+        # Cards Forge's AI doesn't cast on its own: never "cut", never "cold".
+        "ai_wont_play": list(skipped or []),
         "calibration_notes": CALIBRATION_NOTES,
     }
+
+
+def _ai_wont_play_of(deck_path: Path) -> list[str]:
+    """This deck's cards Forge's AI doesn't cast on its own, from the deck
+    file and the Forge index (engine/disclosure.py); [] when unknown."""
+    try:
+        import disclosure
+        return disclosure.of_deck_text(
+            deck_path.read_text(encoding="utf-8", errors="replace")).get("ai_wont_play") or []
+    except Exception:  # noqa: BLE001 - coaching must still run without it
+        return []
+
+
+def _skipped_cold(row: dict, skipped) -> list[str]:
+    """The skipped cards a support-chain row calls cold."""
+    if row.get("status") != "cold":
+        return []
+    import disclosure
+    return disclosure.mentions(str(row.get("link") or ""), skipped)
+
+
+def withhold_skipped(report: dict, skipped) -> dict:
+    """A served report never carries a cut or a "cold" verdict for a card
+    Forge's AI doesn't cast on its own. New output is rejected for that
+    (_validate); a report cached before the rule existed has such cuts moved
+    to `withheld_cuts` and such rows re-marked "ai_skips", so the page can
+    say what was withheld and why. Changes the report in place and returns it."""
+    if not report.get("ok") or not skipped:
+        return report
+    import disclosure
+    kept, withheld = [], []
+    for c in report.get("changes") or []:
+        if c.get("action") == "cut" and disclosure.matches(str(c.get("card") or ""), skipped):
+            withheld.append(c)
+        else:
+            kept.append(c)
+    if withheld:
+        report["changes"] = kept
+        report["withheld_cuts"] = withheld
+    for row in report.get("support_chain") or []:
+        if _skipped_cold(row, skipped):
+            row["status"] = "ai_skips"
+    report["ai_wont_play"] = list(skipped)
+    return report
 
 
 def _parse_json(text: str) -> dict:
@@ -148,8 +210,10 @@ def _parse_json(text: str) -> dict:
     return json.loads(text)
 
 
-def _validate(d: dict, decklist: list[str]) -> None:
-    """Schema + discipline checks; raises ValueError on any violation."""
+def _validate(d: dict, decklist: list[str], skipped=()) -> None:
+    """Schema + discipline checks; raises ValueError on any violation.
+    `skipped` is the deck's ai_wont_play list: no cut and no cold row for one."""
+    import disclosure
     v = d.get("verdict")
     if not isinstance(v, dict) or not v.get("headline") or not v.get("prose"):
         raise ValueError("verdict.headline/prose missing")
@@ -158,6 +222,17 @@ def _validate(d: dict, decklist: list[str]) -> None:
             raise ValueError(f"bad support_chain status: {row.get('status')}")
         if not row.get("link"):
             raise ValueError("support_chain row without a link name")
+        named = _skipped_cold(row, skipped)
+        if named:
+            raise ValueError(f"support_chain calls {named[0]} cold, but Forge's AI "
+                             f"doesn't cast it on its own (use ai_skips)")
+        # "ai_skips" renders as "Not judged": it may only stand for a card on
+        # the list, or a model could hide any cold link behind it.
+        if row.get("status") == "ai_skips" and not disclosure.mentions(
+                " ".join(str(row.get(k) or "") for k in ("link", "measured", "reading")),
+                skipped):
+            raise ValueError(f"support_chain marks {row.get('link')} ai_skips, but it "
+                             f"names no card Forge's AI doesn't cast on its own")
     for m in d.get("matchups", []):
         if not m.get("pod") or not isinstance(m.get("win_rate"), (int, float)):
             raise ValueError("malformed matchup row")
@@ -171,6 +246,9 @@ def _validate(d: dict, decklist: list[str]) -> None:
             raise ValueError("change without card/reason")
         if c["action"] == "cut" and c["card"].casefold() not in lowered:
             raise ValueError(f"cut suggests a card not in the deck: {c['card']}")
+        if c["action"] == "cut" and disclosure.matches(c["card"], skipped):
+            raise ValueError(f"cut suggests {c['card']}, which Forge's AI doesn't "
+                             f"cast on its own, so the sim cannot judge it")
     if not isinstance(d.get("play_guide"), list) or not d["play_guide"]:
         raise ValueError("play_guide missing")
 
@@ -185,7 +263,7 @@ def synthesize(context: dict, *, model: str | None = None,
                             api_key=api_key, max_tokens=1500)
         try:
             out = _parse_json(text)
-            _validate(out, context.get("decklist", []))
+            _validate(out, context.get("decklist", []), context.get("ai_wont_play") or ())
             return out
         except (ValueError, json.JSONDecodeError) as e:
             last_err = str(e)
@@ -227,7 +305,9 @@ def cached_report(result_file: str, deck_file: str) -> dict | None:
     if (data.get("meta") or {}).get("validity_version") != validity.VALIDITY_VERSION:
         return None
     data["cached"] = True
-    return data
+    # A report cached before the ai_wont_play rule may still cut, or call
+    # cold, a card Forge's AI doesn't cast on its own: withheld, and said so.
+    return withhold_skipped(data, _ai_wont_play_of(deck_path))
 
 
 def report(result_file: str, deck_file: str, *, refresh: bool = False) -> dict:
@@ -269,6 +349,8 @@ def report(result_file: str, deck_file: str, *, refresh: bool = False) -> dict:
     synth["verdict"]["sim_is_floor"] = context["archetype"]["sim_is_floor"]
     out = {
         "ok": True, **synth,
+        # Named on the page: these were kept out of the cut suggestions.
+        "ai_wont_play": context["ai_wont_play"],
         "archetype": context["archetype"],
         "games": context["games"],
         "deck": context["deck"],

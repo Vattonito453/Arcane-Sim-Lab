@@ -14,6 +14,8 @@ engine/sim_results
 engine/jobs.db*
 engine/card_cache.json
 engine/combo_cache.json
+# QA reports and the review queue (human flag notes are a person's words).
+engine/simkb
 engine/__pycache__
 **/__pycache__
 

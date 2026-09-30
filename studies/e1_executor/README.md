@@ -6,7 +6,12 @@ G1 go/no-go (Fri 10/23). A thin step interpreter in the public GPL shim
 data-named combo steps on the seeded-board suite (WS3), and this directory
 holds the step data, the runner's exec arm and the development results.
 The gate itself (fresh seeds, pre-registered) is the gate agent's; nothing
-here was run on a seed outside the DEV range 2026200000-2026200999.
+in this README was run on a seed outside the DEV range 2026200000-2026200999.
+
+**G1 result:** GO under the pre-registered primary reading, PARTIAL if S1
+is read by kills only; see `PREREG.md` (the rules, fixed before any gate
+game), `RESULTS.md` (the gate's figures) and `g1_summary.json` (the
+reader's output). `run_g1.py` and `read_g1.py` reproduce it.
 
 **Development result, in short** (20 trials per arm, DEV seeds
 2026200000-019, jar `88e7564`, step files at `e28eeb2`; the gate's own

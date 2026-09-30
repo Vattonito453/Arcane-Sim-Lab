@@ -93,6 +93,24 @@ only the R1 deploy.
 | g | Knockout card convention (D3) | Keep damage summed by card name; any page that ever shows a damage card says "most damage from". |
 | h | Decision 4 checklist sign-off | Sign it: the spike passed, and the checklist is recorded in the shim README. |
 
+## Open after week 4 (owner)
+
+The week-3 list above is still open except (c). Each new item has a
+recommendation.
+
+| # | Decision | Recommendation |
+|---|---|---|
+| a | G1's reading: GO (Phase B builds every line kind) or PARTIAL (activation and cast-from-zone lines only) | Accept GO for the activation and trigger-binding paths, and mark two line kinds not drivable until their blockers are fixed: lines that finish with a combat hand-off (S1: the frozen attack split never kills all three) and lines that need a tap-or-untap choice (S2). The S1 reading was fixed after the dev runs showed 0/20 kills; the PREREG says so. |
+| b | Add `chooseBinary` to decision 4's API list, for data-named steps only | Yes, under the same checklist: it is the only way to drive tap/untap loops (Derevi, Kiki-Jiki with Pestermite or Deceiver Exarch). The evidence branch made S2 20/20 on dev seeds; it adds 22 Java lines, so Phase B's budget has to absorb them. |
+| c | Accept the prototype returning mana abilities as steps | Yes. WS9 Phase A said "a non-mana activation"; S3 and S6 float mana this way, and the shim README discloses it. Record it before Phase B merges the path. |
+| d | Deploy R1.1 | Yes: engine, web and preflight together, then smoke_test.py --sim, preflight --files in the api container and --image-only in the worker (`deploy/HOSTING.md`). |
+| e | Reviewer key for the flag queue | Generate one (`secrets.token_urlsafe(24)`) and set `MTG_REVIEW_KEYS` on the VM; never also in `MTG_API_KEYS` or `MTG_FLAG_KEYS`. Owner only. |
+| f | Disclosure wording | Keep "Cards Forge's AI doesn't cast on its own" (the 2026-09-27 decision) and say "scheduled for November" for readmission, or name the release (R2.1). |
+| g | Decks that lose cards at load | Add single-slash "A / B" normalisation to the import (WS4 follow-up), re-import Richard's Stella deck and the Ant-Man deck, and replace the five bundled decks that carry cards newer than Forge 2.0.13. |
+| h | Cards Forge could not load, in telemetry | Exempt them from "cold" and from cut suggestions too, as the AI-skipped cards already are. |
+| i | qa.json written before the card cache or Forge index | Redo it automatically when either arrives (today it silently under-flags; the file notes say so). |
+| j | QA flag severities and the queue threshold | Keep the implementer's table and `MTG_QA_QUEUE_MIN_SEVERITY=medium` until layer B's first month of data. |
+
 ## Order
 
 Dependencies are the only reason to prefer one order over another. Within a tier,
@@ -201,6 +219,20 @@ Don't rebuild these. See `deploy_plan.md` for the measurements.
     the pilot on every run, "Flag this moment" (`MTG_FLAG_KEYS`), and the
     prediction label with per-pilot rank checks; the R1 rank check PASSED,
     rho 0.510 against 0.40 (`studies/rank_check_r1/RESULTS.md`).
+- Week 4 (2026-09-29):
+  - R1 deployed 2026-09-29 (shim v0.17.0, version-2 plans; preflight OK).
+  - G1, the combo-executor go/no-go: GO under the pre-registered reading,
+    PARTIAL if S1 is counted by kills only (`studies/e1_executor/RESULTS.md`).
+    Executor 20/20 on S3, S4 and S6 and stock 0/20 on all five; S1 reaches
+    the loop state 20/20 (880 of 880 triggers bound) but the pilot's attack
+    split leaves one opponent alive; S2 fails on Forge's chooseBinary. Shim
+    branch `exec-proto` (0.18.0-proto, 396 Java lines, dev box only), and
+    `exec-proto-binary` as evidence for decision (b) below.
+  - R1.1 built and verified, not yet deployed: qa.json on every run (QA layer
+    A), dead-card disclosures, standings with "Leader" and the leaderboard by
+    pilot, the WS11 remainder.
+  - Richard's before/after pack published as a private page for the owner to
+    share: none of the three named plays recurred in 24 rerun games.
 
 ## What is deliberately NOT here
 

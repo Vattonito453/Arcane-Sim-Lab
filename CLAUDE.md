@@ -48,6 +48,7 @@ web/               Next.js 15 App Router, React 19, TypeScript strict
   components/        incl. FlagMoment.tsx (Flag this moment), PredictionPanel.tsx
 studies/           pre-registered experiments (PREREG.md before any game, RESULTS.md after)
   scenarios/         seeded-board harness: writer.py, run_scenarios.py, suite/ S1-S9 + C1, BASELINE.md
+  e1_executor/       combo-executor prototype data (steps/ in simlab-steps/1) and the G1 gate (RESULTS.md)
 Design System/     DESIGN_SYSTEM.md (BINDING) + tokens css + backdrop art + dc.html specs
 mockups/           design_principles.md (superseded for visuals) + v3 HTML wireframes
 deploy/            Dockerfiles (api/worker/web), compose, worker-entrypoint.sh
@@ -291,6 +292,15 @@ telemetry, coaching, the training corpus, and — critically — all AI decision
   obligation for the shim, which is satisfied only while the
   `simlab-forge-shim` repo stays public at the commit the image was built
   from. Do not push this image anywhere public without checking that first.
+- **The combo executor keeps the boundary this way** (shim branch `exec-proto`,
+  0.18.0-proto, dev box only; G1 GO, `studies/e1_executor/`). Combo steps are
+  plan data (`"steps"` in the plans JSON the shim already reads, so
+  `plansSha256` covers them); the Java interprets them generically through
+  `canPlay`, `canPayCost`, `canTarget` and `playStack`, and binds a trigger's
+  target only when an armed line's data names the trigger's host, handing
+  everything else to `super` (owner decision 4's checklist). `chooseBinary` is
+  outside that list: it lives only on the evidence branch `exec-proto-binary`
+  until the owner extends decision 4.
 - Prefer upstream PRs to Card-Forge over carrying a fork; any fork we do carry
   must be public from day one.
 - GPL non-compliance is the only path where Forge contributors could ever
@@ -401,7 +411,7 @@ lost to block buffering. See deploy/HOSTING.md.
 # Engine — every test, discovered. Do NOT replace this with a hand-written
 # list: the previous list named 8 files while 16 existed, so "running the
 # loop" silently ran half the suite. Each must print ALL ASSERTIONS PASSED.
-for t in engine/tests/test_*.py studies/scenarios/tests/test_*.py; do
+for t in engine/tests/test_*.py studies/*/tests/test_*.py; do
   python3 "$t" >/dev/null 2>&1 && echo "pass  $t" || echo "FAIL  $t"
 done
 

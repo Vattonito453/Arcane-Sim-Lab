@@ -1,0 +1,31 @@
+{
+  "format": "simlab-steps/1",
+  "scenario": "s2_derevi_emiel_cradle",
+  "deck": "derevi",
+  "state": "Unbounded green mana floating from the Derevi, Emiel and Gaea's Cradle loop (tap Cradle for 5, pay 3 to blink Derevi with Emiel, Derevi's enter trigger untaps Cradle: net 2 per pass).",
+  "state_step": 0,
+  "outlet_step": 2,
+  "lines": [
+    {
+      "id": "derevi_emiel_cradle_ballista",
+      "pieces": {"Derevi, Empyrial Tactician": "Battlefield", "Emiel the Blessed": "Battlefield",
+                 "Gaea's Cradle": "Battlefield", "Walking Ballista": "Battlefield"},
+      "budget_ms": 240000,
+      "triggers": [
+        {"card": "Derevi, Empyrial Tactician", "target": {"card": "Gaea's Cradle", "tapped": true}},
+        {"card": "Emiel the Blessed", "confirm": false}
+      ],
+      "steps": [
+        {"loop": [
+           {"op": "activate", "card": "Gaea's Cradle", "api": "Mana"},
+           {"op": "activate", "card": "Emiel the Blessed", "api": "ChangeZone",
+            "target": {"card": "Derevi, Empyrial Tactician"}}],
+         "until": {"mana_at_least": 476}, "max": 400},
+        {"op": "activate", "card": "Walking Ballista", "api": "PutCounter", "max": 200},
+        {"op": "activate", "card": "Walking Ballista", "api": "DealDamage",
+         "target": {"player": "opponent", "policy": "lowest_life"},
+         "until": {"opponents_out": true}, "max": 200}
+      ]
+    }
+  ]
+}

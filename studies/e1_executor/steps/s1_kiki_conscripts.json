@@ -1,0 +1,25 @@
+{
+  "format": "simlab-steps/1",
+  "scenario": "s1_kiki_conscripts",
+  "deck": "winota_lua",
+  "state": "Arbitrarily many hasty Zealous Conscripts copies from the Kiki-Jiki loop (Kiki copies Conscripts, the copy's enter trigger untaps Kiki), stopped once the untapped power exceeds the opponents' total life by the margin; then the attack is handed to the pilot.",
+  "state_step": 0,
+  "outlet_step": 1,
+  "lines": [
+    {
+      "id": "kiki_conscripts",
+      "pieces": {"Kiki-Jiki, Mirror Breaker": "Battlefield", "Zealous Conscripts": "Battlefield"},
+      "budget_ms": 240000,
+      "triggers": [
+        {"card": "Zealous Conscripts", "target": {"card": "Kiki-Jiki, Mirror Breaker"}}
+      ],
+      "steps": [
+        {"loop": [
+           {"op": "activate", "card": "Kiki-Jiki, Mirror Breaker", "api": "CopyPermanent",
+            "target": {"card": "Zealous Conscripts"}}],
+         "until": {"power_vs_life": 15}, "max": 80},
+        {"op": "pass"}
+      ]
+    }
+  ]
+}
